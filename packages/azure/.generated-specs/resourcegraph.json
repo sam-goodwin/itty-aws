@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.resourcegraph#GraphQueryDelete": {
+    "com.azure.resourcegraph#DeleteGraphQuery": {
       "type": "operation",
       "input": {
-        "target": "com.azure.resourcegraph#GraphQueryDeleteRequest"
+        "target": "com.azure.resourcegraph#DeleteGraphQueryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.resourcegraph#GraphQueryDeleteRequest": {
+    "com.azure.resourcegraph#DeleteGraphQueryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.resourcegraph#GraphQueryUpdate": {
+    "com.azure.resourcegraph#UpdateGraphQuery": {
       "type": "operation",
       "input": {
-        "target": "com.azure.resourcegraph#GraphQueryUpdateRequest"
+        "target": "com.azure.resourcegraph#UpdateGraphQueryRequest"
       },
       "output": {
-        "target": "com.azure.resourcegraph#GraphQueryUpdateResponse"
+        "target": "com.azure.resourcegraph#UpdateGraphQueryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.resourcegraph#GraphQueryUpdateResponse": {
+    "com.azure.resourcegraph#UpdateGraphQueryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -310,7 +310,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.resourcegraph#GraphQueryUpdateRequest": {
+    "com.azure.resourcegraph#UpdateGraphQueryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -568,13 +568,13 @@
         "smithy.api#documentation": "Properties that contain a graph query."
       }
     },
-    "com.azure.resourcegraph#GraphQueryGet": {
+    "com.azure.resourcegraph#GetGraphQuery": {
       "type": "operation",
       "input": {
-        "target": "com.azure.resourcegraph#GraphQueryGetRequest"
+        "target": "com.azure.resourcegraph#GetGraphQueryRequest"
       },
       "output": {
-        "target": "com.azure.resourcegraph#GraphQueryGetResponse"
+        "target": "com.azure.resourcegraph#GetGraphQueryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -587,7 +587,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.resourcegraph#GraphQueryGetResponse": {
+    "com.azure.resourcegraph#GetGraphQueryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -655,7 +655,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.resourcegraph#GraphQueryGetRequest": {
+    "com.azure.resourcegraph#GetGraphQueryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -687,13 +687,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.resourcegraph#GraphQueryList": {
+    "com.azure.resourcegraph#ListGraphQuery": {
       "type": "operation",
       "input": {
-        "target": "com.azure.resourcegraph#GraphQueryListRequest"
+        "target": "com.azure.resourcegraph#ListGraphQueryRequest"
       },
       "output": {
-        "target": "com.azure.resourcegraph#GraphQueryListResult"
+        "target": "com.azure.resourcegraph#ListGraphQueryResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -706,7 +706,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.resourcegraph#GraphQueryListResult": {
+    "com.azure.resourcegraph#ListGraphQueryResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -804,7 +804,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.resourcegraph#GraphQueryListRequest": {
+    "com.azure.resourcegraph#ListGraphQueryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -828,13 +828,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.resourcegraph#GraphQueryListBySubscription": {
+    "com.azure.resourcegraph#ListGraphQueryBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.resourcegraph#GraphQueryListBySubscriptionRequest"
+        "target": "com.azure.resourcegraph#ListGraphQueryBySubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.resourcegraph#GraphQueryListResult"
+        "target": "com.azure.resourcegraph#ListGraphQueryResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -847,7 +847,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.resourcegraph#GraphQueryListBySubscriptionRequest": {
+    "com.azure.resourcegraph#ListGraphQueryBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1221,7 +1221,7 @@
         "smithy.api#documentation": "Azure subscriptions against which to execute the query."
       }
     },
-    "com.azure.resourcegraph#OperationsList": {
+    "com.azure.resourcegraph#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -1333,28 +1333,28 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.resourcegraph#GraphQueryDelete"
+          "target": "com.azure.resourcegraph#DeleteGraphQuery"
         },
         {
-          "target": "com.azure.resourcegraph#GraphQueryUpdate"
+          "target": "com.azure.resourcegraph#UpdateGraphQuery"
         },
         {
           "target": "com.azure.resourcegraph#GraphQueryCreateOrUpdate"
         },
         {
-          "target": "com.azure.resourcegraph#GraphQueryGet"
+          "target": "com.azure.resourcegraph#GetGraphQuery"
         },
         {
-          "target": "com.azure.resourcegraph#GraphQueryList"
+          "target": "com.azure.resourcegraph#ListGraphQuery"
         },
         {
-          "target": "com.azure.resourcegraph#GraphQueryListBySubscription"
+          "target": "com.azure.resourcegraph#ListGraphQueryBySubscription"
         },
         {
           "target": "com.azure.resourcegraph#Resources"
         },
         {
-          "target": "com.azure.resourcegraph#OperationsList"
+          "target": "com.azure.resourcegraph#ListOperations"
         }
       ],
       "traits": {

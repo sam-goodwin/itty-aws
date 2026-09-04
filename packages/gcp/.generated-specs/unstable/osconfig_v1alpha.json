@@ -3262,7 +3262,7 @@
         "smithy.api#documentation": "VM inventory details."
       }
     },
-    "com.gcp.osconfig_v1alpha#GetProjectsLocationsInstanceOSPoliciesCompliancesRequest": {
+    "com.gcp.osconfig_v1alpha#GetProjectsLocationsInstanceOsPoliciesCompliancesRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -3301,10 +3301,10 @@
         ]
       }
     },
-    "com.gcp.osconfig_v1alpha#GetProjectsLocationsInstanceOSPoliciesCompliances": {
+    "com.gcp.osconfig_v1alpha#GetProjectsLocationsInstanceOsPoliciesCompliances": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.osconfig_v1alpha#GetProjectsLocationsInstanceOSPoliciesCompliancesRequest"
+        "target": "com.gcp.osconfig_v1alpha#GetProjectsLocationsInstanceOsPoliciesCompliancesRequest"
       },
       "output": {
         "target": "com.gcp.osconfig_v1alpha#InstanceOSPoliciesCompliance"
@@ -3325,7 +3325,7 @@
         "smithy.api#documentation": "Get OS policies compliance data for the specified Compute Engine VM instance."
       }
     },
-    "com.gcp.osconfig_v1alpha#ListProjectsLocationsInstanceOSPoliciesCompliancesRequest": {
+    "com.gcp.osconfig_v1alpha#ListProjectsLocationsInstanceOsPoliciesCompliancesRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -3359,10 +3359,10 @@
         }
       }
     },
-    "com.gcp.osconfig_v1alpha#ListProjectsLocationsInstanceOSPoliciesCompliances": {
+    "com.gcp.osconfig_v1alpha#ListProjectsLocationsInstanceOsPoliciesCompliances": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.osconfig_v1alpha#ListProjectsLocationsInstanceOSPoliciesCompliancesRequest"
+        "target": "com.gcp.osconfig_v1alpha#ListProjectsLocationsInstanceOsPoliciesCompliancesRequest"
       },
       "output": {
         "target": "com.gcp.osconfig_v1alpha#ListInstanceOSPoliciesCompliancesResponse"

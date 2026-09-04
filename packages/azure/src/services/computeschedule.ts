@@ -12,131 +12,124 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ComputeSchedule/operations",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+/** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
+export type ResourceProvisionPayloadBaseProfileMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourceProvisionPayloadBaseProfileMap>;
 
-/** Localized display information for this particular operation. */
-export interface OperationDisplay {
-  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
-  provider?: string;
-  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
-  resource?: string;
-  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
-  operation?: string;
-  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
-  description?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = /*@__PURE__*/ S.String;
-
-/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
-export const OperationActionType = /*@__PURE__*/ S.String;
-
-/** Details of a REST API operation, returned from the Resource Provider Operations API */
-export interface Operation {
-  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
-  name?: string;
-  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
-  isDataAction?: boolean;
-  /** Localized display information for this particular operation. */
-  display?: OperationDisplay;
-  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-  origin?: OperationOrigin;
-  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-  actionType?: OperationActionType;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationDisplay),
-    origin: S.optional(OperationOrigin),
-    actionType: S.optional(OperationActionType),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Array<Operation>;
-export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationsListResponseValueList>;
-
-export interface OperationsListResponse {
-  /** List of operations supported by the resource provider */
-  value?: OperationsListResponseValueList;
-  /** URL to get the next set of operation list results (if there are any). */
-  nextLink?: string;
-}
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
-
-/** The list of operation ids to cancel operations on */
-export type ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
-  Array<string>;
-export const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
-  /*@__PURE__*/ S.Array(
+export type ResourceProvisionPayloadResourceOverridesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourceProvisionPayloadResourceOverridesItemMap =
+  /*@__PURE__*/ S.Record(
     S.String,
-  ) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList>;
+    S.Unknown,
+  ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
 
-export interface ScheduledActionsVirtualMachinesCancelOperationsRequest {
+/** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
+export type ResourceProvisionPayloadResourceOverridesList =
+  Array<ResourceProvisionPayloadResourceOverridesItemMap>;
+export const ResourceProvisionPayloadResourceOverridesList =
+  /*@__PURE__*/ S.Array(
+    ResourceProvisionPayloadResourceOverridesItemMap,
+  ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesList>;
+
+/** Resource creation data model */
+export interface ResourceProvisionPayload {
+  /** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
+  baseProfile?: ResourceProvisionPayloadBaseProfileMap;
+  /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
+  resourceOverrides?: ResourceProvisionPayloadResourceOverridesList;
+  /** Number of VMs to be created */
+  resourceCount: number;
+  /** if resourceOverrides doesn't contain "name", service will create name based of prefix and ResourceCount e.g. resourceprefix-0,resourceprefix-1.. */
+  resourcePrefix?: string;
+}
+export const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseProfile: S.optional(ResourceProvisionPayloadBaseProfileMap),
+    resourceOverrides: S.optional(
+      ResourceProvisionPayloadResourceOverridesList,
+    ),
+    resourceCount: S.Number,
+    resourcePrefix: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceProvisionPayload",
+}) as any as S.Schema<ResourceProvisionPayload>;
+
+/** The preferences customers can select to optimize their requests to ScheduledActions */
+export type OptimizationPreference =
+  | "Cost"
+  | "Availability"
+  | "CostAvailabilityBalanced";
+export const OptimizationPreference = /*@__PURE__*/ S.String;
+
+/** The retry policy for the user request */
+export interface RetryPolicy {
+  /** Retry count for user request */
+  retryCount?: number;
+  /** Retry window in minutes for user request */
+  retryWindowInMinutes?: number;
+}
+export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    retryCount: S.optional(S.Number),
+    retryWindowInMinutes: S.optional(S.Number),
+  }),
+).annotate({ identifier: "RetryPolicy" }) as any as S.Schema<RetryPolicy>;
+
+/** Extra details needed to run the user's request */
+export interface ExecutionParameters {
+  /** Details that could optimize the user's request */
+  optimizationPreference?: OptimizationPreference | (string & {});
+  /** Retry policy the user can pass */
+  retryPolicy?: RetryPolicy;
+}
+export const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    optimizationPreference: S.optional(OptimizationPreference),
+    retryPolicy: S.optional(RetryPolicy),
+  }),
+).annotate({
+  identifier: "ExecutionParameters",
+}) as any as S.Schema<ExecutionParameters>;
+
+export interface CreateScheduledActionVirtualMachineExecuteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
   locationparameter: string;
-  /** The list of operation ids to cancel operations on */
-  operationIds: ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList;
+  /** resource creation payload */
+  resourceConfigParameters: ResourceProvisionPayload;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
   /** CorrelationId item */
-  correlationid: string;
+  correlationid?: string;
 }
-export const ScheduledActionsVirtualMachinesCancelOperationsRequest =
+export const CreateScheduledActionVirtualMachineExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       locationparameter: S.String.pipe(T.Label()),
-      operationIds:
-        ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList,
-      correlationid: S.String,
+      resourceConfigParameters: ResourceProvisionPayload,
+      executionParameters: ExecutionParameters,
+      correlationid: S.optional(S.String),
     }).pipe(
       T.Http({
         method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesCancelOperations",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteCreate",
         code: 200,
         apiVersion: "2025-05-01",
       }),
     ),
   ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesCancelOperationsRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequest>;
+    identifier: "CreateScheduledActionVirtualMachineExecuteRequest",
+  }) as any as S.Schema<CreateScheduledActionVirtualMachineExecuteRequest>;
 
 /** Type of operation performed on the resources */
 export type ResourceOperationDetailsOpType =
@@ -181,20 +174,6 @@ export const ResourceOperationError = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ResourceOperationError",
 }) as any as S.Schema<ResourceOperationError>;
-
-/** The retry policy for the user request */
-export interface RetryPolicy {
-  /** Retry count for user request */
-  retryCount?: number;
-  /** Retry window in minutes for user request */
-  retryWindowInMinutes?: number;
-}
-export const RetryPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    retryCount: S.optional(S.Number),
-    retryWindowInMinutes: S.optional(S.Number),
-  }),
-).annotate({ identifier: "RetryPolicy" }) as any as S.Schema<RetryPolicy>;
 
 /** The details of a response from an operation on a resource */
 export interface ResourceOperationDetails {
@@ -264,130 +243,6 @@ export const ResourceOperation = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceOperation",
 }) as any as S.Schema<ResourceOperation>;
 
-/** An array of resource operations that were successfully cancelled */
-export type CancelOperationsResponseResultsList = Array<ResourceOperation>;
-export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<CancelOperationsResponseResultsList>;
-
-/** This is the response from a cancel operations request */
-export interface CancelOperationsResponse {
-  /** An array of resource operations that were successfully cancelled */
-  results: CancelOperationsResponseResultsList;
-}
-export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: CancelOperationsResponseResultsList,
-  }),
-).annotate({
-  identifier: "CancelOperationsResponse",
-}) as any as S.Schema<CancelOperationsResponse>;
-
-/** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
-export type ResourceProvisionPayloadBaseProfileMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourceProvisionPayloadBaseProfileMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourceProvisionPayloadBaseProfileMap>;
-
-export type ResourceProvisionPayloadResourceOverridesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourceProvisionPayloadResourceOverridesItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesItemMap>;
-
-/** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
-export type ResourceProvisionPayloadResourceOverridesList =
-  Array<ResourceProvisionPayloadResourceOverridesItemMap>;
-export const ResourceProvisionPayloadResourceOverridesList =
-  /*@__PURE__*/ S.Array(
-    ResourceProvisionPayloadResourceOverridesItemMap,
-  ) as any as S.Schema<ResourceProvisionPayloadResourceOverridesList>;
-
-/** Resource creation data model */
-export interface ResourceProvisionPayload {
-  /** Virtual machine profile object that contains VM properties that are common across all VMs in this batch (if you want to create 100 VMs in this request, and they all have same vmSize, then include vmSize in baseProfile) */
-  baseProfile?: ResourceProvisionPayloadBaseProfileMap;
-  /** Virtual machine profile array that contains VM properties that needs to be overridden for each VM in the batch (if you want to create 100 VMs, they all need a distinct computerName property, you pass computerNames for each VM in batch in this array), service will merge baseProfile with VM specific overrides and create a merged VMProfile. */
-  resourceOverrides?: ResourceProvisionPayloadResourceOverridesList;
-  /** Number of VMs to be created */
-  resourceCount: number;
-  /** if resourceOverrides doesn't contain "name", service will create name based of prefix and ResourceCount e.g. resourceprefix-0,resourceprefix-1.. */
-  resourcePrefix?: string;
-}
-export const ResourceProvisionPayload = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseProfile: S.optional(ResourceProvisionPayloadBaseProfileMap),
-    resourceOverrides: S.optional(
-      ResourceProvisionPayloadResourceOverridesList,
-    ),
-    resourceCount: S.Number,
-    resourcePrefix: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceProvisionPayload",
-}) as any as S.Schema<ResourceProvisionPayload>;
-
-/** The preferences customers can select to optimize their requests to ScheduledActions */
-export type OptimizationPreference =
-  | "Cost"
-  | "Availability"
-  | "CostAvailabilityBalanced";
-export const OptimizationPreference = /*@__PURE__*/ S.String;
-
-/** Extra details needed to run the user's request */
-export interface ExecutionParameters {
-  /** Details that could optimize the user's request */
-  optimizationPreference?: OptimizationPreference | (string & {});
-  /** Retry policy the user can pass */
-  retryPolicy?: RetryPolicy;
-}
-export const ExecutionParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    optimizationPreference: S.optional(OptimizationPreference),
-    retryPolicy: S.optional(RetryPolicy),
-  }),
-).annotate({
-  identifier: "ExecutionParameters",
-}) as any as S.Schema<ExecutionParameters>;
-
-export interface ScheduledActionsVirtualMachinesExecuteCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The location name. */
-  locationparameter: string;
-  /** resource creation payload */
-  resourceConfigParameters: ResourceProvisionPayload;
-  /** The execution parameters for the request */
-  executionParameters: ExecutionParameters;
-  /** CorrelationId item */
-  correlationid?: string;
-}
-export const ScheduledActionsVirtualMachinesExecuteCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationparameter: S.String.pipe(T.Label()),
-      resourceConfigParameters: ResourceProvisionPayload,
-      executionParameters: ExecutionParameters,
-      correlationid: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteCreate",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesExecuteCreateRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteCreateRequest>;
-
 /** The results from the start request if no errors exist */
 export type CreateResourceOperationResponseResultsList =
   Array<ResourceOperation>;
@@ -434,69 +289,7 @@ export const Resources = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Resources" }) as any as S.Schema<Resources>;
 
-export interface ScheduledActionsVirtualMachinesExecuteDeallocateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The location name. */
-  locationparameter: string;
-  /** The execution parameters for the request */
-  executionParameters: ExecutionParameters;
-  /** The resources for the request */
-  resources: Resources;
-  /** CorrelationId item */
-  correlationid: string;
-}
-export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationparameter: S.String.pipe(T.Label()),
-      executionParameters: ExecutionParameters,
-      resources: Resources,
-      correlationid: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDeallocate",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesExecuteDeallocateRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeallocateRequest>;
-
-/** The results from the deallocate request if no errors exist */
-export type DeallocateResourceOperationResponseResultsList =
-  Array<ResourceOperation>;
-export const DeallocateResourceOperationResponseResultsList =
-  /*@__PURE__*/ S.Array(
-    ResourceOperation,
-  ) as any as S.Schema<DeallocateResourceOperationResponseResultsList>;
-
-/** The response from a deallocate request */
-export interface DeallocateResourceOperationResponse {
-  /** The description of the operation response */
-  description: string;
-  /** The type of resources used in the deallocate request eg virtual machines */
-  type: string;
-  /** The location of the deallocate request eg westus */
-  location: string;
-  /** The results from the deallocate request if no errors exist */
-  results?: DeallocateResourceOperationResponseResultsList;
-}
-export const DeallocateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(DeallocateResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "DeallocateResourceOperationResponse",
-}) as any as S.Schema<DeallocateResourceOperationResponse>;
-
-export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
+export interface DeleteScheduledActionVirtualMachineExecuteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
@@ -510,7 +303,7 @@ export interface ScheduledActionsVirtualMachinesExecuteDeleteRequest {
   /** Forced delete resource item */
   forceDeletion?: boolean;
 }
-export const ScheduledActionsVirtualMachinesExecuteDeleteRequest =
+export const DeleteScheduledActionVirtualMachineExecuteRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -528,8 +321,8 @@ export const ScheduledActionsVirtualMachinesExecuteDeleteRequest =
       }),
     ),
   ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesExecuteDeleteRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeleteRequest>;
+    identifier: "DeleteScheduledActionVirtualMachineExecuteRequest",
+  }) as any as S.Schema<DeleteScheduledActionVirtualMachineExecuteRequest>;
 
 /** The results from the start request if no errors exist */
 export type DeleteResourceOperationResponseResultsList =
@@ -560,129 +353,6 @@ export const DeleteResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteResourceOperationResponse",
 }) as any as S.Schema<DeleteResourceOperationResponse>;
 
-export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The location name. */
-  locationparameter: string;
-  /** The execution parameters for the request */
-  executionParameters: ExecutionParameters;
-  /** The resources for the request */
-  resources: Resources;
-  /** CorrelationId item */
-  correlationid: string;
-}
-export const ScheduledActionsVirtualMachinesExecuteHibernateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationparameter: S.String.pipe(T.Label()),
-      executionParameters: ExecutionParameters,
-      resources: Resources,
-      correlationid: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteHibernate",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesExecuteHibernateRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteHibernateRequest>;
-
-/** The results from the Hibernate request if no errors exist */
-export type HibernateResourceOperationResponseResultsList =
-  Array<ResourceOperation>;
-export const HibernateResourceOperationResponseResultsList =
-  /*@__PURE__*/ S.Array(
-    ResourceOperation,
-  ) as any as S.Schema<HibernateResourceOperationResponseResultsList>;
-
-/** The response from a Hibernate request */
-export interface HibernateResourceOperationResponse {
-  /** The description of the operation response */
-  description: string;
-  /** The type of resources used in the Hibernate request eg virtual machines */
-  type: string;
-  /** The location of the Hibernate request eg westus */
-  location: string;
-  /** The results from the Hibernate request if no errors exist */
-  results?: HibernateResourceOperationResponseResultsList;
-}
-export const HibernateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(HibernateResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "HibernateResourceOperationResponse",
-}) as any as S.Schema<HibernateResourceOperationResponse>;
-
-export interface ScheduledActionsVirtualMachinesExecuteStartRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The location name. */
-  locationparameter: string;
-  /** The execution parameters for the request */
-  executionParameters: ExecutionParameters;
-  /** The resources for the request */
-  resources: Resources;
-  /** CorrelationId item */
-  correlationid: string;
-}
-export const ScheduledActionsVirtualMachinesExecuteStartRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      locationparameter: S.String.pipe(T.Label()),
-      executionParameters: ExecutionParameters,
-      resources: Resources,
-      correlationid: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteStart",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesExecuteStartRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteStartRequest>;
-
-/** The results from the start request if no errors exist */
-export type StartResourceOperationResponseResultsList =
-  Array<ResourceOperation>;
-export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
-  ResourceOperation,
-) as any as S.Schema<StartResourceOperationResponseResultsList>;
-
-/** The response from a start request */
-export interface StartResourceOperationResponse {
-  /** The description of the operation response */
-  description: string;
-  /** The type of resources used in the start request eg virtual machines */
-  type: string;
-  /** The location of the start request eg westus */
-  location: string;
-  /** The results from the start request if no errors exist */
-  results?: StartResourceOperationResponseResultsList;
-}
-export const StartResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.String,
-    type: S.String,
-    location: S.String,
-    results: S.optional(StartResourceOperationResponseResultsList),
-  }),
-).annotate({
-  identifier: "StartResourceOperationResponse",
-}) as any as S.Schema<StartResourceOperationResponse>;
-
 /** The list of operation ids to query errors of */
 export type ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList =
   Array<string>;
@@ -691,7 +361,7 @@ export const ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationId
     S.String,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList>;
 
-export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
+export interface GetScheduledActionVirtualMachineOperationErrorRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
@@ -699,7 +369,7 @@ export interface ScheduledActionsVirtualMachinesGetOperationErrorsRequest {
   /** The list of operation ids to query errors of */
   operationIds: ScheduledActionsVirtualMachinesGetOperationErrorsRequestOperationIdsList;
 }
-export const ScheduledActionsVirtualMachinesGetOperationErrorsRequest =
+export const GetScheduledActionVirtualMachineOperationErrorRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -715,8 +385,8 @@ export const ScheduledActionsVirtualMachinesGetOperationErrorsRequest =
       }),
     ),
   ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesGetOperationErrorsRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationErrorsRequest>;
+    identifier: "GetScheduledActionVirtualMachineOperationErrorRequest",
+  }) as any as S.Schema<GetScheduledActionVirtualMachineOperationErrorRequest>;
 
 /** This defines a list of operation errors associated with a unique operationId */
 export interface OperationErrorDetails {
@@ -812,7 +482,7 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationId
     S.String,
   ) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequestOperationIdsList>;
 
-export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
+export interface GetScheduledActionVirtualMachineOperationStatusRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
@@ -822,7 +492,7 @@ export interface ScheduledActionsVirtualMachinesGetOperationStatusRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesGetOperationStatusRequest =
+export const GetScheduledActionVirtualMachineOperationStatusRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -839,8 +509,8 @@ export const ScheduledActionsVirtualMachinesGetOperationStatusRequest =
       }),
     ),
   ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesGetOperationStatusRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesGetOperationStatusRequest>;
+    identifier: "GetScheduledActionVirtualMachineOperationStatusRequest",
+  }) as any as S.Schema<GetScheduledActionVirtualMachineOperationStatusRequest>;
 
 /** An array of resource operations based on their operation ids */
 export type GetOperationStatusResponseResultsList = Array<ResourceOperation>;
@@ -860,6 +530,275 @@ export const GetOperationStatusResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetOperationStatusResponse",
 }) as any as S.Schema<GetOperationStatusResponse>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ComputeSchedule/operations",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** Localized display information for this particular operation. */
+export interface OperationDisplay {
+  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
+  provider?: string;
+  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
+  resource?: string;
+  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
+  operation?: string;
+  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
+  description?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+export type OperationOrigin = "user" | "system" | "user,system";
+export const OperationOrigin = /*@__PURE__*/ S.String;
+
+/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+export type OperationActionType = "Internal";
+export const OperationActionType = /*@__PURE__*/ S.String;
+
+/** Details of a REST API operation, returned from the Resource Provider Operations API */
+export interface Operation {
+  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
+  name?: string;
+  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
+  isDataAction?: boolean;
+  /** Localized display information for this particular operation. */
+  display?: OperationDisplay;
+  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+  origin?: OperationOrigin;
+  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+  actionType?: OperationActionType;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationDisplay),
+    origin: S.optional(OperationOrigin),
+    actionType: S.optional(OperationActionType),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of operations supported by the resource provider */
+export type OperationsListResponseValueList = Array<Operation>;
+export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationsListResponseValueList>;
+
+export interface ListOperationsResponse {
+  /** List of operations supported by the resource provider */
+  value?: OperationsListResponseValueList;
+  /** URL to get the next set of operation list results (if there are any). */
+  nextLink?: string;
+}
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+/** The list of operation ids to cancel operations on */
+export type ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
+  Array<string>;
+export const ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList>;
+
+export interface ScheduledActionsVirtualMachinesCancelOperationsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The location name. */
+  locationparameter: string;
+  /** The list of operation ids to cancel operations on */
+  operationIds: ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList;
+  /** CorrelationId item */
+  correlationid: string;
+}
+export const ScheduledActionsVirtualMachinesCancelOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      locationparameter: S.String.pipe(T.Label()),
+      operationIds:
+        ScheduledActionsVirtualMachinesCancelOperationsRequestOperationIdsList,
+      correlationid: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesCancelOperations",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScheduledActionsVirtualMachinesCancelOperationsRequest",
+  }) as any as S.Schema<ScheduledActionsVirtualMachinesCancelOperationsRequest>;
+
+/** An array of resource operations that were successfully cancelled */
+export type CancelOperationsResponseResultsList = Array<ResourceOperation>;
+export const CancelOperationsResponseResultsList = /*@__PURE__*/ S.Array(
+  ResourceOperation,
+) as any as S.Schema<CancelOperationsResponseResultsList>;
+
+/** This is the response from a cancel operations request */
+export interface CancelOperationsResponse {
+  /** An array of resource operations that were successfully cancelled */
+  results: CancelOperationsResponseResultsList;
+}
+export const CancelOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: CancelOperationsResponseResultsList,
+  }),
+).annotate({
+  identifier: "CancelOperationsResponse",
+}) as any as S.Schema<CancelOperationsResponse>;
+
+export interface ScheduledActionsVirtualMachinesExecuteDeallocateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The location name. */
+  locationparameter: string;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
+}
+export const ScheduledActionsVirtualMachinesExecuteDeallocateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      locationparameter: S.String.pipe(T.Label()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteDeallocate",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScheduledActionsVirtualMachinesExecuteDeallocateRequest",
+  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteDeallocateRequest>;
+
+/** The results from the deallocate request if no errors exist */
+export type DeallocateResourceOperationResponseResultsList =
+  Array<ResourceOperation>;
+export const DeallocateResourceOperationResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    ResourceOperation,
+  ) as any as S.Schema<DeallocateResourceOperationResponseResultsList>;
+
+/** The response from a deallocate request */
+export interface DeallocateResourceOperationResponse {
+  /** The description of the operation response */
+  description: string;
+  /** The type of resources used in the deallocate request eg virtual machines */
+  type: string;
+  /** The location of the deallocate request eg westus */
+  location: string;
+  /** The results from the deallocate request if no errors exist */
+  results?: DeallocateResourceOperationResponseResultsList;
+}
+export const DeallocateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    type: S.String,
+    location: S.String,
+    results: S.optional(DeallocateResourceOperationResponseResultsList),
+  }),
+).annotate({
+  identifier: "DeallocateResourceOperationResponse",
+}) as any as S.Schema<DeallocateResourceOperationResponse>;
+
+export interface ScheduledActionsVirtualMachinesExecuteHibernateRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The location name. */
+  locationparameter: string;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
+}
+export const ScheduledActionsVirtualMachinesExecuteHibernateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      locationparameter: S.String.pipe(T.Label()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteHibernate",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ScheduledActionsVirtualMachinesExecuteHibernateRequest",
+  }) as any as S.Schema<ScheduledActionsVirtualMachinesExecuteHibernateRequest>;
+
+/** The results from the Hibernate request if no errors exist */
+export type HibernateResourceOperationResponseResultsList =
+  Array<ResourceOperation>;
+export const HibernateResourceOperationResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    ResourceOperation,
+  ) as any as S.Schema<HibernateResourceOperationResponseResultsList>;
+
+/** The response from a Hibernate request */
+export interface HibernateResourceOperationResponse {
+  /** The description of the operation response */
+  description: string;
+  /** The type of resources used in the Hibernate request eg virtual machines */
+  type: string;
+  /** The location of the Hibernate request eg westus */
+  location: string;
+  /** The results from the Hibernate request if no errors exist */
+  results?: HibernateResourceOperationResponseResultsList;
+}
+export const HibernateResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    type: S.String,
+    location: S.String,
+    results: S.optional(HibernateResourceOperationResponseResultsList),
+  }),
+).annotate({
+  identifier: "HibernateResourceOperationResponse",
+}) as any as S.Schema<HibernateResourceOperationResponse>;
 
 /** The deadlinetype of the operation, this can either be InitiateAt or CompleteBy */
 export type ScheduleDeadlineType = "Unknown" | "InitiateAt" | "CompleteBy";
@@ -958,7 +897,68 @@ export const ScheduledActionsVirtualMachinesSubmitHibernateRequest =
     identifier: "ScheduledActionsVirtualMachinesSubmitHibernateRequest",
   }) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitHibernateRequest>;
 
-export interface ScheduledActionsVirtualMachinesSubmitStartRequest {
+export interface StartScheduledActionVirtualMachineExecuteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The location name. */
+  locationparameter: string;
+  /** The execution parameters for the request */
+  executionParameters: ExecutionParameters;
+  /** The resources for the request */
+  resources: Resources;
+  /** CorrelationId item */
+  correlationid: string;
+}
+export const StartScheduledActionVirtualMachineExecuteRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      locationparameter: S.String.pipe(T.Label()),
+      executionParameters: ExecutionParameters,
+      resources: Resources,
+      correlationid: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachinesExecuteStart",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "StartScheduledActionVirtualMachineExecuteRequest",
+  }) as any as S.Schema<StartScheduledActionVirtualMachineExecuteRequest>;
+
+/** The results from the start request if no errors exist */
+export type StartResourceOperationResponseResultsList =
+  Array<ResourceOperation>;
+export const StartResourceOperationResponseResultsList = /*@__PURE__*/ S.Array(
+  ResourceOperation,
+) as any as S.Schema<StartResourceOperationResponseResultsList>;
+
+/** The response from a start request */
+export interface StartResourceOperationResponse {
+  /** The description of the operation response */
+  description: string;
+  /** The type of resources used in the start request eg virtual machines */
+  type: string;
+  /** The location of the start request eg westus */
+  location: string;
+  /** The results from the start request if no errors exist */
+  results?: StartResourceOperationResponseResultsList;
+}
+export const StartResourceOperationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.String,
+    type: S.String,
+    location: S.String,
+    results: S.optional(StartResourceOperationResponseResultsList),
+  }),
+).annotate({
+  identifier: "StartResourceOperationResponse",
+}) as any as S.Schema<StartResourceOperationResponse>;
+
+export interface StartScheduledActionVirtualMachineSubmitRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The location name. */
@@ -972,7 +972,7 @@ export interface ScheduledActionsVirtualMachinesSubmitStartRequest {
   /** CorrelationId item */
   correlationid: string;
 }
-export const ScheduledActionsVirtualMachinesSubmitStartRequest =
+export const StartScheduledActionVirtualMachineSubmitRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -990,19 +990,79 @@ export const ScheduledActionsVirtualMachinesSubmitStartRequest =
       }),
     ),
   ).annotate({
-    identifier: "ScheduledActionsVirtualMachinesSubmitStartRequest",
-  }) as any as S.Schema<ScheduledActionsVirtualMachinesSubmitStartRequest>;
+    identifier: "StartScheduledActionVirtualMachineSubmitRequest",
+  }) as any as S.Schema<StartScheduledActionVirtualMachineSubmitRequest>;
 
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
+export type CreateScheduledActionVirtualMachineExecuteError = AzureOpError;
+/** [PRIVATE PREVIEW]: VirtualMachinesExecuteCreate: Execute create operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
+export const CreateScheduledActionVirtualMachineExecute: API.OperationMethod<
+  CreateScheduledActionVirtualMachineExecuteRequest,
+  CreateResourceOperationResponse,
+  CreateScheduledActionVirtualMachineExecuteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
+  input: CreateScheduledActionVirtualMachineExecuteRequest,
+  output: CreateResourceOperationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteScheduledActionVirtualMachineExecuteError = AzureOpError;
+/** [PRIVATE PREVIEW]: VirtualMachinesExecuteDelete: Execute delete operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
+export const DeleteScheduledActionVirtualMachineExecute: API.OperationMethod<
+  DeleteScheduledActionVirtualMachineExecuteRequest,
+  DeleteResourceOperationResponse,
+  DeleteScheduledActionVirtualMachineExecuteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteScheduledActionVirtualMachineExecuteRequest,
+  output: DeleteResourceOperationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetScheduledActionVirtualMachineOperationErrorError = AzureOpError;
+/** VirtualMachinesGetOperationErrors: Get error details on operation errors (like transient errors encountered, additional logs) if they exist. */
+export const GetScheduledActionVirtualMachineOperationError: API.OperationMethod<
+  GetScheduledActionVirtualMachineOperationErrorRequest,
+  GetOperationErrorsResponse,
+  GetScheduledActionVirtualMachineOperationErrorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduledActionVirtualMachineOperationErrorRequest,
+  output: GetOperationErrorsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetScheduledActionVirtualMachineOperationStatusError = AzureOpError;
+/** VirtualMachinesGetOperationStatus: Polling endpoint to read status of operations performed on virtual machines */
+export const GetScheduledActionVirtualMachineOperationStatus: API.OperationMethod<
+  GetScheduledActionVirtualMachineOperationStatusRequest,
+  GetOperationStatusResponse,
+  GetScheduledActionVirtualMachineOperationStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetScheduledActionVirtualMachineOperationStatusRequest,
+  output: GetOperationStatusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1018,21 +1078,6 @@ export const ScheduledActionsVirtualMachinesCancelOperations: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: ScheduledActionsVirtualMachinesCancelOperationsRequest,
   output: CancelOperationsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsVirtualMachinesExecuteCreateError = AzureOpError;
-/** [PRIVATE PREVIEW]: VirtualMachinesExecuteCreate: Execute create operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
-export const ScheduledActionsVirtualMachinesExecuteCreate: API.OperationMethod<
-  ScheduledActionsVirtualMachinesExecuteCreateRequest,
-  CreateResourceOperationResponse,
-  ScheduledActionsVirtualMachinesExecuteCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsVirtualMachinesExecuteCreateRequest,
-  output: CreateResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1054,21 +1099,6 @@ export const ScheduledActionsVirtualMachinesExecuteDeallocate: API.OperationMeth
   retry: Retry.Retry,
 }));
 
-export type ScheduledActionsVirtualMachinesExecuteDeleteError = AzureOpError;
-/** [PRIVATE PREVIEW]: VirtualMachinesExecuteDelete: Execute delete operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
-export const ScheduledActionsVirtualMachinesExecuteDelete: API.OperationMethod<
-  ScheduledActionsVirtualMachinesExecuteDeleteRequest,
-  DeleteResourceOperationResponse,
-  ScheduledActionsVirtualMachinesExecuteDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsVirtualMachinesExecuteDeleteRequest,
-  output: DeleteResourceOperationResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ScheduledActionsVirtualMachinesExecuteHibernateError = AzureOpError;
 /** VirtualMachinesExecuteHibernate: Execute hibernate operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
 export const ScheduledActionsVirtualMachinesExecuteHibernate: API.OperationMethod<
@@ -1079,53 +1109,6 @@ export const ScheduledActionsVirtualMachinesExecuteHibernate: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: ScheduledActionsVirtualMachinesExecuteHibernateRequest,
   output: HibernateResourceOperationResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsVirtualMachinesExecuteStartError = AzureOpError;
-/** VirtualMachinesExecuteStart: Execute start operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
-export const ScheduledActionsVirtualMachinesExecuteStart: API.OperationMethod<
-  ScheduledActionsVirtualMachinesExecuteStartRequest,
-  StartResourceOperationResponse,
-  ScheduledActionsVirtualMachinesExecuteStartError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsVirtualMachinesExecuteStartRequest,
-  output: StartResourceOperationResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsVirtualMachinesGetOperationErrorsError =
-  AzureOpError;
-/** VirtualMachinesGetOperationErrors: Get error details on operation errors (like transient errors encountered, additional logs) if they exist. */
-export const ScheduledActionsVirtualMachinesGetOperationErrors: API.OperationMethod<
-  ScheduledActionsVirtualMachinesGetOperationErrorsRequest,
-  GetOperationErrorsResponse,
-  ScheduledActionsVirtualMachinesGetOperationErrorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsVirtualMachinesGetOperationErrorsRequest,
-  output: GetOperationErrorsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ScheduledActionsVirtualMachinesGetOperationStatusError =
-  AzureOpError;
-/** VirtualMachinesGetOperationStatus: Polling endpoint to read status of operations performed on virtual machines */
-export const ScheduledActionsVirtualMachinesGetOperationStatus: API.OperationMethod<
-  ScheduledActionsVirtualMachinesGetOperationStatusRequest,
-  GetOperationStatusResponse,
-  ScheduledActionsVirtualMachinesGetOperationStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsVirtualMachinesGetOperationStatusRequest,
-  output: GetOperationStatusResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1161,15 +1144,30 @@ export const ScheduledActionsVirtualMachinesSubmitHibernate: API.OperationMethod
   retry: Retry.Retry,
 }));
 
-export type ScheduledActionsVirtualMachinesSubmitStartError = AzureOpError;
-/** VirtualMachinesSubmitStart: Schedule start operation for a batch of virtual machines at datetime in future. */
-export const ScheduledActionsVirtualMachinesSubmitStart: API.OperationMethod<
-  ScheduledActionsVirtualMachinesSubmitStartRequest,
+export type StartScheduledActionVirtualMachineExecuteError = AzureOpError;
+/** VirtualMachinesExecuteStart: Execute start operation for a batch of virtual machines, this operation is triggered as soon as Computeschedule receives it. */
+export const StartScheduledActionVirtualMachineExecute: API.OperationMethod<
+  StartScheduledActionVirtualMachineExecuteRequest,
   StartResourceOperationResponse,
-  ScheduledActionsVirtualMachinesSubmitStartError,
+  StartScheduledActionVirtualMachineExecuteError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScheduledActionsVirtualMachinesSubmitStartRequest,
+  input: StartScheduledActionVirtualMachineExecuteRequest,
+  output: StartResourceOperationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type StartScheduledActionVirtualMachineSubmitError = AzureOpError;
+/** VirtualMachinesSubmitStart: Schedule start operation for a batch of virtual machines at datetime in future. */
+export const StartScheduledActionVirtualMachineSubmit: API.OperationMethod<
+  StartScheduledActionVirtualMachineSubmitRequest,
+  StartResourceOperationResponse,
+  StartScheduledActionVirtualMachineSubmitError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartScheduledActionVirtualMachineSubmitRequest,
   output: StartResourceOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,

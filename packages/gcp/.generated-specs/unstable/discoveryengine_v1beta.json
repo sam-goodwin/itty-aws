@@ -41126,7 +41126,7 @@
         "smithy.api#documentation": "Completes the user input with advanced keyword suggestions."
       }
     },
-    "com.gcp.discoveryengine_v1beta#ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1beta#ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -41146,10 +41146,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1beta#ListImportProjectLocationCollectionDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -41176,7 +41176,7 @@
         "smithy.api#documentation": "Imports all SuggestionDenyListEntry for a DataStore."
       }
     },
-    "com.gcp.discoveryengine_v1beta#PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1beta#ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -41196,10 +41196,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1beta#ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -42338,7 +42338,7 @@
         "smithy.api#documentation": "Gets a list of all the custom models."
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest": {
+    "com.gcp.discoveryengine_v1beta#GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest": {
       "type": "structure",
       "members": {
         "matcher.fhirMatcher.fhirResources": {
@@ -42365,10 +42365,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranches": {
+    "com.gcp.discoveryengine_v1beta#GetBatchDocumentMetadataProjectLocationCollectionDataStoreBranche": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse"
@@ -43555,7 +43555,7 @@
         "smithy.api#documentation": "Request on-demand recrawl for a list of URIs."
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest": {
+    "com.gcp.discoveryengine_v1beta#VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -43575,10 +43575,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngine": {
+    "com.gcp.discoveryengine_v1beta#VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngine": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest"
+        "target": "com.gcp.discoveryengine_v1beta#VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -43785,7 +43785,7 @@
         "smithy.api#documentation": "Gets a TargetSite."
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest": {
+    "com.gcp.discoveryengine_v1beta#CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -43805,10 +43805,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites": {
+    "com.gcp.discoveryengine_v1beta#CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSite": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -46129,7 +46129,7 @@
         "smithy.api#documentation": "Creates a TargetSite."
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest": {
+    "com.gcp.discoveryengine_v1beta#CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -46149,10 +46149,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites": {
+    "com.gcp.discoveryengine_v1beta#CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSite": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -47606,7 +47606,7 @@
         "smithy.api#documentation": "Creates a Conversation. If the Conversation to create already exists, an ALREADY_EXISTS error is returned."
       }
     },
-    "com.gcp.discoveryengine_v1beta#ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1beta#ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -47626,10 +47626,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#ImportProjectsLocationsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1beta#ListImportProjectLocationDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -47656,7 +47656,7 @@
         "smithy.api#documentation": "Imports all SuggestionDenyListEntry for a DataStore."
       }
     },
-    "com.gcp.discoveryengine_v1beta#PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest": {
+    "com.gcp.discoveryengine_v1beta#ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -47676,10 +47676,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#PurgeProjectsLocationsDataStoresSuggestionDenyListEntries": {
+    "com.gcp.discoveryengine_v1beta#ListPurgeProjectLocationDataStoreSuggestionDenyEntries": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"
@@ -47706,7 +47706,7 @@
         "smithy.api#documentation": "Permanently deletes all SuggestionDenyListEntry for a DataStore."
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest": {
+    "com.gcp.discoveryengine_v1beta#GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest": {
       "type": "structure",
       "members": {
         "matcher.urisMatcher.uris": {
@@ -47733,10 +47733,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchGetDocumentsMetadataProjectsLocationsDataStoresBranches": {
+    "com.gcp.discoveryengine_v1beta#GetBatchDocumentMetadataProjectLocationDataStoreBranche": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest"
+        "target": "com.gcp.discoveryengine_v1beta#GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleCloudDiscoveryengineV1betaBatchGetDocumentsMetadataResponse"
@@ -48674,7 +48674,7 @@
         "smithy.api#documentation": "Completes the user input with advanced keyword suggestions."
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchUpdateUserLicensesProjectsLocationsUserStoresRequest": {
+    "com.gcp.discoveryengine_v1beta#UpdateBatchUserLicenseProjectLocationUserStoreRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -48694,10 +48694,10 @@
         }
       }
     },
-    "com.gcp.discoveryengine_v1beta#BatchUpdateUserLicensesProjectsLocationsUserStores": {
+    "com.gcp.discoveryengine_v1beta#UpdateBatchUserLicenseProjectLocationUserStore": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.discoveryengine_v1beta#BatchUpdateUserLicensesProjectsLocationsUserStoresRequest"
+        "target": "com.gcp.discoveryengine_v1beta#UpdateBatchUserLicenseProjectLocationUserStoreRequest"
       },
       "output": {
         "target": "com.gcp.discoveryengine_v1beta#GoogleLongrunningOperation"

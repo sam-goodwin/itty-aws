@@ -12,431 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ConfigurationNamesListRequest {
-  /** OData filter options. */
-  _filter?: string;
-  /** OData skipToken option for pagination. */
-  _skipToken?: string;
-}
-export const ConfigurationNamesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ServiceLinker/configurationNames",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationNamesListRequest",
-}) as any as S.Schema<ConfigurationNamesListRequest>;
-
-/** The application client type */
-export type ClientType =
-  | "none"
-  | "dotnet"
-  | "java"
-  | "python"
-  | "go"
-  | "php"
-  | "ruby"
-  | "django"
-  | "nodejs"
-  | "springBoot"
-  | "kafka-springBoot"
-  | "jms-springBoot"
-  | "dapr";
-export const ClientType = /*@__PURE__*/ S.String;
-
-/** The authentication type. */
-export type AuthType =
-  | "systemAssignedIdentity"
-  | "userAssignedIdentity"
-  | "servicePrincipalSecret"
-  | "servicePrincipalCertificate"
-  | "secret"
-  | "accessKey"
-  | "userAccount"
-  | "easyAuthMicrosoftEntraID";
-export const AuthType = /*@__PURE__*/ S.String;
-
-/** The type of secret source. */
-export type SecretSourceType = "rawValue" | "keyVaultSecret";
-export const SecretSourceType = /*@__PURE__*/ S.String;
-
-/** The value indicating whether the metadata is required or not */
-export type DaprMetadataRequired = "true" | "false";
-export const DaprMetadataRequired = /*@__PURE__*/ S.String;
-
-/** The dapr component metadata. */
-export interface DaprMetadata {
-  /** Metadata property name. */
-  name?: string;
-  /** Metadata property value. */
-  value?: string;
-  /** The secret name where dapr could get value */
-  secretRef?: string;
-  /** The description of the metadata, returned from configuration api */
-  description?: string;
-  /** The value indicating whether the metadata is required or not */
-  required?: DaprMetadataRequired | (string & {});
-}
-export const DaprMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-    secretRef: S.optional(S.String),
-    description: S.optional(S.String),
-    required: S.optional(DaprMetadataRequired),
-  }),
-).annotate({ identifier: "DaprMetadata" }) as any as S.Schema<DaprMetadata>;
-
-/** Additional dapr metadata */
-export type DaprPropertiesMetadataList = Array<DaprMetadata>;
-export const DaprPropertiesMetadataList = /*@__PURE__*/ S.Array(
-  DaprMetadata,
-) as any as S.Schema<DaprPropertiesMetadataList>;
-
-/** The dapr component scopes */
-export type DaprPropertiesScopesList = Array<string>;
-export const DaprPropertiesScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DaprPropertiesScopesList>;
-
-/** The direction supported by the dapr binding component */
-export type DaprPropertiesBindingComponentDirection = "input" | "output";
-export const DaprPropertiesBindingComponentDirection = /*@__PURE__*/ S.String;
-
-/** Indicates some additional properties for dapr client type */
-export interface DaprProperties {
-  /** The dapr component version */
-  version?: string | null;
-  /** The dapr component type */
-  componentType?: string | null;
-  /** The name of a secret store dapr to retrieve secret */
-  secretStoreComponent?: string | null;
-  /** Additional dapr metadata */
-  metadata?: DaprPropertiesMetadataList;
-  /** The dapr component scopes */
-  scopes?: DaprPropertiesScopesList;
-  /** The runtime version supported by the properties */
-  runtimeVersion?: string | null;
-  /** The direction supported by the dapr binding component */
-  bindingComponentDirection?: DaprPropertiesBindingComponentDirection | null;
-}
-export const DaprProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.NullOr(S.String)),
-    componentType: S.optional(S.NullOr(S.String)),
-    secretStoreComponent: S.optional(S.NullOr(S.String)),
-    metadata: S.optional(DaprPropertiesMetadataList),
-    scopes: S.optional(DaprPropertiesScopesList),
-    runtimeVersion: S.optional(S.NullOr(S.String)),
-    bindingComponentDirection: S.optional(
-      S.NullOr(DaprPropertiesBindingComponentDirection),
-    ),
-  }),
-).annotate({ identifier: "DaprProperties" }) as any as S.Schema<DaprProperties>;
-
-/** The configuration names. */
-export interface ConfigurationName {
-  value?: string;
-  /** Description for the configuration name. */
-  description?: string;
-  /** Represent the configuration is required or not */
-  required?: boolean;
-}
-export const ConfigurationName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    description: S.optional(S.String),
-    required: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ConfigurationName",
-}) as any as S.Schema<ConfigurationName>;
-
-/** The configuration names to be set in compute service environment. */
-export type ConfigurationNamesNamesList = Array<ConfigurationName>;
-export const ConfigurationNamesNamesList = /*@__PURE__*/ S.Array(
-  ConfigurationName,
-) as any as S.Schema<ConfigurationNamesNamesList>;
-
-/** The configuration names which will be set based on specific target resource, client type, auth type. */
-export interface ConfigurationNames {
-  /** The target service provider name and resource name. */
-  targetService?: string;
-  /** The client type for configuration names. */
-  clientType?: ClientType;
-  /** The auth type. */
-  authType?: AuthType;
-  /** Indicates where the secrets in configuration from. Used when secrets are from Keyvault. */
-  secretType?: SecretSourceType;
-  /** Deprecated, please use #/definitions/DaprConfigurationList instead */
-  daprProperties?: DaprProperties;
-  /** The configuration names to be set in compute service environment. */
-  names?: ConfigurationNamesNamesList;
-}
-export const ConfigurationNames = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetService: S.optional(S.String),
-    clientType: S.optional(ClientType),
-    authType: S.optional(AuthType),
-    secretType: S.optional(SecretSourceType),
-    daprProperties: S.optional(DaprProperties),
-    names: S.optional(ConfigurationNamesNamesList),
-  }),
-).annotate({
-  identifier: "ConfigurationNames",
-}) as any as S.Schema<ConfigurationNames>;
-
-export interface ConfigurationNameItem {
-  /** The result detail. */
-  properties?: ConfigurationNames | null;
-}
-export const ConfigurationNameItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(S.NullOr(ConfigurationNames)),
-  }),
-).annotate({
-  identifier: "ConfigurationNameItem",
-}) as any as S.Schema<ConfigurationNameItem>;
-
-/** Expected configuration names for each target service. */
-export type ConfigurationNameResultValueList = Array<ConfigurationNameItem>;
-export const ConfigurationNameResultValueList = /*@__PURE__*/ S.Array(
-  ConfigurationNameItem,
-) as any as S.Schema<ConfigurationNameResultValueList>;
-
-/** Configuration Name list which will be set based on different target resource, client type, auth type. */
-export interface ConfigurationNameResult {
-  /** Expected configuration names for each target service. */
-  value?: ConfigurationNameResultValueList;
-  /** Link to next page of resources. */
-  nextLink?: string;
-}
-export const ConfigurationNameResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ConfigurationNameResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationNameResult",
-}) as any as S.Schema<ConfigurationNameResult>;
-
-/** The name of action for you dryrun job. */
-export type DryrunActionName = "createOrUpdate";
-export const DryrunActionName = /*@__PURE__*/ S.String;
-
-/** The parameters of the dryrun */
-export interface DryrunParameters {
-  actionName: DryrunActionName | (string & {});
-}
-export const DryrunParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionName: DryrunActionName,
-  }),
-).annotate({
-  identifier: "DryrunParameters",
-}) as any as S.Schema<DryrunParameters>;
-
-/** The properties of the dryrun job */
-export interface DryrunPropertiesInput {
-  /** The parameters of the dryrun */
-  parameters?: DryrunParameters;
-}
-export const DryrunPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(DryrunParameters),
-  }),
-).annotate({
-  identifier: "DryrunPropertiesInput",
-}) as any as S.Schema<DryrunPropertiesInput>;
-
-export interface ConnectorCreateDryrunRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-  /** The properties of the dryrun job. */
-  properties?: DryrunPropertiesInput;
-}
-export const ConnectorCreateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-    properties: S.optional(DryrunPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorCreateDryrunRequest",
-}) as any as S.Schema<ConnectorCreateDryrunRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** The type of dryrun result. */
-export type DryrunPrerequisiteResultType = "basicError" | "permissionsMissing";
-export const DryrunPrerequisiteResultType = /*@__PURE__*/ S.String;
-
-/** A result of dryrun */
-export interface DryrunPrerequisiteResult {
-  type: DryrunPrerequisiteResultType;
-}
-export const DryrunPrerequisiteResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: DryrunPrerequisiteResultType,
-  }),
-).annotate({
-  identifier: "DryrunPrerequisiteResult",
-}) as any as S.Schema<DryrunPrerequisiteResult>;
-
-/** the result of the dryrun */
-export type DryrunPropertiesPrerequisiteResultsList =
-  Array<DryrunPrerequisiteResult>;
-export const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ S.Array(
-  DryrunPrerequisiteResult,
-) as any as S.Schema<DryrunPropertiesPrerequisiteResultsList>;
-
-/** The operation type */
-export type DryrunOperationPreviewOperationType =
-  | "configConnection"
-  | "configNetwork"
-  | "configAuth";
-export const DryrunOperationPreviewOperationType = /*@__PURE__*/ S.String;
-
-/** The preview of the operations for creation */
-export interface DryrunOperationPreview {
-  /** The operation name */
-  name?: string;
-  /** The operation type */
-  operationType?: DryrunOperationPreviewOperationType;
-  /** The description of the operation */
-  description?: string;
-  /** The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format */
-  action?: string;
-  /** The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview */
-  scope?: string;
-}
-export const DryrunOperationPreview = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    operationType: S.optional(DryrunOperationPreviewOperationType),
-    description: S.optional(S.String),
-    action: S.optional(S.String),
-    scope: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DryrunOperationPreview",
-}) as any as S.Schema<DryrunOperationPreview>;
-
-/** the preview of the operations for creation */
-export type DryrunPropertiesOperationPreviewsList =
-  Array<DryrunOperationPreview>;
-export const DryrunPropertiesOperationPreviewsList = /*@__PURE__*/ S.Array(
-  DryrunOperationPreview,
-) as any as S.Schema<DryrunPropertiesOperationPreviewsList>;
-
-/** The properties of the dryrun job */
-export interface DryrunProperties {
-  /** The parameters of the dryrun */
-  parameters?: DryrunParameters;
-  /** the result of the dryrun */
-  prerequisiteResults?: DryrunPropertiesPrerequisiteResultsList;
-  /** the preview of the operations for creation */
-  operationPreviews?: DryrunPropertiesOperationPreviewsList;
-  /** The provisioning state. */
-  provisioningState?: string;
-}
-export const DryrunProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(DryrunParameters),
-    prerequisiteResults: S.optional(DryrunPropertiesPrerequisiteResultsList),
-    operationPreviews: S.optional(DryrunPropertiesOperationPreviewsList),
-    provisioningState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DryrunProperties",
-}) as any as S.Schema<DryrunProperties>;
-
-export interface ConnectorCreateDryrunResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const ConnectorCreateDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "ConnectorCreateDryrunResponse",
-}) as any as S.Schema<ConnectorCreateDryrunResponse>;
-
 /** The target service type. */
 export type TargetServiceType =
   | "AzureResource"
@@ -458,6 +33,18 @@ export const TargetServiceBase = /*@__PURE__*/ S.suspend(() =>
   identifier: "TargetServiceBase",
 }) as any as S.Schema<TargetServiceBase>;
 
+/** The authentication type. */
+export type AuthType =
+  | "systemAssignedIdentity"
+  | "userAssignedIdentity"
+  | "servicePrincipalSecret"
+  | "servicePrincipalCertificate"
+  | "secret"
+  | "accessKey"
+  | "userAccount"
+  | "easyAuthMicrosoftEntraID";
+export const AuthType = /*@__PURE__*/ S.String;
+
 /** Indicates how to apply the authentication configuration operations. */
 export type AuthMode = "optInAllAuth" | "optOutAllAuth";
 export const AuthMode = /*@__PURE__*/ S.String;
@@ -475,6 +62,23 @@ export const AuthInfoBase = /*@__PURE__*/ S.suspend(() =>
     authMode: S.optional(AuthMode),
   }),
 ).annotate({ identifier: "AuthInfoBase" }) as any as S.Schema<AuthInfoBase>;
+
+/** The application client type */
+export type ClientType =
+  | "none"
+  | "dotnet"
+  | "java"
+  | "python"
+  | "go"
+  | "php"
+  | "ruby"
+  | "django"
+  | "nodejs"
+  | "springBoot"
+  | "kafka-springBoot"
+  | "jms-springBoot"
+  | "dapr";
+export const ClientType = /*@__PURE__*/ S.String;
 
 /** Type of VNet solution. */
 export type VNetSolutionType = "serviceEndpoint" | "privateLink";
@@ -570,6 +174,33 @@ export const ConfigurationInfoInputCustomizedKeysMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ConfigurationInfoInputCustomizedKeysMap>;
+
+/** The value indicating whether the metadata is required or not */
+export type DaprMetadataRequired = "true" | "false";
+export const DaprMetadataRequired = /*@__PURE__*/ S.String;
+
+/** The dapr component metadata. */
+export interface DaprMetadata {
+  /** Metadata property name. */
+  name?: string;
+  /** Metadata property value. */
+  value?: string;
+  /** The secret name where dapr could get value */
+  secretRef?: string;
+  /** The description of the metadata, returned from configuration api */
+  description?: string;
+  /** The value indicating whether the metadata is required or not */
+  required?: DaprMetadataRequired | (string & {});
+}
+export const DaprMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+    secretRef: S.optional(S.String),
+    description: S.optional(S.String),
+    required: S.optional(DaprMetadataRequired),
+  }),
+).annotate({ identifier: "DaprMetadata" }) as any as S.Schema<DaprMetadata>;
 
 /** Additional dapr metadata */
 export type DaprPropertiesInputMetadataList = Array<DaprMetadata>;
@@ -741,6 +372,48 @@ export const ConnectorCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorCreateOrUpdateRequest",
 }) as any as S.Schema<ConnectorCreateOrUpdateRequest>;
 
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
 /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
 export type ConfigurationInfoCustomizedKeysMap = {
   [key: string]: string | undefined;
@@ -749,6 +422,53 @@ export const ConfigurationInfoCustomizedKeysMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<ConfigurationInfoCustomizedKeysMap>;
+
+/** Additional dapr metadata */
+export type DaprPropertiesMetadataList = Array<DaprMetadata>;
+export const DaprPropertiesMetadataList = /*@__PURE__*/ S.Array(
+  DaprMetadata,
+) as any as S.Schema<DaprPropertiesMetadataList>;
+
+/** The dapr component scopes */
+export type DaprPropertiesScopesList = Array<string>;
+export const DaprPropertiesScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DaprPropertiesScopesList>;
+
+/** The direction supported by the dapr binding component */
+export type DaprPropertiesBindingComponentDirection = "input" | "output";
+export const DaprPropertiesBindingComponentDirection = /*@__PURE__*/ S.String;
+
+/** Indicates some additional properties for dapr client type */
+export interface DaprProperties {
+  /** The dapr component version */
+  version?: string | null;
+  /** The dapr component type */
+  componentType?: string | null;
+  /** The name of a secret store dapr to retrieve secret */
+  secretStoreComponent?: string | null;
+  /** Additional dapr metadata */
+  metadata?: DaprPropertiesMetadataList;
+  /** The dapr component scopes */
+  scopes?: DaprPropertiesScopesList;
+  /** The runtime version supported by the properties */
+  runtimeVersion?: string | null;
+  /** The direction supported by the dapr binding component */
+  bindingComponentDirection?: DaprPropertiesBindingComponentDirection | null;
+}
+export const DaprProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(S.NullOr(S.String)),
+    componentType: S.optional(S.NullOr(S.String)),
+    secretStoreComponent: S.optional(S.NullOr(S.String)),
+    metadata: S.optional(DaprPropertiesMetadataList),
+    scopes: S.optional(DaprPropertiesScopesList),
+    runtimeVersion: S.optional(S.NullOr(S.String)),
+    bindingComponentDirection: S.optional(
+      S.NullOr(DaprPropertiesBindingComponentDirection),
+    ),
+  }),
+).annotate({ identifier: "DaprProperties" }) as any as S.Schema<DaprProperties>;
 
 /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
 export type ConfigurationInfoAdditionalConfigurationsMap = {
@@ -866,558 +586,6 @@ export const ConnectorCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectorCreateOrUpdateResponse",
 }) as any as S.Schema<ConnectorCreateOrUpdateResponse>;
 
-export interface ConnectorDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of resource. */
-  connectorName: string;
-}
-export const ConnectorDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorDeleteRequest",
-}) as any as S.Schema<ConnectorDeleteRequest>;
-
-export interface ConnectorDeleteResponse {}
-export const ConnectorDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConnectorDeleteResponse",
-}) as any as S.Schema<ConnectorDeleteResponse>;
-
-export interface ConnectorDeleteDryrunRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-}
-export const ConnectorDeleteDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorDeleteDryrunRequest",
-}) as any as S.Schema<ConnectorDeleteDryrunRequest>;
-
-export interface ConnectorDeleteDryrunResponse {}
-export const ConnectorDeleteDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ConnectorDeleteDryrunResponse",
-}) as any as S.Schema<ConnectorDeleteDryrunResponse>;
-
-/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
-export type ConnectorGenerateConfigurationsRequestCustomizedKeysMap = {
-  [key: string]: string | undefined;
-};
-export const ConnectorGenerateConfigurationsRequestCustomizedKeysMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestCustomizedKeysMap>;
-
-/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
-export type ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap =
-  { [key: string]: string | undefined };
-export const ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap>;
-
-/** A dictionary of additional properties to be added in the end of connection string. */
-export type ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
-  { [key: string]: string | undefined };
-export const ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
-
-export interface ConnectorGenerateConfigurationsRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of resource. */
-  connectorName: string;
-  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
-  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
-  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
-  action?: ActionType | (string & {});
-  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
-  customizedKeys?: ConnectorGenerateConfigurationsRequestCustomizedKeysMap;
-  /** Indicates some additional properties for dapr client type */
-  daprProperties?: DaprPropertiesInput;
-  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
-  additionalConfigurations?: ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap;
-  /** A dictionary of additional properties to be added in the end of connection string. */
-  additionalConnectionStringProperties?: ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap;
-  /** An option to store configuration into different place */
-  configurationStore?: ConfigurationStore | null;
-}
-export const ConnectorGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      connectorName: S.String.pipe(T.Label()),
-      deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
-      action: S.optional(ActionType),
-      customizedKeys: S.optional(
-        ConnectorGenerateConfigurationsRequestCustomizedKeysMap,
-      ),
-      daprProperties: S.optional(DaprPropertiesInput),
-      additionalConfigurations: S.optional(
-        ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap,
-      ),
-      additionalConnectionStringProperties: S.optional(
-        ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap,
-      ),
-      configurationStore: S.optional(S.NullOr(ConfigurationStore)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/generateConfigurations",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "ConnectorGenerateConfigurationsRequest",
-}) as any as S.Schema<ConnectorGenerateConfigurationsRequest>;
-
-/** Type of configuration to determine whether the configuration can be modified after creation. KeyvaultSecret means the configuration references a key vault secret, such as App Service/ACA key vault reference. Default means the configuration is real value, such as user name, raw secret, etc. */
-export type LinkerConfigurationType = "Default" | "KeyVaultSecret";
-export const LinkerConfigurationType = /*@__PURE__*/ S.String;
-
-/** A configuration item for source resource */
-export interface SourceConfiguration {
-  /** The name of setting. */
-  name?: string;
-  /** The value of setting */
-  value?: string | null;
-  /** The type of setting */
-  configType?: LinkerConfigurationType;
-  /** The identity for key vault reference, system or user-assigned managed identity ID */
-  keyVaultReferenceIdentity?: string | null;
-  /** Descriptive information for the configuration */
-  description?: string | null;
-}
-export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.NullOr(S.String)),
-    configType: S.optional(LinkerConfigurationType),
-    keyVaultReferenceIdentity: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SourceConfiguration",
-}) as any as S.Schema<SourceConfiguration>;
-
-/** The configuration properties for source resource. */
-export type ConfigurationResultConfigurationsList = Array<SourceConfiguration>;
-export const ConfigurationResultConfigurationsList = /*@__PURE__*/ S.Array(
-  SourceConfiguration,
-) as any as S.Schema<ConfigurationResultConfigurationsList>;
-
-/** Configurations for source resource, include appSettings, connectionString and serviceBindings */
-export interface ConfigurationResult {
-  /** The configuration properties for source resource. */
-  configurations?: ConfigurationResultConfigurationsList;
-}
-export const ConfigurationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    configurations: S.optional(ConfigurationResultConfigurationsList),
-  }),
-).annotate({
-  identifier: "ConfigurationResult",
-}) as any as S.Schema<ConfigurationResult>;
-
-export interface ConnectorGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of resource. */
-  connectorName: string;
-}
-export const ConnectorGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorGetRequest",
-}) as any as S.Schema<ConnectorGetRequest>;
-
-export interface ConnectorGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Linker. */
-  properties: LinkerProperties;
-}
-export const ConnectorGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({
-  identifier: "ConnectorGetResponse",
-}) as any as S.Schema<ConnectorGetResponse>;
-
-export interface ConnectorGetDryrunRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-}
-export const ConnectorGetDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorGetDryrunRequest",
-}) as any as S.Schema<ConnectorGetDryrunRequest>;
-
-export interface ConnectorGetDryrunResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const ConnectorGetDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "ConnectorGetDryrunResponse",
-}) as any as S.Schema<ConnectorGetDryrunResponse>;
-
-export interface ConnectorListRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-}
-export const ConnectorListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorListRequest",
-}) as any as S.Schema<ConnectorListRequest>;
-
-/** Linker of source and target resource */
-export interface LinkerResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Linker. */
-  properties: LinkerProperties;
-}
-export const LinkerResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({ identifier: "LinkerResource" }) as any as S.Schema<LinkerResource>;
-
-/** The list of Linkers. */
-export type ResourceListValueList = Array<LinkerResource>;
-export const ResourceListValueList = /*@__PURE__*/ S.Array(
-  LinkerResource,
-) as any as S.Schema<ResourceListValueList>;
-
-/** The list of Linker. */
-export interface ResourceList {
-  /** The Linker used to get the next page of Linker list. */
-  nextLink?: string | null;
-  /** The list of Linkers. */
-  value?: ResourceListValueList;
-}
-export const ResourceList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.NullOr(S.String)),
-    value: S.optional(ResourceListValueList),
-  }),
-).annotate({ identifier: "ResourceList" }) as any as S.Schema<ResourceList>;
-
-export interface ConnectorListDryrunRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-}
-export const ConnectorListDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorListDryrunRequest",
-}) as any as S.Schema<ConnectorListDryrunRequest>;
-
-/** a dryrun job resource */
-export interface DryrunResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const DryrunResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({ identifier: "DryrunResource" }) as any as S.Schema<DryrunResource>;
-
-/** The list of dryrun. */
-export type DryrunListValueList = Array<DryrunResource>;
-export const DryrunListValueList = /*@__PURE__*/ S.Array(
-  DryrunResource,
-) as any as S.Schema<DryrunListValueList>;
-
-/** The list of dryrun. */
-export interface DryrunList {
-  /** The link used to get the next page of dryrun list. */
-  nextLink?: string | null;
-  /** The list of dryrun. */
-  value?: DryrunListValueList;
-}
-export const DryrunList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.NullOr(S.String)),
-    value: S.optional(DryrunListValueList),
-  }),
-).annotate({ identifier: "DryrunList" }) as any as S.Schema<DryrunList>;
-
-export interface ConnectorUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of resource. */
-  connectorName: string;
-  /** Linker properties */
-  properties?: LinkerPropertiesInput;
-}
-export const ConnectorUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    connectorName: S.String.pipe(T.Label()),
-    properties: S.optional(LinkerPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorUpdateRequest",
-}) as any as S.Schema<ConnectorUpdateRequest>;
-
-export interface ConnectorUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Linker. */
-  properties: LinkerProperties;
-}
-export const ConnectorUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({
-  identifier: "ConnectorUpdateResponse",
-}) as any as S.Schema<ConnectorUpdateResponse>;
-
-export interface ConnectorUpdateDryrunRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of Azure region. */
-  location: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-  /** The properties of the dryrun job. */
-  properties?: DryrunPropertiesInput;
-}
-export const ConnectorUpdateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-    properties: S.optional(DryrunPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorUpdateDryrunRequest",
-}) as any as S.Schema<ConnectorUpdateDryrunRequest>;
-
-export interface ConnectorUpdateDryrunResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const ConnectorUpdateDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "ConnectorUpdateDryrunResponse",
-}) as any as S.Schema<ConnectorUpdateDryrunResponse>;
-
 export interface ConnectorValidateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1532,6 +700,757 @@ export const ValidateOperationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateOperationResult",
 }) as any as S.Schema<ValidateOperationResult>;
 
+/** The name of action for you dryrun job. */
+export type DryrunActionName = "createOrUpdate";
+export const DryrunActionName = /*@__PURE__*/ S.String;
+
+/** The parameters of the dryrun */
+export interface DryrunParameters {
+  actionName: DryrunActionName | (string & {});
+}
+export const DryrunParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionName: DryrunActionName,
+  }),
+).annotate({
+  identifier: "DryrunParameters",
+}) as any as S.Schema<DryrunParameters>;
+
+/** The properties of the dryrun job */
+export interface DryrunPropertiesInput {
+  /** The parameters of the dryrun */
+  parameters?: DryrunParameters;
+}
+export const DryrunPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(DryrunParameters),
+  }),
+).annotate({
+  identifier: "DryrunPropertiesInput",
+}) as any as S.Schema<DryrunPropertiesInput>;
+
+export interface CreateConnectorDryrunRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
+}
+export const CreateConnectorDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+    properties: S.optional(DryrunPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateConnectorDryrunRequest",
+}) as any as S.Schema<CreateConnectorDryrunRequest>;
+
+/** The type of dryrun result. */
+export type DryrunPrerequisiteResultType = "basicError" | "permissionsMissing";
+export const DryrunPrerequisiteResultType = /*@__PURE__*/ S.String;
+
+/** A result of dryrun */
+export interface DryrunPrerequisiteResult {
+  type: DryrunPrerequisiteResultType;
+}
+export const DryrunPrerequisiteResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: DryrunPrerequisiteResultType,
+  }),
+).annotate({
+  identifier: "DryrunPrerequisiteResult",
+}) as any as S.Schema<DryrunPrerequisiteResult>;
+
+/** the result of the dryrun */
+export type DryrunPropertiesPrerequisiteResultsList =
+  Array<DryrunPrerequisiteResult>;
+export const DryrunPropertiesPrerequisiteResultsList = /*@__PURE__*/ S.Array(
+  DryrunPrerequisiteResult,
+) as any as S.Schema<DryrunPropertiesPrerequisiteResultsList>;
+
+/** The operation type */
+export type DryrunOperationPreviewOperationType =
+  | "configConnection"
+  | "configNetwork"
+  | "configAuth";
+export const DryrunOperationPreviewOperationType = /*@__PURE__*/ S.String;
+
+/** The preview of the operations for creation */
+export interface DryrunOperationPreview {
+  /** The operation name */
+  name?: string;
+  /** The operation type */
+  operationType?: DryrunOperationPreviewOperationType;
+  /** The description of the operation */
+  description?: string;
+  /** The action defined by RBAC, refer https://docs.microsoft.com/azure/role-based-access-control/role-definitions#actions-format */
+  action?: string;
+  /** The scope of the operation, refer https://docs.microsoft.com/azure/role-based-access-control/scope-overview */
+  scope?: string;
+}
+export const DryrunOperationPreview = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    operationType: S.optional(DryrunOperationPreviewOperationType),
+    description: S.optional(S.String),
+    action: S.optional(S.String),
+    scope: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DryrunOperationPreview",
+}) as any as S.Schema<DryrunOperationPreview>;
+
+/** the preview of the operations for creation */
+export type DryrunPropertiesOperationPreviewsList =
+  Array<DryrunOperationPreview>;
+export const DryrunPropertiesOperationPreviewsList = /*@__PURE__*/ S.Array(
+  DryrunOperationPreview,
+) as any as S.Schema<DryrunPropertiesOperationPreviewsList>;
+
+/** The properties of the dryrun job */
+export interface DryrunProperties {
+  /** The parameters of the dryrun */
+  parameters?: DryrunParameters;
+  /** the result of the dryrun */
+  prerequisiteResults?: DryrunPropertiesPrerequisiteResultsList;
+  /** the preview of the operations for creation */
+  operationPreviews?: DryrunPropertiesOperationPreviewsList;
+  /** The provisioning state. */
+  provisioningState?: string;
+}
+export const DryrunProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(DryrunParameters),
+    prerequisiteResults: S.optional(DryrunPropertiesPrerequisiteResultsList),
+    operationPreviews: S.optional(DryrunPropertiesOperationPreviewsList),
+    provisioningState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DryrunProperties",
+}) as any as S.Schema<DryrunProperties>;
+
+export interface CreateConnectorDryrunResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const CreateConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({
+  identifier: "CreateConnectorDryrunResponse",
+}) as any as S.Schema<CreateConnectorDryrunResponse>;
+
+export interface CreateLinkerDryrunRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
+}
+export const CreateLinkerDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+    properties: S.optional(DryrunPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateLinkerDryrunRequest",
+}) as any as S.Schema<CreateLinkerDryrunRequest>;
+
+export interface CreateLinkerDryrunResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const CreateLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({
+  identifier: "CreateLinkerDryrunResponse",
+}) as any as S.Schema<CreateLinkerDryrunResponse>;
+
+export interface DeleteConnectorRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of resource. */
+  connectorName: string;
+}
+export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConnectorRequest",
+}) as any as S.Schema<DeleteConnectorRequest>;
+
+export interface DeleteConnectorResponse {}
+export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectorResponse",
+}) as any as S.Schema<DeleteConnectorResponse>;
+
+export interface DeleteConnectorDryrunRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+}
+export const DeleteConnectorDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConnectorDryrunRequest",
+}) as any as S.Schema<DeleteConnectorDryrunRequest>;
+
+export interface DeleteConnectorDryrunResponse {}
+export const DeleteConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteConnectorDryrunResponse",
+}) as any as S.Schema<DeleteConnectorDryrunResponse>;
+
+export interface DeleteLinkerRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name Linker resource. */
+  linkerName: string;
+}
+export const DeleteLinkerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    linkerName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLinkerRequest",
+}) as any as S.Schema<DeleteLinkerRequest>;
+
+export interface DeleteLinkerResponse {}
+export const DeleteLinkerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLinkerResponse",
+}) as any as S.Schema<DeleteLinkerResponse>;
+
+export interface DeleteLinkerDryrunRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+}
+export const DeleteLinkerDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLinkerDryrunRequest",
+}) as any as S.Schema<DeleteLinkerDryrunRequest>;
+
+export interface DeleteLinkerDryrunResponse {}
+export const DeleteLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLinkerDryrunResponse",
+}) as any as S.Schema<DeleteLinkerDryrunResponse>;
+
+/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+export type ConnectorGenerateConfigurationsRequestCustomizedKeysMap = {
+  [key: string]: string | undefined;
+};
+export const ConnectorGenerateConfigurationsRequestCustomizedKeysMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestCustomizedKeysMap>;
+
+/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+export type ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap =
+  { [key: string]: string | undefined };
+export const ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap>;
+
+/** A dictionary of additional properties to be added in the end of connection string. */
+export type ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  { [key: string]: string | undefined };
+export const ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+
+export interface GenerateConnectorConfigurationRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of resource. */
+  connectorName: string;
+  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
+  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
+  action?: ActionType | (string & {});
+  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+  customizedKeys?: ConnectorGenerateConfigurationsRequestCustomizedKeysMap;
+  /** Indicates some additional properties for dapr client type */
+  daprProperties?: DaprPropertiesInput;
+  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+  additionalConfigurations?: ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap;
+  /** A dictionary of additional properties to be added in the end of connection string. */
+  additionalConnectionStringProperties?: ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap;
+  /** An option to store configuration into different place */
+  configurationStore?: ConfigurationStore | null;
+}
+export const GenerateConnectorConfigurationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
+      connectorName: S.String.pipe(T.Label()),
+      deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+      action: S.optional(ActionType),
+      customizedKeys: S.optional(
+        ConnectorGenerateConfigurationsRequestCustomizedKeysMap,
+      ),
+      daprProperties: S.optional(DaprPropertiesInput),
+      additionalConfigurations: S.optional(
+        ConnectorGenerateConfigurationsRequestAdditionalConfigurationsMap,
+      ),
+      additionalConnectionStringProperties: S.optional(
+        ConnectorGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap,
+      ),
+      configurationStore: S.optional(S.NullOr(ConfigurationStore)),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}/generateConfigurations",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateConnectorConfigurationRequest",
+}) as any as S.Schema<GenerateConnectorConfigurationRequest>;
+
+/** Type of configuration to determine whether the configuration can be modified after creation. KeyvaultSecret means the configuration references a key vault secret, such as App Service/ACA key vault reference. Default means the configuration is real value, such as user name, raw secret, etc. */
+export type LinkerConfigurationType = "Default" | "KeyVaultSecret";
+export const LinkerConfigurationType = /*@__PURE__*/ S.String;
+
+/** A configuration item for source resource */
+export interface SourceConfiguration {
+  /** The name of setting. */
+  name?: string;
+  /** The value of setting */
+  value?: string | null;
+  /** The type of setting */
+  configType?: LinkerConfigurationType;
+  /** The identity for key vault reference, system or user-assigned managed identity ID */
+  keyVaultReferenceIdentity?: string | null;
+  /** Descriptive information for the configuration */
+  description?: string | null;
+}
+export const SourceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.NullOr(S.String)),
+    configType: S.optional(LinkerConfigurationType),
+    keyVaultReferenceIdentity: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "SourceConfiguration",
+}) as any as S.Schema<SourceConfiguration>;
+
+/** The configuration properties for source resource. */
+export type ConfigurationResultConfigurationsList = Array<SourceConfiguration>;
+export const ConfigurationResultConfigurationsList = /*@__PURE__*/ S.Array(
+  SourceConfiguration,
+) as any as S.Schema<ConfigurationResultConfigurationsList>;
+
+/** Configurations for source resource, include appSettings, connectionString and serviceBindings */
+export interface ConfigurationResult {
+  /** The configuration properties for source resource. */
+  configurations?: ConfigurationResultConfigurationsList;
+}
+export const ConfigurationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    configurations: S.optional(ConfigurationResultConfigurationsList),
+  }),
+).annotate({
+  identifier: "ConfigurationResult",
+}) as any as S.Schema<ConfigurationResult>;
+
+/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+export type LinkersGenerateConfigurationsRequestCustomizedKeysMap = {
+  [key: string]: string | undefined;
+};
+export const LinkersGenerateConfigurationsRequestCustomizedKeysMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkersGenerateConfigurationsRequestCustomizedKeysMap>;
+
+/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+export type LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap = {
+  [key: string]: string | undefined;
+};
+export const LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap>;
+
+/** A dictionary of additional properties to be added in the end of connection string. */
+export type LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  { [key: string]: string | undefined };
+export const LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
+
+export interface GenerateLinkerConfigurationRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name Linker resource. */
+  linkerName: string;
+  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
+  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
+  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
+  action?: ActionType | (string & {});
+  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
+  customizedKeys?: LinkersGenerateConfigurationsRequestCustomizedKeysMap;
+  /** Indicates some additional properties for dapr client type */
+  daprProperties?: DaprPropertiesInput;
+  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
+  additionalConfigurations?: LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap;
+  /** A dictionary of additional properties to be added in the end of connection string. */
+  additionalConnectionStringProperties?: LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap;
+  /** An option to store configuration into different place */
+  configurationStore?: ConfigurationStore | null;
+}
+export const GenerateLinkerConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    linkerName: S.String.pipe(T.Label()),
+    deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
+    action: S.optional(ActionType),
+    customizedKeys: S.optional(
+      LinkersGenerateConfigurationsRequestCustomizedKeysMap,
+    ),
+    daprProperties: S.optional(DaprPropertiesInput),
+    additionalConfigurations: S.optional(
+      LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap,
+    ),
+    additionalConnectionStringProperties: S.optional(
+      LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap,
+    ),
+    configurationStore: S.optional(S.NullOr(ConfigurationStore)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateLinkerConfigurationRequest",
+}) as any as S.Schema<GenerateLinkerConfigurationRequest>;
+
+export interface GetConnectorRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of resource. */
+  connectorName: string;
+}
+export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetConnectorRequest",
+}) as any as S.Schema<GetConnectorRequest>;
+
+export interface GetConnectorResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Linker. */
+  properties: LinkerProperties;
+}
+export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: LinkerProperties,
+  }),
+).annotate({
+  identifier: "GetConnectorResponse",
+}) as any as S.Schema<GetConnectorResponse>;
+
+export interface GetConnectorDryrunRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+}
+export const GetConnectorDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetConnectorDryrunRequest",
+}) as any as S.Schema<GetConnectorDryrunRequest>;
+
+export interface GetConnectorDryrunResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const GetConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({
+  identifier: "GetConnectorDryrunResponse",
+}) as any as S.Schema<GetConnectorDryrunResponse>;
+
+export interface GetLinkerRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name Linker resource. */
+  linkerName: string;
+}
+export const GetLinkerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    linkerName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetLinkerRequest",
+}) as any as S.Schema<GetLinkerRequest>;
+
+export interface GetLinkerResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Linker. */
+  properties: LinkerProperties;
+}
+export const GetLinkerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: LinkerProperties,
+  }),
+).annotate({
+  identifier: "GetLinkerResponse",
+}) as any as S.Schema<GetLinkerResponse>;
+
+export interface GetLinkerDryrunRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+}
+export const GetLinkerDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetLinkerDryrunRequest",
+}) as any as S.Schema<GetLinkerDryrunRequest>;
+
+export interface GetLinkerDryrunResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const GetLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({
+  identifier: "GetLinkerDryrunResponse",
+}) as any as S.Schema<GetLinkerDryrunResponse>;
+
 export interface LinkerCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
@@ -1581,58 +1500,167 @@ export const LinkerCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LinkerCreateOrUpdateResponse",
 }) as any as S.Schema<LinkerCreateOrUpdateResponse>;
 
-export interface LinkerDeleteRequest {
+export interface LinkerValidateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
 }
-export const LinkerDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const LinkerValidateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     linkerName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+      method: "POST",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker",
       code: 200,
       apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
-  identifier: "LinkerDeleteRequest",
-}) as any as S.Schema<LinkerDeleteRequest>;
+  identifier: "LinkerValidateRequest",
+}) as any as S.Schema<LinkerValidateRequest>;
 
-export interface LinkerDeleteResponse {}
-export const LinkerDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LinkerDeleteResponse",
-}) as any as S.Schema<LinkerDeleteResponse>;
-
-export interface LinkerGetRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name Linker resource. */
-  linkerName: string;
+export interface ListConfigurationNamesRequest {
+  /** OData filter options. */
+  _filter?: string;
+  /** OData skipToken option for pagination. */
+  _skipToken?: string;
 }
-export const LinkerGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListConfigurationNamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    linkerName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+      uri: "/providers/Microsoft.ServiceLinker/configurationNames",
       code: 200,
       apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
-  identifier: "LinkerGetRequest",
-}) as any as S.Schema<LinkerGetRequest>;
+  identifier: "ListConfigurationNamesRequest",
+}) as any as S.Schema<ListConfigurationNamesRequest>;
 
-export interface LinkerGetResponse {
+/** The type of secret source. */
+export type SecretSourceType = "rawValue" | "keyVaultSecret";
+export const SecretSourceType = /*@__PURE__*/ S.String;
+
+/** The configuration names. */
+export interface ConfigurationName {
+  value?: string;
+  /** Description for the configuration name. */
+  description?: string;
+  /** Represent the configuration is required or not */
+  required?: boolean;
+}
+export const ConfigurationName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    description: S.optional(S.String),
+    required: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ConfigurationName",
+}) as any as S.Schema<ConfigurationName>;
+
+/** The configuration names to be set in compute service environment. */
+export type ConfigurationNamesNamesList = Array<ConfigurationName>;
+export const ConfigurationNamesNamesList = /*@__PURE__*/ S.Array(
+  ConfigurationName,
+) as any as S.Schema<ConfigurationNamesNamesList>;
+
+/** The configuration names which will be set based on specific target resource, client type, auth type. */
+export interface ConfigurationNames {
+  /** The target service provider name and resource name. */
+  targetService?: string;
+  /** The client type for configuration names. */
+  clientType?: ClientType;
+  /** The auth type. */
+  authType?: AuthType;
+  /** Indicates where the secrets in configuration from. Used when secrets are from Keyvault. */
+  secretType?: SecretSourceType;
+  /** Deprecated, please use #/definitions/DaprConfigurationList instead */
+  daprProperties?: DaprProperties;
+  /** The configuration names to be set in compute service environment. */
+  names?: ConfigurationNamesNamesList;
+}
+export const ConfigurationNames = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetService: S.optional(S.String),
+    clientType: S.optional(ClientType),
+    authType: S.optional(AuthType),
+    secretType: S.optional(SecretSourceType),
+    daprProperties: S.optional(DaprProperties),
+    names: S.optional(ConfigurationNamesNamesList),
+  }),
+).annotate({
+  identifier: "ConfigurationNames",
+}) as any as S.Schema<ConfigurationNames>;
+
+export interface ConfigurationNameItem {
+  /** The result detail. */
+  properties?: ConfigurationNames | null;
+}
+export const ConfigurationNameItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(S.NullOr(ConfigurationNames)),
+  }),
+).annotate({
+  identifier: "ConfigurationNameItem",
+}) as any as S.Schema<ConfigurationNameItem>;
+
+/** Expected configuration names for each target service. */
+export type ConfigurationNameResultValueList = Array<ConfigurationNameItem>;
+export const ConfigurationNameResultValueList = /*@__PURE__*/ S.Array(
+  ConfigurationNameItem,
+) as any as S.Schema<ConfigurationNameResultValueList>;
+
+/** Configuration Name list which will be set based on different target resource, client type, auth type. */
+export interface ConfigurationNameResult {
+  /** Expected configuration names for each target service. */
+  value?: ConfigurationNameResultValueList;
+  /** Link to next page of resources. */
+  nextLink?: string;
+}
+export const ConfigurationNameResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ConfigurationNameResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConfigurationNameResult",
+}) as any as S.Schema<ConfigurationNameResult>;
+
+export interface ListConnectorRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+}
+export const ListConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorRequest",
+}) as any as S.Schema<ListConnectorRequest>;
+
+/** Linker of source and target resource */
+export interface LinkerResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1644,7 +1672,7 @@ export interface LinkerGetResponse {
   /** The properties of the Linker. */
   properties: LinkerProperties;
 }
-export const LinkerGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const LinkerResource = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1652,15 +1680,101 @@ export const LinkerGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(SystemData),
     properties: LinkerProperties,
   }),
-).annotate({
-  identifier: "LinkerGetResponse",
-}) as any as S.Schema<LinkerGetResponse>;
+).annotate({ identifier: "LinkerResource" }) as any as S.Schema<LinkerResource>;
 
-export interface LinkerListRequest {
+/** The list of Linkers. */
+export type ResourceListValueList = Array<LinkerResource>;
+export const ResourceListValueList = /*@__PURE__*/ S.Array(
+  LinkerResource,
+) as any as S.Schema<ResourceListValueList>;
+
+/** The list of Linker. */
+export interface ResourceList {
+  /** The Linker used to get the next page of Linker list. */
+  nextLink?: string | null;
+  /** The list of Linkers. */
+  value?: ResourceListValueList;
+}
+export const ResourceList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.NullOr(S.String)),
+    value: S.optional(ResourceListValueList),
+  }),
+).annotate({ identifier: "ResourceList" }) as any as S.Schema<ResourceList>;
+
+export interface ListConnectorDryrunRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+}
+export const ListConnectorDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorDryrunRequest",
+}) as any as S.Schema<ListConnectorDryrunRequest>;
+
+/** a dryrun job resource */
+export interface DryrunResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const DryrunResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({ identifier: "DryrunResource" }) as any as S.Schema<DryrunResource>;
+
+/** The list of dryrun. */
+export type DryrunListValueList = Array<DryrunResource>;
+export const DryrunListValueList = /*@__PURE__*/ S.Array(
+  DryrunResource,
+) as any as S.Schema<DryrunListValueList>;
+
+/** The list of dryrun. */
+export interface DryrunList {
+  /** The link used to get the next page of dryrun list. */
+  nextLink?: string | null;
+  /** The list of dryrun. */
+  value?: DryrunListValueList;
+}
+export const DryrunList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.NullOr(S.String)),
+    value: S.optional(DryrunListValueList),
+  }),
+).annotate({ identifier: "DryrunList" }) as any as S.Schema<DryrunList>;
+
+export interface ListLinkerRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
 }
-export const LinkerListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLinkerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1672,16 +1786,16 @@ export const LinkerListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LinkerListRequest",
-}) as any as S.Schema<LinkerListRequest>;
+  identifier: "ListLinkerRequest",
+}) as any as S.Schema<ListLinkerRequest>;
 
-export interface LinkerListConfigurationsRequest {
+export interface ListLinkerConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
   /** The name Linker resource. */
   linkerName: string;
 }
-export const LinkerListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLinkerConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
     linkerName: S.String.pipe(T.Label()),
@@ -1694,231 +1808,27 @@ export const LinkerListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LinkerListConfigurationsRequest",
-}) as any as S.Schema<LinkerListConfigurationsRequest>;
+  identifier: "ListLinkerConfigurationsRequest",
+}) as any as S.Schema<ListLinkerConfigurationsRequest>;
 
-export interface LinkersCreateDryrunRequest {
+export interface ListLinkerDaprConfigurationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-  /** The properties of the dryrun job. */
-  properties?: DryrunPropertiesInput;
 }
-export const LinkersCreateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLinkerDaprConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-    properties: S.optional(DryrunPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "LinkersCreateDryrunRequest",
-}) as any as S.Schema<LinkersCreateDryrunRequest>;
-
-export interface LinkersCreateDryrunResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const LinkersCreateDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "LinkersCreateDryrunResponse",
-}) as any as S.Schema<LinkersCreateDryrunResponse>;
-
-export interface LinkersDeleteDryrunRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-}
-export const LinkersDeleteDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "LinkersDeleteDryrunRequest",
-}) as any as S.Schema<LinkersDeleteDryrunRequest>;
-
-export interface LinkersDeleteDryrunResponse {}
-export const LinkersDeleteDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LinkersDeleteDryrunResponse",
-}) as any as S.Schema<LinkersDeleteDryrunResponse>;
-
-/** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
-export type LinkersGenerateConfigurationsRequestCustomizedKeysMap = {
-  [key: string]: string | undefined;
-};
-export const LinkersGenerateConfigurationsRequestCustomizedKeysMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<LinkersGenerateConfigurationsRequestCustomizedKeysMap>;
-
-/** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
-export type LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap = {
-  [key: string]: string | undefined;
-};
-export const LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap>;
-
-/** A dictionary of additional properties to be added in the end of connection string. */
-export type LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
-  { [key: string]: string | undefined };
-export const LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap>;
-
-export interface LinkersGenerateConfigurationsRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name Linker resource. */
-  linkerName: string;
-  /** Indicates whether to clean up previous operation when Linker is updating or deleting */
-  deleteOrUpdateBehavior?: DeleteOrUpdateBehavior | (string & {});
-  /** Optional, indicate whether to apply configurations on source application. If enable, generate configurations and applied to the source application. Default is enable. If optOut, no configuration change will be made on source. */
-  action?: ActionType | (string & {});
-  /** Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations */
-  customizedKeys?: LinkersGenerateConfigurationsRequestCustomizedKeysMap;
-  /** Indicates some additional properties for dapr client type */
-  daprProperties?: DaprPropertiesInput;
-  /** A dictionary of additional configurations to be added. Service will auto generate a set of basic configurations and this property is to full fill more customized configurations */
-  additionalConfigurations?: LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap;
-  /** A dictionary of additional properties to be added in the end of connection string. */
-  additionalConnectionStringProperties?: LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap;
-  /** An option to store configuration into different place */
-  configurationStore?: ConfigurationStore | null;
-}
-export const LinkersGenerateConfigurationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceUri: S.String.pipe(T.Label()),
-      linkerName: S.String.pipe(T.Label()),
-      deleteOrUpdateBehavior: S.optional(DeleteOrUpdateBehavior),
-      action: S.optional(ActionType),
-      customizedKeys: S.optional(
-        LinkersGenerateConfigurationsRequestCustomizedKeysMap,
-      ),
-      daprProperties: S.optional(DaprPropertiesInput),
-      additionalConfigurations: S.optional(
-        LinkersGenerateConfigurationsRequestAdditionalConfigurationsMap,
-      ),
-      additionalConnectionStringProperties: S.optional(
-        LinkersGenerateConfigurationsRequestAdditionalConnectionStringPropertiesMap,
-      ),
-      configurationStore: S.optional(S.NullOr(ConfigurationStore)),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/generateConfigurations",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "LinkersGenerateConfigurationsRequest",
-}) as any as S.Schema<LinkersGenerateConfigurationsRequest>;
-
-export interface LinkersGetDryrunRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-}
-export const LinkersGetDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/daprConfigurations",
       code: 200,
       apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
-  identifier: "LinkersGetDryrunRequest",
-}) as any as S.Schema<LinkersGetDryrunRequest>;
-
-export interface LinkersGetDryrunResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const LinkersGetDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "LinkersGetDryrunResponse",
-}) as any as S.Schema<LinkersGetDryrunResponse>;
-
-export interface LinkersListDaprConfigurationsRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-}
-export const LinkersListDaprConfigurationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceUri: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/daprConfigurations",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "LinkersListDaprConfigurationsRequest",
-}) as any as S.Schema<LinkersListDaprConfigurationsRequest>;
+  identifier: "ListLinkerDaprConfigurationsRequest",
+}) as any as S.Schema<ListLinkerDaprConfigurationsRequest>;
 
 export interface DaprConfigurationProperties {
   /** Supported target resource type, extract from resource id, uppercase */
@@ -1971,11 +1881,11 @@ export const DaprConfigurationList = /*@__PURE__*/ S.suspend(() =>
   identifier: "DaprConfigurationList",
 }) as any as S.Schema<DaprConfigurationList>;
 
-export interface LinkersListDryrunRequest {
+export interface ListLinkerDryrunRequest {
   /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
   resourceUri: string;
 }
-export const LinkersListDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLinkerDryrunRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceUri: S.String.pipe(T.Label()),
   }).pipe(
@@ -1987,131 +1897,11 @@ export const LinkersListDryrunRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LinkersListDryrunRequest",
-}) as any as S.Schema<LinkersListDryrunRequest>;
+  identifier: "ListLinkerDryrunRequest",
+}) as any as S.Schema<ListLinkerDryrunRequest>;
 
-export interface LinkersUpdateDryrunRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name of dryrun. */
-  dryrunName: string;
-  /** The properties of the dryrun job. */
-  properties?: DryrunPropertiesInput;
-}
-export const LinkersUpdateDryrunRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    dryrunName: S.String.pipe(T.Label()),
-    properties: S.optional(DryrunPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "LinkersUpdateDryrunRequest",
-}) as any as S.Schema<LinkersUpdateDryrunRequest>;
-
-export interface LinkersUpdateDryrunResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the dryrun job. */
-  properties?: DryrunProperties;
-}
-export const LinkersUpdateDryrunResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DryrunProperties),
-  }),
-).annotate({
-  identifier: "LinkersUpdateDryrunResponse",
-}) as any as S.Schema<LinkersUpdateDryrunResponse>;
-
-export interface LinkerUpdateRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name Linker resource. */
-  linkerName: string;
-  /** Linker properties */
-  properties?: LinkerPropertiesInput;
-}
-export const LinkerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    linkerName: S.String.pipe(T.Label()),
-    properties: S.optional(LinkerPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "LinkerUpdateRequest",
-}) as any as S.Schema<LinkerUpdateRequest>;
-
-export interface LinkerUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Linker. */
-  properties: LinkerProperties;
-}
-export const LinkerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: LinkerProperties,
-  }),
-).annotate({
-  identifier: "LinkerUpdateResponse",
-}) as any as S.Schema<LinkerUpdateResponse>;
-
-export interface LinkerValidateRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
-  resourceUri: string;
-  /** The name Linker resource. */
-  linkerName: string;
-}
-export const LinkerValidateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    linkerName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}/validateLinker",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "LinkerValidateRequest",
-}) as any as S.Schema<LinkerValidateRequest>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2121,8 +1911,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
@@ -2183,50 +1973,228 @@ export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
 
-export interface OperationsListResponse {
+export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: OperationsListResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResponseValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export type ConfigurationNamesListError = AzureOpError;
-/** Lists the configuration names generated by Service Connector for all target, client types, auth types. */
-export const ConfigurationNamesList: API.OperationMethod<
-  ConfigurationNamesListRequest,
-  ConfigurationNameResult,
-  ConfigurationNamesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationNamesListRequest,
-  output: ConfigurationNameResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateConnectorRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of resource. */
+  connectorName: string;
+  /** Linker properties */
+  properties?: LinkerPropertiesInput;
+}
+export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    connectorName: S.String.pipe(T.Label()),
+    properties: S.optional(LinkerPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/connectors/{connectorName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateConnectorRequest",
+}) as any as S.Schema<UpdateConnectorRequest>;
 
-export type ConnectorCreateDryrunError = AzureOpError;
-/** create a dryrun job to do necessary check before actual creation */
-export const ConnectorCreateDryrun: API.OperationMethod<
-  ConnectorCreateDryrunRequest,
-  ConnectorCreateDryrunResponse,
-  ConnectorCreateDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorCreateDryrunRequest,
-  output: ConnectorCreateDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateConnectorResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Linker. */
+  properties: LinkerProperties;
+}
+export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: LinkerProperties,
+  }),
+).annotate({
+  identifier: "UpdateConnectorResponse",
+}) as any as S.Schema<UpdateConnectorResponse>;
+
+export interface UpdateConnectorDryrunRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of Azure region. */
+  location: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
+}
+export const UpdateConnectorDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+    properties: S.optional(DryrunPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.ServiceLinker/locations/{location}/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateConnectorDryrunRequest",
+}) as any as S.Schema<UpdateConnectorDryrunRequest>;
+
+export interface UpdateConnectorDryrunResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const UpdateConnectorDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({
+  identifier: "UpdateConnectorDryrunResponse",
+}) as any as S.Schema<UpdateConnectorDryrunResponse>;
+
+export interface UpdateLinkerRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name Linker resource. */
+  linkerName: string;
+  /** Linker properties */
+  properties?: LinkerPropertiesInput;
+}
+export const UpdateLinkerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    linkerName: S.String.pipe(T.Label()),
+    properties: S.optional(LinkerPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/linkers/{linkerName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateLinkerRequest",
+}) as any as S.Schema<UpdateLinkerRequest>;
+
+export interface UpdateLinkerResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Linker. */
+  properties: LinkerProperties;
+}
+export const UpdateLinkerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: LinkerProperties,
+  }),
+).annotate({
+  identifier: "UpdateLinkerResponse",
+}) as any as S.Schema<UpdateLinkerResponse>;
+
+export interface UpdateLinkerDryrunRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource to be connected. */
+  resourceUri: string;
+  /** The name of dryrun. */
+  dryrunName: string;
+  /** The properties of the dryrun job. */
+  properties?: DryrunPropertiesInput;
+}
+export const UpdateLinkerDryrunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    dryrunName: S.String.pipe(T.Label()),
+    properties: S.optional(DryrunPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/{resourceUri}/providers/Microsoft.ServiceLinker/dryruns/{dryrunName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateLinkerDryrunRequest",
+}) as any as S.Schema<UpdateLinkerDryrunRequest>;
+
+export interface UpdateLinkerDryrunResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the dryrun job. */
+  properties?: DryrunProperties;
+}
+export const UpdateLinkerDryrunResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DryrunProperties),
+  }),
+).annotate({
+  identifier: "UpdateLinkerDryrunResponse",
+}) as any as S.Schema<UpdateLinkerDryrunResponse>;
 
 export type ConnectorCreateOrUpdateError = AzureOpError;
 /** Create or update Connector resource. */
@@ -2238,141 +2206,6 @@ export const ConnectorCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ConnectorCreateOrUpdateRequest,
   output: ConnectorCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorDeleteError = AzureOpError;
-/** Delete a Connector. */
-export const ConnectorDelete: API.OperationMethod<
-  ConnectorDeleteRequest,
-  ConnectorDeleteResponse,
-  ConnectorDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorDeleteRequest,
-  output: ConnectorDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorDeleteDryrunError = AzureOpError;
-/** delete a dryrun job */
-export const ConnectorDeleteDryrun: API.OperationMethod<
-  ConnectorDeleteDryrunRequest,
-  ConnectorDeleteDryrunResponse,
-  ConnectorDeleteDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorDeleteDryrunRequest,
-  output: ConnectorDeleteDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorGenerateConfigurationsError = AzureOpError;
-/** Generate configurations for a Connector. */
-export const ConnectorGenerateConfigurations: API.OperationMethod<
-  ConnectorGenerateConfigurationsRequest,
-  ConfigurationResult,
-  ConnectorGenerateConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorGenerateConfigurationsRequest,
-  output: ConfigurationResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorGetError = AzureOpError;
-/** Returns Connector resource for a given name. */
-export const ConnectorGet: API.OperationMethod<
-  ConnectorGetRequest,
-  ConnectorGetResponse,
-  ConnectorGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorGetRequest,
-  output: ConnectorGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorGetDryrunError = AzureOpError;
-/** get a dryrun job */
-export const ConnectorGetDryrun: API.OperationMethod<
-  ConnectorGetDryrunRequest,
-  ConnectorGetDryrunResponse,
-  ConnectorGetDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorGetDryrunRequest,
-  output: ConnectorGetDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorListError = AzureOpError;
-/** Returns list of connector which connects to the resource, which supports to config the target service during the resource provision. */
-export const ConnectorList: API.OperationMethod<
-  ConnectorListRequest,
-  ResourceList,
-  ConnectorListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorListRequest,
-  output: ResourceList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorListDryrunError = AzureOpError;
-/** list dryrun jobs */
-export const ConnectorListDryrun: API.OperationMethod<
-  ConnectorListDryrunRequest,
-  DryrunList,
-  ConnectorListDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorListDryrunRequest,
-  output: DryrunList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorUpdateError = AzureOpError;
-/** Operation to update an existing Connector. */
-export const ConnectorUpdate: API.OperationMethod<
-  ConnectorUpdateRequest,
-  ConnectorUpdateResponse,
-  ConnectorUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorUpdateRequest,
-  output: ConnectorUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConnectorUpdateDryrunError = AzureOpError;
-/** update a dryrun job to do necessary check before actual creation */
-export const ConnectorUpdateDryrun: API.OperationMethod<
-  ConnectorUpdateDryrunRequest,
-  ConnectorUpdateDryrunResponse,
-  ConnectorUpdateDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorUpdateDryrunRequest,
-  output: ConnectorUpdateDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2393,6 +2226,186 @@ export const ConnectorValidate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateConnectorDryrunError = AzureOpError;
+/** create a dryrun job to do necessary check before actual creation */
+export const CreateConnectorDryrun: API.OperationMethod<
+  CreateConnectorDryrunRequest,
+  CreateConnectorDryrunResponse,
+  CreateConnectorDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateConnectorDryrunRequest,
+  output: CreateConnectorDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateLinkerDryrunError = AzureOpError;
+/** create a dryrun job to do necessary check before actual creation */
+export const CreateLinkerDryrun: API.OperationMethod<
+  CreateLinkerDryrunRequest,
+  CreateLinkerDryrunResponse,
+  CreateLinkerDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLinkerDryrunRequest,
+  output: CreateLinkerDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConnectorError = AzureOpError;
+/** Delete a Connector. */
+export const DeleteConnector: API.OperationMethod<
+  DeleteConnectorRequest,
+  DeleteConnectorResponse,
+  DeleteConnectorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConnectorDryrunError = AzureOpError;
+/** delete a dryrun job */
+export const DeleteConnectorDryrun: API.OperationMethod<
+  DeleteConnectorDryrunRequest,
+  DeleteConnectorDryrunResponse,
+  DeleteConnectorDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectorDryrunRequest,
+  output: DeleteConnectorDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteLinkerError = AzureOpError;
+/** Delete a Linker. */
+export const DeleteLinker: API.OperationMethod<
+  DeleteLinkerRequest,
+  DeleteLinkerResponse,
+  DeleteLinkerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLinkerRequest,
+  output: DeleteLinkerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteLinkerDryrunError = AzureOpError;
+/** delete a dryrun job */
+export const DeleteLinkerDryrun: API.OperationMethod<
+  DeleteLinkerDryrunRequest,
+  DeleteLinkerDryrunResponse,
+  DeleteLinkerDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLinkerDryrunRequest,
+  output: DeleteLinkerDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateConnectorConfigurationError = AzureOpError;
+/** Generate configurations for a Connector. */
+export const GenerateConnectorConfiguration: API.OperationMethod<
+  GenerateConnectorConfigurationRequest,
+  ConfigurationResult,
+  GenerateConnectorConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateConnectorConfigurationRequest,
+  output: ConfigurationResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateLinkerConfigurationError = AzureOpError;
+/** Generate configurations for a Linker. */
+export const GenerateLinkerConfiguration: API.OperationMethod<
+  GenerateLinkerConfigurationRequest,
+  ConfigurationResult,
+  GenerateLinkerConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateLinkerConfigurationRequest,
+  output: ConfigurationResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConnectorError = AzureOpError;
+/** Returns Connector resource for a given name. */
+export const GetConnector: API.OperationMethod<
+  GetConnectorRequest,
+  GetConnectorResponse,
+  GetConnectorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConnectorDryrunError = AzureOpError;
+/** get a dryrun job */
+export const GetConnectorDryrun: API.OperationMethod<
+  GetConnectorDryrunRequest,
+  GetConnectorDryrunResponse,
+  GetConnectorDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorDryrunRequest,
+  output: GetConnectorDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetLinkerError = AzureOpError;
+/** Returns Linker resource for a given name. */
+export const GetLinker: API.OperationMethod<
+  GetLinkerRequest,
+  GetLinkerResponse,
+  GetLinkerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLinkerRequest,
+  output: GetLinkerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetLinkerDryrunError = AzureOpError;
+/** get a dryrun job */
+export const GetLinkerDryrun: API.OperationMethod<
+  GetLinkerDryrunRequest,
+  GetLinkerDryrunResponse,
+  GetLinkerDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLinkerDryrunRequest,
+  output: GetLinkerDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type LinkerCreateOrUpdateError = AzureOpError;
 /** Create or update Linker resource. */
 export const LinkerCreateOrUpdate: API.OperationMethod<
@@ -2403,186 +2416,6 @@ export const LinkerCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LinkerCreateOrUpdateRequest,
   output: LinkerCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkerDeleteError = AzureOpError;
-/** Delete a Linker. */
-export const LinkerDelete: API.OperationMethod<
-  LinkerDeleteRequest,
-  LinkerDeleteResponse,
-  LinkerDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkerDeleteRequest,
-  output: LinkerDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkerGetError = AzureOpError;
-/** Returns Linker resource for a given name. */
-export const LinkerGet: API.OperationMethod<
-  LinkerGetRequest,
-  LinkerGetResponse,
-  LinkerGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkerGetRequest,
-  output: LinkerGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkerListError = AzureOpError;
-/** Returns list of Linkers which connects to the resource. which supports to config both application and target service during the resource provision. */
-export const LinkerList: API.OperationMethod<
-  LinkerListRequest,
-  ResourceList,
-  LinkerListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkerListRequest,
-  output: ResourceList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkerListConfigurationsError = AzureOpError;
-/** list source configurations for a Linker. */
-export const LinkerListConfigurations: API.OperationMethod<
-  LinkerListConfigurationsRequest,
-  ConfigurationResult,
-  LinkerListConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkerListConfigurationsRequest,
-  output: ConfigurationResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersCreateDryrunError = AzureOpError;
-/** create a dryrun job to do necessary check before actual creation */
-export const LinkersCreateDryrun: API.OperationMethod<
-  LinkersCreateDryrunRequest,
-  LinkersCreateDryrunResponse,
-  LinkersCreateDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersCreateDryrunRequest,
-  output: LinkersCreateDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersDeleteDryrunError = AzureOpError;
-/** delete a dryrun job */
-export const LinkersDeleteDryrun: API.OperationMethod<
-  LinkersDeleteDryrunRequest,
-  LinkersDeleteDryrunResponse,
-  LinkersDeleteDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersDeleteDryrunRequest,
-  output: LinkersDeleteDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersGenerateConfigurationsError = AzureOpError;
-/** Generate configurations for a Linker. */
-export const LinkersGenerateConfigurations: API.OperationMethod<
-  LinkersGenerateConfigurationsRequest,
-  ConfigurationResult,
-  LinkersGenerateConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersGenerateConfigurationsRequest,
-  output: ConfigurationResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersGetDryrunError = AzureOpError;
-/** get a dryrun job */
-export const LinkersGetDryrun: API.OperationMethod<
-  LinkersGetDryrunRequest,
-  LinkersGetDryrunResponse,
-  LinkersGetDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersGetDryrunRequest,
-  output: LinkersGetDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersListDaprConfigurationsError = AzureOpError;
-/** List the dapr configuration supported by Service Connector. */
-export const LinkersListDaprConfigurations: API.OperationMethod<
-  LinkersListDaprConfigurationsRequest,
-  DaprConfigurationList,
-  LinkersListDaprConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersListDaprConfigurationsRequest,
-  output: DaprConfigurationList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersListDryrunError = AzureOpError;
-/** list dryrun jobs */
-export const LinkersListDryrun: API.OperationMethod<
-  LinkersListDryrunRequest,
-  DryrunList,
-  LinkersListDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersListDryrunRequest,
-  output: DryrunList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkersUpdateDryrunError = AzureOpError;
-/** add a dryrun job to do necessary check before actual creation */
-export const LinkersUpdateDryrun: API.OperationMethod<
-  LinkersUpdateDryrunRequest,
-  LinkersUpdateDryrunResponse,
-  LinkersUpdateDryrunError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkersUpdateDryrunRequest,
-  output: LinkersUpdateDryrunResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LinkerUpdateError = AzureOpError;
-/** Operation to update an existing Linker. */
-export const LinkerUpdate: API.OperationMethod<
-  LinkerUpdateRequest,
-  LinkerUpdateResponse,
-  LinkerUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LinkerUpdateRequest,
-  output: LinkerUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2603,16 +2436,181 @@ export const LinkerValidate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** Lists the available ServiceLinker REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
+export type ListConfigurationNamesError = AzureOpError;
+/** Lists the configuration names generated by Service Connector for all target, client types, auth types. */
+export const ListConfigurationNames: API.OperationMethod<
+  ListConfigurationNamesRequest,
+  ConfigurationNameResult,
+  ListConfigurationNamesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
+  input: ListConfigurationNamesRequest,
+  output: ConfigurationNameResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConnectorError = AzureOpError;
+/** Returns list of connector which connects to the resource, which supports to config the target service during the resource provision. */
+export const ListConnector: API.OperationMethod<
+  ListConnectorRequest,
+  ResourceList,
+  ListConnectorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorRequest,
+  output: ResourceList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConnectorDryrunError = AzureOpError;
+/** list dryrun jobs */
+export const ListConnectorDryrun: API.OperationMethod<
+  ListConnectorDryrunRequest,
+  DryrunList,
+  ListConnectorDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorDryrunRequest,
+  output: DryrunList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListLinkerError = AzureOpError;
+/** Returns list of Linkers which connects to the resource. which supports to config both application and target service during the resource provision. */
+export const ListLinker: API.OperationMethod<
+  ListLinkerRequest,
+  ResourceList,
+  ListLinkerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLinkerRequest,
+  output: ResourceList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListLinkerConfigurationsError = AzureOpError;
+/** list source configurations for a Linker. */
+export const ListLinkerConfigurations: API.OperationMethod<
+  ListLinkerConfigurationsRequest,
+  ConfigurationResult,
+  ListLinkerConfigurationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLinkerConfigurationsRequest,
+  output: ConfigurationResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListLinkerDaprConfigurationsError = AzureOpError;
+/** List the dapr configuration supported by Service Connector. */
+export const ListLinkerDaprConfigurations: API.OperationMethod<
+  ListLinkerDaprConfigurationsRequest,
+  DaprConfigurationList,
+  ListLinkerDaprConfigurationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLinkerDaprConfigurationsRequest,
+  output: DaprConfigurationList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListLinkerDryrunError = AzureOpError;
+/** list dryrun jobs */
+export const ListLinkerDryrun: API.OperationMethod<
+  ListLinkerDryrunRequest,
+  DryrunList,
+  ListLinkerDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLinkerDryrunRequest,
+  output: DryrunList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists the available ServiceLinker REST API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateConnectorError = AzureOpError;
+/** Operation to update an existing Connector. */
+export const UpdateConnector: API.OperationMethod<
+  UpdateConnectorRequest,
+  UpdateConnectorResponse,
+  UpdateConnectorError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConnectorRequest,
+  output: UpdateConnectorResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateConnectorDryrunError = AzureOpError;
+/** update a dryrun job to do necessary check before actual creation */
+export const UpdateConnectorDryrun: API.OperationMethod<
+  UpdateConnectorDryrunRequest,
+  UpdateConnectorDryrunResponse,
+  UpdateConnectorDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConnectorDryrunRequest,
+  output: UpdateConnectorDryrunResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateLinkerError = AzureOpError;
+/** Operation to update an existing Linker. */
+export const UpdateLinker: API.OperationMethod<
+  UpdateLinkerRequest,
+  UpdateLinkerResponse,
+  UpdateLinkerError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLinkerRequest,
+  output: UpdateLinkerResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateLinkerDryrunError = AzureOpError;
+/** add a dryrun job to do necessary check before actual creation */
+export const UpdateLinkerDryrun: API.OperationMethod<
+  UpdateLinkerDryrunRequest,
+  UpdateLinkerDryrunResponse,
+  UpdateLinkerDryrunError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLinkerDryrunRequest,
+  output: UpdateLinkerDryrunResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

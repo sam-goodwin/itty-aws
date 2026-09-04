@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeMccIssueDetailsHistory": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeMccIssueDetailHistory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryRequest"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeMccIssueDetailHistoryRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryResponse"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeMccIssueDetailHistoryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryResponse": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeMccIssueDetailHistoryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -286,7 +286,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryRequest": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeMccIssueDetailHistoryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -326,13 +326,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeInstallDetails": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeInstallDetail": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeInstallDetailsRequest"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeInstallDetailRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeInstallDetailsResponse"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeInstallDetailResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -345,7 +345,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeInstallDetailsResponse": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeInstallDetailResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -519,7 +519,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeInstallDetailsRequest": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeInstallDetailRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -826,13 +826,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetBgpCidrs": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationBgpCidr": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetBgpCidrsRequest"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationBgpCidrRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetBgpCidrsResponse"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationBgpCidrResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -845,7 +845,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetBgpCidrsResponse": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationBgpCidrResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -931,7 +931,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetBgpCidrsRequest": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationBgpCidrRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -971,10 +971,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsDelete": {
+    "com.azure.connectedcache#DeleteIspCacheNodeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsDeleteRequest"
+        "target": "com.azure.connectedcache#DeleteIspCacheNodeOperationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -990,7 +990,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsDeleteRequest": {
+    "com.azure.connectedcache#DeleteIspCacheNodeOperationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1030,13 +1030,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsUpdate": {
+    "com.azure.connectedcache#UpdateIspCacheNodeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsUpdateRequest"
+        "target": "com.azure.connectedcache#UpdateIspCacheNodeOperationRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsUpdateResponse"
+        "target": "com.azure.connectedcache#UpdateIspCacheNodeOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1049,7 +1049,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsUpdateResponse": {
+    "com.azure.connectedcache#UpdateIspCacheNodeOperationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2238,7 +2238,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsUpdateRequest": {
+    "com.azure.connectedcache#UpdateIspCacheNodeOperationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2777,13 +2777,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGet": {
+    "com.azure.connectedcache#GetIspCacheNodeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetRequest"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsGetResponse"
+        "target": "com.azure.connectedcache#GetIspCacheNodeOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2796,7 +2796,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetResponse": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2859,7 +2859,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsGetRequest": {
+    "com.azure.connectedcache#GetIspCacheNodeOperationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2899,10 +2899,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsListByIspCustomerResource": {
+    "com.azure.connectedcache#ListIspCacheNodeOperationByIspCustomerResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCacheNodesOperationsListByIspCustomerResourceRequest"
+        "target": "com.azure.connectedcache#ListIspCacheNodeOperationByIspCustomerResourceRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#IspCacheNodeResourceListResult"
@@ -3011,7 +3011,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCacheNodesOperationsListByIspCustomerResourceRequest": {
+    "com.azure.connectedcache#ListIspCacheNodeOperationByIspCustomerResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3043,10 +3043,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCustomersDelete": {
+    "com.azure.connectedcache#DeleteIspCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCustomersDeleteRequest"
+        "target": "com.azure.connectedcache#DeleteIspCustomerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3062,7 +3062,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCustomersDeleteRequest": {
+    "com.azure.connectedcache#DeleteIspCustomerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3094,13 +3094,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCustomersUpdate": {
+    "com.azure.connectedcache#UpdateIspCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCustomersUpdateRequest"
+        "target": "com.azure.connectedcache#UpdateIspCustomerRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCustomersUpdateResponse"
+        "target": "com.azure.connectedcache#UpdateIspCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3113,7 +3113,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCustomersUpdateResponse": {
+    "com.azure.connectedcache#UpdateIspCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3618,7 +3618,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCustomersUpdateRequest": {
+    "com.azure.connectedcache#UpdateIspCustomerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4018,13 +4018,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCustomersGet": {
+    "com.azure.connectedcache#GetIspCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCustomersGetRequest"
+        "target": "com.azure.connectedcache#GetIspCustomerRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#IspCustomersGetResponse"
+        "target": "com.azure.connectedcache#GetIspCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4037,7 +4037,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCustomersGetResponse": {
+    "com.azure.connectedcache#GetIspCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4100,7 +4100,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCustomersGetRequest": {
+    "com.azure.connectedcache#GetIspCustomerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4132,10 +4132,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCustomersListByResourceGroup": {
+    "com.azure.connectedcache#ListIspCustomerByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCustomersListByResourceGroupRequest"
+        "target": "com.azure.connectedcache#ListIspCustomerByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#IspCustomerResourceListResult"
@@ -4244,7 +4244,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#IspCustomersListByResourceGroupRequest": {
+    "com.azure.connectedcache#ListIspCustomerByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4268,13 +4268,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistory": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeTlsCertificateHistory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistoryRequest"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeTlsCertificateHistoryRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistoryResponse"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeTlsCertificateHistoryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4287,7 +4287,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistoryResponse": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeTlsCertificateHistoryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4385,7 +4385,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistoryRequest": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeTlsCertificateHistoryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4425,13 +4425,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeMccIssueDetailsHistory": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeMccIssueDetailHistory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryRequest"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeMccIssueDetailHistoryRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryResponse"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeMccIssueDetailHistoryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4444,7 +4444,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryResponse": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeMccIssueDetailHistoryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4507,7 +4507,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeMccIssueDetailsHistoryRequest": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeMccIssueDetailHistoryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4547,13 +4547,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetails": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeInstallDetail": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsRequest"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeInstallDetailRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsResponse"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeInstallDetailResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4566,7 +4566,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsResponse": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeInstallDetailResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4629,7 +4629,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetailsRequest": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeInstallDetailRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4791,10 +4791,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsDelete": {
+    "com.azure.connectedcache#DeleteEnterpriseMccCacheNodeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsDeleteRequest"
+        "target": "com.azure.connectedcache#DeleteEnterpriseMccCacheNodeOperationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4810,7 +4810,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsDeleteRequest": {
+    "com.azure.connectedcache#DeleteEnterpriseMccCacheNodeOperationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4850,13 +4850,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdate": {
+    "com.azure.connectedcache#UpdateEnterpriseMccCacheNodeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdateRequest"
+        "target": "com.azure.connectedcache#UpdateEnterpriseMccCacheNodeOperationRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdateResponse"
+        "target": "com.azure.connectedcache#UpdateEnterpriseMccCacheNodeOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4869,7 +4869,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdateResponse": {
+    "com.azure.connectedcache#UpdateEnterpriseMccCacheNodeOperationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4932,7 +4932,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdateRequest": {
+    "com.azure.connectedcache#UpdateEnterpriseMccCacheNodeOperationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5143,13 +5143,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGet": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetRequest"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetResponse"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5162,7 +5162,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetResponse": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5225,7 +5225,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetRequest": {
+    "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5265,10 +5265,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsListByEnterpriseMccCustomerResource": {
+    "com.azure.connectedcache#ListEnterpriseMccCacheNodeOperationByEnterpriseMccCustomerResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsListByEnterpriseMccCustomerResourceRequest"
+        "target": "com.azure.connectedcache#ListEnterpriseMccCacheNodeOperationByEnterpriseMccCustomerResourceRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#EnterpriseMccCacheNodeResourceListResult"
@@ -5377,7 +5377,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsListByEnterpriseMccCustomerResourceRequest": {
+    "com.azure.connectedcache#ListEnterpriseMccCacheNodeOperationByEnterpriseMccCustomerResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5409,10 +5409,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersDelete": {
+    "com.azure.connectedcache#DeleteEnterpriseMccCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersDeleteRequest"
+        "target": "com.azure.connectedcache#DeleteEnterpriseMccCustomerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5428,7 +5428,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersDeleteRequest": {
+    "com.azure.connectedcache#DeleteEnterpriseMccCustomerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5460,13 +5460,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersUpdate": {
+    "com.azure.connectedcache#UpdateEnterpriseMccCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersUpdateRequest"
+        "target": "com.azure.connectedcache#UpdateEnterpriseMccCustomerRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersUpdateResponse"
+        "target": "com.azure.connectedcache#UpdateEnterpriseMccCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5479,7 +5479,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersUpdateResponse": {
+    "com.azure.connectedcache#UpdateEnterpriseMccCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5542,7 +5542,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersUpdateRequest": {
+    "com.azure.connectedcache#UpdateEnterpriseMccCustomerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5737,13 +5737,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersGet": {
+    "com.azure.connectedcache#GetEnterpriseMccCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersGetRequest"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCustomerRequest"
       },
       "output": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersGetResponse"
+        "target": "com.azure.connectedcache#GetEnterpriseMccCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5756,7 +5756,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersGetResponse": {
+    "com.azure.connectedcache#GetEnterpriseMccCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5819,7 +5819,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersGetRequest": {
+    "com.azure.connectedcache#GetEnterpriseMccCustomerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5851,10 +5851,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersListByResourceGroup": {
+    "com.azure.connectedcache#ListEnterpriseMccCustomerByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersListByResourceGroupRequest"
+        "target": "com.azure.connectedcache#ListEnterpriseMccCustomerByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#EnterpriseMccCustomerResourceListResult"
@@ -5963,7 +5963,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersListByResourceGroupRequest": {
+    "com.azure.connectedcache#ListEnterpriseMccCustomerByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5987,10 +5987,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#IspCustomersListBySubscription": {
+    "com.azure.connectedcache#ListIspCustomerBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#IspCustomersListBySubscriptionRequest"
+        "target": "com.azure.connectedcache#ListIspCustomerBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#IspCustomerResourceListResult"
@@ -6006,7 +6006,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#IspCustomersListBySubscriptionRequest": {
+    "com.azure.connectedcache#ListIspCustomerBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6022,10 +6022,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersListBySubscription": {
+    "com.azure.connectedcache#ListEnterpriseMccCustomerBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.connectedcache#EnterpriseMccCustomersListBySubscriptionRequest"
+        "target": "com.azure.connectedcache#ListEnterpriseMccCustomerBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.connectedcache#EnterpriseMccCustomerResourceListResult"
@@ -6041,7 +6041,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#EnterpriseMccCustomersListBySubscriptionRequest": {
+    "com.azure.connectedcache#ListEnterpriseMccCustomerBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6057,13 +6057,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.connectedcache#OperationsList": {
+    "com.azure.connectedcache#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.connectedcache#OperationsListResponse"
+        "target": "com.azure.connectedcache#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6076,7 +6076,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.connectedcache#OperationsListResponse": {
+    "com.azure.connectedcache#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -6220,97 +6220,97 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeMccIssueDetailsHistory"
+          "target": "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeMccIssueDetailHistory"
         },
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeInstallDetails"
+          "target": "com.azure.connectedcache#GetIspCacheNodeOperationCacheNodeInstallDetail"
         },
         {
           "target": "com.azure.connectedcache#IspCacheNodesOperationsGetCacheNodeAutoUpdateHistory"
         },
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsGetBgpCidrs"
+          "target": "com.azure.connectedcache#GetIspCacheNodeOperationBgpCidr"
         },
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsDelete"
+          "target": "com.azure.connectedcache#DeleteIspCacheNodeOperation"
         },
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsUpdate"
+          "target": "com.azure.connectedcache#UpdateIspCacheNodeOperation"
         },
         {
           "target": "com.azure.connectedcache#IspCacheNodesOperationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsGet"
+          "target": "com.azure.connectedcache#GetIspCacheNodeOperation"
         },
         {
-          "target": "com.azure.connectedcache#IspCacheNodesOperationsListByIspCustomerResource"
+          "target": "com.azure.connectedcache#ListIspCacheNodeOperationByIspCustomerResource"
         },
         {
-          "target": "com.azure.connectedcache#IspCustomersDelete"
+          "target": "com.azure.connectedcache#DeleteIspCustomer"
         },
         {
-          "target": "com.azure.connectedcache#IspCustomersUpdate"
+          "target": "com.azure.connectedcache#UpdateIspCustomer"
         },
         {
           "target": "com.azure.connectedcache#IspCustomersCreateOrUpdate"
         },
         {
-          "target": "com.azure.connectedcache#IspCustomersGet"
+          "target": "com.azure.connectedcache#GetIspCustomer"
         },
         {
-          "target": "com.azure.connectedcache#IspCustomersListByResourceGroup"
+          "target": "com.azure.connectedcache#ListIspCustomerByResourceGroup"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeTlsCertificateHistory"
+          "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeTlsCertificateHistory"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeMccIssueDetailsHistory"
+          "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeMccIssueDetailHistory"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeInstallDetails"
+          "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperationCacheNodeInstallDetail"
         },
         {
           "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGetCacheNodeAutoUpdateHistory"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsDelete"
+          "target": "com.azure.connectedcache#DeleteEnterpriseMccCacheNodeOperation"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsUpdate"
+          "target": "com.azure.connectedcache#UpdateEnterpriseMccCacheNodeOperation"
         },
         {
           "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsGet"
+          "target": "com.azure.connectedcache#GetEnterpriseMccCacheNodeOperation"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCacheNodesOperationsListByEnterpriseMccCustomerResource"
+          "target": "com.azure.connectedcache#ListEnterpriseMccCacheNodeOperationByEnterpriseMccCustomerResource"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCustomersDelete"
+          "target": "com.azure.connectedcache#DeleteEnterpriseMccCustomer"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCustomersUpdate"
+          "target": "com.azure.connectedcache#UpdateEnterpriseMccCustomer"
         },
         {
           "target": "com.azure.connectedcache#EnterpriseMccCustomersCreateOrUpdate"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCustomersGet"
+          "target": "com.azure.connectedcache#GetEnterpriseMccCustomer"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCustomersListByResourceGroup"
+          "target": "com.azure.connectedcache#ListEnterpriseMccCustomerByResourceGroup"
         },
         {
-          "target": "com.azure.connectedcache#IspCustomersListBySubscription"
+          "target": "com.azure.connectedcache#ListIspCustomerBySubscription"
         },
         {
-          "target": "com.azure.connectedcache#EnterpriseMccCustomersListBySubscription"
+          "target": "com.azure.connectedcache#ListEnterpriseMccCustomerBySubscription"
         },
         {
-          "target": "com.azure.connectedcache#OperationsList"
+          "target": "com.azure.connectedcache#ListOperations"
         }
       ],
       "traits": {

@@ -10517,7 +10517,7 @@
         }
       }
     },
-    "com.gcp.chromemanagement_v1#CountDevicesPerReleaseChannelCustomersReportsRequest": {
+    "com.gcp.chromemanagement_v1#ReleaseCountDevicePerChannelCustomerReportRequest": {
       "type": "structure",
       "members": {
         "date.day": {
@@ -10551,10 +10551,10 @@
         }
       }
     },
-    "com.gcp.chromemanagement_v1#CountDevicesPerReleaseChannelCustomersReports": {
+    "com.gcp.chromemanagement_v1#ReleaseCountDevicePerChannelCustomerReport": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.chromemanagement_v1#CountDevicesPerReleaseChannelCustomersReportsRequest"
+        "target": "com.gcp.chromemanagement_v1#ReleaseCountDevicePerChannelCustomerReportRequest"
       },
       "output": {
         "target": "com.gcp.chromemanagement_v1#GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse"

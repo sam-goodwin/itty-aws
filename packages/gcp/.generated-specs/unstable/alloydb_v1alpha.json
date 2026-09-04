@@ -10162,7 +10162,7 @@
         "smithy.api#documentation": "Gets details of a single Cluster."
       }
     },
-    "com.gcp.alloydb_v1alpha#RestoreFromCloudSQLProjectsLocationsClustersRequest": {
+    "com.gcp.alloydb_v1alpha#RestoreFromCloudSqlProjectsLocationsClustersRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10182,10 +10182,10 @@
         }
       }
     },
-    "com.gcp.alloydb_v1alpha#RestoreFromCloudSQLProjectsLocationsClusters": {
+    "com.gcp.alloydb_v1alpha#RestoreFromCloudSqlProjectsLocationsClusters": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.alloydb_v1alpha#RestoreFromCloudSQLProjectsLocationsClustersRequest"
+        "target": "com.gcp.alloydb_v1alpha#RestoreFromCloudSqlProjectsLocationsClustersRequest"
       },
       "output": {
         "target": "com.gcp.alloydb_v1alpha#Operation"

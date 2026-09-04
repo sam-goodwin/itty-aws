@@ -13336,7 +13336,7 @@
         "smithy.api#documentation": "Calculates the region prices, using today's exchange rate and country-specific pricing patterns, based on the price in the request for a set of regions."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationSubscriptionsRequest": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationSubscriptionRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -13356,10 +13356,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationSubscriptions": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchGetMonetizationSubscriptionsRequest"
+        "target": "com.gcp.androidpublisher_v3#GetBatchMonetizationSubscriptionRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchGetSubscriptionsResponse"
@@ -13766,7 +13766,7 @@
         "smithy.api#documentation": "Deprecated: subscription archiving is not supported."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationSubscriptionsRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationSubscriptionRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -13786,10 +13786,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationSubscriptions": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateMonetizationSubscriptionsRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchMonetizationSubscriptionRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateSubscriptionsResponse"
@@ -13996,7 +13996,7 @@
         "smithy.api#documentation": "Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationSubscriptionBasePlanRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -14024,10 +14024,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationSubscriptionsBasePlans": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationSubscriptionBasePlan": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationSubscriptionsBasePlansRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationSubscriptionBasePlanRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateBasePlanStatesResponse"
@@ -14331,7 +14331,7 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationSubscriptionsBasePlansOffersRequest": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationSubscriptionBasePlanOfferRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -14367,10 +14367,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationSubscriptionsBasePlansOffers": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationSubscriptionBasePlanOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchGetMonetizationSubscriptionsBasePlansOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#GetBatchMonetizationSubscriptionBasePlanOfferRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchGetSubscriptionOffersResponse"
@@ -14397,7 +14397,7 @@
         "smithy.api#documentation": "Reads one or more subscription offers."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationSubscriptionBasePlanOfferRequest": {
       "type": "structure",
       "members": {
         "productId": {
@@ -14433,10 +14433,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationSubscriptionsBasePlansOffers": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationSubscriptionBasePlanOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationSubscriptionsBasePlansOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationSubscriptionBasePlanOfferRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateSubscriptionOfferStatesResponse"
@@ -14806,7 +14806,7 @@
         "smithy.api#documentation": "Deactivates a subscription offer. Once deactivated, existing subscribers will maintain their subscription, but the offer will become unavailable to new subscribers."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationSubscriptionBasePlanOfferRequest": {
       "type": "structure",
       "members": {
         "productId": {
@@ -14842,10 +14842,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationSubscriptionsBasePlansOffers": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationSubscriptionBasePlanOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateMonetizationSubscriptionsBasePlansOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchMonetizationSubscriptionBasePlanOfferRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateSubscriptionOffersResponse"
@@ -14978,7 +14978,7 @@
         "smithy.api#documentation": "Reads a single one-time product."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationOnetimeproductsRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationOnetimeproductRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -14998,10 +14998,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationOnetimeproducts": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationOnetimeproduct": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateMonetizationOnetimeproductsRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchMonetizationOnetimeproductRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateOneTimeProductsResponse"
@@ -15028,7 +15028,7 @@
         "smithy.api#documentation": "Creates or updates one or more one-time products."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsRequest": {
+    "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -15048,10 +15048,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproducts": {
+    "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproduct": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsRequest"
+        "target": "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductRequest"
       },
       "errors": [
         {
@@ -15075,7 +15075,7 @@
         "smithy.api#documentation": "Deletes one or more one-time products."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationOnetimeproductsRequest": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationOnetimeproductRequest": {
       "type": "structure",
       "members": {
         "productIds": {
@@ -15095,10 +15095,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationOnetimeproducts": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationOnetimeproduct": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchGetMonetizationOnetimeproductsRequest"
+        "target": "com.gcp.androidpublisher_v3#GetBatchMonetizationOnetimeproductRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchGetOneTimeProductsResponse"
@@ -15361,7 +15361,7 @@
         "smithy.api#documentation": "Creates or updates a one-time product."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest": {
+    "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductPurchaseOptionRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -15389,10 +15389,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsPurchaseOptions": {
+    "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductPurchaseOption": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsPurchaseOptionsRequest"
+        "target": "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductPurchaseOptionRequest"
       },
       "errors": [
         {
@@ -15416,7 +15416,7 @@
         "smithy.api#documentation": "Deletes purchase options across one or multiple one-time products. By default this operation will fail if there are any existing offers under the deleted purchase options. Use the force parameter to override the default behavior."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationOnetimeproductPurchaseOptionRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -15444,10 +15444,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptions": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationOnetimeproductPurchaseOption": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationOnetimeproductPurchaseOptionRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdatePurchaseOptionStatesResponse"
@@ -15474,7 +15474,7 @@
         "smithy.api#documentation": "Activates or deactivates purchase options across one or multiple one-time products."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationOnetimeproductPurchaseOptionOfferRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -15510,10 +15510,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffers": {
+    "com.gcp.androidpublisher_v3#UpdateBatchMonetizationOnetimeproductPurchaseOptionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateMonetizationOnetimeproductsPurchaseOptionsOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchMonetizationOnetimeproductPurchaseOptionOfferRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateOneTimeProductOffersResponse"
@@ -15540,7 +15540,7 @@
         "smithy.api#documentation": "Creates or updates one or more one-time product offers."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationOnetimeproductPurchaseOptionOfferRequest": {
       "type": "structure",
       "members": {
         "purchaseOptionId": {
@@ -15576,10 +15576,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetMonetizationOnetimeproductsPurchaseOptionsOffers": {
+    "com.gcp.androidpublisher_v3#GetBatchMonetizationOnetimeproductPurchaseOptionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchGetMonetizationOnetimeproductsPurchaseOptionsOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#GetBatchMonetizationOnetimeproductPurchaseOptionOfferRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchGetOneTimeProductOffersResponse"
@@ -15606,7 +15606,7 @@
         "smithy.api#documentation": "Reads one or more one-time product offers."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationOnetimeproductPurchaseOptionOfferRequest": {
       "type": "structure",
       "members": {
         "productId": {
@@ -15642,10 +15642,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffers": {
+    "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationOnetimeproductPurchaseOptionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateStatesMonetizationOnetimeproductsPurchaseOptionsOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchStateMonetizationOnetimeproductPurchaseOptionOfferRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#BatchUpdateOneTimeProductOfferStatesResponse"
@@ -15965,7 +15965,7 @@
         "smithy.api#documentation": "Activates a one-time product offer."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest": {
+    "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductPurchaseOptionOfferRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -16001,10 +16001,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffers": {
+    "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductPurchaseOptionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchDeleteMonetizationOnetimeproductsPurchaseOptionsOffersRequest"
+        "target": "com.gcp.androidpublisher_v3#DeleteBatchMonetizationOnetimeproductPurchaseOptionOfferRequest"
       },
       "errors": [
         {
@@ -21862,7 +21862,7 @@
         "smithy.api#documentation": "Updates an in-app product (a managed product or a subscription). This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetInappproductsRequest": {
+    "com.gcp.androidpublisher_v3#GetBatchInappproductRequest": {
       "type": "structure",
       "members": {
         "sku": {
@@ -21882,10 +21882,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchGetInappproducts": {
+    "com.gcp.androidpublisher_v3#GetBatchInappproduct": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchGetInappproductsRequest"
+        "target": "com.gcp.androidpublisher_v3#GetBatchInappproductRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#InappproductsBatchGetResponse"
@@ -21906,7 +21906,7 @@
         "smithy.api#documentation": "Reads multiple in-app products, which can be managed products or subscriptions. This method should not be used to retrieve subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateInappproductsRequest": {
+    "com.gcp.androidpublisher_v3#UpdateBatchInappproductRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -21926,10 +21926,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchUpdateInappproducts": {
+    "com.gcp.androidpublisher_v3#UpdateBatchInappproduct": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchUpdateInappproductsRequest"
+        "target": "com.gcp.androidpublisher_v3#UpdateBatchInappproductRequest"
       },
       "output": {
         "target": "com.gcp.androidpublisher_v3#InappproductsBatchUpdateResponse"
@@ -21956,7 +21956,7 @@
         "smithy.api#documentation": "Updates or inserts one or more in-app products (managed products or subscriptions). Set the latencyTolerance field on nested requests to PRODUCT_UPDATE_LATENCY_TOLERANCE_LATENCY_TOLERANT to achieve maximum update throughput. This method should no longer be used to update subscriptions. See [this article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html) for more information."
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteInappproductsRequest": {
+    "com.gcp.androidpublisher_v3#DeleteBatchInappproductRequest": {
       "type": "structure",
       "members": {
         "packageName": {
@@ -21976,10 +21976,10 @@
         }
       }
     },
-    "com.gcp.androidpublisher_v3#BatchDeleteInappproducts": {
+    "com.gcp.androidpublisher_v3#DeleteBatchInappproduct": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.androidpublisher_v3#BatchDeleteInappproductsRequest"
+        "target": "com.gcp.androidpublisher_v3#DeleteBatchInappproductRequest"
       },
       "errors": [
         {

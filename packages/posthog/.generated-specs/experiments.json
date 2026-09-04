@@ -65,7 +65,7 @@
       },
       "traits": {}
     },
-    "com.posthog.experiments#ExperimentsListRequest": {
+    "com.posthog.experiments#ListExperimentsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1630,10 +1630,10 @@
       },
       "traits": {}
     },
-    "com.posthog.experiments#ExperimentsList": {
+    "com.posthog.experiments#ListExperiments": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsListRequest"
+        "target": "com.posthog.experiments#ListExperimentsRequest"
       },
       "output": {
         "target": "com.posthog.experiments#PaginatedExperimentBasicList"
@@ -4531,7 +4531,7 @@
         "smithy.api#documentation": "The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409."
       }
     },
-    "com.posthog.experiments#ExperimentsCreateRequest": {
+    "com.posthog.experiments#CreateExperimentRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5015,10 +5015,10 @@
         "smithy.api#documentation": "IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary)."
       }
     },
-    "com.posthog.experiments#ExperimentsCreate": {
+    "com.posthog.experiments#CreateExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -5122,7 +5122,7 @@
         "smithy.api#documentation": "The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409."
       }
     },
-    "com.posthog.experiments#ExperimentsUpdateRequest": {
+    "com.posthog.experiments#UpdateExperimentRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5331,10 +5331,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsUpdate": {
+    "com.posthog.experiments#UpdateExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsUpdateRequest"
+        "target": "com.posthog.experiments#UpdateExperimentRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -5389,7 +5389,7 @@
         "smithy.api#documentation": "The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409."
       }
     },
-    "com.posthog.experiments#ExperimentsPartialUpdateRequest": {
+    "com.posthog.experiments#UpdateExperimentPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5596,10 +5596,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsPartialUpdate": {
+    "com.posthog.experiments#UpdateExperimentPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsPartialUpdateRequest"
+        "target": "com.posthog.experiments#UpdateExperimentPartialRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -5900,7 +5900,7 @@
         "smithy.api#documentation": "Change history for this experiment.\n\nReturns a paginated audit trail of changes to the experiment, its holdouts and\nshared metrics, and its linked feature flag: who made each change, what changed\n(field-level before/after values), and when. Ordered newest first."
       }
     },
-    "com.posthog.experiments#ExperimentsArchiveCreateRequest": {
+    "com.posthog.experiments#CreateExperimentArchiveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5930,10 +5930,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsArchiveCreate": {
+    "com.posthog.experiments#CreateExperimentArchive": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsArchiveCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentArchiveRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -5955,7 +5955,7 @@
         "smithy.api#documentation": "Archive an ended experiment.\n\nHides the experiment from the default list view. The experiment can be\nrestored at any time by updating archived=false. When the linked feature\nflag is still enabled, pass disable_feature_flag=true to also disable and\narchive it. Returns 400 if the experiment is already archived or has not\nended yet."
       }
     },
-    "com.posthog.experiments#ExperimentsCopyToProjectCreateRequest": {
+    "com.posthog.experiments#CreateExperimentCopyToProjectRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5997,10 +5997,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsCopyToProjectCreate": {
+    "com.posthog.experiments#CreateExperimentCopyToProject": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsCopyToProjectCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentCopyToProjectRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -6314,7 +6314,7 @@
         "smithy.api#documentation": "The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409."
       }
     },
-    "com.posthog.experiments#ExperimentsDuplicateCreateRequest": {
+    "com.posthog.experiments#CreateExperimentDuplicateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6515,10 +6515,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsDuplicateCreate": {
+    "com.posthog.experiments#CreateExperimentDuplicate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsDuplicateCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentDuplicateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6543,7 +6543,7 @@
         "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
       }
     },
-    "com.posthog.experiments#ExperimentsEndCreateRequest": {
+    "com.posthog.experiments#CreateExperimentEndRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6600,10 +6600,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsEndCreate": {
+    "com.posthog.experiments#CreateExperimentEnd": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsEndCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentEndRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -6871,7 +6871,7 @@
         "smithy.api#documentation": "Status of the flag-cleanup Desktop task opened for this experiment.\n\nWhen an experiment was ended or shipped with open_cleanup_pr=true, a Desktop task\nremoves the experiment's feature-flag code and opens a draft pull request. This\nreturns that task's latest run status and the PR URL once one is opened. Poll\nuntil is_terminal is true. Returns 404 when no cleanup task was opened."
       }
     },
-    "com.posthog.experiments#ExperimentsFreezeExposureCreateRequest": {
+    "com.posthog.experiments#CreateExperimentFreezeExposureRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6895,10 +6895,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsFreezeExposureCreate": {
+    "com.posthog.experiments#CreateExperimentFreezeExposure": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsFreezeExposureCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentFreezeExposureRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -6912,7 +6912,7 @@
         "smithy.api#documentation": "Freeze exposure on a running experiment while metrics keep flowing.\n\nSnapshots the already-exposed users into a static cohort and narrows the\nlinked feature flag so only those users keep matching — new users can no\nlonger enter the experiment. ``end_date`` is left null so long-term metrics\n(revenue/LTV/renewals/retention) keep accumulating. Enrolled users keep\ntheir assigned variant. The serialized status becomes 'exposure_frozen'.\n\nReturns 400 if the experiment is not running, exposure is already frozen,\nthe experiment is group-aggregated (group flags cannot be frozen with a\nperson cohort), or the exposed set is too large to snapshot synchronously."
       }
     },
-    "com.posthog.experiments#ExperimentsLaunchCreateRequest": {
+    "com.posthog.experiments#CreateExperimentLaunchRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6936,10 +6936,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsLaunchCreate": {
+    "com.posthog.experiments#CreateExperimentLaunch": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsLaunchCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentLaunchRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -7035,7 +7035,7 @@
         "smithy.api#documentation": "* `manual` - Manual\n* `agent_mcp` - Agent (MCP)\n* `cold_run` - Cold Run\n* `stale_refresh` - Stale Refresh\n* `auto_refresh` - Auto Refresh\n* `experiment_config_change` - Experiment Config Change\n* `metric_config_change` - Metric Config Change\n* `config_change` - Config Change\n* `experiment_launch` - Experiment Launch\n* `experiment_stop` - Experiment Stop\n* `experiment_update` - Experiment Update"
       }
     },
-    "com.posthog.experiments#ExperimentsMetricsRecalculationCreateRequest": {
+    "com.posthog.experiments#CreateExperimentMetricRecalculationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7356,10 +7356,10 @@
         "smithy.api#documentation": "Per-metric results computed by this run, scoped by the run's recalc fingerprint"
       }
     },
-    "com.posthog.experiments#ExperimentsMetricsRecalculationCreate": {
+    "com.posthog.experiments#CreateExperimentMetricRecalculation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsMetricsRecalculationCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentMetricRecalculationRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentMetricsRecalculation"
@@ -7473,7 +7473,7 @@
         "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
       }
     },
-    "com.posthog.experiments#ExperimentsPauseCreateRequest": {
+    "com.posthog.experiments#CreateExperimentPauseRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7497,10 +7497,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsPauseCreate": {
+    "com.posthog.experiments#CreateExperimentPause": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsPauseCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentPauseRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -7552,7 +7552,7 @@
         "smithy.api#documentation": "The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409."
       }
     },
-    "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreateRequest": {
+    "com.posthog.experiments#CreateExperimentRecalculateTimeseryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7753,10 +7753,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreate": {
+    "com.posthog.experiments#CreateExperimentRecalculateTimesery": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentRecalculateTimeseryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7781,7 +7781,7 @@
         "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
       }
     },
-    "com.posthog.experiments#ExperimentsResetCreateRequest": {
+    "com.posthog.experiments#CreateExperimentResetRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7805,10 +7805,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsResetCreate": {
+    "com.posthog.experiments#CreateExperimentReset": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsResetCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentResetRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -7830,7 +7830,7 @@
         "smithy.api#documentation": "Reset an experiment back to draft state.\n\nClears start/end dates, conclusion, archived flag, and any flag-cleanup\ntask pointer. The feature flag is left unchanged — users continue to see\ntheir assigned variants.\n\nPreviously collected events still exist but won't be included in\nresults unless the start date is manually adjusted after re-launch.\n\nReturns 400 if the experiment is already in draft state."
       }
     },
-    "com.posthog.experiments#ExperimentsResumeCreateRequest": {
+    "com.posthog.experiments#CreateExperimentResumeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7854,10 +7854,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsResumeCreate": {
+    "com.posthog.experiments#CreateExperimentResume": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsResumeCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentResumeRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -7914,7 +7914,7 @@
         "smithy.api#documentation": "Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionBucketsCreateRequest": {
+    "com.posthog.experiments#CreateExperimentSessionBucketRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8106,10 +8106,10 @@
         "smithy.api#documentation": "Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionBucketsCreate": {
+    "com.posthog.experiments#CreateExperimentSessionBucket": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsSessionBucketsCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentSessionBucketRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentSessionBucketResponse"
@@ -8123,7 +8123,7 @@
         "smithy.api#documentation": "Session recordings of this experiment matching a bucket.\n\nAnswers the questions a recordings query can't express on its own — \"fired any of these\nmetrics\", \"fired none of them\", \"was exposed but never completed the funnel in this\nsession\" — by returning a bounded, most-recent-first list of session IDs to pass back as\na recordings query's session_ids. POST because the metric list doesn't fit a query\nstring; the endpoint only reads.\n\nSession-scoped and goal-free: the set describes what happened in each session, while the\nexperiment analysis counts per person over the whole run window. A session can be in the\ndrop-off bucket while the same person converts in a later one."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionEventDeltasCreateRequest": {
+    "com.posthog.experiments#CreateExperimentSessionEventDeltaRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8506,10 +8506,10 @@
         "smithy.api#documentation": "The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionEventDeltasCreate": {
+    "com.posthog.experiments#CreateExperimentSessionEventDelta": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsSessionEventDeltasCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentSessionEventDeltaRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentSessionEventDeltaResponse"
@@ -8523,7 +8523,7 @@
         "smithy.api#documentation": "The recordings worth watching for this experiment, grouped into cards.\n\nEach card is one sentence and the recordings that back it: an event one variant did clearly\nmore than the others, an error signal concentrated in one variant, or a shortcut to a\nmetric event happening on screen. Every card's count is a count of recordings that actually\nexist, so handing its session ids to the recordings list can't come back empty. POST to\ntake the same throttle and cache posture as the other reads in this family rather than\nbecause it carries a body: it takes no parameters, and it only reads.\n\nIt reports no effect size. Cards carry a direction and a band rather than a rate, a ratio\nor a person count: the experiment's results already state magnitudes, computed per person\nover the whole run window, and this reads one session per person over a clamped one. Two\nnumbers for the same event would read as a contradiction, so this surface states none. That\nis what lets a card sit on one of the experiment's own metric events, which it names, so a\nreader is sent to the results rather than given a second answer."
       }
     },
-    "com.posthog.experiments#ExperimentsShipVariantCreateRequest": {
+    "com.posthog.experiments#CreateExperimentShipVariantRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8592,10 +8592,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsShipVariantCreate": {
+    "com.posthog.experiments#CreateExperimentShipVariant": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsShipVariantCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentShipVariantRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -8688,7 +8688,7 @@
         "smithy.api#documentation": "Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers.\n\nIntercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate\ndecorator on serializer methods and converts them into the same responses the viewset path\nproduces (see decorators._result_to_response), so both paths share one contract."
       }
     },
-    "com.posthog.experiments#ExperimentsUnarchiveCreateRequest": {
+    "com.posthog.experiments#CreateExperimentUnarchiveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8712,10 +8712,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsUnarchiveCreate": {
+    "com.posthog.experiments#CreateExperimentUnarchive": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsUnarchiveCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentUnarchiveRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -8729,7 +8729,7 @@
         "smithy.api#documentation": "Unarchive an archived experiment.\n\nRestores the experiment to the default list view. Returns 400 if the\nexperiment is not currently archived."
       }
     },
-    "com.posthog.experiments#ExperimentsUnfreezeExposureCreateRequest": {
+    "com.posthog.experiments#CreateExperimentUnfreezeExposureRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8753,10 +8753,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.experiments#ExperimentsUnfreezeExposureCreate": {
+    "com.posthog.experiments#CreateExperimentUnfreezeExposure": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsUnfreezeExposureCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentUnfreezeExposureRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentOutput"
@@ -8872,7 +8872,7 @@
         "smithy.api#documentation": "Per-step counts for funnel metrics; the last entry is the final-step count."
       }
     },
-    "com.posthog.experiments#ExperimentsCalculateRunningTimeCreateRequest": {
+    "com.posthog.experiments#CreateExperimentCalculateRunningTimeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8976,10 +8976,10 @@
         "smithy.api#documentation": "Estimated sample size and running time for the given inputs."
       }
     },
-    "com.posthog.experiments#ExperimentsCalculateRunningTimeCreate": {
+    "com.posthog.experiments#CreateExperimentCalculateRunningTime": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsCalculateRunningTimeCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentCalculateRunningTimeRequest"
       },
       "output": {
         "target": "com.posthog.experiments#RunningTimeCalculationResult"
@@ -9546,7 +9546,7 @@
         "smithy.api#documentation": "IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionContextsCreateRequest": {
+    "com.posthog.experiments#CreateExperimentSessionContextRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9593,10 +9593,10 @@
         "smithy.api#documentation": "Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint."
       }
     },
-    "com.posthog.experiments#ExperimentsSessionContextsCreate": {
+    "com.posthog.experiments#CreateExperimentSessionContext": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.experiments#ExperimentsSessionContextsCreateRequest"
+        "target": "com.posthog.experiments#CreateExperimentSessionContextRequest"
       },
       "output": {
         "target": "com.posthog.experiments#ExperimentSessionContextsResponse"
@@ -9695,19 +9695,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.experiments#ExperimentsList"
+          "target": "com.posthog.experiments#ListExperiments"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsCreate"
+          "target": "com.posthog.experiments#CreateExperiment"
         },
         {
           "target": "com.posthog.experiments#ExperimentsRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsUpdate"
+          "target": "com.posthog.experiments#UpdateExperiment"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsPartialUpdate"
+          "target": "com.posthog.experiments#UpdateExperimentPartial"
         },
         {
           "target": "com.posthog.experiments#ExperimentsDestroy"
@@ -9716,19 +9716,19 @@
           "target": "com.posthog.experiments#ExperimentsActivityRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsArchiveCreate"
+          "target": "com.posthog.experiments#CreateExperimentArchive"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsCopyToProjectCreate"
+          "target": "com.posthog.experiments#CreateExperimentCopyToProject"
         },
         {
           "target": "com.posthog.experiments#ExperimentsCreateExposureCohortForExperimentCreate"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsDuplicateCreate"
+          "target": "com.posthog.experiments#CreateExperimentDuplicate"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsEndCreate"
+          "target": "com.posthog.experiments#CreateExperimentEnd"
         },
         {
           "target": "com.posthog.experiments#ExperimentsFlagCleanupTargetRetrieve"
@@ -9737,13 +9737,13 @@
           "target": "com.posthog.experiments#ExperimentsFlagCleanupTaskRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsFreezeExposureCreate"
+          "target": "com.posthog.experiments#CreateExperimentFreezeExposure"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsLaunchCreate"
+          "target": "com.posthog.experiments#CreateExperimentLaunch"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsMetricsRecalculationCreate"
+          "target": "com.posthog.experiments#CreateExperimentMetricRecalculation"
         },
         {
           "target": "com.posthog.experiments#ExperimentsMetricsRecalculationRetrieve"
@@ -9752,37 +9752,37 @@
           "target": "com.posthog.experiments#ExperimentsMetricsRecalculationLatestRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsPauseCreate"
+          "target": "com.posthog.experiments#CreateExperimentPause"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsRecalculateTimeseriesCreate"
+          "target": "com.posthog.experiments#CreateExperimentRecalculateTimesery"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsResetCreate"
+          "target": "com.posthog.experiments#CreateExperimentReset"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsResumeCreate"
+          "target": "com.posthog.experiments#CreateExperimentResume"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsSessionBucketsCreate"
+          "target": "com.posthog.experiments#CreateExperimentSessionBucket"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsSessionEventDeltasCreate"
+          "target": "com.posthog.experiments#CreateExperimentSessionEventDelta"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsShipVariantCreate"
+          "target": "com.posthog.experiments#CreateExperimentShipVariant"
         },
         {
           "target": "com.posthog.experiments#ExperimentsTimeseriesResultsRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsUnarchiveCreate"
+          "target": "com.posthog.experiments#CreateExperimentUnarchive"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsUnfreezeExposureCreate"
+          "target": "com.posthog.experiments#CreateExperimentUnfreezeExposure"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsCalculateRunningTimeCreate"
+          "target": "com.posthog.experiments#CreateExperimentCalculateRunningTime"
         },
         {
           "target": "com.posthog.experiments#ExperimentsCreateFromPromptCreate"
@@ -9794,7 +9794,7 @@
           "target": "com.posthog.experiments#ExperimentsSessionContextRetrieve"
         },
         {
-          "target": "com.posthog.experiments#ExperimentsSessionContextsCreate"
+          "target": "com.posthog.experiments#CreateExperimentSessionContext"
         },
         {
           "target": "com.posthog.experiments#ExperimentsStatsRetrieve"

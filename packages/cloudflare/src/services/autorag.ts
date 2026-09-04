@@ -321,13 +321,13 @@ export const FilesResponse = /*@__PURE__*/ S.suspend(() =>
   FilesResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({ identifier: "FilesResponse" }) as any as S.Schema<FilesResponse>;
 
-export interface JobsGetRequest {
+export interface GetJobRequest {
   accountId: string;
   /** rag id */
   id: string;
   jobId: string;
 }
-export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetJobRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -339,13 +339,13 @@ export const JobsGetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "JobsGetRequest" }) as any as S.Schema<JobsGetRequest>;
+).annotate({ identifier: "GetJobRequest" }) as any as S.Schema<GetJobRequest>;
 
 export type JobsGetResponseSource = "user" | "schedule";
 export const JobsGetResponseSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface JobsGetResponse {
+export interface GetJobResponse {
   id: string;
   source: JobsGetResponseSource;
   endReason?: string | null;
@@ -353,7 +353,7 @@ export interface JobsGetResponse {
   lastSeenAt?: string | null;
   startedAt?: string | null;
 }
-export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetJobResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     source: JobsGetResponseSource,
@@ -362,69 +362,7 @@ export const JobsGetResponse = /*@__PURE__*/ S.suspend(() =>
     lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
     startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
   }),
-).annotate({
-  identifier: "JobsGetResponse",
-}) as any as S.Schema<JobsGetResponse>;
-
-export interface JobsListRequest {
-  accountId: string;
-  /** rag id */
-  id: string;
-  page?: number;
-  perPage?: number;
-}
-export const JobsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.String.pipe(T.Label()),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/autorag/rags/{id}/jobs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "JobsListRequest",
-}) as any as S.Schema<JobsListRequest>;
-
-export type JobsListResultItemSource = "user" | "schedule";
-export const JobsListResultItemSource = /*@__PURE__*/ S.String;
-
-export interface JobsListResultItem {
-  id: string;
-  source: JobsListResultItemSource;
-  endReason?: string | null;
-  endedAt?: string | null;
-  lastSeenAt?: string | null;
-  startedAt?: string | null;
-}
-export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    source: JobsListResultItemSource,
-    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
-    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
-    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
-    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
-  }),
-).annotate({
-  identifier: "JobsListResultItem",
-}) as any as S.Schema<JobsListResultItem>;
-
-export type JobsListResultList = Array<JobsListResultItem>;
-export const JobsListResultList = /*@__PURE__*/ S.Array(
-  JobsListResultItem,
-) as any as S.Schema<JobsListResultList>;
-
-export type JobsListResponse = JobsListResultList;
-export const JobsListResponse = /*@__PURE__*/ S.suspend(() =>
-  JobsListResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "JobsListResponse",
-}) as any as S.Schema<JobsListResponse>;
+).annotate({ identifier: "GetJobResponse" }) as any as S.Schema<GetJobResponse>;
 
 export interface JobsLogsRequest {
   accountId: string;
@@ -480,6 +418,66 @@ export const JobsLogsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "JobsLogsResponse",
 }) as any as S.Schema<JobsLogsResponse>;
+
+export interface ListJobsRequest {
+  accountId: string;
+  /** rag id */
+  id: string;
+  page?: number;
+  perPage?: number;
+}
+export const ListJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.String.pipe(T.Label()),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/autorag/rags/{id}/jobs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListJobsRequest",
+}) as any as S.Schema<ListJobsRequest>;
+
+export type JobsListResultItemSource = "user" | "schedule";
+export const JobsListResultItemSource = /*@__PURE__*/ S.String;
+
+export interface JobsListResultItem {
+  id: string;
+  source: JobsListResultItemSource;
+  endReason?: string | null;
+  endedAt?: string | null;
+  lastSeenAt?: string | null;
+  startedAt?: string | null;
+}
+export const JobsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    source: JobsListResultItemSource,
+    endReason: S.optional(S.NullOr(S.String).pipe(T.Body("end_reason"))),
+    endedAt: S.optional(S.NullOr(S.String).pipe(T.Body("ended_at"))),
+    lastSeenAt: S.optional(S.NullOr(S.String).pipe(T.Body("last_seen_at"))),
+    startedAt: S.optional(S.NullOr(S.String).pipe(T.Body("started_at"))),
+  }),
+).annotate({
+  identifier: "JobsListResultItem",
+}) as any as S.Schema<JobsListResultItem>;
+
+export type JobsListResultList = Array<JobsListResultItem>;
+export const JobsListResultList = /*@__PURE__*/ S.Array(
+  JobsListResultItem,
+) as any as S.Schema<JobsListResultList>;
+
+export type ListJobsResponse = JobsListResultList;
+export const ListJobsResponse = /*@__PURE__*/ S.suspend(() =>
+  JobsListResultList.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "ListJobsResponse",
+}) as any as S.Schema<ListJobsResponse>;
 
 export type SearchRequestFiltersCase0Type =
   | "eq"
@@ -736,31 +734,16 @@ export const files: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type JobsGetError = CloudflareOpError;
+export type GetJobError = CloudflareOpError;
 /** Get a Job Details */
-export const jobsGet: API.OperationMethod<
-  JobsGetRequest,
-  JobsGetResponse,
-  JobsGetError,
+export const getJob: API.OperationMethod<
+  GetJobRequest,
+  GetJobResponse,
+  GetJobError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobsGetRequest,
-  output: JobsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type JobsListError = CloudflareOpError;
-/** List Jobs */
-export const jobsList: API.OperationMethod<
-  JobsListRequest,
-  JobsListResponse,
-  JobsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: JobsListRequest,
-  output: JobsListResponse,
+  input: GetJobRequest,
+  output: GetJobResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -776,6 +759,21 @@ export const jobsLogs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: JobsLogsRequest,
   output: JobsLogsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListJobsError = CloudflareOpError;
+/** List Jobs */
+export const listJobs: API.OperationMethod<
+  ListJobsRequest,
+  ListJobsResponse,
+  ListJobsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListJobsRequest,
+  output: ListJobsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

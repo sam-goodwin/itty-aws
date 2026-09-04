@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.workloads#SAPDatabaseInstancesStopInstance": {
+    "com.azure.workloads#StopSapDatabaseInstanceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesStopInstanceRequest"
+        "target": "com.azure.workloads#StopSapDatabaseInstanceInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesStopInstanceResponse"
+        "target": "com.azure.workloads#StopSapDatabaseInstanceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesStopInstanceResponse": {
+    "com.azure.workloads#StopSapDatabaseInstanceInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -244,7 +244,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesStopInstanceRequest": {
+    "com.azure.workloads#StopSapDatabaseInstanceInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -290,13 +290,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesStartInstance": {
+    "com.azure.workloads#StartSapDatabaseInstanceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesStartInstanceRequest"
+        "target": "com.azure.workloads#StartSapDatabaseInstanceInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesStartInstanceResponse"
+        "target": "com.azure.workloads#StartSapDatabaseInstanceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -309,7 +309,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesStartInstanceResponse": {
+    "com.azure.workloads#StartSapDatabaseInstanceInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -375,7 +375,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesStartInstanceRequest": {
+    "com.azure.workloads#StartSapDatabaseInstanceInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -415,13 +415,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesStopInstance": {
+    "com.azure.workloads#StopSapApplicationServerInstanceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesStopInstanceRequest"
+        "target": "com.azure.workloads#StopSapApplicationServerInstanceInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesStopInstanceResponse"
+        "target": "com.azure.workloads#StopSapApplicationServerInstanceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -434,7 +434,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesStopInstanceResponse": {
+    "com.azure.workloads#StopSapApplicationServerInstanceInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -500,7 +500,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesStopInstanceRequest": {
+    "com.azure.workloads#StopSapApplicationServerInstanceInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -546,13 +546,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesStartInstance": {
+    "com.azure.workloads#StartSapApplicationServerInstanceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesStartInstanceRequest"
+        "target": "com.azure.workloads#StartSapApplicationServerInstanceInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesStartInstanceResponse"
+        "target": "com.azure.workloads#StartSapApplicationServerInstanceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -565,7 +565,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesStartInstanceResponse": {
+    "com.azure.workloads#StartSapApplicationServerInstanceInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -631,7 +631,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesStartInstanceRequest": {
+    "com.azure.workloads#StartSapApplicationServerInstanceInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -671,13 +671,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPCentralInstancesStopInstance": {
+    "com.azure.workloads#StopSapCentralInstanceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesStopInstanceRequest"
+        "target": "com.azure.workloads#StopSapCentralInstanceInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPCentralInstancesStopInstanceResponse"
+        "target": "com.azure.workloads#StopSapCentralInstanceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -690,7 +690,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPCentralInstancesStopInstanceResponse": {
+    "com.azure.workloads#StopSapCentralInstanceInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -756,7 +756,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesStopInstanceRequest": {
+    "com.azure.workloads#StopSapCentralInstanceInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -802,13 +802,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPCentralInstancesStartInstance": {
+    "com.azure.workloads#StartSapCentralInstanceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesStartInstanceRequest"
+        "target": "com.azure.workloads#StartSapCentralInstanceInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPCentralInstancesStartInstanceResponse"
+        "target": "com.azure.workloads#StartSapCentralInstanceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -821,7 +821,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPCentralInstancesStartInstanceResponse": {
+    "com.azure.workloads#StartSapCentralInstanceInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -887,7 +887,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesStartInstanceRequest": {
+    "com.azure.workloads#StartSapCentralInstanceInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -927,13 +927,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesStop": {
+    "com.azure.workloads#StopSapVirtualInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesStopRequest"
+        "target": "com.azure.workloads#StopSapVirtualInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPVirtualInstancesStopResponse"
+        "target": "com.azure.workloads#StopSapVirtualInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -946,7 +946,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesStopResponse": {
+    "com.azure.workloads#StopSapVirtualInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1012,7 +1012,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesStopRequest": {
+    "com.azure.workloads#StopSapVirtualInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1050,13 +1050,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesStart": {
+    "com.azure.workloads#StartSapVirtualInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesStartRequest"
+        "target": "com.azure.workloads#StartSapVirtualInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPVirtualInstancesStartResponse"
+        "target": "com.azure.workloads#StartSapVirtualInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1069,7 +1069,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesStartResponse": {
+    "com.azure.workloads#StartSapVirtualInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1135,7 +1135,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesStartRequest": {
+    "com.azure.workloads#StartSapVirtualInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1167,10 +1167,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesList": {
+    "com.azure.workloads#ListSapApplicationServerInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesListRequest"
+        "target": "com.azure.workloads#ListSapApplicationServerInstancesRequest"
       },
       "output": {
         "target": "com.azure.workloads#SAPApplicationServerInstanceList"
@@ -1730,7 +1730,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesListRequest": {
+    "com.azure.workloads#ListSapApplicationServerInstancesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1762,13 +1762,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesDelete": {
+    "com.azure.workloads#DeleteSapApplicationServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesDeleteRequest"
+        "target": "com.azure.workloads#DeleteSapApplicationServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesDeleteResponse"
+        "target": "com.azure.workloads#DeleteSapApplicationServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1781,7 +1781,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesDeleteResponse": {
+    "com.azure.workloads#DeleteSapApplicationServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1847,7 +1847,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesDeleteRequest": {
+    "com.azure.workloads#DeleteSapApplicationServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1887,13 +1887,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesUpdate": {
+    "com.azure.workloads#UpdateSapApplicationServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesUpdateRequest"
+        "target": "com.azure.workloads#UpdateSapApplicationServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesUpdateResponse"
+        "target": "com.azure.workloads#UpdateSapApplicationServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1906,7 +1906,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesUpdateResponse": {
+    "com.azure.workloads#UpdateSapApplicationServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1966,7 +1966,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesUpdateRequest": {
+    "com.azure.workloads#UpdateSapApplicationServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2024,13 +2024,13 @@
         "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesCreate": {
+    "com.azure.workloads#CreateSapApplicationServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesCreateRequest"
+        "target": "com.azure.workloads#CreateSapApplicationServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesCreateResponse"
+        "target": "com.azure.workloads#CreateSapApplicationServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2043,7 +2043,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesCreateResponse": {
+    "com.azure.workloads#CreateSapApplicationServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2103,7 +2103,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesCreateRequest": {
+    "com.azure.workloads#CreateSapApplicationServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2178,13 +2178,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesGet": {
+    "com.azure.workloads#GetSapApplicationServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesGetRequest"
+        "target": "com.azure.workloads#GetSapApplicationServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPApplicationServerInstancesGetResponse"
+        "target": "com.azure.workloads#GetSapApplicationServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2197,7 +2197,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesGetResponse": {
+    "com.azure.workloads#GetSapApplicationServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2257,7 +2257,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPApplicationServerInstancesGetRequest": {
+    "com.azure.workloads#GetSapApplicationServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2297,10 +2297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesList": {
+    "com.azure.workloads#ListSapDatabaseInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesListRequest"
+        "target": "com.azure.workloads#ListSapDatabaseInstancesRequest"
       },
       "output": {
         "target": "com.azure.workloads#SAPDatabaseInstanceList"
@@ -2499,7 +2499,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesListRequest": {
+    "com.azure.workloads#ListSapDatabaseInstancesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2531,13 +2531,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesDelete": {
+    "com.azure.workloads#DeleteSapDatabaseInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesDeleteRequest"
+        "target": "com.azure.workloads#DeleteSapDatabaseInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesDeleteResponse"
+        "target": "com.azure.workloads#DeleteSapDatabaseInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2550,7 +2550,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesDeleteResponse": {
+    "com.azure.workloads#DeleteSapDatabaseInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2616,7 +2616,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesDeleteRequest": {
+    "com.azure.workloads#DeleteSapDatabaseInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2656,13 +2656,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesUpdate": {
+    "com.azure.workloads#UpdateSapDatabaseInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesUpdateRequest"
+        "target": "com.azure.workloads#UpdateSapDatabaseInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesUpdateResponse"
+        "target": "com.azure.workloads#UpdateSapDatabaseInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2675,7 +2675,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesUpdateResponse": {
+    "com.azure.workloads#UpdateSapDatabaseInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2735,7 +2735,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesUpdateRequest": {
+    "com.azure.workloads#UpdateSapDatabaseInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2793,13 +2793,13 @@
         "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesCreate": {
+    "com.azure.workloads#CreateSapDatabaseInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesCreateRequest"
+        "target": "com.azure.workloads#CreateSapDatabaseInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesCreateResponse"
+        "target": "com.azure.workloads#CreateSapDatabaseInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2812,7 +2812,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesCreateResponse": {
+    "com.azure.workloads#CreateSapDatabaseInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2872,7 +2872,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesCreateRequest": {
+    "com.azure.workloads#CreateSapDatabaseInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2947,13 +2947,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesGet": {
+    "com.azure.workloads#GetSapDatabaseInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesGetRequest"
+        "target": "com.azure.workloads#GetSapDatabaseInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPDatabaseInstancesGetResponse"
+        "target": "com.azure.workloads#GetSapDatabaseInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2966,7 +2966,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesGetResponse": {
+    "com.azure.workloads#GetSapDatabaseInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3026,7 +3026,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPDatabaseInstancesGetRequest": {
+    "com.azure.workloads#GetSapDatabaseInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3066,10 +3066,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPCentralInstancesList": {
+    "com.azure.workloads#ListSapCentralInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesListRequest"
+        "target": "com.azure.workloads#ListSapCentralInstancesRequest"
       },
       "output": {
         "target": "com.azure.workloads#SAPCentralInstanceList"
@@ -3498,7 +3498,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesListRequest": {
+    "com.azure.workloads#ListSapCentralInstancesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3530,13 +3530,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPCentralInstancesDelete": {
+    "com.azure.workloads#DeleteSapCentralInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesDeleteRequest"
+        "target": "com.azure.workloads#DeleteSapCentralInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPCentralInstancesDeleteResponse"
+        "target": "com.azure.workloads#DeleteSapCentralInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3549,7 +3549,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPCentralInstancesDeleteResponse": {
+    "com.azure.workloads#DeleteSapCentralInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3615,7 +3615,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesDeleteRequest": {
+    "com.azure.workloads#DeleteSapCentralInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3655,13 +3655,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPCentralInstancesUpdate": {
+    "com.azure.workloads#UpdateSapCentralInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesUpdateRequest"
+        "target": "com.azure.workloads#UpdateSapCentralInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPCentralInstancesUpdateResponse"
+        "target": "com.azure.workloads#UpdateSapCentralInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3674,7 +3674,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPCentralInstancesUpdateResponse": {
+    "com.azure.workloads#UpdateSapCentralInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3734,7 +3734,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesUpdateRequest": {
+    "com.azure.workloads#UpdateSapCentralInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3792,13 +3792,13 @@
         "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesCreate": {
+    "com.azure.workloads#CreateSapCentralInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesCreateRequest"
+        "target": "com.azure.workloads#CreateSapCentralInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPCentralInstancesCreateResponse"
+        "target": "com.azure.workloads#CreateSapCentralInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3811,7 +3811,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPCentralInstancesCreateResponse": {
+    "com.azure.workloads#CreateSapCentralInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3871,7 +3871,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesCreateRequest": {
+    "com.azure.workloads#CreateSapCentralInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3987,13 +3987,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesGet": {
+    "com.azure.workloads#GetSapCentralInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPCentralInstancesGetRequest"
+        "target": "com.azure.workloads#GetSapCentralInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPCentralInstancesGetResponse"
+        "target": "com.azure.workloads#GetSapCentralInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4006,7 +4006,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPCentralInstancesGetResponse": {
+    "com.azure.workloads#GetSapCentralInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4066,7 +4066,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPCentralInstancesGetRequest": {
+    "com.azure.workloads#GetSapCentralInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4106,10 +4106,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesListBySubscription": {
+    "com.azure.workloads#ListSapVirtualInstanceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesListBySubscriptionRequest"
+        "target": "com.azure.workloads#ListSapVirtualInstanceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.workloads#SAPVirtualInstanceList"
@@ -4528,7 +4528,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesListBySubscriptionRequest": {
+    "com.azure.workloads#ListSapVirtualInstanceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4544,10 +4544,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesListByResourceGroup": {
+    "com.azure.workloads#ListSapVirtualInstanceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesListByResourceGroupRequest"
+        "target": "com.azure.workloads#ListSapVirtualInstanceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.workloads#SAPVirtualInstanceList"
@@ -4563,7 +4563,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesListByResourceGroupRequest": {
+    "com.azure.workloads#ListSapVirtualInstanceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4587,13 +4587,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesDelete": {
+    "com.azure.workloads#DeleteSapVirtualInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesDeleteRequest"
+        "target": "com.azure.workloads#DeleteSapVirtualInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPVirtualInstancesDeleteResponse"
+        "target": "com.azure.workloads#DeleteSapVirtualInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4606,7 +4606,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesDeleteResponse": {
+    "com.azure.workloads#DeleteSapVirtualInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4672,7 +4672,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesDeleteRequest": {
+    "com.azure.workloads#DeleteSapVirtualInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4704,13 +4704,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesUpdate": {
+    "com.azure.workloads#UpdateSapVirtualInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesUpdateRequest"
+        "target": "com.azure.workloads#UpdateSapVirtualInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPVirtualInstancesUpdateResponse"
+        "target": "com.azure.workloads#UpdateSapVirtualInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4723,7 +4723,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesUpdateResponse": {
+    "com.azure.workloads#UpdateSapVirtualInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4826,7 +4826,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesUpdateRequest": {
+    "com.azure.workloads#UpdateSapVirtualInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4923,13 +4923,13 @@
         "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesCreate": {
+    "com.azure.workloads#CreateSapVirtualInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesCreateRequest"
+        "target": "com.azure.workloads#CreateSapVirtualInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPVirtualInstancesCreateResponse"
+        "target": "com.azure.workloads#CreateSapVirtualInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4942,7 +4942,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesCreateResponse": {
+    "com.azure.workloads#CreateSapVirtualInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5045,7 +5045,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesCreateRequest": {
+    "com.azure.workloads#CreateSapVirtualInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5181,13 +5181,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesGet": {
+    "com.azure.workloads#GetSapVirtualInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SAPVirtualInstancesGetRequest"
+        "target": "com.azure.workloads#GetSapVirtualInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SAPVirtualInstancesGetResponse"
+        "target": "com.azure.workloads#GetSapVirtualInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5200,7 +5200,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesGetResponse": {
+    "com.azure.workloads#GetSapVirtualInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5303,7 +5303,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SAPVirtualInstancesGetRequest": {
+    "com.azure.workloads#GetSapVirtualInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6034,13 +6034,13 @@
         "smithy.api#documentation": "The database scale method."
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorList": {
+    "com.azure.workloads#ListSapLandscapeMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapLandscapeMonitorListRequest"
+        "target": "com.azure.workloads#ListSapLandscapeMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapLandscapeMonitorListResult"
+        "target": "com.azure.workloads#ListSapLandscapeMonitorResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -6053,7 +6053,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorListResult": {
+    "com.azure.workloads#ListSapLandscapeMonitorResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -6292,7 +6292,7 @@
         "smithy.api#documentation": "State of provisioning of the SAP monitor."
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorListRequest": {
+    "com.azure.workloads#ListSapLandscapeMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6324,10 +6324,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorDelete": {
+    "com.azure.workloads#DeleteSapLandscapeMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapLandscapeMonitorDeleteRequest"
+        "target": "com.azure.workloads#DeleteSapLandscapeMonitorRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6343,7 +6343,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorDeleteRequest": {
+    "com.azure.workloads#DeleteSapLandscapeMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6375,13 +6375,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorUpdate": {
+    "com.azure.workloads#UpdateSapLandscapeMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapLandscapeMonitorUpdateRequest"
+        "target": "com.azure.workloads#UpdateSapLandscapeMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapLandscapeMonitorUpdateResponse"
+        "target": "com.azure.workloads#UpdateSapLandscapeMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6394,7 +6394,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorUpdateResponse": {
+    "com.azure.workloads#UpdateSapLandscapeMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6432,7 +6432,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorUpdateRequest": {
+    "com.azure.workloads#UpdateSapLandscapeMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6537,13 +6537,13 @@
         "smithy.api#documentation": "Gets or sets the list of landscape to SID mappings."
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorCreate": {
+    "com.azure.workloads#CreateSapLandscapeMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapLandscapeMonitorCreateRequest"
+        "target": "com.azure.workloads#CreateSapLandscapeMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapLandscapeMonitorCreateResponse"
+        "target": "com.azure.workloads#CreateSapLandscapeMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6556,7 +6556,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorCreateResponse": {
+    "com.azure.workloads#CreateSapLandscapeMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6594,7 +6594,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorCreateRequest": {
+    "com.azure.workloads#CreateSapLandscapeMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6632,13 +6632,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorGet": {
+    "com.azure.workloads#GetSapLandscapeMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapLandscapeMonitorGetRequest"
+        "target": "com.azure.workloads#GetSapLandscapeMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapLandscapeMonitorGetResponse"
+        "target": "com.azure.workloads#GetSapLandscapeMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6651,7 +6651,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorGetResponse": {
+    "com.azure.workloads#GetSapLandscapeMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6689,7 +6689,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.workloads#SapLandscapeMonitorGetRequest": {
+    "com.azure.workloads#GetSapLandscapeMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6721,13 +6721,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#ProviderInstancesDelete": {
+    "com.azure.workloads#DeleteProviderInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#ProviderInstancesDeleteRequest"
+        "target": "com.azure.workloads#DeleteProviderInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#ProviderInstancesDeleteResponse"
+        "target": "com.azure.workloads#DeleteProviderInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6740,7 +6740,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#ProviderInstancesDeleteResponse": {
+    "com.azure.workloads#DeleteProviderInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6806,7 +6806,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#ProviderInstancesDeleteRequest": {
+    "com.azure.workloads#DeleteProviderInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6846,13 +6846,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#ProviderInstancesCreate": {
+    "com.azure.workloads#CreateProviderInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#ProviderInstancesCreateRequest"
+        "target": "com.azure.workloads#CreateProviderInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#ProviderInstancesCreateResponse"
+        "target": "com.azure.workloads#CreateProviderInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6865,7 +6865,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#ProviderInstancesCreateResponse": {
+    "com.azure.workloads#CreateProviderInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7092,7 +7092,7 @@
         "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
       }
     },
-    "com.azure.workloads#ProviderInstancesCreateRequest": {
+    "com.azure.workloads#CreateProviderInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7192,13 +7192,13 @@
         "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
       }
     },
-    "com.azure.workloads#ProviderInstancesGet": {
+    "com.azure.workloads#GetProviderInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#ProviderInstancesGetRequest"
+        "target": "com.azure.workloads#GetProviderInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#ProviderInstancesGetResponse"
+        "target": "com.azure.workloads#GetProviderInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7211,7 +7211,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#ProviderInstancesGetResponse": {
+    "com.azure.workloads#GetProviderInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7289,7 +7289,7 @@
         "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
       }
     },
-    "com.azure.workloads#ProviderInstancesGetRequest": {
+    "com.azure.workloads#GetProviderInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7329,10 +7329,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#ProviderInstancesList": {
+    "com.azure.workloads#ListProviderInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#ProviderInstancesListRequest"
+        "target": "com.azure.workloads#ListProviderInstancesRequest"
       },
       "output": {
         "target": "com.azure.workloads#ProviderInstanceListResult"
@@ -7455,7 +7455,7 @@
         "smithy.api#documentation": "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests."
       }
     },
-    "com.azure.workloads#ProviderInstancesListRequest": {
+    "com.azure.workloads#ListProviderInstancesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7487,13 +7487,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#MonitorsDelete": {
+    "com.azure.workloads#DeleteMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#MonitorsDeleteRequest"
+        "target": "com.azure.workloads#DeleteMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#MonitorsDeleteResponse"
+        "target": "com.azure.workloads#DeleteMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7506,7 +7506,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#MonitorsDeleteResponse": {
+    "com.azure.workloads#DeleteMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7572,7 +7572,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#MonitorsDeleteRequest": {
+    "com.azure.workloads#DeleteMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7604,13 +7604,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#MonitorsUpdate": {
+    "com.azure.workloads#UpdateMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#MonitorsUpdateRequest"
+        "target": "com.azure.workloads#UpdateMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#MonitorsUpdateResponse"
+        "target": "com.azure.workloads#UpdateMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7623,7 +7623,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#MonitorsUpdateResponse": {
+    "com.azure.workloads#UpdateMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7864,7 +7864,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#MonitorsUpdateRequest": {
+    "com.azure.workloads#UpdateMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7954,13 +7954,13 @@
         "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
-    "com.azure.workloads#MonitorsCreate": {
+    "com.azure.workloads#CreateMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#MonitorsCreateRequest"
+        "target": "com.azure.workloads#CreateMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#MonitorsCreateResponse"
+        "target": "com.azure.workloads#CreateMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7973,7 +7973,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#MonitorsCreateResponse": {
+    "com.azure.workloads#CreateMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8076,7 +8076,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#MonitorsCreateRequest": {
+    "com.azure.workloads#CreateMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8243,13 +8243,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#MonitorsGet": {
+    "com.azure.workloads#GetMonitor": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#MonitorsGetRequest"
+        "target": "com.azure.workloads#GetMonitorRequest"
       },
       "output": {
-        "target": "com.azure.workloads#MonitorsGetResponse"
+        "target": "com.azure.workloads#GetMonitorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8262,7 +8262,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#MonitorsGetResponse": {
+    "com.azure.workloads#GetMonitorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8365,7 +8365,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#MonitorsGetRequest": {
+    "com.azure.workloads#GetMonitorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8397,10 +8397,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#MonitorsListByResourceGroup": {
+    "com.azure.workloads#ListMonitorByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#MonitorsListByResourceGroupRequest"
+        "target": "com.azure.workloads#ListMonitorByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.workloads#MonitorListResult"
@@ -8548,7 +8548,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#MonitorsListByResourceGroupRequest": {
+    "com.azure.workloads#ListMonitorByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8572,10 +8572,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#MonitorsList": {
+    "com.azure.workloads#ListMonitors": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#MonitorsListRequest"
+        "target": "com.azure.workloads#ListMonitorsRequest"
       },
       "output": {
         "target": "com.azure.workloads#MonitorListResult"
@@ -8591,7 +8591,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#MonitorsListRequest": {
+    "com.azure.workloads#ListMonitorsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8607,13 +8607,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#OperationsList": {
+    "com.azure.workloads#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.workloads#OperationsListResponse"
+        "target": "com.azure.workloads#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8626,7 +8626,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.workloads#OperationsListResponse": {
+    "com.azure.workloads#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -9101,13 +9101,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapDatabaseInstancesStop": {
+    "com.azure.workloads#StopSapDatabaseInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapDatabaseInstancesStopRequest"
+        "target": "com.azure.workloads#StopSapDatabaseInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapDatabaseInstancesStopResponse"
+        "target": "com.azure.workloads#StopSapDatabaseInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9120,7 +9120,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapDatabaseInstancesStopResponse": {
+    "com.azure.workloads#StopSapDatabaseInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9192,7 +9192,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SapDatabaseInstancesStopRequest": {
+    "com.azure.workloads#StopSapDatabaseInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9244,13 +9244,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapDatabaseInstancesStart": {
+    "com.azure.workloads#StartSapDatabaseInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapDatabaseInstancesStartRequest"
+        "target": "com.azure.workloads#StartSapDatabaseInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapDatabaseInstancesStartResponse"
+        "target": "com.azure.workloads#StartSapDatabaseInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9263,7 +9263,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapDatabaseInstancesStartResponse": {
+    "com.azure.workloads#StartSapDatabaseInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9335,7 +9335,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SapDatabaseInstancesStartRequest": {
+    "com.azure.workloads#StartSapDatabaseInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10165,13 +10165,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesStop": {
+    "com.azure.workloads#StopSapCentralServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesStopRequest"
+        "target": "com.azure.workloads#StopSapCentralServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapCentralServerInstancesStopResponse"
+        "target": "com.azure.workloads#StopSapCentralServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10184,7 +10184,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesStopResponse": {
+    "com.azure.workloads#StopSapCentralServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10256,7 +10256,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesStopRequest": {
+    "com.azure.workloads#StopSapCentralServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10308,13 +10308,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesStart": {
+    "com.azure.workloads#StartSapCentralServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesStartRequest"
+        "target": "com.azure.workloads#StartSapCentralServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapCentralServerInstancesStartResponse"
+        "target": "com.azure.workloads#StartSapCentralServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10327,7 +10327,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesStartResponse": {
+    "com.azure.workloads#StartSapCentralServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10399,7 +10399,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesStartRequest": {
+    "com.azure.workloads#StartSapCentralServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10445,10 +10445,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesDelete": {
+    "com.azure.workloads#DeleteSapCentralServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesDeleteRequest"
+        "target": "com.azure.workloads#DeleteSapCentralServerInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10464,7 +10464,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesDeleteRequest": {
+    "com.azure.workloads#DeleteSapCentralServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10504,13 +10504,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesUpdate": {
+    "com.azure.workloads#UpdateSapCentralServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesUpdateRequest"
+        "target": "com.azure.workloads#UpdateSapCentralServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapCentralServerInstancesUpdateResponse"
+        "target": "com.azure.workloads#UpdateSapCentralServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10523,7 +10523,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesUpdateResponse": {
+    "com.azure.workloads#UpdateSapCentralServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10906,7 +10906,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesUpdateRequest": {
+    "com.azure.workloads#UpdateSapCentralServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10964,13 +10964,13 @@
         "smithy.api#documentation": "Gets or sets the Resource tags."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesCreate": {
+    "com.azure.workloads#CreateSapCentralServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesCreateRequest"
+        "target": "com.azure.workloads#CreateSapCentralServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapCentralServerInstancesCreateResponse"
+        "target": "com.azure.workloads#CreateSapCentralServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10983,7 +10983,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesCreateResponse": {
+    "com.azure.workloads#CreateSapCentralServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11046,7 +11046,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesCreateRequest": {
+    "com.azure.workloads#CreateSapCentralServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11156,13 +11156,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesGet": {
+    "com.azure.workloads#GetSapCentralServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesGetRequest"
+        "target": "com.azure.workloads#GetSapCentralServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapCentralServerInstancesGetResponse"
+        "target": "com.azure.workloads#GetSapCentralServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11175,7 +11175,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesGetResponse": {
+    "com.azure.workloads#GetSapCentralServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11238,7 +11238,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesGetRequest": {
+    "com.azure.workloads#GetSapCentralServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11278,10 +11278,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesList": {
+    "com.azure.workloads#ListSapCentralServerInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapCentralServerInstancesListRequest"
+        "target": "com.azure.workloads#ListSapCentralServerInstancesRequest"
       },
       "output": {
         "target": "com.azure.workloads#SAPCentralServerInstanceListResult"
@@ -11378,7 +11378,7 @@
         "smithy.api#documentation": "Define the SAP Central Services Instance resource."
       }
     },
-    "com.azure.workloads#SapCentralServerInstancesListRequest": {
+    "com.azure.workloads#ListSapCentralServerInstancesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11410,13 +11410,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapApplicationServerInstancesStop": {
+    "com.azure.workloads#StopSapApplicationServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapApplicationServerInstancesStopRequest"
+        "target": "com.azure.workloads#StopSapApplicationServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapApplicationServerInstancesStopResponse"
+        "target": "com.azure.workloads#StopSapApplicationServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11429,7 +11429,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapApplicationServerInstancesStopResponse": {
+    "com.azure.workloads#StopSapApplicationServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11501,7 +11501,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SapApplicationServerInstancesStopRequest": {
+    "com.azure.workloads#StopSapApplicationServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11553,13 +11553,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.workloads#SapApplicationServerInstancesStart": {
+    "com.azure.workloads#StartSapApplicationServerInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.workloads#SapApplicationServerInstancesStartRequest"
+        "target": "com.azure.workloads#StartSapApplicationServerInstanceRequest"
       },
       "output": {
-        "target": "com.azure.workloads#SapApplicationServerInstancesStartResponse"
+        "target": "com.azure.workloads#StartSapApplicationServerInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11572,7 +11572,7 @@
         "com.distilled.openapi#apiVersion": "2024-09-01"
       }
     },
-    "com.azure.workloads#SapApplicationServerInstancesStartResponse": {
+    "com.azure.workloads#StartSapApplicationServerInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11644,7 +11644,7 @@
         "smithy.api#documentation": "The operations list."
       }
     },
-    "com.azure.workloads#SapApplicationServerInstancesStartRequest": {
+    "com.azure.workloads#StartSapApplicationServerInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14049,91 +14049,91 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesStopInstance"
+          "target": "com.azure.workloads#StopSapDatabaseInstanceInstance"
         },
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesStartInstance"
+          "target": "com.azure.workloads#StartSapDatabaseInstanceInstance"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesStopInstance"
+          "target": "com.azure.workloads#StopSapApplicationServerInstanceInstance"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesStartInstance"
+          "target": "com.azure.workloads#StartSapApplicationServerInstanceInstance"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesStopInstance"
+          "target": "com.azure.workloads#StopSapCentralInstanceInstance"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesStartInstance"
+          "target": "com.azure.workloads#StartSapCentralInstanceInstance"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesStop"
+          "target": "com.azure.workloads#StopSapVirtualInstance"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesStart"
+          "target": "com.azure.workloads#StartSapVirtualInstance"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesList"
+          "target": "com.azure.workloads#ListSapApplicationServerInstances"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesDelete"
+          "target": "com.azure.workloads#DeleteSapApplicationServerInstance"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesUpdate"
+          "target": "com.azure.workloads#UpdateSapApplicationServerInstance"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesCreate"
+          "target": "com.azure.workloads#CreateSapApplicationServerInstance"
         },
         {
-          "target": "com.azure.workloads#SAPApplicationServerInstancesGet"
+          "target": "com.azure.workloads#GetSapApplicationServerInstance"
         },
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesList"
+          "target": "com.azure.workloads#ListSapDatabaseInstances"
         },
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesDelete"
+          "target": "com.azure.workloads#DeleteSapDatabaseInstance"
         },
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesUpdate"
+          "target": "com.azure.workloads#UpdateSapDatabaseInstance"
         },
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesCreate"
+          "target": "com.azure.workloads#CreateSapDatabaseInstance"
         },
         {
-          "target": "com.azure.workloads#SAPDatabaseInstancesGet"
+          "target": "com.azure.workloads#GetSapDatabaseInstance"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesList"
+          "target": "com.azure.workloads#ListSapCentralInstances"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesDelete"
+          "target": "com.azure.workloads#DeleteSapCentralInstance"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesUpdate"
+          "target": "com.azure.workloads#UpdateSapCentralInstance"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesCreate"
+          "target": "com.azure.workloads#CreateSapCentralInstance"
         },
         {
-          "target": "com.azure.workloads#SAPCentralInstancesGet"
+          "target": "com.azure.workloads#GetSapCentralInstance"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesListBySubscription"
+          "target": "com.azure.workloads#ListSapVirtualInstanceBySubscription"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesListByResourceGroup"
+          "target": "com.azure.workloads#ListSapVirtualInstanceByResourceGroup"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesDelete"
+          "target": "com.azure.workloads#DeleteSapVirtualInstance"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesUpdate"
+          "target": "com.azure.workloads#UpdateSapVirtualInstance"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesCreate"
+          "target": "com.azure.workloads#CreateSapVirtualInstance"
         },
         {
-          "target": "com.azure.workloads#SAPVirtualInstancesGet"
+          "target": "com.azure.workloads#GetSapVirtualInstance"
         },
         {
           "target": "com.azure.workloads#SAPAvailabilityZoneDetails"
@@ -14148,52 +14148,52 @@
           "target": "com.azure.workloads#SAPSizingRecommendations"
         },
         {
-          "target": "com.azure.workloads#SapLandscapeMonitorList"
+          "target": "com.azure.workloads#ListSapLandscapeMonitor"
         },
         {
-          "target": "com.azure.workloads#SapLandscapeMonitorDelete"
+          "target": "com.azure.workloads#DeleteSapLandscapeMonitor"
         },
         {
-          "target": "com.azure.workloads#SapLandscapeMonitorUpdate"
+          "target": "com.azure.workloads#UpdateSapLandscapeMonitor"
         },
         {
-          "target": "com.azure.workloads#SapLandscapeMonitorCreate"
+          "target": "com.azure.workloads#CreateSapLandscapeMonitor"
         },
         {
-          "target": "com.azure.workloads#SapLandscapeMonitorGet"
+          "target": "com.azure.workloads#GetSapLandscapeMonitor"
         },
         {
-          "target": "com.azure.workloads#ProviderInstancesDelete"
+          "target": "com.azure.workloads#DeleteProviderInstance"
         },
         {
-          "target": "com.azure.workloads#ProviderInstancesCreate"
+          "target": "com.azure.workloads#CreateProviderInstance"
         },
         {
-          "target": "com.azure.workloads#ProviderInstancesGet"
+          "target": "com.azure.workloads#GetProviderInstance"
         },
         {
-          "target": "com.azure.workloads#ProviderInstancesList"
+          "target": "com.azure.workloads#ListProviderInstances"
         },
         {
-          "target": "com.azure.workloads#MonitorsDelete"
+          "target": "com.azure.workloads#DeleteMonitor"
         },
         {
-          "target": "com.azure.workloads#MonitorsUpdate"
+          "target": "com.azure.workloads#UpdateMonitor"
         },
         {
-          "target": "com.azure.workloads#MonitorsCreate"
+          "target": "com.azure.workloads#CreateMonitor"
         },
         {
-          "target": "com.azure.workloads#MonitorsGet"
+          "target": "com.azure.workloads#GetMonitor"
         },
         {
-          "target": "com.azure.workloads#MonitorsListByResourceGroup"
+          "target": "com.azure.workloads#ListMonitorByResourceGroup"
         },
         {
-          "target": "com.azure.workloads#MonitorsList"
+          "target": "com.azure.workloads#ListMonitors"
         },
         {
-          "target": "com.azure.workloads#OperationsList"
+          "target": "com.azure.workloads#ListOperations"
         },
         {
           "target": "com.azure.workloads#SapVirtualInstancesStop"
@@ -14202,10 +14202,10 @@
           "target": "com.azure.workloads#SapVirtualInstancesStart"
         },
         {
-          "target": "com.azure.workloads#SapDatabaseInstancesStop"
+          "target": "com.azure.workloads#StopSapDatabaseInstance"
         },
         {
-          "target": "com.azure.workloads#SapDatabaseInstancesStart"
+          "target": "com.azure.workloads#StartSapDatabaseInstance"
         },
         {
           "target": "com.azure.workloads#SapDatabaseInstancesDelete"
@@ -14223,31 +14223,31 @@
           "target": "com.azure.workloads#SapDatabaseInstancesList"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesStop"
+          "target": "com.azure.workloads#StopSapCentralServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesStart"
+          "target": "com.azure.workloads#StartSapCentralServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesDelete"
+          "target": "com.azure.workloads#DeleteSapCentralServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesUpdate"
+          "target": "com.azure.workloads#UpdateSapCentralServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesCreate"
+          "target": "com.azure.workloads#CreateSapCentralServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesGet"
+          "target": "com.azure.workloads#GetSapCentralServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapCentralServerInstancesList"
+          "target": "com.azure.workloads#ListSapCentralServerInstances"
         },
         {
-          "target": "com.azure.workloads#SapApplicationServerInstancesStop"
+          "target": "com.azure.workloads#StopSapApplicationServerInstance"
         },
         {
-          "target": "com.azure.workloads#SapApplicationServerInstancesStart"
+          "target": "com.azure.workloads#StartSapApplicationServerInstance"
         },
         {
           "target": "com.azure.workloads#SapApplicationServerInstancesDelete"

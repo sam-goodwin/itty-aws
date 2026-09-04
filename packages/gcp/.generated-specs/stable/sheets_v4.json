@@ -11598,7 +11598,7 @@
         "smithy.api#documentation": "Creates a spreadsheet, returning the newly created spreadsheet."
       }
     },
-    "com.gcp.sheets_v4#BatchUpdateSpreadsheetsRequest": {
+    "com.gcp.sheets_v4#UpdateBatchSpreadsheetRequest": {
       "type": "structure",
       "members": {
         "spreadsheetId": {
@@ -11618,10 +11618,10 @@
         }
       }
     },
-    "com.gcp.sheets_v4#BatchUpdateSpreadsheets": {
+    "com.gcp.sheets_v4#UpdateBatchSpreadsheet": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sheets_v4#BatchUpdateSpreadsheetsRequest"
+        "target": "com.gcp.sheets_v4#UpdateBatchSpreadsheetRequest"
       },
       "output": {
         "target": "com.gcp.sheets_v4#BatchUpdateSpreadsheetResponse"
@@ -11922,7 +11922,7 @@
         "smithy.api#documentation": "Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range."
       }
     },
-    "com.gcp.sheets_v4#BatchUpdateSpreadsheetsValuesRequest": {
+    "com.gcp.sheets_v4#UpdateBatchSpreadsheetValueRequest": {
       "type": "structure",
       "members": {
         "spreadsheetId": {
@@ -11942,10 +11942,10 @@
         }
       }
     },
-    "com.gcp.sheets_v4#BatchUpdateSpreadsheetsValues": {
+    "com.gcp.sheets_v4#UpdateBatchSpreadsheetValue": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sheets_v4#BatchUpdateSpreadsheetsValuesRequest"
+        "target": "com.gcp.sheets_v4#UpdateBatchSpreadsheetValueRequest"
       },
       "output": {
         "target": "com.gcp.sheets_v4#BatchUpdateValuesResponse"
@@ -12022,7 +12022,7 @@
         "smithy.api#documentation": "Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and data validation) are kept."
       }
     },
-    "com.gcp.sheets_v4#BatchUpdateByDataFilterSpreadsheetsValuesRequest": {
+    "com.gcp.sheets_v4#UpdateBatchByDataFilterSpreadsheetValueRequest": {
       "type": "structure",
       "members": {
         "spreadsheetId": {
@@ -12042,10 +12042,10 @@
         }
       }
     },
-    "com.gcp.sheets_v4#BatchUpdateByDataFilterSpreadsheetsValues": {
+    "com.gcp.sheets_v4#UpdateBatchByDataFilterSpreadsheetValue": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sheets_v4#BatchUpdateByDataFilterSpreadsheetsValuesRequest"
+        "target": "com.gcp.sheets_v4#UpdateBatchByDataFilterSpreadsheetValueRequest"
       },
       "output": {
         "target": "com.gcp.sheets_v4#BatchUpdateValuesByDataFilterResponse"
@@ -12353,7 +12353,7 @@
         "smithy.api#documentation": "Clears one or more ranges of values from a spreadsheet. For more information, see [Read, write, and search metadata](https://developers.google.com/workspace/sheets/api/guides/metadata). The caller must specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc.) are kept."
       }
     },
-    "com.gcp.sheets_v4#BatchGetByDataFilterSpreadsheetsValuesRequest": {
+    "com.gcp.sheets_v4#GetBatchByDataFilterSpreadsheetValueRequest": {
       "type": "structure",
       "members": {
         "spreadsheetId": {
@@ -12373,10 +12373,10 @@
         }
       }
     },
-    "com.gcp.sheets_v4#BatchGetByDataFilterSpreadsheetsValues": {
+    "com.gcp.sheets_v4#GetBatchByDataFilterSpreadsheetValue": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sheets_v4#BatchGetByDataFilterSpreadsheetsValuesRequest"
+        "target": "com.gcp.sheets_v4#GetBatchByDataFilterSpreadsheetValueRequest"
       },
       "output": {
         "target": "com.gcp.sheets_v4#BatchGetValuesByDataFilterResponse"
@@ -12466,7 +12466,7 @@
         }
       }
     },
-    "com.gcp.sheets_v4#BatchGetSpreadsheetsValuesRequest": {
+    "com.gcp.sheets_v4#GetBatchSpreadsheetValueRequest": {
       "type": "structure",
       "members": {
         "majorDimension": {
@@ -12507,10 +12507,10 @@
         }
       }
     },
-    "com.gcp.sheets_v4#BatchGetSpreadsheetsValues": {
+    "com.gcp.sheets_v4#GetBatchSpreadsheetValue": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.sheets_v4#BatchGetSpreadsheetsValuesRequest"
+        "target": "com.gcp.sheets_v4#GetBatchSpreadsheetValueRequest"
       },
       "output": {
         "target": "com.gcp.sheets_v4#BatchGetValuesResponse"

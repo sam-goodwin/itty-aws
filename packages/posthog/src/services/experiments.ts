@@ -39,667 +39,120 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface ExperimentsActivityRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** Number of items per page */
-  limit?: number;
-  /** Page number */
-  page?: number;
+/** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
+export type ExperimentFlagRolloutGroupPropertiesList = Array<unknown>;
+export const ExperimentFlagRolloutGroupPropertiesList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<ExperimentFlagRolloutGroupPropertiesList>;
+
+/** A single release-condition group carrying only the overall rollout percentage, the one groups entry the experiment input applies. */
+export interface ExperimentFlagRolloutGroup {
+  /** Percentage of users who enter the experiment (0-100). */
+  rollout_percentage?: number | null;
+  /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
+  properties?: ExperimentFlagRolloutGroupPropertiesList;
 }
-export const ExperimentsActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+export const ExperimentFlagRolloutGroup = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/experiments/{id}/activity/",
-      code: 200,
-    }),
-  ),
+    rollout_percentage: S.optional(S.NullOr(S.Number)),
+    properties: S.optional(ExperimentFlagRolloutGroupPropertiesList),
+  }),
 ).annotate({
-  identifier: "ExperimentsActivityRetrieveRequest",
-}) as any as S.Schema<ExperimentsActivityRetrieveRequest>;
+  identifier: "ExperimentFlagRolloutGroup",
+}) as any as S.Schema<ExperimentFlagRolloutGroup>;
 
-export interface Change {
-  type?: string;
-  action?: string;
-  field?: string;
-  before?: unknown;
-  after?: unknown;
-}
-export const Change = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    action: S.optional(S.String),
-    field: S.optional(S.String),
-    before: S.optional(S.Unknown),
-    after: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
+/** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
+export type ExperimentFeatureFlagFiltersGroupsList =
+  Array<ExperimentFlagRolloutGroup>;
+export const ExperimentFeatureFlagFiltersGroupsList = /*@__PURE__*/ S.Array(
+  ExperimentFlagRolloutGroup,
+) as any as S.Schema<ExperimentFeatureFlagFiltersGroupsList>;
 
-export type DetailChangesList = Array<Change>;
-export const DetailChangesList = /*@__PURE__*/ S.Array(
-  Change,
-) as any as S.Schema<DetailChangesList>;
-
-export interface Merge {
-  type?: string;
-  source?: unknown;
-  target?: unknown;
-}
-export const Merge = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    source: S.optional(S.Unknown),
-    target: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
-
-export interface Trigger {
-  job_type?: string;
-  job_id?: string;
-  payload?: unknown;
-}
-export const Trigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    job_type: S.optional(S.String),
-    job_id: S.optional(S.String),
-    payload: S.optional(S.Unknown),
-  }),
-).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
-
-export interface Detail {
-  id?: string;
-  changes?: DetailChangesList;
-  merge?: Merge;
-  trigger?: Trigger;
+/** A single multivariate variant. Extra per-variant keys are dropped. */
+export interface ExperimentFlagVariant {
+  /** Unique variant key. The baseline defaults to the variant keyed 'control' when present, else the first variant. */
+  key: string;
+  /** Human-readable variant name. */
   name?: string;
-  short_id?: string;
-  type?: string;
+  /** Variant rollout percentage (0-100). Across variants these must sum to 100. */
+  rollout_percentage: number;
 }
-export const Detail = /*@__PURE__*/ S.suspend(() =>
+export const ExperimentFlagVariant = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    changes: S.optional(DetailChangesList),
-    merge: S.optional(Merge),
-    trigger: S.optional(Trigger),
+    key: S.String,
     name: S.optional(S.String),
-    short_id: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({ identifier: "Detail" }) as any as S.Schema<Detail>;
-
-export interface ActivityLogEntry {
-  id?: string;
-  user?: unknown | null;
-  activity?: string;
-  scope?: string;
-  item_id?: string;
-  detail?: Detail;
-  created_at?: string;
-  /** Whether the activity was performed by the system rather than a user. */
-  is_system?: boolean;
-  /** Whether the acting user was being impersonated by PostHog staff. */
-  was_impersonated?: boolean;
-  /** API client that triggered the activity, from the x-posthog-client request header (e.g. 'mcp'). Null for requests that did not send the header. */
-  client?: string | null;
-}
-export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    user: S.optional(S.NullOr(S.Unknown)),
-    activity: S.optional(S.String),
-    scope: S.optional(S.String),
-    item_id: S.optional(S.String),
-    detail: S.optional(Detail),
-    created_at: S.optional(S.String),
-    is_system: S.optional(S.Boolean),
-    was_impersonated: S.optional(S.Boolean),
-    client: S.optional(S.NullOr(S.String)),
+    rollout_percentage: S.Number,
   }),
 ).annotate({
-  identifier: "ActivityLogEntry",
-}) as any as S.Schema<ActivityLogEntry>;
+  identifier: "ExperimentFlagVariant",
+}) as any as S.Schema<ExperimentFlagVariant>;
 
-export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
-export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
-  ActivityLogEntry,
-) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
+/** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
+export type ExperimentFlagMultivariateVariantsList =
+  Array<ExperimentFlagVariant>;
+export const ExperimentFlagMultivariateVariantsList = /*@__PURE__*/ S.Array(
+  ExperimentFlagVariant,
+) as any as S.Schema<ExperimentFlagMultivariateVariantsList>;
 
-/** Response shape for paginated activity log endpoints. */
-export interface ActivityLogPaginatedResponse {
-  results?: ActivityLogPaginatedResponseResultsList;
-  next?: string | null;
-  previous?: string | null;
-  total_count?: number;
+/** Multivariate config for the experiment's feature flag. */
+export interface ExperimentFlagMultivariate {
+  /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
+  variants: ExperimentFlagMultivariateVariantsList;
 }
-export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+export const ExperimentFlagMultivariate = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    results: S.optional(ActivityLogPaginatedResponseResultsList),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    total_count: S.optional(S.Number),
+    variants: ExperimentFlagMultivariateVariantsList,
   }),
 ).annotate({
-  identifier: "ActivityLogPaginatedResponse",
-}) as any as S.Schema<ActivityLogPaginatedResponse>;
+  identifier: "ExperimentFlagMultivariate",
+}) as any as S.Schema<ExperimentFlagMultivariate>;
 
-export interface ExperimentsArchiveCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** When the linked feature flag is still enabled, also disable and archive it along with the experiment. Has no effect if the flag is already disabled (it is archived either way). */
-  disable_feature_flag?: boolean;
-}
-export const ExperimentsArchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    disable_feature_flag: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/archive/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsArchiveCreateRequest",
-}) as any as S.Schema<ExperimentsArchiveCreateRequest>;
-
-export type MinimalFeatureFlagFiltersMap = {
-  [key: string]: unknown | undefined;
+/** Optional payload values keyed by variant key. */
+export type ExperimentFeatureFlagFiltersPayloadsMap = {
+  [key: string]: string | undefined;
 };
-export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
+export const ExperimentFeatureFlagFiltersPayloadsMap = /*@__PURE__*/ S.Record(
   S.String,
-  S.Unknown,
-) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
-
-/** * `server` - Server * `client` - Client * `all` - All */
-export type EvaluationRuntimeEnum = "server" | "client" | "all";
-export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "";
-export const BlankEnum = /*@__PURE__*/ S.String;
-
-/** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
-export type MinimalFeatureFlagEvaluationRuntime =
-  | EvaluationRuntimeEnum
-  | BlankEnum;
-export const MinimalFeatureFlagEvaluationRuntime =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
-
-/** * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type BucketingIdentifierEnum = "distinct_id" | "device_id";
-export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
-
-/** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
-export type MinimalFeatureFlagBucketingIdentifier =
-  | BucketingIdentifierEnum
-  | BlankEnum;
-export const MinimalFeatureFlagBucketingIdentifier =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
-
-export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
-export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
+) as any as S.Schema<ExperimentFeatureFlagFiltersPayloadsMap>;
 
-export interface MinimalFeatureFlag {
-  id?: number;
-  team_id?: number;
-  name?: string;
-  key?: string;
-  filters?: MinimalFeatureFlagFiltersMap;
-  deleted?: boolean;
-  active?: boolean;
-  ensure_experience_continuity?: boolean | null;
-  version?: number | null;
-  /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
-  evaluation_runtime?: MinimalFeatureFlagEvaluationRuntime | null;
-  /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
-  bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
-  evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
-}
-export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    team_id: S.optional(S.Number),
-    name: S.optional(S.String),
-    key: S.optional(S.String),
-    filters: S.optional(MinimalFeatureFlagFiltersMap),
-    deleted: S.optional(S.Boolean),
-    active: S.optional(S.Boolean),
-    ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-    version: S.optional(S.NullOr(S.Number)),
-    evaluation_runtime: S.optional(
-      S.NullOr(MinimalFeatureFlagEvaluationRuntime),
-    ),
-    bucketing_identifier: S.optional(
-      S.NullOr(MinimalFeatureFlagBucketingIdentifier),
-    ),
-    evaluation_contexts: S.optional(MinimalFeatureFlagEvaluationContextsList),
-  }),
-).annotate({
-  identifier: "MinimalFeatureFlag",
-}) as any as S.Schema<MinimalFeatureFlag>;
-
-/** * `cohort` - cohort * `person` - person * `group` - group */
-export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
-export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
-
-/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
-export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
-  | "exact"
-  | "is_not"
-  | "icontains"
-  | "not_icontains"
-  | "starts_with"
-  | "not_starts_with"
-  | "ends_with"
-  | "not_ends_with"
-  | "regex"
-  | "not_regex"
-  | "gt"
-  | "gte"
-  | "lt"
-  | "lte";
-export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-export interface FeatureFlagFilterPropertyGenericSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
-  value?: unknown;
-  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
-  operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum;
-}
-export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      type: S.optional(PropertyGroupTypeEnum),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      value: S.optional(S.Unknown),
-      operator: S.optional(FeatureFlagFilterPropertyGenericSchemaOperatorEnum),
-    }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyGenericSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
-
-/** * `is_set` - is_set * `is_not_set` - is_not_set */
-export type ExistenceOperatorEnum = "is_set" | "is_not_set";
-export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
-
-export interface FeatureFlagFilterPropertyExistsSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
-  operator?: ExistenceOperatorEnum;
-  /** Optional value. Runtime behavior determines whether this is ignored. */
-  value?: unknown;
-}
-export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      type: S.optional(PropertyGroupTypeEnum),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      operator: S.optional(ExistenceOperatorEnum),
-      value: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyExistsSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyExistsSchema>;
-
-/** * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
-export type DateOperatorEnum =
-  | "is_date_exact"
-  | "is_date_before"
-  | "is_date_after";
-export const DateOperatorEnum = /*@__PURE__*/ S.String;
-
-export interface FeatureFlagFilterPropertyDateSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
-  operator?: DateOperatorEnum;
-  /** Date value in ISO format or relative date expression. */
-  value?: string;
-}
-export const FeatureFlagFilterPropertyDateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    type: S.optional(PropertyGroupTypeEnum),
-    cohort_name: S.optional(S.NullOr(S.String)),
-    group_type_index: S.optional(S.NullOr(S.Number)),
-    operator: S.optional(DateOperatorEnum),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyDateSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyDateSchema>;
-
-/** * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
-export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
-  | "semver_gt"
-  | "semver_gte"
-  | "semver_lt"
-  | "semver_lte"
-  | "semver_eq"
-  | "semver_neq"
-  | "semver_tilde"
-  | "semver_caret"
-  | "semver_wildcard";
-export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-export interface FeatureFlagFilterPropertySemverSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
-  operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum;
-  /** Semantic version string. */
-  value?: string;
-}
-export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      type: S.optional(PropertyGroupTypeEnum),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      operator: S.optional(FeatureFlagFilterPropertySemverSchemaOperatorEnum),
-      value: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertySemverSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
-
-/** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
-export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
-  | "icontains_multi"
-  | "not_icontains_multi";
-export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-/** List of strings to evaluate against. */
-export type FeatureFlagFilterPropertyMultiContainsSchemaValueList =
-  Array<string>;
-export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
-
-export interface FeatureFlagFilterPropertyMultiContainsSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
-  type?: PropertyGroupTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
-  operator?: FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum;
-  /** List of strings to evaluate against. */
-  value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
-}
-export const FeatureFlagFilterPropertyMultiContainsSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      type: S.optional(PropertyGroupTypeEnum),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      operator: S.optional(
-        FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum,
-      ),
-      value: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaValueList),
-    }),
-  ).annotate({
-    identifier: "FeatureFlagFilterPropertyMultiContainsSchema",
-  }) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
-
-/** * `cohort` - cohort */
-export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
-export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** * `in` - in * `not_in` - not_in */
-export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
-  | "in"
-  | "not_in";
-export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-export interface FeatureFlagFilterPropertyCohortInSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Cohort property type required for in/not_in operators. * `cohort` - cohort */
-  type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
-  operator?: FeatureFlagFilterPropertyCohortInSchemaOperatorEnum;
-  /** Cohort comparison value (single or list, depending on usage). */
-  value?: unknown;
-}
-export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      key: S.optional(S.String),
-      type: S.optional(FeatureFlagFilterPropertyCohortInSchemaTypeEnum),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      operator: S.optional(FeatureFlagFilterPropertyCohortInSchemaOperatorEnum),
-      value: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "FeatureFlagFilterPropertyCohortInSchema",
-}) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
-
-/** * `flag` - flag */
-export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
-  /*@__PURE__*/ S.String;
-
-/** * `flag_evaluates_to` - flag_evaluates_to */
-export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
-  "flag_evaluates_to";
-export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
-  /** Property key used in this feature flag condition. */
-  key?: string;
-  /** Flag property type required for flag dependency checks. * `flag` - flag */
-  type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum;
-  /** Resolved cohort name for cohort-type filters. */
-  cohort_name?: string | null;
-  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
-  group_type_index?: number | null;
-  /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
-  operator?: FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum;
-  /** Value to compare flag evaluation against. */
-  value?: unknown;
-}
-export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.optional(S.String),
-      type: S.optional(FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum),
-      cohort_name: S.optional(S.NullOr(S.String)),
-      group_type_index: S.optional(S.NullOr(S.Number)),
-      operator: S.optional(
-        FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum,
-      ),
-      value: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "FeatureFlagFilterPropertyFlagEvaluatesSchema",
-  }) as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
-
-export type FeatureFlagFilterPropertySchema =
-  | FeatureFlagFilterPropertyGenericSchema
-  | FeatureFlagFilterPropertyExistsSchema
-  | FeatureFlagFilterPropertyDateSchema
-  | FeatureFlagFilterPropertySemverSchema
-  | FeatureFlagFilterPropertyMultiContainsSchema
-  | FeatureFlagFilterPropertyCohortInSchema
-  | FeatureFlagFilterPropertyFlagEvaluatesSchema;
-export const FeatureFlagFilterPropertySchema =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
-
-/** Property conditions for this release condition group. */
-export type FeatureFlagConditionGroupSchemaPropertiesList =
-  Array<FeatureFlagFilterPropertySchema>;
-export const FeatureFlagConditionGroupSchemaPropertiesList =
-  /*@__PURE__*/ S.Array(
-    FeatureFlagFilterPropertySchema,
-  ) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
-
-export interface FeatureFlagConditionGroupSchema {
-  /** Property conditions for this release condition group. */
-  properties?: FeatureFlagConditionGroupSchemaPropertiesList;
-  /** Rollout percentage for this release condition group. */
-  rollout_percentage?: number;
-  /** Variant key override for multivariate flags. */
-  variant?: string | null;
-  /** Group type index for this condition set. None means person-level aggregation. */
+/** Feature-flag filters accepted by the experiment endpoints: the flag's own filters shape, minus the keys experiments don't apply. */
+export interface ExperimentFeatureFlagFilters {
+  /** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
+  groups?: ExperimentFeatureFlagFiltersGroupsList;
+  /** Multivariate variant configuration. */
+  multivariate?: ExperimentFlagMultivariate | null;
+  /** Group type index for group-based feature flags. */
   aggregation_group_type_index?: number | null;
+  /** Optional payload values keyed by variant key. */
+  payloads?: ExperimentFeatureFlagFiltersPayloadsMap;
 }
-export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
+export const ExperimentFeatureFlagFilters = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
-    rollout_percentage: S.optional(S.Number),
-    variant: S.optional(S.NullOr(S.String)),
+    groups: S.optional(ExperimentFeatureFlagFiltersGroupsList),
+    multivariate: S.optional(S.NullOr(ExperimentFlagMultivariate)),
     aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
+    payloads: S.optional(ExperimentFeatureFlagFiltersPayloadsMap),
   }),
 ).annotate({
-  identifier: "FeatureFlagConditionGroupSchema",
-}) as any as S.Schema<FeatureFlagConditionGroupSchema>;
+  identifier: "ExperimentFeatureFlagFilters",
+}) as any as S.Schema<ExperimentFeatureFlagFilters>;
 
-/** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
-export type ExperimentHoldoutFiltersList =
-  Array<FeatureFlagConditionGroupSchema>;
-export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
-  FeatureFlagConditionGroupSchema,
-) as any as S.Schema<ExperimentHoldoutFiltersList>;
-
-export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
-/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
-export type RoleAtOrganizationEnum =
-  | "engineering"
-  | "data"
-  | "product"
-  | "founder"
-  | "leadership"
-  | "marketing"
-  | "sales"
-  | "student"
-  | "other";
-export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-export const UserBasicRoleAtOrganization =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
-export interface UserBasic {
-  id?: number;
-  uuid?: string;
-  distinct_id?: string | null;
-  first_name?: string;
-  last_name?: string;
-  email?: string;
-  is_email_verified?: boolean | null;
-  hedgehog_config?: UserBasicHedgehogConfigMap | null;
-  role_at_organization?: UserBasicRoleAtOrganization | null;
+/** Flag config for experiment create/update, sent through the linked feature flag's own shape. Validated both as the OpenAPI request field (via ``ExperimentWriteSerializer``) and at runtime (``ExperimentSerializer._normalize_feature_flag_input`` runs it against the raw feature_flag object). Echoed read-only flag objects (carrying a non-null id) are handled upstream and never reach this validation. */
+export interface ExperimentFeatureFlagInput {
+  /** Flag config to apply: `multivariate.variants` (2 to 20 variants; the baseline defaults to the variant keyed 'control' when present, else the first variant), `groups` (a single group with `rollout_percentage` only; release conditions are not supported here, edit the feature flag directly), `aggregation_group_type_index`, and `payloads` (JSON-encoded strings keyed by variant key). On update, config this object omits is preserved from the linked flag's current state. */
+  filters?: ExperimentFeatureFlagFilters;
+  /** Whether the flag persists variant assignment across authentication steps. */
+  ensure_experience_continuity?: boolean | null;
 }
-export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+export const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.Number),
-    uuid: S.optional(S.String),
-    distinct_id: S.optional(S.NullOr(S.String)),
-    first_name: S.optional(S.String),
-    last_name: S.optional(S.String),
-    email: S.optional(S.String),
-    is_email_verified: S.optional(S.NullOr(S.Boolean)),
-    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
-  }),
-).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-/** A holdout group — a stable slice of users excluded from experiment exposure. */
-export interface ExperimentHoldout {
-  id?: number;
-  /** Human-readable name for the holdout group. */
-  name?: string;
-  /** Optional description of what this holdout reserves and why. */
-  description?: string | null;
-  /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
-  filters?: ExperimentHoldoutFiltersList;
-  created_by?: UserBasic | null;
-  created_at?: string;
-  updated_at?: string;
-  /** The effective access level the user has for this object */
-  user_access_level?: string | null;
-}
-export const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    filters: S.optional(ExperimentHoldoutFiltersList),
-    created_by: S.optional(S.NullOr(UserBasic)),
-    created_at: S.optional(S.String),
-    updated_at: S.optional(S.String),
-    user_access_level: S.optional(S.NullOr(S.String)),
+    filters: S.optional(ExperimentFeatureFlagFilters),
+    ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
-  identifier: "ExperimentHoldout",
-}) as any as S.Schema<ExperimentHoldout>;
+  identifier: "ExperimentFeatureFlagInput",
+}) as any as S.Schema<ExperimentFeatureFlagInput>;
 
 export type ExperimentParametersVariantNotesMap = {
   [key: string]: string | undefined;
@@ -775,44 +228,18 @@ export const ExperimentRunningTimeCalculation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ExperimentRunningTimeCalculation>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentOutputExcludedVariantsList = Array<string>;
-export const ExperimentOutputExcludedVariantsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentOutputExcludedVariantsList>;
-
-export interface ExperimentToSavedMetric {
-  id?: number;
-  experiment?: number;
-  saved_metric?: number;
-  metadata?: unknown;
-  created_at?: string;
-  query?: unknown;
-  name?: string;
-}
-export const ExperimentToSavedMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    experiment: S.optional(S.Number),
-    saved_metric: S.optional(S.Number),
-    metadata: S.optional(S.Unknown),
-    created_at: S.optional(S.String),
-    query: S.optional(S.Unknown),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExperimentToSavedMetric",
-}) as any as S.Schema<ExperimentToSavedMetric>;
-
-export type ExperimentOutputSavedMetricsList = Array<ExperimentToSavedMetric>;
-export const ExperimentOutputSavedMetricsList = /*@__PURE__*/ S.Array(
-  ExperimentToSavedMetric,
-) as any as S.Schema<ExperimentOutputSavedMetricsList>;
+export type ExperimentsCreateRequestExcludedVariantsList = Array<string>;
+export const ExperimentsCreateRequestExcludedVariantsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentsCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentOutputSavedMetricsIdsList = Array<unknown>;
-export const ExperimentOutputSavedMetricsIdsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
+export type ExperimentsCreateRequestSavedMetricsIdsList = Array<unknown>;
+export const ExperimentsCreateRequestSavedMetricsIdsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<ExperimentsCreateRequestSavedMetricsIdsList>;
 
 /** * `web` - web * `product` - product */
 export type ExperimentTypeEnum = "web" | "product";
@@ -2055,6 +1482,654 @@ export type ConclusionEnum =
   | "invalid";
 export const ConclusionEnum = /*@__PURE__*/ S.String;
 
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+export type ExperimentsCreateRequestOriginalExperimentMap = {
+  [key: string]: unknown | undefined;
+};
+export const ExperimentsCreateRequestOriginalExperimentMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ExperimentsCreateRequestOriginalExperimentMap>;
+
+export interface CreateExperimentRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Name of the experiment. */
+  name: string;
+  /** Description of the experiment hypothesis and expected outcomes. */
+  description?: string | null;
+  start_date?: string | null;
+  end_date?: string | null;
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  feature_flag_key: string;
+  /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
+  feature_flag?: ExperimentFeatureFlagInput;
+  /** ID of a holdout group to exclude from the experiment. */
+  holdout_id?: number | null;
+  /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
+  parameters?: ExperimentParameters | null;
+  /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
+  running_time_calculation?: ExperimentRunningTimeCalculation | null;
+  /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
+  excluded_variants?: ExperimentsCreateRequestExcludedVariantsList | null;
+  secondary_metrics?: unknown;
+  /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
+  saved_metrics_ids?: ExperimentsCreateRequestSavedMetricsIdsList | null;
+  filters?: unknown;
+  /** Whether the experiment is archived. */
+  archived?: boolean;
+  deleted?: boolean | null;
+  /** Experiment type: web for frontend UI changes, product for backend/API changes. * `web` - web * `product` - product */
+  type?: ExperimentTypeEnum | (string & {}) | null;
+  /** Exposure configuration including filter test accounts and custom exposure events. */
+  exposure_criteria?: ExperimentApiExposureCriteria | null;
+  /** Primary experiment metrics. Each metric must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Use the read-data-schema tool with query kind 'events' to find available events in the project. */
+  metrics?: ExperimentApiMetricsList | null;
+  /** Secondary metrics for additional measurements. Same format as primary metrics. */
+  metrics_secondary?: ExperimentApiMetricsList | null;
+  stats_config?: unknown;
+  scheduling_config?: unknown;
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  allow_unknown_events?: boolean;
+  _create_in_folder?: string;
+  /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
+  conclusion?: ConclusionEnum | (string & {}) | null;
+  /** Comment about the experiment conclusion. */
+  conclusion_comment?: string | null;
+  /** GitHub repository holding this experiment's feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team's only connected repository and is skipped if the team has several. */
+  repository?: string | null;
+  primary_metrics_ordered_uuids?: unknown;
+  secondary_metrics_ordered_uuids?: unknown;
+  only_count_matured_users?: boolean;
+  /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
+  update_feature_flag_params?: boolean;
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  version?: number | null;
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  original_experiment?: ExperimentsCreateRequestOriginalExperimentMap | null;
+}
+export const CreateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    description: S.optional(S.NullOr(S.String)),
+    start_date: S.optional(S.NullOr(S.String)),
+    end_date: S.optional(S.NullOr(S.String)),
+    feature_flag_key: S.String,
+    feature_flag: S.optional(ExperimentFeatureFlagInput),
+    holdout_id: S.optional(S.NullOr(S.Number)),
+    parameters: S.optional(S.NullOr(ExperimentParameters)),
+    running_time_calculation: S.optional(
+      S.NullOr(ExperimentRunningTimeCalculation),
+    ),
+    excluded_variants: S.optional(
+      S.NullOr(ExperimentsCreateRequestExcludedVariantsList),
+    ),
+    secondary_metrics: S.optional(S.Unknown),
+    saved_metrics_ids: S.optional(
+      S.NullOr(ExperimentsCreateRequestSavedMetricsIdsList),
+    ),
+    filters: S.optional(S.Unknown),
+    archived: S.optional(S.Boolean),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.NullOr(ExperimentTypeEnum)),
+    exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
+    metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
+    metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+    stats_config: S.optional(S.Unknown),
+    scheduling_config: S.optional(S.Unknown),
+    allow_unknown_events: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+    conclusion: S.optional(S.NullOr(ConclusionEnum)),
+    conclusion_comment: S.optional(S.NullOr(S.String)),
+    repository: S.optional(S.NullOr(S.String)),
+    primary_metrics_ordered_uuids: S.optional(S.Unknown),
+    secondary_metrics_ordered_uuids: S.optional(S.Unknown),
+    only_count_matured_users: S.optional(S.Boolean),
+    update_feature_flag_params: S.optional(S.Boolean),
+    version: S.optional(S.NullOr(S.Number)),
+    original_experiment: S.optional(
+      S.NullOr(ExperimentsCreateRequestOriginalExperimentMap),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentRequest",
+}) as any as S.Schema<CreateExperimentRequest>;
+
+export type MinimalFeatureFlagFiltersMap = {
+  [key: string]: unknown | undefined;
+};
+export const MinimalFeatureFlagFiltersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MinimalFeatureFlagFiltersMap>;
+
+/** * `server` - Server * `client` - Client * `all` - All */
+export type EvaluationRuntimeEnum = "server" | "client" | "all";
+export const EvaluationRuntimeEnum = /*@__PURE__*/ S.String;
+
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+/** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
+export type MinimalFeatureFlagEvaluationRuntime =
+  | EvaluationRuntimeEnum
+  | BlankEnum;
+export const MinimalFeatureFlagEvaluationRuntime =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagEvaluationRuntime>;
+
+/** * `distinct_id` - User ID (default) * `device_id` - Device ID */
+export type BucketingIdentifierEnum = "distinct_id" | "device_id";
+export const BucketingIdentifierEnum = /*@__PURE__*/ S.String;
+
+/** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
+export type MinimalFeatureFlagBucketingIdentifier =
+  | BucketingIdentifierEnum
+  | BlankEnum;
+export const MinimalFeatureFlagBucketingIdentifier =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<MinimalFeatureFlagBucketingIdentifier>;
+
+export type MinimalFeatureFlagEvaluationContextsList = Array<string>;
+export const MinimalFeatureFlagEvaluationContextsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MinimalFeatureFlagEvaluationContextsList>;
+
+export interface MinimalFeatureFlag {
+  id?: number;
+  team_id?: number;
+  name?: string;
+  key?: string;
+  filters?: MinimalFeatureFlagFiltersMap;
+  deleted?: boolean;
+  active?: boolean;
+  ensure_experience_continuity?: boolean | null;
+  version?: number | null;
+  /** Specifies where this feature flag should be evaluated * `server` - Server * `client` - Client * `all` - All */
+  evaluation_runtime?: MinimalFeatureFlagEvaluationRuntime | null;
+  /** Identifier used for bucketing users into rollout and variants * `distinct_id` - User ID (default) * `device_id` - Device ID */
+  bucketing_identifier?: MinimalFeatureFlagBucketingIdentifier | null;
+  evaluation_contexts?: MinimalFeatureFlagEvaluationContextsList;
+}
+export const MinimalFeatureFlag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    team_id: S.optional(S.Number),
+    name: S.optional(S.String),
+    key: S.optional(S.String),
+    filters: S.optional(MinimalFeatureFlagFiltersMap),
+    deleted: S.optional(S.Boolean),
+    active: S.optional(S.Boolean),
+    ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
+    version: S.optional(S.NullOr(S.Number)),
+    evaluation_runtime: S.optional(
+      S.NullOr(MinimalFeatureFlagEvaluationRuntime),
+    ),
+    bucketing_identifier: S.optional(
+      S.NullOr(MinimalFeatureFlagBucketingIdentifier),
+    ),
+    evaluation_contexts: S.optional(MinimalFeatureFlagEvaluationContextsList),
+  }),
+).annotate({
+  identifier: "MinimalFeatureFlag",
+}) as any as S.Schema<MinimalFeatureFlag>;
+
+/** * `cohort` - cohort * `person` - person * `group` - group */
+export type PropertyGroupTypeEnum = "cohort" | "person" | "group";
+export const PropertyGroupTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+export type FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
+  | "exact"
+  | "is_not"
+  | "icontains"
+  | "not_icontains"
+  | "starts_with"
+  | "not_starts_with"
+  | "ends_with"
+  | "not_ends_with"
+  | "regex"
+  | "not_regex"
+  | "gt"
+  | "gte"
+  | "lt"
+  | "lte";
+export const FeatureFlagFilterPropertyGenericSchemaOperatorEnum =
+  /*@__PURE__*/ S.String;
+
+export interface FeatureFlagFilterPropertyGenericSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
+  type?: PropertyGroupTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Comparison value for the property filter. Supports strings, numbers, booleans, and arrays. */
+  value?: unknown;
+  /** Operator used to compare the property value. * `exact` - exact * `is_not` - is_not * `icontains` - icontains * `not_icontains` - not_icontains * `starts_with` - starts_with * `not_starts_with` - not_starts_with * `ends_with` - ends_with * `not_ends_with` - not_ends_with * `regex` - regex * `not_regex` - not_regex * `gt` - gt * `gte` - gte * `lt` - lt * `lte` - lte */
+  operator?: FeatureFlagFilterPropertyGenericSchemaOperatorEnum;
+}
+export const FeatureFlagFilterPropertyGenericSchema = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.optional(S.String),
+      type: S.optional(PropertyGroupTypeEnum),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      value: S.optional(S.Unknown),
+      operator: S.optional(FeatureFlagFilterPropertyGenericSchemaOperatorEnum),
+    }),
+).annotate({
+  identifier: "FeatureFlagFilterPropertyGenericSchema",
+}) as any as S.Schema<FeatureFlagFilterPropertyGenericSchema>;
+
+/** * `is_set` - is_set * `is_not_set` - is_not_set */
+export type ExistenceOperatorEnum = "is_set" | "is_not_set";
+export const ExistenceOperatorEnum = /*@__PURE__*/ S.String;
+
+export interface FeatureFlagFilterPropertyExistsSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
+  type?: PropertyGroupTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Existence operator. * `is_set` - is_set * `is_not_set` - is_not_set */
+  operator?: ExistenceOperatorEnum;
+  /** Optional value. Runtime behavior determines whether this is ignored. */
+  value?: unknown;
+}
+export const FeatureFlagFilterPropertyExistsSchema = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.optional(S.String),
+      type: S.optional(PropertyGroupTypeEnum),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      operator: S.optional(ExistenceOperatorEnum),
+      value: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "FeatureFlagFilterPropertyExistsSchema",
+}) as any as S.Schema<FeatureFlagFilterPropertyExistsSchema>;
+
+/** * `is_date_exact` - is_date_exact * `is_date_before` - is_date_before * `is_date_after` - is_date_after */
+export type DateOperatorEnum =
+  | "is_date_exact"
+  | "is_date_before"
+  | "is_date_after";
+export const DateOperatorEnum = /*@__PURE__*/ S.String;
+
+export interface FeatureFlagFilterPropertyDateSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
+  type?: PropertyGroupTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Date comparison operator. * `is_date_exact` - is_date_exact * `is_date_after` - is_date_after * `is_date_before` - is_date_before */
+  operator?: DateOperatorEnum;
+  /** Date value in ISO format or relative date expression. */
+  value?: string;
+}
+export const FeatureFlagFilterPropertyDateSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    type: S.optional(PropertyGroupTypeEnum),
+    cohort_name: S.optional(S.NullOr(S.String)),
+    group_type_index: S.optional(S.NullOr(S.Number)),
+    operator: S.optional(DateOperatorEnum),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FeatureFlagFilterPropertyDateSchema",
+}) as any as S.Schema<FeatureFlagFilterPropertyDateSchema>;
+
+/** * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
+export type FeatureFlagFilterPropertySemverSchemaOperatorEnum =
+  | "semver_gt"
+  | "semver_gte"
+  | "semver_lt"
+  | "semver_lte"
+  | "semver_eq"
+  | "semver_neq"
+  | "semver_tilde"
+  | "semver_caret"
+  | "semver_wildcard";
+export const FeatureFlagFilterPropertySemverSchemaOperatorEnum =
+  /*@__PURE__*/ S.String;
+
+export interface FeatureFlagFilterPropertySemverSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
+  type?: PropertyGroupTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Semantic version comparison operator. * `semver_gt` - semver_gt * `semver_gte` - semver_gte * `semver_lt` - semver_lt * `semver_lte` - semver_lte * `semver_eq` - semver_eq * `semver_neq` - semver_neq * `semver_tilde` - semver_tilde * `semver_caret` - semver_caret * `semver_wildcard` - semver_wildcard */
+  operator?: FeatureFlagFilterPropertySemverSchemaOperatorEnum;
+  /** Semantic version string. */
+  value?: string;
+}
+export const FeatureFlagFilterPropertySemverSchema = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.optional(S.String),
+      type: S.optional(PropertyGroupTypeEnum),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      operator: S.optional(FeatureFlagFilterPropertySemverSchemaOperatorEnum),
+      value: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "FeatureFlagFilterPropertySemverSchema",
+}) as any as S.Schema<FeatureFlagFilterPropertySemverSchema>;
+
+/** * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
+export type FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
+  | "icontains_multi"
+  | "not_icontains_multi";
+export const FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum =
+  /*@__PURE__*/ S.String;
+
+/** List of strings to evaluate against. */
+export type FeatureFlagFilterPropertyMultiContainsSchemaValueList =
+  Array<string>;
+export const FeatureFlagFilterPropertyMultiContainsSchemaValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchemaValueList>;
+
+export interface FeatureFlagFilterPropertyMultiContainsSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Property filter type. Set it on every property. Use `group` with `group_type_index` to filter on a group's properties. * `cohort` - cohort * `person` - person * `group` - group */
+  type?: PropertyGroupTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Multi-contains operator. * `icontains_multi` - icontains_multi * `not_icontains_multi` - not_icontains_multi */
+  operator?: FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum;
+  /** List of strings to evaluate against. */
+  value?: FeatureFlagFilterPropertyMultiContainsSchemaValueList;
+}
+export const FeatureFlagFilterPropertyMultiContainsSchema =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.optional(S.String),
+      type: S.optional(PropertyGroupTypeEnum),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      operator: S.optional(
+        FeatureFlagFilterPropertyMultiContainsSchemaOperatorEnum,
+      ),
+      value: S.optional(FeatureFlagFilterPropertyMultiContainsSchemaValueList),
+    }),
+  ).annotate({
+    identifier: "FeatureFlagFilterPropertyMultiContainsSchema",
+  }) as any as S.Schema<FeatureFlagFilterPropertyMultiContainsSchema>;
+
+/** * `cohort` - cohort */
+export type FeatureFlagFilterPropertyCohortInSchemaTypeEnum = "cohort";
+export const FeatureFlagFilterPropertyCohortInSchemaTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** * `in` - in * `not_in` - not_in */
+export type FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
+  | "in"
+  | "not_in";
+export const FeatureFlagFilterPropertyCohortInSchemaOperatorEnum =
+  /*@__PURE__*/ S.String;
+
+export interface FeatureFlagFilterPropertyCohortInSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Cohort property type required for in/not_in operators. * `cohort` - cohort */
+  type?: FeatureFlagFilterPropertyCohortInSchemaTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Membership operator for cohort properties. * `in` - in * `not_in` - not_in */
+  operator?: FeatureFlagFilterPropertyCohortInSchemaOperatorEnum;
+  /** Cohort comparison value (single or list, depending on usage). */
+  value?: unknown;
+}
+export const FeatureFlagFilterPropertyCohortInSchema = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      key: S.optional(S.String),
+      type: S.optional(FeatureFlagFilterPropertyCohortInSchemaTypeEnum),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      operator: S.optional(FeatureFlagFilterPropertyCohortInSchemaOperatorEnum),
+      value: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "FeatureFlagFilterPropertyCohortInSchema",
+}) as any as S.Schema<FeatureFlagFilterPropertyCohortInSchema>;
+
+/** * `flag` - flag */
+export type FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum = "flag";
+export const FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum =
+  /*@__PURE__*/ S.String;
+
+/** * `flag_evaluates_to` - flag_evaluates_to */
+export type FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
+  "flag_evaluates_to";
+export const FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum =
+  /*@__PURE__*/ S.String;
+
+export interface FeatureFlagFilterPropertyFlagEvaluatesSchema {
+  /** Property key used in this feature flag condition. */
+  key?: string;
+  /** Flag property type required for flag dependency checks. * `flag` - flag */
+  type?: FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum;
+  /** Resolved cohort name for cohort-type filters. */
+  cohort_name?: string | null;
+  /** Group type index a `group` filter reads properties from. Defaults to the condition set's `aggregation_group_type_index`. */
+  group_type_index?: number | null;
+  /** Operator for feature flag dependency evaluation. * `flag_evaluates_to` - flag_evaluates_to */
+  operator?: FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum;
+  /** Value to compare flag evaluation against. */
+  value?: unknown;
+}
+export const FeatureFlagFilterPropertyFlagEvaluatesSchema =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.optional(S.String),
+      type: S.optional(FeatureFlagFilterPropertyFlagEvaluatesSchemaTypeEnum),
+      cohort_name: S.optional(S.NullOr(S.String)),
+      group_type_index: S.optional(S.NullOr(S.Number)),
+      operator: S.optional(
+        FeatureFlagFilterPropertyFlagEvaluatesSchemaOperatorEnum,
+      ),
+      value: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "FeatureFlagFilterPropertyFlagEvaluatesSchema",
+  }) as any as S.Schema<FeatureFlagFilterPropertyFlagEvaluatesSchema>;
+
+export type FeatureFlagFilterPropertySchema =
+  | FeatureFlagFilterPropertyGenericSchema
+  | FeatureFlagFilterPropertyExistsSchema
+  | FeatureFlagFilterPropertyDateSchema
+  | FeatureFlagFilterPropertySemverSchema
+  | FeatureFlagFilterPropertyMultiContainsSchema
+  | FeatureFlagFilterPropertyCohortInSchema
+  | FeatureFlagFilterPropertyFlagEvaluatesSchema;
+export const FeatureFlagFilterPropertySchema =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<FeatureFlagFilterPropertySchema>;
+
+/** Property conditions for this release condition group. */
+export type FeatureFlagConditionGroupSchemaPropertiesList =
+  Array<FeatureFlagFilterPropertySchema>;
+export const FeatureFlagConditionGroupSchemaPropertiesList =
+  /*@__PURE__*/ S.Array(
+    FeatureFlagFilterPropertySchema,
+  ) as any as S.Schema<FeatureFlagConditionGroupSchemaPropertiesList>;
+
+export interface FeatureFlagConditionGroupSchema {
+  /** Property conditions for this release condition group. */
+  properties?: FeatureFlagConditionGroupSchemaPropertiesList;
+  /** Rollout percentage for this release condition group. */
+  rollout_percentage?: number;
+  /** Variant key override for multivariate flags. */
+  variant?: string | null;
+  /** Group type index for this condition set. None means person-level aggregation. */
+  aggregation_group_type_index?: number | null;
+}
+export const FeatureFlagConditionGroupSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(FeatureFlagConditionGroupSchemaPropertiesList),
+    rollout_percentage: S.optional(S.Number),
+    variant: S.optional(S.NullOr(S.String)),
+    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "FeatureFlagConditionGroupSchema",
+}) as any as S.Schema<FeatureFlagConditionGroupSchema>;
+
+/** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
+export type ExperimentHoldoutFiltersList =
+  Array<FeatureFlagConditionGroupSchema>;
+export const ExperimentHoldoutFiltersList = /*@__PURE__*/ S.Array(
+  FeatureFlagConditionGroupSchema,
+) as any as S.Schema<ExperimentHoldoutFiltersList>;
+
+export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
+export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UserBasicHedgehogConfigMap>;
+
+/** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
+export type RoleAtOrganizationEnum =
+  | "engineering"
+  | "data"
+  | "product"
+  | "founder"
+  | "leadership"
+  | "marketing"
+  | "sales"
+  | "student"
+  | "other";
+export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
+
+export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
+export const UserBasicRoleAtOrganization =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
+
+export interface UserBasic {
+  id?: number;
+  uuid?: string;
+  distinct_id?: string | null;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  is_email_verified?: boolean | null;
+  hedgehog_config?: UserBasicHedgehogConfigMap | null;
+  role_at_organization?: UserBasicRoleAtOrganization | null;
+}
+export const UserBasic = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    uuid: S.optional(S.String),
+    distinct_id: S.optional(S.NullOr(S.String)),
+    first_name: S.optional(S.String),
+    last_name: S.optional(S.String),
+    email: S.optional(S.String),
+    is_email_verified: S.optional(S.NullOr(S.Boolean)),
+    hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
+    role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+  }),
+).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
+
+/** A holdout group — a stable slice of users excluded from experiment exposure. */
+export interface ExperimentHoldout {
+  id?: number;
+  /** Human-readable name for the holdout group. */
+  name?: string;
+  /** Optional description of what this holdout reserves and why. */
+  description?: string | null;
+  /** Non-empty list of release-condition groups defining the held-out population, using the same shape as feature-flag release conditions. Each element's `rollout_percentage` (0–100, may be fractional) is the **exclusion** percentage — the share of users held back from all experiments that reference this holdout. `properties` optionally narrows the group by person/group properties. Do not set `variant`: the server normalizes it to `holdout-{id}`. Note that only the first element's `rollout_percentage` is embedded into each linked experiment's feature flag, and this population is shared across every experiment using the holdout. */
+  filters?: ExperimentHoldoutFiltersList;
+  created_by?: UserBasic | null;
+  created_at?: string;
+  updated_at?: string;
+  /** The effective access level the user has for this object */
+  user_access_level?: string | null;
+}
+export const ExperimentHoldout = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    filters: S.optional(ExperimentHoldoutFiltersList),
+    created_by: S.optional(S.NullOr(UserBasic)),
+    created_at: S.optional(S.String),
+    updated_at: S.optional(S.String),
+    user_access_level: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ExperimentHoldout",
+}) as any as S.Schema<ExperimentHoldout>;
+
+/** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
+export type ExperimentOutputExcludedVariantsList = Array<string>;
+export const ExperimentOutputExcludedVariantsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ExperimentOutputExcludedVariantsList>;
+
+export interface ExperimentToSavedMetric {
+  id?: number;
+  experiment?: number;
+  saved_metric?: number;
+  metadata?: unknown;
+  created_at?: string;
+  query?: unknown;
+  name?: string;
+}
+export const ExperimentToSavedMetric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    experiment: S.optional(S.Number),
+    saved_metric: S.optional(S.Number),
+    metadata: S.optional(S.Unknown),
+    created_at: S.optional(S.String),
+    query: S.optional(S.Unknown),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExperimentToSavedMetric",
+}) as any as S.Schema<ExperimentToSavedMetric>;
+
+export type ExperimentOutputSavedMetricsList = Array<ExperimentToSavedMetric>;
+export const ExperimentOutputSavedMetricsList = /*@__PURE__*/ S.Array(
+  ExperimentToSavedMetric,
+) as any as S.Schema<ExperimentOutputSavedMetricsList>;
+
+/** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
+export type ExperimentOutputSavedMetricsIdsList = Array<unknown>;
+export const ExperimentOutputSavedMetricsIdsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<ExperimentOutputSavedMetricsIdsList>;
+
 export type ExperimentStatusEnum =
   | "draft"
   | "running"
@@ -2184,6 +2259,30 @@ export const ExperimentOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentOutput",
 }) as any as S.Schema<ExperimentOutput>;
 
+export interface CreateExperimentArchiveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** When the linked feature flag is still enabled, also disable and archive it along with the experiment. Has no effect if the flag is already disabled (it is archived either way). */
+  disable_feature_flag?: boolean;
+}
+export const CreateExperimentArchiveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    disable_feature_flag: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/archive/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentArchiveRequest",
+}) as any as S.Schema<CreateExperimentArchiveRequest>;
+
 /** * `funnel` - funnel * `mean_count` - mean_count * `mean_sum_or_avg` - mean_sum_or_avg * `ratio` - ratio * `retention` - retention */
 export type MetricTypeEnum =
   | "funnel"
@@ -2230,7 +2329,7 @@ export const RunningTimeBaselineStats = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunningTimeBaselineStats",
 }) as any as S.Schema<RunningTimeBaselineStats>;
 
-export interface ExperimentsCalculateRunningTimeCreateRequest {
+export interface CreateExperimentCalculateRunningTimeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Metric type to size for. 'funnel' for conversion rates, 'mean_count' for event counts per user, 'mean_sum_or_avg' for summed property values per user, 'ratio' and 'retention' for ratio-style metrics (both require baseline_stats or an explicit variance). * `funnel` - funnel * `mean_count` - mean_count * `mean_sum_or_avg` - mean_sum_or_avg * `ratio` - ratio * `retention` - retention */
@@ -2248,7 +2347,7 @@ export interface ExperimentsCalculateRunningTimeCreateRequest {
   /** Raw control-group statistics. When provided, the server derives baseline_value and variance. */
   baseline_stats?: RunningTimeBaselineStats | null;
 }
-export const ExperimentsCalculateRunningTimeCreateRequest =
+export const CreateExperimentCalculateRunningTimeRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -2267,8 +2366,8 @@ export const ExperimentsCalculateRunningTimeCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "ExperimentsCalculateRunningTimeCreateRequest",
-  }) as any as S.Schema<ExperimentsCalculateRunningTimeCreateRequest>;
+    identifier: "CreateExperimentCalculateRunningTimeRequest",
+  }) as any as S.Schema<CreateExperimentCalculateRunningTimeRequest>;
 
 /** Estimated sample size and running time for the given inputs. */
 export interface RunningTimeCalculationResult {
@@ -2292,7 +2391,7 @@ export const RunningTimeCalculationResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "RunningTimeCalculationResult",
 }) as any as S.Schema<RunningTimeCalculationResult>;
 
-export interface ExperimentsCopyToProjectCreateRequest {
+export interface CreateExperimentCopyToProjectRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
@@ -2304,7 +2403,7 @@ export interface ExperimentsCopyToProjectCreateRequest {
   /** Optional name for the copied experiment. */
   name?: string;
 }
-export const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(
+export const CreateExperimentCopyToProjectRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -2320,161 +2419,48 @@ export const ExperimentsCopyToProjectCreateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ExperimentsCopyToProjectCreateRequest",
-}) as any as S.Schema<ExperimentsCopyToProjectCreateRequest>;
-
-/** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
-export type ExperimentFlagRolloutGroupPropertiesList = Array<unknown>;
-export const ExperimentFlagRolloutGroupPropertiesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<ExperimentFlagRolloutGroupPropertiesList>;
-
-/** A single release-condition group carrying only the overall rollout percentage, the one groups entry the experiment input applies. */
-export interface ExperimentFlagRolloutGroup {
-  /** Percentage of users who enter the experiment (0-100). */
-  rollout_percentage?: number | null;
-  /** Must be empty or omitted: release-condition properties are not supported via the experiment input. Edit the feature flag directly for targeting. */
-  properties?: ExperimentFlagRolloutGroupPropertiesList;
-}
-export const ExperimentFlagRolloutGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rollout_percentage: S.optional(S.NullOr(S.Number)),
-    properties: S.optional(ExperimentFlagRolloutGroupPropertiesList),
-  }),
-).annotate({
-  identifier: "ExperimentFlagRolloutGroup",
-}) as any as S.Schema<ExperimentFlagRolloutGroup>;
-
-/** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
-export type ExperimentFeatureFlagFiltersGroupsList =
-  Array<ExperimentFlagRolloutGroup>;
-export const ExperimentFeatureFlagFiltersGroupsList = /*@__PURE__*/ S.Array(
-  ExperimentFlagRolloutGroup,
-) as any as S.Schema<ExperimentFeatureFlagFiltersGroupsList>;
-
-/** A single multivariate variant. Extra per-variant keys are dropped. */
-export interface ExperimentFlagVariant {
-  /** Unique variant key. The baseline defaults to the variant keyed 'control' when present, else the first variant. */
-  key: string;
-  /** Human-readable variant name. */
-  name?: string;
-  /** Variant rollout percentage (0-100). Across variants these must sum to 100. */
-  rollout_percentage: number;
-}
-export const ExperimentFlagVariant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    name: S.optional(S.String),
-    rollout_percentage: S.Number,
-  }),
-).annotate({
-  identifier: "ExperimentFlagVariant",
-}) as any as S.Schema<ExperimentFlagVariant>;
-
-/** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
-export type ExperimentFlagMultivariateVariantsList =
-  Array<ExperimentFlagVariant>;
-export const ExperimentFlagMultivariateVariantsList = /*@__PURE__*/ S.Array(
-  ExperimentFlagVariant,
-) as any as S.Schema<ExperimentFlagMultivariateVariantsList>;
-
-/** Multivariate config for the experiment's feature flag. */
-export interface ExperimentFlagMultivariate {
-  /** Variant definitions (2 to 20). The baseline defaults to the variant keyed 'control' when present, else the first variant. */
-  variants: ExperimentFlagMultivariateVariantsList;
-}
-export const ExperimentFlagMultivariate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    variants: ExperimentFlagMultivariateVariantsList,
-  }),
-).annotate({
-  identifier: "ExperimentFlagMultivariate",
-}) as any as S.Schema<ExperimentFlagMultivariate>;
-
-/** Optional payload values keyed by variant key. */
-export type ExperimentFeatureFlagFiltersPayloadsMap = {
-  [key: string]: string | undefined;
-};
-export const ExperimentFeatureFlagFiltersPayloadsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ExperimentFeatureFlagFiltersPayloadsMap>;
-
-/** Feature-flag filters accepted by the experiment endpoints: the flag's own filters shape, minus the keys experiments don't apply. */
-export interface ExperimentFeatureFlagFilters {
-  /** Overall rollout as a single group: [{"properties": [], "rollout_percentage": N}]. */
-  groups?: ExperimentFeatureFlagFiltersGroupsList;
-  /** Multivariate variant configuration. */
-  multivariate?: ExperimentFlagMultivariate | null;
-  /** Group type index for group-based feature flags. */
-  aggregation_group_type_index?: number | null;
-  /** Optional payload values keyed by variant key. */
-  payloads?: ExperimentFeatureFlagFiltersPayloadsMap;
-}
-export const ExperimentFeatureFlagFilters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groups: S.optional(ExperimentFeatureFlagFiltersGroupsList),
-    multivariate: S.optional(S.NullOr(ExperimentFlagMultivariate)),
-    aggregation_group_type_index: S.optional(S.NullOr(S.Number)),
-    payloads: S.optional(ExperimentFeatureFlagFiltersPayloadsMap),
-  }),
-).annotate({
-  identifier: "ExperimentFeatureFlagFilters",
-}) as any as S.Schema<ExperimentFeatureFlagFilters>;
-
-/** Flag config for experiment create/update, sent through the linked feature flag's own shape. Validated both as the OpenAPI request field (via ``ExperimentWriteSerializer``) and at runtime (``ExperimentSerializer._normalize_feature_flag_input`` runs it against the raw feature_flag object). Echoed read-only flag objects (carrying a non-null id) are handled upstream and never reach this validation. */
-export interface ExperimentFeatureFlagInput {
-  /** Flag config to apply: `multivariate.variants` (2 to 20 variants; the baseline defaults to the variant keyed 'control' when present, else the first variant), `groups` (a single group with `rollout_percentage` only; release conditions are not supported here, edit the feature flag directly), `aggregation_group_type_index`, and `payloads` (JSON-encoded strings keyed by variant key). On update, config this object omits is preserved from the linked flag's current state. */
-  filters?: ExperimentFeatureFlagFilters;
-  /** Whether the flag persists variant assignment across authentication steps. */
-  ensure_experience_continuity?: boolean | null;
-}
-export const ExperimentFeatureFlagInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    filters: S.optional(ExperimentFeatureFlagFilters),
-    ensure_experience_continuity: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ExperimentFeatureFlagInput",
-}) as any as S.Schema<ExperimentFeatureFlagInput>;
+  identifier: "CreateExperimentCopyToProjectRequest",
+}) as any as S.Schema<CreateExperimentCopyToProjectRequest>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsCreateRequestExcludedVariantsList = Array<string>;
-export const ExperimentsCreateRequestExcludedVariantsList =
+export type ExperimentsDuplicateCreateRequestExcludedVariantsList =
+  Array<string>;
+export const ExperimentsDuplicateCreateRequestExcludedVariantsList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ExperimentsCreateRequestExcludedVariantsList>;
+  ) as any as S.Schema<ExperimentsDuplicateCreateRequestExcludedVariantsList>;
 
 /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsCreateRequestSavedMetricsIdsList = Array<unknown>;
-export const ExperimentsCreateRequestSavedMetricsIdsList =
+export type ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
+  Array<unknown>;
+export const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<ExperimentsCreateRequestSavedMetricsIdsList>;
+  ) as any as S.Schema<ExperimentsDuplicateCreateRequestSavedMetricsIdsList>;
 
 /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-export type ExperimentsCreateRequestOriginalExperimentMap = {
+export type ExperimentsDuplicateCreateRequestOriginalExperimentMap = {
   [key: string]: unknown | undefined;
 };
-export const ExperimentsCreateRequestOriginalExperimentMap =
+export const ExperimentsDuplicateCreateRequestOriginalExperimentMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<ExperimentsCreateRequestOriginalExperimentMap>;
+  ) as any as S.Schema<ExperimentsDuplicateCreateRequestOriginalExperimentMap>;
 
-export interface ExperimentsCreateRequest {
+export interface CreateExperimentDuplicateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
   /** Name of the experiment. */
-  name: string;
+  name?: string;
   /** Description of the experiment hypothesis and expected outcomes. */
   description?: string | null;
   start_date?: string | null;
   end_date?: string | null;
   /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
-  feature_flag_key: string;
-  /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
-  feature_flag?: ExperimentFeatureFlagInput;
+  feature_flag_key?: string;
   /** ID of a holdout group to exclude from the experiment. */
   holdout_id?: number | null;
   /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
@@ -2482,10 +2468,10 @@ export interface ExperimentsCreateRequest {
   /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
   running_time_calculation?: ExperimentRunningTimeCalculation | null;
   /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-  excluded_variants?: ExperimentsCreateRequestExcludedVariantsList | null;
+  excluded_variants?: ExperimentsDuplicateCreateRequestExcludedVariantsList | null;
   secondary_metrics?: unknown;
   /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-  saved_metrics_ids?: ExperimentsCreateRequestSavedMetricsIdsList | null;
+  saved_metrics_ids?: ExperimentsDuplicateCreateRequestSavedMetricsIdsList | null;
   filters?: unknown;
   /** Whether the experiment is archived. */
   archived?: boolean;
@@ -2517,28 +2503,28 @@ export interface ExperimentsCreateRequest {
   /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
   version?: number | null;
   /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-  original_experiment?: ExperimentsCreateRequestOriginalExperimentMap | null;
+  original_experiment?: ExperimentsDuplicateCreateRequestOriginalExperimentMap | null;
 }
-export const ExperimentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateExperimentDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    name: S.String,
+    id: S.Number.pipe(T.Label()),
+    name: S.optional(S.String),
     description: S.optional(S.NullOr(S.String)),
     start_date: S.optional(S.NullOr(S.String)),
     end_date: S.optional(S.NullOr(S.String)),
-    feature_flag_key: S.String,
-    feature_flag: S.optional(ExperimentFeatureFlagInput),
+    feature_flag_key: S.optional(S.String),
     holdout_id: S.optional(S.NullOr(S.Number)),
     parameters: S.optional(S.NullOr(ExperimentParameters)),
     running_time_calculation: S.optional(
       S.NullOr(ExperimentRunningTimeCalculation),
     ),
     excluded_variants: S.optional(
-      S.NullOr(ExperimentsCreateRequestExcludedVariantsList),
+      S.NullOr(ExperimentsDuplicateCreateRequestExcludedVariantsList),
     ),
     secondary_metrics: S.optional(S.Unknown),
     saved_metrics_ids: S.optional(
-      S.NullOr(ExperimentsCreateRequestSavedMetricsIdsList),
+      S.NullOr(ExperimentsDuplicateCreateRequestSavedMetricsIdsList),
     ),
     filters: S.optional(S.Unknown),
     archived: S.optional(S.Boolean),
@@ -2560,18 +2546,1290 @@ export const ExperimentsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     update_feature_flag_params: S.optional(S.Boolean),
     version: S.optional(S.NullOr(S.Number)),
     original_experiment: S.optional(
-      S.NullOr(ExperimentsCreateRequestOriginalExperimentMap),
+      S.NullOr(ExperimentsDuplicateCreateRequestOriginalExperimentMap),
     ),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/api/projects/{project_id}/experiments/",
+      uri: "/api/projects/{project_id}/experiments/{id}/duplicate/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ExperimentsCreateRequest",
-}) as any as S.Schema<ExperimentsCreateRequest>;
+  identifier: "CreateExperimentDuplicateRequest",
+}) as any as S.Schema<CreateExperimentDuplicateRequest>;
+
+export interface CreateExperimentDuplicateResponse {}
+export const CreateExperimentDuplicateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateExperimentDuplicateResponse",
+}) as any as S.Schema<CreateExperimentDuplicateResponse>;
+
+export interface CreateExperimentEndRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** The conclusion of the experiment. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
+  conclusion?: ConclusionEnum | (string & {}) | null;
+  /** Optional comment about the experiment conclusion. */
+  conclusion_comment?: string | null;
+  /** When true, open a draft pull request that removes the experiment's feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise. */
+  open_cleanup_pr?: boolean;
+  /** GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team's connected repositories (see the flag_cleanup_target action); it is then saved as the experiment's repository. When omitted, the experiment's saved repository, the team's default cleanup repository, or the team's only connected repository is used. */
+  repository?: string | null;
+  /** When true, also save `repository` as this environment's default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team's GitHub installation. Requires project admin access (403 otherwise). */
+  set_repository_as_team_default?: boolean;
+}
+export const CreateExperimentEndRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    conclusion: S.optional(S.NullOr(ConclusionEnum)),
+    conclusion_comment: S.optional(S.NullOr(S.String)),
+    open_cleanup_pr: S.optional(S.Boolean),
+    repository: S.optional(S.NullOr(S.String)),
+    set_repository_as_team_default: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/end/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentEndRequest",
+}) as any as S.Schema<CreateExperimentEndRequest>;
+
+export interface CreateExperimentFreezeExposureRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentFreezeExposureRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/{id}/freeze_exposure/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateExperimentFreezeExposureRequest",
+}) as any as S.Schema<CreateExperimentFreezeExposureRequest>;
+
+export interface CreateExperimentLaunchRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentLaunchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/launch/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentLaunchRequest",
+}) as any as S.Schema<CreateExperimentLaunchRequest>;
+
+/** * `manual` - Manual * `agent_mcp` - Agent (MCP) * `cold_run` - Cold Run * `stale_refresh` - Stale Refresh * `auto_refresh` - Auto Refresh * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change * `config_change` - Config Change * `experiment_launch` - Experiment Launch * `experiment_stop` - Experiment Stop * `experiment_update` - Experiment Update */
+export type TriggerEnum =
+  | "manual"
+  | "agent_mcp"
+  | "cold_run"
+  | "stale_refresh"
+  | "auto_refresh"
+  | "experiment_config_change"
+  | "metric_config_change"
+  | "config_change"
+  | "experiment_launch"
+  | "experiment_stop"
+  | "experiment_update";
+export const TriggerEnum = /*@__PURE__*/ S.String;
+
+export interface CreateExperimentMetricRecalculationRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** What triggered this recalculation (manual is the default for user-initiated runs) * `manual` - Manual * `agent_mcp` - Agent (MCP) * `cold_run` - Cold Run * `stale_refresh` - Stale Refresh * `auto_refresh` - Auto Refresh * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change * `config_change` - Config Change * `experiment_launch` - Experiment Launch * `experiment_stop` - Experiment Stop * `experiment_update` - Experiment Update */
+  trigger?: TriggerEnum | (string & {});
+}
+export const CreateExperimentMetricRecalculationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+      trigger: S.optional(TriggerEnum),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateExperimentMetricRecalculationRequest",
+  }) as any as S.Schema<CreateExperimentMetricRecalculationRequest>;
+
+/** * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
+export type MetricsRecalculationStatusEnum =
+  | "pending"
+  | "in_progress"
+  | "completed"
+  | "failed";
+export const MetricsRecalculationStatusEnum = /*@__PURE__*/ S.String;
+
+/** Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results. */
+export interface ActiveRecalculationRun {
+  /** Identifier of the run that is still executing */
+  id: string;
+  /** Status of the executing run (pending or in_progress) * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
+  status: MetricsRecalculationStatusEnum;
+}
+export const ActiveRecalculationRun = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    status: MetricsRecalculationStatusEnum,
+  }),
+).annotate({
+  identifier: "ActiveRecalculationRun",
+}) as any as S.Schema<ActiveRecalculationRun>;
+
+/** * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
+export type ResultSourceEnum = "recalculation" | "timeseries_fallback";
+export const ResultSourceEnum = /*@__PURE__*/ S.String;
+
+/** * `pending` - pending * `completed` - completed * `failed` - failed */
+export type MetricRecalculationResultStatusEnum =
+  | "pending"
+  | "completed"
+  | "failed";
+export const MetricRecalculationResultStatusEnum = /*@__PURE__*/ S.String;
+
+/** One metric's recalculated result row, read back from ExperimentMetricResult. */
+export interface MetricRecalculationResult {
+  /** UUID of the metric this result belongs to */
+  metric_uuid: string;
+  /** Status of this metric's calculation in the run * `pending` - pending * `completed` - completed * `failed` - failed */
+  status: MetricRecalculationResultStatusEnum;
+  /** The computed metric result (ExperimentQueryResponse shape); null when status is pending or failed */
+  result: unknown;
+  /** Error message when status is failed; otherwise null */
+  error_message: string | null;
+}
+export const MetricRecalculationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metric_uuid: S.String,
+    status: MetricRecalculationResultStatusEnum,
+    result: S.Unknown,
+    error_message: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "MetricRecalculationResult",
+}) as any as S.Schema<MetricRecalculationResult>;
+
+/** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
+export type ExperimentMetricsRecalculationResultsList =
+  Array<MetricRecalculationResult>;
+export const ExperimentMetricsRecalculationResultsList = /*@__PURE__*/ S.Array(
+  MetricRecalculationResult,
+) as any as S.Schema<ExperimentMetricsRecalculationResultsList>;
+
+/** Serializer for metrics recalculation status responses. */
+export interface ExperimentMetricsRecalculation {
+  /** Unique identifier for this recalculation job */
+  id: string;
+  /** ID of the experiment being recalculated */
+  experiment_id: number;
+  /** Current status of the recalculation job * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
+  status: MetricsRecalculationStatusEnum;
+  /** Total number of metrics to recalculate */
+  total_metrics: number;
+  /** Number of metrics with a COMPLETED result row in this run (derived, not stored) */
+  completed_metrics: number;
+  /** Number of failed metrics in this run (derived): FAILED result rows plus discovery-step failures that never made it to a result row */
+  failed_metrics: number;
+  /** Map of metric_uuid to error details */
+  metric_errors: unknown;
+  /** Transient retry state per metric_uuid: {attempt, max_attempts, error_type, message, next_retry_at}. message is a user-safe description of the error that triggered the retry. Present only while a metric is between failed attempts; cleared when it succeeds or fails terminally, so treat entries for metrics that already have a result as stale. */
+  metric_retries: unknown;
+  /** What triggered this recalculation * `manual` - Manual * `agent_mcp` - Agent (MCP) * `cold_run` - Cold Run * `stale_refresh` - Stale Refresh * `auto_refresh` - Auto Refresh * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change * `config_change` - Config Change * `experiment_launch` - Experiment Launch * `experiment_stop` - Experiment Stop * `experiment_update` - Experiment Update */
+  trigger: TriggerEnum;
+  /** When the job was created */
+  created_at: string;
+  /** When processing started */
+  started_at: string | null;
+  /** When processing completed */
+  completed_at: string | null;
+  /** Upper time bound the metrics in this run were calculated against (the data freshness cutoff). Shared by every metric in the run; null until processing starts */
+  query_to: string | null;
+  /** True if returning an existing job rather than a newly created one */
+  is_existing: boolean;
+  /** Run currently executing for this experiment, if any; poll it by id for live progress */
+  active_run: ActiveRecalculationRun | null;
+  /** Where these results came from: 'recalculation' for a real metrics-recalculation run, 'timeseries_fallback' for a cold-start placeholder built from the latest daily timeseries data. * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
+  result_source: ResultSourceEnum;
+  /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
+  results: ExperimentMetricsRecalculationResultsList;
+  /** Rows read by the run's metric queries so far, both finished and currently running. Cumulative and roughly monotonic across the run; the primary live progress signal */
+  rows_read?: number | null;
+  /** ClickHouse's total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal */
+  estimated_rows_total?: number | null;
+}
+export const ExperimentMetricsRecalculation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    experiment_id: S.Number,
+    status: MetricsRecalculationStatusEnum,
+    total_metrics: S.Number,
+    completed_metrics: S.Number,
+    failed_metrics: S.Number,
+    metric_errors: S.Unknown,
+    metric_retries: S.Unknown,
+    trigger: TriggerEnum,
+    created_at: S.String,
+    started_at: S.NullOr(S.String),
+    completed_at: S.NullOr(S.String),
+    query_to: S.NullOr(S.String),
+    is_existing: S.Boolean,
+    active_run: S.NullOr(ActiveRecalculationRun),
+    result_source: ResultSourceEnum,
+    results: ExperimentMetricsRecalculationResultsList,
+    rows_read: S.optional(S.NullOr(S.Number)),
+    estimated_rows_total: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "ExperimentMetricsRecalculation",
+}) as any as S.Schema<ExperimentMetricsRecalculation>;
+
+export interface CreateExperimentPauseRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentPauseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/pause/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentPauseRequest",
+}) as any as S.Schema<CreateExperimentPauseRequest>;
+
+/** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
+export type ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
+  Array<string>;
+export const ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList>;
+
+/** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
+export type ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList =
+  Array<unknown>;
+export const ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList>;
+
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+export type ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap =
+  { [key: string]: unknown | undefined };
+export const ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap>;
+
+export interface CreateExperimentRecalculateTimeseryRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** Name of the experiment. */
+  name?: string;
+  /** Description of the experiment hypothesis and expected outcomes. */
+  description?: string | null;
+  start_date?: string | null;
+  end_date?: string | null;
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  feature_flag_key?: string;
+  /** ID of a holdout group to exclude from the experiment. */
+  holdout_id?: number | null;
+  /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
+  parameters?: ExperimentParameters | null;
+  /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
+  running_time_calculation?: ExperimentRunningTimeCalculation | null;
+  /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
+  excluded_variants?: ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList | null;
+  secondary_metrics?: unknown;
+  /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
+  saved_metrics_ids?: ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList | null;
+  filters?: unknown;
+  /** Whether the experiment is archived. */
+  archived?: boolean;
+  deleted?: boolean | null;
+  /** Experiment type: web for frontend UI changes, product for backend/API changes. * `web` - web * `product` - product */
+  type?: ExperimentTypeEnum | (string & {}) | null;
+  /** Exposure configuration including filter test accounts and custom exposure events. */
+  exposure_criteria?: ExperimentApiExposureCriteria | null;
+  /** Primary experiment metrics. Each metric must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Use the read-data-schema tool with query kind 'events' to find available events in the project. */
+  metrics?: ExperimentApiMetricsList | null;
+  /** Secondary metrics for additional measurements. Same format as primary metrics. */
+  metrics_secondary?: ExperimentApiMetricsList | null;
+  stats_config?: unknown;
+  scheduling_config?: unknown;
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  allow_unknown_events?: boolean;
+  _create_in_folder?: string;
+  /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
+  conclusion?: ConclusionEnum | (string & {}) | null;
+  /** Comment about the experiment conclusion. */
+  conclusion_comment?: string | null;
+  /** GitHub repository holding this experiment's feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team's only connected repository and is skipped if the team has several. */
+  repository?: string | null;
+  primary_metrics_ordered_uuids?: unknown;
+  secondary_metrics_ordered_uuids?: unknown;
+  only_count_matured_users?: boolean;
+  /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
+  update_feature_flag_params?: boolean;
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  version?: number | null;
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  original_experiment?: ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap | null;
+}
+export const CreateExperimentRecalculateTimeseryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+      name: S.optional(S.String),
+      description: S.optional(S.NullOr(S.String)),
+      start_date: S.optional(S.NullOr(S.String)),
+      end_date: S.optional(S.NullOr(S.String)),
+      feature_flag_key: S.optional(S.String),
+      holdout_id: S.optional(S.NullOr(S.Number)),
+      parameters: S.optional(S.NullOr(ExperimentParameters)),
+      running_time_calculation: S.optional(
+        S.NullOr(ExperimentRunningTimeCalculation),
+      ),
+      excluded_variants: S.optional(
+        S.NullOr(
+          ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList,
+        ),
+      ),
+      secondary_metrics: S.optional(S.Unknown),
+      saved_metrics_ids: S.optional(
+        S.NullOr(
+          ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList,
+        ),
+      ),
+      filters: S.optional(S.Unknown),
+      archived: S.optional(S.Boolean),
+      deleted: S.optional(S.NullOr(S.Boolean)),
+      type: S.optional(S.NullOr(ExperimentTypeEnum)),
+      exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
+      metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
+      metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+      stats_config: S.optional(S.Unknown),
+      scheduling_config: S.optional(S.Unknown),
+      allow_unknown_events: S.optional(S.Boolean),
+      _create_in_folder: S.optional(S.String),
+      conclusion: S.optional(S.NullOr(ConclusionEnum)),
+      conclusion_comment: S.optional(S.NullOr(S.String)),
+      repository: S.optional(S.NullOr(S.String)),
+      primary_metrics_ordered_uuids: S.optional(S.Unknown),
+      secondary_metrics_ordered_uuids: S.optional(S.Unknown),
+      only_count_matured_users: S.optional(S.Boolean),
+      update_feature_flag_params: S.optional(S.Boolean),
+      version: S.optional(S.NullOr(S.Number)),
+      original_experiment: S.optional(
+        S.NullOr(
+          ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap,
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/{id}/recalculate_timeseries/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateExperimentRecalculateTimeseryRequest",
+  }) as any as S.Schema<CreateExperimentRecalculateTimeseryRequest>;
+
+export interface CreateExperimentRecalculateTimeseryResponse {}
+export const CreateExperimentRecalculateTimeseryResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "CreateExperimentRecalculateTimeseryResponse",
+  }) as any as S.Schema<CreateExperimentRecalculateTimeseryResponse>;
+
+export interface CreateExperimentResetRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentResetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/reset/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentResetRequest",
+}) as any as S.Schema<CreateExperimentResetRequest>;
+
+export interface CreateExperimentResumeRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentResumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/resume/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentResumeRequest",
+}) as any as S.Schema<CreateExperimentResumeRequest>;
+
+/** * `fired_any` - fired_any * `no_metric_activity` - no_metric_activity * `funnel_dropoff` - funnel_dropoff */
+export type ExperimentSessionBucketEnum =
+  | "fired_any"
+  | "no_metric_activity"
+  | "funnel_dropoff";
+export const ExperimentSessionBucketEnum = /*@__PURE__*/ S.String;
+
+/** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
+export type ExperimentsSessionBucketsCreateRequestMetricUuidsList =
+  Array<string>;
+export const ExperimentsSessionBucketsCreateRequestMetricUuidsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentsSessionBucketsCreateRequestMetricUuidsList>;
+
+export interface CreateExperimentSessionBucketRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** Which question the returned session set answers. 'fired_any': the session fired at least one event of any listed metric (an OR the recordings query itself can't express). 'no_metric_activity': the session fired none of them. 'funnel_dropoff': the session saw an exposure event but never fired the funnel metric's last step; the exposure is the funnel's implicit first step, the same as in the experiment analysis. All three are session-scoped and goal-free: they say what happened in the session, not whether it helped or hurt the metric. * `fired_any` - fired_any * `no_metric_activity` - no_metric_activity * `funnel_dropoff` - funnel_dropoff */
+  bucket: ExperimentSessionBucketEnum | (string & {});
+  /** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
+  metric_uuids?: ExperimentsSessionBucketsCreateRequestMetricUuidsList;
+  /** Restrict to sessions that saw this variant. Omit for every variant. A session that saw more than one variant matches each variant it saw. */
+  variant?: string | null;
+  /** Maximum session IDs to return, at most 100. The most recently active matching sessions win. */
+  limit?: number;
+}
+export const CreateExperimentSessionBucketRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+      bucket: ExperimentSessionBucketEnum,
+      metric_uuids: S.optional(
+        ExperimentsSessionBucketsCreateRequestMetricUuidsList,
+      ),
+      variant: S.optional(S.NullOr(S.String)),
+      limit: S.optional(S.Number),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/{id}/session_buckets/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateExperimentSessionBucketRequest",
+}) as any as S.Schema<CreateExperimentSessionBucketRequest>;
+
+/** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
+export type ExperimentSessionBucketResponseSessionIdsList = Array<string>;
+export const ExperimentSessionBucketResponseSessionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentSessionBucketResponseSessionIdsList>;
+
+/** One metric the bucket was computed over. */
+export interface ExperimentSessionBucketMetric {
+  /** UUID of the experiment metric. */
+  metric_uuid: string;
+  /** Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed. */
+  metric_name: string;
+}
+export const ExperimentSessionBucketMetric = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metric_uuid: S.String,
+    metric_name: S.String,
+  }),
+).annotate({
+  identifier: "ExperimentSessionBucketMetric",
+}) as any as S.Schema<ExperimentSessionBucketMetric>;
+
+/** The metrics the bucket was actually computed over. Load-bearing for 'no_metric_activity': 'fired nothing' only means something next to the list of metrics it was evaluated against. */
+export type ExperimentSessionBucketResponseConsideredMetricsList =
+  Array<ExperimentSessionBucketMetric>;
+export const ExperimentSessionBucketResponseConsideredMetricsList =
+  /*@__PURE__*/ S.Array(
+    ExperimentSessionBucketMetric,
+  ) as any as S.Schema<ExperimentSessionBucketResponseConsideredMetricsList>;
+
+/** One requested metric the bucket could not be computed over. */
+export interface ExperimentSessionBucketExcludedMetric {
+  /** UUID of the experiment metric. */
+  metric_uuid: string;
+  /** Display name of the metric. */
+  metric_name: string;
+  /** Why the metric can't be matched to recordings: a data-warehouse-only source, a retention window, or events only ever captured server-side. */
+  reason: string;
+}
+export const ExperimentSessionBucketExcludedMetric = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      metric_uuid: S.String,
+      metric_name: S.String,
+      reason: S.String,
+    }),
+).annotate({
+  identifier: "ExperimentSessionBucketExcludedMetric",
+}) as any as S.Schema<ExperimentSessionBucketExcludedMetric>;
+
+/** Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result. */
+export type ExperimentSessionBucketResponseExcludedMetricsList =
+  Array<ExperimentSessionBucketExcludedMetric>;
+export const ExperimentSessionBucketResponseExcludedMetricsList =
+  /*@__PURE__*/ S.Array(
+    ExperimentSessionBucketExcludedMetric,
+  ) as any as S.Schema<ExperimentSessionBucketResponseExcludedMetricsList>;
+
+/** Session recordings of an experiment matching a bucket. */
+export interface ExperimentSessionBucketResponse {
+  /** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
+  session_ids: ExperimentSessionBucketResponseSessionIdsList;
+  /** True when more sessions matched than the limit returned. Older matches were dropped first. */
+  truncated: boolean;
+  /** The metrics the bucket was actually computed over. Load-bearing for 'no_metric_activity': 'fired nothing' only means something next to the list of metrics it was evaluated against. */
+  considered_metrics: ExperimentSessionBucketResponseConsideredMetricsList;
+  /** Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result. */
+  excluded_metrics: ExperimentSessionBucketResponseExcludedMetricsList;
+  /** Start of the window scanned: the experiment's run window, clamped to its most recent 30 days. Matches outside it are not returned. */
+  date_from: string;
+  /** End of the window scanned: the experiment's end date, or now while it runs. */
+  date_to: string;
+  /** Whether the project's test-account filters were applied, following the experiment's exposure criteria, the same rule the experiment's recordings list uses. */
+  filter_test_accounts: boolean;
+  /** True when the exposed population was matched on the stamped $feature/<flag key> event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean 'the flag was active in this session', not 'the exposure moment was captured'. The variant comes from the flag's value on each event, so a returning user can appear under a variant they were re-bucketed into later. */
+  used_exposure_fallback: boolean;
+}
+export const ExperimentSessionBucketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session_ids: ExperimentSessionBucketResponseSessionIdsList,
+    truncated: S.Boolean,
+    considered_metrics: ExperimentSessionBucketResponseConsideredMetricsList,
+    excluded_metrics: ExperimentSessionBucketResponseExcludedMetricsList,
+    date_from: S.String,
+    date_to: S.String,
+    filter_test_accounts: S.Boolean,
+    used_exposure_fallback: S.Boolean,
+  }),
+).annotate({
+  identifier: "ExperimentSessionBucketResponse",
+}) as any as S.Schema<ExperimentSessionBucketResponse>;
+
+/** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
+export type ExperimentsSessionContextsCreateRequestSessionIdsList =
+  Array<string>;
+export const ExperimentsSessionContextsCreateRequestSessionIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentsSessionContextsCreateRequestSessionIdsList>;
+
+export interface CreateExperimentSessionContextRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
+  session_ids: ExperimentsSessionContextsCreateRequestSessionIdsList;
+}
+export const CreateExperimentSessionContextRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      session_ids: ExperimentsSessionContextsCreateRequestSessionIdsList,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/session_contexts/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateExperimentSessionContextRequest",
+}) as any as S.Schema<CreateExperimentSessionContextRequest>;
+
+/** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
+export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
+export const ExperimentSessionContextItemVariantsSeenList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
+
+/** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+export type ExperimentSessionMetricHitTimestampsList = Array<string>;
+export const ExperimentSessionMetricHitTimestampsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
+
+/** * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
+export type SourceRoleEnum =
+  | "source"
+  | "step"
+  | "numerator"
+  | "denominator"
+  | "retention_start"
+  | "retention_completion";
+export const SourceRoleEnum = /*@__PURE__*/ S.String;
+
+/** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+export type ExperimentSessionMetricSourceHitTimestampsList = Array<string>;
+export const ExperimentSessionMetricSourceHitTimestampsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentSessionMetricSourceHitTimestampsList>;
+
+/** One event/action source of a metric with at least one matching event in a session recording. */
+export interface ExperimentSessionMetricSourceHit {
+  /** What this source means to its metric: 'source' (a mean metric's single event), 'step' (a funnel step, numbered by source_index), 'numerator'/'denominator' (a ratio metric's two sides), or 'retention_start'/'retention_completion' (a retention metric's start event and return visit). A hit on one source is not a hit on the metric as the analysis counts it. * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
+  source_role: SourceRoleEnum;
+  /** Display name of the source event or action. */
+  source_name: string;
+  /** 0-based position of this source among all the metric's sources, data-warehouse ones included — so a funnel step keeps its real step number even when an earlier step has no session events. */
+  source_index: number;
+  /** Total number of sources the metric is defined over. */
+  source_total: number;
+  /** Number of events in the session matching this source. */
+  event_count: number;
+  /** Timestamp of the first event in the session matching this source. */
+  first_timestamp: string;
+  /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+  timestamps: ExperimentSessionMetricSourceHitTimestampsList;
+}
+export const ExperimentSessionMetricSourceHit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    source_role: SourceRoleEnum,
+    source_name: S.String,
+    source_index: S.Number,
+    source_total: S.Number,
+    event_count: S.Number,
+    first_timestamp: S.String,
+    timestamps: ExperimentSessionMetricSourceHitTimestampsList,
+  }),
+).annotate({
+  identifier: "ExperimentSessionMetricSourceHit",
+}) as any as S.Schema<ExperimentSessionMetricSourceHit>;
+
+/** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
+export type ExperimentSessionMetricHitSourcesList =
+  Array<ExperimentSessionMetricSourceHit>;
+export const ExperimentSessionMetricHitSourcesList = /*@__PURE__*/ S.Array(
+  ExperimentSessionMetricSourceHit,
+) as any as S.Schema<ExperimentSessionMetricHitSourcesList>;
+
+/** One experiment metric with at least one matching event in a session recording. */
+export interface ExperimentSessionMetricHit {
+  /** UUID of the experiment metric (inline primary/secondary or saved) whose events fired. */
+  metric_uuid: string;
+  /** Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed. */
+  metric_name: string;
+  /** Total number of events in the session matching any of the metric's event/action sources. */
+  event_count: number;
+  /** Timestamp of the first event in the session matching the metric. */
+  first_timestamp: string;
+  /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
+  timestamps: ExperimentSessionMetricHitTimestampsList;
+  /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
+  sources: ExperimentSessionMetricHitSourcesList;
+}
+export const ExperimentSessionMetricHit = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metric_uuid: S.String,
+    metric_name: S.String,
+    event_count: S.Number,
+    first_timestamp: S.String,
+    timestamps: ExperimentSessionMetricHitTimestampsList,
+    sources: ExperimentSessionMetricHitSourcesList,
+  }),
+).annotate({
+  identifier: "ExperimentSessionMetricHit",
+}) as any as S.Schema<ExperimentSessionMetricHit>;
+
+/** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
+export type ExperimentSessionContextItemMetricsInSessionList =
+  Array<ExperimentSessionMetricHit>;
+export const ExperimentSessionContextItemMetricsInSessionList =
+  /*@__PURE__*/ S.Array(
+    ExperimentSessionMetricHit,
+  ) as any as S.Schema<ExperimentSessionContextItemMetricsInSessionList>;
+
+/** One experiment whose feature flag a session recording saw. */
+export interface ExperimentSessionContextItem {
+  /** ID of the experiment whose feature flag the session saw. */
+  experiment_id: number;
+  /** Name of the experiment. */
+  experiment_name: string;
+  /** Key of the experiment's feature flag. */
+  flag_key: string;
+  /** Variant the session saw. Taken from the earliest event matching the experiment's exposure criteria when one exists, otherwise from the earliest flag evaluation in the session, otherwise from the $feature/<key> property stamped on the session's events. */
+  variant: string;
+  /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
+  variants_seen: ExperimentSessionContextItemVariantsSeenList;
+  /** True when the session saw more than one variant of this flag. */
+  multiple_variants: boolean;
+  /** Timestamp of the first event in the session matching the experiment's exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/<key> properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person's counted first exposure may lie in an earlier session. */
+  first_exposure_timestamp: string | null;
+  /** When the experiment was launched. */
+  experiment_start_date: string | null;
+  /** When the experiment ended. Null while the experiment is still running. */
+  experiment_end_date: string | null;
+  /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
+  metrics_in_session: ExperimentSessionContextItemMetricsInSessionList;
+}
+export const ExperimentSessionContextItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    experiment_id: S.Number,
+    experiment_name: S.String,
+    flag_key: S.String,
+    variant: S.String,
+    variants_seen: ExperimentSessionContextItemVariantsSeenList,
+    multiple_variants: S.Boolean,
+    first_exposure_timestamp: S.NullOr(S.String),
+    experiment_start_date: S.NullOr(S.String),
+    experiment_end_date: S.NullOr(S.String),
+    metrics_in_session: ExperimentSessionContextItemMetricsInSessionList,
+  }),
+).annotate({
+  identifier: "ExperimentSessionContextItem",
+}) as any as S.Schema<ExperimentSessionContextItem>;
+
+/** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
+export type ExperimentSessionContextResponseResultsList =
+  Array<ExperimentSessionContextItem>;
+export const ExperimentSessionContextResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    ExperimentSessionContextItem,
+  ) as any as S.Schema<ExperimentSessionContextResponseResultsList>;
+
+/** Experiment/variant context for a session recording. */
+export interface ExperimentSessionContextResponse {
+  /** ID of the session recording the context was resolved for. */
+  session_id: string;
+  /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
+  results: ExperimentSessionContextResponseResultsList;
+}
+export const ExperimentSessionContextResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session_id: S.String,
+    results: ExperimentSessionContextResponseResultsList,
+  }),
+).annotate({
+  identifier: "ExperimentSessionContextResponse",
+}) as any as S.Schema<ExperimentSessionContextResponse>;
+
+/** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
+export type ExperimentSessionContextsResponseResultsList =
+  Array<ExperimentSessionContextResponse>;
+export const ExperimentSessionContextsResponseResultsList =
+  /*@__PURE__*/ S.Array(
+    ExperimentSessionContextResponse,
+  ) as any as S.Schema<ExperimentSessionContextsResponseResultsList>;
+
+/** Experiment/variant context for a batch of session recordings. */
+export interface ExperimentSessionContextsResponse {
+  /** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
+  results: ExperimentSessionContextsResponseResultsList;
+}
+export const ExperimentSessionContextsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: ExperimentSessionContextsResponseResultsList,
+  }),
+).annotate({
+  identifier: "ExperimentSessionContextsResponse",
+}) as any as S.Schema<ExperimentSessionContextsResponse>;
+
+export interface CreateExperimentSessionEventDeltaRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentSessionEventDeltaRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/{id}/session_event_deltas/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateExperimentSessionEventDeltaRequest",
+}) as any as S.Schema<CreateExperimentSessionEventDeltaRequest>;
+
+/** * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
+export type ExperimentWatchCardKindEnum =
+  | "behavior"
+  | "friction"
+  | "variant_only"
+  | "metric";
+export const ExperimentWatchCardKindEnum = /*@__PURE__*/ S.String;
+
+/** * `only` - only * `far_more` - far_more * `more` - more * `slightly_more` - slightly_more */
+export type ExperimentWatchCardStrengthEnum =
+  | "only"
+  | "far_more"
+  | "more"
+  | "slightly_more";
+export const ExperimentWatchCardStrengthEnum = /*@__PURE__*/ S.String;
+
+/** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
+export type ExperimentWatchCardSessionIdsList = Array<string>;
+export const ExperimentWatchCardSessionIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ExperimentWatchCardSessionIdsList>;
+
+/** One recording a card names first, and the phrase that says why. */
+export interface ExperimentWatchHighlight {
+  /** The recording to open. Always one of the card's own session_ids. */
+  session_id: string;
+  /** Everything this recording carries that earned it the place, ready to render as-is, for example '6 rage clicks, 6 errors' or '1 error, did this 4 times'. Every signal the session shows is listed, so the phrase is the whole picture rather than the single strongest part of it. Friction counts cover the whole session; 'did this N times' counts the card's own event. Not a comparison and not a reason the card exists. */
+  reason: string;
+}
+export const ExperimentWatchHighlight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session_id: S.String,
+    reason: S.String,
+  }),
+).annotate({
+  identifier: "ExperimentWatchHighlight",
+}) as any as S.Schema<ExperimentWatchHighlight>;
+
+/** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
+export type ExperimentWatchCardHighlightsList = Array<ExperimentWatchHighlight>;
+export const ExperimentWatchCardHighlightsList = /*@__PURE__*/ S.Array(
+  ExperimentWatchHighlight,
+) as any as S.Schema<ExperimentWatchCardHighlightsList>;
+
+/** One group of recordings worth opening, and the sentence that justifies it. Deliberately no rate, no ratio and no person count: a precise number next to an event name is an effect size, and the experiment's results publish those for everything it measures, computed over a different window and a different unit. The only number here is how many recordings the card can actually show. */
+export interface ExperimentWatchCard {
+  /** What the card is: 'behavior' for an event this variant did clearly more than the other variants together, 'friction' for the same finding on an error or rage signal, 'variant_only' for an event no other variant fired at all, and 'metric' for a shortcut to recordings around one of the experiment's own metric events. A 'variant_only' card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results' answer. * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
+  kind: ExperimentWatchCardKindEnum;
+  /** The event behind the card. */
+  event: string;
+  /** The variant whose recordings these are: for comparison cards, the one that did the event more. */
+  variant: string;
+  /** How far apart this variant and the rest are, as a band rather than a number: 'only' when nobody in the other variants did it at all among the people compared, then 'far_more', 'more' and 'slightly_more'. Read off the conservative end of the difference, so a card that clears the bar only because the sample is large reports as slight. Null on metric cards, which compare nothing. Present a band as a comparison ('far more common in test'), never convert it into a multiple. * `only` - only * `far_more` - far_more * `more` - more * `slightly_more` - slightly_more */
+  strength: ExperimentWatchCardStrengthEnum | null;
+  /** The metric this card's event belongs to, on a comparison card as well as on a shortcut card. When set, the experiment's results measure this event over the whole run window with the statistics that go with a result, so say the card points there and never present the card as a second answer about that metric. Null when no metric counts the event. */
+  metric_name: string | null;
+  /** How many recordings the card carries, at most max_card_recordings (20). Every card is backed by recordings that actually exist: a finding whose sessions were never recorded is dropped rather than promised. A count sitting on the ceiling means at least that many, so say 'at least' and never compare two such counts: how often the event happened is the experiment's results, and this only counts what replay kept. */
+  recording_count: number;
+  /** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
+  session_ids: ExperimentWatchCardSessionIdsList;
+  /** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
+  highlights: ExperimentWatchCardHighlightsList;
+}
+export const ExperimentWatchCard = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: ExperimentWatchCardKindEnum,
+    event: S.String,
+    variant: S.String,
+    strength: S.NullOr(ExperimentWatchCardStrengthEnum),
+    metric_name: S.NullOr(S.String),
+    recording_count: S.Number,
+    session_ids: ExperimentWatchCardSessionIdsList,
+    highlights: ExperimentWatchCardHighlightsList,
+  }),
+).annotate({
+  identifier: "ExperimentWatchCard",
+}) as any as S.Schema<ExperimentWatchCard>;
+
+/** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
+export type ExperimentSessionEventDeltaResponseCardsList =
+  Array<ExperimentWatchCard>;
+export const ExperimentSessionEventDeltaResponseCardsList =
+  /*@__PURE__*/ S.Array(
+    ExperimentWatchCard,
+  ) as any as S.Schema<ExperimentSessionEventDeltaResponseCardsList>;
+
+/** One variant's compared population. */
+export interface ExperimentWatchArm {
+  /** The variant key. */
+  key: string;
+  /** Exposed people the comparison covered for this variant. People rather than sessions because a variant can change how often the flag is evaluated again later, which moves a variant's session count without anyone behaving differently. Each person is read from the first session the comparison covers them in, so every variant gets the same amount of behavior per person. */
+  persons: number;
+  /** Exposed sessions those people were seen in, which is more than the comparison reads: it says how much recorded material sits behind the variant. */
+  sessions: number;
+}
+export const ExperimentWatchArm = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.String,
+    persons: S.Number,
+    sessions: S.Number,
+  }),
+).annotate({
+  identifier: "ExperimentWatchArm",
+}) as any as S.Schema<ExperimentWatchArm>;
+
+/** Every variant's compared population, in the flag's variant order. */
+export type ExperimentSessionEventDeltaResponseArmsList =
+  Array<ExperimentWatchArm>;
+export const ExperimentSessionEventDeltaResponseArmsList =
+  /*@__PURE__*/ S.Array(
+    ExperimentWatchArm,
+  ) as any as S.Schema<ExperimentSessionEventDeltaResponseArmsList>;
+
+/** * `exclude` - exclude * `first_seen` - first_seen */
+export type ExperimentWatchMultipleVariantHandlingEnum =
+  | "exclude"
+  | "first_seen";
+export const ExperimentWatchMultipleVariantHandlingEnum =
+  /*@__PURE__*/ S.String;
+
+/** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
+export type ExperimentSessionEventDeltaResponseMetricEventsList = Array<string>;
+export const ExperimentSessionEventDeltaResponseMetricEventsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentSessionEventDeltaResponseMetricEventsList>;
+
+/** The recordings worth watching for this experiment, grouped into cards. Descriptive, never a result: cards say where behavior visibly differed and hand over the recordings, while the experiment's results measure its metrics over the whole run window and state the magnitudes. Nothing here says a variant is winning. */
+export interface ExperimentSessionEventDeltaResponse {
+  /** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
+  cards: ExperimentSessionEventDeltaResponseCardsList;
+  /** Every variant's compared population, in the flag's variant order. */
+  arms: ExperimentSessionEventDeltaResponseArmsList;
+  /** People who saw more than one variant and were left out of every card. Always 0 when the experiment attributes such users to the variant they saw first. */
+  multiple_variant_persons: number;
+  /** How the experiment handles someone who saw more than one variant, followed here so the cards split their people the same way the analysis does. * `exclude` - exclude * `first_seen` - first_seen */
+  multiple_variant_handling: ExperimentWatchMultipleVariantHandlingEnum;
+  /** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
+  metric_events: ExperimentSessionEventDeltaResponseMetricEventsList;
+  /** Start of what was actually compared. The requested window is the experiment's run window clamped to its most recent 14 days (2 when sessions are matched on the stamped flag property, which no event name can prune a scan on), but a busy experiment reaches the session ceiling long before that, and this reports where the compared sessions really begin - often hours rather than days back. Display this, not the experiment's own dates. */
+  date_from: string;
+  /** End of what was compared: the experiment's end date, or now while it runs. */
+  date_to: string;
+  /** Whether the project's test-account filters were applied, following the experiment's exposure criteria, the same rule the experiment's recordings list uses. */
+  filter_test_accounts: boolean;
+  /** True when the compared sessions were matched on the stamped $feature/<flag key> event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean 'the flag was active in this session', and the variant comes from the flag's value on each event, so a returning user can be counted under a variant they were re-bucketed into later. */
+  used_exposure_fallback: boolean;
+  /** True when the experiment had more exposed sessions in the requested window than one comparison covers, so the most recent ones were used and date_from is later than the experiment's own window. Every variant is still covered over the same stretch of time. */
+  sessions_truncated: boolean;
+  /** True when the project has more distinct event names in the window than one comparison can rank, so some were never considered. */
+  events_truncated: boolean;
+  /** How many exposed people a variant needs before it can be compared at all. Below it a variant's cards would be noise whatever the evidence bar allows. */
+  min_arm_persons: number;
+  /** The most recordings one card can carry. A card whose recording_count equals this hit the ceiling, so report it as 'at least this many' rather than as a count. */
+  max_card_recordings: number;
+  /** How many cards were removed because their recordings were already another card's on the same shelf. Nothing was lost: the recordings are all reachable through the cards that stayed. */
+  dropped_duplicate_cards: number;
+  /** True when fewer than two variants have min_arm_persons exposed people, so no comparison exists and cards is empty. Say 'too early to compare' and show the arms' counts; an empty shelf presented without this would read as 'the variants behaved identically'. */
+  too_early: boolean;
+}
+export const ExperimentSessionEventDeltaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cards: ExperimentSessionEventDeltaResponseCardsList,
+    arms: ExperimentSessionEventDeltaResponseArmsList,
+    multiple_variant_persons: S.Number,
+    multiple_variant_handling: ExperimentWatchMultipleVariantHandlingEnum,
+    metric_events: ExperimentSessionEventDeltaResponseMetricEventsList,
+    date_from: S.String,
+    date_to: S.String,
+    filter_test_accounts: S.Boolean,
+    used_exposure_fallback: S.Boolean,
+    sessions_truncated: S.Boolean,
+    events_truncated: S.Boolean,
+    min_arm_persons: S.Number,
+    max_card_recordings: S.Number,
+    dropped_duplicate_cards: S.Number,
+    too_early: S.Boolean,
+  }),
+).annotate({
+  identifier: "ExperimentSessionEventDeltaResponse",
+}) as any as S.Schema<ExperimentSessionEventDeltaResponse>;
+
+export interface CreateExperimentShipVariantRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** The conclusion of the experiment. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
+  conclusion?: ConclusionEnum | (string & {}) | null;
+  /** Optional comment about the experiment conclusion. */
+  conclusion_comment?: string | null;
+  /** When true, open a draft pull request that removes the experiment's feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise. */
+  open_cleanup_pr?: boolean;
+  /** GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team's connected repositories (see the flag_cleanup_target action); it is then saved as the experiment's repository. When omitted, the experiment's saved repository, the team's default cleanup repository, or the team's only connected repository is used. */
+  repository?: string | null;
+  /** When true, also save `repository` as this environment's default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team's GitHub installation. Requires project admin access (403 otherwise). */
+  set_repository_as_team_default?: boolean;
+  /** The key of the variant to ship. */
+  variant_key?: string;
+  /** If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution — existing release conditions are preserved and the variant is served only to users who already match them. */
+  release_to_everyone?: boolean;
+}
+export const CreateExperimentShipVariantRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    conclusion: S.optional(S.NullOr(ConclusionEnum)),
+    conclusion_comment: S.optional(S.NullOr(S.String)),
+    open_cleanup_pr: S.optional(S.Boolean),
+    repository: S.optional(S.NullOr(S.String)),
+    set_repository_as_team_default: S.optional(S.Boolean),
+    variant_key: S.optional(S.String),
+    release_to_everyone: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/ship_variant/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentShipVariantRequest",
+}) as any as S.Schema<CreateExperimentShipVariantRequest>;
+
+export interface CreateExperimentUnarchiveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentUnarchiveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/experiments/{id}/unarchive/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateExperimentUnarchiveRequest",
+}) as any as S.Schema<CreateExperimentUnarchiveRequest>;
+
+export interface CreateExperimentUnfreezeExposureRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+}
+export const CreateExperimentUnfreezeExposureRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/experiments/{id}/unfreeze_exposure/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateExperimentUnfreezeExposureRequest",
+}) as any as S.Schema<CreateExperimentUnfreezeExposureRequest>;
+
+export interface ExperimentsActivityRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** Number of items per page */
+  limit?: number;
+  /** Page number */
+  page?: number;
+}
+export const ExperimentsActivityRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/experiments/{id}/activity/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ExperimentsActivityRetrieveRequest",
+}) as any as S.Schema<ExperimentsActivityRetrieveRequest>;
+
+export interface Change {
+  type?: string;
+  action?: string;
+  field?: string;
+  before?: unknown;
+  after?: unknown;
+}
+export const Change = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    action: S.optional(S.String),
+    field: S.optional(S.String),
+    before: S.optional(S.Unknown),
+    after: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Change" }) as any as S.Schema<Change>;
+
+export type DetailChangesList = Array<Change>;
+export const DetailChangesList = /*@__PURE__*/ S.Array(
+  Change,
+) as any as S.Schema<DetailChangesList>;
+
+export interface Merge {
+  type?: string;
+  source?: unknown;
+  target?: unknown;
+}
+export const Merge = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    source: S.optional(S.Unknown),
+    target: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Merge" }) as any as S.Schema<Merge>;
+
+export interface Trigger {
+  job_type?: string;
+  job_id?: string;
+  payload?: unknown;
+}
+export const Trigger = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    job_type: S.optional(S.String),
+    job_id: S.optional(S.String),
+    payload: S.optional(S.Unknown),
+  }),
+).annotate({ identifier: "Trigger" }) as any as S.Schema<Trigger>;
+
+export interface Detail {
+  id?: string;
+  changes?: DetailChangesList;
+  merge?: Merge;
+  trigger?: Trigger;
+  name?: string;
+  short_id?: string;
+  type?: string;
+}
+export const Detail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    changes: S.optional(DetailChangesList),
+    merge: S.optional(Merge),
+    trigger: S.optional(Trigger),
+    name: S.optional(S.String),
+    short_id: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({ identifier: "Detail" }) as any as S.Schema<Detail>;
+
+export interface ActivityLogEntry {
+  id?: string;
+  user?: unknown | null;
+  activity?: string;
+  scope?: string;
+  item_id?: string;
+  detail?: Detail;
+  created_at?: string;
+  /** Whether the activity was performed by the system rather than a user. */
+  is_system?: boolean;
+  /** Whether the acting user was being impersonated by PostHog staff. */
+  was_impersonated?: boolean;
+  /** API client that triggered the activity, from the x-posthog-client request header (e.g. 'mcp'). Null for requests that did not send the header. */
+  client?: string | null;
+}
+export const ActivityLogEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    user: S.optional(S.NullOr(S.Unknown)),
+    activity: S.optional(S.String),
+    scope: S.optional(S.String),
+    item_id: S.optional(S.String),
+    detail: S.optional(Detail),
+    created_at: S.optional(S.String),
+    is_system: S.optional(S.Boolean),
+    was_impersonated: S.optional(S.Boolean),
+    client: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ActivityLogEntry",
+}) as any as S.Schema<ActivityLogEntry>;
+
+export type ActivityLogPaginatedResponseResultsList = Array<ActivityLogEntry>;
+export const ActivityLogPaginatedResponseResultsList = /*@__PURE__*/ S.Array(
+  ActivityLogEntry,
+) as any as S.Schema<ActivityLogPaginatedResponseResultsList>;
+
+/** Response shape for paginated activity log endpoints. */
+export interface ActivityLogPaginatedResponse {
+  results?: ActivityLogPaginatedResponseResultsList;
+  next?: string | null;
+  previous?: string | null;
+  total_count?: number;
+}
+export const ActivityLogPaginatedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(ActivityLogPaginatedResponseResultsList),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    total_count: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ActivityLogPaginatedResponse",
+}) as any as S.Schema<ActivityLogPaginatedResponse>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsCreateExposureCohortForExperimentCreateRequestExcludedVariantsList =
@@ -2808,186 +4066,6 @@ export const ExperimentsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentsDestroyResponse",
 }) as any as S.Schema<ExperimentsDestroyResponse>;
 
-/** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsDuplicateCreateRequestExcludedVariantsList =
-  Array<string>;
-export const ExperimentsDuplicateCreateRequestExcludedVariantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsDuplicateCreateRequestExcludedVariantsList>;
-
-/** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
-  Array<unknown>;
-export const ExperimentsDuplicateCreateRequestSavedMetricsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsDuplicateCreateRequestSavedMetricsIdsList>;
-
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-export type ExperimentsDuplicateCreateRequestOriginalExperimentMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExperimentsDuplicateCreateRequestOriginalExperimentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsDuplicateCreateRequestOriginalExperimentMap>;
-
-export interface ExperimentsDuplicateCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** Name of the experiment. */
-  name?: string;
-  /** Description of the experiment hypothesis and expected outcomes. */
-  description?: string | null;
-  start_date?: string | null;
-  end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
-  feature_flag_key?: string;
-  /** ID of a holdout group to exclude from the experiment. */
-  holdout_id?: number | null;
-  /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
-  parameters?: ExperimentParameters | null;
-  /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
-  running_time_calculation?: ExperimentRunningTimeCalculation | null;
-  /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-  excluded_variants?: ExperimentsDuplicateCreateRequestExcludedVariantsList | null;
-  secondary_metrics?: unknown;
-  /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-  saved_metrics_ids?: ExperimentsDuplicateCreateRequestSavedMetricsIdsList | null;
-  filters?: unknown;
-  /** Whether the experiment is archived. */
-  archived?: boolean;
-  deleted?: boolean | null;
-  /** Experiment type: web for frontend UI changes, product for backend/API changes. * `web` - web * `product` - product */
-  type?: ExperimentTypeEnum | (string & {}) | null;
-  /** Exposure configuration including filter test accounts and custom exposure events. */
-  exposure_criteria?: ExperimentApiExposureCriteria | null;
-  /** Primary experiment metrics. Each metric must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Use the read-data-schema tool with query kind 'events' to find available events in the project. */
-  metrics?: ExperimentApiMetricsList | null;
-  /** Secondary metrics for additional measurements. Same format as primary metrics. */
-  metrics_secondary?: ExperimentApiMetricsList | null;
-  stats_config?: unknown;
-  scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
-  allow_unknown_events?: boolean;
-  _create_in_folder?: string;
-  /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
-  conclusion?: ConclusionEnum | (string & {}) | null;
-  /** Comment about the experiment conclusion. */
-  conclusion_comment?: string | null;
-  /** GitHub repository holding this experiment's feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team's only connected repository and is skipped if the team has several. */
-  repository?: string | null;
-  primary_metrics_ordered_uuids?: unknown;
-  secondary_metrics_ordered_uuids?: unknown;
-  only_count_matured_users?: boolean;
-  /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
-  update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
-  version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-  original_experiment?: ExperimentsDuplicateCreateRequestOriginalExperimentMap | null;
-}
-export const ExperimentsDuplicateCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    start_date: S.optional(S.NullOr(S.String)),
-    end_date: S.optional(S.NullOr(S.String)),
-    feature_flag_key: S.optional(S.String),
-    holdout_id: S.optional(S.NullOr(S.Number)),
-    parameters: S.optional(S.NullOr(ExperimentParameters)),
-    running_time_calculation: S.optional(
-      S.NullOr(ExperimentRunningTimeCalculation),
-    ),
-    excluded_variants: S.optional(
-      S.NullOr(ExperimentsDuplicateCreateRequestExcludedVariantsList),
-    ),
-    secondary_metrics: S.optional(S.Unknown),
-    saved_metrics_ids: S.optional(
-      S.NullOr(ExperimentsDuplicateCreateRequestSavedMetricsIdsList),
-    ),
-    filters: S.optional(S.Unknown),
-    archived: S.optional(S.Boolean),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    type: S.optional(S.NullOr(ExperimentTypeEnum)),
-    exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-    metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-    metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
-    stats_config: S.optional(S.Unknown),
-    scheduling_config: S.optional(S.Unknown),
-    allow_unknown_events: S.optional(S.Boolean),
-    _create_in_folder: S.optional(S.String),
-    conclusion: S.optional(S.NullOr(ConclusionEnum)),
-    conclusion_comment: S.optional(S.NullOr(S.String)),
-    repository: S.optional(S.NullOr(S.String)),
-    primary_metrics_ordered_uuids: S.optional(S.Unknown),
-    secondary_metrics_ordered_uuids: S.optional(S.Unknown),
-    only_count_matured_users: S.optional(S.Boolean),
-    update_feature_flag_params: S.optional(S.Boolean),
-    version: S.optional(S.NullOr(S.Number)),
-    original_experiment: S.optional(
-      S.NullOr(ExperimentsDuplicateCreateRequestOriginalExperimentMap),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/duplicate/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsDuplicateCreateRequest",
-}) as any as S.Schema<ExperimentsDuplicateCreateRequest>;
-
-export interface ExperimentsDuplicateCreateResponse {}
-export const ExperimentsDuplicateCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExperimentsDuplicateCreateResponse",
-}) as any as S.Schema<ExperimentsDuplicateCreateResponse>;
-
-export interface ExperimentsEndCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** The conclusion of the experiment. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
-  conclusion?: ConclusionEnum | (string & {}) | null;
-  /** Optional comment about the experiment conclusion. */
-  conclusion_comment?: string | null;
-  /** When true, open a draft pull request that removes the experiment's feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise. */
-  open_cleanup_pr?: boolean;
-  /** GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team's connected repositories (see the flag_cleanup_target action); it is then saved as the experiment's repository. When omitted, the experiment's saved repository, the team's default cleanup repository, or the team's only connected repository is used. */
-  repository?: string | null;
-  /** When true, also save `repository` as this environment's default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team's GitHub installation. Requires project admin access (403 otherwise). */
-  set_repository_as_team_default?: boolean;
-}
-export const ExperimentsEndCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    conclusion: S.optional(S.NullOr(ConclusionEnum)),
-    conclusion_comment: S.optional(S.NullOr(S.String)),
-    open_cleanup_pr: S.optional(S.Boolean),
-    repository: S.optional(S.NullOr(S.String)),
-    set_repository_as_team_default: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/end/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsEndCreateRequest",
-}) as any as S.Schema<ExperimentsEndCreateRequest>;
-
 export interface ExperimentsFlagCleanupTargetRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3099,48 +4177,207 @@ export const ExperimentFlagCleanupTask = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExperimentFlagCleanupTask",
 }) as any as S.Schema<ExperimentFlagCleanupTask>;
 
-export interface ExperimentsFreezeExposureCreateRequest {
+export interface ExperimentsMetricsRecalculationLatestRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsFreezeExposureCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const ExperimentsMetricsRecalculationLatestRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.Number.pipe(T.Label()),
     }).pipe(
       T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/freeze_exposure/",
+        method: "GET",
+        uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/latest/",
         code: 200,
       }),
     ),
-).annotate({
-  identifier: "ExperimentsFreezeExposureCreateRequest",
-}) as any as S.Schema<ExperimentsFreezeExposureCreateRequest>;
+  ).annotate({
+    identifier: "ExperimentsMetricsRecalculationLatestRetrieveRequest",
+  }) as any as S.Schema<ExperimentsMetricsRecalculationLatestRetrieveRequest>;
 
-export interface ExperimentsLaunchCreateRequest {
+export interface ExperimentsMetricsRecalculationRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** UUID of the recalculation run to fetch. This is the run's own id, not the experiment id. */
+  recalculation_id: string;
+}
+export const ExperimentsMetricsRecalculationRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+      recalculation_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/{recalculation_id}/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "ExperimentsMetricsRecalculationRetrieveRequest",
+  }) as any as S.Schema<ExperimentsMetricsRecalculationRetrieveRequest>;
+
+export interface ExperimentsPromptTemplatesRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const ExperimentsPromptTemplatesRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/experiments/prompt_templates/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "ExperimentsPromptTemplatesRetrieveRequest",
+  }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveRequest>;
+
+export interface ExperimentsPromptTemplatesRetrieveResponseBodyItem {
+  key: string;
+  label: string;
+  description: string;
+}
+export const ExperimentsPromptTemplatesRetrieveResponseBodyItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: S.String,
+      label: S.String,
+      description: S.String,
+    }),
+  ).annotate({
+    identifier: "ExperimentsPromptTemplatesRetrieveResponseBodyItem",
+  }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
+
+export type ExperimentsPromptTemplatesRetrieveResponseBodyList =
+  Array<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
+export const ExperimentsPromptTemplatesRetrieveResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    ExperimentsPromptTemplatesRetrieveResponseBodyItem,
+  ) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponseBodyList>;
+
+export type ExperimentsPromptTemplatesRetrieveResponse =
+  ExperimentsPromptTemplatesRetrieveResponseBodyList;
+export const ExperimentsPromptTemplatesRetrieveResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    ExperimentsPromptTemplatesRetrieveResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "ExperimentsPromptTemplatesRetrieveResponse",
+  }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponse>;
+
+export interface ExperimentsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
   id: number;
 }
-export const ExperimentsLaunchCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const ExperimentsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/launch/",
+      method: "GET",
+      uri: "/api/projects/{project_id}/experiments/{id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ExperimentsLaunchCreateRequest",
-}) as any as S.Schema<ExperimentsLaunchCreateRequest>;
+  identifier: "ExperimentsRetrieveRequest",
+}) as any as S.Schema<ExperimentsRetrieveRequest>;
+
+export interface ExperimentsSessionContextRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** ID of the session recording to resolve experiment context for. */
+  session_id: string;
+}
+export const ExperimentsSessionContextRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      session_id: S.String.pipe(T.Query()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/experiments/session_context/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "ExperimentsSessionContextRetrieveRequest",
+}) as any as S.Schema<ExperimentsSessionContextRetrieveRequest>;
+
+export interface ExperimentsStatsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const ExperimentsStatsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/experiments/stats/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ExperimentsStatsRetrieveRequest",
+}) as any as S.Schema<ExperimentsStatsRetrieveRequest>;
+
+export interface ExperimentsStatsRetrieveResponse {}
+export const ExperimentsStatsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ExperimentsStatsRetrieveResponse",
+}) as any as S.Schema<ExperimentsStatsRetrieveResponse>;
+
+export interface ExperimentsTimeseriesResultsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** Fingerprint of the metric configuration. Available alongside metric_uuid on each metric in the experiment's metrics array. */
+  fingerprint: string;
+  /** UUID of the metric to fetch timeseries for. Available on each metric in the experiment's metrics array. */
+  metric_uuid: string;
+}
+export const ExperimentsTimeseriesResultsRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.Number.pipe(T.Label()),
+      fingerprint: S.String.pipe(T.Query()),
+      metric_uuid: S.String.pipe(T.Query()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/experiments/{id}/timeseries_results/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "ExperimentsTimeseriesResultsRetrieveRequest",
+  }) as any as S.Schema<ExperimentsTimeseriesResultsRetrieveRequest>;
+
+export interface ExperimentsTimeseriesResultsRetrieveResponse {}
+export const ExperimentsTimeseriesResultsRetrieveResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "ExperimentsTimeseriesResultsRetrieveResponse",
+  }) as any as S.Schema<ExperimentsTimeseriesResultsRetrieveResponse>;
 
 export type ExperimentsListRequestStatus =
   | "all"
@@ -3152,7 +4389,7 @@ export type ExperimentsListRequestStatus =
   | "stopped";
 export const ExperimentsListRequestStatus = /*@__PURE__*/ S.String;
 
-export interface ExperimentsListRequest {
+export interface ListExperimentsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Filter by archived state. Defaults to non-archived experiments only. */
@@ -3176,7 +4413,7 @@ export interface ExperimentsListRequest {
   /** Filter by experiment status. "running", "paused", and "exposure_frozen" are mutually exclusive: "running" returns launched experiments with an active feature flag, "paused" returns launched experiments whose feature flag is deactivated, and "exposure_frozen" returns launched experiments whose exposure was frozen to the already-enrolled cohort while metrics keep flowing. "complete" is an alias for "stopped". "all" disables status filtering. */
   status?: ExperimentsListRequestStatus | (string & {});
 }
-export const ExperimentsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListExperimentsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     archived: S.optional(S.Boolean.pipe(T.Query())),
@@ -3197,8 +4434,8 @@ export const ExperimentsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ExperimentsListRequest",
-}) as any as S.Schema<ExperimentsListRequest>;
+  identifier: "ListExperimentsRequest",
+}) as any as S.Schema<ListExperimentsRequest>;
 
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentBasicExcludedVariantsList = Array<string>;
@@ -3301,1381 +4538,6 @@ export const PaginatedExperimentBasicList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedExperimentBasicList",
 }) as any as S.Schema<PaginatedExperimentBasicList>;
 
-/** * `manual` - Manual * `agent_mcp` - Agent (MCP) * `cold_run` - Cold Run * `stale_refresh` - Stale Refresh * `auto_refresh` - Auto Refresh * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change * `config_change` - Config Change * `experiment_launch` - Experiment Launch * `experiment_stop` - Experiment Stop * `experiment_update` - Experiment Update */
-export type TriggerEnum =
-  | "manual"
-  | "agent_mcp"
-  | "cold_run"
-  | "stale_refresh"
-  | "auto_refresh"
-  | "experiment_config_change"
-  | "metric_config_change"
-  | "config_change"
-  | "experiment_launch"
-  | "experiment_stop"
-  | "experiment_update";
-export const TriggerEnum = /*@__PURE__*/ S.String;
-
-export interface ExperimentsMetricsRecalculationCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** What triggered this recalculation (manual is the default for user-initiated runs) * `manual` - Manual * `agent_mcp` - Agent (MCP) * `cold_run` - Cold Run * `stale_refresh` - Stale Refresh * `auto_refresh` - Auto Refresh * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change * `config_change` - Config Change * `experiment_launch` - Experiment Launch * `experiment_stop` - Experiment Stop * `experiment_update` - Experiment Update */
-  trigger?: TriggerEnum | (string & {});
-}
-export const ExperimentsMetricsRecalculationCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      trigger: S.optional(TriggerEnum),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsMetricsRecalculationCreateRequest",
-  }) as any as S.Schema<ExperimentsMetricsRecalculationCreateRequest>;
-
-/** * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
-export type MetricsRecalculationStatusEnum =
-  | "pending"
-  | "in_progress"
-  | "completed"
-  | "failed";
-export const MetricsRecalculationStatusEnum = /*@__PURE__*/ S.String;
-
-/** Pointer to a recalculation run that is still executing, surfaced alongside the latest terminal results. */
-export interface ActiveRecalculationRun {
-  /** Identifier of the run that is still executing */
-  id: string;
-  /** Status of the executing run (pending or in_progress) * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
-  status: MetricsRecalculationStatusEnum;
-}
-export const ActiveRecalculationRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    status: MetricsRecalculationStatusEnum,
-  }),
-).annotate({
-  identifier: "ActiveRecalculationRun",
-}) as any as S.Schema<ActiveRecalculationRun>;
-
-/** * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
-export type ResultSourceEnum = "recalculation" | "timeseries_fallback";
-export const ResultSourceEnum = /*@__PURE__*/ S.String;
-
-/** * `pending` - pending * `completed` - completed * `failed` - failed */
-export type MetricRecalculationResultStatusEnum =
-  | "pending"
-  | "completed"
-  | "failed";
-export const MetricRecalculationResultStatusEnum = /*@__PURE__*/ S.String;
-
-/** One metric's recalculated result row, read back from ExperimentMetricResult. */
-export interface MetricRecalculationResult {
-  /** UUID of the metric this result belongs to */
-  metric_uuid: string;
-  /** Status of this metric's calculation in the run * `pending` - pending * `completed` - completed * `failed` - failed */
-  status: MetricRecalculationResultStatusEnum;
-  /** The computed metric result (ExperimentQueryResponse shape); null when status is pending or failed */
-  result: unknown;
-  /** Error message when status is failed; otherwise null */
-  error_message: string | null;
-}
-export const MetricRecalculationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metric_uuid: S.String,
-    status: MetricRecalculationResultStatusEnum,
-    result: S.Unknown,
-    error_message: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "MetricRecalculationResult",
-}) as any as S.Schema<MetricRecalculationResult>;
-
-/** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
-export type ExperimentMetricsRecalculationResultsList =
-  Array<MetricRecalculationResult>;
-export const ExperimentMetricsRecalculationResultsList = /*@__PURE__*/ S.Array(
-  MetricRecalculationResult,
-) as any as S.Schema<ExperimentMetricsRecalculationResultsList>;
-
-/** Serializer for metrics recalculation status responses. */
-export interface ExperimentMetricsRecalculation {
-  /** Unique identifier for this recalculation job */
-  id: string;
-  /** ID of the experiment being recalculated */
-  experiment_id: number;
-  /** Current status of the recalculation job * `pending` - Pending * `in_progress` - In Progress * `completed` - Completed * `failed` - Failed */
-  status: MetricsRecalculationStatusEnum;
-  /** Total number of metrics to recalculate */
-  total_metrics: number;
-  /** Number of metrics with a COMPLETED result row in this run (derived, not stored) */
-  completed_metrics: number;
-  /** Number of failed metrics in this run (derived): FAILED result rows plus discovery-step failures that never made it to a result row */
-  failed_metrics: number;
-  /** Map of metric_uuid to error details */
-  metric_errors: unknown;
-  /** Transient retry state per metric_uuid: {attempt, max_attempts, error_type, message, next_retry_at}. message is a user-safe description of the error that triggered the retry. Present only while a metric is between failed attempts; cleared when it succeeds or fails terminally, so treat entries for metrics that already have a result as stale. */
-  metric_retries: unknown;
-  /** What triggered this recalculation * `manual` - Manual * `agent_mcp` - Agent (MCP) * `cold_run` - Cold Run * `stale_refresh` - Stale Refresh * `auto_refresh` - Auto Refresh * `experiment_config_change` - Experiment Config Change * `metric_config_change` - Metric Config Change * `config_change` - Config Change * `experiment_launch` - Experiment Launch * `experiment_stop` - Experiment Stop * `experiment_update` - Experiment Update */
-  trigger: TriggerEnum;
-  /** When the job was created */
-  created_at: string;
-  /** When processing started */
-  started_at: string | null;
-  /** When processing completed */
-  completed_at: string | null;
-  /** Upper time bound the metrics in this run were calculated against (the data freshness cutoff). Shared by every metric in the run; null until processing starts */
-  query_to: string | null;
-  /** True if returning an existing job rather than a newly created one */
-  is_existing: boolean;
-  /** Run currently executing for this experiment, if any; poll it by id for live progress */
-  active_run: ActiveRecalculationRun | null;
-  /** Where these results came from: 'recalculation' for a real metrics-recalculation run, 'timeseries_fallback' for a cold-start placeholder built from the latest daily timeseries data. * `recalculation` - recalculation * `timeseries_fallback` - timeseries_fallback */
-  result_source: ResultSourceEnum;
-  /** Per-metric results computed by this run, scoped by the run's recalc fingerprint */
-  results: ExperimentMetricsRecalculationResultsList;
-  /** Rows read by the run's metric queries so far, both finished and currently running. Cumulative and roughly monotonic across the run; the primary live progress signal */
-  rows_read?: number | null;
-  /** ClickHouse's total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal */
-  estimated_rows_total?: number | null;
-}
-export const ExperimentMetricsRecalculation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    experiment_id: S.Number,
-    status: MetricsRecalculationStatusEnum,
-    total_metrics: S.Number,
-    completed_metrics: S.Number,
-    failed_metrics: S.Number,
-    metric_errors: S.Unknown,
-    metric_retries: S.Unknown,
-    trigger: TriggerEnum,
-    created_at: S.String,
-    started_at: S.NullOr(S.String),
-    completed_at: S.NullOr(S.String),
-    query_to: S.NullOr(S.String),
-    is_existing: S.Boolean,
-    active_run: S.NullOr(ActiveRecalculationRun),
-    result_source: ResultSourceEnum,
-    results: ExperimentMetricsRecalculationResultsList,
-    rows_read: S.optional(S.NullOr(S.Number)),
-    estimated_rows_total: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ExperimentMetricsRecalculation",
-}) as any as S.Schema<ExperimentMetricsRecalculation>;
-
-export interface ExperimentsMetricsRecalculationLatestRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsMetricsRecalculationLatestRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/latest/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsMetricsRecalculationLatestRetrieveRequest",
-  }) as any as S.Schema<ExperimentsMetricsRecalculationLatestRetrieveRequest>;
-
-export interface ExperimentsMetricsRecalculationRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** UUID of the recalculation run to fetch. This is the run's own id, not the experiment id. */
-  recalculation_id: string;
-}
-export const ExperimentsMetricsRecalculationRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      recalculation_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/experiments/{id}/metrics_recalculation/{recalculation_id}/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsMetricsRecalculationRetrieveRequest",
-  }) as any as S.Schema<ExperimentsMetricsRecalculationRetrieveRequest>;
-
-/** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsPartialUpdateRequestExcludedVariantsList = Array<string>;
-export const ExperimentsPartialUpdateRequestExcludedVariantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsPartialUpdateRequestExcludedVariantsList>;
-
-/** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsPartialUpdateRequestSavedMetricsIdsList = Array<unknown>;
-export const ExperimentsPartialUpdateRequestSavedMetricsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsPartialUpdateRequestSavedMetricsIdsList>;
-
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-export type ExperimentsPartialUpdateRequestOriginalExperimentMap = {
-  [key: string]: unknown | undefined;
-};
-export const ExperimentsPartialUpdateRequestOriginalExperimentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsPartialUpdateRequestOriginalExperimentMap>;
-
-export interface ExperimentsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** Name of the experiment. */
-  name?: string;
-  /** Description of the experiment hypothesis and expected outcomes. */
-  description?: string | null;
-  start_date?: string | null;
-  end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
-  feature_flag_key?: string;
-  /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
-  feature_flag?: ExperimentFeatureFlagInput;
-  /** ID of a holdout group to exclude from the experiment. */
-  holdout_id?: number | null;
-  /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
-  parameters?: ExperimentParameters | null;
-  /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
-  running_time_calculation?: ExperimentRunningTimeCalculation | null;
-  /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-  excluded_variants?: ExperimentsPartialUpdateRequestExcludedVariantsList | null;
-  secondary_metrics?: unknown;
-  /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-  saved_metrics_ids?: ExperimentsPartialUpdateRequestSavedMetricsIdsList | null;
-  filters?: unknown;
-  /** Whether the experiment is archived. */
-  archived?: boolean;
-  deleted?: boolean | null;
-  /** Experiment type: web for frontend UI changes, product for backend/API changes. * `web` - web * `product` - product */
-  type?: ExperimentTypeEnum | (string & {}) | null;
-  /** Exposure configuration including filter test accounts and custom exposure events. */
-  exposure_criteria?: ExperimentApiExposureCriteria | null;
-  /** Primary experiment metrics. Each metric must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Use the read-data-schema tool with query kind 'events' to find available events in the project. */
-  metrics?: ExperimentApiMetricsList | null;
-  /** Secondary metrics for additional measurements. Same format as primary metrics. */
-  metrics_secondary?: ExperimentApiMetricsList | null;
-  stats_config?: unknown;
-  scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
-  allow_unknown_events?: boolean;
-  _create_in_folder?: string;
-  /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
-  conclusion?: ConclusionEnum | (string & {}) | null;
-  /** Comment about the experiment conclusion. */
-  conclusion_comment?: string | null;
-  /** GitHub repository holding this experiment's feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team's only connected repository and is skipped if the team has several. */
-  repository?: string | null;
-  primary_metrics_ordered_uuids?: unknown;
-  secondary_metrics_ordered_uuids?: unknown;
-  only_count_matured_users?: boolean;
-  /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
-  update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
-  version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-  original_experiment?: ExperimentsPartialUpdateRequestOriginalExperimentMap | null;
-}
-export const ExperimentsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.NullOr(S.String)),
-    start_date: S.optional(S.NullOr(S.String)),
-    end_date: S.optional(S.NullOr(S.String)),
-    feature_flag_key: S.optional(S.String),
-    feature_flag: S.optional(ExperimentFeatureFlagInput),
-    holdout_id: S.optional(S.NullOr(S.Number)),
-    parameters: S.optional(S.NullOr(ExperimentParameters)),
-    running_time_calculation: S.optional(
-      S.NullOr(ExperimentRunningTimeCalculation),
-    ),
-    excluded_variants: S.optional(
-      S.NullOr(ExperimentsPartialUpdateRequestExcludedVariantsList),
-    ),
-    secondary_metrics: S.optional(S.Unknown),
-    saved_metrics_ids: S.optional(
-      S.NullOr(ExperimentsPartialUpdateRequestSavedMetricsIdsList),
-    ),
-    filters: S.optional(S.Unknown),
-    archived: S.optional(S.Boolean),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    type: S.optional(S.NullOr(ExperimentTypeEnum)),
-    exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-    metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-    metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
-    stats_config: S.optional(S.Unknown),
-    scheduling_config: S.optional(S.Unknown),
-    allow_unknown_events: S.optional(S.Boolean),
-    _create_in_folder: S.optional(S.String),
-    conclusion: S.optional(S.NullOr(ConclusionEnum)),
-    conclusion_comment: S.optional(S.NullOr(S.String)),
-    repository: S.optional(S.NullOr(S.String)),
-    primary_metrics_ordered_uuids: S.optional(S.Unknown),
-    secondary_metrics_ordered_uuids: S.optional(S.Unknown),
-    only_count_matured_users: S.optional(S.Boolean),
-    update_feature_flag_params: S.optional(S.Boolean),
-    version: S.optional(S.NullOr(S.Number)),
-    original_experiment: S.optional(
-      S.NullOr(ExperimentsPartialUpdateRequestOriginalExperimentMap),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/experiments/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsPartialUpdateRequest",
-}) as any as S.Schema<ExperimentsPartialUpdateRequest>;
-
-export interface ExperimentsPauseCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsPauseCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/pause/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsPauseCreateRequest",
-}) as any as S.Schema<ExperimentsPauseCreateRequest>;
-
-export interface ExperimentsPromptTemplatesRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const ExperimentsPromptTemplatesRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/experiments/prompt_templates/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsPromptTemplatesRetrieveRequest",
-  }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveRequest>;
-
-export interface ExperimentsPromptTemplatesRetrieveResponseBodyItem {
-  key: string;
-  label: string;
-  description: string;
-}
-export const ExperimentsPromptTemplatesRetrieveResponseBodyItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: S.String,
-      label: S.String,
-      description: S.String,
-    }),
-  ).annotate({
-    identifier: "ExperimentsPromptTemplatesRetrieveResponseBodyItem",
-  }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
-
-export type ExperimentsPromptTemplatesRetrieveResponseBodyList =
-  Array<ExperimentsPromptTemplatesRetrieveResponseBodyItem>;
-export const ExperimentsPromptTemplatesRetrieveResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    ExperimentsPromptTemplatesRetrieveResponseBodyItem,
-  ) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponseBodyList>;
-
-export type ExperimentsPromptTemplatesRetrieveResponse =
-  ExperimentsPromptTemplatesRetrieveResponseBodyList;
-export const ExperimentsPromptTemplatesRetrieveResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ExperimentsPromptTemplatesRetrieveResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ExperimentsPromptTemplatesRetrieveResponse",
-  }) as any as S.Schema<ExperimentsPromptTemplatesRetrieveResponse>;
-
-/** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-export type ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
-  Array<string>;
-export const ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList>;
-
-/** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-export type ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList =
-  Array<unknown>;
-export const ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList>;
-
-/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-export type ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap =
-  { [key: string]: unknown | undefined };
-export const ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap>;
-
-export interface ExperimentsRecalculateTimeseriesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** Name of the experiment. */
-  name?: string;
-  /** Description of the experiment hypothesis and expected outcomes. */
-  description?: string | null;
-  start_date?: string | null;
-  end_date?: string | null;
-  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
-  feature_flag_key?: string;
-  /** ID of a holdout group to exclude from the experiment. */
-  holdout_id?: number | null;
-  /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
-  parameters?: ExperimentParameters | null;
-  /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
-  running_time_calculation?: ExperimentRunningTimeCalculation | null;
-  /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
-  excluded_variants?: ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList | null;
-  secondary_metrics?: unknown;
-  /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
-  saved_metrics_ids?: ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList | null;
-  filters?: unknown;
-  /** Whether the experiment is archived. */
-  archived?: boolean;
-  deleted?: boolean | null;
-  /** Experiment type: web for frontend UI changes, product for backend/API changes. * `web` - web * `product` - product */
-  type?: ExperimentTypeEnum | (string & {}) | null;
-  /** Exposure configuration including filter test accounts and custom exposure events. */
-  exposure_criteria?: ExperimentApiExposureCriteria | null;
-  /** Primary experiment metrics. Each metric must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Use the read-data-schema tool with query kind 'events' to find available events in the project. */
-  metrics?: ExperimentApiMetricsList | null;
-  /** Secondary metrics for additional measurements. Same format as primary metrics. */
-  metrics_secondary?: ExperimentApiMetricsList | null;
-  stats_config?: unknown;
-  scheduling_config?: unknown;
-  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
-  allow_unknown_events?: boolean;
-  _create_in_folder?: string;
-  /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
-  conclusion?: ConclusionEnum | (string & {}) | null;
-  /** Comment about the experiment conclusion. */
-  conclusion_comment?: string | null;
-  /** GitHub repository holding this experiment's feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team's only connected repository and is skipped if the team has several. */
-  repository?: string | null;
-  primary_metrics_ordered_uuids?: unknown;
-  secondary_metrics_ordered_uuids?: unknown;
-  only_count_matured_users?: boolean;
-  /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
-  update_feature_flag_params?: boolean;
-  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
-  version?: number | null;
-  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
-  original_experiment?: ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap | null;
-}
-export const ExperimentsRecalculateTimeseriesCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      name: S.optional(S.String),
-      description: S.optional(S.NullOr(S.String)),
-      start_date: S.optional(S.NullOr(S.String)),
-      end_date: S.optional(S.NullOr(S.String)),
-      feature_flag_key: S.optional(S.String),
-      holdout_id: S.optional(S.NullOr(S.Number)),
-      parameters: S.optional(S.NullOr(ExperimentParameters)),
-      running_time_calculation: S.optional(
-        S.NullOr(ExperimentRunningTimeCalculation),
-      ),
-      excluded_variants: S.optional(
-        S.NullOr(
-          ExperimentsRecalculateTimeseriesCreateRequestExcludedVariantsList,
-        ),
-      ),
-      secondary_metrics: S.optional(S.Unknown),
-      saved_metrics_ids: S.optional(
-        S.NullOr(
-          ExperimentsRecalculateTimeseriesCreateRequestSavedMetricsIdsList,
-        ),
-      ),
-      filters: S.optional(S.Unknown),
-      archived: S.optional(S.Boolean),
-      deleted: S.optional(S.NullOr(S.Boolean)),
-      type: S.optional(S.NullOr(ExperimentTypeEnum)),
-      exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
-      metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
-      metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
-      stats_config: S.optional(S.Unknown),
-      scheduling_config: S.optional(S.Unknown),
-      allow_unknown_events: S.optional(S.Boolean),
-      _create_in_folder: S.optional(S.String),
-      conclusion: S.optional(S.NullOr(ConclusionEnum)),
-      conclusion_comment: S.optional(S.NullOr(S.String)),
-      repository: S.optional(S.NullOr(S.String)),
-      primary_metrics_ordered_uuids: S.optional(S.Unknown),
-      secondary_metrics_ordered_uuids: S.optional(S.Unknown),
-      only_count_matured_users: S.optional(S.Boolean),
-      update_feature_flag_params: S.optional(S.Boolean),
-      version: S.optional(S.NullOr(S.Number)),
-      original_experiment: S.optional(
-        S.NullOr(
-          ExperimentsRecalculateTimeseriesCreateRequestOriginalExperimentMap,
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/recalculate_timeseries/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsRecalculateTimeseriesCreateRequest",
-  }) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateRequest>;
-
-export interface ExperimentsRecalculateTimeseriesCreateResponse {}
-export const ExperimentsRecalculateTimeseriesCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExperimentsRecalculateTimeseriesCreateResponse",
-  }) as any as S.Schema<ExperimentsRecalculateTimeseriesCreateResponse>;
-
-export interface ExperimentsResetCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsResetCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/reset/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsResetCreateRequest",
-}) as any as S.Schema<ExperimentsResetCreateRequest>;
-
-export interface ExperimentsResumeCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsResumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/resume/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsResumeCreateRequest",
-}) as any as S.Schema<ExperimentsResumeCreateRequest>;
-
-export interface ExperimentsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/experiments/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsRetrieveRequest",
-}) as any as S.Schema<ExperimentsRetrieveRequest>;
-
-/** * `fired_any` - fired_any * `no_metric_activity` - no_metric_activity * `funnel_dropoff` - funnel_dropoff */
-export type ExperimentSessionBucketEnum =
-  | "fired_any"
-  | "no_metric_activity"
-  | "funnel_dropoff";
-export const ExperimentSessionBucketEnum = /*@__PURE__*/ S.String;
-
-/** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
-export type ExperimentsSessionBucketsCreateRequestMetricUuidsList =
-  Array<string>;
-export const ExperimentsSessionBucketsCreateRequestMetricUuidsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsSessionBucketsCreateRequestMetricUuidsList>;
-
-export interface ExperimentsSessionBucketsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** Which question the returned session set answers. 'fired_any': the session fired at least one event of any listed metric (an OR the recordings query itself can't express). 'no_metric_activity': the session fired none of them. 'funnel_dropoff': the session saw an exposure event but never fired the funnel metric's last step; the exposure is the funnel's implicit first step, the same as in the experiment analysis. All three are session-scoped and goal-free: they say what happened in the session, not whether it helped or hurt the metric. * `fired_any` - fired_any * `no_metric_activity` - no_metric_activity * `funnel_dropoff` - funnel_dropoff */
-  bucket: ExperimentSessionBucketEnum | (string & {});
-  /** Metrics the bucket is computed over. Exactly one funnel metric for 'funnel_dropoff'. Omit for the other buckets to use every metric of the experiment that can be matched to recordings. */
-  metric_uuids?: ExperimentsSessionBucketsCreateRequestMetricUuidsList;
-  /** Restrict to sessions that saw this variant. Omit for every variant. A session that saw more than one variant matches each variant it saw. */
-  variant?: string | null;
-  /** Maximum session IDs to return, at most 100. The most recently active matching sessions win. */
-  limit?: number;
-}
-export const ExperimentsSessionBucketsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      bucket: ExperimentSessionBucketEnum,
-      metric_uuids: S.optional(
-        ExperimentsSessionBucketsCreateRequestMetricUuidsList,
-      ),
-      variant: S.optional(S.NullOr(S.String)),
-      limit: S.optional(S.Number),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/session_buckets/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ExperimentsSessionBucketsCreateRequest",
-}) as any as S.Schema<ExperimentsSessionBucketsCreateRequest>;
-
-/** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
-export type ExperimentSessionBucketResponseSessionIdsList = Array<string>;
-export const ExperimentSessionBucketResponseSessionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentSessionBucketResponseSessionIdsList>;
-
-/** One metric the bucket was computed over. */
-export interface ExperimentSessionBucketMetric {
-  /** UUID of the experiment metric. */
-  metric_uuid: string;
-  /** Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed. */
-  metric_name: string;
-}
-export const ExperimentSessionBucketMetric = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metric_uuid: S.String,
-    metric_name: S.String,
-  }),
-).annotate({
-  identifier: "ExperimentSessionBucketMetric",
-}) as any as S.Schema<ExperimentSessionBucketMetric>;
-
-/** The metrics the bucket was actually computed over. Load-bearing for 'no_metric_activity': 'fired nothing' only means something next to the list of metrics it was evaluated against. */
-export type ExperimentSessionBucketResponseConsideredMetricsList =
-  Array<ExperimentSessionBucketMetric>;
-export const ExperimentSessionBucketResponseConsideredMetricsList =
-  /*@__PURE__*/ S.Array(
-    ExperimentSessionBucketMetric,
-  ) as any as S.Schema<ExperimentSessionBucketResponseConsideredMetricsList>;
-
-/** One requested metric the bucket could not be computed over. */
-export interface ExperimentSessionBucketExcludedMetric {
-  /** UUID of the experiment metric. */
-  metric_uuid: string;
-  /** Display name of the metric. */
-  metric_name: string;
-  /** Why the metric can't be matched to recordings: a data-warehouse-only source, a retention window, or events only ever captured server-side. */
-  reason: string;
-}
-export const ExperimentSessionBucketExcludedMetric = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      metric_uuid: S.String,
-      metric_name: S.String,
-      reason: S.String,
-    }),
-).annotate({
-  identifier: "ExperimentSessionBucketExcludedMetric",
-}) as any as S.Schema<ExperimentSessionBucketExcludedMetric>;
-
-/** Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result. */
-export type ExperimentSessionBucketResponseExcludedMetricsList =
-  Array<ExperimentSessionBucketExcludedMetric>;
-export const ExperimentSessionBucketResponseExcludedMetricsList =
-  /*@__PURE__*/ S.Array(
-    ExperimentSessionBucketExcludedMetric,
-  ) as any as S.Schema<ExperimentSessionBucketResponseExcludedMetricsList>;
-
-/** Session recordings of an experiment matching a bucket. */
-export interface ExperimentSessionBucketResponse {
-  /** IDs of matching sessions that have a recording, most recently active first. Feed these to a recordings query as session_ids; they are a subset of the experiment's exposed sessions, so the exposure filter can stay in place alongside them. */
-  session_ids: ExperimentSessionBucketResponseSessionIdsList;
-  /** True when more sessions matched than the limit returned. Older matches were dropped first. */
-  truncated: boolean;
-  /** The metrics the bucket was actually computed over. Load-bearing for 'no_metric_activity': 'fired nothing' only means something next to the list of metrics it was evaluated against. */
-  considered_metrics: ExperimentSessionBucketResponseConsideredMetricsList;
-  /** Requested metrics left out of the bucket because they can never match a recording, with the reason. They are reported rather than silently producing an empty result. */
-  excluded_metrics: ExperimentSessionBucketResponseExcludedMetricsList;
-  /** Start of the window scanned: the experiment's run window, clamped to its most recent 30 days. Matches outside it are not returned. */
-  date_from: string;
-  /** End of the window scanned: the experiment's end date, or now while it runs. */
-  date_to: string;
-  /** Whether the project's test-account filters were applied, following the experiment's exposure criteria, the same rule the experiment's recordings list uses. */
-  filter_test_accounts: boolean;
-  /** True when the exposed population was matched on the stamped $feature/<flag key> event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean 'the flag was active in this session', not 'the exposure moment was captured'. The variant comes from the flag's value on each event, so a returning user can appear under a variant they were re-bucketed into later. */
-  used_exposure_fallback: boolean;
-}
-export const ExperimentSessionBucketResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_ids: ExperimentSessionBucketResponseSessionIdsList,
-    truncated: S.Boolean,
-    considered_metrics: ExperimentSessionBucketResponseConsideredMetricsList,
-    excluded_metrics: ExperimentSessionBucketResponseExcludedMetricsList,
-    date_from: S.String,
-    date_to: S.String,
-    filter_test_accounts: S.Boolean,
-    used_exposure_fallback: S.Boolean,
-  }),
-).annotate({
-  identifier: "ExperimentSessionBucketResponse",
-}) as any as S.Schema<ExperimentSessionBucketResponse>;
-
-export interface ExperimentsSessionContextRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** ID of the session recording to resolve experiment context for. */
-  session_id: string;
-}
-export const ExperimentsSessionContextRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      session_id: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/experiments/session_context/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ExperimentsSessionContextRetrieveRequest",
-}) as any as S.Schema<ExperimentsSessionContextRetrieveRequest>;
-
-/** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
-export type ExperimentSessionContextItemVariantsSeenList = Array<string>;
-export const ExperimentSessionContextItemVariantsSeenList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentSessionContextItemVariantsSeenList>;
-
-/** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
-export type ExperimentSessionMetricHitTimestampsList = Array<string>;
-export const ExperimentSessionMetricHitTimestampsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentSessionMetricHitTimestampsList>;
-
-/** * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
-export type SourceRoleEnum =
-  | "source"
-  | "step"
-  | "numerator"
-  | "denominator"
-  | "retention_start"
-  | "retention_completion";
-export const SourceRoleEnum = /*@__PURE__*/ S.String;
-
-/** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
-export type ExperimentSessionMetricSourceHitTimestampsList = Array<string>;
-export const ExperimentSessionMetricSourceHitTimestampsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentSessionMetricSourceHitTimestampsList>;
-
-/** One event/action source of a metric with at least one matching event in a session recording. */
-export interface ExperimentSessionMetricSourceHit {
-  /** What this source means to its metric: 'source' (a mean metric's single event), 'step' (a funnel step, numbered by source_index), 'numerator'/'denominator' (a ratio metric's two sides), or 'retention_start'/'retention_completion' (a retention metric's start event and return visit). A hit on one source is not a hit on the metric as the analysis counts it. * `source` - source * `step` - step * `numerator` - numerator * `denominator` - denominator * `retention_start` - retention_start * `retention_completion` - retention_completion */
-  source_role: SourceRoleEnum;
-  /** Display name of the source event or action. */
-  source_name: string;
-  /** 0-based position of this source among all the metric's sources, data-warehouse ones included — so a funnel step keeps its real step number even when an earlier step has no session events. */
-  source_index: number;
-  /** Total number of sources the metric is defined over. */
-  source_total: number;
-  /** Number of events in the session matching this source. */
-  event_count: number;
-  /** Timestamp of the first event in the session matching this source. */
-  first_timestamp: string;
-  /** Ascending timestamps of this source's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
-  timestamps: ExperimentSessionMetricSourceHitTimestampsList;
-}
-export const ExperimentSessionMetricSourceHit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source_role: SourceRoleEnum,
-    source_name: S.String,
-    source_index: S.Number,
-    source_total: S.Number,
-    event_count: S.Number,
-    first_timestamp: S.String,
-    timestamps: ExperimentSessionMetricSourceHitTimestampsList,
-  }),
-).annotate({
-  identifier: "ExperimentSessionMetricSourceHit",
-}) as any as S.Schema<ExperimentSessionMetricSourceHit>;
-
-/** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
-export type ExperimentSessionMetricHitSourcesList =
-  Array<ExperimentSessionMetricSourceHit>;
-export const ExperimentSessionMetricHitSourcesList = /*@__PURE__*/ S.Array(
-  ExperimentSessionMetricSourceHit,
-) as any as S.Schema<ExperimentSessionMetricHitSourcesList>;
-
-/** One experiment metric with at least one matching event in a session recording. */
-export interface ExperimentSessionMetricHit {
-  /** UUID of the experiment metric (inline primary/secondary or saved) whose events fired. */
-  metric_uuid: string;
-  /** Display name of the metric, or an event-derived title (matching the experiment UI) when unnamed. */
-  metric_name: string;
-  /** Total number of events in the session matching any of the metric's event/action sources. */
-  event_count: number;
-  /** Timestamp of the first event in the session matching the metric. */
-  first_timestamp: string;
-  /** Ascending timestamps of the metric's matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count. */
-  timestamps: ExperimentSessionMetricHitTimestampsList;
-  /** Which of the metric's sources fired, so a hit reads as 'step 2 of 3' or 'the start event of a retention metric' rather than an unqualified 'this metric happened'. Sources with no matching event are omitted, as is the whole breakdown for metrics beyond the scan's aggregate ceiling. A retention metric whose start and completion are the same event contributes only the start source: the completion would match the identical events and render a duplicate. */
-  sources: ExperimentSessionMetricHitSourcesList;
-}
-export const ExperimentSessionMetricHit = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metric_uuid: S.String,
-    metric_name: S.String,
-    event_count: S.Number,
-    first_timestamp: S.String,
-    timestamps: ExperimentSessionMetricHitTimestampsList,
-    sources: ExperimentSessionMetricHitSourcesList,
-  }),
-).annotate({
-  identifier: "ExperimentSessionMetricHit",
-}) as any as S.Schema<ExperimentSessionMetricHit>;
-
-/** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
-export type ExperimentSessionContextItemMetricsInSessionList =
-  Array<ExperimentSessionMetricHit>;
-export const ExperimentSessionContextItemMetricsInSessionList =
-  /*@__PURE__*/ S.Array(
-    ExperimentSessionMetricHit,
-  ) as any as S.Schema<ExperimentSessionContextItemMetricsInSessionList>;
-
-/** One experiment whose feature flag a session recording saw. */
-export interface ExperimentSessionContextItem {
-  /** ID of the experiment whose feature flag the session saw. */
-  experiment_id: number;
-  /** Name of the experiment. */
-  experiment_name: string;
-  /** Key of the experiment's feature flag. */
-  flag_key: string;
-  /** Variant the session saw. Taken from the earliest event matching the experiment's exposure criteria when one exists, otherwise from the earliest flag evaluation in the session, otherwise from the $feature/<key> property stamped on the session's events. */
-  variant: string;
-  /** All distinct variant values observed for this flag during the session, sorted alphabetically. Only the flag's defined variant keys count; non-enrollment responses (false) are ignored. More than one value means the session saw multiple variants — a signal of multi-exposure bias. */
-  variants_seen: ExperimentSessionContextItemVariantsSeenList;
-  /** True when the session saw more than one variant of this flag. */
-  multiple_variants: boolean;
-  /** Timestamp of the first event in the session matching the experiment's exposure criteria — the default exposure event ($feature_flag_called), or the configured custom event/action. Null when no event in the session matched the criteria; the variant is then known from flag evaluations or stamped $feature/<key> properties. Session-scoped: the experiment analysis counts exposure per person across the whole run window, so the person's counted first exposure may lie in an earlier session. */
-  first_exposure_timestamp: string | null;
-  /** When the experiment was launched. */
-  experiment_start_date: string | null;
-  /** When the experiment ended. Null while the experiment is still running. */
-  experiment_end_date: string | null;
-  /** This experiment's metrics with at least one matching event in the session, sorted by first occurrence. Empty when none of the experiment's metric events fired during the session. */
-  metrics_in_session: ExperimentSessionContextItemMetricsInSessionList;
-}
-export const ExperimentSessionContextItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    experiment_id: S.Number,
-    experiment_name: S.String,
-    flag_key: S.String,
-    variant: S.String,
-    variants_seen: ExperimentSessionContextItemVariantsSeenList,
-    multiple_variants: S.Boolean,
-    first_exposure_timestamp: S.NullOr(S.String),
-    experiment_start_date: S.NullOr(S.String),
-    experiment_end_date: S.NullOr(S.String),
-    metrics_in_session: ExperimentSessionContextItemMetricsInSessionList,
-  }),
-).annotate({
-  identifier: "ExperimentSessionContextItem",
-}) as any as S.Schema<ExperimentSessionContextItem>;
-
-/** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
-export type ExperimentSessionContextResponseResultsList =
-  Array<ExperimentSessionContextItem>;
-export const ExperimentSessionContextResponseResultsList =
-  /*@__PURE__*/ S.Array(
-    ExperimentSessionContextItem,
-  ) as any as S.Schema<ExperimentSessionContextResponseResultsList>;
-
-/** Experiment/variant context for a session recording. */
-export interface ExperimentSessionContextResponse {
-  /** ID of the session recording the context was resolved for. */
-  session_id: string;
-  /** Experiments (and variants) the session saw, sorted by experiment name. Empty when no launched experiment's run window overlaps the recording or no flag data was observed in the session. */
-  results: ExperimentSessionContextResponseResultsList;
-}
-export const ExperimentSessionContextResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_id: S.String,
-    results: ExperimentSessionContextResponseResultsList,
-  }),
-).annotate({
-  identifier: "ExperimentSessionContextResponse",
-}) as any as S.Schema<ExperimentSessionContextResponse>;
-
-/** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
-export type ExperimentsSessionContextsCreateRequestSessionIdsList =
-  Array<string>;
-export const ExperimentsSessionContextsCreateRequestSessionIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentsSessionContextsCreateRequestSessionIdsList>;
-
-export interface ExperimentsSessionContextsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** IDs of the session recordings to resolve experiment context for, at most 20 per request. Duplicates are ignored. */
-  session_ids: ExperimentsSessionContextsCreateRequestSessionIdsList;
-}
-export const ExperimentsSessionContextsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      session_ids: ExperimentsSessionContextsCreateRequestSessionIdsList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/session_contexts/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ExperimentsSessionContextsCreateRequest",
-}) as any as S.Schema<ExperimentsSessionContextsCreateRequest>;
-
-/** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
-export type ExperimentSessionContextsResponseResultsList =
-  Array<ExperimentSessionContextResponse>;
-export const ExperimentSessionContextsResponseResultsList =
-  /*@__PURE__*/ S.Array(
-    ExperimentSessionContextResponse,
-  ) as any as S.Schema<ExperimentSessionContextsResponseResultsList>;
-
-/** Experiment/variant context for a batch of session recordings. */
-export interface ExperimentSessionContextsResponse {
-  /** Per-session experiment context, in the order the session IDs were requested. Sessions whose recording metadata doesn't exist yet (still ingesting, or unknown to this project) are omitted, as are recordings you don't have access to and sessions beyond the batch's recording-day budget (only the most recent days are computed). Fetch omitted sessions individually via the single-session endpoint. */
-  results: ExperimentSessionContextsResponseResultsList;
-}
-export const ExperimentSessionContextsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: ExperimentSessionContextsResponseResultsList,
-  }),
-).annotate({
-  identifier: "ExperimentSessionContextsResponse",
-}) as any as S.Schema<ExperimentSessionContextsResponse>;
-
-export interface ExperimentsSessionEventDeltasCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsSessionEventDeltasCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/session_event_deltas/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsSessionEventDeltasCreateRequest",
-  }) as any as S.Schema<ExperimentsSessionEventDeltasCreateRequest>;
-
-/** * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
-export type ExperimentWatchCardKindEnum =
-  | "behavior"
-  | "friction"
-  | "variant_only"
-  | "metric";
-export const ExperimentWatchCardKindEnum = /*@__PURE__*/ S.String;
-
-/** * `only` - only * `far_more` - far_more * `more` - more * `slightly_more` - slightly_more */
-export type ExperimentWatchCardStrengthEnum =
-  | "only"
-  | "far_more"
-  | "more"
-  | "slightly_more";
-export const ExperimentWatchCardStrengthEnum = /*@__PURE__*/ S.String;
-
-/** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
-export type ExperimentWatchCardSessionIdsList = Array<string>;
-export const ExperimentWatchCardSessionIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ExperimentWatchCardSessionIdsList>;
-
-/** One recording a card names first, and the phrase that says why. */
-export interface ExperimentWatchHighlight {
-  /** The recording to open. Always one of the card's own session_ids. */
-  session_id: string;
-  /** Everything this recording carries that earned it the place, ready to render as-is, for example '6 rage clicks, 6 errors' or '1 error, did this 4 times'. Every signal the session shows is listed, so the phrase is the whole picture rather than the single strongest part of it. Friction counts cover the whole session; 'did this N times' counts the card's own event. Not a comparison and not a reason the card exists. */
-  reason: string;
-}
-export const ExperimentWatchHighlight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session_id: S.String,
-    reason: S.String,
-  }),
-).annotate({
-  identifier: "ExperimentWatchHighlight",
-}) as any as S.Schema<ExperimentWatchHighlight>;
-
-/** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
-export type ExperimentWatchCardHighlightsList = Array<ExperimentWatchHighlight>;
-export const ExperimentWatchCardHighlightsList = /*@__PURE__*/ S.Array(
-  ExperimentWatchHighlight,
-) as any as S.Schema<ExperimentWatchCardHighlightsList>;
-
-/** One group of recordings worth opening, and the sentence that justifies it. Deliberately no rate, no ratio and no person count: a precise number next to an event name is an effect size, and the experiment's results publish those for everything it measures, computed over a different window and a different unit. The only number here is how many recordings the card can actually show. */
-export interface ExperimentWatchCard {
-  /** What the card is: 'behavior' for an event this variant did clearly more than the other variants together, 'friction' for the same finding on an error or rage signal, 'variant_only' for an event no other variant fired at all, and 'metric' for a shortcut to recordings around one of the experiment's own metric events. A 'variant_only' card shows the variant rendering its own change rather than a behavior difference, so present it as confirmation the change is live and never as a finding. Metric cards claim nothing about how the metric moved: that is the experiment results' answer. * `behavior` - behavior * `friction` - friction * `variant_only` - variant_only * `metric` - metric */
-  kind: ExperimentWatchCardKindEnum;
-  /** The event behind the card. */
-  event: string;
-  /** The variant whose recordings these are: for comparison cards, the one that did the event more. */
-  variant: string;
-  /** How far apart this variant and the rest are, as a band rather than a number: 'only' when nobody in the other variants did it at all among the people compared, then 'far_more', 'more' and 'slightly_more'. Read off the conservative end of the difference, so a card that clears the bar only because the sample is large reports as slight. Null on metric cards, which compare nothing. Present a band as a comparison ('far more common in test'), never convert it into a multiple. * `only` - only * `far_more` - far_more * `more` - more * `slightly_more` - slightly_more */
-  strength: ExperimentWatchCardStrengthEnum | null;
-  /** The metric this card's event belongs to, on a comparison card as well as on a shortcut card. When set, the experiment's results measure this event over the whole run window with the statistics that go with a result, so say the card points there and never present the card as a second answer about that metric. Null when no metric counts the event. */
-  metric_name: string | null;
-  /** How many recordings the card carries, at most max_card_recordings (20). Every card is backed by recordings that actually exist: a finding whose sessions were never recorded is dropped rather than promised. A count sitting on the ceiling means at least that many, so say 'at least' and never compare two such counts: how often the event happened is the experiment's results, and this only counts what replay kept. */
-  recording_count: number;
-  /** The recordings themselves, most recent first, ready to hand to the recordings list as-is. */
-  session_ids: ExperimentWatchCardSessionIdsList;
-  /** Which of the card's recordings to open first, at most 3, ranked by how much each one carries: recordings showing several kinds of signal at once come before recordings showing more of a single kind. Offer these before the full list: the recordings list orders by its own sort, so session_ids order never reaches the viewer, and twenty recordings that share an event are otherwise indistinguishable in it. Empty when no recording the viewer can open carries a signal, which is worth saying rather than hiding. */
-  highlights: ExperimentWatchCardHighlightsList;
-}
-export const ExperimentWatchCard = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: ExperimentWatchCardKindEnum,
-    event: S.String,
-    variant: S.String,
-    strength: S.NullOr(ExperimentWatchCardStrengthEnum),
-    metric_name: S.NullOr(S.String),
-    recording_count: S.Number,
-    session_ids: ExperimentWatchCardSessionIdsList,
-    highlights: ExperimentWatchCardHighlightsList,
-  }),
-).annotate({
-  identifier: "ExperimentWatchCard",
-}) as any as S.Schema<ExperimentWatchCard>;
-
-/** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
-export type ExperimentSessionEventDeltaResponseCardsList =
-  Array<ExperimentWatchCard>;
-export const ExperimentSessionEventDeltaResponseCardsList =
-  /*@__PURE__*/ S.Array(
-    ExperimentWatchCard,
-  ) as any as S.Schema<ExperimentSessionEventDeltaResponseCardsList>;
-
-/** One variant's compared population. */
-export interface ExperimentWatchArm {
-  /** The variant key. */
-  key: string;
-  /** Exposed people the comparison covered for this variant. People rather than sessions because a variant can change how often the flag is evaluated again later, which moves a variant's session count without anyone behaving differently. Each person is read from the first session the comparison covers them in, so every variant gets the same amount of behavior per person. */
-  persons: number;
-  /** Exposed sessions those people were seen in, which is more than the comparison reads: it says how much recorded material sits behind the variant. */
-  sessions: number;
-}
-export const ExperimentWatchArm = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.String,
-    persons: S.Number,
-    sessions: S.Number,
-  }),
-).annotate({
-  identifier: "ExperimentWatchArm",
-}) as any as S.Schema<ExperimentWatchArm>;
-
-/** Every variant's compared population, in the flag's variant order. */
-export type ExperimentSessionEventDeltaResponseArmsList =
-  Array<ExperimentWatchArm>;
-export const ExperimentSessionEventDeltaResponseArmsList =
-  /*@__PURE__*/ S.Array(
-    ExperimentWatchArm,
-  ) as any as S.Schema<ExperimentSessionEventDeltaResponseArmsList>;
-
-/** * `exclude` - exclude * `first_seen` - first_seen */
-export type ExperimentWatchMultipleVariantHandlingEnum =
-  | "exclude"
-  | "first_seen";
-export const ExperimentWatchMultipleVariantHandlingEnum =
-  /*@__PURE__*/ S.String;
-
-/** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
-export type ExperimentSessionEventDeltaResponseMetricEventsList = Array<string>;
-export const ExperimentSessionEventDeltaResponseMetricEventsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ExperimentSessionEventDeltaResponseMetricEventsList>;
-
-/** The recordings worth watching for this experiment, grouped into cards. Descriptive, never a result: cards say where behavior visibly differed and hand over the recordings, while the experiment's results measure its metrics over the whole run window and state the magnitudes. Nothing here says a variant is winning. */
-export interface ExperimentSessionEventDeltaResponse {
-  /** The shelf, strongest comparison first, then the variant's own rendering, then metric shortcuts. Events the variants can't be told apart on get no card at all rather than a weak one, so an empty shelf means no difference was big enough to be sure of, not that nothing was measured. Group by kind before presenting: a 'variant_only' card outranks every real difference by construction, and reading the shelf in order would report it as the headline. */
-  cards: ExperimentSessionEventDeltaResponseCardsList;
-  /** Every variant's compared population, in the flag's variant order. */
-  arms: ExperimentSessionEventDeltaResponseArmsList;
-  /** People who saw more than one variant and were left out of every card. Always 0 when the experiment attributes such users to the variant they saw first. */
-  multiple_variant_persons: number;
-  /** How the experiment handles someone who saw more than one variant, followed here so the cards split their people the same way the analysis does. * `exclude` - exclude * `first_seen` - first_seen */
-  multiple_variant_handling: ExperimentWatchMultipleVariantHandlingEnum;
-  /** The events the experiment's own metrics count. A card on one of these carries metric_name and must be read as pointing at the experiment's results, which measure the same event over the whole run window with the statistics that go with a result. Cards state no magnitude for exactly this reason, so never turn one into a claim about how the metric moved. */
-  metric_events: ExperimentSessionEventDeltaResponseMetricEventsList;
-  /** Start of what was actually compared. The requested window is the experiment's run window clamped to its most recent 14 days (2 when sessions are matched on the stamped flag property, which no event name can prune a scan on), but a busy experiment reaches the session ceiling long before that, and this reports where the compared sessions really begin - often hours rather than days back. Display this, not the experiment's own dates. */
-  date_from: string;
-  /** End of what was compared: the experiment's end date, or now while it runs. */
-  date_to: string;
-  /** Whether the project's test-account filters were applied, following the experiment's exposure criteria, the same rule the experiment's recordings list uses. */
-  filter_test_accounts: boolean;
-  /** True when the compared sessions were matched on the stamped $feature/<flag key> event property instead of the exposure event, because the default exposure event has only ever been captured server-side and can never match a session. The sessions then mean 'the flag was active in this session', and the variant comes from the flag's value on each event, so a returning user can be counted under a variant they were re-bucketed into later. */
-  used_exposure_fallback: boolean;
-  /** True when the experiment had more exposed sessions in the requested window than one comparison covers, so the most recent ones were used and date_from is later than the experiment's own window. Every variant is still covered over the same stretch of time. */
-  sessions_truncated: boolean;
-  /** True when the project has more distinct event names in the window than one comparison can rank, so some were never considered. */
-  events_truncated: boolean;
-  /** How many exposed people a variant needs before it can be compared at all. Below it a variant's cards would be noise whatever the evidence bar allows. */
-  min_arm_persons: number;
-  /** The most recordings one card can carry. A card whose recording_count equals this hit the ceiling, so report it as 'at least this many' rather than as a count. */
-  max_card_recordings: number;
-  /** How many cards were removed because their recordings were already another card's on the same shelf. Nothing was lost: the recordings are all reachable through the cards that stayed. */
-  dropped_duplicate_cards: number;
-  /** True when fewer than two variants have min_arm_persons exposed people, so no comparison exists and cards is empty. Say 'too early to compare' and show the arms' counts; an empty shelf presented without this would read as 'the variants behaved identically'. */
-  too_early: boolean;
-}
-export const ExperimentSessionEventDeltaResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cards: ExperimentSessionEventDeltaResponseCardsList,
-    arms: ExperimentSessionEventDeltaResponseArmsList,
-    multiple_variant_persons: S.Number,
-    multiple_variant_handling: ExperimentWatchMultipleVariantHandlingEnum,
-    metric_events: ExperimentSessionEventDeltaResponseMetricEventsList,
-    date_from: S.String,
-    date_to: S.String,
-    filter_test_accounts: S.Boolean,
-    used_exposure_fallback: S.Boolean,
-    sessions_truncated: S.Boolean,
-    events_truncated: S.Boolean,
-    min_arm_persons: S.Number,
-    max_card_recordings: S.Number,
-    dropped_duplicate_cards: S.Number,
-    too_early: S.Boolean,
-  }),
-).annotate({
-  identifier: "ExperimentSessionEventDeltaResponse",
-}) as any as S.Schema<ExperimentSessionEventDeltaResponse>;
-
-export interface ExperimentsShipVariantCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** The conclusion of the experiment. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
-  conclusion?: ConclusionEnum | (string & {}) | null;
-  /** Optional comment about the experiment conclusion. */
-  conclusion_comment?: string | null;
-  /** When true, open a draft pull request that removes the experiment's feature-flag code from the linked repository. Requires the requesting user to have access to PostHog Desktop (403 otherwise). Only acts for allowlisted teams; ignored otherwise. */
-  open_cleanup_pr?: boolean;
-  /** GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team's connected repositories (see the flag_cleanup_target action); it is then saved as the experiment's repository. When omitted, the experiment's saved repository, the team's default cleanup repository, or the team's only connected repository is used. */
-  repository?: string | null;
-  /** When true, also save `repository` as this environment's default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team's GitHub installation. Requires project admin access (403 otherwise). */
-  set_repository_as_team_default?: boolean;
-  /** The key of the variant to ship. */
-  variant_key?: string;
-  /** If true, prepend a release condition to the feature flag that rolls the variant out to 100% of users, overriding any existing release conditions on the flag. If false (default), only update the variant distribution — existing release conditions are preserved and the variant is served only to users who already match them. */
-  release_to_everyone?: boolean;
-}
-export const ExperimentsShipVariantCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-    conclusion: S.optional(S.NullOr(ConclusionEnum)),
-    conclusion_comment: S.optional(S.NullOr(S.String)),
-    open_cleanup_pr: S.optional(S.Boolean),
-    repository: S.optional(S.NullOr(S.String)),
-    set_repository_as_team_default: S.optional(S.Boolean),
-    variant_key: S.optional(S.String),
-    release_to_everyone: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/ship_variant/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsShipVariantCreateRequest",
-}) as any as S.Schema<ExperimentsShipVariantCreateRequest>;
-
-export interface ExperimentsStatsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const ExperimentsStatsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/experiments/stats/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsStatsRetrieveRequest",
-}) as any as S.Schema<ExperimentsStatsRetrieveRequest>;
-
-export interface ExperimentsStatsRetrieveResponse {}
-export const ExperimentsStatsRetrieveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ExperimentsStatsRetrieveResponse",
-}) as any as S.Schema<ExperimentsStatsRetrieveResponse>;
-
-export interface ExperimentsTimeseriesResultsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-  /** Fingerprint of the metric configuration. Available alongside metric_uuid on each metric in the experiment's metrics array. */
-  fingerprint: string;
-  /** UUID of the metric to fetch timeseries for. Available on each metric in the experiment's metrics array. */
-  metric_uuid: string;
-}
-export const ExperimentsTimeseriesResultsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-      fingerprint: S.String.pipe(T.Query()),
-      metric_uuid: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/experiments/{id}/timeseries_results/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "ExperimentsTimeseriesResultsRetrieveRequest",
-  }) as any as S.Schema<ExperimentsTimeseriesResultsRetrieveRequest>;
-
-export interface ExperimentsTimeseriesResultsRetrieveResponse {}
-export const ExperimentsTimeseriesResultsRetrieveResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ExperimentsTimeseriesResultsRetrieveResponse",
-  }) as any as S.Schema<ExperimentsTimeseriesResultsRetrieveResponse>;
-
-export interface ExperimentsUnarchiveCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsUnarchiveCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/experiments/{id}/unarchive/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExperimentsUnarchiveCreateRequest",
-}) as any as S.Schema<ExperimentsUnarchiveCreateRequest>;
-
-export interface ExperimentsUnfreezeExposureCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A unique integer value identifying this experiment. */
-  id: number;
-}
-export const ExperimentsUnfreezeExposureCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.Number.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/experiments/{id}/unfreeze_exposure/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ExperimentsUnfreezeExposureCreateRequest",
-}) as any as S.Schema<ExperimentsUnfreezeExposureCreateRequest>;
-
 /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
 export type ExperimentsUpdateRequestExcludedVariantsList = Array<string>;
 export const ExperimentsUpdateRequestExcludedVariantsList =
@@ -4700,7 +4562,7 @@ export const ExperimentsUpdateRequestOriginalExperimentMap =
     S.Unknown,
   ) as any as S.Schema<ExperimentsUpdateRequestOriginalExperimentMap>;
 
-export interface ExperimentsUpdateRequest {
+export interface UpdateExperimentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this experiment. */
@@ -4759,7 +4621,7 @@ export interface ExperimentsUpdateRequest {
   /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
   original_experiment?: ExperimentsUpdateRequestOriginalExperimentMap | null;
 }
-export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateExperimentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.Number.pipe(T.Label()),
@@ -4811,8 +4673,458 @@ export const ExperimentsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ExperimentsUpdateRequest",
-}) as any as S.Schema<ExperimentsUpdateRequest>;
+  identifier: "UpdateExperimentRequest",
+}) as any as S.Schema<UpdateExperimentRequest>;
+
+/** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
+export type ExperimentsPartialUpdateRequestExcludedVariantsList = Array<string>;
+export const ExperimentsPartialUpdateRequestExcludedVariantsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ExperimentsPartialUpdateRequestExcludedVariantsList>;
+
+/** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
+export type ExperimentsPartialUpdateRequestSavedMetricsIdsList = Array<unknown>;
+export const ExperimentsPartialUpdateRequestSavedMetricsIdsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<ExperimentsPartialUpdateRequestSavedMetricsIdsList>;
+
+/** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+export type ExperimentsPartialUpdateRequestOriginalExperimentMap = {
+  [key: string]: unknown | undefined;
+};
+export const ExperimentsPartialUpdateRequestOriginalExperimentMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ExperimentsPartialUpdateRequestOriginalExperimentMap>;
+
+export interface UpdateExperimentPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A unique integer value identifying this experiment. */
+  id: number;
+  /** Name of the experiment. */
+  name?: string;
+  /** Description of the experiment hypothesis and expected outcomes. */
+  description?: string | null;
+  start_date?: string | null;
+  end_date?: string | null;
+  /** Unique key for the experiment's feature flag. Letters, numbers, hyphens, and underscores only. Search existing flags with the feature-flag-get-all tool first — reuse an existing flag when possible. */
+  feature_flag_key?: string;
+  /** Feature-flag config for the experiment, in the flag's own filters shape. The linked flag is the source of truth for variants, rollout, aggregation, payloads, and experience continuity: send config here instead of the deprecated `parameters` keys. On a running experiment, also send `update_feature_flag_params=true`. Cannot be combined with the key of a pre-existing feature flag on create (the experiment links to it as-is). */
+  feature_flag?: ExperimentFeatureFlagInput;
+  /** ID of a holdout group to exclude from the experiment. */
+  holdout_id?: number | null;
+  /** Experiment parameters JSON. Supported keys include `custom_exposure_filter` and `variant_notes` (free-text notes per variant, keyed by variant key). Flag config (variants, rollout, aggregation, payloads, experience continuity) belongs on the `feature_flag` object; send it there. For backward compatibility, config still sent through these deprecated keys is copied onto the linked flag rather than rejected, and reads project the flag's current config back into this field. Excluded variants live on the top-level `excluded_variants` field, not here. */
+  parameters?: ExperimentParameters | null;
+  /** Running-time calculator state: `minimum_detectable_effect`, `recommended_running_time`, `recommended_sample_size`, and `exposure_estimate_config`. Canonical home for these keys, which historically lived in `parameters`. */
+  running_time_calculation?: ExperimentRunningTimeCalculation | null;
+  /** Variant keys to exclude from metric result calculations. Excluded variants are still served to users but omitted from statistical analysis. The baseline variant and holdout pseudo-variants cannot be excluded. Canonical home for what historically lived in `parameters.excluded_variants`. */
+  excluded_variants?: ExperimentsPartialUpdateRequestExcludedVariantsList | null;
+  secondary_metrics?: unknown;
+  /** IDs of shared saved metrics to attach to this experiment. Each item has 'id' (saved metric ID) and 'metadata' with 'type' (primary or secondary). */
+  saved_metrics_ids?: ExperimentsPartialUpdateRequestSavedMetricsIdsList | null;
+  filters?: unknown;
+  /** Whether the experiment is archived. */
+  archived?: boolean;
+  deleted?: boolean | null;
+  /** Experiment type: web for frontend UI changes, product for backend/API changes. * `web` - web * `product` - product */
+  type?: ExperimentTypeEnum | (string & {}) | null;
+  /** Exposure configuration including filter test accounts and custom exposure events. */
+  exposure_criteria?: ExperimentApiExposureCriteria | null;
+  /** Primary experiment metrics. Each metric must have kind='ExperimentMetric' and a metric_type: 'mean' (set source to an EventsNode with an event name), 'funnel' (set series to an array of EventsNode steps), 'ratio' (set numerator and denominator EventsNode entries), or 'retention' (set start_event and completion_event). Use the read-data-schema tool with query kind 'events' to find available events in the project. */
+  metrics?: ExperimentApiMetricsList | null;
+  /** Secondary metrics for additional measurements. Same format as primary metrics. */
+  metrics_secondary?: ExperimentApiMetricsList | null;
+  stats_config?: unknown;
+  scheduling_config?: unknown;
+  /** Suppresses the validation that rejects metrics referencing events not yet ingested by this project. REQUIRES explicit user confirmation before being set to true — never flip this silently to retry a failed call. The default validation catches typo'd event names and missing instrumentation. Set this to true only when the user has confirmed the event is intentional (e.g. they are about to instrument it). */
+  allow_unknown_events?: boolean;
+  _create_in_folder?: string;
+  /** Experiment conclusion: won, lost, inconclusive, stopped_early, or invalid. * `won` - won * `lost` - lost * `inconclusive` - inconclusive * `stopped_early` - stopped_early * `invalid` - invalid */
+  conclusion?: ConclusionEnum | (string & {}) | null;
+  /** Comment about the experiment conclusion. */
+  conclusion_comment?: string | null;
+  /** GitHub repository holding this experiment's feature-flag code, in `organization/repository` format. Used as the target of the flag-cleanup pull request opened via open_cleanup_pr on end/ship_variant. When not set, cleanup targets the team's only connected repository and is skipped if the team has several. */
+  repository?: string | null;
+  primary_metrics_ordered_uuids?: unknown;
+  secondary_metrics_ordered_uuids?: unknown;
+  only_count_matured_users?: boolean;
+  /** When true, sync the flag config sent in this request (via the `feature_flag` object) to the linked feature flag. Draft experiments always sync regardless. On a running experiment, `feature_flag` config without this flag is rejected. */
+  update_feature_flag_params?: boolean;
+  /** Optimistic-concurrency token. Reads return the experiment's current version, bumped on every update. Send the version you last read with an update to detect concurrent edits: a stale update merges concurrent changes where safe — metric collections per metric uuid, other fields per field — using the base values sent in `original_experiment`, and fails with HTTP 409 only when the same metric or field changed on both sides (or no base value was sent for a changed field). Omit to skip the check. */
+  version?: number | null;
+  /** The experiment state as the client last read it, used together with `version` to resolve concurrent edits: metric collections merge per metric uuid, and any other field the update carries merges per field against its base value here (only a same-field double edit fails). Relevant keys are metrics, metrics_secondary, saved_metrics_ids, plus the last-read values of whichever scalar fields the update writes; unknown keys are ignored. Changed fields without a base value — and, without this object, any version mismatch — fail with HTTP 409. */
+  original_experiment?: ExperimentsPartialUpdateRequestOriginalExperimentMap | null;
+}
+export const UpdateExperimentPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.Number.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.NullOr(S.String)),
+    start_date: S.optional(S.NullOr(S.String)),
+    end_date: S.optional(S.NullOr(S.String)),
+    feature_flag_key: S.optional(S.String),
+    feature_flag: S.optional(ExperimentFeatureFlagInput),
+    holdout_id: S.optional(S.NullOr(S.Number)),
+    parameters: S.optional(S.NullOr(ExperimentParameters)),
+    running_time_calculation: S.optional(
+      S.NullOr(ExperimentRunningTimeCalculation),
+    ),
+    excluded_variants: S.optional(
+      S.NullOr(ExperimentsPartialUpdateRequestExcludedVariantsList),
+    ),
+    secondary_metrics: S.optional(S.Unknown),
+    saved_metrics_ids: S.optional(
+      S.NullOr(ExperimentsPartialUpdateRequestSavedMetricsIdsList),
+    ),
+    filters: S.optional(S.Unknown),
+    archived: S.optional(S.Boolean),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    type: S.optional(S.NullOr(ExperimentTypeEnum)),
+    exposure_criteria: S.optional(S.NullOr(ExperimentApiExposureCriteria)),
+    metrics: S.optional(S.NullOr(ExperimentApiMetricsList)),
+    metrics_secondary: S.optional(S.NullOr(ExperimentApiMetricsList)),
+    stats_config: S.optional(S.Unknown),
+    scheduling_config: S.optional(S.Unknown),
+    allow_unknown_events: S.optional(S.Boolean),
+    _create_in_folder: S.optional(S.String),
+    conclusion: S.optional(S.NullOr(ConclusionEnum)),
+    conclusion_comment: S.optional(S.NullOr(S.String)),
+    repository: S.optional(S.NullOr(S.String)),
+    primary_metrics_ordered_uuids: S.optional(S.Unknown),
+    secondary_metrics_ordered_uuids: S.optional(S.Unknown),
+    only_count_matured_users: S.optional(S.Boolean),
+    update_feature_flag_params: S.optional(S.Boolean),
+    version: S.optional(S.NullOr(S.Number)),
+    original_experiment: S.optional(
+      S.NullOr(ExperimentsPartialUpdateRequestOriginalExperimentMap),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/experiments/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateExperimentPartialRequest",
+}) as any as S.Schema<UpdateExperimentPartialRequest>;
+
+export type CreateExperimentError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create a new experiment in draft status with optional metrics. */
+export const createExperiment: API.OperationMethod<
+  CreateExperimentRequest,
+  ExperimentOutput,
+  CreateExperimentError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentRequest,
+  output: ExperimentOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentArchiveError =
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Archive an ended experiment. Hides the experiment from the default list view. The experiment can be restored at any time by updating archived=false. When the linked feature flag is still enabled, pass disable_feature_flag=true to also disable and archive it. Returns 400 if the experiment is already archived or has not ended yet. */
+export const createExperimentArchive: API.OperationMethod<
+  CreateExperimentArchiveRequest,
+  ExperimentOutput,
+  CreateExperimentArchiveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentArchiveRequest,
+  output: ExperimentOutput,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentCalculateRunningTimeError = PosthogOpError;
+/** Estimate the recommended sample size and running time for an experiment. Pure statistical calculation — does not read or write any experiment. Pass the metric type, a minimum detectable effect, and either a baseline value or raw baseline statistics. When `exposure_rate_per_day` is provided, the response also includes the estimated running time in days. */
+export const createExperimentCalculateRunningTime: API.OperationMethod<
+  CreateExperimentCalculateRunningTimeRequest,
+  RunningTimeCalculationResult,
+  CreateExperimentCalculateRunningTimeError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentCalculateRunningTimeRequest,
+  output: RunningTimeCalculationResult,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentCopyToProjectError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Copy an experiment into another project in the same organization as a new draft. */
+export const createExperimentCopyToProject: API.OperationMethod<
+  CreateExperimentCopyToProjectRequest,
+  ExperimentOutput,
+  CreateExperimentCopyToProjectError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentCopyToProjectRequest,
+  output: ExperimentOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentDuplicateError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers. Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate decorator on serializer methods and converts them into the same responses the viewset path produces (see decorators._result_to_response), so both paths share one contract. */
+export const createExperimentDuplicate: API.OperationMethod<
+  CreateExperimentDuplicateRequest,
+  CreateExperimentDuplicateResponse,
+  CreateExperimentDuplicateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentDuplicateRequest,
+  output: CreateExperimentDuplicateResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentEndError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** End a running experiment without shipping a variant. Sets end_date to now and marks the experiment as stopped. The feature flag is NOT modified — users continue to see their assigned variants and exposure events ($feature_flag_called) continue to be recorded. However, only data up to end_date is included in experiment results. Use this when: - You want to freeze the results window without changing which variant users see. - A variant was already shipped manually via the feature flag UI and the experiment just needs to be marked complete. The end_date can be adjusted after ending via PATCH if it needs to be backdated (e.g. to match when the flag was actually paused). Other options: - Use ship_variant to end the experiment AND roll out a single variant to 100%% of users. - Use pause to deactivate the flag without ending the experiment (stops variant assignment but does not freeze results). Returns 400 if the experiment is not running. */
+export const createExperimentEnd: API.OperationMethod<
+  CreateExperimentEndRequest,
+  ExperimentOutput,
+  CreateExperimentEndError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentEndRequest,
+  output: ExperimentOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentFreezeExposureError = PosthogOpError;
+/** Freeze exposure on a running experiment while metrics keep flowing. Snapshots the already-exposed users into a static cohort and narrows the linked feature flag so only those users keep matching — new users can no longer enter the experiment. ``end_date`` is left null so long-term metrics (revenue/LTV/renewals/retention) keep accumulating. Enrolled users keep their assigned variant. The serialized status becomes 'exposure_frozen'. Returns 400 if the experiment is not running, exposure is already frozen, the experiment is group-aggregated (group flags cannot be frozen with a person cohort), or the exposed set is too large to snapshot synchronously. */
+export const createExperimentFreezeExposure: API.OperationMethod<
+  CreateExperimentFreezeExposureRequest,
+  ExperimentOutput,
+  CreateExperimentFreezeExposureError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentFreezeExposureRequest,
+  output: ExperimentOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentLaunchError = Forbidden | NotFound | PosthogOpError;
+/** Launch a draft experiment. Validates the experiment is in draft state, activates its linked feature flag, sets start_date to the current server time, and transitions the experiment to running. Returns 400 if the experiment has already been launched or if the feature flag configuration is invalid (e.g. fewer than 2 variants). */
+export const createExperimentLaunch: API.OperationMethod<
+  CreateExperimentLaunchRequest,
+  ExperimentOutput,
+  CreateExperimentLaunchError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentLaunchRequest,
+  output: ExperimentOutput,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentMetricRecalculationError = PosthogOpError;
+/** Trigger a batch recalculation of all metrics for this experiment. Returns 201 with the new pending recalculation, or 200 with the active one if a recalculation is already pending or in progress for this experiment. The response payload intentionally does not include the `results` array — at POST time the workflow has just been queued and no per-metric results exist yet. Clients should poll `GET metrics_recalculation/{id}/` for results as the workflow progresses. */
+export const createExperimentMetricRecalculation: API.OperationMethod<
+  CreateExperimentMetricRecalculationRequest,
+  ExperimentMetricsRecalculation,
+  CreateExperimentMetricRecalculationError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentMetricRecalculationRequest,
+  output: ExperimentMetricsRecalculation,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentPauseError = Forbidden | NotFound | PosthogOpError;
+/** Pause a running experiment. Deactivates the linked feature flag so it is no longer returned by the /decide endpoint. Users fall back to the application default (typically the control experience), and no new exposure events are recorded (i.e. $feature_flag_called is not fired). Returns 400 if the experiment is not running or is already paused. */
+export const createExperimentPause: API.OperationMethod<
+  CreateExperimentPauseRequest,
+  ExperimentOutput,
+  CreateExperimentPauseError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentPauseRequest,
+  output: ExperimentOutput,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentRecalculateTimeseryError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers. Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate decorator on serializer methods and converts them into the same responses the viewset path produces (see decorators._result_to_response), so both paths share one contract. */
+export const createExperimentRecalculateTimesery: API.OperationMethod<
+  CreateExperimentRecalculateTimeseryRequest,
+  CreateExperimentRecalculateTimeseryResponse,
+  CreateExperimentRecalculateTimeseryError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentRecalculateTimeseryRequest,
+  output: CreateExperimentRecalculateTimeseryResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentResetError = Forbidden | NotFound | PosthogOpError;
+/** Reset an experiment back to draft state. Clears start/end dates, conclusion, archived flag, and any flag-cleanup task pointer. The feature flag is left unchanged — users continue to see their assigned variants. Previously collected events still exist but won't be included in results unless the start date is manually adjusted after re-launch. Returns 400 if the experiment is already in draft state. */
+export const createExperimentReset: API.OperationMethod<
+  CreateExperimentResetRequest,
+  ExperimentOutput,
+  CreateExperimentResetError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentResetRequest,
+  output: ExperimentOutput,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentResumeError = Forbidden | NotFound | PosthogOpError;
+/** Resume a paused experiment. Reactivates the linked feature flag so it is returned by /decide again. Users are re-bucketed deterministically into the same variants they had before the pause, and exposure tracking resumes. Returns 400 if the experiment is not running or is not paused. */
+export const createExperimentResume: API.OperationMethod<
+  CreateExperimentResumeRequest,
+  ExperimentOutput,
+  CreateExperimentResumeError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentResumeRequest,
+  output: ExperimentOutput,
+  errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentSessionBucketError = PosthogOpError;
+/** Session recordings of this experiment matching a bucket. Answers the questions a recordings query can't express on its own — "fired any of these metrics", "fired none of them", "was exposed but never completed the funnel in this session" — by returning a bounded, most-recent-first list of session IDs to pass back as a recordings query's session_ids. POST because the metric list doesn't fit a query string; the endpoint only reads. Session-scoped and goal-free: the set describes what happened in each session, while the experiment analysis counts per person over the whole run window. A session can be in the drop-off bucket while the same person converts in a later one. */
+export const createExperimentSessionBucket: API.OperationMethod<
+  CreateExperimentSessionBucketRequest,
+  ExperimentSessionBucketResponse,
+  CreateExperimentSessionBucketError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentSessionBucketRequest,
+  output: ExperimentSessionBucketResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentSessionContextError = PosthogOpError;
+/** Resolve experiment context for a batch of session recordings. Batch variant of `session_context`, used to prefetch the replay player's experiments box for a whole recordings list in one request. POST because the id list doesn't fit a query string; the endpoint only reads. Already-computed sessions are served from (and cold ones written to) the same short-lived per-viewer cache the single-session endpoint uses, so opening any prefetched recording renders its context instantly. Sessions whose recording metadata doesn't exist yet are omitted from the response, as are recordings the caller can't access and sessions beyond the batch's recording-day budget (each distinct recording day costs its own set of ClickHouse scans, so only the most recent days are computed per request). */
+export const createExperimentSessionContext: API.OperationMethod<
+  CreateExperimentSessionContextRequest,
+  ExperimentSessionContextsResponse,
+  CreateExperimentSessionContextError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentSessionContextRequest,
+  output: ExperimentSessionContextsResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentSessionEventDeltaError = PosthogOpError;
+/** The recordings worth watching for this experiment, grouped into cards. Each card is one sentence and the recordings that back it: an event one variant did clearly more than the others, an error signal concentrated in one variant, or a shortcut to a metric event happening on screen. Every card's count is a count of recordings that actually exist, so handing its session ids to the recordings list can't come back empty. POST to take the same throttle and cache posture as the other reads in this family rather than because it carries a body: it takes no parameters, and it only reads. It reports no effect size. Cards carry a direction and a band rather than a rate, a ratio or a person count: the experiment's results already state magnitudes, computed per person over the whole run window, and this reads one session per person over a clamped one. Two numbers for the same event would read as a contradiction, so this surface states none. That is what lets a card sit on one of the experiment's own metric events, which it names, so a reader is sent to the results rather than given a second answer. */
+export const createExperimentSessionEventDelta: API.OperationMethod<
+  CreateExperimentSessionEventDeltaRequest,
+  ExperimentSessionEventDeltaResponse,
+  CreateExperimentSessionEventDeltaError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentSessionEventDeltaRequest,
+  output: ExperimentSessionEventDeltaResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentShipVariantError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Ship a variant and (optionally) end the experiment. Updates the feature flag so the selected variant gets 100% of the variant distribution. By default, existing release conditions on the flag are preserved untouched — the variant is served only to users who already match them. Pass ``release_to_everyone: true`` to also prepend a catch-all release condition that rolls the variant out to 100% of users (overrides any existing release conditions on the flag). Can be called on both running and stopped experiments. If the experiment is still running, it will also be ended (end_date set and status marked as stopped). If the experiment has already ended, only the flag is rewritten - this supports the "end first, ship later" workflow. If an approval policy requires review before changes on the flag take effect, the API returns 409 with a change_request_id. The experiment is NOT ended until the change request is approved and the user retries. Returns 400 if the experiment is in draft state, the variant_key is not found on the flag, or the experiment has no linked feature flag. */
+export const createExperimentShipVariant: API.OperationMethod<
+  CreateExperimentShipVariantRequest,
+  ExperimentOutput,
+  CreateExperimentShipVariantError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentShipVariantRequest,
+  output: ExperimentOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentUnarchiveError = PosthogOpError;
+/** Unarchive an archived experiment. Restores the experiment to the default list view. Returns 400 if the experiment is not currently archived. */
+export const createExperimentUnarchive: API.OperationMethod<
+  CreateExperimentUnarchiveRequest,
+  ExperimentOutput,
+  CreateExperimentUnarchiveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentUnarchiveRequest,
+  output: ExperimentOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateExperimentUnfreezeExposureError = PosthogOpError;
+/** Reopen enrollment on an exposure-frozen experiment. Removes the snapshot-cohort condition and freeze markers from every release group, restoring the flag's original targeting: new users can enroll again and already-enrolled users keep their assigned variant. The snapshot cohort is soft-deleted. The serialized status returns to 'running'. Returns 400 if the experiment is not running or its exposure is not frozen. */
+export const createExperimentUnfreezeExposure: API.OperationMethod<
+  CreateExperimentUnfreezeExposureRequest,
+  ExperimentOutput,
+  CreateExperimentUnfreezeExposureError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateExperimentUnfreezeExposureRequest,
+  output: ExperimentOutput,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ExperimentsActivityRetrieveError = NotFound | PosthogOpError;
 /** Change history for this experiment. Returns a paginated audit trail of changes to the experiment, its holdouts and shared metrics, and its linked feature flag: who made each change, what changed (field-level before/after values), and when. Ordered newest first. */
@@ -4825,77 +5137,6 @@ export const experimentsActivityRetrieve: API.OperationMethod<
   input: ExperimentsActivityRetrieveRequest,
   output: ActivityLogPaginatedResponse,
   errors: [NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsArchiveCreateError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Archive an ended experiment. Hides the experiment from the default list view. The experiment can be restored at any time by updating archived=false. When the linked feature flag is still enabled, pass disable_feature_flag=true to also disable and archive it. Returns 400 if the experiment is already archived or has not ended yet. */
-export const experimentsArchiveCreate: API.OperationMethod<
-  ExperimentsArchiveCreateRequest,
-  ExperimentOutput,
-  ExperimentsArchiveCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsArchiveCreateRequest,
-  output: ExperimentOutput,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsCalculateRunningTimeCreateError = PosthogOpError;
-/** Estimate the recommended sample size and running time for an experiment. Pure statistical calculation — does not read or write any experiment. Pass the metric type, a minimum detectable effect, and either a baseline value or raw baseline statistics. When `exposure_rate_per_day` is provided, the response also includes the estimated running time in days. */
-export const experimentsCalculateRunningTimeCreate: API.OperationMethod<
-  ExperimentsCalculateRunningTimeCreateRequest,
-  RunningTimeCalculationResult,
-  ExperimentsCalculateRunningTimeCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsCalculateRunningTimeCreateRequest,
-  output: RunningTimeCalculationResult,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsCopyToProjectCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Copy an experiment into another project in the same organization as a new draft. */
-export const experimentsCopyToProjectCreate: API.OperationMethod<
-  ExperimentsCopyToProjectCreateRequest,
-  ExperimentOutput,
-  ExperimentsCopyToProjectCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsCopyToProjectCreateRequest,
-  output: ExperimentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create a new experiment in draft status with optional metrics. */
-export const experimentsCreate: API.OperationMethod<
-  ExperimentsCreateRequest,
-  ExperimentOutput,
-  ExperimentsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsCreateRequest,
-  output: ExperimentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -4949,44 +5190,6 @@ export const experimentsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExperimentsDuplicateCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers. Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate decorator on serializer methods and converts them into the same responses the viewset path produces (see decorators._result_to_response), so both paths share one contract. */
-export const experimentsDuplicateCreate: API.OperationMethod<
-  ExperimentsDuplicateCreateRequest,
-  ExperimentsDuplicateCreateResponse,
-  ExperimentsDuplicateCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsDuplicateCreateRequest,
-  output: ExperimentsDuplicateCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsEndCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** End a running experiment without shipping a variant. Sets end_date to now and marks the experiment as stopped. The feature flag is NOT modified — users continue to see their assigned variants and exposure events ($feature_flag_called) continue to be recorded. However, only data up to end_date is included in experiment results. Use this when: - You want to freeze the results window without changing which variant users see. - A variant was already shipped manually via the feature flag UI and the experiment just needs to be marked complete. The end_date can be adjusted after ending via PATCH if it needs to be backdated (e.g. to match when the flag was actually paused). Other options: - Use ship_variant to end the experiment AND roll out a single variant to 100%% of users. - Use pause to deactivate the flag without ending the experiment (stops variant assignment but does not freeze results). Returns 400 if the experiment is not running. */
-export const experimentsEndCreate: API.OperationMethod<
-  ExperimentsEndCreateRequest,
-  ExperimentOutput,
-  ExperimentsEndCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsEndCreateRequest,
-  output: ExperimentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ExperimentsFlagCleanupTargetRetrieveError = PosthogOpError;
 /** Repository a flag-cleanup pull request for this experiment would be opened in. Resolution order: the experiment's saved repository, else the environment's default cleanup repository, else the team's only connected GitHub repository. When the team has several repositories and none is saved (source=ambiguous), pass one via `repository` on end/ship_variant. */
 export const experimentsFlagCleanupTargetRetrieve: API.OperationMethod<
@@ -5012,73 +5215,6 @@ export const experimentsFlagCleanupTaskRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExperimentsFlagCleanupTaskRetrieveRequest,
   output: ExperimentFlagCleanupTask,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsFreezeExposureCreateError = PosthogOpError;
-/** Freeze exposure on a running experiment while metrics keep flowing. Snapshots the already-exposed users into a static cohort and narrows the linked feature flag so only those users keep matching — new users can no longer enter the experiment. ``end_date`` is left null so long-term metrics (revenue/LTV/renewals/retention) keep accumulating. Enrolled users keep their assigned variant. The serialized status becomes 'exposure_frozen'. Returns 400 if the experiment is not running, exposure is already frozen, the experiment is group-aggregated (group flags cannot be frozen with a person cohort), or the exposed set is too large to snapshot synchronously. */
-export const experimentsFreezeExposureCreate: API.OperationMethod<
-  ExperimentsFreezeExposureCreateRequest,
-  ExperimentOutput,
-  ExperimentsFreezeExposureCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsFreezeExposureCreateRequest,
-  output: ExperimentOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsLaunchCreateError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Launch a draft experiment. Validates the experiment is in draft state, activates its linked feature flag, sets start_date to the current server time, and transitions the experiment to running. Returns 400 if the experiment has already been launched or if the feature flag configuration is invalid (e.g. fewer than 2 variants). */
-export const experimentsLaunchCreate: API.OperationMethod<
-  ExperimentsLaunchCreateRequest,
-  ExperimentOutput,
-  ExperimentsLaunchCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsLaunchCreateRequest,
-  output: ExperimentOutput,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** List experiments for the current project. Supports filtering by status and archival state. */
-export const experimentsList: API.OperationMethod<
-  ExperimentsListRequest,
-  PaginatedExperimentBasicList,
-  ExperimentsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsListRequest,
-  output: PaginatedExperimentBasicList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsMetricsRecalculationCreateError = PosthogOpError;
-/** Trigger a batch recalculation of all metrics for this experiment. Returns 201 with the new pending recalculation, or 200 with the active one if a recalculation is already pending or in progress for this experiment. The response payload intentionally does not include the `results` array — at POST time the workflow has just been queued and no per-metric results exist yet. Clients should poll `GET metrics_recalculation/{id}/` for results as the workflow progresses. */
-export const experimentsMetricsRecalculationCreate: API.OperationMethod<
-  ExperimentsMetricsRecalculationCreateRequest,
-  ExperimentMetricsRecalculation,
-  ExperimentsMetricsRecalculationCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsMetricsRecalculationCreateRequest,
-  output: ExperimentMetricsRecalculation,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -5118,40 +5254,6 @@ export const experimentsMetricsRecalculationRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExperimentsPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time. Feature-flag config (variants, rollout, payloads) is sent via the feature_flag object. */
-export const experimentsPartialUpdate: API.OperationMethod<
-  ExperimentsPartialUpdateRequest,
-  ExperimentOutput,
-  ExperimentsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsPartialUpdateRequest,
-  output: ExperimentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsPauseCreateError = Forbidden | NotFound | PosthogOpError;
-/** Pause a running experiment. Deactivates the linked feature flag so it is no longer returned by the /decide endpoint. Users fall back to the application default (typically the control experience), and no new exposure events are recorded (i.e. $feature_flag_called is not fired). Returns 400 if the experiment is not running or is already paused. */
-export const experimentsPauseCreate: API.OperationMethod<
-  ExperimentsPauseCreateRequest,
-  ExperimentOutput,
-  ExperimentsPauseCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsPauseCreateRequest,
-  output: ExperimentOutput,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ExperimentsPromptTemplatesRetrieveError = PosthogOpError;
 /** List the LLM metric templates that can be passed to `create_from_prompt`. */
 export const experimentsPromptTemplatesRetrieve: API.OperationMethod<
@@ -5163,58 +5265,6 @@ export const experimentsPromptTemplatesRetrieve: API.OperationMethod<
   input: ExperimentsPromptTemplatesRetrieveRequest,
   output: ExperimentsPromptTemplatesRetrieveResponse,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsRecalculateTimeseriesCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers. Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate decorator on serializer methods and converts them into the same responses the viewset path produces (see decorators._result_to_response), so both paths share one contract. */
-export const experimentsRecalculateTimeseriesCreate: API.OperationMethod<
-  ExperimentsRecalculateTimeseriesCreateRequest,
-  ExperimentsRecalculateTimeseriesCreateResponse,
-  ExperimentsRecalculateTimeseriesCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsRecalculateTimeseriesCreateRequest,
-  output: ExperimentsRecalculateTimeseriesCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsResetCreateError = Forbidden | NotFound | PosthogOpError;
-/** Reset an experiment back to draft state. Clears start/end dates, conclusion, archived flag, and any flag-cleanup task pointer. The feature flag is left unchanged — users continue to see their assigned variants. Previously collected events still exist but won't be included in results unless the start date is manually adjusted after re-launch. Returns 400 if the experiment is already in draft state. */
-export const experimentsResetCreate: API.OperationMethod<
-  ExperimentsResetCreateRequest,
-  ExperimentOutput,
-  ExperimentsResetCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsResetCreateRequest,
-  output: ExperimentOutput,
-  errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsResumeCreateError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Resume a paused experiment. Reactivates the linked feature flag so it is returned by /decide again. Users are re-bucketed deterministically into the same variants they had before the pause, and exposure tracking resumes. Returns 400 if the experiment is not running or is not paused. */
-export const experimentsResumeCreate: API.OperationMethod<
-  ExperimentsResumeCreateRequest,
-  ExperimentOutput,
-  ExperimentsResumeCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsResumeCreateRequest,
-  output: ExperimentOutput,
-  errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -5234,21 +5284,6 @@ export const experimentsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExperimentsSessionBucketsCreateError = PosthogOpError;
-/** Session recordings of this experiment matching a bucket. Answers the questions a recordings query can't express on its own — "fired any of these metrics", "fired none of them", "was exposed but never completed the funnel in this session" — by returning a bounded, most-recent-first list of session IDs to pass back as a recordings query's session_ids. POST because the metric list doesn't fit a query string; the endpoint only reads. Session-scoped and goal-free: the set describes what happened in each session, while the experiment analysis counts per person over the whole run window. A session can be in the drop-off bucket while the same person converts in a later one. */
-export const experimentsSessionBucketsCreate: API.OperationMethod<
-  ExperimentsSessionBucketsCreateRequest,
-  ExperimentSessionBucketResponse,
-  ExperimentsSessionBucketsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsSessionBucketsCreateRequest,
-  output: ExperimentSessionBucketResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ExperimentsSessionContextRetrieveError = PosthogOpError;
 /** Resolve which experiments (and variants) a session recording saw. Variants come from the session's $feature_flag_called events and stamped $feature/<key> event properties — flag evaluation, which may differ from an experiment's exposure criteria. */
 export const experimentsSessionContextRetrieve: API.OperationMethod<
@@ -5260,55 +5295,6 @@ export const experimentsSessionContextRetrieve: API.OperationMethod<
   input: ExperimentsSessionContextRetrieveRequest,
   output: ExperimentSessionContextResponse,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsSessionContextsCreateError = PosthogOpError;
-/** Resolve experiment context for a batch of session recordings. Batch variant of `session_context`, used to prefetch the replay player's experiments box for a whole recordings list in one request. POST because the id list doesn't fit a query string; the endpoint only reads. Already-computed sessions are served from (and cold ones written to) the same short-lived per-viewer cache the single-session endpoint uses, so opening any prefetched recording renders its context instantly. Sessions whose recording metadata doesn't exist yet are omitted from the response, as are recordings the caller can't access and sessions beyond the batch's recording-day budget (each distinct recording day costs its own set of ClickHouse scans, so only the most recent days are computed per request). */
-export const experimentsSessionContextsCreate: API.OperationMethod<
-  ExperimentsSessionContextsCreateRequest,
-  ExperimentSessionContextsResponse,
-  ExperimentsSessionContextsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsSessionContextsCreateRequest,
-  output: ExperimentSessionContextsResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsSessionEventDeltasCreateError = PosthogOpError;
-/** The recordings worth watching for this experiment, grouped into cards. Each card is one sentence and the recordings that back it: an event one variant did clearly more than the others, an error signal concentrated in one variant, or a shortcut to a metric event happening on screen. Every card's count is a count of recordings that actually exist, so handing its session ids to the recordings list can't come back empty. POST to take the same throttle and cache posture as the other reads in this family rather than because it carries a body: it takes no parameters, and it only reads. It reports no effect size. Cards carry a direction and a band rather than a rate, a ratio or a person count: the experiment's results already state magnitudes, computed per person over the whole run window, and this reads one session per person over a clamped one. Two numbers for the same event would read as a contradiction, so this surface states none. That is what lets a card sit on one of the experiment's own metric events, which it names, so a reader is sent to the results rather than given a second answer. */
-export const experimentsSessionEventDeltasCreate: API.OperationMethod<
-  ExperimentsSessionEventDeltasCreateRequest,
-  ExperimentSessionEventDeltaResponse,
-  ExperimentsSessionEventDeltasCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsSessionEventDeltasCreateRequest,
-  output: ExperimentSessionEventDeltaResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsShipVariantCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Ship a variant and (optionally) end the experiment. Updates the feature flag so the selected variant gets 100% of the variant distribution. By default, existing release conditions on the flag are preserved untouched — the variant is served only to users who already match them. Pass ``release_to_everyone: true`` to also prepend a catch-all release condition that rolls the variant out to 100% of users (overrides any existing release conditions on the flag). Can be called on both running and stopped experiments. If the experiment is still running, it will also be ended (end_date set and status marked as stopped). If the experiment has already ended, only the flag is rewritten - this supports the "end first, ship later" workflow. If an approval policy requires review before changes on the flag take effect, the API returns 409 with a change_request_id. The experiment is NOT ended until the change request is approved and the user retries. Returns 400 if the experiment is in draft state, the variant_key is not found on the flag, or the experiment has no linked feature flag. */
-export const experimentsShipVariantCreate: API.OperationMethod<
-  ExperimentsShipVariantCreateRequest,
-  ExperimentOutput,
-  ExperimentsShipVariantCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsShipVariantCreateRequest,
-  output: ExperimentOutput,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -5350,49 +5336,57 @@ export const experimentsTimeseriesResultsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ExperimentsUnarchiveCreateError = PosthogOpError;
-/** Unarchive an archived experiment. Restores the experiment to the default list view. Returns 400 if the experiment is not currently archived. */
-export const experimentsUnarchiveCreate: API.OperationMethod<
-  ExperimentsUnarchiveCreateRequest,
-  ExperimentOutput,
-  ExperimentsUnarchiveCreateError,
+export type ListExperimentsError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** List experiments for the current project. Supports filtering by status and archival state. */
+export const listExperiments: API.OperationMethod<
+  ListExperimentsRequest,
+  PaginatedExperimentBasicList,
+  ListExperimentsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsUnarchiveCreateRequest,
-  output: ExperimentOutput,
-  errors: [],
+  input: ListExperimentsRequest,
+  output: PaginatedExperimentBasicList,
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type ExperimentsUnfreezeExposureCreateError = PosthogOpError;
-/** Reopen enrollment on an exposure-frozen experiment. Removes the snapshot-cohort condition and freeze markers from every release group, restoring the flag's original targeting: new users can enroll again and already-enrolled users keep their assigned variant. The snapshot cohort is soft-deleted. The serialized status returns to 'running'. Returns 400 if the experiment is not running or its exposure is not frozen. */
-export const experimentsUnfreezeExposureCreate: API.OperationMethod<
-  ExperimentsUnfreezeExposureCreateRequest,
-  ExperimentOutput,
-  ExperimentsUnfreezeExposureCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsUnfreezeExposureCreateRequest,
-  output: ExperimentOutput,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExperimentsUpdateError =
+export type UpdateExperimentError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** Mixin for ViewSets to handle approval-gate exceptions raised from decorated serializers. Intercepts ApprovalRequired (409) and PolicyConflict (400) raised by the @approval_gate decorator on serializer methods and converts them into the same responses the viewset path produces (see decorators._result_to_response), so both paths share one contract. */
-export const experimentsUpdate: API.OperationMethod<
-  ExperimentsUpdateRequest,
+export const updateExperiment: API.OperationMethod<
+  UpdateExperimentRequest,
   ExperimentOutput,
-  ExperimentsUpdateError,
+  UpdateExperimentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExperimentsUpdateRequest,
+  input: UpdateExperimentRequest,
+  output: ExperimentOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateExperimentPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Update an experiment. Use this to modify experiment properties such as name, description, metrics, variants, and configuration. Metrics can be added, changed and removed at any time. Feature-flag config (variants, rollout, payloads) is sent via the feature_flag object. */
+export const updateExperimentPartial: API.OperationMethod<
+  UpdateExperimentPartialRequest,
+  ExperimentOutput,
+  UpdateExperimentPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateExperimentPartialRequest,
   output: ExperimentOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

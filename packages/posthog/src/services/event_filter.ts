@@ -15,7 +15,7 @@ export type { PosthogOpError, PosthogOpContext };
 export type EventFilterConfigModeEnum = "disabled" | "dry_run" | "live";
 export const EventFilterConfigModeEnum = /*@__PURE__*/ S.String;
 
-export interface EventFilterCreateRequest {
+export interface CreateEventFilterRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   mode?: EventFilterConfigModeEnum | (string & {});
@@ -24,7 +24,7 @@ export interface EventFilterCreateRequest {
   /** Test events to validate the filter. Each: {"event_name": "...", "distinct_id": "...", "expected_result": "drop"|"ingest"} */
   test_cases?: unknown;
 }
-export const EventFilterCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateEventFilterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     mode: S.optional(EventFilterConfigModeEnum),
@@ -38,8 +38,8 @@ export const EventFilterCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EventFilterCreateRequest",
-}) as any as S.Schema<EventFilterCreateRequest>;
+  identifier: "CreateEventFilterRequest",
+}) as any as S.Schema<CreateEventFilterRequest>;
 
 export interface EventFilterConfig {
   id?: string;
@@ -179,15 +179,15 @@ export const EventFilterRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventFilterRetrieveRequest",
 }) as any as S.Schema<EventFilterRetrieveRequest>;
 
-export type EventFilterCreateError = PosthogOpError;
+export type CreateEventFilterError = PosthogOpError;
 /** Create or update the event filter config. */
-export const eventFilterCreate: API.OperationMethod<
-  EventFilterCreateRequest,
+export const createEventFilter: API.OperationMethod<
+  CreateEventFilterRequest,
   EventFilterConfig,
-  EventFilterCreateError,
+  CreateEventFilterError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventFilterCreateRequest,
+  input: CreateEventFilterRequest,
   output: EventFilterConfig,
   errors: [],
   protocol: PosthogProtocol,

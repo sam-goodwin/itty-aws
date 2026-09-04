@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.discovery#ProjectsDelete": {
+    "com.azure.discovery#DeleteProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ProjectsDeleteRequest"
+        "target": "com.azure.discovery#DeleteProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ProjectsDeleteRequest": {
+    "com.azure.discovery#DeleteProjectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -76,13 +76,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ProjectsUpdate": {
+    "com.azure.discovery#UpdateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ProjectsUpdateRequest"
+        "target": "com.azure.discovery#UpdateProjectRequest"
       },
       "output": {
-        "target": "com.azure.discovery#ProjectsUpdateResponse"
+        "target": "com.azure.discovery#UpdateProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -95,7 +95,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ProjectsUpdateResponse": {
+    "com.azure.discovery#UpdateProjectResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -371,7 +371,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.discovery#ProjectsUpdateRequest": {
+    "com.azure.discovery#UpdateProjectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -617,13 +617,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ProjectsGet": {
+    "com.azure.discovery#GetProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ProjectsGetRequest"
+        "target": "com.azure.discovery#GetProjectRequest"
       },
       "output": {
-        "target": "com.azure.discovery#ProjectsGetResponse"
+        "target": "com.azure.discovery#GetProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -636,7 +636,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ProjectsGetResponse": {
+    "com.azure.discovery#GetProjectResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -699,7 +699,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ProjectsGetRequest": {
+    "com.azure.discovery#GetProjectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -739,10 +739,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ProjectsListByWorkspace": {
+    "com.azure.discovery#ListProjectByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ProjectsListByWorkspaceRequest"
+        "target": "com.azure.discovery#ListProjectByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.discovery#ProjectListResult"
@@ -851,7 +851,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ProjectsListByWorkspaceRequest": {
+    "com.azure.discovery#ListProjectByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -883,13 +883,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacePrivateLinkResourcesGet": {
+    "com.azure.discovery#GetWorkspacePrivateLinkResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacePrivateLinkResourcesGetRequest"
+        "target": "com.azure.discovery#GetWorkspacePrivateLinkResourceRequest"
       },
       "output": {
-        "target": "com.azure.discovery#WorkspacePrivateLinkResourcesGetResponse"
+        "target": "com.azure.discovery#GetWorkspacePrivateLinkResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -902,7 +902,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacePrivateLinkResourcesGetResponse": {
+    "com.azure.discovery#GetWorkspacePrivateLinkResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -984,7 +984,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.discovery#WorkspacePrivateLinkResourcesGetRequest": {
+    "com.azure.discovery#GetWorkspacePrivateLinkResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1024,10 +1024,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacePrivateLinkResourcesListByWorkspace": {
+    "com.azure.discovery#ListWorkspacePrivateLinkResourceByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacePrivateLinkResourcesListByWorkspaceRequest"
+        "target": "com.azure.discovery#ListWorkspacePrivateLinkResourceByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.discovery#WorkspacePrivateLinkResourceListResult"
@@ -1155,7 +1155,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.discovery#WorkspacePrivateLinkResourcesListByWorkspaceRequest": {
+    "com.azure.discovery#ListWorkspacePrivateLinkResourceByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1187,10 +1187,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsDelete": {
+    "com.azure.discovery#DeleteWorkspacePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.discovery#DeleteWorkspacePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1206,7 +1206,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.discovery#DeleteWorkspacePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1517,13 +1517,13 @@
         "smithy.api#documentation": "The private endpoint resource."
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsGet": {
+    "com.azure.discovery#GetWorkspacePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.discovery#GetWorkspacePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.discovery#GetWorkspacePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1536,7 +1536,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsGetResponse": {
+    "com.azure.discovery#GetWorkspacePrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1616,7 +1616,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsGetRequest": {
+    "com.azure.discovery#GetWorkspacePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1656,10 +1656,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsListByWorkspace": {
+    "com.azure.discovery#ListWorkspacePrivateEndpointConnectionByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsListByWorkspaceRequest"
+        "target": "com.azure.discovery#ListWorkspacePrivateEndpointConnectionByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionListResult"
@@ -1785,7 +1785,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.discovery#WorkspacePrivateEndpointConnectionsListByWorkspaceRequest": {
+    "com.azure.discovery#ListWorkspacePrivateEndpointConnectionByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1817,10 +1817,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsDelete": {
+    "com.azure.discovery#DeleteChatModelDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ChatModelDeploymentsDeleteRequest"
+        "target": "com.azure.discovery#DeleteChatModelDeploymentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1836,7 +1836,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsDeleteRequest": {
+    "com.azure.discovery#DeleteChatModelDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1876,13 +1876,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsUpdate": {
+    "com.azure.discovery#UpdateChatModelDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ChatModelDeploymentsUpdateRequest"
+        "target": "com.azure.discovery#UpdateChatModelDeploymentRequest"
       },
       "output": {
-        "target": "com.azure.discovery#ChatModelDeploymentsUpdateResponse"
+        "target": "com.azure.discovery#UpdateChatModelDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1895,7 +1895,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsUpdateResponse": {
+    "com.azure.discovery#UpdateChatModelDeploymentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2004,7 +2004,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsUpdateRequest": {
+    "com.azure.discovery#UpdateChatModelDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2275,13 +2275,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsGet": {
+    "com.azure.discovery#GetChatModelDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ChatModelDeploymentsGetRequest"
+        "target": "com.azure.discovery#GetChatModelDeploymentRequest"
       },
       "output": {
-        "target": "com.azure.discovery#ChatModelDeploymentsGetResponse"
+        "target": "com.azure.discovery#GetChatModelDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2294,7 +2294,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsGetResponse": {
+    "com.azure.discovery#GetChatModelDeploymentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2357,7 +2357,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsGetRequest": {
+    "com.azure.discovery#GetChatModelDeploymentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2397,10 +2397,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsListByWorkspace": {
+    "com.azure.discovery#ListChatModelDeploymentByWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ChatModelDeploymentsListByWorkspaceRequest"
+        "target": "com.azure.discovery#ListChatModelDeploymentByWorkspaceRequest"
       },
       "output": {
         "target": "com.azure.discovery#ChatModelDeploymentListResult"
@@ -2509,7 +2509,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ChatModelDeploymentsListByWorkspaceRequest": {
+    "com.azure.discovery#ListChatModelDeploymentByWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2541,10 +2541,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacesDelete": {
+    "com.azure.discovery#DeleteWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacesDeleteRequest"
+        "target": "com.azure.discovery#DeleteWorkspaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2560,7 +2560,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacesDeleteRequest": {
+    "com.azure.discovery#DeleteWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2592,13 +2592,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacesUpdate": {
+    "com.azure.discovery#UpdateWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacesUpdateRequest"
+        "target": "com.azure.discovery#UpdateWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.discovery#WorkspacesUpdateResponse"
+        "target": "com.azure.discovery#UpdateWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2611,7 +2611,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacesUpdateResponse": {
+    "com.azure.discovery#UpdateWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3003,7 +3003,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#WorkspacesUpdateRequest": {
+    "com.azure.discovery#UpdateWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3331,13 +3331,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#WorkspacesGet": {
+    "com.azure.discovery#GetWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacesGetRequest"
+        "target": "com.azure.discovery#GetWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.discovery#WorkspacesGetResponse"
+        "target": "com.azure.discovery#GetWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3350,7 +3350,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacesGetResponse": {
+    "com.azure.discovery#GetWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3413,7 +3413,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#WorkspacesGetRequest": {
+    "com.azure.discovery#GetWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3445,10 +3445,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacesListByResourceGroup": {
+    "com.azure.discovery#ListWorkspaceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacesListByResourceGroupRequest"
+        "target": "com.azure.discovery#ListWorkspaceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.discovery#WorkspaceListResult"
@@ -3557,7 +3557,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#WorkspacesListByResourceGroupRequest": {
+    "com.azure.discovery#ListWorkspaceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3581,10 +3581,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ToolsDelete": {
+    "com.azure.discovery#DeleteTool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ToolsDeleteRequest"
+        "target": "com.azure.discovery#DeleteToolRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3600,7 +3600,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ToolsDeleteRequest": {
+    "com.azure.discovery#DeleteToolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3632,13 +3632,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ToolsUpdate": {
+    "com.azure.discovery#UpdateTool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ToolsUpdateRequest"
+        "target": "com.azure.discovery#UpdateToolRequest"
       },
       "output": {
-        "target": "com.azure.discovery#ToolsUpdateResponse"
+        "target": "com.azure.discovery#UpdateToolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3651,7 +3651,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ToolsUpdateResponse": {
+    "com.azure.discovery#UpdateToolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3772,7 +3772,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ToolsUpdateRequest": {
+    "com.azure.discovery#UpdateToolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4075,13 +4075,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ToolsGet": {
+    "com.azure.discovery#GetTool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ToolsGetRequest"
+        "target": "com.azure.discovery#GetToolRequest"
       },
       "output": {
-        "target": "com.azure.discovery#ToolsGetResponse"
+        "target": "com.azure.discovery#GetToolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4094,7 +4094,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ToolsGetResponse": {
+    "com.azure.discovery#GetToolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4157,7 +4157,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ToolsGetRequest": {
+    "com.azure.discovery#GetToolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4189,10 +4189,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ToolsListByResourceGroup": {
+    "com.azure.discovery#ListToolByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ToolsListByResourceGroupRequest"
+        "target": "com.azure.discovery#ListToolByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.discovery#ToolListResult"
@@ -4301,7 +4301,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#ToolsListByResourceGroupRequest": {
+    "com.azure.discovery#ListToolByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4325,10 +4325,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#NodePoolsDelete": {
+    "com.azure.discovery#DeleteNodePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#NodePoolsDeleteRequest"
+        "target": "com.azure.discovery#DeleteNodePoolRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4344,7 +4344,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#NodePoolsDeleteRequest": {
+    "com.azure.discovery#DeleteNodePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4384,13 +4384,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#NodePoolsUpdate": {
+    "com.azure.discovery#UpdateNodePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#NodePoolsUpdateRequest"
+        "target": "com.azure.discovery#UpdateNodePoolRequest"
       },
       "output": {
-        "target": "com.azure.discovery#NodePoolsUpdateResponse"
+        "target": "com.azure.discovery#UpdateNodePoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4403,7 +4403,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#NodePoolsUpdateResponse": {
+    "com.azure.discovery#UpdateNodePoolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4643,7 +4643,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#NodePoolsUpdateRequest": {
+    "com.azure.discovery#UpdateNodePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4959,13 +4959,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#NodePoolsGet": {
+    "com.azure.discovery#GetNodePool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#NodePoolsGetRequest"
+        "target": "com.azure.discovery#GetNodePoolRequest"
       },
       "output": {
-        "target": "com.azure.discovery#NodePoolsGetResponse"
+        "target": "com.azure.discovery#GetNodePoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4978,7 +4978,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#NodePoolsGetResponse": {
+    "com.azure.discovery#GetNodePoolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5041,7 +5041,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#NodePoolsGetRequest": {
+    "com.azure.discovery#GetNodePoolRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5081,10 +5081,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#NodePoolsListBySupercomputer": {
+    "com.azure.discovery#ListNodePoolBySupercomputer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#NodePoolsListBySupercomputerRequest"
+        "target": "com.azure.discovery#ListNodePoolBySupercomputerRequest"
       },
       "output": {
         "target": "com.azure.discovery#NodePoolListResult"
@@ -5193,7 +5193,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#NodePoolsListBySupercomputerRequest": {
+    "com.azure.discovery#ListNodePoolBySupercomputerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5225,10 +5225,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#SupercomputersDelete": {
+    "com.azure.discovery#DeleteSupercomputer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#SupercomputersDeleteRequest"
+        "target": "com.azure.discovery#DeleteSupercomputerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5244,7 +5244,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#SupercomputersDeleteRequest": {
+    "com.azure.discovery#DeleteSupercomputerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5276,13 +5276,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#SupercomputersUpdate": {
+    "com.azure.discovery#UpdateSupercomputer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#SupercomputersUpdateRequest"
+        "target": "com.azure.discovery#UpdateSupercomputerRequest"
       },
       "output": {
-        "target": "com.azure.discovery#SupercomputersUpdateResponse"
+        "target": "com.azure.discovery#UpdateSupercomputerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5295,7 +5295,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#SupercomputersUpdateResponse": {
+    "com.azure.discovery#UpdateSupercomputerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5592,7 +5592,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#SupercomputersUpdateRequest": {
+    "com.azure.discovery#UpdateSupercomputerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6057,13 +6057,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#SupercomputersGet": {
+    "com.azure.discovery#GetSupercomputer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#SupercomputersGetRequest"
+        "target": "com.azure.discovery#GetSupercomputerRequest"
       },
       "output": {
-        "target": "com.azure.discovery#SupercomputersGetResponse"
+        "target": "com.azure.discovery#GetSupercomputerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6076,7 +6076,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#SupercomputersGetResponse": {
+    "com.azure.discovery#GetSupercomputerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6171,7 +6171,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#SupercomputersGetRequest": {
+    "com.azure.discovery#GetSupercomputerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6203,10 +6203,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#SupercomputersListByResourceGroup": {
+    "com.azure.discovery#ListSupercomputerByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#SupercomputersListByResourceGroupRequest"
+        "target": "com.azure.discovery#ListSupercomputerByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.discovery#SupercomputerListResult"
@@ -6347,7 +6347,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#SupercomputersListByResourceGroupRequest": {
+    "com.azure.discovery#ListSupercomputerByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6371,10 +6371,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageAssetsDelete": {
+    "com.azure.discovery#DeleteStorageAsset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageAssetsDeleteRequest"
+        "target": "com.azure.discovery#DeleteStorageAssetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6390,7 +6390,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageAssetsDeleteRequest": {
+    "com.azure.discovery#DeleteStorageAssetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6430,13 +6430,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageAssetsUpdate": {
+    "com.azure.discovery#UpdateStorageAsset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageAssetsUpdateRequest"
+        "target": "com.azure.discovery#UpdateStorageAssetRequest"
       },
       "output": {
-        "target": "com.azure.discovery#StorageAssetsUpdateResponse"
+        "target": "com.azure.discovery#UpdateStorageAssetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6449,7 +6449,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageAssetsUpdateResponse": {
+    "com.azure.discovery#UpdateStorageAssetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6539,7 +6539,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageAssetsUpdateRequest": {
+    "com.azure.discovery#UpdateStorageAssetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6791,13 +6791,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageAssetsGet": {
+    "com.azure.discovery#GetStorageAsset": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageAssetsGetRequest"
+        "target": "com.azure.discovery#GetStorageAssetRequest"
       },
       "output": {
-        "target": "com.azure.discovery#StorageAssetsGetResponse"
+        "target": "com.azure.discovery#GetStorageAssetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6810,7 +6810,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageAssetsGetResponse": {
+    "com.azure.discovery#GetStorageAssetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6873,7 +6873,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageAssetsGetRequest": {
+    "com.azure.discovery#GetStorageAssetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6913,10 +6913,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageAssetsListByStorageContainer": {
+    "com.azure.discovery#ListStorageAssetByStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageAssetsListByStorageContainerRequest"
+        "target": "com.azure.discovery#ListStorageAssetByStorageContainerRequest"
       },
       "output": {
         "target": "com.azure.discovery#StorageAssetListResult"
@@ -7025,7 +7025,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageAssetsListByStorageContainerRequest": {
+    "com.azure.discovery#ListStorageAssetByStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7057,10 +7057,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageContainersDelete": {
+    "com.azure.discovery#DeleteStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageContainersDeleteRequest"
+        "target": "com.azure.discovery#DeleteStorageContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7076,7 +7076,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageContainersDeleteRequest": {
+    "com.azure.discovery#DeleteStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7108,13 +7108,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageContainersUpdate": {
+    "com.azure.discovery#UpdateStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageContainersUpdateRequest"
+        "target": "com.azure.discovery#UpdateStorageContainerRequest"
       },
       "output": {
-        "target": "com.azure.discovery#StorageContainersUpdateResponse"
+        "target": "com.azure.discovery#UpdateStorageContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7127,7 +7127,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageContainersUpdateResponse": {
+    "com.azure.discovery#UpdateStorageContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7246,7 +7246,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageContainersUpdateRequest": {
+    "com.azure.discovery#UpdateStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7462,13 +7462,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageContainersGet": {
+    "com.azure.discovery#GetStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageContainersGetRequest"
+        "target": "com.azure.discovery#GetStorageContainerRequest"
       },
       "output": {
-        "target": "com.azure.discovery#StorageContainersGetResponse"
+        "target": "com.azure.discovery#GetStorageContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7481,7 +7481,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageContainersGetResponse": {
+    "com.azure.discovery#GetStorageContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7544,7 +7544,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageContainersGetRequest": {
+    "com.azure.discovery#GetStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7576,10 +7576,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageContainersListByResourceGroup": {
+    "com.azure.discovery#ListStorageContainerByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageContainersListByResourceGroupRequest"
+        "target": "com.azure.discovery#ListStorageContainerByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.discovery#StorageContainerListResult"
@@ -7688,7 +7688,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#StorageContainersListByResourceGroupRequest": {
+    "com.azure.discovery#ListStorageContainerByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7712,13 +7712,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelfPrivateLinkResourcesGet": {
+    "com.azure.discovery#GetBookshelfPrivateLinkResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelfPrivateLinkResourcesGetRequest"
+        "target": "com.azure.discovery#GetBookshelfPrivateLinkResourceRequest"
       },
       "output": {
-        "target": "com.azure.discovery#BookshelfPrivateLinkResourcesGetResponse"
+        "target": "com.azure.discovery#GetBookshelfPrivateLinkResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7731,7 +7731,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelfPrivateLinkResourcesGetResponse": {
+    "com.azure.discovery#GetBookshelfPrivateLinkResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7813,7 +7813,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.discovery#BookshelfPrivateLinkResourcesGetRequest": {
+    "com.azure.discovery#GetBookshelfPrivateLinkResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7853,10 +7853,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelfPrivateLinkResourcesListByBookshelf": {
+    "com.azure.discovery#ListBookshelfPrivateLinkResourceByBookshelf": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelfPrivateLinkResourcesListByBookshelfRequest"
+        "target": "com.azure.discovery#ListBookshelfPrivateLinkResourceByBookshelfRequest"
       },
       "output": {
         "target": "com.azure.discovery#BookshelfPrivateLinkResourceListResult"
@@ -7984,7 +7984,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.discovery#BookshelfPrivateLinkResourcesListByBookshelfRequest": {
+    "com.azure.discovery#ListBookshelfPrivateLinkResourceByBookshelfRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8016,10 +8016,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsDelete": {
+    "com.azure.discovery#DeleteBookshelfPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.discovery#DeleteBookshelfPrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8035,7 +8035,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.discovery#DeleteBookshelfPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8241,13 +8241,13 @@
         "smithy.api#documentation": "Properties of the private endpoint connection."
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsGet": {
+    "com.azure.discovery#GetBookshelfPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.discovery#GetBookshelfPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.discovery#GetBookshelfPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8260,7 +8260,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsGetResponse": {
+    "com.azure.discovery#GetBookshelfPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8340,7 +8340,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsGetRequest": {
+    "com.azure.discovery#GetBookshelfPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8380,10 +8380,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsListByBookshelf": {
+    "com.azure.discovery#ListBookshelfPrivateEndpointConnectionByBookshelf": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsListByBookshelfRequest"
+        "target": "com.azure.discovery#ListBookshelfPrivateEndpointConnectionByBookshelfRequest"
       },
       "output": {
         "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionListResult"
@@ -8509,7 +8509,7 @@
         "smithy.api#documentation": "The group ids for the private endpoint resource."
       }
     },
-    "com.azure.discovery#BookshelfPrivateEndpointConnectionsListByBookshelfRequest": {
+    "com.azure.discovery#ListBookshelfPrivateEndpointConnectionByBookshelfRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8541,10 +8541,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelvesDelete": {
+    "com.azure.discovery#DeleteBookshelve": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelvesDeleteRequest"
+        "target": "com.azure.discovery#DeleteBookshelveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8560,7 +8560,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelvesDeleteRequest": {
+    "com.azure.discovery#DeleteBookshelveRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8592,13 +8592,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelvesUpdate": {
+    "com.azure.discovery#UpdateBookshelve": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelvesUpdateRequest"
+        "target": "com.azure.discovery#UpdateBookshelveRequest"
       },
       "output": {
-        "target": "com.azure.discovery#BookshelvesUpdateResponse"
+        "target": "com.azure.discovery#UpdateBookshelveResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8611,7 +8611,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelvesUpdateResponse": {
+    "com.azure.discovery#UpdateBookshelveResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8868,7 +8868,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#BookshelvesUpdateRequest": {
+    "com.azure.discovery#UpdateBookshelveRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9178,13 +9178,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#BookshelvesGet": {
+    "com.azure.discovery#GetBookshelve": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelvesGetRequest"
+        "target": "com.azure.discovery#GetBookshelveRequest"
       },
       "output": {
-        "target": "com.azure.discovery#BookshelvesGetResponse"
+        "target": "com.azure.discovery#GetBookshelveResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9197,7 +9197,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelvesGetResponse": {
+    "com.azure.discovery#GetBookshelveResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9260,7 +9260,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#BookshelvesGetRequest": {
+    "com.azure.discovery#GetBookshelveRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9292,10 +9292,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelvesListByResourceGroup": {
+    "com.azure.discovery#ListBookshelveByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelvesListByResourceGroupRequest"
+        "target": "com.azure.discovery#ListBookshelveByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.discovery#BookshelfListResult"
@@ -9404,7 +9404,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.discovery#BookshelvesListByResourceGroupRequest": {
+    "com.azure.discovery#ListBookshelveByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9428,10 +9428,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#WorkspacesListBySubscription": {
+    "com.azure.discovery#ListWorkspaceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#WorkspacesListBySubscriptionRequest"
+        "target": "com.azure.discovery#ListWorkspaceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.discovery#WorkspaceListResult"
@@ -9447,7 +9447,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#WorkspacesListBySubscriptionRequest": {
+    "com.azure.discovery#ListWorkspaceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9463,10 +9463,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#ToolsListBySubscription": {
+    "com.azure.discovery#ListToolBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#ToolsListBySubscriptionRequest"
+        "target": "com.azure.discovery#ListToolBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.discovery#ToolListResult"
@@ -9482,7 +9482,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#ToolsListBySubscriptionRequest": {
+    "com.azure.discovery#ListToolBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9498,10 +9498,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#SupercomputersListBySubscription": {
+    "com.azure.discovery#ListSupercomputerBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#SupercomputersListBySubscriptionRequest"
+        "target": "com.azure.discovery#ListSupercomputerBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.discovery#SupercomputerListResult"
@@ -9517,7 +9517,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#SupercomputersListBySubscriptionRequest": {
+    "com.azure.discovery#ListSupercomputerBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9533,10 +9533,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#StorageContainersListBySubscription": {
+    "com.azure.discovery#ListStorageContainerBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#StorageContainersListBySubscriptionRequest"
+        "target": "com.azure.discovery#ListStorageContainerBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.discovery#StorageContainerListResult"
@@ -9552,7 +9552,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#StorageContainersListBySubscriptionRequest": {
+    "com.azure.discovery#ListStorageContainerBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9568,10 +9568,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#BookshelvesListBySubscription": {
+    "com.azure.discovery#ListBookshelveBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.discovery#BookshelvesListBySubscriptionRequest"
+        "target": "com.azure.discovery#ListBookshelveBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.discovery#BookshelfListResult"
@@ -9587,7 +9587,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#BookshelvesListBySubscriptionRequest": {
+    "com.azure.discovery#ListBookshelveBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9603,13 +9603,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.discovery#OperationsList": {
+    "com.azure.discovery#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.discovery#OperationsListResponse"
+        "target": "com.azure.discovery#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9622,7 +9622,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.discovery#OperationsListResponse": {
+    "com.azure.discovery#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -9766,193 +9766,193 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.discovery#ProjectsDelete"
+          "target": "com.azure.discovery#DeleteProject"
         },
         {
-          "target": "com.azure.discovery#ProjectsUpdate"
+          "target": "com.azure.discovery#UpdateProject"
         },
         {
           "target": "com.azure.discovery#ProjectsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#ProjectsGet"
+          "target": "com.azure.discovery#GetProject"
         },
         {
-          "target": "com.azure.discovery#ProjectsListByWorkspace"
+          "target": "com.azure.discovery#ListProjectByWorkspace"
         },
         {
-          "target": "com.azure.discovery#WorkspacePrivateLinkResourcesGet"
+          "target": "com.azure.discovery#GetWorkspacePrivateLinkResource"
         },
         {
-          "target": "com.azure.discovery#WorkspacePrivateLinkResourcesListByWorkspace"
+          "target": "com.azure.discovery#ListWorkspacePrivateLinkResourceByWorkspace"
         },
         {
-          "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsDelete"
+          "target": "com.azure.discovery#DeleteWorkspacePrivateEndpointConnection"
         },
         {
           "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsGet"
+          "target": "com.azure.discovery#GetWorkspacePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.discovery#WorkspacePrivateEndpointConnectionsListByWorkspace"
+          "target": "com.azure.discovery#ListWorkspacePrivateEndpointConnectionByWorkspace"
         },
         {
-          "target": "com.azure.discovery#ChatModelDeploymentsDelete"
+          "target": "com.azure.discovery#DeleteChatModelDeployment"
         },
         {
-          "target": "com.azure.discovery#ChatModelDeploymentsUpdate"
+          "target": "com.azure.discovery#UpdateChatModelDeployment"
         },
         {
           "target": "com.azure.discovery#ChatModelDeploymentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#ChatModelDeploymentsGet"
+          "target": "com.azure.discovery#GetChatModelDeployment"
         },
         {
-          "target": "com.azure.discovery#ChatModelDeploymentsListByWorkspace"
+          "target": "com.azure.discovery#ListChatModelDeploymentByWorkspace"
         },
         {
-          "target": "com.azure.discovery#WorkspacesDelete"
+          "target": "com.azure.discovery#DeleteWorkspace"
         },
         {
-          "target": "com.azure.discovery#WorkspacesUpdate"
+          "target": "com.azure.discovery#UpdateWorkspace"
         },
         {
           "target": "com.azure.discovery#WorkspacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#WorkspacesGet"
+          "target": "com.azure.discovery#GetWorkspace"
         },
         {
-          "target": "com.azure.discovery#WorkspacesListByResourceGroup"
+          "target": "com.azure.discovery#ListWorkspaceByResourceGroup"
         },
         {
-          "target": "com.azure.discovery#ToolsDelete"
+          "target": "com.azure.discovery#DeleteTool"
         },
         {
-          "target": "com.azure.discovery#ToolsUpdate"
+          "target": "com.azure.discovery#UpdateTool"
         },
         {
           "target": "com.azure.discovery#ToolsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#ToolsGet"
+          "target": "com.azure.discovery#GetTool"
         },
         {
-          "target": "com.azure.discovery#ToolsListByResourceGroup"
+          "target": "com.azure.discovery#ListToolByResourceGroup"
         },
         {
-          "target": "com.azure.discovery#NodePoolsDelete"
+          "target": "com.azure.discovery#DeleteNodePool"
         },
         {
-          "target": "com.azure.discovery#NodePoolsUpdate"
+          "target": "com.azure.discovery#UpdateNodePool"
         },
         {
           "target": "com.azure.discovery#NodePoolsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#NodePoolsGet"
+          "target": "com.azure.discovery#GetNodePool"
         },
         {
-          "target": "com.azure.discovery#NodePoolsListBySupercomputer"
+          "target": "com.azure.discovery#ListNodePoolBySupercomputer"
         },
         {
-          "target": "com.azure.discovery#SupercomputersDelete"
+          "target": "com.azure.discovery#DeleteSupercomputer"
         },
         {
-          "target": "com.azure.discovery#SupercomputersUpdate"
+          "target": "com.azure.discovery#UpdateSupercomputer"
         },
         {
           "target": "com.azure.discovery#SupercomputersCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#SupercomputersGet"
+          "target": "com.azure.discovery#GetSupercomputer"
         },
         {
-          "target": "com.azure.discovery#SupercomputersListByResourceGroup"
+          "target": "com.azure.discovery#ListSupercomputerByResourceGroup"
         },
         {
-          "target": "com.azure.discovery#StorageAssetsDelete"
+          "target": "com.azure.discovery#DeleteStorageAsset"
         },
         {
-          "target": "com.azure.discovery#StorageAssetsUpdate"
+          "target": "com.azure.discovery#UpdateStorageAsset"
         },
         {
           "target": "com.azure.discovery#StorageAssetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#StorageAssetsGet"
+          "target": "com.azure.discovery#GetStorageAsset"
         },
         {
-          "target": "com.azure.discovery#StorageAssetsListByStorageContainer"
+          "target": "com.azure.discovery#ListStorageAssetByStorageContainer"
         },
         {
-          "target": "com.azure.discovery#StorageContainersDelete"
+          "target": "com.azure.discovery#DeleteStorageContainer"
         },
         {
-          "target": "com.azure.discovery#StorageContainersUpdate"
+          "target": "com.azure.discovery#UpdateStorageContainer"
         },
         {
           "target": "com.azure.discovery#StorageContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#StorageContainersGet"
+          "target": "com.azure.discovery#GetStorageContainer"
         },
         {
-          "target": "com.azure.discovery#StorageContainersListByResourceGroup"
+          "target": "com.azure.discovery#ListStorageContainerByResourceGroup"
         },
         {
-          "target": "com.azure.discovery#BookshelfPrivateLinkResourcesGet"
+          "target": "com.azure.discovery#GetBookshelfPrivateLinkResource"
         },
         {
-          "target": "com.azure.discovery#BookshelfPrivateLinkResourcesListByBookshelf"
+          "target": "com.azure.discovery#ListBookshelfPrivateLinkResourceByBookshelf"
         },
         {
-          "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsDelete"
+          "target": "com.azure.discovery#DeleteBookshelfPrivateEndpointConnection"
         },
         {
           "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsGet"
+          "target": "com.azure.discovery#GetBookshelfPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.discovery#BookshelfPrivateEndpointConnectionsListByBookshelf"
+          "target": "com.azure.discovery#ListBookshelfPrivateEndpointConnectionByBookshelf"
         },
         {
-          "target": "com.azure.discovery#BookshelvesDelete"
+          "target": "com.azure.discovery#DeleteBookshelve"
         },
         {
-          "target": "com.azure.discovery#BookshelvesUpdate"
+          "target": "com.azure.discovery#UpdateBookshelve"
         },
         {
           "target": "com.azure.discovery#BookshelvesCreateOrUpdate"
         },
         {
-          "target": "com.azure.discovery#BookshelvesGet"
+          "target": "com.azure.discovery#GetBookshelve"
         },
         {
-          "target": "com.azure.discovery#BookshelvesListByResourceGroup"
+          "target": "com.azure.discovery#ListBookshelveByResourceGroup"
         },
         {
-          "target": "com.azure.discovery#WorkspacesListBySubscription"
+          "target": "com.azure.discovery#ListWorkspaceBySubscription"
         },
         {
-          "target": "com.azure.discovery#ToolsListBySubscription"
+          "target": "com.azure.discovery#ListToolBySubscription"
         },
         {
-          "target": "com.azure.discovery#SupercomputersListBySubscription"
+          "target": "com.azure.discovery#ListSupercomputerBySubscription"
         },
         {
-          "target": "com.azure.discovery#StorageContainersListBySubscription"
+          "target": "com.azure.discovery#ListStorageContainerBySubscription"
         },
         {
-          "target": "com.azure.discovery#BookshelvesListBySubscription"
+          "target": "com.azure.discovery#ListBookshelveBySubscription"
         },
         {
-          "target": "com.azure.discovery#OperationsList"
+          "target": "com.azure.discovery#ListOperations"
         }
       ],
       "traits": {

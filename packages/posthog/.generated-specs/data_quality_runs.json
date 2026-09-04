@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.data_quality_runs#DataQualityRunsListRequest": {
+    "com.posthog.data_quality_runs#ListDataQualityRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -183,10 +183,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_quality_runs#DataQualityRunsList": {
+    "com.posthog.data_quality_runs#ListDataQualityRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_quality_runs#DataQualityRunsListRequest"
+        "target": "com.posthog.data_quality_runs#ListDataQualityRunsRequest"
       },
       "output": {
         "target": "com.posthog.data_quality_runs#PaginatedDataQualitySuiteRunList"
@@ -209,7 +209,7 @@
         "smithy.api#documentation": "Ids of the checks to run. Omit to run every enabled check in the project."
       }
     },
-    "com.posthog.data_quality_runs#DataQualityRunsCreateRequest": {
+    "com.posthog.data_quality_runs#CreateDataQualityRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -231,10 +231,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_quality_runs#DataQualityRunsCreate": {
+    "com.posthog.data_quality_runs#CreateDataQualityRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_quality_runs#DataQualityRunsCreateRequest"
+        "target": "com.posthog.data_quality_runs#CreateDataQualityRunRequest"
       },
       "output": {
         "target": "com.posthog.data_quality_runs#DataQualitySuiteRun"
@@ -294,10 +294,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.data_quality_runs#DataQualityRunsList"
+          "target": "com.posthog.data_quality_runs#ListDataQualityRuns"
         },
         {
-          "target": "com.posthog.data_quality_runs#DataQualityRunsCreate"
+          "target": "com.posthog.data_quality_runs#CreateDataQualityRun"
         },
         {
           "target": "com.posthog.data_quality_runs#DataQualityRunsRetrieve"

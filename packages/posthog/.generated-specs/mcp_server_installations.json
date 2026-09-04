@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.mcp_server_installations#McpServerInstallationsListRequest": {
+    "com.posthog.mcp_server_installations#ListMcpServerInstallationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -199,10 +199,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsList": {
+    "com.posthog.mcp_server_installations#ListMcpServerInstallations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsListRequest"
+        "target": "com.posthog.mcp_server_installations#ListMcpServerInstallationsRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#PaginatedMCPServerInstallationList"
@@ -215,7 +215,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -243,10 +243,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
@@ -299,7 +299,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsUpdateRequest": {
+    "com.posthog.mcp_server_installations#UpdateMcpServerInstallationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -335,10 +335,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsUpdate": {
+    "com.posthog.mcp_server_installations#UpdateMcpServerInstallation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsUpdateRequest"
+        "target": "com.posthog.mcp_server_installations#UpdateMcpServerInstallationRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
@@ -351,7 +351,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsPartialUpdateRequest": {
+    "com.posthog.mcp_server_installations#UpdateMcpServerInstallationPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -384,10 +384,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsPartialUpdate": {
+    "com.posthog.mcp_server_installations#UpdateMcpServerInstallationPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsPartialUpdateRequest"
+        "target": "com.posthog.mcp_server_installations#UpdateMcpServerInstallationPartialRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
@@ -452,7 +452,7 @@
         "smithy.api#documentation": "Arguments object passed straight to the tool, matching its input schema."
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationCallToolRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -547,10 +547,10 @@
         "smithy.api#documentation": "Structured result the tool returned alongside `content`, when it provides one."
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationCallTool": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationCallToolRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#CallToolResponse"
@@ -572,7 +572,7 @@
         "smithy.api#documentation": "Invoke one tool on a connected MCP server.\n\nThe request/response shape is plain REST rather than the JSON-RPC envelope\n`proxy` speaks, because the caller here is an agent surface (the PostHog MCP's\n`exec`) that wants one tool result, not an MCP transport of its own."
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationProxyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -608,10 +608,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationProxy": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationProxyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -624,7 +624,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsShareCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationShareRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -648,10 +648,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsShareCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationShare": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsShareCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationShareRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
@@ -852,7 +852,7 @@
         "smithy.api#documentation": "* `approved` - approved\n* `needs_approval` - needs_approval\n* `do_not_use` - do_not_use"
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsToolsPartialUpdateRequest": {
+    "com.posthog.mcp_server_installations#UpdateMcpServerInstallationToolPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -886,10 +886,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsToolsPartialUpdate": {
+    "com.posthog.mcp_server_installations#UpdateMcpServerInstallationToolPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsPartialUpdateRequest"
+        "target": "com.posthog.mcp_server_installations#UpdateMcpServerInstallationToolPartialRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#MCPServerInstallationTool"
@@ -902,7 +902,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsToolsRefreshCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationToolRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -938,10 +938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsToolsRefreshCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationToolRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRefreshCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationToolRefreshRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#PaginatedMCPServerInstallationToolList"
@@ -954,7 +954,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationUnshareRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -978,10 +978,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationUnshare": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationUnshareRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#MCPServerInstallation"
@@ -1013,7 +1013,7 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieveRequest": {
+    "com.posthog.mcp_server_installations#AuthorizeMcpServerInstallationRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1061,10 +1061,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieve": {
+    "com.posthog.mcp_server_installations#AuthorizeMcpServerInstallationRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieveRequest"
+        "target": "com.posthog.mcp_server_installations#AuthorizeMcpServerInstallationRetrieveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1321,7 +1321,7 @@
         "smithy.api#documentation": "* `personal` - Personal\n* `team` - Team"
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallCustomRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1403,10 +1403,10 @@
       },
       "traits": {}
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallCustom": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallCustomRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#OAuthRedirectResponse"
@@ -1419,7 +1419,7 @@
         }
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsInstallTemplateCreateRequest": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallTemplateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1474,10 +1474,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.mcp_server_installations#McpServerInstallationsInstallTemplateCreate": {
+    "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.mcp_server_installations#McpServerInstallationsInstallTemplateCreateRequest"
+        "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallTemplateRequest"
       },
       "output": {
         "target": "com.posthog.mcp_server_installations#OAuthRedirectResponse"
@@ -1521,55 +1521,55 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsList"
+          "target": "com.posthog.mcp_server_installations#ListMcpServerInstallations"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallation"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsRetrieve"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsUpdate"
+          "target": "com.posthog.mcp_server_installations#UpdateMcpServerInstallation"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsPartialUpdate"
+          "target": "com.posthog.mcp_server_installations#UpdateMcpServerInstallationPartial"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsDestroy"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsCallToolCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationCallTool"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsProxyCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationProxy"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsShareCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationShare"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRetrieve"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsPartialUpdate"
+          "target": "com.posthog.mcp_server_installations#UpdateMcpServerInstallationToolPartial"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsToolsRefreshCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationToolRefresh"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsUnshareCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationUnshare"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsAuthorizeRetrieve"
+          "target": "com.posthog.mcp_server_installations#AuthorizeMcpServerInstallationRetrieve"
         },
         {
           "target": "com.posthog.mcp_server_installations#McpServerInstallationsAvailableToolsRetrieve"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsInstallCustomCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallCustom"
         },
         {
-          "target": "com.posthog.mcp_server_installations#McpServerInstallationsInstallTemplateCreate"
+          "target": "com.posthog.mcp_server_installations#CreateMcpServerInstallationInstallTemplate"
         }
       ],
       "traits": {

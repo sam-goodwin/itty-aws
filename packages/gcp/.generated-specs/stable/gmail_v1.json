@@ -5996,7 +5996,7 @@
         "smithy.api#documentation": "Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not work for some spam messages, such as those attempting to perform domain spoofing. This method does not send a message. Note that the maximum size of the message is 150 MB."
       }
     },
-    "com.gcp.gmail_v1#BatchDeleteUsersMessagesRequest": {
+    "com.gcp.gmail_v1#DeleteBatchUserMessageRequest": {
       "type": "structure",
       "members": {
         "userId": {
@@ -6016,10 +6016,10 @@
         }
       }
     },
-    "com.gcp.gmail_v1#BatchDeleteUsersMessages": {
+    "com.gcp.gmail_v1#DeleteBatchUserMessage": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gmail_v1#BatchDeleteUsersMessagesRequest"
+        "target": "com.gcp.gmail_v1#DeleteBatchUserMessageRequest"
       },
       "errors": [
         {

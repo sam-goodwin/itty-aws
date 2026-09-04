@@ -5358,7 +5358,7 @@
         "smithy.api#documentation": "Perform a token counting."
       }
     },
-    "com.gcp.firebaseml_v2beta#StreamGenerateContentProjectsLocationsPublishersModelsRequest": {
+    "com.gcp.firebaseml_v2beta#GenerateStreamContentProjectLocationPublisherModelRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -5378,10 +5378,10 @@
         }
       }
     },
-    "com.gcp.firebaseml_v2beta#StreamGenerateContentProjectsLocationsPublishersModels": {
+    "com.gcp.firebaseml_v2beta#GenerateStreamContentProjectLocationPublisherModel": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseml_v2beta#StreamGenerateContentProjectsLocationsPublishersModelsRequest"
+        "target": "com.gcp.firebaseml_v2beta#GenerateStreamContentProjectLocationPublisherModelRequest"
       },
       "output": {
         "target": "com.gcp.firebaseml_v2beta#GoogleCloudAiplatformV1beta1GenerateContentResponse"

@@ -65,17 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-/** A specific location in a form. */
-export interface Location {
-  /** The index of an item in the form. This must be in the range [0..*N*), where *N* is the number of items in the form. */
-  index?: number;
-}
-export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    index: S.optional(S.Number),
-  }),
-).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
-
 /** A page break. The title and description of this item are shown at the top of the new page. */
 export interface PageBreakItem {}
 export const PageBreakItem = /*@__PURE__*/ S.suspend(() =>
@@ -596,86 +585,10 @@ export const Item = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Item" }) as any as S.Schema<Item>;
 
-/** Create an item in a form. */
-export interface CreateItemRequest {
-  /** Required. Where to place the new item. */
-  location?: Location;
-  /** Required. The item to create. */
-  item?: Item;
-}
-export const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-    item: S.optional(Item),
-  }),
-).annotate({
-  identifier: "CreateItemRequest",
-}) as any as S.Schema<CreateItemRequest>;
-
-/** Delete an item in a form. */
-export interface DeleteItemRequest {
-  /** Required. The location of the item to delete. */
-  location?: Location;
-}
-export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.optional(Location),
-  }),
-).annotate({
-  identifier: "DeleteItemRequest",
-}) as any as S.Schema<DeleteItemRequest>;
-
-/** Update an item in a form. */
-export interface UpdateItemRequest {
-  /** Required. Only values named in this mask are changed. */
-  updateMask?: string;
-  /** Required. New values for the item. Note that item and question IDs are used if they are provided (and are in the field mask). If an ID is blank (and in the field mask) a new ID is generated. This means you can modify an item by getting the form via forms.get, modifying your local copy of that item to be how you want it, and using UpdateItemRequest to write it back, with the IDs being the same (or not in the field mask). */
-  item?: Item;
-  /** Required. The location identifying the item to update. */
-  location?: Location;
-}
-export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    item: S.optional(Item),
-    location: S.optional(Location),
-  }),
-).annotate({
-  identifier: "UpdateItemRequest",
-}) as any as S.Schema<UpdateItemRequest>;
-
-/** The general information for a form. */
-export interface Info {
-  /** Required. The title of the form which is visible to responders. */
-  title?: string;
-  /** Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title` may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on create, but cannot be modified by a batchUpdate request. Please use the [Google Drive API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically update `document_title`. */
-  documentTitle?: string;
-  /** The description of the form. */
-  description?: string;
-}
-export const Info = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    documentTitle: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({ identifier: "Info" }) as any as S.Schema<Info>;
-
-/** Update Form's Info. */
-export interface UpdateFormInfoRequest {
-  /** The info to update. */
-  info?: Info;
-  /** Required. Only values named in this mask are changed. At least one field must be specified. The root `info` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
-  updateMask?: string;
-}
-export const UpdateFormInfoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    info: S.optional(Info),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateFormInfoRequest",
-}) as any as S.Schema<UpdateFormInfoRequest>;
+export type ItemList = Array<Item>;
+export const ItemList = /*@__PURE__*/ S.Array(
+  Item,
+) as any as S.Schema<ItemList>;
 
 /** Settings related to quiz forms and grading. These must be updated with the UpdateSettingsRequest. */
 export interface QuizSettings {
@@ -709,164 +622,22 @@ export const FormSettings = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "FormSettings" }) as any as S.Schema<FormSettings>;
 
-/** Update Form's FormSettings. */
-export interface UpdateSettingsRequest {
-  /** Required. The settings to update with. */
-  settings?: FormSettings;
-  /** Required. Only values named in this mask are changed. At least one field must be specified. The root `settings` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
-  updateMask?: string;
+/** The general information for a form. */
+export interface Info {
+  /** Required. The title of the form which is visible to responders. */
+  title?: string;
+  /** Output only. The title of the document which is visible in Drive. If Info.title is empty, `document_title` may appear in its place in the Google Forms UI and be visible to responders. `document_title` can be set on create, but cannot be modified by a batchUpdate request. Please use the [Google Drive API](https://developers.google.com/drive/api/v3/reference/files/update) if you need to programmatically update `document_title`. */
+  documentTitle?: string;
+  /** The description of the form. */
+  description?: string;
 }
-export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+export const Info = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    settings: S.optional(FormSettings),
-    updateMask: S.optional(S.String),
+    title: S.optional(S.String),
+    documentTitle: S.optional(S.String),
+    description: S.optional(S.String),
   }),
-).annotate({
-  identifier: "UpdateSettingsRequest",
-}) as any as S.Schema<UpdateSettingsRequest>;
-
-/** Move an item in a form. */
-export interface MoveItemRequest {
-  /** Required. The location of the item to move. */
-  originalLocation?: Location;
-  /** Required. The new location for the item. */
-  newLocation?: Location;
-}
-export const MoveItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalLocation: S.optional(Location),
-    newLocation: S.optional(Location),
-  }),
-).annotate({
-  identifier: "MoveItemRequest",
-}) as any as S.Schema<MoveItemRequest>;
-
-/** The kinds of update requests that can be made. */
-export interface Request {
-  /** Create a new item. */
-  createItem?: CreateItemRequest;
-  /** Delete an item. */
-  deleteItem?: DeleteItemRequest;
-  /** Update an item. */
-  updateItem?: UpdateItemRequest;
-  /** Update Form's Info. */
-  updateFormInfo?: UpdateFormInfoRequest;
-  /** Updates the Form's settings. */
-  updateSettings?: UpdateSettingsRequest;
-  /** Move an item to a specified location. */
-  moveItem?: MoveItemRequest;
-}
-export const Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createItem: S.optional(CreateItemRequest),
-    deleteItem: S.optional(DeleteItemRequest),
-    updateItem: S.optional(UpdateItemRequest),
-    updateFormInfo: S.optional(UpdateFormInfoRequest),
-    updateSettings: S.optional(UpdateSettingsRequest),
-    moveItem: S.optional(MoveItemRequest),
-  }),
-).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
-
-export type RequestList = Array<Request>;
-export const RequestList = /*@__PURE__*/ S.Array(
-  Request,
-) as any as S.Schema<RequestList>;
-
-/** Provides control over how write requests are executed. */
-export interface WriteControl {
-  /** The target revision ID of the form that the write request is applied to. If changes have occurred after this revision, the changes in this update request are transformed against those changes. This results in a new revision of the form that incorporates both the changes in the request and the intervening changes, with the server resolving conflicting changes. The target revision ID may only be used to write to recent versions of a form. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 (Bad Request Error). The request may be retried after reading the latest version of the form. In most cases a target revision ID remains valid for several minutes after it is read, but for frequently-edited forms this window may be shorter. */
-  targetRevisionId?: string;
-  /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
-  requiredRevisionId?: string;
-}
-export const WriteControl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetRevisionId: S.optional(S.String),
-    requiredRevisionId: S.optional(S.String),
-  }),
-).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
-
-/** A batch of updates to perform on a form. All the specified updates are made or none of them are. */
-export interface BatchUpdateFormRequest {
-  /** Required. The update requests of this batch. */
-  requests?: RequestList;
-  /** Whether to return an updated version of the model in the response. */
-  includeFormInResponse?: boolean;
-  /** Provides control over how write requests are executed. */
-  writeControl?: WriteControl;
-}
-export const BatchUpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(RequestList),
-    includeFormInResponse: S.optional(S.Boolean),
-    writeControl: S.optional(WriteControl),
-  }),
-).annotate({
-  identifier: "BatchUpdateFormRequest",
-}) as any as S.Schema<BatchUpdateFormRequest>;
-
-export interface BatchUpdateFormsRequest {
-  /** Required. The form ID. */
-  formId: string;
-  /** Request body */
-  body?: BatchUpdateFormRequest;
-}
-export const BatchUpdateFormsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    formId: S.String.pipe(T.Label()),
-    body: S.optional(BatchUpdateFormRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/forms/{formId}:batchUpdate",
-      baseUrl: "https://forms.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdateFormsRequest",
-}) as any as S.Schema<BatchUpdateFormsRequest>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** The result of creating an item. */
-export interface CreateItemResponse {
-  /** The ID of the created item. */
-  itemId?: string;
-  /** The ID of the question created as part of this item, for a question group it lists IDs of all the questions created for this item. */
-  questionId?: StringList;
-}
-export const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    itemId: S.optional(S.String),
-    questionId: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "CreateItemResponse",
-}) as any as S.Schema<CreateItemResponse>;
-
-/** A single response from an update. */
-export interface Response {
-  /** The result of creating an item. */
-  createItem?: CreateItemResponse;
-}
-export const Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createItem: S.optional(CreateItemResponse),
-  }),
-).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
-
-export type ResponseList = Array<Response>;
-export const ResponseList = /*@__PURE__*/ S.Array(
-  Response,
-) as any as S.Schema<ResponseList>;
-
-export type ItemList = Array<Item>;
-export const ItemList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<ItemList>;
+).annotate({ identifier: "Info" }) as any as S.Schema<Info>;
 
 /** The publishing state of a form. */
 export interface PublishState {
@@ -926,25 +697,6 @@ export const Form = /*@__PURE__*/ S.suspend(() =>
     publishSettings: S.optional(PublishSettings),
   }),
 ).annotate({ identifier: "Form" }) as any as S.Schema<Form>;
-
-/** Response to a BatchUpdateFormRequest. */
-export interface BatchUpdateFormResponse {
-  /** The reply of the updates. This maps 1:1 with the update requests, although replies to some requests may be empty. */
-  replies?: ResponseList;
-  /** Based on the bool request field `include_form_in_response`, a form with all applied mutations/updates is returned or not. This may be later than the revision ID created by these changes. */
-  form?: Form;
-  /** The updated write control after applying the request. */
-  writeControl?: WriteControl;
-}
-export const BatchUpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replies: S.optional(ResponseList),
-    form: S.optional(Form),
-    writeControl: S.optional(WriteControl),
-  }),
-).annotate({
-  identifier: "BatchUpdateFormResponse",
-}) as any as S.Schema<BatchUpdateFormResponse>;
 
 export interface CreateFormsRequest {
   /** Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses. */
@@ -1440,25 +1192,253 @@ export const SetPublishSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SetPublishSettingsResponse",
 }) as any as S.Schema<SetPublishSettingsResponse>;
 
-export type BatchUpdateFormsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Change the form with a batch of updates. */
-export const batchUpdateForms: API.OperationMethod<
-  BatchUpdateFormsRequest,
-  BatchUpdateFormResponse,
-  BatchUpdateFormsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateFormsRequest,
-  output: BatchUpdateFormResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+/** A specific location in a form. */
+export interface Location {
+  /** The index of an item in the form. This must be in the range [0..*N*), where *N* is the number of items in the form. */
+  index?: number;
+}
+export const Location = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    index: S.optional(S.Number),
+  }),
+).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
+
+/** Create an item in a form. */
+export interface CreateItemRequest {
+  /** Required. Where to place the new item. */
+  location?: Location;
+  /** Required. The item to create. */
+  item?: Item;
+}
+export const CreateItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+    item: S.optional(Item),
+  }),
+).annotate({
+  identifier: "CreateItemRequest",
+}) as any as S.Schema<CreateItemRequest>;
+
+/** Delete an item in a form. */
+export interface DeleteItemRequest {
+  /** Required. The location of the item to delete. */
+  location?: Location;
+}
+export const DeleteItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "DeleteItemRequest",
+}) as any as S.Schema<DeleteItemRequest>;
+
+/** Update an item in a form. */
+export interface UpdateItemRequest {
+  /** Required. Only values named in this mask are changed. */
+  updateMask?: string;
+  /** Required. New values for the item. Note that item and question IDs are used if they are provided (and are in the field mask). If an ID is blank (and in the field mask) a new ID is generated. This means you can modify an item by getting the form via forms.get, modifying your local copy of that item to be how you want it, and using UpdateItemRequest to write it back, with the IDs being the same (or not in the field mask). */
+  item?: Item;
+  /** Required. The location identifying the item to update. */
+  location?: Location;
+}
+export const UpdateItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String),
+    item: S.optional(Item),
+    location: S.optional(Location),
+  }),
+).annotate({
+  identifier: "UpdateItemRequest",
+}) as any as S.Schema<UpdateItemRequest>;
+
+/** Update Form's Info. */
+export interface UpdateFormInfoRequest {
+  /** The info to update. */
+  info?: Info;
+  /** Required. Only values named in this mask are changed. At least one field must be specified. The root `info` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
+  updateMask?: string;
+}
+export const UpdateFormInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    info: S.optional(Info),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateFormInfoRequest",
+}) as any as S.Schema<UpdateFormInfoRequest>;
+
+/** Update Form's FormSettings. */
+export interface UpdateSettingsRequest {
+  /** Required. The settings to update with. */
+  settings?: FormSettings;
+  /** Required. Only values named in this mask are changed. At least one field must be specified. The root `settings` is implied and should not be specified. A single `"*"` can be used as short-hand for updating every field. */
+  updateMask?: string;
+}
+export const UpdateSettingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    settings: S.optional(FormSettings),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSettingsRequest",
+}) as any as S.Schema<UpdateSettingsRequest>;
+
+/** Move an item in a form. */
+export interface MoveItemRequest {
+  /** Required. The location of the item to move. */
+  originalLocation?: Location;
+  /** Required. The new location for the item. */
+  newLocation?: Location;
+}
+export const MoveItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originalLocation: S.optional(Location),
+    newLocation: S.optional(Location),
+  }),
+).annotate({
+  identifier: "MoveItemRequest",
+}) as any as S.Schema<MoveItemRequest>;
+
+/** The kinds of update requests that can be made. */
+export interface Request {
+  /** Create a new item. */
+  createItem?: CreateItemRequest;
+  /** Delete an item. */
+  deleteItem?: DeleteItemRequest;
+  /** Update an item. */
+  updateItem?: UpdateItemRequest;
+  /** Update Form's Info. */
+  updateFormInfo?: UpdateFormInfoRequest;
+  /** Updates the Form's settings. */
+  updateSettings?: UpdateSettingsRequest;
+  /** Move an item to a specified location. */
+  moveItem?: MoveItemRequest;
+}
+export const Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createItem: S.optional(CreateItemRequest),
+    deleteItem: S.optional(DeleteItemRequest),
+    updateItem: S.optional(UpdateItemRequest),
+    updateFormInfo: S.optional(UpdateFormInfoRequest),
+    updateSettings: S.optional(UpdateSettingsRequest),
+    moveItem: S.optional(MoveItemRequest),
+  }),
+).annotate({ identifier: "Request" }) as any as S.Schema<Request>;
+
+export type RequestList = Array<Request>;
+export const RequestList = /*@__PURE__*/ S.Array(
+  Request,
+) as any as S.Schema<RequestList>;
+
+/** Provides control over how write requests are executed. */
+export interface WriteControl {
+  /** The target revision ID of the form that the write request is applied to. If changes have occurred after this revision, the changes in this update request are transformed against those changes. This results in a new revision of the form that incorporates both the changes in the request and the intervening changes, with the server resolving conflicting changes. The target revision ID may only be used to write to recent versions of a form. If the target revision is too far behind the latest revision, the request is not processed and returns a 400 (Bad Request Error). The request may be retried after reading the latest version of the form. In most cases a target revision ID remains valid for several minutes after it is read, but for frequently-edited forms this window may be shorter. */
+  targetRevisionId?: string;
+  /** The revision ID of the form that the write request is applied to. If this is not the latest revision of the form, the request is not processed and returns a 400 bad request error. */
+  requiredRevisionId?: string;
+}
+export const WriteControl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetRevisionId: S.optional(S.String),
+    requiredRevisionId: S.optional(S.String),
+  }),
+).annotate({ identifier: "WriteControl" }) as any as S.Schema<WriteControl>;
+
+/** A batch of updates to perform on a form. All the specified updates are made or none of them are. */
+export interface BatchUpdateFormRequest {
+  /** Required. The update requests of this batch. */
+  requests?: RequestList;
+  /** Whether to return an updated version of the model in the response. */
+  includeFormInResponse?: boolean;
+  /** Provides control over how write requests are executed. */
+  writeControl?: WriteControl;
+}
+export const BatchUpdateFormRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(RequestList),
+    includeFormInResponse: S.optional(S.Boolean),
+    writeControl: S.optional(WriteControl),
+  }),
+).annotate({
+  identifier: "BatchUpdateFormRequest",
+}) as any as S.Schema<BatchUpdateFormRequest>;
+
+export interface UpdateBatchFormRequest {
+  /** Required. The form ID. */
+  formId: string;
+  /** Request body */
+  body?: BatchUpdateFormRequest;
+}
+export const UpdateBatchFormRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    formId: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateFormRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/forms/{formId}:batchUpdate",
+      baseUrl: "https://forms.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchFormRequest",
+}) as any as S.Schema<UpdateBatchFormRequest>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** The result of creating an item. */
+export interface CreateItemResponse {
+  /** The ID of the created item. */
+  itemId?: string;
+  /** The ID of the question created as part of this item, for a question group it lists IDs of all the questions created for this item. */
+  questionId?: StringList;
+}
+export const CreateItemResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    itemId: S.optional(S.String),
+    questionId: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "CreateItemResponse",
+}) as any as S.Schema<CreateItemResponse>;
+
+/** A single response from an update. */
+export interface Response {
+  /** The result of creating an item. */
+  createItem?: CreateItemResponse;
+}
+export const Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createItem: S.optional(CreateItemResponse),
+  }),
+).annotate({ identifier: "Response" }) as any as S.Schema<Response>;
+
+export type ResponseList = Array<Response>;
+export const ResponseList = /*@__PURE__*/ S.Array(
+  Response,
+) as any as S.Schema<ResponseList>;
+
+/** Response to a BatchUpdateFormRequest. */
+export interface BatchUpdateFormResponse {
+  /** The reply of the updates. This maps 1:1 with the update requests, although replies to some requests may be empty. */
+  replies?: ResponseList;
+  /** Based on the bool request field `include_form_in_response`, a form with all applied mutations/updates is returned or not. This may be later than the revision ID created by these changes. */
+  form?: Form;
+  /** The updated write control after applying the request. */
+  writeControl?: WriteControl;
+}
+export const BatchUpdateFormResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    replies: S.optional(ResponseList),
+    form: S.optional(Form),
+    writeControl: S.optional(WriteControl),
+  }),
+).annotate({
+  identifier: "BatchUpdateFormResponse",
+}) as any as S.Schema<BatchUpdateFormResponse>;
 
 export type CreateFormsError =
   | NotFound
@@ -1620,6 +1600,26 @@ export const setPublishSettingsForms: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SetPublishSettingsFormsRequest,
   output: SetPublishSettingsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchFormError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Change the form with a batch of updates. */
+export const updateBatchForm: API.OperationMethod<
+  UpdateBatchFormRequest,
+  BatchUpdateFormResponse,
+  UpdateBatchFormError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchFormRequest,
+  output: BatchUpdateFormResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

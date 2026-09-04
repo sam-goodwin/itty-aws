@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.wizard#WizardSessionsListRequest": {
+    "com.posthog.wizard#ListWizardSessionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -397,10 +397,10 @@
       },
       "traits": {}
     },
-    "com.posthog.wizard#WizardSessionsList": {
+    "com.posthog.wizard#ListWizardSessions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.wizard#WizardSessionsListRequest"
+        "target": "com.posthog.wizard#ListWizardSessionsRequest"
       },
       "output": {
         "target": "com.posthog.wizard#PaginatedWizardSessionDTOList"
@@ -445,7 +445,7 @@
         "smithy.api#documentation": "Populated when run_phase='error'. Shape: { type: string, message: string }."
       }
     },
-    "com.posthog.wizard#WizardSessionsCreateRequest": {
+    "com.posthog.wizard#CreateWizardSessionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -530,10 +530,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.wizard#WizardSessionsCreate": {
+    "com.posthog.wizard#CreateWizardSession": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.wizard#WizardSessionsCreateRequest"
+        "target": "com.posthog.wizard#CreateWizardSessionRequest"
       },
       "output": {
         "target": "com.posthog.wizard#WizardSessionDTO"
@@ -722,10 +722,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.wizard#WizardSessionsList"
+          "target": "com.posthog.wizard#ListWizardSessions"
         },
         {
-          "target": "com.posthog.wizard#WizardSessionsCreate"
+          "target": "com.posthog.wizard#CreateWizardSession"
         },
         {
           "target": "com.posthog.wizard#WizardSessionsRetrieve"

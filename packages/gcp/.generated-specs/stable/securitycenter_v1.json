@@ -20157,7 +20157,7 @@
         }
       }
     },
-    "com.gcp.securitycenter_v1#BatchCreateOrganizationsResourceValueConfigsRequest": {
+    "com.gcp.securitycenter_v1#CreateBatchOrganizationResourceValueConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -20176,10 +20176,10 @@
         }
       }
     },
-    "com.gcp.securitycenter_v1#BatchCreateOrganizationsResourceValueConfigs": {
+    "com.gcp.securitycenter_v1#CreateBatchOrganizationResourceValueConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.securitycenter_v1#BatchCreateOrganizationsResourceValueConfigsRequest"
+        "target": "com.gcp.securitycenter_v1#CreateBatchOrganizationResourceValueConfigRequest"
       },
       "output": {
         "target": "com.gcp.securitycenter_v1#BatchCreateResourceValueConfigsResponse"

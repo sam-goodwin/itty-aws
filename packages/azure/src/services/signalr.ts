@@ -12,8 +12,8 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -23,8 +23,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The object that describes a operation. */
 export interface OperationDisplay {
@@ -208,6 +208,88 @@ export const OperationList = /*@__PURE__*/ S.suspend(() =>
     nextLink: S.optional(S.String),
   }),
 ).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
+
+export interface ListUsagesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** the location like "eastus" */
+  location: string;
+}
+export const ListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
+      code: 200,
+      apiVersion: "2024-03-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListUsagesRequest",
+}) as any as S.Schema<ListUsagesRequest>;
+
+/** Localizable String object containing the name and a localized value. */
+export interface SignalRUsageName {
+  /** The identifier of the usage. */
+  value?: string;
+  /** Localized name of the usage. */
+  localizedValue?: string;
+}
+export const SignalRUsageName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    localizedValue: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignalRUsageName",
+}) as any as S.Schema<SignalRUsageName>;
+
+/** Object that describes a specific usage of the resources. */
+export interface SignalRUsage {
+  /** Fully qualified ARM resource id */
+  id?: string;
+  /** Current value for the usage quota. */
+  currentValue?: number;
+  /** The maximum permitted value for the usage quota. If there is no limit, this value will be -1. */
+  limit?: number;
+  name?: SignalRUsageName;
+  /** Representing the units of the usage quota. Possible values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond. */
+  unit?: string;
+}
+export const SignalRUsage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    currentValue: S.optional(S.Number),
+    limit: S.optional(S.Number),
+    name: S.optional(SignalRUsageName),
+    unit: S.optional(S.String),
+  }),
+).annotate({ identifier: "SignalRUsage" }) as any as S.Schema<SignalRUsage>;
+
+/** List of the resource usages */
+export type SignalRUsageListValueList = Array<SignalRUsage>;
+export const SignalRUsageListValueList = /*@__PURE__*/ S.Array(
+  SignalRUsage,
+) as any as S.Schema<SignalRUsageListValueList>;
+
+/** Object that includes an array of the resource usages and a possible link for next set. */
+export interface SignalRUsageList {
+  /** List of the resource usages */
+  value?: SignalRUsageListValueList;
+  /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
+  nextLink?: string;
+}
+export const SignalRUsageList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SignalRUsageListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SignalRUsageList",
+}) as any as S.Schema<SignalRUsageList>;
 
 export interface SignalRCheckNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -3352,98 +3434,31 @@ export const SignalRUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalRUpdateResponse",
 }) as any as S.Schema<SignalRUpdateResponse>;
 
-export interface UsagesListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** the location like "eastus" */
-  location: string;
-}
-export const UsagesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.SignalRService/locations/{location}/usages",
-      code: 200,
-      apiVersion: "2024-03-01",
-    }),
-  ),
-).annotate({
-  identifier: "UsagesListRequest",
-}) as any as S.Schema<UsagesListRequest>;
-
-/** Localizable String object containing the name and a localized value. */
-export interface SignalRUsageName {
-  /** The identifier of the usage. */
-  value?: string;
-  /** Localized name of the usage. */
-  localizedValue?: string;
-}
-export const SignalRUsageName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SignalRUsageName",
-}) as any as S.Schema<SignalRUsageName>;
-
-/** Object that describes a specific usage of the resources. */
-export interface SignalRUsage {
-  /** Fully qualified ARM resource id */
-  id?: string;
-  /** Current value for the usage quota. */
-  currentValue?: number;
-  /** The maximum permitted value for the usage quota. If there is no limit, this value will be -1. */
-  limit?: number;
-  name?: SignalRUsageName;
-  /** Representing the units of the usage quota. Possible values are: Count, Bytes, Seconds, Percent, CountPerSecond, BytesPerSecond. */
-  unit?: string;
-}
-export const SignalRUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    currentValue: S.optional(S.Number),
-    limit: S.optional(S.Number),
-    name: S.optional(SignalRUsageName),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "SignalRUsage" }) as any as S.Schema<SignalRUsage>;
-
-/** List of the resource usages */
-export type SignalRUsageListValueList = Array<SignalRUsage>;
-export const SignalRUsageListValueList = /*@__PURE__*/ S.Array(
-  SignalRUsage,
-) as any as S.Schema<SignalRUsageListValueList>;
-
-/** Object that includes an array of the resource usages and a possible link for next set. */
-export interface SignalRUsageList {
-  /** List of the resource usages */
-  value?: SignalRUsageListValueList;
-  /** The URL the client should use to fetch the next page (per server side paging). It's null for now, added for future use. */
-  nextLink?: string;
-}
-export const SignalRUsageList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SignalRUsageListValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SignalRUsageList",
-}) as any as S.Schema<SignalRUsageList>;
-
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** Lists all of the available REST API operations of the Microsoft.SignalRService provider. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationList,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListUsagesError = AzureOpError;
+/** List resource usage quotas by location. */
+export const ListUsages: API.OperationMethod<
+  ListUsagesRequest,
+  SignalRUsageList,
+  ListUsagesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListUsagesRequest,
+  output: SignalRUsageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4015,21 +4030,6 @@ export const SignalRUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SignalRUpdateRequest,
   output: SignalRUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UsagesListError = AzureOpError;
-/** List resource usage quotas by location. */
-export const UsagesList: API.OperationMethod<
-  UsagesListRequest,
-  SignalRUsageList,
-  UsagesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UsagesListRequest,
-  output: SignalRUsageList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

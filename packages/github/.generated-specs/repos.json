@@ -12947,7 +12947,7 @@
         "smithy.api#documentation": "Update status check protection\n\nProtected branches are available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. For more information, see [GitHub's products](https://docs.github.com/github/getting-started-with-github/githubs-products) in the GitHub Help documentation.\n\nUpdating required status checks requires admin or owner permissions to the repository and branch protection to be enabled."
       }
     },
-    "com.github.repos#RemoveStatusCheckProtectionRequest": {
+    "com.github.repos#CheckRemoveStatusProtectionRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -12979,10 +12979,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.github.repos#RemoveStatusCheckProtection": {
+    "com.github.repos#CheckRemoveStatusProtection": {
       "type": "operation",
       "input": {
-        "target": "com.github.repos#RemoveStatusCheckProtectionRequest"
+        "target": "com.github.repos#CheckRemoveStatusProtectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13115,7 +13115,7 @@
       },
       "traits": {}
     },
-    "com.github.repos#AddStatusCheckContextsRequest": {
+    "com.github.repos#CheckAddStatusContextRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -13160,7 +13160,7 @@
       },
       "traits": {}
     },
-    "com.github.repos#AddStatusCheckContextsResponse": {
+    "com.github.repos#CheckAddStatusContextResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -13175,13 +13175,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.github.repos#AddStatusCheckContexts": {
+    "com.github.repos#CheckAddStatusContext": {
       "type": "operation",
       "input": {
-        "target": "com.github.repos#AddStatusCheckContextsRequest"
+        "target": "com.github.repos#CheckAddStatusContextRequest"
       },
       "output": {
-        "target": "com.github.repos#AddStatusCheckContextsResponse"
+        "target": "com.github.repos#CheckAddStatusContextResponse"
       },
       "errors": [
         {
@@ -13374,7 +13374,7 @@
       },
       "traits": {}
     },
-    "com.github.repos#RemoveStatusCheckContextsRequest": {
+    "com.github.repos#CheckRemoveStatusContextRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -13419,7 +13419,7 @@
       },
       "traits": {}
     },
-    "com.github.repos#RemoveStatusCheckContextsResponse": {
+    "com.github.repos#CheckRemoveStatusContextResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -13434,13 +13434,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.github.repos#RemoveStatusCheckContexts": {
+    "com.github.repos#CheckRemoveStatusContext": {
       "type": "operation",
       "input": {
-        "target": "com.github.repos#RemoveStatusCheckContextsRequest"
+        "target": "com.github.repos#CheckRemoveStatusContextRequest"
       },
       "output": {
-        "target": "com.github.repos#RemoveStatusCheckContextsResponse"
+        "target": "com.github.repos#CheckRemoveStatusContextResponse"
       },
       "errors": [
         {
@@ -26542,7 +26542,7 @@
         "smithy.api#documentation": "Disable private vulnerability reporting for a repository\n\nDisables private vulnerability reporting for a repository. The authenticated user must have admin access to the repository. For more information, see \"[Privately reporting a security vulnerability](https://docs.github.com/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)\"."
       }
     },
-    "com.github.repos#CustomPropertiesForReposGetRepositoryValuesRequest": {
+    "com.github.repos#GetCustomPropertyForReposRepositoryValueRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -26617,7 +26617,7 @@
       },
       "traits": {}
     },
-    "com.github.repos#CustomPropertiesForReposGetRepositoryValuesResponse": {
+    "com.github.repos#GetCustomPropertyForReposRepositoryValueResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -26632,13 +26632,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.github.repos#CustomPropertiesForReposGetRepositoryValues": {
+    "com.github.repos#GetCustomPropertyForReposRepositoryValue": {
       "type": "operation",
       "input": {
-        "target": "com.github.repos#CustomPropertiesForReposGetRepositoryValuesRequest"
+        "target": "com.github.repos#GetCustomPropertyForReposRepositoryValueRequest"
       },
       "output": {
-        "target": "com.github.repos#CustomPropertiesForReposGetRepositoryValuesResponse"
+        "target": "com.github.repos#GetCustomPropertyForReposRepositoryValueResponse"
       },
       "errors": [
         {
@@ -28016,7 +28016,7 @@
         "smithy.api#documentation": "List release assets"
       }
     },
-    "com.github.repos#UploadReleaseAssetRequest": {
+    "com.github.repos#ReleaseUploadAssetRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -28061,10 +28061,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.github.repos#UploadReleaseAsset": {
+    "com.github.repos#ReleaseUploadAsset": {
       "type": "operation",
       "input": {
-        "target": "com.github.repos#UploadReleaseAssetRequest"
+        "target": "com.github.repos#ReleaseUploadAssetRequest"
       },
       "output": {
         "target": "com.github.repos#ReleaseAsset"
@@ -34155,19 +34155,19 @@
           "target": "com.github.repos#UpdateStatusCheckProtection"
         },
         {
-          "target": "com.github.repos#RemoveStatusCheckProtection"
+          "target": "com.github.repos#CheckRemoveStatusProtection"
         },
         {
           "target": "com.github.repos#GetAllStatusCheckContexts"
         },
         {
-          "target": "com.github.repos#AddStatusCheckContexts"
+          "target": "com.github.repos#CheckAddStatusContext"
         },
         {
           "target": "com.github.repos#SetStatusCheckContexts"
         },
         {
-          "target": "com.github.repos#RemoveStatusCheckContexts"
+          "target": "com.github.repos#CheckRemoveStatusContext"
         },
         {
           "target": "com.github.repos#GetAccessRestrictions"
@@ -34485,7 +34485,7 @@
           "target": "com.github.repos#DisablePrivateVulnerabilityReporting"
         },
         {
-          "target": "com.github.repos#CustomPropertiesForReposGetRepositoryValues"
+          "target": "com.github.repos#GetCustomPropertyForReposRepositoryValue"
         },
         {
           "target": "com.github.repos#CustomPropertiesForReposCreateOrUpdateRepositoryValues"
@@ -34533,7 +34533,7 @@
           "target": "com.github.repos#ListReleaseAssets"
         },
         {
-          "target": "com.github.repos#UploadReleaseAsset"
+          "target": "com.github.repos#ReleaseUploadAsset"
         },
         {
           "target": "com.github.repos#GetBranchRules"

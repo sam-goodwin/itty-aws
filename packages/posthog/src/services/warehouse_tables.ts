@@ -40,183 +40,141 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface WarehouseTablesChecksCheckTypesListRequest {
+export interface CheckWarehouseTableSuiteRunRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
+  /** Id of the warehouse table whose suite runs these are. */
   table_id: string;
+  /** A UUID string identifying this data quality suite run. */
+  id: string;
 }
-export const WarehouseTablesChecksCheckTypesListRequest =
+export const CheckWarehouseTableSuiteRunRetrieveRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       table_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/check_types/",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/{id}/",
         code: 200,
       }),
     ),
   ).annotate({
-    identifier: "WarehouseTablesChecksCheckTypesListRequest",
-  }) as any as S.Schema<WarehouseTablesChecksCheckTypesListRequest>;
+    identifier: "CheckWarehouseTableSuiteRunRetrieveRequest",
+  }) as any as S.Schema<CheckWarehouseTableSuiteRunRetrieveRequest>;
 
-/** JSON schema the config object is validated against. */
-export type DataQualityCheckTypeConfigSchemaMap = {
-  [key: string]: unknown | undefined;
-};
-export const DataQualityCheckTypeConfigSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckTypeConfigSchemaMap>;
-
-/** One entry of the check-type catalog, so an agent can author config without guessing. */
-export interface DataQualityCheckType {
-  /** Value to pass as check_type. */
-  check_type: string;
-  /** What the check asserts and what counts as a failure. */
-  description: string;
-  /** Whether column_name must be set for this type. */
-  requires_column: boolean;
-  /** JSON schema the config object is validated against. */
-  config_schema: DataQualityCheckTypeConfigSchemaMap;
+export interface DataQualitySuiteRun {
+  id: string;
+  /** manual, materialization, or source_sync. */
+  trigger: string;
+  /** running, completed, failed, or empty (nothing matched the trigger). */
+  status: string;
+  /** 'table' or 'view' when the run targets exactly one subject, including a run of a single check on that subject; null for a run spanning several subjects. */
+  subject_type: string | null;
+  /** Set when the run targets exactly one subject. */
+  subject_uuid: string | null;
+  workflow_id: string;
+  checks_passed: number;
+  checks_failed: number;
+  checks_errored: number;
+  checks_skipped: number;
+  started_at: string | null;
+  finished_at: string | null;
+  /** Why the suite itself failed, as opposed to an individual check. */
+  error: string;
+  created_at: string;
 }
-export const DataQualityCheckType = /*@__PURE__*/ S.suspend(() =>
+export const DataQualitySuiteRun = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    check_type: S.String,
-    description: S.String,
-    requires_column: S.Boolean,
-    config_schema: DataQualityCheckTypeConfigSchemaMap,
+    id: S.String,
+    trigger: S.String,
+    status: S.String,
+    subject_type: S.NullOr(S.String),
+    subject_uuid: S.NullOr(S.String),
+    workflow_id: S.String,
+    checks_passed: S.Number,
+    checks_failed: S.Number,
+    checks_errored: S.Number,
+    checks_skipped: S.Number,
+    started_at: S.NullOr(S.String),
+    finished_at: S.NullOr(S.String),
+    error: S.String,
+    created_at: S.String,
   }),
 ).annotate({
-  identifier: "DataQualityCheckType",
-}) as any as S.Schema<DataQualityCheckType>;
+  identifier: "DataQualitySuiteRun",
+}) as any as S.Schema<DataQualitySuiteRun>;
 
-export type WarehouseTablesChecksCheckTypesListResponseBodyList =
-  Array<DataQualityCheckType>;
-export const WarehouseTablesChecksCheckTypesListResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    DataQualityCheckType,
-  ) as any as S.Schema<WarehouseTablesChecksCheckTypesListResponseBodyList>;
+/** * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
+export type TableFormatEnum =
+  | "CSV"
+  | "CSVWithNames"
+  | "Parquet"
+  | "JSONEachRow"
+  | "Delta"
+  | "DeltaS3Wrapper";
+export const TableFormatEnum = /*@__PURE__*/ S.String;
 
-export type WarehouseTablesChecksCheckTypesListResponse =
-  WarehouseTablesChecksCheckTypesListResponseBodyList;
-export const WarehouseTablesChecksCheckTypesListResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    WarehouseTablesChecksCheckTypesListResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesChecksCheckTypesListResponse",
-  }) as any as S.Schema<WarehouseTablesChecksCheckTypesListResponse>;
+export interface CredentialInput {
+  /** Access key ID for the bucket the files live in (an AWS access key ID, a Google Cloud HMAC key, or the equivalent for another S3-compatible store). */
+  access_key?: string;
+  /** Secret for the access key. Stored encrypted and never returned by the API. */
+  access_secret?: string | Redacted.Redacted<string>;
+}
+export const CredentialInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    access_key: S.optional(S.String),
+    access_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+  }),
+).annotate({
+  identifier: "CredentialInput",
+}) as any as S.Schema<CredentialInput>;
 
-/** * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
-export type CheckTypeEnum =
-  | "not_null"
-  | "unique"
-  | "accepted_values"
-  | "relationships"
-  | "row_count"
-  | "freshness"
-  | "custom_sql";
-export const CheckTypeEnum = /*@__PURE__*/ S.String;
-
-/** Type-specific configuration, validated against the check type's JSON schema. */
-export type WarehouseTablesChecksCreateRequestConfigMap = {
+/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+export type WarehouseTablesCreateRequestOptionsMap = {
   [key: string]: unknown | undefined;
 };
-export const WarehouseTablesChecksCreateRequestConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<WarehouseTablesChecksCreateRequestConfigMap>;
-
-/** * `error` - error * `warn` - warn */
-export type DataQualityCheckSeverityEnum = "error" | "warn";
-export const DataQualityCheckSeverityEnum = /*@__PURE__*/ S.String;
-
-/** Free-form string labels for grouping and filtering. */
-export type WarehouseTablesChecksCreateRequestTagsList = Array<string>;
-export const WarehouseTablesChecksCreateRequestTagsList = /*@__PURE__*/ S.Array(
+export const WarehouseTablesCreateRequestOptionsMap = /*@__PURE__*/ S.Record(
   S.String,
-) as any as S.Schema<WarehouseTablesChecksCreateRequestTagsList>;
+  S.Unknown,
+) as any as S.Schema<WarehouseTablesCreateRequestOptionsMap>;
 
-/** * `user` - user * `ai_generated` - ai_generated */
-export type CreatedSourceEnum = "user" | "ai_generated";
-export const CreatedSourceEnum = /*@__PURE__*/ S.String;
-
-export interface WarehouseTablesChecksCreateRequest {
+export interface CreateWarehouseTableRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  table_id: string;
-  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
+  /** Whether the table is soft-deleted and hidden from queries. */
+  deleted?: boolean | null;
+  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
   name?: string;
-  /** Why this check exists and what a failure means. */
-  description?: string;
-  /** Column the check applies to. Omit for table-scoped types like row_count. */
-  column_name?: string;
-  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
-  check_type: CheckTypeEnum | (string & {});
-  /** Type-specific configuration, validated against the check type's JSON schema. */
-  config?: WarehouseTablesChecksCreateRequestConfigMap;
-  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
-  severity?: DataQualityCheckSeverityEnum | (string & {});
-  /** Disabled checks are never run by any trigger. */
-  enabled?: boolean;
-  /** Free-form string labels for grouping and filtering. */
-  tags?: WarehouseTablesChecksCreateRequestTagsList;
-  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum | (string & {});
-  /** Model that generated the check, if AI-authored. */
-  ai_model?: string;
-  /** AI author's confidence in the check, 0-1. */
-  confidence?: number | null;
-  /** AI author's reasoning, surfaced as review context. */
-  reasoning?: string;
+  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
+  format?: TableFormatEnum | (string & {});
+  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
+  url_pattern?: string;
+  credential?: CredentialInput;
+  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+  options?: WarehouseTablesCreateRequestOptionsMap;
 }
-export const WarehouseTablesChecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    table_id: S.String.pipe(T.Label()),
+    deleted: S.optional(S.NullOr(S.Boolean)),
     name: S.optional(S.String),
-    description: S.optional(S.String),
-    column_name: S.optional(S.String),
-    check_type: CheckTypeEnum,
-    config: S.optional(WarehouseTablesChecksCreateRequestConfigMap),
-    severity: S.optional(DataQualityCheckSeverityEnum),
-    enabled: S.optional(S.Boolean),
-    tags: S.optional(WarehouseTablesChecksCreateRequestTagsList),
-    created_source: S.optional(CreatedSourceEnum),
-    ai_model: S.optional(S.String),
-    confidence: S.optional(S.NullOr(S.Number)),
-    reasoning: S.optional(S.String),
+    format: S.optional(TableFormatEnum),
+    url_pattern: S.optional(S.String),
+    credential: S.optional(CredentialInput),
+    options: S.optional(WarehouseTablesCreateRequestOptionsMap),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/",
+      uri: "/api/projects/{project_id}/warehouse_tables/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "WarehouseTablesChecksCreateRequest",
-}) as any as S.Schema<WarehouseTablesChecksCreateRequest>;
-
-/** * `table` - table * `view` - view */
-export type SubjectTypeEnum = "table" | "view";
-export const SubjectTypeEnum = /*@__PURE__*/ S.String;
-
-/** Type-specific configuration, validated against the check type's JSON schema. */
-export type DataQualityCheckConfigMap = { [key: string]: unknown | undefined };
-export const DataQualityCheckConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckConfigMap>;
-
-/** Free-form string labels for grouping and filtering. */
-export type DataQualityCheckTagsList = Array<string>;
-export const DataQualityCheckTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<DataQualityCheckTagsList>;
+  identifier: "CreateWarehouseTableRequest",
+}) as any as S.Schema<CreateWarehouseTableRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -268,768 +226,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
     role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
-
-/** The subject is implied by the URL (the parent saved query or table), never part of the body. */
-export interface DataQualityCheck {
-  id: string;
-  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
-  name?: string;
-  /** Why this check exists and what a failure means. */
-  description?: string;
-  /** Kind of catalog object being checked: 'table' (a synced warehouse table) or 'view' (a saved query). * `table` - table * `view` - view */
-  subject_type: SubjectTypeEnum;
-  /** Id of the table or view being checked -- the parent resource in the URL. */
-  subject_uuid: string | null;
-  /** Queryable name of the subject, refreshed on every run. */
-  subject_name: string;
-  /** 'orphaned' once the subject stops resolving. Orphaned checks are skipped, not deleted. */
-  subject_status: string;
-  /** Column the check applies to. Omit for table-scoped types like row_count. */
-  column_name?: string;
-  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
-  check_type: CheckTypeEnum;
-  /** Type-specific configuration, validated against the check type's JSON schema. */
-  config?: DataQualityCheckConfigMap;
-  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
-  severity?: DataQualityCheckSeverityEnum;
-  /** Disabled checks are never run by any trigger. */
-  enabled?: boolean;
-  /** Free-form string labels for grouping and filtering. */
-  tags?: DataQualityCheckTagsList;
-  /** Email of the human accountable for this check, or null. */
-  owner: string | null;
-  /** When the check last executed. */
-  last_run_at: string | null;
-  /** Outcome of the newest run: passed, failed, errored, skipped, or empty if never run. */
-  last_status: string;
-  /** When the check last passed, so a failing check can say how long it has been failing. Null means it has not passed within the run retention window. */
-  last_succeeded_at: string | null;
-  /** sha256 of the subject, type, column, and config. Re-creating the same check upserts. */
-  fingerprint: string;
-  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum;
-  /** Model that generated the check, if AI-authored. */
-  ai_model?: string;
-  /** AI author's confidence in the check, 0-1. */
-  confidence?: number | null;
-  /** AI author's reasoning, surfaced as review context. */
-  reasoning?: string;
-  /** User who first created this check. */
-  created_by: UserBasic;
-  created_at: string;
-  updated_at: string | null;
-}
-export const DataQualityCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    subject_type: SubjectTypeEnum,
-    subject_uuid: S.NullOr(S.String),
-    subject_name: S.String,
-    subject_status: S.String,
-    column_name: S.optional(S.String),
-    check_type: CheckTypeEnum,
-    config: S.optional(DataQualityCheckConfigMap),
-    severity: S.optional(DataQualityCheckSeverityEnum),
-    enabled: S.optional(S.Boolean),
-    tags: S.optional(DataQualityCheckTagsList),
-    owner: S.NullOr(S.String),
-    last_run_at: S.NullOr(S.String),
-    last_status: S.String,
-    last_succeeded_at: S.NullOr(S.String),
-    fingerprint: S.String,
-    created_source: S.optional(CreatedSourceEnum),
-    ai_model: S.optional(S.String),
-    confidence: S.optional(S.NullOr(S.Number)),
-    reasoning: S.optional(S.String),
-    created_by: UserBasic,
-    created_at: S.String,
-    updated_at: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "DataQualityCheck",
-}) as any as S.Schema<DataQualityCheck>;
-
-export interface WarehouseTablesChecksDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** A UUID string identifying this data quality check. */
-  id: string;
-}
-export const WarehouseTablesChecksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    table_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesChecksDestroyRequest",
-}) as any as S.Schema<WarehouseTablesChecksDestroyRequest>;
-
-export interface WarehouseTablesChecksDestroyResponse {}
-export const WarehouseTablesChecksDestroyResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "WarehouseTablesChecksDestroyResponse",
-}) as any as S.Schema<WarehouseTablesChecksDestroyResponse>;
-
-export interface WarehouseTablesChecksHealthRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-}
-export const WarehouseTablesChecksHealthRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/health/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesChecksHealthRetrieveRequest",
-  }) as any as S.Schema<WarehouseTablesChecksHealthRetrieveRequest>;
-
-/** Per-subject rollup, the same rule the information_schema.data_quality_health table uses. */
-export interface DataQualitySubjectHealth {
-  /** 'table' or 'view'. */
-  subject_type: string;
-  /** Id of the table or view. */
-  subject_uuid: string;
-  /** failing (an error-severity check failed), erroring (a check could not run), warn (only warn-severity failures), healthy, or unknown (nothing has run yet). */
-  health: string;
-  /** How many enabled, non-deleted checks cover this subject. */
-  checks_total: number;
-  /** How many of those checks last reported a failure. */
-  checks_failing: number;
-}
-export const DataQualitySubjectHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subject_type: S.String,
-    subject_uuid: S.String,
-    health: S.String,
-    checks_total: S.Number,
-    checks_failing: S.Number,
-  }),
-).annotate({
-  identifier: "DataQualitySubjectHealth",
-}) as any as S.Schema<DataQualitySubjectHealth>;
-
-export interface WarehouseTablesChecksListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const WarehouseTablesChecksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    table_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesChecksListRequest",
-}) as any as S.Schema<WarehouseTablesChecksListRequest>;
-
-export type PaginatedDataQualityCheckListResultsList = Array<DataQualityCheck>;
-export const PaginatedDataQualityCheckListResultsList = /*@__PURE__*/ S.Array(
-  DataQualityCheck,
-) as any as S.Schema<PaginatedDataQualityCheckListResultsList>;
-
-export interface PaginatedDataQualityCheckList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedDataQualityCheckListResultsList;
-}
-export const PaginatedDataQualityCheckList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedDataQualityCheckListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedDataQualityCheckList",
-}) as any as S.Schema<PaginatedDataQualityCheckList>;
-
-/** Type-specific configuration, validated against the check type's JSON schema. */
-export type WarehouseTablesChecksPartialUpdateRequestConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const WarehouseTablesChecksPartialUpdateRequestConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<WarehouseTablesChecksPartialUpdateRequestConfigMap>;
-
-/** Free-form string labels for grouping and filtering. */
-export type WarehouseTablesChecksPartialUpdateRequestTagsList = Array<string>;
-export const WarehouseTablesChecksPartialUpdateRequestTagsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<WarehouseTablesChecksPartialUpdateRequestTagsList>;
-
-export interface WarehouseTablesChecksPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** A UUID string identifying this data quality check. */
-  id: string;
-  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
-  name?: string;
-  /** Why this check exists and what a failure means. */
-  description?: string;
-  /** Column the check applies to. Omit for table-scoped types like row_count. */
-  column_name?: string;
-  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
-  check_type?: CheckTypeEnum | (string & {});
-  /** Type-specific configuration, validated against the check type's JSON schema. */
-  config?: WarehouseTablesChecksPartialUpdateRequestConfigMap;
-  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
-  severity?: DataQualityCheckSeverityEnum | (string & {});
-  /** Disabled checks are never run by any trigger. */
-  enabled?: boolean;
-  /** Free-form string labels for grouping and filtering. */
-  tags?: WarehouseTablesChecksPartialUpdateRequestTagsList;
-  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum | (string & {});
-  /** Model that generated the check, if AI-authored. */
-  ai_model?: string;
-  /** AI author's confidence in the check, 0-1. */
-  confidence?: number | null;
-  /** AI author's reasoning, surfaced as review context. */
-  reasoning?: string;
-}
-export const WarehouseTablesChecksPartialUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      column_name: S.optional(S.String),
-      check_type: S.optional(CheckTypeEnum),
-      config: S.optional(WarehouseTablesChecksPartialUpdateRequestConfigMap),
-      severity: S.optional(DataQualityCheckSeverityEnum),
-      enabled: S.optional(S.Boolean),
-      tags: S.optional(WarehouseTablesChecksPartialUpdateRequestTagsList),
-      created_source: S.optional(CreatedSourceEnum),
-      ai_model: S.optional(S.String),
-      confidence: S.optional(S.NullOr(S.Number)),
-      reasoning: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesChecksPartialUpdateRequest",
-  }) as any as S.Schema<WarehouseTablesChecksPartialUpdateRequest>;
-
-export interface WarehouseTablesChecksRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** A UUID string identifying this data quality check. */
-  id: string;
-}
-export const WarehouseTablesChecksRetrieveRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseTablesChecksRetrieveRequest",
-}) as any as S.Schema<WarehouseTablesChecksRetrieveRequest>;
-
-export interface WarehouseTablesChecksRunAllCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-}
-export const WarehouseTablesChecksRunAllCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/run_all/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseTablesChecksRunAllCreateRequest",
-}) as any as S.Schema<WarehouseTablesChecksRunAllCreateRequest>;
-
-export interface DataQualitySuiteRun {
-  id: string;
-  /** manual, materialization, or source_sync. */
-  trigger: string;
-  /** running, completed, failed, or empty (nothing matched the trigger). */
-  status: string;
-  /** 'table' or 'view' when the run targets exactly one subject, including a run of a single check on that subject; null for a run spanning several subjects. */
-  subject_type: string | null;
-  /** Set when the run targets exactly one subject. */
-  subject_uuid: string | null;
-  workflow_id: string;
-  checks_passed: number;
-  checks_failed: number;
-  checks_errored: number;
-  checks_skipped: number;
-  started_at: string | null;
-  finished_at: string | null;
-  /** Why the suite itself failed, as opposed to an individual check. */
-  error: string;
-  created_at: string;
-}
-export const DataQualitySuiteRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    trigger: S.String,
-    status: S.String,
-    subject_type: S.NullOr(S.String),
-    subject_uuid: S.NullOr(S.String),
-    workflow_id: S.String,
-    checks_passed: S.Number,
-    checks_failed: S.Number,
-    checks_errored: S.Number,
-    checks_skipped: S.Number,
-    started_at: S.NullOr(S.String),
-    finished_at: S.NullOr(S.String),
-    error: S.String,
-    created_at: S.String,
-  }),
-).annotate({
-  identifier: "DataQualitySuiteRun",
-}) as any as S.Schema<DataQualitySuiteRun>;
-
-export interface WarehouseTablesChecksRunCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** A UUID string identifying this data quality check. */
-  id: string;
-}
-export const WarehouseTablesChecksRunCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/run/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseTablesChecksRunCreateRequest",
-}) as any as S.Schema<WarehouseTablesChecksRunCreateRequest>;
-
-export interface WarehouseTablesChecksRunsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** A UUID string identifying this data quality check. */
-  id: string;
-}
-export const WarehouseTablesChecksRunsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/runs/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseTablesChecksRunsListRequest",
-}) as any as S.Schema<WarehouseTablesChecksRunsListRequest>;
-
-/** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
-export type DataQualityCheckRunCheckConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const DataQualityCheckRunCheckConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
-
-export interface DataQualityCheckRun {
-  id: string;
-  /** The definition executed. Nulled rather than cascaded so history outlives hard deletes. */
-  quality_check: string | null;
-  suite_run: string;
-  subject_type: SubjectTypeEnum;
-  subject_uuid: string;
-  subject_name: string;
-  /** Which assertion this run made. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
-  check_type: CheckTypeEnum;
-  column_name: string;
-  /** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
-  check_config: DataQualityCheckRunCheckConfigMap | null;
-  /** Severity this run was judged at. Null for runs recorded before snapshots existed. * `error` - error * `warn` - warn */
-  check_severity: DataQualityCheckSeverityEnum | null;
-  /** passed, failed, errored, or skipped. */
-  status: string;
-  /** Rows violating the assertion. Null for bounds checks like row_count. */
-  failed_row_count: number | null;
-  /** The check's headline number, recorded on passes too. */
-  observed_value: number | null;
-  /** The HogQL that ran. Re-run it to see the offending rows. */
-  compiled_query: string;
-  /** Compilation or execution failure, when status is 'errored'. */
-  error: string;
-  duration_ms: number | null;
-  started_at: string | null;
-  finished_at: string | null;
-  created_at: string;
-}
-export const DataQualityCheckRun = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    quality_check: S.NullOr(S.String),
-    suite_run: S.String,
-    subject_type: SubjectTypeEnum,
-    subject_uuid: S.String,
-    subject_name: S.String,
-    check_type: CheckTypeEnum,
-    column_name: S.String,
-    check_config: S.NullOr(DataQualityCheckRunCheckConfigMap),
-    check_severity: S.NullOr(DataQualityCheckSeverityEnum),
-    status: S.String,
-    failed_row_count: S.NullOr(S.Number),
-    observed_value: S.NullOr(S.Number),
-    compiled_query: S.String,
-    error: S.String,
-    duration_ms: S.NullOr(S.Number),
-    started_at: S.NullOr(S.String),
-    finished_at: S.NullOr(S.String),
-    created_at: S.String,
-  }),
-).annotate({
-  identifier: "DataQualityCheckRun",
-}) as any as S.Schema<DataQualityCheckRun>;
-
-export type WarehouseTablesChecksRunsListResponseBodyList =
-  Array<DataQualityCheckRun>;
-export const WarehouseTablesChecksRunsListResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    DataQualityCheckRun,
-  ) as any as S.Schema<WarehouseTablesChecksRunsListResponseBodyList>;
-
-export type WarehouseTablesChecksRunsListResponse =
-  WarehouseTablesChecksRunsListResponseBodyList;
-export const WarehouseTablesChecksRunsListResponse = /*@__PURE__*/ S.suspend(
-  () => WarehouseTablesChecksRunsListResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "WarehouseTablesChecksRunsListResponse",
-}) as any as S.Schema<WarehouseTablesChecksRunsListResponse>;
-
-export interface WarehouseTablesCheckSuiteRunsCheckRunsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Id of the warehouse table whose suite runs these are. */
-  table_id: string;
-  /** A UUID string identifying this data quality suite run. */
-  id: string;
-}
-export const WarehouseTablesCheckSuiteRunsCheckRunsListRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/{id}/check_runs/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesCheckSuiteRunsCheckRunsListRequest",
-  }) as any as S.Schema<WarehouseTablesCheckSuiteRunsCheckRunsListRequest>;
-
-export type WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList =
-  Array<DataQualityCheckRun>;
-export const WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    DataQualityCheckRun,
-  ) as any as S.Schema<WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList>;
-
-export type WarehouseTablesCheckSuiteRunsCheckRunsListResponse =
-  WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList;
-export const WarehouseTablesCheckSuiteRunsCheckRunsListResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesCheckSuiteRunsCheckRunsListResponse",
-  }) as any as S.Schema<WarehouseTablesCheckSuiteRunsCheckRunsListResponse>;
-
-export interface WarehouseTablesCheckSuiteRunsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Id of the warehouse table whose suite runs these are. */
-  table_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const WarehouseTablesCheckSuiteRunsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      offset: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseTablesCheckSuiteRunsListRequest",
-}) as any as S.Schema<WarehouseTablesCheckSuiteRunsListRequest>;
-
-export type PaginatedDataQualitySuiteRunListResultsList =
-  Array<DataQualitySuiteRun>;
-export const PaginatedDataQualitySuiteRunListResultsList =
-  /*@__PURE__*/ S.Array(
-    DataQualitySuiteRun,
-  ) as any as S.Schema<PaginatedDataQualitySuiteRunListResultsList>;
-
-export interface PaginatedDataQualitySuiteRunList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedDataQualitySuiteRunListResultsList;
-}
-export const PaginatedDataQualitySuiteRunList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedDataQualitySuiteRunListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedDataQualitySuiteRunList",
-}) as any as S.Schema<PaginatedDataQualitySuiteRunList>;
-
-export interface WarehouseTablesCheckSuiteRunsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Id of the warehouse table whose suite runs these are. */
-  table_id: string;
-  /** A UUID string identifying this data quality suite run. */
-  id: string;
-}
-export const WarehouseTablesCheckSuiteRunsRetrieveRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      table_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/{id}/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesCheckSuiteRunsRetrieveRequest",
-  }) as any as S.Schema<WarehouseTablesCheckSuiteRunsRetrieveRequest>;
-
-/** Type-specific configuration, validated against the check type's JSON schema. */
-export type WarehouseTablesChecksUpdateRequestConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const WarehouseTablesChecksUpdateRequestConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<WarehouseTablesChecksUpdateRequestConfigMap>;
-
-/** Free-form string labels for grouping and filtering. */
-export type WarehouseTablesChecksUpdateRequestTagsList = Array<string>;
-export const WarehouseTablesChecksUpdateRequestTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<WarehouseTablesChecksUpdateRequestTagsList>;
-
-export interface WarehouseTablesChecksUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  table_id: string;
-  /** A UUID string identifying this data quality check. */
-  id: string;
-  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
-  name?: string;
-  /** Why this check exists and what a failure means. */
-  description?: string;
-  /** Column the check applies to. Omit for table-scoped types like row_count. */
-  column_name?: string;
-  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
-  check_type: CheckTypeEnum | (string & {});
-  /** Type-specific configuration, validated against the check type's JSON schema. */
-  config?: WarehouseTablesChecksUpdateRequestConfigMap;
-  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
-  severity?: DataQualityCheckSeverityEnum | (string & {});
-  /** Disabled checks are never run by any trigger. */
-  enabled?: boolean;
-  /** Free-form string labels for grouping and filtering. */
-  tags?: WarehouseTablesChecksUpdateRequestTagsList;
-  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
-  created_source?: CreatedSourceEnum | (string & {});
-  /** Model that generated the check, if AI-authored. */
-  ai_model?: string;
-  /** AI author's confidence in the check, 0-1. */
-  confidence?: number | null;
-  /** AI author's reasoning, surfaced as review context. */
-  reasoning?: string;
-}
-export const WarehouseTablesChecksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    table_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    column_name: S.optional(S.String),
-    check_type: CheckTypeEnum,
-    config: S.optional(WarehouseTablesChecksUpdateRequestConfigMap),
-    severity: S.optional(DataQualityCheckSeverityEnum),
-    enabled: S.optional(S.Boolean),
-    tags: S.optional(WarehouseTablesChecksUpdateRequestTagsList),
-    created_source: S.optional(CreatedSourceEnum),
-    ai_model: S.optional(S.String),
-    confidence: S.optional(S.NullOr(S.Number)),
-    reasoning: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesChecksUpdateRequest",
-}) as any as S.Schema<WarehouseTablesChecksUpdateRequest>;
-
-/** * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
-export type TableFormatEnum =
-  | "CSV"
-  | "CSVWithNames"
-  | "Parquet"
-  | "JSONEachRow"
-  | "Delta"
-  | "DeltaS3Wrapper";
-export const TableFormatEnum = /*@__PURE__*/ S.String;
-
-export interface CredentialInput {
-  /** Access key ID for the bucket the files live in (an AWS access key ID, a Google Cloud HMAC key, or the equivalent for another S3-compatible store). */
-  access_key?: string;
-  /** Secret for the access key. Stored encrypted and never returned by the API. */
-  access_secret?: string | Redacted.Redacted<string>;
-}
-export const CredentialInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    access_key: S.optional(S.String),
-    access_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-  }),
-).annotate({
-  identifier: "CredentialInput",
-}) as any as S.Schema<CredentialInput>;
-
-/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-export type WarehouseTablesCreateRequestOptionsMap = {
-  [key: string]: unknown | undefined;
-};
-export const WarehouseTablesCreateRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WarehouseTablesCreateRequestOptionsMap>;
-
-export interface WarehouseTablesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Whether the table is soft-deleted and hidden from queries. */
-  deleted?: boolean | null;
-  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
-  name?: string;
-  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
-  format?: TableFormatEnum | (string & {});
-  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
-  url_pattern?: string;
-  credential?: CredentialInput;
-  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-  options?: WarehouseTablesCreateRequestOptionsMap;
-}
-export const WarehouseTablesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.String),
-    format: S.optional(TableFormatEnum),
-    url_pattern: S.optional(S.String),
-    credential: S.optional(CredentialInput),
-    options: S.optional(WarehouseTablesCreateRequestOptionsMap),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/warehouse_tables/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesCreateRequest",
-}) as any as S.Schema<WarehouseTablesCreateRequest>;
 
 /** * `web` - web * `api` - api * `mcp` - mcp * `wizard` - wizard * `self_driving` - self_driving * `source` - source * `materialized_view` - materialized_view * `demo` - demo */
 export type TableCreatedViaEnum =
@@ -2477,6 +1673,1088 @@ export const TableOutput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TableOutput" }) as any as S.Schema<TableOutput>;
 
+/** * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
+export type CheckTypeEnum =
+  | "not_null"
+  | "unique"
+  | "accepted_values"
+  | "relationships"
+  | "row_count"
+  | "freshness"
+  | "custom_sql";
+export const CheckTypeEnum = /*@__PURE__*/ S.String;
+
+/** Type-specific configuration, validated against the check type's JSON schema. */
+export type WarehouseTablesChecksCreateRequestConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const WarehouseTablesChecksCreateRequestConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WarehouseTablesChecksCreateRequestConfigMap>;
+
+/** * `error` - error * `warn` - warn */
+export type DataQualityCheckSeverityEnum = "error" | "warn";
+export const DataQualityCheckSeverityEnum = /*@__PURE__*/ S.String;
+
+/** Free-form string labels for grouping and filtering. */
+export type WarehouseTablesChecksCreateRequestTagsList = Array<string>;
+export const WarehouseTablesChecksCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<WarehouseTablesChecksCreateRequestTagsList>;
+
+/** * `user` - user * `ai_generated` - ai_generated */
+export type CreatedSourceEnum = "user" | "ai_generated";
+export const CreatedSourceEnum = /*@__PURE__*/ S.String;
+
+export interface CreateWarehouseTableCheckRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
+  name?: string;
+  /** Why this check exists and what a failure means. */
+  description?: string;
+  /** Column the check applies to. Omit for table-scoped types like row_count. */
+  column_name?: string;
+  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
+  check_type: CheckTypeEnum | (string & {});
+  /** Type-specific configuration, validated against the check type's JSON schema. */
+  config?: WarehouseTablesChecksCreateRequestConfigMap;
+  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
+  severity?: DataQualityCheckSeverityEnum | (string & {});
+  /** Disabled checks are never run by any trigger. */
+  enabled?: boolean;
+  /** Free-form string labels for grouping and filtering. */
+  tags?: WarehouseTablesChecksCreateRequestTagsList;
+  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
+  created_source?: CreatedSourceEnum | (string & {});
+  /** Model that generated the check, if AI-authored. */
+  ai_model?: string;
+  /** AI author's confidence in the check, 0-1. */
+  confidence?: number | null;
+  /** AI author's reasoning, surfaced as review context. */
+  reasoning?: string;
+}
+export const CreateWarehouseTableCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    table_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    column_name: S.optional(S.String),
+    check_type: CheckTypeEnum,
+    config: S.optional(WarehouseTablesChecksCreateRequestConfigMap),
+    severity: S.optional(DataQualityCheckSeverityEnum),
+    enabled: S.optional(S.Boolean),
+    tags: S.optional(WarehouseTablesChecksCreateRequestTagsList),
+    created_source: S.optional(CreatedSourceEnum),
+    ai_model: S.optional(S.String),
+    confidence: S.optional(S.NullOr(S.Number)),
+    reasoning: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateWarehouseTableCheckRequest",
+}) as any as S.Schema<CreateWarehouseTableCheckRequest>;
+
+/** * `table` - table * `view` - view */
+export type SubjectTypeEnum = "table" | "view";
+export const SubjectTypeEnum = /*@__PURE__*/ S.String;
+
+/** Type-specific configuration, validated against the check type's JSON schema. */
+export type DataQualityCheckConfigMap = { [key: string]: unknown | undefined };
+export const DataQualityCheckConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DataQualityCheckConfigMap>;
+
+/** Free-form string labels for grouping and filtering. */
+export type DataQualityCheckTagsList = Array<string>;
+export const DataQualityCheckTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<DataQualityCheckTagsList>;
+
+/** The subject is implied by the URL (the parent saved query or table), never part of the body. */
+export interface DataQualityCheck {
+  id: string;
+  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
+  name?: string;
+  /** Why this check exists and what a failure means. */
+  description?: string;
+  /** Kind of catalog object being checked: 'table' (a synced warehouse table) or 'view' (a saved query). * `table` - table * `view` - view */
+  subject_type: SubjectTypeEnum;
+  /** Id of the table or view being checked -- the parent resource in the URL. */
+  subject_uuid: string | null;
+  /** Queryable name of the subject, refreshed on every run. */
+  subject_name: string;
+  /** 'orphaned' once the subject stops resolving. Orphaned checks are skipped, not deleted. */
+  subject_status: string;
+  /** Column the check applies to. Omit for table-scoped types like row_count. */
+  column_name?: string;
+  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
+  check_type: CheckTypeEnum;
+  /** Type-specific configuration, validated against the check type's JSON schema. */
+  config?: DataQualityCheckConfigMap;
+  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
+  severity?: DataQualityCheckSeverityEnum;
+  /** Disabled checks are never run by any trigger. */
+  enabled?: boolean;
+  /** Free-form string labels for grouping and filtering. */
+  tags?: DataQualityCheckTagsList;
+  /** Email of the human accountable for this check, or null. */
+  owner: string | null;
+  /** When the check last executed. */
+  last_run_at: string | null;
+  /** Outcome of the newest run: passed, failed, errored, skipped, or empty if never run. */
+  last_status: string;
+  /** When the check last passed, so a failing check can say how long it has been failing. Null means it has not passed within the run retention window. */
+  last_succeeded_at: string | null;
+  /** sha256 of the subject, type, column, and config. Re-creating the same check upserts. */
+  fingerprint: string;
+  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
+  created_source?: CreatedSourceEnum;
+  /** Model that generated the check, if AI-authored. */
+  ai_model?: string;
+  /** AI author's confidence in the check, 0-1. */
+  confidence?: number | null;
+  /** AI author's reasoning, surfaced as review context. */
+  reasoning?: string;
+  /** User who first created this check. */
+  created_by: UserBasic;
+  created_at: string;
+  updated_at: string | null;
+}
+export const DataQualityCheck = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    subject_type: SubjectTypeEnum,
+    subject_uuid: S.NullOr(S.String),
+    subject_name: S.String,
+    subject_status: S.String,
+    column_name: S.optional(S.String),
+    check_type: CheckTypeEnum,
+    config: S.optional(DataQualityCheckConfigMap),
+    severity: S.optional(DataQualityCheckSeverityEnum),
+    enabled: S.optional(S.Boolean),
+    tags: S.optional(DataQualityCheckTagsList),
+    owner: S.NullOr(S.String),
+    last_run_at: S.NullOr(S.String),
+    last_status: S.String,
+    last_succeeded_at: S.NullOr(S.String),
+    fingerprint: S.String,
+    created_source: S.optional(CreatedSourceEnum),
+    ai_model: S.optional(S.String),
+    confidence: S.optional(S.NullOr(S.Number)),
+    reasoning: S.optional(S.String),
+    created_by: UserBasic,
+    created_at: S.String,
+    updated_at: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "DataQualityCheck",
+}) as any as S.Schema<DataQualityCheck>;
+
+export interface CreateWarehouseTableCheckRunRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** A UUID string identifying this data quality check. */
+  id: string;
+}
+export const CreateWarehouseTableCheckRunRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    table_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/run/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateWarehouseTableCheckRunRequest",
+}) as any as S.Schema<CreateWarehouseTableCheckRunRequest>;
+
+export interface CreateWarehouseTableCheckRunAllRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+}
+export const CreateWarehouseTableCheckRunAllRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/run_all/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateWarehouseTableCheckRunAllRequest",
+}) as any as S.Schema<CreateWarehouseTableCheckRunAllRequest>;
+
+/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+export type WarehouseTablesFileCreateRequestOptionsMap = {
+  [key: string]: unknown | undefined;
+};
+export const WarehouseTablesFileCreateRequestOptionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WarehouseTablesFileCreateRequestOptionsMap>;
+
+export interface CreateWarehouseTableFileRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Whether the table is soft-deleted and hidden from queries. */
+  deleted?: boolean | null;
+  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
+  name?: string;
+  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
+  format?: TableFormatEnum | (string & {});
+  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
+  url_pattern?: string;
+  credential?: CredentialInput;
+  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+  options?: WarehouseTablesFileCreateRequestOptionsMap;
+}
+export const CreateWarehouseTableFileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.String),
+    format: S.optional(TableFormatEnum),
+    url_pattern: S.optional(S.String),
+    credential: S.optional(CredentialInput),
+    options: S.optional(WarehouseTablesFileCreateRequestOptionsMap),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/warehouse_tables/file/",
+      code: 200,
+      contentType: "form-urlencoded",
+    }),
+  ),
+).annotate({
+  identifier: "CreateWarehouseTableFileRequest",
+}) as any as S.Schema<CreateWarehouseTableFileRequest>;
+
+export interface CreateWarehouseTableFileResponse {}
+export const CreateWarehouseTableFileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateWarehouseTableFileResponse",
+}) as any as S.Schema<CreateWarehouseTableFileResponse>;
+
+export interface CreateWarehouseTableRefreshSchemaRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this data warehouse table. */
+  id: string;
+}
+export const CreateWarehouseTableRefreshSchemaRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/warehouse_tables/{id}/refresh_schema/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateWarehouseTableRefreshSchemaRequest",
+}) as any as S.Schema<CreateWarehouseTableRefreshSchemaRequest>;
+
+export interface CreateWarehouseTableRefreshSchemaResponse {}
+export const CreateWarehouseTableRefreshSchemaResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "CreateWarehouseTableRefreshSchemaResponse",
+  }) as any as S.Schema<CreateWarehouseTableRefreshSchemaResponse>;
+
+/** How the file will be read when the table is created. */
+export type WarehouseTablesUploadFileCreateRequestFileFormat =
+  | "csv"
+  | "json"
+  | "parquet";
+export const WarehouseTablesUploadFileCreateRequestFileFormat =
+  /*@__PURE__*/ S.String;
+
+export interface CreateWarehouseTableUploadFileRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** The file to upload. */
+  file: string;
+  /** How the file will be read when the table is created. */
+  file_format: WarehouseTablesUploadFileCreateRequestFileFormat | (string & {});
+}
+export const CreateWarehouseTableUploadFileRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      file: S.String,
+      file_format: WarehouseTablesUploadFileCreateRequestFileFormat,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/warehouse_tables/upload_file/",
+        code: 200,
+        contentType: "multipart",
+      }),
+    ),
+).annotate({
+  identifier: "CreateWarehouseTableUploadFileRequest",
+}) as any as S.Schema<CreateWarehouseTableUploadFileRequest>;
+
+export interface FileUploadResponse {
+  /** Id of the stored upload. Pass it to create_from_upload to build the table. */
+  upload_id: string;
+  /** Sanitized name the file was stored under. */
+  filename: string;
+  /** Format the file will be read as: 'csv', 'json', or 'parquet'. */
+  file_format: string;
+  /** Size of the stored file in bytes. */
+  size_bytes: number;
+}
+export const FileUploadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    upload_id: S.String,
+    filename: S.String,
+    file_format: S.String,
+    size_bytes: S.Number,
+  }),
+).annotate({
+  identifier: "FileUploadResponse",
+}) as any as S.Schema<FileUploadResponse>;
+
+export interface ListWarehouseTableCheckRunsRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** A UUID string identifying this data quality check. */
+  id: string;
+}
+export const ListWarehouseTableCheckRunsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    table_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/runs/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWarehouseTableCheckRunsRequest",
+}) as any as S.Schema<ListWarehouseTableCheckRunsRequest>;
+
+/** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
+export type DataQualityCheckRunCheckConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const DataQualityCheckRunCheckConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
+
+export interface DataQualityCheckRun {
+  id: string;
+  /** The definition executed. Nulled rather than cascaded so history outlives hard deletes. */
+  quality_check: string | null;
+  suite_run: string;
+  subject_type: SubjectTypeEnum;
+  subject_uuid: string;
+  subject_name: string;
+  /** Which assertion this run made. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
+  check_type: CheckTypeEnum;
+  column_name: string;
+  /** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
+  check_config: DataQualityCheckRunCheckConfigMap | null;
+  /** Severity this run was judged at. Null for runs recorded before snapshots existed. * `error` - error * `warn` - warn */
+  check_severity: DataQualityCheckSeverityEnum | null;
+  /** passed, failed, errored, or skipped. */
+  status: string;
+  /** Rows violating the assertion. Null for bounds checks like row_count. */
+  failed_row_count: number | null;
+  /** The check's headline number, recorded on passes too. */
+  observed_value: number | null;
+  /** The HogQL that ran. Re-run it to see the offending rows. */
+  compiled_query: string;
+  /** Compilation or execution failure, when status is 'errored'. */
+  error: string;
+  duration_ms: number | null;
+  started_at: string | null;
+  finished_at: string | null;
+  created_at: string;
+}
+export const DataQualityCheckRun = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    quality_check: S.NullOr(S.String),
+    suite_run: S.String,
+    subject_type: SubjectTypeEnum,
+    subject_uuid: S.String,
+    subject_name: S.String,
+    check_type: CheckTypeEnum,
+    column_name: S.String,
+    check_config: S.NullOr(DataQualityCheckRunCheckConfigMap),
+    check_severity: S.NullOr(DataQualityCheckSeverityEnum),
+    status: S.String,
+    failed_row_count: S.NullOr(S.Number),
+    observed_value: S.NullOr(S.Number),
+    compiled_query: S.String,
+    error: S.String,
+    duration_ms: S.NullOr(S.Number),
+    started_at: S.NullOr(S.String),
+    finished_at: S.NullOr(S.String),
+    created_at: S.String,
+  }),
+).annotate({
+  identifier: "DataQualityCheckRun",
+}) as any as S.Schema<DataQualityCheckRun>;
+
+export type WarehouseTablesChecksRunsListResponseBodyList =
+  Array<DataQualityCheckRun>;
+export const WarehouseTablesChecksRunsListResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    DataQualityCheckRun,
+  ) as any as S.Schema<WarehouseTablesChecksRunsListResponseBodyList>;
+
+export type ListWarehouseTableCheckRunsResponse =
+  WarehouseTablesChecksRunsListResponseBodyList;
+export const ListWarehouseTableCheckRunsResponse = /*@__PURE__*/ S.suspend(() =>
+  WarehouseTablesChecksRunsListResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "ListWarehouseTableCheckRunsResponse",
+}) as any as S.Schema<ListWarehouseTableCheckRunsResponse>;
+
+export interface ListWarehouseTableChecksRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const ListWarehouseTableChecksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    table_id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWarehouseTableChecksRequest",
+}) as any as S.Schema<ListWarehouseTableChecksRequest>;
+
+export type PaginatedDataQualityCheckListResultsList = Array<DataQualityCheck>;
+export const PaginatedDataQualityCheckListResultsList = /*@__PURE__*/ S.Array(
+  DataQualityCheck,
+) as any as S.Schema<PaginatedDataQualityCheckListResultsList>;
+
+export interface PaginatedDataQualityCheckList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedDataQualityCheckListResultsList;
+}
+export const PaginatedDataQualityCheckList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedDataQualityCheckListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedDataQualityCheckList",
+}) as any as S.Schema<PaginatedDataQualityCheckList>;
+
+export interface ListWarehouseTablesRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** A search term. */
+  search?: string;
+}
+export const ListWarehouseTablesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/warehouse_tables/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWarehouseTablesRequest",
+}) as any as S.Schema<ListWarehouseTablesRequest>;
+
+export type PaginatedTableListOutputResultsList = Array<TableOutput>;
+export const PaginatedTableListOutputResultsList = /*@__PURE__*/ S.Array(
+  TableOutput,
+) as any as S.Schema<PaginatedTableListOutputResultsList>;
+
+export interface PaginatedTableListOutput {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedTableListOutputResultsList;
+}
+export const PaginatedTableListOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedTableListOutputResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedTableListOutput",
+}) as any as S.Schema<PaginatedTableListOutput>;
+
+/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+export type WarehouseTablesUpdateRequestOptionsMap = {
+  [key: string]: unknown | undefined;
+};
+export const WarehouseTablesUpdateRequestOptionsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<WarehouseTablesUpdateRequestOptionsMap>;
+
+export interface UpdateWarehouseTableRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this data warehouse table. */
+  id: string;
+  /** Whether the table is soft-deleted and hidden from queries. */
+  deleted?: boolean | null;
+  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
+  name?: string;
+  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
+  format?: TableFormatEnum | (string & {});
+  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
+  url_pattern?: string;
+  credential?: CredentialInput;
+  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+  options?: WarehouseTablesUpdateRequestOptionsMap;
+}
+export const UpdateWarehouseTableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.String),
+    format: S.optional(TableFormatEnum),
+    url_pattern: S.optional(S.String),
+    credential: S.optional(CredentialInput),
+    options: S.optional(WarehouseTablesUpdateRequestOptionsMap),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/warehouse_tables/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateWarehouseTableRequest",
+}) as any as S.Schema<UpdateWarehouseTableRequest>;
+
+/** Type-specific configuration, validated against the check type's JSON schema. */
+export type WarehouseTablesChecksUpdateRequestConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const WarehouseTablesChecksUpdateRequestConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WarehouseTablesChecksUpdateRequestConfigMap>;
+
+/** Free-form string labels for grouping and filtering. */
+export type WarehouseTablesChecksUpdateRequestTagsList = Array<string>;
+export const WarehouseTablesChecksUpdateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<WarehouseTablesChecksUpdateRequestTagsList>;
+
+export interface UpdateWarehouseTableCheckRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** A UUID string identifying this data quality check. */
+  id: string;
+  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
+  name?: string;
+  /** Why this check exists and what a failure means. */
+  description?: string;
+  /** Column the check applies to. Omit for table-scoped types like row_count. */
+  column_name?: string;
+  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
+  check_type: CheckTypeEnum | (string & {});
+  /** Type-specific configuration, validated against the check type's JSON schema. */
+  config?: WarehouseTablesChecksUpdateRequestConfigMap;
+  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
+  severity?: DataQualityCheckSeverityEnum | (string & {});
+  /** Disabled checks are never run by any trigger. */
+  enabled?: boolean;
+  /** Free-form string labels for grouping and filtering. */
+  tags?: WarehouseTablesChecksUpdateRequestTagsList;
+  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
+  created_source?: CreatedSourceEnum | (string & {});
+  /** Model that generated the check, if AI-authored. */
+  ai_model?: string;
+  /** AI author's confidence in the check, 0-1. */
+  confidence?: number | null;
+  /** AI author's reasoning, surfaced as review context. */
+  reasoning?: string;
+}
+export const UpdateWarehouseTableCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    table_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    column_name: S.optional(S.String),
+    check_type: CheckTypeEnum,
+    config: S.optional(WarehouseTablesChecksUpdateRequestConfigMap),
+    severity: S.optional(DataQualityCheckSeverityEnum),
+    enabled: S.optional(S.Boolean),
+    tags: S.optional(WarehouseTablesChecksUpdateRequestTagsList),
+    created_source: S.optional(CreatedSourceEnum),
+    ai_model: S.optional(S.String),
+    confidence: S.optional(S.NullOr(S.Number)),
+    reasoning: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateWarehouseTableCheckRequest",
+}) as any as S.Schema<UpdateWarehouseTableCheckRequest>;
+
+/** Type-specific configuration, validated against the check type's JSON schema. */
+export type WarehouseTablesChecksPartialUpdateRequestConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const WarehouseTablesChecksPartialUpdateRequestConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WarehouseTablesChecksPartialUpdateRequestConfigMap>;
+
+/** Free-form string labels for grouping and filtering. */
+export type WarehouseTablesChecksPartialUpdateRequestTagsList = Array<string>;
+export const WarehouseTablesChecksPartialUpdateRequestTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<WarehouseTablesChecksPartialUpdateRequestTagsList>;
+
+export interface UpdateWarehouseTableCheckPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** A UUID string identifying this data quality check. */
+  id: string;
+  /** Optional identifier-safe handle, unique per project. Omit to address the check by id. */
+  name?: string;
+  /** Why this check exists and what a failure means. */
+  description?: string;
+  /** Column the check applies to. Omit for table-scoped types like row_count. */
+  column_name?: string;
+  /** Which assertion to make. Determines the shape of config; see /check_types/. * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
+  check_type?: CheckTypeEnum | (string & {});
+  /** Type-specific configuration, validated against the check type's JSON schema. */
+  config?: WarehouseTablesChecksPartialUpdateRequestConfigMap;
+  /** 'error' failures mark the subject failing and notify; 'warn' failures only surface. * `error` - error * `warn` - warn */
+  severity?: DataQualityCheckSeverityEnum | (string & {});
+  /** Disabled checks are never run by any trigger. */
+  enabled?: boolean;
+  /** Free-form string labels for grouping and filtering. */
+  tags?: WarehouseTablesChecksPartialUpdateRequestTagsList;
+  /** Whether a human ('user') or an agent ('ai_generated') authored this check. * `user` - user * `ai_generated` - ai_generated */
+  created_source?: CreatedSourceEnum | (string & {});
+  /** Model that generated the check, if AI-authored. */
+  ai_model?: string;
+  /** AI author's confidence in the check, 0-1. */
+  confidence?: number | null;
+  /** AI author's reasoning, surfaced as review context. */
+  reasoning?: string;
+}
+export const UpdateWarehouseTableCheckPartialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      column_name: S.optional(S.String),
+      check_type: S.optional(CheckTypeEnum),
+      config: S.optional(WarehouseTablesChecksPartialUpdateRequestConfigMap),
+      severity: S.optional(DataQualityCheckSeverityEnum),
+      enabled: S.optional(S.Boolean),
+      tags: S.optional(WarehouseTablesChecksPartialUpdateRequestTagsList),
+      created_source: S.optional(CreatedSourceEnum),
+      ai_model: S.optional(S.String),
+      confidence: S.optional(S.NullOr(S.Number)),
+      reasoning: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpdateWarehouseTableCheckPartialRequest",
+}) as any as S.Schema<UpdateWarehouseTableCheckPartialRequest>;
+
+/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+export type WarehouseTablesPartialUpdateRequestOptionsMap = {
+  [key: string]: unknown | undefined;
+};
+export const WarehouseTablesPartialUpdateRequestOptionsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<WarehouseTablesPartialUpdateRequestOptionsMap>;
+
+export interface UpdateWarehouseTablePartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this data warehouse table. */
+  id: string;
+  /** Whether the table is soft-deleted and hidden from queries. */
+  deleted?: boolean | null;
+  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
+  name?: string;
+  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
+  format?: TableFormatEnum | (string & {});
+  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
+  url_pattern?: string;
+  credential?: CredentialInput;
+  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
+  options?: WarehouseTablesPartialUpdateRequestOptionsMap;
+}
+export const UpdateWarehouseTablePartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    deleted: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.String),
+    format: S.optional(TableFormatEnum),
+    url_pattern: S.optional(S.String),
+    credential: S.optional(CredentialInput),
+    options: S.optional(WarehouseTablesPartialUpdateRequestOptionsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/warehouse_tables/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateWarehouseTablePartialRequest",
+}) as any as S.Schema<UpdateWarehouseTablePartialRequest>;
+
+export interface WarehouseTablesChecksCheckTypesListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+}
+export const WarehouseTablesChecksCheckTypesListRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/check_types/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "WarehouseTablesChecksCheckTypesListRequest",
+  }) as any as S.Schema<WarehouseTablesChecksCheckTypesListRequest>;
+
+/** JSON schema the config object is validated against. */
+export type DataQualityCheckTypeConfigSchemaMap = {
+  [key: string]: unknown | undefined;
+};
+export const DataQualityCheckTypeConfigSchemaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DataQualityCheckTypeConfigSchemaMap>;
+
+/** One entry of the check-type catalog, so an agent can author config without guessing. */
+export interface DataQualityCheckType {
+  /** Value to pass as check_type. */
+  check_type: string;
+  /** What the check asserts and what counts as a failure. */
+  description: string;
+  /** Whether column_name must be set for this type. */
+  requires_column: boolean;
+  /** JSON schema the config object is validated against. */
+  config_schema: DataQualityCheckTypeConfigSchemaMap;
+}
+export const DataQualityCheckType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    check_type: S.String,
+    description: S.String,
+    requires_column: S.Boolean,
+    config_schema: DataQualityCheckTypeConfigSchemaMap,
+  }),
+).annotate({
+  identifier: "DataQualityCheckType",
+}) as any as S.Schema<DataQualityCheckType>;
+
+export type WarehouseTablesChecksCheckTypesListResponseBodyList =
+  Array<DataQualityCheckType>;
+export const WarehouseTablesChecksCheckTypesListResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    DataQualityCheckType,
+  ) as any as S.Schema<WarehouseTablesChecksCheckTypesListResponseBodyList>;
+
+export type WarehouseTablesChecksCheckTypesListResponse =
+  WarehouseTablesChecksCheckTypesListResponseBodyList;
+export const WarehouseTablesChecksCheckTypesListResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    WarehouseTablesChecksCheckTypesListResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "WarehouseTablesChecksCheckTypesListResponse",
+  }) as any as S.Schema<WarehouseTablesChecksCheckTypesListResponse>;
+
+export interface WarehouseTablesChecksDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** A UUID string identifying this data quality check. */
+  id: string;
+}
+export const WarehouseTablesChecksDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    table_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WarehouseTablesChecksDestroyRequest",
+}) as any as S.Schema<WarehouseTablesChecksDestroyRequest>;
+
+export interface WarehouseTablesChecksDestroyResponse {}
+export const WarehouseTablesChecksDestroyResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "WarehouseTablesChecksDestroyResponse",
+}) as any as S.Schema<WarehouseTablesChecksDestroyResponse>;
+
+export interface WarehouseTablesChecksHealthRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+}
+export const WarehouseTablesChecksHealthRetrieveRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/health/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "WarehouseTablesChecksHealthRetrieveRequest",
+  }) as any as S.Schema<WarehouseTablesChecksHealthRetrieveRequest>;
+
+/** Per-subject rollup, the same rule the information_schema.data_quality_health table uses. */
+export interface DataQualitySubjectHealth {
+  /** 'table' or 'view'. */
+  subject_type: string;
+  /** Id of the table or view. */
+  subject_uuid: string;
+  /** failing (an error-severity check failed), erroring (a check could not run), warn (only warn-severity failures), healthy, or unknown (nothing has run yet). */
+  health: string;
+  /** How many enabled, non-deleted checks cover this subject. */
+  checks_total: number;
+  /** How many of those checks last reported a failure. */
+  checks_failing: number;
+}
+export const DataQualitySubjectHealth = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subject_type: S.String,
+    subject_uuid: S.String,
+    health: S.String,
+    checks_total: S.Number,
+    checks_failing: S.Number,
+  }),
+).annotate({
+  identifier: "DataQualitySubjectHealth",
+}) as any as S.Schema<DataQualitySubjectHealth>;
+
+export interface WarehouseTablesChecksRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  table_id: string;
+  /** A UUID string identifying this data quality check. */
+  id: string;
+}
+export const WarehouseTablesChecksRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/checks/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "WarehouseTablesChecksRetrieveRequest",
+}) as any as S.Schema<WarehouseTablesChecksRetrieveRequest>;
+
+export interface WarehouseTablesCheckSuiteRunsCheckRunsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Id of the warehouse table whose suite runs these are. */
+  table_id: string;
+  /** A UUID string identifying this data quality suite run. */
+  id: string;
+}
+export const WarehouseTablesCheckSuiteRunsCheckRunsListRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/{id}/check_runs/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "WarehouseTablesCheckSuiteRunsCheckRunsListRequest",
+  }) as any as S.Schema<WarehouseTablesCheckSuiteRunsCheckRunsListRequest>;
+
+export type WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList =
+  Array<DataQualityCheckRun>;
+export const WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    DataQualityCheckRun,
+  ) as any as S.Schema<WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList>;
+
+export type WarehouseTablesCheckSuiteRunsCheckRunsListResponse =
+  WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList;
+export const WarehouseTablesCheckSuiteRunsCheckRunsListResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    WarehouseTablesCheckSuiteRunsCheckRunsListResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "WarehouseTablesCheckSuiteRunsCheckRunsListResponse",
+  }) as any as S.Schema<WarehouseTablesCheckSuiteRunsCheckRunsListResponse>;
+
+export interface WarehouseTablesCheckSuiteRunsListRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Id of the warehouse table whose suite runs these are. */
+  table_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const WarehouseTablesCheckSuiteRunsListRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      table_id: S.String.pipe(T.Label()),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      offset: S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/warehouse_tables/{table_id}/check_suite_runs/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "WarehouseTablesCheckSuiteRunsListRequest",
+}) as any as S.Schema<WarehouseTablesCheckSuiteRunsListRequest>;
+
+export type PaginatedDataQualitySuiteRunListResultsList =
+  Array<DataQualitySuiteRun>;
+export const PaginatedDataQualitySuiteRunListResultsList =
+  /*@__PURE__*/ S.Array(
+    DataQualitySuiteRun,
+  ) as any as S.Schema<PaginatedDataQualitySuiteRunListResultsList>;
+
+export interface PaginatedDataQualitySuiteRunList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedDataQualitySuiteRunListResultsList;
+}
+export const PaginatedDataQualitySuiteRunList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedDataQualitySuiteRunListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedDataQualitySuiteRunList",
+}) as any as S.Schema<PaginatedDataQualitySuiteRunList>;
+
 /** * `csv` - csv * `json` - json * `parquet` - parquet */
 export type CreateTableFromUploadFileFormatEnum = "csv" | "json" | "parquet";
 export const CreateTableFromUploadFileFormatEnum = /*@__PURE__*/ S.String;
@@ -2540,184 +2818,6 @@ export const WarehouseTablesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseTablesDestroyResponse",
 }) as any as S.Schema<WarehouseTablesDestroyResponse>;
 
-/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-export type WarehouseTablesFileCreateRequestOptionsMap = {
-  [key: string]: unknown | undefined;
-};
-export const WarehouseTablesFileCreateRequestOptionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<WarehouseTablesFileCreateRequestOptionsMap>;
-
-export interface WarehouseTablesFileCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Whether the table is soft-deleted and hidden from queries. */
-  deleted?: boolean | null;
-  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
-  name?: string;
-  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
-  format?: TableFormatEnum | (string & {});
-  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
-  url_pattern?: string;
-  credential?: CredentialInput;
-  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-  options?: WarehouseTablesFileCreateRequestOptionsMap;
-}
-export const WarehouseTablesFileCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.String),
-    format: S.optional(TableFormatEnum),
-    url_pattern: S.optional(S.String),
-    credential: S.optional(CredentialInput),
-    options: S.optional(WarehouseTablesFileCreateRequestOptionsMap),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/warehouse_tables/file/",
-      code: 200,
-      contentType: "form-urlencoded",
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesFileCreateRequest",
-}) as any as S.Schema<WarehouseTablesFileCreateRequest>;
-
-export interface WarehouseTablesFileCreateResponse {}
-export const WarehouseTablesFileCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "WarehouseTablesFileCreateResponse",
-}) as any as S.Schema<WarehouseTablesFileCreateResponse>;
-
-export interface WarehouseTablesListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** A search term. */
-  search?: string;
-}
-export const WarehouseTablesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/warehouse_tables/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesListRequest",
-}) as any as S.Schema<WarehouseTablesListRequest>;
-
-export type PaginatedTableListOutputResultsList = Array<TableOutput>;
-export const PaginatedTableListOutputResultsList = /*@__PURE__*/ S.Array(
-  TableOutput,
-) as any as S.Schema<PaginatedTableListOutputResultsList>;
-
-export interface PaginatedTableListOutput {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedTableListOutputResultsList;
-}
-export const PaginatedTableListOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedTableListOutputResultsList),
-  }),
-).annotate({
-  identifier: "PaginatedTableListOutput",
-}) as any as S.Schema<PaginatedTableListOutput>;
-
-/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-export type WarehouseTablesPartialUpdateRequestOptionsMap = {
-  [key: string]: unknown | undefined;
-};
-export const WarehouseTablesPartialUpdateRequestOptionsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<WarehouseTablesPartialUpdateRequestOptionsMap>;
-
-export interface WarehouseTablesPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this data warehouse table. */
-  id: string;
-  /** Whether the table is soft-deleted and hidden from queries. */
-  deleted?: boolean | null;
-  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
-  name?: string;
-  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
-  format?: TableFormatEnum | (string & {});
-  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
-  url_pattern?: string;
-  credential?: CredentialInput;
-  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-  options?: WarehouseTablesPartialUpdateRequestOptionsMap;
-}
-export const WarehouseTablesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.String),
-    format: S.optional(TableFormatEnum),
-    url_pattern: S.optional(S.String),
-    credential: S.optional(CredentialInput),
-    options: S.optional(WarehouseTablesPartialUpdateRequestOptionsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/warehouse_tables/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesPartialUpdateRequest",
-}) as any as S.Schema<WarehouseTablesPartialUpdateRequest>;
-
-export interface WarehouseTablesRefreshSchemaCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this data warehouse table. */
-  id: string;
-}
-export const WarehouseTablesRefreshSchemaCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/warehouse_tables/{id}/refresh_schema/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WarehouseTablesRefreshSchemaCreateRequest",
-  }) as any as S.Schema<WarehouseTablesRefreshSchemaCreateRequest>;
-
-export interface WarehouseTablesRefreshSchemaCreateResponse {}
-export const WarehouseTablesRefreshSchemaCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "WarehouseTablesRefreshSchemaCreateResponse",
-  }) as any as S.Schema<WarehouseTablesRefreshSchemaCreateResponse>;
-
 export interface WarehouseTablesRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2738,53 +2838,6 @@ export const WarehouseTablesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WarehouseTablesRetrieveRequest",
 }) as any as S.Schema<WarehouseTablesRetrieveRequest>;
-
-/** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-export type WarehouseTablesUpdateRequestOptionsMap = {
-  [key: string]: unknown | undefined;
-};
-export const WarehouseTablesUpdateRequestOptionsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<WarehouseTablesUpdateRequestOptionsMap>;
-
-export interface WarehouseTablesUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this data warehouse table. */
-  id: string;
-  /** Whether the table is soft-deleted and hidden from queries. */
-  deleted?: boolean | null;
-  /** Name the table is queried by in HogQL. Must be unique within the project, and must start with a letter or underscore and contain only letters, numbers, and underscores. */
-  name?: string;
-  /** File format of the objects the pattern matches. Every matched file must share this format. * `CSV` - CSV * `CSVWithNames` - CSVWithNames * `Parquet` - Parquet * `JSONEachRow` - JSON * `Delta` - Delta * `DeltaS3Wrapper` - DeltaS3Wrapper */
-  format?: TableFormatEnum | (string & {});
-  /** HTTPS URL of the files to read, with `*` matching any part of a path segment (e.g. `https://your-bucket.s3.amazonaws.com/orders/*.parquet`). All matched files are read as one table. Must point at a bucket you control, not at PostHog's own storage. */
-  url_pattern?: string;
-  credential?: CredentialInput;
-  /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
-  options?: WarehouseTablesUpdateRequestOptionsMap;
-}
-export const WarehouseTablesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    deleted: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.String),
-    format: S.optional(TableFormatEnum),
-    url_pattern: S.optional(S.String),
-    credential: S.optional(CredentialInput),
-    options: S.optional(WarehouseTablesUpdateRequestOptionsMap),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/warehouse_tables/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WarehouseTablesUpdateRequest",
-}) as any as S.Schema<WarehouseTablesUpdateRequest>;
 
 /** Per-format read options. The only one read today is `csv_allow_double_quotes` (boolean), for CSV files that quote fields with doubled quotes. */
 export type WarehouseTablesUpdateSchemaCreateRequestOptionsMap = {
@@ -2841,60 +2894,254 @@ export const WarehouseTablesUpdateSchemaCreateResponse =
     identifier: "WarehouseTablesUpdateSchemaCreateResponse",
   }) as any as S.Schema<WarehouseTablesUpdateSchemaCreateResponse>;
 
-/** How the file will be read when the table is created. */
-export type WarehouseTablesUploadFileCreateRequestFileFormat =
-  | "csv"
-  | "json"
-  | "parquet";
-export const WarehouseTablesUploadFileCreateRequestFileFormat =
-  /*@__PURE__*/ S.String;
+export type CheckWarehouseTableSuiteRunRetrieveError = PosthogOpError;
+/** Read-only reports for this subject's check-suite executions. */
+export const checkWarehouseTableSuiteRunRetrieve: API.OperationMethod<
+  CheckWarehouseTableSuiteRunRetrieveRequest,
+  DataQualitySuiteRun,
+  CheckWarehouseTableSuiteRunRetrieveError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckWarehouseTableSuiteRunRetrieveRequest,
+  output: DataQualitySuiteRun,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
-export interface WarehouseTablesUploadFileCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** The file to upload. */
-  file: string;
-  /** How the file will be read when the table is created. */
-  file_format: WarehouseTablesUploadFileCreateRequestFileFormat | (string & {});
-}
-export const WarehouseTablesUploadFileCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      file: S.String,
-      file_format: WarehouseTablesUploadFileCreateRequestFileFormat,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/warehouse_tables/upload_file/",
-        code: 200,
-        contentType: "multipart",
-      }),
-    ),
-).annotate({
-  identifier: "WarehouseTablesUploadFileCreateRequest",
-}) as any as S.Schema<WarehouseTablesUploadFileCreateRequest>;
+export type CreateWarehouseTableError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, Read, Update and Delete Warehouse Tables. */
+export const createWarehouseTable: API.OperationMethod<
+  CreateWarehouseTableRequest,
+  TableOutput,
+  CreateWarehouseTableError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableRequest,
+  output: TableOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
-export interface FileUploadResponse {
-  /** Id of the stored upload. Pass it to create_from_upload to build the table. */
-  upload_id: string;
-  /** Sanitized name the file was stored under. */
-  filename: string;
-  /** Format the file will be read as: 'csv', 'json', or 'parquet'. */
-  file_format: string;
-  /** Size of the stored file in bytes. */
-  size_bytes: number;
-}
-export const FileUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    upload_id: S.String,
-    filename: S.String,
-    file_format: S.String,
-    size_bytes: S.Number,
-  }),
-).annotate({
-  identifier: "FileUploadResponse",
-}) as any as S.Schema<FileUploadResponse>;
+export type CreateWarehouseTableCheckError = PosthogOpError;
+/** Create a check on this table or view, or refine the one already carrying the same fingerprint. Re-creating a semantically identical check returns 200 and the existing row, never a duplicate. */
+export const createWarehouseTableCheck: API.OperationMethod<
+  CreateWarehouseTableCheckRequest,
+  DataQualityCheck,
+  CreateWarehouseTableCheckError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableCheckRequest,
+  output: DataQualityCheck,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateWarehouseTableCheckRunError = PosthogOpError;
+/** Run this check now. Returns the suite run to poll for the report. */
+export const createWarehouseTableCheckRun: API.OperationMethod<
+  CreateWarehouseTableCheckRunRequest,
+  DataQualitySuiteRun,
+  CreateWarehouseTableCheckRunError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableCheckRunRequest,
+  output: DataQualitySuiteRun,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateWarehouseTableCheckRunAllError = PosthogOpError;
+/** Run every enabled check on this table or view. Returns the suite run to poll. */
+export const createWarehouseTableCheckRunAll: API.OperationMethod<
+  CreateWarehouseTableCheckRunAllRequest,
+  DataQualitySuiteRun,
+  CreateWarehouseTableCheckRunAllError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableCheckRunAllRequest,
+  output: DataQualitySuiteRun,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateWarehouseTableFileError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, Read, Update and Delete Warehouse Tables. */
+export const createWarehouseTableFile: API.OperationMethod<
+  CreateWarehouseTableFileRequest,
+  CreateWarehouseTableFileResponse,
+  CreateWarehouseTableFileError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableFileRequest,
+  output: CreateWarehouseTableFileResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateWarehouseTableRefreshSchemaError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Refresh table schema from source Re-introspect a self-managed (manually linked) warehouse table's schema from its underlying source files and overwrite its stored column list. Use when the source schema has evolved (e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the new columns, because PostHog serves a cached column snapshot until the table is refreshed. Not for tables managed by an external data source sync — those refresh on their own schedule. */
+export const createWarehouseTableRefreshSchema: API.OperationMethod<
+  CreateWarehouseTableRefreshSchemaRequest,
+  CreateWarehouseTableRefreshSchemaResponse,
+  CreateWarehouseTableRefreshSchemaError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableRefreshSchemaRequest,
+  output: CreateWarehouseTableRefreshSchemaResponse,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateWarehouseTableUploadFileError = PosthogOpError;
+/** Upload a file for a new self-managed warehouse table Store an uploaded file in object storage so a self-managed table can be created from it. Uploading is a separate first step from `create_from_upload` so the create call stays JSON-only: this returns an `upload_id` the caller passes back to build the table. The file is written under a team-scoped prefix, so a table can only ever read back its own team's uploads. */
+export const createWarehouseTableUploadFile: API.OperationMethod<
+  CreateWarehouseTableUploadFileRequest,
+  FileUploadResponse,
+  CreateWarehouseTableUploadFileError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWarehouseTableUploadFileRequest,
+  output: FileUploadResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWarehouseTableCheckRunsError = PosthogOpError;
+/** Recent run history for this check, newest first. */
+export const listWarehouseTableCheckRuns: API.OperationMethod<
+  ListWarehouseTableCheckRunsRequest,
+  ListWarehouseTableCheckRunsResponse,
+  ListWarehouseTableCheckRunsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWarehouseTableCheckRunsRequest,
+  output: ListWarehouseTableCheckRunsResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWarehouseTableChecksError = PosthogOpError;
+/** CRUD for one subject's checks, plus the actions that run them and report on them. */
+export const listWarehouseTableChecks: API.OperationMethod<
+  ListWarehouseTableChecksRequest,
+  PaginatedDataQualityCheckList,
+  ListWarehouseTableChecksError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWarehouseTableChecksRequest,
+  output: PaginatedDataQualityCheckList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListWarehouseTablesError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, Read, Update and Delete Warehouse Tables. */
+export const listWarehouseTables: API.OperationMethod<
+  ListWarehouseTablesRequest,
+  PaginatedTableListOutput,
+  ListWarehouseTablesError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWarehouseTablesRequest,
+  output: PaginatedTableListOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWarehouseTableError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, Read, Update and Delete Warehouse Tables. */
+export const updateWarehouseTable: API.OperationMethod<
+  UpdateWarehouseTableRequest,
+  TableOutput,
+  UpdateWarehouseTableError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWarehouseTableRequest,
+  output: TableOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWarehouseTableCheckError = PosthogOpError;
+/** Edit this check in place, including what it asserts (check_type, column_name, config). The table or view it audits is fixed, and the check keeps its id, run history, latest status, and latest run time. A definition or name already held by another active check comes back as a field error, with nothing written. */
+export const updateWarehouseTableCheck: API.OperationMethod<
+  UpdateWarehouseTableCheckRequest,
+  DataQualityCheck,
+  UpdateWarehouseTableCheckError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWarehouseTableCheckRequest,
+  output: DataQualityCheck,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWarehouseTableCheckPartialError = PosthogOpError;
+/** Edit this check in place, including what it asserts (check_type, column_name, config). The table or view it audits is fixed, and the check keeps its id, run history, latest status, and latest run time. A definition or name already held by another active check comes back as a field error, with nothing written. */
+export const updateWarehouseTableCheckPartial: API.OperationMethod<
+  UpdateWarehouseTableCheckPartialRequest,
+  DataQualityCheck,
+  UpdateWarehouseTableCheckPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWarehouseTableCheckPartialRequest,
+  output: DataQualityCheck,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWarehouseTablePartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, Read, Update and Delete Warehouse Tables. */
+export const updateWarehouseTablePartial: API.OperationMethod<
+  UpdateWarehouseTablePartialRequest,
+  TableOutput,
+  UpdateWarehouseTablePartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWarehouseTablePartialRequest,
+  output: TableOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type WarehouseTablesChecksCheckTypesListError = PosthogOpError;
 /** The check types this project can author, with the JSON schema of each type's config. */
@@ -2906,21 +3153,6 @@ export const warehouseTablesChecksCheckTypesList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WarehouseTablesChecksCheckTypesListRequest,
   output: WarehouseTablesChecksCheckTypesListResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesChecksCreateError = PosthogOpError;
-/** Create a check on this table or view, or refine the one already carrying the same fingerprint. Re-creating a semantically identical check returns 200 and the existing row, never a duplicate. */
-export const warehouseTablesChecksCreate: API.OperationMethod<
-  WarehouseTablesChecksCreateRequest,
-  DataQualityCheck,
-  WarehouseTablesChecksCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksCreateRequest,
-  output: DataQualityCheck,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2956,36 +3188,6 @@ export const warehouseTablesChecksHealthRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WarehouseTablesChecksListError = PosthogOpError;
-/** CRUD for one subject's checks, plus the actions that run them and report on them. */
-export const warehouseTablesChecksList: API.OperationMethod<
-  WarehouseTablesChecksListRequest,
-  PaginatedDataQualityCheckList,
-  WarehouseTablesChecksListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksListRequest,
-  output: PaginatedDataQualityCheckList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesChecksPartialUpdateError = PosthogOpError;
-/** Edit this check in place, including what it asserts (check_type, column_name, config). The table or view it audits is fixed, and the check keeps its id, run history, latest status, and latest run time. A definition or name already held by another active check comes back as a field error, with nothing written. */
-export const warehouseTablesChecksPartialUpdate: API.OperationMethod<
-  WarehouseTablesChecksPartialUpdateRequest,
-  DataQualityCheck,
-  WarehouseTablesChecksPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksPartialUpdateRequest,
-  output: DataQualityCheck,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WarehouseTablesChecksRetrieveError = PosthogOpError;
 /** CRUD for one subject's checks, plus the actions that run them and report on them. */
 export const warehouseTablesChecksRetrieve: API.OperationMethod<
@@ -2996,51 +3198,6 @@ export const warehouseTablesChecksRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WarehouseTablesChecksRetrieveRequest,
   output: DataQualityCheck,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesChecksRunAllCreateError = PosthogOpError;
-/** Run every enabled check on this table or view. Returns the suite run to poll. */
-export const warehouseTablesChecksRunAllCreate: API.OperationMethod<
-  WarehouseTablesChecksRunAllCreateRequest,
-  DataQualitySuiteRun,
-  WarehouseTablesChecksRunAllCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksRunAllCreateRequest,
-  output: DataQualitySuiteRun,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesChecksRunCreateError = PosthogOpError;
-/** Run this check now. Returns the suite run to poll for the report. */
-export const warehouseTablesChecksRunCreate: API.OperationMethod<
-  WarehouseTablesChecksRunCreateRequest,
-  DataQualitySuiteRun,
-  WarehouseTablesChecksRunCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksRunCreateRequest,
-  output: DataQualitySuiteRun,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesChecksRunsListError = PosthogOpError;
-/** Recent run history for this check, newest first. */
-export const warehouseTablesChecksRunsList: API.OperationMethod<
-  WarehouseTablesChecksRunsListRequest,
-  WarehouseTablesChecksRunsListResponse,
-  WarehouseTablesChecksRunsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksRunsListRequest,
-  output: WarehouseTablesChecksRunsListResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -3076,55 +3233,6 @@ export const warehouseTablesCheckSuiteRunsList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WarehouseTablesCheckSuiteRunsRetrieveError = PosthogOpError;
-/** Read-only reports for this subject's check-suite executions. */
-export const warehouseTablesCheckSuiteRunsRetrieve: API.OperationMethod<
-  WarehouseTablesCheckSuiteRunsRetrieveRequest,
-  DataQualitySuiteRun,
-  WarehouseTablesCheckSuiteRunsRetrieveError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesCheckSuiteRunsRetrieveRequest,
-  output: DataQualitySuiteRun,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesChecksUpdateError = PosthogOpError;
-/** Edit this check in place, including what it asserts (check_type, column_name, config). The table or view it audits is fixed, and the check keeps its id, run history, latest status, and latest run time. A definition or name already held by another active check comes back as a field error, with nothing written. */
-export const warehouseTablesChecksUpdate: API.OperationMethod<
-  WarehouseTablesChecksUpdateRequest,
-  DataQualityCheck,
-  WarehouseTablesChecksUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesChecksUpdateRequest,
-  output: DataQualityCheck,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, Read, Update and Delete Warehouse Tables. */
-export const warehouseTablesCreate: API.OperationMethod<
-  WarehouseTablesCreateRequest,
-  TableOutput,
-  WarehouseTablesCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesCreateRequest,
-  output: TableOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WarehouseTablesCreateFromUploadCreateError = PosthogOpError;
 /** Create a self-managed warehouse table from an uploaded file Turn a previously uploaded file into a self-managed warehouse table. The file already sits in PostHog's own bucket (see `upload_file`), so the table points straight at it and is read in place — no import pipeline and no recurring sync, the same shape as a linked S3/GCS bucket. The read location is always derived from the caller's own team, so a client-supplied `upload_id` can only resolve inside that team's folder, and the table carries no credential (reads fall back to the node role, never a user-supplied key). */
 export const warehouseTablesCreateFromUploadCreate: API.OperationMethod<
@@ -3155,82 +3263,6 @@ export const warehouseTablesDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WarehouseTablesFileCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, Read, Update and Delete Warehouse Tables. */
-export const warehouseTablesFileCreate: API.OperationMethod<
-  WarehouseTablesFileCreateRequest,
-  WarehouseTablesFileCreateResponse,
-  WarehouseTablesFileCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesFileCreateRequest,
-  output: WarehouseTablesFileCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, Read, Update and Delete Warehouse Tables. */
-export const warehouseTablesList: API.OperationMethod<
-  WarehouseTablesListRequest,
-  PaginatedTableListOutput,
-  WarehouseTablesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesListRequest,
-  output: PaginatedTableListOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, Read, Update and Delete Warehouse Tables. */
-export const warehouseTablesPartialUpdate: API.OperationMethod<
-  WarehouseTablesPartialUpdateRequest,
-  TableOutput,
-  WarehouseTablesPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesPartialUpdateRequest,
-  output: TableOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesRefreshSchemaCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Refresh table schema from source Re-introspect a self-managed (manually linked) warehouse table's schema from its underlying source files and overwrite its stored column list. Use when the source schema has evolved (e.g. new columns in the underlying Delta/Parquet/CSV files) but queries still can't see the new columns, because PostHog serves a cached column snapshot until the table is refreshed. Not for tables managed by an external data source sync — those refresh on their own schedule. */
-export const warehouseTablesRefreshSchemaCreate: API.OperationMethod<
-  WarehouseTablesRefreshSchemaCreateRequest,
-  WarehouseTablesRefreshSchemaCreateResponse,
-  WarehouseTablesRefreshSchemaCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesRefreshSchemaCreateRequest,
-  output: WarehouseTablesRefreshSchemaCreateResponse,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WarehouseTablesRetrieveError =
   | Forbidden
   | NotFound
@@ -3245,25 +3277,6 @@ export const warehouseTablesRetrieve: API.OperationMethod<
   input: WarehouseTablesRetrieveRequest,
   output: TableOutput,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, Read, Update and Delete Warehouse Tables. */
-export const warehouseTablesUpdate: API.OperationMethod<
-  WarehouseTablesUpdateRequest,
-  TableOutput,
-  WarehouseTablesUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesUpdateRequest,
-  output: TableOutput,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -3283,21 +3296,6 @@ export const warehouseTablesUpdateSchemaCreate: API.OperationMethod<
   input: WarehouseTablesUpdateSchemaCreateRequest,
   output: WarehouseTablesUpdateSchemaCreateResponse,
   errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WarehouseTablesUploadFileCreateError = PosthogOpError;
-/** Upload a file for a new self-managed warehouse table Store an uploaded file in object storage so a self-managed table can be created from it. Uploading is a separate first step from `create_from_upload` so the create call stays JSON-only: this returns an `upload_id` the caller passes back to build the table. The file is written under a team-scoped prefix, so a table can only ever read back its own team's uploads. */
-export const warehouseTablesUploadFileCreate: API.OperationMethod<
-  WarehouseTablesUploadFileCreateRequest,
-  FileUploadResponse,
-  WarehouseTablesUploadFileCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseTablesUploadFileCreateRequest,
-  output: FileUploadResponse,
-  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

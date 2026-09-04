@@ -2620,164 +2620,11 @@ export const RemoveAudienceMembersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RemoveAudienceMembersResponse",
 }) as any as S.Schema<RemoveAudienceMembersResponse>;
 
-/** The baseline location of the request. Baseline location is on OR-list of ISO 3166-1 alpha-2 region codes of the requested regions. */
-export interface Location {
-  /** List of ISO 3166-1 alpha-2 region codes. */
-  regionCodes?: StringList;
-}
-export const Location = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    regionCodes: S.optional(StringList),
-  }),
-).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
-
-/** Baseline criteria against which insights are compared. */
-export interface Baseline {
-  /** If set to true, the service will try to automatically detect the baseline location for insights. */
-  locationAutoDetectionEnabled?: boolean;
-  /** The baseline location of the request. Baseline location is an OR-list of the requested regions. */
-  baselineLocation?: Location;
-}
-export const Baseline = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    locationAutoDetectionEnabled: S.optional(S.Boolean),
-    baselineLocation: S.optional(Location),
-  }),
-).annotate({ identifier: "Baseline" }) as any as S.Schema<Baseline>;
-
-/** Request message for DM API MarketingDataInsightsService.RetrieveInsights */
-export interface RetrieveInsightsRequest {
-  /** Required. The user list ID for which insights are requested. */
-  userListId?: string;
-  /** Required. Baseline for the insights requested. */
-  baseline?: Baseline;
-}
-export const RetrieveInsightsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userListId: S.optional(S.String),
-    baseline: S.optional(Baseline),
-  }),
-).annotate({
-  identifier: "RetrieveInsightsRequest",
-}) as any as S.Schema<RetrieveInsightsRequest>;
-
-export interface RetrieveAccountTypesAccountsInsightsRequest {
-  /** Required. The parent account that owns the user list. Format: `accountTypes/{account_type}/accounts/{account}` */
-  parent: string;
-  /** Request body */
-  body?: RetrieveInsightsRequest;
-}
-export const RetrieveAccountTypesAccountsInsightsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(RetrieveInsightsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/insights:retrieve",
-        baseUrl: "https://datamanager.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "RetrieveAccountTypesAccountsInsightsRequest",
-  }) as any as S.Schema<RetrieveAccountTypesAccountsInsightsRequest>;
-
-export type MarketingDataInsightDimensionEnum =
-  | "AUDIENCE_INSIGHTS_DIMENSION_UNSPECIFIED"
-  | "AUDIENCE_INSIGHTS_DIMENSION_UNKNOWN"
-  | "AFFINITY_USER_INTEREST"
-  | "IN_MARKET_USER_INTEREST"
-  | "AGE_RANGE"
-  | "GENDER";
-export const MarketingDataInsightDimensionEnum = /*@__PURE__*/ S.String;
-
-export type MarketingDataInsightsAttributeGenderEnum =
-  | "GENDER_UNSPECIFIED"
-  | "GENDER_UNKNOWN"
-  | "GENDER_MALE"
-  | "GENDER_FEMALE";
-export const MarketingDataInsightsAttributeGenderEnum = /*@__PURE__*/ S.String;
-
-export type MarketingDataInsightsAttributeAgeRangeEnum =
-  | "AGE_RANGE_UNSPECIFIED"
-  | "AGE_RANGE_UNKNOWN"
-  | "AGE_RANGE_18_24"
-  | "AGE_RANGE_25_34"
-  | "AGE_RANGE_35_44"
-  | "AGE_RANGE_45_54"
-  | "AGE_RANGE_55_64"
-  | "AGE_RANGE_65_UP";
-export const MarketingDataInsightsAttributeAgeRangeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Insights for a collection of related attributes of the same dimension. */
-export interface MarketingDataInsightsAttribute {
-  /** Gender of the audience for which the lift is provided. */
-  gender?: MarketingDataInsightsAttributeGenderEnum;
-  /** The user interest ID. */
-  userInterestId?: string;
-  /** Measure of lift that the audience has for the attribute value as compared to the baseline. Range [0-1]. */
-  lift?: number;
-  /** Age range of the audience for which the lift is provided. */
-  ageRange?: MarketingDataInsightsAttributeAgeRangeEnum;
-}
-export const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gender: S.optional(MarketingDataInsightsAttributeGenderEnum),
-    userInterestId: S.optional(S.String),
-    lift: S.optional(S.Number),
-    ageRange: S.optional(MarketingDataInsightsAttributeAgeRangeEnum),
-  }),
-).annotate({
-  identifier: "MarketingDataInsightsAttribute",
-}) as any as S.Schema<MarketingDataInsightsAttribute>;
-
-export type MarketingDataInsightsAttributeList =
-  Array<MarketingDataInsightsAttribute>;
-export const MarketingDataInsightsAttributeList = /*@__PURE__*/ S.Array(
-  MarketingDataInsightsAttribute,
-) as any as S.Schema<MarketingDataInsightsAttributeList>;
-
-/** Insights for marketing data. This feature is only available to data partners. */
-export interface MarketingDataInsight {
-  /** The dimension to which the insight belongs. */
-  dimension?: MarketingDataInsightDimensionEnum;
-  /** Insights for values of a given dimension. */
-  attributes?: MarketingDataInsightsAttributeList;
-}
-export const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimension: S.optional(MarketingDataInsightDimensionEnum),
-    attributes: S.optional(MarketingDataInsightsAttributeList),
-  }),
-).annotate({
-  identifier: "MarketingDataInsight",
-}) as any as S.Schema<MarketingDataInsight>;
-
-export type MarketingDataInsightList = Array<MarketingDataInsight>;
-export const MarketingDataInsightList = /*@__PURE__*/ S.Array(
-  MarketingDataInsight,
-) as any as S.Schema<MarketingDataInsightList>;
-
-/** Response message for DM API MarketingDataInsightsService.RetrieveInsights */
-export interface RetrieveInsightsResponse {
-  /** Contains the insights for the marketing data. */
-  marketingDataInsights?: MarketingDataInsightList;
-}
-export const RetrieveInsightsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    marketingDataInsights: S.optional(MarketingDataInsightList),
-  }),
-).annotate({
-  identifier: "RetrieveInsightsResponse",
-}) as any as S.Schema<RetrieveInsightsResponse>;
-
-export interface RetrieveRequestStatusRequest {
+export interface RequestRetrieveStatusRequest {
   /** Required. Required. The request ID of the Data Manager API request. */
   requestId?: string;
 }
-export const RetrieveRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
+export const RequestRetrieveStatusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestId: S.optional(S.String.pipe(T.Query())),
   }).pipe(
@@ -2788,8 +2635,8 @@ export const RetrieveRequestStatusRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RetrieveRequestStatusRequest",
-}) as any as S.Schema<RetrieveRequestStatusRequest>;
+  identifier: "RequestRetrieveStatusRequest",
+}) as any as S.Schema<RequestRetrieveStatusRequest>;
 
 /** The status of the remove all audience members request. */
 export interface RemoveAllAudienceMembersStatus {}
@@ -3378,17 +3225,170 @@ export const RequestStatusPerDestinationList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RequestStatusPerDestinationList>;
 
 /** Response from the RetrieveRequestStatusRequest. */
-export interface RetrieveRequestStatusResponse {
+export interface RequestRetrieveStatusResponse {
   /** A list of request statuses per destination. The order of the statuses matches the order of the destinations in the original request. */
   requestStatusPerDestination?: RequestStatusPerDestinationList;
 }
-export const RetrieveRequestStatusResponse = /*@__PURE__*/ S.suspend(() =>
+export const RequestRetrieveStatusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     requestStatusPerDestination: S.optional(RequestStatusPerDestinationList),
   }),
 ).annotate({
-  identifier: "RetrieveRequestStatusResponse",
-}) as any as S.Schema<RetrieveRequestStatusResponse>;
+  identifier: "RequestRetrieveStatusResponse",
+}) as any as S.Schema<RequestRetrieveStatusResponse>;
+
+/** The baseline location of the request. Baseline location is on OR-list of ISO 3166-1 alpha-2 region codes of the requested regions. */
+export interface Location {
+  /** List of ISO 3166-1 alpha-2 region codes. */
+  regionCodes?: StringList;
+}
+export const Location = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    regionCodes: S.optional(StringList),
+  }),
+).annotate({ identifier: "Location" }) as any as S.Schema<Location>;
+
+/** Baseline criteria against which insights are compared. */
+export interface Baseline {
+  /** If set to true, the service will try to automatically detect the baseline location for insights. */
+  locationAutoDetectionEnabled?: boolean;
+  /** The baseline location of the request. Baseline location is an OR-list of the requested regions. */
+  baselineLocation?: Location;
+}
+export const Baseline = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    locationAutoDetectionEnabled: S.optional(S.Boolean),
+    baselineLocation: S.optional(Location),
+  }),
+).annotate({ identifier: "Baseline" }) as any as S.Schema<Baseline>;
+
+/** Request message for DM API MarketingDataInsightsService.RetrieveInsights */
+export interface RetrieveInsightsRequest {
+  /** Required. The user list ID for which insights are requested. */
+  userListId?: string;
+  /** Required. Baseline for the insights requested. */
+  baseline?: Baseline;
+}
+export const RetrieveInsightsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userListId: S.optional(S.String),
+    baseline: S.optional(Baseline),
+  }),
+).annotate({
+  identifier: "RetrieveInsightsRequest",
+}) as any as S.Schema<RetrieveInsightsRequest>;
+
+export interface RetrieveAccountTypesAccountsInsightsRequest {
+  /** Required. The parent account that owns the user list. Format: `accountTypes/{account_type}/accounts/{account}` */
+  parent: string;
+  /** Request body */
+  body?: RetrieveInsightsRequest;
+}
+export const RetrieveAccountTypesAccountsInsightsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(RetrieveInsightsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/insights:retrieve",
+        baseUrl: "https://datamanager.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RetrieveAccountTypesAccountsInsightsRequest",
+  }) as any as S.Schema<RetrieveAccountTypesAccountsInsightsRequest>;
+
+export type MarketingDataInsightDimensionEnum =
+  | "AUDIENCE_INSIGHTS_DIMENSION_UNSPECIFIED"
+  | "AUDIENCE_INSIGHTS_DIMENSION_UNKNOWN"
+  | "AFFINITY_USER_INTEREST"
+  | "IN_MARKET_USER_INTEREST"
+  | "AGE_RANGE"
+  | "GENDER";
+export const MarketingDataInsightDimensionEnum = /*@__PURE__*/ S.String;
+
+export type MarketingDataInsightsAttributeGenderEnum =
+  | "GENDER_UNSPECIFIED"
+  | "GENDER_UNKNOWN"
+  | "GENDER_MALE"
+  | "GENDER_FEMALE";
+export const MarketingDataInsightsAttributeGenderEnum = /*@__PURE__*/ S.String;
+
+export type MarketingDataInsightsAttributeAgeRangeEnum =
+  | "AGE_RANGE_UNSPECIFIED"
+  | "AGE_RANGE_UNKNOWN"
+  | "AGE_RANGE_18_24"
+  | "AGE_RANGE_25_34"
+  | "AGE_RANGE_35_44"
+  | "AGE_RANGE_45_54"
+  | "AGE_RANGE_55_64"
+  | "AGE_RANGE_65_UP";
+export const MarketingDataInsightsAttributeAgeRangeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Insights for a collection of related attributes of the same dimension. */
+export interface MarketingDataInsightsAttribute {
+  /** Gender of the audience for which the lift is provided. */
+  gender?: MarketingDataInsightsAttributeGenderEnum;
+  /** The user interest ID. */
+  userInterestId?: string;
+  /** Measure of lift that the audience has for the attribute value as compared to the baseline. Range [0-1]. */
+  lift?: number;
+  /** Age range of the audience for which the lift is provided. */
+  ageRange?: MarketingDataInsightsAttributeAgeRangeEnum;
+}
+export const MarketingDataInsightsAttribute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gender: S.optional(MarketingDataInsightsAttributeGenderEnum),
+    userInterestId: S.optional(S.String),
+    lift: S.optional(S.Number),
+    ageRange: S.optional(MarketingDataInsightsAttributeAgeRangeEnum),
+  }),
+).annotate({
+  identifier: "MarketingDataInsightsAttribute",
+}) as any as S.Schema<MarketingDataInsightsAttribute>;
+
+export type MarketingDataInsightsAttributeList =
+  Array<MarketingDataInsightsAttribute>;
+export const MarketingDataInsightsAttributeList = /*@__PURE__*/ S.Array(
+  MarketingDataInsightsAttribute,
+) as any as S.Schema<MarketingDataInsightsAttributeList>;
+
+/** Insights for marketing data. This feature is only available to data partners. */
+export interface MarketingDataInsight {
+  /** The dimension to which the insight belongs. */
+  dimension?: MarketingDataInsightDimensionEnum;
+  /** Insights for values of a given dimension. */
+  attributes?: MarketingDataInsightsAttributeList;
+}
+export const MarketingDataInsight = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimension: S.optional(MarketingDataInsightDimensionEnum),
+    attributes: S.optional(MarketingDataInsightsAttributeList),
+  }),
+).annotate({
+  identifier: "MarketingDataInsight",
+}) as any as S.Schema<MarketingDataInsight>;
+
+export type MarketingDataInsightList = Array<MarketingDataInsight>;
+export const MarketingDataInsightList = /*@__PURE__*/ S.Array(
+  MarketingDataInsight,
+) as any as S.Schema<MarketingDataInsightList>;
+
+/** Response message for DM API MarketingDataInsightsService.RetrieveInsights */
+export interface RetrieveInsightsResponse {
+  /** Contains the insights for the marketing data. */
+  marketingDataInsights?: MarketingDataInsightList;
+}
+export const RetrieveInsightsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    marketingDataInsights: S.optional(MarketingDataInsightList),
+  }),
+).annotate({
+  identifier: "RetrieveInsightsResponse",
+}) as any as S.Schema<RetrieveInsightsResponse>;
 
 export interface SearchAccountTypesAccountsPartnerLinksRequest {
   /** A page token, received from a previous `SearchPartnerLinks` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchPartnerLinks` must match the call that provided the page token. */
@@ -3866,6 +3866,21 @@ export const removeAudienceMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type RequestRetrieveStatusError = NotFound | Forbidden | GcpOpError;
+/** Gets the status of a request given request id. */
+export const requestRetrieveStatus: API.OperationMethod<
+  RequestRetrieveStatusRequest,
+  RequestRetrieveStatusResponse,
+  RequestRetrieveStatusError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestRetrieveStatusRequest,
+  output: RequestRetrieveStatusResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type RetrieveAccountTypesAccountsInsightsError =
   | NotFound
   | Forbidden
@@ -3882,21 +3897,6 @@ export const retrieveAccountTypesAccountsInsights: API.OperationMethod<
   input: RetrieveAccountTypesAccountsInsightsRequest,
   output: RetrieveInsightsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RetrieveRequestStatusError = NotFound | Forbidden | GcpOpError;
-/** Gets the status of a request given request id. */
-export const retrieveRequestStatus: API.OperationMethod<
-  RetrieveRequestStatusRequest,
-  RetrieveRequestStatusResponse,
-  RetrieveRequestStatusError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RetrieveRequestStatusRequest,
-  output: RetrieveRequestStatusResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

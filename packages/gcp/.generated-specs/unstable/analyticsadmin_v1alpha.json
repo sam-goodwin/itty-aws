@@ -7122,7 +7122,7 @@
         "smithy.api#documentation": "Marks target Account as soft-deleted (ie: \"trashed\") and returns it. This API does not have a method to restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks, Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error if the target is not found."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchUpdateAccountsAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#UpdateBatchAccountAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -7142,10 +7142,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchUpdateAccountsAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#UpdateBatchAccountAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchUpdateAccountsAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#UpdateBatchAccountAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse"
@@ -7227,7 +7227,7 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchDeleteAccountsAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#DeleteBatchAccountAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -7247,10 +7247,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchDeleteAccountsAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#DeleteBatchAccountAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchDeleteAccountsAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#DeleteBatchAccountAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleProtobufEmpty"
@@ -7277,7 +7277,7 @@
         "smithy.api#documentation": "Deletes information about multiple users' links to an account or property."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchGetAccountsAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#GetBatchAccountAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -7297,10 +7297,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchGetAccountsAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#GetBatchAccountAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchGetAccountsAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#GetBatchAccountAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse"
@@ -7371,7 +7371,7 @@
         "smithy.api#documentation": "Creates an access binding on an account or property."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchCreateAccountsAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#CreateBatchAccountAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -7391,10 +7391,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchCreateAccountsAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#CreateBatchAccountAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchCreateAccountsAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#CreateBatchAccountAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse"
@@ -8777,7 +8777,7 @@
         "smithy.api#documentation": "Creates an access binding on an account or property."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchDeletePropertiesAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#DeleteBatchPropertyAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8797,10 +8797,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchDeletePropertiesAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#DeleteBatchPropertyAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchDeletePropertiesAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#DeleteBatchPropertyAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleProtobufEmpty"
@@ -8827,7 +8827,7 @@
         "smithy.api#documentation": "Deletes information about multiple users' links to an account or property."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchGetPropertiesAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#GetBatchPropertyAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8847,10 +8847,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchGetPropertiesAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#GetBatchPropertyAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchGetPropertiesAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#GetBatchPropertyAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse"
@@ -8969,7 +8969,7 @@
         "smithy.api#documentation": "Deletes an access binding on an account or property."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchUpdatePropertiesAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#UpdateBatchPropertyAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8989,10 +8989,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchUpdatePropertiesAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#UpdateBatchPropertyAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchUpdatePropertiesAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#UpdateBatchPropertyAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse"
@@ -9069,7 +9069,7 @@
         "smithy.api#documentation": "Updates an access binding on an account or property."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchCreatePropertiesAccessBindingsRequest": {
+    "com.gcp.analyticsadmin_v1alpha#CreateBatchPropertyAccessBindingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -9089,10 +9089,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#BatchCreatePropertiesAccessBindings": {
+    "com.gcp.analyticsadmin_v1alpha#CreateBatchPropertyAccessBinding": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#BatchCreatePropertiesAccessBindingsRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#CreateBatchPropertyAccessBindingRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse"
@@ -12242,7 +12242,7 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest": {
+    "com.gcp.analyticsadmin_v1alpha#ListPropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest": {
       "type": "structure",
       "members": {
         "pageSize": {
@@ -12269,10 +12269,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#ListPropertiesDataStreamsSKAdNetworkConversionValueSchema": {
+    "com.gcp.analyticsadmin_v1alpha#ListPropertiesDataStreamsSkAdNetworkConversionValueSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#ListPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#ListPropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse"
@@ -12297,7 +12297,7 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest": {
+    "com.gcp.analyticsadmin_v1alpha#PatchPropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest": {
       "type": "structure",
       "members": {
         "updateMask": {
@@ -12324,10 +12324,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#PatchPropertiesDataStreamsSKAdNetworkConversionValueSchema": {
+    "com.gcp.analyticsadmin_v1alpha#PatchPropertiesDataStreamsSkAdNetworkConversionValueSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#PatchPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#PatchPropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema"
@@ -12354,7 +12354,7 @@
         "smithy.api#documentation": "Updates a SKAdNetworkConversionValueSchema."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest": {
+    "com.gcp.analyticsadmin_v1alpha#GetPropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -12367,10 +12367,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#GetPropertiesDataStreamsSKAdNetworkConversionValueSchema": {
+    "com.gcp.analyticsadmin_v1alpha#GetPropertiesDataStreamsSkAdNetworkConversionValueSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#GetPropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#GetPropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema"
@@ -12391,7 +12391,7 @@
         "smithy.api#documentation": "Looks up a single SKAdNetworkConversionValueSchema."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest": {
+    "com.gcp.analyticsadmin_v1alpha#DeletePropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -12404,10 +12404,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#DeletePropertiesDataStreamsSKAdNetworkConversionValueSchema": {
+    "com.gcp.analyticsadmin_v1alpha#DeletePropertiesDataStreamsSkAdNetworkConversionValueSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#DeletePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#DeletePropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleProtobufEmpty"
@@ -12434,7 +12434,7 @@
         "smithy.api#documentation": "Deletes target SKAdNetworkConversionValueSchema."
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest": {
+    "com.gcp.analyticsadmin_v1alpha#CreatePropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -12454,10 +12454,10 @@
         }
       }
     },
-    "com.gcp.analyticsadmin_v1alpha#CreatePropertiesDataStreamsSKAdNetworkConversionValueSchema": {
+    "com.gcp.analyticsadmin_v1alpha#CreatePropertiesDataStreamsSkAdNetworkConversionValueSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.analyticsadmin_v1alpha#CreatePropertiesDataStreamsSKAdNetworkConversionValueSchemaRequest"
+        "target": "com.gcp.analyticsadmin_v1alpha#CreatePropertiesDataStreamsSkAdNetworkConversionValueSchemaRequest"
       },
       "output": {
         "target": "com.gcp.analyticsadmin_v1alpha#GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema"

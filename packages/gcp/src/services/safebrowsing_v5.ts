@@ -44,7 +44,7 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export interface BatchGetHashListsRequest {
+export interface GetBatchHashListRequest {
   /** The versions of the hash list that the client already has. If this is the first time the client is fetching the hash lists, the field should be left empty. Otherwise, the client should supply the versions previously received from the server. The client MUST NOT manipulate those bytes. The client need not send the versions in the same order as the corresponding list names. The client may send fewer or more versions in a request than there are names. However the client MUST NOT send multiple versions that correspond to the same name; if it did, the client will get an error. Historical note: in V4 of the API, this was called `states`; it is now renamed to `version` for clarity. */
   version?: StringList;
   /** Required. The names of the particular hash lists. The list MAY be a threat list, or it may be the Global Cache. The names MUST NOT contain duplicates; if they did, the client will get an error. */
@@ -54,7 +54,7 @@ export interface BatchGetHashListsRequest {
   /** Sets the maximum number of entries that the client is willing to have in the local database for the list. (The server MAY cause the client to store less than this number of entries.) If omitted or zero, no database size limit is set. */
   "sizeConstraints.maxDatabaseEntries"?: number;
 }
-export const BatchGetHashListsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchHashListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     version: S.optional(StringList.pipe(T.Query())),
     names: S.optional(StringList.pipe(T.Query())),
@@ -68,8 +68,8 @@ export const BatchGetHashListsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchGetHashListsRequest",
-}) as any as S.Schema<BatchGetHashListsRequest>;
+  identifier: "GetBatchHashListRequest",
+}) as any as S.Schema<GetBatchHashListRequest>;
 
 /** Same as `RiceDeltaEncoded32Bit` except this encodes 128-bit numbers. */
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
@@ -570,15 +570,15 @@ export const GoogleSecuritySafebrowsingV5SearchUrlsResponse =
     identifier: "GoogleSecuritySafebrowsingV5SearchUrlsResponse",
   }) as any as S.Schema<GoogleSecuritySafebrowsingV5SearchUrlsResponse>;
 
-export type BatchGetHashListsError = NotFound | Forbidden | GcpOpError;
+export type GetBatchHashListError = NotFound | Forbidden | GcpOpError;
 /** Gets multiple hash lists at once. It is very common for a client to need to get multiple hash lists. Using this method is preferred over using the regular Get method multiple times. This is a standard batch Get method as defined by https://google.aip.dev/231 and the HTTP method is also GET. */
-export const batchGetHashLists: API.OperationMethod<
-  BatchGetHashListsRequest,
+export const getBatchHashList: API.OperationMethod<
+  GetBatchHashListRequest,
   GoogleSecuritySafebrowsingV5BatchGetHashListsResponse,
-  BatchGetHashListsError,
+  GetBatchHashListError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetHashListsRequest,
+  input: GetBatchHashListRequest,
   output: GoogleSecuritySafebrowsingV5BatchGetHashListsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,

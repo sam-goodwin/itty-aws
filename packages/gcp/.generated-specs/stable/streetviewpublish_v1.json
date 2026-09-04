@@ -414,7 +414,7 @@
         "smithy.api#documentation": "A Generic 3d measurement sample."
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchDeletePhotosRequest": {
+    "com.gcp.streetviewpublish_v1#DeleteBatchPhotosRequest": {
       "type": "structure",
       "members": {
         "photoIds": {
@@ -500,7 +500,7 @@
         "smithy.api#documentation": "Details related to ProcessingFailureReason#GPS_DATA_GAP. If there are multiple GPS data gaps, only the one with the largest duration is reported here."
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchUpdatePhotosResponse": {
+    "com.gcp.streetviewpublish_v1#UpdateBatchPhotosResponse": {
       "type": "structure",
       "members": {
         "results": {
@@ -554,7 +554,7 @@
         "smithy.api#documentation": "Details related to ProcessingFailureReason#IMU_DATA_GAP. If there are multiple IMU data gaps, only the one with the largest duration is reported here."
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchGetPhotosResponse": {
+    "com.gcp.streetviewpublish_v1#GetBatchPhotosResponse": {
       "type": "structure",
       "members": {
         "results": {
@@ -679,7 +679,7 @@
         "smithy.api#documentation": "Raw pose measurement for an entity."
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchUpdatePhotosRequest": {
+    "com.gcp.streetviewpublish_v1#UpdateBatchPhotosRequest": {
       "type": "structure",
       "members": {
         "updatePhotoRequests": {
@@ -960,7 +960,7 @@
         "smithy.api#documentation": "A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }"
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchDeletePhotosResponse": {
+    "com.gcp.streetviewpublish_v1#DeleteBatchPhotosResponse": {
       "type": "structure",
       "members": {
         "status": {
@@ -1822,7 +1822,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.gcp.streetviewpublish_v1#BatchUpdatePhotosRequest",
+          "target": "com.gcp.streetviewpublish_v1#UpdateBatchPhotosRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -1830,13 +1830,13 @@
         }
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchUpdatePhotos": {
+    "com.gcp.streetviewpublish_v1#UpdateBatchPhotos": {
       "type": "operation",
       "input": {
         "target": "com.gcp.streetviewpublish_v1#BatchUpdatePhotosRequest_"
       },
       "output": {
-        "target": "com.gcp.streetviewpublish_v1#BatchUpdatePhotosResponse"
+        "target": "com.gcp.streetviewpublish_v1#UpdateBatchPhotosResponse"
       },
       "errors": [
         {
@@ -1864,7 +1864,7 @@
       "type": "structure",
       "members": {
         "body": {
-          "target": "com.gcp.streetviewpublish_v1#BatchDeletePhotosRequest",
+          "target": "com.gcp.streetviewpublish_v1#DeleteBatchPhotosRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -1872,13 +1872,13 @@
         }
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchDeletePhotos": {
+    "com.gcp.streetviewpublish_v1#DeleteBatchPhotos": {
       "type": "operation",
       "input": {
         "target": "com.gcp.streetviewpublish_v1#BatchDeletePhotosRequest_"
       },
       "output": {
-        "target": "com.gcp.streetviewpublish_v1#BatchDeletePhotosResponse"
+        "target": "com.gcp.streetviewpublish_v1#DeleteBatchPhotosResponse"
       },
       "errors": [
         {
@@ -1919,7 +1919,7 @@
         }
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchGetPhotosRequest": {
+    "com.gcp.streetviewpublish_v1#GetBatchPhotosRequest": {
       "type": "structure",
       "members": {
         "view": {
@@ -1945,13 +1945,13 @@
         }
       }
     },
-    "com.gcp.streetviewpublish_v1#BatchGetPhotos": {
+    "com.gcp.streetviewpublish_v1#GetBatchPhotos": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.streetviewpublish_v1#BatchGetPhotosRequest"
+        "target": "com.gcp.streetviewpublish_v1#GetBatchPhotosRequest"
       },
       "output": {
-        "target": "com.gcp.streetviewpublish_v1#BatchGetPhotosResponse"
+        "target": "com.gcp.streetviewpublish_v1#GetBatchPhotosResponse"
       },
       "errors": [
         {

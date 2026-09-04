@@ -3363,7 +3363,7 @@
         "smithy.api#documentation": "Deletes a GTM Variable."
       }
     },
-    "com.gcp.tagmanager_v1#UpdateAccountsContainersReauthorize_environmentsRequest": {
+    "com.gcp.tagmanager_v1#UpdateAccountsContainersReauthorizeEnvironmentsRequest": {
       "type": "structure",
       "members": {
         "accountId": {
@@ -3399,10 +3399,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v1#UpdateAccountsContainersReauthorize_environments": {
+    "com.gcp.tagmanager_v1#UpdateAccountsContainersReauthorizeEnvironments": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v1#UpdateAccountsContainersReauthorize_environmentsRequest"
+        "target": "com.gcp.tagmanager_v1#UpdateAccountsContainersReauthorizeEnvironmentsRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v1#Environment"
@@ -3429,7 +3429,7 @@
         "smithy.api#documentation": "Re-generates the authorization code for a GTM Environment."
       }
     },
-    "com.gcp.tagmanager_v1#UpdateAccountsContainersMove_foldersRequest": {
+    "com.gcp.tagmanager_v1#UpdateAccountsContainersMoveFoldersRequest": {
       "type": "structure",
       "members": {
         "containerId": {
@@ -3486,10 +3486,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v1#UpdateAccountsContainersMove_folders": {
+    "com.gcp.tagmanager_v1#UpdateAccountsContainersMoveFolders": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v1#UpdateAccountsContainersMove_foldersRequest"
+        "target": "com.gcp.tagmanager_v1#UpdateAccountsContainersMoveFoldersRequest"
       },
       "errors": [
         {

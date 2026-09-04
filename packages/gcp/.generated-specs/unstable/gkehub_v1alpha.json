@@ -13203,7 +13203,7 @@
         "smithy.api#documentation": "Updates an existing Membership."
       }
     },
-    "com.gcp.gkehub_v1alpha#ValidateCreateProjectsLocationsMembershipsRequest": {
+    "com.gcp.gkehub_v1alpha#CreateValidateProjectLocationMembershipRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -13223,10 +13223,10 @@
         }
       }
     },
-    "com.gcp.gkehub_v1alpha#ValidateCreateProjectsLocationsMemberships": {
+    "com.gcp.gkehub_v1alpha#CreateValidateProjectLocationMembership": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkehub_v1alpha#ValidateCreateProjectsLocationsMembershipsRequest"
+        "target": "com.gcp.gkehub_v1alpha#CreateValidateProjectLocationMembershipRequest"
       },
       "output": {
         "target": "com.gcp.gkehub_v1alpha#ValidateCreateMembershipResponse"
@@ -13968,7 +13968,7 @@
         "smithy.api#documentation": "Creates a Membership RBACRoleBinding."
       }
     },
-    "com.gcp.gkehub_v1alpha#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest": {
+    "com.gcp.gkehub_v1alpha#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindingsRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -13995,10 +13995,10 @@
         }
       }
     },
-    "com.gcp.gkehub_v1alpha#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindings": {
+    "com.gcp.gkehub_v1alpha#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindings": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.gkehub_v1alpha#GenerateMembershipRBACRoleBindingYAMLProjectsLocationsMembershipsRbacrolebindingsRequest"
+        "target": "com.gcp.gkehub_v1alpha#GenerateMembershipRbacRoleBindingYamlProjectsLocationsMembershipsRbacrolebindingsRequest"
       },
       "output": {
         "target": "com.gcp.gkehub_v1alpha#GenerateMembershipRBACRoleBindingYAMLResponse"

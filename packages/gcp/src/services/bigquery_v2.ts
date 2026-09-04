@@ -65,62 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Request message for the BatchDeleteRowAccessPoliciesRequest method. */
-export interface BatchDeleteRowAccessPoliciesRequest {
-  /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
-  force?: boolean;
-  /** Required. Policy IDs of the row access policies. */
-  policyIds?: StringList;
-}
-export const BatchDeleteRowAccessPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    force: S.optional(S.Boolean),
-    policyIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteRowAccessPoliciesRequest",
-}) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest>;
-
-export interface BatchDeleteRowAccessPoliciesRequest_ {
-  /** Required. Dataset ID of the table to delete the row access policies. */
-  datasetId: string;
-  /** Required. Project ID of the table to delete the row access policies. */
-  projectId: string;
-  /** Required. Table ID of the table to delete the row access policies. */
-  tableId: string;
-  /** Request body */
-  body?: BatchDeleteRowAccessPoliciesRequest;
-}
-export const BatchDeleteRowAccessPoliciesRequest_ = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      datasetId: S.String.pipe(T.Label()),
-      projectId: S.String.pipe(T.Label()),
-      tableId: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteRowAccessPoliciesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete",
-        baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchDeleteRowAccessPoliciesRequest_",
-}) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>;
-
-export interface BatchDeleteRowAccessPoliciesResponse {}
-export const BatchDeleteRowAccessPoliciesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "BatchDeleteRowAccessPoliciesResponse",
-}) as any as S.Schema<BatchDeleteRowAccessPoliciesResponse>;
-
 export interface CancelJobsRequest {
   /** The geographic location of the job. You must [specify the location](https://cloud.google.com/bigquery/docs/locations#specify_locations) to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) */
   location?: string;
@@ -261,6 +205,11 @@ export const JobStatistics3 = /*@__PURE__*/ S.suspend(() =>
     outputBytes: S.optional(S.String),
   }),
 ).annotate({ identifier: "JobStatistics3" }) as any as S.Schema<JobStatistics3>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** [Preview] Information related to sessions. */
 export interface SessionInfo {
@@ -4861,6 +4810,57 @@ export const JobCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "JobCancelResponse",
 }) as any as S.Schema<JobCancelResponse>;
 
+/** Request message for the BatchDeleteRowAccessPoliciesRequest method. */
+export interface DeleteBatchRowAccessPolicyRequest {
+  /** If set to true, it deletes the row access policy even if it's the last row access policy on the table and the deletion will widen the access rather narrowing it. */
+  force?: boolean;
+  /** Required. Policy IDs of the row access policies. */
+  policyIds?: StringList;
+}
+export const DeleteBatchRowAccessPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    force: S.optional(S.Boolean),
+    policyIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DeleteBatchRowAccessPolicyRequest",
+}) as any as S.Schema<DeleteBatchRowAccessPolicyRequest>;
+
+export interface BatchDeleteRowAccessPoliciesRequest_ {
+  /** Required. Dataset ID of the table to delete the row access policies. */
+  datasetId: string;
+  /** Required. Project ID of the table to delete the row access policies. */
+  projectId: string;
+  /** Required. Table ID of the table to delete the row access policies. */
+  tableId: string;
+  /** Request body */
+  body?: DeleteBatchRowAccessPolicyRequest;
+}
+export const BatchDeleteRowAccessPoliciesRequest_ = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      datasetId: S.String.pipe(T.Label()),
+      projectId: S.String.pipe(T.Label()),
+      tableId: S.String.pipe(T.Label()),
+      body: S.optional(DeleteBatchRowAccessPolicyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete",
+        baseUrl: "https://bigquery.googleapis.com/bigquery/v2/",
+      }),
+    ),
+).annotate({
+  identifier: "BatchDeleteRowAccessPoliciesRequest_",
+}) as any as S.Schema<BatchDeleteRowAccessPoliciesRequest_>;
+
+export interface DeleteBatchRowAccessPolicyResponse {}
+export const DeleteBatchRowAccessPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBatchRowAccessPolicyResponse",
+}) as any as S.Schema<DeleteBatchRowAccessPolicyResponse>;
+
 export interface DeleteDatasetsRequest {
   /** Required. Dataset ID of dataset being deleted */
   datasetId: string;
@@ -9014,26 +9014,6 @@ export const UpdateTablesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateTablesRequest",
 }) as any as S.Schema<UpdateTablesRequest>;
 
-export type BatchDeleteRowAccessPoliciesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes provided row access policies. # IAM Permissions Requires the following IAM permission(s) on the table: - `bigquery.rowAccessPolicies.delete` - `bigquery.rowAccessPolicies.setIamPolicy` */
-export const batchDeleteRowAccessPolicies: API.OperationMethod<
-  BatchDeleteRowAccessPoliciesRequest_,
-  BatchDeleteRowAccessPoliciesResponse,
-  BatchDeleteRowAccessPoliciesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteRowAccessPoliciesRequest_,
-  output: BatchDeleteRowAccessPoliciesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CancelJobsError =
   | NotFound
   | Forbidden
@@ -9049,6 +9029,26 @@ export const cancelJobs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelJobsRequest,
   output: JobCancelResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchRowAccessPolicyError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes provided row access policies. # IAM Permissions Requires the following IAM permission(s) on the table: - `bigquery.rowAccessPolicies.delete` - `bigquery.rowAccessPolicies.setIamPolicy` */
+export const deleteBatchRowAccessPolicy: API.OperationMethod<
+  BatchDeleteRowAccessPoliciesRequest_,
+  DeleteBatchRowAccessPolicyResponse,
+  DeleteBatchRowAccessPolicyError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchDeleteRowAccessPoliciesRequest_,
+  output: DeleteBatchRowAccessPolicyResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

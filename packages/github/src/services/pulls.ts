@@ -2623,50 +2623,43 @@ export const MergeAsyncRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "MergeAsyncRequest",
 }) as any as S.Schema<MergeAsyncRequest>;
 
-/** An ordered list of pull request numbers to append to the stack, from the current top upward. */
-export type PullRequestStacksAddRequestPullRequestsList = Array<number>;
-export const PullRequestStacksAddRequestPullRequestsList =
+/** An ordered list of pull request numbers forming the stack from bottom to top. */
+export type PullRequestStacksCreateRequestPullRequestsList = Array<number>;
+export const PullRequestStacksCreateRequestPullRequestsList =
   /*@__PURE__*/ S.Array(
     S.Number,
-  ) as any as S.Schema<PullRequestStacksAddRequestPullRequestsList>;
+  ) as any as S.Schema<PullRequestStacksCreateRequestPullRequestsList>;
 
-export interface PullRequestStacksAddRequest {
+export interface PullRequestStacksCreateRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
-  /** The number that identifies the pull request stack. */
-  stack_number: number;
-  /** An ordered list of pull request numbers to append to the stack, from the current top upward. */
-  pull_requests: PullRequestStacksAddRequestPullRequestsList;
+  /** An ordered list of pull request numbers forming the stack from bottom to top. */
+  pull_requests: PullRequestStacksCreateRequestPullRequestsList;
 }
-export const PullRequestStacksAddRequest = /*@__PURE__*/ S.suspend(() =>
+export const PullRequestStacksCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     owner: S.String.pipe(T.Label()),
     repo: S.String.pipe(T.Label()),
-    stack_number: S.Number.pipe(T.Label()),
-    pull_requests: PullRequestStacksAddRequestPullRequestsList,
+    pull_requests: PullRequestStacksCreateRequestPullRequestsList,
   }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/repos/{owner}/{repo}/stacks/{stack_number}/add",
-      code: 200,
-    }),
+    T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/stacks", code: 200 }),
   ),
 ).annotate({
-  identifier: "PullRequestStacksAddRequest",
-}) as any as S.Schema<PullRequestStacksAddRequest>;
+  identifier: "PullRequestStacksCreateRequest",
+}) as any as S.Schema<PullRequestStacksCreateRequest>;
 
-export interface PullRequestStacksAddResponseBase {
+export interface PullRequestStacksCreateResponseBase {
   ref: string;
 }
-export const PullRequestStacksAddResponseBase = /*@__PURE__*/ S.suspend(() =>
+export const PullRequestStacksCreateResponseBase = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ref: S.String,
   }),
 ).annotate({
-  identifier: "PullRequestStacksAddResponseBase",
-}) as any as S.Schema<PullRequestStacksAddResponseBase>;
+  identifier: "PullRequestStacksCreateResponseBase",
+}) as any as S.Schema<PullRequestStacksCreateResponseBase>;
 
 export interface PullRequestStackPullRequestHeadRepo {
   id: number;
@@ -2742,71 +2735,6 @@ export const PullRequestStackPullRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PullRequestStackPullRequest",
 }) as any as S.Schema<PullRequestStackPullRequest>;
 
-export type PullRequestStacksAddResponsePullRequestsList =
-  Array<PullRequestStackPullRequest>;
-export const PullRequestStacksAddResponsePullRequestsList =
-  /*@__PURE__*/ S.Array(
-    PullRequestStackPullRequest,
-  ) as any as S.Schema<PullRequestStacksAddResponsePullRequestsList>;
-
-export interface PullRequestStacksAddResponse {
-  id: number;
-  number: number;
-  node_id: string;
-  url: string;
-  base: PullRequestStacksAddResponseBase;
-  /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
-  open: boolean;
-  created_at: string;
-  pull_requests: PullRequestStacksAddResponsePullRequestsList;
-}
-export const PullRequestStacksAddResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    number: S.Number,
-    node_id: S.String,
-    url: S.String,
-    base: PullRequestStacksAddResponseBase,
-    open: S.Boolean,
-    created_at: S.String,
-    pull_requests: PullRequestStacksAddResponsePullRequestsList,
-  }),
-).annotate({
-  identifier: "PullRequestStacksAddResponse",
-}) as any as S.Schema<PullRequestStacksAddResponse>;
-
-/** An ordered list of pull request numbers forming the stack from bottom to top. */
-export type PullRequestStacksCreateRequestPullRequestsList = Array<number>;
-export const PullRequestStacksCreateRequestPullRequestsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<PullRequestStacksCreateRequestPullRequestsList>;
-
-export interface PullRequestStacksCreateRequest {
-  /** The account owner of the repository. The name is not case sensitive. */
-  owner: string;
-  /** The name of the repository without the `.git` extension. The name is not case sensitive. */
-  repo: string;
-  /** An ordered list of pull request numbers forming the stack from bottom to top. */
-  pull_requests: PullRequestStacksCreateRequestPullRequestsList;
-}
-export const PullRequestStacksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String.pipe(T.Label()),
-    repo: S.String.pipe(T.Label()),
-    pull_requests: PullRequestStacksCreateRequestPullRequestsList,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/stacks", code: 200 }),
-  ),
-).annotate({
-  identifier: "PullRequestStacksCreateRequest",
-}) as any as S.Schema<PullRequestStacksCreateRequest>;
-
-export type PullRequestStacksCreateResponseBase =
-  PullRequestStacksAddResponseBase;
-export const PullRequestStacksCreateResponseBase =
-  PullRequestStacksAddResponseBase;
-
 export type PullRequestStacksCreateResponsePullRequestsList =
   Array<PullRequestStackPullRequest>;
 export const PullRequestStacksCreateResponsePullRequestsList =
@@ -2819,7 +2747,7 @@ export interface PullRequestStacksCreateResponse {
   number: number;
   node_id: string;
   url: string;
-  base: PullRequestStacksAddResponseBase;
+  base: PullRequestStacksCreateResponseBase;
   /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
   open: boolean;
   created_at: string;
@@ -2831,7 +2759,7 @@ export const PullRequestStacksCreateResponse = /*@__PURE__*/ S.suspend(() =>
     number: S.Number,
     node_id: S.String,
     url: S.String,
-    base: PullRequestStacksAddResponseBase,
+    base: PullRequestStacksCreateResponseBase,
     open: S.Boolean,
     created_at: S.String,
     pull_requests: PullRequestStacksCreateResponsePullRequestsList,
@@ -2864,9 +2792,10 @@ export const PullRequestStacksGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PullRequestStacksGetRequest",
 }) as any as S.Schema<PullRequestStacksGetRequest>;
 
-export type PullRequestStacksGetResponseBase = PullRequestStacksAddResponseBase;
+export type PullRequestStacksGetResponseBase =
+  PullRequestStacksCreateResponseBase;
 export const PullRequestStacksGetResponseBase =
-  PullRequestStacksAddResponseBase;
+  PullRequestStacksCreateResponseBase;
 
 export type PullRequestStacksGetResponsePullRequestsList =
   Array<PullRequestStackPullRequest>;
@@ -2880,7 +2809,7 @@ export interface PullRequestStacksGetResponse {
   number: number;
   node_id: string;
   url: string;
-  base: PullRequestStacksAddResponseBase;
+  base: PullRequestStacksCreateResponseBase;
   /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
   open: boolean;
   created_at: string;
@@ -2892,7 +2821,7 @@ export const PullRequestStacksGetResponse = /*@__PURE__*/ S.suspend(() =>
     number: S.Number,
     node_id: S.String,
     url: S.String,
-    base: PullRequestStacksAddResponseBase,
+    base: PullRequestStacksCreateResponseBase,
     open: S.Boolean,
     created_at: S.String,
     pull_requests: PullRequestStacksGetResponsePullRequestsList,
@@ -2927,8 +2856,8 @@ export const PullRequestStacksListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PullRequestStacksListRequest",
 }) as any as S.Schema<PullRequestStacksListRequest>;
 
-export type PullRequestStackMinimalBase = PullRequestStacksAddResponseBase;
-export const PullRequestStackMinimalBase = PullRequestStacksAddResponseBase;
+export type PullRequestStackMinimalBase = PullRequestStacksCreateResponseBase;
+export const PullRequestStackMinimalBase = PullRequestStacksCreateResponseBase;
 
 export type PullRequestStackMinimalPullRequestsItemState = "open" | "closed";
 export const PullRequestStackMinimalPullRequestsItemState =
@@ -2979,7 +2908,7 @@ export interface PullRequestStackMinimal {
   number: number;
   node_id: string;
   url: string;
-  base: PullRequestStacksAddResponseBase;
+  base: PullRequestStacksCreateResponseBase;
   /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
   open: boolean;
   created_at: string;
@@ -2991,7 +2920,7 @@ export const PullRequestStackMinimal = /*@__PURE__*/ S.suspend(() =>
     number: S.Number,
     node_id: S.String,
     url: S.String,
-    base: PullRequestStacksAddResponseBase,
+    base: PullRequestStacksCreateResponseBase,
     open: S.Boolean,
     created_at: S.String,
     pull_requests: PullRequestStackMinimalPullRequestsList,
@@ -3013,68 +2942,6 @@ export const PullRequestStacksListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PullRequestStacksListResponse",
 }) as any as S.Schema<PullRequestStacksListResponse>;
-
-export interface PullRequestStacksUnstackRequest {
-  /** The account owner of the repository. The name is not case sensitive. */
-  owner: string;
-  /** The name of the repository without the `.git` extension. The name is not case sensitive. */
-  repo: string;
-  /** The number that identifies the pull request stack. */
-  stack_number: number;
-}
-export const PullRequestStacksUnstackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    owner: S.String.pipe(T.Label()),
-    repo: S.String.pipe(T.Label()),
-    stack_number: S.Number.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/repos/{owner}/{repo}/stacks/{stack_number}/unstack",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PullRequestStacksUnstackRequest",
-}) as any as S.Schema<PullRequestStacksUnstackRequest>;
-
-export type PullRequestStacksUnstackResponseBase =
-  PullRequestStacksAddResponseBase;
-export const PullRequestStacksUnstackResponseBase =
-  PullRequestStacksAddResponseBase;
-
-export type PullRequestStacksUnstackResponsePullRequestsList =
-  Array<PullRequestStackPullRequest>;
-export const PullRequestStacksUnstackResponsePullRequestsList =
-  /*@__PURE__*/ S.Array(
-    PullRequestStackPullRequest,
-  ) as any as S.Schema<PullRequestStacksUnstackResponsePullRequestsList>;
-
-export interface PullRequestStacksUnstackResponse {
-  id: number;
-  number: number;
-  node_id: string;
-  url: string;
-  base: PullRequestStacksAddResponseBase;
-  /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
-  open: boolean;
-  created_at: string;
-  pull_requests: PullRequestStacksUnstackResponsePullRequestsList;
-}
-export const PullRequestStacksUnstackResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    number: S.Number,
-    node_id: S.String,
-    url: S.String,
-    base: PullRequestStacksAddResponseBase,
-    open: S.Boolean,
-    created_at: S.String,
-    pull_requests: PullRequestStacksUnstackResponsePullRequestsList,
-  }),
-).annotate({
-  identifier: "PullRequestStacksUnstackResponse",
-}) as any as S.Schema<PullRequestStacksUnstackResponse>;
 
 /** An array of user `login`s that will be removed. */
 export type RemoveRequestedReviewersRequestReviewersList = Array<string>;
@@ -3121,6 +2988,140 @@ export const RemoveRequestedReviewersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RemoveRequestedReviewersRequest",
 }) as any as S.Schema<RemoveRequestedReviewersRequest>;
+
+/** An ordered list of pull request numbers to append to the stack, from the current top upward. */
+export type PullRequestStacksAddRequestPullRequestsList = Array<number>;
+export const PullRequestStacksAddRequestPullRequestsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<PullRequestStacksAddRequestPullRequestsList>;
+
+export interface RequestPullStackAddRequest {
+  /** The account owner of the repository. The name is not case sensitive. */
+  owner: string;
+  /** The name of the repository without the `.git` extension. The name is not case sensitive. */
+  repo: string;
+  /** The number that identifies the pull request stack. */
+  stack_number: number;
+  /** An ordered list of pull request numbers to append to the stack, from the current top upward. */
+  pull_requests: PullRequestStacksAddRequestPullRequestsList;
+}
+export const RequestPullStackAddRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owner: S.String.pipe(T.Label()),
+    repo: S.String.pipe(T.Label()),
+    stack_number: S.Number.pipe(T.Label()),
+    pull_requests: PullRequestStacksAddRequestPullRequestsList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/repos/{owner}/{repo}/stacks/{stack_number}/add",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestPullStackAddRequest",
+}) as any as S.Schema<RequestPullStackAddRequest>;
+
+export type PullRequestStacksAddResponseBase =
+  PullRequestStacksCreateResponseBase;
+export const PullRequestStacksAddResponseBase =
+  PullRequestStacksCreateResponseBase;
+
+export type PullRequestStacksAddResponsePullRequestsList =
+  Array<PullRequestStackPullRequest>;
+export const PullRequestStacksAddResponsePullRequestsList =
+  /*@__PURE__*/ S.Array(
+    PullRequestStackPullRequest,
+  ) as any as S.Schema<PullRequestStacksAddResponsePullRequestsList>;
+
+export interface RequestPullStackAddResponse {
+  id: number;
+  number: number;
+  node_id: string;
+  url: string;
+  base: PullRequestStacksCreateResponseBase;
+  /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
+  open: boolean;
+  created_at: string;
+  pull_requests: PullRequestStacksAddResponsePullRequestsList;
+}
+export const RequestPullStackAddResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    number: S.Number,
+    node_id: S.String,
+    url: S.String,
+    base: PullRequestStacksCreateResponseBase,
+    open: S.Boolean,
+    created_at: S.String,
+    pull_requests: PullRequestStacksAddResponsePullRequestsList,
+  }),
+).annotate({
+  identifier: "RequestPullStackAddResponse",
+}) as any as S.Schema<RequestPullStackAddResponse>;
+
+export interface RequestPullStackUnstackRequest {
+  /** The account owner of the repository. The name is not case sensitive. */
+  owner: string;
+  /** The name of the repository without the `.git` extension. The name is not case sensitive. */
+  repo: string;
+  /** The number that identifies the pull request stack. */
+  stack_number: number;
+}
+export const RequestPullStackUnstackRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    owner: S.String.pipe(T.Label()),
+    repo: S.String.pipe(T.Label()),
+    stack_number: S.Number.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/repos/{owner}/{repo}/stacks/{stack_number}/unstack",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestPullStackUnstackRequest",
+}) as any as S.Schema<RequestPullStackUnstackRequest>;
+
+export type PullRequestStacksUnstackResponseBase =
+  PullRequestStacksCreateResponseBase;
+export const PullRequestStacksUnstackResponseBase =
+  PullRequestStacksCreateResponseBase;
+
+export type PullRequestStacksUnstackResponsePullRequestsList =
+  Array<PullRequestStackPullRequest>;
+export const PullRequestStacksUnstackResponsePullRequestsList =
+  /*@__PURE__*/ S.Array(
+    PullRequestStackPullRequest,
+  ) as any as S.Schema<PullRequestStacksUnstackResponsePullRequestsList>;
+
+export interface RequestPullStackUnstackResponse {
+  id: number;
+  number: number;
+  node_id: string;
+  url: string;
+  base: PullRequestStacksCreateResponseBase;
+  /** Whether the stack has any open pull request. False when all pull requests are merged or closed. */
+  open: boolean;
+  created_at: string;
+  pull_requests: PullRequestStacksUnstackResponsePullRequestsList;
+}
+export const RequestPullStackUnstackResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    number: S.Number,
+    node_id: S.String,
+    url: S.String,
+    base: PullRequestStacksCreateResponseBase,
+    open: S.Boolean,
+    created_at: S.String,
+    pull_requests: PullRequestStacksUnstackResponsePullRequestsList,
+  }),
+).annotate({
+  identifier: "RequestPullStackUnstackResponse",
+}) as any as S.Schema<RequestPullStackUnstackResponse>;
 
 /** An array of user `login`s that will be requested. */
 export type RequestReviewersRequestReviewersList = Array<string>;
@@ -3683,25 +3684,6 @@ export const mergeAsync: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullRequestStacksAddError =
-  | NotFound
-  | Conflict
-  | UnprocessableEntity
-  | GithubOpError;
-/** Add pull requests to a pull request stack Appends an ordered list of pull request numbers onto the top of an existing stack. Provide only the pull requests you want to add, from the current top of the stack upward. The first new pull request's base ref must match the current top pull request's head ref. */
-export const pullRequestStacksAdd: API.OperationMethod<
-  PullRequestStacksAddRequest,
-  PullRequestStacksAddResponse,
-  PullRequestStacksAddError,
-  GithubOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PullRequestStacksAddRequest,
-  output: PullRequestStacksAddResponse,
-  errors: [NotFound, Conflict, UnprocessableEntity],
-  protocol: GithubProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PullRequestStacksCreateError =
   | NotFound
   | UnprocessableEntity
@@ -3753,25 +3735,6 @@ export const pullRequestStacksList: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PullRequestStacksUnstackError =
-  | NotFound
-  | Conflict
-  | UnprocessableEntity
-  | GithubOpError;
-/** Remove pull requests from a pull request stack Removes the unmerged pull requests from a stack. Pull requests that cannot be unstacked (for example, those that are queued for merge) are left in place. When pull requests remain in the stack, the updated stack is returned with a `200`. When no pull requests remain, the stack is dissolved and a `204` is returned. */
-export const pullRequestStacksUnstack: API.OperationMethod<
-  PullRequestStacksUnstackRequest,
-  PullRequestStacksUnstackResponse,
-  PullRequestStacksUnstackError,
-  GithubOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PullRequestStacksUnstackRequest,
-  output: PullRequestStacksUnstackResponse,
-  errors: [NotFound, Conflict, UnprocessableEntity],
-  protocol: GithubProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RemoveRequestedReviewersError = UnprocessableEntity | GithubOpError;
 /** Remove requested reviewers from a pull request Removes review requests from a pull request for a given set of users and/or teams. */
 export const removeRequestedReviewers: API.OperationMethod<
@@ -3783,6 +3746,44 @@ export const removeRequestedReviewers: API.OperationMethod<
   input: RemoveRequestedReviewersRequest,
   output: PullRequestSimple,
   errors: [UnprocessableEntity],
+  protocol: GithubProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestPullStackAddError =
+  | NotFound
+  | Conflict
+  | UnprocessableEntity
+  | GithubOpError;
+/** Add pull requests to a pull request stack Appends an ordered list of pull request numbers onto the top of an existing stack. Provide only the pull requests you want to add, from the current top of the stack upward. The first new pull request's base ref must match the current top pull request's head ref. */
+export const requestPullStackAdd: API.OperationMethod<
+  RequestPullStackAddRequest,
+  RequestPullStackAddResponse,
+  RequestPullStackAddError,
+  GithubOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestPullStackAddRequest,
+  output: RequestPullStackAddResponse,
+  errors: [NotFound, Conflict, UnprocessableEntity],
+  protocol: GithubProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestPullStackUnstackError =
+  | NotFound
+  | Conflict
+  | UnprocessableEntity
+  | GithubOpError;
+/** Remove pull requests from a pull request stack Removes the unmerged pull requests from a stack. Pull requests that cannot be unstacked (for example, those that are queued for merge) are left in place. When pull requests remain in the stack, the updated stack is returned with a `200`. When no pull requests remain, the stack is dissolved and a `204` is returned. */
+export const requestPullStackUnstack: API.OperationMethod<
+  RequestPullStackUnstackRequest,
+  RequestPullStackUnstackResponse,
+  RequestPullStackUnstackError,
+  GithubOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestPullStackUnstackRequest,
+  output: RequestPullStackUnstackResponse,
+  errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
 }));

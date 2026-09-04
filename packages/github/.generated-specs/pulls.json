@@ -7652,7 +7652,7 @@
         "smithy.api#documentation": "An ordered list of pull request numbers to append to the stack, from the current top upward."
       }
     },
-    "com.github.pulls#PullRequestStacksAddRequest": {
+    "com.github.pulls#RequestPullStackAddRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -7710,7 +7710,7 @@
       },
       "traits": {}
     },
-    "com.github.pulls#PullRequestStacksAddResponse": {
+    "com.github.pulls#RequestPullStackAddResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7767,13 +7767,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.github.pulls#PullRequestStacksAdd": {
+    "com.github.pulls#RequestPullStackAdd": {
       "type": "operation",
       "input": {
-        "target": "com.github.pulls#PullRequestStacksAddRequest"
+        "target": "com.github.pulls#RequestPullStackAddRequest"
       },
       "output": {
-        "target": "com.github.pulls#PullRequestStacksAddResponse"
+        "target": "com.github.pulls#RequestPullStackAddResponse"
       },
       "errors": [
         {
@@ -7795,7 +7795,7 @@
         "smithy.api#documentation": "Add pull requests to a pull request stack\n\nAppends an ordered list of pull request numbers onto the top of an existing\nstack. Provide only the pull requests you want to add, from the current top of\nthe stack upward. The first new pull request's base ref must match the current\ntop pull request's head ref."
       }
     },
-    "com.github.pulls#PullRequestStacksUnstackRequest": {
+    "com.github.pulls#RequestPullStackUnstackRequest": {
       "type": "structure",
       "members": {
         "owner": {
@@ -7846,7 +7846,7 @@
       },
       "traits": {}
     },
-    "com.github.pulls#PullRequestStacksUnstackResponse": {
+    "com.github.pulls#RequestPullStackUnstackResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7903,13 +7903,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.github.pulls#PullRequestStacksUnstack": {
+    "com.github.pulls#RequestPullStackUnstack": {
       "type": "operation",
       "input": {
-        "target": "com.github.pulls#PullRequestStacksUnstackRequest"
+        "target": "com.github.pulls#RequestPullStackUnstackRequest"
       },
       "output": {
-        "target": "com.github.pulls#PullRequestStacksUnstackResponse"
+        "target": "com.github.pulls#RequestPullStackUnstackResponse"
       },
       "errors": [
         {
@@ -8097,10 +8097,10 @@
           "target": "com.github.pulls#PullRequestStacksGet"
         },
         {
-          "target": "com.github.pulls#PullRequestStacksAdd"
+          "target": "com.github.pulls#RequestPullStackAdd"
         },
         {
-          "target": "com.github.pulls#PullRequestStacksUnstack"
+          "target": "com.github.pulls#RequestPullStackUnstack"
         }
       ],
       "traits": {

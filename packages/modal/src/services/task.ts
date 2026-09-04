@@ -12,84 +12,10 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
-export interface TaskClusterHelloRequest {
-  taskId?: string;
-  containerIp?: string;
-  imexHostIp?: string;
-}
-export const TaskClusterHelloRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    taskId: S.optional(S.String),
-    containerIp: S.optional(S.String),
-    imexHostIp: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/TaskClusterHello",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TaskClusterHelloRequest",
-}) as any as S.Schema<TaskClusterHelloRequest>;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-export interface TaskClusterHelloResponse {
-  clusterId?: string;
-  clusterRank?: number;
-  /** All IPv6 addresses in cluster, ordered by cluster rank */
-  containerIps?: StringList;
-  containerIpv4Ips?: StringList;
-  /** All nvidia-imex IPs in fabric, ordered by cluster rank, and otherwise absent on non-NVL72 systems */
-  imexPeerIps?: StringList;
-  /** GPU-memory-fabric labels, ordered by cluster rank */
-  fabricIds?: StringList;
-}
-export const TaskClusterHelloResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clusterId: S.optional(S.String),
-    clusterRank: S.optional(S.Number),
-    containerIps: S.optional(StringList),
-    containerIpv4Ips: S.optional(StringList),
-    imexPeerIps: S.optional(StringList),
-    fabricIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TaskClusterHelloResponse",
-}) as any as S.Schema<TaskClusterHelloResponse>;
-
-export interface TaskCurrentInputsRequest {}
-export const TaskCurrentInputsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/TaskCurrentInputs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TaskCurrentInputsRequest",
-}) as any as S.Schema<TaskCurrentInputsRequest>;
-
-export interface TaskCurrentInputsResponse {
-  inputIds?: StringList;
-}
-export const TaskCurrentInputsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inputIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TaskCurrentInputsResponse",
-}) as any as S.Schema<TaskCurrentInputsResponse>;
-
-export interface TaskGetCommandRouterAccessRequest {
+export interface GetTaskCommandRouterAccessRequest {
   taskId?: string;
 }
-export const TaskGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetTaskCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
   }).pipe(
@@ -100,26 +26,26 @@ export const TaskGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TaskGetCommandRouterAccessRequest",
-}) as any as S.Schema<TaskGetCommandRouterAccessRequest>;
+  identifier: "GetTaskCommandRouterAccessRequest",
+}) as any as S.Schema<GetTaskCommandRouterAccessRequest>;
 
-export interface TaskGetCommandRouterAccessResponse {
+export interface GetTaskCommandRouterAccessResponse {
   jwt?: string;
   url?: string;
 }
-export const TaskGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetTaskCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jwt: S.optional(S.String),
     url: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "TaskGetCommandRouterAccessResponse",
-}) as any as S.Schema<TaskGetCommandRouterAccessResponse>;
+  identifier: "GetTaskCommandRouterAccessResponse",
+}) as any as S.Schema<GetTaskCommandRouterAccessResponse>;
 
-export interface TaskGetInfoRequest {
+export interface GetTaskInfoRequest {
   taskId?: string;
 }
-export const TaskGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetTaskInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
   }).pipe(
@@ -130,8 +56,8 @@ export const TaskGetInfoRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TaskGetInfoRequest",
-}) as any as S.Schema<TaskGetInfoRequest>;
+  identifier: "GetTaskInfoRequest",
+}) as any as S.Schema<GetTaskInfoRequest>;
 
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
@@ -241,24 +167,24 @@ export const TaskInfo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "TaskInfo" }) as any as S.Schema<TaskInfo>;
 
-export interface TaskGetInfoResponse {
+export interface GetTaskInfoResponse {
   appId?: string;
   info?: TaskInfo;
 }
-export const TaskGetInfoResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetTaskInfoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     info: S.optional(TaskInfo),
   }),
 ).annotate({
-  identifier: "TaskGetInfoResponse",
-}) as any as S.Schema<TaskGetInfoResponse>;
+  identifier: "GetTaskInfoResponse",
+}) as any as S.Schema<GetTaskInfoResponse>;
 
-export interface TaskListRequest {
+export interface ListTaskRequest {
   environmentName?: string;
   appId?: string;
 }
-export const TaskListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     appId: S.optional(S.String),
@@ -270,8 +196,8 @@ export const TaskListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TaskListRequest",
-}) as any as S.Schema<TaskListRequest>;
+  identifier: "ListTaskRequest",
+}) as any as S.Schema<ListTaskRequest>;
 
 export interface TaskStats {
   taskId?: string;
@@ -295,16 +221,90 @@ export const TaskStatsList = /*@__PURE__*/ S.Array(
   TaskStats,
 ) as any as S.Schema<TaskStatsList>;
 
-export interface TaskListResponse {
+export interface ListTaskResponse {
   tasks?: TaskStatsList;
 }
-export const TaskListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tasks: S.optional(TaskStatsList),
   }),
 ).annotate({
-  identifier: "TaskListResponse",
-}) as any as S.Schema<TaskListResponse>;
+  identifier: "ListTaskResponse",
+}) as any as S.Schema<ListTaskResponse>;
+
+export interface TaskClusterHelloRequest {
+  taskId?: string;
+  containerIp?: string;
+  imexHostIp?: string;
+}
+export const TaskClusterHelloRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    taskId: S.optional(S.String),
+    containerIp: S.optional(S.String),
+    imexHostIp: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/TaskClusterHello",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "TaskClusterHelloRequest",
+}) as any as S.Schema<TaskClusterHelloRequest>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+export interface TaskClusterHelloResponse {
+  clusterId?: string;
+  clusterRank?: number;
+  /** All IPv6 addresses in cluster, ordered by cluster rank */
+  containerIps?: StringList;
+  containerIpv4Ips?: StringList;
+  /** All nvidia-imex IPs in fabric, ordered by cluster rank, and otherwise absent on non-NVL72 systems */
+  imexPeerIps?: StringList;
+  /** GPU-memory-fabric labels, ordered by cluster rank */
+  fabricIds?: StringList;
+}
+export const TaskClusterHelloResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clusterId: S.optional(S.String),
+    clusterRank: S.optional(S.Number),
+    containerIps: S.optional(StringList),
+    containerIpv4Ips: S.optional(StringList),
+    imexPeerIps: S.optional(StringList),
+    fabricIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TaskClusterHelloResponse",
+}) as any as S.Schema<TaskClusterHelloResponse>;
+
+export interface TaskCurrentInputsRequest {}
+export const TaskCurrentInputsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/TaskCurrentInputs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "TaskCurrentInputsRequest",
+}) as any as S.Schema<TaskCurrentInputsRequest>;
+
+export interface TaskCurrentInputsResponse {
+  inputIds?: StringList;
+}
+export const TaskCurrentInputsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inputIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TaskCurrentInputsResponse",
+}) as any as S.Schema<TaskCurrentInputsResponse>;
 
 export interface TaskResultRequest {
   result?: GenericResult;
@@ -330,6 +330,48 @@ export const TaskResultResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TaskResultResponse",
 }) as any as S.Schema<TaskResultResponse>;
 
+export type GetTaskCommandRouterAccessError = ModalOpError;
+export const getTaskCommandRouterAccess: API.OperationMethod<
+  GetTaskCommandRouterAccessRequest,
+  GetTaskCommandRouterAccessResponse,
+  GetTaskCommandRouterAccessError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTaskCommandRouterAccessRequest,
+  output: GetTaskCommandRouterAccessResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetTaskInfoError = ModalOpError;
+export const getTaskInfo: API.OperationMethod<
+  GetTaskInfoRequest,
+  GetTaskInfoResponse,
+  GetTaskInfoError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTaskInfoRequest,
+  output: GetTaskInfoResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListTaskError = ModalOpError;
+export const listTask: API.OperationMethod<
+  ListTaskRequest,
+  ListTaskResponse,
+  ListTaskError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTaskRequest,
+  output: ListTaskResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
 export type TaskClusterHelloError = ModalOpError;
 /** Tasks */
 export const taskClusterHello: API.OperationMethod<
@@ -354,48 +396,6 @@ export const taskCurrentInputs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TaskCurrentInputsRequest,
   output: TaskCurrentInputsResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TaskGetCommandRouterAccessError = ModalOpError;
-export const taskGetCommandRouterAccess: API.OperationMethod<
-  TaskGetCommandRouterAccessRequest,
-  TaskGetCommandRouterAccessResponse,
-  TaskGetCommandRouterAccessError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TaskGetCommandRouterAccessRequest,
-  output: TaskGetCommandRouterAccessResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TaskGetInfoError = ModalOpError;
-export const taskGetInfo: API.OperationMethod<
-  TaskGetInfoRequest,
-  TaskGetInfoResponse,
-  TaskGetInfoError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TaskGetInfoRequest,
-  output: TaskGetInfoResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TaskListError = ModalOpError;
-export const taskList: API.OperationMethod<
-  TaskListRequest,
-  TaskListResponse,
-  TaskListError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TaskListRequest,
-  output: TaskListResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

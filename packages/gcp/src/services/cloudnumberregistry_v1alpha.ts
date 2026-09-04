@@ -1267,6 +1267,96 @@ export const GetProjectsLocationsRegistryBooksRequest = /*@__PURE__*/ S.suspend(
   identifier: "GetProjectsLocationsRegistryBooksRequest",
 }) as any as S.Schema<GetProjectsLocationsRegistryBooksRequest>;
 
+export interface GetUtilizationProjectsLocationsCustomRangesRequest {
+  /** Required. The resource name of the CustomRange. */
+  name: string;
+}
+export const GetUtilizationProjectsLocationsCustomRangesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}:showUtilization",
+        baseUrl: "https://cloudnumberregistry.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetUtilizationProjectsLocationsCustomRangesRequest",
+  }) as any as S.Schema<GetUtilizationProjectsLocationsCustomRangesRequest>;
+
+/** Utilization metrics for an IP Range, including consumed and produced address counts. */
+export interface RangeUtilization {
+  /** Output only. The usage of the Range as a percentage. This is marked as optional so that we have presence tracking and API responses show 0.0 instead of NULL. */
+  usage?: number;
+  /** Output only. The total number of IP addresses consumed in the Range. */
+  totalConsumed?: string;
+  /** Output only. The total number of IP addresses produced in the Range. */
+  totalProduced?: string;
+}
+export const RangeUtilization = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    usage: S.optional(S.Number),
+    totalConsumed: S.optional(S.String),
+    totalProduced: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RangeUtilization",
+}) as any as S.Schema<RangeUtilization>;
+
+/** Response message for the CloudNumberRegistry.ShowCustomRangeUtilization method. */
+export interface ShowCustomRangeUtilizationResponse {
+  /** The CustomRange resource. */
+  customRange?: CustomRange;
+  /** The utilization details of the CustomRange. */
+  rangeUtilization?: RangeUtilization;
+}
+export const ShowCustomRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customRange: S.optional(CustomRange),
+    rangeUtilization: S.optional(RangeUtilization),
+  }),
+).annotate({
+  identifier: "ShowCustomRangeUtilizationResponse",
+}) as any as S.Schema<ShowCustomRangeUtilizationResponse>;
+
+export interface GetUtilizationProjectsLocationsDiscoveredRangesRequest {
+  /** Required. The resource name of the DiscoveredRange. */
+  name: string;
+}
+export const GetUtilizationProjectsLocationsDiscoveredRangesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1alpha/{+name}:showUtilization",
+        baseUrl: "https://cloudnumberregistry.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetUtilizationProjectsLocationsDiscoveredRangesRequest",
+  }) as any as S.Schema<GetUtilizationProjectsLocationsDiscoveredRangesRequest>;
+
+/** Response message for the CloudNumberRegistry.ShowDiscoveredRangeUtilization method. */
+export interface ShowDiscoveredRangeUtilizationResponse {
+  /** The utilization details of the DiscoveredRange. */
+  rangeUtilization?: RangeUtilization;
+  /** The DiscoveredRange resource. */
+  discoveredRange?: DiscoveredRange;
+}
+export const ShowDiscoveredRangeUtilizationResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      rangeUtilization: S.optional(RangeUtilization),
+      discoveredRange: S.optional(DiscoveredRange),
+    }),
+).annotate({
+  identifier: "ShowDiscoveredRangeUtilizationResponse",
+}) as any as S.Schema<ShowDiscoveredRangeUtilizationResponse>;
+
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -1934,25 +2024,6 @@ export const SearchIpResourcesProjectsLocationsRegistryBooksRequest =
     identifier: "SearchIpResourcesProjectsLocationsRegistryBooksRequest",
   }) as any as S.Schema<SearchIpResourcesProjectsLocationsRegistryBooksRequest>;
 
-/** Utilization metrics for an IP Range, including consumed and produced address counts. */
-export interface RangeUtilization {
-  /** Output only. The usage of the Range as a percentage. This is marked as optional so that we have presence tracking and API responses show 0.0 instead of NULL. */
-  usage?: number;
-  /** Output only. The total number of IP addresses consumed in the Range. */
-  totalConsumed?: string;
-  /** Output only. The total number of IP addresses produced in the Range. */
-  totalProduced?: string;
-}
-export const RangeUtilization = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    usage: S.optional(S.Number),
-    totalConsumed: S.optional(S.String),
-    totalProduced: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RangeUtilization",
-}) as any as S.Schema<RangeUtilization>;
-
 /** Represents either a CustomRange or a DiscoveredRange. */
 export interface Range {
   /** The utilization of the Range. */
@@ -2017,77 +2088,6 @@ export const SearchIpResourcesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SearchIpResourcesResponse",
 }) as any as S.Schema<SearchIpResourcesResponse>;
-
-export interface ShowUtilizationProjectsLocationsCustomRangesRequest {
-  /** Required. The resource name of the CustomRange. */
-  name: string;
-}
-export const ShowUtilizationProjectsLocationsCustomRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:showUtilization",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowUtilizationProjectsLocationsCustomRangesRequest",
-  }) as any as S.Schema<ShowUtilizationProjectsLocationsCustomRangesRequest>;
-
-/** Response message for the CloudNumberRegistry.ShowCustomRangeUtilization method. */
-export interface ShowCustomRangeUtilizationResponse {
-  /** The CustomRange resource. */
-  customRange?: CustomRange;
-  /** The utilization details of the CustomRange. */
-  rangeUtilization?: RangeUtilization;
-}
-export const ShowCustomRangeUtilizationResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customRange: S.optional(CustomRange),
-    rangeUtilization: S.optional(RangeUtilization),
-  }),
-).annotate({
-  identifier: "ShowCustomRangeUtilizationResponse",
-}) as any as S.Schema<ShowCustomRangeUtilizationResponse>;
-
-export interface ShowUtilizationProjectsLocationsDiscoveredRangesRequest {
-  /** Required. The resource name of the DiscoveredRange. */
-  name: string;
-}
-export const ShowUtilizationProjectsLocationsDiscoveredRangesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1alpha/{+name}:showUtilization",
-        baseUrl: "https://cloudnumberregistry.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowUtilizationProjectsLocationsDiscoveredRangesRequest",
-  }) as any as S.Schema<ShowUtilizationProjectsLocationsDiscoveredRangesRequest>;
-
-/** Response message for the CloudNumberRegistry.ShowDiscoveredRangeUtilization method. */
-export interface ShowDiscoveredRangeUtilizationResponse {
-  /** The utilization details of the DiscoveredRange. */
-  rangeUtilization?: RangeUtilization;
-  /** The DiscoveredRange resource. */
-  discoveredRange?: DiscoveredRange;
-}
-export const ShowDiscoveredRangeUtilizationResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      rangeUtilization: S.optional(RangeUtilization),
-      discoveredRange: S.optional(DiscoveredRange),
-    }),
-).annotate({
-  identifier: "ShowDiscoveredRangeUtilizationResponse",
-}) as any as S.Schema<ShowDiscoveredRangeUtilizationResponse>;
 
 export type CancelOrganizationsLocationsOperationsError =
   | NotFound
@@ -2619,6 +2619,42 @@ export const getProjectsLocationsRegistryBooks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetUtilizationProjectsLocationsCustomRangesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets the details of a single CustomRange and its utilization. */
+export const getUtilizationProjectsLocationsCustomRanges: API.OperationMethod<
+  GetUtilizationProjectsLocationsCustomRangesRequest,
+  ShowCustomRangeUtilizationResponse,
+  GetUtilizationProjectsLocationsCustomRangesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUtilizationProjectsLocationsCustomRangesRequest,
+  output: ShowCustomRangeUtilizationResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetUtilizationProjectsLocationsDiscoveredRangesError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets the details of a single DiscoveredRange and its utilization. */
+export const getUtilizationProjectsLocationsDiscoveredRanges: API.OperationMethod<
+  GetUtilizationProjectsLocationsDiscoveredRangesRequest,
+  ShowDiscoveredRangeUtilizationResponse,
+  GetUtilizationProjectsLocationsDiscoveredRangesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUtilizationProjectsLocationsDiscoveredRangesRequest,
+  output: ShowDiscoveredRangeUtilizationResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListOrganizationsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -2919,42 +2955,6 @@ export const searchIpResourcesProjectsLocationsRegistryBooks: API.OperationMetho
   input: SearchIpResourcesProjectsLocationsRegistryBooksRequest,
   output: SearchIpResourcesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ShowUtilizationProjectsLocationsCustomRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets the details of a single CustomRange and its utilization. */
-export const showUtilizationProjectsLocationsCustomRanges: API.OperationMethod<
-  ShowUtilizationProjectsLocationsCustomRangesRequest,
-  ShowCustomRangeUtilizationResponse,
-  ShowUtilizationProjectsLocationsCustomRangesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ShowUtilizationProjectsLocationsCustomRangesRequest,
-  output: ShowCustomRangeUtilizationResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ShowUtilizationProjectsLocationsDiscoveredRangesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets the details of a single DiscoveredRange and its utilization. */
-export const showUtilizationProjectsLocationsDiscoveredRanges: API.OperationMethod<
-  ShowUtilizationProjectsLocationsDiscoveredRangesRequest,
-  ShowDiscoveredRangeUtilizationResponse,
-  ShowUtilizationProjectsLocationsDiscoveredRangesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ShowUtilizationProjectsLocationsDiscoveredRangesRequest,
-  output: ShowDiscoveredRangeUtilizationResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

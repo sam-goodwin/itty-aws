@@ -88,80 +88,6 @@ export const GoogleChromePolicyVersionsV1PolicyTargetKey =
     identifier: "GoogleChromePolicyVersionsV1PolicyTargetKey",
   }) as any as S.Schema<GoogleChromePolicyVersionsV1PolicyTargetKey>;
 
-/** Request parameters for deleting the policy value of a specific group target. */
-export interface GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
-  /** The fully qualified name of the policy schema that is being inherited. */
-  policySchema?: string;
-  /** Required. The key of the target for which we want to modify a policy. The target resource must point to a Group. */
-  policyTargetKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
-}
-export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policySchema: S.optional(S.String),
-      policyTargetKey: S.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest",
-  }) as any as S.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
-
-export type GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList =
-  Array<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
-export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest,
-  ) as any as S.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList>;
-
-/** Request message for specifying that multiple policy values will be deleted. */
-export interface GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest {
-  /** List of policies that will be deleted as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. */
-  requests?: GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList;
-}
-export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest",
-  }) as any as S.Schema<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest>;
-
-export interface BatchDeleteCustomersPoliciesGroupsRequest {
-  /** ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. */
-  customer: string;
-  /** Request body */
-  body?: GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest;
-}
-export const BatchDeleteCustomersPoliciesGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customer: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+customer}/policies/groups:batchDelete",
-        baseUrl: "https://chromepolicy.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteCustomersPoliciesGroupsRequest",
-  }) as any as S.Schema<BatchDeleteCustomersPoliciesGroupsRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface GoogleProtobufEmpty {}
-export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "GoogleProtobufEmpty",
-}) as any as S.Schema<GoogleProtobufEmpty>;
-
 /** Request parameters for inheriting policy value of a specific org unit target from the policy value of its parent org unit. */
 export interface GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
   /** The fully qualified name of the policy schema that is being inherited. */
@@ -228,6 +154,14 @@ export const BatchInheritCustomersPoliciesOrgunitsRequest =
   ).annotate({
     identifier: "BatchInheritCustomersPoliciesOrgunitsRequest",
   }) as any as S.Schema<BatchInheritCustomersPoliciesOrgunitsRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface GoogleProtobufEmpty {}
+export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GoogleProtobufEmpty",
+}) as any as S.Schema<GoogleProtobufEmpty>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -544,6 +478,72 @@ export const GoogleChromePolicyVersionsV1DefineNetworkResponse =
   ).annotate({
     identifier: "GoogleChromePolicyVersionsV1DefineNetworkResponse",
   }) as any as S.Schema<GoogleChromePolicyVersionsV1DefineNetworkResponse>;
+
+/** Request parameters for deleting the policy value of a specific group target. */
+export interface GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
+  /** The fully qualified name of the policy schema that is being inherited. */
+  policySchema?: string;
+  /** Required. The key of the target for which we want to modify a policy. The target resource must point to a Group. */
+  policyTargetKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
+}
+export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policySchema: S.optional(S.String),
+      policyTargetKey: S.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
+    }),
+  ).annotate({
+    identifier: "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest",
+  }) as any as S.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
+
+export type GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList =
+  Array<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
+export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest,
+  ) as any as S.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList>;
+
+/** Request message for specifying that multiple policy values will be deleted. */
+export interface GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest {
+  /** List of policies that will be deleted as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. */
+  requests?: GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList;
+}
+export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleChromePolicyVersionsV1DeleteGroupPolicyRequestList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest",
+  }) as any as S.Schema<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest>;
+
+export interface DeleteBatchCustomerPolicyGroupRequest {
+  /** ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. */
+  customer: string;
+  /** Request body */
+  body?: GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest;
+}
+export const DeleteBatchCustomerPolicyGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      customer: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+customer}/policies/groups:batchDelete",
+        baseUrl: "https://chromepolicy.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteBatchCustomerPolicyGroupRequest",
+}) as any as S.Schema<DeleteBatchCustomerPolicyGroupRequest>;
 
 export interface GetCustomersPolicySchemasRequest {
   /** Required. The policy schema resource name to query. */
@@ -1596,26 +1596,6 @@ export const GoogleChromePolicyVersionsV1UploadPolicyFileResponse =
     identifier: "GoogleChromePolicyVersionsV1UploadPolicyFileResponse",
   }) as any as S.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileResponse>;
 
-export type BatchDeleteCustomersPoliciesGroupsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status. */
-export const batchDeleteCustomersPoliciesGroups: API.OperationMethod<
-  BatchDeleteCustomersPoliciesGroupsRequest,
-  GoogleProtobufEmpty,
-  BatchDeleteCustomersPoliciesGroupsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteCustomersPoliciesGroupsRequest,
-  output: GoogleProtobufEmpty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchInheritCustomersPoliciesOrgunitsError =
   | NotFound
   | Forbidden
@@ -1711,6 +1691,26 @@ export const defineNetworkCustomersPoliciesNetworks: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DefineNetworkCustomersPoliciesNetworksRequest,
   output: GoogleChromePolicyVersionsV1DefineNetworkResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchCustomerPolicyGroupError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status. */
+export const deleteBatchCustomerPolicyGroup: API.OperationMethod<
+  DeleteBatchCustomerPolicyGroupRequest,
+  GoogleProtobufEmpty,
+  DeleteBatchCustomerPolicyGroupError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchCustomerPolicyGroupRequest,
+  output: GoogleProtobufEmpty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

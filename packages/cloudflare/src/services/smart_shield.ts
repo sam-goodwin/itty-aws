@@ -110,128 +110,6 @@ export const CacheReserveClearStatusResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CacheReserveClearStatusResponse",
 }) as any as S.Schema<CacheReserveClearStatusResponse>;
 
-export interface GetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/smart_shield", code: 200 }),
-  ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
-
-export type GetResponseCacheReserveValue = "on" | "off";
-export const GetResponseCacheReserveValue = /*@__PURE__*/ S.String;
-
-export interface GetResponseCacheReserve {
-  /** The id of the Cache Reserve setting. */
-  id?: string | null;
-  /** Whether the setting is editable. */
-  editable?: boolean | null;
-  /** Specifies the enablement value of Cache Reserve. */
-  value?: GetResponseCacheReserveValue | null;
-}
-export const GetResponseCacheReserve = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    value: S.optional(S.NullOr(GetResponseCacheReserveValue)),
-  }),
-).annotate({
-  identifier: "GetResponseCacheReserve",
-}) as any as S.Schema<GetResponseCacheReserve>;
-
-export type GetResponseRegionalTieredCacheValue = "on" | "off";
-export const GetResponseRegionalTieredCacheValue = /*@__PURE__*/ S.String;
-
-export interface GetResponseRegionalTieredCache {
-  /** The id of the Regional Tiered Cache setting. */
-  id?: string | null;
-  /** Whether the setting is editable. */
-  editable?: boolean | null;
-  /** Specifies the enablement value of Cache Reserve. */
-  value?: GetResponseRegionalTieredCacheValue | null;
-}
-export const GetResponseRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    value: S.optional(S.NullOr(GetResponseRegionalTieredCacheValue)),
-  }),
-).annotate({
-  identifier: "GetResponseRegionalTieredCache",
-}) as any as S.Schema<GetResponseRegionalTieredCache>;
-
-export type GetResponseSmartRoutingValue = "on" | "off";
-export const GetResponseSmartRoutingValue = /*@__PURE__*/ S.String;
-
-export interface GetResponseSmartRouting {
-  /** The id of the Smart Routing setting. */
-  id?: string | null;
-  /** Whether the setting is editable. */
-  editable?: boolean | null;
-  /** Specifies the enablement value of Argo Smart Routing. */
-  value?: GetResponseSmartRoutingValue | null;
-}
-export const GetResponseSmartRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    value: S.optional(S.NullOr(GetResponseSmartRoutingValue)),
-  }),
-).annotate({
-  identifier: "GetResponseSmartRouting",
-}) as any as S.Schema<GetResponseSmartRouting>;
-
-export type GetResponseSmartTieredCacheValue = "on" | "off";
-export const GetResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
-
-export interface GetResponseSmartTieredCache {
-  /** The id of the Smart Tiered Cache setting. */
-  id?: string | null;
-  /** Whether the setting is editable. */
-  editable?: boolean | null;
-  /** The last time the setting was modified. */
-  modifiedOn?: string | null;
-  /** Specifies the enablement value of Tiered Cache. */
-  value?: GetResponseSmartTieredCacheValue | null;
-}
-export const GetResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(GetResponseSmartTieredCacheValue)),
-  }),
-).annotate({
-  identifier: "GetResponseSmartTieredCache",
-}) as any as S.Schema<GetResponseSmartTieredCache>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
-  cacheReserve: GetResponseCacheReserve;
-  /** The total number of health checks associated with the zone. */
-  healthchecksCount: number;
-  regionalTieredCache: GetResponseRegionalTieredCache;
-  smartRouting: GetResponseSmartRouting;
-  smartTieredCache: GetResponseSmartTieredCache;
-}
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cacheReserve: GetResponseCacheReserve.pipe(T.Body("cache_reserve")),
-    healthchecksCount: S.Number.pipe(T.Body("healthchecks_count")),
-    regionalTieredCache: GetResponseRegionalTieredCache.pipe(
-      T.Body("regional_tiered_cache"),
-    ),
-    smartRouting: GetResponseSmartRouting.pipe(T.Body("smart_routing")),
-    smartTieredCache: GetResponseSmartTieredCache.pipe(
-      T.Body("smart_tiered_cache"),
-    ),
-  }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
-
 export type HealthChecksCreateRequestCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -336,7 +214,7 @@ export const HealthChecksCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksCreateRequestTcpConfig",
 }) as any as S.Schema<HealthChecksCreateRequestTcpConfig>;
 
-export interface HealthChecksCreateRequest {
+export interface CreateHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -366,7 +244,7 @@ export interface HealthChecksCreateRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const HealthChecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     address: S.String,
@@ -398,8 +276,8 @@ export const HealthChecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HealthChecksCreateRequest",
-}) as any as S.Schema<HealthChecksCreateRequest>;
+  identifier: "CreateHealthCheckRequest",
+}) as any as S.Schema<CreateHealthCheckRequest>;
 
 export type HealthChecksCreateResponseCheckRegionsItem =
   | "WNAM"
@@ -526,7 +404,7 @@ export const HealthChecksCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksCreateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HealthChecksCreateResponse {
+export interface CreateHealthCheckResponse {
   /** Identifier. */
   id?: string | null;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -562,7 +440,7 @@ export interface HealthChecksCreateResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const HealthChecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -600,16 +478,16 @@ export const HealthChecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
-  identifier: "HealthChecksCreateResponse",
-}) as any as S.Schema<HealthChecksCreateResponse>;
+  identifier: "CreateHealthCheckResponse",
+}) as any as S.Schema<CreateHealthCheckResponse>;
 
-export interface HealthChecksDeleteRequest {
+export interface DeleteHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   healthcheckId: string;
 }
-export const HealthChecksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -621,21 +499,353 @@ export const HealthChecksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HealthChecksDeleteRequest",
-}) as any as S.Schema<HealthChecksDeleteRequest>;
+  identifier: "DeleteHealthCheckRequest",
+}) as any as S.Schema<DeleteHealthCheckRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HealthChecksDeleteResponse {
+export interface DeleteHealthCheckResponse {
   /** Identifier. */
   id?: string | null;
 }
-export const HealthChecksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
-  identifier: "HealthChecksDeleteResponse",
-}) as any as S.Schema<HealthChecksDeleteResponse>;
+  identifier: "DeleteHealthCheckResponse",
+}) as any as S.Schema<DeleteHealthCheckResponse>;
+
+export interface GetRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/zones/{zone_id}/smart_shield", code: 200 }),
+  ),
+).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+
+export type GetResponseCacheReserveValue = "on" | "off";
+export const GetResponseCacheReserveValue = /*@__PURE__*/ S.String;
+
+export interface GetResponseCacheReserve {
+  /** The id of the Cache Reserve setting. */
+  id?: string | null;
+  /** Whether the setting is editable. */
+  editable?: boolean | null;
+  /** Specifies the enablement value of Cache Reserve. */
+  value?: GetResponseCacheReserveValue | null;
+}
+export const GetResponseCacheReserve = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    editable: S.optional(S.NullOr(S.Boolean)),
+    value: S.optional(S.NullOr(GetResponseCacheReserveValue)),
+  }),
+).annotate({
+  identifier: "GetResponseCacheReserve",
+}) as any as S.Schema<GetResponseCacheReserve>;
+
+export type GetResponseRegionalTieredCacheValue = "on" | "off";
+export const GetResponseRegionalTieredCacheValue = /*@__PURE__*/ S.String;
+
+export interface GetResponseRegionalTieredCache {
+  /** The id of the Regional Tiered Cache setting. */
+  id?: string | null;
+  /** Whether the setting is editable. */
+  editable?: boolean | null;
+  /** Specifies the enablement value of Cache Reserve. */
+  value?: GetResponseRegionalTieredCacheValue | null;
+}
+export const GetResponseRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    editable: S.optional(S.NullOr(S.Boolean)),
+    value: S.optional(S.NullOr(GetResponseRegionalTieredCacheValue)),
+  }),
+).annotate({
+  identifier: "GetResponseRegionalTieredCache",
+}) as any as S.Schema<GetResponseRegionalTieredCache>;
+
+export type GetResponseSmartRoutingValue = "on" | "off";
+export const GetResponseSmartRoutingValue = /*@__PURE__*/ S.String;
+
+export interface GetResponseSmartRouting {
+  /** The id of the Smart Routing setting. */
+  id?: string | null;
+  /** Whether the setting is editable. */
+  editable?: boolean | null;
+  /** Specifies the enablement value of Argo Smart Routing. */
+  value?: GetResponseSmartRoutingValue | null;
+}
+export const GetResponseSmartRouting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    editable: S.optional(S.NullOr(S.Boolean)),
+    value: S.optional(S.NullOr(GetResponseSmartRoutingValue)),
+  }),
+).annotate({
+  identifier: "GetResponseSmartRouting",
+}) as any as S.Schema<GetResponseSmartRouting>;
+
+export type GetResponseSmartTieredCacheValue = "on" | "off";
+export const GetResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
+
+export interface GetResponseSmartTieredCache {
+  /** The id of the Smart Tiered Cache setting. */
+  id?: string | null;
+  /** Whether the setting is editable. */
+  editable?: boolean | null;
+  /** The last time the setting was modified. */
+  modifiedOn?: string | null;
+  /** Specifies the enablement value of Tiered Cache. */
+  value?: GetResponseSmartTieredCacheValue | null;
+}
+export const GetResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    editable: S.optional(S.NullOr(S.Boolean)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    value: S.optional(S.NullOr(GetResponseSmartTieredCacheValue)),
+  }),
+).annotate({
+  identifier: "GetResponseSmartTieredCache",
+}) as any as S.Schema<GetResponseSmartTieredCache>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetResponse {
+  cacheReserve: GetResponseCacheReserve;
+  /** The total number of health checks associated with the zone. */
+  healthchecksCount: number;
+  regionalTieredCache: GetResponseRegionalTieredCache;
+  smartRouting: GetResponseSmartRouting;
+  smartTieredCache: GetResponseSmartTieredCache;
+}
+export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cacheReserve: GetResponseCacheReserve.pipe(T.Body("cache_reserve")),
+    healthchecksCount: S.Number.pipe(T.Body("healthchecks_count")),
+    regionalTieredCache: GetResponseRegionalTieredCache.pipe(
+      T.Body("regional_tiered_cache"),
+    ),
+    smartRouting: GetResponseSmartRouting.pipe(T.Body("smart_routing")),
+    smartTieredCache: GetResponseSmartTieredCache.pipe(
+      T.Body("smart_tiered_cache"),
+    ),
+  }),
+).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+
+export interface GetHealthCheckRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  healthcheckId: string;
+}
+export const GetHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetHealthCheckRequest",
+}) as any as S.Schema<GetHealthCheckRequest>;
+
+export type HealthChecksGetResponseCheckRegionsItem =
+  | "WNAM"
+  | "ENAM"
+  | "WEU"
+  | "EEU"
+  | "NSAM"
+  | "SSAM"
+  | "OC"
+  | "ME"
+  | "NAF"
+  | "SAF"
+  | "IN"
+  | "SEAS"
+  | "NEAS"
+  | "ALL_REGIONS";
+export const HealthChecksGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
+
+export type HealthChecksGetResponseCheckRegionsList =
+  Array<HealthChecksGetResponseCheckRegionsItem>;
+export const HealthChecksGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+  HealthChecksGetResponseCheckRegionsItem,
+) as any as S.Schema<HealthChecksGetResponseCheckRegionsList>;
+
+export type HealthChecksGetResponseHttpConfigExpectedCodesList = Array<string>;
+export const HealthChecksGetResponseHttpConfigExpectedCodesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksGetResponseHttpConfigExpectedCodesList>;
+
+export type HealthChecksGetResponseHttpConfigHeaderValueList = Array<string>;
+export const HealthChecksGetResponseHttpConfigHeaderValueList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderValueList>;
+
+export type HealthChecksGetResponseHttpConfigHeaderMap = {
+  [key: string]: HealthChecksGetResponseHttpConfigHeaderValueList | undefined;
+};
+export const HealthChecksGetResponseHttpConfigHeaderMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    HealthChecksGetResponseHttpConfigHeaderValueList,
+  ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderMap>;
+
+export type HealthChecksGetResponseHttpConfigMethod = "GET" | "HEAD";
+export const HealthChecksGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
+
+export interface HealthChecksGetResponseHttpConfig {
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean | null;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string | null;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: HealthChecksGetResponseHttpConfigExpectedCodesList | null;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean | null;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
+  header?: HealthChecksGetResponseHttpConfigHeaderMap | null;
+  /** The HTTP method to use for the health check. */
+  method?: HealthChecksGetResponseHttpConfigMethod | null;
+  /** The endpoint path to health check against. */
+  path?: string | null;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
+  port?: number | null;
+}
+export const HealthChecksGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowInsecure: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
+    ),
+    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      S.NullOr(HealthChecksGetResponseHttpConfigExpectedCodesList).pipe(
+        T.Body("expected_codes"),
+      ),
+    ),
+    followRedirects: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
+    ),
+    header: S.optional(S.NullOr(HealthChecksGetResponseHttpConfigHeaderMap)),
+    method: S.optional(S.NullOr(HealthChecksGetResponseHttpConfigMethod)),
+    path: S.optional(S.NullOr(S.String)),
+    port: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "HealthChecksGetResponseHttpConfig",
+}) as any as S.Schema<HealthChecksGetResponseHttpConfig>;
+
+export type HealthChecksGetResponseStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended";
+export const HealthChecksGetResponseStatus = /*@__PURE__*/ S.String;
+
+export type HealthChecksGetResponseTcpConfigMethod = "connection_established";
+export const HealthChecksGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
+
+export interface HealthChecksGetResponseTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: HealthChecksGetResponseTcpConfigMethod | null;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number | null;
+}
+export const HealthChecksGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    method: S.optional(S.NullOr(HealthChecksGetResponseTcpConfigMethod)),
+    port: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "HealthChecksGetResponseTcpConfig",
+}) as any as S.Schema<HealthChecksGetResponseTcpConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetHealthCheckResponse {
+  /** Identifier. */
+  id?: string | null;
+  /** The hostname or IP address of the origin server to run health checks on. */
+  address?: string | null;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: HealthChecksGetResponseCheckRegionsList | null;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number | null;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number | null;
+  createdOn?: string | null;
+  /** A human-readable description of the health check. */
+  description?: string | null;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string | null;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: HealthChecksGetResponseHttpConfig | null;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number | null;
+  modifiedOn?: string | null;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string | null;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number | null;
+  /** The current status of the origin server according to the health check. */
+  status?: HealthChecksGetResponseStatus | null;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean | null;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: HealthChecksGetResponseTcpConfig | null;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number | null;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
+  type?: string | null;
+}
+export const GetHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    address: S.optional(S.NullOr(S.String)),
+    checkRegions: S.optional(
+      S.NullOr(HealthChecksGetResponseCheckRegionsList).pipe(
+        T.Body("check_regions"),
+      ),
+    ),
+    consecutiveFails: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_fails")),
+    ),
+    consecutiveSuccesses: S.optional(
+      S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    description: S.optional(S.NullOr(S.String)),
+    failureReason: S.optional(
+      S.NullOr(S.String).pipe(T.Body("failure_reason")),
+    ),
+    httpConfig: S.optional(
+      S.NullOr(HealthChecksGetResponseHttpConfig).pipe(T.Body("http_config")),
+    ),
+    interval: S.optional(S.NullOr(S.Number)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    name: S.optional(S.NullOr(S.String)),
+    retries: S.optional(S.NullOr(S.Number)),
+    status: S.optional(S.NullOr(HealthChecksGetResponseStatus)),
+    suspended: S.optional(S.NullOr(S.Boolean)),
+    tcpConfig: S.optional(
+      S.NullOr(HealthChecksGetResponseTcpConfig).pipe(T.Body("tcp_config")),
+    ),
+    timeout: S.optional(S.NullOr(S.Number)),
+    type: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "GetHealthCheckResponse",
+}) as any as S.Schema<GetHealthCheckResponse>;
 
 export type HealthChecksEditRequestCheckRegionsItem =
   | "WNAM"
@@ -997,217 +1207,7 @@ export const HealthChecksEditResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksEditResponse",
 }) as any as S.Schema<HealthChecksEditResponse>;
 
-export interface HealthChecksGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Identifier. */
-  healthcheckId: string;
-}
-export const HealthChecksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/smart_shield/healthchecks/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HealthChecksGetRequest",
-}) as any as S.Schema<HealthChecksGetRequest>;
-
-export type HealthChecksGetResponseCheckRegionsItem =
-  | "WNAM"
-  | "ENAM"
-  | "WEU"
-  | "EEU"
-  | "NSAM"
-  | "SSAM"
-  | "OC"
-  | "ME"
-  | "NAF"
-  | "SAF"
-  | "IN"
-  | "SEAS"
-  | "NEAS"
-  | "ALL_REGIONS";
-export const HealthChecksGetResponseCheckRegionsItem = /*@__PURE__*/ S.String;
-
-export type HealthChecksGetResponseCheckRegionsList =
-  Array<HealthChecksGetResponseCheckRegionsItem>;
-export const HealthChecksGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  HealthChecksGetResponseCheckRegionsItem,
-) as any as S.Schema<HealthChecksGetResponseCheckRegionsList>;
-
-export type HealthChecksGetResponseHttpConfigExpectedCodesList = Array<string>;
-export const HealthChecksGetResponseHttpConfigExpectedCodesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<HealthChecksGetResponseHttpConfigExpectedCodesList>;
-
-export type HealthChecksGetResponseHttpConfigHeaderValueList = Array<string>;
-export const HealthChecksGetResponseHttpConfigHeaderValueList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderValueList>;
-
-export type HealthChecksGetResponseHttpConfigHeaderMap = {
-  [key: string]: HealthChecksGetResponseHttpConfigHeaderValueList | undefined;
-};
-export const HealthChecksGetResponseHttpConfigHeaderMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    HealthChecksGetResponseHttpConfigHeaderValueList,
-  ) as any as S.Schema<HealthChecksGetResponseHttpConfigHeaderMap>;
-
-export type HealthChecksGetResponseHttpConfigMethod = "GET" | "HEAD";
-export const HealthChecksGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksGetResponseHttpConfig {
-  /** Do not validate the certificate when the health check uses HTTPS. */
-  allowInsecure?: boolean | null;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
-  expectedBody?: string | null;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
-  expectedCodes?: HealthChecksGetResponseHttpConfigExpectedCodesList | null;
-  /** Follow redirects if the origin returns a 3xx status code. */
-  followRedirects?: boolean | null;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
-  header?: HealthChecksGetResponseHttpConfigHeaderMap | null;
-  /** The HTTP method to use for the health check. */
-  method?: HealthChecksGetResponseHttpConfigMethod | null;
-  /** The endpoint path to health check against. */
-  path?: string | null;
-  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
-  port?: number | null;
-}
-export const HealthChecksGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowInsecure: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("allow_insecure")),
-    ),
-    expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(
-      S.NullOr(HealthChecksGetResponseHttpConfigExpectedCodesList).pipe(
-        T.Body("expected_codes"),
-      ),
-    ),
-    followRedirects: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("follow_redirects")),
-    ),
-    header: S.optional(S.NullOr(HealthChecksGetResponseHttpConfigHeaderMap)),
-    method: S.optional(S.NullOr(HealthChecksGetResponseHttpConfigMethod)),
-    path: S.optional(S.NullOr(S.String)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksGetResponseHttpConfig",
-}) as any as S.Schema<HealthChecksGetResponseHttpConfig>;
-
-export type HealthChecksGetResponseStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended";
-export const HealthChecksGetResponseStatus = /*@__PURE__*/ S.String;
-
-export type HealthChecksGetResponseTcpConfigMethod = "connection_established";
-export const HealthChecksGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface HealthChecksGetResponseTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: HealthChecksGetResponseTcpConfigMethod | null;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number | null;
-}
-export const HealthChecksGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(S.NullOr(HealthChecksGetResponseTcpConfigMethod)),
-    port: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "HealthChecksGetResponseTcpConfig",
-}) as any as S.Schema<HealthChecksGetResponseTcpConfig>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HealthChecksGetResponse {
-  /** Identifier. */
-  id?: string | null;
-  /** The hostname or IP address of the origin server to run health checks on. */
-  address?: string | null;
-  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
-  checkRegions?: HealthChecksGetResponseCheckRegionsList | null;
-  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
-  consecutiveFails?: number | null;
-  /** The number of consecutive successes required from a health check before changing the health to healthy. */
-  consecutiveSuccesses?: number | null;
-  createdOn?: string | null;
-  /** A human-readable description of the health check. */
-  description?: string | null;
-  /** The current failure reason if status is unhealthy. */
-  failureReason?: string | null;
-  /** Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: HealthChecksGetResponseHttpConfig | null;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number | null;
-  modifiedOn?: string | null;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string | null;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number | null;
-  /** The current status of the origin server according to the health check. */
-  status?: HealthChecksGetResponseStatus | null;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean | null;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: HealthChecksGetResponseTcpConfig | null;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number | null;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string | null;
-}
-export const HealthChecksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    address: S.optional(S.NullOr(S.String)),
-    checkRegions: S.optional(
-      S.NullOr(HealthChecksGetResponseCheckRegionsList).pipe(
-        T.Body("check_regions"),
-      ),
-    ),
-    consecutiveFails: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("consecutive_fails")),
-    ),
-    consecutiveSuccesses: S.optional(
-      S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    description: S.optional(S.NullOr(S.String)),
-    failureReason: S.optional(
-      S.NullOr(S.String).pipe(T.Body("failure_reason")),
-    ),
-    httpConfig: S.optional(
-      S.NullOr(HealthChecksGetResponseHttpConfig).pipe(T.Body("http_config")),
-    ),
-    interval: S.optional(S.NullOr(S.Number)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    name: S.optional(S.NullOr(S.String)),
-    retries: S.optional(S.NullOr(S.Number)),
-    status: S.optional(S.NullOr(HealthChecksGetResponseStatus)),
-    suspended: S.optional(S.NullOr(S.Boolean)),
-    tcpConfig: S.optional(
-      S.NullOr(HealthChecksGetResponseTcpConfig).pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.NullOr(S.Number)),
-    type: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "HealthChecksGetResponse",
-}) as any as S.Schema<HealthChecksGetResponse>;
-
-export interface HealthChecksListRequest {
+export interface ListHealthChecksRequest {
   /** Identifier. */
   zoneId: string;
   /** Page number of paginated results. */
@@ -1215,7 +1215,7 @@ export interface HealthChecksListRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-export const HealthChecksListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListHealthChecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1228,8 +1228,8 @@ export const HealthChecksListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HealthChecksListRequest",
-}) as any as S.Schema<HealthChecksListRequest>;
+  identifier: "ListHealthChecksRequest",
+}) as any as S.Schema<ListHealthChecksRequest>;
 
 export type HealthChecksListResultItemCheckRegionsItem =
   | "WNAM"
@@ -1437,12 +1437,140 @@ export const HealthChecksListResultList = /*@__PURE__*/ S.Array(
   HealthChecksListResultItem,
 ) as any as S.Schema<HealthChecksListResultList>;
 
-export type HealthChecksListResponse = HealthChecksListResultList;
-export const HealthChecksListResponse = /*@__PURE__*/ S.suspend(() =>
+export type ListHealthChecksResponse = HealthChecksListResultList;
+export const ListHealthChecksResponse = /*@__PURE__*/ S.suspend(() =>
   HealthChecksListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "HealthChecksListResponse",
-}) as any as S.Schema<HealthChecksListResponse>;
+  identifier: "ListHealthChecksResponse",
+}) as any as S.Schema<ListHealthChecksResponse>;
+
+export type UpdateRequestCacheReserveValue = "on" | "off";
+export const UpdateRequestCacheReserveValue = /*@__PURE__*/ S.String;
+
+export interface UpdateRequestCacheReserve {
+  /** Specifies the enablement value of Cache Reserve. */
+  value?: UpdateRequestCacheReserveValue | (string & {});
+}
+export const UpdateRequestCacheReserve = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(UpdateRequestCacheReserveValue),
+  }),
+).annotate({
+  identifier: "UpdateRequestCacheReserve",
+}) as any as S.Schema<UpdateRequestCacheReserve>;
+
+export type UpdateRequestRegionalTieredCacheValue = "on" | "off";
+export const UpdateRequestRegionalTieredCacheValue = /*@__PURE__*/ S.String;
+
+export interface UpdateRequestRegionalTieredCache {
+  /** Specifies the enablement value of Regional Tiered Cache. */
+  value?: UpdateRequestRegionalTieredCacheValue | (string & {});
+}
+export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(UpdateRequestRegionalTieredCacheValue),
+  }),
+).annotate({
+  identifier: "UpdateRequestRegionalTieredCache",
+}) as any as S.Schema<UpdateRequestRegionalTieredCache>;
+
+export type UpdateRequestSmartRoutingValue = "on" | "off";
+export const UpdateRequestSmartRoutingValue = /*@__PURE__*/ S.String;
+
+export interface UpdateRequestSmartRouting {
+  /** Specifies the enablement value of Smart Routing. */
+  value?: UpdateRequestSmartRoutingValue | (string & {});
+}
+export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(UpdateRequestSmartRoutingValue),
+  }),
+).annotate({
+  identifier: "UpdateRequestSmartRouting",
+}) as any as S.Schema<UpdateRequestSmartRouting>;
+
+export type UpdateRequestSmartTieredCacheValue = "on" | "off";
+export const UpdateRequestSmartTieredCacheValue = /*@__PURE__*/ S.String;
+
+export interface UpdateRequestSmartTieredCache {
+  /** Specifies the enablement value of Smart Tiered Cache. */
+  value?: UpdateRequestSmartTieredCacheValue | (string & {});
+}
+export const UpdateRequestSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(UpdateRequestSmartTieredCacheValue),
+  }),
+).annotate({
+  identifier: "UpdateRequestSmartTieredCache",
+}) as any as S.Schema<UpdateRequestSmartTieredCache>;
+
+export interface UpdateRequest {
+  /** Identifier. */
+  zoneId: string;
+  cacheReserve?: UpdateRequestCacheReserve;
+  regionalTieredCache?: UpdateRequestRegionalTieredCache;
+  smartRouting?: UpdateRequestSmartRouting;
+  smartTieredCache?: UpdateRequestSmartTieredCache;
+}
+export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    cacheReserve: S.optional(
+      UpdateRequestCacheReserve.pipe(T.Body("cache_reserve")),
+    ),
+    regionalTieredCache: S.optional(
+      UpdateRequestRegionalTieredCache.pipe(T.Body("regional_tiered_cache")),
+    ),
+    smartRouting: S.optional(
+      UpdateRequestSmartRouting.pipe(T.Body("smart_routing")),
+    ),
+    smartTieredCache: S.optional(
+      UpdateRequestSmartTieredCache.pipe(T.Body("smart_tiered_cache")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/smart_shield",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+
+export type UpdateResponseSmartTieredCacheValue = "on" | "off";
+export const UpdateResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
+
+export interface UpdateResponseSmartTieredCache {
+  /** The id of the Smart Tiered Cache setting. */
+  id?: string | null;
+  /** Whether the setting is editable. */
+  editable?: boolean | null;
+  /** The last time the setting was modified. */
+  modifiedOn?: string | null;
+  /** Specifies the enablement value of Tiered Cache. */
+  value?: UpdateResponseSmartTieredCacheValue | null;
+}
+export const UpdateResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    editable: S.optional(S.NullOr(S.Boolean)),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    value: S.optional(S.NullOr(UpdateResponseSmartTieredCacheValue)),
+  }),
+).annotate({
+  identifier: "UpdateResponseSmartTieredCache",
+}) as any as S.Schema<UpdateResponseSmartTieredCache>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateResponse {
+  smartTieredCache: UpdateResponseSmartTieredCache;
+}
+export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    smartTieredCache: UpdateResponseSmartTieredCache.pipe(
+      T.Body("smart_tiered_cache"),
+    ),
+  }),
+).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
 
 export interface HealthChecksUpdateRequestErrorsItemSource {
   pointer?: string;
@@ -1695,7 +1823,7 @@ export const HealthChecksUpdateRequestResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthChecksUpdateRequestResult",
 }) as any as S.Schema<HealthChecksUpdateRequestResult>;
 
-export interface HealthChecksUpdateRequest {
+export interface UpdateHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
@@ -1706,7 +1834,7 @@ export interface HealthChecksUpdateRequest {
   /** Whether the API call was successful. */
   success: boolean;
 }
-export const HealthChecksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHealthCheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -1722,8 +1850,8 @@ export const HealthChecksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HealthChecksUpdateRequest",
-}) as any as S.Schema<HealthChecksUpdateRequest>;
+  identifier: "UpdateHealthCheckRequest",
+}) as any as S.Schema<UpdateHealthCheckRequest>;
 
 export type HealthChecksUpdateResponseCheckRegionsItem =
   | "WNAM"
@@ -1850,7 +1978,7 @@ export const HealthChecksUpdateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HealthChecksUpdateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HealthChecksUpdateResponse {
+export interface UpdateHealthCheckResponse {
   /** Identifier. */
   id?: string | null;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -1886,7 +2014,7 @@ export interface HealthChecksUpdateResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHealthCheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.NullOr(S.String)),
     address: S.optional(S.NullOr(S.String)),
@@ -1924,136 +2052,8 @@ export const HealthChecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
-  identifier: "HealthChecksUpdateResponse",
-}) as any as S.Schema<HealthChecksUpdateResponse>;
-
-export type UpdateRequestCacheReserveValue = "on" | "off";
-export const UpdateRequestCacheReserveValue = /*@__PURE__*/ S.String;
-
-export interface UpdateRequestCacheReserve {
-  /** Specifies the enablement value of Cache Reserve. */
-  value?: UpdateRequestCacheReserveValue | (string & {});
-}
-export const UpdateRequestCacheReserve = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestCacheReserveValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestCacheReserve",
-}) as any as S.Schema<UpdateRequestCacheReserve>;
-
-export type UpdateRequestRegionalTieredCacheValue = "on" | "off";
-export const UpdateRequestRegionalTieredCacheValue = /*@__PURE__*/ S.String;
-
-export interface UpdateRequestRegionalTieredCache {
-  /** Specifies the enablement value of Regional Tiered Cache. */
-  value?: UpdateRequestRegionalTieredCacheValue | (string & {});
-}
-export const UpdateRequestRegionalTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestRegionalTieredCacheValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestRegionalTieredCache",
-}) as any as S.Schema<UpdateRequestRegionalTieredCache>;
-
-export type UpdateRequestSmartRoutingValue = "on" | "off";
-export const UpdateRequestSmartRoutingValue = /*@__PURE__*/ S.String;
-
-export interface UpdateRequestSmartRouting {
-  /** Specifies the enablement value of Smart Routing. */
-  value?: UpdateRequestSmartRoutingValue | (string & {});
-}
-export const UpdateRequestSmartRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestSmartRoutingValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestSmartRouting",
-}) as any as S.Schema<UpdateRequestSmartRouting>;
-
-export type UpdateRequestSmartTieredCacheValue = "on" | "off";
-export const UpdateRequestSmartTieredCacheValue = /*@__PURE__*/ S.String;
-
-export interface UpdateRequestSmartTieredCache {
-  /** Specifies the enablement value of Smart Tiered Cache. */
-  value?: UpdateRequestSmartTieredCacheValue | (string & {});
-}
-export const UpdateRequestSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UpdateRequestSmartTieredCacheValue),
-  }),
-).annotate({
-  identifier: "UpdateRequestSmartTieredCache",
-}) as any as S.Schema<UpdateRequestSmartTieredCache>;
-
-export interface UpdateRequest {
-  /** Identifier. */
-  zoneId: string;
-  cacheReserve?: UpdateRequestCacheReserve;
-  regionalTieredCache?: UpdateRequestRegionalTieredCache;
-  smartRouting?: UpdateRequestSmartRouting;
-  smartTieredCache?: UpdateRequestSmartTieredCache;
-}
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    cacheReserve: S.optional(
-      UpdateRequestCacheReserve.pipe(T.Body("cache_reserve")),
-    ),
-    regionalTieredCache: S.optional(
-      UpdateRequestRegionalTieredCache.pipe(T.Body("regional_tiered_cache")),
-    ),
-    smartRouting: S.optional(
-      UpdateRequestSmartRouting.pipe(T.Body("smart_routing")),
-    ),
-    smartTieredCache: S.optional(
-      UpdateRequestSmartTieredCache.pipe(T.Body("smart_tiered_cache")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/smart_shield",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
-
-export type UpdateResponseSmartTieredCacheValue = "on" | "off";
-export const UpdateResponseSmartTieredCacheValue = /*@__PURE__*/ S.String;
-
-export interface UpdateResponseSmartTieredCache {
-  /** The id of the Smart Tiered Cache setting. */
-  id?: string | null;
-  /** Whether the setting is editable. */
-  editable?: boolean | null;
-  /** The last time the setting was modified. */
-  modifiedOn?: string | null;
-  /** Specifies the enablement value of Tiered Cache. */
-  value?: UpdateResponseSmartTieredCacheValue | null;
-}
-export const UpdateResponseSmartTieredCache = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    editable: S.optional(S.NullOr(S.Boolean)),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    value: S.optional(S.NullOr(UpdateResponseSmartTieredCacheValue)),
-  }),
-).annotate({
-  identifier: "UpdateResponseSmartTieredCache",
-}) as any as S.Schema<UpdateResponseSmartTieredCache>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
-  smartTieredCache: UpdateResponseSmartTieredCache;
-}
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    smartTieredCache: UpdateResponseSmartTieredCache.pipe(
-      T.Body("smart_tiered_cache"),
-    ),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+  identifier: "UpdateHealthCheckResponse",
+}) as any as S.Schema<UpdateHealthCheckResponse>;
 
 export type CacheReserveClearClearError = CloudflareOpError;
 /** You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation. */
@@ -2085,6 +2085,36 @@ export const cacheReserveClearStatus: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateHealthCheckError = CloudflareOpError;
+/** Create a new health check. */
+export const createHealthCheck: API.OperationMethod<
+  CreateHealthCheckRequest,
+  CreateHealthCheckResponse,
+  CreateHealthCheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateHealthCheckRequest,
+  output: CreateHealthCheckResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteHealthCheckError = CloudflareOpError;
+/** Delete a health check. */
+export const deleteHealthCheck: API.OperationMethod<
+  DeleteHealthCheckRequest,
+  DeleteHealthCheckResponse,
+  DeleteHealthCheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHealthCheckRequest,
+  output: DeleteHealthCheckResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetError = CloudflareOpError;
 /** Retrieve Smart Shield Settings. */
 export const get: API.OperationMethod<
@@ -2100,31 +2130,16 @@ export const get: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HealthChecksCreateError = CloudflareOpError;
-/** Create a new health check. */
-export const healthChecksCreate: API.OperationMethod<
-  HealthChecksCreateRequest,
-  HealthChecksCreateResponse,
-  HealthChecksCreateError,
+export type GetHealthCheckError = CloudflareOpError;
+/** Fetch a single configured health check. */
+export const getHealthCheck: API.OperationMethod<
+  GetHealthCheckRequest,
+  GetHealthCheckResponse,
+  GetHealthCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HealthChecksCreateRequest,
-  output: HealthChecksCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HealthChecksDeleteError = CloudflareOpError;
-/** Delete a health check. */
-export const healthChecksDelete: API.OperationMethod<
-  HealthChecksDeleteRequest,
-  HealthChecksDeleteResponse,
-  HealthChecksDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HealthChecksDeleteRequest,
-  output: HealthChecksDeleteResponse,
+  input: GetHealthCheckRequest,
+  output: GetHealthCheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2145,46 +2160,16 @@ export const healthChecksEdit: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HealthChecksGetError = CloudflareOpError;
-/** Fetch a single configured health check. */
-export const healthChecksGet: API.OperationMethod<
-  HealthChecksGetRequest,
-  HealthChecksGetResponse,
-  HealthChecksGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HealthChecksGetRequest,
-  output: HealthChecksGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HealthChecksListError = CloudflareOpError;
+export type ListHealthChecksError = CloudflareOpError;
 /** List configured health checks. */
-export const healthChecksList: API.OperationMethod<
-  HealthChecksListRequest,
-  HealthChecksListResponse,
-  HealthChecksListError,
+export const listHealthChecks: API.OperationMethod<
+  ListHealthChecksRequest,
+  ListHealthChecksResponse,
+  ListHealthChecksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HealthChecksListRequest,
-  output: HealthChecksListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HealthChecksUpdateError = CloudflareOpError;
-/** Update a configured health check. */
-export const healthChecksUpdate: API.OperationMethod<
-  HealthChecksUpdateRequest,
-  HealthChecksUpdateResponse,
-  HealthChecksUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HealthChecksUpdateRequest,
-  output: HealthChecksUpdateResponse,
+  input: ListHealthChecksRequest,
+  output: ListHealthChecksResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2200,6 +2185,21 @@ export const update: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,
   output: UpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHealthCheckError = CloudflareOpError;
+/** Update a configured health check. */
+export const updateHealthCheck: API.OperationMethod<
+  UpdateHealthCheckRequest,
+  UpdateHealthCheckResponse,
+  UpdateHealthCheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHealthCheckRequest,
+  output: UpdateHealthCheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

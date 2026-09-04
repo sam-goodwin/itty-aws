@@ -1324,13 +1324,13 @@ export const BatchCreateNotesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateNotesRequest",
 }) as any as S.Schema<BatchCreateNotesRequest>;
 
-export interface BatchCreateProjectsLocationsNotesRequest {
+export interface CreateBatchProjectLocationNoteRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. */
   parent: string;
   /** Request body */
   body?: BatchCreateNotesRequest;
 }
-export const BatchCreateProjectsLocationsNotesRequest = /*@__PURE__*/ S.suspend(
+export const CreateBatchProjectLocationNoteRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -1343,8 +1343,8 @@ export const BatchCreateProjectsLocationsNotesRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "BatchCreateProjectsLocationsNotesRequest",
-}) as any as S.Schema<BatchCreateProjectsLocationsNotesRequest>;
+  identifier: "CreateBatchProjectLocationNoteRequest",
+}) as any as S.Schema<CreateBatchProjectLocationNoteRequest>;
 
 export type NoteList = Array<Note>;
 export const NoteList = /*@__PURE__*/ S.Array(
@@ -3350,13 +3350,13 @@ export const BatchCreateOccurrencesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateOccurrencesRequest",
 }) as any as S.Schema<BatchCreateOccurrencesRequest>;
 
-export interface BatchCreateProjectsLocationsOccurrencesRequest {
+export interface CreateBatchProjectLocationOccurrenceRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. */
   parent: string;
   /** Request body */
   body?: BatchCreateOccurrencesRequest;
 }
-export const BatchCreateProjectsLocationsOccurrencesRequest =
+export const CreateBatchProjectLocationOccurrenceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -3369,8 +3369,8 @@ export const BatchCreateProjectsLocationsOccurrencesRequest =
       }),
     ),
   ).annotate({
-    identifier: "BatchCreateProjectsLocationsOccurrencesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsOccurrencesRequest>;
+    identifier: "CreateBatchProjectLocationOccurrenceRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationOccurrenceRequest>;
 
 /** Response for creating occurrences in batch. */
 export interface BatchCreateOccurrencesResponse {
@@ -3385,13 +3385,13 @@ export const BatchCreateOccurrencesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateOccurrencesResponse",
 }) as any as S.Schema<BatchCreateOccurrencesResponse>;
 
-export interface BatchCreateProjectsNotesRequest {
+export interface CreateBatchProjectNoteRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. */
   parent: string;
   /** Request body */
   body?: BatchCreateNotesRequest;
 }
-export const BatchCreateProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateBatchProjectNoteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     body: S.optional(BatchCreateNotesRequest.pipe(T.HttpBody())),
@@ -3403,30 +3403,29 @@ export const BatchCreateProjectsNotesRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchCreateProjectsNotesRequest",
-}) as any as S.Schema<BatchCreateProjectsNotesRequest>;
+  identifier: "CreateBatchProjectNoteRequest",
+}) as any as S.Schema<CreateBatchProjectNoteRequest>;
 
-export interface BatchCreateProjectsOccurrencesRequest {
+export interface CreateBatchProjectOccurrenceRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. */
   parent: string;
   /** Request body */
   body?: BatchCreateOccurrencesRequest;
 }
-export const BatchCreateProjectsOccurrencesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreateOccurrencesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/occurrences:batchCreate",
-        baseUrl: "https://containeranalysis.googleapis.com/",
-      }),
-    ),
+export const CreateBatchProjectOccurrenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchCreateOccurrencesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/occurrences:batchCreate",
+      baseUrl: "https://containeranalysis.googleapis.com/",
+    }),
+  ),
 ).annotate({
-  identifier: "BatchCreateProjectsOccurrencesRequest",
-}) as any as S.Schema<BatchCreateProjectsOccurrencesRequest>;
+  identifier: "CreateBatchProjectOccurrenceRequest",
+}) as any as S.Schema<CreateBatchProjectOccurrenceRequest>;
 
 export interface CreateProjectsLocationsNotesRequest {
   /** Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created. */
@@ -4596,80 +4595,80 @@ export const TestIamPermissionsProjectsOccurrencesRequest =
     identifier: "TestIamPermissionsProjectsOccurrencesRequest",
   }) as any as S.Schema<TestIamPermissionsProjectsOccurrencesRequest>;
 
-export type BatchCreateProjectsLocationsNotesError =
+export type CreateBatchProjectLocationNoteError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates new notes in batch. */
-export const batchCreateProjectsLocationsNotes: API.OperationMethod<
-  BatchCreateProjectsLocationsNotesRequest,
+export const createBatchProjectLocationNote: API.OperationMethod<
+  CreateBatchProjectLocationNoteRequest,
   BatchCreateNotesResponse,
-  BatchCreateProjectsLocationsNotesError,
+  CreateBatchProjectLocationNoteError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsNotesRequest,
+  input: CreateBatchProjectLocationNoteRequest,
   output: BatchCreateNotesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsLocationsOccurrencesError =
+export type CreateBatchProjectLocationOccurrenceError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates new occurrences in batch. */
-export const batchCreateProjectsLocationsOccurrences: API.OperationMethod<
-  BatchCreateProjectsLocationsOccurrencesRequest,
+export const createBatchProjectLocationOccurrence: API.OperationMethod<
+  CreateBatchProjectLocationOccurrenceRequest,
   BatchCreateOccurrencesResponse,
-  BatchCreateProjectsLocationsOccurrencesError,
+  CreateBatchProjectLocationOccurrenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsOccurrencesRequest,
+  input: CreateBatchProjectLocationOccurrenceRequest,
   output: BatchCreateOccurrencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsNotesError =
+export type CreateBatchProjectNoteError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates new notes in batch. */
-export const batchCreateProjectsNotes: API.OperationMethod<
-  BatchCreateProjectsNotesRequest,
+export const createBatchProjectNote: API.OperationMethod<
+  CreateBatchProjectNoteRequest,
   BatchCreateNotesResponse,
-  BatchCreateProjectsNotesError,
+  CreateBatchProjectNoteError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsNotesRequest,
+  input: CreateBatchProjectNoteRequest,
   output: BatchCreateNotesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsOccurrencesError =
+export type CreateBatchProjectOccurrenceError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates new occurrences in batch. */
-export const batchCreateProjectsOccurrences: API.OperationMethod<
-  BatchCreateProjectsOccurrencesRequest,
+export const createBatchProjectOccurrence: API.OperationMethod<
+  CreateBatchProjectOccurrenceRequest,
   BatchCreateOccurrencesResponse,
-  BatchCreateProjectsOccurrencesError,
+  CreateBatchProjectOccurrenceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsOccurrencesRequest,
+  input: CreateBatchProjectOccurrenceRequest,
   output: BatchCreateOccurrencesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

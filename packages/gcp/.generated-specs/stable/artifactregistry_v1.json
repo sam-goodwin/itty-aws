@@ -5882,7 +5882,7 @@
         "smithy.api#documentation": "Updates a version."
       }
     },
-    "com.gcp.artifactregistry_v1#BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest": {
+    "com.gcp.artifactregistry_v1#DeleteBatchProjectLocationRepositoryPackageVersionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5902,10 +5902,10 @@
         }
       }
     },
-    "com.gcp.artifactregistry_v1#BatchDeleteProjectsLocationsRepositoriesPackagesVersions": {
+    "com.gcp.artifactregistry_v1#DeleteBatchProjectLocationRepositoryPackageVersion": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.artifactregistry_v1#BatchDeleteProjectsLocationsRepositoriesPackagesVersionsRequest"
+        "target": "com.gcp.artifactregistry_v1#DeleteBatchProjectLocationRepositoryPackageVersionRequest"
       },
       "output": {
         "target": "com.gcp.artifactregistry_v1#Operation"

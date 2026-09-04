@@ -65,6 +65,12 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
@@ -81,113 +87,16 @@ export const RequestOptions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RequestOptions" }) as any as S.Schema<RequestOptions>;
 
-/** A set of field paths on a document. Used to restrict a get or update operation on a document to a subset of its fields. This is different from standard field masks, as this is always scoped to a Document, and takes in account the dynamic nature of Value. */
-export interface DocumentMask {
-  /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
-  fieldPaths?: StringList;
-}
-export const DocumentMask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldPaths: S.optional(StringList),
-  }),
-).annotate({ identifier: "DocumentMask" }) as any as S.Schema<DocumentMask>;
+export type FieldTransformSetToServerValueEnum =
+  | "SERVER_VALUE_UNSPECIFIED"
+  | "REQUEST_TIME";
+export const FieldTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
 
-export type ReadWriteConcurrencyModeEnum =
-  | "CONCURRENCY_MODE_UNSPECIFIED"
-  | "OPTIMISTIC"
-  | "PESSIMISTIC";
-export const ReadWriteConcurrencyModeEnum = /*@__PURE__*/ S.String;
-
-/** Options for a transaction that can be used to read and write documents. */
-export interface ReadWrite {
-  /** Optional. The concurrency control mode to use for this transaction. A database is able to use different concurrency modes for different transactions simultaneously. 3rd party auth requests are only allowed to create optimistic read-write transactions and must specify that here even if the database-level setting is already configured to optimistic. */
-  concurrencyMode?: ReadWriteConcurrencyModeEnum | (string & {});
-  /** An optional transaction to retry. */
-  retryTransaction?: string;
-}
-export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    concurrencyMode: S.optional(ReadWriteConcurrencyModeEnum),
-    retryTransaction: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReadWrite" }) as any as S.Schema<ReadWrite>;
-
-/** Options for a transaction that can only be used to read documents. */
-export interface ReadOnly {
-  /** Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
-  readTime?: string;
-}
-export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "ReadOnly" }) as any as S.Schema<ReadOnly>;
-
-/** Options for creating a new transaction. */
-export interface TransactionOptions {
-  /** The transaction can be used for both read and write operations. */
-  readWrite?: ReadWrite;
-  /** The transaction can only be used for read operations. */
-  readOnly?: ReadOnly;
-}
-export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    readWrite: S.optional(ReadWrite),
-    readOnly: S.optional(ReadOnly),
-  }),
-).annotate({
-  identifier: "TransactionOptions",
-}) as any as S.Schema<TransactionOptions>;
-
-/** The request for Firestore.BatchGetDocuments. */
-export interface BatchGetDocumentsRequest {
-  /** Reads documents in a transaction. */
-  transaction?: string;
-  /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
-  documents?: StringList;
-  /** Optional. The request options for this request. */
-  requestOptions?: RequestOptions;
-  /** The fields to return. If not set, returns all fields. If a document has a field that is not present in this mask, that field will not be returned in the response. */
-  mask?: DocumentMask;
-  /** Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream. */
-  newTransaction?: TransactionOptions;
-  /** Reads documents as they were at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
-  readTime?: string;
-}
-export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(S.String),
-    documents: S.optional(StringList),
-    requestOptions: S.optional(RequestOptions),
-    mask: S.optional(DocumentMask),
-    newTransaction: S.optional(TransactionOptions),
-    readTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchGetDocumentsRequest",
-}) as any as S.Schema<BatchGetDocumentsRequest>;
-
-export interface BatchGetProjectsDatabasesDocumentsRequest {
-  /** Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. */
-  database: string;
-  /** Request body */
-  body?: BatchGetDocumentsRequest;
-}
-export const BatchGetProjectsDatabasesDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(BatchGetDocumentsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/documents:batchGet",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchGetProjectsDatabasesDocumentsRequest",
-  }) as any as S.Schema<BatchGetProjectsDatabasesDocumentsRequest>;
+export type ValueMap = { [key: string]: Value | undefined };
+export const ValueMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.suspend(() => Value),
+) as any as S.Schema<ValueMap>;
 
 /** A map value. */
 export interface MapValue {
@@ -196,7 +105,7 @@ export interface MapValue {
 }
 export const MapValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    fields: S.optional(S.suspend(() => ValueMap)),
+    fields: S.optional(ValueMap),
   }),
 ).annotate({ identifier: "MapValue" }) as any as S.Schema<MapValue>;
 
@@ -214,11 +123,6 @@ export const LatLng = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "LatLng" }) as any as S.Schema<LatLng>;
 
-export type ValueList = Array<Value>;
-export const ValueList = /*@__PURE__*/ S.Array(
-  S.suspend(() => Value),
-) as any as S.Schema<ValueList>;
-
 /** A single operation within a pipeline. A stage is made up of a unique name, and a list of arguments. The exact number of arguments & types is dependent on the stage type. To give an example, the stage `filter(state = "MD")` would be encoded as: ``` name: "filter" args { function_value { name: "eq" args { field_reference_value: "state" } args { string_value: "MD" } } } ``` See public documentation for the full list. */
 export interface Stage {
   /** Optional. Ordered list of arguments the given stage expects. */
@@ -230,8 +134,8 @@ export interface Stage {
 }
 export const Stage = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    args: S.optional(ValueList),
-    options: S.optional(S.suspend(() => ValueMap)),
+    args: S.optional(S.suspend(() => ValueList)),
+    options: S.optional(ValueMap),
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Stage" }) as any as S.Schema<Stage>;
@@ -263,24 +167,13 @@ export interface Firestore_Function {
 }
 export const Firestore_Function = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    args: S.optional(ValueList),
-    options: S.optional(S.suspend(() => ValueMap)),
+    args: S.optional(S.suspend(() => ValueList)),
+    options: S.optional(ValueMap),
     name: S.optional(S.String),
   }),
 ).annotate({
   identifier: "Firestore_Function",
 }) as any as S.Schema<Firestore_Function>;
-
-/** An array value. */
-export interface ArrayValue {
-  /** Values in the array. */
-  values?: ValueList;
-}
-export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(ValueList),
-  }),
-).annotate({ identifier: "ArrayValue" }) as any as S.Schema<ArrayValue>;
 
 export type ValueNullValueEnum = "NULL_VALUE";
 export const ValueNullValueEnum = /*@__PURE__*/ S.String;
@@ -331,71 +224,28 @@ export const Value = /*@__PURE__*/ S.suspend(() =>
     bytesValue: S.optional(S.String),
     pipelineValue: S.optional(Pipeline),
     functionValue: S.optional(Firestore_Function),
-    arrayValue: S.optional(ArrayValue),
+    arrayValue: S.optional(S.suspend(() => ArrayValue)),
     nullValue: S.optional(ValueNullValueEnum),
     doubleValue: S.optional(S.Number),
     referenceValue: S.optional(S.String),
   }),
 ).annotate({ identifier: "Value" }) as any as S.Schema<Value>;
 
-export type ValueMap = { [key: string]: Value | undefined };
-export const ValueMap = /*@__PURE__*/ S.Record(
-  S.String,
+export type ValueList = Array<Value>;
+export const ValueList = /*@__PURE__*/ S.Array(
   Value,
-) as any as S.Schema<ValueMap>;
+) as any as S.Schema<ValueList>;
 
-/** A Firestore document. Must not exceed 1 MiB - 4 bytes. */
-export interface Document {
-  /** Output only. The time at which the document was last changed. This value is initially set to the `create_time` then increases monotonically with each change to the document. It can also be compared to values from other documents and the `read_time` of a query. */
-  updateTime?: string;
-  /** The document's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The field names, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may be used in other contexts to refer to structured fields defined here. For `map_value`, the field path is represented by a dot-delimited (`.`) string of segments. Each segment is either a simple field name (defined below) or a quoted field name. For example, the structured field `"foo" : { map_value: { "x&y" : { string_value: "hello" }}}` would be represented by the field path `` foo.`x&y` ``. A simple field name contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start with `0` to `9`. For example, `foo_bar_17`. A quoted field name starts and ends with `` ` `` and may contain any character. Some characters, including `` ` ``, must be escaped using a `\`. For example, `` `x&y` `` represents `x&y` and `` `bak\`tik` `` represents `` bak`tik ``. */
-  fields?: ValueMap;
-  /** The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
-  name?: string;
-  /** Output only. The time at which the document was created. This value increases monotonically when a document is deleted then recreated. It can also be compared to values from other documents and the `read_time` of a query. */
-  createTime?: string;
+/** An array value. */
+export interface ArrayValue {
+  /** Values in the array. */
+  values?: ValueList;
 }
-export const Document = /*@__PURE__*/ S.suspend(() =>
+export const ArrayValue = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    updateTime: S.optional(S.String),
-    fields: S.optional(ValueMap),
-    name: S.optional(S.String),
-    createTime: S.optional(S.String),
+    values: S.optional(ValueList),
   }),
-).annotate({ identifier: "Document" }) as any as S.Schema<Document>;
-
-/** The streamed response for Firestore.BatchGetDocuments. */
-export interface BatchGetDocumentsResponse {
-  /** The transaction that was started as part of this request. Will only be set in the first response, and only if BatchGetDocumentsRequest.new_transaction was set in the request. */
-  transaction?: string;
-  /** A document that was requested. */
-  found?: Document;
-  /** The time at which the document was read. This may be monotically increasing, in this case the previous documents in the result stream are guaranteed not to have changed between their read_time and this one. */
-  readTime?: string;
-  /** A document name that was requested but does not exist. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
-  missing?: string;
-}
-export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transaction: S.optional(S.String),
-    found: S.optional(Document),
-    readTime: S.optional(S.String),
-    missing: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchGetDocumentsResponse",
-}) as any as S.Schema<BatchGetDocumentsResponse>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-export type FieldTransformSetToServerValueEnum =
-  | "SERVER_VALUE_UNSPECIFIED"
-  | "REQUEST_TIME";
-export const FieldTransformSetToServerValueEnum = /*@__PURE__*/ S.String;
+).annotate({ identifier: "ArrayValue" }) as any as S.Schema<ArrayValue>;
 
 /** A transformation of a field of the document. */
 export interface FieldTransform {
@@ -431,6 +281,26 @@ export const FieldTransformList = /*@__PURE__*/ S.Array(
   FieldTransform,
 ) as any as S.Schema<FieldTransformList>;
 
+/** A Firestore document. Must not exceed 1 MiB - 4 bytes. */
+export interface Document {
+  /** Output only. The time at which the document was last changed. This value is initially set to the `create_time` then increases monotonically with each change to the document. It can also be compared to values from other documents and the `read_time` of a query. */
+  updateTime?: string;
+  /** The document's fields. The map keys represent field names. Field names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The field names, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may be used in other contexts to refer to structured fields defined here. For `map_value`, the field path is represented by a dot-delimited (`.`) string of segments. Each segment is either a simple field name (defined below) or a quoted field name. For example, the structured field `"foo" : { map_value: { "x&y" : { string_value: "hello" }}}` would be represented by the field path `` foo.`x&y` ``. A simple field name contains only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start with `0` to `9`. For example, `foo_bar_17`. A quoted field name starts and ends with `` ` `` and may contain any character. Some characters, including `` ` ``, must be escaped using a `\`. For example, `` `x&y` `` represents `x&y` and `` `bak\`tik` `` represents `` bak`tik ``. */
+  fields?: ValueMap;
+  /** The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
+  name?: string;
+  /** Output only. The time at which the document was created. This value increases monotonically when a document is deleted then recreated. It can also be compared to values from other documents and the `read_time` of a query. */
+  createTime?: string;
+}
+export const Document = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateTime: S.optional(S.String),
+    fields: S.optional(ValueMap),
+    name: S.optional(S.String),
+    createTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "Document" }) as any as S.Schema<Document>;
+
 /** A precondition on a document, used for conditional operations. */
 export interface Precondition {
   /** When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. */
@@ -444,6 +314,17 @@ export const Precondition = /*@__PURE__*/ S.suspend(() =>
     exists: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Precondition" }) as any as S.Schema<Precondition>;
+
+/** A set of field paths on a document. Used to restrict a get or update operation on a document to a subset of its fields. This is different from standard field masks, as this is always scoped to a Document, and takes in account the dynamic nature of Value. */
+export interface DocumentMask {
+  /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
+  fieldPaths?: StringList;
+}
+export const DocumentMask = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fieldPaths: S.optional(StringList),
+  }),
+).annotate({ identifier: "DocumentMask" }) as any as S.Schema<DocumentMask>;
 
 /** A transformation of a document. */
 export interface DocumentTransform {
@@ -601,6 +482,53 @@ export const BatchWriteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchWriteResponse",
 }) as any as S.Schema<BatchWriteResponse>;
 
+export type ReadWriteConcurrencyModeEnum =
+  | "CONCURRENCY_MODE_UNSPECIFIED"
+  | "OPTIMISTIC"
+  | "PESSIMISTIC";
+export const ReadWriteConcurrencyModeEnum = /*@__PURE__*/ S.String;
+
+/** Options for a transaction that can be used to read and write documents. */
+export interface ReadWrite {
+  /** Optional. The concurrency control mode to use for this transaction. A database is able to use different concurrency modes for different transactions simultaneously. 3rd party auth requests are only allowed to create optimistic read-write transactions and must specify that here even if the database-level setting is already configured to optimistic. */
+  concurrencyMode?: ReadWriteConcurrencyModeEnum | (string & {});
+  /** An optional transaction to retry. */
+  retryTransaction?: string;
+}
+export const ReadWrite = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    concurrencyMode: S.optional(ReadWriteConcurrencyModeEnum),
+    retryTransaction: S.optional(S.String),
+  }),
+).annotate({ identifier: "ReadWrite" }) as any as S.Schema<ReadWrite>;
+
+/** Options for a transaction that can only be used to read documents. */
+export interface ReadOnly {
+  /** Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
+  readTime?: string;
+}
+export const ReadOnly = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    readTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "ReadOnly" }) as any as S.Schema<ReadOnly>;
+
+/** Options for creating a new transaction. */
+export interface TransactionOptions {
+  /** The transaction can be used for both read and write operations. */
+  readWrite?: ReadWrite;
+  /** The transaction can only be used for read operations. */
+  readOnly?: ReadOnly;
+}
+export const TransactionOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    readWrite: S.optional(ReadWrite),
+    readOnly: S.optional(ReadOnly),
+  }),
+).annotate({
+  identifier: "TransactionOptions",
+}) as any as S.Schema<TransactionOptions>;
+
 /** The request for Firestore.BeginTransaction. */
 export interface BeginTransactionRequest {
   /** Optional. The request options for this request. */
@@ -651,72 +579,6 @@ export const BeginTransactionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BeginTransactionResponse",
 }) as any as S.Schema<BeginTransactionResponse>;
-
-/** The request for FirestoreAdmin.BulkDeleteDocuments. When both collection_ids and namespace_ids are set, only documents satisfying both conditions will be deleted. Requests with namespace_ids and collection_ids both empty will be rejected. Please use FirestoreAdmin.DeleteDatabase instead. */
-export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
-  /** Optional. Namespaces to delete. An empty list means all namespaces. This is the recommended usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to delete from them. Each namespace in this list must be unique. */
-  namespaceIds?: StringList;
-  /** Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection group in this list must be unique. */
-  collectionIds?: StringList;
-}
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      namespaceIds: S.optional(StringList),
-      collectionIds: S.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsRequest",
-  }) as any as S.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsRequest>;
-
-export interface BulkDeleteDocumentsProjectsDatabasesRequest {
-  /** Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`. */
-  name: string;
-  /** Request body */
-  body?: GoogleFirestoreAdminV1BulkDeleteDocumentsRequest;
-}
-export const BulkDeleteDocumentsProjectsDatabasesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.pipe(T.HttpBody()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:bulkDeleteDocuments",
-        baseUrl: "https://firestore.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteDocumentsProjectsDatabasesRequest",
-  }) as any as S.Schema<BulkDeleteDocumentsProjectsDatabasesRequest>;
-
-/** This resource represents a long-running operation that is the result of a network API call. */
-export interface GoogleLongrunningOperation {
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-}
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(DocumentMap),
-    error: S.optional(Status),
-    name: S.optional(S.String),
-    done: S.optional(S.Boolean),
-    response: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
 
 /** The request message for Operations.CancelOperation. */
 export interface GoogleLongrunningCancelOperationRequest {}
@@ -870,6 +732,31 @@ export const CloneProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CloneProjectsDatabasesRequest",
 }) as any as S.Schema<CloneProjectsDatabasesRequest>;
+
+/** This resource represents a long-running operation that is the result of a network API call. */
+export interface GoogleLongrunningOperation {
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+}
+export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadata: S.optional(DocumentMap),
+    error: S.optional(Status),
+    name: S.optional(S.String),
+    done: S.optional(S.Boolean),
+    response: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleLongrunningOperation",
+}) as any as S.Schema<GoogleLongrunningOperation>;
 
 /** The request for Firestore.Commit. */
 export interface CommitRequest {
@@ -1699,6 +1586,47 @@ export const CreateProjectsDatabasesUserCredsRequest = /*@__PURE__*/ S.suspend(
   identifier: "CreateProjectsDatabasesUserCredsRequest",
 }) as any as S.Schema<CreateProjectsDatabasesUserCredsRequest>;
 
+/** The request for FirestoreAdmin.BulkDeleteDocuments. When both collection_ids and namespace_ids are set, only documents satisfying both conditions will be deleted. Requests with namespace_ids and collection_ids both empty will be rejected. Please use FirestoreAdmin.DeleteDatabase instead. */
+export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
+  /** Optional. Namespaces to delete. An empty list means all namespaces. This is the recommended usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to delete from them. Each namespace in this list must be unique. */
+  namespaceIds?: StringList;
+  /** Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection group in this list must be unique. */
+  collectionIds?: StringList;
+}
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      namespaceIds: S.optional(StringList),
+      collectionIds: S.optional(StringList),
+    }),
+  ).annotate({
+    identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsRequest",
+  }) as any as S.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsRequest>;
+
+export interface DeleteBulkDocumentProjectDatabaseRequest {
+  /** Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`. */
+  name: string;
+  /** Request body */
+  body?: GoogleFirestoreAdminV1BulkDeleteDocumentsRequest;
+}
+export const DeleteBulkDocumentProjectDatabaseRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleFirestoreAdminV1BulkDeleteDocumentsRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:bulkDeleteDocuments",
+        baseUrl: "https://firestore.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteBulkDocumentProjectDatabaseRequest",
+}) as any as S.Schema<DeleteBulkDocumentProjectDatabaseRequest>;
+
 export interface DeleteProjectsDatabasesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}` */
   name: string;
@@ -2075,6 +2003,78 @@ export const ExportDocumentsProjectsDatabasesRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "ExportDocumentsProjectsDatabasesRequest",
 }) as any as S.Schema<ExportDocumentsProjectsDatabasesRequest>;
+
+/** The request for Firestore.BatchGetDocuments. */
+export interface BatchGetDocumentsRequest {
+  /** Reads documents in a transaction. */
+  transaction?: string;
+  /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
+  documents?: StringList;
+  /** Optional. The request options for this request. */
+  requestOptions?: RequestOptions;
+  /** The fields to return. If not set, returns all fields. If a document has a field that is not present in this mask, that field will not be returned in the response. */
+  mask?: DocumentMask;
+  /** Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction ID will be returned as the first response in the stream. */
+  newTransaction?: TransactionOptions;
+  /** Reads documents as they were at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
+  readTime?: string;
+}
+export const BatchGetDocumentsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    transaction: S.optional(S.String),
+    documents: S.optional(StringList),
+    requestOptions: S.optional(RequestOptions),
+    mask: S.optional(DocumentMask),
+    newTransaction: S.optional(TransactionOptions),
+    readTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchGetDocumentsRequest",
+}) as any as S.Schema<BatchGetDocumentsRequest>;
+
+export interface GetBatchProjectDatabaseDocumentRequest {
+  /** Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. */
+  database: string;
+  /** Request body */
+  body?: BatchGetDocumentsRequest;
+}
+export const GetBatchProjectDatabaseDocumentRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      database: S.String.pipe(T.Label()),
+      body: S.optional(BatchGetDocumentsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+database}/documents:batchGet",
+        baseUrl: "https://firestore.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetBatchProjectDatabaseDocumentRequest",
+}) as any as S.Schema<GetBatchProjectDatabaseDocumentRequest>;
+
+/** The streamed response for Firestore.BatchGetDocuments. */
+export interface BatchGetDocumentsResponse {
+  /** The transaction that was started as part of this request. Will only be set in the first response, and only if BatchGetDocumentsRequest.new_transaction was set in the request. */
+  transaction?: string;
+  /** A document that was requested. */
+  found?: Document;
+  /** The time at which the document was read. This may be monotically increasing, in this case the previous documents in the result stream are guaranteed not to have changed between their read_time and this one. */
+  readTime?: string;
+  /** A document name that was requested but does not exist. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
+  missing?: string;
+}
+export const BatchGetDocumentsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    transaction: S.optional(S.String),
+    found: S.optional(Document),
+    readTime: S.optional(S.String),
+    missing: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchGetDocumentsResponse",
+}) as any as S.Schema<BatchGetDocumentsResponse>;
 
 export interface GetProjectsDatabasesRequest {
   /** Required. A name of the form `projects/{project_id}/databases/{database_id}` */
@@ -4204,26 +4204,6 @@ export const WriteResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "WriteResponse" }) as any as S.Schema<WriteResponse>;
 
-export type BatchGetProjectsDatabasesDocumentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested. */
-export const batchGetProjectsDatabasesDocuments: API.OperationMethod<
-  BatchGetProjectsDatabasesDocumentsRequest,
-  BatchGetDocumentsResponse,
-  BatchGetProjectsDatabasesDocumentsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetProjectsDatabasesDocumentsRequest,
-  output: BatchGetDocumentsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchWriteProjectsDatabasesDocumentsError =
   | NotFound
   | Forbidden
@@ -4259,26 +4239,6 @@ export const beginTransactionProjectsDatabasesDocuments: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: BeginTransactionProjectsDatabasesDocumentsRequest,
   output: BeginTransactionResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BulkDeleteDocumentsProjectsDatabasesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created. For more details on bulk delete behavior, refer to: https://cloud.google.com/firestore/docs/manage-data/bulk-delete */
-export const bulkDeleteDocumentsProjectsDatabases: API.OperationMethod<
-  BulkDeleteDocumentsProjectsDatabasesRequest,
-  GoogleLongrunningOperation,
-  BulkDeleteDocumentsProjectsDatabasesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteDocumentsProjectsDatabasesRequest,
-  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4459,6 +4419,26 @@ export const createProjectsDatabasesUserCreds: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsDatabasesUserCredsRequest,
   output: GoogleFirestoreAdminV1UserCreds,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBulkDocumentProjectDatabaseError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created. For more details on bulk delete behavior, refer to: https://cloud.google.com/firestore/docs/manage-data/bulk-delete */
+export const deleteBulkDocumentProjectDatabase: API.OperationMethod<
+  DeleteBulkDocumentProjectDatabaseRequest,
+  GoogleLongrunningOperation,
+  DeleteBulkDocumentProjectDatabaseError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBulkDocumentProjectDatabaseRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4699,6 +4679,26 @@ export const exportDocumentsProjectsDatabases: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExportDocumentsProjectsDatabasesRequest,
   output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchProjectDatabaseDocumentError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested. */
+export const getBatchProjectDatabaseDocument: API.OperationMethod<
+  GetBatchProjectDatabaseDocumentRequest,
+  BatchGetDocumentsResponse,
+  GetBatchProjectDatabaseDocumentError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchProjectDatabaseDocumentRequest,
+  output: BatchGetDocumentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

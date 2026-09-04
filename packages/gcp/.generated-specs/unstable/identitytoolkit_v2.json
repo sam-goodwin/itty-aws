@@ -5757,7 +5757,7 @@
         "smithy.api#documentation": "Step one of the MFA enrollment process. In SMS case, this sends an SMS verification code to the user."
       }
     },
-    "com.gcp.identitytoolkit_v2#FinalizeAccountsMfaSignInRequest": {
+    "com.gcp.identitytoolkit_v2#SignFinalizeAccountMfaInRequest": {
       "type": "structure",
       "members": {
         "body": {
@@ -5769,10 +5769,10 @@
         }
       }
     },
-    "com.gcp.identitytoolkit_v2#FinalizeAccountsMfaSignIn": {
+    "com.gcp.identitytoolkit_v2#SignFinalizeAccountMfaIn": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.identitytoolkit_v2#FinalizeAccountsMfaSignInRequest"
+        "target": "com.gcp.identitytoolkit_v2#SignFinalizeAccountMfaInRequest"
       },
       "output": {
         "target": "com.gcp.identitytoolkit_v2#GoogleCloudIdentitytoolkitV2FinalizeMfaSignInResponse"

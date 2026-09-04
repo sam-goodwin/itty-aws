@@ -12,6 +12,45 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+export interface BotsRegenerateApiJwtSecretRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  botName: string;
+}
+export const BotsRegenerateApiJwtSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    botName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}/regenerateApiJwtSecret",
+      code: 200,
+      apiVersion: "2025-11-01",
+    }),
+  ),
+).annotate({
+  identifier: "BotsRegenerateApiJwtSecretRequest",
+}) as any as S.Schema<BotsRegenerateApiJwtSecretRequest>;
+
+/** An entry of HealthBotKeysResponse */
+export interface HealthBotKey {
+  /** The name of the key. */
+  keyName?: string;
+  /** The value of the key. */
+  value?: string;
+}
+export const HealthBotKey = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keyName: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({ identifier: "HealthBotKey" }) as any as S.Schema<HealthBotKey>;
+
 /** Resource tags. */
 export type BotsCreateRequestTagsMap = { [key: string]: string | undefined };
 export const BotsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
@@ -108,7 +147,7 @@ export const IdentityInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "IdentityInput" }) as any as S.Schema<IdentityInput>;
 
-export interface BotsCreateRequest {
+export interface CreateBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -126,7 +165,7 @@ export interface BotsCreateRequest {
   /** The identity of the Azure Health Bot. */
   identity?: IdentityInput;
 }
-export const BotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -145,8 +184,8 @@ export const BotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BotsCreateRequest",
-}) as any as S.Schema<BotsCreateRequest>;
+  identifier: "CreateBotRequest",
+}) as any as S.Schema<CreateBotRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -264,7 +303,7 @@ export const Identity = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Identity" }) as any as S.Schema<Identity>;
 
-export interface BotsCreateResponse {
+export interface CreateBotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -284,7 +323,7 @@ export interface BotsCreateResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
-export const BotsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -297,10 +336,10 @@ export const BotsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(Identity),
   }),
 ).annotate({
-  identifier: "BotsCreateResponse",
-}) as any as S.Schema<BotsCreateResponse>;
+  identifier: "CreateBotResponse",
+}) as any as S.Schema<CreateBotResponse>;
 
-export interface BotsDeleteRequest {
+export interface DeleteBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -308,7 +347,7 @@ export interface BotsDeleteRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
-export const BotsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -322,17 +361,17 @@ export const BotsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BotsDeleteRequest",
-}) as any as S.Schema<BotsDeleteRequest>;
+  identifier: "DeleteBotRequest",
+}) as any as S.Schema<DeleteBotRequest>;
 
-export interface BotsDeleteResponse {}
-export const BotsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteBotResponse {}
+export const DeleteBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "BotsDeleteResponse",
-}) as any as S.Schema<BotsDeleteResponse>;
+  identifier: "DeleteBotResponse",
+}) as any as S.Schema<DeleteBotResponse>;
 
-export interface BotsGetRequest {
+export interface GetBotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -340,7 +379,7 @@ export interface BotsGetRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
-export const BotsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -353,7 +392,7 @@ export const BotsGetRequest = /*@__PURE__*/ S.suspend(() =>
       apiVersion: "2025-11-01",
     }),
   ),
-).annotate({ identifier: "BotsGetRequest" }) as any as S.Schema<BotsGetRequest>;
+).annotate({ identifier: "GetBotRequest" }) as any as S.Schema<GetBotRequest>;
 
 /** Resource tags. */
 export type BotsGetResponseTagsMap = { [key: string]: string | undefined };
@@ -362,7 +401,7 @@ export const BotsGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<BotsGetResponseTagsMap>;
 
-export interface BotsGetResponse {
+export interface GetBotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -382,7 +421,7 @@ export interface BotsGetResponse {
   /** The identity of the Azure Health Bot. */
   identity?: Identity;
 }
-export const BotsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -394,28 +433,29 @@ export const BotsGetResponse = /*@__PURE__*/ S.suspend(() =>
     sku: Sku,
     identity: S.optional(Identity),
   }),
-).annotate({
-  identifier: "BotsGetResponse",
-}) as any as S.Schema<BotsGetResponse>;
+).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
 
-export interface BotsListRequest {
+export interface ListBotByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
 }
-export const BotsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListBotByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthBot/healthBots",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots",
       code: 200,
       apiVersion: "2025-11-01",
     }),
   ),
 ).annotate({
-  identifier: "BotsListRequest",
-}) as any as S.Schema<BotsListRequest>;
+  identifier: "ListBotByResourceGroupRequest",
+}) as any as S.Schema<ListBotByResourceGroupRequest>;
 
 /** Resource tags. */
 export type HealthBotTagsMap = { [key: string]: string | undefined };
@@ -481,29 +521,26 @@ export const BotResponseList = /*@__PURE__*/ S.suspend(() =>
   identifier: "BotResponseList",
 }) as any as S.Schema<BotResponseList>;
 
-export interface BotsListByResourceGroupRequest {
+export interface ListBotsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
 }
-export const BotsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListBotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.HealthBot/healthBots",
       code: 200,
       apiVersion: "2025-11-01",
     }),
   ),
 ).annotate({
-  identifier: "BotsListByResourceGroupRequest",
-}) as any as S.Schema<BotsListByResourceGroupRequest>;
+  identifier: "ListBotsRequest",
+}) as any as S.Schema<ListBotsRequest>;
 
-export interface BotsListSecretsRequest {
+export interface ListBotSecretsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -511,7 +548,7 @@ export interface BotsListSecretsRequest {
   /** The name of the Bot resource. */
   botName: string;
 }
-export const BotsListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListBotSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -525,22 +562,8 @@ export const BotsListSecretsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BotsListSecretsRequest",
-}) as any as S.Schema<BotsListSecretsRequest>;
-
-/** An entry of HealthBotKeysResponse */
-export interface HealthBotKey {
-  /** The name of the key. */
-  keyName?: string;
-  /** The value of the key. */
-  value?: string;
-}
-export const HealthBotKey = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keyName: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "HealthBotKey" }) as any as S.Schema<HealthBotKey>;
+  identifier: "ListBotSecretsRequest",
+}) as any as S.Schema<ListBotSecretsRequest>;
 
 /** Array of Azure Health Bot Secrets. */
 export type HealthBotKeysResponseSecretsList = Array<HealthBotKey>;
@@ -561,122 +584,8 @@ export const HealthBotKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HealthBotKeysResponse",
 }) as any as S.Schema<HealthBotKeysResponse>;
 
-export interface BotsRegenerateApiJwtSecretRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  botName: string;
-}
-export const BotsRegenerateApiJwtSecretRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    botName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}/regenerateApiJwtSecret",
-      code: 200,
-      apiVersion: "2025-11-01",
-    }),
-  ),
-).annotate({
-  identifier: "BotsRegenerateApiJwtSecretRequest",
-}) as any as S.Schema<BotsRegenerateApiJwtSecretRequest>;
-
-/** Tags for a Azure Health Bot. */
-export type BotsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BotsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotsUpdateRequestTagsMap>;
-
-export interface BotsUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  botName: string;
-  /** Properties of Azure Health Bot. */
-  properties?: HealthBotPropertiesInput;
-  /** Tags for a Azure Health Bot. */
-  tags?: BotsUpdateRequestTagsMap;
-  /** SKU of the Azure Health Bot. */
-  sku?: Sku;
-  /** The identity of the Azure Health Bot. */
-  identity?: IdentityInput;
-  location?: string;
-}
-export const BotsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    botName: S.String.pipe(T.Label()),
-    properties: S.optional(HealthBotPropertiesInput),
-    tags: S.optional(BotsUpdateRequestTagsMap),
-    sku: S.optional(Sku),
-    identity: S.optional(IdentityInput),
-    location: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
-      code: 200,
-      apiVersion: "2025-11-01",
-    }),
-  ),
-).annotate({
-  identifier: "BotsUpdateRequest",
-}) as any as S.Schema<BotsUpdateRequest>;
-
-/** Resource tags. */
-export type BotsUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BotsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotsUpdateResponseTagsMap>;
-
-export interface BotsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: BotsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The set of properties specific to Azure Health Bot resource. */
-  properties?: HealthBotProperties;
-  /** SKU of the Azure Health Bot. */
-  sku: Sku;
-  /** The identity of the Azure Health Bot. */
-  identity?: Identity;
-}
-export const BotsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(BotsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(HealthBotProperties),
-    sku: Sku,
-    identity: S.optional(Identity),
-  }),
-).annotate({
-  identifier: "BotsUpdateResponse",
-}) as any as S.Schema<BotsUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -686,8 +595,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Operation display payload */
 export interface OperationDisplay {
@@ -758,95 +667,94 @@ export const AvailableOperations = /*@__PURE__*/ S.suspend(() =>
   identifier: "AvailableOperations",
 }) as any as S.Schema<AvailableOperations>;
 
-export type BotsCreateError = AzureOpError;
-/** Create a new Azure Health Bot. */
-export const BotsCreate: API.OperationMethod<
-  BotsCreateRequest,
-  BotsCreateResponse,
-  BotsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsCreateRequest,
-  output: BotsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Tags for a Azure Health Bot. */
+export type BotsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const BotsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotsUpdateRequestTagsMap>;
 
-export type BotsDeleteError = AzureOpError;
-/** Delete a HealthBot. */
-export const BotsDelete: API.OperationMethod<
-  BotsDeleteRequest,
-  BotsDeleteResponse,
-  BotsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsDeleteRequest,
-  output: BotsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateBotRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  botName: string;
+  /** Properties of Azure Health Bot. */
+  properties?: HealthBotPropertiesInput;
+  /** Tags for a Azure Health Bot. */
+  tags?: BotsUpdateRequestTagsMap;
+  /** SKU of the Azure Health Bot. */
+  sku?: Sku;
+  /** The identity of the Azure Health Bot. */
+  identity?: IdentityInput;
+  location?: string;
+}
+export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    botName: S.String.pipe(T.Label()),
+    properties: S.optional(HealthBotPropertiesInput),
+    tags: S.optional(BotsUpdateRequestTagsMap),
+    sku: S.optional(Sku),
+    identity: S.optional(IdentityInput),
+    location: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HealthBot/healthBots/{botName}",
+      code: 200,
+      apiVersion: "2025-11-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBotRequest",
+}) as any as S.Schema<UpdateBotRequest>;
 
-export type BotsGetError = AzureOpError;
-/** Get a HealthBot. */
-export const BotsGet: API.OperationMethod<
-  BotsGetRequest,
-  BotsGetResponse,
-  BotsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsGetRequest,
-  output: BotsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Resource tags. */
+export type BotsUpdateResponseTagsMap = { [key: string]: string | undefined };
+export const BotsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotsUpdateResponseTagsMap>;
 
-export type BotsListError = AzureOpError;
-/** Returns all the resources of a particular type belonging to a subscription. */
-export const BotsList: API.OperationMethod<
-  BotsListRequest,
-  BotResponseList,
-  BotsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsListRequest,
-  output: BotResponseList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BotsListByResourceGroupError = AzureOpError;
-/** Returns all the resources of a particular type belonging to a resource group */
-export const BotsListByResourceGroup: API.OperationMethod<
-  BotsListByResourceGroupRequest,
-  BotResponseList,
-  BotsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsListByResourceGroupRequest,
-  output: BotResponseList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BotsListSecretsError = AzureOpError;
-/** List all secrets of a HealthBot. */
-export const BotsListSecrets: API.OperationMethod<
-  BotsListSecretsRequest,
-  HealthBotKeysResponse,
-  BotsListSecretsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsListSecretsRequest,
-  output: HealthBotKeysResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateBotResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: BotsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The set of properties specific to Azure Health Bot resource. */
+  properties?: HealthBotProperties;
+  /** SKU of the Azure Health Bot. */
+  sku: Sku;
+  /** The identity of the Azure Health Bot. */
+  identity?: Identity;
+}
+export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(BotsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(HealthBotProperties),
+    sku: Sku,
+    identity: S.optional(Identity),
+  }),
+).annotate({
+  identifier: "UpdateBotResponse",
+}) as any as S.Schema<UpdateBotResponse>;
 
 export type BotsRegenerateApiJwtSecretError = AzureOpError;
 /** Regenerate the API JWT Secret of a HealthBot. */
@@ -863,31 +771,121 @@ export const BotsRegenerateApiJwtSecret: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BotsUpdateError = AzureOpError;
-/** Patch a HealthBot. */
-export const BotsUpdate: API.OperationMethod<
-  BotsUpdateRequest,
-  BotsUpdateResponse,
-  BotsUpdateError,
+export type CreateBotError = AzureOpError;
+/** Create a new Azure Health Bot. */
+export const CreateBot: API.OperationMethod<
+  CreateBotRequest,
+  CreateBotResponse,
+  CreateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BotsUpdateRequest,
-  output: BotsUpdateResponse,
+  input: CreateBotRequest,
+  output: CreateBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** Lists all the available Azure Health Bot operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  AvailableOperations,
-  OperationsListError,
+export type DeleteBotError = AzureOpError;
+/** Delete a HealthBot. */
+export const DeleteBot: API.OperationMethod<
+  DeleteBotRequest,
+  DeleteBotResponse,
+  DeleteBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: DeleteBotRequest,
+  output: DeleteBotResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBotError = AzureOpError;
+/** Get a HealthBot. */
+export const GetBot: API.OperationMethod<
+  GetBotRequest,
+  GetBotResponse,
+  GetBotError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBotRequest,
+  output: GetBotResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotByResourceGroupError = AzureOpError;
+/** Returns all the resources of a particular type belonging to a resource group */
+export const ListBotByResourceGroup: API.OperationMethod<
+  ListBotByResourceGroupRequest,
+  BotResponseList,
+  ListBotByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotByResourceGroupRequest,
+  output: BotResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotsError = AzureOpError;
+/** Returns all the resources of a particular type belonging to a subscription. */
+export const ListBots: API.OperationMethod<
+  ListBotsRequest,
+  BotResponseList,
+  ListBotsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotsRequest,
+  output: BotResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotSecretsError = AzureOpError;
+/** List all secrets of a HealthBot. */
+export const ListBotSecrets: API.OperationMethod<
+  ListBotSecretsRequest,
+  HealthBotKeysResponse,
+  ListBotSecretsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotSecretsRequest,
+  output: HealthBotKeysResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all the available Azure Health Bot operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  AvailableOperations,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
   output: AvailableOperations,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBotError = AzureOpError;
+/** Patch a HealthBot. */
+export const UpdateBot: API.OperationMethod<
+  UpdateBotRequest,
+  UpdateBotResponse,
+  UpdateBotError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBotRequest,
+  output: UpdateBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

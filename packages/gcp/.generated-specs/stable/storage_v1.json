@@ -2810,7 +2810,7 @@
         "smithy.api#documentation": "A storage.(buckets|objects|managedFolders).testIamPermissions response."
       }
     },
-    "com.gcp.storage_v1#BulkRestoreObjectsRequest": {
+    "com.gcp.storage_v1#RestoreBulkObjectRequest": {
       "type": "structure",
       "members": {
         "allowOverwrite": {
@@ -9217,7 +9217,7 @@
           }
         },
         "body": {
-          "target": "com.gcp.storage_v1#BulkRestoreObjectsRequest",
+          "target": "com.gcp.storage_v1#RestoreBulkObjectRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -9225,7 +9225,7 @@
         }
       }
     },
-    "com.gcp.storage_v1#BulkRestoreObjects": {
+    "com.gcp.storage_v1#RestoreBulkObject": {
       "type": "operation",
       "input": {
         "target": "com.gcp.storage_v1#BulkRestoreObjectsRequest_"

@@ -65,115 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Request to delete multiple Photos. */
-export interface BatchDeletePhotosRequest {
-  /** Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query parameter: `photoIds=&photoIds=&...`. */
-  photoIds?: StringList;
-}
-export const BatchDeletePhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    photoIds: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeletePhotosRequest",
-}) as any as S.Schema<BatchDeletePhotosRequest>;
-
-export interface BatchDeletePhotosRequest_ {
-  /** Request body */
-  body?: BatchDeletePhotosRequest;
-}
-export const BatchDeletePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchDeletePhotosRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/photos:batchDelete",
-      baseUrl: "https://streetviewpublish.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchDeletePhotosRequest_",
-}) as any as S.Schema<BatchDeletePhotosRequest_>;
-
-export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
-
-export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
-
-/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
-export interface Status {
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-}
-export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-    message: S.optional(S.String),
-  }),
-).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
-
-export type StatusList = Array<Status>;
-export const StatusList = /*@__PURE__*/ S.Array(
-  Status,
-) as any as S.Schema<StatusList>;
-
-/** Response to batch delete of one or more Photos. */
-export interface BatchDeletePhotosResponse {
-  /** The status for the operation to delete a single Photo in the batch request. */
-  status?: StatusList;
-}
-export const BatchDeletePhotosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(StatusList),
-  }),
-).annotate({
-  identifier: "BatchDeletePhotosResponse",
-}) as any as S.Schema<BatchDeletePhotosResponse>;
-
-export type BatchGetPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
-export const BatchGetPhotosViewEnum = /*@__PURE__*/ S.String;
-
-export interface BatchGetPhotosRequest {
-  /** Required. Specifies if a download URL for the photo bytes should be returned in the Photo response. */
-  view?: BatchGetPhotosViewEnum | (string & {});
-  /** Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be `photoIds=&photoIds=&...`. */
-  photoIds?: StringList;
-  /** Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the user's language preference for Google services is used. */
-  languageCode?: string;
-}
-export const BatchGetPhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    view: S.optional(BatchGetPhotosViewEnum.pipe(T.Query())),
-    photoIds: S.optional(StringList.pipe(T.Query())),
-    languageCode: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/photos:batchGet",
-      baseUrl: "https://streetviewpublish.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetPhotosRequest",
-}) as any as S.Schema<BatchGetPhotosRequest>;
-
 export type PhotoMapsPublishStatusEnum =
   | "UNSPECIFIED_MAPS_PUBLISH_STATUS"
   | "PUBLISHED"
@@ -357,103 +248,6 @@ export const Photo = /*@__PURE__*/ S.suspend(() =>
     downloadUrl: S.optional(S.String),
   }),
 ).annotate({ identifier: "Photo" }) as any as S.Schema<Photo>;
-
-/** Response payload for a single Photo in batch operations including BatchGetPhotos and BatchUpdatePhotos. */
-export interface PhotoResponse {
-  /** The Photo resource, if the request was successful. */
-  photo?: Photo;
-  /** The status for the operation to get or update a single photo in the batch request. */
-  status?: Status;
-}
-export const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    photo: S.optional(Photo),
-    status: S.optional(Status),
-  }),
-).annotate({ identifier: "PhotoResponse" }) as any as S.Schema<PhotoResponse>;
-
-export type PhotoResponseList = Array<PhotoResponse>;
-export const PhotoResponseList = /*@__PURE__*/ S.Array(
-  PhotoResponse,
-) as any as S.Schema<PhotoResponseList>;
-
-/** Response to batch get of Photos. */
-export interface BatchGetPhotosResponse {
-  /** List of results for each individual Photo requested, in the same order as the requests in BatchGetPhotos. */
-  results?: PhotoResponseList;
-}
-export const BatchGetPhotosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(PhotoResponseList),
-  }),
-).annotate({
-  identifier: "BatchGetPhotosResponse",
-}) as any as S.Schema<BatchGetPhotosResponse>;
-
-/** Request to update the metadata of a Photo. Updating the pixels of a photo is not supported. */
-export interface UpdatePhotoRequest {
-  /** Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. */
-  updateMask?: string;
-  /** Required. Photo object containing the new metadata. */
-  photo?: Photo;
-}
-export const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    photo: S.optional(Photo),
-  }),
-).annotate({
-  identifier: "UpdatePhotoRequest",
-}) as any as S.Schema<UpdatePhotoRequest>;
-
-export type UpdatePhotoRequestList = Array<UpdatePhotoRequest>;
-export const UpdatePhotoRequestList = /*@__PURE__*/ S.Array(
-  UpdatePhotoRequest,
-) as any as S.Schema<UpdatePhotoRequestList>;
-
-/** Request to update the metadata of photos. Updating the pixels of photos is not supported. */
-export interface BatchUpdatePhotosRequest {
-  /** Required. List of UpdatePhotoRequests. */
-  updatePhotoRequests?: UpdatePhotoRequestList;
-}
-export const BatchUpdatePhotosRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updatePhotoRequests: S.optional(UpdatePhotoRequestList),
-  }),
-).annotate({
-  identifier: "BatchUpdatePhotosRequest",
-}) as any as S.Schema<BatchUpdatePhotosRequest>;
-
-export interface BatchUpdatePhotosRequest_ {
-  /** Request body */
-  body?: BatchUpdatePhotosRequest;
-}
-export const BatchUpdatePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(BatchUpdatePhotosRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/photos:batchUpdate",
-      baseUrl: "https://streetviewpublish.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchUpdatePhotosRequest_",
-}) as any as S.Schema<BatchUpdatePhotosRequest_>;
-
-/** Response to batch update of metadata of one or more Photos. */
-export interface BatchUpdatePhotosResponse {
-  /** List of results for each individual Photo updated, in the same order as the request. */
-  results?: PhotoResponseList;
-}
-export const BatchUpdatePhotosResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(PhotoResponseList),
-  }),
-).annotate({
-  identifier: "BatchUpdatePhotosResponse",
-}) as any as S.Schema<BatchUpdatePhotosResponse>;
 
 export interface CreatePhotoRequest {
   /** Request body */
@@ -765,6 +559,34 @@ export const CreatePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreatePhotoSequenceRequest",
 }) as any as S.Schema<CreatePhotoSequenceRequest>;
 
+export type DocumentMap = { [key: string]: unknown | undefined };
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
+
+export type DocumentMapList = Array<DocumentMap>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
+
+/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
+export interface Status {
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+}
+export const Status = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+    message: S.optional(S.String),
+  }),
+).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
+
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -787,6 +609,60 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
     done: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+/** Request to delete multiple Photos. */
+export interface DeleteBatchPhotosRequest {
+  /** Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query parameter: `photoIds=&photoIds=&...`. */
+  photoIds?: StringList;
+}
+export const DeleteBatchPhotosRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    photoIds: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "DeleteBatchPhotosRequest",
+}) as any as S.Schema<DeleteBatchPhotosRequest>;
+
+export interface BatchDeletePhotosRequest_ {
+  /** Request body */
+  body?: DeleteBatchPhotosRequest;
+}
+export const BatchDeletePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(DeleteBatchPhotosRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/photos:batchDelete",
+      baseUrl: "https://streetviewpublish.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchDeletePhotosRequest_",
+}) as any as S.Schema<BatchDeletePhotosRequest_>;
+
+export type StatusList = Array<Status>;
+export const StatusList = /*@__PURE__*/ S.Array(
+  Status,
+) as any as S.Schema<StatusList>;
+
+/** Response to batch delete of one or more Photos. */
+export interface DeleteBatchPhotosResponse {
+  /** The status for the operation to delete a single Photo in the batch request. */
+  status?: StatusList;
+}
+export const DeleteBatchPhotosResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(StatusList),
+  }),
+).annotate({
+  identifier: "DeleteBatchPhotosResponse",
+}) as any as S.Schema<DeleteBatchPhotosResponse>;
 
 export interface DeletePhotoRequest {
   /** Required. ID of the Photo. */
@@ -829,6 +705,65 @@ export const DeletePhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeletePhotoSequenceRequest",
 }) as any as S.Schema<DeletePhotoSequenceRequest>;
+
+export type BatchGetPhotosViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
+export const BatchGetPhotosViewEnum = /*@__PURE__*/ S.String;
+
+export interface GetBatchPhotosRequest {
+  /** Required. Specifies if a download URL for the photo bytes should be returned in the Photo response. */
+  view?: BatchGetPhotosViewEnum | (string & {});
+  /** Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be `photoIds=&photoIds=&...`. */
+  photoIds?: StringList;
+  /** Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. If language_code is unspecified, the user's language preference for Google services is used. */
+  languageCode?: string;
+}
+export const GetBatchPhotosRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    view: S.optional(BatchGetPhotosViewEnum.pipe(T.Query())),
+    photoIds: S.optional(StringList.pipe(T.Query())),
+    languageCode: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/photos:batchGet",
+      baseUrl: "https://streetviewpublish.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBatchPhotosRequest",
+}) as any as S.Schema<GetBatchPhotosRequest>;
+
+/** Response payload for a single Photo in batch operations including BatchGetPhotos and BatchUpdatePhotos. */
+export interface PhotoResponse {
+  /** The Photo resource, if the request was successful. */
+  photo?: Photo;
+  /** The status for the operation to get or update a single photo in the batch request. */
+  status?: Status;
+}
+export const PhotoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    photo: S.optional(Photo),
+    status: S.optional(Status),
+  }),
+).annotate({ identifier: "PhotoResponse" }) as any as S.Schema<PhotoResponse>;
+
+export type PhotoResponseList = Array<PhotoResponse>;
+export const PhotoResponseList = /*@__PURE__*/ S.Array(
+  PhotoResponse,
+) as any as S.Schema<PhotoResponseList>;
+
+/** Response to batch get of Photos. */
+export interface GetBatchPhotosResponse {
+  /** List of results for each individual Photo requested, in the same order as the requests in BatchGetPhotos. */
+  results?: PhotoResponseList;
+}
+export const GetBatchPhotosResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(PhotoResponseList),
+  }),
+).annotate({
+  identifier: "GetBatchPhotosResponse",
+}) as any as S.Schema<GetBatchPhotosResponse>;
 
 export type GetPhotoViewEnum = "BASIC" | "INCLUDE_DOWNLOAD_URL";
 export const GetPhotoViewEnum = /*@__PURE__*/ S.String;
@@ -1014,6 +949,71 @@ export const StartUploadPhotoSequenceRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "StartUploadPhotoSequenceRequest",
 }) as any as S.Schema<StartUploadPhotoSequenceRequest>;
 
+/** Request to update the metadata of a Photo. Updating the pixels of a photo is not supported. */
+export interface UpdatePhotoRequest {
+  /** Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. */
+  updateMask?: string;
+  /** Required. Photo object containing the new metadata. */
+  photo?: Photo;
+}
+export const UpdatePhotoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String),
+    photo: S.optional(Photo),
+  }),
+).annotate({
+  identifier: "UpdatePhotoRequest",
+}) as any as S.Schema<UpdatePhotoRequest>;
+
+export type UpdatePhotoRequestList = Array<UpdatePhotoRequest>;
+export const UpdatePhotoRequestList = /*@__PURE__*/ S.Array(
+  UpdatePhotoRequest,
+) as any as S.Schema<UpdatePhotoRequestList>;
+
+/** Request to update the metadata of photos. Updating the pixels of photos is not supported. */
+export interface UpdateBatchPhotosRequest {
+  /** Required. List of UpdatePhotoRequests. */
+  updatePhotoRequests?: UpdatePhotoRequestList;
+}
+export const UpdateBatchPhotosRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updatePhotoRequests: S.optional(UpdatePhotoRequestList),
+  }),
+).annotate({
+  identifier: "UpdateBatchPhotosRequest",
+}) as any as S.Schema<UpdateBatchPhotosRequest>;
+
+export interface BatchUpdatePhotosRequest_ {
+  /** Request body */
+  body?: UpdateBatchPhotosRequest;
+}
+export const BatchUpdatePhotosRequest_ = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(UpdateBatchPhotosRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/photos:batchUpdate",
+      baseUrl: "https://streetviewpublish.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "BatchUpdatePhotosRequest_",
+}) as any as S.Schema<BatchUpdatePhotosRequest_>;
+
+/** Response to batch update of metadata of one or more Photos. */
+export interface UpdateBatchPhotosResponse {
+  /** List of results for each individual Photo updated, in the same order as the request. */
+  results?: PhotoResponseList;
+}
+export const UpdateBatchPhotosResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(PhotoResponseList),
+  }),
+).annotate({
+  identifier: "UpdateBatchPhotosResponse",
+}) as any as S.Schema<UpdateBatchPhotosResponse>;
+
 export interface UpdatePhotoRequest_ {
   /** Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. */
   updateMask?: string;
@@ -1037,61 +1037,6 @@ export const UpdatePhotoRequest_ = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UpdatePhotoRequest_",
 }) as any as S.Schema<UpdatePhotoRequest_>;
-
-export type BatchDeletePhotosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that can occur per photo. */
-export const batchDeletePhotos: API.OperationMethod<
-  BatchDeletePhotosRequest_,
-  BatchDeletePhotosResponse,
-  BatchDeletePhotosError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeletePhotosRequest_,
-  output: BatchDeletePhotosResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchGetPhotosError = NotFound | Forbidden | GcpOpError;
-/** Gets the metadata of the specified Photo batch. Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error. Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures that can occur per photo. */
-export const batchGetPhotos: API.OperationMethod<
-  BatchGetPhotosRequest,
-  BatchGetPhotosResponse,
-  BatchGetPhotosError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetPhotosRequest,
-  output: BatchGetPhotosResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdatePhotosError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the pixels of photos is not supported. Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures that can occur per photo. Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies to all fields. The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. > Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail. */
-export const batchUpdatePhotos: API.OperationMethod<
-  BatchUpdatePhotosRequest_,
-  BatchUpdatePhotosResponse,
-  BatchUpdatePhotosError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdatePhotosRequest_,
-  output: BatchUpdatePhotosResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
 
 export type CreatePhotoError =
   | NotFound
@@ -1133,6 +1078,26 @@ export const createPhotoSequence: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type DeleteBatchPhotosError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchDeletePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchDeletePhotosResponse.results. See DeletePhoto for specific failures that can occur per photo. */
+export const deleteBatchPhotos: API.OperationMethod<
+  BatchDeletePhotosRequest_,
+  DeleteBatchPhotosResponse,
+  DeleteBatchPhotosError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchDeletePhotosRequest_,
+  output: DeleteBatchPhotosResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DeletePhotoError =
   | NotFound
   | Forbidden
@@ -1169,6 +1134,21 @@ export const deletePhotoSequence: API.OperationMethod<
   input: DeletePhotoSequenceRequest,
   output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchPhotosError = NotFound | Forbidden | GcpOpError;
+/** Gets the metadata of the specified Photo batch. Note that if BatchGetPhotos fails, either critical fields are missing or there is an authentication error. Even if BatchGetPhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchGetPhotosResponse.results. See GetPhoto for specific failures that can occur per photo. */
+export const getBatchPhotos: API.OperationMethod<
+  GetBatchPhotosRequest,
+  GetBatchPhotosResponse,
+  GetBatchPhotosError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchPhotosRequest,
+  output: GetBatchPhotosResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -1278,6 +1258,26 @@ export const startUploadPhotoSequence: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: StartUploadPhotoSequenceRequest,
   output: UploadRef,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchPhotosError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates the metadata of Photos, such as pose, place association, connections, etc. Changing the pixels of photos is not supported. Note that if BatchUpdatePhotos fails, either critical fields are missing or there is an authentication error. Even if BatchUpdatePhotos succeeds, individual photos in the batch may have failures. These failures are specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See UpdatePhoto for specific failures that can occur per photo. Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies to all fields. The number of UpdatePhotoRequest messages in a BatchUpdatePhotosRequest must not exceed 20. > Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail. */
+export const updateBatchPhotos: API.OperationMethod<
+  BatchUpdatePhotosRequest_,
+  UpdateBatchPhotosResponse,
+  UpdateBatchPhotosError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: BatchUpdatePhotosRequest_,
+  output: UpdateBatchPhotosResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.azurefleet#FleetsListVirtualMachineScaleSets": {
+    "com.azure.azurefleet#ListFleetVirtualMachineScaleSets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurefleet#FleetsListVirtualMachineScaleSetsRequest"
+        "target": "com.azure.azurefleet#ListFleetVirtualMachineScaleSetsRequest"
       },
       "output": {
         "target": "com.azure.azurefleet#VirtualMachineScaleSetListResult"
@@ -250,7 +250,7 @@
         "smithy.api#documentation": "The status of the current operation."
       }
     },
-    "com.azure.azurefleet#FleetsListVirtualMachineScaleSetsRequest": {
+    "com.azure.azurefleet#ListFleetVirtualMachineScaleSetsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -282,10 +282,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurefleet#FleetsDelete": {
+    "com.azure.azurefleet#DeleteFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurefleet#FleetsDeleteRequest"
+        "target": "com.azure.azurefleet#DeleteFleetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -301,7 +301,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.azurefleet#FleetsDeleteRequest": {
+    "com.azure.azurefleet#DeleteFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -333,13 +333,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurefleet#FleetsUpdate": {
+    "com.azure.azurefleet#UpdateFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurefleet#FleetsUpdateRequest"
+        "target": "com.azure.azurefleet#UpdateFleetRequest"
       },
       "output": {
-        "target": "com.azure.azurefleet#FleetsUpdateResponse"
+        "target": "com.azure.azurefleet#UpdateFleetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -352,7 +352,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.azurefleet#FleetsUpdateResponse": {
+    "com.azure.azurefleet#UpdateFleetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4002,7 +4002,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.azurefleet#FleetsUpdateRequest": {
+    "com.azure.azurefleet#UpdateFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4997,13 +4997,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurefleet#FleetsGet": {
+    "com.azure.azurefleet#GetFleet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurefleet#FleetsGetRequest"
+        "target": "com.azure.azurefleet#GetFleetRequest"
       },
       "output": {
-        "target": "com.azure.azurefleet#FleetsGetResponse"
+        "target": "com.azure.azurefleet#GetFleetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5016,7 +5016,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.azurefleet#FleetsGetResponse": {
+    "com.azure.azurefleet#GetFleetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5176,7 +5176,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurefleet#FleetsGetRequest": {
+    "com.azure.azurefleet#GetFleetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5208,10 +5208,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurefleet#FleetsListByResourceGroup": {
+    "com.azure.azurefleet#ListFleetByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurefleet#FleetsListByResourceGroupRequest"
+        "target": "com.azure.azurefleet#ListFleetByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.azurefleet#FleetListResult"
@@ -5417,7 +5417,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurefleet#FleetsListByResourceGroupRequest": {
+    "com.azure.azurefleet#ListFleetByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5441,10 +5441,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurefleet#FleetsListBySubscription": {
+    "com.azure.azurefleet#ListFleetBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurefleet#FleetsListBySubscriptionRequest"
+        "target": "com.azure.azurefleet#ListFleetBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.azurefleet#FleetListResult"
@@ -5460,7 +5460,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.azurefleet#FleetsListBySubscriptionRequest": {
+    "com.azure.azurefleet#ListFleetBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5476,13 +5476,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurefleet#OperationsList": {
+    "com.azure.azurefleet#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.azurefleet#OperationsListResponse"
+        "target": "com.azure.azurefleet#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5495,7 +5495,7 @@
         "com.distilled.openapi#apiVersion": "2024-11-01"
       }
     },
-    "com.azure.azurefleet#OperationsListResponse": {
+    "com.azure.azurefleet#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -5639,28 +5639,28 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.azurefleet#FleetsListVirtualMachineScaleSets"
+          "target": "com.azure.azurefleet#ListFleetVirtualMachineScaleSets"
         },
         {
-          "target": "com.azure.azurefleet#FleetsDelete"
+          "target": "com.azure.azurefleet#DeleteFleet"
         },
         {
-          "target": "com.azure.azurefleet#FleetsUpdate"
+          "target": "com.azure.azurefleet#UpdateFleet"
         },
         {
           "target": "com.azure.azurefleet#FleetsCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurefleet#FleetsGet"
+          "target": "com.azure.azurefleet#GetFleet"
         },
         {
-          "target": "com.azure.azurefleet#FleetsListByResourceGroup"
+          "target": "com.azure.azurefleet#ListFleetByResourceGroup"
         },
         {
-          "target": "com.azure.azurefleet#FleetsListBySubscription"
+          "target": "com.azure.azurefleet#ListFleetBySubscription"
         },
         {
-          "target": "com.azure.azurefleet#OperationsList"
+          "target": "com.azure.azurefleet#ListOperations"
         }
       ],
       "traits": {

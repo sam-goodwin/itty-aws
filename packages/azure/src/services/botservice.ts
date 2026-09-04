@@ -13,14 +13,53 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+export interface BotsGetCheckNameAvailabilityRequest {
+  /** the name of the bot for which availability needs to be checked. */
+  name?: string;
+  /** the type of the bot for which availability needs to be checked */
+  type?: string;
+}
+export const BotsGetCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.BotService/checkNameAvailability",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "BotsGetCheckNameAvailabilityRequest",
+}) as any as S.Schema<BotsGetCheckNameAvailabilityRequest>;
+
+/** The response body returned for a request to Bot Service Management to check availability of a bot name. */
+export interface CheckNameAvailabilityResponseBody {
+  /** indicates if the bot name is valid. */
+  valid?: boolean;
+  /** additional message from the bot management api showing why a bot name is not available */
+  message?: string;
+  /** response code from ABS */
+  absCode?: string;
+}
+export const CheckNameAvailabilityResponseBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    valid: S.optional(S.Boolean),
+    message: S.optional(S.String),
+    absCode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckNameAvailabilityResponseBody",
+}) as any as S.Schema<CheckNameAvailabilityResponseBody>;
+
 /** Contains resource tags defined as key/value pairs. */
-export type BotConnectionCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BotConnectionCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+export type BotsCreateRequestTagsMap = { [key: string]: string | undefined };
+export const BotsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<BotConnectionCreateRequestTagsMap>;
+) as any as S.Schema<BotsCreateRequestTagsMap>;
 
 /** The name of SKU. */
 export type SkuName = "F0" | "S1";
@@ -40,799 +79,6 @@ export const SkuInput = /*@__PURE__*/ S.suspend(() =>
 /** Indicates the type of bot service */
 export type Kind = "sdk" | "designer" | "bot" | "function" | "azurebot";
 export const Kind = /*@__PURE__*/ S.String;
-
-/** Extra Parameter in a Connection Setting Properties to indicate service provider specific properties */
-export interface ConnectionSettingParameter {
-  /** Key for the Connection Setting Parameter. */
-  key?: string;
-  /** Value associated with the Connection Setting Parameter. */
-  value?: string | null;
-}
-export const ConnectionSettingParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ConnectionSettingParameter",
-}) as any as S.Schema<ConnectionSettingParameter>;
-
-/** Service Provider Parameters associated with the Connection Setting */
-export type ConnectionSettingPropertiesInputParametersList =
-  Array<ConnectionSettingParameter>;
-export const ConnectionSettingPropertiesInputParametersList =
-  /*@__PURE__*/ S.Array(
-    ConnectionSettingParameter,
-  ) as any as S.Schema<ConnectionSettingPropertiesInputParametersList>;
-
-/** Properties for a Connection Setting Item */
-export interface ConnectionSettingPropertiesInput {
-  /** Id of the Connection Setting. */
-  id?: string;
-  /** Name of the Connection Setting. */
-  name?: string;
-  /** Client Id associated with the Connection Setting. */
-  clientId?: string;
-  /** Client Secret associated with the Connection Setting */
-  clientSecret?: string | Redacted.Redacted<string>;
-  /** Scopes associated with the Connection Setting */
-  scopes?: string;
-  /** Service Provider Id associated with the Connection Setting */
-  serviceProviderId?: string;
-  /** Service Provider Display Name associated with the Connection Setting */
-  serviceProviderDisplayName?: string;
-  /** Service Provider Parameters associated with the Connection Setting */
-  parameters?: ConnectionSettingPropertiesInputParametersList;
-  /** Provisioning state of the resource */
-  provisioningState?: string;
-}
-export const ConnectionSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    clientId: S.optional(S.String),
-    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    scopes: S.optional(S.String),
-    serviceProviderId: S.optional(S.String),
-    serviceProviderDisplayName: S.optional(S.String),
-    parameters: S.optional(ConnectionSettingPropertiesInputParametersList),
-    provisioningState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionSettingPropertiesInput",
-}) as any as S.Schema<ConnectionSettingPropertiesInput>;
-
-export interface BotConnectionCreateRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Bot Service Connection Setting resource. */
-  connectionName: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotConnectionCreateRequestTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: SkuInput;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | (string & {}) | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingPropertiesInput;
-}
-export const BotConnectionCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-    location: S.optional(S.String),
-    tags: S.optional(BotConnectionCreateRequestTagsMap),
-    sku: S.optional(SkuInput),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    properties: S.optional(ConnectionSettingPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotConnectionCreateRequest",
-}) as any as S.Schema<BotConnectionCreateRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotConnectionCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BotConnectionCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotConnectionCreateResponseTagsMap>;
-
-/** Gets the sku tier. This is based on the SKU name. */
-export type SkuTier = "Free" | "Standard";
-export const SkuTier = /*@__PURE__*/ S.String;
-
-/** The SKU of the cognitive services account. */
-export interface Sku {
-  /** The sku name */
-  name: SkuName;
-  /** Gets the sku tier. This is based on the SKU name. */
-  tier?: SkuTier;
-}
-export const Sku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: SkuName,
-    tier: S.optional(SkuTier),
-  }),
-).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
-
-/** Entity zones */
-export type BotConnectionCreateResponseZonesList = Array<string>;
-export const BotConnectionCreateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotConnectionCreateResponseZonesList>;
-
-/** Service Provider Parameters associated with the Connection Setting */
-export type ConnectionSettingPropertiesParametersList =
-  Array<ConnectionSettingParameter>;
-export const ConnectionSettingPropertiesParametersList = /*@__PURE__*/ S.Array(
-  ConnectionSettingParameter,
-) as any as S.Schema<ConnectionSettingPropertiesParametersList>;
-
-/** Properties for a Connection Setting Item */
-export interface ConnectionSettingProperties {
-  /** Id of the Connection Setting. */
-  id?: string;
-  /** Name of the Connection Setting. */
-  name?: string;
-  /** Client Id associated with the Connection Setting. */
-  clientId?: string;
-  /** Setting Id set by the service for the Connection Setting. */
-  settingId?: string;
-  /** Client Secret associated with the Connection Setting */
-  clientSecret?: string | Redacted.Redacted<string>;
-  /** Scopes associated with the Connection Setting */
-  scopes?: string;
-  /** Service Provider Id associated with the Connection Setting */
-  serviceProviderId?: string;
-  /** Service Provider Display Name associated with the Connection Setting */
-  serviceProviderDisplayName?: string;
-  /** Service Provider Parameters associated with the Connection Setting */
-  parameters?: ConnectionSettingPropertiesParametersList;
-  /** Provisioning state of the resource */
-  provisioningState?: string;
-}
-export const ConnectionSettingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    clientId: S.optional(S.String),
-    settingId: S.optional(S.String),
-    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-    scopes: S.optional(S.String),
-    serviceProviderId: S.optional(S.String),
-    serviceProviderDisplayName: S.optional(S.String),
-    parameters: S.optional(ConnectionSettingPropertiesParametersList),
-    provisioningState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectionSettingProperties",
-}) as any as S.Schema<ConnectionSettingProperties>;
-
-export interface BotConnectionCreateResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotConnectionCreateResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotConnectionCreateResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingProperties;
-}
-export const BotConnectionCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotConnectionCreateResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotConnectionCreateResponseZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({
-  identifier: "BotConnectionCreateResponse",
-}) as any as S.Schema<BotConnectionCreateResponse>;
-
-export interface BotConnectionDeleteRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Bot Service Connection Setting resource. */
-  connectionName: string;
-}
-export const BotConnectionDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotConnectionDeleteRequest",
-}) as any as S.Schema<BotConnectionDeleteRequest>;
-
-export interface BotConnectionDeleteResponse {}
-export const BotConnectionDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BotConnectionDeleteResponse",
-}) as any as S.Schema<BotConnectionDeleteResponse>;
-
-export interface BotConnectionGetRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Bot Service Connection Setting resource. */
-  connectionName: string;
-}
-export const BotConnectionGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotConnectionGetRequest",
-}) as any as S.Schema<BotConnectionGetRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotConnectionGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BotConnectionGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotConnectionGetResponseTagsMap>;
-
-/** Entity zones */
-export type BotConnectionGetResponseZonesList = Array<string>;
-export const BotConnectionGetResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotConnectionGetResponseZonesList>;
-
-export interface BotConnectionGetResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotConnectionGetResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotConnectionGetResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingProperties;
-}
-export const BotConnectionGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotConnectionGetResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotConnectionGetResponseZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({
-  identifier: "BotConnectionGetResponse",
-}) as any as S.Schema<BotConnectionGetResponse>;
-
-export interface BotConnectionListByBotServiceRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-}
-export const BotConnectionListByBotServiceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections",
-        code: 200,
-        apiVersion: "2022-09-15",
-      }),
-    ),
-).annotate({
-  identifier: "BotConnectionListByBotServiceRequest",
-}) as any as S.Schema<BotConnectionListByBotServiceRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type ConnectionSettingTagsMap = { [key: string]: string | undefined };
-export const ConnectionSettingTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ConnectionSettingTagsMap>;
-
-/** Entity zones */
-export type ConnectionSettingZonesList = Array<string>;
-export const ConnectionSettingZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectionSettingZonesList>;
-
-/** Bot channel resource definition */
-export interface ConnectionSetting {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: ConnectionSettingTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: ConnectionSettingZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingProperties;
-}
-export const ConnectionSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ConnectionSettingTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(ConnectionSettingZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({
-  identifier: "ConnectionSetting",
-}) as any as S.Schema<ConnectionSetting>;
-
-/** Gets the list of bot service connection settings and their properties. */
-export type ConnectionSettingResponseListValueList = Array<ConnectionSetting>;
-export const ConnectionSettingResponseListValueList = /*@__PURE__*/ S.Array(
-  ConnectionSetting,
-) as any as S.Schema<ConnectionSettingResponseListValueList>;
-
-/** The list of bot service connection settings response. */
-export interface ConnectionSettingResponseList {
-  /** The link used to get the next page of bot service connection setting resources. */
-  nextLink?: string;
-  /** Gets the list of bot service connection settings and their properties. */
-  value?: ConnectionSettingResponseListValueList;
-}
-export const ConnectionSettingResponseList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ConnectionSettingResponseListValueList),
-  }),
-).annotate({
-  identifier: "ConnectionSettingResponseList",
-}) as any as S.Schema<ConnectionSettingResponseList>;
-
-export interface BotConnectionListServiceProvidersRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-}
-export const BotConnectionListServiceProvidersRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listAuthServiceProviders",
-        code: 200,
-        apiVersion: "2022-09-15",
-      }),
-    ),
-).annotate({
-  identifier: "BotConnectionListServiceProvidersRequest",
-}) as any as S.Schema<BotConnectionListServiceProvidersRequest>;
-
-/** the constraints of the bot meta data. */
-export interface ServiceProviderParameterMetadataConstraints {
-  /** Whether required the constraints of the bot meta data. */
-  required?: boolean;
-}
-export const ServiceProviderParameterMetadataConstraints =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      required: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "ServiceProviderParameterMetadataConstraints",
-  }) as any as S.Schema<ServiceProviderParameterMetadataConstraints>;
-
-/** Meta data for the Service Provider */
-export interface ServiceProviderParameterMetadata {
-  /** the constraints of the bot meta data. */
-  constraints?: ServiceProviderParameterMetadataConstraints;
-}
-export const ServiceProviderParameterMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    constraints: S.optional(ServiceProviderParameterMetadataConstraints),
-  }),
-).annotate({
-  identifier: "ServiceProviderParameterMetadata",
-}) as any as S.Schema<ServiceProviderParameterMetadata>;
-
-/** Extra Parameters specific to each Service Provider */
-export interface ServiceProviderParameter {
-  /** Name of the Service Provider */
-  name?: string;
-  /** Type of the Service Provider */
-  type?: string;
-  /** Display Name of the Service Provider */
-  displayName?: string;
-  /** Description of the Service Provider */
-  description?: string;
-  /** Help Url for the Service Provider */
-  helpUrl?: string;
-  /** Default Name for the Service Provider */
-  default?: string;
-  /** Meta data for the Service Provider */
-  metadata?: ServiceProviderParameterMetadata;
-}
-export const ServiceProviderParameter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    displayName: S.optional(S.String),
-    description: S.optional(S.String),
-    helpUrl: S.optional(S.String),
-    default: S.optional(S.String),
-    metadata: S.optional(ServiceProviderParameterMetadata),
-  }),
-).annotate({
-  identifier: "ServiceProviderParameter",
-}) as any as S.Schema<ServiceProviderParameter>;
-
-/** The list of parameters for the Service Provider */
-export type ServiceProviderPropertiesParametersList =
-  Array<ServiceProviderParameter>;
-export const ServiceProviderPropertiesParametersList = /*@__PURE__*/ S.Array(
-  ServiceProviderParameter,
-) as any as S.Schema<ServiceProviderPropertiesParametersList>;
-
-/** The Object used to describe a Service Provider supported by Bot Service */
-export interface ServiceProviderProperties {
-  /** Id for Service Provider */
-  id?: string;
-  /** Display Name of the Service Provider */
-  displayName?: string;
-  /** Name of the Service Provider */
-  serviceProviderName?: string;
-  /** URL of Dev Portal */
-  devPortalUrl?: string;
-  /** The URL of icon */
-  iconUrl?: string;
-  /** The list of parameters for the Service Provider */
-  parameters?: ServiceProviderPropertiesParametersList;
-}
-export const ServiceProviderProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    displayName: S.optional(S.String),
-    serviceProviderName: S.optional(S.String),
-    devPortalUrl: S.optional(S.String),
-    iconUrl: S.optional(S.String),
-    parameters: S.optional(ServiceProviderPropertiesParametersList),
-  }),
-).annotate({
-  identifier: "ServiceProviderProperties",
-}) as any as S.Schema<ServiceProviderProperties>;
-
-/** Service Provider Definition */
-export interface ServiceProvider {
-  /** The Properties of a Service Provider Object */
-  properties?: ServiceProviderProperties;
-}
-export const ServiceProvider = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(ServiceProviderProperties),
-  }),
-).annotate({
-  identifier: "ServiceProvider",
-}) as any as S.Schema<ServiceProvider>;
-
-/** Gets the list of bot service providers and their properties. */
-export type ServiceProviderResponseListValueList = Array<ServiceProvider>;
-export const ServiceProviderResponseListValueList = /*@__PURE__*/ S.Array(
-  ServiceProvider,
-) as any as S.Schema<ServiceProviderResponseListValueList>;
-
-/** The list of bot service providers response. */
-export interface ServiceProviderResponseList {
-  /** The link used to get the next page of bot service providers. */
-  nextLink?: string;
-  /** Gets the list of bot service providers and their properties. */
-  value?: ServiceProviderResponseListValueList;
-}
-export const ServiceProviderResponseList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ServiceProviderResponseListValueList),
-  }),
-).annotate({
-  identifier: "ServiceProviderResponseList",
-}) as any as S.Schema<ServiceProviderResponseList>;
-
-export interface BotConnectionListWithSecretsRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Bot Service Connection Setting resource. */
-  connectionName: string;
-}
-export const BotConnectionListWithSecretsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}/listWithSecrets",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotConnectionListWithSecretsRequest",
-}) as any as S.Schema<BotConnectionListWithSecretsRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotConnectionListWithSecretsResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BotConnectionListWithSecretsResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BotConnectionListWithSecretsResponseTagsMap>;
-
-/** Entity zones */
-export type BotConnectionListWithSecretsResponseZonesList = Array<string>;
-export const BotConnectionListWithSecretsResponseZonesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BotConnectionListWithSecretsResponseZonesList>;
-
-export interface BotConnectionListWithSecretsResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotConnectionListWithSecretsResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotConnectionListWithSecretsResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingProperties;
-}
-export const BotConnectionListWithSecretsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      location: S.optional(S.String),
-      type: S.optional(S.String),
-      tags: S.optional(BotConnectionListWithSecretsResponseTagsMap),
-      sku: S.optional(Sku),
-      kind: S.optional(S.NullOr(Kind)),
-      etag: S.optional(S.String),
-      zones: S.optional(BotConnectionListWithSecretsResponseZonesList),
-      properties: S.optional(ConnectionSettingProperties),
-    }),
-).annotate({
-  identifier: "BotConnectionListWithSecretsResponse",
-}) as any as S.Schema<BotConnectionListWithSecretsResponse>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotConnectionUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BotConnectionUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotConnectionUpdateRequestTagsMap>;
-
-export interface BotConnectionUpdateRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Bot Service Connection Setting resource. */
-  connectionName: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotConnectionUpdateRequestTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: SkuInput;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | (string & {}) | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingPropertiesInput;
-}
-export const BotConnectionUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    connectionName: S.String.pipe(T.Label()),
-    location: S.optional(S.String),
-    tags: S.optional(BotConnectionUpdateRequestTagsMap),
-    sku: S.optional(SkuInput),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    properties: S.optional(ConnectionSettingPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotConnectionUpdateRequest",
-}) as any as S.Schema<BotConnectionUpdateRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotConnectionUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BotConnectionUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotConnectionUpdateResponseTagsMap>;
-
-/** Entity zones */
-export type BotConnectionUpdateResponseZonesList = Array<string>;
-export const BotConnectionUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotConnectionUpdateResponseZonesList>;
-
-export interface BotConnectionUpdateResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotConnectionUpdateResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotConnectionUpdateResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: ConnectionSettingProperties;
-}
-export const BotConnectionUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotConnectionUpdateResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotConnectionUpdateResponseZonesList),
-    properties: S.optional(ConnectionSettingProperties),
-  }),
-).annotate({
-  identifier: "BotConnectionUpdateResponse",
-}) as any as S.Schema<BotConnectionUpdateResponse>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotsCreateRequestTagsMap = { [key: string]: string | undefined };
-export const BotsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotsCreateRequestTagsMap>;
 
 /** Contains resource all settings defined as key/value pairs. */
 export type BotPropertiesInputAllSettingsMap = {
@@ -960,7 +206,7 @@ export const BotPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "BotPropertiesInput",
 }) as any as S.Schema<BotPropertiesInput>;
 
-export interface BotsCreateRequest {
+export interface CreateBotRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
@@ -980,7 +226,7 @@ export interface BotsCreateRequest {
   /** The set of properties specific to bot resource */
   properties?: BotPropertiesInput;
 }
-export const BotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1000,8 +246,8 @@ export const BotsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BotsCreateRequest",
-}) as any as S.Schema<BotsCreateRequest>;
+  identifier: "CreateBotRequest",
+}) as any as S.Schema<CreateBotRequest>;
 
 /** Contains resource tags defined as key/value pairs. */
 export type BotsCreateResponseTagsMap = { [key: string]: string | undefined };
@@ -1009,6 +255,24 @@ export const BotsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
 ) as any as S.Schema<BotsCreateResponseTagsMap>;
+
+/** Gets the sku tier. This is based on the SKU name. */
+export type SkuTier = "Free" | "Standard";
+export const SkuTier = /*@__PURE__*/ S.String;
+
+/** The SKU of the cognitive services account. */
+export interface Sku {
+  /** The sku name */
+  name: SkuName;
+  /** Gets the sku tier. This is based on the SKU name. */
+  tier?: SkuTier;
+}
+export const Sku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: SkuName,
+    tier: S.optional(SkuTier),
+  }),
+).annotate({ identifier: "Sku" }) as any as S.Schema<Sku>;
 
 /** Entity zones */
 export type BotsCreateResponseZonesList = Array<string>;
@@ -1282,7 +546,7 @@ export const BotProperties = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "BotProperties" }) as any as S.Schema<BotProperties>;
 
-export interface BotsCreateResponse {
+export interface CreateBotResponse {
   /** Specifies the resource ID. */
   id?: string;
   /** Specifies the name of the resource. */
@@ -1304,7 +568,7 @@ export interface BotsCreateResponse {
   /** The set of properties specific to bot resource */
   properties?: BotProperties;
 }
-export const BotsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1318,335 +582,188 @@ export const BotsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(BotProperties),
   }),
 ).annotate({
-  identifier: "BotsCreateResponse",
-}) as any as S.Schema<BotsCreateResponse>;
-
-export interface BotsDeleteRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-}
-export const BotsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotsDeleteRequest",
-}) as any as S.Schema<BotsDeleteRequest>;
-
-export interface BotsDeleteResponse {}
-export const BotsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "BotsDeleteResponse",
-}) as any as S.Schema<BotsDeleteResponse>;
-
-export interface BotsGetRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-}
-export const BotsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({ identifier: "BotsGetRequest" }) as any as S.Schema<BotsGetRequest>;
+  identifier: "CreateBotResponse",
+}) as any as S.Schema<CreateBotResponse>;
 
 /** Contains resource tags defined as key/value pairs. */
-export type BotsGetResponseTagsMap = { [key: string]: string | undefined };
-export const BotsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+export type BotConnectionCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BotConnectionCreateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<BotsGetResponseTagsMap>;
+) as any as S.Schema<BotConnectionCreateRequestTagsMap>;
 
-/** Entity zones */
-export type BotsGetResponseZonesList = Array<string>;
-export const BotsGetResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotsGetResponseZonesList>;
-
-export interface BotsGetResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotsGetResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotsGetResponseZonesList;
-  /** The set of properties specific to bot resource */
-  properties?: BotProperties;
+/** Extra Parameter in a Connection Setting Properties to indicate service provider specific properties */
+export interface ConnectionSettingParameter {
+  /** Key for the Connection Setting Parameter. */
+  key?: string;
+  /** Value associated with the Connection Setting Parameter. */
+  value?: string | null;
 }
-export const BotsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const ConnectionSettingParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ConnectionSettingParameter",
+}) as any as S.Schema<ConnectionSettingParameter>;
+
+/** Service Provider Parameters associated with the Connection Setting */
+export type ConnectionSettingPropertiesInputParametersList =
+  Array<ConnectionSettingParameter>;
+export const ConnectionSettingPropertiesInputParametersList =
+  /*@__PURE__*/ S.Array(
+    ConnectionSettingParameter,
+  ) as any as S.Schema<ConnectionSettingPropertiesInputParametersList>;
+
+/** Properties for a Connection Setting Item */
+export interface ConnectionSettingPropertiesInput {
+  /** Id of the Connection Setting. */
+  id?: string;
+  /** Name of the Connection Setting. */
+  name?: string;
+  /** Client Id associated with the Connection Setting. */
+  clientId?: string;
+  /** Client Secret associated with the Connection Setting */
+  clientSecret?: string | Redacted.Redacted<string>;
+  /** Scopes associated with the Connection Setting */
+  scopes?: string;
+  /** Service Provider Id associated with the Connection Setting */
+  serviceProviderId?: string;
+  /** Service Provider Display Name associated with the Connection Setting */
+  serviceProviderDisplayName?: string;
+  /** Service Provider Parameters associated with the Connection Setting */
+  parameters?: ConnectionSettingPropertiesInputParametersList;
+  /** Provisioning state of the resource */
+  provisioningState?: string;
+}
+export const ConnectionSettingPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotsGetResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotsGetResponseZonesList),
-    properties: S.optional(BotProperties),
+    clientId: S.optional(S.String),
+    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    scopes: S.optional(S.String),
+    serviceProviderId: S.optional(S.String),
+    serviceProviderDisplayName: S.optional(S.String),
+    parameters: S.optional(ConnectionSettingPropertiesInputParametersList),
+    provisioningState: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "BotsGetResponse",
-}) as any as S.Schema<BotsGetResponse>;
+  identifier: "ConnectionSettingPropertiesInput",
+}) as any as S.Schema<ConnectionSettingPropertiesInput>;
 
-export interface BotsGetCheckNameAvailabilityRequest {
-  /** the name of the bot for which availability needs to be checked. */
-  name?: string;
-  /** the type of the bot for which availability needs to be checked */
-  type?: string;
-}
-export const BotsGetCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.BotService/checkNameAvailability",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotsGetCheckNameAvailabilityRequest",
-}) as any as S.Schema<BotsGetCheckNameAvailabilityRequest>;
-
-/** The response body returned for a request to Bot Service Management to check availability of a bot name. */
-export interface CheckNameAvailabilityResponseBody {
-  /** indicates if the bot name is valid. */
-  valid?: boolean;
-  /** additional message from the bot management api showing why a bot name is not available */
-  message?: string;
-  /** response code from ABS */
-  absCode?: string;
-}
-export const CheckNameAvailabilityResponseBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valid: S.optional(S.Boolean),
-    message: S.optional(S.String),
-    absCode: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckNameAvailabilityResponseBody",
-}) as any as S.Schema<CheckNameAvailabilityResponseBody>;
-
-export interface BotsListRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-}
-export const BotsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotsListRequest",
-}) as any as S.Schema<BotsListRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotTagsMap = { [key: string]: string | undefined };
-export const BotTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotTagsMap>;
-
-/** Entity zones */
-export type BotZonesList = Array<string>;
-export const BotZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotZonesList>;
-
-/** Bot resource definition */
-export interface Bot {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotZonesList;
-  /** The set of properties specific to bot resource */
-  properties?: BotProperties;
-}
-export const Bot = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotZonesList),
-    properties: S.optional(BotProperties),
-  }),
-).annotate({ identifier: "Bot" }) as any as S.Schema<Bot>;
-
-/** Gets the list of bot service results and their properties. */
-export type BotResponseListValueList = Array<Bot>;
-export const BotResponseListValueList = /*@__PURE__*/ S.Array(
-  Bot,
-) as any as S.Schema<BotResponseListValueList>;
-
-/** The list of bot service operation response. */
-export interface BotResponseList {
-  /** The link used to get the next page of bot service resources. */
-  nextLink?: string;
-  /** Gets the list of bot service results and their properties. */
-  value?: BotResponseListValueList;
-}
-export const BotResponseList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(BotResponseListValueList),
-  }),
-).annotate({
-  identifier: "BotResponseList",
-}) as any as S.Schema<BotResponseList>;
-
-export interface BotsListByResourceGroupRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-}
-export const BotsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "BotsListByResourceGroupRequest",
-}) as any as S.Schema<BotsListByResourceGroupRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotsUpdateRequestTagsMap = { [key: string]: string | undefined };
-export const BotsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotsUpdateRequestTagsMap>;
-
-export interface BotsUpdateRequest {
+export interface CreateBotConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
   resourceGroupName: string;
   /** The name of the Bot resource. */
   resourceName: string;
+  /** The name of the Bot Service Connection Setting resource. */
+  connectionName: string;
   /** Specifies the location of the resource. */
   location?: string;
   /** Contains resource tags defined as key/value pairs. */
-  tags?: BotsUpdateRequestTagsMap;
+  tags?: BotConnectionCreateRequestTagsMap;
   /** Gets or sets the SKU of the resource. */
   sku?: SkuInput;
   /** Required. Gets or sets the Kind of the resource. */
   kind?: Kind | (string & {}) | null;
   /** Entity Tag. */
   etag?: string;
-  /** The set of properties specific to bot resource */
-  properties?: BotPropertiesInput;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingPropertiesInput;
 }
-export const BotsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     resourceName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
     location: S.optional(S.String),
-    tags: S.optional(BotsUpdateRequestTagsMap),
+    tags: S.optional(BotConnectionCreateRequestTagsMap),
     sku: S.optional(SkuInput),
     kind: S.optional(S.NullOr(Kind)),
     etag: S.optional(S.String),
-    properties: S.optional(BotPropertiesInput),
+    properties: S.optional(ConnectionSettingPropertiesInput),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
       code: 200,
       apiVersion: "2022-09-15",
     }),
   ),
 ).annotate({
-  identifier: "BotsUpdateRequest",
-}) as any as S.Schema<BotsUpdateRequest>;
+  identifier: "CreateBotConnectionRequest",
+}) as any as S.Schema<CreateBotConnectionRequest>;
 
 /** Contains resource tags defined as key/value pairs. */
-export type BotsUpdateResponseTagsMap = { [key: string]: string | undefined };
-export const BotsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export type BotConnectionCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BotConnectionCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<BotsUpdateResponseTagsMap>;
+) as any as S.Schema<BotConnectionCreateResponseTagsMap>;
 
 /** Entity zones */
-export type BotsUpdateResponseZonesList = Array<string>;
-export const BotsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
+export type BotConnectionCreateResponseZonesList = Array<string>;
+export const BotConnectionCreateResponseZonesList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<BotsUpdateResponseZonesList>;
+) as any as S.Schema<BotConnectionCreateResponseZonesList>;
 
-export interface BotsUpdateResponse {
+/** Service Provider Parameters associated with the Connection Setting */
+export type ConnectionSettingPropertiesParametersList =
+  Array<ConnectionSettingParameter>;
+export const ConnectionSettingPropertiesParametersList = /*@__PURE__*/ S.Array(
+  ConnectionSettingParameter,
+) as any as S.Schema<ConnectionSettingPropertiesParametersList>;
+
+/** Properties for a Connection Setting Item */
+export interface ConnectionSettingProperties {
+  /** Id of the Connection Setting. */
+  id?: string;
+  /** Name of the Connection Setting. */
+  name?: string;
+  /** Client Id associated with the Connection Setting. */
+  clientId?: string;
+  /** Setting Id set by the service for the Connection Setting. */
+  settingId?: string;
+  /** Client Secret associated with the Connection Setting */
+  clientSecret?: string | Redacted.Redacted<string>;
+  /** Scopes associated with the Connection Setting */
+  scopes?: string;
+  /** Service Provider Id associated with the Connection Setting */
+  serviceProviderId?: string;
+  /** Service Provider Display Name associated with the Connection Setting */
+  serviceProviderDisplayName?: string;
+  /** Service Provider Parameters associated with the Connection Setting */
+  parameters?: ConnectionSettingPropertiesParametersList;
+  /** Provisioning state of the resource */
+  provisioningState?: string;
+}
+export const ConnectionSettingProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    clientId: S.optional(S.String),
+    settingId: S.optional(S.String),
+    clientSecret: S.optional(S.String.pipe(T.SensitiveValue({}))),
+    scopes: S.optional(S.String),
+    serviceProviderId: S.optional(S.String),
+    serviceProviderDisplayName: S.optional(S.String),
+    parameters: S.optional(ConnectionSettingPropertiesParametersList),
+    provisioningState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectionSettingProperties",
+}) as any as S.Schema<ConnectionSettingProperties>;
+
+export interface CreateBotConnectionResponse {
   /** Specifies the resource ID. */
   id?: string;
   /** Specifies the name of the resource. */
@@ -1656,7 +773,7 @@ export interface BotsUpdateResponse {
   /** Specifies the type of the resource. */
   type?: string;
   /** Contains resource tags defined as key/value pairs. */
-  tags?: BotsUpdateResponseTagsMap;
+  tags?: BotConnectionCreateResponseTagsMap;
   /** Gets or sets the SKU of the resource. */
   sku?: Sku;
   /** Required. Gets or sets the Kind of the resource. */
@@ -1664,26 +781,26 @@ export interface BotsUpdateResponse {
   /** Entity Tag. */
   etag?: string;
   /** Entity zones */
-  zones?: BotsUpdateResponseZonesList;
-  /** The set of properties specific to bot resource */
-  properties?: BotProperties;
+  zones?: BotConnectionCreateResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingProperties;
 }
-export const BotsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateBotConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     location: S.optional(S.String),
     type: S.optional(S.String),
-    tags: S.optional(BotsUpdateResponseTagsMap),
+    tags: S.optional(BotConnectionCreateResponseTagsMap),
     sku: S.optional(Sku),
     kind: S.optional(S.NullOr(Kind)),
     etag: S.optional(S.String),
-    zones: S.optional(BotsUpdateResponseZonesList),
-    properties: S.optional(BotProperties),
+    zones: S.optional(BotConnectionCreateResponseZonesList),
+    properties: S.optional(ConnectionSettingProperties),
   }),
 ).annotate({
-  identifier: "BotsUpdateResponse",
-}) as any as S.Schema<BotsUpdateResponse>;
+  identifier: "CreateBotConnectionResponse",
+}) as any as S.Schema<CreateBotConnectionResponse>;
 
 export type ChannelsCreateRequestChannelName =
   | "AlexaChannel"
@@ -1733,7 +850,7 @@ export const ChannelInput = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ChannelInput" }) as any as S.Schema<ChannelInput>;
 
-export interface ChannelsCreateRequest {
+export interface CreateChannelRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
@@ -1755,7 +872,7 @@ export interface ChannelsCreateRequest {
   /** The set of properties specific to bot channel resource */
   properties?: ChannelInput;
 }
-export const ChannelsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1776,8 +893,8 @@ export const ChannelsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ChannelsCreateRequest",
-}) as any as S.Schema<ChannelsCreateRequest>;
+  identifier: "CreateChannelRequest",
+}) as any as S.Schema<CreateChannelRequest>;
 
 /** Contains resource tags defined as key/value pairs. */
 export type ChannelsCreateResponseTagsMap = {
@@ -1814,7 +931,7 @@ export const Channel = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Channel" }) as any as S.Schema<Channel>;
 
-export interface ChannelsCreateResponse {
+export interface CreateChannelResponse {
   /** Specifies the resource ID. */
   id?: string;
   /** Specifies the name of the resource. */
@@ -1836,7 +953,7 @@ export interface ChannelsCreateResponse {
   /** The set of properties specific to bot channel resource */
   properties?: Channel;
 }
-export const ChannelsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1850,10 +967,169 @@ export const ChannelsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(Channel),
   }),
 ).annotate({
-  identifier: "ChannelsCreateResponse",
-}) as any as S.Schema<ChannelsCreateResponse>;
+  identifier: "CreateChannelResponse",
+}) as any as S.Schema<CreateChannelResponse>;
 
-export interface ChannelsDeleteRequest {
+/** The Private Endpoint resource. */
+export interface PrivateEndpointInput {}
+export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PrivateEndpointInput",
+}) as any as S.Schema<PrivateEndpointInput>;
+
+/** Group ids */
+export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  Array<string>;
+export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
+
+/** Properties of the PrivateEndpointConnectProperties. */
+export interface PrivateEndpointConnectionPropertiesInput {
+  /** The resource of private end point. */
+  privateEndpoint?: PrivateEndpointInput;
+  /** A collection of information about the state of the connection between service consumer and provider. */
+  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
+  /** Group ids */
+  groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
+}
+export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      privateEndpoint: S.optional(PrivateEndpointInput),
+      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+      groupIds: S.optional(
+        PrivateEndpointConnectionPropertiesInputGroupIdsList,
+      ),
+    }),
+).annotate({
+  identifier: "PrivateEndpointConnectionPropertiesInput",
+}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
+
+export interface CreatePrivateEndpointConnectionRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the private endpoint connection associated with the Azure resource */
+  privateEndpointConnectionName: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionPropertiesInput;
+}
+export const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2022-09-15",
+      }),
+    ),
+).annotate({
+  identifier: "CreatePrivateEndpointConnectionRequest",
+}) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
+
+export interface CreatePrivateEndpointConnectionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const CreatePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(PrivateEndpointConnectionProperties),
+    }),
+).annotate({
+  identifier: "CreatePrivateEndpointConnectionResponse",
+}) as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
+
+export interface DeleteBotRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+}
+export const DeleteBotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBotRequest",
+}) as any as S.Schema<DeleteBotRequest>;
+
+export interface DeleteBotResponse {}
+export const DeleteBotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBotResponse",
+}) as any as S.Schema<DeleteBotResponse>;
+
+export interface DeleteBotConnectionRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Bot Service Connection Setting resource. */
+  connectionName: string;
+}
+export const DeleteBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBotConnectionRequest",
+}) as any as S.Schema<DeleteBotConnectionRequest>;
+
+export interface DeleteBotConnectionResponse {}
+export const DeleteBotConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteBotConnectionResponse",
+}) as any as S.Schema<DeleteBotConnectionResponse>;
+
+export interface DeleteChannelRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
@@ -1863,7 +1139,7 @@ export interface ChannelsDeleteRequest {
   /** The name of the Bot resource. */
   channelName: string;
 }
-export const ChannelsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteChannelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1878,560 +1154,51 @@ export const ChannelsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ChannelsDeleteRequest",
-}) as any as S.Schema<ChannelsDeleteRequest>;
+  identifier: "DeleteChannelRequest",
+}) as any as S.Schema<DeleteChannelRequest>;
 
-export interface ChannelsDeleteResponse {}
-export const ChannelsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteChannelResponse {}
+export const DeleteChannelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ChannelsDeleteResponse",
-}) as any as S.Schema<ChannelsDeleteResponse>;
+  identifier: "DeleteChannelResponse",
+}) as any as S.Schema<DeleteChannelResponse>;
 
-export interface ChannelsGetRequest {
+export interface DeletePrivateEndpointConnectionRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
   resourceGroupName: string;
   /** The name of the Bot resource. */
   resourceName: string;
-  /** The name of the Bot resource. */
-  channelName: string;
+  /** The name of the private endpoint connection associated with the Azure resource */
+  privateEndpointConnectionName: string;
 }
-export const ChannelsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    channelName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
+export const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceName: S.String.pipe(T.Label()),
+      privateEndpointConnectionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+        code: 200,
+        apiVersion: "2022-09-15",
+      }),
+    ),
 ).annotate({
-  identifier: "ChannelsGetRequest",
-}) as any as S.Schema<ChannelsGetRequest>;
+  identifier: "DeletePrivateEndpointConnectionRequest",
+}) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
 
-/** Contains resource tags defined as key/value pairs. */
-export type ChannelsGetResponseTagsMap = { [key: string]: string | undefined };
-export const ChannelsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ChannelsGetResponseTagsMap>;
-
-/** Entity zones */
-export type ChannelsGetResponseZonesList = Array<string>;
-export const ChannelsGetResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChannelsGetResponseZonesList>;
-
-export interface ChannelsGetResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: ChannelsGetResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: ChannelsGetResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: Channel;
-}
-export const ChannelsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ChannelsGetResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(ChannelsGetResponseZonesList),
-    properties: S.optional(Channel),
-  }),
+export interface DeletePrivateEndpointConnectionResponse {}
+export const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
 ).annotate({
-  identifier: "ChannelsGetResponse",
-}) as any as S.Schema<ChannelsGetResponse>;
-
-export interface ChannelsListByResourceGroupRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-}
-export const ChannelsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "ChannelsListByResourceGroupRequest",
-}) as any as S.Schema<ChannelsListByResourceGroupRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type BotChannelTagsMap = { [key: string]: string | undefined };
-export const BotChannelTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<BotChannelTagsMap>;
-
-/** Entity zones */
-export type BotChannelZonesList = Array<string>;
-export const BotChannelZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BotChannelZonesList>;
-
-/** Bot channel resource definition */
-export interface BotChannel {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: BotChannelTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: BotChannelZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: Channel;
-}
-export const BotChannel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(BotChannelTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(BotChannelZonesList),
-    properties: S.optional(Channel),
-  }),
-).annotate({ identifier: "BotChannel" }) as any as S.Schema<BotChannel>;
-
-/** Gets the list of bot service channel results and their properties. */
-export type ChannelResponseListValueList = Array<BotChannel>;
-export const ChannelResponseListValueList = /*@__PURE__*/ S.Array(
-  BotChannel,
-) as any as S.Schema<ChannelResponseListValueList>;
-
-/** The list of bot service channel operation response. */
-export interface ChannelResponseList {
-  /** The link used to get the next page of bot service channel resources. */
-  nextLink?: string;
-  /** Gets the list of bot service channel results and their properties. */
-  value?: ChannelResponseListValueList;
-}
-export const ChannelResponseList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ChannelResponseListValueList),
-  }),
-).annotate({
-  identifier: "ChannelResponseList",
-}) as any as S.Schema<ChannelResponseList>;
-
-export type ChannelsListWithKeysRequestChannelName =
-  | "AlexaChannel"
-  | "FacebookChannel"
-  | "EmailChannel"
-  | "KikChannel"
-  | "TelegramChannel"
-  | "SlackChannel"
-  | "MsTeamsChannel"
-  | "SkypeChannel"
-  | "WebChatChannel"
-  | "DirectLineChannel"
-  | "SmsChannel"
-  | "LineChannel"
-  | "DirectLineSpeechChannel"
-  | "OutlookChannel"
-  | "Omnichannel"
-  | "TelephonyChannel"
-  | "AcsChatChannel"
-  | "SearchAssistant"
-  | "M365Extensions";
-export const ChannelsListWithKeysRequestChannelName = /*@__PURE__*/ S.String;
-
-export interface ChannelsListWithKeysRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Channel resource. */
-  channelName: ChannelsListWithKeysRequestChannelName | (string & {});
-}
-export const ChannelsListWithKeysRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    channelName: ChannelsListWithKeysRequestChannelName.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/listChannelWithKeys",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "ChannelsListWithKeysRequest",
-}) as any as S.Schema<ChannelsListWithKeysRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type ChannelsListWithKeysResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ChannelsListWithKeysResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ChannelsListWithKeysResponseTagsMap>;
-
-/** Entity zones */
-export type ChannelsListWithKeysResponseZonesList = Array<string>;
-export const ChannelsListWithKeysResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChannelsListWithKeysResponseZonesList>;
-
-/** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
-export type SiteTrustedOriginsList = Array<string>;
-export const SiteTrustedOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SiteTrustedOriginsList>;
-
-/** A site for the channel */
-export interface Site {
-  /** Tenant Id */
-  tenantId?: string;
-  /** Site Id */
-  siteId?: string;
-  /** Site name */
-  siteName: string;
-  /** Primary key. Value only returned through POST to the action Channel List API, otherwise empty. */
-  key?: string;
-  /** Secondary key. Value only returned through POST to the action Channel List API, otherwise empty. */
-  key2?: string;
-  /** Whether this site is enabled for DirectLine channel */
-  isEnabled: boolean;
-  /** Whether this site is token enabled for channel */
-  isTokenEnabled?: boolean;
-  /** Whether this site is EndpointParameters enabled for channel */
-  isEndpointParametersEnabled?: boolean;
-  /** Whether this site is disabled detailed logging for */
-  isDetailedLoggingEnabled?: boolean;
-  /** Whether this site is enabled for block user upload. */
-  isBlockUserUploadEnabled?: boolean | null;
-  /** Whether this no-storage site is disabled detailed logging for */
-  isNoStorageEnabled?: boolean;
-  /** Entity Tag */
-  eTag?: string;
-  /** DirectLine application id */
-  appId?: string;
-  /** Whether this site is enabled for Bot Framework V1 protocol. */
-  isV1Enabled?: boolean;
-  /** Whether this site is enabled for Bot Framework V3 protocol. */
-  isV3Enabled?: boolean;
-  /** Whether this site is enabled for authentication with Bot Framework. */
-  isSecureSiteEnabled?: boolean;
-  /** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
-  trustedOrigins?: SiteTrustedOriginsList;
-  /** Whether this site is enabled for Webchat Speech */
-  isWebChatSpeechEnabled?: boolean;
-  /** Whether this site is enabled for preview versions of Webchat */
-  isWebchatPreviewEnabled?: boolean;
-}
-export const Site = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.String),
-    siteId: S.optional(S.String),
-    siteName: S.String,
-    key: S.optional(S.String),
-    key2: S.optional(S.String),
-    isEnabled: S.Boolean,
-    isTokenEnabled: S.optional(S.Boolean),
-    isEndpointParametersEnabled: S.optional(S.Boolean),
-    isDetailedLoggingEnabled: S.optional(S.Boolean),
-    isBlockUserUploadEnabled: S.optional(S.NullOr(S.Boolean)),
-    isNoStorageEnabled: S.optional(S.Boolean),
-    eTag: S.optional(S.String),
-    appId: S.optional(S.String),
-    isV1Enabled: S.optional(S.Boolean),
-    isV3Enabled: S.optional(S.Boolean),
-    isSecureSiteEnabled: S.optional(S.Boolean),
-    trustedOrigins: S.optional(SiteTrustedOriginsList),
-    isWebChatSpeechEnabled: S.optional(S.Boolean),
-    isWebchatPreviewEnabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
-
-/** The list of sites */
-export type ChannelSettingsSitesList = Array<Site>;
-export const ChannelSettingsSitesList = /*@__PURE__*/ S.Array(
-  Site,
-) as any as S.Schema<ChannelSettingsSitesList>;
-
-/** Channel settings definition */
-export interface ChannelSettings {
-  /** The extensionKey1 */
-  extensionKey1?: string;
-  /** The extensionKey2 */
-  extensionKey2?: string;
-  /** The list of sites */
-  sites?: ChannelSettingsSitesList;
-  /** The channel id */
-  channelId?: string;
-  /** The channel display name */
-  channelDisplayName?: string;
-  /** The bot id */
-  botId?: string;
-  /** The bot icon url */
-  botIconUrl?: string;
-  /** Whether this channel is enabled for the bot */
-  isEnabled?: boolean;
-  /** Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication. */
-  disableLocalAuth?: boolean;
-  /** Whether customer needs to agree to new terms. */
-  requireTermsAgreement?: boolean;
-}
-export const ChannelSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    extensionKey1: S.optional(S.String),
-    extensionKey2: S.optional(S.String),
-    sites: S.optional(ChannelSettingsSitesList),
-    channelId: S.optional(S.String),
-    channelDisplayName: S.optional(S.String),
-    botId: S.optional(S.String),
-    botIconUrl: S.optional(S.String),
-    isEnabled: S.optional(S.Boolean),
-    disableLocalAuth: S.optional(S.Boolean),
-    requireTermsAgreement: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ChannelSettings",
-}) as any as S.Schema<ChannelSettings>;
-
-export interface ChannelsListWithKeysResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: ChannelsListWithKeysResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: ChannelsListWithKeysResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: Channel;
-  /** The set of properties specific to bot channel resource */
-  resource?: Channel;
-  /** Channel settings */
-  setting?: ChannelSettings;
-  /** Provisioning state of the resource */
-  provisioningState?: string;
-  /** Entity tag of the resource */
-  entityTag?: string;
-  /** Changed time of the resource */
-  changedTime?: string;
-}
-export const ChannelsListWithKeysResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ChannelsListWithKeysResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(ChannelsListWithKeysResponseZonesList),
-    properties: S.optional(Channel),
-    resource: S.optional(Channel),
-    setting: S.optional(ChannelSettings),
-    provisioningState: S.optional(S.String),
-    entityTag: S.optional(S.String),
-    changedTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChannelsListWithKeysResponse",
-}) as any as S.Schema<ChannelsListWithKeysResponse>;
-
-export type ChannelsUpdateRequestChannelName =
-  | "AlexaChannel"
-  | "FacebookChannel"
-  | "EmailChannel"
-  | "KikChannel"
-  | "TelegramChannel"
-  | "SlackChannel"
-  | "MsTeamsChannel"
-  | "SkypeChannel"
-  | "WebChatChannel"
-  | "DirectLineChannel"
-  | "SmsChannel"
-  | "LineChannel"
-  | "DirectLineSpeechChannel"
-  | "OutlookChannel"
-  | "Omnichannel"
-  | "TelephonyChannel"
-  | "AcsChatChannel"
-  | "SearchAssistant"
-  | "M365Extensions";
-export const ChannelsUpdateRequestChannelName = /*@__PURE__*/ S.String;
-
-/** Contains resource tags defined as key/value pairs. */
-export type ChannelsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ChannelsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ChannelsUpdateRequestTagsMap>;
-
-export interface ChannelsUpdateRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the Channel resource. */
-  channelName: ChannelsUpdateRequestChannelName | (string & {});
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: ChannelsUpdateRequestTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: SkuInput;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | (string & {}) | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** The set of properties specific to bot channel resource */
-  properties?: ChannelInput;
-}
-export const ChannelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    resourceName: S.String.pipe(T.Label()),
-    channelName: ChannelsUpdateRequestChannelName.pipe(T.Label()),
-    location: S.optional(S.String),
-    tags: S.optional(ChannelsUpdateRequestTagsMap),
-    sku: S.optional(SkuInput),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    properties: S.optional(ChannelInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
-      code: 200,
-      apiVersion: "2022-09-15",
-    }),
-  ),
-).annotate({
-  identifier: "ChannelsUpdateRequest",
-}) as any as S.Schema<ChannelsUpdateRequest>;
-
-/** Contains resource tags defined as key/value pairs. */
-export type ChannelsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ChannelsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ChannelsUpdateResponseTagsMap>;
-
-/** Entity zones */
-export type ChannelsUpdateResponseZonesList = Array<string>;
-export const ChannelsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ChannelsUpdateResponseZonesList>;
-
-export interface ChannelsUpdateResponse {
-  /** Specifies the resource ID. */
-  id?: string;
-  /** Specifies the name of the resource. */
-  name?: string;
-  /** Specifies the location of the resource. */
-  location?: string;
-  /** Specifies the type of the resource. */
-  type?: string;
-  /** Contains resource tags defined as key/value pairs. */
-  tags?: ChannelsUpdateResponseTagsMap;
-  /** Gets or sets the SKU of the resource. */
-  sku?: Sku;
-  /** Required. Gets or sets the Kind of the resource. */
-  kind?: Kind | null;
-  /** Entity Tag. */
-  etag?: string;
-  /** Entity zones */
-  zones?: ChannelsUpdateResponseZonesList;
-  /** The set of properties specific to bot channel resource */
-  properties?: Channel;
-}
-export const ChannelsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    location: S.optional(S.String),
-    type: S.optional(S.String),
-    tags: S.optional(ChannelsUpdateResponseTagsMap),
-    sku: S.optional(Sku),
-    kind: S.optional(S.NullOr(Kind)),
-    etag: S.optional(S.String),
-    zones: S.optional(ChannelsUpdateResponseZonesList),
-    properties: S.optional(Channel),
-  }),
-).annotate({
-  identifier: "ChannelsUpdateResponse",
-}) as any as S.Schema<ChannelsUpdateResponse>;
+  identifier: "DeletePrivateEndpointConnectionResponse",
+}) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
 
 export type DirectLineRegenerateKeysRequestChannelName =
   | "WebChatChannel"
@@ -2589,11 +1356,246 @@ export const CreateEmailSignInUrlResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateEmailSignInUrlResponse",
 }) as any as S.Schema<CreateEmailSignInUrlResponse>;
 
-export interface HostSettingsGetRequest {
+export interface GetBotRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+}
+export const GetBotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({ identifier: "GetBotRequest" }) as any as S.Schema<GetBotRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type BotsGetResponseTagsMap = { [key: string]: string | undefined };
+export const BotsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotsGetResponseTagsMap>;
+
+/** Entity zones */
+export type BotsGetResponseZonesList = Array<string>;
+export const BotsGetResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BotsGetResponseZonesList>;
+
+export interface GetBotResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotsGetResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotsGetResponseZonesList;
+  /** The set of properties specific to bot resource */
+  properties?: BotProperties;
+}
+export const GetBotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(BotsGetResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(BotsGetResponseZonesList),
+    properties: S.optional(BotProperties),
+  }),
+).annotate({ identifier: "GetBotResponse" }) as any as S.Schema<GetBotResponse>;
+
+export interface GetBotConnectionRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Bot Service Connection Setting resource. */
+  connectionName: string;
+}
+export const GetBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "GetBotConnectionRequest",
+}) as any as S.Schema<GetBotConnectionRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type BotConnectionGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BotConnectionGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotConnectionGetResponseTagsMap>;
+
+/** Entity zones */
+export type BotConnectionGetResponseZonesList = Array<string>;
+export const BotConnectionGetResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BotConnectionGetResponseZonesList>;
+
+export interface GetBotConnectionResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotConnectionGetResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotConnectionGetResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingProperties;
+}
+export const GetBotConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(BotConnectionGetResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(BotConnectionGetResponseZonesList),
+    properties: S.optional(ConnectionSettingProperties),
+  }),
+).annotate({
+  identifier: "GetBotConnectionResponse",
+}) as any as S.Schema<GetBotConnectionResponse>;
+
+export interface GetChannelRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Bot resource. */
+  channelName: string;
+}
+export const GetChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    channelName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "GetChannelRequest",
+}) as any as S.Schema<GetChannelRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type ChannelsGetResponseTagsMap = { [key: string]: string | undefined };
+export const ChannelsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ChannelsGetResponseTagsMap>;
+
+/** Entity zones */
+export type ChannelsGetResponseZonesList = Array<string>;
+export const ChannelsGetResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ChannelsGetResponseZonesList>;
+
+export interface GetChannelResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: ChannelsGetResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: ChannelsGetResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: Channel;
+}
+export const GetChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ChannelsGetResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(ChannelsGetResponseZonesList),
+    properties: S.optional(Channel),
+  }),
+).annotate({
+  identifier: "GetChannelResponse",
+}) as any as S.Schema<GetChannelResponse>;
+
+export interface GetHostSettingRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
 }
-export const HostSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetHostSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -2605,8 +1607,8 @@ export const HostSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HostSettingsGetRequest",
-}) as any as S.Schema<HostSettingsGetRequest>;
+  identifier: "GetHostSettingRequest",
+}) as any as S.Schema<GetHostSettingRequest>;
 
 /** The response body returned for a request to Bot Service Management to check per subscription hostSettings */
 export interface HostSettingsResponse {
@@ -2642,13 +1644,13 @@ export const HostSettingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "HostSettingsResponse",
 }) as any as S.Schema<HostSettingsResponse>;
 
-export interface OperationResultsGetRequest {
+export interface GetOperationResultRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The ID of the operation result to get. */
   operationResultId: string;
 }
-export const OperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOperationResultRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     operationResultId: S.String.pipe(T.Label()),
@@ -2661,8 +1663,8 @@ export const OperationResultsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationResultsGetRequest",
-}) as any as S.Schema<OperationResultsGetRequest>;
+  identifier: "GetOperationResultRequest",
+}) as any as S.Schema<GetOperationResultRequest>;
 
 /** The status of the operation being performed. */
 export type OperationResultsDescriptionStatus =
@@ -2695,8 +1697,887 @@ export const OperationResultsDescription = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationResultsDescription",
 }) as any as S.Schema<OperationResultsDescription>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetPrivateEndpointConnectionRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the private endpoint connection associated with the Azure resource */
+  privateEndpointConnectionName: string;
+}
+export const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    privateEndpointConnectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionRequest",
+}) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
+
+export interface GetPrivateEndpointConnectionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Resource properties. */
+  properties?: PrivateEndpointConnectionProperties;
+}
+export const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      properties: S.optional(PrivateEndpointConnectionProperties),
+    }),
+).annotate({
+  identifier: "GetPrivateEndpointConnectionResponse",
+}) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
+
+export interface GetQnAMakerEndpointKeyRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** the host name of the QnA Maker endpoint */
+  hostname?: string;
+  /** Subscription key which provides access to this API. */
+  authkey?: string;
+}
+export const GetQnAMakerEndpointKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    hostname: S.optional(S.String),
+    authkey: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listQnAMakerEndpointKeys",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "GetQnAMakerEndpointKeyRequest",
+}) as any as S.Schema<GetQnAMakerEndpointKeyRequest>;
+
+/** Schema for EndpointKeys generate/refresh operations. */
+export interface QnAMakerEndpointKeysResponse {
+  /** Primary Access Key. */
+  primaryEndpointKey?: string;
+  /** Secondary Access Key. */
+  secondaryEndpointKey?: string;
+  /** Current version of runtime. */
+  installedVersion?: string;
+  /** Latest version of runtime. */
+  lastStableVersion?: string;
+}
+export const QnAMakerEndpointKeysResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    primaryEndpointKey: S.optional(S.String),
+    secondaryEndpointKey: S.optional(S.String),
+    installedVersion: S.optional(S.String),
+    lastStableVersion: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "QnAMakerEndpointKeysResponse",
+}) as any as S.Schema<QnAMakerEndpointKeysResponse>;
+
+export interface ListBotByResourceGroupRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+}
+export const ListBotByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListBotByResourceGroupRequest",
+}) as any as S.Schema<ListBotByResourceGroupRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type BotTagsMap = { [key: string]: string | undefined };
+export const BotTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotTagsMap>;
+
+/** Entity zones */
+export type BotZonesList = Array<string>;
+export const BotZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BotZonesList>;
+
+/** Bot resource definition */
+export interface Bot {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotZonesList;
+  /** The set of properties specific to bot resource */
+  properties?: BotProperties;
+}
+export const Bot = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(BotTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(BotZonesList),
+    properties: S.optional(BotProperties),
+  }),
+).annotate({ identifier: "Bot" }) as any as S.Schema<Bot>;
+
+/** Gets the list of bot service results and their properties. */
+export type BotResponseListValueList = Array<Bot>;
+export const BotResponseListValueList = /*@__PURE__*/ S.Array(
+  Bot,
+) as any as S.Schema<BotResponseListValueList>;
+
+/** The list of bot service operation response. */
+export interface BotResponseList {
+  /** The link used to get the next page of bot service resources. */
+  nextLink?: string;
+  /** Gets the list of bot service results and their properties. */
+  value?: BotResponseListValueList;
+}
+export const BotResponseList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(BotResponseListValueList),
+  }),
+).annotate({
+  identifier: "BotResponseList",
+}) as any as S.Schema<BotResponseList>;
+
+export interface ListBotConnectionByBotServiceRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+}
+export const ListBotConnectionByBotServiceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      resourceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections",
+        code: 200,
+        apiVersion: "2022-09-15",
+      }),
+    ),
+).annotate({
+  identifier: "ListBotConnectionByBotServiceRequest",
+}) as any as S.Schema<ListBotConnectionByBotServiceRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type ConnectionSettingTagsMap = { [key: string]: string | undefined };
+export const ConnectionSettingTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ConnectionSettingTagsMap>;
+
+/** Entity zones */
+export type ConnectionSettingZonesList = Array<string>;
+export const ConnectionSettingZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectionSettingZonesList>;
+
+/** Bot channel resource definition */
+export interface ConnectionSetting {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: ConnectionSettingTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: ConnectionSettingZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingProperties;
+}
+export const ConnectionSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ConnectionSettingTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(ConnectionSettingZonesList),
+    properties: S.optional(ConnectionSettingProperties),
+  }),
+).annotate({
+  identifier: "ConnectionSetting",
+}) as any as S.Schema<ConnectionSetting>;
+
+/** Gets the list of bot service connection settings and their properties. */
+export type ConnectionSettingResponseListValueList = Array<ConnectionSetting>;
+export const ConnectionSettingResponseListValueList = /*@__PURE__*/ S.Array(
+  ConnectionSetting,
+) as any as S.Schema<ConnectionSettingResponseListValueList>;
+
+/** The list of bot service connection settings response. */
+export interface ConnectionSettingResponseList {
+  /** The link used to get the next page of bot service connection setting resources. */
+  nextLink?: string;
+  /** Gets the list of bot service connection settings and their properties. */
+  value?: ConnectionSettingResponseListValueList;
+}
+export const ConnectionSettingResponseList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ConnectionSettingResponseListValueList),
+  }),
+).annotate({
+  identifier: "ConnectionSettingResponseList",
+}) as any as S.Schema<ConnectionSettingResponseList>;
+
+export interface ListBotConnectionServiceProvidersRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+}
+export const ListBotConnectionServiceProvidersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listAuthServiceProviders",
+        code: 200,
+        apiVersion: "2022-09-15",
+      }),
+    ),
+).annotate({
+  identifier: "ListBotConnectionServiceProvidersRequest",
+}) as any as S.Schema<ListBotConnectionServiceProvidersRequest>;
+
+/** the constraints of the bot meta data. */
+export interface ServiceProviderParameterMetadataConstraints {
+  /** Whether required the constraints of the bot meta data. */
+  required?: boolean;
+}
+export const ServiceProviderParameterMetadataConstraints =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      required: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ServiceProviderParameterMetadataConstraints",
+  }) as any as S.Schema<ServiceProviderParameterMetadataConstraints>;
+
+/** Meta data for the Service Provider */
+export interface ServiceProviderParameterMetadata {
+  /** the constraints of the bot meta data. */
+  constraints?: ServiceProviderParameterMetadataConstraints;
+}
+export const ServiceProviderParameterMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    constraints: S.optional(ServiceProviderParameterMetadataConstraints),
+  }),
+).annotate({
+  identifier: "ServiceProviderParameterMetadata",
+}) as any as S.Schema<ServiceProviderParameterMetadata>;
+
+/** Extra Parameters specific to each Service Provider */
+export interface ServiceProviderParameter {
+  /** Name of the Service Provider */
+  name?: string;
+  /** Type of the Service Provider */
+  type?: string;
+  /** Display Name of the Service Provider */
+  displayName?: string;
+  /** Description of the Service Provider */
+  description?: string;
+  /** Help Url for the Service Provider */
+  helpUrl?: string;
+  /** Default Name for the Service Provider */
+  default?: string;
+  /** Meta data for the Service Provider */
+  metadata?: ServiceProviderParameterMetadata;
+}
+export const ServiceProviderParameter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    displayName: S.optional(S.String),
+    description: S.optional(S.String),
+    helpUrl: S.optional(S.String),
+    default: S.optional(S.String),
+    metadata: S.optional(ServiceProviderParameterMetadata),
+  }),
+).annotate({
+  identifier: "ServiceProviderParameter",
+}) as any as S.Schema<ServiceProviderParameter>;
+
+/** The list of parameters for the Service Provider */
+export type ServiceProviderPropertiesParametersList =
+  Array<ServiceProviderParameter>;
+export const ServiceProviderPropertiesParametersList = /*@__PURE__*/ S.Array(
+  ServiceProviderParameter,
+) as any as S.Schema<ServiceProviderPropertiesParametersList>;
+
+/** The Object used to describe a Service Provider supported by Bot Service */
+export interface ServiceProviderProperties {
+  /** Id for Service Provider */
+  id?: string;
+  /** Display Name of the Service Provider */
+  displayName?: string;
+  /** Name of the Service Provider */
+  serviceProviderName?: string;
+  /** URL of Dev Portal */
+  devPortalUrl?: string;
+  /** The URL of icon */
+  iconUrl?: string;
+  /** The list of parameters for the Service Provider */
+  parameters?: ServiceProviderPropertiesParametersList;
+}
+export const ServiceProviderProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    displayName: S.optional(S.String),
+    serviceProviderName: S.optional(S.String),
+    devPortalUrl: S.optional(S.String),
+    iconUrl: S.optional(S.String),
+    parameters: S.optional(ServiceProviderPropertiesParametersList),
+  }),
+).annotate({
+  identifier: "ServiceProviderProperties",
+}) as any as S.Schema<ServiceProviderProperties>;
+
+/** Service Provider Definition */
+export interface ServiceProvider {
+  /** The Properties of a Service Provider Object */
+  properties?: ServiceProviderProperties;
+}
+export const ServiceProvider = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(ServiceProviderProperties),
+  }),
+).annotate({
+  identifier: "ServiceProvider",
+}) as any as S.Schema<ServiceProvider>;
+
+/** Gets the list of bot service providers and their properties. */
+export type ServiceProviderResponseListValueList = Array<ServiceProvider>;
+export const ServiceProviderResponseListValueList = /*@__PURE__*/ S.Array(
+  ServiceProvider,
+) as any as S.Schema<ServiceProviderResponseListValueList>;
+
+/** The list of bot service providers response. */
+export interface ServiceProviderResponseList {
+  /** The link used to get the next page of bot service providers. */
+  nextLink?: string;
+  /** Gets the list of bot service providers and their properties. */
+  value?: ServiceProviderResponseListValueList;
+}
+export const ServiceProviderResponseList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ServiceProviderResponseListValueList),
+  }),
+).annotate({
+  identifier: "ServiceProviderResponseList",
+}) as any as S.Schema<ServiceProviderResponseList>;
+
+export interface ListBotConnectionWithSecretsRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Bot Service Connection Setting resource. */
+  connectionName: string;
+}
+export const ListBotConnectionWithSecretsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}/listWithSecrets",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListBotConnectionWithSecretsRequest",
+}) as any as S.Schema<ListBotConnectionWithSecretsRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type BotConnectionListWithSecretsResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BotConnectionListWithSecretsResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BotConnectionListWithSecretsResponseTagsMap>;
+
+/** Entity zones */
+export type BotConnectionListWithSecretsResponseZonesList = Array<string>;
+export const BotConnectionListWithSecretsResponseZonesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BotConnectionListWithSecretsResponseZonesList>;
+
+export interface ListBotConnectionWithSecretsResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotConnectionListWithSecretsResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotConnectionListWithSecretsResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingProperties;
+}
+export const ListBotConnectionWithSecretsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      location: S.optional(S.String),
+      type: S.optional(S.String),
+      tags: S.optional(BotConnectionListWithSecretsResponseTagsMap),
+      sku: S.optional(Sku),
+      kind: S.optional(S.NullOr(Kind)),
+      etag: S.optional(S.String),
+      zones: S.optional(BotConnectionListWithSecretsResponseZonesList),
+      properties: S.optional(ConnectionSettingProperties),
+    }),
+).annotate({
+  identifier: "ListBotConnectionWithSecretsResponse",
+}) as any as S.Schema<ListBotConnectionWithSecretsResponse>;
+
+export interface ListBotsRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+}
+export const ListBotsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/botServices",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListBotsRequest",
+}) as any as S.Schema<ListBotsRequest>;
+
+export interface ListChannelByResourceGroupRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+}
+export const ListChannelByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListChannelByResourceGroupRequest",
+}) as any as S.Schema<ListChannelByResourceGroupRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type BotChannelTagsMap = { [key: string]: string | undefined };
+export const BotChannelTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotChannelTagsMap>;
+
+/** Entity zones */
+export type BotChannelZonesList = Array<string>;
+export const BotChannelZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BotChannelZonesList>;
+
+/** Bot channel resource definition */
+export interface BotChannel {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotChannelTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotChannelZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: Channel;
+}
+export const BotChannel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(BotChannelTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(BotChannelZonesList),
+    properties: S.optional(Channel),
+  }),
+).annotate({ identifier: "BotChannel" }) as any as S.Schema<BotChannel>;
+
+/** Gets the list of bot service channel results and their properties. */
+export type ChannelResponseListValueList = Array<BotChannel>;
+export const ChannelResponseListValueList = /*@__PURE__*/ S.Array(
+  BotChannel,
+) as any as S.Schema<ChannelResponseListValueList>;
+
+/** The list of bot service channel operation response. */
+export interface ChannelResponseList {
+  /** The link used to get the next page of bot service channel resources. */
+  nextLink?: string;
+  /** Gets the list of bot service channel results and their properties. */
+  value?: ChannelResponseListValueList;
+}
+export const ChannelResponseList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ChannelResponseListValueList),
+  }),
+).annotate({
+  identifier: "ChannelResponseList",
+}) as any as S.Schema<ChannelResponseList>;
+
+export type ChannelsListWithKeysRequestChannelName =
+  | "AlexaChannel"
+  | "FacebookChannel"
+  | "EmailChannel"
+  | "KikChannel"
+  | "TelegramChannel"
+  | "SlackChannel"
+  | "MsTeamsChannel"
+  | "SkypeChannel"
+  | "WebChatChannel"
+  | "DirectLineChannel"
+  | "SmsChannel"
+  | "LineChannel"
+  | "DirectLineSpeechChannel"
+  | "OutlookChannel"
+  | "Omnichannel"
+  | "TelephonyChannel"
+  | "AcsChatChannel"
+  | "SearchAssistant"
+  | "M365Extensions";
+export const ChannelsListWithKeysRequestChannelName = /*@__PURE__*/ S.String;
+
+export interface ListChannelWithKeysRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Channel resource. */
+  channelName: ChannelsListWithKeysRequestChannelName | (string & {});
+}
+export const ListChannelWithKeysRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    channelName: ChannelsListWithKeysRequestChannelName.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}/listChannelWithKeys",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "ListChannelWithKeysRequest",
+}) as any as S.Schema<ListChannelWithKeysRequest>;
+
+/** Contains resource tags defined as key/value pairs. */
+export type ChannelsListWithKeysResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ChannelsListWithKeysResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ChannelsListWithKeysResponseTagsMap>;
+
+/** Entity zones */
+export type ChannelsListWithKeysResponseZonesList = Array<string>;
+export const ChannelsListWithKeysResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ChannelsListWithKeysResponseZonesList>;
+
+/** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
+export type SiteTrustedOriginsList = Array<string>;
+export const SiteTrustedOriginsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SiteTrustedOriginsList>;
+
+/** A site for the channel */
+export interface Site {
+  /** Tenant Id */
+  tenantId?: string;
+  /** Site Id */
+  siteId?: string;
+  /** Site name */
+  siteName: string;
+  /** Primary key. Value only returned through POST to the action Channel List API, otherwise empty. */
+  key?: string;
+  /** Secondary key. Value only returned through POST to the action Channel List API, otherwise empty. */
+  key2?: string;
+  /** Whether this site is enabled for DirectLine channel */
+  isEnabled: boolean;
+  /** Whether this site is token enabled for channel */
+  isTokenEnabled?: boolean;
+  /** Whether this site is EndpointParameters enabled for channel */
+  isEndpointParametersEnabled?: boolean;
+  /** Whether this site is disabled detailed logging for */
+  isDetailedLoggingEnabled?: boolean;
+  /** Whether this site is enabled for block user upload. */
+  isBlockUserUploadEnabled?: boolean | null;
+  /** Whether this no-storage site is disabled detailed logging for */
+  isNoStorageEnabled?: boolean;
+  /** Entity Tag */
+  eTag?: string;
+  /** DirectLine application id */
+  appId?: string;
+  /** Whether this site is enabled for Bot Framework V1 protocol. */
+  isV1Enabled?: boolean;
+  /** Whether this site is enabled for Bot Framework V3 protocol. */
+  isV3Enabled?: boolean;
+  /** Whether this site is enabled for authentication with Bot Framework. */
+  isSecureSiteEnabled?: boolean;
+  /** List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True. */
+  trustedOrigins?: SiteTrustedOriginsList;
+  /** Whether this site is enabled for Webchat Speech */
+  isWebChatSpeechEnabled?: boolean;
+  /** Whether this site is enabled for preview versions of Webchat */
+  isWebchatPreviewEnabled?: boolean;
+}
+export const Site = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    siteId: S.optional(S.String),
+    siteName: S.String,
+    key: S.optional(S.String),
+    key2: S.optional(S.String),
+    isEnabled: S.Boolean,
+    isTokenEnabled: S.optional(S.Boolean),
+    isEndpointParametersEnabled: S.optional(S.Boolean),
+    isDetailedLoggingEnabled: S.optional(S.Boolean),
+    isBlockUserUploadEnabled: S.optional(S.NullOr(S.Boolean)),
+    isNoStorageEnabled: S.optional(S.Boolean),
+    eTag: S.optional(S.String),
+    appId: S.optional(S.String),
+    isV1Enabled: S.optional(S.Boolean),
+    isV3Enabled: S.optional(S.Boolean),
+    isSecureSiteEnabled: S.optional(S.Boolean),
+    trustedOrigins: S.optional(SiteTrustedOriginsList),
+    isWebChatSpeechEnabled: S.optional(S.Boolean),
+    isWebchatPreviewEnabled: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "Site" }) as any as S.Schema<Site>;
+
+/** The list of sites */
+export type ChannelSettingsSitesList = Array<Site>;
+export const ChannelSettingsSitesList = /*@__PURE__*/ S.Array(
+  Site,
+) as any as S.Schema<ChannelSettingsSitesList>;
+
+/** Channel settings definition */
+export interface ChannelSettings {
+  /** The extensionKey1 */
+  extensionKey1?: string;
+  /** The extensionKey2 */
+  extensionKey2?: string;
+  /** The list of sites */
+  sites?: ChannelSettingsSitesList;
+  /** The channel id */
+  channelId?: string;
+  /** The channel display name */
+  channelDisplayName?: string;
+  /** The bot id */
+  botId?: string;
+  /** The bot icon url */
+  botIconUrl?: string;
+  /** Whether this channel is enabled for the bot */
+  isEnabled?: boolean;
+  /** Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication. */
+  disableLocalAuth?: boolean;
+  /** Whether customer needs to agree to new terms. */
+  requireTermsAgreement?: boolean;
+}
+export const ChannelSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    extensionKey1: S.optional(S.String),
+    extensionKey2: S.optional(S.String),
+    sites: S.optional(ChannelSettingsSitesList),
+    channelId: S.optional(S.String),
+    channelDisplayName: S.optional(S.String),
+    botId: S.optional(S.String),
+    botIconUrl: S.optional(S.String),
+    isEnabled: S.optional(S.Boolean),
+    disableLocalAuth: S.optional(S.Boolean),
+    requireTermsAgreement: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ChannelSettings",
+}) as any as S.Schema<ChannelSettings>;
+
+export interface ListChannelWithKeysResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: ChannelsListWithKeysResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: ChannelsListWithKeysResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: Channel;
+  /** The set of properties specific to bot channel resource */
+  resource?: Channel;
+  /** Channel settings */
+  setting?: ChannelSettings;
+  /** Provisioning state of the resource */
+  provisioningState?: string;
+  /** Entity tag of the resource */
+  entityTag?: string;
+  /** Changed time of the resource */
+  changedTime?: string;
+}
+export const ListChannelWithKeysResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ChannelsListWithKeysResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(ChannelsListWithKeysResponseZonesList),
+    properties: S.optional(Channel),
+    resource: S.optional(Channel),
+    setting: S.optional(ChannelSettings),
+    provisioningState: S.optional(S.String),
+    entityTag: S.optional(S.String),
+    changedTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListChannelWithKeysResponse",
+}) as any as S.Schema<ListChannelWithKeysResponse>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2706,8 +2587,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The operation supported by Bot Service Management. */
 export interface OperationDisplayInfo {
@@ -2775,186 +2656,7 @@ export const OperationEntityListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationEntityListResult",
 }) as any as S.Schema<OperationEntityListResult>;
 
-/** The Private Endpoint resource. */
-export interface PrivateEndpointInput {}
-export const PrivateEndpointInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointInput",
-}) as any as S.Schema<PrivateEndpointInput>;
-
-/** Group ids */
-export type PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  Array<string>;
-export const PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
-
-/** Properties of the PrivateEndpointConnectProperties. */
-export interface PrivateEndpointConnectionPropertiesInput {
-  /** The resource of private end point. */
-  privateEndpoint?: PrivateEndpointInput;
-  /** A collection of information about the state of the connection between service consumer and provider. */
-  privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
-  /** Group ids */
-  groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
-}
-export const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      privateEndpoint: S.optional(PrivateEndpointInput),
-      privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-      groupIds: S.optional(
-        PrivateEndpointConnectionPropertiesInputGroupIdsList,
-      ),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionPropertiesInput",
-}) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
-export interface PrivateEndpointConnectionsCreateRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the private endpoint connection associated with the Azure resource */
-  privateEndpointConnectionName: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionPropertiesInput;
-}
-export const PrivateEndpointConnectionsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-      properties: S.optional(PrivateEndpointConnectionPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2022-09-15",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateRequest>;
-
-export interface PrivateEndpointConnectionsCreateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
-export const PrivateEndpointConnectionsCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsCreateResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsCreateResponse>;
-
-export interface PrivateEndpointConnectionsDeleteRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the private endpoint connection associated with the Azure resource */
-  privateEndpointConnectionName: string;
-}
-export const PrivateEndpointConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2022-09-15",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteRequest>;
-
-export interface PrivateEndpointConnectionsDeleteResponse {}
-export const PrivateEndpointConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "PrivateEndpointConnectionsDeleteResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsDeleteResponse>;
-
-export interface PrivateEndpointConnectionsGetRequest {
-  /** Azure Subscription ID. */
-  subscriptionId: string;
-  /** The name of the Bot resource group in the user subscription. */
-  resourceGroupName: string;
-  /** The name of the Bot resource. */
-  resourceName: string;
-  /** The name of the private endpoint connection associated with the Azure resource */
-  privateEndpointConnectionName: string;
-}
-export const PrivateEndpointConnectionsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      resourceName: S.String.pipe(T.Label()),
-      privateEndpointConnectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/privateEndpointConnections/{privateEndpointConnectionName}",
-        code: 200,
-        apiVersion: "2022-09-15",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsGetRequest>;
-
-export interface PrivateEndpointConnectionsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Resource properties. */
-  properties?: PrivateEndpointConnectionProperties;
-}
-export const PrivateEndpointConnectionsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      properties: S.optional(PrivateEndpointConnectionProperties),
-    }),
-).annotate({
-  identifier: "PrivateEndpointConnectionsGetResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsGetResponse>;
-
-export interface PrivateEndpointConnectionsListRequest {
+export interface ListPrivateEndpointConnectionsRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
@@ -2962,7 +2664,7 @@ export interface PrivateEndpointConnectionsListRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
+export const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2977,8 +2679,8 @@ export const PrivateEndpointConnectionsListRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "PrivateEndpointConnectionsListRequest",
-}) as any as S.Schema<PrivateEndpointConnectionsListRequest>;
+  identifier: "ListPrivateEndpointConnectionsRequest",
+}) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
 
 /** The Private Endpoint Connection resource. */
 export type PrivateEndpointConnection =
@@ -2994,20 +2696,20 @@ export const PrivateEndpointConnectionsListResponseValueList =
     BotPropertiesPrivateEndpointConnectionsItem,
   ) as any as S.Schema<PrivateEndpointConnectionsListResponseValueList>;
 
-export interface PrivateEndpointConnectionsListResponse {
+export interface ListPrivateEndpointConnectionsResponse {
   /** Array of private endpoint connections */
   value?: PrivateEndpointConnectionsListResponseValueList;
 }
-export const PrivateEndpointConnectionsListResponse = /*@__PURE__*/ S.suspend(
+export const ListPrivateEndpointConnectionsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       value: S.optional(PrivateEndpointConnectionsListResponseValueList),
     }),
 ).annotate({
-  identifier: "PrivateEndpointConnectionsListResponse",
-}) as any as S.Schema<PrivateEndpointConnectionsListResponse>;
+  identifier: "ListPrivateEndpointConnectionsResponse",
+}) as any as S.Schema<ListPrivateEndpointConnectionsResponse>;
 
-export interface PrivateLinkResourcesListByBotResourceRequest {
+export interface ListPrivateLinkResourceByBotResourceRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
   /** The name of the Bot resource group in the user subscription. */
@@ -3015,7 +2717,7 @@ export interface PrivateLinkResourcesListByBotResourceRequest {
   /** The name of the Bot resource. */
   resourceName: string;
 }
-export const PrivateLinkResourcesListByBotResourceRequest =
+export const ListPrivateLinkResourceByBotResourceRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -3030,8 +2732,8 @@ export const PrivateLinkResourcesListByBotResourceRequest =
       }),
     ),
   ).annotate({
-    identifier: "PrivateLinkResourcesListByBotResourceRequest",
-  }) as any as S.Schema<PrivateLinkResourcesListByBotResourceRequest>;
+    identifier: "ListPrivateLinkResourceByBotResourceRequest",
+  }) as any as S.Schema<ListPrivateLinkResourceByBotResourceRequest>;
 
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
@@ -3100,215 +2802,360 @@ export const PrivateLinkResourcesListByBotResourceResponseValueList =
     PrivateLinkResource,
   ) as any as S.Schema<PrivateLinkResourcesListByBotResourceResponseValueList>;
 
-export interface PrivateLinkResourcesListByBotResourceResponse {
+export interface ListPrivateLinkResourceByBotResourceResponse {
   /** Array of private link resources */
   value?: PrivateLinkResourcesListByBotResourceResponseValueList;
 }
-export const PrivateLinkResourcesListByBotResourceResponse =
+export const ListPrivateLinkResourceByBotResourceResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       value: S.optional(PrivateLinkResourcesListByBotResourceResponseValueList),
     }),
   ).annotate({
-    identifier: "PrivateLinkResourcesListByBotResourceResponse",
-  }) as any as S.Schema<PrivateLinkResourcesListByBotResourceResponse>;
+    identifier: "ListPrivateLinkResourceByBotResourceResponse",
+  }) as any as S.Schema<ListPrivateLinkResourceByBotResourceResponse>;
 
-export interface QnAMakerEndpointKeysGetRequest {
+/** Contains resource tags defined as key/value pairs. */
+export type BotsUpdateRequestTagsMap = { [key: string]: string | undefined };
+export const BotsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotsUpdateRequestTagsMap>;
+
+export interface UpdateBotRequest {
   /** Azure Subscription ID. */
   subscriptionId: string;
-  /** the host name of the QnA Maker endpoint */
-  hostname?: string;
-  /** Subscription key which provides access to this API. */
-  authkey?: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotsUpdateRequestTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: SkuInput;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | (string & {}) | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** The set of properties specific to bot resource */
+  properties?: BotPropertiesInput;
 }
-export const QnAMakerEndpointKeysGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateBotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    hostname: S.optional(S.String),
-    authkey: S.optional(S.String),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(BotsUpdateRequestTagsMap),
+    sku: S.optional(SkuInput),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    properties: S.optional(BotPropertiesInput),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.BotService/listQnAMakerEndpointKeys",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}",
       code: 200,
       apiVersion: "2022-09-15",
     }),
   ),
 ).annotate({
-  identifier: "QnAMakerEndpointKeysGetRequest",
-}) as any as S.Schema<QnAMakerEndpointKeysGetRequest>;
+  identifier: "UpdateBotRequest",
+}) as any as S.Schema<UpdateBotRequest>;
 
-/** Schema for EndpointKeys generate/refresh operations. */
-export interface QnAMakerEndpointKeysResponse {
-  /** Primary Access Key. */
-  primaryEndpointKey?: string;
-  /** Secondary Access Key. */
-  secondaryEndpointKey?: string;
-  /** Current version of runtime. */
-  installedVersion?: string;
-  /** Latest version of runtime. */
-  lastStableVersion?: string;
+/** Contains resource tags defined as key/value pairs. */
+export type BotsUpdateResponseTagsMap = { [key: string]: string | undefined };
+export const BotsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotsUpdateResponseTagsMap>;
+
+/** Entity zones */
+export type BotsUpdateResponseZonesList = Array<string>;
+export const BotsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BotsUpdateResponseZonesList>;
+
+export interface UpdateBotResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotsUpdateResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotsUpdateResponseZonesList;
+  /** The set of properties specific to bot resource */
+  properties?: BotProperties;
 }
-export const QnAMakerEndpointKeysResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateBotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    primaryEndpointKey: S.optional(S.String),
-    secondaryEndpointKey: S.optional(S.String),
-    installedVersion: S.optional(S.String),
-    lastStableVersion: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(BotsUpdateResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(BotsUpdateResponseZonesList),
+    properties: S.optional(BotProperties),
   }),
 ).annotate({
-  identifier: "QnAMakerEndpointKeysResponse",
-}) as any as S.Schema<QnAMakerEndpointKeysResponse>;
+  identifier: "UpdateBotResponse",
+}) as any as S.Schema<UpdateBotResponse>;
 
-export type BotConnectionCreateError = AzureOpError;
-/** Register a new Auth Connection for a Bot Service */
-export const BotConnectionCreate: API.OperationMethod<
-  BotConnectionCreateRequest,
-  BotConnectionCreateResponse,
-  BotConnectionCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionCreateRequest,
-  output: BotConnectionCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Contains resource tags defined as key/value pairs. */
+export type BotConnectionUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BotConnectionUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotConnectionUpdateRequestTagsMap>;
 
-export type BotConnectionDeleteError = AzureOpError;
-/** Deletes a Connection Setting registration for a Bot Service */
-export const BotConnectionDelete: API.OperationMethod<
-  BotConnectionDeleteRequest,
-  BotConnectionDeleteResponse,
-  BotConnectionDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionDeleteRequest,
-  output: BotConnectionDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateBotConnectionRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Bot Service Connection Setting resource. */
+  connectionName: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotConnectionUpdateRequestTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: SkuInput;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | (string & {}) | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingPropertiesInput;
+}
+export const UpdateBotConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    connectionName: S.String.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(BotConnectionUpdateRequestTagsMap),
+    sku: S.optional(SkuInput),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    properties: S.optional(ConnectionSettingPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/connections/{connectionName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBotConnectionRequest",
+}) as any as S.Schema<UpdateBotConnectionRequest>;
 
-export type BotConnectionGetError = AzureOpError;
-/** Get a Connection Setting registration for a Bot Service */
-export const BotConnectionGet: API.OperationMethod<
-  BotConnectionGetRequest,
-  BotConnectionGetResponse,
-  BotConnectionGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionGetRequest,
-  output: BotConnectionGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Contains resource tags defined as key/value pairs. */
+export type BotConnectionUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BotConnectionUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<BotConnectionUpdateResponseTagsMap>;
 
-export type BotConnectionListByBotServiceError = AzureOpError;
-/** Returns all the Connection Settings registered to a particular BotService resource */
-export const BotConnectionListByBotService: API.OperationMethod<
-  BotConnectionListByBotServiceRequest,
-  ConnectionSettingResponseList,
-  BotConnectionListByBotServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionListByBotServiceRequest,
-  output: ConnectionSettingResponseList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Entity zones */
+export type BotConnectionUpdateResponseZonesList = Array<string>;
+export const BotConnectionUpdateResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BotConnectionUpdateResponseZonesList>;
 
-export type BotConnectionListServiceProvidersError = AzureOpError;
-/** Lists the available Service Providers for creating Connection Settings */
-export const BotConnectionListServiceProviders: API.OperationMethod<
-  BotConnectionListServiceProvidersRequest,
-  ServiceProviderResponseList,
-  BotConnectionListServiceProvidersError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionListServiceProvidersRequest,
-  output: ServiceProviderResponseList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateBotConnectionResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: BotConnectionUpdateResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: BotConnectionUpdateResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: ConnectionSettingProperties;
+}
+export const UpdateBotConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(BotConnectionUpdateResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(BotConnectionUpdateResponseZonesList),
+    properties: S.optional(ConnectionSettingProperties),
+  }),
+).annotate({
+  identifier: "UpdateBotConnectionResponse",
+}) as any as S.Schema<UpdateBotConnectionResponse>;
 
-export type BotConnectionListWithSecretsError = AzureOpError;
-/** Get a Connection Setting registration for a Bot Service */
-export const BotConnectionListWithSecrets: API.OperationMethod<
-  BotConnectionListWithSecretsRequest,
-  BotConnectionListWithSecretsResponse,
-  BotConnectionListWithSecretsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionListWithSecretsRequest,
-  output: BotConnectionListWithSecretsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export type ChannelsUpdateRequestChannelName =
+  | "AlexaChannel"
+  | "FacebookChannel"
+  | "EmailChannel"
+  | "KikChannel"
+  | "TelegramChannel"
+  | "SlackChannel"
+  | "MsTeamsChannel"
+  | "SkypeChannel"
+  | "WebChatChannel"
+  | "DirectLineChannel"
+  | "SmsChannel"
+  | "LineChannel"
+  | "DirectLineSpeechChannel"
+  | "OutlookChannel"
+  | "Omnichannel"
+  | "TelephonyChannel"
+  | "AcsChatChannel"
+  | "SearchAssistant"
+  | "M365Extensions";
+export const ChannelsUpdateRequestChannelName = /*@__PURE__*/ S.String;
 
-export type BotConnectionUpdateError = AzureOpError;
-/** Updates a Connection Setting registration for a Bot Service */
-export const BotConnectionUpdate: API.OperationMethod<
-  BotConnectionUpdateRequest,
-  BotConnectionUpdateResponse,
-  BotConnectionUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotConnectionUpdateRequest,
-  output: BotConnectionUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Contains resource tags defined as key/value pairs. */
+export type ChannelsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ChannelsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ChannelsUpdateRequestTagsMap>;
 
-export type BotsCreateError = AzureOpError;
-/** Creates a Bot Service. Bot Service is a resource group wide resource type. */
-export const BotsCreate: API.OperationMethod<
-  BotsCreateRequest,
-  BotsCreateResponse,
-  BotsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsCreateRequest,
-  output: BotsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateChannelRequest {
+  /** Azure Subscription ID. */
+  subscriptionId: string;
+  /** The name of the Bot resource group in the user subscription. */
+  resourceGroupName: string;
+  /** The name of the Bot resource. */
+  resourceName: string;
+  /** The name of the Channel resource. */
+  channelName: ChannelsUpdateRequestChannelName | (string & {});
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: ChannelsUpdateRequestTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: SkuInput;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | (string & {}) | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** The set of properties specific to bot channel resource */
+  properties?: ChannelInput;
+}
+export const UpdateChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    resourceName: S.String.pipe(T.Label()),
+    channelName: ChannelsUpdateRequestChannelName.pipe(T.Label()),
+    location: S.optional(S.String),
+    tags: S.optional(ChannelsUpdateRequestTagsMap),
+    sku: S.optional(SkuInput),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    properties: S.optional(ChannelInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}/channels/{channelName}",
+      code: 200,
+      apiVersion: "2022-09-15",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateChannelRequest",
+}) as any as S.Schema<UpdateChannelRequest>;
 
-export type BotsDeleteError = AzureOpError;
-/** Deletes a Bot Service from the resource group. */
-export const BotsDelete: API.OperationMethod<
-  BotsDeleteRequest,
-  BotsDeleteResponse,
-  BotsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsDeleteRequest,
-  output: BotsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Contains resource tags defined as key/value pairs. */
+export type ChannelsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ChannelsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ChannelsUpdateResponseTagsMap>;
 
-export type BotsGetError = AzureOpError;
-/** Returns a BotService specified by the parameters. */
-export const BotsGet: API.OperationMethod<
-  BotsGetRequest,
-  BotsGetResponse,
-  BotsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsGetRequest,
-  output: BotsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Entity zones */
+export type ChannelsUpdateResponseZonesList = Array<string>;
+export const ChannelsUpdateResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ChannelsUpdateResponseZonesList>;
+
+export interface UpdateChannelResponse {
+  /** Specifies the resource ID. */
+  id?: string;
+  /** Specifies the name of the resource. */
+  name?: string;
+  /** Specifies the location of the resource. */
+  location?: string;
+  /** Specifies the type of the resource. */
+  type?: string;
+  /** Contains resource tags defined as key/value pairs. */
+  tags?: ChannelsUpdateResponseTagsMap;
+  /** Gets or sets the SKU of the resource. */
+  sku?: Sku;
+  /** Required. Gets or sets the Kind of the resource. */
+  kind?: Kind | null;
+  /** Entity Tag. */
+  etag?: string;
+  /** Entity zones */
+  zones?: ChannelsUpdateResponseZonesList;
+  /** The set of properties specific to bot channel resource */
+  properties?: Channel;
+}
+export const UpdateChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    location: S.optional(S.String),
+    type: S.optional(S.String),
+    tags: S.optional(ChannelsUpdateResponseTagsMap),
+    sku: S.optional(Sku),
+    kind: S.optional(S.NullOr(Kind)),
+    etag: S.optional(S.String),
+    zones: S.optional(ChannelsUpdateResponseZonesList),
+    properties: S.optional(Channel),
+  }),
+).annotate({
+  identifier: "UpdateChannelResponse",
+}) as any as S.Schema<UpdateChannelResponse>;
 
 export type BotsGetCheckNameAvailabilityError = AzureOpError;
 /** Check whether a bot name is available. */
@@ -3325,136 +3172,121 @@ export const BotsGetCheckNameAvailability: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BotsListError = AzureOpError;
-/** Returns all the resources of a particular type belonging to a subscription. */
-export const BotsList: API.OperationMethod<
-  BotsListRequest,
-  BotResponseList,
-  BotsListError,
+export type CreateBotError = AzureOpError;
+/** Creates a Bot Service. Bot Service is a resource group wide resource type. */
+export const CreateBot: API.OperationMethod<
+  CreateBotRequest,
+  CreateBotResponse,
+  CreateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BotsListRequest,
-  output: BotResponseList,
+  input: CreateBotRequest,
+  output: CreateBotResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type BotsListByResourceGroupError = AzureOpError;
-/** Returns all the resources of a particular type belonging to a resource group */
-export const BotsListByResourceGroup: API.OperationMethod<
-  BotsListByResourceGroupRequest,
-  BotResponseList,
-  BotsListByResourceGroupError,
+export type CreateBotConnectionError = AzureOpError;
+/** Register a new Auth Connection for a Bot Service */
+export const CreateBotConnection: API.OperationMethod<
+  CreateBotConnectionRequest,
+  CreateBotConnectionResponse,
+  CreateBotConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BotsListByResourceGroupRequest,
-  output: BotResponseList,
+  input: CreateBotConnectionRequest,
+  output: CreateBotConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type BotsUpdateError = AzureOpError;
-/** Updates a Bot Service */
-export const BotsUpdate: API.OperationMethod<
-  BotsUpdateRequest,
-  BotsUpdateResponse,
-  BotsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BotsUpdateRequest,
-  output: BotsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChannelsCreateError = AzureOpError;
+export type CreateChannelError = AzureOpError;
 /** Creates a Channel registration for a Bot Service */
-export const ChannelsCreate: API.OperationMethod<
-  ChannelsCreateRequest,
-  ChannelsCreateResponse,
-  ChannelsCreateError,
+export const CreateChannel: API.OperationMethod<
+  CreateChannelRequest,
+  CreateChannelResponse,
+  CreateChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChannelsCreateRequest,
-  output: ChannelsCreateResponse,
+  input: CreateChannelRequest,
+  output: CreateChannelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ChannelsDeleteError = AzureOpError;
+export type CreatePrivateEndpointConnectionError = AzureOpError;
+/** Update the state of specified private endpoint connection associated with the Bot. */
+export const CreatePrivateEndpointConnection: API.OperationMethod<
+  CreatePrivateEndpointConnectionRequest,
+  CreatePrivateEndpointConnectionResponse,
+  CreatePrivateEndpointConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePrivateEndpointConnectionRequest,
+  output: CreatePrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBotError = AzureOpError;
+/** Deletes a Bot Service from the resource group. */
+export const DeleteBot: API.OperationMethod<
+  DeleteBotRequest,
+  DeleteBotResponse,
+  DeleteBotError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBotRequest,
+  output: DeleteBotResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBotConnectionError = AzureOpError;
+/** Deletes a Connection Setting registration for a Bot Service */
+export const DeleteBotConnection: API.OperationMethod<
+  DeleteBotConnectionRequest,
+  DeleteBotConnectionResponse,
+  DeleteBotConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBotConnectionRequest,
+  output: DeleteBotConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteChannelError = AzureOpError;
 /** Deletes a Channel registration from a Bot Service */
-export const ChannelsDelete: API.OperationMethod<
-  ChannelsDeleteRequest,
-  ChannelsDeleteResponse,
-  ChannelsDeleteError,
+export const DeleteChannel: API.OperationMethod<
+  DeleteChannelRequest,
+  DeleteChannelResponse,
+  DeleteChannelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChannelsDeleteRequest,
-  output: ChannelsDeleteResponse,
+  input: DeleteChannelRequest,
+  output: DeleteChannelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ChannelsGetError = AzureOpError;
-/** Returns a BotService Channel registration specified by the parameters. */
-export const ChannelsGet: API.OperationMethod<
-  ChannelsGetRequest,
-  ChannelsGetResponse,
-  ChannelsGetError,
+export type DeletePrivateEndpointConnectionError = AzureOpError;
+/** Deletes the specified private endpoint connection associated with the Bot. */
+export const DeletePrivateEndpointConnection: API.OperationMethod<
+  DeletePrivateEndpointConnectionRequest,
+  DeletePrivateEndpointConnectionResponse,
+  DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChannelsGetRequest,
-  output: ChannelsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChannelsListByResourceGroupError = AzureOpError;
-/** Returns all the Channel registrations of a particular BotService resource */
-export const ChannelsListByResourceGroup: API.OperationMethod<
-  ChannelsListByResourceGroupRequest,
-  ChannelResponseList,
-  ChannelsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChannelsListByResourceGroupRequest,
-  output: ChannelResponseList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChannelsListWithKeysError = AzureOpError;
-/** Lists a Channel registration for a Bot Service including secrets */
-export const ChannelsListWithKeys: API.OperationMethod<
-  ChannelsListWithKeysRequest,
-  ChannelsListWithKeysResponse,
-  ChannelsListWithKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChannelsListWithKeysRequest,
-  output: ChannelsListWithKeysResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChannelsUpdateError = AzureOpError;
-/** Updates a Channel registration for a Bot Service */
-export const ChannelsUpdate: API.OperationMethod<
-  ChannelsUpdateRequest,
-  ChannelsUpdateResponse,
-  ChannelsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChannelsUpdateRequest,
-  output: ChannelsUpdateResponse,
+  input: DeletePrivateEndpointConnectionRequest,
+  output: DeletePrivateEndpointConnectionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3490,136 +3322,301 @@ export const EmailCreateSignInUrl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HostSettingsGetError = AzureOpError;
-/** Get per subscription settings needed to host bot in compute resource such as Azure App Service */
-export const HostSettingsGet: API.OperationMethod<
-  HostSettingsGetRequest,
-  HostSettingsResponse,
-  HostSettingsGetError,
+export type GetBotError = AzureOpError;
+/** Returns a BotService specified by the parameters. */
+export const GetBot: API.OperationMethod<
+  GetBotRequest,
+  GetBotResponse,
+  GetBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostSettingsGetRequest,
+  input: GetBotRequest,
+  output: GetBotResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBotConnectionError = AzureOpError;
+/** Get a Connection Setting registration for a Bot Service */
+export const GetBotConnection: API.OperationMethod<
+  GetBotConnectionRequest,
+  GetBotConnectionResponse,
+  GetBotConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBotConnectionRequest,
+  output: GetBotConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetChannelError = AzureOpError;
+/** Returns a BotService Channel registration specified by the parameters. */
+export const GetChannel: API.OperationMethod<
+  GetChannelRequest,
+  GetChannelResponse,
+  GetChannelError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetChannelRequest,
+  output: GetChannelResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetHostSettingError = AzureOpError;
+/** Get per subscription settings needed to host bot in compute resource such as Azure App Service */
+export const GetHostSetting: API.OperationMethod<
+  GetHostSettingRequest,
+  HostSettingsResponse,
+  GetHostSettingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHostSettingRequest,
   output: HostSettingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationResultsGetError = AzureOpError;
+export type GetOperationResultError = AzureOpError;
 /** Get the operation result for a long running operation. */
-export const OperationResultsGet: API.OperationMethod<
-  OperationResultsGetRequest,
+export const GetOperationResult: API.OperationMethod<
+  GetOperationResultRequest,
   OperationResultsDescription,
-  OperationResultsGetError,
+  GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationResultsGetRequest,
+  input: GetOperationResultRequest,
   output: OperationResultsDescription,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** Lists all the available BotService operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationEntityListResult,
-  OperationsListError,
+export type GetPrivateEndpointConnectionError = AzureOpError;
+/** Gets the specified private endpoint connection associated with the Bot. */
+export const GetPrivateEndpointConnection: API.OperationMethod<
+  GetPrivateEndpointConnectionRequest,
+  GetPrivateEndpointConnectionResponse,
+  GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: GetPrivateEndpointConnectionRequest,
+  output: GetPrivateEndpointConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetQnAMakerEndpointKeyError = AzureOpError;
+/** Lists the QnA Maker endpoint keys */
+export const GetQnAMakerEndpointKey: API.OperationMethod<
+  GetQnAMakerEndpointKeyRequest,
+  QnAMakerEndpointKeysResponse,
+  GetQnAMakerEndpointKeyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQnAMakerEndpointKeyRequest,
+  output: QnAMakerEndpointKeysResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotByResourceGroupError = AzureOpError;
+/** Returns all the resources of a particular type belonging to a resource group */
+export const ListBotByResourceGroup: API.OperationMethod<
+  ListBotByResourceGroupRequest,
+  BotResponseList,
+  ListBotByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotByResourceGroupRequest,
+  output: BotResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotConnectionByBotServiceError = AzureOpError;
+/** Returns all the Connection Settings registered to a particular BotService resource */
+export const ListBotConnectionByBotService: API.OperationMethod<
+  ListBotConnectionByBotServiceRequest,
+  ConnectionSettingResponseList,
+  ListBotConnectionByBotServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotConnectionByBotServiceRequest,
+  output: ConnectionSettingResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotConnectionServiceProvidersError = AzureOpError;
+/** Lists the available Service Providers for creating Connection Settings */
+export const ListBotConnectionServiceProviders: API.OperationMethod<
+  ListBotConnectionServiceProvidersRequest,
+  ServiceProviderResponseList,
+  ListBotConnectionServiceProvidersError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotConnectionServiceProvidersRequest,
+  output: ServiceProviderResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotConnectionWithSecretsError = AzureOpError;
+/** Get a Connection Setting registration for a Bot Service */
+export const ListBotConnectionWithSecrets: API.OperationMethod<
+  ListBotConnectionWithSecretsRequest,
+  ListBotConnectionWithSecretsResponse,
+  ListBotConnectionWithSecretsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotConnectionWithSecretsRequest,
+  output: ListBotConnectionWithSecretsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBotsError = AzureOpError;
+/** Returns all the resources of a particular type belonging to a subscription. */
+export const ListBots: API.OperationMethod<
+  ListBotsRequest,
+  BotResponseList,
+  ListBotsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBotsRequest,
+  output: BotResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListChannelByResourceGroupError = AzureOpError;
+/** Returns all the Channel registrations of a particular BotService resource */
+export const ListChannelByResourceGroup: API.OperationMethod<
+  ListChannelByResourceGroupRequest,
+  ChannelResponseList,
+  ListChannelByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChannelByResourceGroupRequest,
+  output: ChannelResponseList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListChannelWithKeysError = AzureOpError;
+/** Lists a Channel registration for a Bot Service including secrets */
+export const ListChannelWithKeys: API.OperationMethod<
+  ListChannelWithKeysRequest,
+  ListChannelWithKeysResponse,
+  ListChannelWithKeysError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChannelWithKeysRequest,
+  output: ListChannelWithKeysResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all the available BotService operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationEntityListResult,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
   output: OperationEntityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PrivateEndpointConnectionsCreateError = AzureOpError;
-/** Update the state of specified private endpoint connection associated with the Bot. */
-export const PrivateEndpointConnectionsCreate: API.OperationMethod<
-  PrivateEndpointConnectionsCreateRequest,
-  PrivateEndpointConnectionsCreateResponse,
-  PrivateEndpointConnectionsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateRequest,
-  output: PrivateEndpointConnectionsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsDeleteError = AzureOpError;
-/** Deletes the specified private endpoint connection associated with the Bot. */
-export const PrivateEndpointConnectionsDelete: API.OperationMethod<
-  PrivateEndpointConnectionsDeleteRequest,
-  PrivateEndpointConnectionsDeleteResponse,
-  PrivateEndpointConnectionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsDeleteRequest,
-  output: PrivateEndpointConnectionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsGetError = AzureOpError;
-/** Gets the specified private endpoint connection associated with the Bot. */
-export const PrivateEndpointConnectionsGet: API.OperationMethod<
-  PrivateEndpointConnectionsGetRequest,
-  PrivateEndpointConnectionsGetResponse,
-  PrivateEndpointConnectionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsGetRequest,
-  output: PrivateEndpointConnectionsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateEndpointConnectionsListError = AzureOpError;
+export type ListPrivateEndpointConnectionsError = AzureOpError;
 /** List all the private endpoint connections associated with the Bot. */
-export const PrivateEndpointConnectionsList: API.OperationMethod<
-  PrivateEndpointConnectionsListRequest,
-  PrivateEndpointConnectionsListResponse,
-  PrivateEndpointConnectionsListError,
+export const ListPrivateEndpointConnections: API.OperationMethod<
+  ListPrivateEndpointConnectionsRequest,
+  ListPrivateEndpointConnectionsResponse,
+  ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsListRequest,
-  output: PrivateEndpointConnectionsListResponse,
+  input: ListPrivateEndpointConnectionsRequest,
+  output: ListPrivateEndpointConnectionsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type PrivateLinkResourcesListByBotResourceError = AzureOpError;
+export type ListPrivateLinkResourceByBotResourceError = AzureOpError;
 /** Gets the private link resources that need to be created for a Bot. */
-export const PrivateLinkResourcesListByBotResource: API.OperationMethod<
-  PrivateLinkResourcesListByBotResourceRequest,
-  PrivateLinkResourcesListByBotResourceResponse,
-  PrivateLinkResourcesListByBotResourceError,
+export const ListPrivateLinkResourceByBotResource: API.OperationMethod<
+  ListPrivateLinkResourceByBotResourceRequest,
+  ListPrivateLinkResourceByBotResourceResponse,
+  ListPrivateLinkResourceByBotResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateLinkResourcesListByBotResourceRequest,
-  output: PrivateLinkResourcesListByBotResourceResponse,
+  input: ListPrivateLinkResourceByBotResourceRequest,
+  output: ListPrivateLinkResourceByBotResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type QnAMakerEndpointKeysGetError = AzureOpError;
-/** Lists the QnA Maker endpoint keys */
-export const QnAMakerEndpointKeysGet: API.OperationMethod<
-  QnAMakerEndpointKeysGetRequest,
-  QnAMakerEndpointKeysResponse,
-  QnAMakerEndpointKeysGetError,
+export type UpdateBotError = AzureOpError;
+/** Updates a Bot Service */
+export const UpdateBot: API.OperationMethod<
+  UpdateBotRequest,
+  UpdateBotResponse,
+  UpdateBotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QnAMakerEndpointKeysGetRequest,
-  output: QnAMakerEndpointKeysResponse,
+  input: UpdateBotRequest,
+  output: UpdateBotResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBotConnectionError = AzureOpError;
+/** Updates a Connection Setting registration for a Bot Service */
+export const UpdateBotConnection: API.OperationMethod<
+  UpdateBotConnectionRequest,
+  UpdateBotConnectionResponse,
+  UpdateBotConnectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBotConnectionRequest,
+  output: UpdateBotConnectionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateChannelError = AzureOpError;
+/** Updates a Channel registration for a Bot Service */
+export const UpdateChannel: API.OperationMethod<
+  UpdateChannelRequest,
+  UpdateChannelResponse,
+  UpdateChannelError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateChannelRequest,
+  output: UpdateChannelResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

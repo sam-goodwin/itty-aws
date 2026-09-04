@@ -164,7 +164,7 @@
         "smithy.api#documentation": "Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set."
       }
     },
-    "com.posthog.user_facet_settings#UserFacetSettingsPartialUpdateRequest": {
+    "com.posthog.user_facet_settings#UpdateUserFacetSettingPartialRequest": {
       "type": "structure",
       "members": {
         "uuid": {
@@ -193,10 +193,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.user_facet_settings#UserFacetSettingsPartialUpdate": {
+    "com.posthog.user_facet_settings#UpdateUserFacetSettingPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.user_facet_settings#UserFacetSettingsPartialUpdateRequest"
+        "target": "com.posthog.user_facet_settings#UpdateUserFacetSettingPartialRequest"
       },
       "output": {
         "target": "com.posthog.user_facet_settings#UserFacetSettings2"
@@ -218,7 +218,7 @@
           "target": "com.posthog.user_facet_settings#UserFacetSettingsRetrieve"
         },
         {
-          "target": "com.posthog.user_facet_settings#UserFacetSettingsPartialUpdate"
+          "target": "com.posthog.user_facet_settings#UpdateUserFacetSettingPartial"
         }
       ],
       "traits": {

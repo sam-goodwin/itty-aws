@@ -65,122 +65,10 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type BatchGetCategoriesViewEnum =
-  | "CATEGORY_VIEW_UNSPECIFIED"
-  | "BASIC"
-  | "FULL";
-export const BatchGetCategoriesViewEnum = /*@__PURE__*/ S.String;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
-
-export interface BatchGetCategoriesRequest {
-  /** Required. The BCP 47 code of language that the category names should be returned in. */
-  languageCode?: string;
-  /** Optional. The ISO 3166-1 alpha-2 country code used to infer non-standard language. */
-  regionCode?: string;
-  /** Required. Specifies which parts to the Category resource should be returned in the response. */
-  view?: BatchGetCategoriesViewEnum | (string & {});
-  /** Required. At least one name must be set. The GConcept ids the localized category names should be returned for. To return details for more than one category, repeat this parameter in the request. */
-  names?: StringList;
-}
-export const BatchGetCategoriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    languageCode: S.optional(S.String.pipe(T.Query())),
-    regionCode: S.optional(S.String.pipe(T.Query())),
-    view: S.optional(BatchGetCategoriesViewEnum.pipe(T.Query())),
-    names: S.optional(StringList.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v1/categories:batchGet",
-      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "BatchGetCategoriesRequest",
-}) as any as S.Schema<BatchGetCategoriesRequest>;
-
-/** More hours types that a business can offers, in addition to its regular hours. */
-export interface MoreHoursType {
-  /** Output only. The human-readable English display name for the hours type. */
-  displayName?: string;
-  /** Output only. A stable ID provided by Google for this hours type. */
-  hoursTypeId?: string;
-  /** Output only. The human-readable localized display name for the hours type. */
-  localizedDisplayName?: string;
-}
-export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    hoursTypeId: S.optional(S.String),
-    localizedDisplayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "MoreHoursType" }) as any as S.Schema<MoreHoursType>;
-
-export type MoreHoursTypeList = Array<MoreHoursType>;
-export const MoreHoursTypeList = /*@__PURE__*/ S.Array(
-  MoreHoursType,
-) as any as S.Schema<MoreHoursTypeList>;
-
-/** A message describing a service type that the business offers. */
-export interface ServiceType {
-  /** Output only. A stable ID (provided by Google) for this service type. */
-  serviceTypeId?: string;
-  /** Output only. The human-readable display name for the service type. */
-  displayName?: string;
-}
-export const ServiceType = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceTypeId: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceType" }) as any as S.Schema<ServiceType>;
-
-export type ServiceTypeList = Array<ServiceType>;
-export const ServiceTypeList = /*@__PURE__*/ S.Array(
-  ServiceType,
-) as any as S.Schema<ServiceTypeList>;
-
-/** A category describing what this business is (not what it does). For a list of valid category IDs, and the mappings to their human-readable names, see `categories.list`. */
-export interface Category {
-  /** Output only. More hours types that are available for this business category. */
-  moreHoursTypes?: MoreHoursTypeList;
-  /** Output only. The human-readable name of the category. This is set when reading the location. When modifying the location, `category_id` must be set. */
-  displayName?: string;
-  /** Output only. A list of all the service types that are available for this business category. */
-  serviceTypes?: ServiceTypeList;
-  /** Required. A stable ID (provided by Google) for this category. The value must be specified when modifying the category (when creating or updating a location). */
-  name?: string;
-}
-export const Category = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    moreHoursTypes: S.optional(MoreHoursTypeList),
-    displayName: S.optional(S.String),
-    serviceTypes: S.optional(ServiceTypeList),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
-
-export type CategoryList = Array<Category>;
-export const CategoryList = /*@__PURE__*/ S.Array(
-  Category,
-) as any as S.Schema<CategoryList>;
-
-/** Response message for BusinessCategories.BatchGetBusinessCategories. */
-export interface BatchGetCategoriesResponse {
-  /** Categories that match the GConcept ids provided in the request. They will not come in the same order as category ids in the request. */
-  categories?: CategoryList;
-}
-export const BatchGetCategoriesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    categories: S.optional(CategoryList),
-  }),
-).annotate({
-  identifier: "BatchGetCategoriesResponse",
-}) as any as S.Schema<BatchGetCategoriesResponse>;
 
 /** Defines an area that's represented by a place ID. */
 export interface PlaceInfo {
@@ -404,6 +292,72 @@ export const Metadata = /*@__PURE__*/ S.suspend(() =>
     canHaveBusinessCalls: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Metadata" }) as any as S.Schema<Metadata>;
+
+/** More hours types that a business can offers, in addition to its regular hours. */
+export interface MoreHoursType {
+  /** Output only. The human-readable English display name for the hours type. */
+  displayName?: string;
+  /** Output only. A stable ID provided by Google for this hours type. */
+  hoursTypeId?: string;
+  /** Output only. The human-readable localized display name for the hours type. */
+  localizedDisplayName?: string;
+}
+export const MoreHoursType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    hoursTypeId: S.optional(S.String),
+    localizedDisplayName: S.optional(S.String),
+  }),
+).annotate({ identifier: "MoreHoursType" }) as any as S.Schema<MoreHoursType>;
+
+export type MoreHoursTypeList = Array<MoreHoursType>;
+export const MoreHoursTypeList = /*@__PURE__*/ S.Array(
+  MoreHoursType,
+) as any as S.Schema<MoreHoursTypeList>;
+
+/** A message describing a service type that the business offers. */
+export interface ServiceType {
+  /** Output only. A stable ID (provided by Google) for this service type. */
+  serviceTypeId?: string;
+  /** Output only. The human-readable display name for the service type. */
+  displayName?: string;
+}
+export const ServiceType = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceTypeId: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({ identifier: "ServiceType" }) as any as S.Schema<ServiceType>;
+
+export type ServiceTypeList = Array<ServiceType>;
+export const ServiceTypeList = /*@__PURE__*/ S.Array(
+  ServiceType,
+) as any as S.Schema<ServiceTypeList>;
+
+/** A category describing what this business is (not what it does). For a list of valid category IDs, and the mappings to their human-readable names, see `categories.list`. */
+export interface Category {
+  /** Output only. More hours types that are available for this business category. */
+  moreHoursTypes?: MoreHoursTypeList;
+  /** Output only. The human-readable name of the category. This is set when reading the location. When modifying the location, `category_id` must be set. */
+  displayName?: string;
+  /** Output only. A list of all the service types that are available for this business category. */
+  serviceTypes?: ServiceTypeList;
+  /** Required. A stable ID (provided by Google) for this category. The value must be specified when modifying the category (when creating or updating a location). */
+  name?: string;
+}
+export const Category = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    moreHoursTypes: S.optional(MoreHoursTypeList),
+    displayName: S.optional(S.String),
+    serviceTypes: S.optional(ServiceTypeList),
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "Category" }) as any as S.Schema<Category>;
+
+export type CategoryList = Array<Category>;
+export const CategoryList = /*@__PURE__*/ S.Array(
+  Category,
+) as any as S.Schema<CategoryList>;
 
 /** A collection of categories that describes the business. During updates, both fields must be set. Clients are prohibited from individually updating the primary or additional categories using the update mask. */
 export interface Categories {
@@ -937,6 +891,52 @@ export const Attributes = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
   }),
 ).annotate({ identifier: "Attributes" }) as any as S.Schema<Attributes>;
+
+export type BatchGetCategoriesViewEnum =
+  | "CATEGORY_VIEW_UNSPECIFIED"
+  | "BASIC"
+  | "FULL";
+export const BatchGetCategoriesViewEnum = /*@__PURE__*/ S.String;
+
+export interface GetBatchCategoryRequest {
+  /** Required. The BCP 47 code of language that the category names should be returned in. */
+  languageCode?: string;
+  /** Optional. The ISO 3166-1 alpha-2 country code used to infer non-standard language. */
+  regionCode?: string;
+  /** Required. Specifies which parts to the Category resource should be returned in the response. */
+  view?: BatchGetCategoriesViewEnum | (string & {});
+  /** Required. At least one name must be set. The GConcept ids the localized category names should be returned for. To return details for more than one category, repeat this parameter in the request. */
+  names?: StringList;
+}
+export const GetBatchCategoryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    languageCode: S.optional(S.String.pipe(T.Query())),
+    regionCode: S.optional(S.String.pipe(T.Query())),
+    view: S.optional(BatchGetCategoriesViewEnum.pipe(T.Query())),
+    names: S.optional(StringList.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v1/categories:batchGet",
+      baseUrl: "https://mybusinessbusinessinformation.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "GetBatchCategoryRequest",
+}) as any as S.Schema<GetBatchCategoryRequest>;
+
+/** Response message for BusinessCategories.BatchGetBusinessCategories. */
+export interface GetBatchCategoryResponse {
+  /** Categories that match the GConcept ids provided in the request. They will not come in the same order as category ids in the request. */
+  categories?: CategoryList;
+}
+export const GetBatchCategoryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    categories: S.optional(CategoryList),
+  }),
+).annotate({
+  identifier: "GetBatchCategoryResponse",
+}) as any as S.Schema<GetBatchCategoryResponse>;
 
 export interface GetChainsRequest {
   /** Required. The chain's resource name, in the format `chains/{chain_place_id}`. */
@@ -1482,21 +1482,6 @@ export const UpdateAttributesLocationsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateAttributesLocationsRequest",
 }) as any as S.Schema<UpdateAttributesLocationsRequest>;
 
-export type BatchGetCategoriesError = NotFound | Forbidden | GcpOpError;
-/** Returns a list of business categories for the provided language and GConcept ids. */
-export const batchGetCategories: API.OperationMethod<
-  BatchGetCategoriesRequest,
-  BatchGetCategoriesResponse,
-  BatchGetCategoriesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetCategoriesRequest,
-  output: BatchGetCategoriesResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreateAccountsLocationsError =
   | NotFound
   | Forbidden
@@ -1547,6 +1532,21 @@ export const getAttributesLocations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAttributesLocationsRequest,
   output: Attributes,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchCategoryError = NotFound | Forbidden | GcpOpError;
+/** Returns a list of business categories for the provided language and GConcept ids. */
+export const getBatchCategory: API.OperationMethod<
+  GetBatchCategoryRequest,
+  GetBatchCategoryResponse,
+  GetBatchCategoryError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchCategoryRequest,
+  output: GetBatchCategoryResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

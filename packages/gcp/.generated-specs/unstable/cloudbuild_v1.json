@@ -5610,7 +5610,7 @@
         }
       }
     },
-    "com.gcp.cloudbuild_v1#BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest": {
+    "com.gcp.cloudbuild_v1#CreateBatchProjectLocationBitbucketServerConfigConnectedRepositoryRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5630,10 +5630,10 @@
         }
       }
     },
-    "com.gcp.cloudbuild_v1#BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositories": {
+    "com.gcp.cloudbuild_v1#CreateBatchProjectLocationBitbucketServerConfigConnectedRepository": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudbuild_v1#BatchCreateProjectsLocationsBitbucketServerConfigsConnectedRepositoriesRequest"
+        "target": "com.gcp.cloudbuild_v1#CreateBatchProjectLocationBitbucketServerConfigConnectedRepositoryRequest"
       },
       "output": {
         "target": "com.gcp.cloudbuild_v1#Operation"

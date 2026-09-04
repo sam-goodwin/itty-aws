@@ -59,7 +59,7 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsListRequest": {
+    "com.posthog.accounts#ListAccountsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -395,10 +395,10 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsList": {
+    "com.posthog.accounts#ListAccounts": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsListRequest"
+        "target": "com.posthog.accounts#ListAccountsRequest"
       },
       "output": {
         "target": "com.posthog.accounts#PaginatedAccountList"
@@ -513,7 +513,7 @@
         "smithy.api#documentation": "Tag names attached to the account. Pass a list to replace existing tags."
       }
     },
-    "com.posthog.accounts#AccountsCreateRequest": {
+    "com.posthog.accounts#CreateAccountRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -570,10 +570,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.accounts#AccountsCreate": {
+    "com.posthog.accounts#CreateAccount": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsCreateRequest"
+        "target": "com.posthog.accounts#CreateAccountRequest"
       },
       "output": {
         "target": "com.posthog.accounts#Account"
@@ -728,7 +728,7 @@
         "smithy.api#documentation": "Tag names attached to the account. Pass a list to replace existing tags."
       }
     },
-    "com.posthog.accounts#AccountsUpdateRequest": {
+    "com.posthog.accounts#UpdateAccountRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -793,10 +793,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.accounts#AccountsUpdate": {
+    "com.posthog.accounts#UpdateAccount": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsUpdateRequest"
+        "target": "com.posthog.accounts#UpdateAccountRequest"
       },
       "output": {
         "target": "com.posthog.accounts#Account"
@@ -911,7 +911,7 @@
         "smithy.api#documentation": "Tag names attached to the account. Pass a list to replace existing tags."
       }
     },
-    "com.posthog.accounts#AccountsPartialUpdateRequest": {
+    "com.posthog.accounts#UpdateAccountPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -975,10 +975,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.accounts#AccountsPartialUpdate": {
+    "com.posthog.accounts#UpdateAccountPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsPartialUpdateRequest"
+        "target": "com.posthog.accounts#UpdateAccountPartialRequest"
       },
       "output": {
         "target": "com.posthog.accounts#Account"
@@ -1031,7 +1031,7 @@
         }
       }
     },
-    "com.posthog.accounts#AccountsEmailThreadsListRequest": {
+    "com.posthog.accounts#ListAccountEmailThreadsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1327,10 +1327,10 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsEmailThreadsList": {
+    "com.posthog.accounts#ListAccountEmailThreads": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsEmailThreadsListRequest"
+        "target": "com.posthog.accounts#ListAccountEmailThreadsRequest"
       },
       "output": {
         "target": "com.posthog.accounts#PaginatedAccountEmailThreadList"
@@ -1343,7 +1343,7 @@
         }
       }
     },
-    "com.posthog.accounts#AccountsEmailThreadMessagesListRequest": {
+    "com.posthog.accounts#ListAccountEmailThreadMessagesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1525,10 +1525,10 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsEmailThreadMessagesList": {
+    "com.posthog.accounts#ListAccountEmailThreadMessages": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsEmailThreadMessagesListRequest"
+        "target": "com.posthog.accounts#ListAccountEmailThreadMessagesRequest"
       },
       "output": {
         "target": "com.posthog.accounts#PaginatedAccountEmailThreadMessageList"
@@ -1541,7 +1541,7 @@
         }
       }
     },
-    "com.posthog.accounts#AccountsMeetingsListRequest": {
+    "com.posthog.accounts#ListAccountMeetingsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1742,10 +1742,10 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsMeetingsList": {
+    "com.posthog.accounts#ListAccountMeetings": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsMeetingsListRequest"
+        "target": "com.posthog.accounts#ListAccountMeetingsRequest"
       },
       "output": {
         "target": "com.posthog.accounts#PaginatedMeetingList"
@@ -1758,7 +1758,7 @@
         }
       }
     },
-    "com.posthog.accounts#AccountsSummariesListRequest": {
+    "com.posthog.accounts#ListAccountSummariesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1942,10 +1942,10 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsSummariesList": {
+    "com.posthog.accounts#ListAccountSummaries": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsSummariesListRequest"
+        "target": "com.posthog.accounts#ListAccountSummariesRequest"
       },
       "output": {
         "target": "com.posthog.accounts#PaginatedAccountChannelSummaryList"
@@ -1958,7 +1958,7 @@
         }
       }
     },
-    "com.posthog.accounts#AccountsSupportTicketsListRequest": {
+    "com.posthog.accounts#ListAccountSupportTicketsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2070,7 +2070,7 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsSupportTicketsListResponse": {
+    "com.posthog.accounts#ListAccountSupportTicketsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2085,13 +2085,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.accounts#AccountsSupportTicketsList": {
+    "com.posthog.accounts#ListAccountSupportTickets": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsSupportTicketsListRequest"
+        "target": "com.posthog.accounts#ListAccountSupportTicketsRequest"
       },
       "output": {
-        "target": "com.posthog.accounts#AccountsSupportTicketsListResponse"
+        "target": "com.posthog.accounts#ListAccountSupportTicketsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2101,7 +2101,7 @@
         }
       }
     },
-    "com.posthog.accounts#AccountsSupportTicketMessagesListRequest": {
+    "com.posthog.accounts#ListAccountSupportTicketMessagesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2231,10 +2231,10 @@
       },
       "traits": {}
     },
-    "com.posthog.accounts#AccountsSupportTicketMessagesList": {
+    "com.posthog.accounts#ListAccountSupportTicketMessages": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.accounts#AccountsSupportTicketMessagesListRequest"
+        "target": "com.posthog.accounts#ListAccountSupportTicketMessagesRequest"
       },
       "output": {
         "target": "com.posthog.accounts#PaginatedAccountSupportTicketMessageList"
@@ -2252,40 +2252,40 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.accounts#AccountsList"
+          "target": "com.posthog.accounts#ListAccounts"
         },
         {
-          "target": "com.posthog.accounts#AccountsCreate"
+          "target": "com.posthog.accounts#CreateAccount"
         },
         {
           "target": "com.posthog.accounts#AccountsRetrieve"
         },
         {
-          "target": "com.posthog.accounts#AccountsUpdate"
+          "target": "com.posthog.accounts#UpdateAccount"
         },
         {
-          "target": "com.posthog.accounts#AccountsPartialUpdate"
+          "target": "com.posthog.accounts#UpdateAccountPartial"
         },
         {
           "target": "com.posthog.accounts#AccountsDestroy"
         },
         {
-          "target": "com.posthog.accounts#AccountsEmailThreadsList"
+          "target": "com.posthog.accounts#ListAccountEmailThreads"
         },
         {
-          "target": "com.posthog.accounts#AccountsEmailThreadMessagesList"
+          "target": "com.posthog.accounts#ListAccountEmailThreadMessages"
         },
         {
-          "target": "com.posthog.accounts#AccountsMeetingsList"
+          "target": "com.posthog.accounts#ListAccountMeetings"
         },
         {
-          "target": "com.posthog.accounts#AccountsSummariesList"
+          "target": "com.posthog.accounts#ListAccountSummaries"
         },
         {
-          "target": "com.posthog.accounts#AccountsSupportTicketsList"
+          "target": "com.posthog.accounts#ListAccountSupportTickets"
         },
         {
-          "target": "com.posthog.accounts#AccountsSupportTicketMessagesList"
+          "target": "com.posthog.accounts#ListAccountSupportTicketMessages"
         }
       ],
       "traits": {

@@ -2286,7 +2286,7 @@
         "smithy.api#documentation": "Gets Android App Bundle (AAB) information for a Firebase app."
       }
     },
-    "com.gcp.firebaseappdistribution_v1#BatchDeleteProjectsAppsReleasesRequest": {
+    "com.gcp.firebaseappdistribution_v1#DeleteBatchProjectAppReleaseRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -2306,10 +2306,10 @@
         }
       }
     },
-    "com.gcp.firebaseappdistribution_v1#BatchDeleteProjectsAppsReleases": {
+    "com.gcp.firebaseappdistribution_v1#DeleteBatchProjectAppRelease": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappdistribution_v1#BatchDeleteProjectsAppsReleasesRequest"
+        "target": "com.gcp.firebaseappdistribution_v1#DeleteBatchProjectAppReleaseRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappdistribution_v1#GoogleProtobufEmpty"

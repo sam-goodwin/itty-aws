@@ -899,69 +899,6 @@ export const GoogleChromeManagementV1CountDevicesPerBootTypeResponse =
     identifier: "GoogleChromeManagementV1CountDevicesPerBootTypeResponse",
   }) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerBootTypeResponse>;
 
-export interface CountDevicesPerReleaseChannelCustomersReportsRequest {
-  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
-  "date.day"?: number;
-  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
-  "date.year"?: number;
-  /** Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer". */
-  customer: string;
-  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
-  "date.month"?: number;
-}
-export const CountDevicesPerReleaseChannelCustomersReportsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "date.day": S.optional(S.Number.pipe(T.Query())),
-      "date.year": S.optional(S.Number.pipe(T.Query())),
-      customer: S.String.pipe(T.Label()),
-      "date.month": S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+customer}/reports:countDevicesPerReleaseChannel",
-        baseUrl: "https://chromemanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "CountDevicesPerReleaseChannelCustomersReportsRequest",
-  }) as any as S.Schema<CountDevicesPerReleaseChannelCustomersReportsRequest>;
-
-/** Response containing the number of devices with the given channel. */
-export interface GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
-  /** Number of devices with canary release channel. */
-  canaryChannelCount?: string;
-  /** Number of devices with unsupported release channel. */
-  unsupportedChannelCount?: string;
-  /** Number of devices with lts release channel. */
-  ltsChannelCount?: string;
-  /** Number of devices with dev release channel. */
-  devChannelCount?: string;
-  /** Number of devices with beta release channel. */
-  betaChannelCount?: string;
-  /** Number of devices with ltc release channel. */
-  ltcChannelCount?: string;
-  /** Number of devices with an unreported release channel. */
-  unreportedChannelCount?: string;
-  /** Number of devices with stable release channel. */
-  stableChannelCount?: string;
-}
-export const GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canaryChannelCount: S.optional(S.String),
-      unsupportedChannelCount: S.optional(S.String),
-      ltsChannelCount: S.optional(S.String),
-      devChannelCount: S.optional(S.String),
-      betaChannelCount: S.optional(S.String),
-      ltcChannelCount: S.optional(S.String),
-      unreportedChannelCount: S.optional(S.String),
-      stableChannelCount: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse",
-  }) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>;
-
 export interface CountInstalledAppsCustomersReportsRequest {
   /** Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * app_name * app_type * install_type * number_of_permissions * total_install_count * latest_profile_active_date * permission_name * app_id * manifest_versions * risk_score */
   filter?: string;
@@ -6881,6 +6818,69 @@ export const GoogleChromeManagementVersionsV1QueryUrlVisitsResponse =
     identifier: "GoogleChromeManagementVersionsV1QueryUrlVisitsResponse",
   }) as any as S.Schema<GoogleChromeManagementVersionsV1QueryUrlVisitsResponse>;
 
+export interface ReleaseCountDevicePerChannelCustomerReportRequest {
+  /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
+  "date.day"?: number;
+  /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
+  "date.year"?: number;
+  /** Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer". */
+  customer: string;
+  /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
+  "date.month"?: number;
+}
+export const ReleaseCountDevicePerChannelCustomerReportRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "date.day": S.optional(S.Number.pipe(T.Query())),
+      "date.year": S.optional(S.Number.pipe(T.Query())),
+      customer: S.String.pipe(T.Label()),
+      "date.month": S.optional(S.Number.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+customer}/reports:countDevicesPerReleaseChannel",
+        baseUrl: "https://chromemanagement.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ReleaseCountDevicePerChannelCustomerReportRequest",
+  }) as any as S.Schema<ReleaseCountDevicePerChannelCustomerReportRequest>;
+
+/** Response containing the number of devices with the given channel. */
+export interface GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
+  /** Number of devices with canary release channel. */
+  canaryChannelCount?: string;
+  /** Number of devices with unsupported release channel. */
+  unsupportedChannelCount?: string;
+  /** Number of devices with lts release channel. */
+  ltsChannelCount?: string;
+  /** Number of devices with dev release channel. */
+  devChannelCount?: string;
+  /** Number of devices with beta release channel. */
+  betaChannelCount?: string;
+  /** Number of devices with ltc release channel. */
+  ltcChannelCount?: string;
+  /** Number of devices with an unreported release channel. */
+  unreportedChannelCount?: string;
+  /** Number of devices with stable release channel. */
+  stableChannelCount?: string;
+}
+export const GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canaryChannelCount: S.optional(S.String),
+      unsupportedChannelCount: S.optional(S.String),
+      ltsChannelCount: S.optional(S.String),
+      devChannelCount: S.optional(S.String),
+      betaChannelCount: S.optional(S.String),
+      ltcChannelCount: S.optional(S.String),
+      unreportedChannelCount: S.optional(S.String),
+      stableChannelCount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse",
+  }) as any as S.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>;
+
 /** Request message for marking a certificate provisioning process as failed. */
 export interface GoogleChromeManagementVersionsV1SetFailureRequest {
   /** Required. A message describing the failure details. It is displayed on the ChromeOS client device. */
@@ -7276,24 +7276,6 @@ export const countDevicesPerBootTypeCustomersReports: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CountDevicesPerBootTypeCustomersReportsRequest,
   output: GoogleChromeManagementV1CountDevicesPerBootTypeResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CountDevicesPerReleaseChannelCustomersReportsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Get a count of devices per channel. */
-export const countDevicesPerReleaseChannelCustomersReports: API.OperationMethod<
-  CountDevicesPerReleaseChannelCustomersReportsRequest,
-  GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse,
-  CountDevicesPerReleaseChannelCustomersReportsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CountDevicesPerReleaseChannelCustomersReportsRequest,
-  output: GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8126,6 +8108,24 @@ export const queryUrlVisitsCustomersEnterpriseSecurityInsights: API.OperationMet
 > = /*@__PURE__*/ API.make(() => ({
   input: QueryUrlVisitsCustomersEnterpriseSecurityInsightsRequest,
   output: GoogleChromeManagementVersionsV1QueryUrlVisitsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ReleaseCountDevicePerChannelCustomerReportError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Get a count of devices per channel. */
+export const releaseCountDevicePerChannelCustomerReport: API.OperationMethod<
+  ReleaseCountDevicePerChannelCustomerReportRequest,
+  GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse,
+  ReleaseCountDevicePerChannelCustomerReportError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ReleaseCountDevicePerChannelCustomerReportRequest,
+  output: GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

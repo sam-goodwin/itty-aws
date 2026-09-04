@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesListRequest": {
+    "com.posthog.sandbox_custom_images#ListSandboxCustomImagesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -268,10 +268,10 @@
       },
       "traits": {}
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesList": {
+    "com.posthog.sandbox_custom_images#ListSandboxCustomImages": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesListRequest"
+        "target": "com.posthog.sandbox_custom_images#ListSandboxCustomImagesRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_custom_images#PaginatedSandboxCustomImageDTOList"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "API for custom sandbox base images, built on top of the VM sandbox base via an image-builder agent.\n\nCustom images only run on the Modal VM runtime, so every action is gated on the\n`tasks-modal-vm-sandbox` flag (org-enabled with `user_created` in its origin_products payload)."
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesCreateRequest": {
+    "com.posthog.sandbox_custom_images#CreateSandboxCustomImageRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -327,10 +327,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesCreate": {
+    "com.posthog.sandbox_custom_images#CreateSandboxCustomImage": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesCreateRequest"
+        "target": "com.posthog.sandbox_custom_images#CreateSandboxCustomImageRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_custom_images#SandboxCustomImageDTO"
@@ -384,7 +384,7 @@
         "smithy.api#documentation": "API for custom sandbox base images, built on top of the VM sandbox base via an image-builder agent.\n\nCustom images only run on the Modal VM runtime, so every action is gated on the\n`tasks-modal-vm-sandbox` flag (org-enabled with `user_created` in its origin_products payload)."
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesPartialUpdateRequest": {
+    "com.posthog.sandbox_custom_images#UpdateSandboxCustomImagePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -419,10 +419,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesPartialUpdate": {
+    "com.posthog.sandbox_custom_images#UpdateSandboxCustomImagePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesPartialUpdateRequest"
+        "target": "com.posthog.sandbox_custom_images#UpdateSandboxCustomImagePartialRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_custom_images#SandboxCustomImageDTO"
@@ -476,7 +476,7 @@
         "smithy.api#documentation": "API for custom sandbox base images, built on top of the VM sandbox base via an image-builder agent.\n\nCustom images only run on the Modal VM runtime, so every action is gated on the\n`tasks-modal-vm-sandbox` flag (org-enabled with `user_created` in its origin_products payload)."
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesBuildCreateRequest": {
+    "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuildRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -506,10 +506,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesBuildCreate": {
+    "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuild": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesBuildCreateRequest"
+        "target": "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuildRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_custom_images#SandboxCustomImageDTO"
@@ -523,7 +523,7 @@
         "smithy.api#documentation": "Persist the image spec (from the request body or the builder agent's sandbox), run the security scan, and on pass build and publish the image."
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesBuilderTaskCreateRequest": {
+    "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuilderTaskRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -546,10 +546,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.sandbox_custom_images#SandboxCustomImagesBuilderTaskCreate": {
+    "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuilderTask": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesBuilderTaskCreateRequest"
+        "target": "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuilderTaskRequest"
       },
       "output": {
         "target": "com.posthog.sandbox_custom_images#SandboxCustomImageDTO"
@@ -568,25 +568,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesList"
+          "target": "com.posthog.sandbox_custom_images#ListSandboxCustomImages"
         },
         {
-          "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesCreate"
+          "target": "com.posthog.sandbox_custom_images#CreateSandboxCustomImage"
         },
         {
           "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesRetrieve"
         },
         {
-          "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesPartialUpdate"
+          "target": "com.posthog.sandbox_custom_images#UpdateSandboxCustomImagePartial"
         },
         {
           "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesDestroy"
         },
         {
-          "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesBuildCreate"
+          "target": "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuild"
         },
         {
-          "target": "com.posthog.sandbox_custom_images#SandboxCustomImagesBuilderTaskCreate"
+          "target": "com.posthog.sandbox_custom_images#CreateSandboxCustomImageBuilderTask"
         }
       ],
       "traits": {

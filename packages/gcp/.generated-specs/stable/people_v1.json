@@ -2322,7 +2322,7 @@
         }
       }
     },
-    "com.gcp.people_v1#BatchGetContactGroupsResponse": {
+    "com.gcp.people_v1#GetBatchContactGroupResponse": {
       "type": "structure",
       "members": {
         "responses": {
@@ -3085,7 +3085,7 @@
         "target": "com.gcp.people_v1#ContactToCreate"
       }
     },
-    "com.gcp.people_v1#BatchGetContactGroupsRequest": {
+    "com.gcp.people_v1#GetBatchContactGroupRequest": {
       "type": "structure",
       "members": {
         "maxMembers": {
@@ -3137,13 +3137,13 @@
         ]
       }
     },
-    "com.gcp.people_v1#BatchGetContactGroups": {
+    "com.gcp.people_v1#GetBatchContactGroup": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.people_v1#BatchGetContactGroupsRequest"
+        "target": "com.gcp.people_v1#GetBatchContactGroupRequest"
       },
       "output": {
-        "target": "com.gcp.people_v1#BatchGetContactGroupsResponse"
+        "target": "com.gcp.people_v1#GetBatchContactGroupResponse"
       },
       "errors": [
         {
@@ -4467,7 +4467,7 @@
         "smithy.api#documentation": "Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures."
       }
     },
-    "com.gcp.people_v1#BatchUpdateContactsPeopleRequest": {
+    "com.gcp.people_v1#UpdateBatchContactPeopleRequest": {
       "type": "structure",
       "members": {
         "body": {
@@ -4479,10 +4479,10 @@
         }
       }
     },
-    "com.gcp.people_v1#BatchUpdateContactsPeople": {
+    "com.gcp.people_v1#UpdateBatchContactPeople": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.people_v1#BatchUpdateContactsPeopleRequest"
+        "target": "com.gcp.people_v1#UpdateBatchContactPeopleRequest"
       },
       "output": {
         "target": "com.gcp.people_v1#BatchUpdateContactsResponse"
@@ -4509,7 +4509,7 @@
         "smithy.api#documentation": "Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures."
       }
     },
-    "com.gcp.people_v1#BatchDeleteContactsPeopleRequest": {
+    "com.gcp.people_v1#DeleteBatchContactPeopleRequest": {
       "type": "structure",
       "members": {
         "body": {
@@ -4521,10 +4521,10 @@
         }
       }
     },
-    "com.gcp.people_v1#BatchDeleteContactsPeople": {
+    "com.gcp.people_v1#DeleteBatchContactPeople": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.people_v1#BatchDeleteContactsPeopleRequest"
+        "target": "com.gcp.people_v1#DeleteBatchContactPeopleRequest"
       },
       "output": {
         "target": "com.gcp.people_v1#Empty"
@@ -4649,7 +4649,7 @@
         "smithy.api#documentation": "Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified."
       }
     },
-    "com.gcp.people_v1#BatchCreateContactsPeopleRequest": {
+    "com.gcp.people_v1#CreateBatchContactPeopleRequest": {
       "type": "structure",
       "members": {
         "body": {
@@ -4661,10 +4661,10 @@
         }
       }
     },
-    "com.gcp.people_v1#BatchCreateContactsPeople": {
+    "com.gcp.people_v1#CreateBatchContactPeople": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.people_v1#BatchCreateContactsPeopleRequest"
+        "target": "com.gcp.people_v1#CreateBatchContactPeopleRequest"
       },
       "output": {
         "target": "com.gcp.people_v1#BatchCreateContactsResponse"

@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentReportRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -339,7 +339,7 @@
         "smithy.api#documentation": "Information about the configuration."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -387,10 +387,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignmentReports": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignmentReportsRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -432,7 +432,7 @@
         "smithy.api#documentation": "List of reports for the guest configuration. Report contains information such as compliance status, reason and more."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignmentReportsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -472,10 +472,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDelete": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationHcrpAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDeleteRequest"
+        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationHcrpAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -491,7 +491,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDeleteRequest": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationHcrpAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1474,13 +1474,13 @@
         "smithy.api#documentation": "The configuration parameters for the guest configuration."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponse"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1493,7 +1493,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetResponse": {
+    "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1646,7 +1646,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1686,10 +1686,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -1884,7 +1884,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1916,10 +1916,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentRg": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentRgRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -1935,7 +1935,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentRgRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1959,10 +1959,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentReportRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -1978,7 +1978,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2026,10 +2026,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentReports": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentReportsRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -2045,7 +2045,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentReportsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2085,10 +2085,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDelete": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteRequest"
+        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2104,7 +2104,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDeleteRequest": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2375,13 +2375,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponse"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2394,7 +2394,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetResponse": {
+    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2547,7 +2547,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2587,10 +2587,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -2606,7 +2606,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2638,10 +2638,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReport": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -2657,7 +2657,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2705,10 +2705,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReports": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -2724,7 +2724,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2764,10 +2764,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsDelete": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsDeleteRequest"
+        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2783,7 +2783,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsDeleteRequest": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3054,13 +3054,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponse"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3073,7 +3073,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetResponse": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3226,7 +3226,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3266,10 +3266,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -3285,7 +3285,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3317,10 +3317,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportVmss": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportVmssRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReport"
@@ -3336,7 +3336,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportVmssRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3384,10 +3384,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportVmss": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportVmssRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportList"
@@ -3403,7 +3403,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportVmssRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3443,13 +3443,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDelete": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentVmss": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteRequest"
+        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentVmssRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponse"
+        "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentVmssResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3462,7 +3462,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteResponse": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentVmssResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3615,7 +3615,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDeleteRequest": {
+    "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentVmssRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3879,13 +3879,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGet": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentVmss": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetRequest"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentVmssRequest"
       },
       "output": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponse"
+        "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentVmssResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3898,7 +3898,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetResponse": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentVmssResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4051,7 +4051,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGetRequest": {
+    "com.azure.guestconfiguration#GetGuestConfigurationAssignmentVmssRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4091,10 +4091,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentVmss": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentVmssRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -4110,7 +4110,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentVmssRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4142,10 +4142,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionList": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionListRequest"
+        "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentList"
@@ -4161,7 +4161,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-05"
       }
     },
-    "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionListRequest": {
+    "com.azure.guestconfiguration#ListGuestConfigurationAssignmentSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4177,7 +4177,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.guestconfiguration#OperationsList": {
+    "com.azure.guestconfiguration#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -4300,85 +4300,85 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignmentReport"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentReportsList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignmentReports"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsDelete"
+          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationHcrpAssignment"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationHcrpAssignment"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationHCRPAssignmentsList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationHcrpAssignments"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsRGList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentRg"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignmentReport"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsReportsList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignmentReports"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsDelete"
+          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationConnectedVMwarevSphereAssignment"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationConnectedVMwarevSphereAssignment"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationConnectedVMwarevSphereAssignmentsList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationConnectedVMwarevSphereAssignments"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReport"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReports"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsDelete"
+          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignment"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignment"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignments"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentReportVmss"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentReportsVMSSList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentReportVmss"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSDelete"
+          "target": "com.azure.guestconfiguration#DeleteGuestConfigurationAssignmentVmss"
         },
         {
           "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSCreateOrUpdate"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSGet"
+          "target": "com.azure.guestconfiguration#GetGuestConfigurationAssignmentVmss"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsVMSSList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentVmss"
         },
         {
-          "target": "com.azure.guestconfiguration#GuestConfigurationAssignmentsSubscriptionList"
+          "target": "com.azure.guestconfiguration#ListGuestConfigurationAssignmentSubscription"
         },
         {
-          "target": "com.azure.guestconfiguration#OperationsList"
+          "target": "com.azure.guestconfiguration#ListOperations"
         }
       ],
       "traits": {

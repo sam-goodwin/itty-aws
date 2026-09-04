@@ -1775,7 +1775,7 @@
         "target": "com.gcp.datamanager_v1#UserListGlobalLicenseCustomerInfo"
       }
     },
-    "com.gcp.datamanager_v1#RetrieveRequestStatusResponse": {
+    "com.gcp.datamanager_v1#RequestRetrieveStatusResponse": {
       "type": "structure",
       "members": {
         "requestStatusPerDestination": {
@@ -5894,7 +5894,7 @@
         "smithy.api#documentation": "Uploads a list of AdEvent resources to Google Analytics. This feature is only available to accounts on an allowlist."
       }
     },
-    "com.gcp.datamanager_v1#RetrieveRequestStatusRequest": {
+    "com.gcp.datamanager_v1#RequestRetrieveStatusRequest": {
       "type": "structure",
       "members": {
         "requestId": {
@@ -5906,13 +5906,13 @@
         }
       }
     },
-    "com.gcp.datamanager_v1#RetrieveRequestStatus": {
+    "com.gcp.datamanager_v1#RequestRetrieveStatus": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.datamanager_v1#RetrieveRequestStatusRequest"
+        "target": "com.gcp.datamanager_v1#RequestRetrieveStatusRequest"
       },
       "output": {
-        "target": "com.gcp.datamanager_v1#RetrieveRequestStatusResponse"
+        "target": "com.gcp.datamanager_v1#RequestRetrieveStatusResponse"
       },
       "errors": [
         {

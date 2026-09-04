@@ -15126,7 +15126,7 @@
         "smithy.api#documentation": "Lists all clusters owned by a project in either the specified zone or all zones."
       }
     },
-    "com.gcp.container_v1#GetOpenid_configurationProjectsLocationsClustersWell_knownRequest": {
+    "com.gcp.container_v1#GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -15139,10 +15139,10 @@
         }
       }
     },
-    "com.gcp.container_v1#GetOpenid_configurationProjectsLocationsClustersWell_known": {
+    "com.gcp.container_v1#GetOpenidConfigurationProjectsLocationsClustersWellKnown": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.container_v1#GetOpenid_configurationProjectsLocationsClustersWell_knownRequest"
+        "target": "com.gcp.container_v1#GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest"
       },
       "output": {
         "target": "com.gcp.container_v1#GetOpenIDConfigResponse"

@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.alerts#AlertsListRequest": {
+    "com.posthog.alerts#ListAlertsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1698,10 +1698,10 @@
       },
       "traits": {}
     },
-    "com.posthog.alerts#AlertsList": {
+    "com.posthog.alerts#ListAlerts": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.alerts#AlertsListRequest"
+        "target": "com.posthog.alerts#ListAlertsRequest"
       },
       "output": {
         "target": "com.posthog.alerts#PaginatedAlertList"
@@ -1752,7 +1752,7 @@
       },
       "traits": {}
     },
-    "com.posthog.alerts#AlertsCreateRequest": {
+    "com.posthog.alerts#CreateAlertRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1863,10 +1863,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.alerts#AlertsCreate": {
+    "com.posthog.alerts#CreateAlert": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.alerts#AlertsCreateRequest"
+        "target": "com.posthog.alerts#CreateAlertRequest"
       },
       "output": {
         "target": "com.posthog.alerts#Alert"
@@ -1978,7 +1978,7 @@
         "smithy.api#documentation": "User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object."
       }
     },
-    "com.posthog.alerts#AlertsUpdateRequest": {
+    "com.posthog.alerts#UpdateAlertRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2097,10 +2097,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.alerts#AlertsUpdate": {
+    "com.posthog.alerts#UpdateAlert": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.alerts#AlertsUpdateRequest"
+        "target": "com.posthog.alerts#UpdateAlertRequest"
       },
       "output": {
         "target": "com.posthog.alerts#Alert"
@@ -2133,7 +2133,7 @@
         "smithy.api#documentation": "User IDs to subscribe to this alert. Note: Response returns full UserBasicSerializer object."
       }
     },
-    "com.posthog.alerts#AlertsPartialUpdateRequest": {
+    "com.posthog.alerts#UpdateAlertPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2252,10 +2252,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.alerts#AlertsPartialUpdate": {
+    "com.posthog.alerts#UpdateAlertPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.alerts#AlertsPartialUpdateRequest"
+        "target": "com.posthog.alerts#UpdateAlertPartialRequest"
       },
       "output": {
         "target": "com.posthog.alerts#Alert"
@@ -2327,7 +2327,7 @@
         }
       }
     },
-    "com.posthog.alerts#AlertsTestDeliveryCreateRequest": {
+    "com.posthog.alerts#CreateAlertTestDeliveryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2351,10 +2351,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.alerts#AlertsTestDeliveryCreate": {
+    "com.posthog.alerts#CreateAlertTestDelivery": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.alerts#AlertsTestDeliveryCreateRequest"
+        "target": "com.posthog.alerts#CreateAlertTestDeliveryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2368,7 +2368,7 @@
         "smithy.api#documentation": "Send a synthetic test notification to subscribed users and every active destination on this alert."
       }
     },
-    "com.posthog.alerts#AlertsSimulateCreateRequest": {
+    "com.posthog.alerts#CreateAlertSimulateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2680,10 +2680,10 @@
         "smithy.api#documentation": "Per-breakdown-value simulation results. Present only when the insight has breakdowns (up to 25 values)."
       }
     },
-    "com.posthog.alerts#AlertsSimulateCreate": {
+    "com.posthog.alerts#CreateAlertSimulate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.alerts#AlertsSimulateCreateRequest"
+        "target": "com.posthog.alerts#CreateAlertSimulateRequest"
       },
       "output": {
         "target": "com.posthog.alerts#AlertSimulateResponse"
@@ -2752,28 +2752,28 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.alerts#AlertsList"
+          "target": "com.posthog.alerts#ListAlerts"
         },
         {
-          "target": "com.posthog.alerts#AlertsCreate"
+          "target": "com.posthog.alerts#CreateAlert"
         },
         {
           "target": "com.posthog.alerts#AlertsRetrieve"
         },
         {
-          "target": "com.posthog.alerts#AlertsUpdate"
+          "target": "com.posthog.alerts#UpdateAlert"
         },
         {
-          "target": "com.posthog.alerts#AlertsPartialUpdate"
+          "target": "com.posthog.alerts#UpdateAlertPartial"
         },
         {
           "target": "com.posthog.alerts#AlertsDestroy"
         },
         {
-          "target": "com.posthog.alerts#AlertsTestDeliveryCreate"
+          "target": "com.posthog.alerts#CreateAlertTestDelivery"
         },
         {
-          "target": "com.posthog.alerts#AlertsSimulateCreate"
+          "target": "com.posthog.alerts#CreateAlertSimulate"
         }
       ],
       "traits": {

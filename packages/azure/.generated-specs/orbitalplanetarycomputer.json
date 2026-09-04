@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsDelete": {
+    "com.azure.orbitalplanetarycomputer#DeleteGeoCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsDeleteRequest"
+        "target": "com.azure.orbitalplanetarycomputer#DeleteGeoCatalogRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-15"
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsDeleteRequest": {
+    "com.azure.orbitalplanetarycomputer#DeleteGeoCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -68,13 +68,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsUpdate": {
+    "com.azure.orbitalplanetarycomputer#UpdateGeoCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsUpdateRequest"
+        "target": "com.azure.orbitalplanetarycomputer#UpdateGeoCatalogRequest"
       },
       "output": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsUpdateResponse"
+        "target": "com.azure.orbitalplanetarycomputer#UpdateGeoCatalogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -87,7 +87,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-15"
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsUpdateResponse": {
+    "com.azure.orbitalplanetarycomputer#UpdateGeoCatalogResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -485,7 +485,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsUpdateRequest": {
+    "com.azure.orbitalplanetarycomputer#UpdateGeoCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -612,13 +612,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsCreate": {
+    "com.azure.orbitalplanetarycomputer#CreateGeoCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsCreateRequest"
+        "target": "com.azure.orbitalplanetarycomputer#CreateGeoCatalogRequest"
       },
       "output": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsCreateResponse"
+        "target": "com.azure.orbitalplanetarycomputer#CreateGeoCatalogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -631,7 +631,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-15"
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsCreateResponse": {
+    "com.azure.orbitalplanetarycomputer#CreateGeoCatalogResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -729,7 +729,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsCreateRequest": {
+    "com.azure.orbitalplanetarycomputer#CreateGeoCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -900,13 +900,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsGet": {
+    "com.azure.orbitalplanetarycomputer#GetGeoCatalog": {
       "type": "operation",
       "input": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsGetRequest"
+        "target": "com.azure.orbitalplanetarycomputer#GetGeoCatalogRequest"
       },
       "output": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsGetResponse"
+        "target": "com.azure.orbitalplanetarycomputer#GetGeoCatalogResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -919,7 +919,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-15"
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsGetResponse": {
+    "com.azure.orbitalplanetarycomputer#GetGeoCatalogResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1017,7 +1017,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsGetRequest": {
+    "com.azure.orbitalplanetarycomputer#GetGeoCatalogRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1049,10 +1049,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsListByResourceGroup": {
+    "com.azure.orbitalplanetarycomputer#ListGeoCatalogByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsListByResourceGroupRequest"
+        "target": "com.azure.orbitalplanetarycomputer#ListGeoCatalogByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.orbitalplanetarycomputer#GeoCatalogListResult"
@@ -1196,7 +1196,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsListByResourceGroupRequest": {
+    "com.azure.orbitalplanetarycomputer#ListGeoCatalogByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1220,10 +1220,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsListBySubscription": {
+    "com.azure.orbitalplanetarycomputer#ListGeoCatalogBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsListBySubscriptionRequest"
+        "target": "com.azure.orbitalplanetarycomputer#ListGeoCatalogBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.orbitalplanetarycomputer#GeoCatalogListResult"
@@ -1239,7 +1239,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-15"
       }
     },
-    "com.azure.orbitalplanetarycomputer#GeoCatalogsListBySubscriptionRequest": {
+    "com.azure.orbitalplanetarycomputer#ListGeoCatalogBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1260,22 +1260,22 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsDelete"
+          "target": "com.azure.orbitalplanetarycomputer#DeleteGeoCatalog"
         },
         {
-          "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsUpdate"
+          "target": "com.azure.orbitalplanetarycomputer#UpdateGeoCatalog"
         },
         {
-          "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsCreate"
+          "target": "com.azure.orbitalplanetarycomputer#CreateGeoCatalog"
         },
         {
-          "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsGet"
+          "target": "com.azure.orbitalplanetarycomputer#GetGeoCatalog"
         },
         {
-          "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsListByResourceGroup"
+          "target": "com.azure.orbitalplanetarycomputer#ListGeoCatalogByResourceGroup"
         },
         {
-          "target": "com.azure.orbitalplanetarycomputer#GeoCatalogsListBySubscription"
+          "target": "com.azure.orbitalplanetarycomputer#ListGeoCatalogBySubscription"
         }
       ],
       "traits": {

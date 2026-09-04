@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.evaluation_runs#EvaluationRunsCreateRequest": {
+    "com.posthog.evaluation_runs#CreateEvaluationRunRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -74,7 +74,7 @@
       },
       "traits": {}
     },
-    "com.posthog.evaluation_runs#EvaluationRunsCreateResponse": {
+    "com.posthog.evaluation_runs#CreateEvaluationRunResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -89,13 +89,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.evaluation_runs#EvaluationRunsCreate": {
+    "com.posthog.evaluation_runs#CreateEvaluationRun": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.evaluation_runs#EvaluationRunsCreateRequest"
+        "target": "com.posthog.evaluation_runs#CreateEvaluationRunRequest"
       },
       "output": {
-        "target": "com.posthog.evaluation_runs#EvaluationRunsCreateResponse"
+        "target": "com.posthog.evaluation_runs#CreateEvaluationRunResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -111,7 +111,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.evaluation_runs#EvaluationRunsCreate"
+          "target": "com.posthog.evaluation_runs#CreateEvaluationRun"
         }
       ],
       "traits": {

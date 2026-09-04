@@ -13,6 +13,176 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+export interface CheckServiceChildrenNameAvailabilityRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** The proposed resource name */
+  name?: string;
+  /** The resource type chain (e.g. virtualMachines/extensions) */
+  type?: string;
+}
+export const CheckServiceChildrenNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      groupName: S.String.pipe(T.Label()),
+      serviceName: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckServiceChildrenNameAvailabilityRequest",
+  }) as any as S.Schema<CheckServiceChildrenNameAvailabilityRequest>;
+
+/** The reason why the name is not available, if nameAvailable is false */
+export type ServicesCheckChildrenNameAvailabilityResponseReason =
+  | "AlreadyExists"
+  | "Invalid";
+export const ServicesCheckChildrenNameAvailabilityResponseReason =
+  /*@__PURE__*/ S.String;
+
+export interface CheckServiceChildrenNameAvailabilityResponse {
+  /** If true, the name is valid and available. If false, 'reason' describes why not. */
+  nameAvailable?: boolean;
+  /** The reason why the name is not available, if nameAvailable is false */
+  reason?: ServicesCheckChildrenNameAvailabilityResponseReason;
+  /** The localized reason why the name is not available, if nameAvailable is false */
+  message?: string;
+}
+export const CheckServiceChildrenNameAvailabilityResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nameAvailable: S.optional(S.Boolean),
+      reason: S.optional(ServicesCheckChildrenNameAvailabilityResponseReason),
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CheckServiceChildrenNameAvailabilityResponse",
+  }) as any as S.Schema<CheckServiceChildrenNameAvailabilityResponse>;
+
+export interface CheckServiceNameAvailabilityRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** The Azure region of the operation */
+  location: string;
+  /** The proposed resource name */
+  name?: string;
+  /** The resource type chain (e.g. virtualMachines/extensions) */
+  type?: string;
+}
+export const CheckServiceNameAvailabilityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "CheckServiceNameAvailabilityRequest",
+}) as any as S.Schema<CheckServiceNameAvailabilityRequest>;
+
+/** The reason why the name is not available, if nameAvailable is false */
+export type ServicesCheckNameAvailabilityResponseReason =
+  | "AlreadyExists"
+  | "Invalid";
+export const ServicesCheckNameAvailabilityResponseReason =
+  /*@__PURE__*/ S.String;
+
+export interface CheckServiceNameAvailabilityResponse {
+  /** If true, the name is valid and available. If false, 'reason' describes why not. */
+  nameAvailable?: boolean;
+  /** The reason why the name is not available, if nameAvailable is false */
+  reason?: ServicesCheckNameAvailabilityResponseReason;
+  /** The localized reason why the name is not available, if nameAvailable is false */
+  message?: string;
+}
+export const CheckServiceNameAvailabilityResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nameAvailable: S.optional(S.Boolean),
+      reason: S.optional(ServicesCheckNameAvailabilityResponseReason),
+      message: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "CheckServiceNameAvailabilityResponse",
+}) as any as S.Schema<CheckServiceNameAvailabilityResponse>;
+
+export interface CheckServiceStatusRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+}
+export const CheckServiceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkStatus",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "CheckServiceStatusRequest",
+}) as any as S.Schema<CheckServiceStatusRequest>;
+
+/** The list of supported task types */
+export type ServicesCheckStatusResponseSupportedTaskTypesList = Array<string>;
+export const ServicesCheckStatusResponseSupportedTaskTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ServicesCheckStatusResponseSupportedTaskTypesList>;
+
+export interface CheckServiceStatusResponse {
+  /** The DMS instance agent version */
+  agentVersion?: string;
+  /** Agent Configuration */
+  agentConfiguration?: unknown;
+  /** The machine-readable status, such as 'Initializing', 'Offline', 'Online', 'Deploying', 'Deleting', 'Stopped', 'Stopping', 'Starting', 'FailedToStart', 'FailedToStop' or 'Failed' */
+  status?: string;
+  /** The services virtual machine size, such as 'Standard_D2_v2' */
+  vmSize?: string;
+  /** The list of supported task types */
+  supportedTaskTypes?: ServicesCheckStatusResponseSupportedTaskTypesList;
+}
+export const CheckServiceStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentVersion: S.optional(S.String),
+    agentConfiguration: S.optional(S.Unknown),
+    status: S.optional(S.String),
+    vmSize: S.optional(S.String),
+    supportedTaskTypes: S.optional(
+      ServicesCheckStatusResponseSupportedTaskTypesList,
+    ),
+  }),
+).annotate({
+  identifier: "CheckServiceStatusResponse",
+}) as any as S.Schema<CheckServiceStatusResponse>;
+
 export type DatabaseMigrationPropertiesCosmosDbMongoInputKind =
   | "SqlMi"
   | "SqlVm"
@@ -115,7 +285,7 @@ export const DatabaseMigrationPropertiesCosmosDbMongoInput =
     identifier: "DatabaseMigrationPropertiesCosmosDbMongoInput",
   }) as any as S.Schema<DatabaseMigrationPropertiesCosmosDbMongoInput>;
 
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest {
+export interface CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
@@ -126,7 +296,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest {
   migrationName: string;
   properties?: DatabaseMigrationPropertiesCosmosDbMongoInput;
 }
-export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest =
+export const CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -143,8 +313,8 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest>;
+    identifier: "CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest",
+  }) as any as S.Schema<CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -341,7 +511,7 @@ export const DatabaseMigrationPropertiesCosmosDbMongo = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseMigrationPropertiesCosmosDbMongo",
 }) as any as S.Schema<DatabaseMigrationPropertiesCosmosDbMongo>;
 
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse {
+export interface CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -352,7 +522,7 @@ export interface DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesCosmosDbMongo;
 }
-export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse =
+export const CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -362,173 +532,10 @@ export const DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse =
       properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
     }),
   ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse>;
+    identifier: "CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse",
+  }) as any as S.Schema<CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse>;
 
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** The name of the target resource/account. */
-  targetResourceName: string;
-  /** Name of the migration. */
-  migrationName: string;
-  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
-  force?: boolean;
-}
-export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      targetResourceName: S.String.pipe(T.Label()),
-      migrationName: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest>;
-
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoDeleteResponse {}
-export const DatabaseMigrationsMongoToCosmosDbRUMongoDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoDeleteResponse",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoDeleteResponse>;
-
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** The name of the target resource/account. */
-  targetResourceName: string;
-  /** Name of the migration. */
-  migrationName: string;
-}
-export const DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      targetResourceName: S.String.pipe(T.Label()),
-      migrationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest>;
-
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesCosmosDbMongo;
-}
-export const DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
-    }),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse>;
-
-export interface DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** The name of the target resource/account. */
-  targetResourceName: string;
-}
-export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      targetResourceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest>;
-
-/** Database Migration Resource for Mongo to CosmosDb. */
-export interface DatabaseMigrationCosmosDbMongo {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesCosmosDbMongo;
-}
-export const DatabaseMigrationCosmosDbMongo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationCosmosDbMongo",
-}) as any as S.Schema<DatabaseMigrationCosmosDbMongo>;
-
-export type DatabaseMigrationCosmosDbMongoListResultValueList =
-  Array<DatabaseMigrationCosmosDbMongo>;
-export const DatabaseMigrationCosmosDbMongoListResultValueList =
-  /*@__PURE__*/ S.Array(
-    DatabaseMigrationCosmosDbMongo,
-  ) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResultValueList>;
-
-/** A list of Database Migrations. */
-export interface DatabaseMigrationCosmosDbMongoListResult {
-  value?: DatabaseMigrationCosmosDbMongoListResultValueList;
-  nextLink?: string;
-}
-export const DatabaseMigrationCosmosDbMongoListResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: S.optional(DatabaseMigrationCosmosDbMongoListResultValueList),
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DatabaseMigrationCosmosDbMongoListResult",
-}) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResult>;
-
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest {
+export interface CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
@@ -539,7 +546,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest {
   migrationName: string;
   properties?: DatabaseMigrationPropertiesCosmosDbMongoInput;
 }
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest =
+export const CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -556,10 +563,10 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest>;
+    identifier: "CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest",
+  }) as any as S.Schema<CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest>;
 
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse {
+export interface CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -570,7 +577,7 @@ export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesCosmosDbMongo;
 }
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse =
+export const CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -580,125 +587,8 @@ export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse =
       properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
     }),
   ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse>;
-
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** The name of the target resource/account. */
-  targetResourceName: string;
-  /** Name of the migration. */
-  migrationName: string;
-  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
-  force?: boolean;
-}
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      targetResourceName: S.String.pipe(T.Label()),
-      migrationName: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest>;
-
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteResponse {}
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteResponse",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteResponse>;
-
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** The name of the target resource/account. */
-  targetResourceName: string;
-  /** Name of the migration. */
-  migrationName: string;
-}
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      targetResourceName: S.String.pipe(T.Label()),
-      migrationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest>;
-
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesCosmosDbMongo;
-}
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
-    }),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse>;
-
-export interface DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** The name of the target resource/account. */
-  targetResourceName: string;
-}
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      targetResourceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest",
-  }) as any as S.Schema<DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest>;
+    identifier: "CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse",
+  }) as any as S.Schema<CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse>;
 
 export interface DatabaseMigrationsSqlDbCancelRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -1056,100 +946,6 @@ export const DatabaseMigrationsSqlDbCreateOrUpdateResponse =
   ).annotate({
     identifier: "DatabaseMigrationsSqlDbCreateOrUpdateResponse",
   }) as any as S.Schema<DatabaseMigrationsSqlDbCreateOrUpdateResponse>;
-
-export interface DatabaseMigrationsSqlDbDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  sqlDbInstanceName: string;
-  /** The name of the target database. */
-  targetDbName: string;
-  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
-  force?: boolean;
-}
-export const DatabaseMigrationsSqlDbDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlDbInstanceName: S.String.pipe(T.Label()),
-      targetDbName: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-).annotate({
-  identifier: "DatabaseMigrationsSqlDbDeleteRequest",
-}) as any as S.Schema<DatabaseMigrationsSqlDbDeleteRequest>;
-
-export interface DatabaseMigrationsSqlDbDeleteResponse {}
-export const DatabaseMigrationsSqlDbDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "DatabaseMigrationsSqlDbDeleteResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlDbDeleteResponse>;
-
-export interface DatabaseMigrationsSqlDbGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  sqlDbInstanceName: string;
-  /** The name of the target database. */
-  targetDbName: string;
-  /** Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved. */
-  migrationOperationId?: string;
-  /** Complete migration details be included in the response. */
-  _expand?: string;
-}
-export const DatabaseMigrationsSqlDbGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlDbInstanceName: S.String.pipe(T.Label()),
-    targetDbName: S.String.pipe(T.Label()),
-    migrationOperationId: S.optional(S.String.pipe(T.Query())),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "DatabaseMigrationsSqlDbGetRequest",
-}) as any as S.Schema<DatabaseMigrationsSqlDbGetRequest>;
-
-export interface DatabaseMigrationsSqlDbGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesSqlDb;
-}
-export const DatabaseMigrationsSqlDbGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlDb),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationsSqlDbGetResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlDbGetResponse>;
 
 export interface DatabaseMigrationsSqlDbRetryRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -1862,117 +1658,6 @@ export const DatabaseMigrationsSqlMiCutoverResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseMigrationsSqlMiCutoverResponse",
 }) as any as S.Schema<DatabaseMigrationsSqlMiCutoverResponse>;
 
-export interface DatabaseMigrationsSqlMiDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  managedInstanceName: string;
-  /** The name of the target database. */
-  targetDbName: string;
-  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
-  force?: boolean;
-}
-export const DatabaseMigrationsSqlMiDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      managedInstanceName: S.String.pipe(T.Label()),
-      targetDbName: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-).annotate({
-  identifier: "DatabaseMigrationsSqlMiDeleteRequest",
-}) as any as S.Schema<DatabaseMigrationsSqlMiDeleteRequest>;
-
-export interface DatabaseMigrationsSqlMiDeleteResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesSqlMi;
-}
-export const DatabaseMigrationsSqlMiDeleteResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(DatabaseMigrationPropertiesSqlMi),
-    }),
-).annotate({
-  identifier: "DatabaseMigrationsSqlMiDeleteResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlMiDeleteResponse>;
-
-export interface DatabaseMigrationsSqlMiGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  managedInstanceName: string;
-  /** The name of the target database. */
-  targetDbName: string;
-  /** Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved. */
-  migrationOperationId?: string;
-  /** Complete migration details be included in the response. */
-  _expand?: string;
-}
-export const DatabaseMigrationsSqlMiGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    managedInstanceName: S.String.pipe(T.Label()),
-    targetDbName: S.String.pipe(T.Label()),
-    migrationOperationId: S.optional(S.String.pipe(T.Query())),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "DatabaseMigrationsSqlMiGetRequest",
-}) as any as S.Schema<DatabaseMigrationsSqlMiGetRequest>;
-
-export interface DatabaseMigrationsSqlMiGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesSqlMi;
-}
-export const DatabaseMigrationsSqlMiGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlMi),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationsSqlMiGetResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlMiGetResponse>;
-
 export interface DatabaseMigrationsSqlVmCancelRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -2229,7 +1914,174 @@ export const DatabaseMigrationsSqlVmCutoverResponse = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseMigrationsSqlVmCutoverResponse",
 }) as any as S.Schema<DatabaseMigrationsSqlVmCutoverResponse>;
 
-export interface DatabaseMigrationsSqlVmDeleteRequest {
+export interface DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** The name of the target resource/account. */
+  targetResourceName: string;
+  /** Name of the migration. */
+  migrationName: string;
+  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
+  force?: boolean;
+}
+export const DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      targetResourceName: S.String.pipe(T.Label()),
+      migrationName: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest",
+  }) as any as S.Schema<DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest>;
+
+export interface DeleteDatabaseMigrationMongoToCosmosDbRuMongoResponse {}
+export const DeleteDatabaseMigrationMongoToCosmosDbRuMongoResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteDatabaseMigrationMongoToCosmosDbRuMongoResponse",
+  }) as any as S.Schema<DeleteDatabaseMigrationMongoToCosmosDbRuMongoResponse>;
+
+export interface DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** The name of the target resource/account. */
+  targetResourceName: string;
+  /** Name of the migration. */
+  migrationName: string;
+  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
+  force?: boolean;
+}
+export const DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      targetResourceName: S.String.pipe(T.Label()),
+      migrationName: S.String.pipe(T.Label()),
+      force: S.optional(S.Boolean.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest",
+  }) as any as S.Schema<DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest>;
+
+export interface DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoResponse {}
+export const DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoResponse",
+  }) as any as S.Schema<DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoResponse>;
+
+export interface DeleteDatabaseMigrationSqlDbRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  /** The name of the target database. */
+  targetDbName: string;
+  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
+  force?: boolean;
+}
+export const DeleteDatabaseMigrationSqlDbRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlDbInstanceName: S.String.pipe(T.Label()),
+    targetDbName: S.String.pipe(T.Label()),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDatabaseMigrationSqlDbRequest",
+}) as any as S.Schema<DeleteDatabaseMigrationSqlDbRequest>;
+
+export interface DeleteDatabaseMigrationSqlDbResponse {}
+export const DeleteDatabaseMigrationSqlDbResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteDatabaseMigrationSqlDbResponse",
+}) as any as S.Schema<DeleteDatabaseMigrationSqlDbResponse>;
+
+export interface DeleteDatabaseMigrationSqlMiRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  managedInstanceName: string;
+  /** The name of the target database. */
+  targetDbName: string;
+  /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
+  force?: boolean;
+}
+export const DeleteDatabaseMigrationSqlMiRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    managedInstanceName: S.String.pipe(T.Label()),
+    targetDbName: S.String.pipe(T.Label()),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDatabaseMigrationSqlMiRequest",
+}) as any as S.Schema<DeleteDatabaseMigrationSqlMiRequest>;
+
+export interface DeleteDatabaseMigrationSqlMiResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesSqlMi;
+}
+export const DeleteDatabaseMigrationSqlMiResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(DatabaseMigrationPropertiesSqlMi),
+    }),
+).annotate({
+  identifier: "DeleteDatabaseMigrationSqlMiResponse",
+}) as any as S.Schema<DeleteDatabaseMigrationSqlMiResponse>;
+
+export interface DeleteDatabaseMigrationSqlVmRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
@@ -2240,27 +2092,26 @@ export interface DatabaseMigrationsSqlVmDeleteRequest {
   /** Optional force delete boolean. If this is provided as true, migration will be deleted even if active. */
   force?: boolean;
 }
-export const DatabaseMigrationsSqlVmDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlVirtualMachineName: S.String.pipe(T.Label()),
-      targetDbName: S.String.pipe(T.Label()),
-      force: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
+export const DeleteDatabaseMigrationSqlVmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlVirtualMachineName: S.String.pipe(T.Label()),
+    targetDbName: S.String.pipe(T.Label()),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
 ).annotate({
-  identifier: "DatabaseMigrationsSqlVmDeleteRequest",
-}) as any as S.Schema<DatabaseMigrationsSqlVmDeleteRequest>;
+  identifier: "DeleteDatabaseMigrationSqlVmRequest",
+}) as any as S.Schema<DeleteDatabaseMigrationSqlVmRequest>;
 
-export interface DatabaseMigrationsSqlVmDeleteResponse {
+export interface DeleteDatabaseMigrationSqlVmResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -2271,7 +2122,7 @@ export interface DatabaseMigrationsSqlVmDeleteResponse {
   systemData?: SystemData;
   properties?: DatabaseMigrationPropertiesSqlVm;
 }
-export const DatabaseMigrationsSqlVmDeleteResponse = /*@__PURE__*/ S.suspend(
+export const DeleteDatabaseMigrationSqlVmResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -2281,64 +2132,308 @@ export const DatabaseMigrationsSqlVmDeleteResponse = /*@__PURE__*/ S.suspend(
       properties: S.optional(DatabaseMigrationPropertiesSqlVm),
     }),
 ).annotate({
-  identifier: "DatabaseMigrationsSqlVmDeleteResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlVmDeleteResponse>;
+  identifier: "DeleteDatabaseMigrationSqlVmResponse",
+}) as any as S.Schema<DeleteDatabaseMigrationSqlVmResponse>;
 
-export interface DatabaseMigrationsSqlVmGetRequest {
+export interface DeleteFileRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  sqlVirtualMachineName: string;
-  /** The name of the target database. */
-  targetDbName: string;
-  /** Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved. */
-  migrationOperationId?: string;
-  /** Complete migration details be included in the response. */
-  _expand?: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+  /** Name of the File */
+  fileName: string;
 }
-export const DatabaseMigrationsSqlVmGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlVirtualMachineName: S.String.pipe(T.Label()),
-    targetDbName: S.String.pipe(T.Label()),
-    migrationOperationId: S.optional(S.String.pipe(T.Query())),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    fileName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "DatabaseMigrationsSqlVmGetRequest",
-}) as any as S.Schema<DatabaseMigrationsSqlVmGetRequest>;
+  identifier: "DeleteFileRequest",
+}) as any as S.Schema<DeleteFileRequest>;
 
-export interface DatabaseMigrationsSqlVmGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationPropertiesSqlVm;
-}
-export const DatabaseMigrationsSqlVmGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationPropertiesSqlVm),
-  }),
+export interface DeleteFileResponse {}
+export const DeleteFileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "DatabaseMigrationsSqlVmGetResponse",
-}) as any as S.Schema<DatabaseMigrationsSqlVmGetResponse>;
+  identifier: "DeleteFileResponse",
+}) as any as S.Schema<DeleteFileResponse>;
+
+export interface DeleteMigrationServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the Migration Service. */
+  migrationServiceName: string;
+}
+export const DeleteMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrationServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMigrationServiceRequest",
+}) as any as S.Schema<DeleteMigrationServiceRequest>;
+
+export interface DeleteMigrationServiceResponse {}
+export const DeleteMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteMigrationServiceResponse",
+}) as any as S.Schema<DeleteMigrationServiceResponse>;
+
+export interface DeleteProjectRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+  /** Delete the resource even if it contains running tasks */
+  deleteRunningTasks?: boolean;
+}
+export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProjectRequest",
+}) as any as S.Schema<DeleteProjectRequest>;
+
+export interface DeleteProjectResponse {}
+export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProjectResponse",
+}) as any as S.Schema<DeleteProjectResponse>;
+
+export interface DeleteServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Delete the resource even if it contains running tasks */
+  deleteRunningTasks?: boolean;
+}
+export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteServiceRequest",
+}) as any as S.Schema<DeleteServiceRequest>;
+
+export interface DeleteServiceResponse {}
+export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceResponse",
+}) as any as S.Schema<DeleteServiceResponse>;
+
+export interface DeleteServiceTaskRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the Task */
+  taskName: string;
+  /** Delete the resource even if it contains running tasks */
+  deleteRunningTasks?: boolean;
+}
+export const DeleteServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    taskName: S.String.pipe(T.Label()),
+    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteServiceTaskRequest",
+}) as any as S.Schema<DeleteServiceTaskRequest>;
+
+export interface DeleteServiceTaskResponse {}
+export const DeleteServiceTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceTaskResponse",
+}) as any as S.Schema<DeleteServiceTaskResponse>;
+
+export interface DeleteSqlMigrationServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+}
+export const DeleteSqlMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlMigrationServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSqlMigrationServiceRequest",
+}) as any as S.Schema<DeleteSqlMigrationServiceRequest>;
+
+export interface DeleteSqlMigrationServiceResponse {}
+export const DeleteSqlMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSqlMigrationServiceResponse",
+}) as any as S.Schema<DeleteSqlMigrationServiceResponse>;
+
+export interface DeleteSqlMigrationServiceNodeRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+  /** The name of node to delete. */
+  nodeName?: string;
+  /** The name of integration runtime. */
+  integrationRuntimeName?: string;
+}
+export const DeleteSqlMigrationServiceNodeRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlMigrationServiceName: S.String.pipe(T.Label()),
+      nodeName: S.optional(S.String),
+      integrationRuntimeName: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/deleteNode",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSqlMigrationServiceNodeRequest",
+}) as any as S.Schema<DeleteSqlMigrationServiceNodeRequest>;
+
+/** Details of node to be deleted. */
+export interface DeleteNode {
+  /** The name of node to delete. */
+  nodeName?: string;
+  /** The name of integration runtime. */
+  integrationRuntimeName?: string;
+}
+export const DeleteNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nodeName: S.optional(S.String),
+    integrationRuntimeName: S.optional(S.String),
+  }),
+).annotate({ identifier: "DeleteNode" }) as any as S.Schema<DeleteNode>;
+
+export interface DeleteTaskRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+  /** Name of the Task */
+  taskName: string;
+  /** Delete the resource even if it contains running tasks */
+  deleteRunningTasks?: boolean;
+}
+export const DeleteTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    taskName: S.String.pipe(T.Label()),
+    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTaskRequest",
+}) as any as S.Schema<DeleteTaskRequest>;
+
+export interface DeleteTaskResponse {}
+export const DeleteTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteTaskResponse",
+}) as any as S.Schema<DeleteTaskResponse>;
 
 /** Base class for file properties. */
 export interface ProjectFilePropertiesInput {
@@ -2448,177 +2543,6 @@ export const FilesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilesCreateOrUpdateResponse",
 }) as any as S.Schema<FilesCreateOrUpdateResponse>;
 
-export interface FilesDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-  /** Name of the File */
-  fileName: string;
-}
-export const FilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-    fileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "FilesDeleteRequest",
-}) as any as S.Schema<FilesDeleteRequest>;
-
-export interface FilesDeleteResponse {}
-export const FilesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FilesDeleteResponse",
-}) as any as S.Schema<FilesDeleteResponse>;
-
-export interface FilesGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-  /** Name of the File */
-  fileName: string;
-}
-export const FilesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-    fileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "FilesGetRequest",
-}) as any as S.Schema<FilesGetRequest>;
-
-export interface FilesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom file properties */
-  properties?: ProjectFileProperties;
-}
-export const FilesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectFileProperties),
-  }),
-).annotate({
-  identifier: "FilesGetResponse",
-}) as any as S.Schema<FilesGetResponse>;
-
-export interface FilesListRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-}
-export const FilesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "FilesListRequest",
-}) as any as S.Schema<FilesListRequest>;
-
-/** A file resource */
-export interface ProjectFile {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom file properties */
-  properties?: ProjectFileProperties;
-}
-export const ProjectFile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectFileProperties),
-  }),
-).annotate({ identifier: "ProjectFile" }) as any as S.Schema<ProjectFile>;
-
-/** List of files */
-export type FilesListResponseValueList = Array<ProjectFile>;
-export const FilesListResponseValueList = /*@__PURE__*/ S.Array(
-  ProjectFile,
-) as any as S.Schema<FilesListResponseValueList>;
-
-export interface FilesListResponse {
-  /** List of files */
-  value?: FilesListResponseValueList;
-  /** URL to load the next page of files */
-  nextLink?: string;
-}
-export const FilesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(FilesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FilesListResponse",
-}) as any as S.Schema<FilesListResponse>;
-
 export interface FilesReadRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
@@ -2723,7 +2647,379 @@ export const FilesReadWriteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FilesReadWriteResponse",
 }) as any as S.Schema<FilesReadWriteResponse>;
 
-export interface FilesUpdateRequest {
+export interface GetDatabaseMigrationMongoToCosmosDbRuMongoRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** The name of the target resource/account. */
+  targetResourceName: string;
+  /** Name of the migration. */
+  migrationName: string;
+}
+export const GetDatabaseMigrationMongoToCosmosDbRuMongoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      targetResourceName: S.String.pipe(T.Label()),
+      migrationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDatabaseMigrationMongoToCosmosDbRuMongoRequest",
+  }) as any as S.Schema<GetDatabaseMigrationMongoToCosmosDbRuMongoRequest>;
+
+export interface GetDatabaseMigrationMongoToCosmosDbRuMongoResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesCosmosDbMongo;
+}
+export const GetDatabaseMigrationMongoToCosmosDbRuMongoResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
+    }),
+  ).annotate({
+    identifier: "GetDatabaseMigrationMongoToCosmosDbRuMongoResponse",
+  }) as any as S.Schema<GetDatabaseMigrationMongoToCosmosDbRuMongoResponse>;
+
+export interface GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** The name of the target resource/account. */
+  targetResourceName: string;
+}
+export const GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      targetResourceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/databaseAccounts/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest",
+  }) as any as S.Schema<GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest>;
+
+/** Database Migration Resource for Mongo to CosmosDb. */
+export interface DatabaseMigrationCosmosDbMongo {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesCosmosDbMongo;
+}
+export const DatabaseMigrationCosmosDbMongo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
+  }),
+).annotate({
+  identifier: "DatabaseMigrationCosmosDbMongo",
+}) as any as S.Schema<DatabaseMigrationCosmosDbMongo>;
+
+export type DatabaseMigrationCosmosDbMongoListResultValueList =
+  Array<DatabaseMigrationCosmosDbMongo>;
+export const DatabaseMigrationCosmosDbMongoListResultValueList =
+  /*@__PURE__*/ S.Array(
+    DatabaseMigrationCosmosDbMongo,
+  ) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResultValueList>;
+
+/** A list of Database Migrations. */
+export interface DatabaseMigrationCosmosDbMongoListResult {
+  value?: DatabaseMigrationCosmosDbMongoListResultValueList;
+  nextLink?: string;
+}
+export const DatabaseMigrationCosmosDbMongoListResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.optional(DatabaseMigrationCosmosDbMongoListResultValueList),
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "DatabaseMigrationCosmosDbMongoListResult",
+}) as any as S.Schema<DatabaseMigrationCosmosDbMongoListResult>;
+
+export interface GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** The name of the target resource/account. */
+  targetResourceName: string;
+  /** Name of the migration. */
+  migrationName: string;
+}
+export const GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      targetResourceName: S.String.pipe(T.Label()),
+      migrationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations/{migrationName}",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest",
+  }) as any as S.Schema<GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest>;
+
+export interface GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesCosmosDbMongo;
+}
+export const GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(DatabaseMigrationPropertiesCosmosDbMongo),
+    }),
+  ).annotate({
+    identifier: "GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse",
+  }) as any as S.Schema<GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse>;
+
+export interface GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** The name of the target resource/account. */
+  targetResourceName: string;
+}
+export const GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      targetResourceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DocumentDB/mongoClusters/{targetResourceName}/providers/Microsoft.DataMigration/databaseMigrations",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest",
+  }) as any as S.Schema<GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest>;
+
+export interface GetDatabaseMigrationSqlDbRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  sqlDbInstanceName: string;
+  /** The name of the target database. */
+  targetDbName: string;
+  /** Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved. */
+  migrationOperationId?: string;
+  /** Complete migration details be included in the response. */
+  _expand?: string;
+}
+export const GetDatabaseMigrationSqlDbRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlDbInstanceName: S.String.pipe(T.Label()),
+    targetDbName: S.String.pipe(T.Label()),
+    migrationOperationId: S.optional(S.String.pipe(T.Query())),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "GetDatabaseMigrationSqlDbRequest",
+}) as any as S.Schema<GetDatabaseMigrationSqlDbRequest>;
+
+export interface GetDatabaseMigrationSqlDbResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesSqlDb;
+}
+export const GetDatabaseMigrationSqlDbResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DatabaseMigrationPropertiesSqlDb),
+  }),
+).annotate({
+  identifier: "GetDatabaseMigrationSqlDbResponse",
+}) as any as S.Schema<GetDatabaseMigrationSqlDbResponse>;
+
+export interface GetDatabaseMigrationSqlMiRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  managedInstanceName: string;
+  /** The name of the target database. */
+  targetDbName: string;
+  /** Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved. */
+  migrationOperationId?: string;
+  /** Complete migration details be included in the response. */
+  _expand?: string;
+}
+export const GetDatabaseMigrationSqlMiRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    managedInstanceName: S.String.pipe(T.Label()),
+    targetDbName: S.String.pipe(T.Label()),
+    migrationOperationId: S.optional(S.String.pipe(T.Query())),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "GetDatabaseMigrationSqlMiRequest",
+}) as any as S.Schema<GetDatabaseMigrationSqlMiRequest>;
+
+export interface GetDatabaseMigrationSqlMiResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesSqlMi;
+}
+export const GetDatabaseMigrationSqlMiResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DatabaseMigrationPropertiesSqlMi),
+  }),
+).annotate({
+  identifier: "GetDatabaseMigrationSqlMiResponse",
+}) as any as S.Schema<GetDatabaseMigrationSqlMiResponse>;
+
+export interface GetDatabaseMigrationSqlVmRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  sqlVirtualMachineName: string;
+  /** The name of the target database. */
+  targetDbName: string;
+  /** Optional migration operation ID. If this is provided, then details of migration operation for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved. */
+  migrationOperationId?: string;
+  /** Complete migration details be included in the response. */
+  _expand?: string;
+}
+export const GetDatabaseMigrationSqlVmRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlVirtualMachineName: S.String.pipe(T.Label()),
+    targetDbName: S.String.pipe(T.Label()),
+    migrationOperationId: S.optional(S.String.pipe(T.Query())),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachines/{sqlVirtualMachineName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "GetDatabaseMigrationSqlVmRequest",
+}) as any as S.Schema<GetDatabaseMigrationSqlVmRequest>;
+
+export interface GetDatabaseMigrationSqlVmResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationPropertiesSqlVm;
+}
+export const GetDatabaseMigrationSqlVmResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DatabaseMigrationPropertiesSqlVm),
+  }),
+).annotate({
+  identifier: "GetDatabaseMigrationSqlVmResponse",
+}) as any as S.Schema<GetDatabaseMigrationSqlVmResponse>;
+
+export interface GetFileRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group */
@@ -2734,33 +3030,25 @@ export interface FilesUpdateRequest {
   projectName: string;
   /** Name of the File */
   fileName: string;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom file properties */
-  properties?: ProjectFilePropertiesInput;
 }
-export const FilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectFilePropertiesInput),
   }).pipe(
     T.Http({
-      method: "PATCH",
+      method: "GET",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
-).annotate({
-  identifier: "FilesUpdateRequest",
-}) as any as S.Schema<FilesUpdateRequest>;
+).annotate({ identifier: "GetFileRequest" }) as any as S.Schema<GetFileRequest>;
 
-export interface FilesUpdateResponse {
+export interface GetFileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -2774,7 +3062,7 @@ export interface FilesUpdateResponse {
   /** Custom file properties */
   properties?: ProjectFileProperties;
 }
-export const FilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2784,66 +3072,42 @@ export const FilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ProjectFileProperties),
   }),
 ).annotate({
-  identifier: "FilesUpdateResponse",
-}) as any as S.Schema<FilesUpdateResponse>;
+  identifier: "GetFileResponse",
+}) as any as S.Schema<GetFileResponse>;
 
-/** Resource tags. */
-export type MigrationServicesCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const MigrationServicesCreateOrUpdateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<MigrationServicesCreateOrUpdateRequestTagsMap>;
-
-/** The Migration Service properties. */
-export type MigrationServicePropertiesInput = UserAssignedIdentityInput;
-export const MigrationServicePropertiesInput = UserAssignedIdentityInput;
-
-export interface MigrationServicesCreateOrUpdateRequest {
+export interface GetMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
   resourceGroupName: string;
   /** Name of the Migration Service. */
   migrationServiceName: string;
-  /** Resource tags. */
-  tags?: MigrationServicesCreateOrUpdateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: UserAssignedIdentityInput;
 }
-export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrationServiceName: S.String.pipe(T.Label()),
-      tags: S.optional(MigrationServicesCreateOrUpdateRequestTagsMap),
-      location: S.String,
-      properties: S.optional(UserAssignedIdentityInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
+export const GetMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrationServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
 ).annotate({
-  identifier: "MigrationServicesCreateOrUpdateRequest",
-}) as any as S.Schema<MigrationServicesCreateOrUpdateRequest>;
+  identifier: "GetMigrationServiceRequest",
+}) as any as S.Schema<GetMigrationServiceRequest>;
 
 /** Resource tags. */
-export type MigrationServicesCreateOrUpdateResponseTagsMap = {
+export type MigrationServicesGetResponseTagsMap = {
   [key: string]: string | undefined;
 };
-export const MigrationServicesCreateOrUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<MigrationServicesCreateOrUpdateResponseTagsMap>;
+export const MigrationServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MigrationServicesGetResponseTagsMap>;
 
 /** Provisioning state to track the async operation status. */
 export type MigrationServicePropertiesProvisioningState =
@@ -2871,103 +3135,7 @@ export const MigrationServiceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "MigrationServiceProperties",
 }) as any as S.Schema<MigrationServiceProperties>;
 
-export interface MigrationServicesCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MigrationServicesCreateOrUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: MigrationServiceProperties;
-}
-export const MigrationServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(MigrationServicesCreateOrUpdateResponseTagsMap),
-      location: S.String,
-      properties: S.optional(MigrationServiceProperties),
-    }),
-).annotate({
-  identifier: "MigrationServicesCreateOrUpdateResponse",
-}) as any as S.Schema<MigrationServicesCreateOrUpdateResponse>;
-
-export interface MigrationServicesDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the Migration Service. */
-  migrationServiceName: string;
-}
-export const MigrationServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    migrationServiceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "MigrationServicesDeleteRequest",
-}) as any as S.Schema<MigrationServicesDeleteRequest>;
-
-export interface MigrationServicesDeleteResponse {}
-export const MigrationServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "MigrationServicesDeleteResponse",
-}) as any as S.Schema<MigrationServicesDeleteResponse>;
-
-export interface MigrationServicesGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the Migration Service. */
-  migrationServiceName: string;
-}
-export const MigrationServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    migrationServiceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "MigrationServicesGetRequest",
-}) as any as S.Schema<MigrationServicesGetRequest>;
-
-/** Resource tags. */
-export type MigrationServicesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const MigrationServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServicesGetResponseTagsMap>;
-
-export interface MigrationServicesGetResponse {
+export interface GetMigrationServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -2982,7 +3150,7 @@ export interface MigrationServicesGetResponse {
   location: string;
   properties?: MigrationServiceProperties;
 }
-export const MigrationServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2993,398 +3161,43 @@ export const MigrationServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(MigrationServiceProperties),
   }),
 ).annotate({
-  identifier: "MigrationServicesGetResponse",
-}) as any as S.Schema<MigrationServicesGetResponse>;
+  identifier: "GetMigrationServiceResponse",
+}) as any as S.Schema<GetMigrationServiceResponse>;
 
-export interface MigrationServicesListByResourceGroupRequest {
+export interface GetProjectRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
 }
-export const MigrationServicesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "MigrationServicesListByResourceGroupRequest",
-  }) as any as S.Schema<MigrationServicesListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type MigrationServiceTagsMap = { [key: string]: string | undefined };
-export const MigrationServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServiceTagsMap>;
-
-/** A Migration Service. */
-export interface MigrationService {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MigrationServiceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: MigrationServiceProperties;
-}
-export const MigrationService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MigrationServiceTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "MigrationService",
-}) as any as S.Schema<MigrationService>;
-
-export type MigrationServiceListResultValueList = Array<MigrationService>;
-export const MigrationServiceListResultValueList = /*@__PURE__*/ S.Array(
-  MigrationService,
-) as any as S.Schema<MigrationServiceListResultValueList>;
-
-/** A list of Migration Service. */
-export interface MigrationServiceListResult {
-  value?: MigrationServiceListResultValueList;
-  nextLink?: string;
-}
-export const MigrationServiceListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MigrationServiceListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MigrationServiceListResult",
-}) as any as S.Schema<MigrationServiceListResult>;
-
-export interface MigrationServicesListBySubscriptionRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-}
-export const MigrationServicesListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/migrationServices",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "MigrationServicesListBySubscriptionRequest",
-  }) as any as S.Schema<MigrationServicesListBySubscriptionRequest>;
-
-export interface MigrationServicesListMigrationsRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the Migration Service. */
-  migrationServiceName: string;
-}
-export const MigrationServicesListMigrationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      migrationServiceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}/listMigrations",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-).annotate({
-  identifier: "MigrationServicesListMigrationsRequest",
-}) as any as S.Schema<MigrationServicesListMigrationsRequest>;
-
-export type DatabaseMigrationBasePropertiesKind =
-  | "SqlMi"
-  | "SqlVm"
-  | "SqlDb"
-  | "MongoToCosmosDbMongo";
-export const DatabaseMigrationBasePropertiesKind = /*@__PURE__*/ S.String;
-
-/** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
-export type DatabaseMigrationBasePropertiesProvisioningState =
-  | "Provisioning"
-  | "Updating"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled";
-export const DatabaseMigrationBasePropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Database Migration Base Resource properties. */
-export interface DatabaseMigrationBaseProperties {
-  kind: DatabaseMigrationBasePropertiesKind;
-  /** Resource Id of the target resource. */
-  scope?: string;
-  /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
-  provisioningState?: DatabaseMigrationBasePropertiesProvisioningState;
-  /** Migration status. */
-  migrationStatus?: string;
-  /** Database migration start time. */
-  startedOn?: string;
-  /** Database migration end time. */
-  endedOn?: string;
-  /** Resource Id of the Migration Service. */
-  migrationService?: string;
-  /** ID for current migration operation. */
-  migrationOperationId?: string;
-  /** Error details in case of migration failure. */
-  migrationFailureError?: ErrorInfo;
-  /** Error message for migration provisioning failure, if any. */
-  provisioningError?: string;
-}
-export const DatabaseMigrationBaseProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: DatabaseMigrationBasePropertiesKind,
-    scope: S.optional(S.String),
-    provisioningState: S.optional(
-      DatabaseMigrationBasePropertiesProvisioningState,
-    ),
-    migrationStatus: S.optional(S.String),
-    startedOn: S.optional(S.String),
-    endedOn: S.optional(S.String),
-    migrationService: S.optional(S.String),
-    migrationOperationId: S.optional(S.String),
-    migrationFailureError: S.optional(ErrorInfo),
-    provisioningError: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationBaseProperties",
-}) as any as S.Schema<DatabaseMigrationBaseProperties>;
-
-/** Database Migration Resource. */
-export interface DatabaseMigrationBase {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationBaseProperties;
-}
-export const DatabaseMigrationBase = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationBaseProperties),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationBase",
-}) as any as S.Schema<DatabaseMigrationBase>;
-
-export type DatabaseMigrationBaseListResultValueList =
-  Array<DatabaseMigrationBase>;
-export const DatabaseMigrationBaseListResultValueList = /*@__PURE__*/ S.Array(
-  DatabaseMigrationBase,
-) as any as S.Schema<DatabaseMigrationBaseListResultValueList>;
-
-/** A list of Database Migrations. */
-export interface DatabaseMigrationBaseListResult {
-  value?: DatabaseMigrationBaseListResultValueList;
-  nextLink?: string;
-}
-export const DatabaseMigrationBaseListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DatabaseMigrationBaseListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationBaseListResult",
-}) as any as S.Schema<DatabaseMigrationBaseListResult>;
-
-export type MigrationServicesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const MigrationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServicesUpdateRequestTagsMap>;
-
-export interface MigrationServicesUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the Migration Service. */
-  migrationServiceName: string;
-  tags?: MigrationServicesUpdateRequestTagsMap;
-}
-export const MigrationServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    migrationServiceName: S.String.pipe(T.Label()),
-    tags: S.optional(MigrationServicesUpdateRequestTagsMap),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "MigrationServicesUpdateRequest",
-}) as any as S.Schema<MigrationServicesUpdateRequest>;
-
-/** Resource tags. */
-export type MigrationServicesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const MigrationServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MigrationServicesUpdateResponseTagsMap>;
-
-export interface MigrationServicesUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: MigrationServicesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: MigrationServiceProperties;
-}
-export const MigrationServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(MigrationServicesUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(MigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "MigrationServicesUpdateResponse",
-}) as any as S.Schema<MigrationServicesUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
       method: "GET",
-      uri: "/providers/Microsoft.DataMigration/operations",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-export interface OperationsDisplayDefinition {
-  provider?: string;
-  resource?: string;
-  operation?: string;
-  description?: string;
-}
-export const OperationsDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsDisplayDefinition",
-}) as any as S.Schema<OperationsDisplayDefinition>;
-
-export type OperationsDefinitionOrigin = "user" | "system";
-export const OperationsDefinitionOrigin = /*@__PURE__*/ S.String;
-
-export type OperationsDefinitionPropertiesMap = {
-  [key: string]: unknown | undefined;
-};
-export const OperationsDefinitionPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OperationsDefinitionPropertiesMap>;
-
-export interface OperationsDefinition {
-  name?: string;
-  /** Indicates whether the operation is a data action */
-  isDataAction?: boolean;
-  display?: OperationsDisplayDefinition;
-  origin?: OperationsDefinitionOrigin;
-  properties?: OperationsDefinitionPropertiesMap;
-}
-export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationsDisplayDefinition),
-    origin: S.optional(OperationsDefinitionOrigin),
-    properties: S.optional(OperationsDefinitionPropertiesMap),
-  }),
-).annotate({
-  identifier: "OperationsDefinition",
-}) as any as S.Schema<OperationsDefinition>;
-
-export type OperationListResultValueList = Array<OperationsDefinition>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
-  OperationsDefinition,
-) as any as S.Schema<OperationListResultValueList>;
-
-/** Result of the request to list SQL operations. */
-export interface OperationListResult {
-  value?: OperationListResultValueList;
-  nextLink?: string;
-}
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationListResult",
-}) as any as S.Schema<OperationListResult>;
+  identifier: "GetProjectRequest",
+}) as any as S.Schema<GetProjectRequest>;
 
 /** Resource tags. */
-export type ProjectsCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+export type ProjectsGetResponseTagsMap = { [key: string]: string | undefined };
+export const ProjectsGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+) as any as S.Schema<ProjectsGetResponseTagsMap>;
 
 /** Source platform of the project */
 export type ProjectSourcePlatform =
@@ -3396,7 +3209,7 @@ export type ProjectSourcePlatform =
 export const ProjectSourcePlatform = /*@__PURE__*/ S.String;
 
 /** Azure Active Directory Application */
-export interface ProjectPropertiesInputAzureAuthenticationInfo {
+export interface ProjectPropertiesAzureAuthenticationInfo {
   /** Application ID of the Azure Active Directory Application */
   applicationId?: string;
   /** Key used to authenticate to the Azure Active Directory Application */
@@ -3406,17 +3219,17 @@ export interface ProjectPropertiesInputAzureAuthenticationInfo {
   /** Ignore checking azure permissions on the AAD app */
   ignoreAzurePermissions?: boolean;
 }
-export const ProjectPropertiesInputAzureAuthenticationInfo =
-  /*@__PURE__*/ S.suspend(() =>
+export const ProjectPropertiesAzureAuthenticationInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       applicationId: S.optional(S.String),
       appKey: S.optional(S.String),
       tenantId: S.optional(S.String),
       ignoreAzurePermissions: S.optional(S.Boolean),
     }),
-  ).annotate({
-    identifier: "ProjectPropertiesInputAzureAuthenticationInfo",
-  }) as any as S.Schema<ProjectPropertiesInputAzureAuthenticationInfo>;
+).annotate({
+  identifier: "ProjectPropertiesAzureAuthenticationInfo",
+}) as any as S.Schema<ProjectPropertiesAzureAuthenticationInfo>;
 
 /** Target platform of the project */
 export type ProjectTargetPlatform =
@@ -3429,7 +3242,7 @@ export type ProjectTargetPlatform =
 export const ProjectTargetPlatform = /*@__PURE__*/ S.String;
 
 /** Defines the connection properties of a server */
-export interface ProjectPropertiesInputSourceConnectionInfo {
+export interface ProjectPropertiesSourceConnectionInfo {
   /** Type of connection info */
   type: string;
   /** User name */
@@ -3437,22 +3250,22 @@ export interface ProjectPropertiesInputSourceConnectionInfo {
   /** Password credential. */
   password?: string | Redacted.Redacted<string>;
 }
-export const ProjectPropertiesInputSourceConnectionInfo =
-  /*@__PURE__*/ S.suspend(() =>
+export const ProjectPropertiesSourceConnectionInfo = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       type: S.String,
       userName: S.optional(S.String),
       password: S.optional(S.String.pipe(T.SensitiveValue({}))),
     }),
-  ).annotate({
-    identifier: "ProjectPropertiesInputSourceConnectionInfo",
-  }) as any as S.Schema<ProjectPropertiesInputSourceConnectionInfo>;
+).annotate({
+  identifier: "ProjectPropertiesSourceConnectionInfo",
+}) as any as S.Schema<ProjectPropertiesSourceConnectionInfo>;
 
 /** Defines the connection properties of a server */
-export type ProjectPropertiesInputTargetConnectionInfo =
-  ProjectPropertiesInputSourceConnectionInfo;
-export const ProjectPropertiesInputTargetConnectionInfo =
-  ProjectPropertiesInputSourceConnectionInfo;
+export type ProjectPropertiesTargetConnectionInfo =
+  ProjectPropertiesSourceConnectionInfo;
+export const ProjectPropertiesTargetConnectionInfo =
+  ProjectPropertiesSourceConnectionInfo;
 
 /** Project Database Details */
 export interface DatabaseInfo {
@@ -3464,113 +3277,6 @@ export const DatabaseInfo = /*@__PURE__*/ S.suspend(() =>
     sourceDatabaseName: S.String,
   }),
 ).annotate({ identifier: "DatabaseInfo" }) as any as S.Schema<DatabaseInfo>;
-
-/** List of DatabaseInfo */
-export type ProjectPropertiesInputDatabasesInfoList = Array<DatabaseInfo>;
-export const ProjectPropertiesInputDatabasesInfoList = /*@__PURE__*/ S.Array(
-  DatabaseInfo,
-) as any as S.Schema<ProjectPropertiesInputDatabasesInfoList>;
-
-/** Project-specific properties */
-export interface ProjectPropertiesInput {
-  /** Source platform for the project */
-  sourcePlatform: ProjectSourcePlatform | (string & {});
-  /** Azure Active Directory Application */
-  azureAuthenticationInfo?: ProjectPropertiesInputAzureAuthenticationInfo;
-  /** Target platform for the project */
-  targetPlatform: ProjectTargetPlatform | (string & {});
-  /** Defines the connection properties of a server */
-  sourceConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
-  /** Defines the connection properties of a server */
-  targetConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
-  /** List of DatabaseInfo */
-  databasesInfo?: ProjectPropertiesInputDatabasesInfoList;
-}
-export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourcePlatform: ProjectSourcePlatform,
-    azureAuthenticationInfo: S.optional(
-      ProjectPropertiesInputAzureAuthenticationInfo,
-    ),
-    targetPlatform: ProjectTargetPlatform,
-    sourceConnectionInfo: S.optional(
-      ProjectPropertiesInputSourceConnectionInfo,
-    ),
-    targetConnectionInfo: S.optional(
-      ProjectPropertiesInputSourceConnectionInfo,
-    ),
-    databasesInfo: S.optional(ProjectPropertiesInputDatabasesInfoList),
-  }),
-).annotate({
-  identifier: "ProjectPropertiesInput",
-}) as any as S.Schema<ProjectPropertiesInput>;
-
-export interface ProjectsCreateOrUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-  /** Resource tags. */
-  tags?: ProjectsCreateOrUpdateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Project properties */
-  properties?: ProjectPropertiesInput;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-}
-export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-    tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectPropertiesInput),
-    etag: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ProjectsCreateOrUpdateRequest",
-}) as any as S.Schema<ProjectsCreateOrUpdateRequest>;
-
-/** Resource tags. */
-export type ProjectsCreateOrUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
-
-/** Azure Active Directory Application */
-export type ProjectPropertiesAzureAuthenticationInfo =
-  ProjectPropertiesInputAzureAuthenticationInfo;
-export const ProjectPropertiesAzureAuthenticationInfo =
-  ProjectPropertiesInputAzureAuthenticationInfo;
-
-/** Defines the connection properties of a server */
-export type ProjectPropertiesSourceConnectionInfo =
-  ProjectPropertiesInputSourceConnectionInfo;
-export const ProjectPropertiesSourceConnectionInfo =
-  ProjectPropertiesInputSourceConnectionInfo;
-
-/** Defines the connection properties of a server */
-export type ProjectPropertiesTargetConnectionInfo =
-  ProjectPropertiesInputSourceConnectionInfo;
-export const ProjectPropertiesTargetConnectionInfo =
-  ProjectPropertiesInputSourceConnectionInfo;
 
 /** List of DatabaseInfo */
 export type ProjectPropertiesDatabasesInfoList = Array<DatabaseInfo>;
@@ -3587,15 +3293,15 @@ export interface ProjectProperties {
   /** Source platform for the project */
   sourcePlatform: ProjectSourcePlatform;
   /** Azure Active Directory Application */
-  azureAuthenticationInfo?: ProjectPropertiesInputAzureAuthenticationInfo;
+  azureAuthenticationInfo?: ProjectPropertiesAzureAuthenticationInfo;
   /** Target platform for the project */
   targetPlatform: ProjectTargetPlatform;
   /** UTC Date and time when project was created */
   creationTime?: string;
   /** Defines the connection properties of a server */
-  sourceConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
+  sourceConnectionInfo?: ProjectPropertiesSourceConnectionInfo;
   /** Defines the connection properties of a server */
-  targetConnectionInfo?: ProjectPropertiesInputSourceConnectionInfo;
+  targetConnectionInfo?: ProjectPropertiesSourceConnectionInfo;
   /** List of DatabaseInfo */
   databasesInfo?: ProjectPropertiesDatabasesInfoList;
   /** The project's provisioning state */
@@ -3605,16 +3311,12 @@ export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sourcePlatform: ProjectSourcePlatform,
     azureAuthenticationInfo: S.optional(
-      ProjectPropertiesInputAzureAuthenticationInfo,
+      ProjectPropertiesAzureAuthenticationInfo,
     ),
     targetPlatform: ProjectTargetPlatform,
     creationTime: S.optional(S.String),
-    sourceConnectionInfo: S.optional(
-      ProjectPropertiesInputSourceConnectionInfo,
-    ),
-    targetConnectionInfo: S.optional(
-      ProjectPropertiesInputSourceConnectionInfo,
-    ),
+    sourceConnectionInfo: S.optional(ProjectPropertiesSourceConnectionInfo),
+    targetConnectionInfo: S.optional(ProjectPropertiesSourceConnectionInfo),
     databasesInfo: S.optional(ProjectPropertiesDatabasesInfoList),
     provisioningState: S.optional(ProjectPropertiesProvisioningState),
   }),
@@ -3622,113 +3324,7 @@ export const ProjectProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectProperties",
 }) as any as S.Schema<ProjectProperties>;
 
-export interface ProjectsCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProjectsCreateOrUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Project properties */
-  properties?: ProjectProperties;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-}
-export const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProjectsCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectsCreateOrUpdateResponse",
-}) as any as S.Schema<ProjectsCreateOrUpdateResponse>;
-
-export interface ProjectsDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-  /** Delete the resource even if it contains running tasks */
-  deleteRunningTasks?: boolean;
-}
-export const ProjectsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ProjectsDeleteRequest",
-}) as any as S.Schema<ProjectsDeleteRequest>;
-
-export interface ProjectsDeleteResponse {}
-export const ProjectsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProjectsDeleteResponse",
-}) as any as S.Schema<ProjectsDeleteResponse>;
-
-export interface ProjectsGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-}
-export const ProjectsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ProjectsGetRequest",
-}) as any as S.Schema<ProjectsGetRequest>;
-
-/** Resource tags. */
-export type ProjectsGetResponseTagsMap = { [key: string]: string | undefined };
-export const ProjectsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsGetResponseTagsMap>;
-
-export interface ProjectsGetResponse {
+export interface GetProjectResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -3746,7 +3342,7 @@ export interface ProjectsGetResponse {
   /** HTTP strong entity tag value. This is ignored if submitted. */
   etag?: string;
 }
-export const ProjectsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetProjectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3758,10 +3354,10 @@ export const ProjectsGetResponse = /*@__PURE__*/ S.suspend(() =>
     etag: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ProjectsGetResponse",
-}) as any as S.Schema<ProjectsGetResponse>;
+  identifier: "GetProjectResponse",
+}) as any as S.Schema<GetProjectResponse>;
 
-export interface ProjectsListRequest {
+export interface GetServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group */
@@ -3769,7 +3365,7 @@ export interface ProjectsListRequest {
   /** Name of the service */
   serviceName: string;
 }
-export const ProjectsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
@@ -3777,655 +3373,21 @@ export const ProjectsListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ProjectsListRequest",
-}) as any as S.Schema<ProjectsListRequest>;
-
-/** Resource tags. */
-export type ProjectTagsMap = { [key: string]: string | undefined };
-export const ProjectTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectTagsMap>;
-
-/** A project resource */
-export interface Project {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProjectTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Project properties */
-  properties?: ProjectProperties;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-}
-export const Project = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProjectTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
-
-/** List of projects */
-export type ProjectsListResponseValueList = Array<Project>;
-export const ProjectsListResponseValueList = /*@__PURE__*/ S.Array(
-  Project,
-) as any as S.Schema<ProjectsListResponseValueList>;
-
-export interface ProjectsListResponse {
-  /** List of projects */
-  value?: ProjectsListResponseValueList;
-  /** URL to load the next page of projects */
-  nextLink?: string;
-}
-export const ProjectsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ProjectsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectsListResponse",
-}) as any as S.Schema<ProjectsListResponse>;
-
-/** Resource tags. */
-export type ProjectsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProjectsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsUpdateRequestTagsMap>;
-
-export interface ProjectsUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-  /** Resource tags. */
-  tags?: ProjectsUpdateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Project properties */
-  properties?: ProjectPropertiesInput;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-}
-export const ProjectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-    tags: S.optional(ProjectsUpdateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectPropertiesInput),
-    etag: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ProjectsUpdateRequest",
-}) as any as S.Schema<ProjectsUpdateRequest>;
-
-/** Resource tags. */
-export type ProjectsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProjectsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProjectsUpdateResponseTagsMap>;
-
-export interface ProjectsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProjectsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Project properties */
-  properties?: ProjectProperties;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-}
-export const ProjectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProjectsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProjectProperties),
-    etag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProjectsUpdateResponse",
-}) as any as S.Schema<ProjectsUpdateResponse>;
-
-export interface ResourceSkusListSkusRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-}
-export const ResourceSkusListSkusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/skus",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ResourceSkusListSkusRequest",
-}) as any as S.Schema<ResourceSkusListSkusRequest>;
-
-/** The scale type applicable to the SKU. */
-export type ResourceSkuCapacityScaleType = "Automatic" | "Manual" | "None";
-export const ResourceSkuCapacityScaleType = /*@__PURE__*/ S.String;
-
-/** Describes scaling information of a SKU. */
-export interface ResourceSkuCapacity {
-  /** The minimum capacity. */
-  minimum?: number;
-  /** The maximum capacity. */
-  maximum?: number;
-  /** The default capacity. */
-  default?: number;
-  /** The scale type applicable to the SKU. */
-  scaleType?: ResourceSkuCapacityScaleType;
-}
-export const ResourceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimum: S.optional(S.Number),
-    maximum: S.optional(S.Number),
-    default: S.optional(S.Number),
-    scaleType: S.optional(ResourceSkuCapacityScaleType),
-  }),
-).annotate({
-  identifier: "ResourceSkuCapacity",
-}) as any as S.Schema<ResourceSkuCapacity>;
-
-/** The set of locations that the SKU is available. */
-export type ResourceSkuLocationsList = Array<string>;
-export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuLocationsList>;
-
-/** The api versions that support this SKU. */
-export type ResourceSkuApiVersionsList = Array<string>;
-export const ResourceSkuApiVersionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuApiVersionsList>;
-
-/** Describes metadata for retrieving price info. */
-export interface ResourceSkuCosts {
-  /** Used for querying price from commerce. */
-  meterID?: string;
-  /** The multiplier is needed to extend the base metered cost. */
-  quantity?: number;
-  /** An invariant to show the extended unit. */
-  extendedUnit?: string;
-}
-export const ResourceSkuCosts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meterID: S.optional(S.String),
-    quantity: S.optional(S.Number),
-    extendedUnit: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceSkuCosts",
-}) as any as S.Schema<ResourceSkuCosts>;
-
-/** Metadata for retrieving price info. */
-export type ResourceSkuCostsList = Array<ResourceSkuCosts>;
-export const ResourceSkuCostsList = /*@__PURE__*/ S.Array(
-  ResourceSkuCosts,
-) as any as S.Schema<ResourceSkuCostsList>;
-
-/** Describes The SKU capabilities object. */
-export interface ResourceSkuCapabilities {
-  /** An invariant to describe the feature. */
-  name?: string;
-  /** An invariant if the feature is measured by quantity. */
-  value?: string;
-}
-export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceSkuCapabilities",
-}) as any as S.Schema<ResourceSkuCapabilities>;
-
-/** A name value pair to describe the capability. */
-export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
-export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
-  ResourceSkuCapabilities,
-) as any as S.Schema<ResourceSkuCapabilitiesList>;
-
-/** The type of restrictions. */
-export type ResourceSkuRestrictionsType = "location";
-export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
-
-/** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-export type ResourceSkuRestrictionsValuesList = Array<string>;
-export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
-
-/** The reason code for restriction. */
-export type ResourceSkuRestrictionsReasonCode =
-  | "QuotaId"
-  | "NotAvailableForSubscription";
-export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
-
-/** Describes scaling information of a SKU. */
-export interface ResourceSkuRestrictions {
-  /** The type of restrictions. */
-  type?: ResourceSkuRestrictionsType;
-  /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
-  values?: ResourceSkuRestrictionsValuesList;
-  /** The reason code for restriction. */
-  reasonCode?: ResourceSkuRestrictionsReasonCode;
-}
-export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(ResourceSkuRestrictionsType),
-    values: S.optional(ResourceSkuRestrictionsValuesList),
-    reasonCode: S.optional(ResourceSkuRestrictionsReasonCode),
-  }),
-).annotate({
-  identifier: "ResourceSkuRestrictions",
-}) as any as S.Schema<ResourceSkuRestrictions>;
-
-/** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
-export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
-  ResourceSkuRestrictions,
-) as any as S.Schema<ResourceSkuRestrictionsList>;
-
-/** Describes an available DMS (classic) SKU. */
-export interface ResourceSku {
-  /** The type of resource the SKU applies to. */
-  resourceType?: string;
-  /** The name of SKU. */
-  name?: string;
-  /** Specifies the tier of DMS (classic) in a scale set. */
-  tier?: string;
-  /** The Size of the SKU. */
-  size?: string;
-  /** The Family of this particular SKU. */
-  family?: string;
-  /** The Kind of resources that are supported in this SKU. */
-  kind?: string;
-  /** Not used. */
-  capacity?: ResourceSkuCapacity;
-  /** The set of locations that the SKU is available. */
-  locations?: ResourceSkuLocationsList;
-  /** The api versions that support this SKU. */
-  apiVersions?: ResourceSkuApiVersionsList;
-  /** Metadata for retrieving price info. */
-  costs?: ResourceSkuCostsList;
-  /** A name value pair to describe the capability. */
-  capabilities?: ResourceSkuCapabilitiesList;
-  /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
-  restrictions?: ResourceSkuRestrictionsList;
-}
-export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.optional(S.String),
-    name: S.optional(S.String),
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    kind: S.optional(S.String),
-    capacity: S.optional(ResourceSkuCapacity),
-    locations: S.optional(ResourceSkuLocationsList),
-    apiVersions: S.optional(ResourceSkuApiVersionsList),
-    costs: S.optional(ResourceSkuCostsList),
-    capabilities: S.optional(ResourceSkuCapabilitiesList),
-    restrictions: S.optional(ResourceSkuRestrictionsList),
-  }),
-).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
-
-/** The list of SKUs available for the subscription. */
-export type ResourceSkusListSkusResponseValueList = Array<ResourceSku>;
-export const ResourceSkusListSkusResponseValueList = /*@__PURE__*/ S.Array(
-  ResourceSku,
-) as any as S.Schema<ResourceSkusListSkusResponseValueList>;
-
-export interface ResourceSkusListSkusResponse {
-  /** The list of SKUs available for the subscription. */
-  value: ResourceSkusListSkusResponseValueList;
-  /** The uri to fetch the next page of DMS (classic) SKUs. Call ListNext() with this to fetch the next page of DMS (classic) SKUs. */
-  nextLink?: string;
-}
-export const ResourceSkusListSkusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ResourceSkusListSkusResponseValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceSkusListSkusResponse",
-}) as any as S.Schema<ResourceSkusListSkusResponse>;
-
-export interface ServicesCheckChildrenNameAvailabilityRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** The proposed resource name */
-  name?: string;
-  /** The resource type chain (e.g. virtualMachines/extensions) */
-  type?: string;
-}
-export const ServicesCheckChildrenNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      serviceName: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkNameAvailability",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServicesCheckChildrenNameAvailabilityRequest",
-  }) as any as S.Schema<ServicesCheckChildrenNameAvailabilityRequest>;
-
-/** The reason why the name is not available, if nameAvailable is false */
-export type ServicesCheckChildrenNameAvailabilityResponseReason =
-  | "AlreadyExists"
-  | "Invalid";
-export const ServicesCheckChildrenNameAvailabilityResponseReason =
-  /*@__PURE__*/ S.String;
-
-export interface ServicesCheckChildrenNameAvailabilityResponse {
-  /** If true, the name is valid and available. If false, 'reason' describes why not. */
-  nameAvailable?: boolean;
-  /** The reason why the name is not available, if nameAvailable is false */
-  reason?: ServicesCheckChildrenNameAvailabilityResponseReason;
-  /** The localized reason why the name is not available, if nameAvailable is false */
-  message?: string;
-}
-export const ServicesCheckChildrenNameAvailabilityResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nameAvailable: S.optional(S.Boolean),
-      reason: S.optional(ServicesCheckChildrenNameAvailabilityResponseReason),
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ServicesCheckChildrenNameAvailabilityResponse",
-  }) as any as S.Schema<ServicesCheckChildrenNameAvailabilityResponse>;
-
-export interface ServicesCheckNameAvailabilityRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** The Azure region of the operation */
-  location: string;
-  /** The proposed resource name */
-  name?: string;
-  /** The resource type chain (e.g. virtualMachines/extensions) */
-  type?: string;
-}
-export const ServicesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/checkNameAvailability",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-).annotate({
-  identifier: "ServicesCheckNameAvailabilityRequest",
-}) as any as S.Schema<ServicesCheckNameAvailabilityRequest>;
-
-/** The reason why the name is not available, if nameAvailable is false */
-export type ServicesCheckNameAvailabilityResponseReason =
-  | "AlreadyExists"
-  | "Invalid";
-export const ServicesCheckNameAvailabilityResponseReason =
-  /*@__PURE__*/ S.String;
-
-export interface ServicesCheckNameAvailabilityResponse {
-  /** If true, the name is valid and available. If false, 'reason' describes why not. */
-  nameAvailable?: boolean;
-  /** The reason why the name is not available, if nameAvailable is false */
-  reason?: ServicesCheckNameAvailabilityResponseReason;
-  /** The localized reason why the name is not available, if nameAvailable is false */
-  message?: string;
-}
-export const ServicesCheckNameAvailabilityResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nameAvailable: S.optional(S.Boolean),
-      reason: S.optional(ServicesCheckNameAvailabilityResponseReason),
-      message: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServicesCheckNameAvailabilityResponse",
-}) as any as S.Schema<ServicesCheckNameAvailabilityResponse>;
-
-export interface ServicesCheckStatusRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-}
-export const ServicesCheckStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/checkStatus",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesCheckStatusRequest",
-}) as any as S.Schema<ServicesCheckStatusRequest>;
-
-/** The list of supported task types */
-export type ServicesCheckStatusResponseSupportedTaskTypesList = Array<string>;
-export const ServicesCheckStatusResponseSupportedTaskTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ServicesCheckStatusResponseSupportedTaskTypesList>;
-
-export interface ServicesCheckStatusResponse {
-  /** The DMS instance agent version */
-  agentVersion?: string;
-  /** Agent Configuration */
-  agentConfiguration?: unknown;
-  /** The machine-readable status, such as 'Initializing', 'Offline', 'Online', 'Deploying', 'Deleting', 'Stopped', 'Stopping', 'Starting', 'FailedToStart', 'FailedToStop' or 'Failed' */
-  status?: string;
-  /** The services virtual machine size, such as 'Standard_D2_v2' */
-  vmSize?: string;
-  /** The list of supported task types */
-  supportedTaskTypes?: ServicesCheckStatusResponseSupportedTaskTypesList;
-}
-export const ServicesCheckStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentVersion: S.optional(S.String),
-    agentConfiguration: S.optional(S.Unknown),
-    status: S.optional(S.String),
-    vmSize: S.optional(S.String),
-    supportedTaskTypes: S.optional(
-      ServicesCheckStatusResponseSupportedTaskTypesList,
-    ),
-  }),
-).annotate({
-  identifier: "ServicesCheckStatusResponse",
-}) as any as S.Schema<ServicesCheckStatusResponse>;
-
-/** Resource tags. */
-export type ServicesCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
-
-/** Properties of the Azure Database Migration Service (classic) instance */
-export interface DataMigrationServicePropertiesInput {
-  /** The public key of the service, used to encrypt secrets sent to the service */
-  publicKey?: string;
-  /** The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined */
-  virtualSubnetId?: string;
-  /** The ID of the Microsoft.Network/networkInterfaces resource which the service have */
-  virtualNicId?: string;
-  /** The time delay before the service is auto-stopped when idle. */
-  autoStopDelay?: string;
-  /** Whether service resources should be deleted when stopped. (Turned on by default) */
-  deleteResourcesOnStop?: boolean;
-}
-export const DataMigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    publicKey: S.optional(S.String),
-    virtualSubnetId: S.optional(S.String),
-    virtualNicId: S.optional(S.String),
-    autoStopDelay: S.optional(S.String),
-    deleteResourcesOnStop: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DataMigrationServicePropertiesInput",
-}) as any as S.Schema<DataMigrationServicePropertiesInput>;
-
-/** An Azure SKU instance */
-export interface ServiceSku {
-  /** The unique name of the SKU, such as 'P3' */
-  name?: string;
-  /** The tier of the SKU, such as 'Basic', 'General Purpose', or 'Business Critical' */
-  tier?: string;
-  /** The SKU family, used when the service has multiple performance classes within a tier, such as 'A', 'D', etc. for virtual machines */
-  family?: string;
-  /** The size of the SKU, used when the name alone does not denote a service size or when a SKU has multiple performance classes within a family, e.g. 'A1' for virtual machines */
-  size?: string;
-  /** The capacity of the SKU, if it supports scaling */
-  capacity?: number;
-}
-export const ServiceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    tier: S.optional(S.String),
-    family: S.optional(S.String),
-    size: S.optional(S.String),
-    capacity: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ServiceSku" }) as any as S.Schema<ServiceSku>;
-
-export interface ServicesCreateOrUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Resource tags. */
-  tags?: ServicesCreateOrUpdateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** HTTP strong entity tag value. Ignored if submitted */
-  etag?: string;
-  /** The resource kind. Only 'vm' (the default) is supported. */
-  kind?: string;
-  /** Custom service properties */
-  properties?: DataMigrationServicePropertiesInput;
-  /** Service SKU */
-  sku?: ServiceSku;
-}
-export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServicePropertiesInput),
-    sku: S.optional(ServiceSku),
-  }).pipe(
-    T.Http({
-      method: "PUT",
       uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "ServicesCreateOrUpdateRequest",
-}) as any as S.Schema<ServicesCreateOrUpdateRequest>;
+  identifier: "GetServiceRequest",
+}) as any as S.Schema<GetServiceRequest>;
 
 /** Resource tags. */
-export type ServicesCreateOrUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+export type ServicesGetResponseTagsMap = { [key: string]: string | undefined };
+export const ServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+) as any as S.Schema<ServicesGetResponseTagsMap>;
 
 /** The resource's provisioning state */
 export type DataMigrationServicePropertiesProvisioningState =
@@ -4472,113 +3434,30 @@ export const DataMigrationServiceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataMigrationServiceProperties",
 }) as any as S.Schema<DataMigrationServiceProperties>;
 
-export interface ServicesCreateOrUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
+/** An Azure SKU instance */
+export interface ServiceSku {
+  /** The unique name of the SKU, such as 'P3' */
   name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ServicesCreateOrUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** HTTP strong entity tag value. Ignored if submitted */
-  etag?: string;
-  /** The resource kind. Only 'vm' (the default) is supported. */
-  kind?: string;
-  /** Custom service properties */
-  properties?: DataMigrationServiceProperties;
-  /** Service SKU */
-  sku?: ServiceSku;
+  /** The tier of the SKU, such as 'Basic', 'General Purpose', or 'Business Critical' */
+  tier?: string;
+  /** The SKU family, used when the service has multiple performance classes within a tier, such as 'A', 'D', etc. for virtual machines */
+  family?: string;
+  /** The size of the SKU, used when the name alone does not denote a service size or when a SKU has multiple performance classes within a family, e.g. 'A1' for virtual machines */
+  size?: string;
+  /** The capacity of the SKU, if it supports scaling */
+  capacity?: number;
 }
-export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const ServiceSku = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
     name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ServicesCreateOrUpdateResponseTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServiceProperties),
-    sku: S.optional(ServiceSku),
+    tier: S.optional(S.String),
+    family: S.optional(S.String),
+    size: S.optional(S.String),
+    capacity: S.optional(S.Number),
   }),
-).annotate({
-  identifier: "ServicesCreateOrUpdateResponse",
-}) as any as S.Schema<ServicesCreateOrUpdateResponse>;
+).annotate({ identifier: "ServiceSku" }) as any as S.Schema<ServiceSku>;
 
-export interface ServicesDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Delete the resource even if it contains running tasks */
-  deleteRunningTasks?: boolean;
-}
-export const ServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesDeleteRequest",
-}) as any as S.Schema<ServicesDeleteRequest>;
-
-export interface ServicesDeleteResponse {}
-export const ServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServicesDeleteResponse",
-}) as any as S.Schema<ServicesDeleteResponse>;
-
-export interface ServicesGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-}
-export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesGetRequest",
-}) as any as S.Schema<ServicesGetRequest>;
-
-/** Resource tags. */
-export type ServicesGetResponseTagsMap = { [key: string]: string | undefined };
-export const ServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesGetResponseTagsMap>;
-
-export interface ServicesGetResponse {
+export interface GetServiceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4600,7 +3479,7 @@ export interface ServicesGetResponse {
   /** Service SKU */
   sku?: ServiceSku;
 }
-export const ServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4614,422 +3493,10 @@ export const ServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
     sku: S.optional(ServiceSku),
   }),
 ).annotate({
-  identifier: "ServicesGetResponse",
-}) as any as S.Schema<ServicesGetResponse>;
+  identifier: "GetServiceResponse",
+}) as any as S.Schema<GetServiceResponse>;
 
-export interface ServicesListRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-}
-export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/services",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListRequest",
-}) as any as S.Schema<ServicesListRequest>;
-
-/** Resource tags. */
-export type DataMigrationServiceTagsMap = { [key: string]: string | undefined };
-export const DataMigrationServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<DataMigrationServiceTagsMap>;
-
-/** An Azure Database Migration Service (classic) resource */
-export interface DataMigrationService {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: DataMigrationServiceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** HTTP strong entity tag value. Ignored if submitted */
-  etag?: string;
-  /** The resource kind. Only 'vm' (the default) is supported. */
-  kind?: string;
-  /** Custom service properties */
-  properties?: DataMigrationServiceProperties;
-  /** Service SKU */
-  sku?: ServiceSku;
-}
-export const DataMigrationService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(DataMigrationServiceTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServiceProperties),
-    sku: S.optional(ServiceSku),
-  }),
-).annotate({
-  identifier: "DataMigrationService",
-}) as any as S.Schema<DataMigrationService>;
-
-/** List of services */
-export type ServicesListResponseValueList = Array<DataMigrationService>;
-export const ServicesListResponseValueList = /*@__PURE__*/ S.Array(
-  DataMigrationService,
-) as any as S.Schema<ServicesListResponseValueList>;
-
-export interface ServicesListResponse {
-  /** List of services */
-  value?: ServicesListResponseValueList;
-  /** URL to load the next page of services */
-  nextLink?: string;
-}
-export const ServicesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ServicesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServicesListResponse",
-}) as any as S.Schema<ServicesListResponse>;
-
-export interface ServicesListByResourceGroupRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-}
-export const ServicesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListByResourceGroupRequest",
-}) as any as S.Schema<ServicesListByResourceGroupRequest>;
-
-/** List of services */
-export type ServicesListByResourceGroupResponseValueList =
-  Array<DataMigrationService>;
-export const ServicesListByResourceGroupResponseValueList =
-  /*@__PURE__*/ S.Array(
-    DataMigrationService,
-  ) as any as S.Schema<ServicesListByResourceGroupResponseValueList>;
-
-export interface ServicesListByResourceGroupResponse {
-  /** List of services */
-  value?: ServicesListByResourceGroupResponseValueList;
-  /** URL to load the next page of services */
-  nextLink?: string;
-}
-export const ServicesListByResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ServicesListByResourceGroupResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServicesListByResourceGroupResponse",
-}) as any as S.Schema<ServicesListByResourceGroupResponse>;
-
-export interface ServicesListSkusRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-}
-export const ServicesListSkusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListSkusRequest",
-}) as any as S.Schema<ServicesListSkusRequest>;
-
-/** SKU name, tier, etc. */
-export interface AvailableServiceSkuSku {
-  /** The name of the SKU */
-  name?: string;
-  /** SKU family */
-  family?: string;
-  /** SKU size */
-  size?: string;
-  /** The tier of the SKU, such as "Basic", "General Purpose", or "Business Critical" */
-  tier?: string;
-}
-export const AvailableServiceSkuSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    family: S.optional(S.String),
-    size: S.optional(S.String),
-    tier: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AvailableServiceSkuSku",
-}) as any as S.Schema<AvailableServiceSkuSku>;
-
-/** The scalability approach */
-export type AvailableServiceSkuCapacityScaleType =
-  | "none"
-  | "manual"
-  | "automatic";
-export const AvailableServiceSkuCapacityScaleType = /*@__PURE__*/ S.String;
-
-/** A description of the scaling capacities of the SKU */
-export interface AvailableServiceSkuCapacity {
-  /** The minimum capacity, usually 0 or 1. */
-  minimum?: number;
-  /** The maximum capacity */
-  maximum?: number;
-  /** The default capacity */
-  default?: number;
-  /** The scalability approach */
-  scaleType?: AvailableServiceSkuCapacityScaleType;
-}
-export const AvailableServiceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimum: S.optional(S.Number),
-    maximum: S.optional(S.Number),
-    default: S.optional(S.Number),
-    scaleType: S.optional(AvailableServiceSkuCapacityScaleType),
-  }),
-).annotate({
-  identifier: "AvailableServiceSkuCapacity",
-}) as any as S.Schema<AvailableServiceSkuCapacity>;
-
-/** Describes the available service SKU. */
-export interface AvailableServiceSku {
-  /** The resource type, including the provider namespace */
-  resourceType?: string;
-  /** SKU name, tier, etc. */
-  sku?: AvailableServiceSkuSku;
-  /** A description of the scaling capacities of the SKU */
-  capacity?: AvailableServiceSkuCapacity;
-}
-export const AvailableServiceSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.optional(S.String),
-    sku: S.optional(AvailableServiceSkuSku),
-    capacity: S.optional(AvailableServiceSkuCapacity),
-  }),
-).annotate({
-  identifier: "AvailableServiceSku",
-}) as any as S.Schema<AvailableServiceSku>;
-
-/** List of service SKUs */
-export type ServicesListSkusResponseValueList = Array<AvailableServiceSku>;
-export const ServicesListSkusResponseValueList = /*@__PURE__*/ S.Array(
-  AvailableServiceSku,
-) as any as S.Schema<ServicesListSkusResponseValueList>;
-
-export interface ServicesListSkusResponse {
-  /** List of service SKUs */
-  value?: ServicesListSkusResponseValueList;
-  /** URL to load the next page of service SKUs */
-  nextLink?: string;
-}
-export const ServicesListSkusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ServicesListSkusResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServicesListSkusResponse",
-}) as any as S.Schema<ServicesListSkusResponse>;
-
-export interface ServicesStartRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-}
-export const ServicesStartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/start",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesStartRequest",
-}) as any as S.Schema<ServicesStartRequest>;
-
-export interface ServicesStartResponse {}
-export const ServicesStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServicesStartResponse",
-}) as any as S.Schema<ServicesStartResponse>;
-
-export interface ServicesStopRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-}
-export const ServicesStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/stop",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesStopRequest",
-}) as any as S.Schema<ServicesStopRequest>;
-
-export interface ServicesStopResponse {}
-export const ServicesStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServicesStopResponse",
-}) as any as S.Schema<ServicesStopResponse>;
-
-/** Resource tags. */
-export type ServicesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesUpdateRequestTagsMap>;
-
-export interface ServicesUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Resource tags. */
-  tags?: ServicesUpdateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** HTTP strong entity tag value. Ignored if submitted */
-  etag?: string;
-  /** The resource kind. Only 'vm' (the default) is supported. */
-  kind?: string;
-  /** Custom service properties */
-  properties?: DataMigrationServicePropertiesInput;
-  /** Service SKU */
-  sku?: ServiceSku;
-}
-export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    tags: S.optional(ServicesUpdateRequestTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServicePropertiesInput),
-    sku: S.optional(ServiceSku),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesUpdateRequest",
-}) as any as S.Schema<ServicesUpdateRequest>;
-
-/** Resource tags. */
-export type ServicesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServicesUpdateResponseTagsMap>;
-
-export interface ServicesUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ServicesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** HTTP strong entity tag value. Ignored if submitted */
-  etag?: string;
-  /** The resource kind. Only 'vm' (the default) is supported. */
-  kind?: string;
-  /** Custom service properties */
-  properties?: DataMigrationServiceProperties;
-  /** Service SKU */
-  sku?: ServiceSku;
-}
-export const ServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ServicesUpdateResponseTagsMap),
-    location: S.String,
-    etag: S.optional(S.String),
-    kind: S.optional(S.String),
-    properties: S.optional(DataMigrationServiceProperties),
-    sku: S.optional(ServiceSku),
-  }),
-).annotate({
-  identifier: "ServicesUpdateResponse",
-}) as any as S.Schema<ServicesUpdateResponse>;
-
-export interface ServiceTasksCancelRequest {
+export interface GetServiceTaskRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group */
@@ -5038,24 +3505,27 @@ export interface ServiceTasksCancelRequest {
   serviceName: string;
   /** Name of the Task */
   taskName: string;
+  /** Expand the response */
+  _expand?: string;
 }
-export const ServiceTasksCancelRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     taskName: S.String.pipe(T.Label()),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "ServiceTasksCancelRequest",
-}) as any as S.Schema<ServiceTasksCancelRequest>;
+  identifier: "GetServiceTaskRequest",
+}) as any as S.Schema<GetServiceTaskRequest>;
 
 /** Task type. */
 export type ProjectTaskPropertiesTaskType =
@@ -5283,6 +3753,2062 @@ export const ProjectTaskProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectTaskProperties",
 }) as any as S.Schema<ProjectTaskProperties>;
 
+export interface GetServiceTaskResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskProperties;
+}
+export const GetServiceTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskProperties),
+  }),
+).annotate({
+  identifier: "GetServiceTaskResponse",
+}) as any as S.Schema<GetServiceTaskResponse>;
+
+export interface GetSqlMigrationServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+}
+export const GetSqlMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlMigrationServiceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "GetSqlMigrationServiceRequest",
+}) as any as S.Schema<GetSqlMigrationServiceRequest>;
+
+/** Resource tags. */
+export type SqlMigrationServicesGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlMigrationServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlMigrationServicesGetResponseTagsMap>;
+
+/** The SQL Migration Service properties. */
+export interface SqlMigrationServiceProperties {
+  /** Provisioning state to track the async operation status. */
+  provisioningState?: string;
+  /** Current state of the Integration runtime. */
+  integrationRuntimeState?: string;
+}
+export const SqlMigrationServiceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(S.String),
+    integrationRuntimeState: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlMigrationServiceProperties",
+}) as any as S.Schema<SqlMigrationServiceProperties>;
+
+export interface GetSqlMigrationServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlMigrationServicesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: SqlMigrationServiceProperties;
+}
+export const GetSqlMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlMigrationServicesGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(SqlMigrationServiceProperties),
+  }),
+).annotate({
+  identifier: "GetSqlMigrationServiceResponse",
+}) as any as S.Schema<GetSqlMigrationServiceResponse>;
+
+export interface GetTaskRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+  /** Name of the Task */
+  taskName: string;
+  /** Expand the response */
+  _expand?: string;
+}
+export const GetTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    taskName: S.String.pipe(T.Label()),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({ identifier: "GetTaskRequest" }) as any as S.Schema<GetTaskRequest>;
+
+export interface GetTaskResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskProperties;
+}
+export const GetTaskResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskProperties),
+  }),
+).annotate({
+  identifier: "GetTaskResponse",
+}) as any as S.Schema<GetTaskResponse>;
+
+export interface ListFilesRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+}
+export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListFilesRequest",
+}) as any as S.Schema<ListFilesRequest>;
+
+/** A file resource */
+export interface ProjectFile {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom file properties */
+  properties?: ProjectFileProperties;
+}
+export const ProjectFile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectFileProperties),
+  }),
+).annotate({ identifier: "ProjectFile" }) as any as S.Schema<ProjectFile>;
+
+/** List of files */
+export type FilesListResponseValueList = Array<ProjectFile>;
+export const FilesListResponseValueList = /*@__PURE__*/ S.Array(
+  ProjectFile,
+) as any as S.Schema<FilesListResponseValueList>;
+
+export interface ListFilesResponse {
+  /** List of files */
+  value?: FilesListResponseValueList;
+  /** URL to load the next page of files */
+  nextLink?: string;
+}
+export const ListFilesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(FilesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFilesResponse",
+}) as any as S.Schema<ListFilesResponse>;
+
+export interface ListMigrationServiceByResourceGroupRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+}
+export const ListMigrationServiceByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListMigrationServiceByResourceGroupRequest",
+  }) as any as S.Schema<ListMigrationServiceByResourceGroupRequest>;
+
+/** Resource tags. */
+export type MigrationServiceTagsMap = { [key: string]: string | undefined };
+export const MigrationServiceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MigrationServiceTagsMap>;
+
+/** A Migration Service. */
+export interface MigrationService {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: MigrationServiceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: MigrationServiceProperties;
+}
+export const MigrationService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(MigrationServiceTagsMap),
+    location: S.String,
+    properties: S.optional(MigrationServiceProperties),
+  }),
+).annotate({
+  identifier: "MigrationService",
+}) as any as S.Schema<MigrationService>;
+
+export type MigrationServiceListResultValueList = Array<MigrationService>;
+export const MigrationServiceListResultValueList = /*@__PURE__*/ S.Array(
+  MigrationService,
+) as any as S.Schema<MigrationServiceListResultValueList>;
+
+/** A list of Migration Service. */
+export interface MigrationServiceListResult {
+  value?: MigrationServiceListResultValueList;
+  nextLink?: string;
+}
+export const MigrationServiceListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MigrationServiceListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MigrationServiceListResult",
+}) as any as S.Schema<MigrationServiceListResult>;
+
+export interface ListMigrationServiceBySubscriptionRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+}
+export const ListMigrationServiceBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/migrationServices",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListMigrationServiceBySubscriptionRequest",
+  }) as any as S.Schema<ListMigrationServiceBySubscriptionRequest>;
+
+export interface ListMigrationServiceMigrationsRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the Migration Service. */
+  migrationServiceName: string;
+}
+export const ListMigrationServiceMigrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      migrationServiceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}/listMigrations",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+).annotate({
+  identifier: "ListMigrationServiceMigrationsRequest",
+}) as any as S.Schema<ListMigrationServiceMigrationsRequest>;
+
+export type DatabaseMigrationBasePropertiesKind =
+  | "SqlMi"
+  | "SqlVm"
+  | "SqlDb"
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationBasePropertiesKind = /*@__PURE__*/ S.String;
+
+/** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
+export type DatabaseMigrationBasePropertiesProvisioningState =
+  | "Provisioning"
+  | "Updating"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled";
+export const DatabaseMigrationBasePropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Database Migration Base Resource properties. */
+export interface DatabaseMigrationBaseProperties {
+  kind: DatabaseMigrationBasePropertiesKind;
+  /** Resource Id of the target resource. */
+  scope?: string;
+  /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
+  provisioningState?: DatabaseMigrationBasePropertiesProvisioningState;
+  /** Migration status. */
+  migrationStatus?: string;
+  /** Database migration start time. */
+  startedOn?: string;
+  /** Database migration end time. */
+  endedOn?: string;
+  /** Resource Id of the Migration Service. */
+  migrationService?: string;
+  /** ID for current migration operation. */
+  migrationOperationId?: string;
+  /** Error details in case of migration failure. */
+  migrationFailureError?: ErrorInfo;
+  /** Error message for migration provisioning failure, if any. */
+  provisioningError?: string;
+}
+export const DatabaseMigrationBaseProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: DatabaseMigrationBasePropertiesKind,
+    scope: S.optional(S.String),
+    provisioningState: S.optional(
+      DatabaseMigrationBasePropertiesProvisioningState,
+    ),
+    migrationStatus: S.optional(S.String),
+    startedOn: S.optional(S.String),
+    endedOn: S.optional(S.String),
+    migrationService: S.optional(S.String),
+    migrationOperationId: S.optional(S.String),
+    migrationFailureError: S.optional(ErrorInfo),
+    provisioningError: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseMigrationBaseProperties",
+}) as any as S.Schema<DatabaseMigrationBaseProperties>;
+
+/** Database Migration Resource. */
+export interface DatabaseMigrationBase {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationBaseProperties;
+}
+export const DatabaseMigrationBase = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DatabaseMigrationBaseProperties),
+  }),
+).annotate({
+  identifier: "DatabaseMigrationBase",
+}) as any as S.Schema<DatabaseMigrationBase>;
+
+export type DatabaseMigrationBaseListResultValueList =
+  Array<DatabaseMigrationBase>;
+export const DatabaseMigrationBaseListResultValueList = /*@__PURE__*/ S.Array(
+  DatabaseMigrationBase,
+) as any as S.Schema<DatabaseMigrationBaseListResultValueList>;
+
+/** A list of Database Migrations. */
+export interface DatabaseMigrationBaseListResult {
+  value?: DatabaseMigrationBaseListResultValueList;
+  nextLink?: string;
+}
+export const DatabaseMigrationBaseListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DatabaseMigrationBaseListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseMigrationBaseListResult",
+}) as any as S.Schema<DatabaseMigrationBaseListResult>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.DataMigration/operations",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+export interface OperationsDisplayDefinition {
+  provider?: string;
+  resource?: string;
+  operation?: string;
+  description?: string;
+}
+export const OperationsDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationsDisplayDefinition",
+}) as any as S.Schema<OperationsDisplayDefinition>;
+
+export type OperationsDefinitionOrigin = "user" | "system";
+export const OperationsDefinitionOrigin = /*@__PURE__*/ S.String;
+
+export type OperationsDefinitionPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const OperationsDefinitionPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<OperationsDefinitionPropertiesMap>;
+
+export interface OperationsDefinition {
+  name?: string;
+  /** Indicates whether the operation is a data action */
+  isDataAction?: boolean;
+  display?: OperationsDisplayDefinition;
+  origin?: OperationsDefinitionOrigin;
+  properties?: OperationsDefinitionPropertiesMap;
+}
+export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationsDisplayDefinition),
+    origin: S.optional(OperationsDefinitionOrigin),
+    properties: S.optional(OperationsDefinitionPropertiesMap),
+  }),
+).annotate({
+  identifier: "OperationsDefinition",
+}) as any as S.Schema<OperationsDefinition>;
+
+export type OperationListResultValueList = Array<OperationsDefinition>;
+export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+  OperationsDefinition,
+) as any as S.Schema<OperationListResultValueList>;
+
+/** Result of the request to list SQL operations. */
+export interface OperationListResult {
+  value?: OperationListResultValueList;
+  nextLink?: string;
+}
+export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationListResult",
+}) as any as S.Schema<OperationListResult>;
+
+export interface ListProjectsRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+}
+export const ListProjectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListProjectsRequest",
+}) as any as S.Schema<ListProjectsRequest>;
+
+/** Resource tags. */
+export type ProjectTagsMap = { [key: string]: string | undefined };
+export const ProjectTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectTagsMap>;
+
+/** A project resource */
+export interface Project {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProjectTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectProperties;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+}
+export const Project = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProjectTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Project" }) as any as S.Schema<Project>;
+
+/** List of projects */
+export type ProjectsListResponseValueList = Array<Project>;
+export const ProjectsListResponseValueList = /*@__PURE__*/ S.Array(
+  Project,
+) as any as S.Schema<ProjectsListResponseValueList>;
+
+export interface ListProjectsResponse {
+  /** List of projects */
+  value?: ProjectsListResponseValueList;
+  /** URL to load the next page of projects */
+  nextLink?: string;
+}
+export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ProjectsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListProjectsResponse",
+}) as any as S.Schema<ListProjectsResponse>;
+
+export interface ListResourceSkusSkusRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+}
+export const ListResourceSkusSkusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/skus",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListResourceSkusSkusRequest",
+}) as any as S.Schema<ListResourceSkusSkusRequest>;
+
+/** The scale type applicable to the SKU. */
+export type ResourceSkuCapacityScaleType = "Automatic" | "Manual" | "None";
+export const ResourceSkuCapacityScaleType = /*@__PURE__*/ S.String;
+
+/** Describes scaling information of a SKU. */
+export interface ResourceSkuCapacity {
+  /** The minimum capacity. */
+  minimum?: number;
+  /** The maximum capacity. */
+  maximum?: number;
+  /** The default capacity. */
+  default?: number;
+  /** The scale type applicable to the SKU. */
+  scaleType?: ResourceSkuCapacityScaleType;
+}
+export const ResourceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimum: S.optional(S.Number),
+    maximum: S.optional(S.Number),
+    default: S.optional(S.Number),
+    scaleType: S.optional(ResourceSkuCapacityScaleType),
+  }),
+).annotate({
+  identifier: "ResourceSkuCapacity",
+}) as any as S.Schema<ResourceSkuCapacity>;
+
+/** The set of locations that the SKU is available. */
+export type ResourceSkuLocationsList = Array<string>;
+export const ResourceSkuLocationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSkuLocationsList>;
+
+/** The api versions that support this SKU. */
+export type ResourceSkuApiVersionsList = Array<string>;
+export const ResourceSkuApiVersionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSkuApiVersionsList>;
+
+/** Describes metadata for retrieving price info. */
+export interface ResourceSkuCosts {
+  /** Used for querying price from commerce. */
+  meterID?: string;
+  /** The multiplier is needed to extend the base metered cost. */
+  quantity?: number;
+  /** An invariant to show the extended unit. */
+  extendedUnit?: string;
+}
+export const ResourceSkuCosts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    meterID: S.optional(S.String),
+    quantity: S.optional(S.Number),
+    extendedUnit: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceSkuCosts",
+}) as any as S.Schema<ResourceSkuCosts>;
+
+/** Metadata for retrieving price info. */
+export type ResourceSkuCostsList = Array<ResourceSkuCosts>;
+export const ResourceSkuCostsList = /*@__PURE__*/ S.Array(
+  ResourceSkuCosts,
+) as any as S.Schema<ResourceSkuCostsList>;
+
+/** Describes The SKU capabilities object. */
+export interface ResourceSkuCapabilities {
+  /** An invariant to describe the feature. */
+  name?: string;
+  /** An invariant if the feature is measured by quantity. */
+  value?: string;
+}
+export const ResourceSkuCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceSkuCapabilities",
+}) as any as S.Schema<ResourceSkuCapabilities>;
+
+/** A name value pair to describe the capability. */
+export type ResourceSkuCapabilitiesList = Array<ResourceSkuCapabilities>;
+export const ResourceSkuCapabilitiesList = /*@__PURE__*/ S.Array(
+  ResourceSkuCapabilities,
+) as any as S.Schema<ResourceSkuCapabilitiesList>;
+
+/** The type of restrictions. */
+export type ResourceSkuRestrictionsType = "location";
+export const ResourceSkuRestrictionsType = /*@__PURE__*/ S.String;
+
+/** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
+export type ResourceSkuRestrictionsValuesList = Array<string>;
+export const ResourceSkuRestrictionsValuesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourceSkuRestrictionsValuesList>;
+
+/** The reason code for restriction. */
+export type ResourceSkuRestrictionsReasonCode =
+  | "QuotaId"
+  | "NotAvailableForSubscription";
+export const ResourceSkuRestrictionsReasonCode = /*@__PURE__*/ S.String;
+
+/** Describes scaling information of a SKU. */
+export interface ResourceSkuRestrictions {
+  /** The type of restrictions. */
+  type?: ResourceSkuRestrictionsType;
+  /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
+  values?: ResourceSkuRestrictionsValuesList;
+  /** The reason code for restriction. */
+  reasonCode?: ResourceSkuRestrictionsReasonCode;
+}
+export const ResourceSkuRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(ResourceSkuRestrictionsType),
+    values: S.optional(ResourceSkuRestrictionsValuesList),
+    reasonCode: S.optional(ResourceSkuRestrictionsReasonCode),
+  }),
+).annotate({
+  identifier: "ResourceSkuRestrictions",
+}) as any as S.Schema<ResourceSkuRestrictions>;
+
+/** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
+export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
+export const ResourceSkuRestrictionsList = /*@__PURE__*/ S.Array(
+  ResourceSkuRestrictions,
+) as any as S.Schema<ResourceSkuRestrictionsList>;
+
+/** Describes an available DMS (classic) SKU. */
+export interface ResourceSku {
+  /** The type of resource the SKU applies to. */
+  resourceType?: string;
+  /** The name of SKU. */
+  name?: string;
+  /** Specifies the tier of DMS (classic) in a scale set. */
+  tier?: string;
+  /** The Size of the SKU. */
+  size?: string;
+  /** The Family of this particular SKU. */
+  family?: string;
+  /** The Kind of resources that are supported in this SKU. */
+  kind?: string;
+  /** Not used. */
+  capacity?: ResourceSkuCapacity;
+  /** The set of locations that the SKU is available. */
+  locations?: ResourceSkuLocationsList;
+  /** The api versions that support this SKU. */
+  apiVersions?: ResourceSkuApiVersionsList;
+  /** Metadata for retrieving price info. */
+  costs?: ResourceSkuCostsList;
+  /** A name value pair to describe the capability. */
+  capabilities?: ResourceSkuCapabilitiesList;
+  /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
+  restrictions?: ResourceSkuRestrictionsList;
+}
+export const ResourceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(S.String),
+    name: S.optional(S.String),
+    tier: S.optional(S.String),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    kind: S.optional(S.String),
+    capacity: S.optional(ResourceSkuCapacity),
+    locations: S.optional(ResourceSkuLocationsList),
+    apiVersions: S.optional(ResourceSkuApiVersionsList),
+    costs: S.optional(ResourceSkuCostsList),
+    capabilities: S.optional(ResourceSkuCapabilitiesList),
+    restrictions: S.optional(ResourceSkuRestrictionsList),
+  }),
+).annotate({ identifier: "ResourceSku" }) as any as S.Schema<ResourceSku>;
+
+/** The list of SKUs available for the subscription. */
+export type ResourceSkusListSkusResponseValueList = Array<ResourceSku>;
+export const ResourceSkusListSkusResponseValueList = /*@__PURE__*/ S.Array(
+  ResourceSku,
+) as any as S.Schema<ResourceSkusListSkusResponseValueList>;
+
+export interface ListResourceSkusSkusResponse {
+  /** The list of SKUs available for the subscription. */
+  value: ResourceSkusListSkusResponseValueList;
+  /** The uri to fetch the next page of DMS (classic) SKUs. Call ListNext() with this to fetch the next page of DMS (classic) SKUs. */
+  nextLink?: string;
+}
+export const ListResourceSkusSkusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ResourceSkusListSkusResponseValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResourceSkusSkusResponse",
+}) as any as S.Schema<ListResourceSkusSkusResponse>;
+
+export interface ListServiceByResourceGroupRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+}
+export const ListServiceByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceByResourceGroupRequest",
+}) as any as S.Schema<ListServiceByResourceGroupRequest>;
+
+/** Resource tags. */
+export type DataMigrationServiceTagsMap = { [key: string]: string | undefined };
+export const DataMigrationServiceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<DataMigrationServiceTagsMap>;
+
+/** An Azure Database Migration Service (classic) resource */
+export interface DataMigrationService {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: DataMigrationServiceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServiceProperties;
+  /** Service SKU */
+  sku?: ServiceSku;
+}
+export const DataMigrationService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(DataMigrationServiceTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServiceProperties),
+    sku: S.optional(ServiceSku),
+  }),
+).annotate({
+  identifier: "DataMigrationService",
+}) as any as S.Schema<DataMigrationService>;
+
+/** List of services */
+export type ServicesListByResourceGroupResponseValueList =
+  Array<DataMigrationService>;
+export const ServicesListByResourceGroupResponseValueList =
+  /*@__PURE__*/ S.Array(
+    DataMigrationService,
+  ) as any as S.Schema<ServicesListByResourceGroupResponseValueList>;
+
+export interface ListServiceByResourceGroupResponse {
+  /** List of services */
+  value?: ServicesListByResourceGroupResponseValueList;
+  /** URL to load the next page of services */
+  nextLink?: string;
+}
+export const ListServiceByResourceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ServicesListByResourceGroupResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceByResourceGroupResponse",
+}) as any as S.Schema<ListServiceByResourceGroupResponse>;
+
+export interface ListServicesRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+}
+export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/services",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListServicesRequest",
+}) as any as S.Schema<ListServicesRequest>;
+
+/** List of services */
+export type ServicesListResponseValueList = Array<DataMigrationService>;
+export const ServicesListResponseValueList = /*@__PURE__*/ S.Array(
+  DataMigrationService,
+) as any as S.Schema<ServicesListResponseValueList>;
+
+export interface ListServicesResponse {
+  /** List of services */
+  value?: ServicesListResponseValueList;
+  /** URL to load the next page of services */
+  nextLink?: string;
+}
+export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ServicesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServicesResponse",
+}) as any as S.Schema<ListServicesResponse>;
+
+export interface ListServiceSkusRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+}
+export const ListServiceSkusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/skus",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceSkusRequest",
+}) as any as S.Schema<ListServiceSkusRequest>;
+
+/** SKU name, tier, etc. */
+export interface AvailableServiceSkuSku {
+  /** The name of the SKU */
+  name?: string;
+  /** SKU family */
+  family?: string;
+  /** SKU size */
+  size?: string;
+  /** The tier of the SKU, such as "Basic", "General Purpose", or "Business Critical" */
+  tier?: string;
+}
+export const AvailableServiceSkuSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    family: S.optional(S.String),
+    size: S.optional(S.String),
+    tier: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AvailableServiceSkuSku",
+}) as any as S.Schema<AvailableServiceSkuSku>;
+
+/** The scalability approach */
+export type AvailableServiceSkuCapacityScaleType =
+  | "none"
+  | "manual"
+  | "automatic";
+export const AvailableServiceSkuCapacityScaleType = /*@__PURE__*/ S.String;
+
+/** A description of the scaling capacities of the SKU */
+export interface AvailableServiceSkuCapacity {
+  /** The minimum capacity, usually 0 or 1. */
+  minimum?: number;
+  /** The maximum capacity */
+  maximum?: number;
+  /** The default capacity */
+  default?: number;
+  /** The scalability approach */
+  scaleType?: AvailableServiceSkuCapacityScaleType;
+}
+export const AvailableServiceSkuCapacity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimum: S.optional(S.Number),
+    maximum: S.optional(S.Number),
+    default: S.optional(S.Number),
+    scaleType: S.optional(AvailableServiceSkuCapacityScaleType),
+  }),
+).annotate({
+  identifier: "AvailableServiceSkuCapacity",
+}) as any as S.Schema<AvailableServiceSkuCapacity>;
+
+/** Describes the available service SKU. */
+export interface AvailableServiceSku {
+  /** The resource type, including the provider namespace */
+  resourceType?: string;
+  /** SKU name, tier, etc. */
+  sku?: AvailableServiceSkuSku;
+  /** A description of the scaling capacities of the SKU */
+  capacity?: AvailableServiceSkuCapacity;
+}
+export const AvailableServiceSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(S.String),
+    sku: S.optional(AvailableServiceSkuSku),
+    capacity: S.optional(AvailableServiceSkuCapacity),
+  }),
+).annotate({
+  identifier: "AvailableServiceSku",
+}) as any as S.Schema<AvailableServiceSku>;
+
+/** List of service SKUs */
+export type ServicesListSkusResponseValueList = Array<AvailableServiceSku>;
+export const ServicesListSkusResponseValueList = /*@__PURE__*/ S.Array(
+  AvailableServiceSku,
+) as any as S.Schema<ServicesListSkusResponseValueList>;
+
+export interface ListServiceSkusResponse {
+  /** List of service SKUs */
+  value?: ServicesListSkusResponseValueList;
+  /** URL to load the next page of service SKUs */
+  nextLink?: string;
+}
+export const ListServiceSkusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ServicesListSkusResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceSkusResponse",
+}) as any as S.Schema<ListServiceSkusResponse>;
+
+export interface ListServiceTasksRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Filter tasks by task type */
+  taskType?: string;
+}
+export const ListServiceTasksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    taskType: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceTasksRequest",
+}) as any as S.Schema<ListServiceTasksRequest>;
+
+/** A task resource */
+export interface ProjectTask {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskProperties;
+}
+export const ProjectTask = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskProperties),
+  }),
+).annotate({ identifier: "ProjectTask" }) as any as S.Schema<ProjectTask>;
+
+/** List of tasks */
+export type ServiceTasksListResponseValueList = Array<ProjectTask>;
+export const ServiceTasksListResponseValueList = /*@__PURE__*/ S.Array(
+  ProjectTask,
+) as any as S.Schema<ServiceTasksListResponseValueList>;
+
+export interface ListServiceTasksResponse {
+  /** List of tasks */
+  value?: ServiceTasksListResponseValueList;
+  /** URL to load the next page of tasks */
+  nextLink?: string;
+}
+export const ListServiceTasksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ServiceTasksListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListServiceTasksResponse",
+}) as any as S.Schema<ListServiceTasksResponse>;
+
+export interface ListSqlMigrationServiceAuthKeysRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+}
+export const ListSqlMigrationServiceAuthKeysRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlMigrationServiceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listAuthKeys",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+).annotate({
+  identifier: "ListSqlMigrationServiceAuthKeysRequest",
+}) as any as S.Schema<ListSqlMigrationServiceAuthKeysRequest>;
+
+/** An authentication key. */
+export interface AuthenticationKeys {
+  /** The first authentication key. */
+  authKey1?: string;
+  /** The second authentication key. */
+  authKey2?: string;
+}
+export const AuthenticationKeys = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authKey1: S.optional(S.String),
+    authKey2: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AuthenticationKeys",
+}) as any as S.Schema<AuthenticationKeys>;
+
+export interface ListSqlMigrationServiceByResourceGroupRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+}
+export const ListSqlMigrationServiceByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlMigrationServiceByResourceGroupRequest",
+  }) as any as S.Schema<ListSqlMigrationServiceByResourceGroupRequest>;
+
+/** Resource tags. */
+export type SqlMigrationServiceTagsMap = { [key: string]: string | undefined };
+export const SqlMigrationServiceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlMigrationServiceTagsMap>;
+
+/** A SQL Migration Service. */
+export interface SqlMigrationService {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlMigrationServiceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: SqlMigrationServiceProperties;
+}
+export const SqlMigrationService = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlMigrationServiceTagsMap),
+    location: S.String,
+    properties: S.optional(SqlMigrationServiceProperties),
+  }),
+).annotate({
+  identifier: "SqlMigrationService",
+}) as any as S.Schema<SqlMigrationService>;
+
+export type SqlMigrationListResultValueList = Array<SqlMigrationService>;
+export const SqlMigrationListResultValueList = /*@__PURE__*/ S.Array(
+  SqlMigrationService,
+) as any as S.Schema<SqlMigrationListResultValueList>;
+
+/** A list of SQL Migration Service. */
+export interface SqlMigrationListResult {
+  value?: SqlMigrationListResultValueList;
+  nextLink?: string;
+}
+export const SqlMigrationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SqlMigrationListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SqlMigrationListResult",
+}) as any as S.Schema<SqlMigrationListResult>;
+
+export interface ListSqlMigrationServiceBySubscriptionRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+}
+export const ListSqlMigrationServiceBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/sqlMigrationServices",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlMigrationServiceBySubscriptionRequest",
+  }) as any as S.Schema<ListSqlMigrationServiceBySubscriptionRequest>;
+
+export interface ListSqlMigrationServiceMigrationsRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+}
+export const ListSqlMigrationServiceMigrationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlMigrationServiceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMigrations",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+).annotate({
+  identifier: "ListSqlMigrationServiceMigrationsRequest",
+}) as any as S.Schema<ListSqlMigrationServiceMigrationsRequest>;
+
+export type DatabaseMigrationPropertiesKind =
+  | "SqlMi"
+  | "SqlVm"
+  | "SqlDb"
+  | "MongoToCosmosDbMongo";
+export const DatabaseMigrationPropertiesKind = /*@__PURE__*/ S.String;
+
+/** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
+export type DatabaseMigrationPropertiesProvisioningState =
+  | "Provisioning"
+  | "Updating"
+  | "Succeeded"
+  | "Failed"
+  | "Canceled";
+export const DatabaseMigrationPropertiesProvisioningState =
+  /*@__PURE__*/ S.String;
+
+/** Database Migration Resource properties. */
+export interface DatabaseMigrationProperties {
+  kind: DatabaseMigrationPropertiesKind;
+  /** Resource Id of the target resource. */
+  scope?: string;
+  /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
+  provisioningState?: DatabaseMigrationPropertiesProvisioningState;
+  /** Migration status. */
+  migrationStatus?: string;
+  /** Database migration start time. */
+  startedOn?: string;
+  /** Database migration end time. */
+  endedOn?: string;
+  /** Resource Id of the Migration Service. */
+  migrationService?: string;
+  /** ID for current migration operation. */
+  migrationOperationId?: string;
+  /** Error details in case of migration failure. */
+  migrationFailureError?: ErrorInfo;
+  /** Error message for migration provisioning failure, if any. */
+  provisioningError?: string;
+  /** Source SQL Server connection details. */
+  sourceSqlConnection?: SqlConnectionInformation;
+  /** Name of the source database. */
+  sourceDatabaseName?: string;
+  /** Name of the source sql server. */
+  sourceServerName?: string;
+  /** Database collation to be used for the target database. */
+  targetDatabaseCollation?: string;
+}
+export const DatabaseMigrationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    kind: DatabaseMigrationPropertiesKind,
+    scope: S.optional(S.String),
+    provisioningState: S.optional(DatabaseMigrationPropertiesProvisioningState),
+    migrationStatus: S.optional(S.String),
+    startedOn: S.optional(S.String),
+    endedOn: S.optional(S.String),
+    migrationService: S.optional(S.String),
+    migrationOperationId: S.optional(S.String),
+    migrationFailureError: S.optional(ErrorInfo),
+    provisioningError: S.optional(S.String),
+    sourceSqlConnection: S.optional(SqlConnectionInformation),
+    sourceDatabaseName: S.optional(S.String),
+    sourceServerName: S.optional(S.String),
+    targetDatabaseCollation: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseMigrationProperties",
+}) as any as S.Schema<DatabaseMigrationProperties>;
+
+/** Database Migration Resource. */
+export interface DatabaseMigration {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: DatabaseMigrationProperties;
+}
+export const DatabaseMigration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DatabaseMigrationProperties),
+  }),
+).annotate({
+  identifier: "DatabaseMigration",
+}) as any as S.Schema<DatabaseMigration>;
+
+export type DatabaseMigrationListResultValueList = Array<DatabaseMigration>;
+export const DatabaseMigrationListResultValueList = /*@__PURE__*/ S.Array(
+  DatabaseMigration,
+) as any as S.Schema<DatabaseMigrationListResultValueList>;
+
+/** A list of Database Migrations. */
+export interface DatabaseMigrationListResult {
+  value?: DatabaseMigrationListResultValueList;
+  nextLink?: string;
+}
+export const DatabaseMigrationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(DatabaseMigrationListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DatabaseMigrationListResult",
+}) as any as S.Schema<DatabaseMigrationListResult>;
+
+export interface ListSqlMigrationServiceMonitoringDataRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+}
+export const ListSqlMigrationServiceMonitoringDataRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      sqlMigrationServiceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMonitoringData",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSqlMigrationServiceMonitoringDataRequest",
+  }) as any as S.Schema<ListSqlMigrationServiceMonitoringDataRequest>;
+
+/** Unmatched properties from the message are deserialized in this collection. */
+export type NodeMonitoringDataAdditionalPropertiesMap = {
+  [key: string]: unknown | undefined;
+};
+export const NodeMonitoringDataAdditionalPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<NodeMonitoringDataAdditionalPropertiesMap>;
+
+export interface NodeMonitoringData {
+  /** Unmatched properties from the message are deserialized in this collection. */
+  additionalProperties?: NodeMonitoringDataAdditionalPropertiesMap;
+  /** Name of the integration runtime node. */
+  nodeName?: string;
+  /** Available memory (MB) on the integration runtime node. */
+  availableMemoryInMB?: number;
+  /** CPU percentage on the integration runtime node. */
+  cpuUtilization?: number;
+  /** Maximum concurrent jobs on the integration runtime node. */
+  concurrentJobsLimit?: number;
+  /** The number of jobs currently running on the integration runtime node. */
+  concurrentJobsRunning?: number;
+  /** The maximum concurrent jobs in this integration runtime. */
+  maxConcurrentJobs?: number;
+  /** Sent bytes on the integration runtime node. */
+  sentBytes?: number;
+  /** Received bytes on the integration runtime node. */
+  receivedBytes?: number;
+}
+export const NodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    additionalProperties: S.optional(NodeMonitoringDataAdditionalPropertiesMap),
+    nodeName: S.optional(S.String),
+    availableMemoryInMB: S.optional(S.Number),
+    cpuUtilization: S.optional(S.Number),
+    concurrentJobsLimit: S.optional(S.Number),
+    concurrentJobsRunning: S.optional(S.Number),
+    maxConcurrentJobs: S.optional(S.Number),
+    sentBytes: S.optional(S.Number),
+    receivedBytes: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "NodeMonitoringData",
+}) as any as S.Schema<NodeMonitoringData>;
+
+/** Integration Runtime node monitoring data. */
+export type IntegrationRuntimeMonitoringDataNodesList =
+  Array<NodeMonitoringData>;
+export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
+  NodeMonitoringData,
+) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
+
+/** Integration Runtime Monitoring Data. */
+export interface IntegrationRuntimeMonitoringData {
+  /** The name of Integration Runtime. */
+  name?: string;
+  /** Integration Runtime node monitoring data. */
+  nodes?: IntegrationRuntimeMonitoringDataNodesList;
+}
+export const IntegrationRuntimeMonitoringData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    nodes: S.optional(IntegrationRuntimeMonitoringDataNodesList),
+  }),
+).annotate({
+  identifier: "IntegrationRuntimeMonitoringData",
+}) as any as S.Schema<IntegrationRuntimeMonitoringData>;
+
+export interface ListTasksRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+  /** Filter tasks by task type */
+  taskType?: string;
+}
+export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    taskType: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListTasksRequest",
+}) as any as S.Schema<ListTasksRequest>;
+
+/** List of tasks */
+export type TasksListResponseValueList = Array<ProjectTask>;
+export const TasksListResponseValueList = /*@__PURE__*/ S.Array(
+  ProjectTask,
+) as any as S.Schema<TasksListResponseValueList>;
+
+export interface ListTasksResponse {
+  /** List of tasks */
+  value?: TasksListResponseValueList;
+  /** URL to load the next page of tasks */
+  nextLink?: string;
+}
+export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(TasksListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListTasksResponse",
+}) as any as S.Schema<ListTasksResponse>;
+
+export interface ListUsagesRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** The Azure region of the operation */
+  location: string;
+}
+export const ListUsagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ListUsagesRequest",
+}) as any as S.Schema<ListUsagesRequest>;
+
+/** The name of the quota */
+export interface QuotaName {
+  /** The localized name of the quota */
+  localizedValue?: string;
+  /** The unlocalized name (or ID) of the quota */
+  value?: string;
+}
+export const QuotaName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    localizedValue: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({ identifier: "QuotaName" }) as any as S.Schema<QuotaName>;
+
+/** Describes a quota for or usage details about a resource */
+export interface Quota {
+  /** The current value of the quota. If null or missing, the current value cannot be determined in the context of the request. */
+  currentValue?: number;
+  /** The resource ID of the quota object */
+  id?: string;
+  /** The maximum value of the quota. If null or missing, the quota has no maximum, in which case it merely tracks usage. */
+  limit?: number;
+  /** The name of the quota */
+  name?: QuotaName;
+  /** The unit for the quota, such as Count, Bytes, BytesPerSecond, etc. */
+  unit?: string;
+}
+export const Quota = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currentValue: S.optional(S.Number),
+    id: S.optional(S.String),
+    limit: S.optional(S.Number),
+    name: S.optional(QuotaName),
+    unit: S.optional(S.String),
+  }),
+).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
+
+/** List of quotas */
+export type UsagesListResponseValueList = Array<Quota>;
+export const UsagesListResponseValueList = /*@__PURE__*/ S.Array(
+  Quota,
+) as any as S.Schema<UsagesListResponseValueList>;
+
+export interface ListUsagesResponse {
+  /** List of quotas */
+  value?: UsagesListResponseValueList;
+  /** URL to load the next page of quotas, or null or missing if this is the last page */
+  nextLink?: string;
+}
+export const ListUsagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(UsagesListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListUsagesResponse",
+}) as any as S.Schema<ListUsagesResponse>;
+
+/** Resource tags. */
+export type MigrationServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MigrationServicesCreateOrUpdateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MigrationServicesCreateOrUpdateRequestTagsMap>;
+
+/** The Migration Service properties. */
+export type MigrationServicePropertiesInput = UserAssignedIdentityInput;
+export const MigrationServicePropertiesInput = UserAssignedIdentityInput;
+
+export interface MigrationServicesCreateOrUpdateRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the Migration Service. */
+  migrationServiceName: string;
+  /** Resource tags. */
+  tags?: MigrationServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: UserAssignedIdentityInput;
+}
+export const MigrationServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      migrationServiceName: S.String.pipe(T.Label()),
+      tags: S.optional(MigrationServicesCreateOrUpdateRequestTagsMap),
+      location: S.String,
+      properties: S.optional(UserAssignedIdentityInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+        code: 200,
+        apiVersion: "2025-06-30",
+      }),
+    ),
+).annotate({
+  identifier: "MigrationServicesCreateOrUpdateRequest",
+}) as any as S.Schema<MigrationServicesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type MigrationServicesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MigrationServicesCreateOrUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<MigrationServicesCreateOrUpdateResponseTagsMap>;
+
+export interface MigrationServicesCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: MigrationServicesCreateOrUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: MigrationServiceProperties;
+}
+export const MigrationServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(MigrationServicesCreateOrUpdateResponseTagsMap),
+      location: S.String,
+      properties: S.optional(MigrationServiceProperties),
+    }),
+).annotate({
+  identifier: "MigrationServicesCreateOrUpdateResponse",
+}) as any as S.Schema<MigrationServicesCreateOrUpdateResponse>;
+
+/** Resource tags. */
+export type ProjectsCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsCreateOrUpdateRequestTagsMap>;
+
+/** Azure Active Directory Application */
+export type ProjectPropertiesInputAzureAuthenticationInfo =
+  ProjectPropertiesAzureAuthenticationInfo;
+export const ProjectPropertiesInputAzureAuthenticationInfo =
+  ProjectPropertiesAzureAuthenticationInfo;
+
+/** Defines the connection properties of a server */
+export type ProjectPropertiesInputSourceConnectionInfo =
+  ProjectPropertiesSourceConnectionInfo;
+export const ProjectPropertiesInputSourceConnectionInfo =
+  ProjectPropertiesSourceConnectionInfo;
+
+/** Defines the connection properties of a server */
+export type ProjectPropertiesInputTargetConnectionInfo =
+  ProjectPropertiesSourceConnectionInfo;
+export const ProjectPropertiesInputTargetConnectionInfo =
+  ProjectPropertiesSourceConnectionInfo;
+
+/** List of DatabaseInfo */
+export type ProjectPropertiesInputDatabasesInfoList = Array<DatabaseInfo>;
+export const ProjectPropertiesInputDatabasesInfoList = /*@__PURE__*/ S.Array(
+  DatabaseInfo,
+) as any as S.Schema<ProjectPropertiesInputDatabasesInfoList>;
+
+/** Project-specific properties */
+export interface ProjectPropertiesInput {
+  /** Source platform for the project */
+  sourcePlatform: ProjectSourcePlatform | (string & {});
+  /** Azure Active Directory Application */
+  azureAuthenticationInfo?: ProjectPropertiesAzureAuthenticationInfo;
+  /** Target platform for the project */
+  targetPlatform: ProjectTargetPlatform | (string & {});
+  /** Defines the connection properties of a server */
+  sourceConnectionInfo?: ProjectPropertiesSourceConnectionInfo;
+  /** Defines the connection properties of a server */
+  targetConnectionInfo?: ProjectPropertiesSourceConnectionInfo;
+  /** List of DatabaseInfo */
+  databasesInfo?: ProjectPropertiesInputDatabasesInfoList;
+}
+export const ProjectPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourcePlatform: ProjectSourcePlatform,
+    azureAuthenticationInfo: S.optional(
+      ProjectPropertiesAzureAuthenticationInfo,
+    ),
+    targetPlatform: ProjectTargetPlatform,
+    sourceConnectionInfo: S.optional(ProjectPropertiesSourceConnectionInfo),
+    targetConnectionInfo: S.optional(ProjectPropertiesSourceConnectionInfo),
+    databasesInfo: S.optional(ProjectPropertiesInputDatabasesInfoList),
+  }),
+).annotate({
+  identifier: "ProjectPropertiesInput",
+}) as any as S.Schema<ProjectPropertiesInput>;
+
+export interface ProjectsCreateOrUpdateRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the project */
+  projectName: string;
+  /** Resource tags. */
+  tags?: ProjectsCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectPropertiesInput;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+}
+export const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    projectName: S.String.pipe(T.Label()),
+    tags: S.optional(ProjectsCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectPropertiesInput),
+    etag: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ProjectsCreateOrUpdateRequest",
+}) as any as S.Schema<ProjectsCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ProjectsCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsCreateOrUpdateResponseTagsMap>;
+
+export interface ProjectsCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProjectsCreateOrUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectProperties;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+}
+export const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProjectsCreateOrUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProjectsCreateOrUpdateResponse",
+}) as any as S.Schema<ProjectsCreateOrUpdateResponse>;
+
+/** Resource tags. */
+export type ServicesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
+
+/** Properties of the Azure Database Migration Service (classic) instance */
+export interface DataMigrationServicePropertiesInput {
+  /** The public key of the service, used to encrypt secrets sent to the service */
+  publicKey?: string;
+  /** The ID of the Microsoft.Network/virtualNetworks/subnets resource to which the service should be joined */
+  virtualSubnetId?: string;
+  /** The ID of the Microsoft.Network/networkInterfaces resource which the service have */
+  virtualNicId?: string;
+  /** The time delay before the service is auto-stopped when idle. */
+  autoStopDelay?: string;
+  /** Whether service resources should be deleted when stopped. (Turned on by default) */
+  deleteResourcesOnStop?: boolean;
+}
+export const DataMigrationServicePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    publicKey: S.optional(S.String),
+    virtualSubnetId: S.optional(S.String),
+    virtualNicId: S.optional(S.String),
+    autoStopDelay: S.optional(S.String),
+    deleteResourcesOnStop: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DataMigrationServicePropertiesInput",
+}) as any as S.Schema<DataMigrationServicePropertiesInput>;
+
+export interface ServicesCreateOrUpdateRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Resource tags. */
+  tags?: ServicesCreateOrUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServicePropertiesInput;
+  /** Service SKU */
+  sku?: ServiceSku;
+}
+export const ServicesCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServicePropertiesInput),
+    sku: S.optional(ServiceSku),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ServicesCreateOrUpdateRequest",
+}) as any as S.Schema<ServicesCreateOrUpdateRequest>;
+
+/** Resource tags. */
+export type ServicesCreateOrUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
+
+export interface ServicesCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ServicesCreateOrUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServiceProperties;
+  /** Service SKU */
+  sku?: ServiceSku;
+}
+export const ServicesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ServicesCreateOrUpdateResponseTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServiceProperties),
+    sku: S.optional(ServiceSku),
+  }),
+).annotate({
+  identifier: "ServicesCreateOrUpdateResponse",
+}) as any as S.Schema<ServicesCreateOrUpdateResponse>;
+
+export interface ServiceTasksCancelRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the Task */
+  taskName: string;
+}
+export const ServiceTasksCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    taskName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}/cancel",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "ServiceTasksCancelRequest",
+}) as any as S.Schema<ServiceTasksCancelRequest>;
+
 export interface ServiceTasksCancelResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5438,238 +5964,6 @@ export const ServiceTasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceTasksCreateOrUpdateResponse",
 }) as any as S.Schema<ServiceTasksCreateOrUpdateResponse>;
 
-export interface ServiceTasksDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the Task */
-  taskName: string;
-  /** Delete the resource even if it contains running tasks */
-  deleteRunningTasks?: boolean;
-}
-export const ServiceTasksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    taskName: S.String.pipe(T.Label()),
-    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceTasksDeleteRequest",
-}) as any as S.Schema<ServiceTasksDeleteRequest>;
-
-export interface ServiceTasksDeleteResponse {}
-export const ServiceTasksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServiceTasksDeleteResponse",
-}) as any as S.Schema<ServiceTasksDeleteResponse>;
-
-export interface ServiceTasksGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the Task */
-  taskName: string;
-  /** Expand the response */
-  _expand?: string;
-}
-export const ServiceTasksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    taskName: S.String.pipe(T.Label()),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceTasksGetRequest",
-}) as any as S.Schema<ServiceTasksGetRequest>;
-
-export interface ServiceTasksGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom task properties */
-  properties?: ProjectTaskProperties;
-}
-export const ServiceTasksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({
-  identifier: "ServiceTasksGetResponse",
-}) as any as S.Schema<ServiceTasksGetResponse>;
-
-export interface ServiceTasksListRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Filter tasks by task type */
-  taskType?: string;
-}
-export const ServiceTasksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    taskType: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceTasksListRequest",
-}) as any as S.Schema<ServiceTasksListRequest>;
-
-/** A task resource */
-export interface ProjectTask {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom task properties */
-  properties?: ProjectTaskProperties;
-}
-export const ProjectTask = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({ identifier: "ProjectTask" }) as any as S.Schema<ProjectTask>;
-
-/** List of tasks */
-export type ServiceTasksListResponseValueList = Array<ProjectTask>;
-export const ServiceTasksListResponseValueList = /*@__PURE__*/ S.Array(
-  ProjectTask,
-) as any as S.Schema<ServiceTasksListResponseValueList>;
-
-export interface ServiceTasksListResponse {
-  /** List of tasks */
-  value?: ServiceTasksListResponseValueList;
-  /** URL to load the next page of tasks */
-  nextLink?: string;
-}
-export const ServiceTasksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ServiceTasksListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceTasksListResponse",
-}) as any as S.Schema<ServiceTasksListResponse>;
-
-export interface ServiceTasksUpdateRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the Task */
-  taskName: string;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom task properties */
-  properties?: ProjectTaskPropertiesInput;
-}
-export const ServiceTasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    taskName: S.String.pipe(T.Label()),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceTasksUpdateRequest",
-}) as any as S.Schema<ServiceTasksUpdateRequest>;
-
-export interface ServiceTasksUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** HTTP strong entity tag value. This is ignored if submitted. */
-  etag?: string;
-  /** Custom task properties */
-  properties?: ProjectTaskProperties;
-}
-export const ServiceTasksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    etag: S.optional(S.String),
-    properties: S.optional(ProjectTaskProperties),
-  }),
-).annotate({
-  identifier: "ServiceTasksUpdateResponse",
-}) as any as S.Schema<ServiceTasksUpdateResponse>;
-
 /** Resource tags. */
 export type SqlMigrationServicesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -5728,22 +6022,6 @@ export const SqlMigrationServicesCreateOrUpdateResponseTagsMap =
     S.String,
   ) as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponseTagsMap>;
 
-/** The SQL Migration Service properties. */
-export interface SqlMigrationServiceProperties {
-  /** Provisioning state to track the async operation status. */
-  provisioningState?: string;
-  /** Current state of the Integration runtime. */
-  integrationRuntimeState?: string;
-}
-export const SqlMigrationServiceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(S.String),
-    integrationRuntimeState: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlMigrationServiceProperties",
-}) as any as S.Schema<SqlMigrationServiceProperties>;
-
 export interface SqlMigrationServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5773,519 +6051,6 @@ export const SqlMigrationServicesCreateOrUpdateResponse =
   ).annotate({
     identifier: "SqlMigrationServicesCreateOrUpdateResponse",
   }) as any as S.Schema<SqlMigrationServicesCreateOrUpdateResponse>;
-
-export interface SqlMigrationServicesDeleteRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-}
-export const SqlMigrationServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlMigrationServiceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "SqlMigrationServicesDeleteRequest",
-}) as any as S.Schema<SqlMigrationServicesDeleteRequest>;
-
-export interface SqlMigrationServicesDeleteResponse {}
-export const SqlMigrationServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SqlMigrationServicesDeleteResponse",
-}) as any as S.Schema<SqlMigrationServicesDeleteResponse>;
-
-export interface SqlMigrationServicesDeleteNodeRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-  /** The name of node to delete. */
-  nodeName?: string;
-  /** The name of integration runtime. */
-  integrationRuntimeName?: string;
-}
-export const SqlMigrationServicesDeleteNodeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlMigrationServiceName: S.String.pipe(T.Label()),
-      nodeName: S.optional(S.String),
-      integrationRuntimeName: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/deleteNode",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-).annotate({
-  identifier: "SqlMigrationServicesDeleteNodeRequest",
-}) as any as S.Schema<SqlMigrationServicesDeleteNodeRequest>;
-
-/** Details of node to be deleted. */
-export interface DeleteNode {
-  /** The name of node to delete. */
-  nodeName?: string;
-  /** The name of integration runtime. */
-  integrationRuntimeName?: string;
-}
-export const DeleteNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nodeName: S.optional(S.String),
-    integrationRuntimeName: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteNode" }) as any as S.Schema<DeleteNode>;
-
-export interface SqlMigrationServicesGetRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-}
-export const SqlMigrationServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlMigrationServiceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "SqlMigrationServicesGetRequest",
-}) as any as S.Schema<SqlMigrationServicesGetRequest>;
-
-/** Resource tags. */
-export type SqlMigrationServicesGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlMigrationServicesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServicesGetResponseTagsMap>;
-
-export interface SqlMigrationServicesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlMigrationServicesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: SqlMigrationServiceProperties;
-}
-export const SqlMigrationServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlMigrationServicesGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlMigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "SqlMigrationServicesGetResponse",
-}) as any as S.Schema<SqlMigrationServicesGetResponse>;
-
-export interface SqlMigrationServicesListAuthKeysRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-}
-export const SqlMigrationServicesListAuthKeysRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlMigrationServiceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listAuthKeys",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-).annotate({
-  identifier: "SqlMigrationServicesListAuthKeysRequest",
-}) as any as S.Schema<SqlMigrationServicesListAuthKeysRequest>;
-
-/** An authentication key. */
-export interface AuthenticationKeys {
-  /** The first authentication key. */
-  authKey1?: string;
-  /** The second authentication key. */
-  authKey2?: string;
-}
-export const AuthenticationKeys = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authKey1: S.optional(S.String),
-    authKey2: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AuthenticationKeys",
-}) as any as S.Schema<AuthenticationKeys>;
-
-export interface SqlMigrationServicesListByResourceGroupRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-}
-export const SqlMigrationServicesListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlMigrationServicesListByResourceGroupRequest",
-  }) as any as S.Schema<SqlMigrationServicesListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type SqlMigrationServiceTagsMap = { [key: string]: string | undefined };
-export const SqlMigrationServiceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServiceTagsMap>;
-
-/** A SQL Migration Service. */
-export interface SqlMigrationService {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlMigrationServiceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: SqlMigrationServiceProperties;
-}
-export const SqlMigrationService = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlMigrationServiceTagsMap),
-    location: S.String,
-    properties: S.optional(SqlMigrationServiceProperties),
-  }),
-).annotate({
-  identifier: "SqlMigrationService",
-}) as any as S.Schema<SqlMigrationService>;
-
-export type SqlMigrationListResultValueList = Array<SqlMigrationService>;
-export const SqlMigrationListResultValueList = /*@__PURE__*/ S.Array(
-  SqlMigrationService,
-) as any as S.Schema<SqlMigrationListResultValueList>;
-
-/** A list of SQL Migration Service. */
-export interface SqlMigrationListResult {
-  value?: SqlMigrationListResultValueList;
-  nextLink?: string;
-}
-export const SqlMigrationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SqlMigrationListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SqlMigrationListResult",
-}) as any as S.Schema<SqlMigrationListResult>;
-
-export interface SqlMigrationServicesListBySubscriptionRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-}
-export const SqlMigrationServicesListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/sqlMigrationServices",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlMigrationServicesListBySubscriptionRequest",
-  }) as any as S.Schema<SqlMigrationServicesListBySubscriptionRequest>;
-
-export interface SqlMigrationServicesListMigrationsRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-}
-export const SqlMigrationServicesListMigrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlMigrationServiceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMigrations",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlMigrationServicesListMigrationsRequest",
-  }) as any as S.Schema<SqlMigrationServicesListMigrationsRequest>;
-
-export type DatabaseMigrationPropertiesKind =
-  | "SqlMi"
-  | "SqlVm"
-  | "SqlDb"
-  | "MongoToCosmosDbMongo";
-export const DatabaseMigrationPropertiesKind = /*@__PURE__*/ S.String;
-
-/** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
-export type DatabaseMigrationPropertiesProvisioningState =
-  | "Provisioning"
-  | "Updating"
-  | "Succeeded"
-  | "Failed"
-  | "Canceled";
-export const DatabaseMigrationPropertiesProvisioningState =
-  /*@__PURE__*/ S.String;
-
-/** Database Migration Resource properties. */
-export interface DatabaseMigrationProperties {
-  kind: DatabaseMigrationPropertiesKind;
-  /** Resource Id of the target resource. */
-  scope?: string;
-  /** Provisioning State of migration. ProvisioningState as Succeeded implies that validations have been performed and migration has started. */
-  provisioningState?: DatabaseMigrationPropertiesProvisioningState;
-  /** Migration status. */
-  migrationStatus?: string;
-  /** Database migration start time. */
-  startedOn?: string;
-  /** Database migration end time. */
-  endedOn?: string;
-  /** Resource Id of the Migration Service. */
-  migrationService?: string;
-  /** ID for current migration operation. */
-  migrationOperationId?: string;
-  /** Error details in case of migration failure. */
-  migrationFailureError?: ErrorInfo;
-  /** Error message for migration provisioning failure, if any. */
-  provisioningError?: string;
-  /** Source SQL Server connection details. */
-  sourceSqlConnection?: SqlConnectionInformation;
-  /** Name of the source database. */
-  sourceDatabaseName?: string;
-  /** Name of the source sql server. */
-  sourceServerName?: string;
-  /** Database collation to be used for the target database. */
-  targetDatabaseCollation?: string;
-}
-export const DatabaseMigrationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    kind: DatabaseMigrationPropertiesKind,
-    scope: S.optional(S.String),
-    provisioningState: S.optional(DatabaseMigrationPropertiesProvisioningState),
-    migrationStatus: S.optional(S.String),
-    startedOn: S.optional(S.String),
-    endedOn: S.optional(S.String),
-    migrationService: S.optional(S.String),
-    migrationOperationId: S.optional(S.String),
-    migrationFailureError: S.optional(ErrorInfo),
-    provisioningError: S.optional(S.String),
-    sourceSqlConnection: S.optional(SqlConnectionInformation),
-    sourceDatabaseName: S.optional(S.String),
-    sourceServerName: S.optional(S.String),
-    targetDatabaseCollation: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationProperties",
-}) as any as S.Schema<DatabaseMigrationProperties>;
-
-/** Database Migration Resource. */
-export interface DatabaseMigration {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: DatabaseMigrationProperties;
-}
-export const DatabaseMigration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DatabaseMigrationProperties),
-  }),
-).annotate({
-  identifier: "DatabaseMigration",
-}) as any as S.Schema<DatabaseMigration>;
-
-export type DatabaseMigrationListResultValueList = Array<DatabaseMigration>;
-export const DatabaseMigrationListResultValueList = /*@__PURE__*/ S.Array(
-  DatabaseMigration,
-) as any as S.Schema<DatabaseMigrationListResultValueList>;
-
-/** A list of Database Migrations. */
-export interface DatabaseMigrationListResult {
-  value?: DatabaseMigrationListResultValueList;
-  nextLink?: string;
-}
-export const DatabaseMigrationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(DatabaseMigrationListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseMigrationListResult",
-}) as any as S.Schema<DatabaseMigrationListResult>;
-
-export interface SqlMigrationServicesListMonitoringDataRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-}
-export const SqlMigrationServicesListMonitoringDataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      sqlMigrationServiceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}/listMonitoringData",
-        code: 200,
-        apiVersion: "2025-06-30",
-      }),
-    ),
-  ).annotate({
-    identifier: "SqlMigrationServicesListMonitoringDataRequest",
-  }) as any as S.Schema<SqlMigrationServicesListMonitoringDataRequest>;
-
-/** Unmatched properties from the message are deserialized in this collection. */
-export type NodeMonitoringDataAdditionalPropertiesMap = {
-  [key: string]: unknown | undefined;
-};
-export const NodeMonitoringDataAdditionalPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<NodeMonitoringDataAdditionalPropertiesMap>;
-
-export interface NodeMonitoringData {
-  /** Unmatched properties from the message are deserialized in this collection. */
-  additionalProperties?: NodeMonitoringDataAdditionalPropertiesMap;
-  /** Name of the integration runtime node. */
-  nodeName?: string;
-  /** Available memory (MB) on the integration runtime node. */
-  availableMemoryInMB?: number;
-  /** CPU percentage on the integration runtime node. */
-  cpuUtilization?: number;
-  /** Maximum concurrent jobs on the integration runtime node. */
-  concurrentJobsLimit?: number;
-  /** The number of jobs currently running on the integration runtime node. */
-  concurrentJobsRunning?: number;
-  /** The maximum concurrent jobs in this integration runtime. */
-  maxConcurrentJobs?: number;
-  /** Sent bytes on the integration runtime node. */
-  sentBytes?: number;
-  /** Received bytes on the integration runtime node. */
-  receivedBytes?: number;
-}
-export const NodeMonitoringData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalProperties: S.optional(NodeMonitoringDataAdditionalPropertiesMap),
-    nodeName: S.optional(S.String),
-    availableMemoryInMB: S.optional(S.Number),
-    cpuUtilization: S.optional(S.Number),
-    concurrentJobsLimit: S.optional(S.Number),
-    concurrentJobsRunning: S.optional(S.Number),
-    maxConcurrentJobs: S.optional(S.Number),
-    sentBytes: S.optional(S.Number),
-    receivedBytes: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "NodeMonitoringData",
-}) as any as S.Schema<NodeMonitoringData>;
-
-/** Integration Runtime node monitoring data. */
-export type IntegrationRuntimeMonitoringDataNodesList =
-  Array<NodeMonitoringData>;
-export const IntegrationRuntimeMonitoringDataNodesList = /*@__PURE__*/ S.Array(
-  NodeMonitoringData,
-) as any as S.Schema<IntegrationRuntimeMonitoringDataNodesList>;
-
-/** Integration Runtime Monitoring Data. */
-export interface IntegrationRuntimeMonitoringData {
-  /** The name of Integration Runtime. */
-  name?: string;
-  /** Integration Runtime node monitoring data. */
-  nodes?: IntegrationRuntimeMonitoringDataNodesList;
-}
-export const IntegrationRuntimeMonitoringData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    nodes: S.optional(IntegrationRuntimeMonitoringDataNodesList),
-  }),
-).annotate({
-  identifier: "IntegrationRuntimeMonitoringData",
-}) as any as S.Schema<IntegrationRuntimeMonitoringData>;
 
 export interface SqlMigrationServicesRegenerateAuthKeysRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6339,78 +6104,69 @@ export const RegenAuthKeys = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RegenAuthKeys" }) as any as S.Schema<RegenAuthKeys>;
 
-export type SqlMigrationServicesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlMigrationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServicesUpdateRequestTagsMap>;
-
-export interface SqlMigrationServicesUpdateRequest {
+export interface StartServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
-  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
-  resourceGroupName: string;
-  /** Name of the SQL Migration Service. */
-  sqlMigrationServiceName: string;
-  tags?: SqlMigrationServicesUpdateRequestTagsMap;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
 }
-export const SqlMigrationServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const StartServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    sqlMigrationServiceName: S.String.pipe(T.Label()),
-    tags: S.optional(SqlMigrationServicesUpdateRequestTagsMap),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/start",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "SqlMigrationServicesUpdateRequest",
-}) as any as S.Schema<SqlMigrationServicesUpdateRequest>;
+  identifier: "StartServiceRequest",
+}) as any as S.Schema<StartServiceRequest>;
 
-/** Resource tags. */
-export type SqlMigrationServicesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const SqlMigrationServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<SqlMigrationServicesUpdateResponseTagsMap>;
-
-export interface SqlMigrationServicesUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: SqlMigrationServicesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: SqlMigrationServiceProperties;
-}
-export const SqlMigrationServicesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(SqlMigrationServicesUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(SqlMigrationServiceProperties),
-  }),
+export interface StartServiceResponse {}
+export const StartServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "SqlMigrationServicesUpdateResponse",
-}) as any as S.Schema<SqlMigrationServicesUpdateResponse>;
+  identifier: "StartServiceResponse",
+}) as any as S.Schema<StartServiceResponse>;
+
+export interface StopServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+}
+export const StopServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/stop",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "StopServiceRequest",
+}) as any as S.Schema<StopServiceRequest>;
+
+export interface StopServiceResponse {}
+export const StopServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopServiceResponse",
+}) as any as S.Schema<StopServiceResponse>;
 
 export interface TasksCancelRequest {
   /** Subscription ID that identifies an Azure subscription. */
@@ -6645,7 +6401,7 @@ export const TasksCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TasksCreateOrUpdateResponse",
 }) as any as S.Schema<TasksCreateOrUpdateResponse>;
 
-export interface TasksDeleteRequest {
+export interface UpdateFileRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group */
@@ -6654,39 +6410,144 @@ export interface TasksDeleteRequest {
   serviceName: string;
   /** Name of the project */
   projectName: string;
-  /** Name of the Task */
-  taskName: string;
-  /** Delete the resource even if it contains running tasks */
-  deleteRunningTasks?: boolean;
+  /** Name of the File */
+  fileName: string;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom file properties */
+  properties?: ProjectFilePropertiesInput;
 }
-export const TasksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    taskName: S.String.pipe(T.Label()),
-    deleteRunningTasks: S.optional(S.Boolean.pipe(T.Query())),
+    fileName: S.String.pipe(T.Label()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectFilePropertiesInput),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/files/{fileName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "TasksDeleteRequest",
-}) as any as S.Schema<TasksDeleteRequest>;
+  identifier: "UpdateFileRequest",
+}) as any as S.Schema<UpdateFileRequest>;
 
-export interface TasksDeleteResponse {}
-export const TasksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
+export interface UpdateFileResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom file properties */
+  properties?: ProjectFileProperties;
+}
+export const UpdateFileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectFileProperties),
+  }),
 ).annotate({
-  identifier: "TasksDeleteResponse",
-}) as any as S.Schema<TasksDeleteResponse>;
+  identifier: "UpdateFileResponse",
+}) as any as S.Schema<UpdateFileResponse>;
 
-export interface TasksGetRequest {
+export type MigrationServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MigrationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MigrationServicesUpdateRequestTagsMap>;
+
+export interface UpdateMigrationServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the Migration Service. */
+  migrationServiceName: string;
+  tags?: MigrationServicesUpdateRequestTagsMap;
+}
+export const UpdateMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    migrationServiceName: S.String.pipe(T.Label()),
+    tags: S.optional(MigrationServicesUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/migrationServices/{migrationServiceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMigrationServiceRequest",
+}) as any as S.Schema<UpdateMigrationServiceRequest>;
+
+/** Resource tags. */
+export type MigrationServicesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MigrationServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MigrationServicesUpdateResponseTagsMap>;
+
+export interface UpdateMigrationServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: MigrationServicesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: MigrationServiceProperties;
+}
+export const UpdateMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(MigrationServicesUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(MigrationServiceProperties),
+  }),
+).annotate({
+  identifier: "UpdateMigrationServiceResponse",
+}) as any as S.Schema<UpdateMigrationServiceResponse>;
+
+/** Resource tags. */
+export type ProjectsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsUpdateRequestTagsMap>;
+
+export interface UpdateProjectRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group */
@@ -6695,32 +6556,214 @@ export interface TasksGetRequest {
   serviceName: string;
   /** Name of the project */
   projectName: string;
-  /** Name of the Task */
-  taskName: string;
-  /** Expand the response */
-  _expand?: string;
+  /** Resource tags. */
+  tags?: ProjectsUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectPropertiesInput;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
 }
-export const TasksGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
     serviceName: S.String.pipe(T.Label()),
     projectName: S.String.pipe(T.Label()),
-    taskName: S.String.pipe(T.Label()),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    tags: S.optional(ProjectsUpdateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectPropertiesInput),
+    etag: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks/{taskName}",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "TasksGetRequest",
-}) as any as S.Schema<TasksGetRequest>;
+  identifier: "UpdateProjectRequest",
+}) as any as S.Schema<UpdateProjectRequest>;
 
-export interface TasksGetResponse {
+/** Resource tags. */
+export type ProjectsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProjectsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProjectsUpdateResponseTagsMap>;
+
+export interface UpdateProjectResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProjectsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Project properties */
+  properties?: ProjectProperties;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+}
+export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProjectsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ProjectProperties),
+    etag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateProjectResponse",
+}) as any as S.Schema<UpdateProjectResponse>;
+
+/** Resource tags. */
+export type ServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesUpdateRequestTagsMap>;
+
+export interface UpdateServiceRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Resource tags. */
+  tags?: ServicesUpdateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServicePropertiesInput;
+  /** Service SKU */
+  sku?: ServiceSku;
+}
+export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    tags: S.optional(ServicesUpdateRequestTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServicePropertiesInput),
+    sku: S.optional(ServiceSku),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateServiceRequest",
+}) as any as S.Schema<UpdateServiceRequest>;
+
+/** Resource tags. */
+export type ServicesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServicesUpdateResponseTagsMap>;
+
+export interface UpdateServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ServicesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** HTTP strong entity tag value. Ignored if submitted */
+  etag?: string;
+  /** The resource kind. Only 'vm' (the default) is supported. */
+  kind?: string;
+  /** Custom service properties */
+  properties?: DataMigrationServiceProperties;
+  /** Service SKU */
+  sku?: ServiceSku;
+}
+export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ServicesUpdateResponseTagsMap),
+    location: S.String,
+    etag: S.optional(S.String),
+    kind: S.optional(S.String),
+    properties: S.optional(DataMigrationServiceProperties),
+    sku: S.optional(ServiceSku),
+  }),
+).annotate({
+  identifier: "UpdateServiceResponse",
+}) as any as S.Schema<UpdateServiceResponse>;
+
+export interface UpdateServiceTaskRequest {
+  /** Subscription ID that identifies an Azure subscription. */
+  subscriptionId: string;
+  /** Name of the resource group */
+  groupName: string;
+  /** Name of the service */
+  serviceName: string;
+  /** Name of the Task */
+  taskName: string;
+  /** HTTP strong entity tag value. This is ignored if submitted. */
+  etag?: string;
+  /** Custom task properties */
+  properties?: ProjectTaskPropertiesInput;
+}
+export const UpdateServiceTaskRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    serviceName: S.String.pipe(T.Label()),
+    taskName: S.String.pipe(T.Label()),
+    etag: S.optional(S.String),
+    properties: S.optional(ProjectTaskPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/serviceTasks/{taskName}",
+      code: 200,
+      apiVersion: "2025-06-30",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateServiceTaskRequest",
+}) as any as S.Schema<UpdateServiceTaskRequest>;
+
+export interface UpdateServiceTaskResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -6734,7 +6777,7 @@ export interface TasksGetResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const TasksGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateServiceTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6744,62 +6787,83 @@ export const TasksGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ProjectTaskProperties),
   }),
 ).annotate({
-  identifier: "TasksGetResponse",
-}) as any as S.Schema<TasksGetResponse>;
+  identifier: "UpdateServiceTaskResponse",
+}) as any as S.Schema<UpdateServiceTaskResponse>;
 
-export interface TasksListRequest {
+export type SqlMigrationServicesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlMigrationServicesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlMigrationServicesUpdateRequestTagsMap>;
+
+export interface UpdateSqlMigrationServiceRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
-  /** Name of the resource group */
-  groupName: string;
-  /** Name of the service */
-  serviceName: string;
-  /** Name of the project */
-  projectName: string;
-  /** Filter tasks by task type */
-  taskType?: string;
+  /** Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal. */
+  resourceGroupName: string;
+  /** Name of the SQL Migration Service. */
+  sqlMigrationServiceName: string;
+  tags?: SqlMigrationServicesUpdateRequestTagsMap;
 }
-export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSqlMigrationServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    serviceName: S.String.pipe(T.Label()),
-    projectName: S.String.pipe(T.Label()),
-    taskType: S.optional(S.String.pipe(T.Query())),
+    resourceGroupName: S.String.pipe(T.Label()),
+    sqlMigrationServiceName: S.String.pipe(T.Label()),
+    tags: S.optional(SqlMigrationServicesUpdateRequestTagsMap),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.DataMigration/services/{serviceName}/projects/{projectName}/tasks",
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataMigration/sqlMigrationServices/{sqlMigrationServiceName}",
       code: 200,
       apiVersion: "2025-06-30",
     }),
   ),
 ).annotate({
-  identifier: "TasksListRequest",
-}) as any as S.Schema<TasksListRequest>;
+  identifier: "UpdateSqlMigrationServiceRequest",
+}) as any as S.Schema<UpdateSqlMigrationServiceRequest>;
 
-/** List of tasks */
-export type TasksListResponseValueList = Array<ProjectTask>;
-export const TasksListResponseValueList = /*@__PURE__*/ S.Array(
-  ProjectTask,
-) as any as S.Schema<TasksListResponseValueList>;
+/** Resource tags. */
+export type SqlMigrationServicesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const SqlMigrationServicesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<SqlMigrationServicesUpdateResponseTagsMap>;
 
-export interface TasksListResponse {
-  /** List of tasks */
-  value?: TasksListResponseValueList;
-  /** URL to load the next page of tasks */
-  nextLink?: string;
+export interface UpdateSqlMigrationServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: SqlMigrationServicesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: SqlMigrationServiceProperties;
 }
-export const TasksListResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSqlMigrationServiceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    value: S.optional(TasksListResponseValueList),
-    nextLink: S.optional(S.String),
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(SqlMigrationServicesUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(SqlMigrationServiceProperties),
   }),
 ).annotate({
-  identifier: "TasksListResponse",
-}) as any as S.Schema<TasksListResponse>;
+  identifier: "UpdateSqlMigrationServiceResponse",
+}) as any as S.Schema<UpdateSqlMigrationServiceResponse>;
 
-export interface TasksUpdateRequest {
+export interface UpdateTaskRequest {
   /** Subscription ID that identifies an Azure subscription. */
   subscriptionId: string;
   /** Name of the resource group */
@@ -6815,7 +6879,7 @@ export interface TasksUpdateRequest {
   /** Custom task properties */
   properties?: ProjectTaskPropertiesInput;
 }
-export const TasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTaskRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     groupName: S.String.pipe(T.Label()),
@@ -6833,10 +6897,10 @@ export const TasksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TasksUpdateRequest",
-}) as any as S.Schema<TasksUpdateRequest>;
+  identifier: "UpdateTaskRequest",
+}) as any as S.Schema<UpdateTaskRequest>;
 
-export interface TasksUpdateResponse {
+export interface UpdateTaskResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -6850,7 +6914,7 @@ export interface TasksUpdateResponse {
   /** Custom task properties */
   properties?: ProjectTaskProperties;
 }
-export const TasksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTaskResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6860,208 +6924,80 @@ export const TasksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ProjectTaskProperties),
   }),
 ).annotate({
-  identifier: "TasksUpdateResponse",
-}) as any as S.Schema<TasksUpdateResponse>;
+  identifier: "UpdateTaskResponse",
+}) as any as S.Schema<UpdateTaskResponse>;
 
-export interface UsagesListRequest {
-  /** Subscription ID that identifies an Azure subscription. */
-  subscriptionId: string;
-  /** The Azure region of the operation */
-  location: string;
-}
-export const UsagesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.DataMigration/locations/{location}/usages",
-      code: 200,
-      apiVersion: "2025-06-30",
-    }),
-  ),
-).annotate({
-  identifier: "UsagesListRequest",
-}) as any as S.Schema<UsagesListRequest>;
+export type CheckServiceChildrenNameAvailabilityError = AzureOpError;
+/** Check nested resource name validity and availability This method checks whether a proposed nested resource name is valid and available. */
+export const CheckServiceChildrenNameAvailability: API.OperationMethod<
+  CheckServiceChildrenNameAvailabilityRequest,
+  CheckServiceChildrenNameAvailabilityResponse,
+  CheckServiceChildrenNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckServiceChildrenNameAvailabilityRequest,
+  output: CheckServiceChildrenNameAvailabilityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
 
-/** The name of the quota */
-export interface QuotaName {
-  /** The localized name of the quota */
-  localizedValue?: string;
-  /** The unlocalized name (or ID) of the quota */
-  value?: string;
-}
-export const QuotaName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    localizedValue: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "QuotaName" }) as any as S.Schema<QuotaName>;
+export type CheckServiceNameAvailabilityError = AzureOpError;
+/** Check name validity and availability This method checks whether a proposed top-level resource name is valid and available. */
+export const CheckServiceNameAvailability: API.OperationMethod<
+  CheckServiceNameAvailabilityRequest,
+  CheckServiceNameAvailabilityResponse,
+  CheckServiceNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckServiceNameAvailabilityRequest,
+  output: CheckServiceNameAvailabilityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
 
-/** Describes a quota for or usage details about a resource */
-export interface Quota {
-  /** The current value of the quota. If null or missing, the current value cannot be determined in the context of the request. */
-  currentValue?: number;
-  /** The resource ID of the quota object */
-  id?: string;
-  /** The maximum value of the quota. If null or missing, the quota has no maximum, in which case it merely tracks usage. */
-  limit?: number;
-  /** The name of the quota */
-  name?: QuotaName;
-  /** The unit for the quota, such as Count, Bytes, BytesPerSecond, etc. */
-  unit?: string;
-}
-export const Quota = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currentValue: S.optional(S.Number),
-    id: S.optional(S.String),
-    limit: S.optional(S.Number),
-    name: S.optional(QuotaName),
-    unit: S.optional(S.String),
-  }),
-).annotate({ identifier: "Quota" }) as any as S.Schema<Quota>;
+export type CheckServiceStatusError = AzureOpError;
+/** Check service health status The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This action performs a health check and returns the status of the service and virtual machine size. */
+export const CheckServiceStatus: API.OperationMethod<
+  CheckServiceStatusRequest,
+  CheckServiceStatusResponse,
+  CheckServiceStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckServiceStatusRequest,
+  output: CheckServiceStatusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
 
-/** List of quotas */
-export type UsagesListResponseValueList = Array<Quota>;
-export const UsagesListResponseValueList = /*@__PURE__*/ S.Array(
-  Quota,
-) as any as S.Schema<UsagesListResponseValueList>;
-
-export interface UsagesListResponse {
-  /** List of quotas */
-  value?: UsagesListResponseValueList;
-  /** URL to load the next page of quotas, or null or missing if this is the last page */
-  nextLink?: string;
-}
-export const UsagesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(UsagesListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsagesListResponse",
-}) as any as S.Schema<UsagesListResponse>;
-
-export type DatabaseMigrationsMongoToCosmosDbRUMongoCreateError = AzureOpError;
+export type CreateDatabaseMigrationMongoToCosmosDbRuMongoError = AzureOpError;
 /** Create or Update Database Migration resource. */
-export const DatabaseMigrationsMongoToCosmosDbRUMongoCreate: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest,
-  DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse,
-  DatabaseMigrationsMongoToCosmosDbRUMongoCreateError,
+export const CreateDatabaseMigrationMongoToCosmosDbRuMongo: API.OperationMethod<
+  CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest,
+  CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse,
+  CreateDatabaseMigrationMongoToCosmosDbRuMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest,
-  output: DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse,
+  input: CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest,
+  output: CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DatabaseMigrationsMongoToCosmosDbRUMongoDeleteError = AzureOpError;
-/** Delete Database Migration resource. */
-export const DatabaseMigrationsMongoToCosmosDbRUMongoDelete: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest,
-  DatabaseMigrationsMongoToCosmosDbRUMongoDeleteResponse,
-  DatabaseMigrationsMongoToCosmosDbRUMongoDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest,
-  output: DatabaseMigrationsMongoToCosmosDbRUMongoDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsMongoToCosmosDbRUMongoGetError = AzureOpError;
-/** Get Database Migration resource. */
-export const DatabaseMigrationsMongoToCosmosDbRUMongoGet: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest,
-  DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse,
-  DatabaseMigrationsMongoToCosmosDbRUMongoGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest,
-  output: DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeError =
-  AzureOpError;
-/** Get Database Migration resources for the scope. */
-export const DatabaseMigrationsMongoToCosmosDbRUMongoGetForScope: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest,
-  DatabaseMigrationCosmosDbMongoListResult,
-  DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest,
-  output: DatabaseMigrationCosmosDbMongoListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateError =
+export type CreateDatabaseMigrationMongoToCosmosDbvCoreMongoError =
   AzureOpError;
 /** Create or Update Database Migration resource. */
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoCreate: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateError,
+export const CreateDatabaseMigrationMongoToCosmosDbvCoreMongo: API.OperationMethod<
+  CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest,
+  CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse,
+  CreateDatabaseMigrationMongoToCosmosDbvCoreMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest,
-  output: DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteError =
-  AzureOpError;
-/** Delete Database Migration resource. */
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoDelete: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteResponse,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest,
-  output: DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetError = AzureOpError;
-/** Get Database Migration resource. */
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGet: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest,
-  output: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeError =
-  AzureOpError;
-/** Get Database Migration resources for the scope. */
-export const DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScope: API.OperationMethod<
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest,
-  DatabaseMigrationCosmosDbMongoListResult,
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest,
-  output: DatabaseMigrationCosmosDbMongoListResult,
+  input: CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest,
+  output: CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7092,36 +7028,6 @@ export const DatabaseMigrationsSqlDbCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DatabaseMigrationsSqlDbCreateOrUpdateRequest,
   output: DatabaseMigrationsSqlDbCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsSqlDbDeleteError = AzureOpError;
-/** Delete Database Migration resource. */
-export const DatabaseMigrationsSqlDbDelete: API.OperationMethod<
-  DatabaseMigrationsSqlDbDeleteRequest,
-  DatabaseMigrationsSqlDbDeleteResponse,
-  DatabaseMigrationsSqlDbDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsSqlDbDeleteRequest,
-  output: DatabaseMigrationsSqlDbDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsSqlDbGetError = AzureOpError;
-/** Retrieve the Database Migration resource. */
-export const DatabaseMigrationsSqlDbGet: API.OperationMethod<
-  DatabaseMigrationsSqlDbGetRequest,
-  DatabaseMigrationsSqlDbGetResponse,
-  DatabaseMigrationsSqlDbGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsSqlDbGetRequest,
-  output: DatabaseMigrationsSqlDbGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7187,36 +7093,6 @@ export const DatabaseMigrationsSqlMiCutover: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DatabaseMigrationsSqlMiDeleteError = AzureOpError;
-/** Delete Database Migration resource. */
-export const DatabaseMigrationsSqlMiDelete: API.OperationMethod<
-  DatabaseMigrationsSqlMiDeleteRequest,
-  DatabaseMigrationsSqlMiDeleteResponse,
-  DatabaseMigrationsSqlMiDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsSqlMiDeleteRequest,
-  output: DatabaseMigrationsSqlMiDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DatabaseMigrationsSqlMiGetError = AzureOpError;
-/** Retrieve the specified database migration for a given SQL Managed Instance. */
-export const DatabaseMigrationsSqlMiGet: API.OperationMethod<
-  DatabaseMigrationsSqlMiGetRequest,
-  DatabaseMigrationsSqlMiGetResponse,
-  DatabaseMigrationsSqlMiGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsSqlMiGetRequest,
-  output: DatabaseMigrationsSqlMiGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DatabaseMigrationsSqlVmCancelError = AzureOpError;
 /** Stop in-progress database migration to SQL VM. */
 export const DatabaseMigrationsSqlVmCancel: API.OperationMethod<
@@ -7262,31 +7138,197 @@ export const DatabaseMigrationsSqlVmCutover: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DatabaseMigrationsSqlVmDeleteError = AzureOpError;
+export type DeleteDatabaseMigrationMongoToCosmosDbRuMongoError = AzureOpError;
 /** Delete Database Migration resource. */
-export const DatabaseMigrationsSqlVmDelete: API.OperationMethod<
-  DatabaseMigrationsSqlVmDeleteRequest,
-  DatabaseMigrationsSqlVmDeleteResponse,
-  DatabaseMigrationsSqlVmDeleteError,
+export const DeleteDatabaseMigrationMongoToCosmosDbRuMongo: API.OperationMethod<
+  DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest,
+  DeleteDatabaseMigrationMongoToCosmosDbRuMongoResponse,
+  DeleteDatabaseMigrationMongoToCosmosDbRuMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsSqlVmDeleteRequest,
-  output: DatabaseMigrationsSqlVmDeleteResponse,
+  input: DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest,
+  output: DeleteDatabaseMigrationMongoToCosmosDbRuMongoResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DatabaseMigrationsSqlVmGetError = AzureOpError;
-/** Retrieve the specified database migration for a given SQL VM. */
-export const DatabaseMigrationsSqlVmGet: API.OperationMethod<
-  DatabaseMigrationsSqlVmGetRequest,
-  DatabaseMigrationsSqlVmGetResponse,
-  DatabaseMigrationsSqlVmGetError,
+export type DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoError =
+  AzureOpError;
+/** Delete Database Migration resource. */
+export const DeleteDatabaseMigrationMongoToCosmosDbvCoreMongo: API.OperationMethod<
+  DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest,
+  DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoResponse,
+  DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseMigrationsSqlVmGetRequest,
-  output: DatabaseMigrationsSqlVmGetResponse,
+  input: DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest,
+  output: DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteDatabaseMigrationSqlDbError = AzureOpError;
+/** Delete Database Migration resource. */
+export const DeleteDatabaseMigrationSqlDb: API.OperationMethod<
+  DeleteDatabaseMigrationSqlDbRequest,
+  DeleteDatabaseMigrationSqlDbResponse,
+  DeleteDatabaseMigrationSqlDbError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDatabaseMigrationSqlDbRequest,
+  output: DeleteDatabaseMigrationSqlDbResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteDatabaseMigrationSqlMiError = AzureOpError;
+/** Delete Database Migration resource. */
+export const DeleteDatabaseMigrationSqlMi: API.OperationMethod<
+  DeleteDatabaseMigrationSqlMiRequest,
+  DeleteDatabaseMigrationSqlMiResponse,
+  DeleteDatabaseMigrationSqlMiError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDatabaseMigrationSqlMiRequest,
+  output: DeleteDatabaseMigrationSqlMiResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteDatabaseMigrationSqlVmError = AzureOpError;
+/** Delete Database Migration resource. */
+export const DeleteDatabaseMigrationSqlVm: API.OperationMethod<
+  DeleteDatabaseMigrationSqlVmRequest,
+  DeleteDatabaseMigrationSqlVmResponse,
+  DeleteDatabaseMigrationSqlVmError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDatabaseMigrationSqlVmRequest,
+  output: DeleteDatabaseMigrationSqlVmResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteFileError = AzureOpError;
+/** Delete file This method deletes a file. */
+export const DeleteFile: API.OperationMethod<
+  DeleteFileRequest,
+  DeleteFileResponse,
+  DeleteFileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteFileRequest,
+  output: DeleteFileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteMigrationServiceError = AzureOpError;
+/** Delete Database Migration Service. */
+export const DeleteMigrationService: API.OperationMethod<
+  DeleteMigrationServiceRequest,
+  DeleteMigrationServiceResponse,
+  DeleteMigrationServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMigrationServiceRequest,
+  output: DeleteMigrationServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectError = AzureOpError;
+/** Delete project The project resource is a nested resource representing a stored migration project. The DELETE method deletes a project. */
+export const DeleteProject: API.OperationMethod<
+  DeleteProjectRequest,
+  DeleteProjectResponse,
+  DeleteProjectError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceError = AzureOpError;
+/** Delete DMS (classic) Service Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The DELETE method deletes a service. Any running tasks will be canceled. */
+export const DeleteService: API.OperationMethod<
+  DeleteServiceRequest,
+  DeleteServiceResponse,
+  DeleteServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceTaskError = AzureOpError;
+/** Delete service task The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The DELETE method deletes a service task, canceling it first if it's running. */
+export const DeleteServiceTask: API.OperationMethod<
+  DeleteServiceTaskRequest,
+  DeleteServiceTaskResponse,
+  DeleteServiceTaskError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceTaskRequest,
+  output: DeleteServiceTaskResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlMigrationServiceError = AzureOpError;
+/** Delete Database Migration Service. */
+export const DeleteSqlMigrationService: API.OperationMethod<
+  DeleteSqlMigrationServiceRequest,
+  DeleteSqlMigrationServiceResponse,
+  DeleteSqlMigrationServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlMigrationServiceRequest,
+  output: DeleteSqlMigrationServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSqlMigrationServiceNodeError = AzureOpError;
+/** Delete the integration runtime node. */
+export const DeleteSqlMigrationServiceNode: API.OperationMethod<
+  DeleteSqlMigrationServiceNodeRequest,
+  DeleteNode,
+  DeleteSqlMigrationServiceNodeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSqlMigrationServiceNodeRequest,
+  output: DeleteNode,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTaskError = AzureOpError;
+/** Delete task The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The DELETE method deletes a task, canceling it first if it's running. */
+export const DeleteTask: API.OperationMethod<
+  DeleteTaskRequest,
+  DeleteTaskResponse,
+  DeleteTaskError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTaskRequest,
+  output: DeleteTaskResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7302,51 +7344,6 @@ export const FilesCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: FilesCreateOrUpdateRequest,
   output: FilesCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FilesDeleteError = AzureOpError;
-/** Delete file This method deletes a file. */
-export const FilesDelete: API.OperationMethod<
-  FilesDeleteRequest,
-  FilesDeleteResponse,
-  FilesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FilesDeleteRequest,
-  output: FilesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FilesGetError = AzureOpError;
-/** Get file information The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file. */
-export const FilesGet: API.OperationMethod<
-  FilesGetRequest,
-  FilesGetResponse,
-  FilesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FilesGetRequest,
-  output: FilesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FilesListError = AzureOpError;
-/** Get files in a project The project resource is a nested resource representing a stored migration project. This method returns a list of files owned by a project resource. */
-export const FilesList: API.OperationMethod<
-  FilesListRequest,
-  FilesListResponse,
-  FilesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FilesListRequest,
-  output: FilesListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7382,16 +7379,483 @@ export const FilesReadWrite: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FilesUpdateError = AzureOpError;
-/** Update a file This method updates an existing file. */
-export const FilesUpdate: API.OperationMethod<
-  FilesUpdateRequest,
-  FilesUpdateResponse,
-  FilesUpdateError,
+export type GetDatabaseMigrationMongoToCosmosDbRuMongoError = AzureOpError;
+/** Get Database Migration resource. */
+export const GetDatabaseMigrationMongoToCosmosDbRuMongo: API.OperationMethod<
+  GetDatabaseMigrationMongoToCosmosDbRuMongoRequest,
+  GetDatabaseMigrationMongoToCosmosDbRuMongoResponse,
+  GetDatabaseMigrationMongoToCosmosDbRuMongoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesUpdateRequest,
-  output: FilesUpdateResponse,
+  input: GetDatabaseMigrationMongoToCosmosDbRuMongoRequest,
+  output: GetDatabaseMigrationMongoToCosmosDbRuMongoResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeError =
+  AzureOpError;
+/** Get Database Migration resources for the scope. */
+export const GetDatabaseMigrationMongoToCosmosDbRuMongoForScope: API.OperationMethod<
+  GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest,
+  DatabaseMigrationCosmosDbMongoListResult,
+  GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest,
+  output: DatabaseMigrationCosmosDbMongoListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDatabaseMigrationMongoToCosmosDbvCoreMongoError = AzureOpError;
+/** Get Database Migration resource. */
+export const GetDatabaseMigrationMongoToCosmosDbvCoreMongo: API.OperationMethod<
+  GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest,
+  GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse,
+  GetDatabaseMigrationMongoToCosmosDbvCoreMongoError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest,
+  output: GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeError =
+  AzureOpError;
+/** Get Database Migration resources for the scope. */
+export const GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScope: API.OperationMethod<
+  GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest,
+  DatabaseMigrationCosmosDbMongoListResult,
+  GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest,
+  output: DatabaseMigrationCosmosDbMongoListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDatabaseMigrationSqlDbError = AzureOpError;
+/** Retrieve the Database Migration resource. */
+export const GetDatabaseMigrationSqlDb: API.OperationMethod<
+  GetDatabaseMigrationSqlDbRequest,
+  GetDatabaseMigrationSqlDbResponse,
+  GetDatabaseMigrationSqlDbError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseMigrationSqlDbRequest,
+  output: GetDatabaseMigrationSqlDbResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDatabaseMigrationSqlMiError = AzureOpError;
+/** Retrieve the specified database migration for a given SQL Managed Instance. */
+export const GetDatabaseMigrationSqlMi: API.OperationMethod<
+  GetDatabaseMigrationSqlMiRequest,
+  GetDatabaseMigrationSqlMiResponse,
+  GetDatabaseMigrationSqlMiError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseMigrationSqlMiRequest,
+  output: GetDatabaseMigrationSqlMiResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDatabaseMigrationSqlVmError = AzureOpError;
+/** Retrieve the specified database migration for a given SQL VM. */
+export const GetDatabaseMigrationSqlVm: API.OperationMethod<
+  GetDatabaseMigrationSqlVmRequest,
+  GetDatabaseMigrationSqlVmResponse,
+  GetDatabaseMigrationSqlVmError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseMigrationSqlVmRequest,
+  output: GetDatabaseMigrationSqlVmResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFileError = AzureOpError;
+/** Get file information The files resource is a nested, proxy-only resource representing a file stored under the project resource. This method retrieves information about a file. */
+export const GetFile: API.OperationMethod<
+  GetFileRequest,
+  GetFileResponse,
+  GetFileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFileRequest,
+  output: GetFileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMigrationServiceError = AzureOpError;
+/** Retrieve the Database Migration Service */
+export const GetMigrationService: API.OperationMethod<
+  GetMigrationServiceRequest,
+  GetMigrationServiceResponse,
+  GetMigrationServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMigrationServiceRequest,
+  output: GetMigrationServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetProjectError = AzureOpError;
+/** Get project information The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project. */
+export const GetProject: API.OperationMethod<
+  GetProjectRequest,
+  GetProjectResponse,
+  GetProjectError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProjectRequest,
+  output: GetProjectResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceError = AzureOpError;
+/** Get DMS (classic) Service Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The GET method retrieves information about a service instance. */
+export const GetService: API.OperationMethod<
+  GetServiceRequest,
+  GetServiceResponse,
+  GetServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceRequest,
+  output: GetServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceTaskError = AzureOpError;
+/** Get service task information The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a service task. */
+export const GetServiceTask: API.OperationMethod<
+  GetServiceTaskRequest,
+  GetServiceTaskResponse,
+  GetServiceTaskError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceTaskRequest,
+  output: GetServiceTaskResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSqlMigrationServiceError = AzureOpError;
+/** Retrieve the Database Migration Service */
+export const GetSqlMigrationService: API.OperationMethod<
+  GetSqlMigrationServiceRequest,
+  GetSqlMigrationServiceResponse,
+  GetSqlMigrationServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSqlMigrationServiceRequest,
+  output: GetSqlMigrationServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetTaskError = AzureOpError;
+/** Get task information The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a task. */
+export const GetTask: API.OperationMethod<
+  GetTaskRequest,
+  GetTaskResponse,
+  GetTaskError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTaskRequest,
+  output: GetTaskResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListFilesError = AzureOpError;
+/** Get files in a project The project resource is a nested resource representing a stored migration project. This method returns a list of files owned by a project resource. */
+export const ListFiles: API.OperationMethod<
+  ListFilesRequest,
+  ListFilesResponse,
+  ListFilesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListFilesRequest,
+  output: ListFilesResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMigrationServiceByResourceGroupError = AzureOpError;
+/** Retrieve all migration services in the resource group. */
+export const ListMigrationServiceByResourceGroup: API.OperationMethod<
+  ListMigrationServiceByResourceGroupRequest,
+  MigrationServiceListResult,
+  ListMigrationServiceByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMigrationServiceByResourceGroupRequest,
+  output: MigrationServiceListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMigrationServiceBySubscriptionError = AzureOpError;
+/** Retrieve all migration services in the subscriptions. */
+export const ListMigrationServiceBySubscription: API.OperationMethod<
+  ListMigrationServiceBySubscriptionRequest,
+  MigrationServiceListResult,
+  ListMigrationServiceBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMigrationServiceBySubscriptionRequest,
+  output: MigrationServiceListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMigrationServiceMigrationsError = AzureOpError;
+/** Retrieve the List of database migrations attached to the service. */
+export const ListMigrationServiceMigrations: API.OperationMethod<
+  ListMigrationServiceMigrationsRequest,
+  DatabaseMigrationBaseListResult,
+  ListMigrationServiceMigrationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMigrationServiceMigrationsRequest,
+  output: DatabaseMigrationBaseListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all of the available SQL Migration REST API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationListResult,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProjectsError = AzureOpError;
+/** Get projects in a service The project resource is a nested resource representing a stored migration project. This method returns a list of projects owned by a service resource. */
+export const ListProjects: API.OperationMethod<
+  ListProjectsRequest,
+  ListProjectsResponse,
+  ListProjectsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProjectsRequest,
+  output: ListProjectsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListResourceSkusSkusError = AzureOpError;
+/** Get supported SKUs The skus action returns the list of SKUs that DMS (classic) supports. */
+export const ListResourceSkusSkus: API.OperationMethod<
+  ListResourceSkusSkusRequest,
+  ListResourceSkusSkusResponse,
+  ListResourceSkusSkusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListResourceSkusSkusRequest,
+  output: ListResourceSkusSkusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceByResourceGroupError = AzureOpError;
+/** Get services in resource group The Services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a resource group. */
+export const ListServiceByResourceGroup: API.OperationMethod<
+  ListServiceByResourceGroupRequest,
+  ListServiceByResourceGroupResponse,
+  ListServiceByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceByResourceGroupRequest,
+  output: ListServiceByResourceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServicesError = AzureOpError;
+/** Get services in subscription The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a subscription. */
+export const ListServices: API.OperationMethod<
+  ListServicesRequest,
+  ListServicesResponse,
+  ListServicesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServicesRequest,
+  output: ListServicesResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceSkusError = AzureOpError;
+/** Get compatible SKUs The services resource is the top-level resource that represents the Database Migration Service (classic). The skus action returns the list of SKUs that a service resource can be updated to. */
+export const ListServiceSkus: API.OperationMethod<
+  ListServiceSkusRequest,
+  ListServiceSkusResponse,
+  ListServiceSkusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceSkusRequest,
+  output: ListServiceSkusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceTasksError = AzureOpError;
+/** Get service level tasks for a service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service level tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task. */
+export const ListServiceTasks: API.OperationMethod<
+  ListServiceTasksRequest,
+  ListServiceTasksResponse,
+  ListServiceTasksError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceTasksRequest,
+  output: ListServiceTasksResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlMigrationServiceAuthKeysError = AzureOpError;
+/** Retrieve the List of Authentication Keys for Self Hosted Integration Runtime. */
+export const ListSqlMigrationServiceAuthKeys: API.OperationMethod<
+  ListSqlMigrationServiceAuthKeysRequest,
+  AuthenticationKeys,
+  ListSqlMigrationServiceAuthKeysError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlMigrationServiceAuthKeysRequest,
+  output: AuthenticationKeys,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlMigrationServiceByResourceGroupError = AzureOpError;
+/** Retrieve all SQL migration services in the resource group. */
+export const ListSqlMigrationServiceByResourceGroup: API.OperationMethod<
+  ListSqlMigrationServiceByResourceGroupRequest,
+  SqlMigrationListResult,
+  ListSqlMigrationServiceByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlMigrationServiceByResourceGroupRequest,
+  output: SqlMigrationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlMigrationServiceBySubscriptionError = AzureOpError;
+/** Retrieve all SQL migration services in the subscriptions. */
+export const ListSqlMigrationServiceBySubscription: API.OperationMethod<
+  ListSqlMigrationServiceBySubscriptionRequest,
+  SqlMigrationListResult,
+  ListSqlMigrationServiceBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlMigrationServiceBySubscriptionRequest,
+  output: SqlMigrationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlMigrationServiceMigrationsError = AzureOpError;
+/** Retrieve the List of database migrations attached to the service. */
+export const ListSqlMigrationServiceMigrations: API.OperationMethod<
+  ListSqlMigrationServiceMigrationsRequest,
+  DatabaseMigrationListResult,
+  ListSqlMigrationServiceMigrationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlMigrationServiceMigrationsRequest,
+  output: DatabaseMigrationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSqlMigrationServiceMonitoringDataError = AzureOpError;
+/** Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service. */
+export const ListSqlMigrationServiceMonitoringData: API.OperationMethod<
+  ListSqlMigrationServiceMonitoringDataRequest,
+  IntegrationRuntimeMonitoringData,
+  ListSqlMigrationServiceMonitoringDataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSqlMigrationServiceMonitoringDataRequest,
+  output: IntegrationRuntimeMonitoringData,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListTasksError = AzureOpError;
+/** Get tasks in a service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task. */
+export const ListTasks: API.OperationMethod<
+  ListTasksRequest,
+  ListTasksResponse,
+  ListTasksError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTasksRequest,
+  output: ListTasksResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListUsagesError = AzureOpError;
+/** Get resource quotas and usage information This method returns region-specific quotas and resource usage information for the Azure Database Migration Service (classic). */
+export const ListUsages: API.OperationMethod<
+  ListUsagesRequest,
+  ListUsagesResponse,
+  ListUsagesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListUsagesRequest,
+  output: ListUsagesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7412,111 +7876,6 @@ export const MigrationServicesCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MigrationServicesDeleteError = AzureOpError;
-/** Delete Database Migration Service. */
-export const MigrationServicesDelete: API.OperationMethod<
-  MigrationServicesDeleteRequest,
-  MigrationServicesDeleteResponse,
-  MigrationServicesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MigrationServicesDeleteRequest,
-  output: MigrationServicesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MigrationServicesGetError = AzureOpError;
-/** Retrieve the Database Migration Service */
-export const MigrationServicesGet: API.OperationMethod<
-  MigrationServicesGetRequest,
-  MigrationServicesGetResponse,
-  MigrationServicesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MigrationServicesGetRequest,
-  output: MigrationServicesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MigrationServicesListByResourceGroupError = AzureOpError;
-/** Retrieve all migration services in the resource group. */
-export const MigrationServicesListByResourceGroup: API.OperationMethod<
-  MigrationServicesListByResourceGroupRequest,
-  MigrationServiceListResult,
-  MigrationServicesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MigrationServicesListByResourceGroupRequest,
-  output: MigrationServiceListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MigrationServicesListBySubscriptionError = AzureOpError;
-/** Retrieve all migration services in the subscriptions. */
-export const MigrationServicesListBySubscription: API.OperationMethod<
-  MigrationServicesListBySubscriptionRequest,
-  MigrationServiceListResult,
-  MigrationServicesListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MigrationServicesListBySubscriptionRequest,
-  output: MigrationServiceListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MigrationServicesListMigrationsError = AzureOpError;
-/** Retrieve the List of database migrations attached to the service. */
-export const MigrationServicesListMigrations: API.OperationMethod<
-  MigrationServicesListMigrationsRequest,
-  DatabaseMigrationBaseListResult,
-  MigrationServicesListMigrationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MigrationServicesListMigrationsRequest,
-  output: DatabaseMigrationBaseListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MigrationServicesUpdateError = AzureOpError;
-/** Update Database Migration Service. */
-export const MigrationServicesUpdate: API.OperationMethod<
-  MigrationServicesUpdateRequest,
-  MigrationServicesUpdateResponse,
-  MigrationServicesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MigrationServicesUpdateRequest,
-  output: MigrationServicesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** Lists all of the available SQL Migration REST API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationListResult,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ProjectsCreateOrUpdateError = AzureOpError;
 /** Create or update project The project resource is a nested resource representing a stored migration project. The PUT method creates a new project or updates an existing one. */
 export const ProjectsCreateOrUpdate: API.OperationMethod<
@@ -7532,126 +7891,6 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProjectsDeleteError = AzureOpError;
-/** Delete project The project resource is a nested resource representing a stored migration project. The DELETE method deletes a project. */
-export const ProjectsDelete: API.OperationMethod<
-  ProjectsDeleteRequest,
-  ProjectsDeleteResponse,
-  ProjectsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectsDeleteRequest,
-  output: ProjectsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectsGetError = AzureOpError;
-/** Get project information The project resource is a nested resource representing a stored migration project. The GET method retrieves information about a project. */
-export const ProjectsGet: API.OperationMethod<
-  ProjectsGetRequest,
-  ProjectsGetResponse,
-  ProjectsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectsGetRequest,
-  output: ProjectsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectsListError = AzureOpError;
-/** Get projects in a service The project resource is a nested resource representing a stored migration project. This method returns a list of projects owned by a service resource. */
-export const ProjectsList: API.OperationMethod<
-  ProjectsListRequest,
-  ProjectsListResponse,
-  ProjectsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectsListRequest,
-  output: ProjectsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectsUpdateError = AzureOpError;
-/** Update project The project resource is a nested resource representing a stored migration project. The PATCH method updates an existing project. */
-export const ProjectsUpdate: API.OperationMethod<
-  ProjectsUpdateRequest,
-  ProjectsUpdateResponse,
-  ProjectsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectsUpdateRequest,
-  output: ProjectsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ResourceSkusListSkusError = AzureOpError;
-/** Get supported SKUs The skus action returns the list of SKUs that DMS (classic) supports. */
-export const ResourceSkusListSkus: API.OperationMethod<
-  ResourceSkusListSkusRequest,
-  ResourceSkusListSkusResponse,
-  ResourceSkusListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResourceSkusListSkusRequest,
-  output: ResourceSkusListSkusResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesCheckChildrenNameAvailabilityError = AzureOpError;
-/** Check nested resource name validity and availability This method checks whether a proposed nested resource name is valid and available. */
-export const ServicesCheckChildrenNameAvailability: API.OperationMethod<
-  ServicesCheckChildrenNameAvailabilityRequest,
-  ServicesCheckChildrenNameAvailabilityResponse,
-  ServicesCheckChildrenNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCheckChildrenNameAvailabilityRequest,
-  output: ServicesCheckChildrenNameAvailabilityResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesCheckNameAvailabilityError = AzureOpError;
-/** Check name validity and availability This method checks whether a proposed top-level resource name is valid and available. */
-export const ServicesCheckNameAvailability: API.OperationMethod<
-  ServicesCheckNameAvailabilityRequest,
-  ServicesCheckNameAvailabilityResponse,
-  ServicesCheckNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCheckNameAvailabilityRequest,
-  output: ServicesCheckNameAvailabilityResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesCheckStatusError = AzureOpError;
-/** Check service health status The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This action performs a health check and returns the status of the service and virtual machine size. */
-export const ServicesCheckStatus: API.OperationMethod<
-  ServicesCheckStatusRequest,
-  ServicesCheckStatusResponse,
-  ServicesCheckStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCheckStatusRequest,
-  output: ServicesCheckStatusResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ServicesCreateOrUpdateError = AzureOpError;
 /** Create or update DMS (classic) Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The PUT method creates a new service or updates an existing one. When a service is updated, existing child resources (i.e. tasks) are unaffected. Services currently support a single kind, "vm", which refers to a VM-based service, although other kinds may be added in the future. This method can change the kind, SKU, and network of the service, but if tasks are currently running (i.e. the service is busy), this will fail with 400 Bad Request ("ServiceIsBusy"). The provider will reply when successful with 200 OK or 201 Created. Long-running operations use the provisioningState property. */
 export const ServicesCreateOrUpdate: API.OperationMethod<
@@ -7662,126 +7901,6 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ServicesCreateOrUpdateRequest,
   output: ServicesCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesDeleteError = AzureOpError;
-/** Delete DMS (classic) Service Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The DELETE method deletes a service. Any running tasks will be canceled. */
-export const ServicesDelete: API.OperationMethod<
-  ServicesDeleteRequest,
-  ServicesDeleteResponse,
-  ServicesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesDeleteRequest,
-  output: ServicesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesGetError = AzureOpError;
-/** Get DMS (classic) Service Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The GET method retrieves information about a service instance. */
-export const ServicesGet: API.OperationMethod<
-  ServicesGetRequest,
-  ServicesGetResponse,
-  ServicesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetRequest,
-  output: ServicesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListError = AzureOpError;
-/** Get services in subscription The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a subscription. */
-export const ServicesList: API.OperationMethod<
-  ServicesListRequest,
-  ServicesListResponse,
-  ServicesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListRequest,
-  output: ServicesListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListByResourceGroupError = AzureOpError;
-/** Get services in resource group The Services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service resources in a resource group. */
-export const ServicesListByResourceGroup: API.OperationMethod<
-  ServicesListByResourceGroupRequest,
-  ServicesListByResourceGroupResponse,
-  ServicesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListByResourceGroupRequest,
-  output: ServicesListByResourceGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListSkusError = AzureOpError;
-/** Get compatible SKUs The services resource is the top-level resource that represents the Database Migration Service (classic). The skus action returns the list of SKUs that a service resource can be updated to. */
-export const ServicesListSkus: API.OperationMethod<
-  ServicesListSkusRequest,
-  ServicesListSkusResponse,
-  ServicesListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListSkusRequest,
-  output: ServicesListSkusResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesStartError = AzureOpError;
-/** Start service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This action starts the service and the service can be used for data migration. */
-export const ServicesStart: API.OperationMethod<
-  ServicesStartRequest,
-  ServicesStartResponse,
-  ServicesStartError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesStartRequest,
-  output: ServicesStartResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesStopError = AzureOpError;
-/** Stop service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This action stops the service and the service cannot be used for data migration. The service owner won't be billed when the service is stopped. */
-export const ServicesStop: API.OperationMethod<
-  ServicesStopRequest,
-  ServicesStopResponse,
-  ServicesStopError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesStopRequest,
-  output: ServicesStopResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesUpdateError = AzureOpError;
-/** Create or update DMS (classic) Service Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The PATCH method updates an existing service. This method can change the kind, SKU, and network of the service, but if tasks are currently running (i.e. the service is busy), this will fail with 400 Bad Request ("ServiceIsBusy"). */
-export const ServicesUpdate: API.OperationMethod<
-  ServicesUpdateRequest,
-  ServicesUpdateResponse,
-  ServicesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesUpdateRequest,
-  output: ServicesUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7817,66 +7936,6 @@ export const ServiceTasksCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ServiceTasksDeleteError = AzureOpError;
-/** Delete service task The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The DELETE method deletes a service task, canceling it first if it's running. */
-export const ServiceTasksDelete: API.OperationMethod<
-  ServiceTasksDeleteRequest,
-  ServiceTasksDeleteResponse,
-  ServiceTasksDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTasksDeleteRequest,
-  output: ServiceTasksDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceTasksGetError = AzureOpError;
-/** Get service task information The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a service task. */
-export const ServiceTasksGet: API.OperationMethod<
-  ServiceTasksGetRequest,
-  ServiceTasksGetResponse,
-  ServiceTasksGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTasksGetRequest,
-  output: ServiceTasksGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceTasksListError = AzureOpError;
-/** Get service level tasks for a service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of service level tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task. */
-export const ServiceTasksList: API.OperationMethod<
-  ServiceTasksListRequest,
-  ServiceTasksListResponse,
-  ServiceTasksListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTasksListRequest,
-  output: ServiceTasksListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceTasksUpdateError = AzureOpError;
-/** Create or update service task The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PATCH method updates an existing service task, but since service tasks have no mutable custom properties, there is little reason to do so. */
-export const ServiceTasksUpdate: API.OperationMethod<
-  ServiceTasksUpdateRequest,
-  ServiceTasksUpdateResponse,
-  ServiceTasksUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceTasksUpdateRequest,
-  output: ServiceTasksUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SqlMigrationServicesCreateOrUpdateError = AzureOpError;
 /** Create or Update Database Migration Service. */
 export const SqlMigrationServicesCreateOrUpdate: API.OperationMethod<
@@ -7887,126 +7946,6 @@ export const SqlMigrationServicesCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SqlMigrationServicesCreateOrUpdateRequest,
   output: SqlMigrationServicesCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesDeleteError = AzureOpError;
-/** Delete Database Migration Service. */
-export const SqlMigrationServicesDelete: API.OperationMethod<
-  SqlMigrationServicesDeleteRequest,
-  SqlMigrationServicesDeleteResponse,
-  SqlMigrationServicesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesDeleteRequest,
-  output: SqlMigrationServicesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesDeleteNodeError = AzureOpError;
-/** Delete the integration runtime node. */
-export const SqlMigrationServicesDeleteNode: API.OperationMethod<
-  SqlMigrationServicesDeleteNodeRequest,
-  DeleteNode,
-  SqlMigrationServicesDeleteNodeError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesDeleteNodeRequest,
-  output: DeleteNode,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesGetError = AzureOpError;
-/** Retrieve the Database Migration Service */
-export const SqlMigrationServicesGet: API.OperationMethod<
-  SqlMigrationServicesGetRequest,
-  SqlMigrationServicesGetResponse,
-  SqlMigrationServicesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesGetRequest,
-  output: SqlMigrationServicesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesListAuthKeysError = AzureOpError;
-/** Retrieve the List of Authentication Keys for Self Hosted Integration Runtime. */
-export const SqlMigrationServicesListAuthKeys: API.OperationMethod<
-  SqlMigrationServicesListAuthKeysRequest,
-  AuthenticationKeys,
-  SqlMigrationServicesListAuthKeysError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesListAuthKeysRequest,
-  output: AuthenticationKeys,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesListByResourceGroupError = AzureOpError;
-/** Retrieve all SQL migration services in the resource group. */
-export const SqlMigrationServicesListByResourceGroup: API.OperationMethod<
-  SqlMigrationServicesListByResourceGroupRequest,
-  SqlMigrationListResult,
-  SqlMigrationServicesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesListByResourceGroupRequest,
-  output: SqlMigrationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesListBySubscriptionError = AzureOpError;
-/** Retrieve all SQL migration services in the subscriptions. */
-export const SqlMigrationServicesListBySubscription: API.OperationMethod<
-  SqlMigrationServicesListBySubscriptionRequest,
-  SqlMigrationListResult,
-  SqlMigrationServicesListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesListBySubscriptionRequest,
-  output: SqlMigrationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesListMigrationsError = AzureOpError;
-/** Retrieve the List of database migrations attached to the service. */
-export const SqlMigrationServicesListMigrations: API.OperationMethod<
-  SqlMigrationServicesListMigrationsRequest,
-  DatabaseMigrationListResult,
-  SqlMigrationServicesListMigrationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesListMigrationsRequest,
-  output: DatabaseMigrationListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SqlMigrationServicesListMonitoringDataError = AzureOpError;
-/** Retrieve the registered Integration Runtime nodes and their monitoring data for a given Database Migration Service. */
-export const SqlMigrationServicesListMonitoringData: API.OperationMethod<
-  SqlMigrationServicesListMonitoringDataRequest,
-  IntegrationRuntimeMonitoringData,
-  SqlMigrationServicesListMonitoringDataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesListMonitoringDataRequest,
-  output: IntegrationRuntimeMonitoringData,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8027,16 +7966,31 @@ export const SqlMigrationServicesRegenerateAuthKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SqlMigrationServicesUpdateError = AzureOpError;
-/** Update Database Migration Service. */
-export const SqlMigrationServicesUpdate: API.OperationMethod<
-  SqlMigrationServicesUpdateRequest,
-  SqlMigrationServicesUpdateResponse,
-  SqlMigrationServicesUpdateError,
+export type StartServiceError = AzureOpError;
+/** Start service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This action starts the service and the service can be used for data migration. */
+export const StartService: API.OperationMethod<
+  StartServiceRequest,
+  StartServiceResponse,
+  StartServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlMigrationServicesUpdateRequest,
-  output: SqlMigrationServicesUpdateResponse,
+  input: StartServiceRequest,
+  output: StartServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type StopServiceError = AzureOpError;
+/** Stop service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This action stops the service and the service cannot be used for data migration. The service owner won't be billed when the service is stopped. */
+export const StopService: API.OperationMethod<
+  StopServiceRequest,
+  StopServiceResponse,
+  StopServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StopServiceRequest,
+  output: StopServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8087,76 +8041,106 @@ export const TasksCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TasksDeleteError = AzureOpError;
-/** Delete task The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The DELETE method deletes a task, canceling it first if it's running. */
-export const TasksDelete: API.OperationMethod<
-  TasksDeleteRequest,
-  TasksDeleteResponse,
-  TasksDeleteError,
+export type UpdateFileError = AzureOpError;
+/** Update a file This method updates an existing file. */
+export const UpdateFile: API.OperationMethod<
+  UpdateFileRequest,
+  UpdateFileResponse,
+  UpdateFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksDeleteRequest,
-  output: TasksDeleteResponse,
+  input: UpdateFileRequest,
+  output: UpdateFileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type TasksGetError = AzureOpError;
-/** Get task information The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The GET method retrieves information about a task. */
-export const TasksGet: API.OperationMethod<
-  TasksGetRequest,
-  TasksGetResponse,
-  TasksGetError,
+export type UpdateMigrationServiceError = AzureOpError;
+/** Update Database Migration Service. */
+export const UpdateMigrationService: API.OperationMethod<
+  UpdateMigrationServiceRequest,
+  UpdateMigrationServiceResponse,
+  UpdateMigrationServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksGetRequest,
-  output: TasksGetResponse,
+  input: UpdateMigrationServiceRequest,
+  output: UpdateMigrationServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type TasksListError = AzureOpError;
-/** Get tasks in a service The services resource is the top-level resource that represents the Azure Database Migration Service (classic). This method returns a list of tasks owned by a service resource. Some tasks may have a status of Unknown, which indicates that an error occurred while querying the status of that task. */
-export const TasksList: API.OperationMethod<
-  TasksListRequest,
-  TasksListResponse,
-  TasksListError,
+export type UpdateProjectError = AzureOpError;
+/** Update project The project resource is a nested resource representing a stored migration project. The PATCH method updates an existing project. */
+export const UpdateProject: API.OperationMethod<
+  UpdateProjectRequest,
+  UpdateProjectResponse,
+  UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksListRequest,
-  output: TasksListResponse,
+  input: UpdateProjectRequest,
+  output: UpdateProjectResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type TasksUpdateError = AzureOpError;
+export type UpdateServiceError = AzureOpError;
+/** Create or update DMS (classic) Service Instance The services resource is the top-level resource that represents the Azure Database Migration Service (classic). The PATCH method updates an existing service. This method can change the kind, SKU, and network of the service, but if tasks are currently running (i.e. the service is busy), this will fail with 400 Bad Request ("ServiceIsBusy"). */
+export const UpdateService: API.OperationMethod<
+  UpdateServiceRequest,
+  UpdateServiceResponse,
+  UpdateServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceRequest,
+  output: UpdateServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceTaskError = AzureOpError;
+/** Create or update service task The service tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PATCH method updates an existing service task, but since service tasks have no mutable custom properties, there is little reason to do so. */
+export const UpdateServiceTask: API.OperationMethod<
+  UpdateServiceTaskRequest,
+  UpdateServiceTaskResponse,
+  UpdateServiceTaskError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceTaskRequest,
+  output: UpdateServiceTaskResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSqlMigrationServiceError = AzureOpError;
+/** Update Database Migration Service. */
+export const UpdateSqlMigrationService: API.OperationMethod<
+  UpdateSqlMigrationServiceRequest,
+  UpdateSqlMigrationServiceResponse,
+  UpdateSqlMigrationServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSqlMigrationServiceRequest,
+  output: UpdateSqlMigrationServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateTaskError = AzureOpError;
 /** Create or update task The tasks resource is a nested, proxy-only resource representing work performed by a DMS (classic) instance. The PATCH method updates an existing task, but since tasks have no mutable custom properties, there is little reason to do so. */
-export const TasksUpdate: API.OperationMethod<
-  TasksUpdateRequest,
-  TasksUpdateResponse,
-  TasksUpdateError,
+export const UpdateTask: API.OperationMethod<
+  UpdateTaskRequest,
+  UpdateTaskResponse,
+  UpdateTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksUpdateRequest,
-  output: TasksUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UsagesListError = AzureOpError;
-/** Get resource quotas and usage information This method returns region-specific quotas and resource usage information for the Azure Database Migration Service (classic). */
-export const UsagesList: API.OperationMethod<
-  UsagesListRequest,
-  UsagesListResponse,
-  UsagesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UsagesListRequest,
-  output: UsagesListResponse,
+  input: UpdateTaskRequest,
+  output: UpdateTaskResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

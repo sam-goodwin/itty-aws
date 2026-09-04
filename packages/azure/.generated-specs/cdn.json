@@ -192,10 +192,10 @@
         "smithy.api#documentation": "The type of the secret resource."
       }
     },
-    "com.azure.cdn#AFDProfilesListResourceUsage": {
+    "com.azure.cdn#ListAfdProfileResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDProfilesListResourceUsageRequest"
+        "target": "com.azure.cdn#ListAfdProfileResourceUsageRequest"
       },
       "output": {
         "target": "com.azure.cdn#UsagesListResult"
@@ -317,7 +317,7 @@
         "smithy.api#documentation": "An enum describing the unit of measurement."
       }
     },
-    "com.azure.cdn#AFDProfilesListResourceUsageRequest": {
+    "com.azure.cdn#ListAfdProfileResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1123,10 +1123,10 @@
         "smithy.api#documentation": "Parameters required for profile upgrade."
       }
     },
-    "com.azure.cdn#SecurityPoliciesDelete": {
+    "com.azure.cdn#DeleteSecurityPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecurityPoliciesDeleteRequest"
+        "target": "com.azure.cdn#DeleteSecurityPolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1142,7 +1142,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecurityPoliciesDeleteRequest": {
+    "com.azure.cdn#DeleteSecurityPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1182,13 +1182,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#SecurityPoliciesPatch": {
+    "com.azure.cdn#PatchSecurityPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecurityPoliciesPatchRequest"
+        "target": "com.azure.cdn#PatchSecurityPolicyRequest"
       },
       "output": {
-        "target": "com.azure.cdn#SecurityPoliciesPatchResponse"
+        "target": "com.azure.cdn#PatchSecurityPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1201,7 +1201,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecurityPoliciesPatchResponse": {
+    "com.azure.cdn#PatchSecurityPolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1365,7 +1365,7 @@
         "smithy.api#documentation": "Provisioning status"
       }
     },
-    "com.azure.cdn#SecurityPoliciesPatchRequest": {
+    "com.azure.cdn#PatchSecurityPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1425,13 +1425,13 @@
         "smithy.api#documentation": "The json object that contains properties required to update a security policy"
       }
     },
-    "com.azure.cdn#SecurityPoliciesCreate": {
+    "com.azure.cdn#CreateSecurityPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecurityPoliciesCreateRequest"
+        "target": "com.azure.cdn#CreateSecurityPolicyRequest"
       },
       "output": {
-        "target": "com.azure.cdn#SecurityPoliciesCreateResponse"
+        "target": "com.azure.cdn#CreateSecurityPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1444,7 +1444,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecurityPoliciesCreateResponse": {
+    "com.azure.cdn#CreateSecurityPolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1482,7 +1482,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#SecurityPoliciesCreateRequest": {
+    "com.azure.cdn#CreateSecurityPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1542,13 +1542,13 @@
         "smithy.api#documentation": "The json object that contains properties required to create a security policy"
       }
     },
-    "com.azure.cdn#SecurityPoliciesGet": {
+    "com.azure.cdn#GetSecurityPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecurityPoliciesGetRequest"
+        "target": "com.azure.cdn#GetSecurityPolicyRequest"
       },
       "output": {
-        "target": "com.azure.cdn#SecurityPoliciesGetResponse"
+        "target": "com.azure.cdn#GetSecurityPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1561,7 +1561,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecurityPoliciesGetResponse": {
+    "com.azure.cdn#GetSecurityPolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1599,7 +1599,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#SecurityPoliciesGetRequest": {
+    "com.azure.cdn#GetSecurityPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1639,10 +1639,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#SecurityPoliciesListByProfile": {
+    "com.azure.cdn#ListSecurityPolicyByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecurityPoliciesListByProfileRequest"
+        "target": "com.azure.cdn#ListSecurityPolicyByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#SecurityPolicyListResult"
@@ -1726,7 +1726,7 @@
         "smithy.api#documentation": "SecurityPolicy association for AzureFrontDoor profile"
       }
     },
-    "com.azure.cdn#SecurityPoliciesListByProfileRequest": {
+    "com.azure.cdn#ListSecurityPolicyByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1758,10 +1758,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#SecretsDelete": {
+    "com.azure.cdn#DeleteSecret": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecretsDeleteRequest"
+        "target": "com.azure.cdn#DeleteSecretRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1777,7 +1777,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecretsDeleteRequest": {
+    "com.azure.cdn#DeleteSecretRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1817,13 +1817,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#SecretsCreate": {
+    "com.azure.cdn#CreateSecret": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecretsCreateRequest"
+        "target": "com.azure.cdn#CreateSecretRequest"
       },
       "output": {
-        "target": "com.azure.cdn#SecretsCreateResponse"
+        "target": "com.azure.cdn#CreateSecretResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1836,7 +1836,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecretsCreateResponse": {
+    "com.azure.cdn#CreateSecretResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1918,7 +1918,7 @@
         "smithy.api#documentation": "The json object containing secret parameters"
       }
     },
-    "com.azure.cdn#SecretsCreateRequest": {
+    "com.azure.cdn#CreateSecretRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1978,13 +1978,13 @@
         "smithy.api#documentation": "The JSON object that contains the properties of the Secret to create."
       }
     },
-    "com.azure.cdn#SecretsGet": {
+    "com.azure.cdn#GetSecret": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecretsGetRequest"
+        "target": "com.azure.cdn#GetSecretRequest"
       },
       "output": {
-        "target": "com.azure.cdn#SecretsGetResponse"
+        "target": "com.azure.cdn#GetSecretResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1997,7 +1997,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#SecretsGetResponse": {
+    "com.azure.cdn#GetSecretResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2035,7 +2035,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#SecretsGetRequest": {
+    "com.azure.cdn#GetSecretRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2075,10 +2075,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#SecretsListByProfile": {
+    "com.azure.cdn#ListSecretByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#SecretsListByProfileRequest"
+        "target": "com.azure.cdn#ListSecretByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#SecretListResult"
@@ -2162,7 +2162,7 @@
         "smithy.api#documentation": "Friendly Secret name mapping to the any Secret or secret related information."
       }
     },
-    "com.azure.cdn#SecretsListByProfileRequest": {
+    "com.azure.cdn#ListSecretByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2194,10 +2194,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RuleSetsListResourceUsage": {
+    "com.azure.cdn#ListRuleSetResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RuleSetsListResourceUsageRequest"
+        "target": "com.azure.cdn#ListRuleSetResourceUsageRequest"
       },
       "output": {
         "target": "com.azure.cdn#UsagesListResult"
@@ -2213,7 +2213,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RuleSetsListResourceUsageRequest": {
+    "com.azure.cdn#ListRuleSetResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2253,10 +2253,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RulesDelete": {
+    "com.azure.cdn#DeleteRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RulesDeleteRequest"
+        "target": "com.azure.cdn#DeleteRuleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2272,7 +2272,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RulesDeleteRequest": {
+    "com.azure.cdn#DeleteRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2320,13 +2320,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RulesUpdate": {
+    "com.azure.cdn#UpdateRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RulesUpdateRequest"
+        "target": "com.azure.cdn#UpdateRuleRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RulesUpdateResponse"
+        "target": "com.azure.cdn#UpdateRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2339,7 +2339,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RulesUpdateResponse": {
+    "com.azure.cdn#UpdateRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2688,7 +2688,7 @@
         "smithy.api#documentation": "Request variable to compare with."
       }
     },
-    "com.azure.cdn#RulesUpdateRequest": {
+    "com.azure.cdn#UpdateRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2812,13 +2812,13 @@
         "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
-    "com.azure.cdn#RulesCreate": {
+    "com.azure.cdn#CreateRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RulesCreateRequest"
+        "target": "com.azure.cdn#CreateRuleRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RulesCreateResponse"
+        "target": "com.azure.cdn#CreateRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2831,7 +2831,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RulesCreateResponse": {
+    "com.azure.cdn#CreateRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2869,7 +2869,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#RulesCreateRequest": {
+    "com.azure.cdn#CreateRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2993,13 +2993,13 @@
         "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
-    "com.azure.cdn#RulesGet": {
+    "com.azure.cdn#GetRule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RulesGetRequest"
+        "target": "com.azure.cdn#GetRuleRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RulesGetResponse"
+        "target": "com.azure.cdn#GetRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3012,7 +3012,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RulesGetResponse": {
+    "com.azure.cdn#GetRuleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3050,7 +3050,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#RulesGetRequest": {
+    "com.azure.cdn#GetRuleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3225,10 +3225,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RuleSetsDelete": {
+    "com.azure.cdn#DeleteRuleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RuleSetsDeleteRequest"
+        "target": "com.azure.cdn#DeleteRuleSetRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3244,7 +3244,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RuleSetsDeleteRequest": {
+    "com.azure.cdn#DeleteRuleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3284,13 +3284,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RuleSetsCreate": {
+    "com.azure.cdn#CreateRuleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RuleSetsCreateRequest"
+        "target": "com.azure.cdn#CreateRuleSetRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RuleSetsCreateResponse"
+        "target": "com.azure.cdn#CreateRuleSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3303,7 +3303,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RuleSetsCreateResponse": {
+    "com.azure.cdn#CreateRuleSetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3468,7 +3468,7 @@
         "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
-    "com.azure.cdn#RuleSetsCreateRequest": {
+    "com.azure.cdn#CreateRuleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3620,13 +3620,13 @@
         "smithy.api#documentation": "A list of conditions that must be matched for the actions to be executed"
       }
     },
-    "com.azure.cdn#RuleSetsGet": {
+    "com.azure.cdn#GetRuleSet": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RuleSetsGetRequest"
+        "target": "com.azure.cdn#GetRuleSetRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RuleSetsGetResponse"
+        "target": "com.azure.cdn#GetRuleSetResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3639,7 +3639,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RuleSetsGetResponse": {
+    "com.azure.cdn#GetRuleSetResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3677,7 +3677,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#RuleSetsGetRequest": {
+    "com.azure.cdn#GetRuleSetRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3717,10 +3717,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RuleSetsListByProfile": {
+    "com.azure.cdn#ListRuleSetByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RuleSetsListByProfileRequest"
+        "target": "com.azure.cdn#ListRuleSetByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#RuleSetListResult"
@@ -3804,7 +3804,7 @@
         "smithy.api#documentation": "Friendly RuleSet name mapping to the any RuleSet or secret related information."
       }
     },
-    "com.azure.cdn#RuleSetsListByProfileRequest": {
+    "com.azure.cdn#ListRuleSetByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3836,10 +3836,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginGroupsListResourceUsage": {
+    "com.azure.cdn#ListAfdOriginGroupResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginGroupsListResourceUsageRequest"
+        "target": "com.azure.cdn#ListAfdOriginGroupResourceUsageRequest"
       },
       "output": {
         "target": "com.azure.cdn#UsagesListResult"
@@ -3855,7 +3855,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginGroupsListResourceUsageRequest": {
+    "com.azure.cdn#ListAfdOriginGroupResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3895,10 +3895,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginsDelete": {
+    "com.azure.cdn#DeleteAfdOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginsDeleteRequest"
+        "target": "com.azure.cdn#DeleteAfdOriginRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3914,7 +3914,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginsDeleteRequest": {
+    "com.azure.cdn#DeleteAfdOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3962,13 +3962,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginsUpdate": {
+    "com.azure.cdn#UpdateAfdOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginsUpdateRequest"
+        "target": "com.azure.cdn#UpdateAfdOriginRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDOriginsUpdateResponse"
+        "target": "com.azure.cdn#UpdateAfdOriginResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3981,7 +3981,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginsUpdateResponse": {
+    "com.azure.cdn#UpdateAfdOriginResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4245,7 +4245,7 @@
         "smithy.api#documentation": "Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout."
       }
     },
-    "com.azure.cdn#AFDOriginsUpdateRequest": {
+    "com.azure.cdn#UpdateAfdOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4388,13 +4388,13 @@
         "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
       }
     },
-    "com.azure.cdn#AFDOriginsCreate": {
+    "com.azure.cdn#CreateAfdOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginsCreateRequest"
+        "target": "com.azure.cdn#CreateAfdOriginRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDOriginsCreateResponse"
+        "target": "com.azure.cdn#CreateAfdOriginResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4407,7 +4407,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginsCreateResponse": {
+    "com.azure.cdn#CreateAfdOriginResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4445,7 +4445,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#AFDOriginsCreateRequest": {
+    "com.azure.cdn#CreateAfdOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4588,13 +4588,13 @@
         "smithy.api#documentation": "The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries."
       }
     },
-    "com.azure.cdn#AFDOriginsGet": {
+    "com.azure.cdn#GetAfdOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginsGetRequest"
+        "target": "com.azure.cdn#GetAfdOriginRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDOriginsGetResponse"
+        "target": "com.azure.cdn#GetAfdOriginResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4607,7 +4607,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginsGetResponse": {
+    "com.azure.cdn#GetAfdOriginResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4645,7 +4645,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#AFDOriginsGetRequest": {
+    "com.azure.cdn#GetAfdOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4693,10 +4693,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginsListByOriginGroup": {
+    "com.azure.cdn#ListAfdOriginByOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginsListByOriginGroupRequest"
+        "target": "com.azure.cdn#ListAfdOriginByOriginGroupRequest"
       },
       "output": {
         "target": "com.azure.cdn#AFDOriginListResult"
@@ -4780,7 +4780,7 @@
         "smithy.api#documentation": "Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins."
       }
     },
-    "com.azure.cdn#AFDOriginsListByOriginGroupRequest": {
+    "com.azure.cdn#ListAfdOriginByOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4820,10 +4820,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginGroupsDelete": {
+    "com.azure.cdn#DeleteAfdOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginGroupsDeleteRequest"
+        "target": "com.azure.cdn#DeleteAfdOriginGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4839,7 +4839,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginGroupsDeleteRequest": {
+    "com.azure.cdn#DeleteAfdOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4879,13 +4879,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginGroupsUpdate": {
+    "com.azure.cdn#UpdateAfdOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginGroupsUpdateRequest"
+        "target": "com.azure.cdn#UpdateAfdOriginGroupRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDOriginGroupsUpdateResponse"
+        "target": "com.azure.cdn#UpdateAfdOriginGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4898,7 +4898,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginGroupsUpdateResponse": {
+    "com.azure.cdn#UpdateAfdOriginGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5171,7 +5171,7 @@
         "smithy.api#documentation": "Round-Robin load balancing settings for a backend pool"
       }
     },
-    "com.azure.cdn#AFDOriginGroupsUpdateRequest": {
+    "com.azure.cdn#UpdateAfdOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5255,13 +5255,13 @@
         "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
       }
     },
-    "com.azure.cdn#AFDOriginGroupsCreate": {
+    "com.azure.cdn#CreateAfdOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginGroupsCreateRequest"
+        "target": "com.azure.cdn#CreateAfdOriginGroupRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDOriginGroupsCreateResponse"
+        "target": "com.azure.cdn#CreateAfdOriginGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5274,7 +5274,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginGroupsCreateResponse": {
+    "com.azure.cdn#CreateAfdOriginGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5312,7 +5312,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#AFDOriginGroupsCreateRequest": {
+    "com.azure.cdn#CreateAfdOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5396,13 +5396,13 @@
         "smithy.api#documentation": "The JSON object that contains the properties of the origin group."
       }
     },
-    "com.azure.cdn#AFDOriginGroupsGet": {
+    "com.azure.cdn#GetAfdOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginGroupsGetRequest"
+        "target": "com.azure.cdn#GetAfdOriginGroupRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDOriginGroupsGetResponse"
+        "target": "com.azure.cdn#GetAfdOriginGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5415,7 +5415,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDOriginGroupsGetResponse": {
+    "com.azure.cdn#GetAfdOriginGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5453,7 +5453,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#AFDOriginGroupsGetRequest": {
+    "com.azure.cdn#GetAfdOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5493,10 +5493,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDOriginGroupsListByProfile": {
+    "com.azure.cdn#ListAfdOriginGroupByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDOriginGroupsListByProfileRequest"
+        "target": "com.azure.cdn#ListAfdOriginGroupByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#AFDOriginGroupListResult"
@@ -5580,7 +5580,7 @@
         "smithy.api#documentation": "AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door."
       }
     },
-    "com.azure.cdn#AFDOriginGroupsListByProfileRequest": {
+    "com.azure.cdn#ListAfdOriginGroupByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5714,10 +5714,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsRankings": {
+    "com.azure.cdn#GetLogAnalyticWafLogAnalyticRanking": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsRankingsRequest"
+        "target": "com.azure.cdn#GetLogAnalyticWafLogAnalyticRankingRequest"
       },
       "output": {
         "target": "com.azure.cdn#WafRankingsResponse"
@@ -5808,7 +5808,7 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsRankingsRequest": {
+    "com.azure.cdn#GetLogAnalyticWafLogAnalyticRankingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6035,10 +6035,10 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsMetrics": {
+    "com.azure.cdn#GetLogAnalyticWafLogAnalyticMetric": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsMetricsRequest"
+        "target": "com.azure.cdn#GetLogAnalyticWafLogAnalyticMetricRequest"
       },
       "output": {
         "target": "com.azure.cdn#WafMetricsResponse"
@@ -6173,7 +6173,7 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsMetricsRequest": {
+    "com.azure.cdn#GetLogAnalyticWafLogAnalyticMetricRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6387,10 +6387,10 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#ProfilesListSupportedOptimizationTypes": {
+    "com.azure.cdn#ListProfileSupportedOptimizationTypes": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesListSupportedOptimizationTypesRequest"
+        "target": "com.azure.cdn#ListProfileSupportedOptimizationTypesRequest"
       },
       "output": {
         "target": "com.azure.cdn#SupportedOptimizationTypesListResult"
@@ -6467,7 +6467,7 @@
         "smithy.api#documentation": "Specifies what scenario the customer wants this CDN endpoint to optimize, e.g. Download, Media services. With this information we can apply scenario driven optimization."
       }
     },
-    "com.azure.cdn#ProfilesListSupportedOptimizationTypesRequest": {
+    "com.azure.cdn#ListProfileSupportedOptimizationTypesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6499,10 +6499,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsResources": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsResourcesRequest"
+        "target": "com.azure.cdn#GetLogAnalyticLogAnalyticResourceRequest"
       },
       "output": {
         "target": "com.azure.cdn#ResourcesResponse"
@@ -6607,7 +6607,7 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsResourcesRequest": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6639,10 +6639,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsRankings": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticRanking": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsRankingsRequest"
+        "target": "com.azure.cdn#GetLogAnalyticLogAnalyticRankingRequest"
       },
       "output": {
         "target": "com.azure.cdn#RankingsResponse"
@@ -6735,7 +6735,7 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsRankingsRequest": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticRankingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6907,10 +6907,10 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsMetrics": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticMetric": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsMetricsRequest"
+        "target": "com.azure.cdn#GetLogAnalyticLogAnalyticMetricRequest"
       },
       "output": {
         "target": "com.azure.cdn#MetricsResponse"
@@ -7063,7 +7063,7 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsMetricsRequest": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticMetricRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7299,10 +7299,10 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsLocations": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticLocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsLocationsRequest"
+        "target": "com.azure.cdn#GetLogAnalyticLogAnalyticLocationRequest"
       },
       "output": {
         "target": "com.azure.cdn#ContinentsResponse"
@@ -7367,7 +7367,7 @@
       },
       "traits": {}
     },
-    "com.azure.cdn#LogAnalyticsGetLogAnalyticsLocationsRequest": {
+    "com.azure.cdn#GetLogAnalyticLogAnalyticLocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7399,10 +7399,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ProfilesGenerateSsoUri": {
+    "com.azure.cdn#GenerateProfileSsoUri": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesGenerateSsoUriRequest"
+        "target": "com.azure.cdn#GenerateProfileSsoUriRequest"
       },
       "output": {
         "target": "com.azure.cdn#SsoUri"
@@ -7432,7 +7432,7 @@
         "smithy.api#documentation": "The URI required to login to the supplemental portal from the Azure portal."
       }
     },
-    "com.azure.cdn#ProfilesGenerateSsoUriRequest": {
+    "com.azure.cdn#GenerateProfileSsoUriRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7556,13 +7556,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#EndpointsStop": {
+    "com.azure.cdn#StopEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsStopRequest"
+        "target": "com.azure.cdn#StopEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#EndpointsStopResponse"
+        "target": "com.azure.cdn#StopEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7575,7 +7575,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#EndpointsStopResponse": {
+    "com.azure.cdn#StopEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8498,7 +8498,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsStopRequest": {
+    "com.azure.cdn#StopEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8538,13 +8538,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#EndpointsStart": {
+    "com.azure.cdn#StartEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsStartRequest"
+        "target": "com.azure.cdn#StartEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#EndpointsStartResponse"
+        "target": "com.azure.cdn#StartEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8557,7 +8557,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#EndpointsStartResponse": {
+    "com.azure.cdn#StartEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8620,7 +8620,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsStartRequest": {
+    "com.azure.cdn#StartEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8735,10 +8735,10 @@
         "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory."
       }
     },
-    "com.azure.cdn#OriginsDelete": {
+    "com.azure.cdn#DeleteOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginsDeleteRequest"
+        "target": "com.azure.cdn#DeleteOriginRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8754,7 +8754,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginsDeleteRequest": {
+    "com.azure.cdn#DeleteOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8802,13 +8802,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginsUpdate": {
+    "com.azure.cdn#UpdateOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginsUpdateRequest"
+        "target": "com.azure.cdn#UpdateOriginRequest"
       },
       "output": {
-        "target": "com.azure.cdn#OriginsUpdateResponse"
+        "target": "com.azure.cdn#UpdateOriginResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8821,7 +8821,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginsUpdateResponse": {
+    "com.azure.cdn#UpdateOriginResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9016,7 +9016,7 @@
         "smithy.api#documentation": "Resource status of the origin."
       }
     },
-    "com.azure.cdn#OriginsUpdateRequest": {
+    "com.azure.cdn#UpdateOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9144,13 +9144,13 @@
         "smithy.api#documentation": "The JSON object that contains the properties of the origin."
       }
     },
-    "com.azure.cdn#OriginsCreate": {
+    "com.azure.cdn#CreateOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginsCreateRequest"
+        "target": "com.azure.cdn#CreateOriginRequest"
       },
       "output": {
-        "target": "com.azure.cdn#OriginsCreateResponse"
+        "target": "com.azure.cdn#CreateOriginResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9163,7 +9163,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginsCreateResponse": {
+    "com.azure.cdn#CreateOriginResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9201,7 +9201,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#OriginsCreateRequest": {
+    "com.azure.cdn#CreateOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9255,13 +9255,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginsGet": {
+    "com.azure.cdn#GetOrigin": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginsGetRequest"
+        "target": "com.azure.cdn#GetOriginRequest"
       },
       "output": {
-        "target": "com.azure.cdn#OriginsGetResponse"
+        "target": "com.azure.cdn#GetOriginResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9274,7 +9274,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginsGetResponse": {
+    "com.azure.cdn#GetOriginResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9312,7 +9312,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#OriginsGetRequest": {
+    "com.azure.cdn#GetOriginRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9360,10 +9360,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginsListByEndpoint": {
+    "com.azure.cdn#ListOriginByEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginsListByEndpointRequest"
+        "target": "com.azure.cdn#ListOriginByEndpointRequest"
       },
       "output": {
         "target": "com.azure.cdn#OriginListResult"
@@ -9447,7 +9447,7 @@
         "smithy.api#documentation": "CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins."
       }
     },
-    "com.azure.cdn#OriginsListByEndpointRequest": {
+    "com.azure.cdn#ListOriginByEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9487,10 +9487,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginGroupsDelete": {
+    "com.azure.cdn#DeleteOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginGroupsDeleteRequest"
+        "target": "com.azure.cdn#DeleteOriginGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9506,7 +9506,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginGroupsDeleteRequest": {
+    "com.azure.cdn#DeleteOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9554,13 +9554,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginGroupsUpdate": {
+    "com.azure.cdn#UpdateOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginGroupsUpdateRequest"
+        "target": "com.azure.cdn#UpdateOriginGroupRequest"
       },
       "output": {
-        "target": "com.azure.cdn#OriginGroupsUpdateResponse"
+        "target": "com.azure.cdn#UpdateOriginGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9573,7 +9573,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginGroupsUpdateResponse": {
+    "com.azure.cdn#UpdateOriginGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9728,7 +9728,7 @@
         "smithy.api#documentation": "The source of the content being delivered via CDN within given origin group."
       }
     },
-    "com.azure.cdn#OriginGroupsUpdateRequest": {
+    "com.azure.cdn#UpdateOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9823,13 +9823,13 @@
         "smithy.api#documentation": "The source of the content being delivered via CDN within given origin group."
       }
     },
-    "com.azure.cdn#OriginGroupsCreate": {
+    "com.azure.cdn#CreateOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginGroupsCreateRequest"
+        "target": "com.azure.cdn#CreateOriginGroupRequest"
       },
       "output": {
-        "target": "com.azure.cdn#OriginGroupsCreateResponse"
+        "target": "com.azure.cdn#CreateOriginGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9842,7 +9842,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginGroupsCreateResponse": {
+    "com.azure.cdn#CreateOriginGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9880,7 +9880,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#OriginGroupsCreateRequest": {
+    "com.azure.cdn#CreateOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9934,13 +9934,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginGroupsGet": {
+    "com.azure.cdn#GetOriginGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginGroupsGetRequest"
+        "target": "com.azure.cdn#GetOriginGroupRequest"
       },
       "output": {
-        "target": "com.azure.cdn#OriginGroupsGetResponse"
+        "target": "com.azure.cdn#GetOriginGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9953,7 +9953,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OriginGroupsGetResponse": {
+    "com.azure.cdn#GetOriginGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9991,7 +9991,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#OriginGroupsGetRequest": {
+    "com.azure.cdn#GetOriginGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10039,10 +10039,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OriginGroupsListByEndpoint": {
+    "com.azure.cdn#ListOriginGroupByEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#OriginGroupsListByEndpointRequest"
+        "target": "com.azure.cdn#ListOriginGroupByEndpointRequest"
       },
       "output": {
         "target": "com.azure.cdn#OriginGroupListResult"
@@ -10126,7 +10126,7 @@
         "smithy.api#documentation": "Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN."
       }
     },
-    "com.azure.cdn#OriginGroupsListByEndpointRequest": {
+    "com.azure.cdn#ListOriginGroupByEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10241,13 +10241,13 @@
         "smithy.api#documentation": "The path to the content to be loaded. Path should be a relative file URL of the origin."
       }
     },
-    "com.azure.cdn#CustomDomainsEnableCustomHttps": {
+    "com.azure.cdn#EnableCustomDomainCustomHttp": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#CustomDomainsEnableCustomHttpsRequest"
+        "target": "com.azure.cdn#EnableCustomDomainCustomHttpRequest"
       },
       "output": {
-        "target": "com.azure.cdn#CustomDomainsEnableCustomHttpsResponse"
+        "target": "com.azure.cdn#EnableCustomDomainCustomHttpResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10260,7 +10260,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#CustomDomainsEnableCustomHttpsResponse": {
+    "com.azure.cdn#EnableCustomDomainCustomHttpResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10575,7 +10575,7 @@
         "smithy.api#documentation": "Resource status of the custom domain."
       }
     },
-    "com.azure.cdn#CustomDomainsEnableCustomHttpsRequest": {
+    "com.azure.cdn#EnableCustomDomainCustomHttpRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10643,13 +10643,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#CustomDomainsDisableCustomHttps": {
+    "com.azure.cdn#DisableCustomDomainCustomHttp": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#CustomDomainsDisableCustomHttpsRequest"
+        "target": "com.azure.cdn#DisableCustomDomainCustomHttpRequest"
       },
       "output": {
-        "target": "com.azure.cdn#CustomDomainsDisableCustomHttpsResponse"
+        "target": "com.azure.cdn#DisableCustomDomainCustomHttpResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10662,7 +10662,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#CustomDomainsDisableCustomHttpsResponse": {
+    "com.azure.cdn#DisableCustomDomainCustomHttpResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10700,7 +10700,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#CustomDomainsDisableCustomHttpsRequest": {
+    "com.azure.cdn#DisableCustomDomainCustomHttpRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10748,10 +10748,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#CustomDomainsDelete": {
+    "com.azure.cdn#DeleteCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#CustomDomainsDeleteRequest"
+        "target": "com.azure.cdn#DeleteCustomDomainRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10767,7 +10767,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#CustomDomainsDeleteRequest": {
+    "com.azure.cdn#DeleteCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10815,13 +10815,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#CustomDomainsCreate": {
+    "com.azure.cdn#CreateCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#CustomDomainsCreateRequest"
+        "target": "com.azure.cdn#CreateCustomDomainRequest"
       },
       "output": {
-        "target": "com.azure.cdn#CustomDomainsCreateResponse"
+        "target": "com.azure.cdn#CreateCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10834,7 +10834,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#CustomDomainsCreateResponse": {
+    "com.azure.cdn#CreateCustomDomainResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10872,7 +10872,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#CustomDomainsCreateRequest": {
+    "com.azure.cdn#CreateCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10941,13 +10941,13 @@
         "smithy.api#documentation": "The JSON object that contains the properties of the custom domain to create."
       }
     },
-    "com.azure.cdn#CustomDomainsGet": {
+    "com.azure.cdn#GetCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#CustomDomainsGetRequest"
+        "target": "com.azure.cdn#GetCustomDomainRequest"
       },
       "output": {
-        "target": "com.azure.cdn#CustomDomainsGetResponse"
+        "target": "com.azure.cdn#GetCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10960,7 +10960,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#CustomDomainsGetResponse": {
+    "com.azure.cdn#GetCustomDomainResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10998,7 +10998,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#CustomDomainsGetRequest": {
+    "com.azure.cdn#GetCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11046,10 +11046,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#CustomDomainsListByEndpoint": {
+    "com.azure.cdn#ListCustomDomainByEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#CustomDomainsListByEndpointRequest"
+        "target": "com.azure.cdn#ListCustomDomainByEndpointRequest"
       },
       "output": {
         "target": "com.azure.cdn#CustomDomainListResult"
@@ -11133,7 +11133,7 @@
         "smithy.api#documentation": "Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com."
       }
     },
-    "com.azure.cdn#CustomDomainsListByEndpointRequest": {
+    "com.azure.cdn#ListCustomDomainByEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11173,13 +11173,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#EndpointsListResourceUsage": {
+    "com.azure.cdn#ListEndpointResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsListResourceUsageRequest"
+        "target": "com.azure.cdn#ListEndpointResourceUsageRequest"
       },
       "output": {
-        "target": "com.azure.cdn#ResourceUsageListResult"
+        "target": "com.azure.cdn#ListResourceUsageResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -11192,7 +11192,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ResourceUsageListResult": {
+    "com.azure.cdn#ListResourceUsageResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -11268,7 +11268,7 @@
         "smithy.api#documentation": "Unit of the usage. e.g. count."
       }
     },
-    "com.azure.cdn#EndpointsListResourceUsageRequest": {
+    "com.azure.cdn#ListEndpointResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11308,10 +11308,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#EndpointsDelete": {
+    "com.azure.cdn#DeleteEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsDeleteRequest"
+        "target": "com.azure.cdn#DeleteEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11327,7 +11327,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#EndpointsDeleteRequest": {
+    "com.azure.cdn#DeleteEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11367,13 +11367,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#EndpointsUpdate": {
+    "com.azure.cdn#UpdateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsUpdateRequest"
+        "target": "com.azure.cdn#UpdateEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#EndpointsUpdateResponse"
+        "target": "com.azure.cdn#UpdateEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11386,7 +11386,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#EndpointsUpdateResponse": {
+    "com.azure.cdn#UpdateEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11449,7 +11449,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsUpdateRequest": {
+    "com.azure.cdn#UpdateEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11664,13 +11664,13 @@
         "smithy.api#documentation": "Endpoint tags."
       }
     },
-    "com.azure.cdn#EndpointsCreate": {
+    "com.azure.cdn#CreateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsCreateRequest"
+        "target": "com.azure.cdn#CreateEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#EndpointsCreateResponse"
+        "target": "com.azure.cdn#CreateEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11683,7 +11683,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#EndpointsCreateResponse": {
+    "com.azure.cdn#CreateEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11746,7 +11746,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsCreateRequest": {
+    "com.azure.cdn#CreateEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11999,13 +11999,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsGet": {
+    "com.azure.cdn#GetEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsGetRequest"
+        "target": "com.azure.cdn#GetEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#EndpointsGetResponse"
+        "target": "com.azure.cdn#GetEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12018,7 +12018,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#EndpointsGetResponse": {
+    "com.azure.cdn#GetEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12081,7 +12081,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsGetRequest": {
+    "com.azure.cdn#GetEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12121,10 +12121,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#EndpointsListByProfile": {
+    "com.azure.cdn#ListEndpointByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#EndpointsListByProfileRequest"
+        "target": "com.azure.cdn#ListEndpointByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#EndpointListResult"
@@ -12233,7 +12233,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#EndpointsListByProfileRequest": {
+    "com.azure.cdn#ListEndpointByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12324,10 +12324,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDCustomDomainsDelete": {
+    "com.azure.cdn#DeleteAfdCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDCustomDomainsDeleteRequest"
+        "target": "com.azure.cdn#DeleteAfdCustomDomainRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12343,7 +12343,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDCustomDomainsDeleteRequest": {
+    "com.azure.cdn#DeleteAfdCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12383,13 +12383,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDCustomDomainsUpdate": {
+    "com.azure.cdn#UpdateAfdCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDCustomDomainsUpdateRequest"
+        "target": "com.azure.cdn#UpdateAfdCustomDomainRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDCustomDomainsUpdateResponse"
+        "target": "com.azure.cdn#UpdateAfdCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12402,7 +12402,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDCustomDomainsUpdateResponse": {
+    "com.azure.cdn#UpdateAfdCustomDomainResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12971,7 +12971,7 @@
         "smithy.api#documentation": "Defines the source of the SSL certificate."
       }
     },
-    "com.azure.cdn#AFDCustomDomainsUpdateRequest": {
+    "com.azure.cdn#UpdateAfdCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13049,13 +13049,13 @@
         "smithy.api#documentation": "The JSON object that contains the properties of the domain to create."
       }
     },
-    "com.azure.cdn#AFDCustomDomainsCreate": {
+    "com.azure.cdn#CreateAfdCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDCustomDomainsCreateRequest"
+        "target": "com.azure.cdn#CreateAfdCustomDomainRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDCustomDomainsCreateResponse"
+        "target": "com.azure.cdn#CreateAfdCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13068,7 +13068,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDCustomDomainsCreateResponse": {
+    "com.azure.cdn#CreateAfdCustomDomainResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13106,7 +13106,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#AFDCustomDomainsCreateRequest": {
+    "com.azure.cdn#CreateAfdCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13209,13 +13209,13 @@
         "smithy.api#documentation": "Key-Value pair representing migration properties for domains."
       }
     },
-    "com.azure.cdn#AFDCustomDomainsGet": {
+    "com.azure.cdn#GetAfdCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDCustomDomainsGetRequest"
+        "target": "com.azure.cdn#GetAfdCustomDomainRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDCustomDomainsGetResponse"
+        "target": "com.azure.cdn#GetAfdCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13228,7 +13228,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDCustomDomainsGetResponse": {
+    "com.azure.cdn#GetAfdCustomDomainResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13266,7 +13266,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#AFDCustomDomainsGetRequest": {
+    "com.azure.cdn#GetAfdCustomDomainRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13306,10 +13306,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDCustomDomainsListByProfile": {
+    "com.azure.cdn#ListAfdCustomDomainByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDCustomDomainsListByProfileRequest"
+        "target": "com.azure.cdn#ListAfdCustomDomainByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#AFDDomainListResult"
@@ -13393,7 +13393,7 @@
         "smithy.api#documentation": "Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com."
       }
     },
-    "com.azure.cdn#AFDCustomDomainsListByProfileRequest": {
+    "com.azure.cdn#ListAfdCustomDomainByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13425,13 +13425,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ProfilesListResourceUsage": {
+    "com.azure.cdn#ListProfileResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesListResourceUsageRequest"
+        "target": "com.azure.cdn#ListProfileResourceUsageRequest"
       },
       "output": {
-        "target": "com.azure.cdn#ResourceUsageListResult"
+        "target": "com.azure.cdn#ListResourceUsageResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -13444,7 +13444,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ProfilesListResourceUsageRequest": {
+    "com.azure.cdn#ListProfileResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13476,10 +13476,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDProfilesCheckHostNameAvailability": {
+    "com.azure.cdn#CheckAfdProfileHostNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDProfilesCheckHostNameAvailabilityRequest"
+        "target": "com.azure.cdn#CheckAfdProfileHostNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.cdn#CheckNameAvailabilityOutput"
@@ -13521,7 +13521,7 @@
         "smithy.api#documentation": "Output of check name availability API."
       }
     },
-    "com.azure.cdn#AFDProfilesCheckHostNameAvailabilityRequest": {
+    "com.azure.cdn#CheckAfdProfileHostNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -13560,10 +13560,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDProfilesCheckEndpointNameAvailability": {
+    "com.azure.cdn#CheckAfdProfileEndpointNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDProfilesCheckEndpointNameAvailabilityRequest"
+        "target": "com.azure.cdn#CheckAfdProfileEndpointNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.cdn#CheckEndpointNameAvailabilityOutput"
@@ -13611,7 +13611,7 @@
         "smithy.api#documentation": "Output of check name availability API."
       }
     },
-    "com.azure.cdn#AFDProfilesCheckEndpointNameAvailabilityRequest": {
+    "com.azure.cdn#CheckAfdProfileEndpointNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14063,10 +14063,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDEndpointsListResourceUsage": {
+    "com.azure.cdn#ListAfdEndpointResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDEndpointsListResourceUsageRequest"
+        "target": "com.azure.cdn#ListAfdEndpointResourceUsageRequest"
       },
       "output": {
         "target": "com.azure.cdn#UsagesListResult"
@@ -14082,7 +14082,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDEndpointsListResourceUsageRequest": {
+    "com.azure.cdn#ListAfdEndpointResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14122,10 +14122,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RoutesDelete": {
+    "com.azure.cdn#DeleteRoute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RoutesDeleteRequest"
+        "target": "com.azure.cdn#DeleteRouteRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14141,7 +14141,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RoutesDeleteRequest": {
+    "com.azure.cdn#DeleteRouteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14189,13 +14189,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RoutesUpdate": {
+    "com.azure.cdn#UpdateRoute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RoutesUpdateRequest"
+        "target": "com.azure.cdn#UpdateRouteRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RoutesUpdateResponse"
+        "target": "com.azure.cdn#UpdateRouteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14208,7 +14208,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RoutesUpdateResponse": {
+    "com.azure.cdn#UpdateRouteResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14564,7 +14564,7 @@
         "smithy.api#documentation": "Reference to another resource along with its state."
       }
     },
-    "com.azure.cdn#RoutesUpdateRequest": {
+    "com.azure.cdn#UpdateRouteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14808,13 +14808,13 @@
         "smithy.api#documentation": "Reference to another resource along with its state."
       }
     },
-    "com.azure.cdn#RoutesCreate": {
+    "com.azure.cdn#CreateRoute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RoutesCreateRequest"
+        "target": "com.azure.cdn#CreateRouteRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RoutesCreateResponse"
+        "target": "com.azure.cdn#CreateRouteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14827,7 +14827,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RoutesCreateResponse": {
+    "com.azure.cdn#CreateRouteResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14865,7 +14865,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#RoutesCreateRequest": {
+    "com.azure.cdn#CreateRouteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15095,13 +15095,13 @@
         "smithy.api#documentation": "Domains referenced by this endpoint."
       }
     },
-    "com.azure.cdn#RoutesGet": {
+    "com.azure.cdn#GetRoute": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RoutesGetRequest"
+        "target": "com.azure.cdn#GetRouteRequest"
       },
       "output": {
-        "target": "com.azure.cdn#RoutesGetResponse"
+        "target": "com.azure.cdn#GetRouteResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15114,7 +15114,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#RoutesGetResponse": {
+    "com.azure.cdn#GetRouteResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15152,7 +15152,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.cdn#RoutesGetRequest": {
+    "com.azure.cdn#GetRouteRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15200,10 +15200,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#RoutesListByEndpoint": {
+    "com.azure.cdn#ListRouteByEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#RoutesListByEndpointRequest"
+        "target": "com.azure.cdn#ListRouteByEndpointRequest"
       },
       "output": {
         "target": "com.azure.cdn#RouteListResult"
@@ -15287,7 +15287,7 @@
         "smithy.api#documentation": "Friendly Routes name mapping to the any Routes or secret related information."
       }
     },
-    "com.azure.cdn#RoutesListByEndpointRequest": {
+    "com.azure.cdn#ListRouteByEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15417,10 +15417,10 @@
         "smithy.api#documentation": "The path to the content to be purged. Can describe a file path or a wild card directory."
       }
     },
-    "com.azure.cdn#AFDEndpointsDelete": {
+    "com.azure.cdn#DeleteAfdEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDEndpointsDeleteRequest"
+        "target": "com.azure.cdn#DeleteAfdEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15436,7 +15436,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDEndpointsDeleteRequest": {
+    "com.azure.cdn#DeleteAfdEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15476,13 +15476,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDEndpointsUpdate": {
+    "com.azure.cdn#UpdateAfdEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDEndpointsUpdateRequest"
+        "target": "com.azure.cdn#UpdateAfdEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDEndpointsUpdateResponse"
+        "target": "com.azure.cdn#UpdateAfdEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15495,7 +15495,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDEndpointsUpdateResponse": {
+    "com.azure.cdn#UpdateAfdEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15625,7 +15625,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#AFDEndpointsUpdateRequest": {
+    "com.azure.cdn#UpdateAfdEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15709,13 +15709,13 @@
         "smithy.api#documentation": "Endpoint tags."
       }
     },
-    "com.azure.cdn#AFDEndpointsCreate": {
+    "com.azure.cdn#CreateAfdEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDEndpointsCreateRequest"
+        "target": "com.azure.cdn#CreateAfdEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDEndpointsCreateResponse"
+        "target": "com.azure.cdn#CreateAfdEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15728,7 +15728,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDEndpointsCreateResponse": {
+    "com.azure.cdn#CreateAfdEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15791,7 +15791,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#AFDEndpointsCreateRequest": {
+    "com.azure.cdn#CreateAfdEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15888,13 +15888,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#AFDEndpointsGet": {
+    "com.azure.cdn#GetAfdEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDEndpointsGetRequest"
+        "target": "com.azure.cdn#GetAfdEndpointRequest"
       },
       "output": {
-        "target": "com.azure.cdn#AFDEndpointsGetResponse"
+        "target": "com.azure.cdn#GetAfdEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15907,7 +15907,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#AFDEndpointsGetResponse": {
+    "com.azure.cdn#GetAfdEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15970,7 +15970,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#AFDEndpointsGetRequest": {
+    "com.azure.cdn#GetAfdEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16010,10 +16010,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#AFDEndpointsListByProfile": {
+    "com.azure.cdn#ListAfdEndpointByProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#AFDEndpointsListByProfileRequest"
+        "target": "com.azure.cdn#ListAfdEndpointByProfileRequest"
       },
       "output": {
         "target": "com.azure.cdn#AFDEndpointListResult"
@@ -16122,7 +16122,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#AFDEndpointsListByProfileRequest": {
+    "com.azure.cdn#ListAfdEndpointByProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16154,10 +16154,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ProfilesDelete": {
+    "com.azure.cdn#DeleteProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesDeleteRequest"
+        "target": "com.azure.cdn#DeleteProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -16173,7 +16173,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ProfilesDeleteRequest": {
+    "com.azure.cdn#DeleteProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16205,13 +16205,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ProfilesUpdate": {
+    "com.azure.cdn#UpdateProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesUpdateRequest"
+        "target": "com.azure.cdn#UpdateProfileRequest"
       },
       "output": {
-        "target": "com.azure.cdn#ProfilesUpdateResponse"
+        "target": "com.azure.cdn#UpdateProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16224,7 +16224,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ProfilesUpdateResponse": {
+    "com.azure.cdn#UpdateProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16350,7 +16350,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#ProfilesUpdateRequest": {
+    "com.azure.cdn#UpdateProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16471,13 +16471,13 @@
         "smithy.api#documentation": "Profile tags"
       }
     },
-    "com.azure.cdn#ProfilesCreate": {
+    "com.azure.cdn#CreateProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesCreateRequest"
+        "target": "com.azure.cdn#CreateProfileRequest"
       },
       "output": {
-        "target": "com.azure.cdn#ProfilesCreateResponse"
+        "target": "com.azure.cdn#CreateProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16490,7 +16490,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ProfilesCreateResponse": {
+    "com.azure.cdn#CreateProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16616,7 +16616,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#ProfilesCreateRequest": {
+    "com.azure.cdn#CreateProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16744,13 +16744,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#ProfilesGet": {
+    "com.azure.cdn#GetProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesGetRequest"
+        "target": "com.azure.cdn#GetProfileRequest"
       },
       "output": {
-        "target": "com.azure.cdn#ProfilesGetResponse"
+        "target": "com.azure.cdn#GetProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16763,7 +16763,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ProfilesGetResponse": {
+    "com.azure.cdn#GetProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16889,7 +16889,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#ProfilesGetRequest": {
+    "com.azure.cdn#GetProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16921,10 +16921,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ProfilesListByResourceGroup": {
+    "com.azure.cdn#ListProfileByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesListByResourceGroupRequest"
+        "target": "com.azure.cdn#ListProfileByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.cdn#ProfileListResult"
@@ -17096,7 +17096,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#ProfilesListByResourceGroupRequest": {
+    "com.azure.cdn#ListProfileByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17282,10 +17282,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#PoliciesDelete": {
+    "com.azure.cdn#DeletePolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#PoliciesDeleteRequest"
+        "target": "com.azure.cdn#DeletePolicyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17301,7 +17301,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#PoliciesDeleteRequest": {
+    "com.azure.cdn#DeletePolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17333,13 +17333,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#PoliciesUpdate": {
+    "com.azure.cdn#UpdatePolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#PoliciesUpdateRequest"
+        "target": "com.azure.cdn#UpdatePolicyRequest"
       },
       "output": {
-        "target": "com.azure.cdn#PoliciesUpdateResponse"
+        "target": "com.azure.cdn#UpdatePolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17352,7 +17352,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#PoliciesUpdateResponse": {
+    "com.azure.cdn#UpdatePolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18313,7 +18313,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#PoliciesUpdateRequest": {
+    "com.azure.cdn#UpdatePolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18584,13 +18584,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#PoliciesGet": {
+    "com.azure.cdn#GetPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#PoliciesGetRequest"
+        "target": "com.azure.cdn#GetPolicyRequest"
       },
       "output": {
-        "target": "com.azure.cdn#PoliciesGetResponse"
+        "target": "com.azure.cdn#GetPolicyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18603,7 +18603,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#PoliciesGetResponse": {
+    "com.azure.cdn#GetPolicyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18679,7 +18679,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#PoliciesGetRequest": {
+    "com.azure.cdn#GetPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18711,10 +18711,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#PoliciesList": {
+    "com.azure.cdn#ListPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#PoliciesListRequest"
+        "target": "com.azure.cdn#ListPoliciesRequest"
       },
       "output": {
         "target": "com.azure.cdn#CdnWebApplicationFirewallPolicyList"
@@ -18836,7 +18836,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.cdn#PoliciesListRequest": {
+    "com.azure.cdn#ListPoliciesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18978,10 +18978,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ProfilesList": {
+    "com.azure.cdn#ListProfiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ProfilesListRequest"
+        "target": "com.azure.cdn#ListProfilesRequest"
       },
       "output": {
         "target": "com.azure.cdn#ProfileListResult"
@@ -18997,7 +18997,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ProfilesListRequest": {
+    "com.azure.cdn#ListProfilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19013,13 +19013,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ResourceUsageList": {
+    "com.azure.cdn#ListResourceUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ResourceUsageListRequest"
+        "target": "com.azure.cdn#ListResourceUsageRequest"
       },
       "output": {
-        "target": "com.azure.cdn#ResourceUsageListResult"
+        "target": "com.azure.cdn#ListResourceUsageResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -19032,7 +19032,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#ResourceUsageListRequest": {
+    "com.azure.cdn#ListResourceUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19097,10 +19097,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#ManagedRuleSetsList": {
+    "com.azure.cdn#ListManagedRuleSets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.cdn#ManagedRuleSetsListRequest"
+        "target": "com.azure.cdn#ListManagedRuleSetsRequest"
       },
       "output": {
         "target": "com.azure.cdn#ManagedRuleSetDefinitionList"
@@ -19286,7 +19286,7 @@
         "smithy.api#documentation": "Describes a managed rule definition."
       }
     },
-    "com.azure.cdn#ManagedRuleSetsListRequest": {
+    "com.azure.cdn#ListManagedRuleSetsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19302,13 +19302,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.cdn#OperationsList": {
+    "com.azure.cdn#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.cdn#OperationsListResult"
+        "target": "com.azure.cdn#ListOperationsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -19321,7 +19321,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.cdn#OperationsListResult": {
+    "com.azure.cdn#ListOperationsResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -19646,7 +19646,7 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
-    "com.azure.cdn#EdgeNodesList": {
+    "com.azure.cdn#ListEdgeNodes": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -19870,100 +19870,100 @@
           "target": "com.azure.cdn#AFDProfilesValidateSecret"
         },
         {
-          "target": "com.azure.cdn#AFDProfilesListResourceUsage"
+          "target": "com.azure.cdn#ListAfdProfileResourceUsage"
         },
         {
           "target": "com.azure.cdn#AFDProfilesUpgrade"
         },
         {
-          "target": "com.azure.cdn#SecurityPoliciesDelete"
+          "target": "com.azure.cdn#DeleteSecurityPolicy"
         },
         {
-          "target": "com.azure.cdn#SecurityPoliciesPatch"
+          "target": "com.azure.cdn#PatchSecurityPolicy"
         },
         {
-          "target": "com.azure.cdn#SecurityPoliciesCreate"
+          "target": "com.azure.cdn#CreateSecurityPolicy"
         },
         {
-          "target": "com.azure.cdn#SecurityPoliciesGet"
+          "target": "com.azure.cdn#GetSecurityPolicy"
         },
         {
-          "target": "com.azure.cdn#SecurityPoliciesListByProfile"
+          "target": "com.azure.cdn#ListSecurityPolicyByProfile"
         },
         {
-          "target": "com.azure.cdn#SecretsDelete"
+          "target": "com.azure.cdn#DeleteSecret"
         },
         {
-          "target": "com.azure.cdn#SecretsCreate"
+          "target": "com.azure.cdn#CreateSecret"
         },
         {
-          "target": "com.azure.cdn#SecretsGet"
+          "target": "com.azure.cdn#GetSecret"
         },
         {
-          "target": "com.azure.cdn#SecretsListByProfile"
+          "target": "com.azure.cdn#ListSecretByProfile"
         },
         {
-          "target": "com.azure.cdn#RuleSetsListResourceUsage"
+          "target": "com.azure.cdn#ListRuleSetResourceUsage"
         },
         {
-          "target": "com.azure.cdn#RulesDelete"
+          "target": "com.azure.cdn#DeleteRule"
         },
         {
-          "target": "com.azure.cdn#RulesUpdate"
+          "target": "com.azure.cdn#UpdateRule"
         },
         {
-          "target": "com.azure.cdn#RulesCreate"
+          "target": "com.azure.cdn#CreateRule"
         },
         {
-          "target": "com.azure.cdn#RulesGet"
+          "target": "com.azure.cdn#GetRule"
         },
         {
           "target": "com.azure.cdn#RulesListByRuleSet"
         },
         {
-          "target": "com.azure.cdn#RuleSetsDelete"
+          "target": "com.azure.cdn#DeleteRuleSet"
         },
         {
-          "target": "com.azure.cdn#RuleSetsCreate"
+          "target": "com.azure.cdn#CreateRuleSet"
         },
         {
-          "target": "com.azure.cdn#RuleSetsGet"
+          "target": "com.azure.cdn#GetRuleSet"
         },
         {
-          "target": "com.azure.cdn#RuleSetsListByProfile"
+          "target": "com.azure.cdn#ListRuleSetByProfile"
         },
         {
-          "target": "com.azure.cdn#AFDOriginGroupsListResourceUsage"
+          "target": "com.azure.cdn#ListAfdOriginGroupResourceUsage"
         },
         {
-          "target": "com.azure.cdn#AFDOriginsDelete"
+          "target": "com.azure.cdn#DeleteAfdOrigin"
         },
         {
-          "target": "com.azure.cdn#AFDOriginsUpdate"
+          "target": "com.azure.cdn#UpdateAfdOrigin"
         },
         {
-          "target": "com.azure.cdn#AFDOriginsCreate"
+          "target": "com.azure.cdn#CreateAfdOrigin"
         },
         {
-          "target": "com.azure.cdn#AFDOriginsGet"
+          "target": "com.azure.cdn#GetAfdOrigin"
         },
         {
-          "target": "com.azure.cdn#AFDOriginsListByOriginGroup"
+          "target": "com.azure.cdn#ListAfdOriginByOriginGroup"
         },
         {
-          "target": "com.azure.cdn#AFDOriginGroupsDelete"
+          "target": "com.azure.cdn#DeleteAfdOriginGroup"
         },
         {
-          "target": "com.azure.cdn#AFDOriginGroupsUpdate"
+          "target": "com.azure.cdn#UpdateAfdOriginGroup"
         },
         {
-          "target": "com.azure.cdn#AFDOriginGroupsCreate"
+          "target": "com.azure.cdn#CreateAfdOriginGroup"
         },
         {
-          "target": "com.azure.cdn#AFDOriginGroupsGet"
+          "target": "com.azure.cdn#GetAfdOriginGroup"
         },
         {
-          "target": "com.azure.cdn#AFDOriginGroupsListByProfile"
+          "target": "com.azure.cdn#ListAfdOriginGroupByProfile"
         },
         {
           "target": "com.azure.cdn#ProfilesMigrationCommit"
@@ -19972,136 +19972,136 @@
           "target": "com.azure.cdn#ProfilesMigrationAbort"
         },
         {
-          "target": "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsRankings"
+          "target": "com.azure.cdn#GetLogAnalyticWafLogAnalyticRanking"
         },
         {
-          "target": "com.azure.cdn#LogAnalyticsGetWafLogAnalyticsMetrics"
+          "target": "com.azure.cdn#GetLogAnalyticWafLogAnalyticMetric"
         },
         {
-          "target": "com.azure.cdn#ProfilesListSupportedOptimizationTypes"
+          "target": "com.azure.cdn#ListProfileSupportedOptimizationTypes"
         },
         {
-          "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsResources"
+          "target": "com.azure.cdn#GetLogAnalyticLogAnalyticResource"
         },
         {
-          "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsRankings"
+          "target": "com.azure.cdn#GetLogAnalyticLogAnalyticRanking"
         },
         {
-          "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsMetrics"
+          "target": "com.azure.cdn#GetLogAnalyticLogAnalyticMetric"
         },
         {
-          "target": "com.azure.cdn#LogAnalyticsGetLogAnalyticsLocations"
+          "target": "com.azure.cdn#GetLogAnalyticLogAnalyticLocation"
         },
         {
-          "target": "com.azure.cdn#ProfilesGenerateSsoUri"
+          "target": "com.azure.cdn#GenerateProfileSsoUri"
         },
         {
           "target": "com.azure.cdn#EndpointsValidateCustomDomain"
         },
         {
-          "target": "com.azure.cdn#EndpointsStop"
+          "target": "com.azure.cdn#StopEndpoint"
         },
         {
-          "target": "com.azure.cdn#EndpointsStart"
+          "target": "com.azure.cdn#StartEndpoint"
         },
         {
           "target": "com.azure.cdn#EndpointsPurgeContent"
         },
         {
-          "target": "com.azure.cdn#OriginsDelete"
+          "target": "com.azure.cdn#DeleteOrigin"
         },
         {
-          "target": "com.azure.cdn#OriginsUpdate"
+          "target": "com.azure.cdn#UpdateOrigin"
         },
         {
-          "target": "com.azure.cdn#OriginsCreate"
+          "target": "com.azure.cdn#CreateOrigin"
         },
         {
-          "target": "com.azure.cdn#OriginsGet"
+          "target": "com.azure.cdn#GetOrigin"
         },
         {
-          "target": "com.azure.cdn#OriginsListByEndpoint"
+          "target": "com.azure.cdn#ListOriginByEndpoint"
         },
         {
-          "target": "com.azure.cdn#OriginGroupsDelete"
+          "target": "com.azure.cdn#DeleteOriginGroup"
         },
         {
-          "target": "com.azure.cdn#OriginGroupsUpdate"
+          "target": "com.azure.cdn#UpdateOriginGroup"
         },
         {
-          "target": "com.azure.cdn#OriginGroupsCreate"
+          "target": "com.azure.cdn#CreateOriginGroup"
         },
         {
-          "target": "com.azure.cdn#OriginGroupsGet"
+          "target": "com.azure.cdn#GetOriginGroup"
         },
         {
-          "target": "com.azure.cdn#OriginGroupsListByEndpoint"
+          "target": "com.azure.cdn#ListOriginGroupByEndpoint"
         },
         {
           "target": "com.azure.cdn#EndpointsLoadContent"
         },
         {
-          "target": "com.azure.cdn#CustomDomainsEnableCustomHttps"
+          "target": "com.azure.cdn#EnableCustomDomainCustomHttp"
         },
         {
-          "target": "com.azure.cdn#CustomDomainsDisableCustomHttps"
+          "target": "com.azure.cdn#DisableCustomDomainCustomHttp"
         },
         {
-          "target": "com.azure.cdn#CustomDomainsDelete"
+          "target": "com.azure.cdn#DeleteCustomDomain"
         },
         {
-          "target": "com.azure.cdn#CustomDomainsCreate"
+          "target": "com.azure.cdn#CreateCustomDomain"
         },
         {
-          "target": "com.azure.cdn#CustomDomainsGet"
+          "target": "com.azure.cdn#GetCustomDomain"
         },
         {
-          "target": "com.azure.cdn#CustomDomainsListByEndpoint"
+          "target": "com.azure.cdn#ListCustomDomainByEndpoint"
         },
         {
-          "target": "com.azure.cdn#EndpointsListResourceUsage"
+          "target": "com.azure.cdn#ListEndpointResourceUsage"
         },
         {
-          "target": "com.azure.cdn#EndpointsDelete"
+          "target": "com.azure.cdn#DeleteEndpoint"
         },
         {
-          "target": "com.azure.cdn#EndpointsUpdate"
+          "target": "com.azure.cdn#UpdateEndpoint"
         },
         {
-          "target": "com.azure.cdn#EndpointsCreate"
+          "target": "com.azure.cdn#CreateEndpoint"
         },
         {
-          "target": "com.azure.cdn#EndpointsGet"
+          "target": "com.azure.cdn#GetEndpoint"
         },
         {
-          "target": "com.azure.cdn#EndpointsListByProfile"
+          "target": "com.azure.cdn#ListEndpointByProfile"
         },
         {
           "target": "com.azure.cdn#AFDCustomDomainsRefreshValidationToken"
         },
         {
-          "target": "com.azure.cdn#AFDCustomDomainsDelete"
+          "target": "com.azure.cdn#DeleteAfdCustomDomain"
         },
         {
-          "target": "com.azure.cdn#AFDCustomDomainsUpdate"
+          "target": "com.azure.cdn#UpdateAfdCustomDomain"
         },
         {
-          "target": "com.azure.cdn#AFDCustomDomainsCreate"
+          "target": "com.azure.cdn#CreateAfdCustomDomain"
         },
         {
-          "target": "com.azure.cdn#AFDCustomDomainsGet"
+          "target": "com.azure.cdn#GetAfdCustomDomain"
         },
         {
-          "target": "com.azure.cdn#AFDCustomDomainsListByProfile"
+          "target": "com.azure.cdn#ListAfdCustomDomainByProfile"
         },
         {
-          "target": "com.azure.cdn#ProfilesListResourceUsage"
+          "target": "com.azure.cdn#ListProfileResourceUsage"
         },
         {
-          "target": "com.azure.cdn#AFDProfilesCheckHostNameAvailability"
+          "target": "com.azure.cdn#CheckAfdProfileHostNameAvailability"
         },
         {
-          "target": "com.azure.cdn#AFDProfilesCheckEndpointNameAvailability"
+          "target": "com.azure.cdn#CheckAfdProfileEndpointNameAvailability"
         },
         {
           "target": "com.azure.cdn#ProfilesCdnMigrateToAfd"
@@ -20113,55 +20113,55 @@
           "target": "com.azure.cdn#AFDEndpointsValidateCustomDomain"
         },
         {
-          "target": "com.azure.cdn#AFDEndpointsListResourceUsage"
+          "target": "com.azure.cdn#ListAfdEndpointResourceUsage"
         },
         {
-          "target": "com.azure.cdn#RoutesDelete"
+          "target": "com.azure.cdn#DeleteRoute"
         },
         {
-          "target": "com.azure.cdn#RoutesUpdate"
+          "target": "com.azure.cdn#UpdateRoute"
         },
         {
-          "target": "com.azure.cdn#RoutesCreate"
+          "target": "com.azure.cdn#CreateRoute"
         },
         {
-          "target": "com.azure.cdn#RoutesGet"
+          "target": "com.azure.cdn#GetRoute"
         },
         {
-          "target": "com.azure.cdn#RoutesListByEndpoint"
+          "target": "com.azure.cdn#ListRouteByEndpoint"
         },
         {
           "target": "com.azure.cdn#AFDEndpointsPurgeContent"
         },
         {
-          "target": "com.azure.cdn#AFDEndpointsDelete"
+          "target": "com.azure.cdn#DeleteAfdEndpoint"
         },
         {
-          "target": "com.azure.cdn#AFDEndpointsUpdate"
+          "target": "com.azure.cdn#UpdateAfdEndpoint"
         },
         {
-          "target": "com.azure.cdn#AFDEndpointsCreate"
+          "target": "com.azure.cdn#CreateAfdEndpoint"
         },
         {
-          "target": "com.azure.cdn#AFDEndpointsGet"
+          "target": "com.azure.cdn#GetAfdEndpoint"
         },
         {
-          "target": "com.azure.cdn#AFDEndpointsListByProfile"
+          "target": "com.azure.cdn#ListAfdEndpointByProfile"
         },
         {
-          "target": "com.azure.cdn#ProfilesDelete"
+          "target": "com.azure.cdn#DeleteProfile"
         },
         {
-          "target": "com.azure.cdn#ProfilesUpdate"
+          "target": "com.azure.cdn#UpdateProfile"
         },
         {
-          "target": "com.azure.cdn#ProfilesCreate"
+          "target": "com.azure.cdn#CreateProfile"
         },
         {
-          "target": "com.azure.cdn#ProfilesGet"
+          "target": "com.azure.cdn#GetProfile"
         },
         {
-          "target": "com.azure.cdn#ProfilesListByResourceGroup"
+          "target": "com.azure.cdn#ListProfileByResourceGroup"
         },
         {
           "target": "com.azure.cdn#ProfilesMigrate"
@@ -20170,19 +20170,19 @@
           "target": "com.azure.cdn#CheckEndpointNameAvailability"
         },
         {
-          "target": "com.azure.cdn#PoliciesDelete"
+          "target": "com.azure.cdn#DeletePolicy"
         },
         {
-          "target": "com.azure.cdn#PoliciesUpdate"
+          "target": "com.azure.cdn#UpdatePolicy"
         },
         {
           "target": "com.azure.cdn#PoliciesCreateOrUpdate"
         },
         {
-          "target": "com.azure.cdn#PoliciesGet"
+          "target": "com.azure.cdn#GetPolicy"
         },
         {
-          "target": "com.azure.cdn#PoliciesList"
+          "target": "com.azure.cdn#ListPolicies"
         },
         {
           "target": "com.azure.cdn#ProfilesCanMigrate"
@@ -20191,22 +20191,22 @@
           "target": "com.azure.cdn#ValidateProbe"
         },
         {
-          "target": "com.azure.cdn#ProfilesList"
+          "target": "com.azure.cdn#ListProfiles"
         },
         {
-          "target": "com.azure.cdn#ResourceUsageList"
+          "target": "com.azure.cdn#ListResourceUsage"
         },
         {
           "target": "com.azure.cdn#CheckNameAvailabilityWithSubscription"
         },
         {
-          "target": "com.azure.cdn#ManagedRuleSetsList"
+          "target": "com.azure.cdn#ListManagedRuleSets"
         },
         {
-          "target": "com.azure.cdn#OperationsList"
+          "target": "com.azure.cdn#ListOperations"
         },
         {
-          "target": "com.azure.cdn#EdgeNodesList"
+          "target": "com.azure.cdn#ListEdgeNodes"
         },
         {
           "target": "com.azure.cdn#CheckNameAvailability"

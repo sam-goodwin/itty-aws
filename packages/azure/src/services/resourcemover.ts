@@ -12,214 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsBulkRemoveRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
-
-/** Defines the move resource input type. */
-export type MoveResourceInputType = "MoveResourceId" | "MoveResourceSourceId";
-export const MoveResourceInputType = /*@__PURE__*/ S.String;
-
-export interface MoveCollectionsBulkRemoveRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  resourceGroupName: string;
-  moveCollectionName: string;
-  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
-  validateOnly?: boolean;
-  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-  moveResources?: MoveCollectionsBulkRemoveRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType | (string & {});
-}
-export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean),
-    moveResources: S.optional(
-      MoveCollectionsBulkRemoveRequestMoveResourcesList,
-    ),
-    moveResourceInputType: S.optional(MoveResourceInputType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsBulkRemoveRequest",
-}) as any as S.Schema<MoveCollectionsBulkRemoveRequest>;
-
-/** The error details. */
-export type OperationStatusErrorDetailsList = Array<OperationStatusError>;
-export const OperationStatusErrorDetailsList = /*@__PURE__*/ S.Array(
-  S.suspend(() => OperationStatusError),
-) as any as S.Schema<OperationStatusErrorDetailsList>;
-
-/** The affected move resources. */
-export type AffectedMoveResourceMoveResourcesList = Array<AffectedMoveResource>;
-export const AffectedMoveResourceMoveResourcesList = /*@__PURE__*/ S.Array(
-  S.suspend(() => AffectedMoveResource),
-) as any as S.Schema<AffectedMoveResourceMoveResourcesList>;
-
-/** The RP custom operation error info. */
-export interface AffectedMoveResource {
-  /** The affected move resource id. */
-  id?: string;
-  /** The affected move resource source id. */
-  sourceId?: string;
-  /** The affected move resources. */
-  moveResources?: AffectedMoveResourceMoveResourcesList;
-}
-export const AffectedMoveResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    sourceId: S.optional(S.String),
-    moveResources: S.optional(AffectedMoveResourceMoveResourcesList),
-  }),
-).annotate({
-  identifier: "AffectedMoveResource",
-}) as any as S.Schema<AffectedMoveResource>;
-
-/** The affected move resources. */
-export type MoveErrorInfoMoveResourcesList = Array<AffectedMoveResource>;
-export const MoveErrorInfoMoveResourcesList = /*@__PURE__*/ S.Array(
-  AffectedMoveResource,
-) as any as S.Schema<MoveErrorInfoMoveResourcesList>;
-
-/** The move custom error info. */
-export interface MoveErrorInfo {
-  /** The affected move resources. */
-  moveResources?: MoveErrorInfoMoveResourcesList;
-}
-export const MoveErrorInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    moveResources: S.optional(MoveErrorInfoMoveResourcesList),
-  }),
-).annotate({ identifier: "MoveErrorInfo" }) as any as S.Schema<MoveErrorInfo>;
-
-/** The operation error info. */
-export interface OperationErrorAdditionalInfo {
-  /** The error type. */
-  type?: string;
-  /** The operation error info. */
-  info?: MoveErrorInfo;
-}
-export const OperationErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(S.String),
-    info: S.optional(MoveErrorInfo),
-  }),
-).annotate({
-  identifier: "OperationErrorAdditionalInfo",
-}) as any as S.Schema<OperationErrorAdditionalInfo>;
-
-/** The additional info. */
-export type OperationStatusErrorAdditionalInfoList =
-  Array<OperationErrorAdditionalInfo>;
-export const OperationStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
-  OperationErrorAdditionalInfo,
-) as any as S.Schema<OperationStatusErrorAdditionalInfoList>;
-
-/** Class for operation status errors. */
-export interface OperationStatusError {
-  /** The error code. */
-  code?: string;
-  /** The error message. */
-  message?: string;
-  /** The error details. */
-  details?: OperationStatusErrorDetailsList;
-  /** The additional info. */
-  additionalInfo?: OperationStatusErrorAdditionalInfoList;
-}
-export const OperationStatusError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.optional(S.String),
-    message: S.optional(S.String),
-    details: S.optional(OperationStatusErrorDetailsList),
-    additionalInfo: S.optional(OperationStatusErrorAdditionalInfoList),
-  }),
-).annotate({
-  identifier: "OperationStatusError",
-}) as any as S.Schema<OperationStatusError>;
-
-/** Operation status REST resource. */
-export interface OperationStatus {
-  /** Resource Id. */
-  id?: string;
-  /** Operation name. */
-  name?: string;
-  /** Status of the operation. ARM expects the terminal status to be one of Succeeded/ Failed/ Canceled. All other values imply that the operation is still running. */
-  status?: string;
-  /** Start time. */
-  startTime?: string;
-  /** End time. */
-  endTime?: string;
-  /** Error stating all error details for the operation. */
-  error?: OperationStatusError;
-  /** Custom data. */
-  properties?: unknown;
-}
-export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    status: S.optional(S.String),
-    startTime: S.optional(S.String),
-    endTime: S.optional(S.String),
-    error: S.optional(OperationStatusError),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "OperationStatus",
-}) as any as S.Schema<OperationStatus>;
-
-/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsCommitRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsCommitRequestMoveResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MoveCollectionsCommitRequestMoveResourcesList>;
-
-export interface MoveCollectionsCommitRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
-  validateOnly?: boolean;
-  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-  moveResources: MoveCollectionsCommitRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType | (string & {});
-}
-export const MoveCollectionsCommitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean),
-    moveResources: MoveCollectionsCommitRequestMoveResourcesList,
-    moveResourceInputType: S.optional(MoveResourceInputType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsCommitRequest",
-}) as any as S.Schema<MoveCollectionsCommitRequest>;
-
 /** Resource tags. */
 export type MoveCollectionsCreateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -277,7 +69,7 @@ export const MoveCollectionPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "MoveCollectionPropertiesInput",
 }) as any as S.Schema<MoveCollectionPropertiesInput>;
 
-export interface MoveCollectionsCreateRequest {
+export interface CreateMoveCollectionRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   /** The Resource Group Name. */
@@ -291,7 +83,7 @@ export interface MoveCollectionsCreateRequest {
   identity?: Identity;
   properties?: MoveCollectionPropertiesInput;
 }
-export const MoveCollectionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMoveCollectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -309,8 +101,8 @@ export const MoveCollectionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MoveCollectionsCreateRequest",
-}) as any as S.Schema<MoveCollectionsCreateRequest>;
+  identifier: "CreateMoveCollectionRequest",
+}) as any as S.Schema<CreateMoveCollectionRequest>;
 
 /** Resource tags. */
 export type MoveCollectionTagsMap = { [key: string]: string | undefined };
@@ -475,355 +267,6 @@ export const MoveCollection = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoveCollection" }) as any as S.Schema<MoveCollection>;
 
-export interface MoveCollectionsDeleteRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-}
-export const MoveCollectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsDeleteRequest",
-}) as any as S.Schema<MoveCollectionsDeleteRequest>;
-
-/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsDiscardRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsDiscardRequestMoveResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MoveCollectionsDiscardRequestMoveResourcesList>;
-
-export interface MoveCollectionsDiscardRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
-  validateOnly?: boolean;
-  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-  moveResources: MoveCollectionsDiscardRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType | (string & {});
-}
-export const MoveCollectionsDiscardRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean),
-    moveResources: MoveCollectionsDiscardRequestMoveResourcesList,
-    moveResourceInputType: S.optional(MoveResourceInputType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsDiscardRequest",
-}) as any as S.Schema<MoveCollectionsDiscardRequest>;
-
-export interface MoveCollectionsGetRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-}
-export const MoveCollectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsGetRequest",
-}) as any as S.Schema<MoveCollectionsGetRequest>;
-
-/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsInitiateMoveRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsInitiateMoveRequestMoveResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MoveCollectionsInitiateMoveRequestMoveResourcesList>;
-
-export interface MoveCollectionsInitiateMoveRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
-  validateOnly?: boolean;
-  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-  moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType | (string & {});
-}
-export const MoveCollectionsInitiateMoveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean),
-    moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList,
-    moveResourceInputType: S.optional(MoveResourceInputType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsInitiateMoveRequest",
-}) as any as S.Schema<MoveCollectionsInitiateMoveRequest>;
-
-export interface MoveCollectionsListMoveCollectionsByResourceGroupRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-}
-export const MoveCollectionsListMoveCollectionsByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
-        code: 200,
-        apiVersion: "2023-08-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "MoveCollectionsListMoveCollectionsByResourceGroupRequest",
-  }) as any as S.Schema<MoveCollectionsListMoveCollectionsByResourceGroupRequest>;
-
-/** Gets the list of move collections. */
-export type MoveCollectionResultListValueList = Array<MoveCollection>;
-export const MoveCollectionResultListValueList = /*@__PURE__*/ S.Array(
-  MoveCollection,
-) as any as S.Schema<MoveCollectionResultListValueList>;
-
-/** Defines the collection of move collections. */
-export interface MoveCollectionResultList {
-  /** Gets the list of move collections. */
-  value?: MoveCollectionResultListValueList;
-  /** Gets the value of next link. */
-  nextLink?: string;
-}
-export const MoveCollectionResultList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MoveCollectionResultListValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MoveCollectionResultList",
-}) as any as S.Schema<MoveCollectionResultList>;
-
-export interface MoveCollectionsListMoveCollectionsBySubscriptionRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-}
-export const MoveCollectionsListMoveCollectionsBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
-        code: 200,
-        apiVersion: "2023-08-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "MoveCollectionsListMoveCollectionsBySubscriptionRequest",
-  }) as any as S.Schema<MoveCollectionsListMoveCollectionsBySubscriptionRequest>;
-
-export interface MoveCollectionsListRequiredForRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** The sourceId for which the api is invoked. */
-  sourceId: string;
-}
-export const MoveCollectionsListRequiredForRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      moveCollectionName: S.String.pipe(T.Label()),
-      sourceId: S.String.pipe(T.Query()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/requiredFor",
-        code: 200,
-        apiVersion: "2023-08-01",
-      }),
-    ),
-).annotate({
-  identifier: "MoveCollectionsListRequiredForRequest",
-}) as any as S.Schema<MoveCollectionsListRequiredForRequest>;
-
-/** Gets or sets the list of source Ids for which the input resource is required. */
-export type RequiredForResourcesCollectionSourceIdsList = Array<string>;
-export const RequiredForResourcesCollectionSourceIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RequiredForResourcesCollectionSourceIdsList>;
-
-/** Required for resources collection. */
-export interface RequiredForResourcesCollection {
-  /** Gets or sets the list of source Ids for which the input resource is required. */
-  sourceIds?: RequiredForResourcesCollectionSourceIdsList;
-}
-export const RequiredForResourcesCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceIds: S.optional(RequiredForResourcesCollectionSourceIdsList),
-  }),
-).annotate({
-  identifier: "RequiredForResourcesCollection",
-}) as any as S.Schema<RequiredForResourcesCollection>;
-
-/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-export type MoveCollectionsPrepareRequestMoveResourcesList = Array<string>;
-export const MoveCollectionsPrepareRequestMoveResourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MoveCollectionsPrepareRequestMoveResourcesList>;
-
-export interface MoveCollectionsPrepareRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
-  validateOnly?: boolean;
-  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
-  moveResources: MoveCollectionsPrepareRequestMoveResourcesList;
-  moveResourceInputType?: MoveResourceInputType | (string & {});
-}
-export const MoveCollectionsPrepareRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    validateOnly: S.optional(S.Boolean),
-    moveResources: MoveCollectionsPrepareRequestMoveResourcesList,
-    moveResourceInputType: S.optional(MoveResourceInputType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsPrepareRequest",
-}) as any as S.Schema<MoveCollectionsPrepareRequest>;
-
-export interface MoveCollectionsResolveDependenciesRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-}
-export const MoveCollectionsResolveDependenciesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      moveCollectionName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
-        code: 200,
-        apiVersion: "2023-08-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "MoveCollectionsResolveDependenciesRequest",
-  }) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>;
-
-/** Gets or sets the Resource tags. */
-export type MoveCollectionsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const MoveCollectionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MoveCollectionsUpdateRequestTagsMap>;
-
-export interface MoveCollectionsUpdateRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** Gets or sets the Resource tags. */
-  tags?: MoveCollectionsUpdateRequestTagsMap;
-  identity?: Identity;
-}
-export const MoveCollectionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    tags: S.optional(MoveCollectionsUpdateRequestTagsMap),
-    identity: S.optional(Identity),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveCollectionsUpdateRequest",
-}) as any as S.Schema<MoveCollectionsUpdateRequest>;
-
 /** Gets or sets the resource settings. */
 export interface ResourceSettings {
   /** The resource type. For example, the value can be Microsoft.Compute/virtualMachines. */
@@ -891,7 +334,7 @@ export const MoveResourcePropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "MoveResourcePropertiesInput",
 }) as any as S.Schema<MoveResourcePropertiesInput>;
 
-export interface MoveResourcesCreateRequest {
+export interface CreateMoveResourceRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   /** The Resource Group Name. */
@@ -902,7 +345,7 @@ export interface MoveResourcesCreateRequest {
   moveResourceName: string;
   properties?: MoveResourcePropertiesInput;
 }
-export const MoveResourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMoveResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -918,8 +361,8 @@ export const MoveResourcesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MoveResourcesCreateRequest",
-}) as any as S.Schema<MoveResourcesCreateRequest>;
+  identifier: "CreateMoveResourceRequest",
+}) as any as S.Schema<CreateMoveResourceRequest>;
 
 /** Defines the MoveResource states. */
 export type MoveState =
@@ -1158,7 +601,156 @@ export const MoveResource = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MoveResource" }) as any as S.Schema<MoveResource>;
 
-export interface MoveResourcesDeleteRequest {
+export interface DeleteMoveCollectionRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+}
+export const DeleteMoveCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMoveCollectionRequest",
+}) as any as S.Schema<DeleteMoveCollectionRequest>;
+
+/** The error details. */
+export type OperationStatusErrorDetailsList = Array<OperationStatusError>;
+export const OperationStatusErrorDetailsList = /*@__PURE__*/ S.Array(
+  S.suspend(() => OperationStatusError),
+) as any as S.Schema<OperationStatusErrorDetailsList>;
+
+/** The affected move resources. */
+export type AffectedMoveResourceMoveResourcesList = Array<AffectedMoveResource>;
+export const AffectedMoveResourceMoveResourcesList = /*@__PURE__*/ S.Array(
+  S.suspend(() => AffectedMoveResource),
+) as any as S.Schema<AffectedMoveResourceMoveResourcesList>;
+
+/** The RP custom operation error info. */
+export interface AffectedMoveResource {
+  /** The affected move resource id. */
+  id?: string;
+  /** The affected move resource source id. */
+  sourceId?: string;
+  /** The affected move resources. */
+  moveResources?: AffectedMoveResourceMoveResourcesList;
+}
+export const AffectedMoveResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    sourceId: S.optional(S.String),
+    moveResources: S.optional(AffectedMoveResourceMoveResourcesList),
+  }),
+).annotate({
+  identifier: "AffectedMoveResource",
+}) as any as S.Schema<AffectedMoveResource>;
+
+/** The affected move resources. */
+export type MoveErrorInfoMoveResourcesList = Array<AffectedMoveResource>;
+export const MoveErrorInfoMoveResourcesList = /*@__PURE__*/ S.Array(
+  AffectedMoveResource,
+) as any as S.Schema<MoveErrorInfoMoveResourcesList>;
+
+/** The move custom error info. */
+export interface MoveErrorInfo {
+  /** The affected move resources. */
+  moveResources?: MoveErrorInfoMoveResourcesList;
+}
+export const MoveErrorInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    moveResources: S.optional(MoveErrorInfoMoveResourcesList),
+  }),
+).annotate({ identifier: "MoveErrorInfo" }) as any as S.Schema<MoveErrorInfo>;
+
+/** The operation error info. */
+export interface OperationErrorAdditionalInfo {
+  /** The error type. */
+  type?: string;
+  /** The operation error info. */
+  info?: MoveErrorInfo;
+}
+export const OperationErrorAdditionalInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(S.String),
+    info: S.optional(MoveErrorInfo),
+  }),
+).annotate({
+  identifier: "OperationErrorAdditionalInfo",
+}) as any as S.Schema<OperationErrorAdditionalInfo>;
+
+/** The additional info. */
+export type OperationStatusErrorAdditionalInfoList =
+  Array<OperationErrorAdditionalInfo>;
+export const OperationStatusErrorAdditionalInfoList = /*@__PURE__*/ S.Array(
+  OperationErrorAdditionalInfo,
+) as any as S.Schema<OperationStatusErrorAdditionalInfoList>;
+
+/** Class for operation status errors. */
+export interface OperationStatusError {
+  /** The error code. */
+  code?: string;
+  /** The error message. */
+  message?: string;
+  /** The error details. */
+  details?: OperationStatusErrorDetailsList;
+  /** The additional info. */
+  additionalInfo?: OperationStatusErrorAdditionalInfoList;
+}
+export const OperationStatusError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.optional(S.String),
+    message: S.optional(S.String),
+    details: S.optional(OperationStatusErrorDetailsList),
+    additionalInfo: S.optional(OperationStatusErrorAdditionalInfoList),
+  }),
+).annotate({
+  identifier: "OperationStatusError",
+}) as any as S.Schema<OperationStatusError>;
+
+/** Operation status REST resource. */
+export interface OperationStatus {
+  /** Resource Id. */
+  id?: string;
+  /** Operation name. */
+  name?: string;
+  /** Status of the operation. ARM expects the terminal status to be one of Succeeded/ Failed/ Canceled. All other values imply that the operation is still running. */
+  status?: string;
+  /** Start time. */
+  startTime?: string;
+  /** End time. */
+  endTime?: string;
+  /** Error stating all error details for the operation. */
+  error?: OperationStatusError;
+  /** Custom data. */
+  properties?: unknown;
+}
+export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    status: S.optional(S.String),
+    startTime: S.optional(S.String),
+    endTime: S.optional(S.String),
+    error: S.optional(OperationStatusError),
+    properties: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "OperationStatus",
+}) as any as S.Schema<OperationStatus>;
+
+export interface DeleteMoveResourceRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   /** The Resource Group Name. */
@@ -1168,7 +760,7 @@ export interface MoveResourcesDeleteRequest {
   /** The Move Resource Name. */
   moveResourceName: string;
 }
-export const MoveResourcesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMoveResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1183,10 +775,35 @@ export const MoveResourcesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MoveResourcesDeleteRequest",
-}) as any as S.Schema<MoveResourcesDeleteRequest>;
+  identifier: "DeleteMoveResourceRequest",
+}) as any as S.Schema<DeleteMoveResourceRequest>;
 
-export interface MoveResourcesGetRequest {
+export interface GetMoveCollectionRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+}
+export const GetMoveCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetMoveCollectionRequest",
+}) as any as S.Schema<GetMoveCollectionRequest>;
+
+export interface GetMoveResourceRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   /** The Resource Group Name. */
@@ -1196,7 +813,7 @@ export interface MoveResourcesGetRequest {
   /** The Move Resource Name. */
   moveResourceName: string;
 }
-export const MoveResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetMoveResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1211,103 +828,11 @@ export const MoveResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MoveResourcesGetRequest",
-}) as any as S.Schema<MoveResourcesGetRequest>;
+  identifier: "GetMoveResourceRequest",
+}) as any as S.Schema<GetMoveResourceRequest>;
 
-export interface MoveResourcesListRequest {
-  /** The Subscription ID. */
-  subscriptionId: string;
-  /** The Resource Group Name. */
-  resourceGroupName: string;
-  /** The Move Collection Name. */
-  moveCollectionName: string;
-  /** The filter to apply on the operation. For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'. */
-  _filter?: string;
-}
-export const MoveResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    moveCollectionName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
-      code: 200,
-      apiVersion: "2023-08-01",
-    }),
-  ),
-).annotate({
-  identifier: "MoveResourcesListRequest",
-}) as any as S.Schema<MoveResourcesListRequest>;
-
-/** Gets the list of move resources. */
-export type MoveResourceCollectionValueList = Array<MoveResource>;
-export const MoveResourceCollectionValueList = /*@__PURE__*/ S.Array(
-  MoveResource,
-) as any as S.Schema<MoveResourceCollectionValueList>;
-
-/** Summary item. */
-export interface Summary {
-  /** Gets the count. */
-  count?: number;
-  /** Gets the item. */
-  item?: string;
-}
-export const Summary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.optional(S.Number),
-    item: S.optional(S.String),
-  }),
-).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
-
-/** Gets or sets the list of summary items. */
-export type SummaryCollectionSummaryList = Array<Summary>;
-export const SummaryCollectionSummaryList = /*@__PURE__*/ S.Array(
-  Summary,
-) as any as S.Schema<SummaryCollectionSummaryList>;
-
-/** Summary Collection. */
-export interface SummaryCollection {
-  /** Gets or sets the field name on which summary is done. */
-  fieldName?: string;
-  /** Gets or sets the list of summary items. */
-  summary?: SummaryCollectionSummaryList;
-}
-export const SummaryCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fieldName: S.optional(S.String),
-    summary: S.optional(SummaryCollectionSummaryList),
-  }),
-).annotate({
-  identifier: "SummaryCollection",
-}) as any as S.Schema<SummaryCollection>;
-
-/** Defines the collection of move resources. */
-export interface MoveResourceCollection {
-  /** Gets the list of move resources. */
-  value?: MoveResourceCollectionValueList;
-  /** Gets the value of next link. */
-  nextLink?: string;
-  /** Gets or sets the list of summary items and the field on which summary is done. */
-  summaryCollection?: SummaryCollection;
-  /** Gets the total count. */
-  totalCount?: number;
-}
-export const MoveResourceCollection = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MoveResourceCollectionValueList),
-    nextLink: S.optional(S.String),
-    summaryCollection: S.optional(SummaryCollection),
-    totalCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MoveResourceCollection",
-}) as any as S.Schema<MoveResourceCollection>;
-
-export interface OperationsDiscoveryGetRequest {}
-export const OperationsDiscoveryGetRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetOperationDiscoveryRequest {}
+export const GetOperationDiscoveryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1317,8 +842,8 @@ export const OperationsDiscoveryGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsDiscoveryGetRequest",
-}) as any as S.Schema<OperationsDiscoveryGetRequest>;
+  identifier: "GetOperationDiscoveryRequest",
+}) as any as S.Schema<GetOperationDiscoveryRequest>;
 
 /** Contains the localized display information for this particular operation / action. These value will be used by several clients for (1) custom role definitions for RBAC; (2) complex query filters for the event service; and (3) audit history / records for management operations. */
 export interface Display {
@@ -1391,7 +916,7 @@ export type UnresolvedDependenciesGetRequestDependencyLevel =
 export const UnresolvedDependenciesGetRequestDependencyLevel =
   /*@__PURE__*/ S.String;
 
-export interface UnresolvedDependenciesGetRequest {
+export interface GetUnresolvedDependencyRequest {
   /** The Subscription ID. */
   subscriptionId: string;
   /** The Resource Group Name. */
@@ -1407,7 +932,7 @@ export interface UnresolvedDependenciesGetRequest {
   /** The filter to apply on the operation. For example, $apply=filter(count eq 2). */
   _filter?: string;
 }
-export const UnresolvedDependenciesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetUnresolvedDependencyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1426,8 +951,8 @@ export const UnresolvedDependenciesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UnresolvedDependenciesGetRequest",
-}) as any as S.Schema<UnresolvedDependenciesGetRequest>;
+  identifier: "GetUnresolvedDependencyRequest",
+}) as any as S.Schema<GetUnresolvedDependencyRequest>;
 
 /** Unresolved dependency. */
 export interface UnresolvedDependency {
@@ -1452,6 +977,42 @@ export const UnresolvedDependencyCollectionValueList = /*@__PURE__*/ S.Array(
   UnresolvedDependency,
 ) as any as S.Schema<UnresolvedDependencyCollectionValueList>;
 
+/** Summary item. */
+export interface Summary {
+  /** Gets the count. */
+  count?: number;
+  /** Gets the item. */
+  item?: string;
+}
+export const Summary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    item: S.optional(S.String),
+  }),
+).annotate({ identifier: "Summary" }) as any as S.Schema<Summary>;
+
+/** Gets or sets the list of summary items. */
+export type SummaryCollectionSummaryList = Array<Summary>;
+export const SummaryCollectionSummaryList = /*@__PURE__*/ S.Array(
+  Summary,
+) as any as S.Schema<SummaryCollectionSummaryList>;
+
+/** Summary Collection. */
+export interface SummaryCollection {
+  /** Gets or sets the field name on which summary is done. */
+  fieldName?: string;
+  /** Gets or sets the list of summary items. */
+  summary?: SummaryCollectionSummaryList;
+}
+export const SummaryCollection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fieldName: S.optional(S.String),
+    summary: S.optional(SummaryCollectionSummaryList),
+  }),
+).annotate({
+  identifier: "SummaryCollection",
+}) as any as S.Schema<SummaryCollection>;
+
 /** Unresolved dependency collection. */
 export interface UnresolvedDependencyCollection {
   /** Gets or sets the list of unresolved dependencies. */
@@ -1473,6 +1034,624 @@ export const UnresolvedDependencyCollection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "UnresolvedDependencyCollection",
 }) as any as S.Schema<UnresolvedDependencyCollection>;
+
+export interface ListMoveCollectionMoveCollectionByResourceGroupRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+}
+export const ListMoveCollectionMoveCollectionByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections",
+        code: 200,
+        apiVersion: "2023-08-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListMoveCollectionMoveCollectionByResourceGroupRequest",
+  }) as any as S.Schema<ListMoveCollectionMoveCollectionByResourceGroupRequest>;
+
+/** Gets the list of move collections. */
+export type MoveCollectionResultListValueList = Array<MoveCollection>;
+export const MoveCollectionResultListValueList = /*@__PURE__*/ S.Array(
+  MoveCollection,
+) as any as S.Schema<MoveCollectionResultListValueList>;
+
+/** Defines the collection of move collections. */
+export interface MoveCollectionResultList {
+  /** Gets the list of move collections. */
+  value?: MoveCollectionResultListValueList;
+  /** Gets the value of next link. */
+  nextLink?: string;
+}
+export const MoveCollectionResultList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MoveCollectionResultListValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MoveCollectionResultList",
+}) as any as S.Schema<MoveCollectionResultList>;
+
+export interface ListMoveCollectionMoveCollectionBySubscriptionRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+}
+export const ListMoveCollectionMoveCollectionBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Migrate/moveCollections",
+        code: 200,
+        apiVersion: "2023-08-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListMoveCollectionMoveCollectionBySubscriptionRequest",
+  }) as any as S.Schema<ListMoveCollectionMoveCollectionBySubscriptionRequest>;
+
+export interface ListMoveCollectionRequiredForRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** The sourceId for which the api is invoked. */
+  sourceId: string;
+}
+export const ListMoveCollectionRequiredForRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      moveCollectionName: S.String.pipe(T.Label()),
+      sourceId: S.String.pipe(T.Query()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/requiredFor",
+        code: 200,
+        apiVersion: "2023-08-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListMoveCollectionRequiredForRequest",
+}) as any as S.Schema<ListMoveCollectionRequiredForRequest>;
+
+/** Gets or sets the list of source Ids for which the input resource is required. */
+export type RequiredForResourcesCollectionSourceIdsList = Array<string>;
+export const RequiredForResourcesCollectionSourceIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RequiredForResourcesCollectionSourceIdsList>;
+
+/** Required for resources collection. */
+export interface RequiredForResourcesCollection {
+  /** Gets or sets the list of source Ids for which the input resource is required. */
+  sourceIds?: RequiredForResourcesCollectionSourceIdsList;
+}
+export const RequiredForResourcesCollection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceIds: S.optional(RequiredForResourcesCollectionSourceIdsList),
+  }),
+).annotate({
+  identifier: "RequiredForResourcesCollection",
+}) as any as S.Schema<RequiredForResourcesCollection>;
+
+export interface ListMoveResourcesRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** The filter to apply on the operation. For example, you can use $filter=Properties/ProvisioningState eq 'Succeeded'. */
+  _filter?: string;
+}
+export const ListMoveResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/moveResources",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListMoveResourcesRequest",
+}) as any as S.Schema<ListMoveResourcesRequest>;
+
+/** Gets the list of move resources. */
+export type MoveResourceCollectionValueList = Array<MoveResource>;
+export const MoveResourceCollectionValueList = /*@__PURE__*/ S.Array(
+  MoveResource,
+) as any as S.Schema<MoveResourceCollectionValueList>;
+
+/** Defines the collection of move resources. */
+export interface MoveResourceCollection {
+  /** Gets the list of move resources. */
+  value?: MoveResourceCollectionValueList;
+  /** Gets the value of next link. */
+  nextLink?: string;
+  /** Gets or sets the list of summary items and the field on which summary is done. */
+  summaryCollection?: SummaryCollection;
+  /** Gets the total count. */
+  totalCount?: number;
+}
+export const MoveResourceCollection = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MoveResourceCollectionValueList),
+    nextLink: S.optional(S.String),
+    summaryCollection: S.optional(SummaryCollection),
+    totalCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MoveResourceCollection",
+}) as any as S.Schema<MoveResourceCollection>;
+
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsBulkRemoveRequestMoveResourcesList = Array<string>;
+export const MoveCollectionsBulkRemoveRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsBulkRemoveRequestMoveResourcesList>;
+
+/** Defines the move resource input type. */
+export type MoveResourceInputType = "MoveResourceId" | "MoveResourceSourceId";
+export const MoveResourceInputType = /*@__PURE__*/ S.String;
+
+export interface MoveCollectionsBulkRemoveRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  resourceGroupName: string;
+  moveCollectionName: string;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources?: MoveCollectionsBulkRemoveRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
+}
+export const MoveCollectionsBulkRemoveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: S.optional(
+      MoveCollectionsBulkRemoveRequestMoveResourcesList,
+    ),
+    moveResourceInputType: S.optional(MoveResourceInputType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/bulkRemove",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCollectionsBulkRemoveRequest",
+}) as any as S.Schema<MoveCollectionsBulkRemoveRequest>;
+
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsCommitRequestMoveResourcesList = Array<string>;
+export const MoveCollectionsCommitRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsCommitRequestMoveResourcesList>;
+
+export interface MoveCollectionsCommitRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsCommitRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
+}
+export const MoveCollectionsCommitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsCommitRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/commit",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCollectionsCommitRequest",
+}) as any as S.Schema<MoveCollectionsCommitRequest>;
+
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsDiscardRequestMoveResourcesList = Array<string>;
+export const MoveCollectionsDiscardRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsDiscardRequestMoveResourcesList>;
+
+export interface MoveCollectionsDiscardRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsDiscardRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
+}
+export const MoveCollectionsDiscardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsDiscardRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/discard",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCollectionsDiscardRequest",
+}) as any as S.Schema<MoveCollectionsDiscardRequest>;
+
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsInitiateMoveRequestMoveResourcesList = Array<string>;
+export const MoveCollectionsInitiateMoveRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsInitiateMoveRequestMoveResourcesList>;
+
+export interface MoveCollectionsInitiateMoveRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
+}
+export const MoveCollectionsInitiateMoveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsInitiateMoveRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/initiateMove",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCollectionsInitiateMoveRequest",
+}) as any as S.Schema<MoveCollectionsInitiateMoveRequest>;
+
+/** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+export type MoveCollectionsPrepareRequestMoveResourcesList = Array<string>;
+export const MoveCollectionsPrepareRequestMoveResourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MoveCollectionsPrepareRequestMoveResourcesList>;
+
+export interface MoveCollectionsPrepareRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** Gets or sets a value indicating whether the operation needs to only run pre-requisite. */
+  validateOnly?: boolean;
+  /** Gets or sets the list of resource Id's, by default it accepts move resource id's unless the input type is switched via moveResourceInputType property. */
+  moveResources: MoveCollectionsPrepareRequestMoveResourcesList;
+  moveResourceInputType?: MoveResourceInputType | (string & {});
+}
+export const MoveCollectionsPrepareRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    validateOnly: S.optional(S.Boolean),
+    moveResources: MoveCollectionsPrepareRequestMoveResourcesList,
+    moveResourceInputType: S.optional(MoveResourceInputType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/prepare",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "MoveCollectionsPrepareRequest",
+}) as any as S.Schema<MoveCollectionsPrepareRequest>;
+
+export interface MoveCollectionsResolveDependenciesRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+}
+export const MoveCollectionsResolveDependenciesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      moveCollectionName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}/resolveDependencies",
+        code: 200,
+        apiVersion: "2023-08-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "MoveCollectionsResolveDependenciesRequest",
+  }) as any as S.Schema<MoveCollectionsResolveDependenciesRequest>;
+
+/** Gets or sets the Resource tags. */
+export type MoveCollectionsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const MoveCollectionsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MoveCollectionsUpdateRequestTagsMap>;
+
+export interface UpdateMoveCollectionRequest {
+  /** The Subscription ID. */
+  subscriptionId: string;
+  /** The Resource Group Name. */
+  resourceGroupName: string;
+  /** The Move Collection Name. */
+  moveCollectionName: string;
+  /** Gets or sets the Resource tags. */
+  tags?: MoveCollectionsUpdateRequestTagsMap;
+  identity?: Identity;
+}
+export const UpdateMoveCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    moveCollectionName: S.String.pipe(T.Label()),
+    tags: S.optional(MoveCollectionsUpdateRequestTagsMap),
+    identity: S.optional(Identity),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/moveCollections/{moveCollectionName}",
+      code: 200,
+      apiVersion: "2023-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMoveCollectionRequest",
+}) as any as S.Schema<UpdateMoveCollectionRequest>;
+
+export type CreateMoveCollectionError = AzureOpError;
+/** Creates or updates a move collection. */
+export const CreateMoveCollection: API.OperationMethod<
+  CreateMoveCollectionRequest,
+  MoveCollection,
+  CreateMoveCollectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMoveCollectionRequest,
+  output: MoveCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateMoveResourceError = AzureOpError;
+/** Creates or updates a Move Resource in the move collection. */
+export const CreateMoveResource: API.OperationMethod<
+  CreateMoveResourceRequest,
+  MoveResource,
+  CreateMoveResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMoveResourceRequest,
+  output: MoveResource,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteMoveCollectionError = AzureOpError;
+/** Deletes a move collection. */
+export const DeleteMoveCollection: API.OperationMethod<
+  DeleteMoveCollectionRequest,
+  OperationStatus,
+  DeleteMoveCollectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMoveCollectionRequest,
+  output: OperationStatus,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteMoveResourceError = AzureOpError;
+/** Deletes a Move Resource from the move collection. */
+export const DeleteMoveResource: API.OperationMethod<
+  DeleteMoveResourceRequest,
+  OperationStatus,
+  DeleteMoveResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMoveResourceRequest,
+  output: OperationStatus,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMoveCollectionError = AzureOpError;
+/** Gets the move collection. */
+export const GetMoveCollection: API.OperationMethod<
+  GetMoveCollectionRequest,
+  MoveCollection,
+  GetMoveCollectionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMoveCollectionRequest,
+  output: MoveCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetMoveResourceError = AzureOpError;
+/** Gets the Move Resource. */
+export const GetMoveResource: API.OperationMethod<
+  GetMoveResourceRequest,
+  MoveResource,
+  GetMoveResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMoveResourceRequest,
+  output: MoveResource,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOperationDiscoveryError = AzureOpError;
+export const GetOperationDiscovery: API.OperationMethod<
+  GetOperationDiscoveryRequest,
+  OperationsDiscoveryCollection,
+  GetOperationDiscoveryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOperationDiscoveryRequest,
+  output: OperationsDiscoveryCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetUnresolvedDependencyError = AzureOpError;
+/** Gets a list of unresolved dependencies. */
+export const GetUnresolvedDependency: API.OperationMethod<
+  GetUnresolvedDependencyRequest,
+  UnresolvedDependencyCollection,
+  GetUnresolvedDependencyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUnresolvedDependencyRequest,
+  output: UnresolvedDependencyCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMoveCollectionMoveCollectionByResourceGroupError = AzureOpError;
+/** Get all Move Collections. Get all the Move Collections in the resource group. */
+export const ListMoveCollectionMoveCollectionByResourceGroup: API.OperationMethod<
+  ListMoveCollectionMoveCollectionByResourceGroupRequest,
+  MoveCollectionResultList,
+  ListMoveCollectionMoveCollectionByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMoveCollectionMoveCollectionByResourceGroupRequest,
+  output: MoveCollectionResultList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMoveCollectionMoveCollectionBySubscriptionError = AzureOpError;
+/** Get all Move Collections. Get all the Move Collections in the subscription. */
+export const ListMoveCollectionMoveCollectionBySubscription: API.OperationMethod<
+  ListMoveCollectionMoveCollectionBySubscriptionRequest,
+  MoveCollectionResultList,
+  ListMoveCollectionMoveCollectionBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMoveCollectionMoveCollectionBySubscriptionRequest,
+  output: MoveCollectionResultList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMoveCollectionRequiredForError = AzureOpError;
+/** List of the move resources for which an arm resource is required for. */
+export const ListMoveCollectionRequiredFor: API.OperationMethod<
+  ListMoveCollectionRequiredForRequest,
+  RequiredForResourcesCollection,
+  ListMoveCollectionRequiredForError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMoveCollectionRequiredForRequest,
+  output: RequiredForResourcesCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMoveResourcesError = AzureOpError;
+/** Lists the Move Resources in the move collection. */
+export const ListMoveResources: API.OperationMethod<
+  ListMoveResourcesRequest,
+  MoveResourceCollection,
+  ListMoveResourcesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMoveResourcesRequest,
+  output: MoveResourceCollection,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
 
 export type MoveCollectionsBulkRemoveError = AzureOpError;
 /** Removes the set of move resources included in the request body from move collection. The orchestration is done by service. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true. */
@@ -1504,36 +1683,6 @@ export const MoveCollectionsCommit: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveCollectionsCreateError = AzureOpError;
-/** Creates or updates a move collection. */
-export const MoveCollectionsCreate: API.OperationMethod<
-  MoveCollectionsCreateRequest,
-  MoveCollection,
-  MoveCollectionsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsCreateRequest,
-  output: MoveCollection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveCollectionsDeleteError = AzureOpError;
-/** Deletes a move collection. */
-export const MoveCollectionsDelete: API.OperationMethod<
-  MoveCollectionsDeleteRequest,
-  OperationStatus,
-  MoveCollectionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsDeleteRequest,
-  output: OperationStatus,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type MoveCollectionsDiscardError = AzureOpError;
 /** Discards the set of resources included in the request body. The discard operation is triggered on the moveResources in the moveState 'CommitPending' or 'DiscardFailed', on a successful completion the moveResource moveState do a transition to MovePending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true. */
 export const MoveCollectionsDiscard: API.OperationMethod<
@@ -1549,21 +1698,6 @@ export const MoveCollectionsDiscard: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveCollectionsGetError = AzureOpError;
-/** Gets the move collection. */
-export const MoveCollectionsGet: API.OperationMethod<
-  MoveCollectionsGetRequest,
-  MoveCollection,
-  MoveCollectionsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsGetRequest,
-  output: MoveCollection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type MoveCollectionsInitiateMoveError = AzureOpError;
 /** Moves the set of resources included in the request body. The move operation is triggered after the moveResources are in the moveState 'MovePending' or 'MoveFailed', on a successful completion the moveResource moveState do a transition to CommitPending. To aid the user to prerequisite the operation the client can call operation with validateOnly property set to true. */
 export const MoveCollectionsInitiateMove: API.OperationMethod<
@@ -1574,53 +1708,6 @@ export const MoveCollectionsInitiateMove: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MoveCollectionsInitiateMoveRequest,
   output: OperationStatus,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveCollectionsListMoveCollectionsByResourceGroupError =
-  AzureOpError;
-/** Get all Move Collections. Get all the Move Collections in the resource group. */
-export const MoveCollectionsListMoveCollectionsByResourceGroup: API.OperationMethod<
-  MoveCollectionsListMoveCollectionsByResourceGroupRequest,
-  MoveCollectionResultList,
-  MoveCollectionsListMoveCollectionsByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsListMoveCollectionsByResourceGroupRequest,
-  output: MoveCollectionResultList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveCollectionsListMoveCollectionsBySubscriptionError =
-  AzureOpError;
-/** Get all Move Collections. Get all the Move Collections in the subscription. */
-export const MoveCollectionsListMoveCollectionsBySubscription: API.OperationMethod<
-  MoveCollectionsListMoveCollectionsBySubscriptionRequest,
-  MoveCollectionResultList,
-  MoveCollectionsListMoveCollectionsBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsListMoveCollectionsBySubscriptionRequest,
-  output: MoveCollectionResultList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveCollectionsListRequiredForError = AzureOpError;
-/** List of the move resources for which an arm resource is required for. */
-export const MoveCollectionsListRequiredFor: API.OperationMethod<
-  MoveCollectionsListRequiredForRequest,
-  RequiredForResourcesCollection,
-  MoveCollectionsListRequiredForError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsListRequiredForRequest,
-  output: RequiredForResourcesCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1656,105 +1743,16 @@ export const MoveCollectionsResolveDependencies: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type MoveCollectionsUpdateError = AzureOpError;
+export type UpdateMoveCollectionError = AzureOpError;
 /** Updates a move collection. */
-export const MoveCollectionsUpdate: API.OperationMethod<
-  MoveCollectionsUpdateRequest,
+export const UpdateMoveCollection: API.OperationMethod<
+  UpdateMoveCollectionRequest,
   MoveCollection,
-  MoveCollectionsUpdateError,
+  UpdateMoveCollectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveCollectionsUpdateRequest,
+  input: UpdateMoveCollectionRequest,
   output: MoveCollection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveResourcesCreateError = AzureOpError;
-/** Creates or updates a Move Resource in the move collection. */
-export const MoveResourcesCreate: API.OperationMethod<
-  MoveResourcesCreateRequest,
-  MoveResource,
-  MoveResourcesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveResourcesCreateRequest,
-  output: MoveResource,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveResourcesDeleteError = AzureOpError;
-/** Deletes a Move Resource from the move collection. */
-export const MoveResourcesDelete: API.OperationMethod<
-  MoveResourcesDeleteRequest,
-  OperationStatus,
-  MoveResourcesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveResourcesDeleteRequest,
-  output: OperationStatus,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveResourcesGetError = AzureOpError;
-/** Gets the Move Resource. */
-export const MoveResourcesGet: API.OperationMethod<
-  MoveResourcesGetRequest,
-  MoveResource,
-  MoveResourcesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveResourcesGetRequest,
-  output: MoveResource,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MoveResourcesListError = AzureOpError;
-/** Lists the Move Resources in the move collection. */
-export const MoveResourcesList: API.OperationMethod<
-  MoveResourcesListRequest,
-  MoveResourceCollection,
-  MoveResourcesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MoveResourcesListRequest,
-  output: MoveResourceCollection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsDiscoveryGetError = AzureOpError;
-export const OperationsDiscoveryGet: API.OperationMethod<
-  OperationsDiscoveryGetRequest,
-  OperationsDiscoveryCollection,
-  OperationsDiscoveryGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsDiscoveryGetRequest,
-  output: OperationsDiscoveryCollection,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UnresolvedDependenciesGetError = AzureOpError;
-/** Gets a list of unresolved dependencies. */
-export const UnresolvedDependenciesGet: API.OperationMethod<
-  UnresolvedDependenciesGetRequest,
-  UnresolvedDependencyCollection,
-  UnresolvedDependenciesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UnresolvedDependenciesGetRequest,
-  output: UnresolvedDependencyCollection,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

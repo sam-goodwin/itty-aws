@@ -119,13 +119,13 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#OperationsList": {
+    "com.azure.management#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.management#OperationsListResponse"
+        "target": "com.azure.management#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -138,7 +138,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#OperationsListResponse": {
+    "com.azure.management#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -277,10 +277,10 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsDelete": {
+    "com.azure.management#DeleteManagementGroupSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupSubscriptionsDeleteRequest"
+        "target": "com.azure.management#DeleteManagementGroupSubscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -296,7 +296,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsDeleteRequest": {
+    "com.azure.management#DeleteManagementGroupSubscriptionRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -320,13 +320,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsCreate": {
+    "com.azure.management#CreateManagementGroupSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupSubscriptionsCreateRequest"
+        "target": "com.azure.management#CreateManagementGroupSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.management#ManagementGroupSubscriptionsCreateResponse"
+        "target": "com.azure.management#CreateManagementGroupSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -339,7 +339,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsCreateResponse": {
+    "com.azure.management#CreateManagementGroupSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -532,7 +532,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsCreateRequest": {
+    "com.azure.management#CreateManagementGroupSubscriptionRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -556,13 +556,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsGetSubscription": {
+    "com.azure.management#GetManagementGroupSubscriptionSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionRequest"
+        "target": "com.azure.management#GetManagementGroupSubscriptionSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionResponse"
+        "target": "com.azure.management#GetManagementGroupSubscriptionSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -575,7 +575,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionResponse": {
+    "com.azure.management#GetManagementGroupSubscriptionSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -613,7 +613,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionRequest": {
+    "com.azure.management#GetManagementGroupSubscriptionSubscriptionRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -637,10 +637,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup": {
+    "com.azure.management#GetManagementGroupSubscriptionSubscriptionUnderManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest"
+        "target": "com.azure.management#GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest"
       },
       "output": {
         "target": "com.azure.management#ListSubscriptionUnderManagementGroup"
@@ -724,7 +724,7 @@
         "smithy.api#documentation": "The details of subscription under management group."
       }
     },
-    "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest": {
+    "com.azure.management#GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -747,10 +747,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#HierarchySettingsDelete": {
+    "com.azure.management#DeleteHierarchySetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#HierarchySettingsDeleteRequest"
+        "target": "com.azure.management#DeleteHierarchySettingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -766,7 +766,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#HierarchySettingsDeleteRequest": {
+    "com.azure.management#DeleteHierarchySettingRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -782,13 +782,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#HierarchySettingsUpdate": {
+    "com.azure.management#UpdateHierarchySetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#HierarchySettingsUpdateRequest"
+        "target": "com.azure.management#UpdateHierarchySettingRequest"
       },
       "output": {
-        "target": "com.azure.management#HierarchySettingsUpdateResponse"
+        "target": "com.azure.management#UpdateHierarchySettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -801,7 +801,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#HierarchySettingsUpdateResponse": {
+    "com.azure.management#UpdateHierarchySettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -865,7 +865,7 @@
         "smithy.api#documentation": "The generic properties of hierarchy settings."
       }
     },
-    "com.azure.management#HierarchySettingsUpdateRequest": {
+    "com.azure.management#UpdateHierarchySettingRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -986,13 +986,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#HierarchySettingsGet": {
+    "com.azure.management#GetHierarchySetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#HierarchySettingsGetRequest"
+        "target": "com.azure.management#GetHierarchySettingRequest"
       },
       "output": {
-        "target": "com.azure.management#HierarchySettingsGetResponse"
+        "target": "com.azure.management#GetHierarchySettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1005,7 +1005,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#HierarchySettingsGetResponse": {
+    "com.azure.management#GetHierarchySettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1043,7 +1043,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.management#HierarchySettingsGetRequest": {
+    "com.azure.management#GetHierarchySettingRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -1156,10 +1156,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#ManagementGroupsGetDescendants": {
+    "com.azure.management#GetManagementGroupDescendant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupsGetDescendantsRequest"
+        "target": "com.azure.management#GetManagementGroupDescendantRequest"
       },
       "output": {
         "target": "com.azure.management#DescendantListResult"
@@ -1262,7 +1262,7 @@
         "smithy.api#documentation": "The generic properties of an descendant."
       }
     },
-    "com.azure.management#ManagementGroupsGetDescendantsRequest": {
+    "com.azure.management#GetManagementGroupDescendantRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -1292,10 +1292,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#ManagementGroupsDelete": {
+    "com.azure.management#DeleteManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupsDeleteRequest"
+        "target": "com.azure.management#DeleteManagementGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1311,7 +1311,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#ManagementGroupsDeleteRequest": {
+    "com.azure.management#DeleteManagementGroupRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -1327,13 +1327,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#ManagementGroupsUpdate": {
+    "com.azure.management#UpdateManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupsUpdateRequest"
+        "target": "com.azure.management#UpdateManagementGroupRequest"
       },
       "output": {
-        "target": "com.azure.management#ManagementGroupsUpdateResponse"
+        "target": "com.azure.management#UpdateManagementGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1346,7 +1346,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#ManagementGroupsUpdateResponse": {
+    "com.azure.management#UpdateManagementGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1617,7 +1617,7 @@
         "smithy.api#documentation": "(Optional) The ID of the parent management group."
       }
     },
-    "com.azure.management#ManagementGroupsUpdateRequest": {
+    "com.azure.management#UpdateManagementGroupRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -1779,13 +1779,13 @@
         "smithy.api#documentation": "(Optional) The ID of the parent management group used during creation."
       }
     },
-    "com.azure.management#ManagementGroupsGet": {
+    "com.azure.management#GetManagementGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupsGetRequest"
+        "target": "com.azure.management#GetManagementGroupRequest"
       },
       "output": {
-        "target": "com.azure.management#ManagementGroupsGetResponse"
+        "target": "com.azure.management#GetManagementGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1798,7 +1798,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.management#ManagementGroupsGetResponse": {
+    "com.azure.management#GetManagementGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1836,7 +1836,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.management#ManagementGroupsGetRequest": {
+    "com.azure.management#GetManagementGroupRequest": {
       "type": "structure",
       "members": {
         "groupId": {
@@ -1897,10 +1897,10 @@
       },
       "traits": {}
     },
-    "com.azure.management#ManagementGroupsList": {
+    "com.azure.management#ListManagementGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ManagementGroupsListRequest"
+        "target": "com.azure.management#ListManagementGroupsRequest"
       },
       "output": {
         "target": "com.azure.management#ManagementGroupListResult"
@@ -1998,7 +1998,7 @@
         "smithy.api#documentation": "The generic properties of a management group."
       }
     },
-    "com.azure.management#ManagementGroupsListRequest": {
+    "com.azure.management#ListManagementGroupsRequest": {
       "type": "structure",
       "members": {
         "_skiptoken": {
@@ -2013,10 +2013,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.management#EntitiesList": {
+    "com.azure.management#ListEntities": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#EntitiesListRequest"
+        "target": "com.azure.management#ListEntitiesRequest"
       },
       "output": {
         "target": "com.azure.management#EntityListResult"
@@ -2245,7 +2245,7 @@
         "smithy.api#documentation": "(Optional) The ID of the parent management group."
       }
     },
-    "com.azure.management#EntitiesListRequest": {
+    "com.azure.management#ListEntitiesRequest": {
       "type": "structure",
       "members": {
         "_skiptoken": {
@@ -2861,13 +2861,13 @@
         "smithy.api#documentation": "The serviceGroup tags."
       }
     },
-    "com.azure.management#ServiceGroupsGet": {
+    "com.azure.management#GetServiceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.management#ServiceGroupsGetRequest"
+        "target": "com.azure.management#GetServiceGroupRequest"
       },
       "output": {
-        "target": "com.azure.management#ServiceGroupsGetResponse"
+        "target": "com.azure.management#GetServiceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2880,7 +2880,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.management#ServiceGroupsGetResponse": {
+    "com.azure.management#GetServiceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2942,7 +2942,7 @@
         "smithy.api#documentation": "The serviceGroup tags."
       }
     },
-    "com.azure.management#ServiceGroupsGetRequest": {
+    "com.azure.management#GetServiceGroupRequest": {
       "type": "structure",
       "members": {
         "serviceGroupName": {
@@ -2969,55 +2969,55 @@
           "target": "com.azure.management#StartTenantBackfill"
         },
         {
-          "target": "com.azure.management#OperationsList"
+          "target": "com.azure.management#ListOperations"
         },
         {
-          "target": "com.azure.management#ManagementGroupSubscriptionsDelete"
+          "target": "com.azure.management#DeleteManagementGroupSubscription"
         },
         {
-          "target": "com.azure.management#ManagementGroupSubscriptionsCreate"
+          "target": "com.azure.management#CreateManagementGroupSubscription"
         },
         {
-          "target": "com.azure.management#ManagementGroupSubscriptionsGetSubscription"
+          "target": "com.azure.management#GetManagementGroupSubscriptionSubscription"
         },
         {
-          "target": "com.azure.management#ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup"
+          "target": "com.azure.management#GetManagementGroupSubscriptionSubscriptionUnderManagementGroup"
         },
         {
-          "target": "com.azure.management#HierarchySettingsDelete"
+          "target": "com.azure.management#DeleteHierarchySetting"
         },
         {
-          "target": "com.azure.management#HierarchySettingsUpdate"
+          "target": "com.azure.management#UpdateHierarchySetting"
         },
         {
           "target": "com.azure.management#HierarchySettingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.management#HierarchySettingsGet"
+          "target": "com.azure.management#GetHierarchySetting"
         },
         {
           "target": "com.azure.management#HierarchySettingsList2"
         },
         {
-          "target": "com.azure.management#ManagementGroupsGetDescendants"
+          "target": "com.azure.management#GetManagementGroupDescendant"
         },
         {
-          "target": "com.azure.management#ManagementGroupsDelete"
+          "target": "com.azure.management#DeleteManagementGroup"
         },
         {
-          "target": "com.azure.management#ManagementGroupsUpdate"
+          "target": "com.azure.management#UpdateManagementGroup"
         },
         {
           "target": "com.azure.management#ManagementGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.management#ManagementGroupsGet"
+          "target": "com.azure.management#GetManagementGroup"
         },
         {
-          "target": "com.azure.management#ManagementGroupsList"
+          "target": "com.azure.management#ListManagementGroups"
         },
         {
-          "target": "com.azure.management#EntitiesList"
+          "target": "com.azure.management#ListEntities"
         },
         {
           "target": "com.azure.management#CheckNameAvailability"
@@ -3032,7 +3032,7 @@
           "target": "com.azure.management#CreateOrUpdateServiceGroup"
         },
         {
-          "target": "com.azure.management#ServiceGroupsGet"
+          "target": "com.azure.management#GetServiceGroup"
         }
       ],
       "traits": {

@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.support#CommunicationsCreate": {
+    "com.azure.support#CreateCommunication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsCreateRequest"
+        "target": "com.azure.support#CreateCommunicationRequest"
       },
       "output": {
-        "target": "com.azure.support#CommunicationsCreateResponse"
+        "target": "com.azure.support#CreateCommunicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsCreateResponse": {
+    "com.azure.support#CreateCommunicationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -269,7 +269,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.support#CommunicationsCreateRequest": {
+    "com.azure.support#CreateCommunicationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -336,13 +336,13 @@
         "smithy.api#documentation": "Describes the properties of a communication resource."
       }
     },
-    "com.azure.support#CommunicationsGet": {
+    "com.azure.support#GetCommunication": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsGetRequest"
+        "target": "com.azure.support#GetCommunicationRequest"
       },
       "output": {
-        "target": "com.azure.support#CommunicationsGetResponse"
+        "target": "com.azure.support#GetCommunicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -355,7 +355,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsGetResponse": {
+    "com.azure.support#GetCommunicationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -394,7 +394,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#CommunicationsGetRequest": {
+    "com.azure.support#GetCommunicationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -426,13 +426,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#CommunicationsList": {
+    "com.azure.support#ListCommunications": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsListRequest"
+        "target": "com.azure.support#ListCommunicationsRequest"
       },
       "output": {
-        "target": "com.azure.support#CommunicationsListResult"
+        "target": "com.azure.support#ListCommunicationsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -445,7 +445,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsListResult": {
+    "com.azure.support#ListCommunicationsResult": {
       "type": "structure",
       "members": {
         "nextLink": {
@@ -513,7 +513,7 @@
         "smithy.api#documentation": "Object that represents a Communication resource."
       }
     },
-    "com.azure.support#CommunicationsListRequest": {
+    "com.azure.support#ListCommunicationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -551,10 +551,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#CommunicationsCheckNameAvailability": {
+    "com.azure.support#CheckCommunicationNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsCheckNameAvailabilityRequest"
+        "target": "com.azure.support#CheckCommunicationNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.support#CheckNameAvailabilityOutput"
@@ -596,7 +596,7 @@
         "smithy.api#documentation": "Output of check name availability API."
       }
     },
-    "com.azure.support#CommunicationsCheckNameAvailabilityRequest": {
+    "com.azure.support#CheckCommunicationNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -654,13 +654,13 @@
         "smithy.api#documentation": "The type of resource."
       }
     },
-    "com.azure.support#ChatTranscriptsGet": {
+    "com.azure.support#GetChatTranscript": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ChatTranscriptsGetRequest"
+        "target": "com.azure.support#GetChatTranscriptRequest"
       },
       "output": {
-        "target": "com.azure.support#ChatTranscriptsGetResponse"
+        "target": "com.azure.support#GetChatTranscriptResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -673,7 +673,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ChatTranscriptsGetResponse": {
+    "com.azure.support#GetChatTranscriptResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -778,7 +778,7 @@
         "smithy.api#documentation": "Describes the properties of a Message Details resource."
       }
     },
-    "com.azure.support#ChatTranscriptsGetRequest": {
+    "com.azure.support#GetChatTranscriptRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -810,13 +810,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ChatTranscriptsList": {
+    "com.azure.support#ListChatTranscripts": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ChatTranscriptsListRequest"
+        "target": "com.azure.support#ListChatTranscriptsRequest"
       },
       "output": {
-        "target": "com.azure.support#ChatTranscriptsListResult"
+        "target": "com.azure.support#ListChatTranscriptsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -829,7 +829,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ChatTranscriptsListResult": {
+    "com.azure.support#ListChatTranscriptsResult": {
       "type": "structure",
       "members": {
         "nextLink": {
@@ -896,7 +896,7 @@
         "smithy.api#documentation": "Object that represents a Chat Transcript resource."
       }
     },
-    "com.azure.support#ChatTranscriptsListRequest": {
+    "com.azure.support#ListChatTranscriptsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -920,13 +920,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsUpdate": {
+    "com.azure.support#UpdateSupportTicket": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsUpdateRequest"
+        "target": "com.azure.support#UpdateSupportTicketRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsUpdateResponse"
+        "target": "com.azure.support#UpdateSupportTicketResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -939,7 +939,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsUpdateResponse": {
+    "com.azure.support#UpdateSupportTicketResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1483,7 +1483,7 @@
         "smithy.api#documentation": "A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers."
       }
     },
-    "com.azure.support#SupportTicketsUpdateRequest": {
+    "com.azure.support#UpdateSupportTicketRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1637,13 +1637,13 @@
         "smithy.api#documentation": "Status to be updated on the ticket."
       }
     },
-    "com.azure.support#SupportTicketsCreate": {
+    "com.azure.support#CreateSupportTicket": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsCreateRequest"
+        "target": "com.azure.support#CreateSupportTicketRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsCreateResponse"
+        "target": "com.azure.support#CreateSupportTicketResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1656,7 +1656,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsCreateResponse": {
+    "com.azure.support#CreateSupportTicketResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1695,7 +1695,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#SupportTicketsCreateRequest": {
+    "com.azure.support#CreateSupportTicketRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1878,13 +1878,13 @@
         "smithy.api#documentation": "Service Level Agreement details for a support ticket."
       }
     },
-    "com.azure.support#SupportTicketsGet": {
+    "com.azure.support#GetSupportTicket": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsGetRequest"
+        "target": "com.azure.support#GetSupportTicketRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsGetResponse"
+        "target": "com.azure.support#GetSupportTicketResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1897,7 +1897,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsGetResponse": {
+    "com.azure.support#GetSupportTicketResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1936,7 +1936,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#SupportTicketsGetRequest": {
+    "com.azure.support#GetSupportTicketRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1960,13 +1960,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsList": {
+    "com.azure.support#ListSupportTickets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsListRequest"
+        "target": "com.azure.support#ListSupportTicketsRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsListResult"
+        "target": "com.azure.support#ListSupportTicketsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -1979,7 +1979,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsListResult": {
+    "com.azure.support#ListSupportTicketsResult": {
       "type": "structure",
       "members": {
         "nextLink": {
@@ -2047,7 +2047,7 @@
         "smithy.api#documentation": "Object that represents SupportTicketDetails resource."
       }
     },
-    "com.azure.support#SupportTicketsListRequest": {
+    "com.azure.support#ListSupportTicketsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2140,13 +2140,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FilesCreate": {
+    "com.azure.support#CreateFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FilesCreateRequest"
+        "target": "com.azure.support#CreateFileRequest"
       },
       "output": {
-        "target": "com.azure.support#FilesCreateResponse"
+        "target": "com.azure.support#CreateFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2159,7 +2159,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FilesCreateResponse": {
+    "com.azure.support#CreateFileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2229,7 +2229,7 @@
         "smithy.api#documentation": "Describes the properties of a file."
       }
     },
-    "com.azure.support#FilesCreateRequest": {
+    "com.azure.support#CreateFileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2293,13 +2293,13 @@
         "smithy.api#documentation": "Describes the properties of a file."
       }
     },
-    "com.azure.support#FilesGet": {
+    "com.azure.support#GetFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FilesGetRequest"
+        "target": "com.azure.support#GetFileRequest"
       },
       "output": {
-        "target": "com.azure.support#FilesGetResponse"
+        "target": "com.azure.support#GetFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2312,7 +2312,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FilesGetResponse": {
+    "com.azure.support#GetFileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2350,7 +2350,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#FilesGetRequest": {
+    "com.azure.support#GetFileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2382,13 +2382,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FilesList": {
+    "com.azure.support#ListFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FilesListRequest"
+        "target": "com.azure.support#ListFilesRequest"
       },
       "output": {
-        "target": "com.azure.support#FilesListResult"
+        "target": "com.azure.support#ListFilesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -2401,7 +2401,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FilesListResult": {
+    "com.azure.support#ListFilesResult": {
       "type": "structure",
       "members": {
         "nextLink": {
@@ -2468,7 +2468,7 @@
         "smithy.api#documentation": "Object that represents File Details resource"
       }
     },
-    "com.azure.support#FilesListRequest": {
+    "com.azure.support#ListFilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2492,13 +2492,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FileWorkspacesCreate": {
+    "com.azure.support#CreateFileWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FileWorkspacesCreateRequest"
+        "target": "com.azure.support#CreateFileWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.support#FileWorkspacesCreateResponse"
+        "target": "com.azure.support#CreateFileWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2511,7 +2511,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FileWorkspacesCreateResponse": {
+    "com.azure.support#CreateFileWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2569,7 +2569,7 @@
         "smithy.api#documentation": "Describes the properties of a file workspace."
       }
     },
-    "com.azure.support#FileWorkspacesCreateRequest": {
+    "com.azure.support#CreateFileWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2593,13 +2593,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FileWorkspacesGet": {
+    "com.azure.support#GetFileWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FileWorkspacesGetRequest"
+        "target": "com.azure.support#GetFileWorkspaceRequest"
       },
       "output": {
-        "target": "com.azure.support#FileWorkspacesGetResponse"
+        "target": "com.azure.support#GetFileWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2612,7 +2612,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FileWorkspacesGetResponse": {
+    "com.azure.support#GetFileWorkspaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2650,7 +2650,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#FileWorkspacesGetRequest": {
+    "com.azure.support#GetFileWorkspaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2674,10 +2674,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsCheckNameAvailability": {
+    "com.azure.support#CheckSupportTicketNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsCheckNameAvailabilityRequest"
+        "target": "com.azure.support#CheckSupportTicketNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.support#CheckNameAvailabilityOutput"
@@ -2693,7 +2693,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsCheckNameAvailabilityRequest": {
+    "com.azure.support#CheckSupportTicketNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2723,13 +2723,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionCreate": {
+    "com.azure.support#CreateCommunicationNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsNoSubscriptionCreateRequest"
+        "target": "com.azure.support#CreateCommunicationNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#CommunicationsNoSubscriptionCreateResponse"
+        "target": "com.azure.support#CreateCommunicationNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2742,7 +2742,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionCreateResponse": {
+    "com.azure.support#CreateCommunicationNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2781,7 +2781,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionCreateRequest": {
+    "com.azure.support#CreateCommunicationNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -2812,13 +2812,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionGet": {
+    "com.azure.support#GetCommunicationNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsNoSubscriptionGetRequest"
+        "target": "com.azure.support#GetCommunicationNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#CommunicationsNoSubscriptionGetResponse"
+        "target": "com.azure.support#GetCommunicationNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2831,7 +2831,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionGetResponse": {
+    "com.azure.support#GetCommunicationNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2870,7 +2870,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionGetRequest": {
+    "com.azure.support#GetCommunicationNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -2894,13 +2894,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionList": {
+    "com.azure.support#ListCommunicationNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsNoSubscriptionListRequest"
+        "target": "com.azure.support#ListCommunicationNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#CommunicationsListResult"
+        "target": "com.azure.support#ListCommunicationsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -2913,7 +2913,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionListRequest": {
+    "com.azure.support#ListCommunicationNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -2943,10 +2943,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionCheckNameAvailability": {
+    "com.azure.support#CheckCommunicationNoSubscriptionNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#CommunicationsNoSubscriptionCheckNameAvailabilityRequest"
+        "target": "com.azure.support#CheckCommunicationNoSubscriptionNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.support#CheckNameAvailabilityOutput"
@@ -2962,7 +2962,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#CommunicationsNoSubscriptionCheckNameAvailabilityRequest": {
+    "com.azure.support#CheckCommunicationNoSubscriptionNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -2992,13 +2992,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ChatTranscriptsNoSubscriptionGet": {
+    "com.azure.support#GetChatTranscriptNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ChatTranscriptsNoSubscriptionGetRequest"
+        "target": "com.azure.support#GetChatTranscriptNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#ChatTranscriptsNoSubscriptionGetResponse"
+        "target": "com.azure.support#GetChatTranscriptNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3011,7 +3011,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ChatTranscriptsNoSubscriptionGetResponse": {
+    "com.azure.support#GetChatTranscriptNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3049,7 +3049,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#ChatTranscriptsNoSubscriptionGetRequest": {
+    "com.azure.support#GetChatTranscriptNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -3073,13 +3073,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ChatTranscriptsNoSubscriptionList": {
+    "com.azure.support#ListChatTranscriptNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ChatTranscriptsNoSubscriptionListRequest"
+        "target": "com.azure.support#ListChatTranscriptNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#ChatTranscriptsListResult"
+        "target": "com.azure.support#ListChatTranscriptsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -3092,7 +3092,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ChatTranscriptsNoSubscriptionListRequest": {
+    "com.azure.support#ListChatTranscriptNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -3108,13 +3108,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionUpdate": {
+    "com.azure.support#UpdateSupportTicketNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionUpdateRequest"
+        "target": "com.azure.support#UpdateSupportTicketNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionUpdateResponse"
+        "target": "com.azure.support#UpdateSupportTicketNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3127,7 +3127,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionUpdateResponse": {
+    "com.azure.support#UpdateSupportTicketNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3166,7 +3166,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionUpdateRequest": {
+    "com.azure.support#UpdateSupportTicketNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -3221,13 +3221,13 @@
         "smithy.api#documentation": "This property indicates secondary consents for the support ticket"
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionCreate": {
+    "com.azure.support#CreateSupportTicketNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionCreateRequest"
+        "target": "com.azure.support#CreateSupportTicketNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionCreateResponse"
+        "target": "com.azure.support#CreateSupportTicketNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3240,7 +3240,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionCreateResponse": {
+    "com.azure.support#CreateSupportTicketNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3279,7 +3279,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionCreateRequest": {
+    "com.azure.support#CreateSupportTicketNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -3302,13 +3302,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionGet": {
+    "com.azure.support#GetSupportTicketNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionGetRequest"
+        "target": "com.azure.support#GetSupportTicketNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionGetResponse"
+        "target": "com.azure.support#GetSupportTicketNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3321,7 +3321,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionGetResponse": {
+    "com.azure.support#GetSupportTicketNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3360,7 +3360,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionGetRequest": {
+    "com.azure.support#GetSupportTicketNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "supportTicketName": {
@@ -3376,13 +3376,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionList": {
+    "com.azure.support#ListSupportTicketNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionListRequest"
+        "target": "com.azure.support#ListSupportTicketNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#SupportTicketsListResult"
+        "target": "com.azure.support#ListSupportTicketsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -3395,7 +3395,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionListRequest": {
+    "com.azure.support#ListSupportTicketNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "_top": {
@@ -3417,13 +3417,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ProblemClassificationsGet": {
+    "com.azure.support#GetProblemClassification": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ProblemClassificationsGetRequest"
+        "target": "com.azure.support#GetProblemClassificationRequest"
       },
       "output": {
-        "target": "com.azure.support#ProblemClassificationsGetResponse"
+        "target": "com.azure.support#GetProblemClassificationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3436,7 +3436,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ProblemClassificationsGetResponse": {
+    "com.azure.support#GetProblemClassificationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3523,7 +3523,7 @@
         "smithy.api#documentation": "This property indicates whether secondary consent is present for problem classification."
       }
     },
-    "com.azure.support#ProblemClassificationsGetRequest": {
+    "com.azure.support#GetProblemClassificationRequest": {
       "type": "structure",
       "members": {
         "serviceName": {
@@ -3547,13 +3547,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ProblemClassificationsList": {
+    "com.azure.support#ListProblemClassifications": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ProblemClassificationsListRequest"
+        "target": "com.azure.support#ListProblemClassificationsRequest"
       },
       "output": {
-        "target": "com.azure.support#ProblemClassificationsListResult"
+        "target": "com.azure.support#ListProblemClassificationsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -3566,7 +3566,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ProblemClassificationsListResult": {
+    "com.azure.support#ListProblemClassificationsResult": {
       "type": "structure",
       "members": {
         "nextLink": {
@@ -3633,7 +3633,7 @@
         "smithy.api#documentation": "ProblemClassification resource object."
       }
     },
-    "com.azure.support#ProblemClassificationsListRequest": {
+    "com.azure.support#ListProblemClassificationsRequest": {
       "type": "structure",
       "members": {
         "serviceName": {
@@ -3649,13 +3649,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ServicesGet": {
+    "com.azure.support#GetService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#ServicesGetRequest"
+        "target": "com.azure.support#GetServiceRequest"
       },
       "output": {
-        "target": "com.azure.support#ServicesGetResponse"
+        "target": "com.azure.support#GetServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3668,7 +3668,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ServicesGetResponse": {
+    "com.azure.support#GetServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3735,7 +3735,7 @@
         "smithy.api#documentation": "ARM Resource types."
       }
     },
-    "com.azure.support#ServicesGetRequest": {
+    "com.azure.support#GetServiceRequest": {
       "type": "structure",
       "members": {
         "serviceName": {
@@ -3751,13 +3751,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#ServicesList": {
+    "com.azure.support#ListServices": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.support#ServicesListResult"
+        "target": "com.azure.support#ListServicesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -3770,7 +3770,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#ServicesListResult": {
+    "com.azure.support#ListServicesResult": {
       "type": "structure",
       "members": {
         "nextLink": {
@@ -3837,13 +3837,13 @@
         "smithy.api#documentation": "Object that represents a Service resource."
       }
     },
-    "com.azure.support#OperationsList": {
+    "com.azure.support#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.support#OperationsListResponse"
+        "target": "com.azure.support#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3856,7 +3856,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#OperationsListResponse": {
+    "com.azure.support#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -4050,13 +4050,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FilesNoSubscriptionCreate": {
+    "com.azure.support#CreateFileNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FilesNoSubscriptionCreateRequest"
+        "target": "com.azure.support#CreateFileNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#FilesNoSubscriptionCreateResponse"
+        "target": "com.azure.support#CreateFileNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4069,7 +4069,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FilesNoSubscriptionCreateResponse": {
+    "com.azure.support#CreateFileNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4107,7 +4107,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#FilesNoSubscriptionCreateRequest": {
+    "com.azure.support#CreateFileNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "fileWorkspaceName": {
@@ -4137,13 +4137,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FilesNoSubscriptionGet": {
+    "com.azure.support#GetFileNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FilesNoSubscriptionGetRequest"
+        "target": "com.azure.support#GetFileNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#FilesNoSubscriptionGetResponse"
+        "target": "com.azure.support#GetFileNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4156,7 +4156,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FilesNoSubscriptionGetResponse": {
+    "com.azure.support#GetFileNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4194,7 +4194,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#FilesNoSubscriptionGetRequest": {
+    "com.azure.support#GetFileNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "fileWorkspaceName": {
@@ -4218,13 +4218,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FilesNoSubscriptionList": {
+    "com.azure.support#ListFileNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FilesNoSubscriptionListRequest"
+        "target": "com.azure.support#ListFileNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#FilesListResult"
+        "target": "com.azure.support#ListFilesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -4237,7 +4237,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FilesNoSubscriptionListRequest": {
+    "com.azure.support#ListFileNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "fileWorkspaceName": {
@@ -4253,13 +4253,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FileWorkspacesNoSubscriptionCreate": {
+    "com.azure.support#CreateFileWorkspaceNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FileWorkspacesNoSubscriptionCreateRequest"
+        "target": "com.azure.support#CreateFileWorkspaceNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#FileWorkspacesNoSubscriptionCreateResponse"
+        "target": "com.azure.support#CreateFileWorkspaceNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4272,7 +4272,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FileWorkspacesNoSubscriptionCreateResponse": {
+    "com.azure.support#CreateFileWorkspaceNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4310,7 +4310,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#FileWorkspacesNoSubscriptionCreateRequest": {
+    "com.azure.support#CreateFileWorkspaceNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "fileWorkspaceName": {
@@ -4326,13 +4326,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#FileWorkspacesNoSubscriptionGet": {
+    "com.azure.support#GetFileWorkspaceNoSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#FileWorkspacesNoSubscriptionGetRequest"
+        "target": "com.azure.support#GetFileWorkspaceNoSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.support#FileWorkspacesNoSubscriptionGetResponse"
+        "target": "com.azure.support#GetFileWorkspaceNoSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4345,7 +4345,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#FileWorkspacesNoSubscriptionGetResponse": {
+    "com.azure.support#GetFileWorkspaceNoSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4383,7 +4383,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.support#FileWorkspacesNoSubscriptionGetRequest": {
+    "com.azure.support#GetFileWorkspaceNoSubscriptionRequest": {
       "type": "structure",
       "members": {
         "fileWorkspaceName": {
@@ -4399,10 +4399,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailability": {
+    "com.azure.support#CheckSupportTicketNoSubscriptionNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailabilityRequest"
+        "target": "com.azure.support#CheckSupportTicketNoSubscriptionNameAvailabilityRequest"
       },
       "output": {
         "target": "com.azure.support#CheckNameAvailabilityOutput"
@@ -4418,7 +4418,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailabilityRequest": {
+    "com.azure.support#CheckSupportTicketNoSubscriptionNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -4445,121 +4445,121 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.support#CommunicationsCreate"
+          "target": "com.azure.support#CreateCommunication"
         },
         {
-          "target": "com.azure.support#CommunicationsGet"
+          "target": "com.azure.support#GetCommunication"
         },
         {
-          "target": "com.azure.support#CommunicationsList"
+          "target": "com.azure.support#ListCommunications"
         },
         {
-          "target": "com.azure.support#CommunicationsCheckNameAvailability"
+          "target": "com.azure.support#CheckCommunicationNameAvailability"
         },
         {
-          "target": "com.azure.support#ChatTranscriptsGet"
+          "target": "com.azure.support#GetChatTranscript"
         },
         {
-          "target": "com.azure.support#ChatTranscriptsList"
+          "target": "com.azure.support#ListChatTranscripts"
         },
         {
-          "target": "com.azure.support#SupportTicketsUpdate"
+          "target": "com.azure.support#UpdateSupportTicket"
         },
         {
-          "target": "com.azure.support#SupportTicketsCreate"
+          "target": "com.azure.support#CreateSupportTicket"
         },
         {
-          "target": "com.azure.support#SupportTicketsGet"
+          "target": "com.azure.support#GetSupportTicket"
         },
         {
-          "target": "com.azure.support#SupportTicketsList"
+          "target": "com.azure.support#ListSupportTickets"
         },
         {
           "target": "com.azure.support#FilesUpload"
         },
         {
-          "target": "com.azure.support#FilesCreate"
+          "target": "com.azure.support#CreateFile"
         },
         {
-          "target": "com.azure.support#FilesGet"
+          "target": "com.azure.support#GetFile"
         },
         {
-          "target": "com.azure.support#FilesList"
+          "target": "com.azure.support#ListFiles"
         },
         {
-          "target": "com.azure.support#FileWorkspacesCreate"
+          "target": "com.azure.support#CreateFileWorkspace"
         },
         {
-          "target": "com.azure.support#FileWorkspacesGet"
+          "target": "com.azure.support#GetFileWorkspace"
         },
         {
-          "target": "com.azure.support#SupportTicketsCheckNameAvailability"
+          "target": "com.azure.support#CheckSupportTicketNameAvailability"
         },
         {
-          "target": "com.azure.support#CommunicationsNoSubscriptionCreate"
+          "target": "com.azure.support#CreateCommunicationNoSubscription"
         },
         {
-          "target": "com.azure.support#CommunicationsNoSubscriptionGet"
+          "target": "com.azure.support#GetCommunicationNoSubscription"
         },
         {
-          "target": "com.azure.support#CommunicationsNoSubscriptionList"
+          "target": "com.azure.support#ListCommunicationNoSubscription"
         },
         {
-          "target": "com.azure.support#CommunicationsNoSubscriptionCheckNameAvailability"
+          "target": "com.azure.support#CheckCommunicationNoSubscriptionNameAvailability"
         },
         {
-          "target": "com.azure.support#ChatTranscriptsNoSubscriptionGet"
+          "target": "com.azure.support#GetChatTranscriptNoSubscription"
         },
         {
-          "target": "com.azure.support#ChatTranscriptsNoSubscriptionList"
+          "target": "com.azure.support#ListChatTranscriptNoSubscription"
         },
         {
-          "target": "com.azure.support#SupportTicketsNoSubscriptionUpdate"
+          "target": "com.azure.support#UpdateSupportTicketNoSubscription"
         },
         {
-          "target": "com.azure.support#SupportTicketsNoSubscriptionCreate"
+          "target": "com.azure.support#CreateSupportTicketNoSubscription"
         },
         {
-          "target": "com.azure.support#SupportTicketsNoSubscriptionGet"
+          "target": "com.azure.support#GetSupportTicketNoSubscription"
         },
         {
-          "target": "com.azure.support#SupportTicketsNoSubscriptionList"
+          "target": "com.azure.support#ListSupportTicketNoSubscription"
         },
         {
-          "target": "com.azure.support#ProblemClassificationsGet"
+          "target": "com.azure.support#GetProblemClassification"
         },
         {
-          "target": "com.azure.support#ProblemClassificationsList"
+          "target": "com.azure.support#ListProblemClassifications"
         },
         {
-          "target": "com.azure.support#ServicesGet"
+          "target": "com.azure.support#GetService"
         },
         {
-          "target": "com.azure.support#ServicesList"
+          "target": "com.azure.support#ListServices"
         },
         {
-          "target": "com.azure.support#OperationsList"
+          "target": "com.azure.support#ListOperations"
         },
         {
           "target": "com.azure.support#FilesNoSubscriptionUpload"
         },
         {
-          "target": "com.azure.support#FilesNoSubscriptionCreate"
+          "target": "com.azure.support#CreateFileNoSubscription"
         },
         {
-          "target": "com.azure.support#FilesNoSubscriptionGet"
+          "target": "com.azure.support#GetFileNoSubscription"
         },
         {
-          "target": "com.azure.support#FilesNoSubscriptionList"
+          "target": "com.azure.support#ListFileNoSubscription"
         },
         {
-          "target": "com.azure.support#FileWorkspacesNoSubscriptionCreate"
+          "target": "com.azure.support#CreateFileWorkspaceNoSubscription"
         },
         {
-          "target": "com.azure.support#FileWorkspacesNoSubscriptionGet"
+          "target": "com.azure.support#GetFileWorkspaceNoSubscription"
         },
         {
-          "target": "com.azure.support#SupportTicketsNoSubscriptionCheckNameAvailability"
+          "target": "com.azure.support#CheckSupportTicketNoSubscriptionNameAvailability"
         }
       ],
       "traits": {

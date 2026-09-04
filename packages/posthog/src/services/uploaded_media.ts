@@ -30,11 +30,11 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export interface UploadedMediaCreateRequest {
+export interface CreateUploadedMediaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const UploadedMediaCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateUploadedMediaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -45,8 +45,8 @@ export const UploadedMediaCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UploadedMediaCreateRequest",
-}) as any as S.Schema<UploadedMediaCreateRequest>;
+  identifier: "CreateUploadedMediaRequest",
+}) as any as S.Schema<CreateUploadedMediaRequest>;
 
 export type UploadedMediaCreateResponseBodyMap = {
   [key: string]: unknown | undefined;
@@ -56,23 +56,23 @@ export const UploadedMediaCreateResponseBodyMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<UploadedMediaCreateResponseBodyMap>;
 
-export type UploadedMediaCreateResponse = UploadedMediaCreateResponseBodyMap;
-export const UploadedMediaCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export type CreateUploadedMediaResponse = UploadedMediaCreateResponseBodyMap;
+export const CreateUploadedMediaResponse = /*@__PURE__*/ S.suspend(() =>
   UploadedMediaCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "UploadedMediaCreateResponse",
-}) as any as S.Schema<UploadedMediaCreateResponse>;
+  identifier: "CreateUploadedMediaResponse",
+}) as any as S.Schema<CreateUploadedMediaResponse>;
 
-export type UploadedMediaCreateError = Forbidden | NotFound | PosthogOpError;
+export type CreateUploadedMediaError = Forbidden | NotFound | PosthogOpError;
 /** When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards. Uploaded media must have a content type beginning with 'image/' and be less than 4MB. */
-export const uploadedMediaCreate: API.OperationMethod<
-  UploadedMediaCreateRequest,
-  UploadedMediaCreateResponse,
-  UploadedMediaCreateError,
+export const createUploadedMedia: API.OperationMethod<
+  CreateUploadedMediaRequest,
+  CreateUploadedMediaResponse,
+  CreateUploadedMediaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadedMediaCreateRequest,
-  output: UploadedMediaCreateResponse,
+  input: CreateUploadedMediaRequest,
+  output: CreateUploadedMediaResponse,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

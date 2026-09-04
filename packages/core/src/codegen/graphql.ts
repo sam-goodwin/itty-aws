@@ -39,6 +39,8 @@
  * out of packages/expo-eas.
  */
 
+import { toVerbNoun } from "./rewrite-operation-ids.ts";
+
 // ============================================================================
 // GraphQL introspection types (subset of the canonical spec)
 // ============================================================================
@@ -222,6 +224,12 @@ export interface GraphQLConvertOptions {
   readonly customScalars?: Record<string, string>;
   /** Relay connection pagination. Omit (or `false`) to emit no `paginated`. */
   readonly relay?: RelayOptions | false;
+  /**
+   * SDK operation name style. Default `"verbNoun"` (`projectCreate` →
+   * `createProject`). The GraphQL document's `operationName` stays the
+   * schema field name.
+   */
+  readonly operationNaming?: "as-is" | "verbNoun";
 }
 
 export interface GraphQLConvertResult {
@@ -917,6 +925,7 @@ export const convertGraphQLToSmithy = (
     skipRootField = () => false,
     customScalars = {},
     relay = false,
+    operationNaming = "verbNoun",
   } = options;
 
   const typeMap = new Map<string, IntrospectionType>();
@@ -950,11 +959,15 @@ export const convertGraphQLToSmithy = (
       );
       for (const opPath of paths) {
         const functionName = pathToFunctionName(opPath);
-        if (seenNames.has(functionName)) continue;
-        seenNames.add(functionName);
+        const sdkName =
+          operationNaming === "verbNoun"
+            ? toVerbNoun(functionName)
+            : functionName;
+        if (seenNames.has(sdkName)) continue;
+        seenNames.add(sdkName);
         pending.push({
           functionName,
-          opName: toPascalCase(functionName),
+          opName: toPascalCase(sdkName),
           type,
           path: opPath,
           description:

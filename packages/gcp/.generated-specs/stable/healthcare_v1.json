@@ -8656,7 +8656,7 @@
         "smithy.api#documentation": "SetBlobStorageSettings sets the blob storage settings of the specified resources."
       }
     },
-    "com.gcp.healthcare_v1#GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest": {
+    "com.gcp.healthcare_v1#GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -8669,10 +8669,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStores": {
+    "com.gcp.healthcare_v1#GetDicomStoreMetricsProjectsLocationsDatasetsDicomStores": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest"
+        "target": "com.gcp.healthcare_v1#GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#DicomStoreMetrics"
@@ -11441,7 +11441,7 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#BulkDeleteProjectsLocationsDatasetsFhirStoresRequest": {
+    "com.gcp.healthcare_v1#DeleteBulkProjectLocationDatasetFhirStoreRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -11461,10 +11461,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#BulkDeleteProjectsLocationsDatasetsFhirStores": {
+    "com.gcp.healthcare_v1#DeleteBulkProjectLocationDatasetFhirStore": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#BulkDeleteProjectsLocationsDatasetsFhirStoresRequest"
+        "target": "com.gcp.healthcare_v1#DeleteBulkProjectLocationDatasetFhirStoreRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#Operation"
@@ -11698,7 +11698,7 @@
         "smithy.api#documentation": "Export resources from the FHIR store to the specified destination. This method returns an Operation that can be used to track the status of the export by calling GetOperation. To improve performance, it is recommended to make the `type` filter as specific as possible, including only the resource types that are absolutely needed. This minimizes the size of the initial dataset to be processed and is the most effective way to improve performance. While post-filters like `_since` are useful for refining results, they do not speed up the initial data retrieval phase, which is primarily governed by the `type` filter. Immediate fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the operation finishes, a detailed response of type ExportResourcesResponse is returned in the response field. The metadata field type for this operation is OperationMetadata."
       }
     },
-    "com.gcp.healthcare_v1#GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest": {
+    "com.gcp.healthcare_v1#GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -11711,10 +11711,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStores": {
+    "com.gcp.healthcare_v1#GetFhirStoreMetricsProjectsLocationsDatasetsFhirStores": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest"
+        "target": "com.gcp.healthcare_v1#GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#FhirStoreMetrics"
@@ -12222,7 +12222,7 @@
         "smithy.api#documentation": "Deletes all the historical versions of a resource (excluding the current version) from the FHIR store. To remove all versions of a resource, first delete the current version and then call this method. This is not a FHIR standard operation. For samples that show how to call `Resource-purge`, see [Deleting historical versions of a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource)."
       }
     },
-    "com.gcp.healthcare_v1#ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest": {
+    "com.gcp.healthcare_v1#DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -12243,10 +12243,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhir": {
+    "com.gcp.healthcare_v1#DeleteConditionalProjectLocationDatasetFhirStoreFhir": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest"
+        "target": "com.gcp.healthcare_v1#DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#Empty"
@@ -12368,7 +12368,7 @@
         "smithy.api#documentation": "Gets the contents of a version (current or historical) of a FHIR Binary resource by version ID. This method can be used to retrieve a Binary resource version either by using the FHIR JSON mimetype as the value for the Accept header, or as a raw data stream. If the FHIR Accept type is used this method will return a Binary resource with the data base64-encoded, regardless of how the resource version was created. The resource data can be retrieved in base64-decoded form if the Accept type of the request matches the value of the resource version's `contentType` field. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest."
       }
     },
-    "com.gcp.healthcare_v1#ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest": {
+    "com.gcp.healthcare_v1#UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -12396,10 +12396,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhir": {
+    "com.gcp.healthcare_v1#UpdateConditionalProjectLocationDatasetFhirStoreFhir": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest"
+        "target": "com.gcp.healthcare_v1#UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#HttpBody"
@@ -12657,7 +12657,7 @@
         "smithy.api#documentation": "Updates the entire contents of a resource. Implements the FHIR standard update interaction ([DSTU2](https://hl7.org/fhir/DSTU2/http.html#update), [STU3](https://hl7.org/fhir/STU3/http.html#update), [R4](https://hl7.org/fhir/R4/http.html#update), [R5](https://hl7.org/fhir/R5/http.html#update)). If the specified resource does not exist and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. The resource must contain an `id` element having an identical value to the ID in the REST path of the request. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. The conditional update interaction If-None-Match is supported, including the wildcard behaviour, as defined by the R5 spec. This functionality is supported in R4 and R5. For samples that show how to call `update`, see [Updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource)."
       }
     },
-    "com.gcp.healthcare_v1#Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest": {
+    "com.gcp.healthcare_v1#CreateBinaryProjectLocationDatasetFhirStoreFhirRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -12677,10 +12677,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#Binary_createProjectsLocationsDatasetsFhirStoresFhir": {
+    "com.gcp.healthcare_v1#CreateBinaryProjectLocationDatasetFhirStoreFhir": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest"
+        "target": "com.gcp.healthcare_v1#CreateBinaryProjectLocationDatasetFhirStoreFhirRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#HttpBody"
@@ -12772,7 +12772,7 @@
         "smithy.api#documentation": "Validates an input FHIR resource's conformance to its profiles and the profiles configured on the FHIR store. Implements the FHIR extended operation $validate ([DSTU2](https://hl7.org/fhir/DSTU2/resource-operations.html#validate), [STU3](https://hl7.org/fhir/STU3/resource-operations.html#validate), [R4](https://hl7.org/fhir/R4/resource-operation-validate.html). or [R5](https://hl7.org/fhir/R5/resource-operation-validate.html)). The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. The `Parameters` input syntax is not supported. The `profile` query parameter can be used to request that the resource only be validated against a specific profile. If a profile with the given URL cannot be found in the FHIR store then an error is returned. Errors generated by validation contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead."
       }
     },
-    "com.gcp.healthcare_v1#Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest": {
+    "com.gcp.healthcare_v1#UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -12792,10 +12792,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#Binary_updateProjectsLocationsDatasetsFhirStoresFhir": {
+    "com.gcp.healthcare_v1#UpdateBinaryProjectLocationDatasetFhirStoreFhir": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest"
+        "target": "com.gcp.healthcare_v1#UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#HttpBody"
@@ -12951,7 +12951,7 @@
         "smithy.api#documentation": "Updates part of an existing resource by applying the operations specified in a [JSON Patch](http://jsonpatch.com/) document. Implements the FHIR standard patch interaction ([STU3](https://hl7.org/fhir/STU3/http.html#patch), [R4](https://hl7.org/fhir/R4/http.html#patch), [R5](https://hl7.org/fhir/R5/http.html#patch)). DSTU2 doesn't define a patch method, but the server supports it in the same way it supports STU3. The request body must contain a JSON Patch document, and the request headers must contain `Content-Type: application/json-patch+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `patch`, see [Patching a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource)."
       }
     },
-    "com.gcp.healthcare_v1#Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest": {
+    "com.gcp.healthcare_v1#GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -12964,10 +12964,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperations": {
+    "com.gcp.healthcare_v1#GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperations": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest"
+        "target": "com.gcp.healthcare_v1#GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#HttpBody"
@@ -12988,7 +12988,7 @@
         "smithy.api#documentation": "Gets the status of operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can have one of these states: * in-progress: response status code is `202` and `X-Progress` header is set to `in progress`. * complete: response status code is `200` and the body is a JSON-encoded operation response as defined by the spec. For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status. * error: response status code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource describing the reason for the error."
       }
     },
-    "com.gcp.healthcare_v1#Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest": {
+    "com.gcp.healthcare_v1#DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -13001,10 +13001,10 @@
         }
       }
     },
-    "com.gcp.healthcare_v1#Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperations": {
+    "com.gcp.healthcare_v1#DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperations": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.healthcare_v1#Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest"
+        "target": "com.gcp.healthcare_v1#DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest"
       },
       "output": {
         "target": "com.gcp.healthcare_v1#HttpBody"

@@ -35,7 +35,7 @@
       },
       "traits": {}
     },
-    "com.posthog.heatmaps#HeatmapsListRequest": {
+    "com.posthog.heatmaps#ListHeatmapsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -231,7 +231,7 @@
       },
       "traits": {}
     },
-    "com.posthog.heatmaps#HeatmapsListResponse": {
+    "com.posthog.heatmaps#ListHeatmapsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -246,13 +246,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.heatmaps#HeatmapsList": {
+    "com.posthog.heatmaps#ListHeatmaps": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.heatmaps#HeatmapsListRequest"
+        "target": "com.posthog.heatmaps#ListHeatmapsRequest"
       },
       "output": {
-        "target": "com.posthog.heatmaps#HeatmapsListResponse"
+        "target": "com.posthog.heatmaps#ListHeatmapsResponse"
       },
       "errors": [
         {
@@ -555,7 +555,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.heatmaps#HeatmapsList"
+          "target": "com.posthog.heatmaps#ListHeatmaps"
         },
         {
           "target": "com.posthog.heatmaps#HeatmapsEventsRetrieve"

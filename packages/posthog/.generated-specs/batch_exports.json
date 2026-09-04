@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.batch_exports#BatchExportsListRequest": {
+    "com.posthog.batch_exports#ListBatchExportsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4787,10 +4787,10 @@
       },
       "traits": {}
     },
-    "com.posthog.batch_exports#BatchExportsList": {
+    "com.posthog.batch_exports#ListBatchExports": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsListRequest"
+        "target": "com.posthog.batch_exports#ListBatchExportsRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#PaginatedBatchExportListOutput"
@@ -5170,7 +5170,7 @@
         "smithy.api#documentation": "* `Redshift` - Redshift"
       }
     },
-    "com.posthog.batch_exports#BatchExportsCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5252,10 +5252,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsCreate": {
+    "com.posthog.batch_exports#CreateBatchExport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#BatchExportOutput"
@@ -5279,7 +5279,7 @@
         }
       }
     },
-    "com.posthog.batch_exports#BatchExportsBackfillsListRequest": {
+    "com.posthog.batch_exports#ListBatchExportBackfillsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5510,10 +5510,10 @@
       },
       "traits": {}
     },
-    "com.posthog.batch_exports#BatchExportsBackfillsList": {
+    "com.posthog.batch_exports#ListBatchExportBackfills": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsBackfillsListRequest"
+        "target": "com.posthog.batch_exports#ListBatchExportBackfillsRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#PaginatedBatchExportBackfillList"
@@ -5538,7 +5538,7 @@
         "smithy.api#documentation": "ViewSet for BatchExportBackfill models.\n\nAllows creating and reading backfills, but not updating or deleting them."
       }
     },
-    "com.posthog.batch_exports#BatchExportsBackfillsCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportBackfillRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5614,10 +5614,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsBackfillsCreate": {
+    "com.posthog.batch_exports#CreateBatchExportBackfill": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsBackfillsCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportBackfillRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#BatchExportBackfill"
@@ -5698,7 +5698,7 @@
         "smithy.api#documentation": "ViewSet for BatchExportBackfill models.\n\nAllows creating and reading backfills, but not updating or deleting them."
       }
     },
-    "com.posthog.batch_exports#BatchExportsBackfillsCancelCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportBackfillCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5782,10 +5782,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsBackfillsCancelCreate": {
+    "com.posthog.batch_exports#CreateBatchExportBackfillCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsBackfillsCancelCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportBackfillCancelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5885,7 +5885,7 @@
       },
       "traits": {}
     },
-    "com.posthog.batch_exports#BatchExportsRunsListRequest": {
+    "com.posthog.batch_exports#ListBatchExportRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5985,10 +5985,10 @@
       },
       "traits": {}
     },
-    "com.posthog.batch_exports#BatchExportsRunsList": {
+    "com.posthog.batch_exports#ListBatchExportRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsRunsListRequest"
+        "target": "com.posthog.batch_exports#ListBatchExportRunsRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#PaginatedBatchExportRunList"
@@ -6067,7 +6067,7 @@
         }
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunsCancelCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportRunCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6180,10 +6180,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunsCancelCreate": {
+    "com.posthog.batch_exports#CreateBatchExportRunCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsRunsCancelCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportRunCancelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6308,7 +6308,7 @@
         }
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunsRetryCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportRunRetryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6421,10 +6421,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunsRetryCreate": {
+    "com.posthog.batch_exports#CreateBatchExportRunRetry": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsRunsRetryCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportRunRetryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6497,7 +6497,7 @@
         }
       }
     },
-    "com.posthog.batch_exports#BatchExportsUpdateRequest": {
+    "com.posthog.batch_exports#UpdateBatchExportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6587,10 +6587,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsUpdate": {
+    "com.posthog.batch_exports#UpdateBatchExport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsUpdateRequest"
+        "target": "com.posthog.batch_exports#UpdateBatchExportRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#BatchExportOutput"
@@ -6614,7 +6614,7 @@
         }
       }
     },
-    "com.posthog.batch_exports#BatchExportsPartialUpdateRequest": {
+    "com.posthog.batch_exports#UpdateBatchExportPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6701,10 +6701,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsPartialUpdate": {
+    "com.posthog.batch_exports#UpdateBatchExportPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsPartialUpdateRequest"
+        "target": "com.posthog.batch_exports#UpdateBatchExportPartialRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#BatchExportOutput"
@@ -6917,7 +6917,7 @@
         "smithy.api#documentation": "Serializer for an BatchExportDestination model.\n\nThe `config` field is polymorphic and typed only for destinations that keep\ncredentials in the linked Integration (currently Databricks, AzureBlob, BigQuery, Postgres,\nAwsS3, S3Compatible, Snowflake, Redshift). Other destination types accept the same JSON shape\nbut without a typed OpenAPI schema. Secret fields are stripped from `config` on read."
       }
     },
-    "com.posthog.batch_exports#BatchExportsPauseCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportPauseRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7023,10 +7023,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsPauseCreate": {
+    "com.posthog.batch_exports#CreateBatchExportPause": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsPauseCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportPauseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7065,7 +7065,7 @@
         "smithy.api#documentation": "Which model this BatchExport is exporting.\n\n* `events` - Events\n* `persons` - Persons\n* `sessions` - Sessions\n* `hogql` - Hogql"
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunTestStepCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportRunTestStepRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7171,10 +7171,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunTestStepCreate": {
+    "com.posthog.batch_exports#CreateBatchExportRunTestStep": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsRunTestStepCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportRunTestStepRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7212,7 +7212,7 @@
         "smithy.api#documentation": "Which model this BatchExport is exporting.\n\n* `events` - Events\n* `persons` - Persons\n* `sessions` - Sessions\n* `hogql` - Hogql"
       }
     },
-    "com.posthog.batch_exports#BatchExportsUnpauseCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportUnpauseRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7318,10 +7318,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsUnpauseCreate": {
+    "com.posthog.batch_exports#CreateBatchExportUnpause": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsUnpauseCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportUnpauseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7360,7 +7360,7 @@
         "smithy.api#documentation": "Which model this BatchExport is exporting.\n\n* `events` - Events\n* `persons` - Persons\n* `sessions` - Sessions\n* `hogql` - Hogql"
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunTestStepNewCreateRequest": {
+    "com.posthog.batch_exports#CreateBatchExportRunTestStepNewRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7458,10 +7458,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#BatchExportsRunTestStepNewCreate": {
+    "com.posthog.batch_exports#CreateBatchExportRunTestStepNew": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#BatchExportsRunTestStepNewCreateRequest"
+        "target": "com.posthog.batch_exports#CreateBatchExportRunTestStepNewRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7525,7 +7525,7 @@
         }
       }
     },
-    "com.posthog.batch_exports#FileDownloadBatchExportsListRequest": {
+    "com.posthog.batch_exports#ListFileDownloadBatchExportsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7614,10 +7614,10 @@
       },
       "traits": {}
     },
-    "com.posthog.batch_exports#FileDownloadBatchExportsList": {
+    "com.posthog.batch_exports#ListFileDownloadBatchExports": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#FileDownloadBatchExportsListRequest"
+        "target": "com.posthog.batch_exports#ListFileDownloadBatchExportsRequest"
       },
       "output": {
         "target": "com.posthog.batch_exports#PaginatedListOutputList"
@@ -7875,7 +7875,7 @@
         "smithy.api#documentation": "* `hogql` - hogql"
       }
     },
-    "com.posthog.batch_exports#FileDownloadBatchExportsCreateRequest": {
+    "com.posthog.batch_exports#CreateFileDownloadBatchExportRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7897,10 +7897,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#FileDownloadBatchExportsCreate": {
+    "com.posthog.batch_exports#CreateFileDownloadBatchExport": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#FileDownloadBatchExportsCreateRequest"
+        "target": "com.posthog.batch_exports#CreateFileDownloadBatchExportRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8170,7 +8170,7 @@
       },
       "traits": {}
     },
-    "com.posthog.batch_exports#FileDownloadBatchExportsCancelCreateRequest": {
+    "com.posthog.batch_exports#CreateFileDownloadBatchExportCancelRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8230,10 +8230,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.batch_exports#FileDownloadBatchExportsCancelCreate": {
+    "com.posthog.batch_exports#CreateFileDownloadBatchExportCancel": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.batch_exports#FileDownloadBatchExportsCancelCreateRequest"
+        "target": "com.posthog.batch_exports#CreateFileDownloadBatchExportCancelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8414,46 +8414,46 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.batch_exports#BatchExportsList"
+          "target": "com.posthog.batch_exports#ListBatchExports"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExport"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsBackfillsList"
+          "target": "com.posthog.batch_exports#ListBatchExportBackfills"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsBackfillsCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportBackfill"
         },
         {
           "target": "com.posthog.batch_exports#BatchExportsBackfillsRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsBackfillsCancelCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportBackfillCancel"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsRunsList"
+          "target": "com.posthog.batch_exports#ListBatchExportRuns"
         },
         {
           "target": "com.posthog.batch_exports#BatchExportsRunsRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsRunsCancelCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportRunCancel"
         },
         {
           "target": "com.posthog.batch_exports#BatchExportsRunsLogsRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsRunsRetryCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportRunRetry"
         },
         {
           "target": "com.posthog.batch_exports#BatchExportsRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsUpdate"
+          "target": "com.posthog.batch_exports#UpdateBatchExport"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsPartialUpdate"
+          "target": "com.posthog.batch_exports#UpdateBatchExportPartial"
         },
         {
           "target": "com.posthog.batch_exports#BatchExportsDestroy"
@@ -8462,31 +8462,31 @@
           "target": "com.posthog.batch_exports#BatchExportsLogsRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsPauseCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportPause"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsRunTestStepCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportRunTestStep"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsUnpauseCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportUnpause"
         },
         {
-          "target": "com.posthog.batch_exports#BatchExportsRunTestStepNewCreate"
+          "target": "com.posthog.batch_exports#CreateBatchExportRunTestStepNew"
         },
         {
           "target": "com.posthog.batch_exports#BatchExportsTestRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#FileDownloadBatchExportsList"
+          "target": "com.posthog.batch_exports#ListFileDownloadBatchExports"
         },
         {
-          "target": "com.posthog.batch_exports#FileDownloadBatchExportsCreate"
+          "target": "com.posthog.batch_exports#CreateFileDownloadBatchExport"
         },
         {
           "target": "com.posthog.batch_exports#FileDownloadBatchExportsRetrieve"
         },
         {
-          "target": "com.posthog.batch_exports#FileDownloadBatchExportsCancelCreate"
+          "target": "com.posthog.batch_exports#CreateFileDownloadBatchExportCancel"
         },
         {
           "target": "com.posthog.batch_exports#FileDownloadBatchExportsDownloadRetrieve"

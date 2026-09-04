@@ -212,7 +212,7 @@ export const ModelConfigurationInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ModelConfigurationInput",
 }) as any as S.Schema<ModelConfigurationInput>;
 
-export interface EvaluationsCreateRequest {
+export interface CreateEvaluationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Name of the evaluation. */
@@ -242,7 +242,7 @@ export interface EvaluationsCreateRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -266,8 +266,8 @@ export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EvaluationsCreateRequest",
-}) as any as S.Schema<EvaluationsCreateRequest>;
+  identifier: "CreateEvaluationRequest",
+}) as any as S.Schema<CreateEvaluationRequest>;
 
 /** * `active` - Active * `paused` - Paused * `error` - Error */
 export type EvaluationStatusEnum = "active" | "paused" | "error";
@@ -514,6 +514,129 @@ export const Evaluation = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Evaluation" }) as any as S.Schema<Evaluation>;
 
+export type EvaluationsTestHogCreateRequestConditionsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const EvaluationsTestHogCreateRequestConditionsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<EvaluationsTestHogCreateRequestConditionsItemMap>;
+
+/** Optional trigger conditions to filter which events are sampled. */
+export type EvaluationsTestHogCreateRequestConditionsList =
+  Array<EvaluationsTestHogCreateRequestConditionsItemMap>;
+export const EvaluationsTestHogCreateRequestConditionsList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsTestHogCreateRequestConditionsItemMap,
+  ) as any as S.Schema<EvaluationsTestHogCreateRequestConditionsList>;
+
+export interface TestHogTargetConfig {
+  /** Aggregation window for trace samples, in seconds. */
+  window_seconds?: number;
+  /** For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run. */
+  quiet_period_seconds?: number;
+}
+export const TestHogTargetConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    window_seconds: S.optional(S.Number),
+    quiet_period_seconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "TestHogTargetConfig",
+}) as any as S.Schema<TestHogTargetConfig>;
+
+export interface CreateEvaluationTestHogRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Hog source code to test. Must return a boolean (true = pass, false = fail) or null for N/A. */
+  source?: string;
+  /** Number of recent $ai_generation events to test against (1–10, default 5). */
+  sample_count?: number;
+  /** Whether the evaluation can return N/A for non-applicable generations. */
+  allows_na?: boolean;
+  /** Optional trigger conditions to filter which events are sampled. */
+  conditions?: EvaluationsTestHogCreateRequestConditionsList;
+  /** What the evaluation runs against: 'generation' samples individual generations, 'trace' samples whole traces, and 'session' samples whole sessions that have gone quiet. Each target runs against the same globals it would run against online. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  target?: EvaluationTargetEnum | (string & {});
+  /** Target-specific preview settings. For a trace target, set window_seconds between 10 and 7200. */
+  target_config?: TestHogTargetConfig;
+}
+export const CreateEvaluationTestHogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    source: S.optional(S.String),
+    sample_count: S.optional(S.Number),
+    allows_na: S.optional(S.Boolean),
+    conditions: S.optional(EvaluationsTestHogCreateRequestConditionsList),
+    target: S.optional(EvaluationTargetEnum),
+    target_config: S.optional(TestHogTargetConfig),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/evaluations/test_hog/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateEvaluationTestHogRequest",
+}) as any as S.Schema<CreateEvaluationTestHogRequest>;
+
+export interface TestHogResultItem {
+  /** Stable identifier for the sampled generation, trace, or session. */
+  sample_id?: string;
+  /** Type of sampled unit: generation, trace, or session. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  sample_type?: EvaluationTargetEnum;
+  /** UUID of the sampled $ai_generation event, or null for a trace or session sample. */
+  event_uuid?: string | null;
+  /** Trace ID if available. */
+  trace_id?: string | null;
+  /** First 200 characters of input from the sampled unit. */
+  input_preview?: string;
+  /** First 200 characters of output from the sampled unit. */
+  output_preview?: string;
+  /** True = pass, False = fail, null = N/A or error. */
+  result?: boolean | null;
+  /** Hog evaluation reasoning string, if any. */
+  reasoning?: string | null;
+  /** Error message if the Hog code raised an exception. */
+  error?: string | null;
+}
+export const TestHogResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sample_id: S.optional(S.String),
+    sample_type: S.optional(EvaluationTargetEnum),
+    event_uuid: S.optional(S.NullOr(S.String)),
+    trace_id: S.optional(S.NullOr(S.String)),
+    input_preview: S.optional(S.String),
+    output_preview: S.optional(S.String),
+    result: S.optional(S.NullOr(S.Boolean)),
+    reasoning: S.optional(S.NullOr(S.String)),
+    error: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "TestHogResultItem",
+}) as any as S.Schema<TestHogResultItem>;
+
+export type TestHogResponseResultsList = Array<TestHogResultItem>;
+export const TestHogResponseResultsList = /*@__PURE__*/ S.Array(
+  TestHogResultItem,
+) as any as S.Schema<TestHogResponseResultsList>;
+
+export interface TestHogResponse {
+  results?: TestHogResponseResultsList;
+  /** Optional message, e.g. when no recent events were found. */
+  message?: string;
+}
+export const TestHogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: S.optional(TestHogResponseResultsList),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "TestHogResponse",
+}) as any as S.Schema<TestHogResponse>;
+
 export interface EvaluationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -542,6 +665,27 @@ export const EvaluationsDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EvaluationsDestroyResponse",
 }) as any as S.Schema<EvaluationsDestroyResponse>;
 
+export interface EvaluationsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this evaluation. */
+  id: string;
+}
+export const EvaluationsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/evaluations/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EvaluationsRetrieveRequest",
+}) as any as S.Schema<EvaluationsRetrieveRequest>;
+
 export type EvaluationsListRequestEvaluationType =
   | "hog"
   | "llm_judge"
@@ -569,7 +713,7 @@ export const EvaluationsListRequestOrderByList = /*@__PURE__*/ S.Array(
   EvaluationsListRequestOrderByItem,
 ) as any as S.Schema<EvaluationsListRequestOrderByList>;
 
-export interface EvaluationsListRequest {
+export interface ListEvaluationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Filter evaluations by directory UUID. */
@@ -591,7 +735,7 @@ export interface EvaluationsListRequest {
   /** Search in name or description */
   search?: string;
 }
-export const EvaluationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     directory_id: S.optional(S.String.pipe(T.Query())),
@@ -613,8 +757,8 @@ export const EvaluationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EvaluationsListRequest",
-}) as any as S.Schema<EvaluationsListRequest>;
+  identifier: "ListEvaluationsRequest",
+}) as any as S.Schema<ListEvaluationsRequest>;
 
 export type PaginatedEvaluationListResultsList = Array<Evaluation>;
 export const PaginatedEvaluationListResultsList = /*@__PURE__*/ S.Array(
@@ -637,6 +781,167 @@ export const PaginatedEvaluationList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedEvaluationList",
 }) as any as S.Schema<PaginatedEvaluationList>;
+
+export type EvaluationsUpdateRequestEvaluationConfigCase0 =
+  EvaluationsCreateRequestEvaluationConfigCase0;
+export const EvaluationsUpdateRequestEvaluationConfigCase0 =
+  EvaluationsCreateRequestEvaluationConfigCase0;
+
+export type EvaluationsUpdateRequestEvaluationConfigCase1 =
+  EvaluationsCreateRequestEvaluationConfigCase1;
+export const EvaluationsUpdateRequestEvaluationConfigCase1 =
+  EvaluationsCreateRequestEvaluationConfigCase1;
+
+/** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
+export type EvaluationsUpdateRequestEvaluationConfigCase2Source =
+  "user_messages";
+export const EvaluationsUpdateRequestEvaluationConfigCase2Source =
+  /*@__PURE__*/ S.String;
+
+export interface EvaluationsUpdateRequestEvaluationConfigCase2 {
+  /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
+  source?: EvaluationsUpdateRequestEvaluationConfigCase2Source | (string & {});
+}
+export const EvaluationsUpdateRequestEvaluationConfigCase2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      source: S.optional(EvaluationsUpdateRequestEvaluationConfigCase2Source),
+    }),
+  ).annotate({
+    identifier: "EvaluationsUpdateRequestEvaluationConfigCase2",
+  }) as any as S.Schema<EvaluationsUpdateRequestEvaluationConfigCase2>;
+
+/** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
+export type EvaluationsUpdateRequestEvaluationConfig =
+  | EvaluationsCreateRequestEvaluationConfigCase0
+  | EvaluationsCreateRequestEvaluationConfigCase1
+  | EvaluationsUpdateRequestEvaluationConfigCase2;
+export const EvaluationsUpdateRequestEvaluationConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsUpdateRequestEvaluationConfig>;
+
+/** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
+export type EvaluationsUpdateRequestOutputConfig =
+  EvaluationsCreateRequestOutputConfig;
+export const EvaluationsUpdateRequestOutputConfig =
+  EvaluationsCreateRequestOutputConfig;
+
+/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+export type EvaluationsUpdateRequestConditionsList = Array<EvaluationCondition>;
+export const EvaluationsUpdateRequestConditionsList = /*@__PURE__*/ S.Array(
+  EvaluationCondition,
+) as any as S.Schema<EvaluationsUpdateRequestConditionsList>;
+
+/** Wait a fixed window after the first matching generation, then evaluate. */
+export type EvaluationsUpdateRequestTargetConfigCase0Strategy = "fixed_window";
+export const EvaluationsUpdateRequestTargetConfigCase0Strategy =
+  /*@__PURE__*/ S.String;
+
+export interface EvaluationsUpdateRequestTargetConfigCase0 {
+  /** Wait a fixed window after the first matching generation, then evaluate. */
+  strategy: EvaluationsUpdateRequestTargetConfigCase0Strategy;
+  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  window_seconds?: number;
+}
+export const EvaluationsUpdateRequestTargetConfigCase0 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      strategy: EvaluationsUpdateRequestTargetConfigCase0Strategy,
+      window_seconds: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "EvaluationsUpdateRequestTargetConfigCase0",
+  }) as any as S.Schema<EvaluationsUpdateRequestTargetConfigCase0>;
+
+/** Evaluate once the unit has had no new activity for the quiet period. */
+export type EvaluationsUpdateRequestTargetConfigCase1Strategy = "inactivity";
+export const EvaluationsUpdateRequestTargetConfigCase1Strategy =
+  /*@__PURE__*/ S.String;
+
+export interface EvaluationsUpdateRequestTargetConfigCase1 {
+  /** Evaluate once the unit has had no new activity for the quiet period. */
+  strategy: EvaluationsUpdateRequestTargetConfigCase1Strategy;
+  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  quiet_period_seconds?: number;
+  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
+  max_age_seconds?: number;
+}
+export const EvaluationsUpdateRequestTargetConfigCase1 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      strategy: EvaluationsUpdateRequestTargetConfigCase1Strategy,
+      quiet_period_seconds: S.optional(S.Number),
+      max_age_seconds: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "EvaluationsUpdateRequestTargetConfigCase1",
+  }) as any as S.Schema<EvaluationsUpdateRequestTargetConfigCase1>;
+
+/** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
+export type EvaluationsUpdateRequestTargetConfig =
+  | EvaluationsUpdateRequestTargetConfigCase0
+  | EvaluationsUpdateRequestTargetConfigCase1;
+export const EvaluationsUpdateRequestTargetConfig =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsUpdateRequestTargetConfig>;
+
+export interface UpdateEvaluationRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this evaluation. */
+  id: string;
+  /** Name of the evaluation. */
+  name?: string;
+  /** Optional description of what this evaluation checks. */
+  description?: string;
+  /** Directory containing the evaluation. Pass null to move the evaluation to the top level. */
+  directory_id?: string | null;
+  /** Whether the evaluation runs automatically on new $ai_generation events. */
+  enabled?: boolean;
+  /** 'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment (trained on English, so use 'llm_judge' for multilingual agents). * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
+  evaluation_type?: EvaluationTypeEnum | (string & {});
+  /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
+  evaluation_config?: EvaluationsUpdateRequestEvaluationConfig;
+  /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
+  output_type?: OutputTypeEnum | (string & {});
+  /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
+  output_config?: EvaluationsCreateRequestOutputConfig;
+  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
+  conditions?: EvaluationsUpdateRequestConditionsList;
+  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
+  target?: EvaluationTargetEnum | (string & {});
+  /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
+  target_config?: EvaluationsUpdateRequestTargetConfig;
+  /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
+  model_configuration?: ModelConfigurationInput | null;
+  /** Set to true to soft-delete the evaluation. */
+  deleted?: boolean;
+}
+export const UpdateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    directory_id: S.optional(S.NullOr(S.String)),
+    enabled: S.optional(S.Boolean),
+    evaluation_type: S.optional(EvaluationTypeEnum),
+    evaluation_config: S.optional(EvaluationsUpdateRequestEvaluationConfig),
+    output_type: S.optional(OutputTypeEnum),
+    output_config: S.optional(EvaluationsCreateRequestOutputConfig),
+    conditions: S.optional(EvaluationsUpdateRequestConditionsList),
+    target: S.optional(EvaluationTargetEnum),
+    target_config: S.optional(EvaluationsUpdateRequestTargetConfig),
+    model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
+    deleted: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/evaluations/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateEvaluationRequest",
+}) as any as S.Schema<UpdateEvaluationRequest>;
 
 export type EvaluationsPartialUpdateRequestEvaluationConfigCase0 =
   EvaluationsCreateRequestEvaluationConfigCase0;
@@ -747,7 +1052,7 @@ export type EvaluationsPartialUpdateRequestTargetConfig =
 export const EvaluationsPartialUpdateRequestTargetConfig =
   /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsPartialUpdateRequestTargetConfig>;
 
-export interface EvaluationsPartialUpdateRequest {
+export interface UpdateEvaluationPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation. */
@@ -779,7 +1084,7 @@ export interface EvaluationsPartialUpdateRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-export const EvaluationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateEvaluationPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -806,323 +1111,33 @@ export const EvaluationsPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EvaluationsPartialUpdateRequest",
-}) as any as S.Schema<EvaluationsPartialUpdateRequest>;
+  identifier: "UpdateEvaluationPartialRequest",
+}) as any as S.Schema<UpdateEvaluationPartialRequest>;
 
-export interface EvaluationsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this evaluation. */
-  id: string;
-}
-export const EvaluationsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/evaluations/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EvaluationsRetrieveRequest",
-}) as any as S.Schema<EvaluationsRetrieveRequest>;
-
-export type EvaluationsTestHogCreateRequestConditionsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const EvaluationsTestHogCreateRequestConditionsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EvaluationsTestHogCreateRequestConditionsItemMap>;
-
-/** Optional trigger conditions to filter which events are sampled. */
-export type EvaluationsTestHogCreateRequestConditionsList =
-  Array<EvaluationsTestHogCreateRequestConditionsItemMap>;
-export const EvaluationsTestHogCreateRequestConditionsList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsTestHogCreateRequestConditionsItemMap,
-  ) as any as S.Schema<EvaluationsTestHogCreateRequestConditionsList>;
-
-export interface TestHogTargetConfig {
-  /** Aggregation window for trace samples, in seconds. */
-  window_seconds?: number;
-  /** For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run. */
-  quiet_period_seconds?: number;
-}
-export const TestHogTargetConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    window_seconds: S.optional(S.Number),
-    quiet_period_seconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "TestHogTargetConfig",
-}) as any as S.Schema<TestHogTargetConfig>;
-
-export interface EvaluationsTestHogCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Hog source code to test. Must return a boolean (true = pass, false = fail) or null for N/A. */
-  source?: string;
-  /** Number of recent $ai_generation events to test against (1–10, default 5). */
-  sample_count?: number;
-  /** Whether the evaluation can return N/A for non-applicable generations. */
-  allows_na?: boolean;
-  /** Optional trigger conditions to filter which events are sampled. */
-  conditions?: EvaluationsTestHogCreateRequestConditionsList;
-  /** What the evaluation runs against: 'generation' samples individual generations, 'trace' samples whole traces, and 'session' samples whole sessions that have gone quiet. Each target runs against the same globals it would run against online. * `generation` - Generation * `trace` - Trace * `session` - Session */
-  target?: EvaluationTargetEnum | (string & {});
-  /** Target-specific preview settings. For a trace target, set window_seconds between 10 and 7200. */
-  target_config?: TestHogTargetConfig;
-}
-export const EvaluationsTestHogCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    source: S.optional(S.String),
-    sample_count: S.optional(S.Number),
-    allows_na: S.optional(S.Boolean),
-    conditions: S.optional(EvaluationsTestHogCreateRequestConditionsList),
-    target: S.optional(EvaluationTargetEnum),
-    target_config: S.optional(TestHogTargetConfig),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/evaluations/test_hog/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EvaluationsTestHogCreateRequest",
-}) as any as S.Schema<EvaluationsTestHogCreateRequest>;
-
-export interface TestHogResultItem {
-  /** Stable identifier for the sampled generation, trace, or session. */
-  sample_id?: string;
-  /** Type of sampled unit: generation, trace, or session. * `generation` - Generation * `trace` - Trace * `session` - Session */
-  sample_type?: EvaluationTargetEnum;
-  /** UUID of the sampled $ai_generation event, or null for a trace or session sample. */
-  event_uuid?: string | null;
-  /** Trace ID if available. */
-  trace_id?: string | null;
-  /** First 200 characters of input from the sampled unit. */
-  input_preview?: string;
-  /** First 200 characters of output from the sampled unit. */
-  output_preview?: string;
-  /** True = pass, False = fail, null = N/A or error. */
-  result?: boolean | null;
-  /** Hog evaluation reasoning string, if any. */
-  reasoning?: string | null;
-  /** Error message if the Hog code raised an exception. */
-  error?: string | null;
-}
-export const TestHogResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sample_id: S.optional(S.String),
-    sample_type: S.optional(EvaluationTargetEnum),
-    event_uuid: S.optional(S.NullOr(S.String)),
-    trace_id: S.optional(S.NullOr(S.String)),
-    input_preview: S.optional(S.String),
-    output_preview: S.optional(S.String),
-    result: S.optional(S.NullOr(S.Boolean)),
-    reasoning: S.optional(S.NullOr(S.String)),
-    error: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "TestHogResultItem",
-}) as any as S.Schema<TestHogResultItem>;
-
-export type TestHogResponseResultsList = Array<TestHogResultItem>;
-export const TestHogResponseResultsList = /*@__PURE__*/ S.Array(
-  TestHogResultItem,
-) as any as S.Schema<TestHogResponseResultsList>;
-
-export interface TestHogResponse {
-  results?: TestHogResponseResultsList;
-  /** Optional message, e.g. when no recent events were found. */
-  message?: string;
-}
-export const TestHogResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: S.optional(TestHogResponseResultsList),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TestHogResponse",
-}) as any as S.Schema<TestHogResponse>;
-
-export type EvaluationsUpdateRequestEvaluationConfigCase0 =
-  EvaluationsCreateRequestEvaluationConfigCase0;
-export const EvaluationsUpdateRequestEvaluationConfigCase0 =
-  EvaluationsCreateRequestEvaluationConfigCase0;
-
-export type EvaluationsUpdateRequestEvaluationConfigCase1 =
-  EvaluationsCreateRequestEvaluationConfigCase1;
-export const EvaluationsUpdateRequestEvaluationConfigCase1 =
-  EvaluationsCreateRequestEvaluationConfigCase1;
-
-/** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
-export type EvaluationsUpdateRequestEvaluationConfigCase2Source =
-  "user_messages";
-export const EvaluationsUpdateRequestEvaluationConfigCase2Source =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationsUpdateRequestEvaluationConfigCase2 {
-  /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
-  source?: EvaluationsUpdateRequestEvaluationConfigCase2Source | (string & {});
-}
-export const EvaluationsUpdateRequestEvaluationConfigCase2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      source: S.optional(EvaluationsUpdateRequestEvaluationConfigCase2Source),
-    }),
-  ).annotate({
-    identifier: "EvaluationsUpdateRequestEvaluationConfigCase2",
-  }) as any as S.Schema<EvaluationsUpdateRequestEvaluationConfigCase2>;
-
-/** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
-export type EvaluationsUpdateRequestEvaluationConfig =
-  | EvaluationsCreateRequestEvaluationConfigCase0
-  | EvaluationsCreateRequestEvaluationConfigCase1
-  | EvaluationsUpdateRequestEvaluationConfigCase2;
-export const EvaluationsUpdateRequestEvaluationConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsUpdateRequestEvaluationConfig>;
-
-/** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-export type EvaluationsUpdateRequestOutputConfig =
-  EvaluationsCreateRequestOutputConfig;
-export const EvaluationsUpdateRequestOutputConfig =
-  EvaluationsCreateRequestOutputConfig;
-
-/** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
-export type EvaluationsUpdateRequestConditionsList = Array<EvaluationCondition>;
-export const EvaluationsUpdateRequestConditionsList = /*@__PURE__*/ S.Array(
-  EvaluationCondition,
-) as any as S.Schema<EvaluationsUpdateRequestConditionsList>;
-
-/** Wait a fixed window after the first matching generation, then evaluate. */
-export type EvaluationsUpdateRequestTargetConfigCase0Strategy = "fixed_window";
-export const EvaluationsUpdateRequestTargetConfigCase0Strategy =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationsUpdateRequestTargetConfigCase0 {
-  /** Wait a fixed window after the first matching generation, then evaluate. */
-  strategy: EvaluationsUpdateRequestTargetConfigCase0Strategy;
-  /** Seconds to wait after the first matching generation before evaluating the whole unit. Captured when the run is scheduled — editing it does not change runs already in flight. The accepted range depends on `target`: 10–7200 for 'trace', 10–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
-  window_seconds?: number;
-}
-export const EvaluationsUpdateRequestTargetConfigCase0 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      strategy: EvaluationsUpdateRequestTargetConfigCase0Strategy,
-      window_seconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "EvaluationsUpdateRequestTargetConfigCase0",
-  }) as any as S.Schema<EvaluationsUpdateRequestTargetConfigCase0>;
-
-/** Evaluate once the unit has had no new activity for the quiet period. */
-export type EvaluationsUpdateRequestTargetConfigCase1Strategy = "inactivity";
-export const EvaluationsUpdateRequestTargetConfigCase1Strategy =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationsUpdateRequestTargetConfigCase1 {
-  /** Evaluate once the unit has had no new activity for the quiet period. */
-  strategy: EvaluationsUpdateRequestTargetConfigCase1Strategy;
-  /** Seconds without new activity before the unit counts as settled. The accepted range depends on `target`: 10–1800 for 'trace', 10–86400 for 'session'. The default also depends on `target`; see the field-level help_text. */
-  quiet_period_seconds?: number;
-  /** Hard cap in seconds on the total wait from the first matching generation, even if the unit stays active. Must be at least quiet_period_seconds. The accepted range depends on `target`: 60–7200 for 'trace', 60–604800 for 'session'. The default also depends on `target`; see the field-level help_text. */
-  max_age_seconds?: number;
-}
-export const EvaluationsUpdateRequestTargetConfigCase1 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      strategy: EvaluationsUpdateRequestTargetConfigCase1Strategy,
-      quiet_period_seconds: S.optional(S.Number),
-      max_age_seconds: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "EvaluationsUpdateRequestTargetConfigCase1",
-  }) as any as S.Schema<EvaluationsUpdateRequestTargetConfigCase1>;
-
-/** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
-export type EvaluationsUpdateRequestTargetConfig =
-  | EvaluationsUpdateRequestTargetConfigCase0
-  | EvaluationsUpdateRequestTargetConfigCase1;
-export const EvaluationsUpdateRequestTargetConfig =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<EvaluationsUpdateRequestTargetConfig>;
-
-export interface EvaluationsUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this evaluation. */
-  id: string;
-  /** Name of the evaluation. */
-  name?: string;
-  /** Optional description of what this evaluation checks. */
-  description?: string;
-  /** Directory containing the evaluation. Pass null to move the evaluation to the top level. */
-  directory_id?: string | null;
-  /** Whether the evaluation runs automatically on new $ai_generation events. */
-  enabled?: boolean;
-  /** 'llm_judge' uses an LLM to score outputs against a prompt; 'hog' runs deterministic Hog code; 'sentiment' classifies user-message sentiment (trained on English, so use 'llm_judge' for multilingual agents). * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
-  evaluation_type?: EvaluationTypeEnum | (string & {});
-  /** Configuration dict. For 'llm_judge': {prompt}; for 'hog': {source}; for 'sentiment': {source: 'user_messages'}. */
-  evaluation_config?: EvaluationsUpdateRequestEvaluationConfig;
-  /** Output format. Use 'boolean' for pass/fail evaluations and 'sentiment' for sentiment analysis. * `boolean` - Boolean (Pass/Fail) * `sentiment` - Sentiment */
-  output_type?: OutputTypeEnum | (string & {});
-  /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results. */
-  output_config?: EvaluationsCreateRequestOutputConfig;
-  /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} — `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
-  conditions?: EvaluationsUpdateRequestConditionsList;
-  /** What the evaluation runs on. 'generation' evaluates each matching $ai_generation event individually. 'trace' evaluates the whole trace once and 'session' the whole $ai_session_id session once: the first matching generation schedules a run that waits for the unit to settle, then evaluates all of its events together. Condition filters still match individual generations — a unit is evaluated when any of its generations matches, and sampling applies per unit. A 'session' evaluation only fires for generations that carry $ai_session_id. When and how the run fires is controlled by target_config's settle strategy. * `generation` - Generation * `trace` - Trace * `session` - Session */
-  target?: EvaluationTargetEnum | (string & {});
-  /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
-  target_config?: EvaluationsUpdateRequestTargetConfig;
-  /** Provider and model for an llm_judge evaluation. Required when creating or switching to llm_judge. To add or replace a model, provide both provider and model. On an existing configured llm_judge, omit this field to keep the current model; null is rejected. When switching an llm_judge to hog or sentiment, set this field to null. Legacy llm_judge evaluations without a model remain editable without adding one. The nested provider_key_id may be null. */
-  model_configuration?: ModelConfigurationInput | null;
-  /** Set to true to soft-delete the evaluation. */
-  deleted?: boolean;
-}
-export const EvaluationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    directory_id: S.optional(S.NullOr(S.String)),
-    enabled: S.optional(S.Boolean),
-    evaluation_type: S.optional(EvaluationTypeEnum),
-    evaluation_config: S.optional(EvaluationsUpdateRequestEvaluationConfig),
-    output_type: S.optional(OutputTypeEnum),
-    output_config: S.optional(EvaluationsCreateRequestOutputConfig),
-    conditions: S.optional(EvaluationsUpdateRequestConditionsList),
-    target: S.optional(EvaluationTargetEnum),
-    target_config: S.optional(EvaluationsUpdateRequestTargetConfig),
-    model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
-    deleted: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/evaluations/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EvaluationsUpdateRequest",
-}) as any as S.Schema<EvaluationsUpdateRequest>;
-
-export type EvaluationsCreateError = PosthogOpError;
-export const evaluationsCreate: API.OperationMethod<
-  EvaluationsCreateRequest,
+export type CreateEvaluationError = PosthogOpError;
+export const createEvaluation: API.OperationMethod<
+  CreateEvaluationRequest,
   Evaluation,
-  EvaluationsCreateError,
+  CreateEvaluationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsCreateRequest,
+  input: CreateEvaluationRequest,
   output: Evaluation,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateEvaluationTestHogError = PosthogOpError;
+/** Test Hog evaluation code against sample events without saving. */
+export const createEvaluationTestHog: API.OperationMethod<
+  CreateEvaluationTestHogRequest,
+  TestHogResponse,
+  CreateEvaluationTestHogError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEvaluationTestHogRequest,
+  output: TestHogResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1143,34 +1158,6 @@ export const evaluationsDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EvaluationsListError = PosthogOpError;
-export const evaluationsList: API.OperationMethod<
-  EvaluationsListRequest,
-  PaginatedEvaluationList,
-  EvaluationsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsListRequest,
-  output: PaginatedEvaluationList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EvaluationsPartialUpdateError = PosthogOpError;
-export const evaluationsPartialUpdate: API.OperationMethod<
-  EvaluationsPartialUpdateRequest,
-  Evaluation,
-  EvaluationsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsPartialUpdateRequest,
-  output: Evaluation,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EvaluationsRetrieveError = PosthogOpError;
 export const evaluationsRetrieve: API.OperationMethod<
   EvaluationsRetrieveRequest,
@@ -1185,29 +1172,42 @@ export const evaluationsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EvaluationsTestHogCreateError = PosthogOpError;
-/** Test Hog evaluation code against sample events without saving. */
-export const evaluationsTestHogCreate: API.OperationMethod<
-  EvaluationsTestHogCreateRequest,
-  TestHogResponse,
-  EvaluationsTestHogCreateError,
+export type ListEvaluationsError = PosthogOpError;
+export const listEvaluations: API.OperationMethod<
+  ListEvaluationsRequest,
+  PaginatedEvaluationList,
+  ListEvaluationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsTestHogCreateRequest,
-  output: TestHogResponse,
+  input: ListEvaluationsRequest,
+  output: PaginatedEvaluationList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
 
-export type EvaluationsUpdateError = PosthogOpError;
-export const evaluationsUpdate: API.OperationMethod<
-  EvaluationsUpdateRequest,
+export type UpdateEvaluationError = PosthogOpError;
+export const updateEvaluation: API.OperationMethod<
+  UpdateEvaluationRequest,
   Evaluation,
-  EvaluationsUpdateError,
+  UpdateEvaluationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsUpdateRequest,
+  input: UpdateEvaluationRequest,
+  output: Evaluation,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateEvaluationPartialError = PosthogOpError;
+export const updateEvaluationPartial: API.OperationMethod<
+  UpdateEvaluationPartialRequest,
+  Evaluation,
+  UpdateEvaluationPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEvaluationPartialRequest,
   output: Evaluation,
   errors: [],
   protocol: PosthogProtocol,

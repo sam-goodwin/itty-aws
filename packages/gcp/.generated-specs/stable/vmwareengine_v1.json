@@ -6573,7 +6573,7 @@
         "smithy.api#documentation": "Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating a private cloud also creates a [management cluster](https://cloud.google.com/vmware-engine/docs/concepts-vmware-components) for that private cloud."
       }
     },
-    "com.gcp.vmwareengine_v1#ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest": {
+    "com.gcp.vmwareengine_v1#GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest": {
       "type": "structure",
       "members": {
         "privateCloud": {
@@ -6593,10 +6593,10 @@
         }
       }
     },
-    "com.gcp.vmwareengine_v1#ShowVcenterCredentialsProjectsLocationsPrivateClouds": {
+    "com.gcp.vmwareengine_v1#GetVcenterCredentialsProjectsLocationsPrivateClouds": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.vmwareengine_v1#ShowVcenterCredentialsProjectsLocationsPrivateCloudsRequest"
+        "target": "com.gcp.vmwareengine_v1#GetVcenterCredentialsProjectsLocationsPrivateCloudsRequest"
       },
       "output": {
         "target": "com.gcp.vmwareengine_v1#Vmwareengine_Credentials"
@@ -7068,7 +7068,7 @@
         "smithy.api#documentation": "Updates the parameters of the `DnsForwarding` config, like associated domains. Only fields specified in `update_mask` are applied."
       }
     },
-    "com.gcp.vmwareengine_v1#ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest": {
+    "com.gcp.vmwareengine_v1#GetNsxCredentialsProjectsLocationsPrivateCloudsRequest": {
       "type": "structure",
       "members": {
         "privateCloud": {
@@ -7081,10 +7081,10 @@
         }
       }
     },
-    "com.gcp.vmwareengine_v1#ShowNsxCredentialsProjectsLocationsPrivateClouds": {
+    "com.gcp.vmwareengine_v1#GetNsxCredentialsProjectsLocationsPrivateClouds": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.vmwareengine_v1#ShowNsxCredentialsProjectsLocationsPrivateCloudsRequest"
+        "target": "com.gcp.vmwareengine_v1#GetNsxCredentialsProjectsLocationsPrivateCloudsRequest"
       },
       "output": {
         "target": "com.gcp.vmwareengine_v1#Vmwareengine_Credentials"

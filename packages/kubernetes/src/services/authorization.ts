@@ -895,14 +895,14 @@ export const IoK8sApiAuthorizationV1SubjectAccessReview =
     identifier: "IoK8sApiAuthorizationV1SubjectAccessReview",
   }) as any as S.Schema<IoK8sApiAuthorizationV1SubjectAccessReview>;
 
-export interface GetAuthorizationAPIGroupRequest {}
-export const GetAuthorizationAPIGroupRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetAuthorizationApiGroupRequest {}
+export const GetAuthorizationApiGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/apis/authorization.k8s.io/", code: 200 }),
   ),
 ).annotate({
-  identifier: "GetAuthorizationAPIGroupRequest",
-}) as any as S.Schema<GetAuthorizationAPIGroupRequest>;
+  identifier: "GetAuthorizationApiGroupRequest",
+}) as any as S.Schema<GetAuthorizationApiGroupRequest>;
 
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
@@ -987,8 +987,8 @@ export const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ S.suspend(
   identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
 }) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
 
-export interface GetAuthorizationV1APIResourcesRequest {}
-export const GetAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(
+export interface GetAuthorizationV1ApiResourcesRequest {}
+export const GetAuthorizationV1ApiResourcesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({}).pipe(
       T.Http({
@@ -998,8 +998,8 @@ export const GetAuthorizationV1APIResourcesRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "GetAuthorizationV1APIResourcesRequest",
-}) as any as S.Schema<GetAuthorizationV1APIResourcesRequest>;
+  identifier: "GetAuthorizationV1ApiResourcesRequest",
+}) as any as S.Schema<GetAuthorizationV1ApiResourcesRequest>;
 
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
@@ -1172,30 +1172,30 @@ export const createAuthorizationV1SubjectAccessReview: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAuthorizationAPIGroupError = KubernetesOpError;
+export type GetAuthorizationApiGroupError = KubernetesOpError;
 /** get information of a group */
-export const getAuthorizationAPIGroup: API.OperationMethod<
-  GetAuthorizationAPIGroupRequest,
+export const getAuthorizationApiGroup: API.OperationMethod<
+  GetAuthorizationApiGroupRequest,
   IoK8sApimachineryPkgApisMetaV1APIGroup,
-  GetAuthorizationAPIGroupError,
+  GetAuthorizationApiGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationAPIGroupRequest,
+  input: GetAuthorizationApiGroupRequest,
   output: IoK8sApimachineryPkgApisMetaV1APIGroup,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetAuthorizationV1APIResourcesError = KubernetesOpError;
+export type GetAuthorizationV1ApiResourcesError = KubernetesOpError;
 /** get available resources */
-export const getAuthorizationV1APIResources: API.OperationMethod<
-  GetAuthorizationV1APIResourcesRequest,
+export const getAuthorizationV1ApiResources: API.OperationMethod<
+  GetAuthorizationV1ApiResourcesRequest,
   IoK8sApimachineryPkgApisMetaV1APIResourceList,
-  GetAuthorizationV1APIResourcesError,
+  GetAuthorizationV1ApiResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationV1APIResourcesRequest,
+  input: GetAuthorizationV1ApiResourcesRequest,
   output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,

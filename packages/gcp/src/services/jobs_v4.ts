@@ -65,6 +65,120 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+export type CompleteQueryProjectsTenantsTypeEnum =
+  | "COMPLETION_TYPE_UNSPECIFIED"
+  | "JOB_TITLE"
+  | "COMPANY_NAME"
+  | "COMBINED";
+export const CompleteQueryProjectsTenantsTypeEnum = /*@__PURE__*/ S.String;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
+
+export type CompleteQueryProjectsTenantsScopeEnum =
+  | "COMPLETION_SCOPE_UNSPECIFIED"
+  | "TENANT"
+  | "PUBLIC";
+export const CompleteQueryProjectsTenantsScopeEnum = /*@__PURE__*/ S.String;
+
+export interface CompleteQueryProjectsTenantsRequest {
+  /** If provided, restricts completion to specified company. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
+  company?: string;
+  /** The completion topic. The default is CompletionType.COMBINED. */
+  type?: CompleteQueryProjectsTenantsTypeEnum | (string & {});
+  /** The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. */
+  languageCodes?: StringList;
+  /** Required. The query used to generate suggestions. The maximum number of allowed characters is 255. */
+  query?: string;
+  /** Required. Completion result count. The maximum allowed page size is 10. */
+  pageSize?: number;
+  /** The scope of the completion. The defaults is CompletionScope.PUBLIC. */
+  scope?: CompleteQueryProjectsTenantsScopeEnum | (string & {});
+  /** Required. Resource name of tenant the completion is performed within. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
+  tenant: string;
+}
+export const CompleteQueryProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    company: S.optional(S.String.pipe(T.Query())),
+    type: S.optional(CompleteQueryProjectsTenantsTypeEnum.pipe(T.Query())),
+    languageCodes: S.optional(StringList.pipe(T.Query())),
+    query: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query())),
+    scope: S.optional(CompleteQueryProjectsTenantsScopeEnum.pipe(T.Query())),
+    tenant: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "v4/{+tenant}:completeQuery",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CompleteQueryProjectsTenantsRequest",
+}) as any as S.Schema<CompleteQueryProjectsTenantsRequest>;
+
+/** Additional information returned to client, such as debugging information. */
+export interface ResponseMetadata {
+  /** A unique id associated with this call. This id is logged for tracking purposes. */
+  requestId?: string;
+}
+export const ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requestId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResponseMetadata",
+}) as any as S.Schema<ResponseMetadata>;
+
+export type CompletionResultTypeEnum =
+  | "COMPLETION_TYPE_UNSPECIFIED"
+  | "JOB_TITLE"
+  | "COMPANY_NAME"
+  | "COMBINED";
+export const CompletionResultTypeEnum = /*@__PURE__*/ S.String;
+
+/** Resource that represents completion results. */
+export interface CompletionResult {
+  /** The suggestion for the query. */
+  suggestion?: string;
+  /** The completion topic. */
+  type?: CompletionResultTypeEnum;
+  /** The URI of the company image for COMPANY_NAME. */
+  imageUri?: string;
+}
+export const CompletionResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    suggestion: S.optional(S.String),
+    type: S.optional(CompletionResultTypeEnum),
+    imageUri: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CompletionResult",
+}) as any as S.Schema<CompletionResult>;
+
+export type CompletionResultList = Array<CompletionResult>;
+export const CompletionResultList = /*@__PURE__*/ S.Array(
+  CompletionResult,
+) as any as S.Schema<CompletionResultList>;
+
+/** Response of auto-complete query. */
+export interface CompleteQueryResponse {
+  /** Additional information for the API invocation, such as the request tracking id. */
+  metadata?: ResponseMetadata;
+  /** Results of the matching job/company candidates. */
+  completionResults?: CompletionResultList;
+}
+export const CompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metadata: S.optional(ResponseMetadata),
+    completionResults: S.optional(CompletionResultList),
+  }),
+).annotate({
+  identifier: "CompleteQueryResponse",
+}) as any as S.Schema<CompleteQueryResponse>;
+
 export type JobJobBenefitsItemEnum =
   | "JOB_BENEFIT_UNSPECIFIED"
   | "CHILD_CARE"
@@ -114,11 +228,6 @@ export type LocationLocationTypeEnum =
   | "NEIGHBORHOOD"
   | "STREET_ADDRESS";
 export const LocationLocationTypeEnum = /*@__PURE__*/ S.String;
-
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
 
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface PostalAddress {
@@ -595,27 +704,26 @@ export const BatchCreateJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateJobsRequest",
 }) as any as S.Schema<BatchCreateJobsRequest>;
 
-export interface BatchCreateProjectsTenantsJobsRequest {
+export interface CreateBatchProjectTenantJobRequest {
   /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
   parent: string;
   /** Request body */
   body?: BatchCreateJobsRequest;
 }
-export const BatchCreateProjectsTenantsJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreateJobsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v4/{+parent}/jobs:batchCreate",
-        baseUrl: "https://jobs.googleapis.com/",
-      }),
-    ),
+export const CreateBatchProjectTenantJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchCreateJobsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/{+parent}/jobs:batchCreate",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
 ).annotate({
-  identifier: "BatchCreateProjectsTenantsJobsRequest",
-}) as any as S.Schema<BatchCreateProjectsTenantsJobsRequest>;
+  identifier: "CreateBatchProjectTenantJobRequest",
+}) as any as S.Schema<CreateBatchProjectTenantJobRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -667,188 +775,6 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
     response: S.optional(DocumentMap),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** Request to delete a batch of jobs. */
-export interface BatchDeleteJobsRequest {
-  /** The names of the jobs to delete. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". A maximum of 200 jobs can be deleted in a batch. */
-  names?: StringList;
-}
-export const BatchDeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    names: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteJobsRequest",
-}) as any as S.Schema<BatchDeleteJobsRequest>;
-
-export interface BatchDeleteProjectsTenantsJobsRequest {
-  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". The parent of all of the jobs specified in `names` must match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchDeleteJobsRequest;
-}
-export const BatchDeleteProjectsTenantsJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteJobsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v4/{+parent}/jobs:batchDelete",
-        baseUrl: "https://jobs.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchDeleteProjectsTenantsJobsRequest",
-}) as any as S.Schema<BatchDeleteProjectsTenantsJobsRequest>;
-
-/** Request to update a batch of jobs. */
-export interface BatchUpdateJobsRequest {
-  /** Strongly recommended for the best service experience. Be aware that it will also increase latency when checking the status of a batch operation. If update_mask is provided, only the specified fields in Job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. If update_mask is provided, The Job inside JobResult will only contains fields that is updated, plus the Id of the Job. Otherwise, Job will include all fields, which can yield a very large response. */
-  updateMask?: string;
-  /** Required. The jobs to be updated. A maximum of 200 jobs can be updated in a batch. */
-  jobs?: JobList;
-}
-export const BatchUpdateJobsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    updateMask: S.optional(S.String),
-    jobs: S.optional(JobList),
-  }),
-).annotate({
-  identifier: "BatchUpdateJobsRequest",
-}) as any as S.Schema<BatchUpdateJobsRequest>;
-
-export interface BatchUpdateProjectsTenantsJobsRequest {
-  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
-  parent: string;
-  /** Request body */
-  body?: BatchUpdateJobsRequest;
-}
-export const BatchUpdateProjectsTenantsJobsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateJobsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v4/{+parent}/jobs:batchUpdate",
-        baseUrl: "https://jobs.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchUpdateProjectsTenantsJobsRequest",
-}) as any as S.Schema<BatchUpdateProjectsTenantsJobsRequest>;
-
-export type CompleteQueryProjectsTenantsTypeEnum =
-  | "COMPLETION_TYPE_UNSPECIFIED"
-  | "JOB_TITLE"
-  | "COMPANY_NAME"
-  | "COMBINED";
-export const CompleteQueryProjectsTenantsTypeEnum = /*@__PURE__*/ S.String;
-
-export type CompleteQueryProjectsTenantsScopeEnum =
-  | "COMPLETION_SCOPE_UNSPECIFIED"
-  | "TENANT"
-  | "PUBLIC";
-export const CompleteQueryProjectsTenantsScopeEnum = /*@__PURE__*/ S.String;
-
-export interface CompleteQueryProjectsTenantsRequest {
-  /** If provided, restricts completion to specified company. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}", for example, "projects/foo/tenants/bar/companies/baz". */
-  company?: string;
-  /** The completion topic. The default is CompletionType.COMBINED. */
-  type?: CompleteQueryProjectsTenantsTypeEnum | (string & {});
-  /** The list of languages of the query. This is the BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47). The maximum number of allowed characters is 255. */
-  languageCodes?: StringList;
-  /** Required. The query used to generate suggestions. The maximum number of allowed characters is 255. */
-  query?: string;
-  /** Required. Completion result count. The maximum allowed page size is 10. */
-  pageSize?: number;
-  /** The scope of the completion. The defaults is CompletionScope.PUBLIC. */
-  scope?: CompleteQueryProjectsTenantsScopeEnum | (string & {});
-  /** Required. Resource name of tenant the completion is performed within. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
-  tenant: string;
-}
-export const CompleteQueryProjectsTenantsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    company: S.optional(S.String.pipe(T.Query())),
-    type: S.optional(CompleteQueryProjectsTenantsTypeEnum.pipe(T.Query())),
-    languageCodes: S.optional(StringList.pipe(T.Query())),
-    query: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query())),
-    scope: S.optional(CompleteQueryProjectsTenantsScopeEnum.pipe(T.Query())),
-    tenant: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "v4/{+tenant}:completeQuery",
-      baseUrl: "https://jobs.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CompleteQueryProjectsTenantsRequest",
-}) as any as S.Schema<CompleteQueryProjectsTenantsRequest>;
-
-/** Additional information returned to client, such as debugging information. */
-export interface ResponseMetadata {
-  /** A unique id associated with this call. This id is logged for tracking purposes. */
-  requestId?: string;
-}
-export const ResponseMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requestId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResponseMetadata",
-}) as any as S.Schema<ResponseMetadata>;
-
-export type CompletionResultTypeEnum =
-  | "COMPLETION_TYPE_UNSPECIFIED"
-  | "JOB_TITLE"
-  | "COMPANY_NAME"
-  | "COMBINED";
-export const CompletionResultTypeEnum = /*@__PURE__*/ S.String;
-
-/** Resource that represents completion results. */
-export interface CompletionResult {
-  /** The suggestion for the query. */
-  suggestion?: string;
-  /** The completion topic. */
-  type?: CompletionResultTypeEnum;
-  /** The URI of the company image for COMPANY_NAME. */
-  imageUri?: string;
-}
-export const CompletionResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    suggestion: S.optional(S.String),
-    type: S.optional(CompletionResultTypeEnum),
-    imageUri: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CompletionResult",
-}) as any as S.Schema<CompletionResult>;
-
-export type CompletionResultList = Array<CompletionResult>;
-export const CompletionResultList = /*@__PURE__*/ S.Array(
-  CompletionResult,
-) as any as S.Schema<CompletionResultList>;
-
-/** Response of auto-complete query. */
-export interface CompleteQueryResponse {
-  /** Additional information for the API invocation, such as the request tracking id. */
-  metadata?: ResponseMetadata;
-  /** Results of the matching job/company candidates. */
-  completionResults?: CompletionResultList;
-}
-export const CompleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metadata: S.optional(ResponseMetadata),
-    completionResults: S.optional(CompletionResultList),
-  }),
-).annotate({
-  identifier: "CompleteQueryResponse",
-}) as any as S.Schema<CompleteQueryResponse>;
 
 /** A Tenant resource represents a tenant in the service. A tenant is a group or entity that shares common access with specific privileges for resources like jobs. Customer may create multiple tenants to provide data isolation for different groups. */
 export interface Tenant {
@@ -1076,6 +1002,40 @@ export const CreateProjectsTenantsJobsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectsTenantsJobsRequest",
 }) as any as S.Schema<CreateProjectsTenantsJobsRequest>;
+
+/** Request to delete a batch of jobs. */
+export interface BatchDeleteJobsRequest {
+  /** The names of the jobs to delete. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}". For example, "projects/foo/tenants/bar/jobs/baz". A maximum of 200 jobs can be deleted in a batch. */
+  names?: StringList;
+}
+export const BatchDeleteJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    names: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteJobsRequest",
+}) as any as S.Schema<BatchDeleteJobsRequest>;
+
+export interface DeleteBatchProjectTenantJobRequest {
+  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". The parent of all of the jobs specified in `names` must match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchDeleteJobsRequest;
+}
+export const DeleteBatchProjectTenantJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchDeleteJobsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/{+parent}/jobs:batchDelete",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBatchProjectTenantJobRequest",
+}) as any as S.Schema<DeleteBatchProjectTenantJobRequest>;
 
 export interface DeleteProjectsTenantsRequest {
   /** Required. The resource name of the tenant to be deleted. The format is "projects/{project_id}/tenants/{tenant_id}", for example, "projects/foo/tenants/bar". */
@@ -2063,65 +2023,42 @@ export const SearchProjectsTenantsJobsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SearchProjectsTenantsJobsRequest",
 }) as any as S.Schema<SearchProjectsTenantsJobsRequest>;
 
-export type BatchCreateProjectsTenantsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Begins executing a batch create jobs operation. */
-export const batchCreateProjectsTenantsJobs: API.OperationMethod<
-  BatchCreateProjectsTenantsJobsRequest,
-  Operation,
-  BatchCreateProjectsTenantsJobsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsTenantsJobsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+/** Request to update a batch of jobs. */
+export interface BatchUpdateJobsRequest {
+  /** Strongly recommended for the best service experience. Be aware that it will also increase latency when checking the status of a batch operation. If update_mask is provided, only the specified fields in Job are updated. Otherwise all the fields are updated. A field mask to restrict the fields that are updated. Only top level fields of Job are supported. If update_mask is provided, The Job inside JobResult will only contains fields that is updated, plus the Id of the Job. Otherwise, Job will include all fields, which can yield a very large response. */
+  updateMask?: string;
+  /** Required. The jobs to be updated. A maximum of 200 jobs can be updated in a batch. */
+  jobs?: JobList;
+}
+export const BatchUpdateJobsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    updateMask: S.optional(S.String),
+    jobs: S.optional(JobList),
+  }),
+).annotate({
+  identifier: "BatchUpdateJobsRequest",
+}) as any as S.Schema<BatchUpdateJobsRequest>;
 
-export type BatchDeleteProjectsTenantsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Begins executing a batch delete jobs operation. */
-export const batchDeleteProjectsTenantsJobs: API.OperationMethod<
-  BatchDeleteProjectsTenantsJobsRequest,
-  Operation,
-  BatchDeleteProjectsTenantsJobsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsTenantsJobsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateProjectsTenantsJobsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Begins executing a batch update jobs operation. */
-export const batchUpdateProjectsTenantsJobs: API.OperationMethod<
-  BatchUpdateProjectsTenantsJobsRequest,
-  Operation,
-  BatchUpdateProjectsTenantsJobsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateProjectsTenantsJobsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateBatchProjectTenantJobRequest {
+  /** Required. The resource name of the tenant under which the job is created. The format is "projects/{project_id}/tenants/{tenant_id}". For example, "projects/foo/tenants/bar". */
+  parent: string;
+  /** Request body */
+  body?: BatchUpdateJobsRequest;
+}
+export const UpdateBatchProjectTenantJobRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateJobsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v4/{+parent}/jobs:batchUpdate",
+      baseUrl: "https://jobs.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchProjectTenantJobRequest",
+}) as any as S.Schema<UpdateBatchProjectTenantJobRequest>;
 
 export type CompleteQueryProjectsTenantsError =
   | NotFound
@@ -2137,6 +2074,26 @@ export const completeQueryProjectsTenants: API.OperationMethod<
   input: CompleteQueryProjectsTenantsRequest,
   output: CompleteQueryResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectTenantJobError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Begins executing a batch create jobs operation. */
+export const createBatchProjectTenantJob: API.OperationMethod<
+  CreateBatchProjectTenantJobRequest,
+  Operation,
+  CreateBatchProjectTenantJobError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectTenantJobRequest,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -2216,6 +2173,26 @@ export const createProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsTenantsJobsRequest,
   output: Job,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchProjectTenantJobError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Begins executing a batch delete jobs operation. */
+export const deleteBatchProjectTenantJob: API.OperationMethod<
+  DeleteBatchProjectTenantJobRequest,
+  Operation,
+  DeleteBatchProjectTenantJobError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchProjectTenantJobRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2502,6 +2479,26 @@ export const searchProjectsTenantsJobs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SearchProjectsTenantsJobsRequest,
   output: SearchJobsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchProjectTenantJobError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Begins executing a batch update jobs operation. */
+export const updateBatchProjectTenantJob: API.OperationMethod<
+  UpdateBatchProjectTenantJobRequest,
+  Operation,
+  UpdateBatchProjectTenantJobError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchProjectTenantJobRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

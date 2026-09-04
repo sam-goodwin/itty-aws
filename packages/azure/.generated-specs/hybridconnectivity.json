@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.hybridconnectivity#SolutionTypesGet": {
+    "com.azure.hybridconnectivity#GetSolutionType": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionTypesGetRequest"
+        "target": "com.azure.hybridconnectivity#GetSolutionTypeRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#SolutionTypesGetResponse"
+        "target": "com.azure.hybridconnectivity#GetSolutionTypeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#SolutionTypesGetResponse": {
+    "com.azure.hybridconnectivity#GetSolutionTypeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -342,7 +342,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.hybridconnectivity#SolutionTypesGetRequest": {
+    "com.azure.hybridconnectivity#GetSolutionTypeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -374,10 +374,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#SolutionTypesListByResourceGroup": {
+    "com.azure.hybridconnectivity#ListSolutionTypeByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionTypesListByResourceGroupRequest"
+        "target": "com.azure.hybridconnectivity#ListSolutionTypeByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#SolutionTypeResourceListResult"
@@ -461,7 +461,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.hybridconnectivity#SolutionTypesListByResourceGroupRequest": {
+    "com.azure.hybridconnectivity#ListSolutionTypeByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -756,10 +756,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsDelete": {
+    "com.azure.hybridconnectivity#DeletePublicCloudConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsDeleteRequest"
+        "target": "com.azure.hybridconnectivity#DeletePublicCloudConnectorRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -775,7 +775,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsDeleteRequest": {
+    "com.azure.hybridconnectivity#DeletePublicCloudConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -807,13 +807,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsUpdate": {
+    "com.azure.hybridconnectivity#UpdatePublicCloudConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsUpdateRequest"
+        "target": "com.azure.hybridconnectivity#UpdatePublicCloudConnectorRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsUpdateResponse"
+        "target": "com.azure.hybridconnectivity#UpdatePublicCloudConnectorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -826,7 +826,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsUpdateResponse": {
+    "com.azure.hybridconnectivity#UpdatePublicCloudConnectorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1097,7 +1097,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsUpdateRequest": {
+    "com.azure.hybridconnectivity#UpdatePublicCloudConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1426,13 +1426,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsGet": {
+    "com.azure.hybridconnectivity#GetPublicCloudConnector": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsGetRequest"
+        "target": "com.azure.hybridconnectivity#GetPublicCloudConnectorRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsGetResponse"
+        "target": "com.azure.hybridconnectivity#GetPublicCloudConnectorResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1445,7 +1445,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsGetResponse": {
+    "com.azure.hybridconnectivity#GetPublicCloudConnectorResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1514,7 +1514,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsGetRequest": {
+    "com.azure.hybridconnectivity#GetPublicCloudConnectorRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1546,10 +1546,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsListByResourceGroup": {
+    "com.azure.hybridconnectivity#ListPublicCloudConnectorByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsListByResourceGroupRequest"
+        "target": "com.azure.hybridconnectivity#ListPublicCloudConnectorByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#PublicCloudConnectorListResult"
@@ -1664,7 +1664,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsListByResourceGroupRequest": {
+    "com.azure.hybridconnectivity#ListPublicCloudConnectorByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1688,10 +1688,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#SolutionTypesListBySubscription": {
+    "com.azure.hybridconnectivity#ListSolutionTypeBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionTypesListBySubscriptionRequest"
+        "target": "com.azure.hybridconnectivity#ListSolutionTypeBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#SolutionTypeResourceListResult"
@@ -1707,7 +1707,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#SolutionTypesListBySubscriptionRequest": {
+    "com.azure.hybridconnectivity#ListSolutionTypeBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1723,10 +1723,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsListBySubscription": {
+    "com.azure.hybridconnectivity#ListPublicCloudConnectorBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#PublicCloudConnectorsListBySubscriptionRequest"
+        "target": "com.azure.hybridconnectivity#ListPublicCloudConnectorBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#PublicCloudConnectorListResult"
@@ -1742,7 +1742,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#PublicCloudConnectorsListBySubscriptionRequest": {
+    "com.azure.hybridconnectivity#ListPublicCloudConnectorBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1967,13 +1967,13 @@
         "smithy.api#documentation": "The list of solution types and their settings"
       }
     },
-    "com.azure.hybridconnectivity#OperationsList": {
+    "com.azure.hybridconnectivity#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#OperationsListResponse"
+        "target": "com.azure.hybridconnectivity#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1986,7 +1986,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#OperationsListResponse": {
+    "com.azure.hybridconnectivity#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -2240,13 +2240,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#InventoryGet": {
+    "com.azure.hybridconnectivity#GetInventory": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#InventoryGetRequest"
+        "target": "com.azure.hybridconnectivity#GetInventoryRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#InventoryGetResponse"
+        "target": "com.azure.hybridconnectivity#GetInventoryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2259,7 +2259,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#InventoryGetResponse": {
+    "com.azure.hybridconnectivity#GetInventoryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2387,7 +2387,7 @@
         "smithy.api#documentation": "Cloud Native Type enum."
       }
     },
-    "com.azure.hybridconnectivity#InventoryGetRequest": {
+    "com.azure.hybridconnectivity#GetInventoryRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2419,10 +2419,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#InventoryListBySolutionConfiguration": {
+    "com.azure.hybridconnectivity#ListInventoryBySolutionConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#InventoryListBySolutionConfigurationRequest"
+        "target": "com.azure.hybridconnectivity#ListInventoryBySolutionConfigurationRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#InventoryResourceListResult"
@@ -2506,7 +2506,7 @@
         "smithy.api#documentation": "Concrete proxy resource types can be created by aliasing this type using a specific property type."
       }
     },
-    "com.azure.hybridconnectivity#InventoryListBySolutionConfigurationRequest": {
+    "com.azure.hybridconnectivity#ListInventoryBySolutionConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2530,10 +2530,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsDelete": {
+    "com.azure.hybridconnectivity#DeleteSolutionConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionConfigurationsDeleteRequest"
+        "target": "com.azure.hybridconnectivity#DeleteSolutionConfigurationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2549,7 +2549,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsDeleteRequest": {
+    "com.azure.hybridconnectivity#DeleteSolutionConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2573,13 +2573,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsUpdate": {
+    "com.azure.hybridconnectivity#UpdateSolutionConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionConfigurationsUpdateRequest"
+        "target": "com.azure.hybridconnectivity#UpdateSolutionConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#SolutionConfigurationsUpdateResponse"
+        "target": "com.azure.hybridconnectivity#UpdateSolutionConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2592,7 +2592,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsUpdateResponse": {
+    "com.azure.hybridconnectivity#UpdateSolutionConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2675,7 +2675,7 @@
         "smithy.api#documentation": "Solution configuration resource."
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsUpdateRequest": {
+    "com.azure.hybridconnectivity#UpdateSolutionConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2833,13 +2833,13 @@
         "smithy.api#documentation": "Solution configuration resource."
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsGet": {
+    "com.azure.hybridconnectivity#GetSolutionConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionConfigurationsGetRequest"
+        "target": "com.azure.hybridconnectivity#GetSolutionConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#SolutionConfigurationsGetResponse"
+        "target": "com.azure.hybridconnectivity#GetSolutionConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2852,7 +2852,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsGetResponse": {
+    "com.azure.hybridconnectivity#GetSolutionConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2890,7 +2890,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsGetRequest": {
+    "com.azure.hybridconnectivity#GetSolutionConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -2914,10 +2914,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsList": {
+    "com.azure.hybridconnectivity#ListSolutionConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#SolutionConfigurationsListRequest"
+        "target": "com.azure.hybridconnectivity#ListSolutionConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#SolutionConfigurationListResult"
@@ -3001,7 +3001,7 @@
         "smithy.api#documentation": "Solution Configuration"
       }
     },
-    "com.azure.hybridconnectivity#SolutionConfigurationsListRequest": {
+    "com.azure.hybridconnectivity#ListSolutionConfigurationsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3017,10 +3017,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsDelete": {
+    "com.azure.hybridconnectivity#DeleteServiceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsDeleteRequest"
+        "target": "com.azure.hybridconnectivity#DeleteServiceConfigurationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3036,7 +3036,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsDeleteRequest": {
+    "com.azure.hybridconnectivity#DeleteServiceConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3068,13 +3068,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsUpdate": {
+    "com.azure.hybridconnectivity#UpdateServiceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsUpdateRequest"
+        "target": "com.azure.hybridconnectivity#UpdateServiceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsUpdateResponse"
+        "target": "com.azure.hybridconnectivity#UpdateServiceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3087,7 +3087,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsUpdateResponse": {
+    "com.azure.hybridconnectivity#UpdateServiceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3216,7 +3216,7 @@
         "smithy.api#documentation": "Name of the service."
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsUpdateRequest": {
+    "com.azure.hybridconnectivity#UpdateServiceConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3268,13 +3268,13 @@
         "smithy.api#documentation": "Service configuration details"
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsCreateOrupdate": {
+    "com.azure.hybridconnectivity#CreateServiceConfigurationOrupdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsCreateOrupdateRequest"
+        "target": "com.azure.hybridconnectivity#CreateServiceConfigurationOrupdateRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsCreateOrupdateResponse"
+        "target": "com.azure.hybridconnectivity#CreateServiceConfigurationOrupdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3287,7 +3287,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsCreateOrupdateResponse": {
+    "com.azure.hybridconnectivity#CreateServiceConfigurationOrupdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3325,7 +3325,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsCreateOrupdateRequest": {
+    "com.azure.hybridconnectivity#CreateServiceConfigurationOrupdateRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3390,13 +3390,13 @@
         "smithy.api#documentation": "Service configuration details"
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsGet": {
+    "com.azure.hybridconnectivity#GetServiceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsGetRequest"
+        "target": "com.azure.hybridconnectivity#GetServiceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsGetResponse"
+        "target": "com.azure.hybridconnectivity#GetServiceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3409,7 +3409,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsGetResponse": {
+    "com.azure.hybridconnectivity#GetServiceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3447,7 +3447,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsGetRequest": {
+    "com.azure.hybridconnectivity#GetServiceConfigurationRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3479,10 +3479,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsListByEndpointResource": {
+    "com.azure.hybridconnectivity#ListServiceConfigurationByEndpointResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#ServiceConfigurationsListByEndpointResourceRequest"
+        "target": "com.azure.hybridconnectivity#ListServiceConfigurationByEndpointResourceRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#ServiceConfigurationList"
@@ -3566,7 +3566,7 @@
         "smithy.api#documentation": "The service configuration details associated with the target resource."
       }
     },
-    "com.azure.hybridconnectivity#ServiceConfigurationsListByEndpointResourceRequest": {
+    "com.azure.hybridconnectivity#ListServiceConfigurationByEndpointResourceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3590,10 +3590,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsListManagedProxyDetails": {
+    "com.azure.hybridconnectivity#ListEndpointManagedProxyDetails": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#EndpointsListManagedProxyDetailsRequest"
+        "target": "com.azure.hybridconnectivity#ListEndpointManagedProxyDetailsRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#ManagedProxyResource"
@@ -3631,7 +3631,7 @@
         "smithy.api#documentation": "Managed Proxy"
       }
     },
-    "com.azure.hybridconnectivity#EndpointsListManagedProxyDetailsRequest": {
+    "com.azure.hybridconnectivity#ListEndpointManagedProxyDetailsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3674,10 +3674,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsListIngressGatewayCredentials": {
+    "com.azure.hybridconnectivity#ListEndpointIngressGatewayCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#EndpointsListIngressGatewayCredentialsRequest"
+        "target": "com.azure.hybridconnectivity#ListEndpointIngressGatewayCredentialsRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#IngressGatewayResource"
@@ -3804,7 +3804,7 @@
         "smithy.api#documentation": "Azure relay hybrid connection access properties"
       }
     },
-    "com.azure.hybridconnectivity#EndpointsListIngressGatewayCredentialsRequest": {
+    "com.azure.hybridconnectivity#ListEndpointIngressGatewayCredentialsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3841,10 +3841,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsListCredentials": {
+    "com.azure.hybridconnectivity#ListEndpointCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#EndpointsListCredentialsRequest"
+        "target": "com.azure.hybridconnectivity#ListEndpointCredentialsRequest"
       },
       "output": {
         "target": "com.azure.hybridconnectivity#EndpointAccessResource"
@@ -3874,7 +3874,7 @@
         "smithy.api#documentation": "The endpoint access for the target resource."
       }
     },
-    "com.azure.hybridconnectivity#EndpointsListCredentialsRequest": {
+    "com.azure.hybridconnectivity#ListEndpointCredentialsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3911,10 +3911,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsDelete": {
+    "com.azure.hybridconnectivity#DeleteEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#EndpointsDeleteRequest"
+        "target": "com.azure.hybridconnectivity#DeleteEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3930,7 +3930,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#EndpointsDeleteRequest": {
+    "com.azure.hybridconnectivity#DeleteEndpointRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -3954,13 +3954,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsUpdate": {
+    "com.azure.hybridconnectivity#UpdateEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#EndpointsUpdateRequest"
+        "target": "com.azure.hybridconnectivity#UpdateEndpointRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#EndpointsUpdateResponse"
+        "target": "com.azure.hybridconnectivity#UpdateEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3973,7 +3973,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#EndpointsUpdateResponse": {
+    "com.azure.hybridconnectivity#UpdateEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4058,7 +4058,7 @@
         "smithy.api#documentation": "The type of endpoint."
       }
     },
-    "com.azure.hybridconnectivity#EndpointsUpdateRequest": {
+    "com.azure.hybridconnectivity#UpdateEndpointRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -4196,13 +4196,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsGet": {
+    "com.azure.hybridconnectivity#GetEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridconnectivity#EndpointsGetRequest"
+        "target": "com.azure.hybridconnectivity#GetEndpointRequest"
       },
       "output": {
-        "target": "com.azure.hybridconnectivity#EndpointsGetResponse"
+        "target": "com.azure.hybridconnectivity#GetEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4215,7 +4215,7 @@
         "com.distilled.openapi#apiVersion": "2027-01-01"
       }
     },
-    "com.azure.hybridconnectivity#EndpointsGetResponse": {
+    "com.azure.hybridconnectivity#GetEndpointResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4253,7 +4253,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.hybridconnectivity#EndpointsGetRequest": {
+    "com.azure.hybridconnectivity#GetEndpointRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -4385,34 +4385,34 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.hybridconnectivity#SolutionTypesGet"
+          "target": "com.azure.hybridconnectivity#GetSolutionType"
         },
         {
-          "target": "com.azure.hybridconnectivity#SolutionTypesListByResourceGroup"
+          "target": "com.azure.hybridconnectivity#ListSolutionTypeByResourceGroup"
         },
         {
           "target": "com.azure.hybridconnectivity#PublicCloudConnectorsTestPermissions"
         },
         {
-          "target": "com.azure.hybridconnectivity#PublicCloudConnectorsDelete"
+          "target": "com.azure.hybridconnectivity#DeletePublicCloudConnector"
         },
         {
-          "target": "com.azure.hybridconnectivity#PublicCloudConnectorsUpdate"
+          "target": "com.azure.hybridconnectivity#UpdatePublicCloudConnector"
         },
         {
           "target": "com.azure.hybridconnectivity#PublicCloudConnectorsCreateOrUpdate"
         },
         {
-          "target": "com.azure.hybridconnectivity#PublicCloudConnectorsGet"
+          "target": "com.azure.hybridconnectivity#GetPublicCloudConnector"
         },
         {
-          "target": "com.azure.hybridconnectivity#PublicCloudConnectorsListByResourceGroup"
+          "target": "com.azure.hybridconnectivity#ListPublicCloudConnectorByResourceGroup"
         },
         {
-          "target": "com.azure.hybridconnectivity#SolutionTypesListBySubscription"
+          "target": "com.azure.hybridconnectivity#ListSolutionTypeBySubscription"
         },
         {
-          "target": "com.azure.hybridconnectivity#PublicCloudConnectorsListBySubscription"
+          "target": "com.azure.hybridconnectivity#ListPublicCloudConnectorBySubscription"
         },
         {
           "target": "com.azure.hybridconnectivity#GenerateGcpTemplatePost"
@@ -4421,67 +4421,67 @@
           "target": "com.azure.hybridconnectivity#GenerateAwsTemplatePost"
         },
         {
-          "target": "com.azure.hybridconnectivity#OperationsList"
+          "target": "com.azure.hybridconnectivity#ListOperations"
         },
         {
           "target": "com.azure.hybridconnectivity#SolutionConfigurationsSyncNow"
         },
         {
-          "target": "com.azure.hybridconnectivity#InventoryGet"
+          "target": "com.azure.hybridconnectivity#GetInventory"
         },
         {
-          "target": "com.azure.hybridconnectivity#InventoryListBySolutionConfiguration"
+          "target": "com.azure.hybridconnectivity#ListInventoryBySolutionConfiguration"
         },
         {
-          "target": "com.azure.hybridconnectivity#SolutionConfigurationsDelete"
+          "target": "com.azure.hybridconnectivity#DeleteSolutionConfiguration"
         },
         {
-          "target": "com.azure.hybridconnectivity#SolutionConfigurationsUpdate"
+          "target": "com.azure.hybridconnectivity#UpdateSolutionConfiguration"
         },
         {
           "target": "com.azure.hybridconnectivity#SolutionConfigurationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.hybridconnectivity#SolutionConfigurationsGet"
+          "target": "com.azure.hybridconnectivity#GetSolutionConfiguration"
         },
         {
-          "target": "com.azure.hybridconnectivity#SolutionConfigurationsList"
+          "target": "com.azure.hybridconnectivity#ListSolutionConfigurations"
         },
         {
-          "target": "com.azure.hybridconnectivity#ServiceConfigurationsDelete"
+          "target": "com.azure.hybridconnectivity#DeleteServiceConfiguration"
         },
         {
-          "target": "com.azure.hybridconnectivity#ServiceConfigurationsUpdate"
+          "target": "com.azure.hybridconnectivity#UpdateServiceConfiguration"
         },
         {
-          "target": "com.azure.hybridconnectivity#ServiceConfigurationsCreateOrupdate"
+          "target": "com.azure.hybridconnectivity#CreateServiceConfigurationOrupdate"
         },
         {
-          "target": "com.azure.hybridconnectivity#ServiceConfigurationsGet"
+          "target": "com.azure.hybridconnectivity#GetServiceConfiguration"
         },
         {
-          "target": "com.azure.hybridconnectivity#ServiceConfigurationsListByEndpointResource"
+          "target": "com.azure.hybridconnectivity#ListServiceConfigurationByEndpointResource"
         },
         {
-          "target": "com.azure.hybridconnectivity#EndpointsListManagedProxyDetails"
+          "target": "com.azure.hybridconnectivity#ListEndpointManagedProxyDetails"
         },
         {
-          "target": "com.azure.hybridconnectivity#EndpointsListIngressGatewayCredentials"
+          "target": "com.azure.hybridconnectivity#ListEndpointIngressGatewayCredentials"
         },
         {
-          "target": "com.azure.hybridconnectivity#EndpointsListCredentials"
+          "target": "com.azure.hybridconnectivity#ListEndpointCredentials"
         },
         {
-          "target": "com.azure.hybridconnectivity#EndpointsDelete"
+          "target": "com.azure.hybridconnectivity#DeleteEndpoint"
         },
         {
-          "target": "com.azure.hybridconnectivity#EndpointsUpdate"
+          "target": "com.azure.hybridconnectivity#UpdateEndpoint"
         },
         {
           "target": "com.azure.hybridconnectivity#EndpointsCreateOrUpdate"
         },
         {
-          "target": "com.azure.hybridconnectivity#EndpointsGet"
+          "target": "com.azure.hybridconnectivity#GetEndpoint"
         },
         {
           "target": "com.azure.hybridconnectivity#EndpointsList2"

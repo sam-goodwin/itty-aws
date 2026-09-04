@@ -51,7 +51,7 @@ export const MarketingAnalyticsApplySetupOpsCreateRequestOpsList =
 export type ApplySetupOpsSourceEnum = "setup_tab" | "apply_all_safe" | "mcp";
 export const ApplySetupOpsSourceEnum = /*@__PURE__*/ S.String;
 
-export interface MarketingAnalyticsApplySetupOpsCreateRequest {
+export interface CreateMarketingAnalyticApplySetupOpsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Operations to apply, in order. Send `apply` payloads returned verbatim by setup_plan — never hand-craft one. Navigate-only ops (open_oauth, open_source_wizard, open_settings, fix_platform_urls) are rejected: they describe something a browser or a human does. */
@@ -59,7 +59,7 @@ export interface MarketingAnalyticsApplySetupOpsCreateRequest {
   /** Where the request came from, recorded in the activity log * `setup_tab` - setup_tab * `apply_all_safe` - apply_all_safe * `mcp` - mcp */
   source?: ApplySetupOpsSourceEnum | (string & {});
 }
-export const MarketingAnalyticsApplySetupOpsCreateRequest =
+export const CreateMarketingAnalyticApplySetupOpsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -73,8 +73,8 @@ export const MarketingAnalyticsApplySetupOpsCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "MarketingAnalyticsApplySetupOpsCreateRequest",
-  }) as any as S.Schema<MarketingAnalyticsApplySetupOpsCreateRequest>;
+    identifier: "CreateMarketingAnalyticApplySetupOpsRequest",
+  }) as any as S.Schema<CreateMarketingAnalyticApplySetupOpsRequest>;
 
 /** The operations that were applied */
 export type ApplySetupOpsResponseAppliedList = Array<unknown>;
@@ -105,6 +105,52 @@ export const ApplySetupOpsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApplySetupOpsResponse",
 }) as any as S.Schema<ApplySetupOpsResponse>;
+
+export interface CreateMarketingAnalyticTestMappingRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const CreateMarketingAnalyticTestMappingRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/marketing_analytics/test_mapping/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateMarketingAnalyticTestMappingRequest",
+  }) as any as S.Schema<CreateMarketingAnalyticTestMappingRequest>;
+
+export interface CreateMarketingAnalyticTestMappingResponse {}
+export const CreateMarketingAnalyticTestMappingResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "CreateMarketingAnalyticTestMappingResponse",
+  }) as any as S.Schema<CreateMarketingAnalyticTestMappingResponse>;
+
+export interface DeleteMarketingAnalyticConversionGoalDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  conversion_goal_id: string;
+}
+export const DeleteMarketingAnalyticConversionGoalDestroyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      conversion_goal_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/{conversion_goal_id}/delete/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteMarketingAnalyticConversionGoalDestroyRequest",
+  }) as any as S.Schema<DeleteMarketingAnalyticConversionGoalDestroyRequest>;
 
 export type PropertyOperator =
   | "exact"
@@ -1819,28 +1865,6 @@ export type ConversionGoal =
 export const ConversionGoal =
   /*@__PURE__*/ S.Unknown as any as S.Schema<ConversionGoal>;
 
-export interface MarketingAnalyticsConversionGoalsCreateCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** The conversion goal. Must match one of the ConversionGoalFilter shapes: an events node, an actions node or a data warehouse node. conversion_goal_id is assigned by the server and any value sent is ignored. */
-  goal: ConversionGoal;
-}
-export const MarketingAnalyticsConversionGoalsCreateCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      goal: ConversionGoal,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/create/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "MarketingAnalyticsConversionGoalsCreateCreateRequest",
-  }) as any as S.Schema<MarketingAnalyticsConversionGoalsCreateCreateRequest>;
-
 export type ConversionGoalWrittenListItem =
   | ConversionGoalFilter1
   | ConversionGoalFilter2
@@ -1869,26 +1893,27 @@ export const ConversionGoalWriteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConversionGoalWriteResponse",
 }) as any as S.Schema<ConversionGoalWriteResponse>;
 
-export interface MarketingAnalyticsConversionGoalsDeleteDestroyRequest {
+export interface MarketingAnalyticsConversionGoalsCreateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  conversion_goal_id: string;
+  /** The conversion goal. Must match one of the ConversionGoalFilter shapes: an events node, an actions node or a data warehouse node. conversion_goal_id is assigned by the server and any value sent is ignored. */
+  goal: ConversionGoal;
 }
-export const MarketingAnalyticsConversionGoalsDeleteDestroyRequest =
+export const MarketingAnalyticsConversionGoalsCreateCreateRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      conversion_goal_id: S.String.pipe(T.Label()),
+      goal: ConversionGoal,
     }).pipe(
       T.Http({
-        method: "DELETE",
-        uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/{conversion_goal_id}/delete/",
+        method: "POST",
+        uri: "/api/projects/{project_id}/marketing_analytics/conversion_goals/create/",
         code: 200,
       }),
     ),
   ).annotate({
-    identifier: "MarketingAnalyticsConversionGoalsDeleteDestroyRequest",
-  }) as any as S.Schema<MarketingAnalyticsConversionGoalsDeleteDestroyRequest>;
+    identifier: "MarketingAnalyticsConversionGoalsCreateCreateRequest",
+  }) as any as S.Schema<MarketingAnalyticsConversionGoalsCreateCreateRequest>;
 
 export interface MarketingAnalyticsConversionGoalsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -3539,31 +3564,6 @@ export const UtmMappingSuggestionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UtmMappingSuggestionsResponse",
 }) as any as S.Schema<UtmMappingSuggestionsResponse>;
 
-export interface MarketingAnalyticsTestMappingCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const MarketingAnalyticsTestMappingCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/marketing_analytics/test_mapping/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "MarketingAnalyticsTestMappingCreateRequest",
-  }) as any as S.Schema<MarketingAnalyticsTestMappingCreateRequest>;
-
-export interface MarketingAnalyticsTestMappingCreateResponse {}
-export const MarketingAnalyticsTestMappingCreateResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "MarketingAnalyticsTestMappingCreateResponse",
-  }) as any as S.Schema<MarketingAnalyticsTestMappingCreateResponse>;
-
 export interface MarketingAnalyticsUtmAuditRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3787,20 +3787,52 @@ export const UtmAuditResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UtmAuditResponse",
 }) as any as S.Schema<UtmAuditResponse>;
 
-export type MarketingAnalyticsApplySetupOpsCreateError =
+export type CreateMarketingAnalyticApplySetupOpsError =
   | BadRequest
   | NotFound
   | PosthogOpError;
 /** Apply setup operations Apply one or more setup operations from the setup plan, atomically. Either every operation lands or none does — a partially-applied batch has no well-defined undo. Returns `undo_ops`, computed from the pre-change state, which can be POSTed back to reverse the batch. Only send `apply` payloads returned by setup_plan. */
-export const marketingAnalyticsApplySetupOpsCreate: API.OperationMethod<
-  MarketingAnalyticsApplySetupOpsCreateRequest,
+export const createMarketingAnalyticApplySetupOps: API.OperationMethod<
+  CreateMarketingAnalyticApplySetupOpsRequest,
   ApplySetupOpsResponse,
-  MarketingAnalyticsApplySetupOpsCreateError,
+  CreateMarketingAnalyticApplySetupOpsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketingAnalyticsApplySetupOpsCreateRequest,
+  input: CreateMarketingAnalyticApplySetupOpsRequest,
   output: ApplySetupOpsResponse,
   errors: [BadRequest, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateMarketingAnalyticTestMappingError = PosthogOpError;
+export const createMarketingAnalyticTestMapping: API.OperationMethod<
+  CreateMarketingAnalyticTestMappingRequest,
+  CreateMarketingAnalyticTestMappingResponse,
+  CreateMarketingAnalyticTestMappingError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMarketingAnalyticTestMappingRequest,
+  output: CreateMarketingAnalyticTestMappingResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteMarketingAnalyticConversionGoalDestroyError =
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Delete conversion goal Remove one conversion goal from the project, leaving the others in place. */
+export const deleteMarketingAnalyticConversionGoalDestroy: API.OperationMethod<
+  DeleteMarketingAnalyticConversionGoalDestroyRequest,
+  ConversionGoalWriteResponse,
+  DeleteMarketingAnalyticConversionGoalDestroyError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMarketingAnalyticConversionGoalDestroyRequest,
+  output: ConversionGoalWriteResponse,
+  errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -3819,24 +3851,6 @@ export const marketingAnalyticsConversionGoalsCreateCreate: API.OperationMethod<
   input: MarketingAnalyticsConversionGoalsCreateCreateRequest,
   output: ConversionGoalWriteResponse,
   errors: [BadRequest, Forbidden],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarketingAnalyticsConversionGoalsDeleteDestroyError =
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Delete conversion goal Remove one conversion goal from the project, leaving the others in place. */
-export const marketingAnalyticsConversionGoalsDeleteDestroy: API.OperationMethod<
-  MarketingAnalyticsConversionGoalsDeleteDestroyRequest,
-  ConversionGoalWriteResponse,
-  MarketingAnalyticsConversionGoalsDeleteDestroyError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarketingAnalyticsConversionGoalsDeleteDestroyRequest,
-  output: ConversionGoalWriteResponse,
-  errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -3964,20 +3978,6 @@ export const marketingAnalyticsSuggestUtmMappingsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: MarketingAnalyticsSuggestUtmMappingsRetrieveRequest,
   output: UtmMappingSuggestionsResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MarketingAnalyticsTestMappingCreateError = PosthogOpError;
-export const marketingAnalyticsTestMappingCreate: API.OperationMethod<
-  MarketingAnalyticsTestMappingCreateRequest,
-  MarketingAnalyticsTestMappingCreateResponse,
-  MarketingAnalyticsTestMappingCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MarketingAnalyticsTestMappingCreateRequest,
-  output: MarketingAnalyticsTestMappingCreateResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

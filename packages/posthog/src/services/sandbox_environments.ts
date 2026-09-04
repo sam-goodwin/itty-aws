@@ -55,7 +55,7 @@ export const SandboxCreateRequestRepositoriesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SandboxCreateRequestRepositoriesList>;
 
-export interface SandboxCreateRequest {
+export interface CreateSandboxRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Display name for the environment. */
@@ -75,7 +75,7 @@ export interface SandboxCreateRequest {
   /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
   custom_image_id?: string | null;
 }
-export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.String,
@@ -94,8 +94,8 @@ export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxCreateRequest",
-}) as any as S.Schema<SandboxCreateRequest>;
+  identifier: "CreateSandboxRequest",
+}) as any as S.Schema<CreateSandboxRequest>;
 
 export type SandboxEnvironmentDTOAllowedDomainsList = Array<string>;
 export const SandboxEnvironmentDTOAllowedDomainsList = /*@__PURE__*/ S.Array(
@@ -203,6 +203,54 @@ export const SandboxEnvironmentDTO = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxEnvironmentDTO",
 }) as any as S.Schema<SandboxEnvironmentDTO>;
 
+export interface ListSandboxRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+}
+export const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/sandbox_environments/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSandboxRequest",
+}) as any as S.Schema<ListSandboxRequest>;
+
+export type PaginatedSandboxEnvironmentDTOListResultsList =
+  Array<SandboxEnvironmentDTO>;
+export const PaginatedSandboxEnvironmentDTOListResultsList =
+  /*@__PURE__*/ S.Array(
+    SandboxEnvironmentDTO,
+  ) as any as S.Schema<PaginatedSandboxEnvironmentDTOListResultsList>;
+
+export interface PaginatedSandboxEnvironmentDTOList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedSandboxEnvironmentDTOListResultsList;
+}
+export const PaginatedSandboxEnvironmentDTOList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedSandboxEnvironmentDTOListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedSandboxEnvironmentDTOList",
+}) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>;
+
 export interface SandboxDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -230,112 +278,6 @@ export const SandboxDestroyResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxDestroyResponse",
 }) as any as S.Schema<SandboxDestroyResponse>;
 
-export interface SandboxListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const SandboxListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/sandbox_environments/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxListRequest",
-}) as any as S.Schema<SandboxListRequest>;
-
-export type PaginatedSandboxEnvironmentDTOListResultsList =
-  Array<SandboxEnvironmentDTO>;
-export const PaginatedSandboxEnvironmentDTOListResultsList =
-  /*@__PURE__*/ S.Array(
-    SandboxEnvironmentDTO,
-  ) as any as S.Schema<PaginatedSandboxEnvironmentDTOListResultsList>;
-
-export interface PaginatedSandboxEnvironmentDTOList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedSandboxEnvironmentDTOListResultsList;
-}
-export const PaginatedSandboxEnvironmentDTOList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedSandboxEnvironmentDTOListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedSandboxEnvironmentDTOList",
-}) as any as S.Schema<PaginatedSandboxEnvironmentDTOList>;
-
-/** Allowed domains for custom network access. */
-export type SandboxPartialUpdateRequestAllowedDomainsList = Array<string>;
-export const SandboxPartialUpdateRequestAllowedDomainsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SandboxPartialUpdateRequestAllowedDomainsList>;
-
-/** Repositories this environment applies to (format: org/repo). */
-export type SandboxPartialUpdateRequestRepositoriesList = Array<string>;
-export const SandboxPartialUpdateRequestRepositoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SandboxPartialUpdateRequestRepositoriesList>;
-
-export interface SandboxPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Display name for the environment. */
-  name?: string;
-  /** Network access policy: trusted (default allowlist), full (unrestricted), or custom. * `trusted` - Trusted * `full` - Full * `custom` - Custom */
-  network_access_level?: NetworkAccessLevelEnum | (string & {});
-  /** Allowed domains for custom network access. */
-  allowed_domains?: SandboxPartialUpdateRequestAllowedDomainsList;
-  /** Whether to include default trusted domains (GitHub, npm, PyPI). */
-  include_default_domains?: boolean;
-  /** Repositories this environment applies to (format: org/repo). */
-  repositories?: SandboxPartialUpdateRequestRepositoriesList;
-  /** Encrypted environment variables (write-only, never returned in responses). */
-  environment_variables?: unknown;
-  /** If true, only the creator can see this environment; otherwise the whole team can. */
-  private?: boolean;
-  /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
-  custom_image_id?: string | null;
-}
-export const SandboxPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    network_access_level: S.optional(NetworkAccessLevelEnum),
-    allowed_domains: S.optional(SandboxPartialUpdateRequestAllowedDomainsList),
-    include_default_domains: S.optional(S.Boolean),
-    repositories: S.optional(SandboxPartialUpdateRequestRepositoriesList),
-    environment_variables: S.optional(S.Unknown),
-    private: S.optional(S.Boolean),
-    custom_image_id: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/sandbox_environments/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxPartialUpdateRequest",
-}) as any as S.Schema<SandboxPartialUpdateRequest>;
-
 export interface SandboxRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -356,20 +298,97 @@ export const SandboxRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxRetrieveRequest",
 }) as any as S.Schema<SandboxRetrieveRequest>;
 
-export type SandboxCreateError =
+/** Allowed domains for custom network access. */
+export type SandboxPartialUpdateRequestAllowedDomainsList = Array<string>;
+export const SandboxPartialUpdateRequestAllowedDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SandboxPartialUpdateRequestAllowedDomainsList>;
+
+/** Repositories this environment applies to (format: org/repo). */
+export type SandboxPartialUpdateRequestRepositoriesList = Array<string>;
+export const SandboxPartialUpdateRequestRepositoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SandboxPartialUpdateRequestRepositoriesList>;
+
+export interface UpdateSandboxPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  id: string;
+  /** Display name for the environment. */
+  name?: string;
+  /** Network access policy: trusted (default allowlist), full (unrestricted), or custom. * `trusted` - Trusted * `full` - Full * `custom` - Custom */
+  network_access_level?: NetworkAccessLevelEnum | (string & {});
+  /** Allowed domains for custom network access. */
+  allowed_domains?: SandboxPartialUpdateRequestAllowedDomainsList;
+  /** Whether to include default trusted domains (GitHub, npm, PyPI). */
+  include_default_domains?: boolean;
+  /** Repositories this environment applies to (format: org/repo). */
+  repositories?: SandboxPartialUpdateRequestRepositoriesList;
+  /** Encrypted environment variables (write-only, never returned in responses). */
+  environment_variables?: unknown;
+  /** If true, only the creator can see this environment; otherwise the whole team can. */
+  private?: boolean;
+  /** Custom base image for this environment's sandboxes (Modal VM runtime only); null uses the default base. */
+  custom_image_id?: string | null;
+}
+export const UpdateSandboxPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    network_access_level: S.optional(NetworkAccessLevelEnum),
+    allowed_domains: S.optional(SandboxPartialUpdateRequestAllowedDomainsList),
+    include_default_domains: S.optional(S.Boolean),
+    repositories: S.optional(SandboxPartialUpdateRequestRepositoriesList),
+    environment_variables: S.optional(S.Unknown),
+    private: S.optional(S.Boolean),
+    custom_image_id: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/sandbox_environments/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSandboxPartialRequest",
+}) as any as S.Schema<UpdateSandboxPartialRequest>;
+
+export type CreateSandboxError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** API for managing sandbox environments that control network access for task runs. */
-export const sandboxCreate: API.OperationMethod<
-  SandboxCreateRequest,
+export const createSandbox: API.OperationMethod<
+  CreateSandboxRequest,
   SandboxEnvironmentDTO,
-  SandboxCreateError,
+  CreateSandboxError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCreateRequest,
+  input: CreateSandboxRequest,
   output: SandboxEnvironmentDTO,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSandboxError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** API for managing sandbox environments that control network access for task runs. */
+export const listSandbox: API.OperationMethod<
+  ListSandboxRequest,
+  PaginatedSandboxEnvironmentDTOList,
+  ListSandboxError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSandboxRequest,
+  output: PaginatedSandboxEnvironmentDTOList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -390,44 +409,6 @@ export const sandboxDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SandboxListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** API for managing sandbox environments that control network access for task runs. */
-export const sandboxList: API.OperationMethod<
-  SandboxListRequest,
-  PaginatedSandboxEnvironmentDTOList,
-  SandboxListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxListRequest,
-  output: PaginatedSandboxEnvironmentDTOList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** API for managing sandbox environments that control network access for task runs. */
-export const sandboxPartialUpdate: API.OperationMethod<
-  SandboxPartialUpdateRequest,
-  SandboxEnvironmentDTO,
-  SandboxPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxPartialUpdateRequest,
-  output: SandboxEnvironmentDTO,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SandboxRetrieveError = Forbidden | NotFound | PosthogOpError;
 /** API for managing sandbox environments that control network access for task runs. */
 export const sandboxRetrieve: API.OperationMethod<
@@ -439,6 +420,25 @@ export const sandboxRetrieve: API.OperationMethod<
   input: SandboxRetrieveRequest,
   output: SandboxEnvironmentDTO,
   errors: [Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSandboxPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** API for managing sandbox environments that control network access for task runs. */
+export const updateSandboxPartial: API.OperationMethod<
+  UpdateSandboxPartialRequest,
+  SandboxEnvironmentDTO,
+  UpdateSandboxPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSandboxPartialRequest,
+  output: SandboxEnvironmentDTO,
+  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

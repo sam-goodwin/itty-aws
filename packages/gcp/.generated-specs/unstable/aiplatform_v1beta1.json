@@ -68534,7 +68534,7 @@
         "smithy.api#documentation": "Perform a server-side streaming online prediction request for Vertex LLM streaming."
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentProjectsLocationsPublishersModelsRequest": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentProjectLocationPublisherModelRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -68554,10 +68554,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentProjectsLocationsPublishersModels": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentProjectLocationPublisherModel": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#StreamGenerateContentProjectsLocationsPublishersModelsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GenerateStreamContentProjectLocationPublisherModelRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleCloudAiplatformV1beta1GenerateContentResponse"
@@ -73497,7 +73497,7 @@
         "smithy.api#documentation": "Deletes a single Feature."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -73517,10 +73517,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsFeaturestoresEntityTypesFeatures": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationFeaturestoreEntityTypeFeature": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsFeaturestoresEntityTypesFeaturesRequest"
+        "target": "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationFeaturestoreEntityTypeFeatureRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -80904,7 +80904,7 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsTensorboardsExperimentsRequest": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationTensorboardExperimentRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -80924,10 +80924,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsTensorboardsExperiments": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationTensorboardExperiment": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsTensorboardsExperimentsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationTensorboardExperimentRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleCloudAiplatformV1beta1BatchCreateTensorboardTimeSeriesResponse"
@@ -81554,7 +81554,7 @@
         "smithy.api#documentation": "Deletes a TensorboardRun."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationTensorboardExperimentRunRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -81574,10 +81574,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsTensorboardsExperimentsRuns": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationTensorboardExperimentRun": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsTensorboardsExperimentsRunsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationTensorboardExperimentRunRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleCloudAiplatformV1beta1BatchCreateTensorboardRunsResponse"
@@ -83974,7 +83974,7 @@
         "smithy.api#documentation": "Deletes a single Feature."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationFeatureGroupFeatureRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -83994,10 +83994,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsFeatureGroupsFeatures": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationFeatureGroupFeature": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsFeatureGroupsFeaturesRequest"
+        "target": "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationFeatureGroupFeatureRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -90087,7 +90087,7 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentProjectsLocationsEndpointsRequest": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentProjectLocationEndpointRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -90107,10 +90107,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentProjectsLocationsEndpoints": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentProjectLocationEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#StreamGenerateContentProjectsLocationsEndpointsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GenerateStreamContentProjectLocationEndpointRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleCloudAiplatformV1beta1GenerateContentResponse"
@@ -99360,7 +99360,7 @@
         "smithy.api#documentation": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsRagCorporaRagFilesRagMetadataRequest": {
+    "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationRagCorporaRagFileRagMetadataRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -99380,10 +99380,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsRagCorporaRagFilesRagMetadata": {
+    "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationRagCorporaRagFileRagMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsRagCorporaRagFilesRagMetadataRequest"
+        "target": "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationRagCorporaRagFileRagMetadataRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -99517,7 +99517,7 @@
         "smithy.api#documentation": "Updates a RagMetadata."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsRagCorporaRagFilesRagMetadataRequest": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationRagCorporaRagFileRagMetadataRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -99537,10 +99537,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsRagCorporaRagFilesRagMetadata": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationRagCorporaRagFileRagMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsRagCorporaRagFilesRagMetadataRequest"
+        "target": "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationRagCorporaRagFileRagMetadataRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -99944,7 +99944,7 @@
         "smithy.api#documentation": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsRagCorporaRagDataSchemasRequest": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationRagCorporaRagDataSchemaRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -99964,10 +99964,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsRagCorporaRagDataSchemas": {
+    "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationRagCorporaRagDataSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchCreateProjectsLocationsRagCorporaRagDataSchemasRequest"
+        "target": "com.gcp.aiplatform_v1beta1#CreateBatchProjectLocationRagCorporaRagDataSchemaRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -100129,7 +100129,7 @@
         "smithy.api#documentation": "Deletes a RagDataSchema."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsRagCorporaRagDataSchemasRequest": {
+    "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationRagCorporaRagDataSchemaRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -100149,10 +100149,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsRagCorporaRagDataSchemas": {
+    "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationRagCorporaRagDataSchema": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsRagCorporaRagDataSchemasRequest"
+        "target": "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationRagCorporaRagDataSchemaRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -103955,7 +103955,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aTaskRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -103983,10 +103983,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aTaskRequest"
       },
       "errors": [
         {
@@ -104049,7 +104049,7 @@
         "smithy.api#documentation": "Stream get request for reasoning engine instance via the A2A stream get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aTaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -104077,10 +104077,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aTaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aTaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -104393,7 +104393,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aV1TaskRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -104421,10 +104421,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1Tasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aV1Task": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aV1TaskRequest"
       },
       "errors": [
         {
@@ -104535,7 +104535,7 @@
         "smithy.api#documentation": "Send post request for reasoning engine instance via the A2A post protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aV1TaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -104563,10 +104563,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aV1TaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineRuntimeRevisionA2aV1TaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -106241,7 +106241,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aTaskRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -106269,10 +106269,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aTaskRequest"
       },
       "errors": [
         {
@@ -106335,7 +106335,7 @@
         "smithy.api#documentation": "Stream get request for reasoning engine instance via the A2A stream get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aTaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -106363,10 +106363,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aTaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aTasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aTaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -106727,7 +106727,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aV1TaskRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -106755,10 +106755,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1Tasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aV1Task": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aV1TaskRequest"
       },
       "errors": [
         {
@@ -106821,7 +106821,7 @@
         "smithy.api#documentation": "Stream get request for reasoning engine instance via the A2A stream get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aV1TaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -106849,10 +106849,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aV1TaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineProjectsLocationsReasoningEnginesA2aV1TasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineProjectLocationReasoningEngineA2aV1TaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -108452,7 +108452,7 @@
         "smithy.api#documentation": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`."
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsPipelineJobsRequest": {
+    "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationPipelineJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -108472,10 +108472,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsPipelineJobs": {
+    "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationPipelineJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#BatchDeleteProjectsLocationsPipelineJobsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#DeleteBatchProjectLocationPipelineJobRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleLongrunningOperation"
@@ -116677,7 +116677,7 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentPublishersModelsRequest": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentPublisherModelRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -116697,10 +116697,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentPublishersModels": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentPublisherModel": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#StreamGenerateContentPublishersModelsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GenerateStreamContentPublisherModelRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleCloudAiplatformV1beta1GenerateContentResponse"
@@ -126521,7 +126521,7 @@
         "smithy.api#documentation": "Generate content with multimodal inputs."
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentEndpointsRequest": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentEndpointRequest": {
       "type": "structure",
       "members": {
         "model": {
@@ -126541,10 +126541,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#StreamGenerateContentEndpoints": {
+    "com.gcp.aiplatform_v1beta1#GenerateStreamContentEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#StreamGenerateContentEndpointsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GenerateStreamContentEndpointRequest"
       },
       "output": {
         "target": "com.gcp.aiplatform_v1beta1#GoogleCloudAiplatformV1beta1GenerateContentResponse"
@@ -132166,7 +132166,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aTaskRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -132194,10 +132194,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aTaskRequest"
       },
       "errors": [
         {
@@ -132308,7 +132308,7 @@
         "smithy.api#documentation": "Send post request for reasoning engine instance via the A2A post protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aTaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -132336,10 +132336,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aTaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aTasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aTaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -132652,7 +132652,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aV1TaskRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -132680,10 +132680,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1Tasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aV1Task": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aV1TaskRequest"
       },
       "errors": [
         {
@@ -132794,7 +132794,7 @@
         "smithy.api#documentation": "Send post request for reasoning engine instance via the A2A post protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aV1TaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -132822,10 +132822,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aV1TaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesRuntimeRevisionsA2aV1TasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineRuntimeRevisionA2aV1TaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -134293,7 +134293,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aTasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aTaskRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -134321,10 +134321,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aTasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aTask": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aTasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aTaskRequest"
       },
       "errors": [
         {
@@ -134387,7 +134387,7 @@
         "smithy.api#documentation": "Stream get request for reasoning engine instance via the A2A stream get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aTaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -134415,10 +134415,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aTaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aTasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aTaskPushNotificationConfigRequest"
       },
       "errors": [
         {
@@ -134632,7 +134632,7 @@
         "smithy.api#documentation": "Get request for reasoning engine instance via the A2A get protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aV1TasksRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aV1TaskRequest": {
       "type": "structure",
       "members": {
         "a2aEndpoint": {
@@ -134660,10 +134660,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aV1Tasks": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aV1Task": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aV1TasksRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aV1TaskRequest"
       },
       "errors": [
         {
@@ -134774,7 +134774,7 @@
         "smithy.api#documentation": "Send post request for reasoning engine instance via the A2A post protocol apis."
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsRequest": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aV1TaskPushNotificationConfigRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -134802,10 +134802,10 @@
         }
       }
     },
-    "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigs": {
+    "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aV1TaskPushNotificationConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.aiplatform_v1beta1#A2aGetReasoningEngineReasoningEnginesA2aV1TasksPushNotificationConfigsRequest"
+        "target": "com.gcp.aiplatform_v1beta1#GetA2aReasoningEngineReasoningEngineA2aV1TaskPushNotificationConfigRequest"
       },
       "errors": [
         {

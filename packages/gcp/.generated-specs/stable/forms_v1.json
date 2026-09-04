@@ -1916,7 +1916,7 @@
         "smithy.api#documentation": "Get a form."
       }
     },
-    "com.gcp.forms_v1#BatchUpdateFormsRequest": {
+    "com.gcp.forms_v1#UpdateBatchFormRequest": {
       "type": "structure",
       "members": {
         "formId": {
@@ -1962,10 +1962,10 @@
         ]
       }
     },
-    "com.gcp.forms_v1#BatchUpdateForms": {
+    "com.gcp.forms_v1#UpdateBatchForm": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.forms_v1#BatchUpdateFormsRequest"
+        "target": "com.gcp.forms_v1#UpdateBatchFormRequest"
       },
       "output": {
         "target": "com.gcp.forms_v1#BatchUpdateFormResponse"

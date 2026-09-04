@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.event_schemas#EventSchemasListRequest": {
+    "com.posthog.event_schemas#ListEventSchemasRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -367,10 +367,10 @@
       },
       "traits": {}
     },
-    "com.posthog.event_schemas#EventSchemasList": {
+    "com.posthog.event_schemas#ListEventSchemas": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_schemas#EventSchemasListRequest"
+        "target": "com.posthog.event_schemas#ListEventSchemasRequest"
       },
       "output": {
         "target": "com.posthog.event_schemas#PaginatedEventSchemaListOutput"
@@ -394,7 +394,7 @@
         }
       }
     },
-    "com.posthog.event_schemas#EventSchemasCreateRequest": {
+    "com.posthog.event_schemas#CreateEventSchemaRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -416,10 +416,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_schemas#EventSchemasCreate": {
+    "com.posthog.event_schemas#CreateEventSchema": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_schemas#EventSchemasCreateRequest"
+        "target": "com.posthog.event_schemas#CreateEventSchemaRequest"
       },
       "output": {
         "target": "com.posthog.event_schemas#EventSchemaOutput"
@@ -443,7 +443,7 @@
         }
       }
     },
-    "com.posthog.event_schemas#EventSchemasUpdateRequest": {
+    "com.posthog.event_schemas#UpdateEventSchemaRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -473,10 +473,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_schemas#EventSchemasUpdate": {
+    "com.posthog.event_schemas#UpdateEventSchema": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_schemas#EventSchemasUpdateRequest"
+        "target": "com.posthog.event_schemas#UpdateEventSchemaRequest"
       },
       "output": {
         "target": "com.posthog.event_schemas#EventSchemaOutput"
@@ -500,7 +500,7 @@
         }
       }
     },
-    "com.posthog.event_schemas#EventSchemasPartialUpdateRequest": {
+    "com.posthog.event_schemas#UpdateEventSchemaPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -530,10 +530,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_schemas#EventSchemasPartialUpdate": {
+    "com.posthog.event_schemas#UpdateEventSchemaPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_schemas#EventSchemasPartialUpdateRequest"
+        "target": "com.posthog.event_schemas#UpdateEventSchemaPartialRequest"
       },
       "output": {
         "target": "com.posthog.event_schemas#EventSchemaOutput"
@@ -649,16 +649,16 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.event_schemas#EventSchemasList"
+          "target": "com.posthog.event_schemas#ListEventSchemas"
         },
         {
-          "target": "com.posthog.event_schemas#EventSchemasCreate"
+          "target": "com.posthog.event_schemas#CreateEventSchema"
         },
         {
-          "target": "com.posthog.event_schemas#EventSchemasUpdate"
+          "target": "com.posthog.event_schemas#UpdateEventSchema"
         },
         {
-          "target": "com.posthog.event_schemas#EventSchemasPartialUpdate"
+          "target": "com.posthog.event_schemas#UpdateEventSchemaPartial"
         },
         {
           "target": "com.posthog.event_schemas#EventSchemasDestroy"

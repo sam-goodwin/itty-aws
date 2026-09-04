@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.replay#SessionRecordingPlaylistsListRequest": {
+    "com.posthog.replay#ListSessionRecordingPlaylistsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -366,10 +366,10 @@
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingPlaylistsList": {
+    "com.posthog.replay#ListSessionRecordingPlaylists": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsListRequest"
+        "target": "com.posthog.replay#ListSessionRecordingPlaylistsRequest"
       },
       "output": {
         "target": "com.posthog.replay#PaginatedSessionRecordingPlaylistListOutput"
@@ -394,7 +394,7 @@
         "smithy.api#documentation": "Override list to include synthetic playlists.\n\nSynthetics have no DB row, so we compute each one's position in the merged\nsort and split the requested page between synthetics and a DB queryset slice.\nThe merge/rank/sort is all in-memory, so each phase is wrapped in a span and\nthe input sizes are recorded as span attributes — a slow response on a team\nwith many playlists then shows up as a wide span against a large db_count."
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsCreateRequest": {
+    "com.posthog.replay#CreateSessionRecordingPlaylistRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -457,10 +457,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsCreate": {
+    "com.posthog.replay#CreateSessionRecordingPlaylist": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsCreateRequest"
+        "target": "com.posthog.replay#CreateSessionRecordingPlaylistRequest"
       },
       "output": {
         "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
@@ -531,7 +531,7 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsUpdateRequest": {
+    "com.posthog.replay#UpdateSessionRecordingPlaylistRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -601,10 +601,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsUpdate": {
+    "com.posthog.replay#UpdateSessionRecordingPlaylist": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsUpdateRequest"
+        "target": "com.posthog.replay#UpdateSessionRecordingPlaylistRequest"
       },
       "output": {
         "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
@@ -628,7 +628,7 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequest": {
+    "com.posthog.replay#UpdateSessionRecordingPlaylistPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -698,10 +698,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsPartialUpdate": {
+    "com.posthog.replay#UpdateSessionRecordingPlaylistPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsPartialUpdateRequest"
+        "target": "com.posthog.replay#UpdateSessionRecordingPlaylistPartialRequest"
       },
       "output": {
         "target": "com.posthog.replay#SessionRecordingPlaylistOutput"
@@ -820,7 +820,7 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequest": {
+    "com.posthog.replay#CreateSessionRecordingPlaylistRecordingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -897,10 +897,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreate": {
+    "com.posthog.replay#CreateSessionRecordingPlaylistRecording": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreateRequest"
+        "target": "com.posthog.replay#CreateSessionRecordingPlaylistRecordingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -978,7 +978,7 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingsListRequest": {
+    "com.posthog.replay#ListSessionRecordingsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1276,10 +1276,10 @@
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingsList": {
+    "com.posthog.replay#ListSessionRecordings": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingsListRequest"
+        "target": "com.posthog.replay#ListSessionRecordingsRequest"
       },
       "output": {
         "target": "com.posthog.replay#PaginatedSessionRecordingList"
@@ -1363,7 +1363,7 @@
       },
       "traits": {}
     },
-    "com.posthog.replay#SessionRecordingsUpdateRequest": {
+    "com.posthog.replay#UpdateSessionRecordingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1390,10 +1390,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionRecordingsUpdate": {
+    "com.posthog.replay#UpdateSessionRecording": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingsUpdateRequest"
+        "target": "com.posthog.replay#UpdateSessionRecordingRequest"
       },
       "output": {
         "target": "com.posthog.replay#SessionRecording"
@@ -1417,7 +1417,7 @@
         }
       }
     },
-    "com.posthog.replay#SessionRecordingsPartialUpdateRequest": {
+    "com.posthog.replay#UpdateSessionRecordingPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1444,10 +1444,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.replay#SessionRecordingsPartialUpdate": {
+    "com.posthog.replay#UpdateSessionRecordingPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.replay#SessionRecordingsPartialUpdateRequest"
+        "target": "com.posthog.replay#UpdateSessionRecordingPartialRequest"
       },
       "output": {
         "target": "com.posthog.replay#SessionRecording"
@@ -1662,19 +1662,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsList"
+          "target": "com.posthog.replay#ListSessionRecordingPlaylists"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsCreate"
+          "target": "com.posthog.replay#CreateSessionRecordingPlaylist"
         },
         {
           "target": "com.posthog.replay#SessionRecordingPlaylistsRetrieve"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsUpdate"
+          "target": "com.posthog.replay#UpdateSessionRecordingPlaylist"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsPartialUpdate"
+          "target": "com.posthog.replay#UpdateSessionRecordingPlaylistPartial"
         },
         {
           "target": "com.posthog.replay#SessionRecordingPlaylistsDestroy"
@@ -1683,22 +1683,22 @@
           "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsRetrieve"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsCreate"
+          "target": "com.posthog.replay#CreateSessionRecordingPlaylistRecording"
         },
         {
           "target": "com.posthog.replay#SessionRecordingPlaylistsRecordingsDestroy"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingsList"
+          "target": "com.posthog.replay#ListSessionRecordings"
         },
         {
           "target": "com.posthog.replay#SessionRecordingsRetrieve"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingsUpdate"
+          "target": "com.posthog.replay#UpdateSessionRecording"
         },
         {
-          "target": "com.posthog.replay#SessionRecordingsPartialUpdate"
+          "target": "com.posthog.replay#UpdateSessionRecordingPartial"
         },
         {
           "target": "com.posthog.replay#SessionRecordingsDestroy"

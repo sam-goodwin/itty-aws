@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.streamlit_apps#StreamlitAppsListRequest": {
+    "com.posthog.streamlit_apps#ListStreamlitAppsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -225,10 +225,10 @@
       },
       "traits": {}
     },
-    "com.posthog.streamlit_apps#StreamlitAppsList": {
+    "com.posthog.streamlit_apps#ListStreamlitApps": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.streamlit_apps#StreamlitAppsListRequest"
+        "target": "com.posthog.streamlit_apps#ListStreamlitAppsRequest"
       },
       "output": {
         "target": "com.posthog.streamlit_apps#PaginatedAppSummaryContractList"
@@ -242,7 +242,7 @@
         "smithy.api#documentation": "List streamlit apps"
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsCreateRequest": {
+    "com.posthog.streamlit_apps#CreateStreamlitAppRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -453,10 +453,10 @@
       },
       "traits": {}
     },
-    "com.posthog.streamlit_apps#StreamlitAppsCreate": {
+    "com.posthog.streamlit_apps#CreateStreamlitApp": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.streamlit_apps#StreamlitAppsCreateRequest"
+        "target": "com.posthog.streamlit_apps#CreateStreamlitAppRequest"
       },
       "output": {
         "target": "com.posthog.streamlit_apps#AppContract"
@@ -510,7 +510,7 @@
         "smithy.api#documentation": "Retrieve a streamlit app"
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsUpdateRequest": {
+    "com.posthog.streamlit_apps#UpdateStreamlitAppRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -557,10 +557,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsUpdate": {
+    "com.posthog.streamlit_apps#UpdateStreamlitApp": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.streamlit_apps#StreamlitAppsUpdateRequest"
+        "target": "com.posthog.streamlit_apps#UpdateStreamlitAppRequest"
       },
       "output": {
         "target": "com.posthog.streamlit_apps#AppContract"
@@ -574,7 +574,7 @@
         "smithy.api#documentation": "Update a streamlit app"
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsPartialUpdateRequest": {
+    "com.posthog.streamlit_apps#UpdateStreamlitAppPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -621,10 +621,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsPartialUpdate": {
+    "com.posthog.streamlit_apps#UpdateStreamlitAppPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.streamlit_apps#StreamlitAppsPartialUpdateRequest"
+        "target": "com.posthog.streamlit_apps#UpdateStreamlitAppPartialRequest"
       },
       "output": {
         "target": "com.posthog.streamlit_apps#AppContract"
@@ -678,7 +678,7 @@
         "smithy.api#documentation": "Delete a streamlit app"
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsActivateVersionCreateRequest": {
+    "com.posthog.streamlit_apps#CreateStreamlitAppActivateVersionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -721,10 +721,10 @@
       },
       "traits": {}
     },
-    "com.posthog.streamlit_apps#StreamlitAppsActivateVersionCreate": {
+    "com.posthog.streamlit_apps#CreateStreamlitAppActivateVersion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.streamlit_apps#StreamlitAppsActivateVersionCreateRequest"
+        "target": "com.posthog.streamlit_apps#CreateStreamlitAppActivateVersionRequest"
       },
       "output": {
         "target": "com.posthog.streamlit_apps#ActivateVersionResponse"
@@ -1055,7 +1055,7 @@
         "smithy.api#documentation": "Stop the app sandbox"
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsUploadVersionCreateRequest": {
+    "com.posthog.streamlit_apps#CreateStreamlitAppUploadVersionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1085,10 +1085,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.streamlit_apps#StreamlitAppsUploadVersionCreate": {
+    "com.posthog.streamlit_apps#CreateStreamlitAppUploadVersion": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.streamlit_apps#StreamlitAppsUploadVersionCreateRequest"
+        "target": "com.posthog.streamlit_apps#CreateStreamlitAppUploadVersionRequest"
       },
       "output": {
         "target": "com.posthog.streamlit_apps#AppVersionContract"
@@ -1169,25 +1169,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.streamlit_apps#StreamlitAppsList"
+          "target": "com.posthog.streamlit_apps#ListStreamlitApps"
         },
         {
-          "target": "com.posthog.streamlit_apps#StreamlitAppsCreate"
+          "target": "com.posthog.streamlit_apps#CreateStreamlitApp"
         },
         {
           "target": "com.posthog.streamlit_apps#StreamlitAppsRetrieve"
         },
         {
-          "target": "com.posthog.streamlit_apps#StreamlitAppsUpdate"
+          "target": "com.posthog.streamlit_apps#UpdateStreamlitApp"
         },
         {
-          "target": "com.posthog.streamlit_apps#StreamlitAppsPartialUpdate"
+          "target": "com.posthog.streamlit_apps#UpdateStreamlitAppPartial"
         },
         {
           "target": "com.posthog.streamlit_apps#StreamlitAppsDestroy"
         },
         {
-          "target": "com.posthog.streamlit_apps#StreamlitAppsActivateVersionCreate"
+          "target": "com.posthog.streamlit_apps#CreateStreamlitAppActivateVersion"
         },
         {
           "target": "com.posthog.streamlit_apps#StreamlitAppsConnectInfoRetrieve"
@@ -1208,7 +1208,7 @@
           "target": "com.posthog.streamlit_apps#StreamlitAppsStopCreate"
         },
         {
-          "target": "com.posthog.streamlit_apps#StreamlitAppsUploadVersionCreate"
+          "target": "com.posthog.streamlit_apps#CreateStreamlitAppUploadVersion"
         },
         {
           "target": "com.posthog.streamlit_apps#StreamlitAppsVersionsRetrieve"

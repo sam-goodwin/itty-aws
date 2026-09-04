@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.plugin_configs#PluginConfigsLogsListRequest": {
+    "com.posthog.plugin_configs#ListPluginConfigLogsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -182,10 +182,10 @@
       },
       "traits": {}
     },
-    "com.posthog.plugin_configs#PluginConfigsLogsList": {
+    "com.posthog.plugin_configs#ListPluginConfigLogs": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.plugin_configs#PluginConfigsLogsListRequest"
+        "target": "com.posthog.plugin_configs#ListPluginConfigLogsRequest"
       },
       "output": {
         "target": "com.posthog.plugin_configs#PaginatedPluginLogEntryList"
@@ -253,7 +253,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.plugin_configs#PluginConfigsLogsList"
+          "target": "com.posthog.plugin_configs#ListPluginConfigLogs"
         }
       ],
       "traits": {

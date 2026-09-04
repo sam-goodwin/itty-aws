@@ -1,10 +1,11 @@
 /**
  * JSON Patch (RFC 6902) Implementation
  *
- * Provides a unified spec patching system for all SDKs. Patches are applied to
- * generated intermediary specs (Smithy models, OpenAPI docs, …) before code
- * generation to add typed error shapes, rename operations, mark nullable
- * fields, etc. Ported from the distilled repo's `core/json-patch`.
+ * Provides a unified spec patching system for all SDKs. Patches apply in
+ * `convert` so `.generated-specs` is the patched Smithy model. generate does
+ * not patch. Prefer `operationNaming: "verbNoun"` for operationId renames —
+ * JSON pointers at `/paths/~1foo/operationId` go stale when upstream prefixes
+ * paths.
  *
  * Pure functions only — callers load patch files themselves (the generators
  * use Effect's FileSystem) and hand the parsed operations to `applyPatch`.
@@ -50,14 +51,27 @@ export function getValueAtPath(obj: unknown, pointer: string): unknown {
   let current: unknown = obj;
 
   for (const segment of segments) {
-    if (current === null || typeof current !== "object") {
-      throw new Error(`Cannot traverse path ${pointer}: not an object`);
+    if (
+      current === null ||
+      current === undefined ||
+      typeof current !== "object"
+    ) {
+      throw new Error(
+        `JSON pointer ${pointer} missing (at '${segment}'): not an object`,
+      );
     }
     if (Array.isArray(current)) {
       const index = segment === "-" ? current.length : parseInt(segment, 10);
+      if (index < 0 || index >= current.length) {
+        throw new Error(`JSON pointer ${pointer} missing index '${segment}'`);
+      }
       current = current[index];
     } else {
-      current = (current as Record<string, unknown>)[segment];
+      const record = current as Record<string, unknown>;
+      if (!Object.prototype.hasOwnProperty.call(record, segment)) {
+        throw new Error(`JSON pointer ${pointer} missing key '${segment}'`);
+      }
+      current = record[segment];
     }
   }
 
@@ -158,11 +172,14 @@ export function applyOperation(
     case "remove":
       removeValueAtPath(obj, operation.path);
       break;
-    case "replace":
-      // For replace, the path must exist
-      getValueAtPath(obj, operation.path); // throws if doesn't exist
+    case "replace": {
+      const existing = getValueAtPath(obj, operation.path);
+      if (existing === undefined) {
+        throw new Error(`JSON pointer ${operation.path} does not exist`);
+      }
       setValueAtPath(obj, operation.path, operation.value);
       break;
+    }
     case "move": {
       if (!operation.from) throw new Error("move operation requires 'from'");
       const moveValue = getValueAtPath(obj, operation.from);
@@ -210,13 +227,15 @@ export function applyPatch(obj: unknown, patch: JsonPatch): void {
  * Whether a per-operation failure is caused by the target location being
  * absent from the spec (i.e. spec drift — the operation/shape the patch
  * targets was renamed or removed upstream) as opposed to a malformed patch.
- * Stale targets should be skipped with a warning rather than aborting the
- * whole generate; a patch that only adds an error to an operation that no
- * longer exists is harmless to drop.
+ * Convert and generate fail the run on these by default (`onStalePatch:
+ * "fail"`). `"warn"` restores skip-and-continue.
  */
 export function isStaleTargetError(message: string): boolean {
   return (
     message.includes("not an object") ||
-    message.includes("parent is not an object")
+    message.includes("parent is not an object") ||
+    message.includes("missing key") ||
+    message.includes("missing index") ||
+    message.includes("does not exist")
   );
 }

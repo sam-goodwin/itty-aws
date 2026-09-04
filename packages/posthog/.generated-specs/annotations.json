@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.annotations#AnnotationsListRequest": {
+    "com.posthog.annotations#ListAnnotationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -392,10 +392,10 @@
       },
       "traits": {}
     },
-    "com.posthog.annotations#AnnotationsList": {
+    "com.posthog.annotations#ListAnnotations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.annotations#AnnotationsListRequest"
+        "target": "com.posthog.annotations#ListAnnotationsRequest"
       },
       "output": {
         "target": "com.posthog.annotations#PaginatedAnnotationList"
@@ -420,7 +420,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/data/annotations) for more information on annotations."
       }
     },
-    "com.posthog.annotations#AnnotationsCreateRequest": {
+    "com.posthog.annotations#CreateAnnotationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -496,10 +496,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.annotations#AnnotationsCreate": {
+    "com.posthog.annotations#CreateAnnotation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.annotations#AnnotationsCreateRequest"
+        "target": "com.posthog.annotations#CreateAnnotationRequest"
       },
       "output": {
         "target": "com.posthog.annotations#Annotation"
@@ -573,7 +573,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/data/annotations) for more information on annotations."
       }
     },
-    "com.posthog.annotations#AnnotationsUpdateRequest": {
+    "com.posthog.annotations#UpdateAnnotationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -657,10 +657,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.annotations#AnnotationsUpdate": {
+    "com.posthog.annotations#UpdateAnnotation": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.annotations#AnnotationsUpdateRequest"
+        "target": "com.posthog.annotations#UpdateAnnotationRequest"
       },
       "output": {
         "target": "com.posthog.annotations#Annotation"
@@ -685,7 +685,7 @@
         "smithy.api#documentation": "Create, Read, Update and Delete annotations. [See docs](https://posthog.com/docs/data/annotations) for more information on annotations."
       }
     },
-    "com.posthog.annotations#AnnotationsPartialUpdateRequest": {
+    "com.posthog.annotations#UpdateAnnotationPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -769,10 +769,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.annotations#AnnotationsPartialUpdate": {
+    "com.posthog.annotations#UpdateAnnotationPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.annotations#AnnotationsPartialUpdateRequest"
+        "target": "com.posthog.annotations#UpdateAnnotationPartialRequest"
       },
       "output": {
         "target": "com.posthog.annotations#Annotation"
@@ -890,19 +890,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.annotations#AnnotationsList"
+          "target": "com.posthog.annotations#ListAnnotations"
         },
         {
-          "target": "com.posthog.annotations#AnnotationsCreate"
+          "target": "com.posthog.annotations#CreateAnnotation"
         },
         {
           "target": "com.posthog.annotations#AnnotationsRetrieve"
         },
         {
-          "target": "com.posthog.annotations#AnnotationsUpdate"
+          "target": "com.posthog.annotations#UpdateAnnotation"
         },
         {
-          "target": "com.posthog.annotations#AnnotationsPartialUpdate"
+          "target": "com.posthog.annotations#UpdateAnnotationPartial"
         },
         {
           "target": "com.posthog.annotations#AnnotationsDestroy"

@@ -11,12 +11,12 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface McpToolsCreateRequest {
+export interface CreateMcpToolRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   tool_name: string;
 }
-export const McpToolsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMcpToolRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     tool_name: S.String.pipe(T.Label()),
@@ -28,8 +28,8 @@ export const McpToolsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "McpToolsCreateRequest",
-}) as any as S.Schema<McpToolsCreateRequest>;
+  identifier: "CreateMcpToolRequest",
+}) as any as S.Schema<CreateMcpToolRequest>;
 
 export type McpToolsCreateResponseBodyMap = {
   [key: string]: unknown | undefined;
@@ -39,23 +39,23 @@ export const McpToolsCreateResponseBodyMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<McpToolsCreateResponseBodyMap>;
 
-export type McpToolsCreateResponse = McpToolsCreateResponseBodyMap;
-export const McpToolsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export type CreateMcpToolResponse = McpToolsCreateResponseBodyMap;
+export const CreateMcpToolResponse = /*@__PURE__*/ S.suspend(() =>
   McpToolsCreateResponseBodyMap.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "McpToolsCreateResponse",
-}) as any as S.Schema<McpToolsCreateResponse>;
+  identifier: "CreateMcpToolResponse",
+}) as any as S.Schema<CreateMcpToolResponse>;
 
-export type McpToolsCreateError = PosthogOpError;
+export type CreateMcpToolError = PosthogOpError;
 /** Invoke an MCP tool by name. This endpoint allows MCP callers to invoke Max AI tools directly without going through the full LangChain conversation flow. Scopes are resolved dynamically per tool via dangerously_get_required_scopes. */
-export const mcpToolsCreate: API.OperationMethod<
-  McpToolsCreateRequest,
-  McpToolsCreateResponse,
-  McpToolsCreateError,
+export const createMcpTool: API.OperationMethod<
+  CreateMcpToolRequest,
+  CreateMcpToolResponse,
+  CreateMcpToolError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: McpToolsCreateRequest,
-  output: McpToolsCreateResponse,
+  input: CreateMcpToolRequest,
+  output: CreateMcpToolResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

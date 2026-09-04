@@ -2366,555 +2366,26 @@ export const AnswerProjectsLocationsDataStoresServingConfigsRequest =
     identifier: "AnswerProjectsLocationsDataStoresServingConfigsRequest",
   }) as any as S.Schema<AnswerProjectsLocationsDataStoresServingConfigsRequest>;
 
-export type GoogleCloudDiscoveryengineV1TargetSiteTypeEnum =
-  | "TYPE_UNSPECIFIED"
-  | "INCLUDE"
-  | "EXCLUDE";
-export const GoogleCloudDiscoveryengineV1TargetSiteTypeEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum =
-  | "SITE_VERIFICATION_STATE_UNSPECIFIED"
-  | "VERIFIED"
-  | "UNVERIFIED"
-  | "EXEMPTED";
-export const GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum =
-  /*@__PURE__*/ S.String;
-
-/** Verification information for target sites in advanced site search. */
-export interface GoogleCloudDiscoveryengineV1SiteVerificationInfo {
-  /** Latest site verification time. */
-  verifyTime?: string;
-  /** Site verification state indicating the ownership and validity. */
-  siteVerificationState?:
-    | GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum
-    | (string & {});
-}
-export const GoogleCloudDiscoveryengineV1SiteVerificationInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      verifyTime: S.optional(S.String),
-      siteVerificationState: S.optional(
-        GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1SiteVerificationInfo",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1SiteVerificationInfo>;
-
-export type GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum =
-  | "INDEXING_STATUS_UNSPECIFIED"
-  | "PENDING"
-  | "FAILED"
-  | "SUCCEEDED"
-  | "DELETING"
-  | "CANCELLABLE"
-  | "CANCELLED";
-export const GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum =
-  /*@__PURE__*/ S.String;
-
-/** Failed due to insufficient quota. */
-export interface GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure {
-  /** This number is an estimation on how much total quota this project needs to successfully complete indexing. */
-  totalRequiredQuota?: string;
-}
-export const GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      totalRequiredQuota: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure>;
-
-/** Site search indexing failure reasons. */
-export interface GoogleCloudDiscoveryengineV1TargetSiteFailureReason {
-  /** Failed due to insufficient quota. */
-  quotaFailure?: GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure;
-}
-export const GoogleCloudDiscoveryengineV1TargetSiteFailureReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      quotaFailure: S.optional(
-        GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1TargetSiteFailureReason",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSiteFailureReason>;
-
-/** A target site for the SiteSearchEngine. */
-export interface GoogleCloudDiscoveryengineV1TargetSite {
-  /** Required. Input only. The user provided URI pattern from which the `generated_uri_pattern` is generated. */
-  providedUriPattern?: string;
-  /** The type of the target site, e.g., whether the site is to be included or excluded. */
-  type?: GoogleCloudDiscoveryengineV1TargetSiteTypeEnum | (string & {});
-  /** Output only. This is system-generated based on the provided_uri_pattern. */
-  generatedUriPattern?: string;
-  /** Output only. The target site's last updated time. */
-  updateTime?: string;
-  /** Output only. Site ownership and validity verification status. */
-  siteVerificationInfo?: GoogleCloudDiscoveryengineV1SiteVerificationInfo;
-  /** Output only. Indexing status. */
-  indexingStatus?:
-    | GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum
-    | (string & {});
-  /** Output only. Failure reason. */
-  failureReason?: GoogleCloudDiscoveryengineV1TargetSiteFailureReason;
-  /** Output only. The fully qualified resource name of the target site. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}` The `target_site_id` is system-generated. */
-  name?: string;
-  /** Immutable. If set to false, a uri_pattern is generated to include all pages whose address contains the provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one. provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine. */
-  exactMatch?: boolean;
-  /** Output only. Root domain of the provided_uri_pattern. */
-  rootDomainUri?: string;
-}
-export const GoogleCloudDiscoveryengineV1TargetSite = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      providedUriPattern: S.optional(S.String),
-      type: S.optional(GoogleCloudDiscoveryengineV1TargetSiteTypeEnum),
-      generatedUriPattern: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      siteVerificationInfo: S.optional(
-        GoogleCloudDiscoveryengineV1SiteVerificationInfo,
-      ),
-      indexingStatus: S.optional(
-        GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum,
-      ),
-      failureReason: S.optional(
-        GoogleCloudDiscoveryengineV1TargetSiteFailureReason,
-      ),
-      name: S.optional(S.String),
-      exactMatch: S.optional(S.Boolean),
-      rootDomainUri: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1TargetSite",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSite>;
-
-/** Request message for SiteSearchEngineService.CreateTargetSite method. */
-export interface GoogleCloudDiscoveryengineV1CreateTargetSiteRequest {
-  /** Required. Parent resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
-  parent?: string;
-  /** Required. The TargetSite to create. */
-  targetSite?: GoogleCloudDiscoveryengineV1TargetSite;
-}
-export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.optional(S.String),
-      targetSite: S.optional(GoogleCloudDiscoveryengineV1TargetSite),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1CreateTargetSiteRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
-
-export type GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList =
-  Array<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
-export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1CreateTargetSiteRequest,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList>;
-
-/** Request message for SiteSearchEngineService.BatchCreateTargetSites method. */
-export interface GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest {
-  /** Required. The request message specifying the resources to create. A maximum of 20 TargetSites can be created in a batch. */
-  requests?: GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList;
-}
-export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest>;
-
-export interface BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest {
-  /** Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest;
-}
-export const BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/targetSites:batchCreate",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest>;
-
-/** This resource represents a long-running operation that is the result of a network API call. */
-export interface GoogleLongrunningOperation {
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: GoogleRpcStatus;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-}
-export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: S.optional(GoogleRpcStatus),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-  }),
-).annotate({
-  identifier: "GoogleLongrunningOperation",
-}) as any as S.Schema<GoogleLongrunningOperation>;
-
-export interface BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest {
-  /** Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest;
-}
-export const BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/targetSites:batchCreate",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest>;
-
-export interface BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest {
-  /** Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
-  "matcher.fhirMatcher.fhirResources"?: StringList;
-  /** The exact URIs to match by. */
-  "matcher.urisMatcher.uris"?: StringList;
-  /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. */
-  parent: string;
-}
-export const BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "matcher.fhirMatcher.fhirResources": S.optional(
-        StringList.pipe(T.Query()),
-      ),
-      "matcher.urisMatcher.uris": S.optional(StringList.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/batchGetDocumentsMetadata",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest",
-  }) as any as S.Schema<BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest>;
-
-/** The value of the matcher that was used to match the Document. */
-export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue {
-  /** Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
-  fhirResource?: string;
-  /** If match by URI, the URI of the Document. */
-  uri?: string;
-}
-export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fhirResource: S.optional(S.String),
-      uri: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue>;
-
-export type GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "INDEXED"
-  | "NOT_IN_TARGET_SITE"
-  | "NOT_IN_INDEX";
-export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum =
-  /*@__PURE__*/ S.String;
-
-/** The metadata of a Document. */
-export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata {
-  /** The value of the matcher that was used to match the Document. */
-  matcherValue?: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue;
-  /** The state of the document. */
-  state?: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum;
-  /** The data ingestion source of the Document. Allowed values are: * `batch`: Data ingested via Batch API, e.g., ImportDocuments. * `streaming` Data ingested via Streaming API, e.g., FHIR streaming. */
-  dataIngestionSource?: string;
-  /** The timestamp of the last time the Document was last indexed. */
-  lastRefreshedTime?: string;
-}
-export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      matcherValue: S.optional(
-        GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue,
-      ),
-      state: S.optional(
-        GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum,
-      ),
-      dataIngestionSource: S.optional(S.String),
-      lastRefreshedTime: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
-
-export type GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList =
-  Array<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
-export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList>;
-
-/** Response message for DocumentService.BatchGetDocumentsMetadata method. */
-export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse {
-  /** The metadata of the Documents. */
-  documentsMetadata?: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList;
-}
-export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      documentsMetadata: S.optional(
-        GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse>;
-
-export interface BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest {
-  /** Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
-  "matcher.fhirMatcher.fhirResources"?: StringList;
-  /** The exact URIs to match by. */
-  "matcher.urisMatcher.uris"?: StringList;
-  /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. */
-  parent: string;
-}
-export const BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "matcher.fhirMatcher.fhirResources": S.optional(
-        StringList.pipe(T.Query()),
-      ),
-      "matcher.urisMatcher.uris": S.optional(StringList.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/batchGetDocumentsMetadata",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest",
-  }) as any as S.Schema<BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest>;
-
-export type GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum =
-  | "LICENSE_ASSIGNMENT_STATE_UNSPECIFIED"
-  | "ASSIGNED"
-  | "UNASSIGNED"
-  | "NO_LICENSE"
-  | "NO_LICENSE_ATTEMPTED_LOGIN"
-  | "BLOCKED";
-export const GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum =
-  /*@__PURE__*/ S.String;
-
-/** User License information assigned by the admin. */
-export interface GoogleCloudDiscoveryengineV1UserLicense {
-  /** Required. Immutable. The user principal of the User, could be email address or other prinical identifier. This field is immutable. Admin assign licenses based on the user principal. */
-  userPrincipal?: string;
-  /** Optional. The full resource name of the Subscription(LicenseConfig) assigned to the user. */
-  licenseConfig?: string;
-  /** Output only. User created timestamp. */
-  createTime?: string;
-  /** Output only. User update timestamp. */
-  updateTime?: string;
-  /** Optional. The user profile. We user user full name(First name + Last name) as user profile. */
-  userProfile?: string;
-  /** Output only. User last logged in time. If the user has not logged in yet, this field will be empty. */
-  lastLoginTime?: string;
-  /** Output only. License assignment state of the user. If the user is assigned with a license config, the user login will be assigned with the license; If the user's license assignment state is unassigned or unspecified, no license config will be associated to the user; */
-  licenseAssignmentState?:
-    | GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum
-    | (string & {});
-}
-export const GoogleCloudDiscoveryengineV1UserLicense = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      userPrincipal: S.optional(S.String),
-      licenseConfig: S.optional(S.String),
-      createTime: S.optional(S.String),
-      updateTime: S.optional(S.String),
-      userProfile: S.optional(S.String),
-      lastLoginTime: S.optional(S.String),
-      licenseAssignmentState: S.optional(
-        GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum,
-      ),
-    }),
-).annotate({
-  identifier: "GoogleCloudDiscoveryengineV1UserLicense",
-}) as any as S.Schema<GoogleCloudDiscoveryengineV1UserLicense>;
-
-export type GoogleCloudDiscoveryengineV1UserLicenseList =
-  Array<GoogleCloudDiscoveryengineV1UserLicense>;
-export const GoogleCloudDiscoveryengineV1UserLicenseList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1UserLicense,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1UserLicenseList>;
-
-/** The inline source for the input config for BatchUpdateUserLicenses method. */
-export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource {
-  /** Optional. The list of fields to update. */
-  updateMask?: string;
-  /** Required. A list of user licenses to update. Each user license must have a valid UserLicense.user_principal. */
-  userLicenses?: GoogleCloudDiscoveryengineV1UserLicenseList;
-}
-export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String),
-      userLicenses: S.optional(GoogleCloudDiscoveryengineV1UserLicenseList),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource>;
-
-/** Request message for UserLicenseService.BatchUpdateUserLicenses method. */
-export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest {
-  /** Optional. If true, if user licenses removed associated license config, the user license will be deleted. By default which is false, the user license will be updated to unassigned state. */
-  deleteUnassignedUserLicenses?: boolean;
-  /** The inline source for the input content for license assignment. */
-  inlineSource?: GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource;
-}
-export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deleteUnassignedUserLicenses: S.optional(S.Boolean),
-      inlineSource: S.optional(
-        GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest>;
-
-export interface BatchUpdateUserLicensesProjectsLocationsUserStoresRequest {
-  /** Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest;
-}
-export const BatchUpdateUserLicensesProjectsLocationsUserStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:batchUpdateUserLicenses",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateUserLicensesProjectsLocationsUserStoresRequest",
-  }) as any as S.Schema<BatchUpdateUserLicensesProjectsLocationsUserStoresRequest>;
-
-/** Request message for SiteSearchEngineService.BatchVerifyTargetSites method. */
-export interface GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest {}
-export const GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest>;
-
-export interface BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
-  /** Required. The parent resource shared by all TargetSites being verified. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-}
-export const BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:batchVerifyTargetSites",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest",
-  }) as any as S.Schema<BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest>;
-
 /** The request message for Operations.CancelOperation. */
-export type GoogleLongrunningCancelOperationRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-export const GoogleLongrunningCancelOperationRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+export interface GoogleLongrunningCancelOperationRequest {}
+export const GoogleLongrunningCancelOperationRequest = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "GoogleLongrunningCancelOperationRequest",
+}) as any as S.Schema<GoogleLongrunningCancelOperationRequest>;
 
 export interface CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const CancelProjectsLocationsCollectionsDataStoresBranchesOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -2936,10 +2407,8 @@ export const GoogleProtobufEmpty = /*@__PURE__*/ S.suspend(() =>
   identifier: "GoogleProtobufEmpty",
 }) as any as S.Schema<GoogleProtobufEmpty>;
 
-export type A2aV1CancelTaskRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-export const A2aV1CancelTaskRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+export type A2aV1CancelTaskRequest = GoogleLongrunningCancelOperationRequest;
+export const A2aV1CancelTaskRequest = GoogleLongrunningCancelOperationRequest;
 
 export interface CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest {
   /** The resource name of the task to cancel. Format: tasks/{task_id} */
@@ -2947,7 +2416,7 @@ export interface CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1T
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1TasksRequest =
   /*@__PURE__*/ S.suspend(() =>
@@ -2955,9 +2424,7 @@ export const CancelProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Tasks
       name: S.String.pipe(T.Label()),
       tenant: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -3151,16 +2618,14 @@ export interface CancelProjectsLocationsCollectionsEnginesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const CancelProjectsLocationsCollectionsEnginesOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -3177,16 +2642,14 @@ export interface CancelProjectsLocationsDataStoresBranchesOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const CancelProjectsLocationsDataStoresBranchesOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -3203,15 +2666,13 @@ export interface CancelProjectsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const CancelProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
     body: S.optional(
-      GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-        T.HttpBody(),
-      ),
+      GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
     ),
   }).pipe(
     T.Http({
@@ -5156,6 +4617,252 @@ export const ConverseProjectsLocationsDataStoresConversationsRequest =
     identifier: "ConverseProjectsLocationsDataStoresConversationsRequest",
   }) as any as S.Schema<ConverseProjectsLocationsDataStoresConversationsRequest>;
 
+export type GoogleCloudDiscoveryengineV1TargetSiteTypeEnum =
+  | "TYPE_UNSPECIFIED"
+  | "INCLUDE"
+  | "EXCLUDE";
+export const GoogleCloudDiscoveryengineV1TargetSiteTypeEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum =
+  | "SITE_VERIFICATION_STATE_UNSPECIFIED"
+  | "VERIFIED"
+  | "UNVERIFIED"
+  | "EXEMPTED";
+export const GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum =
+  /*@__PURE__*/ S.String;
+
+/** Verification information for target sites in advanced site search. */
+export interface GoogleCloudDiscoveryengineV1SiteVerificationInfo {
+  /** Latest site verification time. */
+  verifyTime?: string;
+  /** Site verification state indicating the ownership and validity. */
+  siteVerificationState?:
+    | GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum
+    | (string & {});
+}
+export const GoogleCloudDiscoveryengineV1SiteVerificationInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      verifyTime: S.optional(S.String),
+      siteVerificationState: S.optional(
+        GoogleCloudDiscoveryengineV1SiteVerificationInfoSiteVerificationStateEnum,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1SiteVerificationInfo",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1SiteVerificationInfo>;
+
+export type GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum =
+  | "INDEXING_STATUS_UNSPECIFIED"
+  | "PENDING"
+  | "FAILED"
+  | "SUCCEEDED"
+  | "DELETING"
+  | "CANCELLABLE"
+  | "CANCELLED";
+export const GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum =
+  /*@__PURE__*/ S.String;
+
+/** Failed due to insufficient quota. */
+export interface GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure {
+  /** This number is an estimation on how much total quota this project needs to successfully complete indexing. */
+  totalRequiredQuota?: string;
+}
+export const GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      totalRequiredQuota: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure>;
+
+/** Site search indexing failure reasons. */
+export interface GoogleCloudDiscoveryengineV1TargetSiteFailureReason {
+  /** Failed due to insufficient quota. */
+  quotaFailure?: GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure;
+}
+export const GoogleCloudDiscoveryengineV1TargetSiteFailureReason =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      quotaFailure: S.optional(
+        GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1TargetSiteFailureReason",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSiteFailureReason>;
+
+/** A target site for the SiteSearchEngine. */
+export interface GoogleCloudDiscoveryengineV1TargetSite {
+  /** Required. Input only. The user provided URI pattern from which the `generated_uri_pattern` is generated. */
+  providedUriPattern?: string;
+  /** The type of the target site, e.g., whether the site is to be included or excluded. */
+  type?: GoogleCloudDiscoveryengineV1TargetSiteTypeEnum | (string & {});
+  /** Output only. This is system-generated based on the provided_uri_pattern. */
+  generatedUriPattern?: string;
+  /** Output only. The target site's last updated time. */
+  updateTime?: string;
+  /** Output only. Site ownership and validity verification status. */
+  siteVerificationInfo?: GoogleCloudDiscoveryengineV1SiteVerificationInfo;
+  /** Output only. Indexing status. */
+  indexingStatus?:
+    | GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum
+    | (string & {});
+  /** Output only. Failure reason. */
+  failureReason?: GoogleCloudDiscoveryengineV1TargetSiteFailureReason;
+  /** Output only. The fully qualified resource name of the target site. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}` The `target_site_id` is system-generated. */
+  name?: string;
+  /** Immutable. If set to false, a uri_pattern is generated to include all pages whose address contains the provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one. provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine. */
+  exactMatch?: boolean;
+  /** Output only. Root domain of the provided_uri_pattern. */
+  rootDomainUri?: string;
+}
+export const GoogleCloudDiscoveryengineV1TargetSite = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      providedUriPattern: S.optional(S.String),
+      type: S.optional(GoogleCloudDiscoveryengineV1TargetSiteTypeEnum),
+      generatedUriPattern: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      siteVerificationInfo: S.optional(
+        GoogleCloudDiscoveryengineV1SiteVerificationInfo,
+      ),
+      indexingStatus: S.optional(
+        GoogleCloudDiscoveryengineV1TargetSiteIndexingStatusEnum,
+      ),
+      failureReason: S.optional(
+        GoogleCloudDiscoveryengineV1TargetSiteFailureReason,
+      ),
+      name: S.optional(S.String),
+      exactMatch: S.optional(S.Boolean),
+      rootDomainUri: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1TargetSite",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1TargetSite>;
+
+/** Request message for SiteSearchEngineService.CreateTargetSite method. */
+export interface GoogleCloudDiscoveryengineV1CreateTargetSiteRequest {
+  /** Required. Parent resource name of TargetSite, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
+  parent?: string;
+  /** Required. The TargetSite to create. */
+  targetSite?: GoogleCloudDiscoveryengineV1TargetSite;
+}
+export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.optional(S.String),
+      targetSite: S.optional(GoogleCloudDiscoveryengineV1TargetSite),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1CreateTargetSiteRequest",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
+
+export type GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList =
+  Array<GoogleCloudDiscoveryengineV1CreateTargetSiteRequest>;
+export const GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDiscoveryengineV1CreateTargetSiteRequest,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList>;
+
+/** Request message for SiteSearchEngineService.BatchCreateTargetSites method. */
+export interface GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest {
+  /** Required. The request message specifying the resources to create. A maximum of 20 TargetSites can be created in a batch. */
+  requests?: GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList;
+}
+export const GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleCloudDiscoveryengineV1CreateTargetSiteRequestList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest>;
+
+export interface CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest {
+  /** Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest;
+}
+export const CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/targetSites:batchCreate",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest>;
+
+/** This resource represents a long-running operation that is the result of a network API call. */
+export interface GoogleLongrunningOperation {
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: GoogleRpcStatus;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+}
+export const GoogleLongrunningOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: S.optional(GoogleRpcStatus),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+  }),
+).annotate({
+  identifier: "GoogleLongrunningOperation",
+}) as any as S.Schema<GoogleLongrunningOperation>;
+
+export interface CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest {
+  /** Required. The parent resource shared by all TargetSites being created. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. The parent field in the CreateBookRequest messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest;
+}
+export const CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudDiscoveryengineV1BatchCreateTargetSitesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/targetSites:batchCreate",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest>;
+
 export type GoogleCloudDiscoveryengineV1NaturalLanguageQueryUnderstandingConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "DISABLED"
@@ -5614,9 +5321,9 @@ export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLa
 
 /** The digital parsing configurations for documents. */
 export type GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 /** Related configurations applied to a specific type of document parser. */
 export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig {
@@ -5625,7 +5332,7 @@ export interface GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConf
   /** Configurations applied to layout parser. */
   layoutParsingConfig?: GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig;
   /** Configurations applied to digital parser. */
-  digitalParsingConfig?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  digitalParsingConfig?: GoogleLongrunningCancelOperationRequest;
 }
 export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig =
   /*@__PURE__*/ S.suspend(() =>
@@ -5636,9 +5343,7 @@ export const GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig =
       layoutParsingConfig: S.optional(
         GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig,
       ),
-      digitalParsingConfig: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest,
-      ),
+      digitalParsingConfig: S.optional(GoogleLongrunningCancelOperationRequest),
     }),
   ).annotate({
     identifier:
@@ -8751,24 +8456,22 @@ export const DeleteProjectsLocationsIdentityMappingStoresRequest =
 
 /** Request message for SiteSearchEngineService.DisableAdvancedSiteSearch method. */
 export type GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 export interface DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
   /** Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. */
   siteSearchEngine: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const DisableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -8786,16 +8489,14 @@ export interface DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchE
   /** Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. */
   siteSearchEngine: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const DisableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -8875,24 +8576,22 @@ export const GoogleCloudDiscoveryengineV1DistributeLicenseConfigResponse =
 
 /** Request message for SiteSearchEngineService.EnableAdvancedSiteSearch method. */
 export type GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 export interface EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest {
   /** Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. */
   siteSearchEngine: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const EnableAdvancedSiteSearchProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -8910,16 +8609,14 @@ export interface EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEn
   /** Required. Full resource name of the SiteSearchEngine, such as `projects/{project}/locations/{location}/dataStores/{data_store_id}/siteSearchEngine`. */
   siteSearchEngine: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const EnableAdvancedSiteSearchProjectsLocationsDataStoresSiteSearchEngineRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       siteSearchEngine: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -9145,6 +8842,139 @@ export const GoogleCloudDiscoveryengineV1AclConfig = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "GoogleCloudDiscoveryengineV1AclConfig",
 }) as any as S.Schema<GoogleCloudDiscoveryengineV1AclConfig>;
+
+export interface GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest {
+  /** Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
+  "matcher.fhirMatcher.fhirResources"?: StringList;
+  /** The exact URIs to match by. */
+  "matcher.urisMatcher.uris"?: StringList;
+  /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. */
+  parent: string;
+}
+export const GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "matcher.fhirMatcher.fhirResources": S.optional(
+        StringList.pipe(T.Query()),
+      ),
+      "matcher.urisMatcher.uris": S.optional(StringList.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/batchGetDocumentsMetadata",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest",
+  }) as any as S.Schema<GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest>;
+
+/** The value of the matcher that was used to match the Document. */
+export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue {
+  /** Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
+  fhirResource?: string;
+  /** If match by URI, the URI of the Document. */
+  uri?: string;
+}
+export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fhirResource: S.optional(S.String),
+      uri: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue>;
+
+export type GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "INDEXED"
+  | "NOT_IN_TARGET_SITE"
+  | "NOT_IN_INDEX";
+export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum =
+  /*@__PURE__*/ S.String;
+
+/** The metadata of a Document. */
+export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata {
+  /** The value of the matcher that was used to match the Document. */
+  matcherValue?: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue;
+  /** The state of the document. */
+  state?: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum;
+  /** The data ingestion source of the Document. Allowed values are: * `batch`: Data ingested via Batch API, e.g., ImportDocuments. * `streaming` Data ingested via Streaming API, e.g., FHIR streaming. */
+  dataIngestionSource?: string;
+  /** The timestamp of the last time the Document was last indexed. */
+  lastRefreshedTime?: string;
+}
+export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      matcherValue: S.optional(
+        GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataMatcherValue,
+      ),
+      state: S.optional(
+        GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataStateEnum,
+      ),
+      dataIngestionSource: S.optional(S.String),
+      lastRefreshedTime: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
+
+export type GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList =
+  Array<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata>;
+export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadata,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList>;
+
+/** Response message for DocumentService.BatchGetDocumentsMetadata method. */
+export interface GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse {
+  /** The metadata of the Documents. */
+  documentsMetadata?: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList;
+}
+export const GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      documentsMetadata: S.optional(
+        GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponseDocumentMetadataList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse>;
+
+export interface GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest {
+  /** Required. The FHIR resources to match by. Format: projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}/fhir/{resource_type}/{fhir_resource_id} */
+  "matcher.fhirMatcher.fhirResources"?: StringList;
+  /** The exact URIs to match by. */
+  "matcher.urisMatcher.uris"?: StringList;
+  /** Required. The parent branch resource name, such as `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`. */
+  parent: string;
+}
+export const GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "matcher.fhirMatcher.fhirResources": S.optional(
+        StringList.pipe(T.Query()),
+      ),
+      "matcher.urisMatcher.uris": S.optional(StringList.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/batchGetDocumentsMetadata",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest",
+  }) as any as S.Schema<GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest>;
 
 export interface GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Request {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
@@ -13333,105 +13163,6 @@ export const ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRe
       "ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest",
   }) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>;
 
-export type GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum =
-  | "MATCH_OPERATOR_UNSPECIFIED"
-  | "EXACT_MATCH"
-  | "CONTAINS";
-export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum =
-  /*@__PURE__*/ S.String;
-
-/** Suggestion deny list entry identifying the phrase to block from suggestions and the applied operation for the phrase. */
-export interface GoogleCloudDiscoveryengineV1SuggestionDenyListEntry {
-  /** Required. The match operator to apply for this phrase. Whether to block the exact phrase, or block any suggestions containing this phrase. */
-  matchOperator?:
-    | GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum
-    | (string & {});
-  /** Required. Phrase to block from suggestions served. Can be maximum 125 characters. */
-  blockPhrase?: string;
-}
-export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntry =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      matchOperator: S.optional(
-        GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum,
-      ),
-      blockPhrase: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDiscoveryengineV1SuggestionDenyListEntry",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
-
-export type GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList =
-  Array<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
-export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudDiscoveryengineV1SuggestionDenyListEntry,
-  ) as any as S.Schema<GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList>;
-
-/** The inline source for SuggestionDenyListEntry. */
-export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource {
-  /** Required. A list of all denylist entries to import. Max of 1000 items. */
-  entries?: GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList;
-}
-export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      entries: S.optional(
-        GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource>;
-
-/** Request message for CompletionService.ImportSuggestionDenyListEntries method. */
-export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest {
-  /** The Inline source for the input content for suggestion deny list entries. */
-  inlineSource?: GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource;
-  /** Cloud Storage location for the input content. Only 1 file can be specified that contains all entries to import. Supported values `gcs_source.schema` for autocomplete suggestion deny list entry imports: * `suggestion_deny_list` (default): One JSON [SuggestionDenyListEntry] per line. */
-  gcsSource?: GoogleCloudDiscoveryengineV1GcsSource;
-}
-export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      inlineSource: S.optional(
-        GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource,
-      ),
-      gcsSource: S.optional(GoogleCloudDiscoveryengineV1GcsSource),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest>;
-
-export interface ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest {
-  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest;
-}
-export const ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/suggestionDenyListEntries:import",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>;
-
 /** The conversation information such as the question index and session name. */
 export interface GoogleCloudDiscoveryengineV1FeedbackConversationInfo {
   /** Name of the newly generated or continued session. */
@@ -13949,33 +13680,6 @@ export const ImportProjectsLocationsDataStoresCompletionSuggestionsRequest =
     identifier: "ImportProjectsLocationsDataStoresCompletionSuggestionsRequest",
   }) as any as S.Schema<ImportProjectsLocationsDataStoresCompletionSuggestionsRequest>;
 
-export interface ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest {
-  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest;
-}
-export const ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/suggestionDenyListEntries:import",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
-
 export interface ImportProjectsLocationsDataStoresUserEventsRequest {
   /** Required. Parent DataStore resource name, of the form `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` */
   parent: string;
@@ -14068,6 +13772,132 @@ export const GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse =
   ).annotate({
     identifier: "GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse",
   }) as any as S.Schema<GoogleCloudDiscoveryengineV1ListIdentityMappingsResponse>;
+
+export type GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum =
+  | "MATCH_OPERATOR_UNSPECIFIED"
+  | "EXACT_MATCH"
+  | "CONTAINS";
+export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum =
+  /*@__PURE__*/ S.String;
+
+/** Suggestion deny list entry identifying the phrase to block from suggestions and the applied operation for the phrase. */
+export interface GoogleCloudDiscoveryengineV1SuggestionDenyListEntry {
+  /** Required. The match operator to apply for this phrase. Whether to block the exact phrase, or block any suggestions containing this phrase. */
+  matchOperator?:
+    | GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum
+    | (string & {});
+  /** Required. Phrase to block from suggestions served. Can be maximum 125 characters. */
+  blockPhrase?: string;
+}
+export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntry =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      matchOperator: S.optional(
+        GoogleCloudDiscoveryengineV1SuggestionDenyListEntryMatchOperatorEnum,
+      ),
+      blockPhrase: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1SuggestionDenyListEntry",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
+
+export type GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList =
+  Array<GoogleCloudDiscoveryengineV1SuggestionDenyListEntry>;
+export const GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDiscoveryengineV1SuggestionDenyListEntry,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList>;
+
+/** The inline source for SuggestionDenyListEntry. */
+export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource {
+  /** Required. A list of all denylist entries to import. Max of 1000 items. */
+  entries?: GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList;
+}
+export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      entries: S.optional(
+        GoogleCloudDiscoveryengineV1SuggestionDenyListEntryList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource>;
+
+/** Request message for CompletionService.ImportSuggestionDenyListEntries method. */
+export interface GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest {
+  /** The Inline source for the input content for suggestion deny list entries. */
+  inlineSource?: GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource;
+  /** Cloud Storage location for the input content. Only 1 file can be specified that contains all entries to import. Supported values `gcs_source.schema` for autocomplete suggestion deny list entry imports: * `suggestion_deny_list` (default): One JSON [SuggestionDenyListEntry] per line. */
+  gcsSource?: GoogleCloudDiscoveryengineV1GcsSource;
+}
+export const GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      inlineSource: S.optional(
+        GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequestInlineSource,
+      ),
+      gcsSource: S.optional(GoogleCloudDiscoveryengineV1GcsSource),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest>;
+
+export interface ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest {
+  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest;
+}
+export const ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/suggestionDenyListEntries:import",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest",
+  }) as any as S.Schema<ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest>;
+
+export interface ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest {
+  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest;
+}
+export const ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/suggestionDenyListEntries:import",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest",
+  }) as any as S.Schema<ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest>;
 
 export interface ListProjectsLocationsCmekConfigsRequest {
   /** Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list CmekConfigs under this location, regardless of whether or not a CmekConfig exists, a PERMISSION_DENIED error is returned. */
@@ -15746,6 +15576,59 @@ export const ListProjectsLocationsUserStoresUserLicensesRequest =
     identifier: "ListProjectsLocationsUserStoresUserLicensesRequest",
   }) as any as S.Schema<ListProjectsLocationsUserStoresUserLicensesRequest>;
 
+export type GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum =
+  | "LICENSE_ASSIGNMENT_STATE_UNSPECIFIED"
+  | "ASSIGNED"
+  | "UNASSIGNED"
+  | "NO_LICENSE"
+  | "NO_LICENSE_ATTEMPTED_LOGIN"
+  | "BLOCKED";
+export const GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum =
+  /*@__PURE__*/ S.String;
+
+/** User License information assigned by the admin. */
+export interface GoogleCloudDiscoveryengineV1UserLicense {
+  /** Required. Immutable. The user principal of the User, could be email address or other prinical identifier. This field is immutable. Admin assign licenses based on the user principal. */
+  userPrincipal?: string;
+  /** Optional. The full resource name of the Subscription(LicenseConfig) assigned to the user. */
+  licenseConfig?: string;
+  /** Output only. User created timestamp. */
+  createTime?: string;
+  /** Output only. User update timestamp. */
+  updateTime?: string;
+  /** Optional. The user profile. We user user full name(First name + Last name) as user profile. */
+  userProfile?: string;
+  /** Output only. User last logged in time. If the user has not logged in yet, this field will be empty. */
+  lastLoginTime?: string;
+  /** Output only. License assignment state of the user. If the user is assigned with a license config, the user login will be assigned with the license; If the user's license assignment state is unassigned or unspecified, no license config will be associated to the user; */
+  licenseAssignmentState?:
+    | GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum
+    | (string & {});
+}
+export const GoogleCloudDiscoveryengineV1UserLicense = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      userPrincipal: S.optional(S.String),
+      licenseConfig: S.optional(S.String),
+      createTime: S.optional(S.String),
+      updateTime: S.optional(S.String),
+      userProfile: S.optional(S.String),
+      lastLoginTime: S.optional(S.String),
+      licenseAssignmentState: S.optional(
+        GoogleCloudDiscoveryengineV1UserLicenseLicenseAssignmentStateEnum,
+      ),
+    }),
+).annotate({
+  identifier: "GoogleCloudDiscoveryengineV1UserLicense",
+}) as any as S.Schema<GoogleCloudDiscoveryengineV1UserLicense>;
+
+export type GoogleCloudDiscoveryengineV1UserLicenseList =
+  Array<GoogleCloudDiscoveryengineV1UserLicense>;
+export const GoogleCloudDiscoveryengineV1UserLicenseList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudDiscoveryengineV1UserLicense,
+  ) as any as S.Schema<GoogleCloudDiscoveryengineV1UserLicenseList>;
+
 /** Response message for UserLicenseService.ListUserLicenses. */
 export interface GoogleCloudDiscoveryengineV1ListUserLicensesResponse {
   /** All the customer's UserLicenses. */
@@ -15792,6 +15675,61 @@ export const ListProjectsOperationsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListProjectsOperationsRequest",
 }) as any as S.Schema<ListProjectsOperationsRequest>;
+
+/** Request message for CompletionService.PurgeSuggestionDenyListEntries method. */
+export type GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesRequest =
+  GoogleLongrunningCancelOperationRequest;
+export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesRequest =
+  GoogleLongrunningCancelOperationRequest;
+
+export interface ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest {
+  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
+  parent: string;
+  /** Request body */
+  body?: GoogleLongrunningCancelOperationRequest;
+}
+export const ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/suggestionDenyListEntries:purge",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest",
+  }) as any as S.Schema<ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest>;
+
+export interface ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest {
+  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
+  parent: string;
+  /** Request body */
+  body?: GoogleLongrunningCancelOperationRequest;
+}
+export const ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/suggestionDenyListEntries:purge",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest",
+  }) as any as S.Schema<ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest>;
 
 export interface McpProjectsLocationsCollectionsDataConnectorRequest {
   /** The HTTP request/response body as raw binary. */
@@ -16798,24 +16736,22 @@ export const PurgeProjectsLocationsCollectionsDataStoresBranchesDocumentsRequest
 
 /** Request message for CompletionService.PurgeCompletionSuggestions method. */
 export type GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 export interface PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest {
   /** Required. The parent data store resource name for which to purge completion suggestions. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
   parent: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -16828,39 +16764,6 @@ export const PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsReq
     identifier:
       "PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest",
   }) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresCompletionSuggestionsRequest>;
-
-/** Request message for CompletionService.PurgeSuggestionDenyListEntries method. */
-export type GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-export const GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesRequest =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-
-export interface PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest {
-  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-}
-export const PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/suggestionDenyListEntries:purge",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest>;
 
 /** Request message for PurgeUserEvents method. */
 export interface GoogleCloudDiscoveryengineV1PurgeUserEventsRequest {
@@ -16931,16 +16834,14 @@ export interface PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest {
   /** Required. The parent data store resource name for which to purge completion suggestions. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
   parent: string;
   /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  body?: GoogleLongrunningCancelOperationRequest;
 }
 export const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
       body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
       ),
     }).pipe(
       T.Http({
@@ -16952,33 +16853,6 @@ export const PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest =
   ).annotate({
     identifier: "PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest",
   }) as any as S.Schema<PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest>;
-
-export interface PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest {
-  /** Required. The parent data store resource name for which to import denylist entries. Follows pattern projects/*\/locations/*\/collections/*\/dataStores/*. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
-}
-export const PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/suggestionDenyListEntries:purge",
-        baseUrl: "https://discoveryengine.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest",
-  }) as any as S.Schema<PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest>;
 
 export interface PurgeProjectsLocationsDataStoresUserEventsRequest {
   /** Required. The resource name of the catalog under which the events are created. The format is `projects/{project}/locations/global/collections/{collection}/dataStores/{dataStore}`. */
@@ -18742,21 +18616,21 @@ export const StreamAnswerProjectsLocationsDataStoresServingConfigsRequest =
 
 /** Specification of the web grounding tool. */
 export type GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecWebGroundingSpec =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecWebGroundingSpec =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 /** Specification of the image generation tool. */
 export type GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecImageGenerationSpec =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecImageGenerationSpec =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 /** Specification of the video generation tool. */
 export type GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVideoGenerationSpec =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 export const GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVideoGenerationSpec =
-  GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  GoogleLongrunningCancelOperationRequest;
 
 /** Specification of the Vertex AI Search tool. */
 export interface GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec {
@@ -18781,26 +18655,20 @@ export const GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSea
 /** Specification of tools that are used to serve the request. */
 export interface GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpec {
   /** Optional. Specification of the web grounding tool. If field is present, enables grounding with web search. Works only if Assistant.web_grounding_type is WEB_GROUNDING_TYPE_GOOGLE_SEARCH or WEB_GROUNDING_TYPE_ENTERPRISE_WEB_SEARCH. */
-  webGroundingSpec?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  webGroundingSpec?: GoogleLongrunningCancelOperationRequest;
   /** Optional. Specification of the image generation tool. */
-  imageGenerationSpec?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  imageGenerationSpec?: GoogleLongrunningCancelOperationRequest;
   /** Optional. Specification of the video generation tool. */
-  videoGenerationSpec?: GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest;
+  videoGenerationSpec?: GoogleLongrunningCancelOperationRequest;
   /** Optional. Specification of the Vertex AI Search tool. */
   vertexAiSearchSpec?: GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec;
 }
 export const GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpec =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      webGroundingSpec: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest,
-      ),
-      imageGenerationSpec: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest,
-      ),
-      videoGenerationSpec: S.optional(
-        GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest,
-      ),
+      webGroundingSpec: S.optional(GoogleLongrunningCancelOperationRequest),
+      imageGenerationSpec: S.optional(GoogleLongrunningCancelOperationRequest),
+      videoGenerationSpec: S.optional(GoogleLongrunningCancelOperationRequest),
       vertexAiSearchSpec: S.optional(
         GoogleCloudDiscoveryengineV1StreamAssistRequestToolsSpecVertexAiSearchSpec,
       ),
@@ -19250,6 +19118,69 @@ export const UpdateAclConfigProjectsLocationsRequest = /*@__PURE__*/ S.suspend(
   identifier: "UpdateAclConfigProjectsLocationsRequest",
 }) as any as S.Schema<UpdateAclConfigProjectsLocationsRequest>;
 
+/** The inline source for the input config for BatchUpdateUserLicenses method. */
+export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource {
+  /** Optional. The list of fields to update. */
+  updateMask?: string;
+  /** Required. A list of user licenses to update. Each user license must have a valid UserLicense.user_principal. */
+  userLicenses?: GoogleCloudDiscoveryengineV1UserLicenseList;
+}
+export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String),
+      userLicenses: S.optional(GoogleCloudDiscoveryengineV1UserLicenseList),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource>;
+
+/** Request message for UserLicenseService.BatchUpdateUserLicenses method. */
+export interface GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest {
+  /** Optional. If true, if user licenses removed associated license config, the user license will be deleted. By default which is false, the user license will be updated to unassigned state. */
+  deleteUnassignedUserLicenses?: boolean;
+  /** The inline source for the input content for license assignment. */
+  inlineSource?: GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource;
+}
+export const GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deleteUnassignedUserLicenses: S.optional(S.Boolean),
+      inlineSource: S.optional(
+        GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequestInlineSource,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest",
+  }) as any as S.Schema<GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest>;
+
+export interface UpdateBatchUserLicenseProjectLocationUserStoreRequest {
+  /** Required. The parent UserStore resource name, format: `projects/{project}/locations/{location}/userStores/{user_store_id}`. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest;
+}
+export const UpdateBatchUserLicenseProjectLocationUserStoreRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudDiscoveryengineV1BatchUpdateUserLicensesRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:batchUpdateUserLicenses",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBatchUserLicenseProjectLocationUserStoreRequest",
+  }) as any as S.Schema<UpdateBatchUserLicenseProjectLocationUserStoreRequest>;
+
 export interface UpdateCmekConfigProjectsLocationsRequest {
   /** Set the following CmekConfig as the default to be used for child resources if one is not specified. */
   setDefault?: boolean;
@@ -19303,6 +19234,37 @@ export const UpdateDataConnectorProjectsLocationsCollectionsRequest =
   ).annotate({
     identifier: "UpdateDataConnectorProjectsLocationsCollectionsRequest",
   }) as any as S.Schema<UpdateDataConnectorProjectsLocationsCollectionsRequest>;
+
+/** Request message for SiteSearchEngineService.BatchVerifyTargetSites method. */
+export type GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest =
+  GoogleLongrunningCancelOperationRequest;
+export const GoogleCloudDiscoveryengineV1BatchVerifyTargetSitesRequest =
+  GoogleLongrunningCancelOperationRequest;
+
+export interface VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest {
+  /** Required. The parent resource shared by all TargetSites being verified. `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine`. */
+  parent: string;
+  /** Request body */
+  body?: GoogleLongrunningCancelOperationRequest;
+}
+export const VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleLongrunningCancelOperationRequest.pipe(T.HttpBody()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:batchVerifyTargetSites",
+        baseUrl: "https://discoveryengine.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest",
+  }) as any as S.Schema<VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest>;
 
 export interface WriteProjectsLocationsCollectionsDataStoresUserEventsRequest {
   /** Required. The parent resource name. If the write user event action is applied in DataStore level, the format is: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the write user event action is applied in Location level, for example, the event with Document across multiple DataStore, the format is: `projects/{project}/locations/{location}`. */
@@ -19440,126 +19402,6 @@ export const answerProjectsLocationsDataStoresServingConfigs: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: AnswerProjectsLocationsDataStoresServingConfigsRequest,
   output: GoogleCloudDiscoveryengineV1AnswerQueryResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates TargetSite in a batch. */
-export const batchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
-  BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
-  GoogleLongrunningOperation,
-  BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchCreateProjectsLocationsCollectionsDataStoresSiteSearchEngineTargetSitesRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates TargetSite in a batch. */
-export const batchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSites: API.OperationMethod<
-  BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
-  GoogleLongrunningOperation,
-  BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchCreateProjectsLocationsDataStoresSiteSearchEngineTargetSitesRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets index freshness metadata for Documents. Supported for website search only. */
-export const batchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranches: API.OperationMethod<
-  BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest,
-  GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
-  BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchGetDocumentsMetadataProjectsLocationsCollectionsDataStoresBranchesRequest,
-  output: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets index freshness metadata for Documents. Supported for website search only. */
-export const batchGetDocumentsMetadataProjectsLocationsDataStoresBranches: API.OperationMethod<
-  BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest,
-  GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
-  BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetDocumentsMetadataProjectsLocationsDataStoresBranchesRequest,
-  output: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateUserLicensesProjectsLocationsUserStoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates the User License. This method is used for batch assign/unassign licenses to users. */
-export const batchUpdateUserLicensesProjectsLocationsUserStores: API.OperationMethod<
-  BatchUpdateUserLicensesProjectsLocationsUserStoresRequest,
-  GoogleLongrunningOperation,
-  BatchUpdateUserLicensesProjectsLocationsUserStoresError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateUserLicensesProjectsLocationsUserStoresRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification. */
-export const batchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngine: API.OperationMethod<
-  BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
-  GoogleLongrunningOperation,
-  BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    BatchVerifyTargetSitesProjectsLocationsCollectionsDataStoresSiteSearchEngineRequest,
-  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -19893,6 +19735,47 @@ export const converseProjectsLocationsDataStoresConversations: API.OperationMeth
 > = /*@__PURE__*/ API.make(() => ({
   input: ConverseProjectsLocationsDataStoresConversationsRequest,
   output: GoogleCloudDiscoveryengineV1ConverseConversationResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates TargetSite in a batch. */
+export const createBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSite: API.OperationMethod<
+  CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest,
+  GoogleLongrunningOperation,
+  CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    CreateBatchProjectLocationCollectionDataStoreSiteSearchEngineTargetSiteRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates TargetSite in a batch. */
+export const createBatchProjectLocationDataStoreSiteSearchEngineTargetSite: API.OperationMethod<
+  CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest,
+  GoogleLongrunningOperation,
+  CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectLocationDataStoreSiteSearchEngineTargetSiteRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -21188,6 +21071,43 @@ export const getAclConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets index freshness metadata for Documents. Supported for website search only. */
+export const getBatchDocumentMetadataProjectLocationCollectionDataStoreBranche: API.OperationMethod<
+  GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest,
+  GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
+  GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    GetBatchDocumentMetadataProjectLocationCollectionDataStoreBrancheRequest,
+  output: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchDocumentMetadataProjectLocationDataStoreBrancheError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets index freshness metadata for Documents. Supported for website search only. */
+export const getBatchDocumentMetadataProjectLocationDataStoreBranche: API.OperationMethod<
+  GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest,
+  GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
+  GetBatchDocumentMetadataProjectLocationDataStoreBrancheError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchDocumentMetadataProjectLocationDataStoreBrancheRequest,
+  output: GoogleCloudDiscoveryengineV1BatchGetDocumentsMetadataResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetCardProjectsLocationsCollectionsEnginesAssistantsAgentsA2aV1Error =
   | NotFound
   | Forbidden
@@ -22278,27 +22198,6 @@ export const importProjectsLocationsCollectionsDataStoresCompletionSuggestions: 
   retry: Retry.Retry,
 }));
 
-export type ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Imports all SuggestionDenyListEntry for a DataStore. */
-export const importProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
-  ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest,
-  GoogleLongrunningOperation,
-  ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    ImportProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ImportProjectsLocationsCollectionsDataStoresUserEventsError =
   | NotFound
   | Forbidden
@@ -22353,26 +22252,6 @@ export const importProjectsLocationsDataStoresCompletionSuggestions: API.Operati
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ImportProjectsLocationsDataStoresCompletionSuggestionsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ImportProjectsLocationsDataStoresSuggestionDenyListEntriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Imports all SuggestionDenyListEntry for a DataStore. */
-export const importProjectsLocationsDataStoresSuggestionDenyListEntries: API.OperationMethod<
-  ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest,
-  GoogleLongrunningOperation,
-  ImportProjectsLocationsDataStoresSuggestionDenyListEntriesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsDataStoresSuggestionDenyListEntriesRequest,
   output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -22441,6 +22320,47 @@ export const listIdentityMappingsProjectsLocationsIdentityMappingStores: API.Pag
     outputToken: "nextPageToken",
   } as const,
 })) as any;
+
+export type ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Imports all SuggestionDenyListEntry for a DataStore. */
+export const listImportProjectLocationCollectionDataStoreSuggestionDenyEntries: API.OperationMethod<
+  ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest,
+  GoogleLongrunningOperation,
+  ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    ListImportProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListImportProjectLocationDataStoreSuggestionDenyEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Imports all SuggestionDenyListEntry for a DataStore. */
+export const listImportProjectLocationDataStoreSuggestionDenyEntries: API.OperationMethod<
+  ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest,
+  GoogleLongrunningOperation,
+  ListImportProjectLocationDataStoreSuggestionDenyEntriesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListImportProjectLocationDataStoreSuggestionDenyEntriesRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
 
 export type ListProjectsLocationsCmekConfigsError =
   | NotFound
@@ -23440,6 +23360,47 @@ export const listProjectsOperations: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
+export type ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
+export const listPurgeProjectLocationCollectionDataStoreSuggestionDenyEntries: API.OperationMethod<
+  ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest,
+  GoogleLongrunningOperation,
+  ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    ListPurgeProjectLocationCollectionDataStoreSuggestionDenyEntriesRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPurgeProjectLocationDataStoreSuggestionDenyEntriesError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
+export const listPurgeProjectLocationDataStoreSuggestionDenyEntries: API.OperationMethod<
+  ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest,
+  GoogleLongrunningOperation,
+  ListPurgeProjectLocationDataStoreSuggestionDenyEntriesError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPurgeProjectLocationDataStoreSuggestionDenyEntriesRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type McpProjectsLocationsCollectionsDataConnectorError =
   | NotFound
   | Forbidden
@@ -24122,27 +24083,6 @@ export const purgeProjectsLocationsCollectionsDataStoresCompletionSuggestions: A
   retry: Retry.Retry,
 }));
 
-export type PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
-export const purgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntries: API.OperationMethod<
-  PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest,
-  GoogleLongrunningOperation,
-  PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    PurgeProjectsLocationsCollectionsDataStoresSuggestionDenyListEntriesRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PurgeProjectsLocationsCollectionsDataStoresUserEventsError =
   | NotFound
   | Forbidden
@@ -24197,26 +24137,6 @@ export const purgeProjectsLocationsDataStoresCompletionSuggestions: API.Operatio
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: PurgeProjectsLocationsDataStoresCompletionSuggestionsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Permanently deletes all SuggestionDenyListEntry for a DataStore. */
-export const purgeProjectsLocationsDataStoresSuggestionDenyListEntries: API.OperationMethod<
-  PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest,
-  GoogleLongrunningOperation,
-  PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PurgeProjectsLocationsDataStoresSuggestionDenyListEntriesRequest,
   output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -24746,6 +24666,26 @@ export const updateAclConfigProjectsLocations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateBatchUserLicenseProjectLocationUserStoreError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates the User License. This method is used for batch assign/unassign licenses to users. */
+export const updateBatchUserLicenseProjectLocationUserStore: API.OperationMethod<
+  UpdateBatchUserLicenseProjectLocationUserStoreRequest,
+  GoogleLongrunningOperation,
+  UpdateBatchUserLicenseProjectLocationUserStoreError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchUserLicenseProjectLocationUserStoreRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateCmekConfigProjectsLocationsError =
   | NotFound
   | Forbidden
@@ -24781,6 +24721,27 @@ export const updateDataConnectorProjectsLocationsCollections: API.OperationMetho
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateDataConnectorProjectsLocationsCollectionsRequest,
   output: GoogleCloudDiscoveryengineV1DataConnector,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Verify target sites' ownership and validity. This API sends all the target sites under site search engine for verification. */
+export const verifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngine: API.OperationMethod<
+  VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest,
+  GoogleLongrunningOperation,
+  VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    VerifyBatchTargetSiteProjectLocationCollectionDataStoreSiteSearchEngineRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

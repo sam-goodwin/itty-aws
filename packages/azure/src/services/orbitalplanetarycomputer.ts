@@ -93,7 +93,7 @@ export const GeoCatalogsCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeoCatalogsCreateRequestIdentity",
 }) as any as S.Schema<GeoCatalogsCreateRequestIdentity>;
 
-export interface GeoCatalogsCreateRequest {
+export interface CreateGeoCatalogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -109,7 +109,7 @@ export interface GeoCatalogsCreateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GeoCatalogsCreateRequestIdentity;
 }
-export const GeoCatalogsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateGeoCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -127,8 +127,8 @@ export const GeoCatalogsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GeoCatalogsCreateRequest",
-}) as any as S.Schema<GeoCatalogsCreateRequest>;
+  identifier: "CreateGeoCatalogRequest",
+}) as any as S.Schema<CreateGeoCatalogRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -274,7 +274,7 @@ export const GeoCatalogsCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeoCatalogsCreateResponseIdentity",
 }) as any as S.Schema<GeoCatalogsCreateResponseIdentity>;
 
-export interface GeoCatalogsCreateResponse {
+export interface CreateGeoCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -292,7 +292,7 @@ export interface GeoCatalogsCreateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GeoCatalogsCreateResponseIdentity;
 }
-export const GeoCatalogsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateGeoCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -304,10 +304,10 @@ export const GeoCatalogsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(GeoCatalogsCreateResponseIdentity),
   }),
 ).annotate({
-  identifier: "GeoCatalogsCreateResponse",
-}) as any as S.Schema<GeoCatalogsCreateResponse>;
+  identifier: "CreateGeoCatalogResponse",
+}) as any as S.Schema<CreateGeoCatalogResponse>;
 
-export interface GeoCatalogsDeleteRequest {
+export interface DeleteGeoCatalogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -315,7 +315,7 @@ export interface GeoCatalogsDeleteRequest {
   /** The name of the catalog */
   catalogName: string;
 }
-export const GeoCatalogsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteGeoCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -329,17 +329,17 @@ export const GeoCatalogsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GeoCatalogsDeleteRequest",
-}) as any as S.Schema<GeoCatalogsDeleteRequest>;
+  identifier: "DeleteGeoCatalogRequest",
+}) as any as S.Schema<DeleteGeoCatalogRequest>;
 
-export interface GeoCatalogsDeleteResponse {}
-export const GeoCatalogsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteGeoCatalogResponse {}
+export const DeleteGeoCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "GeoCatalogsDeleteResponse",
-}) as any as S.Schema<GeoCatalogsDeleteResponse>;
+  identifier: "DeleteGeoCatalogResponse",
+}) as any as S.Schema<DeleteGeoCatalogResponse>;
 
-export interface GeoCatalogsGetRequest {
+export interface GetGeoCatalogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -347,7 +347,7 @@ export interface GeoCatalogsGetRequest {
   /** The name of the catalog */
   catalogName: string;
 }
-export const GeoCatalogsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetGeoCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -361,8 +361,8 @@ export const GeoCatalogsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GeoCatalogsGetRequest",
-}) as any as S.Schema<GeoCatalogsGetRequest>;
+  identifier: "GetGeoCatalogRequest",
+}) as any as S.Schema<GetGeoCatalogRequest>;
 
 /** Resource tags. */
 export type GeoCatalogsGetResponseTagsMap = {
@@ -377,7 +377,7 @@ export const GeoCatalogsGetResponseTagsMap = /*@__PURE__*/ S.Record(
 export type GeoCatalogsGetResponseIdentity = GeoCatalogsCreateResponseIdentity;
 export const GeoCatalogsGetResponseIdentity = GeoCatalogsCreateResponseIdentity;
 
-export interface GeoCatalogsGetResponse {
+export interface GetGeoCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -395,7 +395,7 @@ export interface GeoCatalogsGetResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GeoCatalogsCreateResponseIdentity;
 }
-export const GeoCatalogsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetGeoCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -407,16 +407,16 @@ export const GeoCatalogsGetResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(GeoCatalogsCreateResponseIdentity),
   }),
 ).annotate({
-  identifier: "GeoCatalogsGetResponse",
-}) as any as S.Schema<GeoCatalogsGetResponse>;
+  identifier: "GetGeoCatalogResponse",
+}) as any as S.Schema<GetGeoCatalogResponse>;
 
-export interface GeoCatalogsListByResourceGroupRequest {
+export interface ListGeoCatalogByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const GeoCatalogsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
+export const ListGeoCatalogByResourceGroupRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -430,8 +430,8 @@ export const GeoCatalogsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "GeoCatalogsListByResourceGroupRequest",
-}) as any as S.Schema<GeoCatalogsListByResourceGroupRequest>;
+  identifier: "ListGeoCatalogByResourceGroupRequest",
+}) as any as S.Schema<ListGeoCatalogByResourceGroupRequest>;
 
 /** Resource tags. */
 export type GeoCatalogTagsMap = { [key: string]: string | undefined };
@@ -498,25 +498,24 @@ export const GeoCatalogListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "GeoCatalogListResult",
 }) as any as S.Schema<GeoCatalogListResult>;
 
-export interface GeoCatalogsListBySubscriptionRequest {
+export interface ListGeoCatalogBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-export const GeoCatalogsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/geoCatalogs",
-        code: 200,
-        apiVersion: "2026-04-15",
-      }),
-    ),
+export const ListGeoCatalogBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/geoCatalogs",
+      code: 200,
+      apiVersion: "2026-04-15",
+    }),
+  ),
 ).annotate({
-  identifier: "GeoCatalogsListBySubscriptionRequest",
-}) as any as S.Schema<GeoCatalogsListBySubscriptionRequest>;
+  identifier: "ListGeoCatalogBySubscriptionRequest",
+}) as any as S.Schema<ListGeoCatalogBySubscriptionRequest>;
 
 /** Resource tags. */
 export type GeoCatalogsUpdateRequestTagsMap = {
@@ -569,7 +568,7 @@ export const ManagedServiceIdentityUpdateInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedServiceIdentityUpdateInput",
 }) as any as S.Schema<ManagedServiceIdentityUpdateInput>;
 
-export interface GeoCatalogsUpdateRequest {
+export interface UpdateGeoCatalogRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -581,7 +580,7 @@ export interface GeoCatalogsUpdateRequest {
   /** The managed service identity properties to update. */
   identity?: ManagedServiceIdentityUpdateInput;
 }
-export const GeoCatalogsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateGeoCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -597,8 +596,8 @@ export const GeoCatalogsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GeoCatalogsUpdateRequest",
-}) as any as S.Schema<GeoCatalogsUpdateRequest>;
+  identifier: "UpdateGeoCatalogRequest",
+}) as any as S.Schema<UpdateGeoCatalogRequest>;
 
 /** Resource tags. */
 export type GeoCatalogsUpdateResponseTagsMap = {
@@ -615,7 +614,7 @@ export type GeoCatalogsUpdateResponseIdentity =
 export const GeoCatalogsUpdateResponseIdentity =
   GeoCatalogsCreateResponseIdentity;
 
-export interface GeoCatalogsUpdateResponse {
+export interface UpdateGeoCatalogResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -633,7 +632,7 @@ export interface GeoCatalogsUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: GeoCatalogsCreateResponseIdentity;
 }
-export const GeoCatalogsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateGeoCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -645,94 +644,94 @@ export const GeoCatalogsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(GeoCatalogsCreateResponseIdentity),
   }),
 ).annotate({
-  identifier: "GeoCatalogsUpdateResponse",
-}) as any as S.Schema<GeoCatalogsUpdateResponse>;
+  identifier: "UpdateGeoCatalogResponse",
+}) as any as S.Schema<UpdateGeoCatalogResponse>;
 
-export type GeoCatalogsCreateError = AzureOpError;
+export type CreateGeoCatalogError = AzureOpError;
 /** Create a GeoCatalog */
-export const GeoCatalogsCreate: API.OperationMethod<
-  GeoCatalogsCreateRequest,
-  GeoCatalogsCreateResponse,
-  GeoCatalogsCreateError,
+export const CreateGeoCatalog: API.OperationMethod<
+  CreateGeoCatalogRequest,
+  CreateGeoCatalogResponse,
+  CreateGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeoCatalogsCreateRequest,
-  output: GeoCatalogsCreateResponse,
+  input: CreateGeoCatalogRequest,
+  output: CreateGeoCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GeoCatalogsDeleteError = AzureOpError;
+export type DeleteGeoCatalogError = AzureOpError;
 /** Delete a GeoCatalog */
-export const GeoCatalogsDelete: API.OperationMethod<
-  GeoCatalogsDeleteRequest,
-  GeoCatalogsDeleteResponse,
-  GeoCatalogsDeleteError,
+export const DeleteGeoCatalog: API.OperationMethod<
+  DeleteGeoCatalogRequest,
+  DeleteGeoCatalogResponse,
+  DeleteGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeoCatalogsDeleteRequest,
-  output: GeoCatalogsDeleteResponse,
+  input: DeleteGeoCatalogRequest,
+  output: DeleteGeoCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GeoCatalogsGetError = AzureOpError;
+export type GetGeoCatalogError = AzureOpError;
 /** Get a GeoCatalog */
-export const GeoCatalogsGet: API.OperationMethod<
-  GeoCatalogsGetRequest,
-  GeoCatalogsGetResponse,
-  GeoCatalogsGetError,
+export const GetGeoCatalog: API.OperationMethod<
+  GetGeoCatalogRequest,
+  GetGeoCatalogResponse,
+  GetGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeoCatalogsGetRequest,
-  output: GeoCatalogsGetResponse,
+  input: GetGeoCatalogRequest,
+  output: GetGeoCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GeoCatalogsListByResourceGroupError = AzureOpError;
+export type ListGeoCatalogByResourceGroupError = AzureOpError;
 /** List GeoCatalog resources by resource group */
-export const GeoCatalogsListByResourceGroup: API.OperationMethod<
-  GeoCatalogsListByResourceGroupRequest,
+export const ListGeoCatalogByResourceGroup: API.OperationMethod<
+  ListGeoCatalogByResourceGroupRequest,
   GeoCatalogListResult,
-  GeoCatalogsListByResourceGroupError,
+  ListGeoCatalogByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeoCatalogsListByResourceGroupRequest,
+  input: ListGeoCatalogByResourceGroupRequest,
   output: GeoCatalogListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GeoCatalogsListBySubscriptionError = AzureOpError;
+export type ListGeoCatalogBySubscriptionError = AzureOpError;
 /** List GeoCatalog resources by subscription ID */
-export const GeoCatalogsListBySubscription: API.OperationMethod<
-  GeoCatalogsListBySubscriptionRequest,
+export const ListGeoCatalogBySubscription: API.OperationMethod<
+  ListGeoCatalogBySubscriptionRequest,
   GeoCatalogListResult,
-  GeoCatalogsListBySubscriptionError,
+  ListGeoCatalogBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeoCatalogsListBySubscriptionRequest,
+  input: ListGeoCatalogBySubscriptionRequest,
   output: GeoCatalogListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type GeoCatalogsUpdateError = AzureOpError;
+export type UpdateGeoCatalogError = AzureOpError;
 /** Update a GeoCatalog */
-export const GeoCatalogsUpdate: API.OperationMethod<
-  GeoCatalogsUpdateRequest,
-  GeoCatalogsUpdateResponse,
-  GeoCatalogsUpdateError,
+export const UpdateGeoCatalog: API.OperationMethod<
+  UpdateGeoCatalogRequest,
+  UpdateGeoCatalogResponse,
+  UpdateGeoCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GeoCatalogsUpdateRequest,
-  output: GeoCatalogsUpdateResponse,
+  input: UpdateGeoCatalogRequest,
+  output: UpdateGeoCatalogResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

@@ -5921,7 +5921,7 @@
         "smithy.api#documentation": "Gets the specified firewall rule."
       }
     },
-    "com.gcp.appengine_v1#BatchUpdateAppsFirewallIngressRulesRequest": {
+    "com.gcp.appengine_v1#UpdateBatchAppFirewallIngressRuleRequest": {
       "type": "structure",
       "members": {
         "appsId": {
@@ -5941,10 +5941,10 @@
         }
       }
     },
-    "com.gcp.appengine_v1#BatchUpdateAppsFirewallIngressRules": {
+    "com.gcp.appengine_v1#UpdateBatchAppFirewallIngressRule": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.appengine_v1#BatchUpdateAppsFirewallIngressRulesRequest"
+        "target": "com.gcp.appengine_v1#UpdateBatchAppFirewallIngressRuleRequest"
       },
       "output": {
         "target": "com.gcp.appengine_v1#BatchUpdateIngressRulesResponse"

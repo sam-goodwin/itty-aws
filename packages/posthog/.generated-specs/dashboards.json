@@ -35,7 +35,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsListRequest": {
+    "com.posthog.dashboards#ListDashboardsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -474,10 +474,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsList": {
+    "com.posthog.dashboards#ListDashboards": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsListRequest"
+        "target": "com.posthog.dashboards#ListDashboardsRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#PaginatedDashboardBasicList"
@@ -599,7 +599,7 @@
         "smithy.api#documentation": "* `vertical` - vertical\n* `horizontal` - horizontal\n* `stable` - stable"
       }
     },
-    "com.posthog.dashboards#DashboardsCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -964,10 +964,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsCreate": {
+    "com.posthog.dashboards#CreateDashboard": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardOutput"
@@ -991,7 +991,7 @@
         }
       }
     },
-    "com.posthog.dashboards#DashboardsCollaboratorsListRequest": {
+    "com.posthog.dashboards#ListDashboardCollaboratorsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1048,7 +1048,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsCollaboratorsListResponse": {
+    "com.posthog.dashboards#ListDashboardCollaboratorsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1063,13 +1063,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.dashboards#DashboardsCollaboratorsList": {
+    "com.posthog.dashboards#ListDashboardCollaborators": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsCollaboratorsListRequest"
+        "target": "com.posthog.dashboards#ListDashboardCollaboratorsRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#DashboardsCollaboratorsListResponse"
+        "target": "com.posthog.dashboards#ListDashboardCollaboratorsResponse"
       },
       "errors": [
         {
@@ -1087,7 +1087,7 @@
         }
       }
     },
-    "com.posthog.dashboards#DashboardsCollaboratorsCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardCollaboratorRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1116,10 +1116,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsCollaboratorsCreate": {
+    "com.posthog.dashboards#CreateDashboardCollaborator": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsCollaboratorsCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardCollaboratorRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardCollaboratorOutput"
@@ -1197,7 +1197,7 @@
         }
       }
     },
-    "com.posthog.dashboards#DashboardsSharingListRequest": {
+    "com.posthog.dashboards#ListDashboardSharingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1295,7 +1295,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsSharingListResponse": {
+    "com.posthog.dashboards#ListDashboardSharingResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1310,13 +1310,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.dashboards#DashboardsSharingList": {
+    "com.posthog.dashboards#ListDashboardSharing": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsSharingListRequest"
+        "target": "com.posthog.dashboards#ListDashboardSharingRequest"
       },
       "output": {
-        "target": "com.posthog.dashboards#DashboardsSharingListResponse"
+        "target": "com.posthog.dashboards#ListDashboardSharingResponse"
       },
       "errors": [
         {
@@ -1334,7 +1334,7 @@
         }
       }
     },
-    "com.posthog.dashboards#DashboardsSharingPasswordsCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardSharingPasswordRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1366,10 +1366,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsSharingPasswordsCreate": {
+    "com.posthog.dashboards#CreateDashboardSharingPassword": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsSharingPasswordsCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardSharingPasswordRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#SharingConfiguration"
@@ -1449,7 +1449,7 @@
         "smithy.api#documentation": "Delete a password from the sharing configuration."
       }
     },
-    "com.posthog.dashboards#DashboardsSharingRefreshCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardSharingRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1481,10 +1481,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsSharingRefreshCreate": {
+    "com.posthog.dashboards#CreateDashboardSharingRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsSharingRefreshCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardSharingRefreshRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#SharingConfiguration"
@@ -1638,7 +1638,7 @@
         "smithy.api#documentation": "List of quick filter IDs associated with this dashboard"
       }
     },
-    "com.posthog.dashboards#DashboardsUpdateRequest": {
+    "com.posthog.dashboards#UpdateDashboardRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1762,10 +1762,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsUpdate": {
+    "com.posthog.dashboards#UpdateDashboard": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsUpdateRequest"
+        "target": "com.posthog.dashboards#UpdateDashboardRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardOutput"
@@ -3398,7 +3398,7 @@
         "smithy.api#documentation": "Dashboard tiles to update. Widget tiles accept nested widget.config patches."
       }
     },
-    "com.posthog.dashboards#DashboardsPartialUpdateRequest": {
+    "com.posthog.dashboards#UpdateDashboardPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3516,10 +3516,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsPartialUpdate": {
+    "com.posthog.dashboards#UpdateDashboardPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsPartialUpdateRequest"
+        "target": "com.posthog.dashboards#UpdateDashboardPartialRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardOutput"
@@ -3637,7 +3637,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsCopyTileCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardCopyTileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3679,10 +3679,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsCopyTileCreate": {
+    "com.posthog.dashboards#CreateDashboardCopyTile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsCopyTileCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardCopyTileRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardOutput"
@@ -39214,7 +39214,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsDeleteTileRequest": {
+    "com.posthog.dashboards#DeleteDashboardTileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -39251,10 +39251,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsDeleteTile": {
+    "com.posthog.dashboards#DeleteDashboardTile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsDeleteTileRequest"
+        "target": "com.posthog.dashboards#DeleteDashboardTileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -39299,7 +39299,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsMoveTileCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardMoveTileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -39343,10 +39343,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsMoveTileCreate": {
+    "com.posthog.dashboards#CreateDashboardMoveTile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsMoveTileCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardMoveTileRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardOutput"
@@ -39412,7 +39412,7 @@
         "smithy.api#documentation": "* `preserve` - preserve\n* `two_column` - two_column\n* `full_width` - full_width"
       }
     },
-    "com.posthog.dashboards#DashboardsReorderTilesCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardReorderTileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -39454,10 +39454,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboards#DashboardsReorderTilesCreate": {
+    "com.posthog.dashboards#CreateDashboardReorderTile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsReorderTilesCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardReorderTileRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardOutput"
@@ -39954,7 +39954,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsSubscribeNudgeCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardSubscribeNudgeRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -39997,10 +39997,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboards#DashboardsSubscribeNudgeCreate": {
+    "com.posthog.dashboards#CreateDashboardSubscribeNudge": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsSubscribeNudgeCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardSubscribeNudgeRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#DashboardSubscribeNudgeResponse"
@@ -40674,7 +40674,7 @@
         "smithy.api#documentation": "Widget tiles to add atomically. Supported widget_type values: activity_events_list, conversations_recent_tickets, error_tracking_list, experiment_results, experiments_list, logs_list, session_replay_list, survey_results. Use dashboard-widget-catalog-list for per-type config_schema documentation. (1–10 per request)."
       }
     },
-    "com.posthog.dashboards#DashboardsWidgetsBatchCreateRequest": {
+    "com.posthog.dashboards#CreateDashboardWidgetBatchRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -40733,10 +40733,10 @@
         "smithy.api#documentation": "Created dashboard widget tiles in request order."
       }
     },
-    "com.posthog.dashboards#DashboardsWidgetsBatchCreate": {
+    "com.posthog.dashboards#CreateDashboardWidgetBatch": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsWidgetsBatchCreateRequest"
+        "target": "com.posthog.dashboards#CreateDashboardWidgetBatchRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#AddDashboardWidgetsBatchResponseOutput"
@@ -41111,7 +41111,7 @@
         "smithy.api#documentation": "Widget tiles to update atomically, each identified by its tile_id. config shape is per widget_type; see dashboard-widget-catalog-list for per-type config_schema (1–10 per request)."
       }
     },
-    "com.posthog.dashboards#DashboardsUpdateWidgetsBatchRequest": {
+    "com.posthog.dashboards#UpdateDashboardWidgetBatchRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -41169,10 +41169,10 @@
         "smithy.api#documentation": "Updated dashboard widget tiles in request order."
       }
     },
-    "com.posthog.dashboards#DashboardsUpdateWidgetsBatch": {
+    "com.posthog.dashboards#UpdateDashboardWidgetBatch": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboards#DashboardsUpdateWidgetsBatchRequest"
+        "target": "com.posthog.dashboards#UpdateDashboardWidgetBatchRequest"
       },
       "output": {
         "target": "com.posthog.dashboards#UpdateDashboardWidgetsBatchResponseOutput"
@@ -41787,58 +41787,58 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.dashboards#DashboardsList"
+          "target": "com.posthog.dashboards#ListDashboards"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsCreate"
+          "target": "com.posthog.dashboards#CreateDashboard"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsCollaboratorsList"
+          "target": "com.posthog.dashboards#ListDashboardCollaborators"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsCollaboratorsCreate"
+          "target": "com.posthog.dashboards#CreateDashboardCollaborator"
         },
         {
           "target": "com.posthog.dashboards#DashboardsCollaboratorsDestroy"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsSharingList"
+          "target": "com.posthog.dashboards#ListDashboardSharing"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsSharingPasswordsCreate"
+          "target": "com.posthog.dashboards#CreateDashboardSharingPassword"
         },
         {
           "target": "com.posthog.dashboards#DashboardsSharingPasswordsDestroy"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsSharingRefreshCreate"
+          "target": "com.posthog.dashboards#CreateDashboardSharingRefresh"
         },
         {
           "target": "com.posthog.dashboards#DashboardsRetrieve"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsUpdate"
+          "target": "com.posthog.dashboards#UpdateDashboard"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsPartialUpdate"
+          "target": "com.posthog.dashboards#UpdateDashboardPartial"
         },
         {
           "target": "com.posthog.dashboards#DashboardsDestroy"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsCopyTileCreate"
+          "target": "com.posthog.dashboards#CreateDashboardCopyTile"
         },
         {
           "target": "com.posthog.dashboards#DashboardsCreateTextTileCreate"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsDeleteTile"
+          "target": "com.posthog.dashboards#DeleteDashboardTile"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsMoveTileCreate"
+          "target": "com.posthog.dashboards#CreateDashboardMoveTile"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsReorderTilesCreate"
+          "target": "com.posthog.dashboards#CreateDashboardReorderTile"
         },
         {
           "target": "com.posthog.dashboards#DashboardsRunInsightsRetrieve"
@@ -41850,16 +41850,16 @@
           "target": "com.posthog.dashboards#DashboardsStreamTilesRetrieve"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsSubscribeNudgeCreate"
+          "target": "com.posthog.dashboards#CreateDashboardSubscribeNudge"
         },
         {
           "target": "com.posthog.dashboards#DashboardsUpdateTextTileCreate"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsWidgetsBatchCreate"
+          "target": "com.posthog.dashboards#CreateDashboardWidgetBatch"
         },
         {
-          "target": "com.posthog.dashboards#DashboardsUpdateWidgetsBatch"
+          "target": "com.posthog.dashboards#UpdateDashboardWidgetBatch"
         },
         {
           "target": "com.posthog.dashboards#DashboardsWidgetCatalogRetrieve"

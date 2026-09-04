@@ -12,6 +12,1492 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type AddsServicesAddRequestCustomNotificationEmailsList = Array<string>;
+export const AddsServicesAddRequestCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesAddRequestCustomNotificationEmailsList>;
+
+/** The list of emails to whom service notifications will be sent. */
+export type AddsServicesAddRequestNotificationEmailsList = Array<string>;
+export const AddsServicesAddRequestNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesAddRequestNotificationEmailsList>;
+
+export interface AddsServicesAddRequest {
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: AddsServicesAddRequestCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: AddsServicesAddRequestNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
+  serviceId?: string;
+  /** The name of the service. */
+  serviceName?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
+}
+export const AddsServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      AddsServicesAddRequestCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(
+      AddsServicesAddRequestNotificationEmailsList,
+    ),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    serviceName: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "AddsServicesAddRequest",
+}) as any as S.Schema<AddsServicesAddRequest>;
+
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type ServicePropertiesCustomNotificationEmailsList = Array<string>;
+export const ServicePropertiesCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
+
+/** The list of emails to whom service notifications will be sent. */
+export type ServicePropertiesNotificationEmailsList = Array<string>;
+export const ServicePropertiesNotificationEmailsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ServicePropertiesNotificationEmailsList>;
+
+/** The service properties for a given service. */
+export interface ServiceProperties {
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: ServicePropertiesCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: ServicePropertiesNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
+  serviceId?: string;
+  /** The name of the service. */
+  serviceName?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
+}
+export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      ServicePropertiesCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(ServicePropertiesNotificationEmailsList),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    serviceName: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceProperties",
+}) as any as S.Schema<ServiceProperties>;
+
+/** The monitoring level reported by the server. */
+export type AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
+  | "Partial"
+  | "Full"
+  | "Off";
+export const AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
+  /*@__PURE__*/ S.String;
+
+export interface AddsServicesServiceMembersAddRequest {
+  /** The name of the service under which the server is to be onboarded. */
+  serviceName: string;
+  /** The id of the server. */
+  serviceMemberId?: string;
+  /** The service id to whom this server belongs. */
+  serviceId?: string;
+  /** The tenant id to whom this server belongs. */
+  tenantId?: string;
+  /** The total number of alerts that are currently active for the server. */
+  activeAlerts?: number;
+  /** The additional information, if any, for the server. */
+  additionalInformation?: string;
+  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The server specific configuration related dimensions. */
+  dimensions?: unknown;
+  /** Indicates if the server is disabled or not. */
+  disabled?: boolean;
+  /** The reason for disabling the server. */
+  disabledReason?: number;
+  /** The list of installed QFEs for the server. */
+  installedQfes?: unknown;
+  /** The date and time , in UTC, when the server was last disabled. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the server was last rebooted. */
+  lastReboot?: string;
+  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
+  lastServerReportedMonitoringLevelChange?: string;
+  /** The date and time, in UTC, when the server properties were last updated. */
+  lastUpdated?: string;
+  /** The id of the machine. */
+  machineId?: string;
+  /** The name of the server. */
+  machineName?: string;
+  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** The name of the operating system installed in the machine. */
+  osName?: string;
+  /** The version of the operating system installed in the machine. */
+  osVersion?: string;
+  /** Server specific properties. */
+  properties?: unknown;
+  /** The list of recommended hotfixes for the server. */
+  recommendedQfes?: unknown;
+  /** The total count of alerts that are resolved for this server. */
+  resolvedAlerts?: number;
+  /** The service role that is being monitored in the server. */
+  role?: string;
+  /** The monitoring level reported by the server. */
+  serverReportedMonitoringLevel?:
+    | AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel
+    | (string & {});
+  /** The health status of the server. */
+  status?: string;
+}
+export const AddsServicesServiceMembersAddRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      serviceMemberId: S.optional(S.String),
+      serviceId: S.optional(S.String),
+      tenantId: S.optional(S.String),
+      activeAlerts: S.optional(S.Number),
+      additionalInformation: S.optional(S.String),
+      createdDate: S.optional(S.String),
+      dimensions: S.optional(S.Unknown),
+      disabled: S.optional(S.Boolean),
+      disabledReason: S.optional(S.Number),
+      installedQfes: S.optional(S.Unknown),
+      lastDisabled: S.optional(S.String),
+      lastReboot: S.optional(S.String),
+      lastServerReportedMonitoringLevelChange: S.optional(S.String),
+      lastUpdated: S.optional(S.String),
+      machineId: S.optional(S.String),
+      machineName: S.optional(S.String),
+      monitoringConfigurationsComputed: S.optional(S.Unknown),
+      monitoringConfigurationsCustomized: S.optional(S.Unknown),
+      osName: S.optional(S.String),
+      osVersion: S.optional(S.String),
+      properties: S.optional(S.Unknown),
+      recommendedQfes: S.optional(S.Unknown),
+      resolvedAlerts: S.optional(S.Number),
+      role: S.optional(S.String),
+      serverReportedMonitoringLevel: S.optional(
+        AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel,
+      ),
+      status: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "AddsServicesServiceMembersAddRequest",
+}) as any as S.Schema<AddsServicesServiceMembersAddRequest>;
+
+/** The monitoring level reported by the server. */
+export type ServiceMemberServerReportedMonitoringLevel =
+  | "Partial"
+  | "Full"
+  | "Off";
+export const ServiceMemberServerReportedMonitoringLevel =
+  /*@__PURE__*/ S.String;
+
+/** The server properties for a given service. */
+export interface ServiceMember {
+  /** The id of the server. */
+  serviceMemberId?: string;
+  /** The service id to whom this server belongs. */
+  serviceId?: string;
+  /** The tenant id to whom this server belongs. */
+  tenantId?: string;
+  /** The total number of alerts that are currently active for the server. */
+  activeAlerts?: number;
+  /** The additional information, if any, for the server. */
+  additionalInformation?: string;
+  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The server specific configuration related dimensions. */
+  dimensions?: unknown;
+  /** Indicates if the server is disabled or not. */
+  disabled?: boolean;
+  /** The reason for disabling the server. */
+  disabledReason?: number;
+  /** The list of installed QFEs for the server. */
+  installedQfes?: unknown;
+  /** The date and time , in UTC, when the server was last disabled. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the server was last rebooted. */
+  lastReboot?: string;
+  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
+  lastServerReportedMonitoringLevelChange?: string;
+  /** The date and time, in UTC, when the server properties were last updated. */
+  lastUpdated?: string;
+  /** The id of the machine. */
+  machineId?: string;
+  /** The name of the server. */
+  machineName?: string;
+  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** The name of the operating system installed in the machine. */
+  osName?: string;
+  /** The version of the operating system installed in the machine. */
+  osVersion?: string;
+  /** Server specific properties. */
+  properties?: unknown;
+  /** The list of recommended hotfixes for the server. */
+  recommendedQfes?: unknown;
+  /** The total count of alerts that are resolved for this server. */
+  resolvedAlerts?: number;
+  /** The service role that is being monitored in the server. */
+  role?: string;
+  /** The monitoring level reported by the server. */
+  serverReportedMonitoringLevel?: ServiceMemberServerReportedMonitoringLevel;
+  /** The health status of the server. */
+  status?: string;
+}
+export const ServiceMember = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceMemberId: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    dimensions: S.optional(S.Unknown),
+    disabled: S.optional(S.Boolean),
+    disabledReason: S.optional(S.Number),
+    installedQfes: S.optional(S.Unknown),
+    lastDisabled: S.optional(S.String),
+    lastReboot: S.optional(S.String),
+    lastServerReportedMonitoringLevelChange: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    machineId: S.optional(S.String),
+    machineName: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    osName: S.optional(S.String),
+    osVersion: S.optional(S.String),
+    properties: S.optional(S.Unknown),
+    recommendedQfes: S.optional(S.Unknown),
+    resolvedAlerts: S.optional(S.Number),
+    role: S.optional(S.String),
+    serverReportedMonitoringLevel: S.optional(
+      ServiceMemberServerReportedMonitoringLevel,
+    ),
+    status: S.optional(S.String),
+  }),
+).annotate({ identifier: "ServiceMember" }) as any as S.Schema<ServiceMember>;
+
+/** The name of the metric. */
+export type AddsServicesUserPreferenceAddRequestMetricNamesList = Array<string>;
+export const AddsServicesUserPreferenceAddRequestMetricNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesUserPreferenceAddRequestMetricNamesList>;
+
+export interface AddsServicesUserPreferenceAddRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The name of the feature. */
+  featureName: string;
+  /** The name of the metric. */
+  metricNames?: AddsServicesUserPreferenceAddRequestMetricNamesList;
+}
+export const AddsServicesUserPreferenceAddRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      featureName: S.String.pipe(T.Label()),
+      metricNames: S.optional(
+        AddsServicesUserPreferenceAddRequestMetricNamesList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "AddsServicesUserPreferenceAddRequest",
+}) as any as S.Schema<AddsServicesUserPreferenceAddRequest>;
+
+export interface AddsServicesUserPreferenceAddResponse {}
+export const AddsServicesUserPreferenceAddResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "AddsServicesUserPreferenceAddResponse",
+}) as any as S.Schema<AddsServicesUserPreferenceAddResponse>;
+
+export interface ConfigurationAddRequest {}
+export const ConfigurationAddRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.ADHybridHealthService/configuration",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ConfigurationAddRequest",
+}) as any as S.Schema<ConfigurationAddRequest>;
+
+/** The list of global administrators for the tenant. */
+export type TenantGlobalAdminsEmailList = Array<string>;
+export const TenantGlobalAdminsEmailList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TenantGlobalAdminsEmailList>;
+
+/** The details of the onboarded tenant. */
+export interface Tenant {
+  /** The Id of the tenant. */
+  tenantId?: string;
+  /** The Azure Active Directory license of the tenant. */
+  aadLicense?: string;
+  /** Indicate if the tenant has Azure Active Directory Premium license or not. */
+  aadPremium?: boolean;
+  /** Indicates if the tenant is configured to automatically receive updates for Azure Active Directory Connect Health client side features. */
+  agentAutoUpdate?: boolean;
+  /** The time in minutes after which an alert will be auto-suppressed. */
+  alertSuppressionTimeInMins?: number;
+  /** Indicates if the tenant data can be seen by Microsoft through Azure portal. */
+  consentedToMicrosoftDevOps?: boolean;
+  /** The country letter code of the tenant. */
+  countryLetterCode?: string;
+  /** The date, in UTC, when the tenant was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The date and time, in UTC, till when the tenant data can be seen by Microsoft through Azure portal. */
+  devOpsTtl?: string;
+  /** Indicates if the tenant is disabled in Azure Active Directory Connect Health. */
+  disabled?: boolean;
+  /** The reason due to which the tenant was disabled in Azure Active Directory Connect Health. */
+  disabledReason?: number;
+  /** The list of global administrators for the tenant. */
+  globalAdminsEmail?: TenantGlobalAdminsEmailList;
+  /** The initial domain of the tenant. */
+  initialDomain?: string;
+  /** The date and time, in UTC, when the tenant was last disabled in Azure Active Directory Connect Health. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the tenant onboarding status in Azure Active Directory Connect Health was last verified. */
+  lastVerified?: string;
+  /** Indicates if the tenant is allowed to onboard to Azure Active Directory Connect Health. */
+  onboardingAllowed?: boolean;
+  /** Indicates if the tenant is already onboarded to Azure Active Directory Connect Health. */
+  onboarded?: boolean;
+  /** The certificate associated with the tenant to onboard data to Azure Active Directory Connect Health. */
+  pksCertificate?: unknown;
+  /** Indicates if the tenant has signed up for private preview of Azure Active Directory Connect Health features. */
+  privatePreviewTenant?: boolean;
+  /** Indicates if data collection for this tenant is disabled or not. */
+  tenantInQuarantine?: boolean;
+  /** The name of the tenant. */
+  tenantName?: string;
+}
+export const Tenant = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    aadLicense: S.optional(S.String),
+    aadPremium: S.optional(S.Boolean),
+    agentAutoUpdate: S.optional(S.Boolean),
+    alertSuppressionTimeInMins: S.optional(S.Number),
+    consentedToMicrosoftDevOps: S.optional(S.Boolean),
+    countryLetterCode: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    devOpsTtl: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+    disabledReason: S.optional(S.Number),
+    globalAdminsEmail: S.optional(TenantGlobalAdminsEmailList),
+    initialDomain: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastVerified: S.optional(S.String),
+    onboardingAllowed: S.optional(S.Boolean),
+    onboarded: S.optional(S.Boolean),
+    pksCertificate: S.optional(S.Unknown),
+    privatePreviewTenant: S.optional(S.Boolean),
+    tenantInQuarantine: S.optional(S.Boolean),
+    tenantName: S.optional(S.String),
+  }),
+).annotate({ identifier: "Tenant" }) as any as S.Schema<Tenant>;
+
+export interface DeleteAddServiceRequest {
+  /** The name of the service which needs to be deleted. */
+  serviceName: string;
+  /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
+  confirm?: boolean;
+}
+export const DeleteAddServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    confirm: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAddServiceRequest",
+}) as any as S.Schema<DeleteAddServiceRequest>;
+
+export interface DeleteAddServiceResponse {}
+export const DeleteAddServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAddServiceResponse",
+}) as any as S.Schema<DeleteAddServiceResponse>;
+
+export interface DeleteAddServiceMemberRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server Id. */
+  serviceMemberId: string;
+  /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
+  confirm?: boolean;
+}
+export const DeleteAddServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+    confirm: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAddServiceMemberRequest",
+}) as any as S.Schema<DeleteAddServiceMemberRequest>;
+
+export interface DeleteAddServiceMemberResponse {}
+export const DeleteAddServiceMemberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAddServiceMemberResponse",
+}) as any as S.Schema<DeleteAddServiceMemberResponse>;
+
+export interface DeleteAddServiceUserPreferenceRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The name of the feature. */
+  featureName: string;
+}
+export const DeleteAddServiceUserPreferenceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      featureName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAddServiceUserPreferenceRequest",
+}) as any as S.Schema<DeleteAddServiceUserPreferenceRequest>;
+
+export interface DeleteAddServiceUserPreferenceResponse {}
+export const DeleteAddServiceUserPreferenceResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteAddServiceUserPreferenceResponse",
+}) as any as S.Schema<DeleteAddServiceUserPreferenceResponse>;
+
+export interface DeleteServiceRequest {
+  /** The name of the service which needs to be deleted. */
+  serviceName: string;
+  /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
+  confirm?: boolean;
+}
+export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    confirm: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteServiceRequest",
+}) as any as S.Schema<DeleteServiceRequest>;
+
+export interface DeleteServiceResponse {}
+export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceResponse",
+}) as any as S.Schema<DeleteServiceResponse>;
+
+export interface DeleteServiceMemberRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server Id. */
+  serviceMemberId: string;
+  /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
+  confirm?: boolean;
+}
+export const DeleteServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+    confirm: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteServiceMemberRequest",
+}) as any as S.Schema<DeleteServiceMemberRequest>;
+
+export interface DeleteServiceMemberResponse {}
+export const DeleteServiceMemberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceMemberResponse",
+}) as any as S.Schema<DeleteServiceMemberResponse>;
+
+export interface DeleteServiceMemberDataRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server Id. */
+  serviceMemberId: string;
+}
+export const DeleteServiceMemberDataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/data",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteServiceMemberDataRequest",
+}) as any as S.Schema<DeleteServiceMemberDataRequest>;
+
+export interface DeleteServiceMemberDataResponse {}
+export const DeleteServiceMemberDataResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteServiceMemberDataResponse",
+}) as any as S.Schema<DeleteServiceMemberDataResponse>;
+
+export interface GetAddServiceRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const GetAddServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddServiceRequest",
+}) as any as S.Schema<GetAddServiceRequest>;
+
+export interface GetAddServiceForestSummaryRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const GetAddServiceForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/forestsummary",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddServiceForestSummaryRequest",
+}) as any as S.Schema<GetAddServiceForestSummaryRequest>;
+
+/** The list of domain controller names. */
+export type ForestSummaryDomainsList = Array<string>;
+export const ForestSummaryDomainsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ForestSummaryDomainsList>;
+
+/** The list of site names. */
+export type ForestSummarySitesList = Array<string>;
+export const ForestSummarySitesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ForestSummarySitesList>;
+
+/** The forest summary for an ADDS domain. */
+export interface ForestSummary {
+  /** The forest name. */
+  forestName?: string;
+  /** The domain count. */
+  domainCount?: number;
+  /** The site count. */
+  siteCount?: number;
+  /** The number of domain controllers that are monitored by Azure Active Directory Connect Health. */
+  monitoredDcCount?: number;
+  /** The total domain controllers. */
+  totalDcCount?: number;
+  /** The list of domain controller names. */
+  domains?: ForestSummaryDomainsList;
+  /** The list of site names. */
+  sites?: ForestSummarySitesList;
+}
+export const ForestSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    forestName: S.optional(S.String),
+    domainCount: S.optional(S.Number),
+    siteCount: S.optional(S.Number),
+    monitoredDcCount: S.optional(S.Number),
+    totalDcCount: S.optional(S.Number),
+    domains: S.optional(ForestSummaryDomainsList),
+    sites: S.optional(ForestSummarySitesList),
+  }),
+).annotate({ identifier: "ForestSummary" }) as any as S.Schema<ForestSummary>;
+
+export interface GetAddServiceMemberRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server Id. */
+  serviceMemberId: string;
+}
+export const GetAddServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddServiceMemberRequest",
+}) as any as S.Schema<GetAddServiceMemberRequest>;
+
+export interface GetAddServiceMetricRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+  /** The group key */
+  groupKey?: string;
+  /** The start date. */
+  fromDate?: string;
+  /** The end date. */
+  toDate?: string;
+}
+export const GetAddServiceMetricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    groupKey: S.optional(S.String.pipe(T.Query())),
+    fromDate: S.optional(S.String.pipe(T.Query())),
+    toDate: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddServiceMetricRequest",
+}) as any as S.Schema<GetAddServiceMetricRequest>;
+
+/** The list of the metric values. */
+export type MetricSetValuesList = Array<number>;
+export const MetricSetValuesList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<MetricSetValuesList>;
+
+/** The set of metric values. Example of a MetricSet are Values of token requests for a Server1 or RelyingParty1. */
+export interface MetricSet {
+  /** The name of the set. */
+  setName?: string;
+  /** The list of the metric values. */
+  values?: MetricSetValuesList;
+}
+export const MetricSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    setName: S.optional(S.String),
+    values: S.optional(MetricSetValuesList),
+  }),
+).annotate({ identifier: "MetricSet" }) as any as S.Schema<MetricSet>;
+
+/** The list of metric set. */
+export type MetricSetsSetsList = Array<MetricSet>;
+export const MetricSetsSetsList = /*@__PURE__*/ S.Array(
+  MetricSet,
+) as any as S.Schema<MetricSetsSetsList>;
+
+/** The list of timestamps for each metric in the metric set. */
+export type MetricSetsTimeStampsList = Array<string>;
+export const MetricSetsTimeStampsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MetricSetsTimeStampsList>;
+
+/** The metrics data represented set. */
+export interface MetricSets {
+  /** The list of metric set. */
+  sets?: MetricSetsSetsList;
+  /** The list of timestamps for each metric in the metric set. */
+  timeStamps?: MetricSetsTimeStampsList;
+}
+export const MetricSets = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sets: S.optional(MetricSetsSetsList),
+    timeStamps: S.optional(MetricSetsTimeStampsList),
+  }),
+).annotate({ identifier: "MetricSets" }) as any as S.Schema<MetricSets>;
+
+export interface GetAddServiceMetricMetadataRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+}
+export const GetAddServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddServiceMetricMetadataRequest",
+}) as any as S.Schema<GetAddServiceMetricMetadataRequest>;
+
+/** The metric group details. */
+export interface MetricGroup {
+  /** The key for the group. */
+  key?: string;
+  /** The display name for the group. */
+  displayName?: string;
+  /** indicates if the metric group is displayed in Azure Active Directory Connect Health UI. */
+  invisibleForUi?: boolean;
+}
+export const MetricGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    displayName: S.optional(S.String),
+    invisibleForUi: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "MetricGroup" }) as any as S.Schema<MetricGroup>;
+
+/** The groupings for the metrics. */
+export type MetricMetadataGroupingsList = Array<MetricGroup>;
+export const MetricMetadataGroupingsList = /*@__PURE__*/ S.Array(
+  MetricGroup,
+) as any as S.Schema<MetricMetadataGroupingsList>;
+
+/** The metric meta data */
+export interface MetricMetadata {
+  /** The name of the class which retrieve and process the metric. */
+  metricsProcessorClassName?: string;
+  /** The metric name */
+  metricName?: string;
+  /** The groupings for the metrics. */
+  groupings?: MetricMetadataGroupingsList;
+  /** The display name for the metric. */
+  displayName?: string;
+  /** Indicates if the metrics is a rate,value, percent or duration type. */
+  valueKind?: string;
+  /** The minimum value. */
+  minValue?: number;
+  /** The maximum value. */
+  maxValue?: number;
+  /** Indicates whether the dashboard to represent the metric is a line, bar,pie, area or donut chart. */
+  kind?: string;
+  /** Indicates if the metric is a default metric or not. */
+  isDefault?: boolean;
+  /** Indicates if the metric is a performance counter metric or not. */
+  isPerfCounter?: boolean;
+  /** Indicates if the metric is visible to DevOps or not. */
+  isDevOps?: boolean;
+}
+export const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metricsProcessorClassName: S.optional(S.String),
+    metricName: S.optional(S.String),
+    groupings: S.optional(MetricMetadataGroupingsList),
+    displayName: S.optional(S.String),
+    valueKind: S.optional(S.String),
+    minValue: S.optional(S.Number),
+    maxValue: S.optional(S.Number),
+    kind: S.optional(S.String),
+    isDefault: S.optional(S.Boolean),
+    isPerfCounter: S.optional(S.Boolean),
+    isDevOps: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "MetricMetadata" }) as any as S.Schema<MetricMetadata>;
+
+export interface GetAddServiceMetricMetadataForGroupRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+  /** The group key */
+  groupKey?: string;
+  /** The start date. */
+  fromDate?: string;
+  /** The end date. */
+  toDate?: string;
+}
+export const GetAddServiceMetricMetadataForGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      metricName: S.String.pipe(T.Label()),
+      groupName: S.String.pipe(T.Label()),
+      groupKey: S.optional(S.String.pipe(T.Query())),
+      fromDate: S.optional(S.String.pipe(T.Query())),
+      toDate: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAddServiceMetricMetadataForGroupRequest",
+  }) as any as S.Schema<GetAddServiceMetricMetadataForGroupRequest>;
+
+export interface GetAddServiceReplicationStatusRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const GetAddServiceReplicationStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationstatus",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetAddServiceReplicationStatusRequest",
+}) as any as S.Schema<GetAddServiceReplicationStatusRequest>;
+
+/** Replication summary for a domain controller. */
+export interface ReplicationStatus {
+  /** The forest name. */
+  forestName?: string;
+  /** The total number of domain controllers for a given forest. */
+  totalDcCount?: number;
+  /** The total number of domain controllers with error in a given forest. */
+  errorDcCount?: number;
+}
+export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    forestName: S.optional(S.String),
+    totalDcCount: S.optional(S.Number),
+    errorDcCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ReplicationStatus",
+}) as any as S.Schema<ReplicationStatus>;
+
+export interface GetAddServiceUserPreferenceRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The name of the feature. */
+  featureName: string;
+}
+export const GetAddServiceUserPreferenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    featureName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddServiceUserPreferenceRequest",
+}) as any as S.Schema<GetAddServiceUserPreferenceRequest>;
+
+/** The name of the metric. */
+export type UserPreferenceMetricNamesList = Array<string>;
+export const UserPreferenceMetricNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<UserPreferenceMetricNamesList>;
+
+/** The user preference for a given feature. */
+export interface UserPreference {
+  /** The name of the metric. */
+  metricNames?: UserPreferenceMetricNamesList;
+}
+export const UserPreference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    metricNames: S.optional(UserPreferenceMetricNamesList),
+  }),
+).annotate({ identifier: "UserPreference" }) as any as S.Schema<UserPreference>;
+
+export interface GetConfigurationRequest {}
+export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/configuration",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetConfigurationRequest",
+}) as any as S.Schema<GetConfigurationRequest>;
+
+export interface GetReportDevOpsRequest {}
+export const GetReportDevOpsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetReportDevOpsRequest",
+}) as any as S.Schema<GetReportDevOpsRequest>;
+
+/** The result for an operation. */
+export interface Result {
+  /** The value. */
+  value?: boolean;
+}
+export const Result = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
+
+export interface GetServiceRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceRequest",
+}) as any as S.Schema<GetServiceRequest>;
+
+export interface GetServiceFeatureAvailibilityRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The name of the feature. */
+  featureName: string;
+}
+export const GetServiceFeatureAvailibilityRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      featureName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/checkServiceFeatureAvailibility/{featureName}",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetServiceFeatureAvailibilityRequest",
+}) as any as S.Schema<GetServiceFeatureAvailibilityRequest>;
+
+export interface GetServiceMemberRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server Id. */
+  serviceMemberId: string;
+}
+export const GetServiceMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceMemberRequest",
+}) as any as S.Schema<GetServiceMemberRequest>;
+
+export interface GetServiceMemberConnectorMetadataRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The service member id. */
+  serviceMemberId: string;
+  /** The name of the metric. */
+  metricName: string;
+}
+export const GetServiceMemberConnectorMetadataRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      serviceMemberId: S.String.pipe(T.Label()),
+      metricName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetServiceMemberConnectorMetadataRequest",
+}) as any as S.Schema<GetServiceMemberConnectorMetadataRequest>;
+
+/** Details of the connector. */
+export interface ConnectorMetadataDetails {
+  /** The Connector Id. */
+  connectorId?: string;
+  /** The Connector Display Name */
+  connectorDisplayName?: string;
+}
+export const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectorId: S.optional(S.String),
+    connectorDisplayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ConnectorMetadataDetails",
+}) as any as S.Schema<ConnectorMetadataDetails>;
+
+/** The list of connectors. */
+export type ConnectorMetadataConnectorsList = Array<ConnectorMetadataDetails>;
+export const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
+  ConnectorMetadataDetails,
+) as any as S.Schema<ConnectorMetadataConnectorsList>;
+
+/** The list of run profile names. */
+export type ConnectorMetadataRunProfileNamesList = Array<string>;
+export const ConnectorMetadataRunProfileNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
+
+/** Gets the list of connectors and run profile names. */
+export interface ConnectorMetadata {
+  /** The list of connectors. */
+  connectors?: ConnectorMetadataConnectorsList;
+  /** The list of run profile names. */
+  runProfileNames?: ConnectorMetadataRunProfileNamesList;
+}
+export const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    connectors: S.optional(ConnectorMetadataConnectorsList),
+    runProfileNames: S.optional(ConnectorMetadataRunProfileNamesList),
+  }),
+).annotate({
+  identifier: "ConnectorMetadata",
+}) as any as S.Schema<ConnectorMetadata>;
+
+export interface GetServiceMemberMetricRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server id. */
+  serviceMemberId: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+  /** The group key */
+  groupKey?: string;
+  /** The start date. */
+  fromDate?: string;
+  /** The end date. */
+  toDate?: string;
+}
+export const GetServiceMemberMetricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    groupKey: S.optional(S.String.pipe(T.Query())),
+    fromDate: S.optional(S.String.pipe(T.Query())),
+    toDate: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceMemberMetricRequest",
+}) as any as S.Schema<GetServiceMemberMetricRequest>;
+
+export interface GetServiceMemberServiceConfigurationRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server Id. */
+  serviceMemberId: string;
+}
+export const GetServiceMemberServiceConfigurationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      serviceMemberId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/serviceconfiguration",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetServiceMemberServiceConfigurationRequest",
+  }) as any as S.Schema<GetServiceMemberServiceConfigurationRequest>;
+
+/** The service configuration */
+export interface ServiceConfiguration {
+  /** The version of the sync service. */
+  version?: string;
+  /** The service type of the server. */
+  serviceType?: number;
+  /** The service account. */
+  serviceAccount?: string;
+  /** The SQL server information. */
+  sqlServer?: string;
+  /** The SQL version. */
+  sqlVersion?: string;
+  /** The SQL edition */
+  sqlEdition?: string;
+  /** The SQL instance details. */
+  sqlInstance?: string;
+  /** The SQL database. */
+  sqlDatabaseName?: string;
+  /** The SQL database size. */
+  sqlDatabaseSize?: number;
+}
+export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version: S.optional(S.String),
+    serviceType: S.optional(S.Number),
+    serviceAccount: S.optional(S.String),
+    sqlServer: S.optional(S.String),
+    sqlVersion: S.optional(S.String),
+    sqlEdition: S.optional(S.String),
+    sqlInstance: S.optional(S.String),
+    sqlDatabaseName: S.optional(S.String),
+    sqlDatabaseSize: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ServiceConfiguration",
+}) as any as S.Schema<ServiceConfiguration>;
+
+export interface GetServiceMetricRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+  /** The group key */
+  groupKey?: string;
+  /** The start date. */
+  fromDate?: string;
+  /** The end date. */
+  toDate?: string;
+}
+export const GetServiceMetricRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+    groupKey: S.optional(S.String.pipe(T.Query())),
+    fromDate: S.optional(S.String.pipe(T.Query())),
+    toDate: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceMetricRequest",
+}) as any as S.Schema<GetServiceMetricRequest>;
+
+export interface GetServiceMetricMetadataRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+}
+export const GetServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceMetricMetadataRequest",
+}) as any as S.Schema<GetServiceMetricMetadataRequest>;
+
+export interface GetServiceMetricMetadataForGroupRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+  /** The group key */
+  groupKey?: string;
+  /** The start date. */
+  fromDate?: string;
+  /** The end date. */
+  toDate?: string;
+}
+export const GetServiceMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      metricName: S.String.pipe(T.Label()),
+      groupName: S.String.pipe(T.Label()),
+      groupKey: S.optional(S.String.pipe(T.Query())),
+      fromDate: S.optional(S.String.pipe(T.Query())),
+      toDate: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetServiceMetricMetadataForGroupRequest",
+}) as any as S.Schema<GetServiceMetricMetadataForGroupRequest>;
+
+export interface GetServiceTenantWhitelistingRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The name of the feature. */
+  featureName: string;
+}
+export const GetServiceTenantWhitelistingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    featureName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceTenantWhitelistingRequest",
+}) as any as S.Schema<GetServiceTenantWhitelistingRequest>;
+
 export type AdDomainServiceMembersListRequestNextPartitionKey = " ";
 export const AdDomainServiceMembersListRequestNextPartitionKey =
   /*@__PURE__*/ S.String;
@@ -20,7 +1506,7 @@ export type AdDomainServiceMembersListRequestNextRowKey = " ";
 export const AdDomainServiceMembersListRequestNextRowKey =
   /*@__PURE__*/ S.String;
 
-export interface AdDomainServiceMembersListRequest {
+export interface ListAdDomainServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server property filter to apply. */
@@ -38,7 +1524,7 @@ export interface AdDomainServiceMembersListRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const AdDomainServiceMembersListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAdDomainServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -58,8 +1544,8 @@ export const AdDomainServiceMembersListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AdDomainServiceMembersListRequest",
-}) as any as S.Schema<AdDomainServiceMembersListRequest>;
+  identifier: "ListAdDomainServiceMembersRequest",
+}) as any as S.Schema<ListAdDomainServiceMembersRequest>;
 
 /** The list of ADDS roles. */
 export type AddsServiceMemberAddsRolesList = Array<string>;
@@ -297,259 +1783,7 @@ export const AddsServiceMembers = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddsServiceMembers",
 }) as any as S.Schema<AddsServiceMembers>;
 
-export interface AddsServiceGetMetricsRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-  /** The group key */
-  groupKey?: string;
-  /** The start date. */
-  fromDate?: string;
-  /** The end date. */
-  toDate?: string;
-}
-export const AddsServiceGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    metricName: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    groupKey: S.optional(S.String.pipe(T.Query())),
-    fromDate: S.optional(S.String.pipe(T.Query())),
-    toDate: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServiceGetMetricsRequest",
-}) as any as S.Schema<AddsServiceGetMetricsRequest>;
-
-/** The list of the metric values. */
-export type MetricSetValuesList = Array<number>;
-export const MetricSetValuesList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<MetricSetValuesList>;
-
-/** The set of metric values. Example of a MetricSet are Values of token requests for a Server1 or RelyingParty1. */
-export interface MetricSet {
-  /** The name of the set. */
-  setName?: string;
-  /** The list of the metric values. */
-  values?: MetricSetValuesList;
-}
-export const MetricSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    setName: S.optional(S.String),
-    values: S.optional(MetricSetValuesList),
-  }),
-).annotate({ identifier: "MetricSet" }) as any as S.Schema<MetricSet>;
-
-/** The list of metric set. */
-export type MetricSetsSetsList = Array<MetricSet>;
-export const MetricSetsSetsList = /*@__PURE__*/ S.Array(
-  MetricSet,
-) as any as S.Schema<MetricSetsSetsList>;
-
-/** The list of timestamps for each metric in the metric set. */
-export type MetricSetsTimeStampsList = Array<string>;
-export const MetricSetsTimeStampsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MetricSetsTimeStampsList>;
-
-/** The metrics data represented set. */
-export interface MetricSets {
-  /** The list of metric set. */
-  sets?: MetricSetsSetsList;
-  /** The list of timestamps for each metric in the metric set. */
-  timeStamps?: MetricSetsTimeStampsList;
-}
-export const MetricSets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sets: S.optional(MetricSetsSetsList),
-    timeStamps: S.optional(MetricSetsTimeStampsList),
-  }),
-).annotate({ identifier: "MetricSets" }) as any as S.Schema<MetricSets>;
-
-export interface AddsServiceMembersDeleteRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server Id. */
-  serviceMemberId: string;
-  /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
-  confirm?: boolean;
-}
-export const AddsServiceMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    serviceMemberId: S.String.pipe(T.Label()),
-    confirm: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServiceMembersDeleteRequest",
-}) as any as S.Schema<AddsServiceMembersDeleteRequest>;
-
-export interface AddsServiceMembersDeleteResponse {}
-export const AddsServiceMembersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddsServiceMembersDeleteResponse",
-}) as any as S.Schema<AddsServiceMembersDeleteResponse>;
-
-export interface AddsServiceMembersGetRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server Id. */
-  serviceMemberId: string;
-}
-export const AddsServiceMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    serviceMemberId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers/{serviceMemberId}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServiceMembersGetRequest",
-}) as any as S.Schema<AddsServiceMembersGetRequest>;
-
-/** The monitoring level reported by the server. */
-export type ServiceMemberServerReportedMonitoringLevel =
-  | "Partial"
-  | "Full"
-  | "Off";
-export const ServiceMemberServerReportedMonitoringLevel =
-  /*@__PURE__*/ S.String;
-
-/** The server properties for a given service. */
-export interface ServiceMember {
-  /** The id of the server. */
-  serviceMemberId?: string;
-  /** The service id to whom this server belongs. */
-  serviceId?: string;
-  /** The tenant id to whom this server belongs. */
-  tenantId?: string;
-  /** The total number of alerts that are currently active for the server. */
-  activeAlerts?: number;
-  /** The additional information, if any, for the server. */
-  additionalInformation?: string;
-  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The server specific configuration related dimensions. */
-  dimensions?: unknown;
-  /** Indicates if the server is disabled or not. */
-  disabled?: boolean;
-  /** The reason for disabling the server. */
-  disabledReason?: number;
-  /** The list of installed QFEs for the server. */
-  installedQfes?: unknown;
-  /** The date and time , in UTC, when the server was last disabled. */
-  lastDisabled?: string;
-  /** The date and time, in UTC, when the server was last rebooted. */
-  lastReboot?: string;
-  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
-  lastServerReportedMonitoringLevelChange?: string;
-  /** The date and time, in UTC, when the server properties were last updated. */
-  lastUpdated?: string;
-  /** The id of the machine. */
-  machineId?: string;
-  /** The name of the server. */
-  machineName?: string;
-  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsComputed?: unknown;
-  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsCustomized?: unknown;
-  /** The name of the operating system installed in the machine. */
-  osName?: string;
-  /** The version of the operating system installed in the machine. */
-  osVersion?: string;
-  /** Server specific properties. */
-  properties?: unknown;
-  /** The list of recommended hotfixes for the server. */
-  recommendedQfes?: unknown;
-  /** The total count of alerts that are resolved for this server. */
-  resolvedAlerts?: number;
-  /** The service role that is being monitored in the server. */
-  role?: string;
-  /** The monitoring level reported by the server. */
-  serverReportedMonitoringLevel?: ServiceMemberServerReportedMonitoringLevel;
-  /** The health status of the server. */
-  status?: string;
-}
-export const ServiceMember = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceMemberId: S.optional(S.String),
-    serviceId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    activeAlerts: S.optional(S.Number),
-    additionalInformation: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    dimensions: S.optional(S.Unknown),
-    disabled: S.optional(S.Boolean),
-    disabledReason: S.optional(S.Number),
-    installedQfes: S.optional(S.Unknown),
-    lastDisabled: S.optional(S.String),
-    lastReboot: S.optional(S.String),
-    lastServerReportedMonitoringLevelChange: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    machineId: S.optional(S.String),
-    machineName: S.optional(S.String),
-    monitoringConfigurationsComputed: S.optional(S.Unknown),
-    monitoringConfigurationsCustomized: S.optional(S.Unknown),
-    osName: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    properties: S.optional(S.Unknown),
-    recommendedQfes: S.optional(S.Unknown),
-    resolvedAlerts: S.optional(S.Number),
-    role: S.optional(S.String),
-    serverReportedMonitoringLevel: S.optional(
-      ServiceMemberServerReportedMonitoringLevel,
-    ),
-    status: S.optional(S.String),
-  }),
-).annotate({ identifier: "ServiceMember" }) as any as S.Schema<ServiceMember>;
-
-export interface AddsServiceMembersListRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server property filter to apply. */
-  _filter?: string;
-}
-export const AddsServiceMembersListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServiceMembersListRequest",
-}) as any as S.Schema<AddsServiceMembersListRequest>;
-
-export interface AddsServiceMembersListCredentialsRequest {
+export interface ListAddServiceMemberCredentialsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
@@ -557,7 +1791,7 @@ export interface AddsServiceMembersListCredentialsRequest {
   /** The property filter to apply. */
   _filter?: string;
 }
-export const AddsServiceMembersListCredentialsRequest = /*@__PURE__*/ S.suspend(
+export const ListAddServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -572,8 +1806,8 @@ export const AddsServiceMembersListCredentialsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AddsServiceMembersListCredentialsRequest",
-}) as any as S.Schema<AddsServiceMembersListCredentialsRequest>;
+  identifier: "ListAddServiceMemberCredentialsRequest",
+}) as any as S.Schema<ListAddServiceMemberCredentialsRequest>;
 
 /** The credential data. */
 export type CredentialCredentialDataList = Array<string>;
@@ -615,494 +1849,80 @@ export const Credentials = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Credentials" }) as any as S.Schema<Credentials>;
 
-/** The list of additional emails that are configured to receive notifications about the service. */
-export type AddsServicesAddRequestCustomNotificationEmailsList = Array<string>;
-export const AddsServicesAddRequestCustomNotificationEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddsServicesAddRequestCustomNotificationEmailsList>;
-
-/** The list of emails to whom service notifications will be sent. */
-export type AddsServicesAddRequestNotificationEmailsList = Array<string>;
-export const AddsServicesAddRequestNotificationEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddsServicesAddRequestNotificationEmailsList>;
-
-export interface AddsServicesAddRequest {
-  /** The id of the service. */
-  id?: string;
-  /** The count of alerts that are currently active for the service. */
-  activeAlerts?: number;
-  /** The additional information related to the service. */
-  additionalInformation?: string;
-  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The list of additional emails that are configured to receive notifications about the service. */
-  customNotificationEmails?: AddsServicesAddRequestCustomNotificationEmailsList;
-  /** Indicates if the service is disabled or not. */
-  disabled?: boolean;
-  /** The display name of the service. */
-  displayName?: string;
-  /** The health of the service. */
-  health?: string;
-  /** The date and time, in UTC, when the service was last disabled. */
-  lastDisabled?: string;
-  /** The date or time , in UTC, when the service properties were last updated. */
-  lastUpdated?: string;
-  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsComputed?: unknown;
-  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsCustomized?: unknown;
-  /** Indicates if email notification is enabled or not. */
-  notificationEmailEnabled?: boolean;
-  /** Indicates if email notification is enabled for global administrators of the tenant. */
-  notificationEmailEnabledForGlobalAdmins?: boolean;
-  /** Indicates if email notification is enabled for global administrators of the tenant. */
-  notificationEmailsEnabledForGlobalAdmins?: boolean;
-  /** The list of emails to whom service notifications will be sent. */
-  notificationEmails?: AddsServicesAddRequestNotificationEmailsList;
-  /** Gets the original disable state. */
-  originalDisabledState?: boolean;
-  /** The total count of alerts that has been resolved for the service. */
-  resolvedAlerts?: number;
-  /** The id of the service. */
-  serviceId?: string;
-  /** The name of the service. */
-  serviceName?: string;
-  /** The signature of the service. */
-  signature?: string;
-  /** List of service specific configuration properties. */
-  simpleProperties?: unknown;
-  /** The id of the tenant to which the service is registered to. */
-  tenantId?: string;
-  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
-  type?: string;
-}
-export const AddsServicesAddRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    activeAlerts: S.optional(S.Number),
-    additionalInformation: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    customNotificationEmails: S.optional(
-      AddsServicesAddRequestCustomNotificationEmailsList,
-    ),
-    disabled: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    health: S.optional(S.String),
-    lastDisabled: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    monitoringConfigurationsComputed: S.optional(S.Unknown),
-    monitoringConfigurationsCustomized: S.optional(S.Unknown),
-    notificationEmailEnabled: S.optional(S.Boolean),
-    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
-    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-    notificationEmails: S.optional(
-      AddsServicesAddRequestNotificationEmailsList,
-    ),
-    originalDisabledState: S.optional(S.Boolean),
-    resolvedAlerts: S.optional(S.Number),
-    serviceId: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    signature: S.optional(S.String),
-    simpleProperties: S.optional(S.Unknown),
-    tenantId: S.optional(S.String),
-    type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServicesAddRequest",
-}) as any as S.Schema<AddsServicesAddRequest>;
-
-/** The list of additional emails that are configured to receive notifications about the service. */
-export type ServicePropertiesCustomNotificationEmailsList = Array<string>;
-export const ServicePropertiesCustomNotificationEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ServicePropertiesCustomNotificationEmailsList>;
-
-/** The list of emails to whom service notifications will be sent. */
-export type ServicePropertiesNotificationEmailsList = Array<string>;
-export const ServicePropertiesNotificationEmailsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServicePropertiesNotificationEmailsList>;
-
-/** The service properties for a given service. */
-export interface ServiceProperties {
-  /** The id of the service. */
-  id?: string;
-  /** The count of alerts that are currently active for the service. */
-  activeAlerts?: number;
-  /** The additional information related to the service. */
-  additionalInformation?: string;
-  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The list of additional emails that are configured to receive notifications about the service. */
-  customNotificationEmails?: ServicePropertiesCustomNotificationEmailsList;
-  /** Indicates if the service is disabled or not. */
-  disabled?: boolean;
-  /** The display name of the service. */
-  displayName?: string;
-  /** The health of the service. */
-  health?: string;
-  /** The date and time, in UTC, when the service was last disabled. */
-  lastDisabled?: string;
-  /** The date or time , in UTC, when the service properties were last updated. */
-  lastUpdated?: string;
-  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsComputed?: unknown;
-  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsCustomized?: unknown;
-  /** Indicates if email notification is enabled or not. */
-  notificationEmailEnabled?: boolean;
-  /** Indicates if email notification is enabled for global administrators of the tenant. */
-  notificationEmailEnabledForGlobalAdmins?: boolean;
-  /** Indicates if email notification is enabled for global administrators of the tenant. */
-  notificationEmailsEnabledForGlobalAdmins?: boolean;
-  /** The list of emails to whom service notifications will be sent. */
-  notificationEmails?: ServicePropertiesNotificationEmailsList;
-  /** Gets the original disable state. */
-  originalDisabledState?: boolean;
-  /** The total count of alerts that has been resolved for the service. */
-  resolvedAlerts?: number;
-  /** The id of the service. */
-  serviceId?: string;
-  /** The name of the service. */
-  serviceName?: string;
-  /** The signature of the service. */
-  signature?: string;
-  /** List of service specific configuration properties. */
-  simpleProperties?: unknown;
-  /** The id of the tenant to which the service is registered to. */
-  tenantId?: string;
-  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
-  type?: string;
-}
-export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    activeAlerts: S.optional(S.Number),
-    additionalInformation: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    customNotificationEmails: S.optional(
-      ServicePropertiesCustomNotificationEmailsList,
-    ),
-    disabled: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    health: S.optional(S.String),
-    lastDisabled: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    monitoringConfigurationsComputed: S.optional(S.Unknown),
-    monitoringConfigurationsCustomized: S.optional(S.Unknown),
-    notificationEmailEnabled: S.optional(S.Boolean),
-    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
-    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-    notificationEmails: S.optional(ServicePropertiesNotificationEmailsList),
-    originalDisabledState: S.optional(S.Boolean),
-    resolvedAlerts: S.optional(S.Number),
-    serviceId: S.optional(S.String),
-    serviceName: S.optional(S.String),
-    signature: S.optional(S.String),
-    simpleProperties: S.optional(S.Unknown),
-    tenantId: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceProperties",
-}) as any as S.Schema<ServiceProperties>;
-
-export interface AddsServicesDeleteRequest {
-  /** The name of the service which needs to be deleted. */
-  serviceName: string;
-  /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
-  confirm?: boolean;
-}
-export const AddsServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    confirm: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServicesDeleteRequest",
-}) as any as S.Schema<AddsServicesDeleteRequest>;
-
-export interface AddsServicesDeleteResponse {}
-export const AddsServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddsServicesDeleteResponse",
-}) as any as S.Schema<AddsServicesDeleteResponse>;
-
-export interface AddsServicesGetRequest {
+export interface ListAddServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
+  /** The server property filter to apply. */
+  _filter?: string;
 }
-export const AddsServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAddServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/addsservicemembers",
       code: 200,
       apiVersion: "2014-01-01",
     }),
   ),
 ).annotate({
-  identifier: "AddsServicesGetRequest",
-}) as any as S.Schema<AddsServicesGetRequest>;
+  identifier: "ListAddServiceMembersRequest",
+}) as any as S.Schema<ListAddServiceMembersRequest>;
 
-export interface AddsServicesGetForestSummaryRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const AddsServicesGetForestSummaryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/forestsummary",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServicesGetForestSummaryRequest",
-}) as any as S.Schema<AddsServicesGetForestSummaryRequest>;
-
-/** The list of domain controller names. */
-export type ForestSummaryDomainsList = Array<string>;
-export const ForestSummaryDomainsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForestSummaryDomainsList>;
-
-/** The list of site names. */
-export type ForestSummarySitesList = Array<string>;
-export const ForestSummarySitesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ForestSummarySitesList>;
-
-/** The forest summary for an ADDS domain. */
-export interface ForestSummary {
-  /** The forest name. */
-  forestName?: string;
-  /** The domain count. */
-  domainCount?: number;
-  /** The site count. */
-  siteCount?: number;
-  /** The number of domain controllers that are monitored by Azure Active Directory Connect Health. */
-  monitoredDcCount?: number;
-  /** The total domain controllers. */
-  totalDcCount?: number;
-  /** The list of domain controller names. */
-  domains?: ForestSummaryDomainsList;
-  /** The list of site names. */
-  sites?: ForestSummarySitesList;
-}
-export const ForestSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forestName: S.optional(S.String),
-    domainCount: S.optional(S.Number),
-    siteCount: S.optional(S.Number),
-    monitoredDcCount: S.optional(S.Number),
-    totalDcCount: S.optional(S.Number),
-    domains: S.optional(ForestSummaryDomainsList),
-    sites: S.optional(ForestSummarySitesList),
-  }),
-).annotate({ identifier: "ForestSummary" }) as any as S.Schema<ForestSummary>;
-
-export interface AddsServicesGetMetricMetadataRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-}
-export const AddsServicesGetMetricMetadataRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      metricName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesGetMetricMetadataRequest",
-}) as any as S.Schema<AddsServicesGetMetricMetadataRequest>;
-
-/** The metric group details. */
-export interface MetricGroup {
-  /** The key for the group. */
-  key?: string;
-  /** The display name for the group. */
-  displayName?: string;
-  /** indicates if the metric group is displayed in Azure Active Directory Connect Health UI. */
-  invisibleForUi?: boolean;
-}
-export const MetricGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    displayName: S.optional(S.String),
-    invisibleForUi: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MetricGroup" }) as any as S.Schema<MetricGroup>;
-
-/** The groupings for the metrics. */
-export type MetricMetadataGroupingsList = Array<MetricGroup>;
-export const MetricMetadataGroupingsList = /*@__PURE__*/ S.Array(
-  MetricGroup,
-) as any as S.Schema<MetricMetadataGroupingsList>;
-
-/** The metric meta data */
-export interface MetricMetadata {
-  /** The name of the class which retrieve and process the metric. */
-  metricsProcessorClassName?: string;
-  /** The metric name */
-  metricName?: string;
-  /** The groupings for the metrics. */
-  groupings?: MetricMetadataGroupingsList;
-  /** The display name for the metric. */
-  displayName?: string;
-  /** Indicates if the metrics is a rate,value, percent or duration type. */
-  valueKind?: string;
-  /** The minimum value. */
-  minValue?: number;
-  /** The maximum value. */
-  maxValue?: number;
-  /** Indicates whether the dashboard to represent the metric is a line, bar,pie, area or donut chart. */
-  kind?: string;
-  /** Indicates if the metric is a default metric or not. */
-  isDefault?: boolean;
-  /** Indicates if the metric is a performance counter metric or not. */
-  isPerfCounter?: boolean;
-  /** Indicates if the metric is visible to DevOps or not. */
-  isDevOps?: boolean;
-}
-export const MetricMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricsProcessorClassName: S.optional(S.String),
-    metricName: S.optional(S.String),
-    groupings: S.optional(MetricMetadataGroupingsList),
-    displayName: S.optional(S.String),
-    valueKind: S.optional(S.String),
-    minValue: S.optional(S.Number),
-    maxValue: S.optional(S.Number),
-    kind: S.optional(S.String),
-    isDefault: S.optional(S.Boolean),
-    isPerfCounter: S.optional(S.Boolean),
-    isDevOps: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "MetricMetadata" }) as any as S.Schema<MetricMetadata>;
-
-export interface AddsServicesGetMetricMetadataForGroupRequest {
+export interface ListAddServiceMetricAverageRequest {
   /** The name of the service. */
   serviceName: string;
   /** The metric name */
   metricName: string;
   /** The group name */
   groupName: string;
-  /** The group key */
-  groupKey?: string;
-  /** The start date. */
-  fromDate?: string;
-  /** The end date. */
-  toDate?: string;
 }
-export const AddsServicesGetMetricMetadataForGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      metricName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      groupKey: S.optional(S.String.pipe(T.Query())),
-      fromDate: S.optional(S.String.pipe(T.Query())),
-      toDate: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AddsServicesGetMetricMetadataForGroupRequest",
-  }) as any as S.Schema<AddsServicesGetMetricMetadataForGroupRequest>;
-
-export interface AddsServicesListRequest {
-  /** The service property filter to apply. */
-  _filter?: string;
-  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
-  serviceType?: string;
-  /** The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements. */
-  skipCount?: number;
-  /** The take count , which specifies the number of elements that can be returned from a sequence. */
-  takeCount?: number;
-}
-export const AddsServicesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAddServiceMetricAverageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    serviceType: S.optional(S.String.pipe(T.Query())),
-    skipCount: S.optional(S.Number.pipe(T.Query())),
-    takeCount: S.optional(S.Number.pipe(T.Query())),
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
       code: 200,
       apiVersion: "2014-01-01",
     }),
   ),
 ).annotate({
-  identifier: "AddsServicesListRequest",
-}) as any as S.Schema<AddsServicesListRequest>;
+  identifier: "ListAddServiceMetricAverageRequest",
+}) as any as S.Schema<ListAddServiceMetricAverageRequest>;
 
 /** The value returned by the operation. */
-export type ServicesValueList = Array<ServiceProperties>;
-export const ServicesValueList = /*@__PURE__*/ S.Array(
-  ServiceProperties,
-) as any as S.Schema<ServicesValueList>;
+export type MetricsValueList = Array<Item>;
+export const MetricsValueList = /*@__PURE__*/ S.Array(
+  Item,
+) as any as S.Schema<MetricsValueList>;
 
-/** The list of services for a given onboarded tenant. */
-export interface Services {
+/** The list of metric items. */
+export interface Metrics {
   /** The link used to get the next page of operations. */
   nextLink?: string;
   /** The value returned by the operation. */
-  value?: ServicesValueList;
-  /** The total count of service elements. */
+  value?: MetricsValueList;
+  /** The total count of metrics. */
   totalCount?: number;
   /** The continuation token for paginated calls. */
   continuationToken?: string;
 }
-export const Services = /*@__PURE__*/ S.suspend(() =>
+export const Metrics = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
-    value: S.optional(ServicesValueList),
+    value: S.optional(MetricsValueList),
     totalCount: S.optional(S.Number),
     continuationToken: S.optional(S.String),
   }),
-).annotate({ identifier: "Services" }) as any as S.Schema<Services>;
+).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
 
-export interface AddsServicesListMetricMetadataRequest {
+export interface ListAddServiceMetricMetadataRequest {
   /** The name of the service. */
   serviceName: string;
   /** The metric metadata property filter to apply. */
@@ -1110,23 +1930,22 @@ export interface AddsServicesListMetricMetadataRequest {
   /** Indicates if only performance counter metrics are requested. */
   perfCounter?: boolean;
 }
-export const AddsServicesListMetricMetadataRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      perfCounter: S.optional(S.Boolean.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
+export const ListAddServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    perfCounter: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metricmetadata",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
 ).annotate({
-  identifier: "AddsServicesListMetricMetadataRequest",
-}) as any as S.Schema<AddsServicesListMetricMetadataRequest>;
+  identifier: "ListAddServiceMetricMetadataRequest",
+}) as any as S.Schema<ListAddServiceMetricMetadataRequest>;
 
 /** The value returned by the operation. */
 export type MetricMetadataListValueList = Array<MetricMetadata>;
@@ -1156,7 +1975,7 @@ export const MetricMetadataList = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetricMetadataList",
 }) as any as S.Schema<MetricMetadataList>;
 
-export interface AddsServicesListMetricsAverageRequest {
+export interface ListAddServiceMetricSumRequest {
   /** The name of the service. */
   serviceName: string;
   /** The metric name */
@@ -1164,59 +1983,7 @@ export interface AddsServicesListMetricsAverageRequest {
   /** The group name */
   groupName: string;
 }
-export const AddsServicesListMetricsAverageRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      metricName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesListMetricsAverageRequest",
-}) as any as S.Schema<AddsServicesListMetricsAverageRequest>;
-
-/** The value returned by the operation. */
-export type MetricsValueList = Array<Item>;
-export const MetricsValueList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<MetricsValueList>;
-
-/** The list of metric items. */
-export interface Metrics {
-  /** The link used to get the next page of operations. */
-  nextLink?: string;
-  /** The value returned by the operation. */
-  value?: MetricsValueList;
-  /** The total count of metrics. */
-  totalCount?: number;
-  /** The continuation token for paginated calls. */
-  continuationToken?: string;
-}
-export const Metrics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(MetricsValueList),
-    totalCount: S.optional(S.Number),
-    continuationToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "Metrics" }) as any as S.Schema<Metrics>;
-
-export interface AddsServicesListMetricsSumRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-}
-export const AddsServicesListMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAddServiceMetricSumRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     metricName: S.String.pipe(T.Label()),
@@ -1230,10 +1997,10 @@ export const AddsServicesListMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AddsServicesListMetricsSumRequest",
-}) as any as S.Schema<AddsServicesListMetricsSumRequest>;
+  identifier: "ListAddServiceMetricSumRequest",
+}) as any as S.Schema<ListAddServiceMetricSumRequest>;
 
-export interface AddsServicesListPremiumServicesRequest {
+export interface ListAddServicePremiumServicesRequest {
   /** The service property filter to apply. */
   _filter?: string;
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
@@ -1243,7 +2010,7 @@ export interface AddsServicesListPremiumServicesRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const AddsServicesListPremiumServicesRequest = /*@__PURE__*/ S.suspend(
+export const ListAddServicePremiumServicesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1259,10 +2026,36 @@ export const AddsServicesListPremiumServicesRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "AddsServicesListPremiumServicesRequest",
-}) as any as S.Schema<AddsServicesListPremiumServicesRequest>;
+  identifier: "ListAddServicePremiumServicesRequest",
+}) as any as S.Schema<ListAddServicePremiumServicesRequest>;
 
-export interface AddsServicesListReplicationDetailsRequest {
+/** The value returned by the operation. */
+export type ServicesValueList = Array<ServiceProperties>;
+export const ServicesValueList = /*@__PURE__*/ S.Array(
+  ServiceProperties,
+) as any as S.Schema<ServicesValueList>;
+
+/** The list of services for a given onboarded tenant. */
+export interface Services {
+  /** The link used to get the next page of operations. */
+  nextLink?: string;
+  /** The value returned by the operation. */
+  value?: ServicesValueList;
+  /** The total count of service elements. */
+  totalCount?: number;
+  /** The continuation token for paginated calls. */
+  continuationToken?: string;
+}
+export const Services = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ServicesValueList),
+    totalCount: S.optional(S.Number),
+    continuationToken: S.optional(S.String),
+  }),
+).annotate({ identifier: "Services" }) as any as S.Schema<Services>;
+
+export interface ListAddServiceReplicationDetailsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server property filter to apply. */
@@ -1270,8 +2063,8 @@ export interface AddsServicesListReplicationDetailsRequest {
   /** Indicates if InboundReplicationNeighbor details are required or not. */
   withDetails?: boolean;
 }
-export const AddsServicesListReplicationDetailsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListAddServiceReplicationDetailsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1284,9 +2077,9 @@ export const AddsServicesListReplicationDetailsRequest =
         apiVersion: "2014-01-01",
       }),
     ),
-  ).annotate({
-    identifier: "AddsServicesListReplicationDetailsRequest",
-  }) as any as S.Schema<AddsServicesListReplicationDetailsRequest>;
+).annotate({
+  identifier: "ListAddServiceReplicationDetailsRequest",
+}) as any as S.Schema<ListAddServiceReplicationDetailsRequest>;
 
 /** The replication summary for the domain controller inbound neighbor. */
 export interface InboundReplicationNeighbor {
@@ -1414,7 +2207,7 @@ export type AddsServicesListReplicationSummaryRequestNextRowKey = " ";
 export const AddsServicesListReplicationSummaryRequestNextRowKey =
   /*@__PURE__*/ S.String;
 
-export interface AddsServicesListReplicationSummaryRequest {
+export interface ListAddServiceReplicationSummaryRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server property filter to apply. */
@@ -1434,8 +2227,8 @@ export interface AddsServicesListReplicationSummaryRequest {
   /** The take count , which specifies the number of elements that can be returned from a sequence. */
   takeCount?: number;
 }
-export const AddsServicesListReplicationSummaryRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListAddServiceReplicationSummaryRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
       _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -1457,9 +2250,9 @@ export const AddsServicesListReplicationSummaryRequest =
         apiVersion: "2014-01-01",
       }),
     ),
-  ).annotate({
-    identifier: "AddsServicesListReplicationSummaryRequest",
-  }) as any as S.Schema<AddsServicesListReplicationSummaryRequest>;
+).annotate({
+  identifier: "ListAddServiceReplicationSummaryRequest",
+}) as any as S.Schema<ListAddServiceReplicationSummaryRequest>;
 
 /** The value returned by the operation. */
 export type ReplicationSummaryListValueList = Array<ReplicationSummary>;
@@ -1480,7 +2273,35 @@ export const ReplicationSummaryList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ReplicationSummaryList",
 }) as any as S.Schema<ReplicationSummaryList>;
 
-export interface AddsServicesListServerAlertsRequest {
+export interface ListAddServicesRequest {
+  /** The service property filter to apply. */
+  _filter?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  serviceType?: string;
+  /** The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements. */
+  skipCount?: number;
+  /** The take count , which specifies the number of elements that can be returned from a sequence. */
+  takeCount?: number;
+}
+export const ListAddServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    serviceType: S.optional(S.String.pipe(T.Query())),
+    skipCount: S.optional(S.Number.pipe(T.Query())),
+    takeCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAddServicesRequest",
+}) as any as S.Schema<ListAddServicesRequest>;
+
+export interface ListAddServiceServerAlertsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id for which the alert details needs to be queried. */
@@ -1494,7 +2315,7 @@ export interface AddsServicesListServerAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const AddsServicesListServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAddServiceServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -1511,8 +2332,8 @@ export const AddsServicesListServerAlertsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AddsServicesListServerAlertsRequest",
-}) as any as S.Schema<AddsServicesListServerAlertsRequest>;
+  identifier: "ListAddServiceServerAlertsRequest",
+}) as any as S.Schema<ListAddServiceServerAlertsRequest>;
 
 /** The alert level which indicates the severity of the alert. */
 export type AlertLevel = "Warning" | "Error" | "PreWarning";
@@ -1678,156 +2499,7 @@ export const Alerts = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Alerts" }) as any as S.Schema<Alerts>;
 
-export interface AddsServicesReplicationStatusGetRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const AddsServicesReplicationStatusGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/replicationstatus",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesReplicationStatusGetRequest",
-}) as any as S.Schema<AddsServicesReplicationStatusGetRequest>;
-
-/** Replication summary for a domain controller. */
-export interface ReplicationStatus {
-  /** The forest name. */
-  forestName?: string;
-  /** The total number of domain controllers for a given forest. */
-  totalDcCount?: number;
-  /** The total number of domain controllers with error in a given forest. */
-  errorDcCount?: number;
-}
-export const ReplicationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forestName: S.optional(S.String),
-    totalDcCount: S.optional(S.Number),
-    errorDcCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ReplicationStatus",
-}) as any as S.Schema<ReplicationStatus>;
-
-/** The monitoring level reported by the server. */
-export type AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
-  | "Partial"
-  | "Full"
-  | "Off";
-export const AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel =
-  /*@__PURE__*/ S.String;
-
-export interface AddsServicesServiceMembersAddRequest {
-  /** The name of the service under which the server is to be onboarded. */
-  serviceName: string;
-  /** The id of the server. */
-  serviceMemberId?: string;
-  /** The service id to whom this server belongs. */
-  serviceId?: string;
-  /** The tenant id to whom this server belongs. */
-  tenantId?: string;
-  /** The total number of alerts that are currently active for the server. */
-  activeAlerts?: number;
-  /** The additional information, if any, for the server. */
-  additionalInformation?: string;
-  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The server specific configuration related dimensions. */
-  dimensions?: unknown;
-  /** Indicates if the server is disabled or not. */
-  disabled?: boolean;
-  /** The reason for disabling the server. */
-  disabledReason?: number;
-  /** The list of installed QFEs for the server. */
-  installedQfes?: unknown;
-  /** The date and time , in UTC, when the server was last disabled. */
-  lastDisabled?: string;
-  /** The date and time, in UTC, when the server was last rebooted. */
-  lastReboot?: string;
-  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
-  lastServerReportedMonitoringLevelChange?: string;
-  /** The date and time, in UTC, when the server properties were last updated. */
-  lastUpdated?: string;
-  /** The id of the machine. */
-  machineId?: string;
-  /** The name of the server. */
-  machineName?: string;
-  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsComputed?: unknown;
-  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsCustomized?: unknown;
-  /** The name of the operating system installed in the machine. */
-  osName?: string;
-  /** The version of the operating system installed in the machine. */
-  osVersion?: string;
-  /** Server specific properties. */
-  properties?: unknown;
-  /** The list of recommended hotfixes for the server. */
-  recommendedQfes?: unknown;
-  /** The total count of alerts that are resolved for this server. */
-  resolvedAlerts?: number;
-  /** The service role that is being monitored in the server. */
-  role?: string;
-  /** The monitoring level reported by the server. */
-  serverReportedMonitoringLevel?:
-    | AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel
-    | (string & {});
-  /** The health status of the server. */
-  status?: string;
-}
-export const AddsServicesServiceMembersAddRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      serviceMemberId: S.optional(S.String),
-      serviceId: S.optional(S.String),
-      tenantId: S.optional(S.String),
-      activeAlerts: S.optional(S.Number),
-      additionalInformation: S.optional(S.String),
-      createdDate: S.optional(S.String),
-      dimensions: S.optional(S.Unknown),
-      disabled: S.optional(S.Boolean),
-      disabledReason: S.optional(S.Number),
-      installedQfes: S.optional(S.Unknown),
-      lastDisabled: S.optional(S.String),
-      lastReboot: S.optional(S.String),
-      lastServerReportedMonitoringLevelChange: S.optional(S.String),
-      lastUpdated: S.optional(S.String),
-      machineId: S.optional(S.String),
-      machineName: S.optional(S.String),
-      monitoringConfigurationsComputed: S.optional(S.Unknown),
-      monitoringConfigurationsCustomized: S.optional(S.Unknown),
-      osName: S.optional(S.String),
-      osVersion: S.optional(S.String),
-      properties: S.optional(S.Unknown),
-      recommendedQfes: S.optional(S.Unknown),
-      resolvedAlerts: S.optional(S.Number),
-      role: S.optional(S.String),
-      serverReportedMonitoringLevel: S.optional(
-        AddsServicesServiceMembersAddRequestServerReportedMonitoringLevel,
-      ),
-      status: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesServiceMembersAddRequest",
-}) as any as S.Schema<AddsServicesServiceMembersAddRequest>;
-
-export interface AddsServicesServiceMembersListRequest {
+export interface ListAddServiceServiceMembersRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server property filter to apply. */
@@ -1837,24 +2509,23 @@ export interface AddsServicesServiceMembersListRequest {
   /** The value of the dimension. */
   dimensionSignature?: string;
 }
-export const AddsServicesServiceMembersListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      dimensionType: S.optional(S.String.pipe(T.Query())),
-      dimensionSignature: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
+export const ListAddServiceServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    dimensionType: S.optional(S.String.pipe(T.Query())),
+    dimensionSignature: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/servicemembers",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
 ).annotate({
-  identifier: "AddsServicesServiceMembersListRequest",
-}) as any as S.Schema<AddsServicesServiceMembersListRequest>;
+  identifier: "ListAddServiceServiceMembersRequest",
+}) as any as S.Schema<ListAddServiceServiceMembersRequest>;
 
 /** The value returned by the operation. */
 export type ServiceMembersValueList = Array<ServiceMember>;
@@ -1882,226 +2553,7 @@ export const ServiceMembers = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ServiceMembers" }) as any as S.Schema<ServiceMembers>;
 
-/** The list of additional emails that are configured to receive notifications about the service. */
-export type AddsServicesUpdateRequestCustomNotificationEmailsList =
-  Array<string>;
-export const AddsServicesUpdateRequestCustomNotificationEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddsServicesUpdateRequestCustomNotificationEmailsList>;
-
-/** The list of emails to whom service notifications will be sent. */
-export type AddsServicesUpdateRequestNotificationEmailsList = Array<string>;
-export const AddsServicesUpdateRequestNotificationEmailsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddsServicesUpdateRequestNotificationEmailsList>;
-
-export interface AddsServicesUpdateRequest {
-  /** The name of the service which needs to be deleted. */
-  serviceName: string;
-  /** The id of the service. */
-  id?: string;
-  /** The count of alerts that are currently active for the service. */
-  activeAlerts?: number;
-  /** The additional information related to the service. */
-  additionalInformation?: string;
-  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The list of additional emails that are configured to receive notifications about the service. */
-  customNotificationEmails?: AddsServicesUpdateRequestCustomNotificationEmailsList;
-  /** Indicates if the service is disabled or not. */
-  disabled?: boolean;
-  /** The display name of the service. */
-  displayName?: string;
-  /** The health of the service. */
-  health?: string;
-  /** The date and time, in UTC, when the service was last disabled. */
-  lastDisabled?: string;
-  /** The date or time , in UTC, when the service properties were last updated. */
-  lastUpdated?: string;
-  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsComputed?: unknown;
-  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsCustomized?: unknown;
-  /** Indicates if email notification is enabled or not. */
-  notificationEmailEnabled?: boolean;
-  /** Indicates if email notification is enabled for global administrators of the tenant. */
-  notificationEmailEnabledForGlobalAdmins?: boolean;
-  /** Indicates if email notification is enabled for global administrators of the tenant. */
-  notificationEmailsEnabledForGlobalAdmins?: boolean;
-  /** The list of emails to whom service notifications will be sent. */
-  notificationEmails?: AddsServicesUpdateRequestNotificationEmailsList;
-  /** Gets the original disable state. */
-  originalDisabledState?: boolean;
-  /** The total count of alerts that has been resolved for the service. */
-  resolvedAlerts?: number;
-  /** The id of the service. */
-  serviceId?: string;
-  /** The signature of the service. */
-  signature?: string;
-  /** List of service specific configuration properties. */
-  simpleProperties?: unknown;
-  /** The id of the tenant to which the service is registered to. */
-  tenantId?: string;
-  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
-  type?: string;
-}
-export const AddsServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    activeAlerts: S.optional(S.Number),
-    additionalInformation: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    customNotificationEmails: S.optional(
-      AddsServicesUpdateRequestCustomNotificationEmailsList,
-    ),
-    disabled: S.optional(S.Boolean),
-    displayName: S.optional(S.String),
-    health: S.optional(S.String),
-    lastDisabled: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    monitoringConfigurationsComputed: S.optional(S.Unknown),
-    monitoringConfigurationsCustomized: S.optional(S.Unknown),
-    notificationEmailEnabled: S.optional(S.Boolean),
-    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
-    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
-    notificationEmails: S.optional(
-      AddsServicesUpdateRequestNotificationEmailsList,
-    ),
-    originalDisabledState: S.optional(S.Boolean),
-    resolvedAlerts: S.optional(S.Number),
-    serviceId: S.optional(S.String),
-    signature: S.optional(S.String),
-    simpleProperties: S.optional(S.Unknown),
-    tenantId: S.optional(S.String),
-    type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddsServicesUpdateRequest",
-}) as any as S.Schema<AddsServicesUpdateRequest>;
-
-/** The name of the metric. */
-export type AddsServicesUserPreferenceAddRequestMetricNamesList = Array<string>;
-export const AddsServicesUserPreferenceAddRequestMetricNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AddsServicesUserPreferenceAddRequestMetricNamesList>;
-
-export interface AddsServicesUserPreferenceAddRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The name of the feature. */
-  featureName: string;
-  /** The name of the metric. */
-  metricNames?: AddsServicesUserPreferenceAddRequestMetricNamesList;
-}
-export const AddsServicesUserPreferenceAddRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      featureName: S.String.pipe(T.Label()),
-      metricNames: S.optional(
-        AddsServicesUserPreferenceAddRequestMetricNamesList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesUserPreferenceAddRequest",
-}) as any as S.Schema<AddsServicesUserPreferenceAddRequest>;
-
-export interface AddsServicesUserPreferenceAddResponse {}
-export const AddsServicesUserPreferenceAddResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "AddsServicesUserPreferenceAddResponse",
-}) as any as S.Schema<AddsServicesUserPreferenceAddResponse>;
-
-export interface AddsServicesUserPreferenceDeleteRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The name of the feature. */
-  featureName: string;
-}
-export const AddsServicesUserPreferenceDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      featureName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesUserPreferenceDeleteRequest",
-}) as any as S.Schema<AddsServicesUserPreferenceDeleteRequest>;
-
-export interface AddsServicesUserPreferenceDeleteResponse {}
-export const AddsServicesUserPreferenceDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "AddsServicesUserPreferenceDeleteResponse",
-}) as any as S.Schema<AddsServicesUserPreferenceDeleteResponse>;
-
-export interface AddsServicesUserPreferenceGetRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The name of the feature. */
-  featureName: string;
-}
-export const AddsServicesUserPreferenceGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      featureName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}/features/{featureName}/userpreference",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AddsServicesUserPreferenceGetRequest",
-}) as any as S.Schema<AddsServicesUserPreferenceGetRequest>;
-
-/** The name of the metric. */
-export type UserPreferenceMetricNamesList = Array<string>;
-export const UserPreferenceMetricNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<UserPreferenceMetricNamesList>;
-
-/** The user preference for a given feature. */
-export interface UserPreference {
-  /** The name of the metric. */
-  metricNames?: UserPreferenceMetricNamesList;
-}
-export const UserPreference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    metricNames: S.optional(UserPreferenceMetricNamesList),
-  }),
-).annotate({ identifier: "UserPreference" }) as any as S.Schema<UserPreference>;
-
-export interface AlertsListAddsAlertsRequest {
+export interface ListAlertAddAlertsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The alert property filter to apply. */
@@ -2113,7 +2565,7 @@ export interface AlertsListAddsAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const AlertsListAddsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAlertAddAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2129,121 +2581,16 @@ export const AlertsListAddsAlertsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AlertsListAddsAlertsRequest",
-}) as any as S.Schema<AlertsListAddsAlertsRequest>;
+  identifier: "ListAlertAddAlertsRequest",
+}) as any as S.Schema<ListAlertAddAlertsRequest>;
 
-export interface ConfigurationAddRequest {}
-export const ConfigurationAddRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.ADHybridHealthService/configuration",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationAddRequest",
-}) as any as S.Schema<ConfigurationAddRequest>;
-
-/** The list of global administrators for the tenant. */
-export type TenantGlobalAdminsEmailList = Array<string>;
-export const TenantGlobalAdminsEmailList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantGlobalAdminsEmailList>;
-
-/** The details of the onboarded tenant. */
-export interface Tenant {
-  /** The Id of the tenant. */
-  tenantId?: string;
-  /** The Azure Active Directory license of the tenant. */
-  aadLicense?: string;
-  /** Indicate if the tenant has Azure Active Directory Premium license or not. */
-  aadPremium?: boolean;
-  /** Indicates if the tenant is configured to automatically receive updates for Azure Active Directory Connect Health client side features. */
-  agentAutoUpdate?: boolean;
-  /** The time in minutes after which an alert will be auto-suppressed. */
-  alertSuppressionTimeInMins?: number;
-  /** Indicates if the tenant data can be seen by Microsoft through Azure portal. */
-  consentedToMicrosoftDevOps?: boolean;
-  /** The country letter code of the tenant. */
-  countryLetterCode?: string;
-  /** The date, in UTC, when the tenant was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The date and time, in UTC, till when the tenant data can be seen by Microsoft through Azure portal. */
-  devOpsTtl?: string;
-  /** Indicates if the tenant is disabled in Azure Active Directory Connect Health. */
-  disabled?: boolean;
-  /** The reason due to which the tenant was disabled in Azure Active Directory Connect Health. */
-  disabledReason?: number;
-  /** The list of global administrators for the tenant. */
-  globalAdminsEmail?: TenantGlobalAdminsEmailList;
-  /** The initial domain of the tenant. */
-  initialDomain?: string;
-  /** The date and time, in UTC, when the tenant was last disabled in Azure Active Directory Connect Health. */
-  lastDisabled?: string;
-  /** The date and time, in UTC, when the tenant onboarding status in Azure Active Directory Connect Health was last verified. */
-  lastVerified?: string;
-  /** Indicates if the tenant is allowed to onboard to Azure Active Directory Connect Health. */
-  onboardingAllowed?: boolean;
-  /** Indicates if the tenant is already onboarded to Azure Active Directory Connect Health. */
-  onboarded?: boolean;
-  /** The certificate associated with the tenant to onboard data to Azure Active Directory Connect Health. */
-  pksCertificate?: unknown;
-  /** Indicates if the tenant has signed up for private preview of Azure Active Directory Connect Health features. */
-  privatePreviewTenant?: boolean;
-  /** Indicates if data collection for this tenant is disabled or not. */
-  tenantInQuarantine?: boolean;
-  /** The name of the tenant. */
-  tenantName?: string;
-}
-export const Tenant = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.String),
-    aadLicense: S.optional(S.String),
-    aadPremium: S.optional(S.Boolean),
-    agentAutoUpdate: S.optional(S.Boolean),
-    alertSuppressionTimeInMins: S.optional(S.Number),
-    consentedToMicrosoftDevOps: S.optional(S.Boolean),
-    countryLetterCode: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    devOpsTtl: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    disabledReason: S.optional(S.Number),
-    globalAdminsEmail: S.optional(TenantGlobalAdminsEmailList),
-    initialDomain: S.optional(S.String),
-    lastDisabled: S.optional(S.String),
-    lastVerified: S.optional(S.String),
-    onboardingAllowed: S.optional(S.Boolean),
-    onboarded: S.optional(S.Boolean),
-    pksCertificate: S.optional(S.Unknown),
-    privatePreviewTenant: S.optional(S.Boolean),
-    tenantInQuarantine: S.optional(S.Boolean),
-    tenantName: S.optional(S.String),
-  }),
-).annotate({ identifier: "Tenant" }) as any as S.Schema<Tenant>;
-
-export interface ConfigurationGetRequest {}
-export const ConfigurationGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/configuration",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationGetRequest",
-}) as any as S.Schema<ConfigurationGetRequest>;
-
-export interface ConfigurationListAddsConfigurationsRequest {
+export interface ListConfigurationAddConfigurationsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The grouping for configurations. */
   grouping?: string;
 }
-export const ConfigurationListAddsConfigurationsRequest =
+export const ListConfigurationAddConfigurationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -2257,8 +2604,8 @@ export const ConfigurationListAddsConfigurationsRequest =
       }),
     ),
   ).annotate({
-    identifier: "ConfigurationListAddsConfigurationsRequest",
-  }) as any as S.Schema<ConfigurationListAddsConfigurationsRequest>;
+    identifier: "ListConfigurationAddConfigurationsRequest",
+  }) as any as S.Schema<ListConfigurationAddConfigurationsRequest>;
 
 /** The value returned by the operation. */
 export type AddsConfigurationValueList = Array<Item>;
@@ -2288,101 +2635,13 @@ export const AddsConfiguration = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddsConfiguration",
 }) as any as S.Schema<AddsConfiguration>;
 
-/** The list of global administrators for the tenant. */
-export type ConfigurationUpdateRequestGlobalAdminsEmailList = Array<string>;
-export const ConfigurationUpdateRequestGlobalAdminsEmailList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConfigurationUpdateRequestGlobalAdminsEmailList>;
-
-export interface ConfigurationUpdateRequest {
-  /** The Id of the tenant. */
-  tenantId?: string;
-  /** The Azure Active Directory license of the tenant. */
-  aadLicense?: string;
-  /** Indicate if the tenant has Azure Active Directory Premium license or not. */
-  aadPremium?: boolean;
-  /** Indicates if the tenant is configured to automatically receive updates for Azure Active Directory Connect Health client side features. */
-  agentAutoUpdate?: boolean;
-  /** The time in minutes after which an alert will be auto-suppressed. */
-  alertSuppressionTimeInMins?: number;
-  /** Indicates if the tenant data can be seen by Microsoft through Azure portal. */
-  consentedToMicrosoftDevOps?: boolean;
-  /** The country letter code of the tenant. */
-  countryLetterCode?: string;
-  /** The date, in UTC, when the tenant was onboarded to Azure Active Directory Connect Health. */
-  createdDate?: string;
-  /** The date and time, in UTC, till when the tenant data can be seen by Microsoft through Azure portal. */
-  devOpsTtl?: string;
-  /** Indicates if the tenant is disabled in Azure Active Directory Connect Health. */
-  disabled?: boolean;
-  /** The reason due to which the tenant was disabled in Azure Active Directory Connect Health. */
-  disabledReason?: number;
-  /** The list of global administrators for the tenant. */
-  globalAdminsEmail?: ConfigurationUpdateRequestGlobalAdminsEmailList;
-  /** The initial domain of the tenant. */
-  initialDomain?: string;
-  /** The date and time, in UTC, when the tenant was last disabled in Azure Active Directory Connect Health. */
-  lastDisabled?: string;
-  /** The date and time, in UTC, when the tenant onboarding status in Azure Active Directory Connect Health was last verified. */
-  lastVerified?: string;
-  /** Indicates if the tenant is allowed to onboard to Azure Active Directory Connect Health. */
-  onboardingAllowed?: boolean;
-  /** Indicates if the tenant is already onboarded to Azure Active Directory Connect Health. */
-  onboarded?: boolean;
-  /** The certificate associated with the tenant to onboard data to Azure Active Directory Connect Health. */
-  pksCertificate?: unknown;
-  /** Indicates if the tenant has signed up for private preview of Azure Active Directory Connect Health features. */
-  privatePreviewTenant?: boolean;
-  /** Indicates if data collection for this tenant is disabled or not. */
-  tenantInQuarantine?: boolean;
-  /** The name of the tenant. */
-  tenantName?: string;
-}
-export const ConfigurationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.String),
-    aadLicense: S.optional(S.String),
-    aadPremium: S.optional(S.Boolean),
-    agentAutoUpdate: S.optional(S.Boolean),
-    alertSuppressionTimeInMins: S.optional(S.Number),
-    consentedToMicrosoftDevOps: S.optional(S.Boolean),
-    countryLetterCode: S.optional(S.String),
-    createdDate: S.optional(S.String),
-    devOpsTtl: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    disabledReason: S.optional(S.Number),
-    globalAdminsEmail: S.optional(
-      ConfigurationUpdateRequestGlobalAdminsEmailList,
-    ),
-    initialDomain: S.optional(S.String),
-    lastDisabled: S.optional(S.String),
-    lastVerified: S.optional(S.String),
-    onboardingAllowed: S.optional(S.Boolean),
-    onboarded: S.optional(S.Boolean),
-    pksCertificate: S.optional(S.Unknown),
-    privatePreviewTenant: S.optional(S.Boolean),
-    tenantInQuarantine: S.optional(S.Boolean),
-    tenantName: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/providers/Microsoft.ADHybridHealthService/configuration",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationUpdateRequest",
-}) as any as S.Schema<ConfigurationUpdateRequest>;
-
-export interface DimensionsListAddsDimensionsRequest {
+export interface ListDimensionAddDimensionsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The dimension type. */
   dimension: string;
 }
-export const DimensionsListAddsDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDimensionAddDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     dimension: S.String.pipe(T.Label()),
@@ -2395,8 +2654,8 @@ export const DimensionsListAddsDimensionsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DimensionsListAddsDimensionsRequest",
-}) as any as S.Schema<DimensionsListAddsDimensionsRequest>;
+  identifier: "ListDimensionAddDimensionsRequest",
+}) as any as S.Schema<ListDimensionAddDimensionsRequest>;
 
 /** The health status for the domain controller. */
 export type DimensionHealth =
@@ -2468,13 +2727,13 @@ export const Dimensions = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Dimensions" }) as any as S.Schema<Dimensions>;
 
-export interface ListIPAddressAggregatesByServiceRequest {
+export interface ListIpAddressAggregatesByServiceRequest {
   /** The name of the service. */
   serviceName: string;
   /** A continuationtoken value returned in paginated result to load different pages. */
   skiptoken?: string;
 }
-export const ListIPAddressAggregatesByServiceRequest = /*@__PURE__*/ S.suspend(
+export const ListIpAddressAggregatesByServiceRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -2488,8 +2747,8 @@ export const ListIPAddressAggregatesByServiceRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ListIPAddressAggregatesByServiceRequest",
-}) as any as S.Schema<ListIPAddressAggregatesByServiceRequest>;
+  identifier: "ListIpAddressAggregatesByServiceRequest",
+}) as any as S.Schema<ListIpAddressAggregatesByServiceRequest>;
 
 /** The key value pair for properties. */
 export interface IPAddressAggregate {
@@ -2580,11 +2839,11 @@ export const IPAddressAggregates = /*@__PURE__*/ S.suspend(() =>
   identifier: "IPAddressAggregates",
 }) as any as S.Schema<IPAddressAggregates>;
 
-export interface ListIPAddressAggregateSettingsRequest {
+export interface ListIpAddressAggregateSettingsRequest {
   /** The name of the service. */
   serviceName: string;
 }
-export const ListIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(
+export const ListIpAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -2597,8 +2856,8 @@ export const ListIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ListIPAddressAggregateSettingsRequest",
-}) as any as S.Schema<ListIPAddressAggregateSettingsRequest>;
+  identifier: "ListIpAddressAggregateSettingsRequest",
+}) as any as S.Schema<ListIpAddressAggregateSettingsRequest>;
 
 /** The key value pair for IP aggregate thresholds. */
 export interface IPAddressAggregateSetting {
@@ -2628,8 +2887,8 @@ export const IPAddressAggregateSetting = /*@__PURE__*/ S.suspend(() =>
   identifier: "IPAddressAggregateSetting",
 }) as any as S.Schema<IPAddressAggregateSetting>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -2639,8 +2898,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The details of the operation. */
 export interface Operation {
@@ -2684,453 +2943,475 @@ export const OperationListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResponse",
 }) as any as S.Schema<OperationListResponse>;
 
-export interface ReportsGetDevOpsRequest {}
-export const ReportsGetDevOpsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/reports/DevOps/IsDevOps",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReportsGetDevOpsRequest",
-}) as any as S.Schema<ReportsGetDevOpsRequest>;
-
-/** The result for an operation. */
-export interface Result {
-  /** The value. */
-  value?: boolean;
-}
-export const Result = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "Result" }) as any as S.Schema<Result>;
-
-export interface ServiceGetMetricsRequest {
+export interface ListServiceAlertFeedbackRequest {
   /** The name of the service. */
   serviceName: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-  /** The group key */
-  groupKey?: string;
-  /** The start date. */
-  fromDate?: string;
-  /** The end date. */
-  toDate?: string;
+  /** The name of the alert. */
+  shortName: string;
 }
-export const ServiceGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListServiceAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
-    metricName: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    groupKey: S.optional(S.String.pipe(T.Query())),
-    fromDate: S.optional(S.String.pipe(T.Query())),
-    toDate: S.optional(S.String.pipe(T.Query())),
+    shortName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/{shortName}/alertfeedback",
       code: 200,
       apiVersion: "2014-01-01",
     }),
   ),
 ).annotate({
-  identifier: "ServiceGetMetricsRequest",
-}) as any as S.Schema<ServiceGetMetricsRequest>;
+  identifier: "ListServiceAlertFeedbackRequest",
+}) as any as S.Schema<ListServiceAlertFeedbackRequest>;
 
-/** The monitoring level reported by the server. */
-export type ServiceMembersAddRequestServerReportedMonitoringLevel =
-  | "Partial"
-  | "Full"
-  | "Off";
-export const ServiceMembersAddRequestServerReportedMonitoringLevel =
-  /*@__PURE__*/ S.String;
-
-export interface ServiceMembersAddRequest {
-  /** The name of the service under which the server is to be onboarded. */
-  serviceName: string;
-  /** The id of the server. */
+/** The alert feedback details. */
+export interface AlertFeedback {
+  /** The alert level which indicates the severity of the alert. */
+  level?: string;
+  /** The alert state which can be either active or resolved with multiple resolution types. */
+  state?: string;
+  /** The alert short name. */
+  shortName?: string;
+  /** The feedback for the alert which indicates if the customer likes or dislikes the alert. */
+  feedback?: string;
+  /** Additional comments related to the alert. */
+  comment?: string;
+  /** Indicates if the alert feedback can be shared from product team. */
+  consentedToShare?: boolean;
+  /** The server Id of the alert. */
   serviceMemberId?: string;
-  /** The service id to whom this server belongs. */
-  serviceId?: string;
-  /** The tenant id to whom this server belongs. */
-  tenantId?: string;
-  /** The total number of alerts that are currently active for the server. */
-  activeAlerts?: number;
-  /** The additional information, if any, for the server. */
-  additionalInformation?: string;
-  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
+  /** The date and time,in UTC,when the alert was created. */
   createdDate?: string;
-  /** The server specific configuration related dimensions. */
-  dimensions?: unknown;
-  /** Indicates if the server is disabled or not. */
-  disabled?: boolean;
-  /** The reason for disabling the server. */
-  disabledReason?: number;
-  /** The list of installed QFEs for the server. */
-  installedQfes?: unknown;
-  /** The date and time , in UTC, when the server was last disabled. */
-  lastDisabled?: string;
-  /** The date and time, in UTC, when the server was last rebooted. */
-  lastReboot?: string;
-  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
-  lastServerReportedMonitoringLevelChange?: string;
-  /** The date and time, in UTC, when the server properties were last updated. */
-  lastUpdated?: string;
-  /** The id of the machine. */
-  machineId?: string;
-  /** The name of the server. */
-  machineName?: string;
-  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsComputed?: unknown;
-  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
-  monitoringConfigurationsCustomized?: unknown;
-  /** The name of the operating system installed in the machine. */
-  osName?: string;
-  /** The version of the operating system installed in the machine. */
-  osVersion?: string;
-  /** Server specific properties. */
-  properties?: unknown;
-  /** The list of recommended hotfixes for the server. */
-  recommendedQfes?: unknown;
-  /** The total count of alerts that are resolved for this server. */
-  resolvedAlerts?: number;
-  /** The service role that is being monitored in the server. */
-  role?: string;
-  /** The monitoring level reported by the server. */
-  serverReportedMonitoringLevel?:
-    | ServiceMembersAddRequestServerReportedMonitoringLevel
-    | (string & {});
-  /** The health status of the server. */
-  status?: string;
 }
-export const ServiceMembersAddRequest = /*@__PURE__*/ S.suspend(() =>
+export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    serviceName: S.String.pipe(T.Label()),
+    level: S.optional(S.String),
+    state: S.optional(S.String),
+    shortName: S.optional(S.String),
+    feedback: S.optional(S.String),
+    comment: S.optional(S.String),
+    consentedToShare: S.optional(S.Boolean),
     serviceMemberId: S.optional(S.String),
-    serviceId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    activeAlerts: S.optional(S.Number),
-    additionalInformation: S.optional(S.String),
     createdDate: S.optional(S.String),
-    dimensions: S.optional(S.Unknown),
-    disabled: S.optional(S.Boolean),
-    disabledReason: S.optional(S.Number),
-    installedQfes: S.optional(S.Unknown),
-    lastDisabled: S.optional(S.String),
-    lastReboot: S.optional(S.String),
-    lastServerReportedMonitoringLevelChange: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    machineId: S.optional(S.String),
-    machineName: S.optional(S.String),
-    monitoringConfigurationsComputed: S.optional(S.Unknown),
-    monitoringConfigurationsCustomized: S.optional(S.Unknown),
-    osName: S.optional(S.String),
-    osVersion: S.optional(S.String),
-    properties: S.optional(S.Unknown),
-    recommendedQfes: S.optional(S.Unknown),
-    resolvedAlerts: S.optional(S.Number),
-    role: S.optional(S.String),
-    serverReportedMonitoringLevel: S.optional(
-      ServiceMembersAddRequestServerReportedMonitoringLevel,
-    ),
-    status: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceMembersAddRequest",
-}) as any as S.Schema<ServiceMembersAddRequest>;
-
-export interface ServiceMembersDeleteRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server Id. */
-  serviceMemberId: string;
-  /** Indicates if the server will be permanently deleted or disabled. True indicates that the server will be permanently deleted and False indicates that the server will be marked disabled and then deleted after 30 days, if it is not re-registered. */
-  confirm?: boolean;
-}
-export const ServiceMembersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    serviceMemberId: S.String.pipe(T.Label()),
-    confirm: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceMembersDeleteRequest",
-}) as any as S.Schema<ServiceMembersDeleteRequest>;
-
-export interface ServiceMembersDeleteResponse {}
-export const ServiceMembersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServiceMembersDeleteResponse",
-}) as any as S.Schema<ServiceMembersDeleteResponse>;
-
-export interface ServiceMembersDeleteDataRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server Id. */
-  serviceMemberId: string;
-}
-export const ServiceMembersDeleteDataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    serviceMemberId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/data",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceMembersDeleteDataRequest",
-}) as any as S.Schema<ServiceMembersDeleteDataRequest>;
-
-export interface ServiceMembersDeleteDataResponse {}
-export const ServiceMembersDeleteDataResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServiceMembersDeleteDataResponse",
-}) as any as S.Schema<ServiceMembersDeleteDataResponse>;
-
-export interface ServiceMembersGetRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server Id. */
-  serviceMemberId: string;
-}
-export const ServiceMembersGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    serviceMemberId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceMembersGetRequest",
-}) as any as S.Schema<ServiceMembersGetRequest>;
-
-export interface ServiceMembersGetConnectorMetadataRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The service member id. */
-  serviceMemberId: string;
-  /** The name of the metric. */
-  metricName: string;
-}
-export const ServiceMembersGetConnectorMetadataRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      serviceMemberId: S.String.pipe(T.Label()),
-      metricName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServiceMembersGetConnectorMetadataRequest",
-  }) as any as S.Schema<ServiceMembersGetConnectorMetadataRequest>;
-
-/** Details of the connector. */
-export interface ConnectorMetadataDetails {
-  /** The Connector Id. */
-  connectorId?: string;
-  /** The Connector Display Name */
-  connectorDisplayName?: string;
-}
-export const ConnectorMetadataDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    connectorId: S.optional(S.String),
-    connectorDisplayName: S.optional(S.String),
   }),
-).annotate({
-  identifier: "ConnectorMetadataDetails",
-}) as any as S.Schema<ConnectorMetadataDetails>;
+).annotate({ identifier: "AlertFeedback" }) as any as S.Schema<AlertFeedback>;
 
-/** The list of connectors. */
-export type ConnectorMetadataConnectorsList = Array<ConnectorMetadataDetails>;
-export const ConnectorMetadataConnectorsList = /*@__PURE__*/ S.Array(
-  ConnectorMetadataDetails,
-) as any as S.Schema<ConnectorMetadataConnectorsList>;
+/** The value returned by the operation. */
+export type AlertFeedbacksValueList = Array<AlertFeedback>;
+export const AlertFeedbacksValueList = /*@__PURE__*/ S.Array(
+  AlertFeedback,
+) as any as S.Schema<AlertFeedbacksValueList>;
 
-/** The list of run profile names. */
-export type ConnectorMetadataRunProfileNamesList = Array<string>;
-export const ConnectorMetadataRunProfileNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConnectorMetadataRunProfileNamesList>;
-
-/** Gets the list of connectors and run profile names. */
-export interface ConnectorMetadata {
-  /** The list of connectors. */
-  connectors?: ConnectorMetadataConnectorsList;
-  /** The list of run profile names. */
-  runProfileNames?: ConnectorMetadataRunProfileNamesList;
+/** The list of alert feedback. */
+export interface AlertFeedbacks {
+  /** The value returned by the operation. */
+  value?: AlertFeedbacksValueList;
 }
-export const ConnectorMetadata = /*@__PURE__*/ S.suspend(() =>
+export const AlertFeedbacks = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    connectors: S.optional(ConnectorMetadataConnectorsList),
-    runProfileNames: S.optional(ConnectorMetadataRunProfileNamesList),
+    value: S.optional(AlertFeedbacksValueList),
   }),
-).annotate({
-  identifier: "ConnectorMetadata",
-}) as any as S.Schema<ConnectorMetadata>;
+).annotate({ identifier: "AlertFeedbacks" }) as any as S.Schema<AlertFeedbacks>;
 
-export interface ServiceMembersGetMetricsRequest {
+export interface ListServiceAlertsRequest {
   /** The name of the service. */
   serviceName: string;
-  /** The server id. */
-  serviceMemberId: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-  /** The group key */
-  groupKey?: string;
-  /** The start date. */
-  fromDate?: string;
-  /** The end date. */
-  toDate?: string;
-}
-export const ServiceMembersGetMetricsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    serviceMemberId: S.String.pipe(T.Label()),
-    metricName: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-    groupKey: S.optional(S.String.pipe(T.Query())),
-    fromDate: S.optional(S.String.pipe(T.Query())),
-    toDate: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/metrics/{metricName}/groups/{groupName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServiceMembersGetMetricsRequest",
-}) as any as S.Schema<ServiceMembersGetMetricsRequest>;
-
-export interface ServiceMembersGetServiceConfigurationRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server Id. */
-  serviceMemberId: string;
-}
-export const ServiceMembersGetServiceConfigurationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      serviceMemberId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/serviceconfiguration",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServiceMembersGetServiceConfigurationRequest",
-  }) as any as S.Schema<ServiceMembersGetServiceConfigurationRequest>;
-
-/** The service configuration */
-export interface ServiceConfiguration {
-  /** The version of the sync service. */
-  version?: string;
-  /** The service type of the server. */
-  serviceType?: number;
-  /** The service account. */
-  serviceAccount?: string;
-  /** The SQL server information. */
-  sqlServer?: string;
-  /** The SQL version. */
-  sqlVersion?: string;
-  /** The SQL edition */
-  sqlEdition?: string;
-  /** The SQL instance details. */
-  sqlInstance?: string;
-  /** The SQL database. */
-  sqlDatabaseName?: string;
-  /** The SQL database size. */
-  sqlDatabaseSize?: number;
-}
-export const ServiceConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version: S.optional(S.String),
-    serviceType: S.optional(S.Number),
-    serviceAccount: S.optional(S.String),
-    sqlServer: S.optional(S.String),
-    sqlVersion: S.optional(S.String),
-    sqlEdition: S.optional(S.String),
-    sqlInstance: S.optional(S.String),
-    sqlDatabaseName: S.optional(S.String),
-    sqlDatabaseSize: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ServiceConfiguration",
-}) as any as S.Schema<ServiceConfiguration>;
-
-export interface ServiceMembersListRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The server property filter to apply. */
+  /** The alert property filter to apply. */
   _filter?: string;
-  /** The server specific dimension. */
-  dimensionType?: string;
-  /** The value of the dimension. */
-  dimensionSignature?: string;
+  /** The alert state to query for. */
+  state?: string;
+  /** The start date to query for. */
+  from?: string;
+  /** The end date till when to query for. */
+  to?: string;
 }
-export const ServiceMembersListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListServiceAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    dimensionType: S.optional(S.String.pipe(T.Query())),
-    dimensionSignature: S.optional(S.String.pipe(T.Query())),
+    state: S.optional(S.String.pipe(T.Query())),
+    from: S.optional(S.String.pipe(T.Query())),
+    to: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
       code: 200,
       apiVersion: "2014-01-01",
     }),
   ),
 ).annotate({
-  identifier: "ServiceMembersListRequest",
-}) as any as S.Schema<ServiceMembersListRequest>;
+  identifier: "ListServiceAlertsRequest",
+}) as any as S.Schema<ListServiceAlertsRequest>;
 
-export interface ServiceMembersListAlertsRequest {
+export interface ListServiceAllRiskyIpDownloadReportRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const ListServiceAllRiskyIpDownloadReportRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/blobUris",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListServiceAllRiskyIpDownloadReportRequest",
+  }) as any as S.Schema<ListServiceAllRiskyIpDownloadReportRequest>;
+
+/** The blob uri pointing to Risky IP Report. */
+export interface RiskyIPBlobUri {
+  /** The tenant id for whom the report belongs to. */
+  tenantId?: string;
+  /** The service id for whom the report belongs to. */
+  serviceId?: string;
+  /** The blob uri for the report. */
+  resultSasUri?: string;
+  /** Time at which the new Risky IP report was requested. */
+  blobCreateDateTime?: string;
+  /** Time at which the blob creation job for the new Risky IP report was completed. */
+  jobCompletionTime?: string;
+  /** Status of the Risky IP report generation. */
+  status?: string;
+}
+export const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    resultSasUri: S.optional(S.String),
+    blobCreateDateTime: S.optional(S.String),
+    jobCompletionTime: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
+).annotate({ identifier: "RiskyIPBlobUri" }) as any as S.Schema<RiskyIPBlobUri>;
+
+/** The list of blob uris. */
+export type RiskyIPBlobUrisValueList = Array<RiskyIPBlobUri>;
+export const RiskyIPBlobUrisValueList = /*@__PURE__*/ S.Array(
+  RiskyIPBlobUri,
+) as any as S.Schema<RiskyIPBlobUrisValueList>;
+
+/** The list containing blob uris. */
+export interface RiskyIPBlobUris {
+  /** The list of blob uris. */
+  value?: RiskyIPBlobUrisValueList;
+}
+export const RiskyIPBlobUris = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(RiskyIPBlobUrisValueList),
+  }),
+).annotate({
+  identifier: "RiskyIPBlobUris",
+}) as any as S.Schema<RiskyIPBlobUris>;
+
+export interface ListServiceCurrentRiskyIpDownloadReportRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const ListServiceCurrentRiskyIpDownloadReportRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/generateBlobUri",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListServiceCurrentRiskyIpDownloadReportRequest",
+  }) as any as S.Schema<ListServiceCurrentRiskyIpDownloadReportRequest>;
+
+export interface ListServiceExportErrorsRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const ListServiceExportErrorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/counts",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceExportErrorsRequest",
+}) as any as S.Schema<ListServiceExportErrorsRequest>;
+
+/** The error count details. */
+export interface ErrorCount {
+  /** The error bucket. */
+  errorBucket?: string;
+  /** The error count. */
+  count?: number;
+  /** Indicates if the error count is truncated or not. */
+  truncated?: boolean;
+}
+export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    errorBucket: S.optional(S.String),
+    count: S.optional(S.Number),
+    truncated: S.optional(S.Boolean),
+  }),
+).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
+
+/** The value returned by the operation. */
+export type ErrorCountsValueList = Array<ErrorCount>;
+export const ErrorCountsValueList = /*@__PURE__*/ S.Array(
+  ErrorCount,
+) as any as S.Schema<ErrorCountsValueList>;
+
+/** The list of error counts. */
+export interface ErrorCounts {
+  /** The value returned by the operation. */
+  value?: ErrorCountsValueList;
+}
+export const ErrorCounts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ErrorCountsValueList),
+  }),
+).annotate({ identifier: "ErrorCounts" }) as any as S.Schema<ErrorCounts>;
+
+export interface ListServiceExportErrorV2Request {
+  /** The name of the service. */
+  serviceName: string;
+  /** The error category to query for. */
+  errorBucket: string;
+}
+export const ListServiceExportErrorV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    errorBucket: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/listV2",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceExportErrorV2Request",
+}) as any as S.Schema<ListServiceExportErrorV2Request>;
+
+/** Object that hold sync object details. */
+export interface AssociatedObject {
+  /** The display name of the object. */
+  displayName?: string;
+  /** The distinguished name of the object. */
+  distinguishedName?: string;
+  /** The last dirSync time. */
+  lastDirSyncTime?: string;
+  /** The email of the object. */
+  mail?: string;
+  /** The object guid. */
+  objectGuid?: string;
+  /** The object type. */
+  objectType?: string;
+  /** The On-premises UPN. */
+  onpremisesUserPrincipalName?: string;
+  /** The proxy addresses. */
+  proxyAddresses?: string;
+  /** The source anchor. */
+  sourceAnchor?: string;
+  /** The source of authority. */
+  sourceOfAuthority?: string;
+  /** The time of the error. */
+  timeOccurred?: string;
+  /** The UPN. */
+  userPrincipalName?: string;
+}
+export const AssociatedObject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    distinguishedName: S.optional(S.String),
+    lastDirSyncTime: S.optional(S.String),
+    mail: S.optional(S.String),
+    objectGuid: S.optional(S.String),
+    objectType: S.optional(S.String),
+    onpremisesUserPrincipalName: S.optional(S.String),
+    proxyAddresses: S.optional(S.String),
+    sourceAnchor: S.optional(S.String),
+    sourceOfAuthority: S.optional(S.String),
+    timeOccurred: S.optional(S.String),
+    userPrincipalName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssociatedObject",
+}) as any as S.Schema<AssociatedObject>;
+
+/** The merged export error. */
+export interface MergedExportError {
+  /** The error Id. */
+  id?: string;
+  /** The incoming object display name. */
+  incomingObjectDisplayName?: string;
+  /** The incoming object type. */
+  incomingObjectType?: string;
+  /** The user principal name */
+  userPrincipalName?: string;
+  /** The type of the error. */
+  type?: string;
+  /** The attribute name. */
+  attributeName?: string;
+  /** The attribute value. */
+  attributeValue?: string;
+  /** The date and time when the error occurred. */
+  timeOccurred?: string;
+  /** The time when the error first occurred. */
+  timeFirstOccurred?: string;
+  /** the cs object Id. */
+  csObjectId?: string;
+  /** the DN of the object. */
+  dn?: string;
+  /** The incoming object details. */
+  incomingObject?: AssociatedObject;
+  /** The existing object */
+  existingObject?: AssociatedObject;
+  /** The modified or removed attribute value. */
+  modifiedOrRemovedAttributeValue?: string;
+  /** The run step result Id. */
+  runStepResultId?: string;
+  /** The sam account name. */
+  samAccountName?: string;
+  /** The server error details. */
+  serverErrorDetail?: string;
+  /** The service Id. */
+  serviceId?: string;
+  /** The server Id. */
+  serviceMemberId?: string;
+  /** The merged entity Id. */
+  mergedEntityId?: string;
+  /** The date and time, in UTC, when the error was created. */
+  createdDate?: string;
+  /** The export error status. */
+  exportErrorStatus?: number;
+}
+export const MergedExportError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    incomingObjectDisplayName: S.optional(S.String),
+    incomingObjectType: S.optional(S.String),
+    userPrincipalName: S.optional(S.String),
+    type: S.optional(S.String),
+    attributeName: S.optional(S.String),
+    attributeValue: S.optional(S.String),
+    timeOccurred: S.optional(S.String),
+    timeFirstOccurred: S.optional(S.String),
+    csObjectId: S.optional(S.String),
+    dn: S.optional(S.String),
+    incomingObject: S.optional(AssociatedObject),
+    existingObject: S.optional(AssociatedObject),
+    modifiedOrRemovedAttributeValue: S.optional(S.String),
+    runStepResultId: S.optional(S.String),
+    samAccountName: S.optional(S.String),
+    serverErrorDetail: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    serviceMemberId: S.optional(S.String),
+    mergedEntityId: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    exportErrorStatus: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "MergedExportError",
+}) as any as S.Schema<MergedExportError>;
+
+/** The value returned by the operation. */
+export type MergedExportErrorsValueList = Array<MergedExportError>;
+export const MergedExportErrorsValueList = /*@__PURE__*/ S.Array(
+  MergedExportError,
+) as any as S.Schema<MergedExportErrorsValueList>;
+
+/** The list of export errors. */
+export interface MergedExportErrors {
+  /** The value returned by the operation. */
+  value?: MergedExportErrorsValueList;
+}
+export const MergedExportErrors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MergedExportErrorsValueList),
+  }),
+).annotate({
+  identifier: "MergedExportErrors",
+}) as any as S.Schema<MergedExportErrors>;
+
+export interface ListServiceExportStatusRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const ListServiceExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exportstatus",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceExportStatusRequest",
+}) as any as S.Schema<ListServiceExportStatusRequest>;
+
+/** The details of the export status. */
+export interface ExportStatus {
+  /** The id of the service for whom the export status is being reported. */
+  serviceId?: string;
+  /** The server Id for whom the export status is being reported. */
+  serviceMemberId?: string;
+  /** The date and time when the export ended. */
+  endTime?: string;
+  /** The run step result Id. */
+  runStepResultId?: string;
+}
+export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceId: S.optional(S.String),
+    serviceMemberId: S.optional(S.String),
+    endTime: S.optional(S.String),
+    runStepResultId: S.optional(S.String),
+  }),
+).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
+
+/** The value returned by the operation. */
+export type ExportStatusesValueList = Array<ExportStatus>;
+export const ExportStatusesValueList = /*@__PURE__*/ S.Array(
+  ExportStatus,
+) as any as S.Schema<ExportStatusesValueList>;
+
+/** The list of export statuses. */
+export interface ExportStatuses {
+  /** The link used to get the next page of operations. */
+  nextLink?: string;
+  /** The value returned by the operation. */
+  value?: ExportStatusesValueList;
+  /** The total count of service elements. */
+  totalCount?: number;
+  /** The continuation token for paginated calls. */
+  continuationToken?: string;
+}
+export const ExportStatuses = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ExportStatusesValueList),
+    totalCount: S.optional(S.Number),
+    continuationToken: S.optional(S.String),
+  }),
+).annotate({ identifier: "ExportStatuses" }) as any as S.Schema<ExportStatuses>;
+
+export interface ListServiceMemberAlertsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id for which the alert details needs to be queried. */
@@ -3144,7 +3425,7 @@ export interface ServiceMembersListAlertsRequest {
   /** The end date till when to query for. */
   to?: string;
 }
-export const ServiceMembersListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListServiceMemberAlertsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3161,16 +3442,16 @@ export const ServiceMembersListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ServiceMembersListAlertsRequest",
-}) as any as S.Schema<ServiceMembersListAlertsRequest>;
+  identifier: "ListServiceMemberAlertsRequest",
+}) as any as S.Schema<ListServiceMemberAlertsRequest>;
 
-export interface ServiceMembersListConnectorsRequest {
+export interface ListServiceMemberConnectorsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-export const ServiceMembersListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListServiceMemberConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     serviceMemberId: S.String.pipe(T.Label()),
@@ -3183,8 +3464,8 @@ export const ServiceMembersListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ServiceMembersListConnectorsRequest",
-}) as any as S.Schema<ServiceMembersListConnectorsRequest>;
+  identifier: "ListServiceMemberConnectorsRequest",
+}) as any as S.Schema<ListServiceMemberConnectorsRequest>;
 
 /** The in-scope object classes. */
 export type PartitionScopeObjectClassesList = Array<string>;
@@ -3405,7 +3686,7 @@ export const Connectors = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "Connectors" }) as any as S.Schema<Connectors>;
 
-export interface ServiceMembersListCredentialsRequest {
+export interface ListServiceMemberCredentialsRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
@@ -3413,31 +3694,30 @@ export interface ServiceMembersListCredentialsRequest {
   /** The property filter to apply. */
   _filter?: string;
 }
-export const ServiceMembersListCredentialsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      serviceMemberId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/credentials",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
+export const ListServiceMemberCredentialsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers/{serviceMemberId}/credentials",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
 ).annotate({
-  identifier: "ServiceMembersListCredentialsRequest",
-}) as any as S.Schema<ServiceMembersListCredentialsRequest>;
+  identifier: "ListServiceMemberCredentialsRequest",
+}) as any as S.Schema<ListServiceMemberCredentialsRequest>;
 
-export interface ServiceMembersListDataFreshnessRequest {
+export interface ListServiceMemberDataFreshnessRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-export const ServiceMembersListDataFreshnessRequest = /*@__PURE__*/ S.suspend(
+export const ListServiceMemberDataFreshnessRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -3451,8 +3731,8 @@ export const ServiceMembersListDataFreshnessRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ServiceMembersListDataFreshnessRequest",
-}) as any as S.Schema<ServiceMembersListDataFreshnessRequest>;
+  identifier: "ListServiceMemberDataFreshnessRequest",
+}) as any as S.Schema<ListServiceMemberDataFreshnessRequest>;
 
 /** The value returned by the operation. */
 export type DataFreshnessDetailsValueList = Array<Item>;
@@ -3473,13 +3753,13 @@ export const DataFreshnessDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "DataFreshnessDetails",
 }) as any as S.Schema<DataFreshnessDetails>;
 
-export interface ServiceMembersListExportStatusRequest {
+export interface ListServiceMemberExportStatusRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server Id. */
   serviceMemberId: string;
 }
-export const ServiceMembersListExportStatusRequest = /*@__PURE__*/ S.suspend(
+export const ListServiceMemberExportStatusRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -3493,62 +3773,16 @@ export const ServiceMembersListExportStatusRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ServiceMembersListExportStatusRequest",
-}) as any as S.Schema<ServiceMembersListExportStatusRequest>;
+  identifier: "ListServiceMemberExportStatusRequest",
+}) as any as S.Schema<ListServiceMemberExportStatusRequest>;
 
-/** The details of the export status. */
-export interface ExportStatus {
-  /** The id of the service for whom the export status is being reported. */
-  serviceId?: string;
-  /** The server Id for whom the export status is being reported. */
-  serviceMemberId?: string;
-  /** The date and time when the export ended. */
-  endTime?: string;
-  /** The run step result Id. */
-  runStepResultId?: string;
-}
-export const ExportStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.optional(S.String),
-    serviceMemberId: S.optional(S.String),
-    endTime: S.optional(S.String),
-    runStepResultId: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExportStatus" }) as any as S.Schema<ExportStatus>;
-
-/** The value returned by the operation. */
-export type ExportStatusesValueList = Array<ExportStatus>;
-export const ExportStatusesValueList = /*@__PURE__*/ S.Array(
-  ExportStatus,
-) as any as S.Schema<ExportStatusesValueList>;
-
-/** The list of export statuses. */
-export interface ExportStatuses {
-  /** The link used to get the next page of operations. */
-  nextLink?: string;
-  /** The value returned by the operation. */
-  value?: ExportStatusesValueList;
-  /** The total count of service elements. */
-  totalCount?: number;
-  /** The continuation token for paginated calls. */
-  continuationToken?: string;
-}
-export const ExportStatuses = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ExportStatusesValueList),
-    totalCount: S.optional(S.Number),
-    continuationToken: S.optional(S.String),
-  }),
-).annotate({ identifier: "ExportStatuses" }) as any as S.Schema<ExportStatuses>;
-
-export interface ServiceMembersListGlobalConfigurationRequest {
+export interface ListServiceMemberGlobalConfigurationRequest {
   /** The name of the service. */
   serviceName: string;
   /** The server id. */
   serviceMemberId: string;
 }
-export const ServiceMembersListGlobalConfigurationRequest =
+export const ListServiceMemberGlobalConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -3562,8 +3796,8 @@ export const ServiceMembersListGlobalConfigurationRequest =
       }),
     ),
   ).annotate({
-    identifier: "ServiceMembersListGlobalConfigurationRequest",
-  }) as any as S.Schema<ServiceMembersListGlobalConfigurationRequest>;
+    identifier: "ListServiceMemberGlobalConfigurationRequest",
+  }) as any as S.Schema<ListServiceMemberGlobalConfigurationRequest>;
 
 /** The list of additional feature sets. */
 export type GlobalConfigurationFeatureSetList = Array<Item>;
@@ -3614,6 +3848,378 @@ export const GlobalConfigurations = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GlobalConfigurations",
 }) as any as S.Schema<GlobalConfigurations>;
+
+export interface ListServiceMembersRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The server property filter to apply. */
+  _filter?: string;
+  /** The server specific dimension. */
+  dimensionType?: string;
+  /** The value of the dimension. */
+  dimensionSignature?: string;
+}
+export const ListServiceMembersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    dimensionType: S.optional(S.String.pipe(T.Query())),
+    dimensionSignature: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceMembersRequest",
+}) as any as S.Schema<ListServiceMembersRequest>;
+
+export interface ListServiceMetricAverageRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+}
+export const ListServiceMetricAverageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceMetricAverageRequest",
+}) as any as S.Schema<ListServiceMetricAverageRequest>;
+
+export interface ListServiceMetricMetadataRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric metadata property filter to apply. */
+  _filter?: string;
+  /** Indicates if only performance counter metrics are requested. */
+  perfCounter?: boolean;
+}
+export const ListServiceMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    perfCounter: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceMetricMetadataRequest",
+}) as any as S.Schema<ListServiceMetricMetadataRequest>;
+
+export interface ListServiceMetricSumRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The metric name */
+  metricName: string;
+  /** The group name */
+  groupName: string;
+}
+export const ListServiceMetricSumRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    metricName: S.String.pipe(T.Label()),
+    groupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServiceMetricSumRequest",
+}) as any as S.Schema<ListServiceMetricSumRequest>;
+
+export interface ListServiceMonitoringConfigurationsRequest {
+  /** The name of the service. */
+  serviceName: string;
+}
+export const ListServiceMonitoringConfigurationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/monitoringconfigurations",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListServiceMonitoringConfigurationsRequest",
+  }) as any as S.Schema<ListServiceMonitoringConfigurationsRequest>;
+
+/** The value returned by the operation. */
+export type ItemsValueList = Array<Item>;
+export const ItemsValueList = /*@__PURE__*/ S.Array(
+  Item,
+) as any as S.Schema<ItemsValueList>;
+
+/** The list of key value properties. */
+export interface Items {
+  /** The value returned by the operation. */
+  value?: ItemsValueList;
+}
+export const Items = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ItemsValueList),
+  }),
+).annotate({ identifier: "Items" }) as any as S.Schema<Items>;
+
+export interface ListServicePremiumRequest {
+  /** The service property filter to apply. */
+  _filter?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  serviceType?: string;
+  /** The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements. */
+  skipCount?: number;
+  /** The take count , which specifies the number of elements that can be returned from a sequence. */
+  takeCount?: number;
+}
+export const ListServicePremiumRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    serviceType: S.optional(S.String.pipe(T.Query())),
+    skipCount: S.optional(S.Number.pipe(T.Query())),
+    takeCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/premiumCheck",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServicePremiumRequest",
+}) as any as S.Schema<ListServicePremiumRequest>;
+
+export interface ListServicesRequest {
+  /** The service property filter to apply. */
+  _filter?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  serviceType?: string;
+  /** The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements. */
+  skipCount?: number;
+  /** The take count , which specifies the number of elements that can be returned from a sequence. */
+  takeCount?: number;
+}
+export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    serviceType: S.optional(S.String.pipe(T.Query())),
+    skipCount: S.optional(S.Number.pipe(T.Query())),
+    takeCount: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ADHybridHealthService/services",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServicesRequest",
+}) as any as S.Schema<ListServicesRequest>;
+
+export interface ListServiceUserBadPasswordReportRequest {
+  /** The name of the service. */
+  serviceName: string;
+  /** The source of data, if its test data or customer data. */
+  dataSource?: string;
+}
+export const ListServiceUserBadPasswordReportRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceName: S.String.pipe(T.Label()),
+      dataSource: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/badpassword/details/user",
+        code: 200,
+        apiVersion: "2014-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListServiceUserBadPasswordReportRequest",
+}) as any as S.Schema<ListServiceUserBadPasswordReportRequest>;
+
+/** The bad password login attempt details. */
+export interface ErrorReportUsersEntry {
+  /** The user ID value. */
+  userId?: string;
+  /** The IP address corresponding to the last error event. */
+  ipAddress?: string;
+  /** The date and time when the last error event was logged. */
+  lastUpdated?: string;
+  /** The list of unique IP addresses. */
+  uniqueIpAddresses?: string;
+  /** The total count of specific error events. */
+  totalErrorAttempts?: number;
+}
+export const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    userId: S.optional(S.String),
+    ipAddress: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    uniqueIpAddresses: S.optional(S.String),
+    totalErrorAttempts: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ErrorReportUsersEntry",
+}) as any as S.Schema<ErrorReportUsersEntry>;
+
+/** The value returned by the operation. */
+export type ErrorReportUsersEntriesValueList = Array<ErrorReportUsersEntry>;
+export const ErrorReportUsersEntriesValueList = /*@__PURE__*/ S.Array(
+  ErrorReportUsersEntry,
+) as any as S.Schema<ErrorReportUsersEntriesValueList>;
+
+/** The list of bad password log in attempt entries. */
+export interface ErrorReportUsersEntries {
+  /** The value returned by the operation. */
+  value?: ErrorReportUsersEntriesValueList;
+}
+export const ErrorReportUsersEntries = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ErrorReportUsersEntriesValueList),
+  }),
+).annotate({
+  identifier: "ErrorReportUsersEntries",
+}) as any as S.Schema<ErrorReportUsersEntries>;
+
+/** The monitoring level reported by the server. */
+export type ServiceMembersAddRequestServerReportedMonitoringLevel =
+  | "Partial"
+  | "Full"
+  | "Off";
+export const ServiceMembersAddRequestServerReportedMonitoringLevel =
+  /*@__PURE__*/ S.String;
+
+export interface ServiceMembersAddRequest {
+  /** The name of the service under which the server is to be onboarded. */
+  serviceName: string;
+  /** The id of the server. */
+  serviceMemberId?: string;
+  /** The service id to whom this server belongs. */
+  serviceId?: string;
+  /** The tenant id to whom this server belongs. */
+  tenantId?: string;
+  /** The total number of alerts that are currently active for the server. */
+  activeAlerts?: number;
+  /** The additional information, if any, for the server. */
+  additionalInformation?: string;
+  /** The date time , in UTC, when the server was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The server specific configuration related dimensions. */
+  dimensions?: unknown;
+  /** Indicates if the server is disabled or not. */
+  disabled?: boolean;
+  /** The reason for disabling the server. */
+  disabledReason?: number;
+  /** The list of installed QFEs for the server. */
+  installedQfes?: unknown;
+  /** The date and time , in UTC, when the server was last disabled. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the server was last rebooted. */
+  lastReboot?: string;
+  /** The date and time, in UTC, when the server's data monitoring configuration was last changed. */
+  lastServerReportedMonitoringLevelChange?: string;
+  /** The date and time, in UTC, when the server properties were last updated. */
+  lastUpdated?: string;
+  /** The id of the machine. */
+  machineId?: string;
+  /** The name of the server. */
+  machineName?: string;
+  /** The monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the server which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** The name of the operating system installed in the machine. */
+  osName?: string;
+  /** The version of the operating system installed in the machine. */
+  osVersion?: string;
+  /** Server specific properties. */
+  properties?: unknown;
+  /** The list of recommended hotfixes for the server. */
+  recommendedQfes?: unknown;
+  /** The total count of alerts that are resolved for this server. */
+  resolvedAlerts?: number;
+  /** The service role that is being monitored in the server. */
+  role?: string;
+  /** The monitoring level reported by the server. */
+  serverReportedMonitoringLevel?:
+    | ServiceMembersAddRequestServerReportedMonitoringLevel
+    | (string & {});
+  /** The health status of the server. */
+  status?: string;
+}
+export const ServiceMembersAddRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    serviceMemberId: S.optional(S.String),
+    serviceId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    dimensions: S.optional(S.Unknown),
+    disabled: S.optional(S.Boolean),
+    disabledReason: S.optional(S.Number),
+    installedQfes: S.optional(S.Unknown),
+    lastDisabled: S.optional(S.String),
+    lastReboot: S.optional(S.String),
+    lastServerReportedMonitoringLevelChange: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    machineId: S.optional(S.String),
+    machineName: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    osName: S.optional(S.String),
+    osVersion: S.optional(S.String),
+    properties: S.optional(S.Unknown),
+    recommendedQfes: S.optional(S.Unknown),
+    resolvedAlerts: S.optional(S.Number),
+    role: S.optional(S.String),
+    serverReportedMonitoringLevel: S.optional(
+      ServiceMembersAddRequestServerReportedMonitoringLevel,
+    ),
+    status: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/servicemembers",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "ServiceMembersAddRequest",
+}) as any as S.Schema<ServiceMembersAddRequest>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type ServicesAddRequestCustomNotificationEmailsList = Array<string>;
@@ -3761,813 +4367,240 @@ export const ServicesAddAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServicesAddAlertFeedbackRequest",
 }) as any as S.Schema<ServicesAddAlertFeedbackRequest>;
 
-/** The alert feedback details. */
-export interface AlertFeedback {
-  /** The alert level which indicates the severity of the alert. */
-  level?: string;
-  /** The alert state which can be either active or resolved with multiple resolution types. */
-  state?: string;
-  /** The alert short name. */
-  shortName?: string;
-  /** The feedback for the alert which indicates if the customer likes or dislikes the alert. */
-  feedback?: string;
-  /** Additional comments related to the alert. */
-  comment?: string;
-  /** Indicates if the alert feedback can be shared from product team. */
-  consentedToShare?: boolean;
-  /** The server Id of the alert. */
-  serviceMemberId?: string;
-  /** The date and time,in UTC,when the alert was created. */
-  createdDate?: string;
-}
-export const AlertFeedback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    level: S.optional(S.String),
-    state: S.optional(S.String),
-    shortName: S.optional(S.String),
-    feedback: S.optional(S.String),
-    comment: S.optional(S.String),
-    consentedToShare: S.optional(S.Boolean),
-    serviceMemberId: S.optional(S.String),
-    createdDate: S.optional(S.String),
-  }),
-).annotate({ identifier: "AlertFeedback" }) as any as S.Schema<AlertFeedback>;
+/** The list of additional emails that are configured to receive notifications about the service. */
+export type AddsServicesUpdateRequestCustomNotificationEmailsList =
+  Array<string>;
+export const AddsServicesUpdateRequestCustomNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesUpdateRequestCustomNotificationEmailsList>;
 
-export interface ServicesDeleteRequest {
+/** The list of emails to whom service notifications will be sent. */
+export type AddsServicesUpdateRequestNotificationEmailsList = Array<string>;
+export const AddsServicesUpdateRequestNotificationEmailsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AddsServicesUpdateRequestNotificationEmailsList>;
+
+export interface UpdateAddServiceRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
-  /** Indicates if the service will be permanently deleted or disabled. True indicates that the service will be permanently deleted and False indicates that the service will be marked disabled and then deleted after 30 days, if it is not re-registered. */
-  confirm?: boolean;
-}
-export const ServicesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    confirm: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesDeleteRequest",
-}) as any as S.Schema<ServicesDeleteRequest>;
-
-export interface ServicesDeleteResponse {}
-export const ServicesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ServicesDeleteResponse",
-}) as any as S.Schema<ServicesDeleteResponse>;
-
-export interface ServicesGetRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesGetRequest",
-}) as any as S.Schema<ServicesGetRequest>;
-
-export interface ServicesGetFeatureAvailibilityRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The name of the feature. */
-  featureName: string;
-}
-export const ServicesGetFeatureAvailibilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      featureName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/checkServiceFeatureAvailibility/{featureName}",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "ServicesGetFeatureAvailibilityRequest",
-}) as any as S.Schema<ServicesGetFeatureAvailibilityRequest>;
-
-export interface ServicesGetMetricMetadataRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-}
-export const ServicesGetMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    metricName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesGetMetricMetadataRequest",
-}) as any as S.Schema<ServicesGetMetricMetadataRequest>;
-
-export interface ServicesGetMetricMetadataForGroupRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-  /** The group key */
-  groupKey?: string;
-  /** The start date. */
-  fromDate?: string;
-  /** The end date. */
-  toDate?: string;
-}
-export const ServicesGetMetricMetadataForGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      metricName: S.String.pipe(T.Label()),
-      groupName: S.String.pipe(T.Label()),
-      groupKey: S.optional(S.String.pipe(T.Query())),
-      fromDate: S.optional(S.String.pipe(T.Query())),
-      toDate: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata/{metricName}/groups/{groupName}",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "ServicesGetMetricMetadataForGroupRequest",
-}) as any as S.Schema<ServicesGetMetricMetadataForGroupRequest>;
-
-export interface ServicesGetTenantWhitelistingRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The name of the feature. */
-  featureName: string;
-}
-export const ServicesGetTenantWhitelistingRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      featureName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/TenantWhitelisting/{featureName}",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "ServicesGetTenantWhitelistingRequest",
-}) as any as S.Schema<ServicesGetTenantWhitelistingRequest>;
-
-export interface ServicesListRequest {
-  /** The service property filter to apply. */
-  _filter?: string;
-  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
-  serviceType?: string;
-  /** The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements. */
-  skipCount?: number;
-  /** The take count , which specifies the number of elements that can be returned from a sequence. */
-  takeCount?: number;
-}
-export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    serviceType: S.optional(S.String.pipe(T.Query())),
-    skipCount: S.optional(S.Number.pipe(T.Query())),
-    takeCount: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListRequest",
-}) as any as S.Schema<ServicesListRequest>;
-
-export interface ServicesListAlertFeedbackRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The name of the alert. */
-  shortName: string;
-}
-export const ServicesListAlertFeedbackRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    shortName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/feedbacktype/alerts/{shortName}/alertfeedback",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListAlertFeedbackRequest",
-}) as any as S.Schema<ServicesListAlertFeedbackRequest>;
-
-/** The value returned by the operation. */
-export type AlertFeedbacksValueList = Array<AlertFeedback>;
-export const AlertFeedbacksValueList = /*@__PURE__*/ S.Array(
-  AlertFeedback,
-) as any as S.Schema<AlertFeedbacksValueList>;
-
-/** The list of alert feedback. */
-export interface AlertFeedbacks {
-  /** The value returned by the operation. */
-  value?: AlertFeedbacksValueList;
-}
-export const AlertFeedbacks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(AlertFeedbacksValueList),
-  }),
-).annotate({ identifier: "AlertFeedbacks" }) as any as S.Schema<AlertFeedbacks>;
-
-export interface ServicesListAlertsRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The alert property filter to apply. */
-  _filter?: string;
-  /** The alert state to query for. */
-  state?: string;
-  /** The start date to query for. */
-  from?: string;
-  /** The end date till when to query for. */
-  to?: string;
-}
-export const ServicesListAlertsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    state: S.optional(S.String.pipe(T.Query())),
-    from: S.optional(S.String.pipe(T.Query())),
-    to: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/alerts",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListAlertsRequest",
-}) as any as S.Schema<ServicesListAlertsRequest>;
-
-export interface ServicesListAllRiskyIpDownloadReportRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const ServicesListAllRiskyIpDownloadReportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/blobUris",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServicesListAllRiskyIpDownloadReportRequest",
-  }) as any as S.Schema<ServicesListAllRiskyIpDownloadReportRequest>;
-
-/** The blob uri pointing to Risky IP Report. */
-export interface RiskyIPBlobUri {
-  /** The tenant id for whom the report belongs to. */
-  tenantId?: string;
-  /** The service id for whom the report belongs to. */
+  /** The id of the service. */
+  id?: string;
+  /** The count of alerts that are currently active for the service. */
+  activeAlerts?: number;
+  /** The additional information related to the service. */
+  additionalInformation?: string;
+  /** The date and time, in UTC, when the service was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The list of additional emails that are configured to receive notifications about the service. */
+  customNotificationEmails?: AddsServicesUpdateRequestCustomNotificationEmailsList;
+  /** Indicates if the service is disabled or not. */
+  disabled?: boolean;
+  /** The display name of the service. */
+  displayName?: string;
+  /** The health of the service. */
+  health?: string;
+  /** The date and time, in UTC, when the service was last disabled. */
+  lastDisabled?: string;
+  /** The date or time , in UTC, when the service properties were last updated. */
+  lastUpdated?: string;
+  /** The monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsComputed?: unknown;
+  /** The customized monitoring configuration of the service which determines what activities are monitored by Azure Active Directory Connect Health. */
+  monitoringConfigurationsCustomized?: unknown;
+  /** Indicates if email notification is enabled or not. */
+  notificationEmailEnabled?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailEnabledForGlobalAdmins?: boolean;
+  /** Indicates if email notification is enabled for global administrators of the tenant. */
+  notificationEmailsEnabledForGlobalAdmins?: boolean;
+  /** The list of emails to whom service notifications will be sent. */
+  notificationEmails?: AddsServicesUpdateRequestNotificationEmailsList;
+  /** Gets the original disable state. */
+  originalDisabledState?: boolean;
+  /** The total count of alerts that has been resolved for the service. */
+  resolvedAlerts?: number;
+  /** The id of the service. */
   serviceId?: string;
-  /** The blob uri for the report. */
-  resultSasUri?: string;
-  /** Time at which the new Risky IP report was requested. */
-  blobCreateDateTime?: string;
-  /** Time at which the blob creation job for the new Risky IP report was completed. */
-  jobCompletionTime?: string;
-  /** Status of the Risky IP report generation. */
-  status?: string;
+  /** The signature of the service. */
+  signature?: string;
+  /** List of service specific configuration properties. */
+  simpleProperties?: unknown;
+  /** The id of the tenant to which the service is registered to. */
+  tenantId?: string;
+  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
+  type?: string;
 }
-export const RiskyIPBlobUri = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAddServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    id: S.optional(S.String),
+    activeAlerts: S.optional(S.Number),
+    additionalInformation: S.optional(S.String),
+    createdDate: S.optional(S.String),
+    customNotificationEmails: S.optional(
+      AddsServicesUpdateRequestCustomNotificationEmailsList,
+    ),
+    disabled: S.optional(S.Boolean),
+    displayName: S.optional(S.String),
+    health: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastUpdated: S.optional(S.String),
+    monitoringConfigurationsComputed: S.optional(S.Unknown),
+    monitoringConfigurationsCustomized: S.optional(S.Unknown),
+    notificationEmailEnabled: S.optional(S.Boolean),
+    notificationEmailEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmailsEnabledForGlobalAdmins: S.optional(S.Boolean),
+    notificationEmails: S.optional(
+      AddsServicesUpdateRequestNotificationEmailsList,
+    ),
+    originalDisabledState: S.optional(S.Boolean),
+    resolvedAlerts: S.optional(S.Number),
+    serviceId: S.optional(S.String),
+    signature: S.optional(S.String),
+    simpleProperties: S.optional(S.Unknown),
+    tenantId: S.optional(S.String),
+    type: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/providers/Microsoft.ADHybridHealthService/addsservices/{serviceName}",
+      code: 200,
+      apiVersion: "2014-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAddServiceRequest",
+}) as any as S.Schema<UpdateAddServiceRequest>;
+
+/** The list of global administrators for the tenant. */
+export type ConfigurationUpdateRequestGlobalAdminsEmailList = Array<string>;
+export const ConfigurationUpdateRequestGlobalAdminsEmailList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigurationUpdateRequestGlobalAdminsEmailList>;
+
+export interface UpdateConfigurationRequest {
+  /** The Id of the tenant. */
+  tenantId?: string;
+  /** The Azure Active Directory license of the tenant. */
+  aadLicense?: string;
+  /** Indicate if the tenant has Azure Active Directory Premium license or not. */
+  aadPremium?: boolean;
+  /** Indicates if the tenant is configured to automatically receive updates for Azure Active Directory Connect Health client side features. */
+  agentAutoUpdate?: boolean;
+  /** The time in minutes after which an alert will be auto-suppressed. */
+  alertSuppressionTimeInMins?: number;
+  /** Indicates if the tenant data can be seen by Microsoft through Azure portal. */
+  consentedToMicrosoftDevOps?: boolean;
+  /** The country letter code of the tenant. */
+  countryLetterCode?: string;
+  /** The date, in UTC, when the tenant was onboarded to Azure Active Directory Connect Health. */
+  createdDate?: string;
+  /** The date and time, in UTC, till when the tenant data can be seen by Microsoft through Azure portal. */
+  devOpsTtl?: string;
+  /** Indicates if the tenant is disabled in Azure Active Directory Connect Health. */
+  disabled?: boolean;
+  /** The reason due to which the tenant was disabled in Azure Active Directory Connect Health. */
+  disabledReason?: number;
+  /** The list of global administrators for the tenant. */
+  globalAdminsEmail?: ConfigurationUpdateRequestGlobalAdminsEmailList;
+  /** The initial domain of the tenant. */
+  initialDomain?: string;
+  /** The date and time, in UTC, when the tenant was last disabled in Azure Active Directory Connect Health. */
+  lastDisabled?: string;
+  /** The date and time, in UTC, when the tenant onboarding status in Azure Active Directory Connect Health was last verified. */
+  lastVerified?: string;
+  /** Indicates if the tenant is allowed to onboard to Azure Active Directory Connect Health. */
+  onboardingAllowed?: boolean;
+  /** Indicates if the tenant is already onboarded to Azure Active Directory Connect Health. */
+  onboarded?: boolean;
+  /** The certificate associated with the tenant to onboard data to Azure Active Directory Connect Health. */
+  pksCertificate?: unknown;
+  /** Indicates if the tenant has signed up for private preview of Azure Active Directory Connect Health features. */
+  privatePreviewTenant?: boolean;
+  /** Indicates if data collection for this tenant is disabled or not. */
+  tenantInQuarantine?: boolean;
+  /** The name of the tenant. */
+  tenantName?: string;
+}
+export const UpdateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantId: S.optional(S.String),
-    serviceId: S.optional(S.String),
-    resultSasUri: S.optional(S.String),
-    blobCreateDateTime: S.optional(S.String),
-    jobCompletionTime: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
-).annotate({ identifier: "RiskyIPBlobUri" }) as any as S.Schema<RiskyIPBlobUri>;
-
-/** The list of blob uris. */
-export type RiskyIPBlobUrisValueList = Array<RiskyIPBlobUri>;
-export const RiskyIPBlobUrisValueList = /*@__PURE__*/ S.Array(
-  RiskyIPBlobUri,
-) as any as S.Schema<RiskyIPBlobUrisValueList>;
-
-/** The list containing blob uris. */
-export interface RiskyIPBlobUris {
-  /** The list of blob uris. */
-  value?: RiskyIPBlobUrisValueList;
-}
-export const RiskyIPBlobUris = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(RiskyIPBlobUrisValueList),
-  }),
-).annotate({
-  identifier: "RiskyIPBlobUris",
-}) as any as S.Schema<RiskyIPBlobUris>;
-
-export interface ServicesListCurrentRiskyIpDownloadReportRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const ServicesListCurrentRiskyIpDownloadReportRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/riskyIp/generateBlobUri",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ServicesListCurrentRiskyIpDownloadReportRequest",
-  }) as any as S.Schema<ServicesListCurrentRiskyIpDownloadReportRequest>;
-
-export interface ServicesListExportErrorsRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const ServicesListExportErrorsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/counts",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListExportErrorsRequest",
-}) as any as S.Schema<ServicesListExportErrorsRequest>;
-
-/** The error count details. */
-export interface ErrorCount {
-  /** The error bucket. */
-  errorBucket?: string;
-  /** The error count. */
-  count?: number;
-  /** Indicates if the error count is truncated or not. */
-  truncated?: boolean;
-}
-export const ErrorCount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    errorBucket: S.optional(S.String),
-    count: S.optional(S.Number),
-    truncated: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "ErrorCount" }) as any as S.Schema<ErrorCount>;
-
-/** The value returned by the operation. */
-export type ErrorCountsValueList = Array<ErrorCount>;
-export const ErrorCountsValueList = /*@__PURE__*/ S.Array(
-  ErrorCount,
-) as any as S.Schema<ErrorCountsValueList>;
-
-/** The list of error counts. */
-export interface ErrorCounts {
-  /** The value returned by the operation. */
-  value?: ErrorCountsValueList;
-}
-export const ErrorCounts = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ErrorCountsValueList),
-  }),
-).annotate({ identifier: "ErrorCounts" }) as any as S.Schema<ErrorCounts>;
-
-export interface ServicesListExportErrorsV2Request {
-  /** The name of the service. */
-  serviceName: string;
-  /** The error category to query for. */
-  errorBucket: string;
-}
-export const ServicesListExportErrorsV2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    errorBucket: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exporterrors/listV2",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListExportErrorsV2Request",
-}) as any as S.Schema<ServicesListExportErrorsV2Request>;
-
-/** Object that hold sync object details. */
-export interface AssociatedObject {
-  /** The display name of the object. */
-  displayName?: string;
-  /** The distinguished name of the object. */
-  distinguishedName?: string;
-  /** The last dirSync time. */
-  lastDirSyncTime?: string;
-  /** The email of the object. */
-  mail?: string;
-  /** The object guid. */
-  objectGuid?: string;
-  /** The object type. */
-  objectType?: string;
-  /** The On-premises UPN. */
-  onpremisesUserPrincipalName?: string;
-  /** The proxy addresses. */
-  proxyAddresses?: string;
-  /** The source anchor. */
-  sourceAnchor?: string;
-  /** The source of authority. */
-  sourceOfAuthority?: string;
-  /** The time of the error. */
-  timeOccurred?: string;
-  /** The UPN. */
-  userPrincipalName?: string;
-}
-export const AssociatedObject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    distinguishedName: S.optional(S.String),
-    lastDirSyncTime: S.optional(S.String),
-    mail: S.optional(S.String),
-    objectGuid: S.optional(S.String),
-    objectType: S.optional(S.String),
-    onpremisesUserPrincipalName: S.optional(S.String),
-    proxyAddresses: S.optional(S.String),
-    sourceAnchor: S.optional(S.String),
-    sourceOfAuthority: S.optional(S.String),
-    timeOccurred: S.optional(S.String),
-    userPrincipalName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AssociatedObject",
-}) as any as S.Schema<AssociatedObject>;
-
-/** The merged export error. */
-export interface MergedExportError {
-  /** The error Id. */
-  id?: string;
-  /** The incoming object display name. */
-  incomingObjectDisplayName?: string;
-  /** The incoming object type. */
-  incomingObjectType?: string;
-  /** The user principal name */
-  userPrincipalName?: string;
-  /** The type of the error. */
-  type?: string;
-  /** The attribute name. */
-  attributeName?: string;
-  /** The attribute value. */
-  attributeValue?: string;
-  /** The date and time when the error occurred. */
-  timeOccurred?: string;
-  /** The time when the error first occurred. */
-  timeFirstOccurred?: string;
-  /** the cs object Id. */
-  csObjectId?: string;
-  /** the DN of the object. */
-  dn?: string;
-  /** The incoming object details. */
-  incomingObject?: AssociatedObject;
-  /** The existing object */
-  existingObject?: AssociatedObject;
-  /** The modified or removed attribute value. */
-  modifiedOrRemovedAttributeValue?: string;
-  /** The run step result Id. */
-  runStepResultId?: string;
-  /** The sam account name. */
-  samAccountName?: string;
-  /** The server error details. */
-  serverErrorDetail?: string;
-  /** The service Id. */
-  serviceId?: string;
-  /** The server Id. */
-  serviceMemberId?: string;
-  /** The merged entity Id. */
-  mergedEntityId?: string;
-  /** The date and time, in UTC, when the error was created. */
-  createdDate?: string;
-  /** The export error status. */
-  exportErrorStatus?: number;
-}
-export const MergedExportError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    incomingObjectDisplayName: S.optional(S.String),
-    incomingObjectType: S.optional(S.String),
-    userPrincipalName: S.optional(S.String),
-    type: S.optional(S.String),
-    attributeName: S.optional(S.String),
-    attributeValue: S.optional(S.String),
-    timeOccurred: S.optional(S.String),
-    timeFirstOccurred: S.optional(S.String),
-    csObjectId: S.optional(S.String),
-    dn: S.optional(S.String),
-    incomingObject: S.optional(AssociatedObject),
-    existingObject: S.optional(AssociatedObject),
-    modifiedOrRemovedAttributeValue: S.optional(S.String),
-    runStepResultId: S.optional(S.String),
-    samAccountName: S.optional(S.String),
-    serverErrorDetail: S.optional(S.String),
-    serviceId: S.optional(S.String),
-    serviceMemberId: S.optional(S.String),
-    mergedEntityId: S.optional(S.String),
+    aadLicense: S.optional(S.String),
+    aadPremium: S.optional(S.Boolean),
+    agentAutoUpdate: S.optional(S.Boolean),
+    alertSuppressionTimeInMins: S.optional(S.Number),
+    consentedToMicrosoftDevOps: S.optional(S.Boolean),
+    countryLetterCode: S.optional(S.String),
     createdDate: S.optional(S.String),
-    exportErrorStatus: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MergedExportError",
-}) as any as S.Schema<MergedExportError>;
-
-/** The value returned by the operation. */
-export type MergedExportErrorsValueList = Array<MergedExportError>;
-export const MergedExportErrorsValueList = /*@__PURE__*/ S.Array(
-  MergedExportError,
-) as any as S.Schema<MergedExportErrorsValueList>;
-
-/** The list of export errors. */
-export interface MergedExportErrors {
-  /** The value returned by the operation. */
-  value?: MergedExportErrorsValueList;
-}
-export const MergedExportErrors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MergedExportErrorsValueList),
-  }),
-).annotate({
-  identifier: "MergedExportErrors",
-}) as any as S.Schema<MergedExportErrors>;
-
-export interface ServicesListExportStatusRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const ServicesListExportStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/exportstatus",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListExportStatusRequest",
-}) as any as S.Schema<ServicesListExportStatusRequest>;
-
-export interface ServicesListMetricMetadataRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric metadata property filter to apply. */
-  _filter?: string;
-  /** Indicates if only performance counter metrics are requested. */
-  perfCounter?: boolean;
-}
-export const ServicesListMetricMetadataRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    perfCounter: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metricmetadata",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListMetricMetadataRequest",
-}) as any as S.Schema<ServicesListMetricMetadataRequest>;
-
-export interface ServicesListMetricsAverageRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-}
-export const ServicesListMetricsAverageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    metricName: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/average",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListMetricsAverageRequest",
-}) as any as S.Schema<ServicesListMetricsAverageRequest>;
-
-export interface ServicesListMetricsSumRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** The metric name */
-  metricName: string;
-  /** The group name */
-  groupName: string;
-}
-export const ServicesListMetricsSumRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    metricName: S.String.pipe(T.Label()),
-    groupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/metrics/{metricName}/groups/{groupName}/sum",
-      code: 200,
-      apiVersion: "2014-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListMetricsSumRequest",
-}) as any as S.Schema<ServicesListMetricsSumRequest>;
-
-export interface ServicesListMonitoringConfigurationsRequest {
-  /** The name of the service. */
-  serviceName: string;
-}
-export const ServicesListMonitoringConfigurationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/monitoringconfigurations",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
+    devOpsTtl: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+    disabledReason: S.optional(S.Number),
+    globalAdminsEmail: S.optional(
+      ConfigurationUpdateRequestGlobalAdminsEmailList,
     ),
-  ).annotate({
-    identifier: "ServicesListMonitoringConfigurationsRequest",
-  }) as any as S.Schema<ServicesListMonitoringConfigurationsRequest>;
-
-/** The value returned by the operation. */
-export type ItemsValueList = Array<Item>;
-export const ItemsValueList = /*@__PURE__*/ S.Array(
-  Item,
-) as any as S.Schema<ItemsValueList>;
-
-/** The list of key value properties. */
-export interface Items {
-  /** The value returned by the operation. */
-  value?: ItemsValueList;
-}
-export const Items = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ItemsValueList),
-  }),
-).annotate({ identifier: "Items" }) as any as S.Schema<Items>;
-
-export interface ServicesListPremiumRequest {
-  /** The service property filter to apply. */
-  _filter?: string;
-  /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
-  serviceType?: string;
-  /** The skip count, which specifies the number of elements that can be bypassed from a sequence and then return the remaining elements. */
-  skipCount?: number;
-  /** The take count , which specifies the number of elements that can be returned from a sequence. */
-  takeCount?: number;
-}
-export const ServicesListPremiumRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    serviceType: S.optional(S.String.pipe(T.Query())),
-    skipCount: S.optional(S.Number.pipe(T.Query())),
-    takeCount: S.optional(S.Number.pipe(T.Query())),
+    initialDomain: S.optional(S.String),
+    lastDisabled: S.optional(S.String),
+    lastVerified: S.optional(S.String),
+    onboardingAllowed: S.optional(S.Boolean),
+    onboarded: S.optional(S.Boolean),
+    pksCertificate: S.optional(S.Unknown),
+    privatePreviewTenant: S.optional(S.Boolean),
+    tenantInQuarantine: S.optional(S.Boolean),
+    tenantName: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ADHybridHealthService/services/premiumCheck",
+      method: "PATCH",
+      uri: "/providers/Microsoft.ADHybridHealthService/configuration",
       code: 200,
       apiVersion: "2014-01-01",
     }),
   ),
 ).annotate({
-  identifier: "ServicesListPremiumRequest",
-}) as any as S.Schema<ServicesListPremiumRequest>;
+  identifier: "UpdateConfigurationRequest",
+}) as any as S.Schema<UpdateConfigurationRequest>;
 
-export interface ServicesListUserBadPasswordReportRequest {
+export interface UpdateIpAddressAggregateSettingsRequest {
   /** The name of the service. */
   serviceName: string;
-  /** The source of data, if its test data or customer data. */
-  dataSource?: string;
+  /** Unique ID for the entree */
+  id?: string;
+  /** This threshold setting defines the per day trigger for a new event to be generated in the report. */
+  badPasswordAndExtranetLockoutCombinedDailyThreshold?: number;
+  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
+  badPasswordAndExtranetLockoutCombinedHourlyThreshold?: number;
+  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
+  extranetLockoutDailyThreshold?: number;
+  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
+  extranetLockoutHourlyThreshold?: number;
+  /** A value indicating whether email notification has been enabled. */
+  emailNotificationEnabled?: boolean;
 }
-export const ServicesListUserBadPasswordReportRequest = /*@__PURE__*/ S.suspend(
+export const UpdateIpAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
-      dataSource: S.optional(S.String.pipe(T.Query())),
+      id: S.optional(S.String),
+      badPasswordAndExtranetLockoutCombinedDailyThreshold: S.optional(S.Number),
+      badPasswordAndExtranetLockoutCombinedHourlyThreshold: S.optional(
+        S.Number,
+      ),
+      extranetLockoutDailyThreshold: S.optional(S.Number),
+      extranetLockoutHourlyThreshold: S.optional(S.Number),
+      emailNotificationEnabled: S.optional(S.Boolean),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/reports/badpassword/details/user",
+        method: "PATCH",
+        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
         code: 200,
         apiVersion: "2014-01-01",
       }),
     ),
 ).annotate({
-  identifier: "ServicesListUserBadPasswordReportRequest",
-}) as any as S.Schema<ServicesListUserBadPasswordReportRequest>;
-
-/** The bad password login attempt details. */
-export interface ErrorReportUsersEntry {
-  /** The user ID value. */
-  userId?: string;
-  /** The IP address corresponding to the last error event. */
-  ipAddress?: string;
-  /** The date and time when the last error event was logged. */
-  lastUpdated?: string;
-  /** The list of unique IP addresses. */
-  uniqueIpAddresses?: string;
-  /** The total count of specific error events. */
-  totalErrorAttempts?: number;
-}
-export const ErrorReportUsersEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    userId: S.optional(S.String),
-    ipAddress: S.optional(S.String),
-    lastUpdated: S.optional(S.String),
-    uniqueIpAddresses: S.optional(S.String),
-    totalErrorAttempts: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ErrorReportUsersEntry",
-}) as any as S.Schema<ErrorReportUsersEntry>;
-
-/** The value returned by the operation. */
-export type ErrorReportUsersEntriesValueList = Array<ErrorReportUsersEntry>;
-export const ErrorReportUsersEntriesValueList = /*@__PURE__*/ S.Array(
-  ErrorReportUsersEntry,
-) as any as S.Schema<ErrorReportUsersEntriesValueList>;
-
-/** The list of bad password log in attempt entries. */
-export interface ErrorReportUsersEntries {
-  /** The value returned by the operation. */
-  value?: ErrorReportUsersEntriesValueList;
-}
-export const ErrorReportUsersEntries = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ErrorReportUsersEntriesValueList),
-  }),
-).annotate({
-  identifier: "ErrorReportUsersEntries",
-}) as any as S.Schema<ErrorReportUsersEntries>;
+  identifier: "UpdateIpAddressAggregateSettingsRequest",
+}) as any as S.Schema<UpdateIpAddressAggregateSettingsRequest>;
 
 /** The list of additional emails that are configured to receive notifications about the service. */
 export type ServicesUpdateRequestCustomNotificationEmailsList = Array<string>;
@@ -4583,7 +4616,7 @@ export const ServicesUpdateRequestNotificationEmailsList =
     S.String,
   ) as any as S.Schema<ServicesUpdateRequestNotificationEmailsList>;
 
-export interface ServicesUpdateRequest {
+export interface UpdateServiceRequest {
   /** The name of the service which needs to be deleted. */
   serviceName: string;
   /** The id of the service. */
@@ -4633,7 +4666,7 @@ export interface ServicesUpdateRequest {
   /** The service type for the services onboarded to Azure Active Directory Connect Health. Depending on whether the service is monitoring, ADFS, Sync or ADDS roles, the service type can either be AdFederationService or AadSyncService or AdDomainService. */
   type?: string;
 }
-export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     serviceName: S.String.pipe(T.Label()),
     id: S.optional(S.String),
@@ -4670,10 +4703,10 @@ export const ServicesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ServicesUpdateRequest",
-}) as any as S.Schema<ServicesUpdateRequest>;
+  identifier: "UpdateServiceRequest",
+}) as any as S.Schema<UpdateServiceRequest>;
 
-export interface ServicesUpdateMonitoringConfigurationRequest {
+export interface UpdateServiceMonitoringConfigurationRequest {
   /** The name of the service. */
   serviceName: string;
   /** The key for the property. */
@@ -4681,7 +4714,7 @@ export interface ServicesUpdateMonitoringConfigurationRequest {
   /** The value for the key. */
   value?: string;
 }
-export const ServicesUpdateMonitoringConfigurationRequest =
+export const UpdateServiceMonitoringConfigurationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       serviceName: S.String.pipe(T.Label()),
@@ -4696,144 +4729,14 @@ export const ServicesUpdateMonitoringConfigurationRequest =
       }),
     ),
   ).annotate({
-    identifier: "ServicesUpdateMonitoringConfigurationRequest",
-  }) as any as S.Schema<ServicesUpdateMonitoringConfigurationRequest>;
+    identifier: "UpdateServiceMonitoringConfigurationRequest",
+  }) as any as S.Schema<UpdateServiceMonitoringConfigurationRequest>;
 
-export interface ServicesUpdateMonitoringConfigurationResponse {}
-export const ServicesUpdateMonitoringConfigurationResponse =
+export interface UpdateServiceMonitoringConfigurationResponse {}
+export const UpdateServiceMonitoringConfigurationResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ServicesUpdateMonitoringConfigurationResponse",
-  }) as any as S.Schema<ServicesUpdateMonitoringConfigurationResponse>;
-
-export interface UpdateIPAddressAggregateSettingsRequest {
-  /** The name of the service. */
-  serviceName: string;
-  /** Unique ID for the entree */
-  id?: string;
-  /** This threshold setting defines the per day trigger for a new event to be generated in the report. */
-  badPasswordAndExtranetLockoutCombinedDailyThreshold?: number;
-  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
-  badPasswordAndExtranetLockoutCombinedHourlyThreshold?: number;
-  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
-  extranetLockoutDailyThreshold?: number;
-  /** This threshold setting defines the per hour trigger for a new event to be generated in the report. */
-  extranetLockoutHourlyThreshold?: number;
-  /** A value indicating whether email notification has been enabled. */
-  emailNotificationEnabled?: boolean;
-}
-export const UpdateIPAddressAggregateSettingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceName: S.String.pipe(T.Label()),
-      id: S.optional(S.String),
-      badPasswordAndExtranetLockoutCombinedDailyThreshold: S.optional(S.Number),
-      badPasswordAndExtranetLockoutCombinedHourlyThreshold: S.optional(
-        S.Number,
-      ),
-      extranetLockoutDailyThreshold: S.optional(S.Number),
-      extranetLockoutHourlyThreshold: S.optional(S.Number),
-      emailNotificationEnabled: S.optional(S.Boolean),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/providers/Microsoft.ADHybridHealthService/services/{serviceName}/ipAddressAggregateSettings",
-        code: 200,
-        apiVersion: "2014-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "UpdateIPAddressAggregateSettingsRequest",
-}) as any as S.Schema<UpdateIPAddressAggregateSettingsRequest>;
-
-export type AdDomainServiceMembersListError = AzureOpError;
-/** Gets the details of the servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health. */
-export const AdDomainServiceMembersList: API.OperationMethod<
-  AdDomainServiceMembersListRequest,
-  AddsServiceMembers,
-  AdDomainServiceMembersListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AdDomainServiceMembersListRequest,
-  output: AddsServiceMembers,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServiceGetMetricsError = AzureOpError;
-/** Gets the server related metrics for a given metric and group combination. */
-export const AddsServiceGetMetrics: API.OperationMethod<
-  AddsServiceGetMetricsRequest,
-  MetricSets,
-  AddsServiceGetMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServiceGetMetricsRequest,
-  output: MetricSets,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServiceMembersDeleteError = AzureOpError;
-/** Deletes a Active Directory Domain Controller server that has been onboarded to Azure Active Directory Connect Health Service. */
-export const AddsServiceMembersDelete: API.OperationMethod<
-  AddsServiceMembersDeleteRequest,
-  AddsServiceMembersDeleteResponse,
-  AddsServiceMembersDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServiceMembersDeleteRequest,
-  output: AddsServiceMembersDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServiceMembersGetError = AzureOpError;
-/** Gets the details of a server, for a given Active Directory Domain Controller service, that are onboarded to Azure Active Directory Connect Health Service. */
-export const AddsServiceMembersGet: API.OperationMethod<
-  AddsServiceMembersGetRequest,
-  ServiceMember,
-  AddsServiceMembersGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServiceMembersGetRequest,
-  output: ServiceMember,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServiceMembersListError = AzureOpError;
-/** Gets the details of the Active Directory Domain servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health. */
-export const AddsServiceMembersList: API.OperationMethod<
-  AddsServiceMembersListRequest,
-  AddsServiceMembers,
-  AddsServiceMembersListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServiceMembersListRequest,
-  output: AddsServiceMembers,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServiceMembersListCredentialsError = AzureOpError;
-/** Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service. */
-export const AddsServiceMembersListCredentials: API.OperationMethod<
-  AddsServiceMembersListCredentialsRequest,
-  Credentials,
-  AddsServiceMembersListCredentialsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServiceMembersListCredentialsRequest,
-  output: Credentials,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+    identifier: "UpdateServiceMonitoringConfigurationResponse",
+  }) as any as S.Schema<UpdateServiceMonitoringConfigurationResponse>;
 
 export type AddsServicesAddError = AzureOpError;
 /** Onboards a service for a given tenant in Azure Active Directory Connect Health. */
@@ -4845,216 +4748,6 @@ export const AddsServicesAdd: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AddsServicesAddRequest,
   output: ServiceProperties,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesDeleteError = AzureOpError;
-/** Deletes an Active Directory Domain Service which is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesDelete: API.OperationMethod<
-  AddsServicesDeleteRequest,
-  AddsServicesDeleteResponse,
-  AddsServicesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesDeleteRequest,
-  output: AddsServicesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesGetError = AzureOpError;
-/** Gets the details of an Active Directory Domain Service for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesGet: API.OperationMethod<
-  AddsServicesGetRequest,
-  ServiceProperties,
-  AddsServicesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesGetRequest,
-  output: ServiceProperties,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesGetForestSummaryError = AzureOpError;
-/** Gets the forest summary for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesGetForestSummary: API.OperationMethod<
-  AddsServicesGetForestSummaryRequest,
-  ForestSummary,
-  AddsServicesGetForestSummaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesGetForestSummaryRequest,
-  output: ForestSummary,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesGetMetricMetadataError = AzureOpError;
-/** Gets the service related metric information. */
-export const AddsServicesGetMetricMetadata: API.OperationMethod<
-  AddsServicesGetMetricMetadataRequest,
-  MetricMetadata,
-  AddsServicesGetMetricMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesGetMetricMetadataRequest,
-  output: MetricMetadata,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesGetMetricMetadataForGroupError = AzureOpError;
-/** Gets the service related metrics for a given metric and group combination. */
-export const AddsServicesGetMetricMetadataForGroup: API.OperationMethod<
-  AddsServicesGetMetricMetadataForGroupRequest,
-  MetricSets,
-  AddsServicesGetMetricMetadataForGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesGetMetricMetadataForGroupRequest,
-  output: MetricSets,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListError = AzureOpError;
-/** Gets the details of Active Directory Domain Service, for a tenant, that are onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesList: API.OperationMethod<
-  AddsServicesListRequest,
-  Services,
-  AddsServicesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListRequest,
-  output: Services,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListMetricMetadataError = AzureOpError;
-/** Gets the service related metrics information. */
-export const AddsServicesListMetricMetadata: API.OperationMethod<
-  AddsServicesListMetricMetadataRequest,
-  MetricMetadataList,
-  AddsServicesListMetricMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListMetricMetadataRequest,
-  output: MetricMetadataList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListMetricsAverageError = AzureOpError;
-/** Gets the average of the metric values for a given metric and group combination. */
-export const AddsServicesListMetricsAverage: API.OperationMethod<
-  AddsServicesListMetricsAverageRequest,
-  Metrics,
-  AddsServicesListMetricsAverageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListMetricsAverageRequest,
-  output: Metrics,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListMetricsSumError = AzureOpError;
-/** Gets the sum of the metric values for a given metric and group combination. */
-export const AddsServicesListMetricsSum: API.OperationMethod<
-  AddsServicesListMetricsSumRequest,
-  Metrics,
-  AddsServicesListMetricsSumError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListMetricsSumRequest,
-  output: Metrics,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListPremiumServicesError = AzureOpError;
-/** Gets the details of Active Directory Domain Services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesListPremiumServices: API.OperationMethod<
-  AddsServicesListPremiumServicesRequest,
-  Services,
-  AddsServicesListPremiumServicesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListPremiumServicesRequest,
-  output: Services,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListReplicationDetailsError = AzureOpError;
-/** Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesListReplicationDetails: API.OperationMethod<
-  AddsServicesListReplicationDetailsRequest,
-  ReplicationDetailsList,
-  AddsServicesListReplicationDetailsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListReplicationDetailsRequest,
-  output: ReplicationDetailsList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListReplicationSummaryError = AzureOpError;
-/** Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesListReplicationSummary: API.OperationMethod<
-  AddsServicesListReplicationSummaryRequest,
-  ReplicationSummaryList,
-  AddsServicesListReplicationSummaryError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListReplicationSummaryRequest,
-  output: ReplicationSummaryList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesListServerAlertsError = AzureOpError;
-/** Gets the details of an alert for a given Active Directory Domain Controller service and server combination. */
-export const AddsServicesListServerAlerts: API.OperationMethod<
-  AddsServicesListServerAlertsRequest,
-  Alerts,
-  AddsServicesListServerAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesListServerAlertsRequest,
-  output: Alerts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesReplicationStatusGetError = AzureOpError;
-/** Gets Replication status for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
-export const AddsServicesReplicationStatusGet: API.OperationMethod<
-  AddsServicesReplicationStatusGetRequest,
-  ReplicationStatus,
-  AddsServicesReplicationStatusGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesReplicationStatusGetRequest,
-  output: ReplicationStatus,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5075,36 +4768,6 @@ export const AddsServicesServiceMembersAdd: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AddsServicesServiceMembersListError = AzureOpError;
-/** Gets the details of the servers, for a given Active Directory Domain Controller service, that are onboarded to Azure Active Directory Connect Health Service. */
-export const AddsServicesServiceMembersList: API.OperationMethod<
-  AddsServicesServiceMembersListRequest,
-  ServiceMembers,
-  AddsServicesServiceMembersListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesServiceMembersListRequest,
-  output: ServiceMembers,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesUpdateError = AzureOpError;
-/** Updates an Active Directory Domain Service properties of an onboarded service. */
-export const AddsServicesUpdate: API.OperationMethod<
-  AddsServicesUpdateRequest,
-  ServiceProperties,
-  AddsServicesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesUpdateRequest,
-  output: ServiceProperties,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AddsServicesUserPreferenceAddError = AzureOpError;
 /** Adds the user preferences for a given feature. */
 export const AddsServicesUserPreferenceAdd: API.OperationMethod<
@@ -5115,51 +4778,6 @@ export const AddsServicesUserPreferenceAdd: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AddsServicesUserPreferenceAddRequest,
   output: AddsServicesUserPreferenceAddResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesUserPreferenceDeleteError = AzureOpError;
-/** Deletes the user preferences for a given feature. */
-export const AddsServicesUserPreferenceDelete: API.OperationMethod<
-  AddsServicesUserPreferenceDeleteRequest,
-  AddsServicesUserPreferenceDeleteResponse,
-  AddsServicesUserPreferenceDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesUserPreferenceDeleteRequest,
-  output: AddsServicesUserPreferenceDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AddsServicesUserPreferenceGetError = AzureOpError;
-/** Gets the user preferences for a given feature. */
-export const AddsServicesUserPreferenceGet: API.OperationMethod<
-  AddsServicesUserPreferenceGetRequest,
-  UserPreference,
-  AddsServicesUserPreferenceGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AddsServicesUserPreferenceGetRequest,
-  output: UserPreference,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AlertsListAddsAlertsError = AzureOpError;
-/** Gets the alerts for a given Active Directory Domain Service. */
-export const AlertsListAddsAlerts: API.OperationMethod<
-  AlertsListAddsAlertsRequest,
-  Alerts,
-  AlertsListAddsAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AlertsListAddsAlertsRequest,
-  output: Alerts,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5180,136 +4798,976 @@ export const ConfigurationAdd: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ConfigurationGetError = AzureOpError;
+export type DeleteAddServiceError = AzureOpError;
+/** Deletes an Active Directory Domain Service which is onboarded to Azure Active Directory Connect Health. */
+export const DeleteAddService: API.OperationMethod<
+  DeleteAddServiceRequest,
+  DeleteAddServiceResponse,
+  DeleteAddServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAddServiceRequest,
+  output: DeleteAddServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAddServiceMemberError = AzureOpError;
+/** Deletes a Active Directory Domain Controller server that has been onboarded to Azure Active Directory Connect Health Service. */
+export const DeleteAddServiceMember: API.OperationMethod<
+  DeleteAddServiceMemberRequest,
+  DeleteAddServiceMemberResponse,
+  DeleteAddServiceMemberError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAddServiceMemberRequest,
+  output: DeleteAddServiceMemberResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAddServiceUserPreferenceError = AzureOpError;
+/** Deletes the user preferences for a given feature. */
+export const DeleteAddServiceUserPreference: API.OperationMethod<
+  DeleteAddServiceUserPreferenceRequest,
+  DeleteAddServiceUserPreferenceResponse,
+  DeleteAddServiceUserPreferenceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAddServiceUserPreferenceRequest,
+  output: DeleteAddServiceUserPreferenceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceError = AzureOpError;
+/** Deletes a service which is onboarded to Azure Active Directory Connect Health. */
+export const DeleteService: API.OperationMethod<
+  DeleteServiceRequest,
+  DeleteServiceResponse,
+  DeleteServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceMemberError = AzureOpError;
+/** Deletes a server that has been onboarded to Azure Active Directory Connect Health Service. */
+export const DeleteServiceMember: API.OperationMethod<
+  DeleteServiceMemberRequest,
+  DeleteServiceMemberResponse,
+  DeleteServiceMemberError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceMemberRequest,
+  output: DeleteServiceMemberResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceMemberDataError = AzureOpError;
+/** Deletes the data uploaded by the server to Azure Active Directory Connect Health Service. */
+export const DeleteServiceMemberData: API.OperationMethod<
+  DeleteServiceMemberDataRequest,
+  DeleteServiceMemberDataResponse,
+  DeleteServiceMemberDataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceMemberDataRequest,
+  output: DeleteServiceMemberDataResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceError = AzureOpError;
+/** Gets the details of an Active Directory Domain Service for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
+export const GetAddService: API.OperationMethod<
+  GetAddServiceRequest,
+  ServiceProperties,
+  GetAddServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceRequest,
+  output: ServiceProperties,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceForestSummaryError = AzureOpError;
+/** Gets the forest summary for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
+export const GetAddServiceForestSummary: API.OperationMethod<
+  GetAddServiceForestSummaryRequest,
+  ForestSummary,
+  GetAddServiceForestSummaryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceForestSummaryRequest,
+  output: ForestSummary,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceMemberError = AzureOpError;
+/** Gets the details of a server, for a given Active Directory Domain Controller service, that are onboarded to Azure Active Directory Connect Health Service. */
+export const GetAddServiceMember: API.OperationMethod<
+  GetAddServiceMemberRequest,
+  ServiceMember,
+  GetAddServiceMemberError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceMemberRequest,
+  output: ServiceMember,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceMetricError = AzureOpError;
+/** Gets the server related metrics for a given metric and group combination. */
+export const GetAddServiceMetric: API.OperationMethod<
+  GetAddServiceMetricRequest,
+  MetricSets,
+  GetAddServiceMetricError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceMetricRequest,
+  output: MetricSets,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceMetricMetadataError = AzureOpError;
+/** Gets the service related metric information. */
+export const GetAddServiceMetricMetadata: API.OperationMethod<
+  GetAddServiceMetricMetadataRequest,
+  MetricMetadata,
+  GetAddServiceMetricMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceMetricMetadataRequest,
+  output: MetricMetadata,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceMetricMetadataForGroupError = AzureOpError;
+/** Gets the service related metrics for a given metric and group combination. */
+export const GetAddServiceMetricMetadataForGroup: API.OperationMethod<
+  GetAddServiceMetricMetadataForGroupRequest,
+  MetricSets,
+  GetAddServiceMetricMetadataForGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceMetricMetadataForGroupRequest,
+  output: MetricSets,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceReplicationStatusError = AzureOpError;
+/** Gets Replication status for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
+export const GetAddServiceReplicationStatus: API.OperationMethod<
+  GetAddServiceReplicationStatusRequest,
+  ReplicationStatus,
+  GetAddServiceReplicationStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceReplicationStatusRequest,
+  output: ReplicationStatus,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddServiceUserPreferenceError = AzureOpError;
+/** Gets the user preferences for a given feature. */
+export const GetAddServiceUserPreference: API.OperationMethod<
+  GetAddServiceUserPreferenceRequest,
+  UserPreference,
+  GetAddServiceUserPreferenceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAddServiceUserPreferenceRequest,
+  output: UserPreference,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetConfigurationError = AzureOpError;
 /** Gets the details of a tenant onboarded to Azure Active Directory Connect Health. */
-export const ConfigurationGet: API.OperationMethod<
-  ConfigurationGetRequest,
+export const GetConfiguration: API.OperationMethod<
+  GetConfigurationRequest,
   Tenant,
-  ConfigurationGetError,
+  GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationGetRequest,
+  input: GetConfigurationRequest,
   output: Tenant,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConfigurationListAddsConfigurationsError = AzureOpError;
-/** Gets the service configurations. */
-export const ConfigurationListAddsConfigurations: API.OperationMethod<
-  ConfigurationListAddsConfigurationsRequest,
-  AddsConfiguration,
-  ConfigurationListAddsConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationListAddsConfigurationsRequest,
-  output: AddsConfiguration,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConfigurationUpdateError = AzureOpError;
-/** Updates tenant properties for tenants onboarded to Azure Active Directory Connect Health. */
-export const ConfigurationUpdate: API.OperationMethod<
-  ConfigurationUpdateRequest,
-  Tenant,
-  ConfigurationUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationUpdateRequest,
-  output: Tenant,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DimensionsListAddsDimensionsError = AzureOpError;
-/** Gets the dimensions for a given dimension type in a server. */
-export const DimensionsListAddsDimensions: API.OperationMethod<
-  DimensionsListAddsDimensionsRequest,
-  Dimensions,
-  DimensionsListAddsDimensionsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DimensionsListAddsDimensionsRequest,
-  output: Dimensions,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListIPAddressAggregatesByServiceError = AzureOpError;
-/** Gets the IP address aggregates for a given service. */
-export const ListIPAddressAggregatesByService: API.OperationMethod<
-  ListIPAddressAggregatesByServiceRequest,
-  IPAddressAggregates,
-  ListIPAddressAggregatesByServiceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListIPAddressAggregatesByServiceRequest,
-  output: IPAddressAggregates,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ListIPAddressAggregateSettingsError = AzureOpError;
-/** Gets the IP address aggregate settings. */
-export const ListIPAddressAggregateSettings: API.OperationMethod<
-  ListIPAddressAggregateSettingsRequest,
-  IPAddressAggregateSetting,
-  ListIPAddressAggregateSettingsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListIPAddressAggregateSettingsRequest,
-  output: IPAddressAggregateSetting,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** Lists the available Azure Data Factory API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReportsGetDevOpsError = AzureOpError;
+export type GetReportDevOpsError = AzureOpError;
 /** Checks if the user is enabled for Dev Ops access. */
-export const ReportsGetDevOps: API.OperationMethod<
-  ReportsGetDevOpsRequest,
+export const GetReportDevOps: API.OperationMethod<
+  GetReportDevOpsRequest,
   Result,
-  ReportsGetDevOpsError,
+  GetReportDevOpsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportsGetDevOpsRequest,
+  input: GetReportDevOpsRequest,
   output: Result,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ServiceGetMetricsError = AzureOpError;
-/** Gets the server related metrics for a given metric and group combination. */
-export const ServiceGetMetrics: API.OperationMethod<
-  ServiceGetMetricsRequest,
-  MetricSets,
-  ServiceGetMetricsError,
+export type GetServiceError = AzureOpError;
+/** Gets the details of a service for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
+export const GetService: API.OperationMethod<
+  GetServiceRequest,
+  ServiceProperties,
+  GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServiceGetMetricsRequest,
+  input: GetServiceRequest,
+  output: ServiceProperties,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceFeatureAvailibilityError = AzureOpError;
+/** Checks if the service has all the pre-requisites met to use a feature. */
+export const GetServiceFeatureAvailibility: API.OperationMethod<
+  GetServiceFeatureAvailibilityRequest,
+  Result,
+  GetServiceFeatureAvailibilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceFeatureAvailibilityRequest,
+  output: Result,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMemberError = AzureOpError;
+/** Gets the details of a server, for a given service, that are onboarded to Azure Active Directory Connect Health Service. */
+export const GetServiceMember: API.OperationMethod<
+  GetServiceMemberRequest,
+  ServiceMember,
+  GetServiceMemberError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMemberRequest,
+  output: ServiceMember,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMemberConnectorMetadataError = AzureOpError;
+/** Gets the list of connectors and run profile names. */
+export const GetServiceMemberConnectorMetadata: API.OperationMethod<
+  GetServiceMemberConnectorMetadataRequest,
+  ConnectorMetadata,
+  GetServiceMemberConnectorMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMemberConnectorMetadataRequest,
+  output: ConnectorMetadata,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMemberMetricError = AzureOpError;
+/** Gets the server related metrics for a given metric and group combination. */
+export const GetServiceMemberMetric: API.OperationMethod<
+  GetServiceMemberMetricRequest,
+  MetricSets,
+  GetServiceMemberMetricError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMemberMetricRequest,
   output: MetricSets,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMemberServiceConfigurationError = AzureOpError;
+/** Gets the service configuration. */
+export const GetServiceMemberServiceConfiguration: API.OperationMethod<
+  GetServiceMemberServiceConfigurationRequest,
+  ServiceConfiguration,
+  GetServiceMemberServiceConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMemberServiceConfigurationRequest,
+  output: ServiceConfiguration,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMetricError = AzureOpError;
+/** Gets the server related metrics for a given metric and group combination. */
+export const GetServiceMetric: API.OperationMethod<
+  GetServiceMetricRequest,
+  MetricSets,
+  GetServiceMetricError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMetricRequest,
+  output: MetricSets,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMetricMetadataError = AzureOpError;
+/** Gets the service related metrics information. */
+export const GetServiceMetricMetadata: API.OperationMethod<
+  GetServiceMetricMetadataRequest,
+  MetricMetadata,
+  GetServiceMetricMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMetricMetadataRequest,
+  output: MetricMetadata,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceMetricMetadataForGroupError = AzureOpError;
+/** Gets the service related metrics for a given metric and group combination. */
+export const GetServiceMetricMetadataForGroup: API.OperationMethod<
+  GetServiceMetricMetadataForGroupRequest,
+  MetricSets,
+  GetServiceMetricMetadataForGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceMetricMetadataForGroupRequest,
+  output: MetricSets,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceTenantWhitelistingError = AzureOpError;
+/** Checks if the tenant, to which a service is registered, is listed as allowed to use a feature. */
+export const GetServiceTenantWhitelisting: API.OperationMethod<
+  GetServiceTenantWhitelistingRequest,
+  Result,
+  GetServiceTenantWhitelistingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceTenantWhitelistingRequest,
+  output: Result,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAdDomainServiceMembersError = AzureOpError;
+/** Gets the details of the servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health. */
+export const ListAdDomainServiceMembers: API.OperationMethod<
+  ListAdDomainServiceMembersRequest,
+  AddsServiceMembers,
+  ListAdDomainServiceMembersError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAdDomainServiceMembersRequest,
+  output: AddsServiceMembers,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceMemberCredentialsError = AzureOpError;
+/** Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service. */
+export const ListAddServiceMemberCredentials: API.OperationMethod<
+  ListAddServiceMemberCredentialsRequest,
+  Credentials,
+  ListAddServiceMemberCredentialsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceMemberCredentialsRequest,
+  output: Credentials,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceMembersError = AzureOpError;
+/** Gets the details of the Active Directory Domain servers, for a given Active Directory Domain Service, that are onboarded to Azure Active Directory Connect Health. */
+export const ListAddServiceMembers: API.OperationMethod<
+  ListAddServiceMembersRequest,
+  AddsServiceMembers,
+  ListAddServiceMembersError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceMembersRequest,
+  output: AddsServiceMembers,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceMetricAverageError = AzureOpError;
+/** Gets the average of the metric values for a given metric and group combination. */
+export const ListAddServiceMetricAverage: API.OperationMethod<
+  ListAddServiceMetricAverageRequest,
+  Metrics,
+  ListAddServiceMetricAverageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceMetricAverageRequest,
+  output: Metrics,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceMetricMetadataError = AzureOpError;
+/** Gets the service related metrics information. */
+export const ListAddServiceMetricMetadata: API.OperationMethod<
+  ListAddServiceMetricMetadataRequest,
+  MetricMetadataList,
+  ListAddServiceMetricMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceMetricMetadataRequest,
+  output: MetricMetadataList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceMetricSumError = AzureOpError;
+/** Gets the sum of the metric values for a given metric and group combination. */
+export const ListAddServiceMetricSum: API.OperationMethod<
+  ListAddServiceMetricSumRequest,
+  Metrics,
+  ListAddServiceMetricSumError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceMetricSumRequest,
+  output: Metrics,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServicePremiumServicesError = AzureOpError;
+/** Gets the details of Active Directory Domain Services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
+export const ListAddServicePremiumServices: API.OperationMethod<
+  ListAddServicePremiumServicesRequest,
+  Services,
+  ListAddServicePremiumServicesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServicePremiumServicesRequest,
+  output: Services,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceReplicationDetailsError = AzureOpError;
+/** Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
+export const ListAddServiceReplicationDetails: API.OperationMethod<
+  ListAddServiceReplicationDetailsRequest,
+  ReplicationDetailsList,
+  ListAddServiceReplicationDetailsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceReplicationDetailsRequest,
+  output: ReplicationDetailsList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceReplicationSummaryError = AzureOpError;
+/** Gets complete domain controller list along with replication details for a given Active Directory Domain Service, that is onboarded to Azure Active Directory Connect Health. */
+export const ListAddServiceReplicationSummary: API.OperationMethod<
+  ListAddServiceReplicationSummaryRequest,
+  ReplicationSummaryList,
+  ListAddServiceReplicationSummaryError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceReplicationSummaryRequest,
+  output: ReplicationSummaryList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServicesError = AzureOpError;
+/** Gets the details of Active Directory Domain Service, for a tenant, that are onboarded to Azure Active Directory Connect Health. */
+export const ListAddServices: API.OperationMethod<
+  ListAddServicesRequest,
+  Services,
+  ListAddServicesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServicesRequest,
+  output: Services,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceServerAlertsError = AzureOpError;
+/** Gets the details of an alert for a given Active Directory Domain Controller service and server combination. */
+export const ListAddServiceServerAlerts: API.OperationMethod<
+  ListAddServiceServerAlertsRequest,
+  Alerts,
+  ListAddServiceServerAlertsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceServerAlertsRequest,
+  output: Alerts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddServiceServiceMembersError = AzureOpError;
+/** Gets the details of the servers, for a given Active Directory Domain Controller service, that are onboarded to Azure Active Directory Connect Health Service. */
+export const ListAddServiceServiceMembers: API.OperationMethod<
+  ListAddServiceServiceMembersRequest,
+  ServiceMembers,
+  ListAddServiceServiceMembersError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAddServiceServiceMembersRequest,
+  output: ServiceMembers,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAlertAddAlertsError = AzureOpError;
+/** Gets the alerts for a given Active Directory Domain Service. */
+export const ListAlertAddAlerts: API.OperationMethod<
+  ListAlertAddAlertsRequest,
+  Alerts,
+  ListAlertAddAlertsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAlertAddAlertsRequest,
+  output: Alerts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConfigurationAddConfigurationsError = AzureOpError;
+/** Gets the service configurations. */
+export const ListConfigurationAddConfigurations: API.OperationMethod<
+  ListConfigurationAddConfigurationsRequest,
+  AddsConfiguration,
+  ListConfigurationAddConfigurationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConfigurationAddConfigurationsRequest,
+  output: AddsConfiguration,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDimensionAddDimensionsError = AzureOpError;
+/** Gets the dimensions for a given dimension type in a server. */
+export const ListDimensionAddDimensions: API.OperationMethod<
+  ListDimensionAddDimensionsRequest,
+  Dimensions,
+  ListDimensionAddDimensionsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDimensionAddDimensionsRequest,
+  output: Dimensions,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListIpAddressAggregatesByServiceError = AzureOpError;
+/** Gets the IP address aggregates for a given service. */
+export const ListIpAddressAggregatesByService: API.OperationMethod<
+  ListIpAddressAggregatesByServiceRequest,
+  IPAddressAggregates,
+  ListIpAddressAggregatesByServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListIpAddressAggregatesByServiceRequest,
+  output: IPAddressAggregates,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListIpAddressAggregateSettingsError = AzureOpError;
+/** Gets the IP address aggregate settings. */
+export const ListIpAddressAggregateSettings: API.OperationMethod<
+  ListIpAddressAggregateSettingsRequest,
+  IPAddressAggregateSetting,
+  ListIpAddressAggregateSettingsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListIpAddressAggregateSettingsRequest,
+  output: IPAddressAggregateSetting,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists the available Azure Data Factory API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationListResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: OperationListResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceAlertFeedbackError = AzureOpError;
+/** Gets a list of all alert feedback for a given tenant and alert type. */
+export const ListServiceAlertFeedback: API.OperationMethod<
+  ListServiceAlertFeedbackRequest,
+  AlertFeedbacks,
+  ListServiceAlertFeedbackError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceAlertFeedbackRequest,
+  output: AlertFeedbacks,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceAlertsError = AzureOpError;
+/** Gets the alerts for a given service. */
+export const ListServiceAlerts: API.OperationMethod<
+  ListServiceAlertsRequest,
+  Alerts,
+  ListServiceAlertsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceAlertsRequest,
+  output: Alerts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceAllRiskyIpDownloadReportError = AzureOpError;
+/** Gets all Risky IP report URIs for the last 7 days. */
+export const ListServiceAllRiskyIpDownloadReport: API.OperationMethod<
+  ListServiceAllRiskyIpDownloadReportRequest,
+  RiskyIPBlobUris,
+  ListServiceAllRiskyIpDownloadReportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceAllRiskyIpDownloadReportRequest,
+  output: RiskyIPBlobUris,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceCurrentRiskyIpDownloadReportError = AzureOpError;
+/** Initiate the generation of a new Risky IP report. Returns the URI for the new one. */
+export const ListServiceCurrentRiskyIpDownloadReport: API.OperationMethod<
+  ListServiceCurrentRiskyIpDownloadReportRequest,
+  RiskyIPBlobUris,
+  ListServiceCurrentRiskyIpDownloadReportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceCurrentRiskyIpDownloadReportRequest,
+  output: RiskyIPBlobUris,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceExportErrorsError = AzureOpError;
+/** Gets the count of latest AAD export errors. */
+export const ListServiceExportErrors: API.OperationMethod<
+  ListServiceExportErrorsRequest,
+  ErrorCounts,
+  ListServiceExportErrorsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceExportErrorsRequest,
+  output: ErrorCounts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceExportErrorV2Error = AzureOpError;
+/** Gets the categorized export errors. */
+export const ListServiceExportErrorV2: API.OperationMethod<
+  ListServiceExportErrorV2Request,
+  MergedExportErrors,
+  ListServiceExportErrorV2Error,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceExportErrorV2Request,
+  output: MergedExportErrors,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceExportStatusError = AzureOpError;
+/** Gets the export status. */
+export const ListServiceExportStatus: API.OperationMethod<
+  ListServiceExportStatusRequest,
+  ExportStatuses,
+  ListServiceExportStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceExportStatusRequest,
+  output: ExportStatuses,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMemberAlertsError = AzureOpError;
+/** Gets the details of an alert for a given service and server combination. */
+export const ListServiceMemberAlerts: API.OperationMethod<
+  ListServiceMemberAlertsRequest,
+  Alerts,
+  ListServiceMemberAlertsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMemberAlertsRequest,
+  output: Alerts,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMemberConnectorsError = AzureOpError;
+/** Gets the connector details for a service. */
+export const ListServiceMemberConnectors: API.OperationMethod<
+  ListServiceMemberConnectorsRequest,
+  Connectors,
+  ListServiceMemberConnectorsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMemberConnectorsRequest,
+  output: Connectors,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMemberCredentialsError = AzureOpError;
+/** Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service. */
+export const ListServiceMemberCredentials: API.OperationMethod<
+  ListServiceMemberCredentialsRequest,
+  Credentials,
+  ListServiceMemberCredentialsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMemberCredentialsRequest,
+  output: Credentials,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMemberDataFreshnessError = AzureOpError;
+/** Gets the last time when the server uploaded data to Azure Active Directory Connect Health Service. */
+export const ListServiceMemberDataFreshness: API.OperationMethod<
+  ListServiceMemberDataFreshnessRequest,
+  DataFreshnessDetails,
+  ListServiceMemberDataFreshnessError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMemberDataFreshnessRequest,
+  output: DataFreshnessDetails,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMemberExportStatusError = AzureOpError;
+/** Gets the export status. */
+export const ListServiceMemberExportStatus: API.OperationMethod<
+  ListServiceMemberExportStatusRequest,
+  ExportStatuses,
+  ListServiceMemberExportStatusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMemberExportStatusRequest,
+  output: ExportStatuses,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMemberGlobalConfigurationError = AzureOpError;
+/** Gets the global configuration. */
+export const ListServiceMemberGlobalConfiguration: API.OperationMethod<
+  ListServiceMemberGlobalConfigurationRequest,
+  GlobalConfigurations,
+  ListServiceMemberGlobalConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMemberGlobalConfigurationRequest,
+  output: GlobalConfigurations,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMembersError = AzureOpError;
+/** Gets the details of the servers, for a given service, that are onboarded to Azure Active Directory Connect Health Service. */
+export const ListServiceMembers: API.OperationMethod<
+  ListServiceMembersRequest,
+  ServiceMembers,
+  ListServiceMembersError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMembersRequest,
+  output: ServiceMembers,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMetricAverageError = AzureOpError;
+/** Gets the average of the metric values for a given metric and group combination. */
+export const ListServiceMetricAverage: API.OperationMethod<
+  ListServiceMetricAverageRequest,
+  Metrics,
+  ListServiceMetricAverageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMetricAverageRequest,
+  output: Metrics,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMetricMetadataError = AzureOpError;
+/** Gets the service related metrics information. */
+export const ListServiceMetricMetadata: API.OperationMethod<
+  ListServiceMetricMetadataRequest,
+  MetricMetadataList,
+  ListServiceMetricMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMetricMetadataRequest,
+  output: MetricMetadataList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMetricSumError = AzureOpError;
+/** Gets the sum of the metric values for a given metric and group combination. */
+export const ListServiceMetricSum: API.OperationMethod<
+  ListServiceMetricSumRequest,
+  Metrics,
+  ListServiceMetricSumError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMetricSumRequest,
+  output: Metrics,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceMonitoringConfigurationsError = AzureOpError;
+/** Gets the service level monitoring configurations. */
+export const ListServiceMonitoringConfigurations: API.OperationMethod<
+  ListServiceMonitoringConfigurationsRequest,
+  Items,
+  ListServiceMonitoringConfigurationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceMonitoringConfigurationsRequest,
+  output: Items,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServicePremiumError = AzureOpError;
+/** Gets the details of services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
+export const ListServicePremium: API.OperationMethod<
+  ListServicePremiumRequest,
+  Services,
+  ListServicePremiumError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServicePremiumRequest,
+  output: Services,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServicesError = AzureOpError;
+/** Gets the details of services, for a tenant, that are onboarded to Azure Active Directory Connect Health. */
+export const ListServices: API.OperationMethod<
+  ListServicesRequest,
+  Services,
+  ListServicesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServicesRequest,
+  output: Services,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServiceUserBadPasswordReportError = AzureOpError;
+/** Gets the bad password login attempt report for an user */
+export const ListServiceUserBadPasswordReport: API.OperationMethod<
+  ListServiceUserBadPasswordReportRequest,
+  ErrorReportUsersEntries,
+  ListServiceUserBadPasswordReportError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServiceUserBadPasswordReportRequest,
+  output: ErrorReportUsersEntries,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5325,201 +5783,6 @@ export const ServiceMembersAdd: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ServiceMembersAddRequest,
   output: ServiceMember,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersDeleteError = AzureOpError;
-/** Deletes a server that has been onboarded to Azure Active Directory Connect Health Service. */
-export const ServiceMembersDelete: API.OperationMethod<
-  ServiceMembersDeleteRequest,
-  ServiceMembersDeleteResponse,
-  ServiceMembersDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersDeleteRequest,
-  output: ServiceMembersDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersDeleteDataError = AzureOpError;
-/** Deletes the data uploaded by the server to Azure Active Directory Connect Health Service. */
-export const ServiceMembersDeleteData: API.OperationMethod<
-  ServiceMembersDeleteDataRequest,
-  ServiceMembersDeleteDataResponse,
-  ServiceMembersDeleteDataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersDeleteDataRequest,
-  output: ServiceMembersDeleteDataResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersGetError = AzureOpError;
-/** Gets the details of a server, for a given service, that are onboarded to Azure Active Directory Connect Health Service. */
-export const ServiceMembersGet: API.OperationMethod<
-  ServiceMembersGetRequest,
-  ServiceMember,
-  ServiceMembersGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersGetRequest,
-  output: ServiceMember,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersGetConnectorMetadataError = AzureOpError;
-/** Gets the list of connectors and run profile names. */
-export const ServiceMembersGetConnectorMetadata: API.OperationMethod<
-  ServiceMembersGetConnectorMetadataRequest,
-  ConnectorMetadata,
-  ServiceMembersGetConnectorMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersGetConnectorMetadataRequest,
-  output: ConnectorMetadata,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersGetMetricsError = AzureOpError;
-/** Gets the server related metrics for a given metric and group combination. */
-export const ServiceMembersGetMetrics: API.OperationMethod<
-  ServiceMembersGetMetricsRequest,
-  MetricSets,
-  ServiceMembersGetMetricsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersGetMetricsRequest,
-  output: MetricSets,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersGetServiceConfigurationError = AzureOpError;
-/** Gets the service configuration. */
-export const ServiceMembersGetServiceConfiguration: API.OperationMethod<
-  ServiceMembersGetServiceConfigurationRequest,
-  ServiceConfiguration,
-  ServiceMembersGetServiceConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersGetServiceConfigurationRequest,
-  output: ServiceConfiguration,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListError = AzureOpError;
-/** Gets the details of the servers, for a given service, that are onboarded to Azure Active Directory Connect Health Service. */
-export const ServiceMembersList: API.OperationMethod<
-  ServiceMembersListRequest,
-  ServiceMembers,
-  ServiceMembersListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListRequest,
-  output: ServiceMembers,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListAlertsError = AzureOpError;
-/** Gets the details of an alert for a given service and server combination. */
-export const ServiceMembersListAlerts: API.OperationMethod<
-  ServiceMembersListAlertsRequest,
-  Alerts,
-  ServiceMembersListAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListAlertsRequest,
-  output: Alerts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListConnectorsError = AzureOpError;
-/** Gets the connector details for a service. */
-export const ServiceMembersListConnectors: API.OperationMethod<
-  ServiceMembersListConnectorsRequest,
-  Connectors,
-  ServiceMembersListConnectorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListConnectorsRequest,
-  output: Connectors,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListCredentialsError = AzureOpError;
-/** Gets the credentials of the server which is needed by the agent to connect to Azure Active Directory Connect Health Service. */
-export const ServiceMembersListCredentials: API.OperationMethod<
-  ServiceMembersListCredentialsRequest,
-  Credentials,
-  ServiceMembersListCredentialsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListCredentialsRequest,
-  output: Credentials,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListDataFreshnessError = AzureOpError;
-/** Gets the last time when the server uploaded data to Azure Active Directory Connect Health Service. */
-export const ServiceMembersListDataFreshness: API.OperationMethod<
-  ServiceMembersListDataFreshnessRequest,
-  DataFreshnessDetails,
-  ServiceMembersListDataFreshnessError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListDataFreshnessRequest,
-  output: DataFreshnessDetails,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListExportStatusError = AzureOpError;
-/** Gets the export status. */
-export const ServiceMembersListExportStatus: API.OperationMethod<
-  ServiceMembersListExportStatusRequest,
-  ExportStatuses,
-  ServiceMembersListExportStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListExportStatusRequest,
-  output: ExportStatuses,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceMembersListGlobalConfigurationError = AzureOpError;
-/** Gets the global configuration. */
-export const ServiceMembersListGlobalConfiguration: API.OperationMethod<
-  ServiceMembersListGlobalConfigurationRequest,
-  GlobalConfigurations,
-  ServiceMembersListGlobalConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceMembersListGlobalConfigurationRequest,
-  output: GlobalConfigurations,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5555,346 +5818,76 @@ export const ServicesAddAlertFeedback: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ServicesDeleteError = AzureOpError;
-/** Deletes a service which is onboarded to Azure Active Directory Connect Health. */
-export const ServicesDelete: API.OperationMethod<
-  ServicesDeleteRequest,
-  ServicesDeleteResponse,
-  ServicesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesDeleteRequest,
-  output: ServicesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesGetError = AzureOpError;
-/** Gets the details of a service for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
-export const ServicesGet: API.OperationMethod<
-  ServicesGetRequest,
+export type UpdateAddServiceError = AzureOpError;
+/** Updates an Active Directory Domain Service properties of an onboarded service. */
+export const UpdateAddService: API.OperationMethod<
+  UpdateAddServiceRequest,
   ServiceProperties,
-  ServicesGetError,
+  UpdateAddServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetRequest,
+  input: UpdateAddServiceRequest,
   output: ServiceProperties,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ServicesGetFeatureAvailibilityError = AzureOpError;
-/** Checks if the service has all the pre-requisites met to use a feature. */
-export const ServicesGetFeatureAvailibility: API.OperationMethod<
-  ServicesGetFeatureAvailibilityRequest,
-  Result,
-  ServicesGetFeatureAvailibilityError,
+export type UpdateConfigurationError = AzureOpError;
+/** Updates tenant properties for tenants onboarded to Azure Active Directory Connect Health. */
+export const UpdateConfiguration: API.OperationMethod<
+  UpdateConfigurationRequest,
+  Tenant,
+  UpdateConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetFeatureAvailibilityRequest,
-  output: Result,
+  input: UpdateConfigurationRequest,
+  output: Tenant,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ServicesGetMetricMetadataError = AzureOpError;
-/** Gets the service related metrics information. */
-export const ServicesGetMetricMetadata: API.OperationMethod<
-  ServicesGetMetricMetadataRequest,
-  MetricMetadata,
-  ServicesGetMetricMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetMetricMetadataRequest,
-  output: MetricMetadata,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesGetMetricMetadataForGroupError = AzureOpError;
-/** Gets the service related metrics for a given metric and group combination. */
-export const ServicesGetMetricMetadataForGroup: API.OperationMethod<
-  ServicesGetMetricMetadataForGroupRequest,
-  MetricSets,
-  ServicesGetMetricMetadataForGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetMetricMetadataForGroupRequest,
-  output: MetricSets,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesGetTenantWhitelistingError = AzureOpError;
-/** Checks if the tenant, to which a service is registered, is listed as allowed to use a feature. */
-export const ServicesGetTenantWhitelisting: API.OperationMethod<
-  ServicesGetTenantWhitelistingRequest,
-  Result,
-  ServicesGetTenantWhitelistingError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetTenantWhitelistingRequest,
-  output: Result,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListError = AzureOpError;
-/** Gets the details of services, for a tenant, that are onboarded to Azure Active Directory Connect Health. */
-export const ServicesList: API.OperationMethod<
-  ServicesListRequest,
-  Services,
-  ServicesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListRequest,
-  output: Services,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListAlertFeedbackError = AzureOpError;
-/** Gets a list of all alert feedback for a given tenant and alert type. */
-export const ServicesListAlertFeedback: API.OperationMethod<
-  ServicesListAlertFeedbackRequest,
-  AlertFeedbacks,
-  ServicesListAlertFeedbackError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListAlertFeedbackRequest,
-  output: AlertFeedbacks,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListAlertsError = AzureOpError;
-/** Gets the alerts for a given service. */
-export const ServicesListAlerts: API.OperationMethod<
-  ServicesListAlertsRequest,
-  Alerts,
-  ServicesListAlertsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListAlertsRequest,
-  output: Alerts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListAllRiskyIpDownloadReportError = AzureOpError;
-/** Gets all Risky IP report URIs for the last 7 days. */
-export const ServicesListAllRiskyIpDownloadReport: API.OperationMethod<
-  ServicesListAllRiskyIpDownloadReportRequest,
-  RiskyIPBlobUris,
-  ServicesListAllRiskyIpDownloadReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListAllRiskyIpDownloadReportRequest,
-  output: RiskyIPBlobUris,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListCurrentRiskyIpDownloadReportError = AzureOpError;
-/** Initiate the generation of a new Risky IP report. Returns the URI for the new one. */
-export const ServicesListCurrentRiskyIpDownloadReport: API.OperationMethod<
-  ServicesListCurrentRiskyIpDownloadReportRequest,
-  RiskyIPBlobUris,
-  ServicesListCurrentRiskyIpDownloadReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListCurrentRiskyIpDownloadReportRequest,
-  output: RiskyIPBlobUris,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListExportErrorsError = AzureOpError;
-/** Gets the count of latest AAD export errors. */
-export const ServicesListExportErrors: API.OperationMethod<
-  ServicesListExportErrorsRequest,
-  ErrorCounts,
-  ServicesListExportErrorsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListExportErrorsRequest,
-  output: ErrorCounts,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListExportErrorsV2Error = AzureOpError;
-/** Gets the categorized export errors. */
-export const ServicesListExportErrorsV2: API.OperationMethod<
-  ServicesListExportErrorsV2Request,
-  MergedExportErrors,
-  ServicesListExportErrorsV2Error,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListExportErrorsV2Request,
-  output: MergedExportErrors,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListExportStatusError = AzureOpError;
-/** Gets the export status. */
-export const ServicesListExportStatus: API.OperationMethod<
-  ServicesListExportStatusRequest,
-  ExportStatuses,
-  ServicesListExportStatusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListExportStatusRequest,
-  output: ExportStatuses,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListMetricMetadataError = AzureOpError;
-/** Gets the service related metrics information. */
-export const ServicesListMetricMetadata: API.OperationMethod<
-  ServicesListMetricMetadataRequest,
-  MetricMetadataList,
-  ServicesListMetricMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListMetricMetadataRequest,
-  output: MetricMetadataList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListMetricsAverageError = AzureOpError;
-/** Gets the average of the metric values for a given metric and group combination. */
-export const ServicesListMetricsAverage: API.OperationMethod<
-  ServicesListMetricsAverageRequest,
-  Metrics,
-  ServicesListMetricsAverageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListMetricsAverageRequest,
-  output: Metrics,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListMetricsSumError = AzureOpError;
-/** Gets the sum of the metric values for a given metric and group combination. */
-export const ServicesListMetricsSum: API.OperationMethod<
-  ServicesListMetricsSumRequest,
-  Metrics,
-  ServicesListMetricsSumError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListMetricsSumRequest,
-  output: Metrics,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListMonitoringConfigurationsError = AzureOpError;
-/** Gets the service level monitoring configurations. */
-export const ServicesListMonitoringConfigurations: API.OperationMethod<
-  ServicesListMonitoringConfigurationsRequest,
-  Items,
-  ServicesListMonitoringConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListMonitoringConfigurationsRequest,
-  output: Items,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListPremiumError = AzureOpError;
-/** Gets the details of services for a tenant having Azure AD Premium license and is onboarded to Azure Active Directory Connect Health. */
-export const ServicesListPremium: API.OperationMethod<
-  ServicesListPremiumRequest,
-  Services,
-  ServicesListPremiumError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListPremiumRequest,
-  output: Services,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesListUserBadPasswordReportError = AzureOpError;
-/** Gets the bad password login attempt report for an user */
-export const ServicesListUserBadPasswordReport: API.OperationMethod<
-  ServicesListUserBadPasswordReportRequest,
-  ErrorReportUsersEntries,
-  ServicesListUserBadPasswordReportError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListUserBadPasswordReportRequest,
-  output: ErrorReportUsersEntries,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesUpdateError = AzureOpError;
-/** Updates the service properties of an onboarded service. */
-export const ServicesUpdate: API.OperationMethod<
-  ServicesUpdateRequest,
-  ServiceProperties,
-  ServicesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesUpdateRequest,
-  output: ServiceProperties,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesUpdateMonitoringConfigurationError = AzureOpError;
-/** Updates the service level monitoring configuration. */
-export const ServicesUpdateMonitoringConfiguration: API.OperationMethod<
-  ServicesUpdateMonitoringConfigurationRequest,
-  ServicesUpdateMonitoringConfigurationResponse,
-  ServicesUpdateMonitoringConfigurationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesUpdateMonitoringConfigurationRequest,
-  output: ServicesUpdateMonitoringConfigurationResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UpdateIPAddressAggregateSettingsError = AzureOpError;
+export type UpdateIpAddressAggregateSettingsError = AzureOpError;
 /** Updates the IP address aggregate settings alert thresholds. */
-export const UpdateIPAddressAggregateSettings: API.OperationMethod<
-  UpdateIPAddressAggregateSettingsRequest,
+export const UpdateIpAddressAggregateSettings: API.OperationMethod<
+  UpdateIpAddressAggregateSettingsRequest,
   IPAddressAggregateSetting,
-  UpdateIPAddressAggregateSettingsError,
+  UpdateIpAddressAggregateSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIPAddressAggregateSettingsRequest,
+  input: UpdateIpAddressAggregateSettingsRequest,
   output: IPAddressAggregateSetting,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceError = AzureOpError;
+/** Updates the service properties of an onboarded service. */
+export const UpdateService: API.OperationMethod<
+  UpdateServiceRequest,
+  ServiceProperties,
+  UpdateServiceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceRequest,
+  output: ServiceProperties,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceMonitoringConfigurationError = AzureOpError;
+/** Updates the service level monitoring configuration. */
+export const UpdateServiceMonitoringConfiguration: API.OperationMethod<
+  UpdateServiceMonitoringConfigurationRequest,
+  UpdateServiceMonitoringConfigurationResponse,
+  UpdateServiceMonitoringConfigurationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceMonitoringConfigurationRequest,
+  output: UpdateServiceMonitoringConfigurationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

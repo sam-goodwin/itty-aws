@@ -377,100 +377,6 @@ export const ExchangeAuthCodeResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ExchangeAuthCodeResponse",
 }) as any as S.Schema<ExchangeAuthCodeResponse>;
 
-export type ExecuteHttpRequestRequestHttpMethodEnum =
-  | "HTTP_METHOD_UNSPECIFIED"
-  | "HTTP_METHOD_GET"
-  | "HTTP_METHOD_POST"
-  | "HTTP_METHOD_PUT"
-  | "HTTP_METHOD_PATCH"
-  | "HTTP_METHOD_DELETE"
-  | "HTTP_METHOD_HEAD"
-  | "HTTP_METHOD_OPTIONS";
-export const ExecuteHttpRequestRequestHttpMethodEnum = /*@__PURE__*/ S.String;
-
-/** A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present. */
-export interface HttpHeader {
-  /** The header name. */
-  key?: string;
-  /** The header value. */
-  value?: string;
-}
-export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({ identifier: "HttpHeader" }) as any as S.Schema<HttpHeader>;
-
-export type HttpHeaderList = Array<HttpHeader>;
-export const HttpHeaderList = /*@__PURE__*/ S.Array(
-  HttpHeader,
-) as any as S.Schema<HttpHeaderList>;
-
-export interface ExecuteHttpRequestRequest {
-  /** Required. The HTTP method to use for the request. */
-  httpMethod?: ExecuteHttpRequestRequestHttpMethodEnum | (string & {});
-  /** Required. The fully resolved absolute target URL. Callers must pre-encode any query parameters. */
-  url?: string;
-  /** HTTP headers to send with the request (e.g., Content-Type: application/json). Order is preserved and duplicate keys are allowed. */
-  headers?: HttpHeaderList;
-  /** Raw byte payload. Used for all pre-serialized formats including JSON, XML, GraphQL, and Multipart. */
-  rawBody?: string;
-}
-export const ExecuteHttpRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    httpMethod: S.optional(ExecuteHttpRequestRequestHttpMethodEnum),
-    url: S.optional(S.String),
-    headers: S.optional(HttpHeaderList),
-    rawBody: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ExecuteHttpRequestRequest",
-}) as any as S.Schema<ExecuteHttpRequestRequest>;
-
-export interface ExecuteHttpRequestProjectsLocationsConnectionsRequest {
-  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
-  name: string;
-  /** Request body */
-  body?: ExecuteHttpRequestRequest;
-}
-export const ExecuteHttpRequestProjectsLocationsConnectionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(ExecuteHttpRequestRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:executeHttpRequest",
-        baseUrl: "https://connectors.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ExecuteHttpRequestProjectsLocationsConnectionsRequest",
-  }) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>;
-
-export interface ExecuteHttpRequestResponse {
-  /** The HTTP status code received from the backend. */
-  statusCode?: number;
-  /** The raw response body. */
-  body?: string;
-  /** The HTTP status reason phrase received from the backend (e.g., "Not Found"). May be empty if the backend did not provide one. */
-  reason?: string;
-  /** HTTP headers received in the response. Order is preserved and duplicate keys are allowed (e.g., multiple Set-Cookie headers). */
-  headers?: HttpHeaderList;
-}
-export const ExecuteHttpRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    statusCode: S.optional(S.Number),
-    body: S.optional(S.String),
-    reason: S.optional(S.String),
-    headers: S.optional(HttpHeaderList),
-  }),
-).annotate({
-  identifier: "ExecuteHttpRequestResponse",
-}) as any as S.Schema<ExecuteHttpRequestResponse>;
-
 /** Request message for ActionService.ExecuteAction */
 export interface ExecuteActionRequest {
   /** Parameters for executing the action. The parameters can be key/value pairs or nested structs. */
@@ -2030,6 +1936,100 @@ export const RefreshAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RefreshAccessTokenResponse",
 }) as any as S.Schema<RefreshAccessTokenResponse>;
 
+export type ExecuteHttpRequestRequestHttpMethodEnum =
+  | "HTTP_METHOD_UNSPECIFIED"
+  | "HTTP_METHOD_GET"
+  | "HTTP_METHOD_POST"
+  | "HTTP_METHOD_PUT"
+  | "HTTP_METHOD_PATCH"
+  | "HTTP_METHOD_DELETE"
+  | "HTTP_METHOD_HEAD"
+  | "HTTP_METHOD_OPTIONS";
+export const ExecuteHttpRequestRequestHttpMethodEnum = /*@__PURE__*/ S.String;
+
+/** A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present. */
+export interface HttpHeader {
+  /** The header name. */
+  key?: string;
+  /** The header value. */
+  value?: string;
+}
+export const HttpHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({ identifier: "HttpHeader" }) as any as S.Schema<HttpHeader>;
+
+export type HttpHeaderList = Array<HttpHeader>;
+export const HttpHeaderList = /*@__PURE__*/ S.Array(
+  HttpHeader,
+) as any as S.Schema<HttpHeaderList>;
+
+export interface ExecuteHttpRequestRequest {
+  /** Required. The HTTP method to use for the request. */
+  httpMethod?: ExecuteHttpRequestRequestHttpMethodEnum | (string & {});
+  /** Required. The fully resolved absolute target URL. Callers must pre-encode any query parameters. */
+  url?: string;
+  /** HTTP headers to send with the request (e.g., Content-Type: application/json). Order is preserved and duplicate keys are allowed. */
+  headers?: HttpHeaderList;
+  /** Raw byte payload. Used for all pre-serialized formats including JSON, XML, GraphQL, and Multipart. */
+  rawBody?: string;
+}
+export const ExecuteHttpRequestRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    httpMethod: S.optional(ExecuteHttpRequestRequestHttpMethodEnum),
+    url: S.optional(S.String),
+    headers: S.optional(HttpHeaderList),
+    rawBody: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ExecuteHttpRequestRequest",
+}) as any as S.Schema<ExecuteHttpRequestRequest>;
+
+export interface RequestExecuteHttpProjectLocationConnectionRequest {
+  /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
+  name: string;
+  /** Request body */
+  body?: ExecuteHttpRequestRequest;
+}
+export const RequestExecuteHttpProjectLocationConnectionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(ExecuteHttpRequestRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:executeHttpRequest",
+        baseUrl: "https://connectors.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RequestExecuteHttpProjectLocationConnectionRequest",
+  }) as any as S.Schema<RequestExecuteHttpProjectLocationConnectionRequest>;
+
+export interface ExecuteHttpRequestResponse {
+  /** The HTTP status code received from the backend. */
+  statusCode?: number;
+  /** The raw response body. */
+  body?: string;
+  /** The HTTP status reason phrase received from the backend (e.g., "Not Found"). May be empty if the backend did not provide one. */
+  reason?: string;
+  /** HTTP headers received in the response. Order is preserved and duplicate keys are allowed (e.g., multiple Set-Cookie headers). */
+  headers?: HttpHeaderList;
+}
+export const ExecuteHttpRequestResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    statusCode: S.optional(S.Number),
+    body: S.optional(S.String),
+    reason: S.optional(S.String),
+    headers: S.optional(HttpHeaderList),
+  }),
+).annotate({
+  identifier: "ExecuteHttpRequestResponse",
+}) as any as S.Schema<ExecuteHttpRequestResponse>;
+
 /** Request message for ConnectorAgentService.ListToolsPost */
 export interface ListToolsPostRequest {
   /** List of tool specifications. */
@@ -2235,26 +2235,6 @@ export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ExchangeAuthCodeProjectsLocationsConnectionsRequest,
   output: ExchangeAuthCodeResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ExecuteHttpRequestProjectsLocationsConnectionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Executes a generic HTTP request. This supports all payload formats including REST/JSON, GraphQL, XML, SOAP, and Multipart by passing the rendered payload as raw bytes. */
-export const executeHttpRequestProjectsLocationsConnections: API.OperationMethod<
-  ExecuteHttpRequestProjectsLocationsConnectionsRequest,
-  ExecuteHttpRequestResponse,
-  ExecuteHttpRequestProjectsLocationsConnectionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteHttpRequestProjectsLocationsConnectionsRequest,
-  output: ExecuteHttpRequestResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2600,6 +2580,26 @@ export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod
 > = /*@__PURE__*/ API.make(() => ({
   input: RefreshAccessTokenProjectsLocationsConnectionsRequest,
   output: RefreshAccessTokenResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestExecuteHttpProjectLocationConnectionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Executes a generic HTTP request. This supports all payload formats including REST/JSON, GraphQL, XML, SOAP, and Multipart by passing the rendered payload as raw bytes. */
+export const requestExecuteHttpProjectLocationConnection: API.OperationMethod<
+  RequestExecuteHttpProjectLocationConnectionRequest,
+  ExecuteHttpRequestResponse,
+  RequestExecuteHttpProjectLocationConnectionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestExecuteHttpProjectLocationConnectionRequest,
+  output: ExecuteHttpRequestResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

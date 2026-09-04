@@ -2184,7 +2184,7 @@
         "smithy.api#documentation": "Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones)."
       }
     },
-    "com.gcp.playdeveloperreporting_v1beta1#FetchReleaseFilterOptionsAppsRequest": {
+    "com.gcp.playdeveloperreporting_v1beta1#ReleaseFetchFilterOptionAppRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -2223,10 +2223,10 @@
         ]
       }
     },
-    "com.gcp.playdeveloperreporting_v1beta1#FetchReleaseFilterOptionsApps": {
+    "com.gcp.playdeveloperreporting_v1beta1#ReleaseFetchFilterOptionApp": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.playdeveloperreporting_v1beta1#FetchReleaseFilterOptionsAppsRequest"
+        "target": "com.gcp.playdeveloperreporting_v1beta1#ReleaseFetchFilterOptionAppRequest"
       },
       "output": {
         "target": "com.gcp.playdeveloperreporting_v1beta1#GooglePlayDeveloperReportingV1beta1ReleaseFilterOptions"

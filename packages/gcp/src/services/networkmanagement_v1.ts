@@ -2830,6 +2830,157 @@ export const GenerateProviderAccessTokenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateProviderAccessTokenResponse",
 }) as any as S.Schema<GenerateProviderAccessTokenResponse>;
 
+export interface GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest {
+  /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
+  pageToken?: string;
+  /** Required. The parent resource of the VpcFlowLogsConfig, specified in the following format: `projects/{project_id}/locations/global` */
+  parent: string;
+  /** Required. The resource to get the effective VPC Flow Logs configuration for. The resource must belong to the same project as the parent. The resource must be a network, subnetwork, interconnect attachment, VPN tunnel, or a project. */
+  resource?: string;
+  /** Optional. Number of `EffectiveVpcFlowLogsConfigs` to return. Default is 30. */
+  pageSize?: number;
+  /** Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match the filter expression. A filter expression must use the supported [CEL logic operators] (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators). */
+  filter?: string;
+}
+export const GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      pageToken: S.optional(S.String.pipe(T.Query())),
+      parent: S.String.pipe(T.Label()),
+      resource: S.optional(S.String.pipe(T.Query())),
+      pageSize: S.optional(S.Number.pipe(T.Query())),
+      filter: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs",
+        baseUrl: "https://networkmanagement.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
+  }) as any as S.Schema<GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>;
+
+export type EffectiveVpcFlowLogsConfigStateEnum =
+  | "STATE_UNSPECIFIED"
+  | "ENABLED"
+  | "DISABLED";
+export const EffectiveVpcFlowLogsConfigStateEnum = /*@__PURE__*/ S.String;
+
+export type EffectiveVpcFlowLogsConfigScopeEnum =
+  | "SCOPE_UNSPECIFIED"
+  | "SUBNET"
+  | "COMPUTE_API_SUBNET"
+  | "NETWORK"
+  | "VPN_TUNNEL"
+  | "INTERCONNECT_ATTACHMENT"
+  | "ORGANIZATION";
+export const EffectiveVpcFlowLogsConfigScopeEnum = /*@__PURE__*/ S.String;
+
+export type EffectiveVpcFlowLogsConfigMetadataEnum =
+  | "METADATA_UNSPECIFIED"
+  | "INCLUDE_ALL_METADATA"
+  | "EXCLUDE_ALL_METADATA"
+  | "CUSTOM_METADATA";
+export const EffectiveVpcFlowLogsConfigMetadataEnum = /*@__PURE__*/ S.String;
+
+export type EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
+  | "CROSS_PROJECT_METADATA_UNSPECIFIED"
+  | "CROSS_PROJECT_METADATA_ENABLED"
+  | "CROSS_PROJECT_METADATA_DISABLED";
+export const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
+  /*@__PURE__*/ S.String;
+
+export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
+  | "AGGREGATION_INTERVAL_UNSPECIFIED"
+  | "INTERVAL_5_SEC"
+  | "INTERVAL_30_SEC"
+  | "INTERVAL_1_MIN"
+  | "INTERVAL_5_MIN"
+  | "INTERVAL_10_MIN"
+  | "INTERVAL_15_MIN";
+export const EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
+  /*@__PURE__*/ S.String;
+
+/** A configuration to generate a response for GetEffectiveVpcFlowLogsConfig request. */
+export interface EffectiveVpcFlowLogsConfig {
+  /** The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new configuration, it must be enabled. Setting state=DISABLED will pause the log generation for this config. */
+  state?: EffectiveVpcFlowLogsConfigStateEnum;
+  /** Unique name of the configuration. The name can have one of the following forms: - For project-level configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level configurations: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For a Compute config, the name will be the path of the subnet: `projects/{project_id}/regions/{region}/subnetworks/{subnet_id}` */
+  name?: string;
+  /** The value of the field must be in (0, 1]. The sampling rate of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use the state field instead. Default value is 1.0. */
+  flowSampling?: number;
+  /** Specifies the scope of the config (e.g., SUBNET, NETWORK, ORGANIZATION..). */
+  scope?: EffectiveVpcFlowLogsConfigScopeEnum;
+  /** Custom metadata fields to include in the reported VPC flow logs. Can only be specified if "metadata" was set to CUSTOM_METADATA. */
+  metadataFields?: StringList;
+  /** Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA. */
+  metadata?: EffectiveVpcFlowLogsConfigMetadataEnum;
+  /** Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name} */
+  vpnTunnel?: string;
+  /** Determines whether to include cross project annotations in the logs. This field is available only for organization configurations. If not specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED. */
+  crossProjectMetadata?: EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum;
+  /** Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name} */
+  network?: string;
+  /** Export filter used to define which VPC Flow Logs should be logged. */
+  filterExpr?: string;
+  /** Traffic will be logged from the Interconnect Attachment. Format: projects/{project_id}/regions/{region}/interconnectAttachments/{name} */
+  interconnectAttachment?: string;
+  /** The aggregation interval for the logs. Default value is INTERVAL_5_SEC. */
+  aggregationInterval?: EffectiveVpcFlowLogsConfigAggregationIntervalEnum;
+  /** Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name} */
+  subnet?: string;
+}
+export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: S.optional(EffectiveVpcFlowLogsConfigStateEnum),
+    name: S.optional(S.String),
+    flowSampling: S.optional(S.Number),
+    scope: S.optional(EffectiveVpcFlowLogsConfigScopeEnum),
+    metadataFields: S.optional(StringList),
+    metadata: S.optional(EffectiveVpcFlowLogsConfigMetadataEnum),
+    vpnTunnel: S.optional(S.String),
+    crossProjectMetadata: S.optional(
+      EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum,
+    ),
+    network: S.optional(S.String),
+    filterExpr: S.optional(S.String),
+    interconnectAttachment: S.optional(S.String),
+    aggregationInterval: S.optional(
+      EffectiveVpcFlowLogsConfigAggregationIntervalEnum,
+    ),
+    subnet: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EffectiveVpcFlowLogsConfig",
+}) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
+
+export type EffectiveVpcFlowLogsConfigList = Array<EffectiveVpcFlowLogsConfig>;
+export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
+  EffectiveVpcFlowLogsConfig,
+) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;
+
+/** Response for the `ShowEffectiveFlowLogsConfigs` method. */
+export interface ShowEffectiveFlowLogsConfigsResponse {
+  /** Locations that could not be reached (when querying all locations with `-`). */
+  unreachable?: StringList;
+  /** List of Effective Vpc Flow Logs configurations. */
+  effectiveFlowLogsConfigs?: EffectiveVpcFlowLogsConfigList;
+  /** Page token to fetch the next set of configurations. */
+  nextPageToken?: string;
+}
+export const ShowEffectiveFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      unreachable: S.optional(StringList),
+      effectiveFlowLogsConfigs: S.optional(EffectiveVpcFlowLogsConfigList),
+      nextPageToken: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ShowEffectiveFlowLogsConfigsResponse",
+}) as any as S.Schema<ShowEffectiveFlowLogsConfigsResponse>;
+
 export interface GetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -4228,157 +4379,6 @@ export const SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest =
     identifier: "SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest",
   }) as any as S.Schema<SetIamPolicyProjectsLocationsGlobalConnectivityTestsRequest>;
 
-export interface ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest {
-  /** Optional. Page token from an earlier query, as returned in `next_page_token`. */
-  pageToken?: string;
-  /** Required. The parent resource of the VpcFlowLogsConfig, specified in the following format: `projects/{project_id}/locations/global` */
-  parent: string;
-  /** Required. The resource to get the effective VPC Flow Logs configuration for. The resource must belong to the same project as the parent. The resource must be a network, subnetwork, interconnect attachment, VPN tunnel, or a project. */
-  resource?: string;
-  /** Optional. Number of `EffectiveVpcFlowLogsConfigs` to return. Default is 30. */
-  pageSize?: number;
-  /** Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match the filter expression. A filter expression must use the supported [CEL logic operators] (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators). */
-  filter?: string;
-}
-export const ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      pageToken: S.optional(S.String.pipe(T.Query())),
-      parent: S.String.pipe(T.Label()),
-      resource: S.optional(S.String.pipe(T.Query())),
-      pageSize: S.optional(S.Number.pipe(T.Query())),
-      filter: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs",
-        baseUrl: "https://networkmanagement.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest",
-  }) as any as S.Schema<ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest>;
-
-export type EffectiveVpcFlowLogsConfigStateEnum =
-  | "STATE_UNSPECIFIED"
-  | "ENABLED"
-  | "DISABLED";
-export const EffectiveVpcFlowLogsConfigStateEnum = /*@__PURE__*/ S.String;
-
-export type EffectiveVpcFlowLogsConfigScopeEnum =
-  | "SCOPE_UNSPECIFIED"
-  | "SUBNET"
-  | "COMPUTE_API_SUBNET"
-  | "NETWORK"
-  | "VPN_TUNNEL"
-  | "INTERCONNECT_ATTACHMENT"
-  | "ORGANIZATION";
-export const EffectiveVpcFlowLogsConfigScopeEnum = /*@__PURE__*/ S.String;
-
-export type EffectiveVpcFlowLogsConfigMetadataEnum =
-  | "METADATA_UNSPECIFIED"
-  | "INCLUDE_ALL_METADATA"
-  | "EXCLUDE_ALL_METADATA"
-  | "CUSTOM_METADATA";
-export const EffectiveVpcFlowLogsConfigMetadataEnum = /*@__PURE__*/ S.String;
-
-export type EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
-  | "CROSS_PROJECT_METADATA_UNSPECIFIED"
-  | "CROSS_PROJECT_METADATA_ENABLED"
-  | "CROSS_PROJECT_METADATA_DISABLED";
-export const EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum =
-  /*@__PURE__*/ S.String;
-
-export type EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
-  | "AGGREGATION_INTERVAL_UNSPECIFIED"
-  | "INTERVAL_5_SEC"
-  | "INTERVAL_30_SEC"
-  | "INTERVAL_1_MIN"
-  | "INTERVAL_5_MIN"
-  | "INTERVAL_10_MIN"
-  | "INTERVAL_15_MIN";
-export const EffectiveVpcFlowLogsConfigAggregationIntervalEnum =
-  /*@__PURE__*/ S.String;
-
-/** A configuration to generate a response for GetEffectiveVpcFlowLogsConfig request. */
-export interface EffectiveVpcFlowLogsConfig {
-  /** The state of the VPC Flow Log configuration. Default value is ENABLED. When creating a new configuration, it must be enabled. Setting state=DISABLED will pause the log generation for this config. */
-  state?: EffectiveVpcFlowLogsConfigStateEnum;
-  /** Unique name of the configuration. The name can have one of the following forms: - For project-level configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level configurations: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For a Compute config, the name will be the path of the subnet: `projects/{project_id}/regions/{region}/subnetworks/{subnet_id}` */
-  name?: string;
-  /** The value of the field must be in (0, 1]. The sampling rate of VPC Flow Logs where 1.0 means all collected logs are reported. Setting the sampling rate to 0.0 is not allowed. If you want to disable VPC Flow Logs, use the state field instead. Default value is 1.0. */
-  flowSampling?: number;
-  /** Specifies the scope of the config (e.g., SUBNET, NETWORK, ORGANIZATION..). */
-  scope?: EffectiveVpcFlowLogsConfigScopeEnum;
-  /** Custom metadata fields to include in the reported VPC flow logs. Can only be specified if "metadata" was set to CUSTOM_METADATA. */
-  metadataFields?: StringList;
-  /** Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default value is INCLUDE_ALL_METADATA. */
-  metadata?: EffectiveVpcFlowLogsConfigMetadataEnum;
-  /** Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name} */
-  vpnTunnel?: string;
-  /** Determines whether to include cross project annotations in the logs. This field is available only for organization configurations. If not specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED. */
-  crossProjectMetadata?: EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum;
-  /** Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments within the network. Format: projects/{project_id}/global/networks/{name} */
-  network?: string;
-  /** Export filter used to define which VPC Flow Logs should be logged. */
-  filterExpr?: string;
-  /** Traffic will be logged from the Interconnect Attachment. Format: projects/{project_id}/regions/{region}/interconnectAttachments/{name} */
-  interconnectAttachment?: string;
-  /** The aggregation interval for the logs. Default value is INTERVAL_5_SEC. */
-  aggregationInterval?: EffectiveVpcFlowLogsConfigAggregationIntervalEnum;
-  /** Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name} */
-  subnet?: string;
-}
-export const EffectiveVpcFlowLogsConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: S.optional(EffectiveVpcFlowLogsConfigStateEnum),
-    name: S.optional(S.String),
-    flowSampling: S.optional(S.Number),
-    scope: S.optional(EffectiveVpcFlowLogsConfigScopeEnum),
-    metadataFields: S.optional(StringList),
-    metadata: S.optional(EffectiveVpcFlowLogsConfigMetadataEnum),
-    vpnTunnel: S.optional(S.String),
-    crossProjectMetadata: S.optional(
-      EffectiveVpcFlowLogsConfigCrossProjectMetadataEnum,
-    ),
-    network: S.optional(S.String),
-    filterExpr: S.optional(S.String),
-    interconnectAttachment: S.optional(S.String),
-    aggregationInterval: S.optional(
-      EffectiveVpcFlowLogsConfigAggregationIntervalEnum,
-    ),
-    subnet: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EffectiveVpcFlowLogsConfig",
-}) as any as S.Schema<EffectiveVpcFlowLogsConfig>;
-
-export type EffectiveVpcFlowLogsConfigList = Array<EffectiveVpcFlowLogsConfig>;
-export const EffectiveVpcFlowLogsConfigList = /*@__PURE__*/ S.Array(
-  EffectiveVpcFlowLogsConfig,
-) as any as S.Schema<EffectiveVpcFlowLogsConfigList>;
-
-/** Response for the `ShowEffectiveFlowLogsConfigs` method. */
-export interface ShowEffectiveFlowLogsConfigsResponse {
-  /** Locations that could not be reached (when querying all locations with `-`). */
-  unreachable?: StringList;
-  /** List of Effective Vpc Flow Logs configurations. */
-  effectiveFlowLogsConfigs?: EffectiveVpcFlowLogsConfigList;
-  /** Page token to fetch the next set of configurations. */
-  nextPageToken?: string;
-}
-export const ShowEffectiveFlowLogsConfigsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      unreachable: S.optional(StringList),
-      effectiveFlowLogsConfigs: S.optional(EffectiveVpcFlowLogsConfigList),
-      nextPageToken: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ShowEffectiveFlowLogsConfigsResponse",
-}) as any as S.Schema<ShowEffectiveFlowLogsConfigsResponse>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
@@ -4762,6 +4762,29 @@ export const generateProviderAccessTokenProjectsLocationsNetworkMonitoringProvid
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
+
+export type GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
+export const getEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
+  GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
+  ShowEffectiveFlowLogsConfigsResponse,
+  GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError,
+  GcpOpContext,
+  ShowEffectiveFlowLogsConfigsResponse
+> = /*@__PURE__*/ API.makePaginated(() => ({
+  input: GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
+  output: ShowEffectiveFlowLogsConfigsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+  pagination: {
+    inputToken: "pageToken",
+    outputToken: "nextPageToken",
+  } as const,
+})) as any;
 
 export type GetIamPolicyProjectsLocationsGlobalConnectivityTestsError =
   | NotFound
@@ -5342,29 +5365,6 @@ export const setIamPolicyProjectsLocationsGlobalConnectivityTests: API.Operation
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
-
-export type ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource. */
-export const showEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs: API.PaginatedOperationMethod<
-  ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
-  ShowEffectiveFlowLogsConfigsResponse,
-  ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsError,
-  GcpOpContext,
-  ShowEffectiveFlowLogsConfigsResponse
-> = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest,
-  output: ShowEffectiveFlowLogsConfigsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-  pagination: {
-    inputToken: "pageToken",
-    outputToken: "nextPageToken",
-  } as const,
-})) as any;
 
 export type TestIamPermissionsProjectsLocationsGlobalConnectivityTestsError =
   | NotFound

@@ -155,6 +155,38 @@ export const FetchReadWriteTokenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FetchReadWriteTokenResponse",
 }) as any as S.Schema<FetchReadWriteTokenResponse>;
 
+/** The request message for Operations.CancelOperation. */
+export type CancelOperationRequest = FetchReadTokenRequest;
+export const CancelOperationRequest = FetchReadTokenRequest;
+
+export interface CancelProjectsLocationsOperationsRequest {
+  /** The name of the operation resource to be cancelled. */
+  name: string;
+  /** Request body */
+  body?: FetchReadTokenRequest;
+}
+export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v2/{+name}:cancel",
+        baseUrl: "https://cloudbuild.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CancelProjectsLocationsOperationsRequest",
+}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
+
 export type StringMap = { [key: string]: string | undefined };
 export const StringMap = /*@__PURE__*/ S.Record(
   S.String,
@@ -227,13 +259,13 @@ export const BatchCreateRepositoriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchCreateRepositoriesRequest",
 }) as any as S.Schema<BatchCreateRepositoriesRequest>;
 
-export interface BatchCreateProjectsLocationsConnectionsRepositoriesRequest {
+export interface CreateBatchProjectLocationConnectionRepositoryRequest {
   /** Required. The connection to contain all the repositories being created. Format: projects/*\/locations/*\/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field. */
   parent: string;
   /** Request body */
   body?: BatchCreateRepositoriesRequest;
 }
-export const BatchCreateProjectsLocationsConnectionsRepositoriesRequest =
+export const CreateBatchProjectLocationConnectionRepositoryRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -246,8 +278,8 @@ export const BatchCreateProjectsLocationsConnectionsRepositoriesRequest =
       }),
     ),
   ).annotate({
-    identifier: "BatchCreateProjectsLocationsConnectionsRepositoriesRequest",
-  }) as any as S.Schema<BatchCreateProjectsLocationsConnectionsRepositoriesRequest>;
+    identifier: "CreateBatchProjectLocationConnectionRepositoryRequest",
+  }) as any as S.Schema<CreateBatchProjectLocationConnectionRepositoryRequest>;
 
 export type DocumentMap = { [key: string]: unknown | undefined };
 export const DocumentMap = /*@__PURE__*/ S.Record(
@@ -299,38 +331,6 @@ export const Operation = /*@__PURE__*/ S.suspend(() =>
     done: S.optional(S.Boolean),
   }),
 ).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** The request message for Operations.CancelOperation. */
-export type CancelOperationRequest = FetchReadTokenRequest;
-export const CancelOperationRequest = FetchReadTokenRequest;
-
-export interface CancelProjectsLocationsOperationsRequest {
-  /** The name of the operation resource to be cancelled. */
-  name: string;
-  /** Request body */
-  body?: FetchReadTokenRequest;
-}
-export const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(FetchReadTokenRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v2/{+name}:cancel",
-        baseUrl: "https://cloudbuild.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CancelProjectsLocationsOperationsRequest",
-}) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
 
 /** ServiceDirectoryConfig represents Service Directory configuration for a connection. */
 export interface GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
@@ -1385,26 +1385,6 @@ export const accessReadWriteTokenProjectsLocationsConnectionsRepositories: API.O
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsLocationsConnectionsRepositoriesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates multiple repositories inside a connection. */
-export const batchCreateProjectsLocationsConnectionsRepositories: API.OperationMethod<
-  BatchCreateProjectsLocationsConnectionsRepositoriesRequest,
-  Operation,
-  BatchCreateProjectsLocationsConnectionsRepositoriesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsLocationsConnectionsRepositoriesRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -1420,6 +1400,26 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CancelProjectsLocationsOperationsRequest,
   output: Empty,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectLocationConnectionRepositoryError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates multiple repositories inside a connection. */
+export const createBatchProjectLocationConnectionRepository: API.OperationMethod<
+  CreateBatchProjectLocationConnectionRepositoryRequest,
+  Operation,
+  CreateBatchProjectLocationConnectionRepositoryError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectLocationConnectionRepositoryRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

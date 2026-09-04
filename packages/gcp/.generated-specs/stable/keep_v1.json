@@ -624,7 +624,7 @@
         "smithy.api#documentation": "Gets a note."
       }
     },
-    "com.gcp.keep_v1#BatchDeleteNotesPermissionsRequest": {
+    "com.gcp.keep_v1#DeleteBatchNotePermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -644,10 +644,10 @@
         }
       }
     },
-    "com.gcp.keep_v1#BatchDeleteNotesPermissions": {
+    "com.gcp.keep_v1#DeleteBatchNotePermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.keep_v1#BatchDeleteNotesPermissionsRequest"
+        "target": "com.gcp.keep_v1#DeleteBatchNotePermissionRequest"
       },
       "output": {
         "target": "com.gcp.keep_v1#Empty"
@@ -674,7 +674,7 @@
         "smithy.api#documentation": "Deletes one or more permissions on the note. The specified entities will immediately lose access. A permission with the `OWNER` role can't be removed. If removing a permission fails, then the entire request fails and no changes are made. Returns a 400 bad request error if a specified permission does not exist on the note."
       }
     },
-    "com.gcp.keep_v1#BatchCreateNotesPermissionsRequest": {
+    "com.gcp.keep_v1#CreateBatchNotePermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -694,10 +694,10 @@
         }
       }
     },
-    "com.gcp.keep_v1#BatchCreateNotesPermissions": {
+    "com.gcp.keep_v1#CreateBatchNotePermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.keep_v1#BatchCreateNotesPermissionsRequest"
+        "target": "com.gcp.keep_v1#CreateBatchNotePermissionRequest"
       },
       "output": {
         "target": "com.gcp.keep_v1#BatchCreatePermissionsResponse"

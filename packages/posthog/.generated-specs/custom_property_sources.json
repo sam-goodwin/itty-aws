@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.custom_property_sources#CustomPropertySourcesListRequest": {
+    "com.posthog.custom_property_sources#ListCustomPropertySourcesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -444,10 +444,10 @@
       },
       "traits": {}
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesList": {
+    "com.posthog.custom_property_sources#ListCustomPropertySources": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.custom_property_sources#CustomPropertySourcesListRequest"
+        "target": "com.posthog.custom_property_sources#ListCustomPropertySourcesRequest"
       },
       "output": {
         "target": "com.posthog.custom_property_sources#PaginatedCustomPropertySourceList"
@@ -460,7 +460,7 @@
         }
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesCreateRequest": {
+    "com.posthog.custom_property_sources#CreateCustomPropertySourceRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -529,10 +529,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesCreate": {
+    "com.posthog.custom_property_sources#CreateCustomPropertySource": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.custom_property_sources#CustomPropertySourcesCreateRequest"
+        "target": "com.posthog.custom_property_sources#CreateCustomPropertySourceRequest"
       },
       "output": {
         "target": "com.posthog.custom_property_sources#CustomPropertySource"
@@ -584,7 +584,7 @@
         }
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesUpdateRequest": {
+    "com.posthog.custom_property_sources#UpdateCustomPropertySourceRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -625,10 +625,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesUpdate": {
+    "com.posthog.custom_property_sources#UpdateCustomPropertySource": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.custom_property_sources#CustomPropertySourcesUpdateRequest"
+        "target": "com.posthog.custom_property_sources#UpdateCustomPropertySourceRequest"
       },
       "output": {
         "target": "com.posthog.custom_property_sources#CustomPropertySource"
@@ -641,7 +641,7 @@
         }
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesPartialUpdateRequest": {
+    "com.posthog.custom_property_sources#UpdateCustomPropertySourcePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -682,10 +682,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesPartialUpdate": {
+    "com.posthog.custom_property_sources#UpdateCustomPropertySourcePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.custom_property_sources#CustomPropertySourcesPartialUpdateRequest"
+        "target": "com.posthog.custom_property_sources#UpdateCustomPropertySourcePartialRequest"
       },
       "output": {
         "target": "com.posthog.custom_property_sources#CustomPropertySource"
@@ -777,7 +777,7 @@
         "smithy.api#documentation": "Person and group sources only: start a backfill that reads the whole warehouse table and\npopulates person or group properties for historical rows. Coalesces if one is already running\nfor the table."
       }
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesRunsListRequest": {
+    "com.posthog.custom_property_sources#ListCustomPropertySourceRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -858,10 +858,10 @@
       },
       "traits": {}
     },
-    "com.posthog.custom_property_sources#CustomPropertySourcesRunsList": {
+    "com.posthog.custom_property_sources#ListCustomPropertySourceRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.custom_property_sources#CustomPropertySourcesRunsListRequest"
+        "target": "com.posthog.custom_property_sources#ListCustomPropertySourceRunsRequest"
       },
       "output": {
         "target": "com.posthog.custom_property_sources#PaginatedCustomPropertySyncRunList"
@@ -920,19 +920,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.custom_property_sources#CustomPropertySourcesList"
+          "target": "com.posthog.custom_property_sources#ListCustomPropertySources"
         },
         {
-          "target": "com.posthog.custom_property_sources#CustomPropertySourcesCreate"
+          "target": "com.posthog.custom_property_sources#CreateCustomPropertySource"
         },
         {
           "target": "com.posthog.custom_property_sources#CustomPropertySourcesRetrieve"
         },
         {
-          "target": "com.posthog.custom_property_sources#CustomPropertySourcesUpdate"
+          "target": "com.posthog.custom_property_sources#UpdateCustomPropertySource"
         },
         {
-          "target": "com.posthog.custom_property_sources#CustomPropertySourcesPartialUpdate"
+          "target": "com.posthog.custom_property_sources#UpdateCustomPropertySourcePartial"
         },
         {
           "target": "com.posthog.custom_property_sources#CustomPropertySourcesDestroy"
@@ -941,7 +941,7 @@
           "target": "com.posthog.custom_property_sources#CustomPropertySourcesBackfill"
         },
         {
-          "target": "com.posthog.custom_property_sources#CustomPropertySourcesRunsList"
+          "target": "com.posthog.custom_property_sources#ListCustomPropertySourceRuns"
         },
         {
           "target": "com.posthog.custom_property_sources#CustomPropertySourcesSync"

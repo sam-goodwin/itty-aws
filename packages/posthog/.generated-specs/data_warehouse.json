@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.data_warehouse#DataWarehouseCheckDatabaseNameRetrieveRequest": {
+    "com.posthog.data_warehouse#CheckDataWarehouseDatabaseNameRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -59,10 +59,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_warehouse#DataWarehouseCheckDatabaseNameRetrieve": {
+    "com.posthog.data_warehouse#CheckDataWarehouseDatabaseNameRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseCheckDatabaseNameRetrieveRequest"
+        "target": "com.posthog.data_warehouse#CheckDataWarehouseDatabaseNameRetrieveRequest"
       },
       "output": {
         "target": "com.posthog.data_warehouse#CheckDatabaseNameResponse"
@@ -76,7 +76,7 @@
         "smithy.api#documentation": "Check if a database name is available."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseCheckSchemaNameRetrieveRequest": {
+    "com.posthog.data_warehouse#CheckDataWarehouseSchemaNameRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -120,10 +120,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_warehouse#DataWarehouseCheckSchemaNameRetrieve": {
+    "com.posthog.data_warehouse#CheckDataWarehouseSchemaNameRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseCheckSchemaNameRetrieveRequest"
+        "target": "com.posthog.data_warehouse#CheckDataWarehouseSchemaNameRetrieveRequest"
       },
       "output": {
         "target": "com.posthog.data_warehouse#CheckSchemaNameResponse"
@@ -284,7 +284,7 @@
         "smithy.api#documentation": "Read or update the team's data quality gate: whether a materialization whose error-severity checks fail is published."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseDataQualityGatePartialUpdateRequest": {
+    "com.posthog.data_warehouse#UpdateDataWarehouseDataQualityGatePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -306,10 +306,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseDataQualityGatePartialUpdate": {
+    "com.posthog.data_warehouse#UpdateDataWarehouseDataQualityGatePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseDataQualityGatePartialUpdateRequest"
+        "target": "com.posthog.data_warehouse#UpdateDataWarehouseDataQualityGatePartialRequest"
       },
       "output": {
         "target": "com.posthog.data_warehouse#DataQualityGateConfig"
@@ -323,7 +323,7 @@
         "smithy.api#documentation": "Read or update the team's data quality gate: whether a materialization whose error-severity checks fail is published."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseDeleteOrgDestroyRequest": {
+    "com.posthog.data_warehouse#DeleteOrgDataWarehouseDestroyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -357,10 +357,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_warehouse#DataWarehouseDeleteOrgDestroy": {
+    "com.posthog.data_warehouse#DeleteOrgDataWarehouseDestroy": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseDeleteOrgDestroyRequest"
+        "target": "com.posthog.data_warehouse#DeleteOrgDataWarehouseDestroyRequest"
       },
       "output": {
         "target": "com.posthog.data_warehouse#DeleteWarehouseOrgResponse"
@@ -374,7 +374,7 @@
         "smithy.api#documentation": "Remove the organization's provisioning record after teardown, freeing its warehouse name.\n\nCalled once the warehouse status reports `deleted`: deprovision tears the warehouse\ndown, this removes the now-empty org row so the database_name can be reused. Restricted\nto organization admins."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseDeprovisionCreateRequest": {
+    "com.posthog.data_warehouse#CreateDataWarehouseDeprovisionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -390,10 +390,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseDeprovisionCreate": {
+    "com.posthog.data_warehouse#CreateDataWarehouseDeprovision": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseDeprovisionCreateRequest"
+        "target": "com.posthog.data_warehouse#CreateDataWarehouseDeprovisionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1622,7 +1622,7 @@
         "smithy.api#documentation": "Get per-schema detail for one imported source\n\nPer-schema backfill and live import status for one source, for the Overview tab's drill-down modal — the main status endpoint only returns a per-source rollup."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseOnboardTeamCreateRequest": {
+    "com.posthog.data_warehouse#CreateDataWarehouseOnboardTeamRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1665,10 +1665,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_warehouse#DataWarehouseOnboardTeamCreate": {
+    "com.posthog.data_warehouse#CreateDataWarehouseOnboardTeam": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseOnboardTeamCreateRequest"
+        "target": "com.posthog.data_warehouse#CreateDataWarehouseOnboardTeamRequest"
       },
       "output": {
         "target": "com.posthog.data_warehouse#OnboardWarehouseTeamResponse"
@@ -1715,7 +1715,7 @@
         "smithy.api#documentation": "API endpoints for data warehouse aggregate statistics and operations."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseProvisionCreateRequest": {
+    "com.posthog.data_warehouse#CreateDataWarehouseProvisionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1745,10 +1745,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseProvisionCreate": {
+    "com.posthog.data_warehouse#CreateDataWarehouseProvision": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseProvisionCreateRequest"
+        "target": "com.posthog.data_warehouse#CreateDataWarehouseProvisionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1762,7 +1762,7 @@
         "smithy.api#documentation": "Start provisioning a managed warehouse for this organization (shared by all its teams)."
       }
     },
-    "com.posthog.data_warehouse#DataWarehouseResetPasswordCreateRequest": {
+    "com.posthog.data_warehouse#CreateDataWarehouseResetPasswordRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1797,10 +1797,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_warehouse#DataWarehouseResetPasswordCreate": {
+    "com.posthog.data_warehouse#CreateDataWarehouseResetPassword": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_warehouse#DataWarehouseResetPasswordCreateRequest"
+        "target": "com.posthog.data_warehouse#CreateDataWarehouseResetPasswordRequest"
       },
       "output": {
         "target": "com.posthog.data_warehouse#ResetPasswordResponse"
@@ -2142,10 +2142,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseCheckDatabaseNameRetrieve"
+          "target": "com.posthog.data_warehouse#CheckDataWarehouseDatabaseNameRetrieve"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseCheckSchemaNameRetrieve"
+          "target": "com.posthog.data_warehouse#CheckDataWarehouseSchemaNameRetrieve"
         },
         {
           "target": "com.posthog.data_warehouse#DataWarehouseCompletedActivityRetrieve"
@@ -2160,13 +2160,13 @@
           "target": "com.posthog.data_warehouse#DataWarehouseDataQualityGateRetrieve"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseDataQualityGatePartialUpdate"
+          "target": "com.posthog.data_warehouse#UpdateDataWarehouseDataQualityGatePartial"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseDeleteOrgDestroy"
+          "target": "com.posthog.data_warehouse#DeleteOrgDataWarehouseDestroy"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseDeprovisionCreate"
+          "target": "com.posthog.data_warehouse#CreateDataWarehouseDeprovision"
         },
         {
           "target": "com.posthog.data_warehouse#DataWarehouseJobStatsRetrieve"
@@ -2184,16 +2184,16 @@
           "target": "com.posthog.data_warehouse#DataWarehouseManagedWarehouseSourceSchemasRetrieve"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseOnboardTeamCreate"
+          "target": "com.posthog.data_warehouse#CreateDataWarehouseOnboardTeam"
         },
         {
           "target": "com.posthog.data_warehouse#DataWarehousePropertyValuesRetrieve"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseProvisionCreate"
+          "target": "com.posthog.data_warehouse#CreateDataWarehouseProvision"
         },
         {
-          "target": "com.posthog.data_warehouse#DataWarehouseResetPasswordCreate"
+          "target": "com.posthog.data_warehouse#CreateDataWarehouseResetPassword"
         },
         {
           "target": "com.posthog.data_warehouse#DataWarehouseRunningActivityRetrieve"

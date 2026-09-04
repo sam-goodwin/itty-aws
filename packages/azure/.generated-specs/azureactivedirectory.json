@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsDelete": {
+    "com.azure.azureactivedirectory#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.azureactivedirectory#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.azureactivedirectory#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -76,13 +76,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsCreate": {
+    "com.azure.azureactivedirectory#CreatePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsCreateRequest"
+        "target": "com.azure.azureactivedirectory#CreatePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsCreateResponse"
+        "target": "com.azure.azureactivedirectory#CreatePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -95,7 +95,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsCreateResponse": {
+    "com.azure.azureactivedirectory#CreatePrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -283,7 +283,7 @@
         "smithy.api#documentation": "Private endpoint object properties."
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsCreateRequest": {
+    "com.azure.azureactivedirectory#CreatePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -355,13 +355,13 @@
         "smithy.api#documentation": "Properties of the private endpoint connection resource."
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsGet": {
+    "com.azure.azureactivedirectory#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.azureactivedirectory#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.azureactivedirectory#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -374,7 +374,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.azureactivedirectory#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -406,7 +406,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.azureactivedirectory#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -446,10 +446,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsListByPolicyName": {
+    "com.azure.azureactivedirectory#ListPrivateEndpointConnectionByPolicyName": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsListByPolicyNameRequest"
+        "target": "com.azure.azureactivedirectory#ListPrivateEndpointConnectionByPolicyNameRequest"
       },
       "output": {
         "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionListResult"
@@ -526,7 +526,7 @@
         "smithy.api#documentation": "Private endpoint connection resource."
       }
     },
-    "com.azure.azureactivedirectory#PrivateEndpointConnectionsListByPolicyNameRequest": {
+    "com.azure.azureactivedirectory#ListPrivateEndpointConnectionByPolicyNameRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -558,10 +558,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdList": {
+    "com.azure.azureactivedirectory#ListPrivateLinkForAzureAd": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdListRequest"
+        "target": "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdRequest"
       },
       "output": {
         "target": "com.azure.azureactivedirectory#PrivateLinkPolicyListResult"
@@ -695,7 +695,7 @@
         "smithy.api#documentation": "The list of tenantIds."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdListRequest": {
+    "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -719,10 +719,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdListBySubscription": {
+    "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdListBySubscriptionRequest"
+        "target": "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.azureactivedirectory#PrivateLinkPolicyListResult"
@@ -738,7 +738,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdListBySubscriptionRequest": {
+    "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -754,10 +754,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdDelete": {
+    "com.azure.azureactivedirectory#DeletePrivateLinkForAzureAd": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdDeleteRequest"
+        "target": "com.azure.azureactivedirectory#DeletePrivateLinkForAzureAdRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -773,7 +773,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdDeleteRequest": {
+    "com.azure.azureactivedirectory#DeletePrivateLinkForAzureAdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -805,13 +805,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdate": {
+    "com.azure.azureactivedirectory#UpdatePrivateLinkForAzureAd": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdateRequest"
+        "target": "com.azure.azureactivedirectory#UpdatePrivateLinkForAzureAdRequest"
       },
       "output": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdateResponse"
+        "target": "com.azure.azureactivedirectory#UpdatePrivateLinkForAzureAdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -824,7 +824,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdateResponse": {
+    "com.azure.azureactivedirectory#UpdatePrivateLinkForAzureAdResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -913,7 +913,7 @@
         "smithy.api#documentation": "The list of tenantIds."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdateRequest": {
+    "com.azure.azureactivedirectory#UpdatePrivateLinkForAzureAdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -963,13 +963,13 @@
         "smithy.api#documentation": "Resource tags to be updated."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreate": {
+    "com.azure.azureactivedirectory#CreatePrivateLinkForAzureAd": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateRequest"
+        "target": "com.azure.azureactivedirectory#CreatePrivateLinkForAzureAdRequest"
       },
       "output": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateResponse"
+        "target": "com.azure.azureactivedirectory#CreatePrivateLinkForAzureAdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -982,7 +982,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateResponse": {
+    "com.azure.azureactivedirectory#CreatePrivateLinkForAzureAdResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1071,7 +1071,7 @@
         "smithy.api#documentation": "The list of tenantIds."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreateRequest": {
+    "com.azure.azureactivedirectory#CreatePrivateLinkForAzureAdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1166,13 +1166,13 @@
         "smithy.api#documentation": "The list of tenantIds."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdGet": {
+    "com.azure.azureactivedirectory#GetPrivateLinkForAzureAd": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdGetRequest"
+        "target": "com.azure.azureactivedirectory#GetPrivateLinkForAzureAdRequest"
       },
       "output": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdGetResponse"
+        "target": "com.azure.azureactivedirectory#GetPrivateLinkForAzureAdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1185,7 +1185,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdGetResponse": {
+    "com.azure.azureactivedirectory#GetPrivateLinkForAzureAdResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1274,7 +1274,7 @@
         "smithy.api#documentation": "The list of tenantIds."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkForAzureAdGetRequest": {
+    "com.azure.azureactivedirectory#GetPrivateLinkForAzureAdRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1306,13 +1306,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkResourcesGet": {
+    "com.azure.azureactivedirectory#GetPrivateLinkResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkResourcesGetRequest"
+        "target": "com.azure.azureactivedirectory#GetPrivateLinkResourceRequest"
       },
       "output": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkResourcesGetResponse"
+        "target": "com.azure.azureactivedirectory#GetPrivateLinkResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1325,7 +1325,7 @@
         "com.distilled.openapi#apiVersion": "2020-03-01"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkResourcesGetResponse": {
+    "com.azure.azureactivedirectory#GetPrivateLinkResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1386,7 +1386,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkResourcesGetRequest": {
+    "com.azure.azureactivedirectory#GetPrivateLinkResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1426,10 +1426,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkResourcesListByPrivateLinkPolicy": {
+    "com.azure.azureactivedirectory#ListPrivateLinkResourceByPrivateLinkPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azureactivedirectory#PrivateLinkResourcesListByPrivateLinkPolicyRequest"
+        "target": "com.azure.azureactivedirectory#ListPrivateLinkResourceByPrivateLinkPolicyRequest"
       },
       "output": {
         "target": "com.azure.azureactivedirectory#PrivateLinkResourceListResult"
@@ -1506,7 +1506,7 @@
         "smithy.api#documentation": "A private link resource"
       }
     },
-    "com.azure.azureactivedirectory#PrivateLinkResourcesListByPrivateLinkPolicyRequest": {
+    "com.azure.azureactivedirectory#ListPrivateLinkResourceByPrivateLinkPolicyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1543,40 +1543,40 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.azureactivedirectory#DeletePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsCreate"
+          "target": "com.azure.azureactivedirectory#CreatePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsGet"
+          "target": "com.azure.azureactivedirectory#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateEndpointConnectionsListByPolicyName"
+          "target": "com.azure.azureactivedirectory#ListPrivateEndpointConnectionByPolicyName"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdList"
+          "target": "com.azure.azureactivedirectory#ListPrivateLinkForAzureAd"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdListBySubscription"
+          "target": "com.azure.azureactivedirectory#ListPrivateLinkForAzureAdBySubscription"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdDelete"
+          "target": "com.azure.azureactivedirectory#DeletePrivateLinkForAzureAd"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdUpdate"
+          "target": "com.azure.azureactivedirectory#UpdatePrivateLinkForAzureAd"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdCreate"
+          "target": "com.azure.azureactivedirectory#CreatePrivateLinkForAzureAd"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkForAzureAdGet"
+          "target": "com.azure.azureactivedirectory#GetPrivateLinkForAzureAd"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkResourcesGet"
+          "target": "com.azure.azureactivedirectory#GetPrivateLinkResource"
         },
         {
-          "target": "com.azure.azureactivedirectory#PrivateLinkResourcesListByPrivateLinkPolicy"
+          "target": "com.azure.azureactivedirectory#ListPrivateLinkResourceByPrivateLinkPolicy"
         }
       ],
       "traits": {

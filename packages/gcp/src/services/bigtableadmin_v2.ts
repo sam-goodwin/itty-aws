@@ -3503,56 +3503,6 @@ export const ModifyColumnFamiliesProjectsInstancesTablesRequest =
     identifier: "ModifyColumnFamiliesProjectsInstancesTablesRequest",
   }) as any as S.Schema<ModifyColumnFamiliesProjectsInstancesTablesRequest>;
 
-export interface PartialUpdateClusterProjectsInstancesClustersRequest {
-  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
-  name: string;
-  /** Required. The subset of Cluster fields which should be replaced. */
-  updateMask?: string;
-  /** Request body */
-  body?: Cluster;
-}
-export const PartialUpdateClusterProjectsInstancesClustersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Cluster.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartialUpdateClusterProjectsInstancesClustersRequest",
-  }) as any as S.Schema<PartialUpdateClusterProjectsInstancesClustersRequest>;
-
-export interface PartialUpdateInstanceProjectsInstancesRequest {
-  /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
-  name: string;
-  /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
-  updateMask?: string;
-  /** Request body */
-  body?: Instance;
-}
-export const PartialUpdateInstanceProjectsInstancesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      updateMask: S.optional(S.String.pipe(T.Query())),
-      body: S.optional(Instance.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "v2/{+name}",
-        baseUrl: "https://bigtableadmin.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "PartialUpdateInstanceProjectsInstancesRequest",
-  }) as any as S.Schema<PartialUpdateInstanceProjectsInstancesRequest>;
-
 export interface PatchProjectsInstancesAppProfilesRequest {
   /** Required. The subset of app profile fields which should be replaced. If unset, all fields will be replaced. */
   updateMask?: string;
@@ -4178,6 +4128,56 @@ export const UpdateMemoryLayerProjectsInstancesClustersRequest =
   ).annotate({
     identifier: "UpdateMemoryLayerProjectsInstancesClustersRequest",
   }) as any as S.Schema<UpdateMemoryLayerProjectsInstancesClustersRequest>;
+
+export interface UpdatePartialClusterProjectInstanceClusterRequest {
+  /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
+  name: string;
+  /** Required. The subset of Cluster fields which should be replaced. */
+  updateMask?: string;
+  /** Request body */
+  body?: Cluster;
+}
+export const UpdatePartialClusterProjectInstanceClusterRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Cluster.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2/{+name}",
+        baseUrl: "https://bigtableadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdatePartialClusterProjectInstanceClusterRequest",
+  }) as any as S.Schema<UpdatePartialClusterProjectInstanceClusterRequest>;
+
+export interface UpdatePartialInstanceProjectInstanceRequest {
+  /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
+  name: string;
+  /** Required. The subset of Instance fields which should be replaced. Must be explicitly set. */
+  updateMask?: string;
+  /** Request body */
+  body?: Instance;
+}
+export const UpdatePartialInstanceProjectInstanceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      updateMask: S.optional(S.String.pipe(T.Query())),
+      body: S.optional(Instance.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "v2/{+name}",
+        baseUrl: "https://bigtableadmin.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdatePartialInstanceProjectInstanceRequest",
+  }) as any as S.Schema<UpdatePartialInstanceProjectInstanceRequest>;
 
 export interface UpdateProjectsInstancesRequest {
   /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
@@ -5304,46 +5304,6 @@ export const modifyColumnFamiliesProjectsInstancesTables: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PartialUpdateClusterProjectsInstancesClustersError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Partially updates a cluster within a project. This method is the preferred way to update a Cluster. To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note that an update cannot simultaneously set serve_nodes to non-zero and cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a serve_node count via the update_mask. */
-export const partialUpdateClusterProjectsInstancesClusters: API.OperationMethod<
-  PartialUpdateClusterProjectsInstancesClustersRequest,
-  Operation,
-  PartialUpdateClusterProjectsInstancesClustersError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateClusterProjectsInstancesClustersRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PartialUpdateInstanceProjectsInstancesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance. */
-export const partialUpdateInstanceProjectsInstances: API.OperationMethod<
-  PartialUpdateInstanceProjectsInstancesRequest,
-  Operation,
-  PartialUpdateInstanceProjectsInstancesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PartialUpdateInstanceProjectsInstancesRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PatchProjectsInstancesAppProfilesError =
   | NotFound
   | Forbidden
@@ -5818,6 +5778,46 @@ export const updateMemoryLayerProjectsInstancesClusters: API.OperationMethod<
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateMemoryLayerProjectsInstancesClustersRequest,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePartialClusterProjectInstanceClusterError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Partially updates a cluster within a project. This method is the preferred way to update a Cluster. To enable and update autoscaling, set cluster_config.cluster_autoscaling_config. When autoscaling is enabled, serve_nodes is treated as an OUTPUT_ONLY field, meaning that updates to it are ignored. Note that an update cannot simultaneously set serve_nodes to non-zero and cluster_config.cluster_autoscaling_config to non-empty, and also specify both in the update_mask. To disable autoscaling, clear cluster_config.cluster_autoscaling_config, and explicitly set a serve_node count via the update_mask. */
+export const updatePartialClusterProjectInstanceCluster: API.OperationMethod<
+  UpdatePartialClusterProjectInstanceClusterRequest,
+  Operation,
+  UpdatePartialClusterProjectInstanceClusterError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePartialClusterProjectInstanceClusterRequest,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePartialInstanceProjectInstanceError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Partially updates an instance within a project. This method can modify all fields of an Instance and is the preferred way to update an Instance. */
+export const updatePartialInstanceProjectInstance: API.OperationMethod<
+  UpdatePartialInstanceProjectInstanceRequest,
+  Operation,
+  UpdatePartialInstanceProjectInstanceError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePartialInstanceProjectInstanceRequest,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

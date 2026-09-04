@@ -5489,7 +5489,7 @@
         "smithy.api#documentation": "Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist"
       }
     },
-    "com.gcp.toolresults_v1beta3#BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest": {
+    "com.gcp.toolresults_v1beta3#CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest": {
       "type": "structure",
       "members": {
         "executionId": {
@@ -5541,10 +5541,10 @@
         }
       }
     },
-    "com.gcp.toolresults_v1beta3#BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamples": {
+    "com.gcp.toolresults_v1beta3#CreateBatchProjectHistoryExecutionStepPerfSampleSerySample": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.toolresults_v1beta3#BatchCreateProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesRequest"
+        "target": "com.gcp.toolresults_v1beta3#CreateBatchProjectHistoryExecutionStepPerfSampleSerySampleRequest"
       },
       "output": {
         "target": "com.gcp.toolresults_v1beta3#BatchCreatePerfSamplesResponse"

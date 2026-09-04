@@ -65,12 +65,111 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
+/** Developer notes for an issue. */
+export interface Note {
+  /** Output only. Identifier. Format: "projects/{project}/apps/app/issues/{issue}/notes/{note}". */
+  name?: string;
+  /** Immutable. The body of the note. */
+  body?: string;
+  /** Output only. Time when the note was created. */
+  createTime?: string;
+  /** Output only. The email of the author of the note. */
+  author?: string;
+}
+export const Note = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    body: S.optional(S.String),
+    createTime: S.optional(S.String),
+    author: S.optional(S.String),
+  }),
+).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
+
+export interface CreateProjectsAppsIssuesNotesRequest {
+  /** Required. The parent resource where this note will be created. Format: "projects/{project}/apps/{app}/issues/{issue}". */
+  parent: string;
+  /** Request body */
+  body?: Note;
+}
+export const CreateProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(Note.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1alpha/{+parent}/notes",
+        baseUrl: "https://firebasecrashlytics.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectsAppsIssuesNotesRequest",
+}) as any as S.Schema<CreateProjectsAppsIssuesNotesRequest>;
+
+export interface DeleteCrashReportsProjectsAppsUsersRequest {
+  /** Required. Resource name for user reports, in the format: projects/ PROJECT_IDENTIFIER/apps/APP_ID/users/USER_ID/crashReports - PROJECT_IDENTIFIER: The Firebase project's project number (recommended) or its project ID. Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). - APP_ID: The globally unique, Firebase-assigned identifier for the Firebase App. This is not your package name or bundle ID. Learn how to [find your app ID](https://firebase.google.com/support/faq/#find-app-id). - USER_ID: The user ID set using the Crashlytics SDK. Learn how to [set user identifiers](https://firebase.google.com/docs/crashlytics/customize-crash-reports#set-user-ids). */
+  name: string;
+}
+export const DeleteCrashReportsProjectsAppsUsersRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://firebasecrashlytics.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteCrashReportsProjectsAppsUsersRequest",
+  }) as any as S.Schema<DeleteCrashReportsProjectsAppsUsersRequest>;
+
+/** Response message for the DeleteUserCrashReports method. All crash reports associated with the specified user will be deleted typically within 24 hours of receiving the crash report. */
+export interface DeleteUserCrashReportsResponse {
+  /** Target time to complete the delete crash reports operation. */
+  targetCompleteTime?: string;
+}
+export const DeleteUserCrashReportsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    targetCompleteTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteUserCrashReportsResponse",
+}) as any as S.Schema<DeleteUserCrashReportsResponse>;
+
+export interface DeleteProjectsAppsIssuesNotesRequest {
+  /** Required. The name of the note to delete. Format: projects/{project}/apps/{app}/issues/{issue}/notes/{note}. */
+  name: string;
+}
+export const DeleteProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1alpha/{+name}",
+        baseUrl: "https://firebasecrashlytics.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectsAppsIssuesNotesRequest",
+}) as any as S.Schema<DeleteProjectsAppsIssuesNotesRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
+
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export interface BatchGetProjectsAppsEventsRequest {
+export interface GetBatchProjectAppEventRequest {
   /** Required. The firebase application. Format: "projects/{project}/apps/{app_id}". */
   parent: string;
   /** Required. The resource names of the desired events. A maximum of 100 events can be retrieved in a batch. Format: "projects/{project}/apps/{app_id}/events/{event_id}". The app_id and event_id are required, but project may be "-" to conserve space in long URIs. */
@@ -78,7 +177,7 @@ export interface BatchGetProjectsAppsEventsRequest {
   /** Optional. The list of Event fields to include in the response. If omitted, the full event is returned. */
   readMask?: string;
 }
-export const BatchGetProjectsAppsEventsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchProjectAppEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     names: S.optional(StringList.pipe(T.Query())),
@@ -91,8 +190,8 @@ export const BatchGetProjectsAppsEventsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchGetProjectsAppsEventsRequest",
-}) as any as S.Schema<BatchGetProjectsAppsEventsRequest>;
+  identifier: "GetBatchProjectAppEventRequest",
+}) as any as S.Schema<GetBatchProjectAppEventRequest>;
 
 /** Web browser metadata. */
 export interface Browser {
@@ -717,182 +816,6 @@ export const BatchGetEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetEventsResponse",
 }) as any as S.Schema<BatchGetEventsResponse>;
 
-/** Request message for the UpdateIssue method. */
-export interface UpdateIssueRequest {
-  /** Required. The issue to update. The issue's `name` field is used to identify the issue to update. Format: "projects/{project}/apps/{app}/issues/{issue}". */
-  issue?: Issue;
-  /** Optional. The list of Issue fields to update. Currently only "state" is mutable. */
-  updateMask?: string;
-}
-export const UpdateIssueRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issue: S.optional(Issue),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateIssueRequest",
-}) as any as S.Schema<UpdateIssueRequest>;
-
-export type UpdateIssueRequestList = Array<UpdateIssueRequest>;
-export const UpdateIssueRequestList = /*@__PURE__*/ S.Array(
-  UpdateIssueRequest,
-) as any as S.Schema<UpdateIssueRequestList>;
-
-/** Request message for the BatchUpdateIssues method. */
-export interface BatchUpdateIssuesRequest {
-  /** Required. The request message specifying the resources to update. A maximum of 100 issues can be modified in a batch. */
-  requests?: UpdateIssueRequestList;
-  /** Optional. The list of Issue fields to update. If this is set, the update_mask field in the UpdateIssueRequest messages must either be empty or match this field. */
-  updateMask?: string;
-}
-export const BatchUpdateIssuesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requests: S.optional(UpdateIssueRequestList),
-    updateMask: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BatchUpdateIssuesRequest",
-}) as any as S.Schema<BatchUpdateIssuesRequest>;
-
-export interface BatchUpdateProjectsAppsIssuesRequest {
-  /** Required. The parent resource shared by all issues being updated. Format: projects/{project}/apps/{app}. If this is set, the parent field in the UpdateIssueRequest messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: BatchUpdateIssuesRequest;
-}
-export const BatchUpdateProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchUpdateIssuesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/issues:batchUpdate",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "BatchUpdateProjectsAppsIssuesRequest",
-}) as any as S.Schema<BatchUpdateProjectsAppsIssuesRequest>;
-
-export type IssueList = Array<Issue>;
-export const IssueList = /*@__PURE__*/ S.Array(
-  Issue,
-) as any as S.Schema<IssueList>;
-
-/** Response message for the BatchUpdateIssues method. */
-export interface BatchUpdateIssuesResponse {
-  /** Issues updated in the same order as in BatchUpdateIssuesRequest. */
-  issues?: IssueList;
-}
-export const BatchUpdateIssuesResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issues: S.optional(IssueList),
-  }),
-).annotate({
-  identifier: "BatchUpdateIssuesResponse",
-}) as any as S.Schema<BatchUpdateIssuesResponse>;
-
-/** Developer notes for an issue. */
-export interface Note {
-  /** Output only. Identifier. Format: "projects/{project}/apps/app/issues/{issue}/notes/{note}". */
-  name?: string;
-  /** Immutable. The body of the note. */
-  body?: string;
-  /** Output only. Time when the note was created. */
-  createTime?: string;
-  /** Output only. The email of the author of the note. */
-  author?: string;
-}
-export const Note = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    body: S.optional(S.String),
-    createTime: S.optional(S.String),
-    author: S.optional(S.String),
-  }),
-).annotate({ identifier: "Note" }) as any as S.Schema<Note>;
-
-export interface CreateProjectsAppsIssuesNotesRequest {
-  /** Required. The parent resource where this note will be created. Format: "projects/{project}/apps/{app}/issues/{issue}". */
-  parent: string;
-  /** Request body */
-  body?: Note;
-}
-export const CreateProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(Note.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1alpha/{+parent}/notes",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "CreateProjectsAppsIssuesNotesRequest",
-}) as any as S.Schema<CreateProjectsAppsIssuesNotesRequest>;
-
-export interface DeleteCrashReportsProjectsAppsUsersRequest {
-  /** Required. Resource name for user reports, in the format: projects/ PROJECT_IDENTIFIER/apps/APP_ID/users/USER_ID/crashReports - PROJECT_IDENTIFIER: The Firebase project's project number (recommended) or its project ID. Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). - APP_ID: The globally unique, Firebase-assigned identifier for the Firebase App. This is not your package name or bundle ID. Learn how to [find your app ID](https://firebase.google.com/support/faq/#find-app-id). - USER_ID: The user ID set using the Crashlytics SDK. Learn how to [set user identifiers](https://firebase.google.com/docs/crashlytics/customize-crash-reports#set-user-ids). */
-  name: string;
-}
-export const DeleteCrashReportsProjectsAppsUsersRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "DeleteCrashReportsProjectsAppsUsersRequest",
-  }) as any as S.Schema<DeleteCrashReportsProjectsAppsUsersRequest>;
-
-/** Response message for the DeleteUserCrashReports method. All crash reports associated with the specified user will be deleted typically within 24 hours of receiving the crash report. */
-export interface DeleteUserCrashReportsResponse {
-  /** Target time to complete the delete crash reports operation. */
-  targetCompleteTime?: string;
-}
-export const DeleteUserCrashReportsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    targetCompleteTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DeleteUserCrashReportsResponse",
-}) as any as S.Schema<DeleteUserCrashReportsResponse>;
-
-export interface DeleteProjectsAppsIssuesNotesRequest {
-  /** Required. The name of the note to delete. Format: projects/{project}/apps/{app}/issues/{issue}/notes/{note}. */
-  name: string;
-}
-export const DeleteProjectsAppsIssuesNotesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1alpha/{+name}",
-        baseUrl: "https://firebasecrashlytics.googleapis.com/",
-      }),
-    ),
-).annotate({
-  identifier: "DeleteProjectsAppsIssuesNotesRequest",
-}) as any as S.Schema<DeleteProjectsAppsIssuesNotesRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
-
 export interface GetProjectsAppsIssuesRequest {
   /** Required. The name of the issue to retrieve. Format: "projects/{project}/apps/{app}/issues/{issue}". */
   name: string;
@@ -1466,40 +1389,81 @@ export const PatchProjectsAppsIssuesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "PatchProjectsAppsIssuesRequest",
 }) as any as S.Schema<PatchProjectsAppsIssuesRequest>;
 
-export type BatchGetProjectsAppsEventsError = NotFound | Forbidden | GcpOpError;
-/** Fetch a batch of up to 100 events by name. */
-export const batchGetProjectsAppsEvents: API.OperationMethod<
-  BatchGetProjectsAppsEventsRequest,
-  BatchGetEventsResponse,
-  BatchGetProjectsAppsEventsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetProjectsAppsEventsRequest,
-  output: BatchGetEventsResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+/** Request message for the UpdateIssue method. */
+export interface UpdateIssueRequest {
+  /** Required. The issue to update. The issue's `name` field is used to identify the issue to update. Format: "projects/{project}/apps/{app}/issues/{issue}". */
+  issue?: Issue;
+  /** Optional. The list of Issue fields to update. Currently only "state" is mutable. */
+  updateMask?: string;
+}
+export const UpdateIssueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issue: S.optional(Issue),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateIssueRequest",
+}) as any as S.Schema<UpdateIssueRequest>;
 
-export type BatchUpdateProjectsAppsIssuesError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Change the state of a group of issues. This method is not atomic, so partial failures can occur. In the event of a partial failure, the request will fail and you will need to call `GetIssue` to see which issues were not updated. */
-export const batchUpdateProjectsAppsIssues: API.OperationMethod<
-  BatchUpdateProjectsAppsIssuesRequest,
-  BatchUpdateIssuesResponse,
-  BatchUpdateProjectsAppsIssuesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateProjectsAppsIssuesRequest,
-  output: BatchUpdateIssuesResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
+export type UpdateIssueRequestList = Array<UpdateIssueRequest>;
+export const UpdateIssueRequestList = /*@__PURE__*/ S.Array(
+  UpdateIssueRequest,
+) as any as S.Schema<UpdateIssueRequestList>;
+
+/** Request message for the BatchUpdateIssues method. */
+export interface BatchUpdateIssuesRequest {
+  /** Required. The request message specifying the resources to update. A maximum of 100 issues can be modified in a batch. */
+  requests?: UpdateIssueRequestList;
+  /** Optional. The list of Issue fields to update. If this is set, the update_mask field in the UpdateIssueRequest messages must either be empty or match this field. */
+  updateMask?: string;
+}
+export const BatchUpdateIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requests: S.optional(UpdateIssueRequestList),
+    updateMask: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BatchUpdateIssuesRequest",
+}) as any as S.Schema<BatchUpdateIssuesRequest>;
+
+export interface UpdateBatchProjectAppIssueRequest {
+  /** Required. The parent resource shared by all issues being updated. Format: projects/{project}/apps/{app}. If this is set, the parent field in the UpdateIssueRequest messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: BatchUpdateIssuesRequest;
+}
+export const UpdateBatchProjectAppIssueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(BatchUpdateIssuesRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1alpha/{+parent}/issues:batchUpdate",
+      baseUrl: "https://firebasecrashlytics.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateBatchProjectAppIssueRequest",
+}) as any as S.Schema<UpdateBatchProjectAppIssueRequest>;
+
+export type IssueList = Array<Issue>;
+export const IssueList = /*@__PURE__*/ S.Array(
+  Issue,
+) as any as S.Schema<IssueList>;
+
+/** Response message for the BatchUpdateIssues method. */
+export interface BatchUpdateIssuesResponse {
+  /** Issues updated in the same order as in BatchUpdateIssuesRequest. */
+  issues?: IssueList;
+}
+export const BatchUpdateIssuesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issues: S.optional(IssueList),
+  }),
+).annotate({
+  identifier: "BatchUpdateIssuesResponse",
+}) as any as S.Schema<BatchUpdateIssuesResponse>;
 
 export type CreateProjectsAppsIssuesNotesError =
   | NotFound
@@ -1557,6 +1521,21 @@ export const deleteProjectsAppsIssuesNotes: API.OperationMethod<
   input: DeleteProjectsAppsIssuesNotesRequest,
   output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchProjectAppEventError = NotFound | Forbidden | GcpOpError;
+/** Fetch a batch of up to 100 events by name. */
+export const getBatchProjectAppEvent: API.OperationMethod<
+  GetBatchProjectAppEventRequest,
+  BatchGetEventsResponse,
+  GetBatchProjectAppEventError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchProjectAppEventRequest,
+  output: BatchGetEventsResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -1669,6 +1648,26 @@ export const patchProjectsAppsIssues: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsAppsIssuesRequest,
   output: Issue,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchProjectAppIssueError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Change the state of a group of issues. This method is not atomic, so partial failures can occur. In the event of a partial failure, the request will fail and you will need to call `GetIssue` to see which issues were not updated. */
+export const updateBatchProjectAppIssue: API.OperationMethod<
+  UpdateBatchProjectAppIssueRequest,
+  BatchUpdateIssuesResponse,
+  UpdateBatchProjectAppIssueError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchProjectAppIssueRequest,
+  output: BatchUpdateIssuesResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

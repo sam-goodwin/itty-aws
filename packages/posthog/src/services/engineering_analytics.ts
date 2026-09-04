@@ -446,28 +446,6 @@ export const CISignalsConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CISignalsConfig",
 }) as any as S.Schema<CISignalsConfig>;
 
-export interface EngineeringAnalyticsCiSignalsConfigUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Enable or disable every CI signal detector atomically. */
-  enabled: boolean;
-}
-export const EngineeringAnalyticsCiSignalsConfigUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/api/projects/{project_id}/engineering_analytics/ci-signals-config/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "EngineeringAnalyticsCiSignalsConfigUpdateRequest",
-  }) as any as S.Schema<EngineeringAnalyticsCiSignalsConfigUpdateRequest>;
-
 export interface EngineeringAnalyticsCurrentBranchHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -3140,6 +3118,28 @@ export const EngineeringAnalyticsWorkflowRunsResponse = /*@__PURE__*/ S.suspend(
   identifier: "EngineeringAnalyticsWorkflowRunsResponse",
 }) as any as S.Schema<EngineeringAnalyticsWorkflowRunsResponse>;
 
+export interface UpdateEngineeringAnalyticCiSignalConfigRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Enable or disable every CI signal detector atomically. */
+  enabled: boolean;
+}
+export const UpdateEngineeringAnalyticCiSignalConfigRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      enabled: S.Boolean,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/api/projects/{project_id}/engineering_analytics/ci-signals-config/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateEngineeringAnalyticCiSignalConfigRequest",
+  }) as any as S.Schema<UpdateEngineeringAnalyticCiSignalConfigRequest>;
+
 export type EngineeringAnalyticsAuthorWorkflowCostsError =
   | BadRequest
   | PosthogOpError;
@@ -3213,21 +3213,6 @@ export const engineeringAnalyticsCiSignalsConfigRetrieve: API.OperationMethod<
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: EngineeringAnalyticsCiSignalsConfigRetrieveRequest,
-  output: CISignalsConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EngineeringAnalyticsCiSignalsConfigUpdateError = PosthogOpError;
-/** Enable or disable all CI signal detectors in one transaction. */
-export const engineeringAnalyticsCiSignalsConfigUpdate: API.OperationMethod<
-  EngineeringAnalyticsCiSignalsConfigUpdateRequest,
-  CISignalsConfig,
-  EngineeringAnalyticsCiSignalsConfigUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EngineeringAnalyticsCiSignalsConfigUpdateRequest,
   output: CISignalsConfig,
   errors: [],
   protocol: PosthogProtocol,
@@ -3652,6 +3637,21 @@ export const engineeringAnalyticsWorkflowRuns: API.OperationMethod<
   input: EngineeringAnalyticsWorkflowRunsRequest,
   output: EngineeringAnalyticsWorkflowRunsResponse,
   errors: [BadRequest],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateEngineeringAnalyticCiSignalConfigError = PosthogOpError;
+/** Enable or disable all CI signal detectors in one transaction. */
+export const updateEngineeringAnalyticCiSignalConfig: API.OperationMethod<
+  UpdateEngineeringAnalyticCiSignalConfigRequest,
+  CISignalsConfig,
+  UpdateEngineeringAnalyticCiSignalConfigError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEngineeringAnalyticCiSignalConfigRequest,
+  output: CISignalsConfig,
+  errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

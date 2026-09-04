@@ -201,13 +201,13 @@ export const AttemptRetryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AttemptRetryResponse",
 }) as any as S.Schema<AttemptRetryResponse>;
 
-export interface AttemptStartRequest {
+export interface StartAttemptRequest {
   functionId?: string;
   parentInputId?: string;
   input?: FunctionPutInputsItem;
   proxied?: boolean;
 }
-export const AttemptStartRequest = /*@__PURE__*/ S.suspend(() =>
+export const StartAttemptRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     functionId: S.optional(S.String),
     parentInputId: S.optional(S.String),
@@ -221,8 +221,8 @@ export const AttemptStartRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AttemptStartRequest",
-}) as any as S.Schema<AttemptStartRequest>;
+  identifier: "StartAttemptRequest",
+}) as any as S.Schema<StartAttemptRequest>;
 
 export interface FunctionRetryPolicy {
   backoffCoefficient?: number;
@@ -242,18 +242,18 @@ export const FunctionRetryPolicy = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionRetryPolicy",
 }) as any as S.Schema<FunctionRetryPolicy>;
 
-export interface AttemptStartResponse {
+export interface StartAttemptResponse {
   attemptToken?: string;
   retryPolicy?: FunctionRetryPolicy;
 }
-export const AttemptStartResponse = /*@__PURE__*/ S.suspend(() =>
+export const StartAttemptResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     attemptToken: S.optional(S.String),
     retryPolicy: S.optional(FunctionRetryPolicy),
   }),
 ).annotate({
-  identifier: "AttemptStartResponse",
-}) as any as S.Schema<AttemptStartResponse>;
+  identifier: "StartAttemptResponse",
+}) as any as S.Schema<StartAttemptResponse>;
 
 export type AttemptAwaitError = ModalOpError;
 /** Input Plane */
@@ -284,15 +284,15 @@ export const attemptRetry: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AttemptStartError = ModalOpError;
-export const attemptStart: API.OperationMethod<
-  AttemptStartRequest,
-  AttemptStartResponse,
-  AttemptStartError,
+export type StartAttemptError = ModalOpError;
+export const startAttempt: API.OperationMethod<
+  StartAttemptRequest,
+  StartAttemptResponse,
+  StartAttemptError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AttemptStartRequest,
-  output: AttemptStartResponse,
+  input: StartAttemptRequest,
+  output: StartAttemptResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

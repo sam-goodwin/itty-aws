@@ -205,10 +205,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#FilesDelete": {
+    "com.azure.datamigration#DeleteFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#FilesDeleteRequest"
+        "target": "com.azure.datamigration#DeleteFileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -224,7 +224,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#FilesDeleteRequest": {
+    "com.azure.datamigration#DeleteFileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -272,13 +272,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#FilesUpdate": {
+    "com.azure.datamigration#UpdateFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#FilesUpdateRequest"
+        "target": "com.azure.datamigration#UpdateFileRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#FilesUpdateResponse"
+        "target": "com.azure.datamigration#UpdateFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -291,7 +291,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#FilesUpdateResponse": {
+    "com.azure.datamigration#UpdateFileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -481,7 +481,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.datamigration#FilesUpdateRequest": {
+    "com.azure.datamigration#UpdateFileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -690,13 +690,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#FilesGet": {
+    "com.azure.datamigration#GetFile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#FilesGetRequest"
+        "target": "com.azure.datamigration#GetFileRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#FilesGetResponse"
+        "target": "com.azure.datamigration#GetFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -709,7 +709,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#FilesGetResponse": {
+    "com.azure.datamigration#GetFileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -753,7 +753,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#FilesGetRequest": {
+    "com.azure.datamigration#GetFileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -801,13 +801,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#FilesList": {
+    "com.azure.datamigration#ListFiles": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#FilesListRequest"
+        "target": "com.azure.datamigration#ListFilesRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#FilesListResponse"
+        "target": "com.azure.datamigration#ListFilesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -820,7 +820,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#FilesListResponse": {
+    "com.azure.datamigration#ListFilesResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -893,7 +893,7 @@
         "smithy.api#documentation": "A file resource"
       }
     },
-    "com.azure.datamigration#FilesListRequest": {
+    "com.azure.datamigration#ListFilesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -933,13 +933,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#UsagesList": {
+    "com.azure.datamigration#ListUsages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#UsagesListRequest"
+        "target": "com.azure.datamigration#ListUsagesRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#UsagesListResponse"
+        "target": "com.azure.datamigration#ListUsagesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -952,7 +952,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#UsagesListResponse": {
+    "com.azure.datamigration#ListUsagesResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -1039,7 +1039,7 @@
         "smithy.api#documentation": "The name of the quota"
       }
     },
-    "com.azure.datamigration#UsagesListRequest": {
+    "com.azure.datamigration#ListUsagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1063,13 +1063,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesCheckNameAvailability": {
+    "com.azure.datamigration#CheckServiceNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesCheckNameAvailabilityRequest"
+        "target": "com.azure.datamigration#CheckServiceNameAvailabilityRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesCheckNameAvailabilityResponse"
+        "target": "com.azure.datamigration#CheckServiceNameAvailabilityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1082,7 +1082,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesCheckNameAvailabilityResponse": {
+    "com.azure.datamigration#CheckServiceNameAvailabilityResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -1128,7 +1128,7 @@
         "smithy.api#documentation": "The reason why the name is not available, if nameAvailable is false"
       }
     },
-    "com.azure.datamigration#ServicesCheckNameAvailabilityRequest": {
+    "com.azure.datamigration#CheckServiceNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1164,10 +1164,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ProjectsDelete": {
+    "com.azure.datamigration#DeleteProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ProjectsDeleteRequest"
+        "target": "com.azure.datamigration#DeleteProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1183,7 +1183,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ProjectsDeleteRequest": {
+    "com.azure.datamigration#DeleteProjectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1230,13 +1230,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ProjectsUpdate": {
+    "com.azure.datamigration#UpdateProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ProjectsUpdateRequest"
+        "target": "com.azure.datamigration#UpdateProjectRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ProjectsUpdateResponse"
+        "target": "com.azure.datamigration#UpdateProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1249,7 +1249,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ProjectsUpdateResponse": {
+    "com.azure.datamigration#UpdateProjectResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1590,7 +1590,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ProjectsUpdateRequest": {
+    "com.azure.datamigration#UpdateProjectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1975,13 +1975,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ProjectsGet": {
+    "com.azure.datamigration#GetProject": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ProjectsGetRequest"
+        "target": "com.azure.datamigration#GetProjectRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ProjectsGetResponse"
+        "target": "com.azure.datamigration#GetProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1994,7 +1994,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ProjectsGetResponse": {
+    "com.azure.datamigration#GetProjectResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2063,7 +2063,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ProjectsGetRequest": {
+    "com.azure.datamigration#GetProjectRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2103,13 +2103,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ProjectsList": {
+    "com.azure.datamigration#ListProjects": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ProjectsListRequest"
+        "target": "com.azure.datamigration#ListProjectsRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ProjectsListResponse"
+        "target": "com.azure.datamigration#ListProjectsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2122,7 +2122,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ProjectsListResponse": {
+    "com.azure.datamigration#ListProjectsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -2220,7 +2220,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ProjectsListRequest": {
+    "com.azure.datamigration#ListProjectsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3303,10 +3303,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServiceTasksDelete": {
+    "com.azure.datamigration#DeleteServiceTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServiceTasksDeleteRequest"
+        "target": "com.azure.datamigration#DeleteServiceTaskRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3322,7 +3322,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServiceTasksDeleteRequest": {
+    "com.azure.datamigration#DeleteServiceTaskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3369,13 +3369,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServiceTasksUpdate": {
+    "com.azure.datamigration#UpdateServiceTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServiceTasksUpdateRequest"
+        "target": "com.azure.datamigration#UpdateServiceTaskRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServiceTasksUpdateResponse"
+        "target": "com.azure.datamigration#UpdateServiceTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3388,7 +3388,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServiceTasksUpdateResponse": {
+    "com.azure.datamigration#UpdateServiceTaskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3432,7 +3432,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#ServiceTasksUpdateRequest": {
+    "com.azure.datamigration#UpdateServiceTaskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3868,13 +3868,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServiceTasksGet": {
+    "com.azure.datamigration#GetServiceTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServiceTasksGetRequest"
+        "target": "com.azure.datamigration#GetServiceTaskRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServiceTasksGetResponse"
+        "target": "com.azure.datamigration#GetServiceTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3887,7 +3887,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServiceTasksGetResponse": {
+    "com.azure.datamigration#GetServiceTaskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3931,7 +3931,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#ServiceTasksGetRequest": {
+    "com.azure.datamigration#GetServiceTaskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3978,10 +3978,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#TasksDelete": {
+    "com.azure.datamigration#DeleteTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#TasksDeleteRequest"
+        "target": "com.azure.datamigration#DeleteTaskRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3997,7 +3997,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#TasksDeleteRequest": {
+    "com.azure.datamigration#DeleteTaskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4052,13 +4052,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#TasksUpdate": {
+    "com.azure.datamigration#UpdateTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#TasksUpdateRequest"
+        "target": "com.azure.datamigration#UpdateTaskRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#TasksUpdateResponse"
+        "target": "com.azure.datamigration#UpdateTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4071,7 +4071,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#TasksUpdateResponse": {
+    "com.azure.datamigration#UpdateTaskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4115,7 +4115,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#TasksUpdateRequest": {
+    "com.azure.datamigration#UpdateTaskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4298,13 +4298,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#TasksGet": {
+    "com.azure.datamigration#GetTask": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#TasksGetRequest"
+        "target": "com.azure.datamigration#GetTaskRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#TasksGetResponse"
+        "target": "com.azure.datamigration#GetTaskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4317,7 +4317,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#TasksGetResponse": {
+    "com.azure.datamigration#GetTaskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4361,7 +4361,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#TasksGetRequest": {
+    "com.azure.datamigration#GetTaskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4416,13 +4416,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesList": {
+    "com.azure.datamigration#ListServices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesListRequest"
+        "target": "com.azure.datamigration#ListServicesRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesListResponse"
+        "target": "com.azure.datamigration#ListServicesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4435,7 +4435,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesListResponse": {
+    "com.azure.datamigration#ListServicesResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -4695,7 +4695,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ServicesListRequest": {
+    "com.azure.datamigration#ListServicesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4711,13 +4711,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesListByResourceGroup": {
+    "com.azure.datamigration#ListServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesListByResourceGroupRequest"
+        "target": "com.azure.datamigration#ListServiceByResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesListByResourceGroupResponse"
+        "target": "com.azure.datamigration#ListServiceByResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4730,7 +4730,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesListByResourceGroupResponse": {
+    "com.azure.datamigration#ListServiceByResourceGroupResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -4759,7 +4759,7 @@
         "smithy.api#documentation": "List of services"
       }
     },
-    "com.azure.datamigration#ServicesListByResourceGroupRequest": {
+    "com.azure.datamigration#ListServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4783,13 +4783,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesCheckChildrenNameAvailability": {
+    "com.azure.datamigration#CheckServiceChildrenNameAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesCheckChildrenNameAvailabilityRequest"
+        "target": "com.azure.datamigration#CheckServiceChildrenNameAvailabilityRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesCheckChildrenNameAvailabilityResponse"
+        "target": "com.azure.datamigration#CheckServiceChildrenNameAvailabilityResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4802,7 +4802,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesCheckChildrenNameAvailabilityResponse": {
+    "com.azure.datamigration#CheckServiceChildrenNameAvailabilityResponse": {
       "type": "structure",
       "members": {
         "nameAvailable": {
@@ -4848,7 +4848,7 @@
         "smithy.api#documentation": "The reason why the name is not available, if nameAvailable is false"
       }
     },
-    "com.azure.datamigration#ServicesCheckChildrenNameAvailabilityRequest": {
+    "com.azure.datamigration#CheckServiceChildrenNameAvailabilityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4892,13 +4892,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServiceTasksList": {
+    "com.azure.datamigration#ListServiceTasks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServiceTasksListRequest"
+        "target": "com.azure.datamigration#ListServiceTasksRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServiceTasksListResponse"
+        "target": "com.azure.datamigration#ListServiceTasksResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4911,7 +4911,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServiceTasksListResponse": {
+    "com.azure.datamigration#ListServiceTasksResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -4984,7 +4984,7 @@
         "smithy.api#documentation": "A task resource"
       }
     },
-    "com.azure.datamigration#ServiceTasksListRequest": {
+    "com.azure.datamigration#ListServiceTasksRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5023,13 +5023,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#TasksList": {
+    "com.azure.datamigration#ListTasks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#TasksListRequest"
+        "target": "com.azure.datamigration#ListTasksRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#TasksListResponse"
+        "target": "com.azure.datamigration#ListTasksResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5042,7 +5042,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#TasksListResponse": {
+    "com.azure.datamigration#ListTasksResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -5071,7 +5071,7 @@
         "smithy.api#documentation": "List of tasks"
       }
     },
-    "com.azure.datamigration#TasksListRequest": {
+    "com.azure.datamigration#ListTasksRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5118,13 +5118,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesListSkus": {
+    "com.azure.datamigration#ListServiceSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesListSkusRequest"
+        "target": "com.azure.datamigration#ListServiceSkusRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesListSkusResponse"
+        "target": "com.azure.datamigration#ListServiceSkusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5137,7 +5137,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesListSkusResponse": {
+    "com.azure.datamigration#ListServiceSkusResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -5282,7 +5282,7 @@
         "smithy.api#documentation": "SKU name, tier, etc."
       }
     },
-    "com.azure.datamigration#ServicesListSkusRequest": {
+    "com.azure.datamigration#ListServiceSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5314,10 +5314,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesStop": {
+    "com.azure.datamigration#StopService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesStopRequest"
+        "target": "com.azure.datamigration#StopServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5333,7 +5333,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesStopRequest": {
+    "com.azure.datamigration#StopServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5365,10 +5365,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesStart": {
+    "com.azure.datamigration#StartService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesStartRequest"
+        "target": "com.azure.datamigration#StartServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5384,7 +5384,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesStartRequest": {
+    "com.azure.datamigration#StartServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5416,13 +5416,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesCheckStatus": {
+    "com.azure.datamigration#CheckServiceStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesCheckStatusRequest"
+        "target": "com.azure.datamigration#CheckServiceStatusRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesCheckStatusResponse"
+        "target": "com.azure.datamigration#CheckServiceStatusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5435,7 +5435,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesCheckStatusResponse": {
+    "com.azure.datamigration#CheckServiceStatusResponse": {
       "type": "structure",
       "members": {
         "agentVersion": {
@@ -5482,7 +5482,7 @@
         "smithy.api#documentation": "The list of supported task types"
       }
     },
-    "com.azure.datamigration#ServicesCheckStatusRequest": {
+    "com.azure.datamigration#CheckServiceStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5514,10 +5514,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesDelete": {
+    "com.azure.datamigration#DeleteService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesDeleteRequest"
+        "target": "com.azure.datamigration#DeleteServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5533,7 +5533,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesDeleteRequest": {
+    "com.azure.datamigration#DeleteServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5572,13 +5572,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ServicesUpdate": {
+    "com.azure.datamigration#UpdateService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesUpdateRequest"
+        "target": "com.azure.datamigration#UpdateServiceRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesUpdateResponse"
+        "target": "com.azure.datamigration#UpdateServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5591,7 +5591,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesUpdateResponse": {
+    "com.azure.datamigration#UpdateServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5672,7 +5672,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ServicesUpdateRequest": {
+    "com.azure.datamigration#UpdateServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5972,13 +5972,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ServicesGet": {
+    "com.azure.datamigration#GetService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ServicesGetRequest"
+        "target": "com.azure.datamigration#GetServiceRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ServicesGetResponse"
+        "target": "com.azure.datamigration#GetServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5991,7 +5991,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ServicesGetResponse": {
+    "com.azure.datamigration#GetServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6072,7 +6072,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#ServicesGetRequest": {
+    "com.azure.datamigration#GetServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6104,13 +6104,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#ResourceSkusListSkus": {
+    "com.azure.datamigration#ListResourceSkusSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#ResourceSkusListSkusRequest"
+        "target": "com.azure.datamigration#ListResourceSkusSkusRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#ResourceSkusListSkusResponse"
+        "target": "com.azure.datamigration#ListResourceSkusSkusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6123,7 +6123,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#ResourceSkusListSkusResponse": {
+    "com.azure.datamigration#ListResourceSkusSkusResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -6451,7 +6451,7 @@
         "smithy.api#documentation": "The scale type applicable to the SKU."
       }
     },
-    "com.azure.datamigration#ResourceSkusListSkusRequest": {
+    "com.azure.datamigration#ListResourceSkusSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6467,10 +6467,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListBySubscription": {
+    "com.azure.datamigration#ListSqlMigrationServiceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesListBySubscriptionRequest"
+        "target": "com.azure.datamigration#ListSqlMigrationServiceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.datamigration#SqlMigrationListResult"
@@ -6587,7 +6587,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListBySubscriptionRequest": {
+    "com.azure.datamigration#ListSqlMigrationServiceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6603,10 +6603,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListMonitoringData": {
+    "com.azure.datamigration#ListSqlMigrationServiceMonitoringData": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesListMonitoringDataRequest"
+        "target": "com.azure.datamigration#ListSqlMigrationServiceMonitoringDataRequest"
       },
       "output": {
         "target": "com.azure.datamigration#IntegrationRuntimeMonitoringData"
@@ -6723,7 +6723,7 @@
         "smithy.api#documentation": " Unmatched properties from the message are deserialized in this collection."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListMonitoringDataRequest": {
+    "com.azure.datamigration#ListSqlMigrationServiceMonitoringDataRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6755,10 +6755,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListMigrations": {
+    "com.azure.datamigration#ListSqlMigrationServiceMigrations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesListMigrationsRequest"
+        "target": "com.azure.datamigration#ListSqlMigrationServiceMigrationsRequest"
       },
       "output": {
         "target": "com.azure.datamigration#DatabaseMigrationListResult"
@@ -7055,7 +7055,7 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#SqlMigrationServicesListMigrationsRequest": {
+    "com.azure.datamigration#ListSqlMigrationServiceMigrationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7087,10 +7087,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesDeleteNode": {
+    "com.azure.datamigration#DeleteSqlMigrationServiceNode": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesDeleteNodeRequest"
+        "target": "com.azure.datamigration#DeleteSqlMigrationServiceNodeRequest"
       },
       "output": {
         "target": "com.azure.datamigration#DeleteNode"
@@ -7126,7 +7126,7 @@
         "smithy.api#documentation": "Details of node to be deleted."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesDeleteNodeRequest": {
+    "com.azure.datamigration#DeleteSqlMigrationServiceNodeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7265,10 +7265,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListAuthKeys": {
+    "com.azure.datamigration#ListSqlMigrationServiceAuthKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesListAuthKeysRequest"
+        "target": "com.azure.datamigration#ListSqlMigrationServiceAuthKeysRequest"
       },
       "output": {
         "target": "com.azure.datamigration#AuthenticationKeys"
@@ -7304,7 +7304,7 @@
         "smithy.api#documentation": "An authentication key."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListAuthKeysRequest": {
+    "com.azure.datamigration#ListSqlMigrationServiceAuthKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7336,10 +7336,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListByResourceGroup": {
+    "com.azure.datamigration#ListSqlMigrationServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesListByResourceGroupRequest"
+        "target": "com.azure.datamigration#ListSqlMigrationServiceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.datamigration#SqlMigrationListResult"
@@ -7355,7 +7355,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesListByResourceGroupRequest": {
+    "com.azure.datamigration#ListSqlMigrationServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7379,10 +7379,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesDelete": {
+    "com.azure.datamigration#DeleteSqlMigrationService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesDeleteRequest"
+        "target": "com.azure.datamigration#DeleteSqlMigrationServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7398,7 +7398,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesDeleteRequest": {
+    "com.azure.datamigration#DeleteSqlMigrationServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7430,13 +7430,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesUpdate": {
+    "com.azure.datamigration#UpdateSqlMigrationService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesUpdateRequest"
+        "target": "com.azure.datamigration#UpdateSqlMigrationServiceRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#SqlMigrationServicesUpdateResponse"
+        "target": "com.azure.datamigration#UpdateSqlMigrationServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7449,7 +7449,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesUpdateResponse": {
+    "com.azure.datamigration#UpdateSqlMigrationServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7509,7 +7509,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesUpdateRequest": {
+    "com.azure.datamigration#UpdateSqlMigrationServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7700,13 +7700,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesGet": {
+    "com.azure.datamigration#GetSqlMigrationService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#SqlMigrationServicesGetRequest"
+        "target": "com.azure.datamigration#GetSqlMigrationServiceRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#SqlMigrationServicesGetResponse"
+        "target": "com.azure.datamigration#GetSqlMigrationServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7719,7 +7719,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesGetResponse": {
+    "com.azure.datamigration#GetSqlMigrationServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7779,7 +7779,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#SqlMigrationServicesGetRequest": {
+    "com.azure.datamigration#GetSqlMigrationServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7811,10 +7811,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#MigrationServicesListMigrations": {
+    "com.azure.datamigration#ListMigrationServiceMigrations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#MigrationServicesListMigrationsRequest"
+        "target": "com.azure.datamigration#ListMigrationServiceMigrationsRequest"
       },
       "output": {
         "target": "com.azure.datamigration#DatabaseMigrationBaseListResult"
@@ -8022,7 +8022,7 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#MigrationServicesListMigrationsRequest": {
+    "com.azure.datamigration#ListMigrationServiceMigrationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8054,10 +8054,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#MigrationServicesListBySubscription": {
+    "com.azure.datamigration#ListMigrationServiceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#MigrationServicesListBySubscriptionRequest"
+        "target": "com.azure.datamigration#ListMigrationServiceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.datamigration#MigrationServiceListResult"
@@ -8212,7 +8212,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#MigrationServicesListBySubscriptionRequest": {
+    "com.azure.datamigration#ListMigrationServiceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8228,10 +8228,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#MigrationServicesListByResourceGroup": {
+    "com.azure.datamigration#ListMigrationServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#MigrationServicesListByResourceGroupRequest"
+        "target": "com.azure.datamigration#ListMigrationServiceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.datamigration#MigrationServiceListResult"
@@ -8247,7 +8247,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#MigrationServicesListByResourceGroupRequest": {
+    "com.azure.datamigration#ListMigrationServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8271,10 +8271,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#MigrationServicesDelete": {
+    "com.azure.datamigration#DeleteMigrationService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#MigrationServicesDeleteRequest"
+        "target": "com.azure.datamigration#DeleteMigrationServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8290,7 +8290,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#MigrationServicesDeleteRequest": {
+    "com.azure.datamigration#DeleteMigrationServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8322,13 +8322,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#MigrationServicesUpdate": {
+    "com.azure.datamigration#UpdateMigrationService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#MigrationServicesUpdateRequest"
+        "target": "com.azure.datamigration#UpdateMigrationServiceRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#MigrationServicesUpdateResponse"
+        "target": "com.azure.datamigration#UpdateMigrationServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8341,7 +8341,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#MigrationServicesUpdateResponse": {
+    "com.azure.datamigration#UpdateMigrationServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8401,7 +8401,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#MigrationServicesUpdateRequest": {
+    "com.azure.datamigration#UpdateMigrationServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8592,13 +8592,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#MigrationServicesGet": {
+    "com.azure.datamigration#GetMigrationService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#MigrationServicesGetRequest"
+        "target": "com.azure.datamigration#GetMigrationServiceRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#MigrationServicesGetResponse"
+        "target": "com.azure.datamigration#GetMigrationServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8611,7 +8611,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#MigrationServicesGetResponse": {
+    "com.azure.datamigration#GetMigrationServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8671,7 +8671,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.datamigration#MigrationServicesGetRequest": {
+    "com.azure.datamigration#GetMigrationServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8703,7 +8703,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#OperationsList": {
+    "com.azure.datamigration#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -8941,13 +8941,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlVmDelete": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlVm": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlVmDeleteRequest"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlVmRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlVmDeleteResponse"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlVmResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8960,7 +8960,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlVmDeleteResponse": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlVmResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9701,7 +9701,7 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlVmDeleteRequest": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlVmRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10078,13 +10078,13 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlVmGet": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlVm": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlVmGetRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationSqlVmRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlVmGetResponse"
+        "target": "com.azure.datamigration#GetDatabaseMigrationSqlVmResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10097,7 +10097,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlVmGetResponse": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlVmResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10132,7 +10132,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlVmGetRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlVmRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10313,13 +10313,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlMiDelete": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlMi": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlMiDeleteRequest"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlMiRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlMiDeleteResponse"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlMiResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10332,7 +10332,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlMiDeleteResponse": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlMiResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10545,7 +10545,7 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlMiDeleteRequest": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlMiRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10785,13 +10785,13 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlMiGet": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlMi": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlMiGetRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationSqlMiRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlMiGetResponse"
+        "target": "com.azure.datamigration#GetDatabaseMigrationSqlMiResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10804,7 +10804,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlMiGetResponse": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlMiResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10839,7 +10839,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlMiGetRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlMiRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11020,10 +11020,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlDbDelete": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlDb": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlDbDeleteRequest"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlDbRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11039,7 +11039,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlDbDeleteRequest": {
+    "com.azure.datamigration#DeleteDatabaseMigrationSqlDbRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11613,13 +11613,13 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlDbGet": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlDb": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlDbGetRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationSqlDbRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsSqlDbGetResponse"
+        "target": "com.azure.datamigration#GetDatabaseMigrationSqlDbResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11632,7 +11632,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlDbGetResponse": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlDbResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11667,7 +11667,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsSqlDbGetRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationSqlDbRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11720,10 +11720,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScope": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest"
       },
       "output": {
         "target": "com.azure.datamigration#DatabaseMigrationCosmosDbMongoListResult"
@@ -12118,7 +12118,7 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScopeRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScopeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12150,10 +12150,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoDelete": {
+    "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbvCoreMongo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12169,7 +12169,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoDeleteRequest": {
+    "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbvCoreMongoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12216,13 +12216,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoCreate": {
+    "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbvCoreMongo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest"
+        "target": "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse"
+        "target": "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12235,7 +12235,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateResponse": {
+    "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbvCoreMongoResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12270,7 +12270,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoCreateRequest": {
+    "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbvCoreMongoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12440,13 +12440,13 @@
       },
       "traits": {}
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGet": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse"
+        "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12459,7 +12459,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetResponse": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12494,7 +12494,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12534,10 +12534,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetForScope": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoForScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest"
       },
       "output": {
         "target": "com.azure.datamigration#DatabaseMigrationCosmosDbMongoListResult"
@@ -12553,7 +12553,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetForScopeRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoForScopeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12585,10 +12585,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoDelete": {
+    "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbRuMongo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest"
+        "target": "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -12604,7 +12604,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoDeleteRequest": {
+    "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbRuMongoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12651,13 +12651,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoCreate": {
+    "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbRuMongo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest"
+        "target": "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse"
+        "target": "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12670,7 +12670,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoCreateResponse": {
+    "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbRuMongoResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12705,7 +12705,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoCreateRequest": {
+    "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbRuMongoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12748,13 +12748,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGet": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongo": {
       "type": "operation",
       "input": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest"
+        "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoRequest"
       },
       "output": {
-        "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse"
+        "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12767,7 +12767,7 @@
         "com.distilled.openapi#apiVersion": "2025-06-30"
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetResponse": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12802,7 +12802,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetRequest": {
+    "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12853,40 +12853,40 @@
           "target": "com.azure.datamigration#FilesRead"
         },
         {
-          "target": "com.azure.datamigration#FilesDelete"
+          "target": "com.azure.datamigration#DeleteFile"
         },
         {
-          "target": "com.azure.datamigration#FilesUpdate"
+          "target": "com.azure.datamigration#UpdateFile"
         },
         {
           "target": "com.azure.datamigration#FilesCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#FilesGet"
+          "target": "com.azure.datamigration#GetFile"
         },
         {
-          "target": "com.azure.datamigration#FilesList"
+          "target": "com.azure.datamigration#ListFiles"
         },
         {
-          "target": "com.azure.datamigration#UsagesList"
+          "target": "com.azure.datamigration#ListUsages"
         },
         {
-          "target": "com.azure.datamigration#ServicesCheckNameAvailability"
+          "target": "com.azure.datamigration#CheckServiceNameAvailability"
         },
         {
-          "target": "com.azure.datamigration#ProjectsDelete"
+          "target": "com.azure.datamigration#DeleteProject"
         },
         {
-          "target": "com.azure.datamigration#ProjectsUpdate"
+          "target": "com.azure.datamigration#UpdateProject"
         },
         {
           "target": "com.azure.datamigration#ProjectsCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#ProjectsGet"
+          "target": "com.azure.datamigration#GetProject"
         },
         {
-          "target": "com.azure.datamigration#ProjectsList"
+          "target": "com.azure.datamigration#ListProjects"
         },
         {
           "target": "com.azure.datamigration#TasksCommand"
@@ -12898,127 +12898,127 @@
           "target": "com.azure.datamigration#TasksCancel"
         },
         {
-          "target": "com.azure.datamigration#ServiceTasksDelete"
+          "target": "com.azure.datamigration#DeleteServiceTask"
         },
         {
-          "target": "com.azure.datamigration#ServiceTasksUpdate"
+          "target": "com.azure.datamigration#UpdateServiceTask"
         },
         {
           "target": "com.azure.datamigration#ServiceTasksCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#ServiceTasksGet"
+          "target": "com.azure.datamigration#GetServiceTask"
         },
         {
-          "target": "com.azure.datamigration#TasksDelete"
+          "target": "com.azure.datamigration#DeleteTask"
         },
         {
-          "target": "com.azure.datamigration#TasksUpdate"
+          "target": "com.azure.datamigration#UpdateTask"
         },
         {
           "target": "com.azure.datamigration#TasksCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#TasksGet"
+          "target": "com.azure.datamigration#GetTask"
         },
         {
-          "target": "com.azure.datamigration#ServicesList"
+          "target": "com.azure.datamigration#ListServices"
         },
         {
-          "target": "com.azure.datamigration#ServicesListByResourceGroup"
+          "target": "com.azure.datamigration#ListServiceByResourceGroup"
         },
         {
-          "target": "com.azure.datamigration#ServicesCheckChildrenNameAvailability"
+          "target": "com.azure.datamigration#CheckServiceChildrenNameAvailability"
         },
         {
-          "target": "com.azure.datamigration#ServiceTasksList"
+          "target": "com.azure.datamigration#ListServiceTasks"
         },
         {
-          "target": "com.azure.datamigration#TasksList"
+          "target": "com.azure.datamigration#ListTasks"
         },
         {
-          "target": "com.azure.datamigration#ServicesListSkus"
+          "target": "com.azure.datamigration#ListServiceSkus"
         },
         {
-          "target": "com.azure.datamigration#ServicesStop"
+          "target": "com.azure.datamigration#StopService"
         },
         {
-          "target": "com.azure.datamigration#ServicesStart"
+          "target": "com.azure.datamigration#StartService"
         },
         {
-          "target": "com.azure.datamigration#ServicesCheckStatus"
+          "target": "com.azure.datamigration#CheckServiceStatus"
         },
         {
-          "target": "com.azure.datamigration#ServicesDelete"
+          "target": "com.azure.datamigration#DeleteService"
         },
         {
-          "target": "com.azure.datamigration#ServicesUpdate"
+          "target": "com.azure.datamigration#UpdateService"
         },
         {
           "target": "com.azure.datamigration#ServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#ServicesGet"
+          "target": "com.azure.datamigration#GetService"
         },
         {
-          "target": "com.azure.datamigration#ResourceSkusListSkus"
+          "target": "com.azure.datamigration#ListResourceSkusSkus"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesListBySubscription"
+          "target": "com.azure.datamigration#ListSqlMigrationServiceBySubscription"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesListMonitoringData"
+          "target": "com.azure.datamigration#ListSqlMigrationServiceMonitoringData"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesListMigrations"
+          "target": "com.azure.datamigration#ListSqlMigrationServiceMigrations"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesDeleteNode"
+          "target": "com.azure.datamigration#DeleteSqlMigrationServiceNode"
         },
         {
           "target": "com.azure.datamigration#SqlMigrationServicesRegenerateAuthKeys"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesListAuthKeys"
+          "target": "com.azure.datamigration#ListSqlMigrationServiceAuthKeys"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesListByResourceGroup"
+          "target": "com.azure.datamigration#ListSqlMigrationServiceByResourceGroup"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesDelete"
+          "target": "com.azure.datamigration#DeleteSqlMigrationService"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesUpdate"
+          "target": "com.azure.datamigration#UpdateSqlMigrationService"
         },
         {
           "target": "com.azure.datamigration#SqlMigrationServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#SqlMigrationServicesGet"
+          "target": "com.azure.datamigration#GetSqlMigrationService"
         },
         {
-          "target": "com.azure.datamigration#MigrationServicesListMigrations"
+          "target": "com.azure.datamigration#ListMigrationServiceMigrations"
         },
         {
-          "target": "com.azure.datamigration#MigrationServicesListBySubscription"
+          "target": "com.azure.datamigration#ListMigrationServiceBySubscription"
         },
         {
-          "target": "com.azure.datamigration#MigrationServicesListByResourceGroup"
+          "target": "com.azure.datamigration#ListMigrationServiceByResourceGroup"
         },
         {
-          "target": "com.azure.datamigration#MigrationServicesDelete"
+          "target": "com.azure.datamigration#DeleteMigrationService"
         },
         {
-          "target": "com.azure.datamigration#MigrationServicesUpdate"
+          "target": "com.azure.datamigration#UpdateMigrationService"
         },
         {
           "target": "com.azure.datamigration#MigrationServicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#MigrationServicesGet"
+          "target": "com.azure.datamigration#GetMigrationService"
         },
         {
-          "target": "com.azure.datamigration#OperationsList"
+          "target": "com.azure.datamigration#ListOperations"
         },
         {
           "target": "com.azure.datamigration#DatabaseMigrationsSqlVmCutover"
@@ -13027,13 +13027,13 @@
           "target": "com.azure.datamigration#DatabaseMigrationsSqlVmCancel"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsSqlVmDelete"
+          "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlVm"
         },
         {
           "target": "com.azure.datamigration#DatabaseMigrationsSqlVmCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsSqlVmGet"
+          "target": "com.azure.datamigration#GetDatabaseMigrationSqlVm"
         },
         {
           "target": "com.azure.datamigration#DatabaseMigrationsSqlMiCutover"
@@ -13042,13 +13042,13 @@
           "target": "com.azure.datamigration#DatabaseMigrationsSqlMiCancel"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsSqlMiDelete"
+          "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlMi"
         },
         {
           "target": "com.azure.datamigration#DatabaseMigrationsSqlMiCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsSqlMiGet"
+          "target": "com.azure.datamigration#GetDatabaseMigrationSqlMi"
         },
         {
           "target": "com.azure.datamigration#DatabaseMigrationsSqlDbRetry"
@@ -13057,37 +13057,37 @@
           "target": "com.azure.datamigration#DatabaseMigrationsSqlDbCancel"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsSqlDbDelete"
+          "target": "com.azure.datamigration#DeleteDatabaseMigrationSqlDb"
         },
         {
           "target": "com.azure.datamigration#DatabaseMigrationsSqlDbCreateOrUpdate"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsSqlDbGet"
+          "target": "com.azure.datamigration#GetDatabaseMigrationSqlDb"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGetForScope"
+          "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongoForScope"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoDelete"
+          "target": "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbvCoreMongo"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoCreate"
+          "target": "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbvCoreMongo"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbvCoreMongoGet"
+          "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbvCoreMongo"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGetForScope"
+          "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongoForScope"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoDelete"
+          "target": "com.azure.datamigration#DeleteDatabaseMigrationMongoToCosmosDbRuMongo"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoCreate"
+          "target": "com.azure.datamigration#CreateDatabaseMigrationMongoToCosmosDbRuMongo"
         },
         {
-          "target": "com.azure.datamigration#DatabaseMigrationsMongoToCosmosDbRUMongoGet"
+          "target": "com.azure.datamigration#GetDatabaseMigrationMongoToCosmosDbRuMongo"
         }
       ],
       "traits": {

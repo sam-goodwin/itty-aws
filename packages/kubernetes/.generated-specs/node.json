@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.node#GetNodeAPIGroup": {
+    "com.kubernetes.node#GetNodeApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.node#GetNodeV1APIResources": {
+    "com.kubernetes.node#GetNodeV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -1656,7 +1656,7 @@
         "smithy.api#documentation": "delete a RuntimeClass"
       }
     },
-    "com.kubernetes.node#WatchNodeV1RuntimeClassListRequest": {
+    "com.kubernetes.node#ListWatchNodeV1RuntimeClassRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -1769,10 +1769,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.node#WatchNodeV1RuntimeClassList": {
+    "com.kubernetes.node#ListWatchNodeV1RuntimeClass": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.node#WatchNodeV1RuntimeClassListRequest"
+        "target": "com.kubernetes.node#ListWatchNodeV1RuntimeClassRequest"
       },
       "output": {
         "target": "com.kubernetes.node#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -1947,10 +1947,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.node#GetNodeAPIGroup"
+          "target": "com.kubernetes.node#GetNodeApiGroup"
         },
         {
-          "target": "com.kubernetes.node#GetNodeV1APIResources"
+          "target": "com.kubernetes.node#GetNodeV1ApiResources"
         },
         {
           "target": "com.kubernetes.node#ListNodeV1RuntimeClass"
@@ -1974,7 +1974,7 @@
           "target": "com.kubernetes.node#DeleteNodeV1RuntimeClass"
         },
         {
-          "target": "com.kubernetes.node#WatchNodeV1RuntimeClassList"
+          "target": "com.kubernetes.node#ListWatchNodeV1RuntimeClass"
         },
         {
           "target": "com.kubernetes.node#WatchNodeV1RuntimeClass"

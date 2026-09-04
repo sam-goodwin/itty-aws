@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.signals#SignalsProcessingListRequest": {
+    "com.posthog.signals#ListSignalProcessingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -91,10 +91,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsProcessingList": {
+    "com.posthog.signals#ListSignalProcessing": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsProcessingListRequest"
+        "target": "com.posthog.signals#ListSignalProcessingRequest"
       },
       "output": {
         "target": "com.posthog.signals#PaginatedPauseStateResponseList"
@@ -119,7 +119,7 @@
         "smithy.api#documentation": "Return current processing state including pause status."
       }
     },
-    "com.posthog.signals#SignalsProcessingPauseUpdateRequest": {
+    "com.posthog.signals#UpdateSignalProcessingPauseRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -159,10 +159,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsProcessingPauseUpdate": {
+    "com.posthog.signals#UpdateSignalProcessingPause": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsProcessingPauseUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalProcessingPauseRequest"
       },
       "output": {
         "target": "com.posthog.signals#PauseResponse"
@@ -228,7 +228,7 @@
         "smithy.api#documentation": "View and control signal processing pipeline state for a team."
       }
     },
-    "com.posthog.signals#SignalsReportsListRequest": {
+    "com.posthog.signals#ListSignalReportsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -918,10 +918,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsReportsList": {
+    "com.posthog.signals#ListSignalReports": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsListRequest"
+        "target": "com.posthog.signals#ListSignalReportsRequest"
       },
       "output": {
         "target": "com.posthog.signals#PaginatedSignalReportList"
@@ -974,7 +974,7 @@
         }
       }
     },
-    "com.posthog.signals#SignalsReportsPartialUpdateRequest": {
+    "com.posthog.signals#UpdateSignalReportPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1010,10 +1010,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsReportsPartialUpdate": {
+    "com.posthog.signals#UpdateSignalReportPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsPartialUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalReportPartialRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReport"
@@ -1055,7 +1055,7 @@
         "smithy.api#documentation": "* `positive` - positive\n* `negative` - negative"
       }
     },
-    "com.posthog.signals#SignalsReportsFeedbackCreateRequest": {
+    "com.posthog.signals#CreateSignalReportFeedbackRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1105,10 +1105,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsReportsFeedbackCreate": {
+    "com.posthog.signals#CreateSignalReportFeedback": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsFeedbackCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportFeedbackRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReportFeedbackResponse"
@@ -1498,7 +1498,7 @@
         "smithy.api#documentation": "Fetch comments for a report's implementation PR\n\nFetch the pull request's conversation comments and inline review comments, merged chronologically, via the team's GitHub integration."
       }
     },
-    "com.posthog.signals#SignalsReportPrReviewCommentsCreateRequest": {
+    "com.posthog.signals#CreateSignalReportPrReviewCommentRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1571,10 +1571,10 @@
         "smithy.api#documentation": "Response after posting a review comment — the created comment in the normalized PR-comment shape."
       }
     },
-    "com.posthog.signals#SignalsReportPrReviewCommentsCreate": {
+    "com.posthog.signals#CreateSignalReportPrReviewComment": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportPrReviewCommentsCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportPrReviewCommentRequest"
       },
       "output": {
         "target": "com.posthog.signals#PullRequestReviewCommentCreateResponse"
@@ -1599,7 +1599,7 @@
         "smithy.api#documentation": "Post an inline review comment on a report's implementation PR\n\nPost an inline review comment on the report's implementation pull request, attributed to the requesting user's own GitHub identity via their personal GitHub connection. Either replies to an existing thread (`in_reply_to`) or starts a new thread on a diff line (`path` + `line`)."
       }
     },
-    "com.posthog.signals#SignalsReportPrReviewCommentUpdateRequest": {
+    "com.posthog.signals#UpdateSignalReportPrReviewCommentRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1636,10 +1636,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsReportPrReviewCommentUpdate": {
+    "com.posthog.signals#UpdateSignalReportPrReviewComment": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportPrReviewCommentUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalReportPrReviewCommentRequest"
       },
       "output": {
         "target": "com.posthog.signals#PullRequestReviewCommentCreateResponse"
@@ -1773,7 +1773,7 @@
         "smithy.api#documentation": "* `+1` - +1\n* `-1` - -1\n* `laugh` - laugh\n* `hooray` - hooray\n* `confused` - confused\n* `heart` - heart\n* `rocket` - rocket\n* `eyes` - eyes"
       }
     },
-    "com.posthog.signals#SignalsReportPrReviewCommentReactionsCreateRequest": {
+    "com.posthog.signals#CreateSignalReportPrReviewCommentReactionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1825,10 +1825,10 @@
         "smithy.api#documentation": "Response after adding a reaction — the created reaction, so the frontend can track its id."
       }
     },
-    "com.posthog.signals#SignalsReportPrReviewCommentReactionsCreate": {
+    "com.posthog.signals#CreateSignalReportPrReviewCommentReaction": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportPrReviewCommentReactionsCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportPrReviewCommentReactionRequest"
       },
       "output": {
         "target": "com.posthog.signals#PullRequestReviewCommentReactionCreateResponse"
@@ -1913,7 +1913,7 @@
         "smithy.api#documentation": "Remove one of the requesting user's own reactions from a review comment"
       }
     },
-    "com.posthog.signals#SignalsReportsRefundCreateRequest": {
+    "com.posthog.signals#CreateSignalReportRefundRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2033,10 +2033,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsReportsRefundCreate": {
+    "com.posthog.signals#CreateSignalReportRefund": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsRefundCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportRefundRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReportRefundResponse"
@@ -5875,7 +5875,7 @@
         "smithy.api#documentation": "* `already_fixed` - Already fixed\n* `report_unclear` - Report is unclear to me\n* `analysis_wrong` - Agent's analysis is wrong\n* `wontfix_intentional` - Won't fix - intentional behavior\n* `wontfix_irrelevant` - Won't fix - issue is real but insignificant\n* `other` - Something else…"
       }
     },
-    "com.posthog.signals#SignalsReportsStateCreateRequest": {
+    "com.posthog.signals#CreateSignalReportStateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5924,10 +5924,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsReportsStateCreate": {
+    "com.posthog.signals#CreateSignalReportState": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsStateCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportStateRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReport"
@@ -5941,7 +5941,7 @@
         "smithy.api#documentation": "Transition a report to a new state. The model validates allowed transitions.\n\nThe request body is validated by SignalReportStateRequestSerializer — only the\nfields it declares (state, dismissal_reason, dismissal_note, snooze_for) are read,\nand only snooze_for is ever forwarded to transition_to. Any other key is ignored,\nso internal transition_to kwargs (reset_weight, error, ...) can't be injected.\n\nBody: {\n    \"state\": \"suppressed\" | \"potential\" | \"resolved\",\n    # Optional dismissal feedback (honored when state == \"suppressed\", \"potential\", or \"resolved\"):\n    \"dismissal_reason\": \"<canonical reason code, see SIGNAL_REPORT_DISMISSAL_REASON_CHOICES>\",\n    \"dismissal_note\": \"free-form text\",\n    # Optional, only honored for state == \"potential\":\n    \"snooze_for\": <number of additional signals before re-promotion>,\n}"
       }
     },
-    "com.posthog.signals#SignalsReportsViewedCreateRequest": {
+    "com.posthog.signals#CreateSignalReportViewedRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5965,10 +5965,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsReportsViewedCreate": {
+    "com.posthog.signals#CreateSignalReportViewed": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsViewedCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportViewedRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5982,7 +5982,7 @@
         "smithy.api#documentation": "Record that a person viewed a report\n\nRecord that the caller opened this report's detail view. One row per person per report is kept (repeat views bump a counter), and the record counts as consumption evidence for the scout that authored the report — scouts whose reports nobody consumes are eventually paused. Intended as fire-and-forget from the inbox UI when a person opens a report. Only browser-session requests leave a record; a call with any other credential (personal API key, OAuth token) returns 204 but records nothing."
       }
     },
-    "com.posthog.signals#SignalsReportArtefactsListRequest": {
+    "com.posthog.signals#ListSignalReportArtefactsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6270,10 +6270,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsReportArtefactsList": {
+    "com.posthog.signals#ListSignalReportArtefacts": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportArtefactsListRequest"
+        "target": "com.posthog.signals#ListSignalReportArtefactsRequest"
       },
       "output": {
         "target": "com.posthog.signals#PaginatedSignalReportArtefactList"
@@ -6287,7 +6287,7 @@
         "smithy.api#documentation": "List a report's artefacts\n\nList every artefact on a report — the full work log: signal findings (the evidence behind the report), status judgments (safety / actionability / priority, repo selection, suggested reviewers — the newest row of each status type is canonical), and log entries (code references, commits, task runs, notes). `suggested_reviewers` content is enriched with PostHog user info at read time."
       }
     },
-    "com.posthog.signals#SignalsReportArtefactsCreateRequest": {
+    "com.posthog.signals#CreateSignalReportArtefactRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6384,10 +6384,10 @@
         "smithy.api#documentation": "Response shape for the log-artefact create/update endpoints — echoes the stored row."
       }
     },
-    "com.posthog.signals#SignalsReportArtefactsCreate": {
+    "com.posthog.signals#CreateSignalReportArtefact": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportArtefactsCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportArtefactRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReportArtefactWriteResponse"
@@ -6458,7 +6458,7 @@
         "smithy.api#documentation": "Get a single artefact\n\nGet one artefact by id, content parsed (and reviewers enriched) the same way as the list."
       }
     },
-    "com.posthog.signals#SignalsReportArtefactsPartialUpdateRequest": {
+    "com.posthog.signals#UpdateSignalReportArtefactPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6496,10 +6496,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsReportArtefactsPartialUpdate": {
+    "com.posthog.signals#UpdateSignalReportArtefactPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportArtefactsPartialUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalReportArtefactPartialRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReportArtefactWriteResponse"
@@ -6666,7 +6666,7 @@
         "smithy.api#documentation": "Report ids to transition to `state` in one call (1–100). Duplicates are de-duplicated; each id is processed independently so one disallowed transition does not block the rest. `dismissal_reason`, `dismissal_note` and `snooze_for` apply to every id."
       }
     },
-    "com.posthog.signals#SignalsReportsBulkStateCreateRequest": {
+    "com.posthog.signals#CreateSignalReportBulkStateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6798,10 +6798,10 @@
         "smithy.api#documentation": "One result per requested id, in request order (after de-duplication)."
       }
     },
-    "com.posthog.signals#SignalsReportsBulkStateCreate": {
+    "com.posthog.signals#CreateSignalReportBulkState": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsReportsBulkStateCreateRequest"
+        "target": "com.posthog.signals#CreateSignalReportBulkStateRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalReportBulkStateResponse"
@@ -7106,7 +7106,7 @@
         "smithy.api#documentation": "MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run."
       }
     },
-    "com.posthog.signals#SignalsScoutCreateRequest": {
+    "com.posthog.signals#CreateSignalScoutRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7663,10 +7663,10 @@
         "smithy.api#documentation": "Free-form labels for grouping the fleet, e.g. `[\"revenue\", \"on-call\"]`. Normalized to lowercase kebab-case (`On Call` and `on_call` both become `on-call`), deduped, and stored sorted; at most 10 tags, each at most 50 characters once normalized. Pass the full desired set — a write replaces the existing tags rather than merging into them. Filter the config list with the `tags` query parameter."
       }
     },
-    "com.posthog.signals#SignalsScoutCreate": {
+    "com.posthog.signals#CreateSignalScout": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutCreateRequest"
+        "target": "com.posthog.signals#CreateSignalScoutRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalScoutCreateResponse"
@@ -7714,7 +7714,7 @@
         "smithy.api#documentation": "* `author_scout` - author_scout\n* `fleet_overview` - fleet_overview\n* `recent_signals` - recent_signals"
       }
     },
-    "com.posthog.signals#SignalsScoutChatTasksCreateRequest": {
+    "com.posthog.signals#CreateSignalScoutChatTaskRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7750,10 +7750,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutChatTasksCreate": {
+    "com.posthog.signals#CreateSignalScoutChatTask": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutChatTasksCreateRequest"
+        "target": "com.posthog.signals#CreateSignalScoutChatTaskRequest"
       },
       "output": {
         "target": "com.posthog.signals#ScoutChatTask"
@@ -7772,7 +7772,7 @@
         "smithy.api#documentation": "Start a scout chat task\n\nCreate and run a cloud task for one of the fixed scout chat templates (suggest a scout, fleet overview, recent signals). The prompt is server-owned; the response carries the task id to navigate to."
       }
     },
-    "com.posthog.signals#SignalsScoutConfigListRequest": {
+    "com.posthog.signals#ListSignalScoutConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7802,7 +7802,7 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutConfigListResponse": {
+    "com.posthog.signals#ListSignalScoutConfigResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -7817,13 +7817,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.signals#SignalsScoutConfigList": {
+    "com.posthog.signals#ListSignalScoutConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutConfigListRequest"
+        "target": "com.posthog.signals#ListSignalScoutConfigRequest"
       },
       "output": {
-        "target": "com.posthog.signals#SignalsScoutConfigListResponse"
+        "target": "com.posthog.signals#ListSignalScoutConfigResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7864,7 +7864,7 @@
         "smithy.api#documentation": "MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run."
       }
     },
-    "com.posthog.signals#SignalsScoutConfigCreateRequest": {
+    "com.posthog.signals#CreateSignalScoutConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -7956,10 +7956,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsScoutConfigCreate": {
+    "com.posthog.signals#CreateSignalScoutConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutConfigCreateRequest"
+        "target": "com.posthog.signals#CreateSignalScoutConfigRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalScoutConfig"
@@ -8008,7 +8008,7 @@
         "smithy.api#documentation": "MCP gateway servers (by id) this scout's runs may use, chosen from the connections members shared to the whole team. Selection is per scout: an empty list gives the scout no MCP servers. Applies from the scout's next run."
       }
     },
-    "com.posthog.signals#SignalsScoutConfigUpdateRequest": {
+    "com.posthog.signals#UpdateSignalScoutConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8101,10 +8101,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsScoutConfigUpdate": {
+    "com.posthog.signals#UpdateSignalScoutConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutConfigUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalScoutConfigRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalScoutConfig"
@@ -8279,7 +8279,7 @@
         "smithy.api#documentation": "Sync scout configs\n\nMaterialize the scout fleet for this project on demand (idempotent): seed the canonical `signals-scout-*` skills, create a default-schedule config for any scout lacking one, and return all scout configs. Normally the Temporal coordinator does this on its next tick; this action exists so setup flows (e.g. the wizard's self-driving program) can hand the user a tunable fleet immediately."
       }
     },
-    "com.posthog.signals#SignalsScoutMembersListRequest": {
+    "com.posthog.signals#ListSignalScoutMembersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8353,7 +8353,7 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutMembersListResponse": {
+    "com.posthog.signals#ListSignalScoutMembersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -8368,13 +8368,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.signals#SignalsScoutMembersList": {
+    "com.posthog.signals#ListSignalScoutMembers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutMembersListRequest"
+        "target": "com.posthog.signals#ListSignalScoutMembersRequest"
       },
       "output": {
-        "target": "com.posthog.signals#SignalsScoutMembersListResponse"
+        "target": "com.posthog.signals#ListSignalScoutMembersResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8385,7 +8385,7 @@
         "smithy.api#documentation": "List project members for reviewer routing\n\nReturn the people who can review work on this project — one row per member with access to it, each with their `user_uuid`, `email`, `first_name`/`last_name`, and resolved GitHub `login` (null when they have no linked GitHub identity). The cold-start reviewer-routing path: when a finding's owner can't be read off a fetched entity's `created_by` and there's no cached `reviewer:<area>` memory or inbox precedent, list members, match the owner by email/name, then put their resolved `github_login` in `suggested_reviewers` on `emit-report` / `edit-report`. Pass `search` to narrow a large roster; the result is capped at 200. Strictly team-scoped."
       }
     },
-    "com.posthog.signals#SignalsScoutMetadataGetRequest": {
+    "com.posthog.signals#GetSignalScoutMetadataRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8469,10 +8469,10 @@
         "smithy.api#documentation": "A team's enforced scout run caps and current usage.\n\nThese are the values the coordinator actually applies at dispatch (resolved per-team override →\nfleet-wide default → code constant), so the UI can show the real throttle rather than what a\nuser thinks they configured."
       }
     },
-    "com.posthog.signals#SignalsScoutMetadataGet": {
+    "com.posthog.signals#GetSignalScoutMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutMetadataGetRequest"
+        "target": "com.posthog.signals#GetSignalScoutMetadataRequest"
       },
       "output": {
         "target": "com.posthog.signals#ScoutMetadata"
@@ -8486,7 +8486,7 @@
         "smithy.api#documentation": "Get scout metadata\n\nReturn the project's scout metadata: whether it is enrolled, the current announcement banner (e.g. an alpha run-limit notice, or null when unset), and the enforced run limits with current usage. Limits reflect what the coordinator actually applies at dispatch, so a user can see the real throttle rather than what they assume they set. All values come from the `signals-scout` flag payload, so the banner and caps can change with no deploy."
       }
     },
-    "com.posthog.signals#SignalsScoutNotesListRequest": {
+    "com.posthog.signals#ListSignalScoutNotesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8618,7 +8618,7 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutNotesListResponse": {
+    "com.posthog.signals#ListSignalScoutNotesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -8633,13 +8633,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.signals#SignalsScoutNotesList": {
+    "com.posthog.signals#ListSignalScoutNotes": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutNotesListRequest"
+        "target": "com.posthog.signals#ListSignalScoutNotesRequest"
       },
       "output": {
-        "target": "com.posthog.signals#SignalsScoutNotesListResponse"
+        "target": "com.posthog.signals#ListSignalScoutNotesResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8650,7 +8650,7 @@
         "smithy.api#documentation": "List scout notes\n\nReturn the steering notes left for this project's scouts, newest first. Pass `skill_name` to get the notes addressed to one scout (or one pipeline audience, e.g. `pipeline:report-research`) plus the general (blank-target) fleet-wide notes — the shape a scout run reads at cold start. Omit `skill_name` to browse every note. Expired notes are excluded unless `include_expired=true`. `date_from` / `date_to` are a half-open window on `created_at` (`>= date_from`, `< date_to`); pass `date_to` (the `created_at` of the oldest note seen) to walk past the cap. Results capped at 500."
       }
     },
-    "com.posthog.signals#SignalsScoutNotesCreateRequest": {
+    "com.posthog.signals#CreateSignalScoutNoteRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -8686,10 +8686,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsScoutNotesCreate": {
+    "com.posthog.signals#CreateSignalScoutNote": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutNotesCreateRequest"
+        "target": "com.posthog.signals#CreateSignalScoutNoteRequest"
       },
       "output": {
         "target": "com.posthog.signals#ScoutNote"
@@ -8753,7 +8753,7 @@
         "smithy.api#documentation": "Delete a scout note\n\nDelete one note by its `id`, retiring it from every scout's view. Use this when a note has been acted on or no longer applies; time-boxed notes can instead carry an `expires_at` and retire themselves."
       }
     },
-    "com.posthog.signals#SignalsScoutProjectProfileGetRequest": {
+    "com.posthog.signals#GetSignalScoutProjectProfileRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10441,10 +10441,10 @@
         "smithy.api#documentation": "Top ~50 events by count over a recent rolling window (each row carries `window_days`), with first/last seen timestamps within that window. These are WINDOWED counts, not lifetime totals: a capture gap can collapse a real, high-volume project's counts to near-zero here, so rule out an ingestion gap (compare against a trailing baseline via a direct `execute-sql`) before reading thinness as a genuinely low-volume project. `null` if the underlying ClickHouse query failed or timed out (distinct from `[]`, which means the team has no captures in the window). Use the gap between `first_seen_in_window` and `now` to spot new event types or recent bursts."
       }
     },
-    "com.posthog.signals#SignalsScoutProjectProfileGet": {
+    "com.posthog.signals#GetSignalScoutProjectProfile": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutProjectProfileGetRequest"
+        "target": "com.posthog.signals#GetSignalScoutProjectProfileRequest"
       },
       "output": {
         "target": "com.posthog.signals#ProjectProfile"
@@ -10463,7 +10463,7 @@
         "smithy.api#documentation": "Get the current project profile\n\nReturn the team's deterministic project profile. For the internal scout token the response reflects the newest non-expired cached row or a freshly-built one (lazy compute on cache miss); `force_refresh=true` skips the cache and rebuilds from authoritative sources. Public read callers (session auth or a `signal_scout:read` PAK) get the newest cached profile, or 404 if none has been built yet — they never trigger a rebuild. Read this at the start of a run to orient on the team's product mix, integrations, warehouse sources, signal coverage, and existing inbox surface."
       }
     },
-    "com.posthog.signals#SignalsScoutRunsListRequest": {
+    "com.posthog.signals#ListSignalScoutRunsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10821,7 +10821,7 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutRunsListResponse": {
+    "com.posthog.signals#ListSignalScoutRunsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -10836,13 +10836,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.signals#SignalsScoutRunsList": {
+    "com.posthog.signals#ListSignalScoutRuns": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutRunsListRequest"
+        "target": "com.posthog.signals#ListSignalScoutRunsRequest"
       },
       "output": {
-        "target": "com.posthog.signals#SignalsScoutRunsListResponse"
+        "target": "com.posthog.signals#ListSignalScoutRunsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12020,7 +12020,7 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutEmitSignalRequest": {
+    "com.posthog.signals#SignalSignalScoutEmitRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -12148,10 +12148,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsScoutEmitSignal": {
+    "com.posthog.signals#SignalSignalScoutEmit": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsScoutEmitSignalRequest"
+        "target": "com.posthog.signals#SignalSignalScoutEmitRequest"
       },
       "output": {
         "target": "com.posthog.signals#EmitFindingResponse"
@@ -12985,7 +12985,7 @@
         "smithy.api#documentation": "Forget a scratchpad entry by key\n\nDelete an entry by key. Returns `deleted=false` if no row matched."
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsListRequest": {
+    "com.posthog.signals#ListSignalSourceConfigsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -13524,10 +13524,10 @@
       },
       "traits": {}
     },
-    "com.posthog.signals#SignalsSourceConfigsList": {
+    "com.posthog.signals#ListSignalSourceConfigs": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsSourceConfigsListRequest"
+        "target": "com.posthog.signals#ListSignalSourceConfigsRequest"
       },
       "output": {
         "target": "com.posthog.signals#PaginatedSignalSourceConfigList"
@@ -13563,7 +13563,7 @@
         "smithy.api#documentation": "Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis."
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsCreateRequest": {
+    "com.posthog.signals#CreateSignalSourceConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -13594,10 +13594,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsCreate": {
+    "com.posthog.signals#CreateSignalSourceConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsSourceConfigsCreateRequest"
+        "target": "com.posthog.signals#CreateSignalSourceConfigRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalSourceConfig"
@@ -13681,7 +13681,7 @@
         "smithy.api#documentation": "Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis."
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsUpdateRequest": {
+    "com.posthog.signals#UpdateSignalSourceConfigRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -13720,10 +13720,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsUpdate": {
+    "com.posthog.signals#UpdateSignalSourceConfig": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsSourceConfigsUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalSourceConfigRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalSourceConfig"
@@ -13759,7 +13759,7 @@
         "smithy.api#documentation": "Per-source settings as a JSON object. Keys read by the emission actionability gate on sources that define one (most data warehouse imports, and Conversations): `steering` (string, max 2000 characters) holds the team's preferences about this source's records in plain language: what matters, what to skip, what's out of scope. The emission actionability gate applies it when deciding which records become signals; rules apply from the next sync and nothing already emitted is retracted. `default_not_actionable` (boolean, default false) flips the gate's default: instead of keeping every record the steering rules don't exclude, only records that clearly match the team's preferences are kept. Other sources store these keys without reading them yet; future pipeline stages will consume the same steering text. Some sources read additional keys, for example `recording_filters` and `sample_rate` for session analysis."
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsPartialUpdateRequest": {
+    "com.posthog.signals#UpdateSignalSourceConfigPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -13798,10 +13798,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.signals#SignalsSourceConfigsPartialUpdate": {
+    "com.posthog.signals#UpdateSignalSourceConfigPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.signals#SignalsSourceConfigsPartialUpdateRequest"
+        "target": "com.posthog.signals#UpdateSignalSourceConfigPartialRequest"
       },
       "output": {
         "target": "com.posthog.signals#SignalSourceConfig"
@@ -13930,25 +13930,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.signals#SignalsProcessingList"
+          "target": "com.posthog.signals#ListSignalProcessing"
         },
         {
-          "target": "com.posthog.signals#SignalsProcessingPauseUpdate"
+          "target": "com.posthog.signals#UpdateSignalProcessingPause"
         },
         {
           "target": "com.posthog.signals#SignalsProcessingPauseDestroy"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsList"
+          "target": "com.posthog.signals#ListSignalReports"
         },
         {
           "target": "com.posthog.signals#SignalsReportsRetrieve"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsPartialUpdate"
+          "target": "com.posthog.signals#UpdateSignalReportPartial"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsFeedbackCreate"
+          "target": "com.posthog.signals#CreateSignalReportFeedback"
         },
         {
           "target": "com.posthog.signals#SignalsReportPrChecks"
@@ -13957,43 +13957,43 @@
           "target": "com.posthog.signals#SignalsReportPrComments"
         },
         {
-          "target": "com.posthog.signals#SignalsReportPrReviewCommentsCreate"
+          "target": "com.posthog.signals#CreateSignalReportPrReviewComment"
         },
         {
-          "target": "com.posthog.signals#SignalsReportPrReviewCommentUpdate"
+          "target": "com.posthog.signals#UpdateSignalReportPrReviewComment"
         },
         {
           "target": "com.posthog.signals#SignalsReportPrReviewCommentDestroy"
         },
         {
-          "target": "com.posthog.signals#SignalsReportPrReviewCommentReactionsCreate"
+          "target": "com.posthog.signals#CreateSignalReportPrReviewCommentReaction"
         },
         {
           "target": "com.posthog.signals#SignalsReportPrReviewCommentReactionDestroy"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsRefundCreate"
+          "target": "com.posthog.signals#CreateSignalReportRefund"
         },
         {
           "target": "com.posthog.signals#SignalsReportsSignalsRetrieve"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsStateCreate"
+          "target": "com.posthog.signals#CreateSignalReportState"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsViewedCreate"
+          "target": "com.posthog.signals#CreateSignalReportViewed"
         },
         {
-          "target": "com.posthog.signals#SignalsReportArtefactsList"
+          "target": "com.posthog.signals#ListSignalReportArtefacts"
         },
         {
-          "target": "com.posthog.signals#SignalsReportArtefactsCreate"
+          "target": "com.posthog.signals#CreateSignalReportArtefact"
         },
         {
           "target": "com.posthog.signals#SignalsReportArtefactsRetrieve"
         },
         {
-          "target": "com.posthog.signals#SignalsReportArtefactsPartialUpdate"
+          "target": "com.posthog.signals#UpdateSignalReportArtefactPartial"
         },
         {
           "target": "com.posthog.signals#SignalsReportArtefactsDestroy"
@@ -14002,25 +14002,25 @@
           "target": "com.posthog.signals#SignalsReportArtefactsDiff"
         },
         {
-          "target": "com.posthog.signals#SignalsReportsBulkStateCreate"
+          "target": "com.posthog.signals#CreateSignalReportBulkState"
         },
         {
           "target": "com.posthog.signals#SignalsReportsRefundSummaryRetrieve"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutCreate"
+          "target": "com.posthog.signals#CreateSignalScout"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutChatTasksCreate"
+          "target": "com.posthog.signals#CreateSignalScoutChatTask"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutConfigList"
+          "target": "com.posthog.signals#ListSignalScoutConfig"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutConfigCreate"
+          "target": "com.posthog.signals#CreateSignalScoutConfig"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutConfigUpdate"
+          "target": "com.posthog.signals#UpdateSignalScoutConfig"
         },
         {
           "target": "com.posthog.signals#SignalsScoutConfigDestroy"
@@ -14032,25 +14032,25 @@
           "target": "com.posthog.signals#SignalsScoutConfigSync"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutMembersList"
+          "target": "com.posthog.signals#ListSignalScoutMembers"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutMetadataGet"
+          "target": "com.posthog.signals#GetSignalScoutMetadata"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutNotesList"
+          "target": "com.posthog.signals#ListSignalScoutNotes"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutNotesCreate"
+          "target": "com.posthog.signals#CreateSignalScoutNote"
         },
         {
           "target": "com.posthog.signals#SignalsScoutNotesDestroy"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutProjectProfileGet"
+          "target": "com.posthog.signals#GetSignalScoutProjectProfile"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutRunsList"
+          "target": "com.posthog.signals#ListSignalScoutRuns"
         },
         {
           "target": "com.posthog.signals#SignalsScoutRunsRetrieve"
@@ -14068,7 +14068,7 @@
           "target": "com.posthog.signals#SignalsScoutEmitReport"
         },
         {
-          "target": "com.posthog.signals#SignalsScoutEmitSignal"
+          "target": "com.posthog.signals#SignalSignalScoutEmit"
         },
         {
           "target": "com.posthog.signals#SignalsScoutRecordOutput"
@@ -14098,19 +14098,19 @@
           "target": "com.posthog.signals#SignalsScoutScratchpadForget"
         },
         {
-          "target": "com.posthog.signals#SignalsSourceConfigsList"
+          "target": "com.posthog.signals#ListSignalSourceConfigs"
         },
         {
-          "target": "com.posthog.signals#SignalsSourceConfigsCreate"
+          "target": "com.posthog.signals#CreateSignalSourceConfig"
         },
         {
           "target": "com.posthog.signals#SignalsSourceConfigsRetrieve"
         },
         {
-          "target": "com.posthog.signals#SignalsSourceConfigsUpdate"
+          "target": "com.posthog.signals#UpdateSignalSourceConfig"
         },
         {
-          "target": "com.posthog.signals#SignalsSourceConfigsPartialUpdate"
+          "target": "com.posthog.signals#UpdateSignalSourceConfigPartial"
         },
         {
           "target": "com.posthog.signals#SignalsSourceConfigsDestroy"

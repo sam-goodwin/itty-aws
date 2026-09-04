@@ -1095,13 +1095,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#MaccTransactionsGet": {
+    "com.azure.billingbenefits#GetMaccTransaction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccTransactionsGetRequest"
+        "target": "com.azure.billingbenefits#GetMaccTransactionRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#MaccTransactionsGetResponse"
+        "target": "com.azure.billingbenefits#GetMaccTransactionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1114,7 +1114,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#MaccTransactionsGetResponse": {
+    "com.azure.billingbenefits#GetMaccTransactionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1298,7 +1298,7 @@
         "smithy.api#documentation": "The type of charge for a transaction."
       }
     },
-    "com.azure.billingbenefits#MaccTransactionsGetRequest": {
+    "com.azure.billingbenefits#GetMaccTransactionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1338,10 +1338,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#MaccTransactionsListByParent": {
+    "com.azure.billingbenefits#ListMaccTransactionByParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccTransactionsListByParentRequest"
+        "target": "com.azure.billingbenefits#ListMaccTransactionByParentRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#MaccTransactionsList"
@@ -1425,7 +1425,7 @@
         "smithy.api#documentation": "Transaction resource definition for Maccs"
       }
     },
-    "com.azure.billingbenefits#MaccTransactionsListByParentRequest": {
+    "com.azure.billingbenefits#ListMaccTransactionByParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1457,13 +1457,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ContributorsGetFromPrimary": {
+    "com.azure.billingbenefits#GetContributorFromPrimary": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ContributorsGetFromPrimaryRequest"
+        "target": "com.azure.billingbenefits#GetContributorFromPrimaryRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ContributorsGetFromPrimaryResponse"
+        "target": "com.azure.billingbenefits#GetContributorFromPrimaryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1476,7 +1476,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ContributorsGetFromPrimaryResponse": {
+    "com.azure.billingbenefits#GetContributorFromPrimaryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1514,7 +1514,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#ContributorsGetFromPrimaryRequest": {
+    "com.azure.billingbenefits#GetContributorFromPrimaryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1554,10 +1554,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ContributorsListFromPrimary": {
+    "com.azure.billingbenefits#ListContributorFromPrimary": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ContributorsListFromPrimaryRequest"
+        "target": "com.azure.billingbenefits#ListContributorFromPrimaryRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ContributorList"
@@ -1641,7 +1641,7 @@
         "smithy.api#documentation": "MACC contributor"
       }
     },
-    "com.azure.billingbenefits#ContributorsListFromPrimaryRequest": {
+    "com.azure.billingbenefits#ListContributorFromPrimaryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2067,10 +2067,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#MaccsDelete": {
+    "com.azure.billingbenefits#DeleteMacc": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccsDeleteRequest"
+        "target": "com.azure.billingbenefits#DeleteMaccRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2086,7 +2086,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#MaccsDeleteRequest": {
+    "com.azure.billingbenefits#DeleteMaccRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2118,13 +2118,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#MaccsUpdate": {
+    "com.azure.billingbenefits#UpdateMacc": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccsUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateMaccRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#MaccsUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateMaccResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2137,7 +2137,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#MaccsUpdateResponse": {
+    "com.azure.billingbenefits#UpdateMaccResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2280,7 +2280,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#MaccsUpdateRequest": {
+    "com.azure.billingbenefits#UpdateMaccRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2413,13 +2413,13 @@
         "smithy.api#documentation": "List of milestones to update or add."
       }
     },
-    "com.azure.billingbenefits#MaccsCreate": {
+    "com.azure.billingbenefits#CreateMacc": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccsCreateRequest"
+        "target": "com.azure.billingbenefits#CreateMaccRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#MaccsCreateResponse"
+        "target": "com.azure.billingbenefits#CreateMaccResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2432,7 +2432,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#MaccsCreateResponse": {
+    "com.azure.billingbenefits#CreateMaccResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2575,7 +2575,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#MaccsCreateRequest": {
+    "com.azure.billingbenefits#CreateMaccRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2839,13 +2839,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#MaccsGet": {
+    "com.azure.billingbenefits#GetMacc": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccsGetRequest"
+        "target": "com.azure.billingbenefits#GetMaccRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#MaccsGetResponse"
+        "target": "com.azure.billingbenefits#GetMaccResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2858,7 +2858,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#MaccsGetResponse": {
+    "com.azure.billingbenefits#GetMaccResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3001,7 +3001,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#MaccsGetRequest": {
+    "com.azure.billingbenefits#GetMaccRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3033,10 +3033,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#MaccsListByResourceGroup": {
+    "com.azure.billingbenefits#ListMaccByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccsListByResourceGroupRequest"
+        "target": "com.azure.billingbenefits#ListMaccByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#MaccList"
@@ -3225,7 +3225,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#MaccsListByResourceGroupRequest": {
+    "com.azure.billingbenefits#ListMaccByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3249,10 +3249,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#FreeServicesDelete": {
+    "com.azure.billingbenefits#DeleteFreeService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#FreeServicesDeleteRequest"
+        "target": "com.azure.billingbenefits#DeleteFreeServiceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3268,7 +3268,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#FreeServicesDeleteRequest": {
+    "com.azure.billingbenefits#DeleteFreeServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3300,13 +3300,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#FreeServicesUpdate": {
+    "com.azure.billingbenefits#UpdateFreeService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#FreeServicesUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateFreeServiceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#FreeServicesUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateFreeServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3319,7 +3319,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#FreeServicesUpdateResponse": {
+    "com.azure.billingbenefits#UpdateFreeServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3580,7 +3580,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#FreeServicesUpdateRequest": {
+    "com.azure.billingbenefits#UpdateFreeServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3650,13 +3650,13 @@
         "smithy.api#documentation": "Free services patch request properties"
       }
     },
-    "com.azure.billingbenefits#FreeServicesCreate": {
+    "com.azure.billingbenefits#CreateFreeService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#FreeServicesCreateRequest"
+        "target": "com.azure.billingbenefits#CreateFreeServiceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#FreeServicesCreateResponse"
+        "target": "com.azure.billingbenefits#CreateFreeServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3669,7 +3669,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#FreeServicesCreateResponse": {
+    "com.azure.billingbenefits#CreateFreeServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3812,7 +3812,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#FreeServicesCreateRequest": {
+    "com.azure.billingbenefits#CreateFreeServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3987,13 +3987,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#FreeServicesGet": {
+    "com.azure.billingbenefits#GetFreeService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#FreeServicesGetRequest"
+        "target": "com.azure.billingbenefits#GetFreeServiceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#FreeServicesGetResponse"
+        "target": "com.azure.billingbenefits#GetFreeServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4006,7 +4006,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#FreeServicesGetResponse": {
+    "com.azure.billingbenefits#GetFreeServiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4149,7 +4149,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#FreeServicesGetRequest": {
+    "com.azure.billingbenefits#GetFreeServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4181,10 +4181,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#FreeServicesListByResourceGroup": {
+    "com.azure.billingbenefits#ListFreeServiceByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#FreeServicesListByResourceGroupRequest"
+        "target": "com.azure.billingbenefits#ListFreeServiceByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#FreeServicesList"
@@ -4372,7 +4372,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#FreeServicesListByResourceGroupRequest": {
+    "com.azure.billingbenefits#ListFreeServiceByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4770,10 +4770,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#DiscountsDelete": {
+    "com.azure.billingbenefits#DeleteDiscount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountsDeleteRequest"
+        "target": "com.azure.billingbenefits#DeleteDiscountRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4789,7 +4789,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#DiscountsDeleteRequest": {
+    "com.azure.billingbenefits#DeleteDiscountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4821,13 +4821,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#DiscountUpdate": {
+    "com.azure.billingbenefits#UpdateDiscount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateDiscountRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#DiscountUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateDiscountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4840,7 +4840,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#DiscountUpdateResponse": {
+    "com.azure.billingbenefits#UpdateDiscountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4939,7 +4939,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#DiscountUpdateRequest": {
+    "com.azure.billingbenefits#UpdateDiscountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5015,13 +5015,13 @@
         "smithy.api#documentation": "Discounts patch request properties"
       }
     },
-    "com.azure.billingbenefits#DiscountsCreate": {
+    "com.azure.billingbenefits#CreateDiscount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountsCreateRequest"
+        "target": "com.azure.billingbenefits#CreateDiscountRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#DiscountsCreateResponse"
+        "target": "com.azure.billingbenefits#CreateDiscountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5034,7 +5034,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#DiscountsCreateResponse": {
+    "com.azure.billingbenefits#CreateDiscountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5133,7 +5133,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#DiscountsCreateRequest": {
+    "com.azure.billingbenefits#CreateDiscountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5325,13 +5325,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#DiscountGet": {
+    "com.azure.billingbenefits#GetDiscount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountGetRequest"
+        "target": "com.azure.billingbenefits#GetDiscountRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#DiscountGetResponse"
+        "target": "com.azure.billingbenefits#GetDiscountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5344,7 +5344,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#DiscountGetResponse": {
+    "com.azure.billingbenefits#GetDiscountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5443,7 +5443,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#DiscountGetRequest": {
+    "com.azure.billingbenefits#GetDiscountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5475,10 +5475,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#DiscountsResourceGroupList": {
+    "com.azure.billingbenefits#ListDiscountResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountsResourceGroupListRequest"
+        "target": "com.azure.billingbenefits#ListDiscountResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#DiscountList"
@@ -5623,7 +5623,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#DiscountsResourceGroupListRequest": {
+    "com.azure.billingbenefits#ListDiscountResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5647,13 +5647,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditTransactionsGet": {
+    "com.azure.billingbenefits#GetCreditTransaction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditTransactionsGetRequest"
+        "target": "com.azure.billingbenefits#GetCreditTransactionRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#CreditTransactionsGetResponse"
+        "target": "com.azure.billingbenefits#GetCreditTransactionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5666,7 +5666,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditTransactionsGetResponse": {
+    "com.azure.billingbenefits#GetCreditTransactionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5704,7 +5704,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#CreditTransactionsGetRequest": {
+    "com.azure.billingbenefits#GetCreditTransactionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5744,10 +5744,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditTransactionsListByParent": {
+    "com.azure.billingbenefits#ListCreditTransactionByParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditTransactionsListByParentRequest"
+        "target": "com.azure.billingbenefits#ListCreditTransactionByParentRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#TransactionsList"
@@ -5831,7 +5831,7 @@
         "smithy.api#documentation": "Transaction resource definition for Credits"
       }
     },
-    "com.azure.billingbenefits#CreditTransactionsListByParentRequest": {
+    "com.azure.billingbenefits#ListCreditTransactionByParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5863,10 +5863,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SourcesDelete": {
+    "com.azure.billingbenefits#DeleteSource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SourcesDeleteRequest"
+        "target": "com.azure.billingbenefits#DeleteSourceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5882,7 +5882,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SourcesDeleteRequest": {
+    "com.azure.billingbenefits#DeleteSourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5922,13 +5922,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SourcesUpdate": {
+    "com.azure.billingbenefits#UpdateSource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SourcesUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateSourceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SourcesUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateSourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5941,7 +5941,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SourcesUpdateResponse": {
+    "com.azure.billingbenefits#UpdateSourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6178,7 +6178,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#SourcesUpdateRequest": {
+    "com.azure.billingbenefits#UpdateSourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6236,13 +6236,13 @@
         "smithy.api#documentation": "Resource Tags"
       }
     },
-    "com.azure.billingbenefits#SourcesCreate": {
+    "com.azure.billingbenefits#CreateSource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SourcesCreateRequest"
+        "target": "com.azure.billingbenefits#CreateSourceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SourcesCreateResponse"
+        "target": "com.azure.billingbenefits#CreateSourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6255,7 +6255,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SourcesCreateResponse": {
+    "com.azure.billingbenefits#CreateSourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6398,7 +6398,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#SourcesCreateRequest": {
+    "com.azure.billingbenefits#CreateSourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6557,13 +6557,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#SourcesGet": {
+    "com.azure.billingbenefits#GetSource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SourcesGetRequest"
+        "target": "com.azure.billingbenefits#GetSourceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SourcesGetResponse"
+        "target": "com.azure.billingbenefits#GetSourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6576,7 +6576,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SourcesGetResponse": {
+    "com.azure.billingbenefits#GetSourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6719,7 +6719,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#SourcesGetRequest": {
+    "com.azure.billingbenefits#GetSourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6759,10 +6759,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SourcesListByCredit": {
+    "com.azure.billingbenefits#ListSourceByCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SourcesListByCreditRequest"
+        "target": "com.azure.billingbenefits#ListSourceByCreditRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CreditSourcesList"
@@ -6951,7 +6951,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#SourcesListByCreditRequest": {
+    "com.azure.billingbenefits#ListSourceByCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7599,10 +7599,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditsDelete": {
+    "com.azure.billingbenefits#DeleteCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsDeleteRequest"
+        "target": "com.azure.billingbenefits#DeleteCreditRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7618,7 +7618,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditsDeleteRequest": {
+    "com.azure.billingbenefits#DeleteCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7650,13 +7650,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditsUpdate": {
+    "com.azure.billingbenefits#UpdateCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateCreditRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#CreditsUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateCreditResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7669,7 +7669,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditsUpdateResponse": {
+    "com.azure.billingbenefits#UpdateCreditResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7812,7 +7812,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#CreditsUpdateRequest": {
+    "com.azure.billingbenefits#UpdateCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7903,13 +7903,13 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.billingbenefits#CreditsCreate": {
+    "com.azure.billingbenefits#CreateCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsCreateRequest"
+        "target": "com.azure.billingbenefits#CreateCreditRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#CreditsCreateResponse"
+        "target": "com.azure.billingbenefits#CreateCreditResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7922,7 +7922,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditsCreateResponse": {
+    "com.azure.billingbenefits#CreateCreditResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8065,7 +8065,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#CreditsCreateRequest": {
+    "com.azure.billingbenefits#CreateCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8291,13 +8291,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#CreditsGet": {
+    "com.azure.billingbenefits#GetCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsGetRequest"
+        "target": "com.azure.billingbenefits#GetCreditRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#CreditsGetResponse"
+        "target": "com.azure.billingbenefits#GetCreditResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8310,7 +8310,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditsGetResponse": {
+    "com.azure.billingbenefits#GetCreditResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8453,7 +8453,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#CreditsGetRequest": {
+    "com.azure.billingbenefits#GetCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8485,10 +8485,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditsListByResourceGroup": {
+    "com.azure.billingbenefits#ListCreditByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsListByResourceGroupRequest"
+        "target": "com.azure.billingbenefits#ListCreditByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CreditsList"
@@ -8677,7 +8677,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#CreditsListByResourceGroupRequest": {
+    "com.azure.billingbenefits#ListCreditByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8701,13 +8701,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditTransactionsGet": {
+    "com.azure.billingbenefits#GetConditionalCreditTransaction": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditTransactionsGetRequest"
+        "target": "com.azure.billingbenefits#GetConditionalCreditTransactionRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ConditionalCreditTransactionsGetResponse"
+        "target": "com.azure.billingbenefits#GetConditionalCreditTransactionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8720,7 +8720,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditTransactionsGetResponse": {
+    "com.azure.billingbenefits#GetConditionalCreditTransactionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8758,7 +8758,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditTransactionsGetRequest": {
+    "com.azure.billingbenefits#GetConditionalCreditTransactionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8798,10 +8798,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditTransactionsListByParent": {
+    "com.azure.billingbenefits#ListConditionalCreditTransactionByParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditTransactionsListByParentRequest"
+        "target": "com.azure.billingbenefits#ListConditionalCreditTransactionByParentRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ConditionalCreditTransactionsList"
@@ -8885,7 +8885,7 @@
         "smithy.api#documentation": "Transaction resource definition for ConditionalCredits"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditTransactionsListByParentRequest": {
+    "com.azure.billingbenefits#ListConditionalCreditTransactionByParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8917,13 +8917,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsGetFromPrimary": {
+    "com.azure.billingbenefits#GetConditionalCreditContributorFromPrimary": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditContributorsGetFromPrimaryRequest"
+        "target": "com.azure.billingbenefits#GetConditionalCreditContributorFromPrimaryRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ConditionalCreditContributorsGetFromPrimaryResponse"
+        "target": "com.azure.billingbenefits#GetConditionalCreditContributorFromPrimaryResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8936,7 +8936,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsGetFromPrimaryResponse": {
+    "com.azure.billingbenefits#GetConditionalCreditContributorFromPrimaryResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9376,7 +9376,7 @@
         "smithy.api#documentation": "Type of conditional credit entity"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsGetFromPrimaryRequest": {
+    "com.azure.billingbenefits#GetConditionalCreditContributorFromPrimaryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9416,10 +9416,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsListFromPrimary": {
+    "com.azure.billingbenefits#ListConditionalCreditContributorFromPrimary": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditContributorsListFromPrimaryRequest"
+        "target": "com.azure.billingbenefits#ListConditionalCreditContributorFromPrimaryRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ConditionalCreditContributorList"
@@ -9503,7 +9503,7 @@
         "smithy.api#documentation": "Conditional credit contributor"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsListFromPrimaryRequest": {
+    "com.azure.billingbenefits#ListConditionalCreditContributorFromPrimaryRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9822,10 +9822,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsDelete": {
+    "com.azure.billingbenefits#DeleteConditionalCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsDeleteRequest"
+        "target": "com.azure.billingbenefits#DeleteConditionalCreditRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9841,7 +9841,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsDeleteRequest": {
+    "com.azure.billingbenefits#DeleteConditionalCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9873,13 +9873,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsUpdate": {
+    "com.azure.billingbenefits#UpdateConditionalCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateConditionalCreditRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateConditionalCreditResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9892,7 +9892,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsUpdateResponse": {
+    "com.azure.billingbenefits#UpdateConditionalCreditResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10035,7 +10035,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsUpdateRequest": {
+    "com.azure.billingbenefits#UpdateConditionalCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10564,13 +10564,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsGet": {
+    "com.azure.billingbenefits#GetConditionalCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsGetRequest"
+        "target": "com.azure.billingbenefits#GetConditionalCreditRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsGetResponse"
+        "target": "com.azure.billingbenefits#GetConditionalCreditResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10583,7 +10583,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsGetResponse": {
+    "com.azure.billingbenefits#GetConditionalCreditResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10726,7 +10726,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsGetRequest": {
+    "com.azure.billingbenefits#GetConditionalCreditRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10758,10 +10758,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsListByResourceGroup": {
+    "com.azure.billingbenefits#ListConditionalCreditByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsListByResourceGroupRequest"
+        "target": "com.azure.billingbenefits#ListConditionalCreditByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ConditionalCreditList"
@@ -10950,7 +10950,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsListByResourceGroupRequest": {
+    "com.azure.billingbenefits#ListConditionalCreditByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10974,10 +10974,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#MaccsListBySubscription": {
+    "com.azure.billingbenefits#ListMaccBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#MaccsListBySubscriptionRequest"
+        "target": "com.azure.billingbenefits#ListMaccBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#MaccList"
@@ -10993,7 +10993,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#MaccsListBySubscriptionRequest": {
+    "com.azure.billingbenefits#ListMaccBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11009,10 +11009,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#FreeServicesListBySubscription": {
+    "com.azure.billingbenefits#ListFreeServiceBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#FreeServicesListBySubscriptionRequest"
+        "target": "com.azure.billingbenefits#ListFreeServiceBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#FreeServicesList"
@@ -11028,7 +11028,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#FreeServicesListBySubscriptionRequest": {
+    "com.azure.billingbenefits#ListFreeServiceBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11044,10 +11044,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#DiscountsSubscriptionList": {
+    "com.azure.billingbenefits#ListDiscountSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountsSubscriptionListRequest"
+        "target": "com.azure.billingbenefits#ListDiscountSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#DiscountList"
@@ -11063,7 +11063,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#DiscountsSubscriptionListRequest": {
+    "com.azure.billingbenefits#ListDiscountSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11079,10 +11079,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditsListBySubscription": {
+    "com.azure.billingbenefits#ListCreditBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsListBySubscriptionRequest"
+        "target": "com.azure.billingbenefits#ListCreditBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CreditsList"
@@ -11098,7 +11098,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditsListBySubscriptionRequest": {
+    "com.azure.billingbenefits#ListCreditBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11114,10 +11114,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsListBySubscription": {
+    "com.azure.billingbenefits#ListConditionalCreditBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsListBySubscriptionRequest"
+        "target": "com.azure.billingbenefits#ListConditionalCreditBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ConditionalCreditList"
@@ -11133,7 +11133,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsListBySubscriptionRequest": {
+    "com.azure.billingbenefits#ListConditionalCreditBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11149,13 +11149,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsGet": {
+    "com.azure.billingbenefits#GetSubscriptionCatalogGroupOps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsGetRequest"
+        "target": "com.azure.billingbenefits#GetSubscriptionCatalogGroupOpsRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsGetResponse"
+        "target": "com.azure.billingbenefits#GetSubscriptionCatalogGroupOpsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11168,7 +11168,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsGetResponse": {
+    "com.azure.billingbenefits#GetSubscriptionCatalogGroupOpsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11368,7 +11368,7 @@
         "smithy.api#documentation": "The top-level ARM resource type for a billing benefit (e.g., maccs, credits, savingsPlans, reservations)."
       }
     },
-    "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsGetRequest": {
+    "com.azure.billingbenefits#GetSubscriptionCatalogGroupOpsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11392,10 +11392,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsList": {
+    "com.azure.billingbenefits#ListSubscriptionCatalogGroupOps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsListRequest"
+        "target": "com.azure.billingbenefits#ListSubscriptionCatalogGroupOpsRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CatalogGroupListResult"
@@ -11479,7 +11479,7 @@
         "smithy.api#documentation": "A catalog group represents a BenefitResourceType + Namespace grouping used for benefit SKU discovery."
       }
     },
-    "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsListRequest": {
+    "com.azure.billingbenefits#ListSubscriptionCatalogGroupOpsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11502,10 +11502,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ContributorsListFromApplicableMacc": {
+    "com.azure.billingbenefits#ListContributorFromApplicableMacc": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ContributorsListFromApplicableMaccRequest"
+        "target": "com.azure.billingbenefits#ListContributorFromApplicableMaccRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ContributorList"
@@ -11521,7 +11521,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ContributorsListFromApplicableMaccRequest": {
+    "com.azure.billingbenefits#ListContributorFromApplicableMaccRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -11545,10 +11545,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ApplicableMaccsList": {
+    "com.azure.billingbenefits#ListApplicableMaccs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ApplicableMaccsListRequest"
+        "target": "com.azure.billingbenefits#ListApplicableMaccsRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ApplicableMaccList"
@@ -11631,7 +11631,7 @@
         "smithy.api#documentation": "Applicable MACC."
       }
     },
-    "com.azure.billingbenefits#ApplicableMaccsListRequest": {
+    "com.azure.billingbenefits#ListApplicableMaccsRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -11647,10 +11647,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsListFromApplicableConditionalCredit": {
+    "com.azure.billingbenefits#ListConditionalCreditContributorFromApplicableConditionalCredit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditContributorsListFromApplicableConditionalCreditRequest"
+        "target": "com.azure.billingbenefits#ListConditionalCreditContributorFromApplicableConditionalCreditRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ConditionalCreditContributorList"
@@ -11666,7 +11666,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditContributorsListFromApplicableConditionalCreditRequest": {
+    "com.azure.billingbenefits#ListConditionalCreditContributorFromApplicableConditionalCreditRequest": {
       "type": "structure",
       "members": {
         "billingAccountId": {
@@ -11870,10 +11870,10 @@
         "smithy.api#documentation": "Represents benefit model type for validation. Includes all resource types\nplus legacy singular-form values used by the validate API."
       }
     },
-    "com.azure.billingbenefits#SavingsPlanListAll": {
+    "com.azure.billingbenefits#ListSavingPlanAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanListAllRequest"
+        "target": "com.azure.billingbenefits#ListSavingPlanAllRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#SavingsPlanModelListResult"
@@ -12538,7 +12538,7 @@
         "smithy.api#documentation": "Provisioning state"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanListAllRequest": {
+    "com.azure.billingbenefits#ListSavingPlanAllRequest": {
       "type": "structure",
       "members": {
         "_filter": {
@@ -12588,10 +12588,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanValidateUpdate": {
+    "com.azure.billingbenefits#UpdateSavingPlanValidate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanValidateUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateSavingPlanValidateRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#SavingsPlanValidateResponse"
@@ -12655,7 +12655,7 @@
         "smithy.api#documentation": "Benefit scope response property"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanValidateUpdateRequest": {
+    "com.azure.billingbenefits#UpdateSavingPlanValidateRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderId": {
@@ -12808,13 +12808,13 @@
       },
       "traits": {}
     },
-    "com.azure.billingbenefits#SavingsPlanUpdate": {
+    "com.azure.billingbenefits#UpdateSavingPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanUpdateRequest"
+        "target": "com.azure.billingbenefits#UpdateSavingPlanRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SavingsPlanUpdateResponse"
+        "target": "com.azure.billingbenefits#UpdateSavingPlanResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12827,7 +12827,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanUpdateResponse": {
+    "com.azure.billingbenefits#UpdateSavingPlanResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12872,7 +12872,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanUpdateRequest": {
+    "com.azure.billingbenefits#UpdateSavingPlanRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderId": {
@@ -12902,13 +12902,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanGet": {
+    "com.azure.billingbenefits#GetSavingPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanGetRequest"
+        "target": "com.azure.billingbenefits#GetSavingPlanRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SavingsPlanGetResponse"
+        "target": "com.azure.billingbenefits#GetSavingPlanResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12921,7 +12921,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanGetResponse": {
+    "com.azure.billingbenefits#GetSavingPlanResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12966,7 +12966,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanGetRequest": {
+    "com.azure.billingbenefits#GetSavingPlanRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderId": {
@@ -12997,10 +12997,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanList": {
+    "com.azure.billingbenefits#ListSavingPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanListRequest"
+        "target": "com.azure.billingbenefits#ListSavingPlanRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#SavingsPlanModelList"
@@ -13046,7 +13046,7 @@
         "smithy.api#documentation": "The SavingsPlanModel items on this page"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanListRequest": {
+    "com.azure.billingbenefits#ListSavingPlanRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderId": {
@@ -13149,13 +13149,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderGet": {
+    "com.azure.billingbenefits#GetSavingPlanOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanOrderGetRequest"
+        "target": "com.azure.billingbenefits#GetSavingPlanOrderRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SavingsPlanOrderGetResponse"
+        "target": "com.azure.billingbenefits#GetSavingPlanOrderResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13168,7 +13168,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderGetResponse": {
+    "com.azure.billingbenefits#GetSavingPlanOrderResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13415,7 +13415,7 @@
         "smithy.api#documentation": "Describes whether the payment is completed, failed, cancelled or scheduled in the future."
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderGetRequest": {
+    "com.azure.billingbenefits#GetSavingPlanOrderRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderId": {
@@ -13438,7 +13438,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderList": {
+    "com.azure.billingbenefits#ListSavingPlanOrder": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -13532,13 +13532,13 @@
         "smithy.api#documentation": "Savings plan order"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderAliasCreate": {
+    "com.azure.billingbenefits#CreateSavingPlanOrderAlia": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanOrderAliasCreateRequest"
+        "target": "com.azure.billingbenefits#CreateSavingPlanOrderAliaRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SavingsPlanOrderAliasCreateResponse"
+        "target": "com.azure.billingbenefits#CreateSavingPlanOrderAliaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13551,7 +13551,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderAliasCreateResponse": {
+    "com.azure.billingbenefits#CreateSavingPlanOrderAliaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13670,7 +13670,7 @@
         "smithy.api#documentation": "Savings plan properties"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderAliasCreateRequest": {
+    "com.azure.billingbenefits#CreateSavingPlanOrderAliaRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderAliasName": {
@@ -13761,13 +13761,13 @@
         "smithy.api#documentation": "Savings plan properties"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderAliasGet": {
+    "com.azure.billingbenefits#GetSavingPlanOrderAlia": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SavingsPlanOrderAliasGetRequest"
+        "target": "com.azure.billingbenefits#GetSavingPlanOrderAliaRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SavingsPlanOrderAliasGetResponse"
+        "target": "com.azure.billingbenefits#GetSavingPlanOrderAliaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13780,7 +13780,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderAliasGetResponse": {
+    "com.azure.billingbenefits#GetSavingPlanOrderAliaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13831,7 +13831,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#SavingsPlanOrderAliasGetRequest": {
+    "com.azure.billingbenefits#GetSavingPlanOrderAliaRequest": {
       "type": "structure",
       "members": {
         "savingsPlanOrderAliasName": {
@@ -13847,13 +13847,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ReservationOrderAliasCreate": {
+    "com.azure.billingbenefits#CreateReservationOrderAlia": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ReservationOrderAliasCreateRequest"
+        "target": "com.azure.billingbenefits#CreateReservationOrderAliaRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ReservationOrderAliasCreateResponse"
+        "target": "com.azure.billingbenefits#CreateReservationOrderAliaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13866,7 +13866,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ReservationOrderAliasCreateResponse": {
+    "com.azure.billingbenefits#CreateReservationOrderAliaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14219,7 +14219,7 @@
         "smithy.api#documentation": "The type of the resource that is being reserved."
       }
     },
-    "com.azure.billingbenefits#ReservationOrderAliasCreateRequest": {
+    "com.azure.billingbenefits#CreateReservationOrderAliaRequest": {
       "type": "structure",
       "members": {
         "reservationOrderAliasName": {
@@ -14354,13 +14354,13 @@
         "smithy.api#documentation": "Properties specific to each reserved resource type. Not required if not applicable."
       }
     },
-    "com.azure.billingbenefits#ReservationOrderAliasGet": {
+    "com.azure.billingbenefits#GetReservationOrderAlia": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ReservationOrderAliasGetRequest"
+        "target": "com.azure.billingbenefits#GetReservationOrderAliaRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#ReservationOrderAliasGetResponse"
+        "target": "com.azure.billingbenefits#GetReservationOrderAliaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14373,7 +14373,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ReservationOrderAliasGetResponse": {
+    "com.azure.billingbenefits#GetReservationOrderAliaResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14424,7 +14424,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#ReservationOrderAliasGetRequest": {
+    "com.azure.billingbenefits#GetReservationOrderAliaRequest": {
       "type": "structure",
       "members": {
         "reservationOrderAliasName": {
@@ -14440,13 +14440,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#OperationsList": {
+    "com.azure.billingbenefits#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.billingbenefits#OperationsListResponse"
+        "target": "com.azure.billingbenefits#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14459,7 +14459,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#OperationsListResponse": {
+    "com.azure.billingbenefits#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -14598,13 +14598,13 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.billingbenefits#SellerResourceList": {
+    "com.azure.billingbenefits#ListSellerResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#SellerResourceListRequest"
+        "target": "com.azure.billingbenefits#ListSellerResourceRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#SellerResourceListResponse"
+        "target": "com.azure.billingbenefits#ListSellerResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14617,7 +14617,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#SellerResourceListResponse": {
+    "com.azure.billingbenefits#ListSellerResourceResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -14639,7 +14639,7 @@
       },
       "traits": {}
     },
-    "com.azure.billingbenefits#SellerResourceListRequest": {
+    "com.azure.billingbenefits#ListSellerResourceRequest": {
       "type": "structure",
       "members": {
         "properties": {
@@ -14693,13 +14693,13 @@
         "smithy.api#documentation": "Request properties to list maccs under a billing account"
       }
     },
-    "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGet": {
+    "com.azure.billingbenefits#GetBillingAccountCatalogGroupOps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGetRequest"
+        "target": "com.azure.billingbenefits#GetBillingAccountCatalogGroupOpsRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGetResponse"
+        "target": "com.azure.billingbenefits#GetBillingAccountCatalogGroupOpsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14712,7 +14712,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGetResponse": {
+    "com.azure.billingbenefits#GetBillingAccountCatalogGroupOpsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14750,7 +14750,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGetRequest": {
+    "com.azure.billingbenefits#GetBillingAccountCatalogGroupOpsRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14774,10 +14774,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsList": {
+    "com.azure.billingbenefits#ListBillingAccountCatalogGroupOps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsListRequest"
+        "target": "com.azure.billingbenefits#ListBillingAccountCatalogGroupOpsRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CatalogGroupListResult"
@@ -14793,7 +14793,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsListRequest": {
+    "com.azure.billingbenefits#ListBillingAccountCatalogGroupOpsRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14816,13 +14816,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsGet": {
+    "com.azure.billingbenefits#GetBillingProfileCatalogGroupOps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsGetRequest"
+        "target": "com.azure.billingbenefits#GetBillingProfileCatalogGroupOpsRequest"
       },
       "output": {
-        "target": "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsGetResponse"
+        "target": "com.azure.billingbenefits#GetBillingProfileCatalogGroupOpsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14835,7 +14835,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsGetResponse": {
+    "com.azure.billingbenefits#GetBillingProfileCatalogGroupOpsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14873,7 +14873,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsGetRequest": {
+    "com.azure.billingbenefits#GetBillingProfileCatalogGroupOpsRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14905,10 +14905,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsList": {
+    "com.azure.billingbenefits#ListBillingProfileCatalogGroupOps": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsListRequest"
+        "target": "com.azure.billingbenefits#ListBillingProfileCatalogGroupOpsRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CatalogGroupListResult"
@@ -14924,7 +14924,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsListRequest": {
+    "com.azure.billingbenefits#ListBillingProfileCatalogGroupOpsRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14955,10 +14955,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#DiscountsScopeList": {
+    "com.azure.billingbenefits#ListDiscountScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#DiscountsScopeListRequest"
+        "target": "com.azure.billingbenefits#ListDiscountScopeRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#DiscountList"
@@ -14974,7 +14974,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#DiscountsScopeListRequest": {
+    "com.azure.billingbenefits#ListDiscountScopeRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -14990,10 +14990,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#CreditsListApplicable": {
+    "com.azure.billingbenefits#ListCreditApplicable": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#CreditsListApplicableRequest"
+        "target": "com.azure.billingbenefits#ListCreditApplicableRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#CreditsList"
@@ -15009,7 +15009,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#CreditsListApplicableRequest": {
+    "com.azure.billingbenefits#ListCreditApplicableRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -15025,10 +15025,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsScopeList": {
+    "com.azure.billingbenefits#ListConditionalCreditScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billingbenefits#ConditionalCreditsScopeListRequest"
+        "target": "com.azure.billingbenefits#ListConditionalCreditScopeRequest"
       },
       "output": {
         "target": "com.azure.billingbenefits#ConditionalCreditList"
@@ -15044,7 +15044,7 @@
         "com.distilled.openapi#apiVersion": "2026-06-01"
       }
     },
-    "com.azure.billingbenefits#ConditionalCreditsScopeListRequest": {
+    "com.azure.billingbenefits#ListConditionalCreditScopeRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -15068,16 +15068,16 @@
           "target": "com.azure.billingbenefits#MaccsWriteOff"
         },
         {
-          "target": "com.azure.billingbenefits#MaccTransactionsGet"
+          "target": "com.azure.billingbenefits#GetMaccTransaction"
         },
         {
-          "target": "com.azure.billingbenefits#MaccTransactionsListByParent"
+          "target": "com.azure.billingbenefits#ListMaccTransactionByParent"
         },
         {
-          "target": "com.azure.billingbenefits#ContributorsGetFromPrimary"
+          "target": "com.azure.billingbenefits#GetContributorFromPrimary"
         },
         {
-          "target": "com.azure.billingbenefits#ContributorsListFromPrimary"
+          "target": "com.azure.billingbenefits#ListContributorFromPrimary"
         },
         {
           "target": "com.azure.billingbenefits#MaccsChargeShortfall"
@@ -15086,73 +15086,73 @@
           "target": "com.azure.billingbenefits#MaccsCancel"
         },
         {
-          "target": "com.azure.billingbenefits#MaccsDelete"
+          "target": "com.azure.billingbenefits#DeleteMacc"
         },
         {
-          "target": "com.azure.billingbenefits#MaccsUpdate"
+          "target": "com.azure.billingbenefits#UpdateMacc"
         },
         {
-          "target": "com.azure.billingbenefits#MaccsCreate"
+          "target": "com.azure.billingbenefits#CreateMacc"
         },
         {
-          "target": "com.azure.billingbenefits#MaccsGet"
+          "target": "com.azure.billingbenefits#GetMacc"
         },
         {
-          "target": "com.azure.billingbenefits#MaccsListByResourceGroup"
+          "target": "com.azure.billingbenefits#ListMaccByResourceGroup"
         },
         {
-          "target": "com.azure.billingbenefits#FreeServicesDelete"
+          "target": "com.azure.billingbenefits#DeleteFreeService"
         },
         {
-          "target": "com.azure.billingbenefits#FreeServicesUpdate"
+          "target": "com.azure.billingbenefits#UpdateFreeService"
         },
         {
-          "target": "com.azure.billingbenefits#FreeServicesCreate"
+          "target": "com.azure.billingbenefits#CreateFreeService"
         },
         {
-          "target": "com.azure.billingbenefits#FreeServicesGet"
+          "target": "com.azure.billingbenefits#GetFreeService"
         },
         {
-          "target": "com.azure.billingbenefits#FreeServicesListByResourceGroup"
+          "target": "com.azure.billingbenefits#ListFreeServiceByResourceGroup"
         },
         {
           "target": "com.azure.billingbenefits#DiscountsCancel"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountsDelete"
+          "target": "com.azure.billingbenefits#DeleteDiscount"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountUpdate"
+          "target": "com.azure.billingbenefits#UpdateDiscount"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountsCreate"
+          "target": "com.azure.billingbenefits#CreateDiscount"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountGet"
+          "target": "com.azure.billingbenefits#GetDiscount"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountsResourceGroupList"
+          "target": "com.azure.billingbenefits#ListDiscountResourceGroup"
         },
         {
-          "target": "com.azure.billingbenefits#CreditTransactionsGet"
+          "target": "com.azure.billingbenefits#GetCreditTransaction"
         },
         {
-          "target": "com.azure.billingbenefits#CreditTransactionsListByParent"
+          "target": "com.azure.billingbenefits#ListCreditTransactionByParent"
         },
         {
-          "target": "com.azure.billingbenefits#SourcesDelete"
+          "target": "com.azure.billingbenefits#DeleteSource"
         },
         {
-          "target": "com.azure.billingbenefits#SourcesUpdate"
+          "target": "com.azure.billingbenefits#UpdateSource"
         },
         {
-          "target": "com.azure.billingbenefits#SourcesCreate"
+          "target": "com.azure.billingbenefits#CreateSource"
         },
         {
-          "target": "com.azure.billingbenefits#SourcesGet"
+          "target": "com.azure.billingbenefits#GetSource"
         },
         {
-          "target": "com.azure.billingbenefits#SourcesListByCredit"
+          "target": "com.azure.billingbenefits#ListSourceByCredit"
         },
         {
           "target": "com.azure.billingbenefits#CreditsChangeSponsor"
@@ -15161,145 +15161,145 @@
           "target": "com.azure.billingbenefits#CreditsCancel"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsDelete"
+          "target": "com.azure.billingbenefits#DeleteCredit"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsUpdate"
+          "target": "com.azure.billingbenefits#UpdateCredit"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsCreate"
+          "target": "com.azure.billingbenefits#CreateCredit"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsGet"
+          "target": "com.azure.billingbenefits#GetCredit"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsListByResourceGroup"
+          "target": "com.azure.billingbenefits#ListCreditByResourceGroup"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditTransactionsGet"
+          "target": "com.azure.billingbenefits#GetConditionalCreditTransaction"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditTransactionsListByParent"
+          "target": "com.azure.billingbenefits#ListConditionalCreditTransactionByParent"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditContributorsGetFromPrimary"
+          "target": "com.azure.billingbenefits#GetConditionalCreditContributorFromPrimary"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditContributorsListFromPrimary"
+          "target": "com.azure.billingbenefits#ListConditionalCreditContributorFromPrimary"
         },
         {
           "target": "com.azure.billingbenefits#ConditionalCreditsCancel"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditsDelete"
+          "target": "com.azure.billingbenefits#DeleteConditionalCredit"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditsUpdate"
+          "target": "com.azure.billingbenefits#UpdateConditionalCredit"
         },
         {
           "target": "com.azure.billingbenefits#ConditionalCreditsCreateOrUpdate"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditsGet"
+          "target": "com.azure.billingbenefits#GetConditionalCredit"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditsListByResourceGroup"
+          "target": "com.azure.billingbenefits#ListConditionalCreditByResourceGroup"
         },
         {
-          "target": "com.azure.billingbenefits#MaccsListBySubscription"
+          "target": "com.azure.billingbenefits#ListMaccBySubscription"
         },
         {
-          "target": "com.azure.billingbenefits#FreeServicesListBySubscription"
+          "target": "com.azure.billingbenefits#ListFreeServiceBySubscription"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountsSubscriptionList"
+          "target": "com.azure.billingbenefits#ListDiscountSubscription"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsListBySubscription"
+          "target": "com.azure.billingbenefits#ListCreditBySubscription"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditsListBySubscription"
+          "target": "com.azure.billingbenefits#ListConditionalCreditBySubscription"
         },
         {
-          "target": "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsGet"
+          "target": "com.azure.billingbenefits#GetSubscriptionCatalogGroupOps"
         },
         {
-          "target": "com.azure.billingbenefits#SubscriptionCatalogGroupsOpsList"
+          "target": "com.azure.billingbenefits#ListSubscriptionCatalogGroupOps"
         },
         {
-          "target": "com.azure.billingbenefits#ContributorsListFromApplicableMacc"
+          "target": "com.azure.billingbenefits#ListContributorFromApplicableMacc"
         },
         {
-          "target": "com.azure.billingbenefits#ApplicableMaccsList"
+          "target": "com.azure.billingbenefits#ListApplicableMaccs"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditContributorsListFromApplicableConditionalCredit"
+          "target": "com.azure.billingbenefits#ListConditionalCreditContributorFromApplicableConditionalCredit"
         },
         {
           "target": "com.azure.billingbenefits#BenefitValidate"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanListAll"
+          "target": "com.azure.billingbenefits#ListSavingPlanAll"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanValidateUpdate"
+          "target": "com.azure.billingbenefits#UpdateSavingPlanValidate"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanUpdate"
+          "target": "com.azure.billingbenefits#UpdateSavingPlan"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanGet"
+          "target": "com.azure.billingbenefits#GetSavingPlan"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanList"
+          "target": "com.azure.billingbenefits#ListSavingPlan"
         },
         {
           "target": "com.azure.billingbenefits#SavingsPlanOrderElevate"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanOrderGet"
+          "target": "com.azure.billingbenefits#GetSavingPlanOrder"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanOrderList"
+          "target": "com.azure.billingbenefits#ListSavingPlanOrder"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanOrderAliasCreate"
+          "target": "com.azure.billingbenefits#CreateSavingPlanOrderAlia"
         },
         {
-          "target": "com.azure.billingbenefits#SavingsPlanOrderAliasGet"
+          "target": "com.azure.billingbenefits#GetSavingPlanOrderAlia"
         },
         {
-          "target": "com.azure.billingbenefits#ReservationOrderAliasCreate"
+          "target": "com.azure.billingbenefits#CreateReservationOrderAlia"
         },
         {
-          "target": "com.azure.billingbenefits#ReservationOrderAliasGet"
+          "target": "com.azure.billingbenefits#GetReservationOrderAlia"
         },
         {
-          "target": "com.azure.billingbenefits#OperationsList"
+          "target": "com.azure.billingbenefits#ListOperations"
         },
         {
-          "target": "com.azure.billingbenefits#SellerResourceList"
+          "target": "com.azure.billingbenefits#ListSellerResource"
         },
         {
-          "target": "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsGet"
+          "target": "com.azure.billingbenefits#GetBillingAccountCatalogGroupOps"
         },
         {
-          "target": "com.azure.billingbenefits#BillingAccountCatalogGroupsOpsList"
+          "target": "com.azure.billingbenefits#ListBillingAccountCatalogGroupOps"
         },
         {
-          "target": "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsGet"
+          "target": "com.azure.billingbenefits#GetBillingProfileCatalogGroupOps"
         },
         {
-          "target": "com.azure.billingbenefits#BillingProfileCatalogGroupsOpsList"
+          "target": "com.azure.billingbenefits#ListBillingProfileCatalogGroupOps"
         },
         {
-          "target": "com.azure.billingbenefits#DiscountsScopeList"
+          "target": "com.azure.billingbenefits#ListDiscountScope"
         },
         {
-          "target": "com.azure.billingbenefits#CreditsListApplicable"
+          "target": "com.azure.billingbenefits#ListCreditApplicable"
         },
         {
-          "target": "com.azure.billingbenefits#ConditionalCreditsScopeList"
+          "target": "com.azure.billingbenefits#ListConditionalCreditScope"
         }
       ],
       "traits": {

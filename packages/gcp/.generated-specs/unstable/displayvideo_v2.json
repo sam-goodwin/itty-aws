@@ -28216,7 +28216,7 @@
         "smithy.api#documentation": "Gets a YouTube ad group."
       }
     },
-    "com.gcp.displayvideo_v2#BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest": {
+    "com.gcp.displayvideo_v2#ListBulkAdGroupAssignedTargetingOptionAdvertiserYoutubeAdGroupsRequest": {
       "type": "structure",
       "members": {
         "youtubeAdGroupIds": {
@@ -28264,10 +28264,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v2#BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroups": {
+    "com.gcp.displayvideo_v2#ListBulkAdGroupAssignedTargetingOptionAdvertiserYoutubeAdGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v2#BulkListAdGroupAssignedTargetingOptionsAdvertisersYoutubeAdGroupsRequest"
+        "target": "com.gcp.displayvideo_v2#ListBulkAdGroupAssignedTargetingOptionAdvertiserYoutubeAdGroupsRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v2#BulkListAdGroupAssignedTargetingOptionsResponse"
@@ -31885,7 +31885,7 @@
         "smithy.api#documentation": "Creates a new line item. Returns the newly created line item if successful. YouTube & Partners line items cannot be created or updated using the API."
       }
     },
-    "com.gcp.displayvideo_v2#BulkUpdateAdvertisersLineItemsRequest": {
+    "com.gcp.displayvideo_v2#UpdateBulkAdvertiserLineItemRequest": {
       "type": "structure",
       "members": {
         "advertiserId": {
@@ -31905,10 +31905,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v2#BulkUpdateAdvertisersLineItems": {
+    "com.gcp.displayvideo_v2#UpdateBulkAdvertiserLineItem": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v2#BulkUpdateAdvertisersLineItemsRequest"
+        "target": "com.gcp.displayvideo_v2#UpdateBulkAdvertiserLineItemRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v2#BulkUpdateLineItemsResponse"
@@ -32108,7 +32108,7 @@
         "smithy.api#documentation": "Duplicates a line item. Returns the ID of the created line item if successful. YouTube & Partners line items cannot be created or updated using the API. **This method regularly experiences high latency.** We recommend [increasing your default timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors."
       }
     },
-    "com.gcp.displayvideo_v2#BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest": {
+    "com.gcp.displayvideo_v2#ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest": {
       "type": "structure",
       "members": {
         "pageSize": {
@@ -32156,10 +32156,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v2#BulkListAssignedTargetingOptionsAdvertisersLineItems": {
+    "com.gcp.displayvideo_v2#ListBulkAssignedTargetingOptionAdvertiserLineItems": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v2#BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest"
+        "target": "com.gcp.displayvideo_v2#ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v2#BulkListAssignedTargetingOptionsResponse"

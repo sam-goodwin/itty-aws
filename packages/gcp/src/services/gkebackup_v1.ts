@@ -3225,6 +3225,99 @@ export const PatchProjectsLocationsRestorePlansRestoresRequest =
     identifier: "PatchProjectsLocationsRestorePlansRestoresRequest",
   }) as any as S.Schema<PatchProjectsLocationsRestorePlansRestoresRequest>;
 
+/** Request message for `TestIamPermissions` method. */
+export interface TestIamPermissionsRequest {
+  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
+  permissions?: StringList;
+}
+export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsRequest",
+}) as any as S.Schema<TestIamPermissionsRequest>;
+
+export interface RestoreTestIamPermissionProjectLocationPlanRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+export const RestoreTestIamPermissionProjectLocationPlanRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://gkebackup.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RestoreTestIamPermissionProjectLocationPlanRequest",
+  }) as any as S.Schema<RestoreTestIamPermissionProjectLocationPlanRequest>;
+
+/** Response message for `TestIamPermissions` method. */
+export interface TestIamPermissionsResponse {
+  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
+  permissions?: StringList;
+}
+export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    permissions: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "TestIamPermissionsResponse",
+}) as any as S.Schema<TestIamPermissionsResponse>;
+
+export interface RestoreTestIamPermissionProjectLocationPlanRestoreRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+export const RestoreTestIamPermissionProjectLocationPlanRestoreRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://gkebackup.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "RestoreTestIamPermissionProjectLocationPlanRestoreRequest",
+  }) as any as S.Schema<RestoreTestIamPermissionProjectLocationPlanRestoreRequest>;
+
+export interface RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest {
+  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
+  resource: string;
+  /** Request body */
+  body?: TestIamPermissionsRequest;
+}
+export const RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resource: S.String.pipe(T.Label()),
+      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+resource}:testIamPermissions",
+        baseUrl: "https://gkebackup.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest",
+  }) as any as S.Schema<RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest>;
+
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -3458,19 +3551,6 @@ export const SetTagsProjectsLocationsRestorePlansRequest =
     identifier: "SetTagsProjectsLocationsRestorePlansRequest",
   }) as any as S.Schema<SetTagsProjectsLocationsRestorePlansRequest>;
 
-/** Request message for `TestIamPermissions` method. */
-export interface TestIamPermissionsRequest {
-  /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
-  permissions?: StringList;
-}
-export const TestIamPermissionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsRequest",
-}) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsBackupPlansRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
@@ -3492,19 +3572,6 @@ export const TestIamPermissionsProjectsLocationsBackupPlansRequest =
   ).annotate({
     identifier: "TestIamPermissionsProjectsLocationsBackupPlansRequest",
   }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansRequest>;
-
-/** Response message for `TestIamPermissions` method. */
-export interface TestIamPermissionsResponse {
-  /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
-  permissions?: StringList;
-}
-export const TestIamPermissionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    permissions: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "TestIamPermissionsResponse",
-}) as any as S.Schema<TestIamPermissionsResponse>;
 
 export interface TestIamPermissionsProjectsLocationsBackupPlansBackupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
@@ -3550,74 +3617,6 @@ export const TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsR
     identifier:
       "TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest",
   }) as any as S.Schema<TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest>;
-
-export interface TestIamPermissionsProjectsLocationsRestorePlansRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-export const TestIamPermissionsProjectsLocationsRestorePlansRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "TestIamPermissionsProjectsLocationsRestorePlansRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRequest>;
-
-export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest>;
-
-export interface TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest {
-  /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
-  resource: string;
-  /** Request body */
-  body?: TestIamPermissionsRequest;
-}
-export const TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resource: S.String.pipe(T.Label()),
-      body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+resource}:testIamPermissions",
-        baseUrl: "https://gkebackup.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest",
-  }) as any as S.Schema<TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest>;
 
 export type CancelProjectsLocationsOperationsError =
   | NotFound
@@ -4667,6 +4666,66 @@ export const patchProjectsLocationsRestorePlansRestores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type RestoreTestIamPermissionProjectLocationPlanError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const restoreTestIamPermissionProjectLocationPlan: API.OperationMethod<
+  RestoreTestIamPermissionProjectLocationPlanRequest,
+  TestIamPermissionsResponse,
+  RestoreTestIamPermissionProjectLocationPlanError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestoreTestIamPermissionProjectLocationPlanRequest,
+  output: TestIamPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RestoreTestIamPermissionProjectLocationPlanRestoreError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const restoreTestIamPermissionProjectLocationPlanRestore: API.OperationMethod<
+  RestoreTestIamPermissionProjectLocationPlanRestoreRequest,
+  TestIamPermissionsResponse,
+  RestoreTestIamPermissionProjectLocationPlanRestoreError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestoreTestIamPermissionProjectLocationPlanRestoreRequest,
+  output: TestIamPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
+export const restoreTestIamPermissionProjectLocationPlanRestoreVolumeRestore: API.OperationMethod<
+  RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest,
+  TestIamPermissionsResponse,
+  RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestoreTestIamPermissionProjectLocationPlanRestoreVolumeRestoreRequest,
+  output: TestIamPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type SetIamPolicyProjectsLocationsBackupPlansError =
   | NotFound
   | Forbidden
@@ -4882,67 +4941,6 @@ export const testIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackups:
 > = /*@__PURE__*/ API.make(() => ({
   input:
     TestIamPermissionsProjectsLocationsBackupPlansBackupsVolumeBackupsRequest,
-  output: TestIamPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TestIamPermissionsProjectsLocationsRestorePlansError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRestorePlans: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRestorePlansRequest,
-  TestIamPermissionsResponse,
-  TestIamPermissionsProjectsLocationsRestorePlansError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRequest,
-  output: TestIamPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRestorePlansRestores: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
-  TestIamPermissionsResponse,
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRestorePlansRestoresRequest,
-  output: TestIamPermissionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning. */
-export const testIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestores: API.OperationMethod<
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
-  TestIamPermissionsResponse,
-  TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    TestIamPermissionsProjectsLocationsRestorePlansRestoresVolumeRestoresRequest,
   output: TestIamPermissionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

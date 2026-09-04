@@ -74,13 +74,13 @@ export const PutAliasRequestProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "PutAliasRequestProperties",
 }) as any as S.Schema<PutAliasRequestProperties>;
 
-export interface AliasCreateRequest {
+export interface CreateAliaRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
   /** Put alias request properties. */
   properties?: PutAliasRequestProperties;
 }
-export const AliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAliaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
     properties: S.optional(PutAliasRequestProperties),
@@ -93,8 +93,8 @@ export const AliasCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AliasCreateRequest",
-}) as any as S.Schema<AliasCreateRequest>;
+  identifier: "CreateAliaRequest",
+}) as any as S.Schema<CreateAliaRequest>;
 
 /** The provisioning state of the resource. */
 export type SubscriptionAliasResponsePropertiesProvisioningState =
@@ -236,11 +236,11 @@ export const SubscriptionAliasResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SubscriptionAliasResponse",
 }) as any as S.Schema<SubscriptionAliasResponse>;
 
-export interface AliasDeleteRequest {
+export interface DeleteAliaRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
-export const AliasDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAliaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
   }).pipe(
@@ -252,21 +252,53 @@ export const AliasDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AliasDeleteRequest",
-}) as any as S.Schema<AliasDeleteRequest>;
+  identifier: "DeleteAliaRequest",
+}) as any as S.Schema<DeleteAliaRequest>;
 
-export interface AliasDeleteResponse {}
-export const AliasDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteAliaResponse {}
+export const DeleteAliaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "AliasDeleteResponse",
-}) as any as S.Schema<AliasDeleteResponse>;
+  identifier: "DeleteAliaResponse",
+}) as any as S.Schema<DeleteAliaResponse>;
 
-export interface AliasGetRequest {
+export interface EnableSubscriptionRequest {
+  /** Subscription Id. */
+  subscriptionId: string;
+}
+export const EnableSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/enable",
+      code: 200,
+      apiVersion: "2021-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "EnableSubscriptionRequest",
+}) as any as S.Schema<EnableSubscriptionRequest>;
+
+/** The ID of the subscriptions that is being enabled */
+export interface EnabledSubscriptionId {
+  /** The ID of the subscriptions that is being enabled */
+  subscriptionId?: string;
+}
+export const EnabledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EnabledSubscriptionId",
+}) as any as S.Schema<EnabledSubscriptionId>;
+
+export interface GetAliaRequest {
   /** AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation. */
   aliasName: string;
 }
-export const AliasGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAliaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     aliasName: S.String.pipe(T.Label()),
   }).pipe(
@@ -277,52 +309,13 @@ export const AliasGetRequest = /*@__PURE__*/ S.suspend(() =>
       apiVersion: "2021-10-01",
     }),
   ),
-).annotate({
-  identifier: "AliasGetRequest",
-}) as any as S.Schema<AliasGetRequest>;
+).annotate({ identifier: "GetAliaRequest" }) as any as S.Schema<GetAliaRequest>;
 
-export interface AliasListRequest {}
-export const AliasListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Subscription/aliases",
-      code: 200,
-      apiVersion: "2021-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "AliasListRequest",
-}) as any as S.Schema<AliasListRequest>;
-
-/** The list of alias. */
-export type SubscriptionAliasListResultValueList =
-  Array<SubscriptionAliasResponse>;
-export const SubscriptionAliasListResultValueList = /*@__PURE__*/ S.Array(
-  SubscriptionAliasResponse,
-) as any as S.Schema<SubscriptionAliasListResultValueList>;
-
-/** The list of aliases. */
-export interface SubscriptionAliasListResult {
-  /** The list of alias. */
-  value?: SubscriptionAliasListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const SubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(SubscriptionAliasListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionAliasListResult",
-}) as any as S.Schema<SubscriptionAliasListResult>;
-
-export interface BillingAccountGetPolicyRequest {
+export interface GetBillingAccountPolicyRequest {
   /** Billing Account Id. */
   billingAccountId: string;
 }
-export const BillingAccountGetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBillingAccountPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
   }).pipe(
@@ -334,8 +327,8 @@ export const BillingAccountGetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BillingAccountGetPolicyRequest",
-}) as any as S.Schema<BillingAccountGetPolicyRequest>;
+  identifier: "GetBillingAccountPolicyRequest",
+}) as any as S.Schema<GetBillingAccountPolicyRequest>;
 
 /** Billing account service tenant. */
 export interface ServiceTenantResponse {
@@ -456,8 +449,191 @@ export const BillingAccountPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BillingAccountPoliciesResponse",
 }) as any as S.Schema<BillingAccountPoliciesResponse>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetSubscriptionOperationRequest {
+  /** The operation ID, which can be found from the Location field in the generate recommendation response header. */
+  operationId: string;
+}
+export const GetSubscriptionOperationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}",
+      code: 200,
+      apiVersion: "2021-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSubscriptionOperationRequest",
+}) as any as S.Schema<GetSubscriptionOperationRequest>;
+
+/** The created subscription object. */
+export interface SubscriptionCreationResult {
+  /** The link to the new subscription. Use this link to check the status of subscription creation operation. */
+  subscriptionLink?: string;
+}
+export const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SubscriptionCreationResult",
+}) as any as S.Schema<SubscriptionCreationResult>;
+
+export interface GetSubscriptionPolicyPolicyForTenantRequest {}
+export const GetSubscriptionPolicyPolicyForTenantRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Subscription/policies/default",
+        code: 200,
+        apiVersion: "2021-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetSubscriptionPolicyPolicyForTenantRequest",
+  }) as any as S.Schema<GetSubscriptionPolicyPolicyForTenantRequest>;
+
+/** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
+export type TenantPolicyExemptedPrincipalsList = Array<string>;
+export const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TenantPolicyExemptedPrincipalsList>;
+
+/** Tenant policy. */
+export interface TenantPolicy {
+  /** Policy Id. */
+  policyId?: string;
+  /** Blocks the leaving of subscriptions from user's tenant. */
+  blockSubscriptionsLeavingTenant?: boolean;
+  /** Blocks the entering of subscriptions into user's tenant. */
+  blockSubscriptionsIntoTenant?: boolean;
+  /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
+  exemptedPrincipals?: TenantPolicyExemptedPrincipalsList;
+}
+export const TenantPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policyId: S.optional(S.String),
+    blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
+    blockSubscriptionsIntoTenant: S.optional(S.Boolean),
+    exemptedPrincipals: S.optional(TenantPolicyExemptedPrincipalsList),
+  }),
+).annotate({ identifier: "TenantPolicy" }) as any as S.Schema<TenantPolicy>;
+
+/** The type of identity that created the resource. */
+export type GetTenantPolicyResponseSystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const GetTenantPolicyResponseSystemDataCreatedByType =
+  /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type GetTenantPolicyResponseSystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const GetTenantPolicyResponseSystemDataLastModifiedByType =
+  /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface GetTenantPolicyResponseSystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: GetTenantPolicyResponseSystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: GetTenantPolicyResponseSystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const GetTenantPolicyResponseSystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(GetTenantPolicyResponseSystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(
+      GetTenantPolicyResponseSystemDataLastModifiedByType,
+    ),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetTenantPolicyResponseSystemData",
+}) as any as S.Schema<GetTenantPolicyResponseSystemData>;
+
+/** Tenant policy Information. */
+export interface GetTenantPolicyResponse {
+  /** Policy Id. */
+  id?: string;
+  /** Policy name. */
+  name?: string;
+  /** Resource type. */
+  type?: string;
+  /** Tenant policy properties. */
+  properties?: TenantPolicy;
+  /** Metadata pertaining to creation and last modification of the resource. */
+  systemData?: GetTenantPolicyResponseSystemData;
+}
+export const GetTenantPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    properties: S.optional(TenantPolicy),
+    systemData: S.optional(GetTenantPolicyResponseSystemData),
+  }),
+).annotate({
+  identifier: "GetTenantPolicyResponse",
+}) as any as S.Schema<GetTenantPolicyResponse>;
+
+export interface ListAliasRequest {}
+export const ListAliasRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Subscription/aliases",
+      code: 200,
+      apiVersion: "2021-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAliasRequest",
+}) as any as S.Schema<ListAliasRequest>;
+
+/** The list of alias. */
+export type SubscriptionAliasListResultValueList =
+  Array<SubscriptionAliasResponse>;
+export const SubscriptionAliasListResultValueList = /*@__PURE__*/ S.Array(
+  SubscriptionAliasResponse,
+) as any as S.Schema<SubscriptionAliasListResultValueList>;
+
+/** The list of aliases. */
+export interface SubscriptionAliasListResult {
+  /** The list of alias. */
+  value?: SubscriptionAliasListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const SubscriptionAliasListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(SubscriptionAliasListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SubscriptionAliasListResult",
+}) as any as S.Schema<SubscriptionAliasListResult>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -467,8 +643,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The object that represents the operation. */
 export interface OperationDisplay {
@@ -530,6 +706,44 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
+
+export interface ListSubscriptionPolicyPolicyForTenantRequest {}
+export const ListSubscriptionPolicyPolicyForTenantRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({}).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Subscription/policies",
+        code: 200,
+        apiVersion: "2021-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSubscriptionPolicyPolicyForTenantRequest",
+  }) as any as S.Schema<ListSubscriptionPolicyPolicyForTenantRequest>;
+
+/** The list of tenant policies. */
+export type GetTenantPolicyListResponseValueList =
+  Array<GetTenantPolicyResponse>;
+export const GetTenantPolicyListResponseValueList = /*@__PURE__*/ S.Array(
+  GetTenantPolicyResponse,
+) as any as S.Schema<GetTenantPolicyListResponseValueList>;
+
+/** Tenant policy information list. */
+export interface GetTenantPolicyListResponse {
+  /** The list of tenant policies. */
+  value?: GetTenantPolicyListResponseValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const GetTenantPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(GetTenantPolicyListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetTenantPolicyListResponse",
+}) as any as S.Schema<GetTenantPolicyListResponse>;
 
 /** Tags for the subscription */
 export type AcceptOwnershipRequestPropertiesTagsMap = {
@@ -682,258 +896,6 @@ export const CanceledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanceledSubscriptionId",
 }) as any as S.Schema<CanceledSubscriptionId>;
 
-export interface SubscriptionEnableRequest {
-  /** Subscription Id. */
-  subscriptionId: string;
-}
-export const SubscriptionEnableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Subscription/enable",
-      code: 200,
-      apiVersion: "2021-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "SubscriptionEnableRequest",
-}) as any as S.Schema<SubscriptionEnableRequest>;
-
-/** The ID of the subscriptions that is being enabled */
-export interface EnabledSubscriptionId {
-  /** The ID of the subscriptions that is being enabled */
-  subscriptionId?: string;
-}
-export const EnabledSubscriptionId = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EnabledSubscriptionId",
-}) as any as S.Schema<EnabledSubscriptionId>;
-
-export interface SubscriptionOperationGetRequest {
-  /** The operation ID, which can be found from the Location field in the generate recommendation response header. */
-  operationId: string;
-}
-export const SubscriptionOperationGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Subscription/subscriptionOperations/{operationId}",
-      code: 200,
-      apiVersion: "2021-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "SubscriptionOperationGetRequest",
-}) as any as S.Schema<SubscriptionOperationGetRequest>;
-
-/** The created subscription object. */
-export interface SubscriptionCreationResult {
-  /** The link to the new subscription. Use this link to check the status of subscription creation operation. */
-  subscriptionLink?: string;
-}
-export const SubscriptionCreationResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SubscriptionCreationResult",
-}) as any as S.Schema<SubscriptionCreationResult>;
-
-/** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
-export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
-  Array<string>;
-export const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList>;
-
-export interface SubscriptionPolicyAddUpdatePolicyForTenantRequest {
-  /** Blocks the leaving of subscriptions from user's tenant. */
-  blockSubscriptionsLeavingTenant?: boolean;
-  /** Blocks the entering of subscriptions into user's tenant. */
-  blockSubscriptionsIntoTenant?: boolean;
-  /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
-  exemptedPrincipals?: SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList;
-}
-export const SubscriptionPolicyAddUpdatePolicyForTenantRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
-      blockSubscriptionsIntoTenant: S.optional(S.Boolean),
-      exemptedPrincipals: S.optional(
-        SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Subscription/policies/default",
-        code: 200,
-        apiVersion: "2021-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SubscriptionPolicyAddUpdatePolicyForTenantRequest",
-  }) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequest>;
-
-/** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
-export type TenantPolicyExemptedPrincipalsList = Array<string>;
-export const TenantPolicyExemptedPrincipalsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantPolicyExemptedPrincipalsList>;
-
-/** Tenant policy. */
-export interface TenantPolicy {
-  /** Policy Id. */
-  policyId?: string;
-  /** Blocks the leaving of subscriptions from user's tenant. */
-  blockSubscriptionsLeavingTenant?: boolean;
-  /** Blocks the entering of subscriptions into user's tenant. */
-  blockSubscriptionsIntoTenant?: boolean;
-  /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
-  exemptedPrincipals?: TenantPolicyExemptedPrincipalsList;
-}
-export const TenantPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policyId: S.optional(S.String),
-    blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
-    blockSubscriptionsIntoTenant: S.optional(S.Boolean),
-    exemptedPrincipals: S.optional(TenantPolicyExemptedPrincipalsList),
-  }),
-).annotate({ identifier: "TenantPolicy" }) as any as S.Schema<TenantPolicy>;
-
-/** The type of identity that created the resource. */
-export type GetTenantPolicyResponseSystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const GetTenantPolicyResponseSystemDataCreatedByType =
-  /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type GetTenantPolicyResponseSystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const GetTenantPolicyResponseSystemDataLastModifiedByType =
-  /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface GetTenantPolicyResponseSystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: GetTenantPolicyResponseSystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: GetTenantPolicyResponseSystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const GetTenantPolicyResponseSystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(GetTenantPolicyResponseSystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(
-      GetTenantPolicyResponseSystemDataLastModifiedByType,
-    ),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTenantPolicyResponseSystemData",
-}) as any as S.Schema<GetTenantPolicyResponseSystemData>;
-
-/** Tenant policy Information. */
-export interface GetTenantPolicyResponse {
-  /** Policy Id. */
-  id?: string;
-  /** Policy name. */
-  name?: string;
-  /** Resource type. */
-  type?: string;
-  /** Tenant policy properties. */
-  properties?: TenantPolicy;
-  /** Metadata pertaining to creation and last modification of the resource. */
-  systemData?: GetTenantPolicyResponseSystemData;
-}
-export const GetTenantPolicyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    properties: S.optional(TenantPolicy),
-    systemData: S.optional(GetTenantPolicyResponseSystemData),
-  }),
-).annotate({
-  identifier: "GetTenantPolicyResponse",
-}) as any as S.Schema<GetTenantPolicyResponse>;
-
-export interface SubscriptionPolicyGetPolicyForTenantRequest {}
-export const SubscriptionPolicyGetPolicyForTenantRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Subscription/policies/default",
-        code: 200,
-        apiVersion: "2021-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SubscriptionPolicyGetPolicyForTenantRequest",
-  }) as any as S.Schema<SubscriptionPolicyGetPolicyForTenantRequest>;
-
-export interface SubscriptionPolicyListPolicyForTenantRequest {}
-export const SubscriptionPolicyListPolicyForTenantRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Subscription/policies",
-        code: 200,
-        apiVersion: "2021-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SubscriptionPolicyListPolicyForTenantRequest",
-  }) as any as S.Schema<SubscriptionPolicyListPolicyForTenantRequest>;
-
-/** The list of tenant policies. */
-export type GetTenantPolicyListResponseValueList =
-  Array<GetTenantPolicyResponse>;
-export const GetTenantPolicyListResponseValueList = /*@__PURE__*/ S.Array(
-  GetTenantPolicyResponse,
-) as any as S.Schema<GetTenantPolicyListResponseValueList>;
-
-/** Tenant policy information list. */
-export interface GetTenantPolicyListResponse {
-  /** The list of tenant policies. */
-  value?: GetTenantPolicyListResponseValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const GetTenantPolicyListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(GetTenantPolicyListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GetTenantPolicyListResponse",
-}) as any as S.Schema<GetTenantPolicyListResponse>;
-
 export interface SubscriptionRenameRequest {
   /** Subscription Id. */
   subscriptionId: string;
@@ -969,91 +931,187 @@ export const RenamedSubscriptionId = /*@__PURE__*/ S.suspend(() =>
   identifier: "RenamedSubscriptionId",
 }) as any as S.Schema<RenamedSubscriptionId>;
 
-export type AliasCreateError = AzureOpError;
+/** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
+export type SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
+  Array<string>;
+export const SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList>;
+
+export interface UpdateSubscriptionPolicyAddPolicyForTenantRequest {
+  /** Blocks the leaving of subscriptions from user's tenant. */
+  blockSubscriptionsLeavingTenant?: boolean;
+  /** Blocks the entering of subscriptions into user's tenant. */
+  blockSubscriptionsIntoTenant?: boolean;
+  /** List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant. */
+  exemptedPrincipals?: SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList;
+}
+export const UpdateSubscriptionPolicyAddPolicyForTenantRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      blockSubscriptionsLeavingTenant: S.optional(S.Boolean),
+      blockSubscriptionsIntoTenant: S.optional(S.Boolean),
+      exemptedPrincipals: S.optional(
+        SubscriptionPolicyAddUpdatePolicyForTenantRequestExemptedPrincipalsList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Subscription/policies/default",
+        code: 200,
+        apiVersion: "2021-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateSubscriptionPolicyAddPolicyForTenantRequest",
+  }) as any as S.Schema<UpdateSubscriptionPolicyAddPolicyForTenantRequest>;
+
+export type CreateAliaError = AzureOpError;
 /** Create Alias Subscription. */
-export const AliasCreate: API.OperationMethod<
-  AliasCreateRequest,
+export const CreateAlia: API.OperationMethod<
+  CreateAliaRequest,
   SubscriptionAliasResponse,
-  AliasCreateError,
+  CreateAliaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AliasCreateRequest,
+  input: CreateAliaRequest,
   output: SubscriptionAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AliasDeleteError = AzureOpError;
+export type DeleteAliaError = AzureOpError;
 /** Delete Alias. */
-export const AliasDelete: API.OperationMethod<
-  AliasDeleteRequest,
-  AliasDeleteResponse,
-  AliasDeleteError,
+export const DeleteAlia: API.OperationMethod<
+  DeleteAliaRequest,
+  DeleteAliaResponse,
+  DeleteAliaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AliasDeleteRequest,
-  output: AliasDeleteResponse,
+  input: DeleteAliaRequest,
+  output: DeleteAliaResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AliasGetError = AzureOpError;
-/** Get Alias Subscription. */
-export const AliasGet: API.OperationMethod<
-  AliasGetRequest,
-  SubscriptionAliasResponse,
-  AliasGetError,
+export type EnableSubscriptionError = AzureOpError;
+/** The operation to enable a subscription */
+export const EnableSubscription: API.OperationMethod<
+  EnableSubscriptionRequest,
+  EnabledSubscriptionId,
+  EnableSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AliasGetRequest,
+  input: EnableSubscriptionRequest,
+  output: EnabledSubscriptionId,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAliaError = AzureOpError;
+/** Get Alias Subscription. */
+export const GetAlia: API.OperationMethod<
+  GetAliaRequest,
+  SubscriptionAliasResponse,
+  GetAliaError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAliaRequest,
   output: SubscriptionAliasResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AliasListError = AzureOpError;
-/** List Alias Subscription. */
-export const AliasList: API.OperationMethod<
-  AliasListRequest,
-  SubscriptionAliasListResult,
-  AliasListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AliasListRequest,
-  output: SubscriptionAliasListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BillingAccountGetPolicyError = AzureOpError;
+export type GetBillingAccountPolicyError = AzureOpError;
 /** Get Billing Account Policy. */
-export const BillingAccountGetPolicy: API.OperationMethod<
-  BillingAccountGetPolicyRequest,
+export const GetBillingAccountPolicy: API.OperationMethod<
+  GetBillingAccountPolicyRequest,
   BillingAccountPoliciesResponse,
-  BillingAccountGetPolicyError,
+  GetBillingAccountPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingAccountGetPolicyRequest,
+  input: GetBillingAccountPolicyRequest,
   output: BillingAccountPoliciesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** Lists all of the available Microsoft.Subscription API operations. */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationListResult,
-  OperationsListError,
+export type GetSubscriptionOperationError = AzureOpError;
+/** Get the status of the pending Microsoft.Subscription API operations. */
+export const GetSubscriptionOperation: API.OperationMethod<
+  GetSubscriptionOperationRequest,
+  SubscriptionCreationResult,
+  GetSubscriptionOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: GetSubscriptionOperationRequest,
+  output: SubscriptionCreationResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSubscriptionPolicyPolicyForTenantError = AzureOpError;
+/** Get the subscription tenant policy for the user's tenant. */
+export const GetSubscriptionPolicyPolicyForTenant: API.OperationMethod<
+  GetSubscriptionPolicyPolicyForTenantRequest,
+  GetTenantPolicyResponse,
+  GetSubscriptionPolicyPolicyForTenantError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSubscriptionPolicyPolicyForTenantRequest,
+  output: GetTenantPolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAliasError = AzureOpError;
+/** List Alias Subscription. */
+export const ListAlias: API.OperationMethod<
+  ListAliasRequest,
+  SubscriptionAliasListResult,
+  ListAliasError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAliasRequest,
+  output: SubscriptionAliasListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** Lists all of the available Microsoft.Subscription API operations. */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationListResult,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
   output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSubscriptionPolicyPolicyForTenantError = AzureOpError;
+/** Get the subscription tenant policy for the user's tenant. */
+export const ListSubscriptionPolicyPolicyForTenant: API.OperationMethod<
+  ListSubscriptionPolicyPolicyForTenantRequest,
+  GetTenantPolicyListResponse,
+  ListSubscriptionPolicyPolicyForTenantError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSubscriptionPolicyPolicyForTenantRequest,
+  output: GetTenantPolicyListResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1104,81 +1162,6 @@ export const SubscriptionCancel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SubscriptionEnableError = AzureOpError;
-/** The operation to enable a subscription */
-export const SubscriptionEnable: API.OperationMethod<
-  SubscriptionEnableRequest,
-  EnabledSubscriptionId,
-  SubscriptionEnableError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionEnableRequest,
-  output: EnabledSubscriptionId,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SubscriptionOperationGetError = AzureOpError;
-/** Get the status of the pending Microsoft.Subscription API operations. */
-export const SubscriptionOperationGet: API.OperationMethod<
-  SubscriptionOperationGetRequest,
-  SubscriptionCreationResult,
-  SubscriptionOperationGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionOperationGetRequest,
-  output: SubscriptionCreationResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SubscriptionPolicyAddUpdatePolicyForTenantError = AzureOpError;
-/** Create or Update Subscription tenant policy for user's tenant. */
-export const SubscriptionPolicyAddUpdatePolicyForTenant: API.OperationMethod<
-  SubscriptionPolicyAddUpdatePolicyForTenantRequest,
-  GetTenantPolicyResponse,
-  SubscriptionPolicyAddUpdatePolicyForTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionPolicyAddUpdatePolicyForTenantRequest,
-  output: GetTenantPolicyResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SubscriptionPolicyGetPolicyForTenantError = AzureOpError;
-/** Get the subscription tenant policy for the user's tenant. */
-export const SubscriptionPolicyGetPolicyForTenant: API.OperationMethod<
-  SubscriptionPolicyGetPolicyForTenantRequest,
-  GetTenantPolicyResponse,
-  SubscriptionPolicyGetPolicyForTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionPolicyGetPolicyForTenantRequest,
-  output: GetTenantPolicyResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SubscriptionPolicyListPolicyForTenantError = AzureOpError;
-/** Get the subscription tenant policy for the user's tenant. */
-export const SubscriptionPolicyListPolicyForTenant: API.OperationMethod<
-  SubscriptionPolicyListPolicyForTenantRequest,
-  GetTenantPolicyListResponse,
-  SubscriptionPolicyListPolicyForTenantError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionPolicyListPolicyForTenantRequest,
-  output: GetTenantPolicyListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SubscriptionRenameError = AzureOpError;
 /** The operation to rename a subscription */
 export const SubscriptionRename: API.OperationMethod<
@@ -1189,6 +1172,21 @@ export const SubscriptionRename: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SubscriptionRenameRequest,
   output: RenamedSubscriptionId,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSubscriptionPolicyAddPolicyForTenantError = AzureOpError;
+/** Create or Update Subscription tenant policy for user's tenant. */
+export const UpdateSubscriptionPolicyAddPolicyForTenant: API.OperationMethod<
+  UpdateSubscriptionPolicyAddPolicyForTenantRequest,
+  GetTenantPolicyResponse,
+  UpdateSubscriptionPolicyAddPolicyForTenantError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSubscriptionPolicyAddPolicyForTenantRequest,
+  output: GetTenantPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

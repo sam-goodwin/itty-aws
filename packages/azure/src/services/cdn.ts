@@ -12,558 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-/** Defines the source of the SSL certificate. */
-export type AfdCertificateType =
-  | "CustomerCertificate"
-  | "ManagedCertificate"
-  | "AzureFirstPartyManagedCertificate";
-export const AfdCertificateType = /*@__PURE__*/ S.String;
-
-/** cipher suite set type that will be used for Https */
-export type AfdCipherSuiteSetType =
-  | "Customized"
-  | "TLS10_2019"
-  | "TLS12_2022"
-  | "TLS12_2023";
-export const AfdCipherSuiteSetType = /*@__PURE__*/ S.String;
-
-/** TLS protocol version that will be used for Https when cipherSuiteSetType is Customized. */
-export type AfdMinimumTlsVersion = "TLS10" | "TLS12" | "TLS13";
-export const AfdMinimumTlsVersion = /*@__PURE__*/ S.String;
-
-export type AfdCustomizedCipherSuiteForTls12 =
-  | "ECDHE_RSA_AES128_GCM_SHA256"
-  | "ECDHE_RSA_AES256_GCM_SHA384"
-  | "DHE_RSA_AES256_GCM_SHA384"
-  | "DHE_RSA_AES128_GCM_SHA256"
-  | "ECDHE_RSA_AES128_SHA256"
-  | "ECDHE_RSA_AES256_SHA384";
-export const AfdCustomizedCipherSuiteForTls12 = /*@__PURE__*/ S.String;
-
-/** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
-export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List =
-  Array<AfdCustomizedCipherSuiteForTls12 | (string & {})>;
-export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List =
-  /*@__PURE__*/ S.Array(
-    AfdCustomizedCipherSuiteForTls12,
-  ) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List>;
-
-export type AfdCustomizedCipherSuiteForTls13 =
-  | "TLS_AES_128_GCM_SHA256"
-  | "TLS_AES_256_GCM_SHA384";
-export const AfdCustomizedCipherSuiteForTls13 = /*@__PURE__*/ S.String;
-
-/** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
-export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
-  Array<AfdCustomizedCipherSuiteForTls13 | (string & {})>;
-export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
-  /*@__PURE__*/ S.Array(
-    AfdCustomizedCipherSuiteForTls13,
-  ) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List>;
-
-/** Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized. */
-export interface AFDDomainHttpsCustomizedCipherSuiteSet {
-  /** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
-  cipherSuiteSetForTls12?: AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List;
-  /** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
-  cipherSuiteSetForTls13?: AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List;
-}
-export const AFDDomainHttpsCustomizedCipherSuiteSet = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      cipherSuiteSetForTls12: S.optional(
-        AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List,
-      ),
-      cipherSuiteSetForTls13: S.optional(
-        AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List,
-      ),
-    }),
-).annotate({
-  identifier: "AFDDomainHttpsCustomizedCipherSuiteSet",
-}) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSet>;
-
-/** Server TLS group policy that will be used for Https. Standard and Enhanced are service-managed sets; Custom allows specifying serverTlsGroups explicitly. */
-export type AfdServerTlsGroupPolicy = "Standard" | "Enhanced" | "Custom";
-export const AfdServerTlsGroupPolicy = /*@__PURE__*/ S.String;
-
-/** Supported key-exchange groups and curves. The ML-KEM groups are hybrid post-quantum groups. */
-export type AfdServerTlsGroup =
-  | "SecP256r1MLKEM768"
-  | "SecP384r1MLKEM1024"
-  | "X25519MLKEM768"
-  | "prime256v1"
-  | "X25519"
-  | "secp384r1"
-  | "secp521r1";
-export const AfdServerTlsGroup = /*@__PURE__*/ S.String;
-
-/** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
-export type AFDDomainHttpsParametersServerTlsGroupsList = Array<
-  AfdServerTlsGroup | (string & {})
->;
-export const AFDDomainHttpsParametersServerTlsGroupsList =
-  /*@__PURE__*/ S.Array(
-    AfdServerTlsGroup,
-  ) as any as S.Schema<AFDDomainHttpsParametersServerTlsGroupsList>;
-
-/** Reference to another resource. */
-export interface ResourceReference {
-  /** Resource ID. */
-  id?: string;
-}
-export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceReference",
-}) as any as S.Schema<ResourceReference>;
-
-/** The JSON object that contains the properties to secure a domain. */
-export interface AFDDomainHttpsParameters {
-  /** Defines the source of the SSL certificate. */
-  certificateType: AfdCertificateType | (string & {});
-  /** cipher suite set type that will be used for Https */
-  cipherSuiteSetType?: AfdCipherSuiteSetType | (string & {});
-  /** TLS protocol version that will be used for Https when cipherSuiteSetType is Customized. */
-  minimumTlsVersion?: AfdMinimumTlsVersion | (string & {});
-  /** Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized. */
-  customizedCipherSuiteSet?: AFDDomainHttpsCustomizedCipherSuiteSet;
-  /** Server TLS group policy that will be used for Https. */
-  serverTlsGroupPolicy?: AfdServerTlsGroupPolicy | (string & {});
-  /** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
-  serverTlsGroups?: AFDDomainHttpsParametersServerTlsGroupsList;
-  /** Resource reference to the secret. ie. subs/rg/profile/secret */
-  secret?: ResourceReference;
-}
-export const AFDDomainHttpsParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    certificateType: AfdCertificateType,
-    cipherSuiteSetType: S.optional(AfdCipherSuiteSetType),
-    minimumTlsVersion: S.optional(AfdMinimumTlsVersion),
-    customizedCipherSuiteSet: S.optional(
-      AFDDomainHttpsCustomizedCipherSuiteSet,
-    ),
-    serverTlsGroupPolicy: S.optional(AfdServerTlsGroupPolicy),
-    serverTlsGroups: S.optional(AFDDomainHttpsParametersServerTlsGroupsList),
-    secret: S.optional(ResourceReference),
-  }),
-).annotate({
-  identifier: "AFDDomainHttpsParameters",
-}) as any as S.Schema<AFDDomainHttpsParameters>;
-
-/** Supported scenarios for establishing mTLS connection. */
-export type MtlsScenarioType =
-  | "ClientCertificateRequiredAndValidated"
-  | "ClientCertificateRequiredAndOriginValidates"
-  | "ClientCertificateValidatedIfPresented"
-  | "CompleteMtlsPassthroughToOrigin";
-export const MtlsScenarioType = /*@__PURE__*/ S.String;
-
-/** Contains the properties to configure mutual TLS for a custom domain with FQDN. Mutual TLS cannot be configured for custom domains with wildcard host names. */
-export interface AFDDomainMtlsParameters {
-  /** Supported scenarios for establishing mTLS connection. */
-  scenario: MtlsScenarioType | (string & {});
-}
-export const AFDDomainMtlsParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scenario: MtlsScenarioType,
-  }),
-).annotate({
-  identifier: "AFDDomainMtlsParameters",
-}) as any as S.Schema<AFDDomainMtlsParameters>;
-
-/** Key-Value pair representing migration properties for domains. */
-export type AFDDomainPropertiesInputExtendedPropertiesMap = {
-  [key: string]: string | undefined;
-};
-export const AFDDomainPropertiesInputExtendedPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<AFDDomainPropertiesInputExtendedPropertiesMap>;
-
-/** The JSON object that contains the properties of the domain to create. */
-export interface AFDDomainPropertiesInput {
-  /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
-  tlsSettings?: AFDDomainHttpsParameters;
-  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
-  mtlsSettings?: AFDDomainMtlsParameters;
-  /** Resource reference to the Azure DNS zone */
-  azureDnsZone?: ResourceReference;
-  /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
-  preValidatedCustomDomainResourceId?: ResourceReference;
-  /** The host name of the domain. Must be a domain name. */
-  hostName: string;
-  /** Key-Value pair representing migration properties for domains. */
-  extendedProperties?: AFDDomainPropertiesInputExtendedPropertiesMap;
-}
-export const AFDDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tlsSettings: S.optional(AFDDomainHttpsParameters),
-    mtlsSettings: S.optional(AFDDomainMtlsParameters),
-    azureDnsZone: S.optional(ResourceReference),
-    preValidatedCustomDomainResourceId: S.optional(ResourceReference),
-    hostName: S.String,
-    extendedProperties: S.optional(
-      AFDDomainPropertiesInputExtendedPropertiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "AFDDomainPropertiesInput",
-}) as any as S.Schema<AFDDomainPropertiesInput>;
-
-export interface AFDCustomDomainsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the domain under the profile which is unique globally. */
-  customDomainName: string;
-  /** The JSON object that contains the properties of the domain to create. */
-  properties?: AFDDomainPropertiesInput;
-}
-export const AFDCustomDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    customDomainName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDDomainPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDCustomDomainsCreateRequest",
-}) as any as S.Schema<AFDCustomDomainsCreateRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Provisioning status */
-export type AfdProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Updating"
-  | "Deleting"
-  | "Creating";
-export const AfdProvisioningState = /*@__PURE__*/ S.String;
-
-export type DeploymentStatus =
-  | "NotStarted"
-  | "InProgress"
-  | "Succeeded"
-  | "Failed";
-export const DeploymentStatus = /*@__PURE__*/ S.String;
-
-/** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation. */
-export type DomainValidationState =
-  | "Unknown"
-  | "Submitting"
-  | "Pending"
-  | "Rejected"
-  | "TimedOut"
-  | "PendingRevalidation"
-  | "Approved"
-  | "RefreshingValidationToken"
-  | "InternalError";
-export const DomainValidationState = /*@__PURE__*/ S.String;
-
-/** Key-Value pair representing migration properties for domains. */
-export type AFDDomainPropertiesExtendedPropertiesMap = {
-  [key: string]: string | undefined;
-};
-export const AFDDomainPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDDomainPropertiesExtendedPropertiesMap>;
-
-/** The JSON object that contains the properties to validate a domain. */
-export interface DomainValidationProperties {
-  /** Challenge used for DNS TXT record or file based validation */
-  validationToken?: string;
-  /** The date time that the token expires */
-  expirationDate?: string;
-}
-export const DomainValidationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validationToken: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DomainValidationProperties",
-}) as any as S.Schema<DomainValidationProperties>;
-
-/** The JSON object that contains the properties of the domain to create. */
-export interface AFDDomainProperties {
-  /** The name of the profile which holds the domain. */
-  profileName?: string;
-  /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
-  tlsSettings?: AFDDomainHttpsParameters;
-  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
-  mtlsSettings?: AFDDomainMtlsParameters;
-  /** Resource reference to the Azure DNS zone */
-  azureDnsZone?: ResourceReference;
-  /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
-  preValidatedCustomDomainResourceId?: ResourceReference;
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-  /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation. */
-  domainValidationState?: DomainValidationState;
-  /** The host name of the domain. Must be a domain name. */
-  hostName: string;
-  /** Key-Value pair representing migration properties for domains. */
-  extendedProperties?: AFDDomainPropertiesExtendedPropertiesMap;
-  /** Values the customer needs to validate domain ownership */
-  validationProperties?: DomainValidationProperties;
-}
-export const AFDDomainProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileName: S.optional(S.String),
-    tlsSettings: S.optional(AFDDomainHttpsParameters),
-    mtlsSettings: S.optional(AFDDomainMtlsParameters),
-    azureDnsZone: S.optional(ResourceReference),
-    preValidatedCustomDomainResourceId: S.optional(ResourceReference),
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-    domainValidationState: S.optional(DomainValidationState),
-    hostName: S.String,
-    extendedProperties: S.optional(AFDDomainPropertiesExtendedPropertiesMap),
-    validationProperties: S.optional(DomainValidationProperties),
-  }),
-).annotate({
-  identifier: "AFDDomainProperties",
-}) as any as S.Schema<AFDDomainProperties>;
-
-export interface AFDCustomDomainsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the domain to create. */
-  properties?: AFDDomainProperties;
-}
-export const AFDCustomDomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDDomainProperties),
-  }),
-).annotate({
-  identifier: "AFDCustomDomainsCreateResponse",
-}) as any as S.Schema<AFDCustomDomainsCreateResponse>;
-
-export interface AFDCustomDomainsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the domain under the profile which is unique globally. */
-  customDomainName: string;
-}
-export const AFDCustomDomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    customDomainName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDCustomDomainsDeleteRequest",
-}) as any as S.Schema<AFDCustomDomainsDeleteRequest>;
-
-export interface AFDCustomDomainsDeleteResponse {}
-export const AFDCustomDomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AFDCustomDomainsDeleteResponse",
-}) as any as S.Schema<AFDCustomDomainsDeleteResponse>;
-
-export interface AFDCustomDomainsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the domain under the profile which is unique globally. */
-  customDomainName: string;
-}
-export const AFDCustomDomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    customDomainName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDCustomDomainsGetRequest",
-}) as any as S.Schema<AFDCustomDomainsGetRequest>;
-
-export interface AFDCustomDomainsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the domain to create. */
-  properties?: AFDDomainProperties;
-}
-export const AFDCustomDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDDomainProperties),
-  }),
-).annotate({
-  identifier: "AFDCustomDomainsGetResponse",
-}) as any as S.Schema<AFDCustomDomainsGetResponse>;
-
-export interface AFDCustomDomainsListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const AFDCustomDomainsListByProfileRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "AFDCustomDomainsListByProfileRequest",
-}) as any as S.Schema<AFDCustomDomainsListByProfileRequest>;
-
-/** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
-export interface AFDDomain {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the domain to create. */
-  properties?: AFDDomainProperties;
-}
-export const AFDDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDDomainProperties),
-  }),
-).annotate({ identifier: "AFDDomain" }) as any as S.Schema<AFDDomain>;
-
-/** The AFDDomain items on this page */
-export type AFDDomainListResultValueList = Array<AFDDomain>;
-export const AFDDomainListResultValueList = /*@__PURE__*/ S.Array(
-  AFDDomain,
-) as any as S.Schema<AFDDomainListResultValueList>;
-
-/** The response of a AFDDomain list operation. */
-export interface AFDDomainListResult {
-  /** The AFDDomain items on this page */
-  value: AFDDomainListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AFDDomainListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AFDDomainListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AFDDomainListResult",
-}) as any as S.Schema<AFDDomainListResult>;
-
 export interface AFDCustomDomainsRefreshValidationTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -598,517 +46,6 @@ export const AFDCustomDomainsRefreshValidationTokenResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
     identifier: "AFDCustomDomainsRefreshValidationTokenResponse",
   }) as any as S.Schema<AFDCustomDomainsRefreshValidationTokenResponse>;
-
-/** The JSON object that contains the properties of the domain to create. */
-export interface AFDDomainUpdatePropertiesParametersInput {
-  /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
-  tlsSettings?: AFDDomainHttpsParameters;
-  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
-  mtlsSettings?: AFDDomainMtlsParameters;
-  /** Resource reference to the Azure DNS zone */
-  azureDnsZone?: ResourceReference;
-  /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
-  preValidatedCustomDomainResourceId?: ResourceReference;
-}
-export const AFDDomainUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      tlsSettings: S.optional(AFDDomainHttpsParameters),
-      mtlsSettings: S.optional(AFDDomainMtlsParameters),
-      azureDnsZone: S.optional(ResourceReference),
-      preValidatedCustomDomainResourceId: S.optional(ResourceReference),
-    }),
-).annotate({
-  identifier: "AFDDomainUpdatePropertiesParametersInput",
-}) as any as S.Schema<AFDDomainUpdatePropertiesParametersInput>;
-
-export interface AFDCustomDomainsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the domain under the profile which is unique globally. */
-  customDomainName: string;
-  /** The JSON object that contains the properties of the domain to create. */
-  properties?: AFDDomainUpdatePropertiesParametersInput;
-}
-export const AFDCustomDomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    customDomainName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDDomainUpdatePropertiesParametersInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDCustomDomainsUpdateRequest",
-}) as any as S.Schema<AFDCustomDomainsUpdateRequest>;
-
-export interface AFDCustomDomainsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the domain to create. */
-  properties?: AFDDomainProperties;
-}
-export const AFDCustomDomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDDomainProperties),
-  }),
-).annotate({
-  identifier: "AFDCustomDomainsUpdateResponse",
-}) as any as S.Schema<AFDCustomDomainsUpdateResponse>;
-
-/** Resource tags. */
-export type AFDEndpointsCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AFDEndpointsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDEndpointsCreateRequestTagsMap>;
-
-/** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-export type EnabledState = "Enabled" | "Disabled";
-export const EnabledState = /*@__PURE__*/ S.String;
-
-/** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
-export type EnforceMtlsEnabledState = "Enabled" | "Disabled";
-export const EnforceMtlsEnabledState = /*@__PURE__*/ S.String;
-
-/** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
-export type AutoGeneratedDomainNameLabelScope =
-  | "TenantReuse"
-  | "SubscriptionReuse"
-  | "ResourceGroupReuse"
-  | "NoReuse";
-export const AutoGeneratedDomainNameLabelScope = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties required to create an endpoint. */
-export interface AFDEndpointPropertiesInput {
-  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-  enabledState?: EnabledState | (string & {});
-  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
-  enforceMtls?: EnforceMtlsEnabledState | (string & {});
-  /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
-  autoGeneratedDomainNameLabelScope?:
-    | AutoGeneratedDomainNameLabelScope
-    | (string & {});
-}
-export const AFDEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabledState: S.optional(EnabledState),
-    enforceMtls: S.optional(EnforceMtlsEnabledState),
-    autoGeneratedDomainNameLabelScope: S.optional(
-      AutoGeneratedDomainNameLabelScope,
-    ),
-  }),
-).annotate({
-  identifier: "AFDEndpointPropertiesInput",
-}) as any as S.Schema<AFDEndpointPropertiesInput>;
-
-export interface AFDEndpointsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Resource tags. */
-  tags?: AFDEndpointsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: AFDEndpointPropertiesInput;
-}
-export const AFDEndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    tags: S.optional(AFDEndpointsCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(AFDEndpointPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDEndpointsCreateRequest",
-}) as any as S.Schema<AFDEndpointsCreateRequest>;
-
-/** Resource tags. */
-export type AFDEndpointsCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AFDEndpointsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDEndpointsCreateResponseTagsMap>;
-
-/** The JSON object that contains the properties required to create an endpoint. */
-export interface AFDEndpointProperties {
-  /** The name of the profile which holds the endpoint. */
-  profileName?: string;
-  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-  enabledState?: EnabledState;
-  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
-  enforceMtls?: EnforceMtlsEnabledState;
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-  /** The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net */
-  hostName?: string;
-  /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
-  autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope;
-}
-export const AFDEndpointProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileName: S.optional(S.String),
-    enabledState: S.optional(EnabledState),
-    enforceMtls: S.optional(EnforceMtlsEnabledState),
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-    hostName: S.optional(S.String),
-    autoGeneratedDomainNameLabelScope: S.optional(
-      AutoGeneratedDomainNameLabelScope,
-    ),
-  }),
-).annotate({
-  identifier: "AFDEndpointProperties",
-}) as any as S.Schema<AFDEndpointProperties>;
-
-export interface AFDEndpointsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AFDEndpointsCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: AFDEndpointProperties;
-}
-export const AFDEndpointsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AFDEndpointsCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AFDEndpointProperties),
-  }),
-).annotate({
-  identifier: "AFDEndpointsCreateResponse",
-}) as any as S.Schema<AFDEndpointsCreateResponse>;
-
-export interface AFDEndpointsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const AFDEndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDEndpointsDeleteRequest",
-}) as any as S.Schema<AFDEndpointsDeleteRequest>;
-
-export interface AFDEndpointsDeleteResponse {}
-export const AFDEndpointsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AFDEndpointsDeleteResponse",
-}) as any as S.Schema<AFDEndpointsDeleteResponse>;
-
-export interface AFDEndpointsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const AFDEndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDEndpointsGetRequest",
-}) as any as S.Schema<AFDEndpointsGetRequest>;
-
-/** Resource tags. */
-export type AFDEndpointsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AFDEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDEndpointsGetResponseTagsMap>;
-
-export interface AFDEndpointsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AFDEndpointsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: AFDEndpointProperties;
-}
-export const AFDEndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AFDEndpointsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AFDEndpointProperties),
-  }),
-).annotate({
-  identifier: "AFDEndpointsGetResponse",
-}) as any as S.Schema<AFDEndpointsGetResponse>;
-
-export interface AFDEndpointsListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const AFDEndpointsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDEndpointsListByProfileRequest",
-}) as any as S.Schema<AFDEndpointsListByProfileRequest>;
-
-/** Resource tags. */
-export type AFDEndpointTagsMap = { [key: string]: string | undefined };
-export const AFDEndpointTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDEndpointTagsMap>;
-
-/** Azure Front Door endpoint is the entity within a Azure Front Door profile containing configuration information such as origin, protocol, content caching and delivery behavior. The AzureFrontDoor endpoint uses the URL format <endpointname>.azureedge.net. */
-export interface AFDEndpoint {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AFDEndpointTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: AFDEndpointProperties;
-}
-export const AFDEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AFDEndpointTagsMap),
-    location: S.String,
-    properties: S.optional(AFDEndpointProperties),
-  }),
-).annotate({ identifier: "AFDEndpoint" }) as any as S.Schema<AFDEndpoint>;
-
-/** The AFDEndpoint items on this page */
-export type AFDEndpointListResultValueList = Array<AFDEndpoint>;
-export const AFDEndpointListResultValueList = /*@__PURE__*/ S.Array(
-  AFDEndpoint,
-) as any as S.Schema<AFDEndpointListResultValueList>;
-
-/** The response of a AFDEndpoint list operation. */
-export interface AFDEndpointListResult {
-  /** The AFDEndpoint items on this page */
-  value: AFDEndpointListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AFDEndpointListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AFDEndpointListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AFDEndpointListResult",
-}) as any as S.Schema<AFDEndpointListResult>;
-
-export interface AFDEndpointsListResourceUsageRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const AFDEndpointsListResourceUsageRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-      endpointName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "AFDEndpointsListResourceUsageRequest",
-}) as any as S.Schema<AFDEndpointsListResourceUsageRequest>;
-
-/** An enum describing the unit of measurement. */
-export type UsageUnit = "Count";
-export const UsageUnit = /*@__PURE__*/ S.String;
-
-/** The usage names. */
-export interface UsageName {
-  /** A string describing the resource name. */
-  value?: string;
-  /** A localized string describing the resource name. */
-  localizedValue?: string;
-}
-export const UsageName = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-    localizedValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "UsageName" }) as any as S.Schema<UsageName>;
-
-/** Describes resource usage. */
-export interface Usage {
-  /** Resource identifier. */
-  id?: string;
-  /** An enum describing the unit of measurement. */
-  unit: UsageUnit;
-  /** The current value of the usage. */
-  currentValue: number;
-  /** The limit of usage. */
-  limit: number;
-  /** The name of the type of usage. */
-  name: UsageName;
-}
-export const Usage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    unit: UsageUnit,
-    currentValue: S.Number,
-    limit: S.Number,
-    name: UsageName,
-  }),
-).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
-
-/** The Usage items on this page */
-export type UsagesListResultValueList = Array<Usage>;
-export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
-  Usage,
-) as any as S.Schema<UsagesListResultValueList>;
-
-/** The list usages operation response. */
-export interface UsagesListResult {
-  /** The Usage items on this page */
-  value: UsagesListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const UsagesListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: UsagesListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UsagesListResult",
-}) as any as S.Schema<UsagesListResult>;
 
 /** The path to the content to be purged. Can describe a file path or a wild card directory. */
 export type AFDEndpointsPurgeContentRequestContentPathsList = Array<string>;
@@ -1164,105 +101,6 @@ export const AFDEndpointsPurgeContentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AFDEndpointsPurgeContentResponse",
 }) as any as S.Schema<AFDEndpointsPurgeContentResponse>;
 
-/** Endpoint tags. */
-export type AFDEndpointsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AFDEndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDEndpointsUpdateRequestTagsMap>;
-
-/** The JSON object containing endpoint update parameters. */
-export interface AFDEndpointPropertiesUpdateParametersInput {
-  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-  enabledState?: EnabledState | (string & {});
-  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
-  enforceMtls?: EnforceMtlsEnabledState | (string & {});
-}
-export const AFDEndpointPropertiesUpdateParametersInput =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabledState: S.optional(EnabledState),
-      enforceMtls: S.optional(EnforceMtlsEnabledState),
-    }),
-  ).annotate({
-    identifier: "AFDEndpointPropertiesUpdateParametersInput",
-  }) as any as S.Schema<AFDEndpointPropertiesUpdateParametersInput>;
-
-export interface AFDEndpointsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Endpoint tags. */
-  tags?: AFDEndpointsUpdateRequestTagsMap;
-  /** The JSON object containing endpoint update parameters. */
-  properties?: AFDEndpointPropertiesUpdateParametersInput;
-}
-export const AFDEndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    tags: S.optional(AFDEndpointsUpdateRequestTagsMap),
-    properties: S.optional(AFDEndpointPropertiesUpdateParametersInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDEndpointsUpdateRequest",
-}) as any as S.Schema<AFDEndpointsUpdateRequest>;
-
-/** Resource tags. */
-export type AFDEndpointsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AFDEndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AFDEndpointsUpdateResponseTagsMap>;
-
-export interface AFDEndpointsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AFDEndpointsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: AFDEndpointProperties;
-}
-export const AFDEndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AFDEndpointsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AFDEndpointProperties),
-  }),
-).annotate({
-  identifier: "AFDEndpointsUpdateResponse",
-}) as any as S.Schema<AFDEndpointsUpdateResponse>;
-
 export interface AFDEndpointsValidateCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1314,1104 +152,18 @@ export const ValidateCustomDomainOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateCustomDomainOutput",
 }) as any as S.Schema<ValidateCustomDomainOutput>;
 
-/** Round-Robin load balancing settings for a backend pool */
-export interface LoadBalancingSettingsParameters {
-  /** The number of samples to consider for load balancing decisions */
-  sampleSize?: number;
-  /** The number of samples within the sample period that must succeed */
-  successfulSamplesRequired?: number;
-  /** The additional latency in milliseconds for probes to fall into the lowest latency bucket */
-  additionalLatencyInMilliseconds?: number;
-}
-export const LoadBalancingSettingsParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sampleSize: S.optional(S.Number),
-    successfulSamplesRequired: S.optional(S.Number),
-    additionalLatencyInMilliseconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LoadBalancingSettingsParameters",
-}) as any as S.Schema<LoadBalancingSettingsParameters>;
-
-/** The type of health probe request that is made. */
-export type HealthProbeRequestType = "NotSet" | "GET" | "HEAD";
-export const HealthProbeRequestType = /*@__PURE__*/ S.String;
-
-/** Protocol to use for health probe. */
-export type ProbeProtocol = "NotSet" | "Http" | "Https";
-export const ProbeProtocol = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties to send health probes to origin. */
-export interface HealthProbeParameters {
-  /** The path relative to the origin that is used to determine the health of the origin. */
-  probePath?: string;
-  /** The type of health probe request that is made. */
-  probeRequestType?: HealthProbeRequestType | (string & {});
-  /** Protocol to use for health probe. */
-  probeProtocol?: ProbeProtocol | (string & {});
-  /** The number of seconds between health probes.Default is 240sec. */
-  probeIntervalInSeconds?: number;
-}
-export const HealthProbeParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    probePath: S.optional(S.String),
-    probeRequestType: S.optional(HealthProbeRequestType),
-    probeProtocol: S.optional(ProbeProtocol),
-    probeIntervalInSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "HealthProbeParameters",
-}) as any as S.Schema<HealthProbeParameters>;
-
-/** The type of the authentication for the origin. */
-export type OriginAuthenticationType =
-  | "SystemAssignedIdentity"
-  | "UserAssignedIdentity";
-export const OriginAuthenticationType = /*@__PURE__*/ S.String;
-
-/** The HTTP request header where the origin authentication token is placed when forwarding the request to the origin. */
-export type OriginAuthenticationTokenDestinationHeader =
-  | "Authorization"
-  | "X-Azure-Authorization";
-export const OriginAuthenticationTokenDestinationHeader =
-  /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the origin authentication settings. */
-export interface OriginAuthenticationProperties {
-  /** The type of the authentication for the origin. */
-  type?: OriginAuthenticationType | (string & {});
-  /** The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity. */
-  userAssignedIdentity?: ResourceReference;
-  /** The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default". */
-  scope?: string;
-  /** The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility. */
-  tokenDestinationHeader?:
-    | OriginAuthenticationTokenDestinationHeader
-    | (string & {});
-}
-export const OriginAuthenticationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: S.optional(OriginAuthenticationType),
-    userAssignedIdentity: S.optional(ResourceReference),
-    scope: S.optional(S.String),
-    tokenDestinationHeader: S.optional(
-      OriginAuthenticationTokenDestinationHeader,
-    ),
-  }),
-).annotate({
-  identifier: "OriginAuthenticationProperties",
-}) as any as S.Schema<OriginAuthenticationProperties>;
-
-/** The JSON object that contains the properties of the origin group. */
-export interface AFDOriginGroupPropertiesInput {
-  /** Load balancing settings for a backend pool */
-  loadBalancingSettings?: LoadBalancingSettingsParameters;
-  /** Health probe settings to the origin that is used to determine the health of the origin. */
-  healthProbeSettings?: HealthProbeParameters;
-  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
-  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
-  /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
-  sessionAffinityState?: EnabledState | (string & {});
-  /** Authentication settings for origin in origin group. */
-  authentication?: OriginAuthenticationProperties;
-}
-export const AFDOriginGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
-    healthProbeSettings: S.optional(HealthProbeParameters),
-    trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-    sessionAffinityState: S.optional(EnabledState),
-    authentication: S.optional(OriginAuthenticationProperties),
-  }),
-).annotate({
-  identifier: "AFDOriginGroupPropertiesInput",
-}) as any as S.Schema<AFDOriginGroupPropertiesInput>;
-
-export interface AFDOriginGroupsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupPropertiesInput;
-}
-export const AFDOriginGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginGroupPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginGroupsCreateRequest",
-}) as any as S.Schema<AFDOriginGroupsCreateRequest>;
-
-/** The JSON object that contains the properties of the origin group. */
-export interface AFDOriginGroupProperties {
-  /** The name of the profile which holds the origin group. */
-  profileName?: string;
-  /** Load balancing settings for a backend pool */
-  loadBalancingSettings?: LoadBalancingSettingsParameters;
-  /** Health probe settings to the origin that is used to determine the health of the origin. */
-  healthProbeSettings?: HealthProbeParameters;
-  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
-  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
-  /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
-  sessionAffinityState?: EnabledState;
-  /** Authentication settings for origin in origin group. */
-  authentication?: OriginAuthenticationProperties;
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-}
-export const AFDOriginGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    profileName: S.optional(S.String),
-    loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
-    healthProbeSettings: S.optional(HealthProbeParameters),
-    trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-    sessionAffinityState: S.optional(EnabledState),
-    authentication: S.optional(OriginAuthenticationProperties),
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-  }),
-).annotate({
-  identifier: "AFDOriginGroupProperties",
-}) as any as S.Schema<AFDOriginGroupProperties>;
-
-export interface AFDOriginGroupsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+/** Reference to another resource. */
+export interface ResourceReference {
+  /** Resource ID. */
   id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupProperties;
 }
-export const AFDOriginGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const ResourceReference = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginGroupProperties),
   }),
 ).annotate({
-  identifier: "AFDOriginGroupsCreateResponse",
-}) as any as S.Schema<AFDOriginGroupsCreateResponse>;
-
-export interface AFDOriginGroupsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-}
-export const AFDOriginGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginGroupsDeleteRequest",
-}) as any as S.Schema<AFDOriginGroupsDeleteRequest>;
-
-export interface AFDOriginGroupsDeleteResponse {}
-export const AFDOriginGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AFDOriginGroupsDeleteResponse",
-}) as any as S.Schema<AFDOriginGroupsDeleteResponse>;
-
-export interface AFDOriginGroupsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-}
-export const AFDOriginGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginGroupsGetRequest",
-}) as any as S.Schema<AFDOriginGroupsGetRequest>;
-
-export interface AFDOriginGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupProperties;
-}
-export const AFDOriginGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginGroupProperties),
-  }),
-).annotate({
-  identifier: "AFDOriginGroupsGetResponse",
-}) as any as S.Schema<AFDOriginGroupsGetResponse>;
-
-export interface AFDOriginGroupsListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const AFDOriginGroupsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginGroupsListByProfileRequest",
-}) as any as S.Schema<AFDOriginGroupsListByProfileRequest>;
-
-/** AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door. */
-export interface AFDOriginGroup {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupProperties;
-}
-export const AFDOriginGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginGroupProperties),
-  }),
-).annotate({ identifier: "AFDOriginGroup" }) as any as S.Schema<AFDOriginGroup>;
-
-/** The AFDOriginGroup items on this page */
-export type AFDOriginGroupListResultValueList = Array<AFDOriginGroup>;
-export const AFDOriginGroupListResultValueList = /*@__PURE__*/ S.Array(
-  AFDOriginGroup,
-) as any as S.Schema<AFDOriginGroupListResultValueList>;
-
-/** The response of a AFDOriginGroup list operation. */
-export interface AFDOriginGroupListResult {
-  /** The AFDOriginGroup items on this page */
-  value: AFDOriginGroupListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AFDOriginGroupListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AFDOriginGroupListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AFDOriginGroupListResult",
-}) as any as S.Schema<AFDOriginGroupListResult>;
-
-export interface AFDOriginGroupsListResourceUsageRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-}
-export const AFDOriginGroupsListResourceUsageRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-      originGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "AFDOriginGroupsListResourceUsageRequest",
-}) as any as S.Schema<AFDOriginGroupsListResourceUsageRequest>;
-
-/** The JSON object that contains the properties of the origin group. */
-export type AFDOriginGroupUpdatePropertiesParametersInput =
-  AFDOriginGroupPropertiesInput;
-export const AFDOriginGroupUpdatePropertiesParametersInput =
-  AFDOriginGroupPropertiesInput;
-
-export interface AFDOriginGroupsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupPropertiesInput;
-}
-export const AFDOriginGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginGroupPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginGroupsUpdateRequest",
-}) as any as S.Schema<AFDOriginGroupsUpdateRequest>;
-
-export interface AFDOriginGroupsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: AFDOriginGroupProperties;
-}
-export const AFDOriginGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginGroupProperties),
-  }),
-).annotate({
-  identifier: "AFDOriginGroupsUpdateResponse",
-}) as any as S.Schema<AFDOriginGroupsUpdateResponse>;
-
-/** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
-export type SharedPrivateLinkResourceStatus =
-  | "Pending"
-  | "Approved"
-  | "Rejected"
-  | "Disconnected"
-  | "Timeout";
-export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
-
-/** Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin. */
-export interface SharedPrivateLinkResourceProperties {
-  /** The resource id of the resource the shared private link resource is for. */
-  privateLink?: ResourceReference;
-  /** The location of the shared private link resource */
-  privateLinkLocation?: string;
-  /** The group id from the provider of resource the shared private link resource is for. */
-  groupId?: string;
-  /** The request message for requesting approval of the shared private link resource. */
-  requestMessage?: string;
-  /** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
-  status?: SharedPrivateLinkResourceStatus | (string & {});
-}
-export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateLink: S.optional(ResourceReference),
-    privateLinkLocation: S.optional(S.String),
-    groupId: S.optional(S.String),
-    requestMessage: S.optional(S.String),
-    status: S.optional(SharedPrivateLinkResourceStatus),
-  }),
-).annotate({
-  identifier: "SharedPrivateLinkResourceProperties",
-}) as any as S.Schema<SharedPrivateLinkResourceProperties>;
-
-/** The validation mode for certificate name check at origin level. Only applicable when enforceCertificateNameCheck is true. */
-export type CertificateNameCheckValidationMode =
-  | "OriginHostname"
-  | "CustomCertificateSubject"
-  | "IncomingHostHeader";
-export const CertificateNameCheckValidationMode = /*@__PURE__*/ S.String;
-
-/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
-export type AFDOriginPropertiesInputCustomCertificateSubjectsList =
-  Array<string>;
-export const AFDOriginPropertiesInputCustomCertificateSubjectsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AFDOriginPropertiesInputCustomCertificateSubjectsList>;
-
-/** The JSON object that contains the properties of the origin. */
-export interface AFDOriginPropertiesInput {
-  /** Resource reference to the Azure origin resource. */
-  azureOrigin?: ResourceReference;
-  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
-  hostName?: string;
-  /** The value of the HTTP port. Must be between 1 and 65535. */
-  httpPort?: number;
-  /** The value of the HTTPS port. Must be between 1 and 65535. */
-  httpsPort?: number;
-  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
-  originHostHeader?: string;
-  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
-  priority?: number;
-  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
-  weight?: number;
-  /** The properties of the private link resource for private origin. */
-  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
-  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
-  enabledState?: EnabledState | (string & {});
-  /** Whether to enable certificate name check at origin level */
-  enforceCertificateNameCheck?: boolean;
-  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
-  certificateNameCheckValidationMode?:
-    | CertificateNameCheckValidationMode
-    | (string & {});
-  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
-  customCertificateSubjects?: AFDOriginPropertiesInputCustomCertificateSubjectsList;
-}
-export const AFDOriginPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    azureOrigin: S.optional(ResourceReference),
-    hostName: S.optional(S.String),
-    httpPort: S.optional(S.Number),
-    httpsPort: S.optional(S.Number),
-    originHostHeader: S.optional(S.String),
-    priority: S.optional(S.Number),
-    weight: S.optional(S.Number),
-    sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
-    enabledState: S.optional(EnabledState),
-    enforceCertificateNameCheck: S.optional(S.Boolean),
-    certificateNameCheckValidationMode: S.optional(
-      CertificateNameCheckValidationMode,
-    ),
-    customCertificateSubjects: S.optional(
-      AFDOriginPropertiesInputCustomCertificateSubjectsList,
-    ),
-  }),
-).annotate({
-  identifier: "AFDOriginPropertiesInput",
-}) as any as S.Schema<AFDOriginPropertiesInput>;
-
-export interface AFDOriginsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** Name of the origin which is unique within the profile. */
-  originName: string;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginPropertiesInput;
-}
-export const AFDOriginsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginsCreateRequest",
-}) as any as S.Schema<AFDOriginsCreateRequest>;
-
-/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
-export type AFDOriginPropertiesCustomCertificateSubjectsList = Array<string>;
-export const AFDOriginPropertiesCustomCertificateSubjectsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AFDOriginPropertiesCustomCertificateSubjectsList>;
-
-/** The JSON object that contains the properties of the origin. */
-export interface AFDOriginProperties {
-  /** The name of the origin group which contains this origin. */
-  originGroupName?: string;
-  /** Resource reference to the Azure origin resource. */
-  azureOrigin?: ResourceReference;
-  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
-  hostName?: string;
-  /** The value of the HTTP port. Must be between 1 and 65535. */
-  httpPort?: number;
-  /** The value of the HTTPS port. Must be between 1 and 65535. */
-  httpsPort?: number;
-  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
-  originHostHeader?: string;
-  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
-  priority?: number;
-  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
-  weight?: number;
-  /** The properties of the private link resource for private origin. */
-  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
-  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
-  enabledState?: EnabledState;
-  /** Whether to enable certificate name check at origin level */
-  enforceCertificateNameCheck?: boolean;
-  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
-  certificateNameCheckValidationMode?: CertificateNameCheckValidationMode;
-  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
-  customCertificateSubjects?: AFDOriginPropertiesCustomCertificateSubjectsList;
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-}
-export const AFDOriginProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originGroupName: S.optional(S.String),
-    azureOrigin: S.optional(ResourceReference),
-    hostName: S.optional(S.String),
-    httpPort: S.optional(S.Number),
-    httpsPort: S.optional(S.Number),
-    originHostHeader: S.optional(S.String),
-    priority: S.optional(S.Number),
-    weight: S.optional(S.Number),
-    sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
-    enabledState: S.optional(EnabledState),
-    enforceCertificateNameCheck: S.optional(S.Boolean),
-    certificateNameCheckValidationMode: S.optional(
-      CertificateNameCheckValidationMode,
-    ),
-    customCertificateSubjects: S.optional(
-      AFDOriginPropertiesCustomCertificateSubjectsList,
-    ),
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-  }),
-).annotate({
-  identifier: "AFDOriginProperties",
-}) as any as S.Schema<AFDOriginProperties>;
-
-export interface AFDOriginsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginProperties;
-}
-export const AFDOriginsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginProperties),
-  }),
-).annotate({
-  identifier: "AFDOriginsCreateResponse",
-}) as any as S.Schema<AFDOriginsCreateResponse>;
-
-export interface AFDOriginsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** Name of the origin which is unique within the profile. */
-  originName: string;
-}
-export const AFDOriginsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginsDeleteRequest",
-}) as any as S.Schema<AFDOriginsDeleteRequest>;
-
-export interface AFDOriginsDeleteResponse {}
-export const AFDOriginsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AFDOriginsDeleteResponse",
-}) as any as S.Schema<AFDOriginsDeleteResponse>;
-
-export interface AFDOriginsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** Name of the origin which is unique within the profile. */
-  originName: string;
-}
-export const AFDOriginsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginsGetRequest",
-}) as any as S.Schema<AFDOriginsGetRequest>;
-
-export interface AFDOriginsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginProperties;
-}
-export const AFDOriginsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginProperties),
-  }),
-).annotate({
-  identifier: "AFDOriginsGetResponse",
-}) as any as S.Schema<AFDOriginsGetResponse>;
-
-export interface AFDOriginsListByOriginGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-}
-export const AFDOriginsListByOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginsListByOriginGroupRequest",
-}) as any as S.Schema<AFDOriginsListByOriginGroupRequest>;
-
-/** Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
-export interface AFDOrigin {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginProperties;
-}
-export const AFDOrigin = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginProperties),
-  }),
-).annotate({ identifier: "AFDOrigin" }) as any as S.Schema<AFDOrigin>;
-
-/** The AFDOrigin items on this page */
-export type AFDOriginListResultValueList = Array<AFDOrigin>;
-export const AFDOriginListResultValueList = /*@__PURE__*/ S.Array(
-  AFDOrigin,
-) as any as S.Schema<AFDOriginListResultValueList>;
-
-/** The response of a AFDOrigin list operation. */
-export interface AFDOriginListResult {
-  /** The AFDOrigin items on this page */
-  value: AFDOriginListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AFDOriginListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AFDOriginListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AFDOriginListResult",
-}) as any as S.Schema<AFDOriginListResult>;
-
-/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
-export type AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList =
-  Array<string>;
-export const AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList>;
-
-/** The JSON object that contains the properties of the origin. */
-export interface AFDOriginUpdatePropertiesParametersInput {
-  /** Resource reference to the Azure origin resource. */
-  azureOrigin?: ResourceReference;
-  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
-  hostName?: string;
-  /** The value of the HTTP port. Must be between 1 and 65535. */
-  httpPort?: number;
-  /** The value of the HTTPS port. Must be between 1 and 65535. */
-  httpsPort?: number;
-  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
-  originHostHeader?: string;
-  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
-  priority?: number;
-  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
-  weight?: number;
-  /** The properties of the private link resource for private origin. */
-  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
-  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
-  enabledState?: EnabledState | (string & {});
-  /** Whether to enable certificate name check at origin level */
-  enforceCertificateNameCheck?: boolean;
-  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
-  certificateNameCheckValidationMode?:
-    | CertificateNameCheckValidationMode
-    | (string & {});
-  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
-  customCertificateSubjects?: AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList;
-}
-export const AFDOriginUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      azureOrigin: S.optional(ResourceReference),
-      hostName: S.optional(S.String),
-      httpPort: S.optional(S.Number),
-      httpsPort: S.optional(S.Number),
-      originHostHeader: S.optional(S.String),
-      priority: S.optional(S.Number),
-      weight: S.optional(S.Number),
-      sharedPrivateLinkResource: S.optional(
-        SharedPrivateLinkResourceProperties,
-      ),
-      enabledState: S.optional(EnabledState),
-      enforceCertificateNameCheck: S.optional(S.Boolean),
-      certificateNameCheckValidationMode: S.optional(
-        CertificateNameCheckValidationMode,
-      ),
-      customCertificateSubjects: S.optional(
-        AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList,
-      ),
-    }),
-).annotate({
-  identifier: "AFDOriginUpdatePropertiesParametersInput",
-}) as any as S.Schema<AFDOriginUpdatePropertiesParametersInput>;
-
-export interface AFDOriginsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** Name of the origin which is unique within the profile. */
-  originName: string;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginUpdatePropertiesParametersInput;
-}
-export const AFDOriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-    properties: S.optional(AFDOriginUpdatePropertiesParametersInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDOriginsUpdateRequest",
-}) as any as S.Schema<AFDOriginsUpdateRequest>;
-
-export interface AFDOriginsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: AFDOriginProperties;
-}
-export const AFDOriginsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AFDOriginProperties),
-  }),
-).annotate({
-  identifier: "AFDOriginsUpdateResponse",
-}) as any as S.Schema<AFDOriginsUpdateResponse>;
-
-/** Type of CDN resource used in CheckNameAvailability. */
-export type ResourceType =
-  | "Microsoft.Cdn/Profiles/Endpoints"
-  | "Microsoft.Cdn/Profiles/AfdEndpoints";
-export const ResourceType = /*@__PURE__*/ S.String;
-
-export interface AFDProfilesCheckEndpointNameAvailabilityRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** The resource name to validate. */
-  name: string;
-  /** The type of the resource whose name is to be validated. */
-  type: ResourceType | (string & {});
-  /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
-  autoGeneratedDomainNameLabelScope?:
-    | AutoGeneratedDomainNameLabelScope
-    | (string & {});
-}
-export const AFDProfilesCheckEndpointNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-      name: S.String,
-      type: ResourceType,
-      autoGeneratedDomainNameLabelScope: S.optional(
-        AutoGeneratedDomainNameLabelScope,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkEndpointNameAvailability",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AFDProfilesCheckEndpointNameAvailabilityRequest",
-  }) as any as S.Schema<AFDProfilesCheckEndpointNameAvailabilityRequest>;
-
-/** Output of check name availability API. */
-export interface CheckEndpointNameAvailabilityOutput {
-  /** Indicates whether the name is available. */
-  nameAvailable?: boolean;
-  /** Returns the available hostname generated based on the AutoGeneratedDomainNameLabelScope when the name is available, otherwise it returns empty string */
-  availableHostname?: string;
-  /** The reason why the name is not available. */
-  reason?: string;
-  /** The detailed error message describing why the name is not available. */
-  message?: string;
-}
-export const CheckEndpointNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    availableHostname: S.optional(S.String),
-    reason: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckEndpointNameAvailabilityOutput",
-}) as any as S.Schema<CheckEndpointNameAvailabilityOutput>;
-
-export interface AFDProfilesCheckHostNameAvailabilityRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** The host name to validate. */
-  hostName: string;
-}
-export const AFDProfilesCheckHostNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-      hostName: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkHostNameAvailability",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AFDProfilesCheckHostNameAvailabilityRequest",
-  }) as any as S.Schema<AFDProfilesCheckHostNameAvailabilityRequest>;
-
-/** Output of check name availability API. */
-export interface CheckNameAvailabilityOutput {
-  /** Indicates whether the name is available. */
-  nameAvailable?: boolean;
-  /** The reason why the name is not available. */
-  reason?: string;
-  /** The detailed error message describing why the name is not available. */
-  message?: string;
-}
-export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckNameAvailabilityOutput",
-}) as any as S.Schema<CheckNameAvailabilityOutput>;
-
-export interface AFDProfilesListResourceUsageRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const AFDProfilesListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "AFDProfilesListResourceUsageRequest",
-}) as any as S.Schema<AFDProfilesListResourceUsageRequest>;
+  identifier: "ResourceReference",
+}) as any as S.Schema<ResourceReference>;
 
 /** Parameters required for profile upgrade. */
 export interface ProfileChangeSkuWafMapping {
@@ -2464,6 +216,48 @@ export const AFDProfilesUpgradeRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AFDProfilesUpgradeRequest",
 }) as any as S.Schema<AFDProfilesUpgradeRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
 /** Resource tags. */
 export type AFDProfilesUpgradeResponseTagsMap = {
@@ -2788,6 +582,129 @@ export const ValidateSecretOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateSecretOutput",
 }) as any as S.Schema<ValidateSecretOutput>;
 
+/** Type of CDN resource used in CheckNameAvailability. */
+export type ResourceType =
+  | "Microsoft.Cdn/Profiles/Endpoints"
+  | "Microsoft.Cdn/Profiles/AfdEndpoints";
+export const ResourceType = /*@__PURE__*/ S.String;
+
+/** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
+export type AutoGeneratedDomainNameLabelScope =
+  | "TenantReuse"
+  | "SubscriptionReuse"
+  | "ResourceGroupReuse"
+  | "NoReuse";
+export const AutoGeneratedDomainNameLabelScope = /*@__PURE__*/ S.String;
+
+export interface CheckAfdProfileEndpointNameAvailabilityRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of the resource whose name is to be validated. */
+  type: ResourceType | (string & {});
+  /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
+  autoGeneratedDomainNameLabelScope?:
+    | AutoGeneratedDomainNameLabelScope
+    | (string & {});
+}
+export const CheckAfdProfileEndpointNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      profileName: S.String.pipe(T.Label()),
+      name: S.String,
+      type: ResourceType,
+      autoGeneratedDomainNameLabelScope: S.optional(
+        AutoGeneratedDomainNameLabelScope,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkEndpointNameAvailability",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckAfdProfileEndpointNameAvailabilityRequest",
+  }) as any as S.Schema<CheckAfdProfileEndpointNameAvailabilityRequest>;
+
+/** Output of check name availability API. */
+export interface CheckEndpointNameAvailabilityOutput {
+  /** Indicates whether the name is available. */
+  nameAvailable?: boolean;
+  /** Returns the available hostname generated based on the AutoGeneratedDomainNameLabelScope when the name is available, otherwise it returns empty string */
+  availableHostname?: string;
+  /** The reason why the name is not available. */
+  reason?: string;
+  /** The detailed error message describing why the name is not available. */
+  message?: string;
+}
+export const CheckEndpointNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nameAvailable: S.optional(S.Boolean),
+    availableHostname: S.optional(S.String),
+    reason: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckEndpointNameAvailabilityOutput",
+}) as any as S.Schema<CheckEndpointNameAvailabilityOutput>;
+
+export interface CheckAfdProfileHostNameAvailabilityRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** The host name to validate. */
+  hostName: string;
+}
+export const CheckAfdProfileHostNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      profileName: S.String.pipe(T.Label()),
+      hostName: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkHostNameAvailability",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckAfdProfileHostNameAvailabilityRequest",
+  }) as any as S.Schema<CheckAfdProfileHostNameAvailabilityRequest>;
+
+/** Output of check name availability API. */
+export interface CheckNameAvailabilityOutput {
+  /** Indicates whether the name is available. */
+  nameAvailable?: boolean;
+  /** The reason why the name is not available. */
+  reason?: string;
+  /** The detailed error message describing why the name is not available. */
+  message?: string;
+}
+export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nameAvailable: S.optional(S.Boolean),
+    reason: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckNameAvailabilityOutput",
+}) as any as S.Schema<CheckNameAvailabilityOutput>;
+
 export interface CheckEndpointNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2872,6 +789,918 @@ export const CheckNameAvailabilityWithSubscriptionRequest =
     identifier: "CheckNameAvailabilityWithSubscriptionRequest",
   }) as any as S.Schema<CheckNameAvailabilityWithSubscriptionRequest>;
 
+/** Defines the source of the SSL certificate. */
+export type AfdCertificateType =
+  | "CustomerCertificate"
+  | "ManagedCertificate"
+  | "AzureFirstPartyManagedCertificate";
+export const AfdCertificateType = /*@__PURE__*/ S.String;
+
+/** cipher suite set type that will be used for Https */
+export type AfdCipherSuiteSetType =
+  | "Customized"
+  | "TLS10_2019"
+  | "TLS12_2022"
+  | "TLS12_2023";
+export const AfdCipherSuiteSetType = /*@__PURE__*/ S.String;
+
+/** TLS protocol version that will be used for Https when cipherSuiteSetType is Customized. */
+export type AfdMinimumTlsVersion = "TLS10" | "TLS12" | "TLS13";
+export const AfdMinimumTlsVersion = /*@__PURE__*/ S.String;
+
+export type AfdCustomizedCipherSuiteForTls12 =
+  | "ECDHE_RSA_AES128_GCM_SHA256"
+  | "ECDHE_RSA_AES256_GCM_SHA384"
+  | "DHE_RSA_AES256_GCM_SHA384"
+  | "DHE_RSA_AES128_GCM_SHA256"
+  | "ECDHE_RSA_AES128_SHA256"
+  | "ECDHE_RSA_AES256_SHA384";
+export const AfdCustomizedCipherSuiteForTls12 = /*@__PURE__*/ S.String;
+
+/** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
+export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List =
+  Array<AfdCustomizedCipherSuiteForTls12 | (string & {})>;
+export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List =
+  /*@__PURE__*/ S.Array(
+    AfdCustomizedCipherSuiteForTls12,
+  ) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List>;
+
+export type AfdCustomizedCipherSuiteForTls13 =
+  | "TLS_AES_128_GCM_SHA256"
+  | "TLS_AES_256_GCM_SHA384";
+export const AfdCustomizedCipherSuiteForTls13 = /*@__PURE__*/ S.String;
+
+/** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
+export type AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
+  Array<AfdCustomizedCipherSuiteForTls13 | (string & {})>;
+export const AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List =
+  /*@__PURE__*/ S.Array(
+    AfdCustomizedCipherSuiteForTls13,
+  ) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List>;
+
+/** Customized cipher suite set object that will be used for Https when cipherSuiteSetType is Customized. */
+export interface AFDDomainHttpsCustomizedCipherSuiteSet {
+  /** Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2. */
+  cipherSuiteSetForTls12?: AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List;
+  /** Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3. */
+  cipherSuiteSetForTls13?: AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List;
+}
+export const AFDDomainHttpsCustomizedCipherSuiteSet = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      cipherSuiteSetForTls12: S.optional(
+        AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls12List,
+      ),
+      cipherSuiteSetForTls13: S.optional(
+        AFDDomainHttpsCustomizedCipherSuiteSetCipherSuiteSetForTls13List,
+      ),
+    }),
+).annotate({
+  identifier: "AFDDomainHttpsCustomizedCipherSuiteSet",
+}) as any as S.Schema<AFDDomainHttpsCustomizedCipherSuiteSet>;
+
+/** Server TLS group policy that will be used for Https. Standard and Enhanced are service-managed sets; Custom allows specifying serverTlsGroups explicitly. */
+export type AfdServerTlsGroupPolicy = "Standard" | "Enhanced" | "Custom";
+export const AfdServerTlsGroupPolicy = /*@__PURE__*/ S.String;
+
+/** Supported key-exchange groups and curves. The ML-KEM groups are hybrid post-quantum groups. */
+export type AfdServerTlsGroup =
+  | "SecP256r1MLKEM768"
+  | "SecP384r1MLKEM1024"
+  | "X25519MLKEM768"
+  | "prime256v1"
+  | "X25519"
+  | "secp384r1"
+  | "secp521r1";
+export const AfdServerTlsGroup = /*@__PURE__*/ S.String;
+
+/** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
+export type AFDDomainHttpsParametersServerTlsGroupsList = Array<
+  AfdServerTlsGroup | (string & {})
+>;
+export const AFDDomainHttpsParametersServerTlsGroupsList =
+  /*@__PURE__*/ S.Array(
+    AfdServerTlsGroup,
+  ) as any as S.Schema<AFDDomainHttpsParametersServerTlsGroupsList>;
+
+/** The JSON object that contains the properties to secure a domain. */
+export interface AFDDomainHttpsParameters {
+  /** Defines the source of the SSL certificate. */
+  certificateType: AfdCertificateType | (string & {});
+  /** cipher suite set type that will be used for Https */
+  cipherSuiteSetType?: AfdCipherSuiteSetType | (string & {});
+  /** TLS protocol version that will be used for Https when cipherSuiteSetType is Customized. */
+  minimumTlsVersion?: AfdMinimumTlsVersion | (string & {});
+  /** Customized cipher suites object that will be used for Https when cipherSuiteSetType is Customized. */
+  customizedCipherSuiteSet?: AFDDomainHttpsCustomizedCipherSuiteSet;
+  /** Server TLS group policy that will be used for Https. */
+  serverTlsGroupPolicy?: AfdServerTlsGroupPolicy | (string & {});
+  /** Server TLS groups that will be used for Https when serverTlsGroupPolicy is Custom. */
+  serverTlsGroups?: AFDDomainHttpsParametersServerTlsGroupsList;
+  /** Resource reference to the secret. ie. subs/rg/profile/secret */
+  secret?: ResourceReference;
+}
+export const AFDDomainHttpsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    certificateType: AfdCertificateType,
+    cipherSuiteSetType: S.optional(AfdCipherSuiteSetType),
+    minimumTlsVersion: S.optional(AfdMinimumTlsVersion),
+    customizedCipherSuiteSet: S.optional(
+      AFDDomainHttpsCustomizedCipherSuiteSet,
+    ),
+    serverTlsGroupPolicy: S.optional(AfdServerTlsGroupPolicy),
+    serverTlsGroups: S.optional(AFDDomainHttpsParametersServerTlsGroupsList),
+    secret: S.optional(ResourceReference),
+  }),
+).annotate({
+  identifier: "AFDDomainHttpsParameters",
+}) as any as S.Schema<AFDDomainHttpsParameters>;
+
+/** Supported scenarios for establishing mTLS connection. */
+export type MtlsScenarioType =
+  | "ClientCertificateRequiredAndValidated"
+  | "ClientCertificateRequiredAndOriginValidates"
+  | "ClientCertificateValidatedIfPresented"
+  | "CompleteMtlsPassthroughToOrigin";
+export const MtlsScenarioType = /*@__PURE__*/ S.String;
+
+/** Contains the properties to configure mutual TLS for a custom domain with FQDN. Mutual TLS cannot be configured for custom domains with wildcard host names. */
+export interface AFDDomainMtlsParameters {
+  /** Supported scenarios for establishing mTLS connection. */
+  scenario: MtlsScenarioType | (string & {});
+}
+export const AFDDomainMtlsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scenario: MtlsScenarioType,
+  }),
+).annotate({
+  identifier: "AFDDomainMtlsParameters",
+}) as any as S.Schema<AFDDomainMtlsParameters>;
+
+/** Key-Value pair representing migration properties for domains. */
+export type AFDDomainPropertiesInputExtendedPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const AFDDomainPropertiesInputExtendedPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AFDDomainPropertiesInputExtendedPropertiesMap>;
+
+/** The JSON object that contains the properties of the domain to create. */
+export interface AFDDomainPropertiesInput {
+  /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
+  tlsSettings?: AFDDomainHttpsParameters;
+  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
+  mtlsSettings?: AFDDomainMtlsParameters;
+  /** Resource reference to the Azure DNS zone */
+  azureDnsZone?: ResourceReference;
+  /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
+  preValidatedCustomDomainResourceId?: ResourceReference;
+  /** The host name of the domain. Must be a domain name. */
+  hostName: string;
+  /** Key-Value pair representing migration properties for domains. */
+  extendedProperties?: AFDDomainPropertiesInputExtendedPropertiesMap;
+}
+export const AFDDomainPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tlsSettings: S.optional(AFDDomainHttpsParameters),
+    mtlsSettings: S.optional(AFDDomainMtlsParameters),
+    azureDnsZone: S.optional(ResourceReference),
+    preValidatedCustomDomainResourceId: S.optional(ResourceReference),
+    hostName: S.String,
+    extendedProperties: S.optional(
+      AFDDomainPropertiesInputExtendedPropertiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "AFDDomainPropertiesInput",
+}) as any as S.Schema<AFDDomainPropertiesInput>;
+
+export interface CreateAfdCustomDomainRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the domain under the profile which is unique globally. */
+  customDomainName: string;
+  /** The JSON object that contains the properties of the domain to create. */
+  properties?: AFDDomainPropertiesInput;
+}
+export const CreateAfdCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+    properties: S.optional(AFDDomainPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAfdCustomDomainRequest",
+}) as any as S.Schema<CreateAfdCustomDomainRequest>;
+
+/** Provisioning status */
+export type AfdProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Updating"
+  | "Deleting"
+  | "Creating";
+export const AfdProvisioningState = /*@__PURE__*/ S.String;
+
+export type DeploymentStatus =
+  | "NotStarted"
+  | "InProgress"
+  | "Succeeded"
+  | "Failed";
+export const DeploymentStatus = /*@__PURE__*/ S.String;
+
+/** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation. */
+export type DomainValidationState =
+  | "Unknown"
+  | "Submitting"
+  | "Pending"
+  | "Rejected"
+  | "TimedOut"
+  | "PendingRevalidation"
+  | "Approved"
+  | "RefreshingValidationToken"
+  | "InternalError";
+export const DomainValidationState = /*@__PURE__*/ S.String;
+
+/** Key-Value pair representing migration properties for domains. */
+export type AFDDomainPropertiesExtendedPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const AFDDomainPropertiesExtendedPropertiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDDomainPropertiesExtendedPropertiesMap>;
+
+/** The JSON object that contains the properties to validate a domain. */
+export interface DomainValidationProperties {
+  /** Challenge used for DNS TXT record or file based validation */
+  validationToken?: string;
+  /** The date time that the token expires */
+  expirationDate?: string;
+}
+export const DomainValidationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    validationToken: S.optional(S.String),
+    expirationDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DomainValidationProperties",
+}) as any as S.Schema<DomainValidationProperties>;
+
+/** The JSON object that contains the properties of the domain to create. */
+export interface AFDDomainProperties {
+  /** The name of the profile which holds the domain. */
+  profileName?: string;
+  /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
+  tlsSettings?: AFDDomainHttpsParameters;
+  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
+  mtlsSettings?: AFDDomainMtlsParameters;
+  /** Resource reference to the Azure DNS zone */
+  azureDnsZone?: ResourceReference;
+  /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
+  preValidatedCustomDomainResourceId?: ResourceReference;
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+  /** Provisioning substate shows the progress of custom HTTPS enabling/disabling process step by step. DCV stands for DomainControlValidation. */
+  domainValidationState?: DomainValidationState;
+  /** The host name of the domain. Must be a domain name. */
+  hostName: string;
+  /** Key-Value pair representing migration properties for domains. */
+  extendedProperties?: AFDDomainPropertiesExtendedPropertiesMap;
+  /** Values the customer needs to validate domain ownership */
+  validationProperties?: DomainValidationProperties;
+}
+export const AFDDomainProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileName: S.optional(S.String),
+    tlsSettings: S.optional(AFDDomainHttpsParameters),
+    mtlsSettings: S.optional(AFDDomainMtlsParameters),
+    azureDnsZone: S.optional(ResourceReference),
+    preValidatedCustomDomainResourceId: S.optional(ResourceReference),
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+    domainValidationState: S.optional(DomainValidationState),
+    hostName: S.String,
+    extendedProperties: S.optional(AFDDomainPropertiesExtendedPropertiesMap),
+    validationProperties: S.optional(DomainValidationProperties),
+  }),
+).annotate({
+  identifier: "AFDDomainProperties",
+}) as any as S.Schema<AFDDomainProperties>;
+
+export interface CreateAfdCustomDomainResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the domain to create. */
+  properties?: AFDDomainProperties;
+}
+export const CreateAfdCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDDomainProperties),
+  }),
+).annotate({
+  identifier: "CreateAfdCustomDomainResponse",
+}) as any as S.Schema<CreateAfdCustomDomainResponse>;
+
+/** Resource tags. */
+export type AFDEndpointsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AFDEndpointsCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDEndpointsCreateRequestTagsMap>;
+
+/** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
+export type EnabledState = "Enabled" | "Disabled";
+export const EnabledState = /*@__PURE__*/ S.String;
+
+/** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+export type EnforceMtlsEnabledState = "Enabled" | "Disabled";
+export const EnforceMtlsEnabledState = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties required to create an endpoint. */
+export interface AFDEndpointPropertiesInput {
+  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
+  enabledState?: EnabledState | (string & {});
+  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+  enforceMtls?: EnforceMtlsEnabledState | (string & {});
+  /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
+  autoGeneratedDomainNameLabelScope?:
+    | AutoGeneratedDomainNameLabelScope
+    | (string & {});
+}
+export const AFDEndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabledState: S.optional(EnabledState),
+    enforceMtls: S.optional(EnforceMtlsEnabledState),
+    autoGeneratedDomainNameLabelScope: S.optional(
+      AutoGeneratedDomainNameLabelScope,
+    ),
+  }),
+).annotate({
+  identifier: "AFDEndpointPropertiesInput",
+}) as any as S.Schema<AFDEndpointPropertiesInput>;
+
+export interface CreateAfdEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Resource tags. */
+  tags?: AFDEndpointsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: AFDEndpointPropertiesInput;
+}
+export const CreateAfdEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    tags: S.optional(AFDEndpointsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(AFDEndpointPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAfdEndpointRequest",
+}) as any as S.Schema<CreateAfdEndpointRequest>;
+
+/** Resource tags. */
+export type AFDEndpointsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AFDEndpointsCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDEndpointsCreateResponseTagsMap>;
+
+/** The JSON object that contains the properties required to create an endpoint. */
+export interface AFDEndpointProperties {
+  /** The name of the profile which holds the endpoint. */
+  profileName?: string;
+  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
+  enabledState?: EnabledState;
+  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+  enforceMtls?: EnforceMtlsEnabledState;
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+  /** The host name of the endpoint structured as {endpointName}.{DNSZone}, e.g. contoso.azureedge.net */
+  hostName?: string;
+  /** Indicates the endpoint name reuse scope. The default value is TenantReuse. */
+  autoGeneratedDomainNameLabelScope?: AutoGeneratedDomainNameLabelScope;
+}
+export const AFDEndpointProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileName: S.optional(S.String),
+    enabledState: S.optional(EnabledState),
+    enforceMtls: S.optional(EnforceMtlsEnabledState),
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+    hostName: S.optional(S.String),
+    autoGeneratedDomainNameLabelScope: S.optional(
+      AutoGeneratedDomainNameLabelScope,
+    ),
+  }),
+).annotate({
+  identifier: "AFDEndpointProperties",
+}) as any as S.Schema<AFDEndpointProperties>;
+
+export interface CreateAfdEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AFDEndpointsCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: AFDEndpointProperties;
+}
+export const CreateAfdEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AFDEndpointsCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AFDEndpointProperties),
+  }),
+).annotate({
+  identifier: "CreateAfdEndpointResponse",
+}) as any as S.Schema<CreateAfdEndpointResponse>;
+
+/** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
+export type SharedPrivateLinkResourceStatus =
+  | "Pending"
+  | "Approved"
+  | "Rejected"
+  | "Disconnected"
+  | "Timeout";
+export const SharedPrivateLinkResourceStatus = /*@__PURE__*/ S.String;
+
+/** Describes the properties of an existing Shared Private Link Resource to use when connecting to a private origin. */
+export interface SharedPrivateLinkResourceProperties {
+  /** The resource id of the resource the shared private link resource is for. */
+  privateLink?: ResourceReference;
+  /** The location of the shared private link resource */
+  privateLinkLocation?: string;
+  /** The group id from the provider of resource the shared private link resource is for. */
+  groupId?: string;
+  /** The request message for requesting approval of the shared private link resource. */
+  requestMessage?: string;
+  /** Status of the shared private link resource. Can be Pending, Approved, Rejected, Disconnected, or Timeout. */
+  status?: SharedPrivateLinkResourceStatus | (string & {});
+}
+export const SharedPrivateLinkResourceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateLink: S.optional(ResourceReference),
+    privateLinkLocation: S.optional(S.String),
+    groupId: S.optional(S.String),
+    requestMessage: S.optional(S.String),
+    status: S.optional(SharedPrivateLinkResourceStatus),
+  }),
+).annotate({
+  identifier: "SharedPrivateLinkResourceProperties",
+}) as any as S.Schema<SharedPrivateLinkResourceProperties>;
+
+/** The validation mode for certificate name check at origin level. Only applicable when enforceCertificateNameCheck is true. */
+export type CertificateNameCheckValidationMode =
+  | "OriginHostname"
+  | "CustomCertificateSubject"
+  | "IncomingHostHeader";
+export const CertificateNameCheckValidationMode = /*@__PURE__*/ S.String;
+
+/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+export type AFDOriginPropertiesInputCustomCertificateSubjectsList =
+  Array<string>;
+export const AFDOriginPropertiesInputCustomCertificateSubjectsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AFDOriginPropertiesInputCustomCertificateSubjectsList>;
+
+/** The JSON object that contains the properties of the origin. */
+export interface AFDOriginPropertiesInput {
+  /** Resource reference to the Azure origin resource. */
+  azureOrigin?: ResourceReference;
+  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
+  hostName?: string;
+  /** The value of the HTTP port. Must be between 1 and 65535. */
+  httpPort?: number;
+  /** The value of the HTTPS port. Must be between 1 and 65535. */
+  httpsPort?: number;
+  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
+  originHostHeader?: string;
+  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
+  priority?: number;
+  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
+  weight?: number;
+  /** The properties of the private link resource for private origin. */
+  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
+  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
+  enabledState?: EnabledState | (string & {});
+  /** Whether to enable certificate name check at origin level */
+  enforceCertificateNameCheck?: boolean;
+  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
+  certificateNameCheckValidationMode?:
+    | CertificateNameCheckValidationMode
+    | (string & {});
+  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+  customCertificateSubjects?: AFDOriginPropertiesInputCustomCertificateSubjectsList;
+}
+export const AFDOriginPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    azureOrigin: S.optional(ResourceReference),
+    hostName: S.optional(S.String),
+    httpPort: S.optional(S.Number),
+    httpsPort: S.optional(S.Number),
+    originHostHeader: S.optional(S.String),
+    priority: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
+    enabledState: S.optional(EnabledState),
+    enforceCertificateNameCheck: S.optional(S.Boolean),
+    certificateNameCheckValidationMode: S.optional(
+      CertificateNameCheckValidationMode,
+    ),
+    customCertificateSubjects: S.optional(
+      AFDOriginPropertiesInputCustomCertificateSubjectsList,
+    ),
+  }),
+).annotate({
+  identifier: "AFDOriginPropertiesInput",
+}) as any as S.Schema<AFDOriginPropertiesInput>;
+
+export interface CreateAfdOriginRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** Name of the origin which is unique within the profile. */
+  originName: string;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: AFDOriginPropertiesInput;
+}
+export const CreateAfdOriginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
+    properties: S.optional(AFDOriginPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAfdOriginRequest",
+}) as any as S.Schema<CreateAfdOriginRequest>;
+
+/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+export type AFDOriginPropertiesCustomCertificateSubjectsList = Array<string>;
+export const AFDOriginPropertiesCustomCertificateSubjectsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AFDOriginPropertiesCustomCertificateSubjectsList>;
+
+/** The JSON object that contains the properties of the origin. */
+export interface AFDOriginProperties {
+  /** The name of the origin group which contains this origin. */
+  originGroupName?: string;
+  /** Resource reference to the Azure origin resource. */
+  azureOrigin?: ResourceReference;
+  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
+  hostName?: string;
+  /** The value of the HTTP port. Must be between 1 and 65535. */
+  httpPort?: number;
+  /** The value of the HTTPS port. Must be between 1 and 65535. */
+  httpsPort?: number;
+  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
+  originHostHeader?: string;
+  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
+  priority?: number;
+  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
+  weight?: number;
+  /** The properties of the private link resource for private origin. */
+  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
+  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
+  enabledState?: EnabledState;
+  /** Whether to enable certificate name check at origin level */
+  enforceCertificateNameCheck?: boolean;
+  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
+  certificateNameCheckValidationMode?: CertificateNameCheckValidationMode;
+  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+  customCertificateSubjects?: AFDOriginPropertiesCustomCertificateSubjectsList;
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+}
+export const AFDOriginProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originGroupName: S.optional(S.String),
+    azureOrigin: S.optional(ResourceReference),
+    hostName: S.optional(S.String),
+    httpPort: S.optional(S.Number),
+    httpsPort: S.optional(S.Number),
+    originHostHeader: S.optional(S.String),
+    priority: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    sharedPrivateLinkResource: S.optional(SharedPrivateLinkResourceProperties),
+    enabledState: S.optional(EnabledState),
+    enforceCertificateNameCheck: S.optional(S.Boolean),
+    certificateNameCheckValidationMode: S.optional(
+      CertificateNameCheckValidationMode,
+    ),
+    customCertificateSubjects: S.optional(
+      AFDOriginPropertiesCustomCertificateSubjectsList,
+    ),
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+  }),
+).annotate({
+  identifier: "AFDOriginProperties",
+}) as any as S.Schema<AFDOriginProperties>;
+
+export interface CreateAfdOriginResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: AFDOriginProperties;
+}
+export const CreateAfdOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginProperties),
+  }),
+).annotate({
+  identifier: "CreateAfdOriginResponse",
+}) as any as S.Schema<CreateAfdOriginResponse>;
+
+/** Round-Robin load balancing settings for a backend pool */
+export interface LoadBalancingSettingsParameters {
+  /** The number of samples to consider for load balancing decisions */
+  sampleSize?: number;
+  /** The number of samples within the sample period that must succeed */
+  successfulSamplesRequired?: number;
+  /** The additional latency in milliseconds for probes to fall into the lowest latency bucket */
+  additionalLatencyInMilliseconds?: number;
+}
+export const LoadBalancingSettingsParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sampleSize: S.optional(S.Number),
+    successfulSamplesRequired: S.optional(S.Number),
+    additionalLatencyInMilliseconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "LoadBalancingSettingsParameters",
+}) as any as S.Schema<LoadBalancingSettingsParameters>;
+
+/** The type of health probe request that is made. */
+export type HealthProbeRequestType = "NotSet" | "GET" | "HEAD";
+export const HealthProbeRequestType = /*@__PURE__*/ S.String;
+
+/** Protocol to use for health probe. */
+export type ProbeProtocol = "NotSet" | "Http" | "Https";
+export const ProbeProtocol = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties to send health probes to origin. */
+export interface HealthProbeParameters {
+  /** The path relative to the origin that is used to determine the health of the origin. */
+  probePath?: string;
+  /** The type of health probe request that is made. */
+  probeRequestType?: HealthProbeRequestType | (string & {});
+  /** Protocol to use for health probe. */
+  probeProtocol?: ProbeProtocol | (string & {});
+  /** The number of seconds between health probes.Default is 240sec. */
+  probeIntervalInSeconds?: number;
+}
+export const HealthProbeParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    probePath: S.optional(S.String),
+    probeRequestType: S.optional(HealthProbeRequestType),
+    probeProtocol: S.optional(ProbeProtocol),
+    probeIntervalInSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "HealthProbeParameters",
+}) as any as S.Schema<HealthProbeParameters>;
+
+/** The type of the authentication for the origin. */
+export type OriginAuthenticationType =
+  | "SystemAssignedIdentity"
+  | "UserAssignedIdentity";
+export const OriginAuthenticationType = /*@__PURE__*/ S.String;
+
+/** The HTTP request header where the origin authentication token is placed when forwarding the request to the origin. */
+export type OriginAuthenticationTokenDestinationHeader =
+  | "Authorization"
+  | "X-Azure-Authorization";
+export const OriginAuthenticationTokenDestinationHeader =
+  /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the origin authentication settings. */
+export interface OriginAuthenticationProperties {
+  /** The type of the authentication for the origin. */
+  type?: OriginAuthenticationType | (string & {});
+  /** The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity. */
+  userAssignedIdentity?: ResourceReference;
+  /** The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default". */
+  scope?: string;
+  /** The HTTP request header where the origin authentication token will be placed when forwarding the request to the origin. If not specified, the service will use the `Authorization` header for backward compatibility. */
+  tokenDestinationHeader?:
+    | OriginAuthenticationTokenDestinationHeader
+    | (string & {});
+}
+export const OriginAuthenticationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: S.optional(OriginAuthenticationType),
+    userAssignedIdentity: S.optional(ResourceReference),
+    scope: S.optional(S.String),
+    tokenDestinationHeader: S.optional(
+      OriginAuthenticationTokenDestinationHeader,
+    ),
+  }),
+).annotate({
+  identifier: "OriginAuthenticationProperties",
+}) as any as S.Schema<OriginAuthenticationProperties>;
+
+/** The JSON object that contains the properties of the origin group. */
+export interface AFDOriginGroupPropertiesInput {
+  /** Load balancing settings for a backend pool */
+  loadBalancingSettings?: LoadBalancingSettingsParameters;
+  /** Health probe settings to the origin that is used to determine the health of the origin. */
+  healthProbeSettings?: HealthProbeParameters;
+  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
+  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
+  /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
+  sessionAffinityState?: EnabledState | (string & {});
+  /** Authentication settings for origin in origin group. */
+  authentication?: OriginAuthenticationProperties;
+}
+export const AFDOriginGroupPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
+    healthProbeSettings: S.optional(HealthProbeParameters),
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
+    sessionAffinityState: S.optional(EnabledState),
+    authentication: S.optional(OriginAuthenticationProperties),
+  }),
+).annotate({
+  identifier: "AFDOriginGroupPropertiesInput",
+}) as any as S.Schema<AFDOriginGroupPropertiesInput>;
+
+export interface CreateAfdOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: AFDOriginGroupPropertiesInput;
+}
+export const CreateAfdOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    properties: S.optional(AFDOriginGroupPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateAfdOriginGroupRequest",
+}) as any as S.Schema<CreateAfdOriginGroupRequest>;
+
+/** The JSON object that contains the properties of the origin group. */
+export interface AFDOriginGroupProperties {
+  /** The name of the profile which holds the origin group. */
+  profileName?: string;
+  /** Load balancing settings for a backend pool */
+  loadBalancingSettings?: LoadBalancingSettingsParameters;
+  /** Health probe settings to the origin that is used to determine the health of the origin. */
+  healthProbeSettings?: HealthProbeParameters;
+  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
+  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
+  /** Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled' */
+  sessionAffinityState?: EnabledState;
+  /** Authentication settings for origin in origin group. */
+  authentication?: OriginAuthenticationProperties;
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+}
+export const AFDOriginGroupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    profileName: S.optional(S.String),
+    loadBalancingSettings: S.optional(LoadBalancingSettingsParameters),
+    healthProbeSettings: S.optional(HealthProbeParameters),
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
+    sessionAffinityState: S.optional(EnabledState),
+    authentication: S.optional(OriginAuthenticationProperties),
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+  }),
+).annotate({
+  identifier: "AFDOriginGroupProperties",
+}) as any as S.Schema<AFDOriginGroupProperties>;
+
+export interface CreateAfdOriginGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: AFDOriginGroupProperties;
+}
+export const CreateAfdOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginGroupProperties),
+  }),
+).annotate({
+  identifier: "CreateAfdOriginGroupResponse",
+}) as any as S.Schema<CreateAfdOriginGroupResponse>;
+
 /** The JSON object that contains the properties of the custom domain to create. */
 export interface CustomDomainPropertiesParameters {
   /** The host name of the custom domain. Must be a domain name. */
@@ -2885,7 +1714,7 @@ export const CustomDomainPropertiesParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomDomainPropertiesParameters",
 }) as any as S.Schema<CustomDomainPropertiesParameters>;
 
-export interface CustomDomainsCreateRequest {
+export interface CreateCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -2899,7 +1728,7 @@ export interface CustomDomainsCreateRequest {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainPropertiesParameters;
 }
-export const CustomDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -2916,8 +1745,8 @@ export const CustomDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomDomainsCreateRequest",
-}) as any as S.Schema<CustomDomainsCreateRequest>;
+  identifier: "CreateCustomDomainRequest",
+}) as any as S.Schema<CreateCustomDomainRequest>;
 
 /** Resource status of the custom domain. */
 export type CustomDomainResourceState = "Creating" | "Active" | "Deleting";
@@ -3010,7 +1839,7 @@ export const CustomDomainProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomDomainProperties",
 }) as any as S.Schema<CustomDomainProperties>;
 
-export interface CustomDomainsCreateResponse {
+export interface CreateCustomDomainResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -3022,7 +1851,7 @@ export interface CustomDomainsCreateResponse {
   /** The JSON object that contains the properties of the custom domain to create. */
   properties?: CustomDomainProperties;
 }
-export const CustomDomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -3031,416 +1860,8 @@ export const CustomDomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(CustomDomainProperties),
   }),
 ).annotate({
-  identifier: "CustomDomainsCreateResponse",
-}) as any as S.Schema<CustomDomainsCreateResponse>;
-
-export interface CustomDomainsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the custom domain within an endpoint. */
-  customDomainName: string;
-}
-export const CustomDomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    customDomainName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomDomainsDeleteRequest",
-}) as any as S.Schema<CustomDomainsDeleteRequest>;
-
-export interface CustomDomainsDeleteResponse {}
-export const CustomDomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomDomainsDeleteResponse",
-}) as any as S.Schema<CustomDomainsDeleteResponse>;
-
-export interface CustomDomainsDisableCustomHttpsRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the custom domain within an endpoint. */
-  customDomainName: string;
-}
-export const CustomDomainsDisableCustomHttpsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-      endpointName: S.String.pipe(T.Label()),
-      customDomainName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "CustomDomainsDisableCustomHttpsRequest",
-}) as any as S.Schema<CustomDomainsDisableCustomHttpsRequest>;
-
-export interface CustomDomainsDisableCustomHttpsResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the custom domain to create. */
-  properties?: CustomDomainProperties;
-}
-export const CustomDomainsDisableCustomHttpsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(CustomDomainProperties),
-    }),
-).annotate({
-  identifier: "CustomDomainsDisableCustomHttpsResponse",
-}) as any as S.Schema<CustomDomainsDisableCustomHttpsResponse>;
-
-export interface CustomDomainsEnableCustomHttpsRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the custom domain within an endpoint. */
-  customDomainName: string;
-  /** Defines the source of the SSL certificate. */
-  certificateSource: CertificateSource | (string & {});
-  /** Defines the TLS extension protocol that is used for secure delivery. */
-  protocolType: ProtocolType | (string & {});
-  /** TLS protocol version that will be used for Https */
-  minimumTlsVersion?: MinimumTlsVersion | (string & {});
-}
-export const CustomDomainsEnableCustomHttpsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-      endpointName: S.String.pipe(T.Label()),
-      customDomainName: S.String.pipe(T.Label()),
-      certificateSource: CertificateSource,
-      protocolType: ProtocolType,
-      minimumTlsVersion: S.optional(MinimumTlsVersion),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "CustomDomainsEnableCustomHttpsRequest",
-}) as any as S.Schema<CustomDomainsEnableCustomHttpsRequest>;
-
-export interface CustomDomainsEnableCustomHttpsResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the custom domain to create. */
-  properties?: CustomDomainProperties;
-}
-export const CustomDomainsEnableCustomHttpsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(CustomDomainProperties),
-    }),
-).annotate({
-  identifier: "CustomDomainsEnableCustomHttpsResponse",
-}) as any as S.Schema<CustomDomainsEnableCustomHttpsResponse>;
-
-export interface CustomDomainsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the custom domain within an endpoint. */
-  customDomainName: string;
-}
-export const CustomDomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    customDomainName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomDomainsGetRequest",
-}) as any as S.Schema<CustomDomainsGetRequest>;
-
-export interface CustomDomainsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the custom domain to create. */
-  properties?: CustomDomainProperties;
-}
-export const CustomDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CustomDomainProperties),
-  }),
-).annotate({
-  identifier: "CustomDomainsGetResponse",
-}) as any as S.Schema<CustomDomainsGetResponse>;
-
-export interface CustomDomainsListByEndpointRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const CustomDomainsListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomDomainsListByEndpointRequest",
-}) as any as S.Schema<CustomDomainsListByEndpointRequest>;
-
-/** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
-export interface CustomDomain {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the custom domain to create. */
-  properties?: CustomDomainProperties;
-}
-export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CustomDomainProperties),
-  }),
-).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
-
-/** The CustomDomain items on this page */
-export type CustomDomainListResultValueList = Array<CustomDomain>;
-export const CustomDomainListResultValueList = /*@__PURE__*/ S.Array(
-  CustomDomain,
-) as any as S.Schema<CustomDomainListResultValueList>;
-
-/** The response of a CustomDomain list operation. */
-export interface CustomDomainListResult {
-  /** The CustomDomain items on this page */
-  value: CustomDomainListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CustomDomainListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: CustomDomainListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CustomDomainListResult",
-}) as any as S.Schema<CustomDomainListResult>;
-
-export interface EdgeNodesListRequest {}
-export const EdgeNodesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Cdn/edgenodes",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "EdgeNodesListRequest",
-}) as any as S.Schema<EdgeNodesListRequest>;
-
-/** CIDR Ip address */
-export interface CidrIpAddress {
-  /** Ip address itself. */
-  baseIpAddress?: string;
-  /** The length of the prefix of the ip address. */
-  prefixLength?: number;
-}
-export const CidrIpAddress = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseIpAddress: S.optional(S.String),
-    prefixLength: S.optional(S.Number),
-  }),
-).annotate({ identifier: "CidrIpAddress" }) as any as S.Schema<CidrIpAddress>;
-
-/** The list of ip v4 addresses. */
-export type IpAddressGroupIpv4AddressesList = Array<CidrIpAddress>;
-export const IpAddressGroupIpv4AddressesList = /*@__PURE__*/ S.Array(
-  CidrIpAddress,
-) as any as S.Schema<IpAddressGroupIpv4AddressesList>;
-
-/** The list of ip v6 addresses. */
-export type IpAddressGroupIpv6AddressesList = Array<CidrIpAddress>;
-export const IpAddressGroupIpv6AddressesList = /*@__PURE__*/ S.Array(
-  CidrIpAddress,
-) as any as S.Schema<IpAddressGroupIpv6AddressesList>;
-
-/** CDN Ip address group */
-export interface IpAddressGroup {
-  /** The delivery region of the ip address group */
-  deliveryRegion?: string;
-  /** The list of ip v4 addresses. */
-  ipv4Addresses?: IpAddressGroupIpv4AddressesList;
-  /** The list of ip v6 addresses. */
-  ipv6Addresses?: IpAddressGroupIpv6AddressesList;
-}
-export const IpAddressGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deliveryRegion: S.optional(S.String),
-    ipv4Addresses: S.optional(IpAddressGroupIpv4AddressesList),
-    ipv6Addresses: S.optional(IpAddressGroupIpv6AddressesList),
-  }),
-).annotate({ identifier: "IpAddressGroup" }) as any as S.Schema<IpAddressGroup>;
-
-/** List of ip address groups. */
-export type EdgeNodePropertiesIpAddressGroupsList = Array<IpAddressGroup>;
-export const EdgeNodePropertiesIpAddressGroupsList = /*@__PURE__*/ S.Array(
-  IpAddressGroup,
-) as any as S.Schema<EdgeNodePropertiesIpAddressGroupsList>;
-
-/** The JSON object that contains the properties required to create an edgenode. */
-export interface EdgeNodeProperties {
-  /** List of ip address groups. */
-  ipAddressGroups: EdgeNodePropertiesIpAddressGroupsList;
-}
-export const EdgeNodeProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipAddressGroups: EdgeNodePropertiesIpAddressGroupsList,
-  }),
-).annotate({
-  identifier: "EdgeNodeProperties",
-}) as any as S.Schema<EdgeNodeProperties>;
-
-/** Edgenode is a global Point of Presence (POP) location used to deliver CDN content to end users. */
-export interface EdgeNode {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties required to create an edgenode. */
-  properties?: EdgeNodeProperties;
-}
-export const EdgeNode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EdgeNodeProperties),
-  }),
-).annotate({ identifier: "EdgeNode" }) as any as S.Schema<EdgeNode>;
-
-/** The EdgeNode items on this page */
-export type EdgenodeResultValueList = Array<EdgeNode>;
-export const EdgenodeResultValueList = /*@__PURE__*/ S.Array(
-  EdgeNode,
-) as any as S.Schema<EdgenodeResultValueList>;
-
-/** Result of the request to list CDN edgenodes. It contains a list of ip address group and a URL link to get the next set of results. */
-export interface EdgenodeResult {
-  /** The EdgeNode items on this page */
-  value: EdgenodeResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const EdgenodeResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: EdgenodeResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "EdgenodeResult" }) as any as S.Schema<EdgenodeResult>;
+  identifier: "CreateCustomDomainResponse",
+}) as any as S.Schema<CreateCustomDomainResponse>;
 
 /** Resource tags. */
 export type EndpointsCreateRequestTagsMap = {
@@ -3941,7 +2362,7 @@ export const EndpointPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointPropertiesInput",
 }) as any as S.Schema<EndpointPropertiesInput>;
 
-export interface EndpointsCreateRequest {
+export interface CreateEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -3957,7 +2378,7 @@ export interface EndpointsCreateRequest {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointPropertiesInput;
 }
-export const EndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -3975,8 +2396,8 @@ export const EndpointsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointsCreateRequest",
-}) as any as S.Schema<EndpointsCreateRequest>;
+  identifier: "CreateEndpointRequest",
+}) as any as S.Schema<CreateEndpointRequest>;
 
 /** Resource tags. */
 export type EndpointsCreateResponseTagsMap = {
@@ -4161,7 +2582,7 @@ export const EndpointProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointProperties",
 }) as any as S.Schema<EndpointProperties>;
 
-export interface EndpointsCreateResponse {
+export interface CreateEndpointResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -4177,7 +2598,7 @@ export interface EndpointsCreateResponse {
   /** The JSON object that contains the properties required to create an endpoint. */
   properties?: EndpointProperties;
 }
-export const EndpointsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -4188,10 +2609,1321 @@ export const EndpointsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(EndpointProperties),
   }),
 ).annotate({
-  identifier: "EndpointsCreateResponse",
-}) as any as S.Schema<EndpointsCreateResponse>;
+  identifier: "CreateEndpointResponse",
+}) as any as S.Schema<CreateEndpointResponse>;
 
-export interface EndpointsDeleteRequest {
+/** Resource status of the origin. */
+export type OriginResourceState = "Creating" | "Active" | "Deleting";
+export const OriginResourceState = /*@__PURE__*/ S.String;
+
+/** Provisioning status of the origin. */
+export type OriginProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Updating"
+  | "Deleting"
+  | "Creating";
+export const OriginProvisioningState = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the origin. */
+export interface OriginProperties {
+  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
+  hostName: string;
+  /** The value of the HTTP port. Must be between 1 and 65535. */
+  httpPort?: number;
+  /** The value of the HTTPS port. Must be between 1 and 65535. */
+  httpsPort?: number;
+  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
+  originHostHeader?: string;
+  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
+  priority?: number;
+  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
+  weight?: number;
+  /** Origin is enabled for load balancing or not */
+  enabled?: boolean;
+  /** The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private' */
+  privateLinkAlias?: string;
+  /** The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private' */
+  privateLinkResourceId?: string;
+  /** The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated */
+  privateLinkLocation?: string;
+  /** A custom message to be included in the approval request to connect to the Private Link. */
+  privateLinkApprovalMessage?: string;
+  /** Resource status of the origin. */
+  resourceState?: OriginResourceState | (string & {});
+  /** Provisioning status of the origin. */
+  provisioningState?: OriginProvisioningState | (string & {});
+  /** The approval status for the connection to the Private Link */
+  privateEndpointStatus?: PrivateEndpointStatus | (string & {});
+}
+export const OriginProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hostName: S.String,
+    httpPort: S.optional(S.Number),
+    httpsPort: S.optional(S.Number),
+    originHostHeader: S.optional(S.String),
+    priority: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    privateLinkAlias: S.optional(S.String),
+    privateLinkResourceId: S.optional(S.String),
+    privateLinkLocation: S.optional(S.String),
+    privateLinkApprovalMessage: S.optional(S.String),
+    resourceState: S.optional(OriginResourceState),
+    provisioningState: S.optional(OriginProvisioningState),
+    privateEndpointStatus: S.optional(PrivateEndpointStatus),
+  }),
+).annotate({
+  identifier: "OriginProperties",
+}) as any as S.Schema<OriginProperties>;
+
+export interface CreateOriginRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the origin which is unique within the endpoint. */
+  originName: string;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: OriginProperties;
+}
+export const CreateOriginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
+    properties: S.optional(OriginProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOriginRequest",
+}) as any as S.Schema<CreateOriginRequest>;
+
+export interface CreateOriginResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: OriginProperties;
+}
+export const CreateOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OriginProperties),
+  }),
+).annotate({
+  identifier: "CreateOriginResponse",
+}) as any as S.Schema<CreateOriginResponse>;
+
+/** The source of the content being delivered via CDN within given origin group. */
+export type OriginGroupPropertiesOriginsList = Array<ResourceReference>;
+export const OriginGroupPropertiesOriginsList = /*@__PURE__*/ S.Array(
+  ResourceReference,
+) as any as S.Schema<OriginGroupPropertiesOriginsList>;
+
+/** Resource status of the origin group. */
+export type OriginGroupResourceState = "Creating" | "Active" | "Deleting";
+export const OriginGroupResourceState = /*@__PURE__*/ S.String;
+
+/** Provisioning status of the origin group. */
+export type OriginGroupProvisioningState =
+  | "Succeeded"
+  | "Failed"
+  | "Updating"
+  | "Deleting"
+  | "Creating";
+export const OriginGroupProvisioningState = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the origin group. */
+export interface OriginGroupProperties {
+  /** Health probe settings to the origin that is used to determine the health of the origin. */
+  healthProbeSettings?: HealthProbeParameters;
+  /** The source of the content being delivered via CDN within given origin group. */
+  origins?: OriginGroupPropertiesOriginsList;
+  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
+  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
+  /** The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported. */
+  responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
+  /** Resource status of the origin group. */
+  resourceState?: OriginGroupResourceState | (string & {});
+  /** Provisioning status of the origin group. */
+  provisioningState?: OriginGroupProvisioningState | (string & {});
+}
+export const OriginGroupProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    healthProbeSettings: S.optional(HealthProbeParameters),
+    origins: S.optional(OriginGroupPropertiesOriginsList),
+    trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
+    responseBasedOriginErrorDetectionSettings: S.optional(
+      ResponseBasedOriginErrorDetectionParameters,
+    ),
+    resourceState: S.optional(OriginGroupResourceState),
+    provisioningState: S.optional(OriginGroupProvisioningState),
+  }),
+).annotate({
+  identifier: "OriginGroupProperties",
+}) as any as S.Schema<OriginGroupProperties>;
+
+export interface CreateOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: OriginGroupProperties;
+}
+export const CreateOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    properties: S.optional(OriginGroupProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateOriginGroupRequest",
+}) as any as S.Schema<CreateOriginGroupRequest>;
+
+export interface CreateOriginGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: OriginGroupProperties;
+}
+export const CreateOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OriginGroupProperties),
+  }),
+).annotate({
+  identifier: "CreateOriginGroupResponse",
+}) as any as S.Schema<CreateOriginGroupResponse>;
+
+/** Resource tags. */
+export type ProfilesCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProfilesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfilesCreateRequestTagsMap>;
+
+/** The JSON object that contains the properties required to create a profile. */
+export interface ProfilePropertiesInput {
+  /** Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns. */
+  originResponseTimeoutSeconds?: number;
+  /** Defines rules that scrub sensitive fields in the Azure Front Door profile logs. */
+  logScrubbing?: ProfileLogScrubbing;
+}
+export const ProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originResponseTimeoutSeconds: S.optional(S.Number),
+    logScrubbing: S.optional(ProfileLogScrubbing),
+  }),
+).annotate({
+  identifier: "ProfilePropertiesInput",
+}) as any as S.Schema<ProfilePropertiesInput>;
+
+/** User assigned identity properties */
+export interface UserAssignedIdentityInput {}
+export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "UserAssignedIdentityInput",
+}) as any as S.Schema<UserAssignedIdentityInput>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ProfilesCreateRequestIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentityInput | undefined;
+};
+export const ProfilesCreateRequestIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentityInput,
+  ) as any as S.Schema<ProfilesCreateRequestIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProfilesCreateRequestIdentity {
+  type: ManagedServiceIdentityType | (string & {});
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ProfilesCreateRequestIdentityUserAssignedIdentitiesMap;
+}
+export const ProfilesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ProfilesCreateRequestIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ProfilesCreateRequestIdentity",
+}) as any as S.Schema<ProfilesCreateRequestIdentity>;
+
+export interface CreateProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Resource tags. */
+  tags?: ProfilesCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create a profile. */
+  properties?: ProfilePropertiesInput;
+  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
+  sku: Sku;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProfilesCreateRequestIdentity;
+}
+export const CreateProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    tags: S.optional(ProfilesCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProfilePropertiesInput),
+    sku: Sku,
+    identity: S.optional(ProfilesCreateRequestIdentity),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProfileRequest",
+}) as any as S.Schema<CreateProfileRequest>;
+
+/** Resource tags. */
+export type ProfilesCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProfilesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfilesCreateResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ProfilesCreateResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const ProfilesCreateResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<ProfilesCreateResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProfilesCreateResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ProfilesCreateResponseIdentityUserAssignedIdentitiesMap;
+}
+export const ProfilesCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ProfilesCreateResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ProfilesCreateResponseIdentity",
+}) as any as S.Schema<ProfilesCreateResponseIdentity>;
+
+export interface CreateProfileResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProfilesCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create a profile. */
+  properties?: ProfileProperties;
+  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
+  sku: Sku;
+  /** Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProfilesCreateResponseIdentity;
+}
+export const CreateProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProfilesCreateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ProfileProperties),
+    sku: Sku,
+    kind: S.optional(S.String),
+    identity: S.optional(ProfilesCreateResponseIdentity),
+  }),
+).annotate({
+  identifier: "CreateProfileResponse",
+}) as any as S.Schema<CreateProfileResponse>;
+
+/** Reference to another resource along with its state. */
+export type ActivatedResourceReferenceInput = ResourceReference;
+export const ActivatedResourceReferenceInput = ResourceReference;
+
+/** Domains referenced by this endpoint. */
+export type RoutePropertiesInputCustomDomainsList = Array<ResourceReference>;
+export const RoutePropertiesInputCustomDomainsList = /*@__PURE__*/ S.Array(
+  ResourceReference,
+) as any as S.Schema<RoutePropertiesInputCustomDomainsList>;
+
+/** rule sets referenced by this endpoint. */
+export type RoutePropertiesInputRuleSetsList = Array<ResourceReference>;
+export const RoutePropertiesInputRuleSetsList = /*@__PURE__*/ S.Array(
+  ResourceReference,
+) as any as S.Schema<RoutePropertiesInputRuleSetsList>;
+
+/** Supported protocols for the customer's endpoint. */
+export type AFDEndpointProtocols = "Http" | "Https";
+export const AFDEndpointProtocols = /*@__PURE__*/ S.String;
+
+/** List of supported protocols for this route. */
+export type RoutePropertiesInputSupportedProtocolsList = Array<
+  AFDEndpointProtocols | (string & {})
+>;
+export const RoutePropertiesInputSupportedProtocolsList = /*@__PURE__*/ S.Array(
+  AFDEndpointProtocols,
+) as any as S.Schema<RoutePropertiesInputSupportedProtocolsList>;
+
+/** The route patterns of the rule. */
+export type RoutePropertiesInputPatternsToMatchList = Array<string>;
+export const RoutePropertiesInputPatternsToMatchList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutePropertiesInputPatternsToMatchList>;
+
+/** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
+export type AfdQueryStringCachingBehavior =
+  | "IgnoreQueryString"
+  | "UseQueryString"
+  | "IgnoreSpecifiedQueryStrings"
+  | "IncludeSpecifiedQueryStrings";
+export const AfdQueryStringCachingBehavior = /*@__PURE__*/ S.String;
+
+/** List of content types on which compression applies. The value should be a valid MIME type. */
+export type CompressionSettingsContentTypesToCompressList = Array<string>;
+export const CompressionSettingsContentTypesToCompressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CompressionSettingsContentTypesToCompressList>;
+
+/** settings for compression. */
+export interface CompressionSettings {
+  /** List of content types on which compression applies. The value should be a valid MIME type. */
+  contentTypesToCompress?: CompressionSettingsContentTypesToCompressList;
+  /** Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB. */
+  isCompressionEnabled?: boolean;
+}
+export const CompressionSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentTypesToCompress: S.optional(
+      CompressionSettingsContentTypesToCompressList,
+    ),
+    isCompressionEnabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CompressionSettings",
+}) as any as S.Schema<CompressionSettings>;
+
+/** Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object. */
+export interface AfdRouteCacheConfiguration {
+  /** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
+  queryStringCachingBehavior?: AfdQueryStringCachingBehavior | (string & {});
+  /** query parameters to include or exclude (comma separated). */
+  queryParameters?: string;
+  /** compression settings. */
+  compressionSettings?: CompressionSettings;
+}
+export const AfdRouteCacheConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queryStringCachingBehavior: S.optional(AfdQueryStringCachingBehavior),
+    queryParameters: S.optional(S.String),
+    compressionSettings: S.optional(CompressionSettings),
+  }),
+).annotate({
+  identifier: "AfdRouteCacheConfiguration",
+}) as any as S.Schema<AfdRouteCacheConfiguration>;
+
+/** Protocol this rule will use when forwarding traffic to backends. */
+export type RoutePropertiesInputForwardingProtocol =
+  | "HttpOnly"
+  | "HttpsOnly"
+  | "MatchRequest";
+export const RoutePropertiesInputForwardingProtocol = /*@__PURE__*/ S.String;
+
+/** whether this route will be linked to the default endpoint domain. */
+export type RoutePropertiesInputLinkToDefaultDomain = "Enabled" | "Disabled";
+export const RoutePropertiesInputLinkToDefaultDomain = /*@__PURE__*/ S.String;
+
+/** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
+export type RoutePropertiesInputHttpsRedirect = "Enabled" | "Disabled";
+export const RoutePropertiesInputHttpsRedirect = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the Routes to create. */
+export interface RoutePropertiesInput {
+  /** Domains referenced by this endpoint. */
+  customDomains?: RoutePropertiesInputCustomDomainsList;
+  /** A reference to the origin group. */
+  originGroup?: ResourceReference;
+  /** A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
+  originPath?: string;
+  /** rule sets referenced by this endpoint. */
+  ruleSets?: RoutePropertiesInputRuleSetsList;
+  /** List of supported protocols for this route. */
+  supportedProtocols?: RoutePropertiesInputSupportedProtocolsList;
+  /** The route patterns of the rule. */
+  patternsToMatch?: RoutePropertiesInputPatternsToMatchList;
+  /** The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object. */
+  cacheConfiguration?: AfdRouteCacheConfiguration;
+  /** Protocol this rule will use when forwarding traffic to backends. */
+  forwardingProtocol?: RoutePropertiesInputForwardingProtocol | (string & {});
+  /** whether this route will be linked to the default endpoint domain. */
+  linkToDefaultDomain?: RoutePropertiesInputLinkToDefaultDomain | (string & {});
+  /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
+  httpsRedirect?: RoutePropertiesInputHttpsRedirect | (string & {});
+  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
+  enabledState?: EnabledState | (string & {});
+}
+export const RoutePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customDomains: S.optional(RoutePropertiesInputCustomDomainsList),
+    originGroup: S.optional(ResourceReference),
+    originPath: S.optional(S.String),
+    ruleSets: S.optional(RoutePropertiesInputRuleSetsList),
+    supportedProtocols: S.optional(RoutePropertiesInputSupportedProtocolsList),
+    patternsToMatch: S.optional(RoutePropertiesInputPatternsToMatchList),
+    cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
+    forwardingProtocol: S.optional(RoutePropertiesInputForwardingProtocol),
+    linkToDefaultDomain: S.optional(RoutePropertiesInputLinkToDefaultDomain),
+    httpsRedirect: S.optional(RoutePropertiesInputHttpsRedirect),
+    enabledState: S.optional(EnabledState),
+  }),
+).annotate({
+  identifier: "RoutePropertiesInput",
+}) as any as S.Schema<RoutePropertiesInput>;
+
+export interface CreateRouteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the routing rule. */
+  routeName: string;
+  /** The JSON object that contains the properties of the Routes to create. */
+  properties?: RoutePropertiesInput;
+}
+export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    routeName: S.String.pipe(T.Label()),
+    properties: S.optional(RoutePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateRouteRequest",
+}) as any as S.Schema<CreateRouteRequest>;
+
+/** Reference to another resource along with its state. */
+export interface ActivatedResourceReference {
+  /** Resource ID. */
+  id?: string;
+  /** Whether the resource is active or inactive */
+  isActive?: boolean;
+}
+export const ActivatedResourceReference = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    isActive: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ActivatedResourceReference",
+}) as any as S.Schema<ActivatedResourceReference>;
+
+/** Domains referenced by this endpoint. */
+export type RoutePropertiesCustomDomainsList =
+  Array<ActivatedResourceReference>;
+export const RoutePropertiesCustomDomainsList = /*@__PURE__*/ S.Array(
+  ActivatedResourceReference,
+) as any as S.Schema<RoutePropertiesCustomDomainsList>;
+
+/** rule sets referenced by this endpoint. */
+export type RoutePropertiesRuleSetsList = Array<ResourceReference>;
+export const RoutePropertiesRuleSetsList = /*@__PURE__*/ S.Array(
+  ResourceReference,
+) as any as S.Schema<RoutePropertiesRuleSetsList>;
+
+/** List of supported protocols for this route. */
+export type RoutePropertiesSupportedProtocolsList = Array<AFDEndpointProtocols>;
+export const RoutePropertiesSupportedProtocolsList = /*@__PURE__*/ S.Array(
+  AFDEndpointProtocols,
+) as any as S.Schema<RoutePropertiesSupportedProtocolsList>;
+
+/** The route patterns of the rule. */
+export type RoutePropertiesPatternsToMatchList = Array<string>;
+export const RoutePropertiesPatternsToMatchList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutePropertiesPatternsToMatchList>;
+
+/** Protocol this rule will use when forwarding traffic to backends. */
+export type RoutePropertiesForwardingProtocol =
+  | "HttpOnly"
+  | "HttpsOnly"
+  | "MatchRequest";
+export const RoutePropertiesForwardingProtocol = /*@__PURE__*/ S.String;
+
+/** whether this route will be linked to the default endpoint domain. */
+export type RoutePropertiesLinkToDefaultDomain = "Enabled" | "Disabled";
+export const RoutePropertiesLinkToDefaultDomain = /*@__PURE__*/ S.String;
+
+/** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
+export type RoutePropertiesHttpsRedirect = "Enabled" | "Disabled";
+export const RoutePropertiesHttpsRedirect = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the Routes to create. */
+export interface RouteProperties {
+  /** The name of the endpoint which holds the route. */
+  endpointName?: string;
+  /** Domains referenced by this endpoint. */
+  customDomains?: RoutePropertiesCustomDomainsList;
+  /** A reference to the origin group. */
+  originGroup?: ResourceReference;
+  /** A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
+  originPath?: string;
+  /** rule sets referenced by this endpoint. */
+  ruleSets?: RoutePropertiesRuleSetsList;
+  /** List of supported protocols for this route. */
+  supportedProtocols?: RoutePropertiesSupportedProtocolsList;
+  /** The route patterns of the rule. */
+  patternsToMatch?: RoutePropertiesPatternsToMatchList;
+  /** The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object. */
+  cacheConfiguration?: AfdRouteCacheConfiguration;
+  /** Protocol this rule will use when forwarding traffic to backends. */
+  forwardingProtocol?: RoutePropertiesForwardingProtocol;
+  /** whether this route will be linked to the default endpoint domain. */
+  linkToDefaultDomain?: RoutePropertiesLinkToDefaultDomain;
+  /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
+  httpsRedirect?: RoutePropertiesHttpsRedirect;
+  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
+  enabledState?: EnabledState;
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+}
+export const RouteProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endpointName: S.optional(S.String),
+    customDomains: S.optional(RoutePropertiesCustomDomainsList),
+    originGroup: S.optional(ResourceReference),
+    originPath: S.optional(S.String),
+    ruleSets: S.optional(RoutePropertiesRuleSetsList),
+    supportedProtocols: S.optional(RoutePropertiesSupportedProtocolsList),
+    patternsToMatch: S.optional(RoutePropertiesPatternsToMatchList),
+    cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
+    forwardingProtocol: S.optional(RoutePropertiesForwardingProtocol),
+    linkToDefaultDomain: S.optional(RoutePropertiesLinkToDefaultDomain),
+    httpsRedirect: S.optional(RoutePropertiesHttpsRedirect),
+    enabledState: S.optional(EnabledState),
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+  }),
+).annotate({
+  identifier: "RouteProperties",
+}) as any as S.Schema<RouteProperties>;
+
+export interface CreateRouteResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Routes to create. */
+  properties?: RouteProperties;
+}
+export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RouteProperties),
+  }),
+).annotate({
+  identifier: "CreateRouteResponse",
+}) as any as S.Schema<CreateRouteResponse>;
+
+/** A list of conditions that must be matched for the actions to be executed */
+export type RulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
+export const RulePropertiesInputConditionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleCondition,
+) as any as S.Schema<RulePropertiesInputConditionsList>;
+
+/** A list of actions that are executed when all the conditions of a rule are satisfied. */
+export type RulePropertiesInputActionsList = Array<DeliveryRuleAction>;
+export const RulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleAction,
+) as any as S.Schema<RulePropertiesInputActionsList>;
+
+/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+export type RulePropertiesInputMatchProcessingBehavior = "Continue" | "Stop";
+export const RulePropertiesInputMatchProcessingBehavior =
+  /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the Rules to create. */
+export interface RulePropertiesInput {
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  order?: number;
+  /** A list of conditions that must be matched for the actions to be executed */
+  conditions?: RulePropertiesInputConditionsList;
+  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
+  actions?: RulePropertiesInputActionsList;
+  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+  matchProcessingBehavior?:
+    | RulePropertiesInputMatchProcessingBehavior
+    | (string & {});
+}
+export const RulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    order: S.optional(S.Number),
+    conditions: S.optional(RulePropertiesInputConditionsList),
+    actions: S.optional(RulePropertiesInputActionsList),
+    matchProcessingBehavior: S.optional(
+      RulePropertiesInputMatchProcessingBehavior,
+    ),
+  }),
+).annotate({
+  identifier: "RulePropertiesInput",
+}) as any as S.Schema<RulePropertiesInput>;
+
+export interface CreateRuleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+  /** Name of the delivery rule which is unique within the endpoint. */
+  ruleName: string;
+  /** The JSON object that contains the properties of the Rules to create. */
+  properties?: RulePropertiesInput;
+}
+export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+    properties: S.optional(RulePropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateRuleRequest",
+}) as any as S.Schema<CreateRuleRequest>;
+
+/** A list of conditions that must be matched for the actions to be executed */
+export type RulePropertiesConditionsList = Array<DeliveryRuleCondition>;
+export const RulePropertiesConditionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleCondition,
+) as any as S.Schema<RulePropertiesConditionsList>;
+
+/** A list of actions that are executed when all the conditions of a rule are satisfied. */
+export type RulePropertiesActionsList = Array<DeliveryRuleAction>;
+export const RulePropertiesActionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleAction,
+) as any as S.Schema<RulePropertiesActionsList>;
+
+/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+export type RulePropertiesMatchProcessingBehavior = "Continue" | "Stop";
+export const RulePropertiesMatchProcessingBehavior = /*@__PURE__*/ S.String;
+
+/** The JSON object that contains the properties of the Rules to create. */
+export interface RuleProperties {
+  /** The name of the rule set containing the rule. */
+  ruleSetName?: string;
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  order?: number;
+  /** A list of conditions that must be matched for the actions to be executed */
+  conditions?: RulePropertiesConditionsList;
+  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
+  actions?: RulePropertiesActionsList;
+  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+  matchProcessingBehavior?: RulePropertiesMatchProcessingBehavior;
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+}
+export const RuleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleSetName: S.optional(S.String),
+    order: S.optional(S.Number),
+    conditions: S.optional(RulePropertiesConditionsList),
+    actions: S.optional(RulePropertiesActionsList),
+    matchProcessingBehavior: S.optional(RulePropertiesMatchProcessingBehavior),
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+  }),
+).annotate({ identifier: "RuleProperties" }) as any as S.Schema<RuleProperties>;
+
+export interface CreateRuleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Rules to create. */
+  properties?: RuleProperties;
+}
+export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RuleProperties),
+  }),
+).annotate({
+  identifier: "CreateRuleResponse",
+}) as any as S.Schema<CreateRuleResponse>;
+
+/** A list of conditions that must be matched for the actions to be executed */
+export type BatchRulePropertiesInputConditionsList =
+  Array<DeliveryRuleCondition>;
+export const BatchRulePropertiesInputConditionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleCondition,
+) as any as S.Schema<BatchRulePropertiesInputConditionsList>;
+
+/** A list of actions that are executed when all the conditions of a rule are satisfied. */
+export type BatchRulePropertiesInputActionsList = Array<DeliveryRuleAction>;
+export const BatchRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleAction,
+) as any as S.Schema<BatchRulePropertiesInputActionsList>;
+
+/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+export type BatchRulePropertiesInputMatchProcessingBehavior =
+  | "Continue"
+  | "Stop";
+export const BatchRulePropertiesInputMatchProcessingBehavior =
+  /*@__PURE__*/ S.String;
+
+/** The JSON object that contains a rule with its name for batch mode operations. */
+export interface BatchRulePropertiesInput {
+  /** Name of the rule. */
+  ruleName: string;
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  order?: number;
+  /** A list of conditions that must be matched for the actions to be executed */
+  conditions?: BatchRulePropertiesInputConditionsList;
+  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
+  actions?: BatchRulePropertiesInputActionsList;
+  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+  matchProcessingBehavior?:
+    | BatchRulePropertiesInputMatchProcessingBehavior
+    | (string & {});
+}
+export const BatchRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleName: S.String,
+    order: S.optional(S.Number),
+    conditions: S.optional(BatchRulePropertiesInputConditionsList),
+    actions: S.optional(BatchRulePropertiesInputActionsList),
+    matchProcessingBehavior: S.optional(
+      BatchRulePropertiesInputMatchProcessingBehavior,
+    ),
+  }),
+).annotate({
+  identifier: "BatchRulePropertiesInput",
+}) as any as S.Schema<BatchRulePropertiesInput>;
+
+/** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
+export type RuleSetPropertiesInputRulesList = Array<BatchRulePropertiesInput>;
+export const RuleSetPropertiesInputRulesList = /*@__PURE__*/ S.Array(
+  BatchRulePropertiesInput,
+) as any as S.Schema<RuleSetPropertiesInputRulesList>;
+
+/** The JSON object that contains the properties of the Rule Set to create. */
+export interface RuleSetPropertiesInput {
+  /** Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set. When batch mode is disabled, rules would need to be processed independently. This property can only be set during rule set creation and cannot be updated later. For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set. */
+  batchMode?: boolean;
+  /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
+  rules?: RuleSetPropertiesInputRulesList;
+}
+export const RuleSetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    batchMode: S.optional(S.Boolean),
+    rules: S.optional(RuleSetPropertiesInputRulesList),
+  }),
+).annotate({
+  identifier: "RuleSetPropertiesInput",
+}) as any as S.Schema<RuleSetPropertiesInput>;
+
+export interface CreateRuleSetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+  /** The JSON object that contains the properties of the Rule Set to create. */
+  properties?: RuleSetPropertiesInput;
+}
+export const CreateRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+    properties: S.optional(RuleSetPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateRuleSetRequest",
+}) as any as S.Schema<CreateRuleSetRequest>;
+
+/** A list of conditions that must be matched for the actions to be executed */
+export type BatchRulePropertiesConditionsList = Array<DeliveryRuleCondition>;
+export const BatchRulePropertiesConditionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleCondition,
+) as any as S.Schema<BatchRulePropertiesConditionsList>;
+
+/** A list of actions that are executed when all the conditions of a rule are satisfied. */
+export type BatchRulePropertiesActionsList = Array<DeliveryRuleAction>;
+export const BatchRulePropertiesActionsList = /*@__PURE__*/ S.Array(
+  DeliveryRuleAction,
+) as any as S.Schema<BatchRulePropertiesActionsList>;
+
+/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+export type BatchRulePropertiesMatchProcessingBehavior = "Continue" | "Stop";
+export const BatchRulePropertiesMatchProcessingBehavior =
+  /*@__PURE__*/ S.String;
+
+/** The JSON object that contains a rule with its name for batch mode operations. */
+export interface BatchRuleProperties {
+  /** Name of the rule. */
+  ruleName: string;
+  /** The name of the rule set containing the rule. */
+  ruleSetName?: string;
+  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
+  order?: number;
+  /** A list of conditions that must be matched for the actions to be executed */
+  conditions?: BatchRulePropertiesConditionsList;
+  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
+  actions?: BatchRulePropertiesActionsList;
+  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
+  matchProcessingBehavior?: BatchRulePropertiesMatchProcessingBehavior;
+}
+export const BatchRuleProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleName: S.String,
+    ruleSetName: S.optional(S.String),
+    order: S.optional(S.Number),
+    conditions: S.optional(BatchRulePropertiesConditionsList),
+    actions: S.optional(BatchRulePropertiesActionsList),
+    matchProcessingBehavior: S.optional(
+      BatchRulePropertiesMatchProcessingBehavior,
+    ),
+  }),
+).annotate({
+  identifier: "BatchRuleProperties",
+}) as any as S.Schema<BatchRuleProperties>;
+
+/** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
+export type RuleSetPropertiesRulesList = Array<BatchRuleProperties>;
+export const RuleSetPropertiesRulesList = /*@__PURE__*/ S.Array(
+  BatchRuleProperties,
+) as any as S.Schema<RuleSetPropertiesRulesList>;
+
+/** The JSON object that contains the properties of the Rule Set to create. */
+export interface RuleSetProperties {
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+  /** The name of the profile which holds the rule set. */
+  profileName?: string;
+  /** Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set. When batch mode is disabled, rules would need to be processed independently. This property can only be set during rule set creation and cannot be updated later. For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set. */
+  batchMode?: boolean;
+  /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
+  rules?: RuleSetPropertiesRulesList;
+}
+export const RuleSetProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+    profileName: S.optional(S.String),
+    batchMode: S.optional(S.Boolean),
+    rules: S.optional(RuleSetPropertiesRulesList),
+  }),
+).annotate({
+  identifier: "RuleSetProperties",
+}) as any as S.Schema<RuleSetProperties>;
+
+export interface CreateRuleSetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Rule Set to create. */
+  properties?: RuleSetProperties;
+}
+export const CreateRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RuleSetProperties),
+  }),
+).annotate({
+  identifier: "CreateRuleSetResponse",
+}) as any as S.Schema<CreateRuleSetResponse>;
+
+/** The json object containing secret parameters */
+export interface SecretParameters {
+  /** The type of the secret resource. */
+  type: SecretType | (string & {});
+}
+export const SecretParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SecretType,
+  }),
+).annotate({
+  identifier: "SecretParameters",
+}) as any as S.Schema<SecretParameters>;
+
+/** The JSON object that contains the properties of the Secret to create. */
+export interface SecretPropertiesInput {
+  /** object which contains secret parameters */
+  parameters?: SecretParameters;
+}
+export const SecretPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(SecretParameters),
+  }),
+).annotate({
+  identifier: "SecretPropertiesInput",
+}) as any as S.Schema<SecretPropertiesInput>;
+
+export interface CreateSecretRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the Secret under the profile. */
+  secretName: string;
+  /** The JSON object that contains the properties of the Secret to create. */
+  properties?: SecretPropertiesInput;
+}
+export const CreateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    secretName: S.String.pipe(T.Label()),
+    properties: S.optional(SecretPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSecretRequest",
+}) as any as S.Schema<CreateSecretRequest>;
+
+/** The JSON object that contains the properties of the Secret to create. */
+export interface SecretProperties {
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+  /** The name of the profile which holds the secret. */
+  profileName?: string;
+  /** object which contains secret parameters */
+  parameters?: SecretParameters;
+}
+export const SecretProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+    profileName: S.optional(S.String),
+    parameters: S.optional(SecretParameters),
+  }),
+).annotate({
+  identifier: "SecretProperties",
+}) as any as S.Schema<SecretProperties>;
+
+export interface CreateSecretResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Secret to create. */
+  properties?: SecretProperties;
+}
+export const CreateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecretProperties),
+  }),
+).annotate({
+  identifier: "CreateSecretResponse",
+}) as any as S.Schema<CreateSecretResponse>;
+
+/** The type of the Security policy to create. */
+export type SecurityPolicyType = "WebApplicationFirewall";
+export const SecurityPolicyType = /*@__PURE__*/ S.String;
+
+/** The json object containing security policy parameters */
+export interface SecurityPolicyPropertiesParameters {
+  /** The type of the Security policy to create. */
+  type: SecurityPolicyType | (string & {});
+}
+export const SecurityPolicyPropertiesParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SecurityPolicyType,
+  }),
+).annotate({
+  identifier: "SecurityPolicyPropertiesParameters",
+}) as any as S.Schema<SecurityPolicyPropertiesParameters>;
+
+/** The json object that contains properties required to create a security policy */
+export interface SecurityPolicyPropertiesInput {
+  /** object which contains security policy parameters */
+  parameters?: SecurityPolicyPropertiesParameters;
+}
+export const SecurityPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parameters: S.optional(SecurityPolicyPropertiesParameters),
+  }),
+).annotate({
+  identifier: "SecurityPolicyPropertiesInput",
+}) as any as S.Schema<SecurityPolicyPropertiesInput>;
+
+export interface CreateSecurityPolicyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the security policy under the profile. */
+  securityPolicyName: string;
+  /** The json object that contains properties required to create a security policy */
+  properties?: SecurityPolicyPropertiesInput;
+}
+export const CreateSecurityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    securityPolicyName: S.String.pipe(T.Label()),
+    properties: S.optional(SecurityPolicyPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSecurityPolicyRequest",
+}) as any as S.Schema<CreateSecurityPolicyRequest>;
+
+/** The json object that contains properties required to create a security policy */
+export interface SecurityPolicyProperties {
+  /** Provisioning status */
+  provisioningState?: AfdProvisioningState;
+  deploymentStatus?: DeploymentStatus;
+  /** The name of the profile which holds the security policy. */
+  profileName?: string;
+  /** object which contains security policy parameters */
+  parameters?: SecurityPolicyPropertiesParameters;
+}
+export const SecurityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(AfdProvisioningState),
+    deploymentStatus: S.optional(DeploymentStatus),
+    profileName: S.optional(S.String),
+    parameters: S.optional(SecurityPolicyPropertiesParameters),
+  }),
+).annotate({
+  identifier: "SecurityPolicyProperties",
+}) as any as S.Schema<SecurityPolicyProperties>;
+
+export interface CreateSecurityPolicyResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The json object that contains properties required to create a security policy */
+  properties?: SecurityPolicyProperties;
+}
+export const CreateSecurityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecurityPolicyProperties),
+  }),
+).annotate({
+  identifier: "CreateSecurityPolicyResponse",
+}) as any as S.Schema<CreateSecurityPolicyResponse>;
+
+export interface DeleteAfdCustomDomainRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the domain under the profile which is unique globally. */
+  customDomainName: string;
+}
+export const DeleteAfdCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAfdCustomDomainRequest",
+}) as any as S.Schema<DeleteAfdCustomDomainRequest>;
+
+export interface DeleteAfdCustomDomainResponse {}
+export const DeleteAfdCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAfdCustomDomainResponse",
+}) as any as S.Schema<DeleteAfdCustomDomainResponse>;
+
+export interface DeleteAfdEndpointRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4201,7 +3933,153 @@ export interface EndpointsDeleteRequest {
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
 }
-export const EndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAfdEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAfdEndpointRequest",
+}) as any as S.Schema<DeleteAfdEndpointRequest>;
+
+export interface DeleteAfdEndpointResponse {}
+export const DeleteAfdEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAfdEndpointResponse",
+}) as any as S.Schema<DeleteAfdEndpointResponse>;
+
+export interface DeleteAfdOriginRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** Name of the origin which is unique within the profile. */
+  originName: string;
+}
+export const DeleteAfdOriginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAfdOriginRequest",
+}) as any as S.Schema<DeleteAfdOriginRequest>;
+
+export interface DeleteAfdOriginResponse {}
+export const DeleteAfdOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAfdOriginResponse",
+}) as any as S.Schema<DeleteAfdOriginResponse>;
+
+export interface DeleteAfdOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+}
+export const DeleteAfdOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAfdOriginGroupRequest",
+}) as any as S.Schema<DeleteAfdOriginGroupRequest>;
+
+export interface DeleteAfdOriginGroupResponse {}
+export const DeleteAfdOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAfdOriginGroupResponse",
+}) as any as S.Schema<DeleteAfdOriginGroupResponse>;
+
+export interface DeleteCustomDomainRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the custom domain within an endpoint. */
+  customDomainName: string;
+}
+export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCustomDomainRequest",
+}) as any as S.Schema<DeleteCustomDomainRequest>;
+
+export interface DeleteCustomDomainResponse {}
+export const DeleteCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCustomDomainResponse",
+}) as any as S.Schema<DeleteCustomDomainResponse>;
+
+export interface DeleteEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const DeleteEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -4216,17 +4094,17 @@ export const EndpointsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointsDeleteRequest",
-}) as any as S.Schema<EndpointsDeleteRequest>;
+  identifier: "DeleteEndpointRequest",
+}) as any as S.Schema<DeleteEndpointRequest>;
 
-export interface EndpointsDeleteResponse {}
-export const EndpointsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteEndpointResponse {}
+export const DeleteEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "EndpointsDeleteResponse",
-}) as any as S.Schema<EndpointsDeleteResponse>;
+  identifier: "DeleteEndpointResponse",
+}) as any as S.Schema<DeleteEndpointResponse>;
 
-export interface EndpointsGetRequest {
+export interface DeleteOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4235,146 +4113,36 @@ export interface EndpointsGetRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** Name of the origin which is unique within the endpoint. */
+  originName: string;
 }
-export const EndpointsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
       code: 200,
       apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
-  identifier: "EndpointsGetRequest",
-}) as any as S.Schema<EndpointsGetRequest>;
+  identifier: "DeleteOriginRequest",
+}) as any as S.Schema<DeleteOriginRequest>;
 
-/** Resource tags. */
-export type EndpointsGetResponseTagsMap = { [key: string]: string | undefined };
-export const EndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointsGetResponseTagsMap>;
-
-export interface EndpointsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: EndpointsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: EndpointProperties;
-}
-export const EndpointsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EndpointsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EndpointProperties),
-  }),
+export interface DeleteOriginResponse {}
+export const DeleteOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "EndpointsGetResponse",
-}) as any as S.Schema<EndpointsGetResponse>;
+  identifier: "DeleteOriginResponse",
+}) as any as S.Schema<DeleteOriginResponse>;
 
-export interface EndpointsListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const EndpointsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "EndpointsListByProfileRequest",
-}) as any as S.Schema<EndpointsListByProfileRequest>;
-
-/** Resource tags. */
-export type EndpointTagsMap = { [key: string]: string | undefined };
-export const EndpointTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointTagsMap>;
-
-/** CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net. */
-export interface Endpoint {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: EndpointTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: EndpointProperties;
-}
-export const Endpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EndpointTagsMap),
-    location: S.String,
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
-
-/** The Endpoint items on this page */
-export type EndpointListResultValueList = Array<Endpoint>;
-export const EndpointListResultValueList = /*@__PURE__*/ S.Array(
-  Endpoint,
-) as any as S.Schema<EndpointListResultValueList>;
-
-/** The response of a Endpoint list operation. */
-export interface EndpointListResult {
-  /** The Endpoint items on this page */
-  value: EndpointListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const EndpointListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: EndpointListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndpointListResult",
-}) as any as S.Schema<EndpointListResult>;
-
-export interface EndpointsListResourceUsageRequest {
+export interface DeleteOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4383,70 +4151,401 @@ export interface EndpointsListResourceUsageRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
 }
-export const EndpointsListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOriginGroupRequest",
+}) as any as S.Schema<DeleteOriginGroupRequest>;
+
+export interface DeleteOriginGroupResponse {}
+export const DeleteOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteOriginGroupResponse",
+}) as any as S.Schema<DeleteOriginGroupResponse>;
+
+export interface DeletePolicyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the CdnWebApplicationFirewallPolicy. */
+  policyName: string;
+}
+export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    policyName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeletePolicyRequest",
+}) as any as S.Schema<DeletePolicyRequest>;
+
+export interface DeletePolicyResponse {}
+export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePolicyResponse",
+}) as any as S.Schema<DeletePolicyResponse>;
+
+export interface DeleteProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const DeleteProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProfileRequest",
+}) as any as S.Schema<DeleteProfileRequest>;
+
+export interface DeleteProfileResponse {}
+export const DeleteProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProfileResponse",
+}) as any as S.Schema<DeleteProfileResponse>;
+
+export interface DeleteRouteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the routing rule. */
+  routeName: string;
+}
+export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    routeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRouteRequest",
+}) as any as S.Schema<DeleteRouteRequest>;
+
+export interface DeleteRouteResponse {}
+export const DeleteRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRouteResponse",
+}) as any as S.Schema<DeleteRouteResponse>;
+
+export interface DeleteRuleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+  /** Name of the delivery rule which is unique within the endpoint. */
+  ruleName: string;
+}
+export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRuleRequest",
+}) as any as S.Schema<DeleteRuleRequest>;
+
+export interface DeleteRuleResponse {}
+export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRuleResponse",
+}) as any as S.Schema<DeleteRuleResponse>;
+
+export interface DeleteRuleSetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+}
+export const DeleteRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRuleSetRequest",
+}) as any as S.Schema<DeleteRuleSetRequest>;
+
+export interface DeleteRuleSetResponse {}
+export const DeleteRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteRuleSetResponse",
+}) as any as S.Schema<DeleteRuleSetResponse>;
+
+export interface DeleteSecretRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the Secret under the profile. */
+  secretName: string;
+}
+export const DeleteSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    secretName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSecretRequest",
+}) as any as S.Schema<DeleteSecretRequest>;
+
+export interface DeleteSecretResponse {}
+export const DeleteSecretResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSecretResponse",
+}) as any as S.Schema<DeleteSecretResponse>;
+
+export interface DeleteSecurityPolicyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the security policy under the profile. */
+  securityPolicyName: string;
+}
+export const DeleteSecurityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    securityPolicyName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSecurityPolicyRequest",
+}) as any as S.Schema<DeleteSecurityPolicyRequest>;
+
+export interface DeleteSecurityPolicyResponse {}
+export const DeleteSecurityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSecurityPolicyResponse",
+}) as any as S.Schema<DeleteSecurityPolicyResponse>;
+
+export interface DisableCustomDomainCustomHttpRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the custom domain within an endpoint. */
+  customDomainName: string;
+}
+export const DisableCustomDomainCustomHttpRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      profileName: S.String.pipe(T.Label()),
+      endpointName: S.String.pipe(T.Label()),
+      customDomainName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/disableCustomHttps",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "DisableCustomDomainCustomHttpRequest",
+}) as any as S.Schema<DisableCustomDomainCustomHttpRequest>;
+
+export interface DisableCustomDomainCustomHttpResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the custom domain to create. */
+  properties?: CustomDomainProperties;
+}
+export const DisableCustomDomainCustomHttpResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(CustomDomainProperties),
+    }),
+).annotate({
+  identifier: "DisableCustomDomainCustomHttpResponse",
+}) as any as S.Schema<DisableCustomDomainCustomHttpResponse>;
+
+export interface EnableCustomDomainCustomHttpRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the custom domain within an endpoint. */
+  customDomainName: string;
+  /** Defines the source of the SSL certificate. */
+  certificateSource: CertificateSource | (string & {});
+  /** Defines the TLS extension protocol that is used for secure delivery. */
+  protocolType: ProtocolType | (string & {});
+  /** TLS protocol version that will be used for Https */
+  minimumTlsVersion?: MinimumTlsVersion | (string & {});
+}
+export const EnableCustomDomainCustomHttpRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+    certificateSource: CertificateSource,
+    protocolType: ProtocolType,
+    minimumTlsVersion: S.optional(MinimumTlsVersion),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}/enableCustomHttps",
       code: 200,
       apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
-  identifier: "EndpointsListResourceUsageRequest",
-}) as any as S.Schema<EndpointsListResourceUsageRequest>;
+  identifier: "EnableCustomDomainCustomHttpRequest",
+}) as any as S.Schema<EnableCustomDomainCustomHttpRequest>;
 
-/** Unit of the usage. e.g. count. */
-export type ResourceUsageUnit = "count";
-export const ResourceUsageUnit = /*@__PURE__*/ S.String;
-
-/** Output of check resource usage API. */
-export interface ResourceUsage {
-  /** Resource type for which the usage is provided. */
-  resourceType?: string;
-  /** Unit of the usage. e.g. count. */
-  unit?: ResourceUsageUnit;
-  /** Actual value of usage on the specified resource type. */
-  currentValue?: number;
-  /** Quota of the specified resource type. */
-  limit?: number;
+export interface EnableCustomDomainCustomHttpResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the custom domain to create. */
+  properties?: CustomDomainProperties;
 }
-export const ResourceUsage = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceType: S.optional(S.String),
-    unit: S.optional(ResourceUsageUnit),
-    currentValue: S.optional(S.Number),
-    limit: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ResourceUsage" }) as any as S.Schema<ResourceUsage>;
-
-/** The ResourceUsage items on this page */
-export type ResourceUsageListResultValueList = Array<ResourceUsage>;
-export const ResourceUsageListResultValueList = /*@__PURE__*/ S.Array(
-  ResourceUsage,
-) as any as S.Schema<ResourceUsageListResultValueList>;
-
-/** Output of check resource usage API. */
-export interface ResourceUsageListResult {
-  /** The ResourceUsage items on this page */
-  value: ResourceUsageListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ResourceUsageListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ResourceUsageListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
+export const EnableCustomDomainCustomHttpResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(CustomDomainProperties),
+    }),
 ).annotate({
-  identifier: "ResourceUsageListResult",
-}) as any as S.Schema<ResourceUsageListResult>;
+  identifier: "EnableCustomDomainCustomHttpResponse",
+}) as any as S.Schema<EnableCustomDomainCustomHttpResponse>;
 
 /** The path to the content to be loaded. Path should be a relative file URL of the origin. */
 export type EndpointsLoadContentRequestContentPathsList = Array<string>;
@@ -4538,316 +4637,6 @@ export const EndpointsPurgeContentResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointsPurgeContentResponse",
 }) as any as S.Schema<EndpointsPurgeContentResponse>;
 
-export interface EndpointsStartRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const EndpointsStartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "EndpointsStartRequest",
-}) as any as S.Schema<EndpointsStartRequest>;
-
-/** Resource tags. */
-export type EndpointsStartResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const EndpointsStartResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointsStartResponseTagsMap>;
-
-export interface EndpointsStartResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: EndpointsStartResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: EndpointProperties;
-}
-export const EndpointsStartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EndpointsStartResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({
-  identifier: "EndpointsStartResponse",
-}) as any as S.Schema<EndpointsStartResponse>;
-
-export interface EndpointsStopRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const EndpointsStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "EndpointsStopRequest",
-}) as any as S.Schema<EndpointsStopRequest>;
-
-/** Resource tags. */
-export type EndpointsStopResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const EndpointsStopResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointsStopResponseTagsMap>;
-
-export interface EndpointsStopResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: EndpointsStopResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: EndpointProperties;
-}
-export const EndpointsStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EndpointsStopResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({
-  identifier: "EndpointsStopResponse",
-}) as any as S.Schema<EndpointsStopResponse>;
-
-/** Endpoint tags. */
-export type EndpointsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const EndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointsUpdateRequestTagsMap>;
-
-/** List of content types on which compression applies. The value should be a valid MIME type. */
-export type EndpointPropertiesUpdateParametersContentTypesToCompressList =
-  Array<string>;
-export const EndpointPropertiesUpdateParametersContentTypesToCompressList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EndpointPropertiesUpdateParametersContentTypesToCompressList>;
-
-/** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
-export type EndpointPropertiesUpdateParametersQueryStringCachingBehavior =
-  | "IgnoreQueryString"
-  | "BypassCaching"
-  | "UseQueryString"
-  | "NotSet";
-export const EndpointPropertiesUpdateParametersQueryStringCachingBehavior =
-  /*@__PURE__*/ S.String;
-
-/** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
-export type EndpointPropertiesUpdateParametersGeoFiltersList = Array<GeoFilter>;
-export const EndpointPropertiesUpdateParametersGeoFiltersList =
-  /*@__PURE__*/ S.Array(
-    GeoFilter,
-  ) as any as S.Schema<EndpointPropertiesUpdateParametersGeoFiltersList>;
-
-/** List of keys used to validate the signed URL hashes. */
-export type EndpointPropertiesUpdateParametersUrlSigningKeysList =
-  Array<UrlSigningKey>;
-export const EndpointPropertiesUpdateParametersUrlSigningKeysList =
-  /*@__PURE__*/ S.Array(
-    UrlSigningKey,
-  ) as any as S.Schema<EndpointPropertiesUpdateParametersUrlSigningKeysList>;
-
-/** The JSON object containing endpoint update parameters. */
-export interface EndpointPropertiesUpdateParameters {
-  /** A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
-  originPath?: string;
-  /** List of content types on which compression applies. The value should be a valid MIME type. */
-  contentTypesToCompress?: EndpointPropertiesUpdateParametersContentTypesToCompressList;
-  /** The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. */
-  originHostHeader?: string;
-  /** Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB. */
-  isCompressionEnabled?: boolean;
-  /** Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed. */
-  isHttpAllowed?: boolean;
-  /** Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed. */
-  isHttpsAllowed?: boolean;
-  /** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
-  queryStringCachingBehavior?:
-    | EndpointPropertiesUpdateParametersQueryStringCachingBehavior
-    | (string & {});
-  /** Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization. */
-  optimizationType?: OptimizationType | (string & {});
-  /** Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin. */
-  probePath?: string;
-  /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
-  geoFilters?: EndpointPropertiesUpdateParametersGeoFiltersList;
-  /** A reference to the origin group. */
-  defaultOriginGroup?: ResourceReference;
-  /** List of keys used to validate the signed URL hashes. */
-  urlSigningKeys?: EndpointPropertiesUpdateParametersUrlSigningKeysList;
-  /** A policy that specifies the delivery rules to be used for an endpoint. */
-  deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
-  /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
-  webApplicationFirewallPolicyLink?: ResourceReference;
-}
-export const EndpointPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originPath: S.optional(S.String),
-    contentTypesToCompress: S.optional(
-      EndpointPropertiesUpdateParametersContentTypesToCompressList,
-    ),
-    originHostHeader: S.optional(S.String),
-    isCompressionEnabled: S.optional(S.Boolean),
-    isHttpAllowed: S.optional(S.Boolean),
-    isHttpsAllowed: S.optional(S.Boolean),
-    queryStringCachingBehavior: S.optional(
-      EndpointPropertiesUpdateParametersQueryStringCachingBehavior,
-    ),
-    optimizationType: S.optional(OptimizationType),
-    probePath: S.optional(S.String),
-    geoFilters: S.optional(EndpointPropertiesUpdateParametersGeoFiltersList),
-    defaultOriginGroup: S.optional(ResourceReference),
-    urlSigningKeys: S.optional(
-      EndpointPropertiesUpdateParametersUrlSigningKeysList,
-    ),
-    deliveryPolicy: S.optional(
-      EndpointPropertiesUpdateParametersDeliveryPolicy,
-    ),
-    webApplicationFirewallPolicyLink: S.optional(ResourceReference),
-  }),
-).annotate({
-  identifier: "EndpointPropertiesUpdateParameters",
-}) as any as S.Schema<EndpointPropertiesUpdateParameters>;
-
-export interface EndpointsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Endpoint tags. */
-  tags?: EndpointsUpdateRequestTagsMap;
-  /** The JSON object containing endpoint update parameters. */
-  properties?: EndpointPropertiesUpdateParameters;
-}
-export const EndpointsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    tags: S.optional(EndpointsUpdateRequestTagsMap),
-    properties: S.optional(EndpointPropertiesUpdateParameters),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "EndpointsUpdateRequest",
-}) as any as S.Schema<EndpointsUpdateRequest>;
-
-/** Resource tags. */
-export type EndpointsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const EndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<EndpointsUpdateResponseTagsMap>;
-
-export interface EndpointsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: EndpointsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create an endpoint. */
-  properties?: EndpointProperties;
-}
-export const EndpointsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(EndpointsUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(EndpointProperties),
-  }),
-).annotate({
-  identifier: "EndpointsUpdateResponse",
-}) as any as S.Schema<EndpointsUpdateResponse>;
-
 export interface EndpointsValidateCustomDomainRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4880,7 +4669,7 @@ export const EndpointsValidateCustomDomainRequest = /*@__PURE__*/ S.suspend(
   identifier: "EndpointsValidateCustomDomainRequest",
 }) as any as S.Schema<EndpointsValidateCustomDomainRequest>;
 
-export interface LogAnalyticsGetLogAnalyticsLocationsRequest {
+export interface GenerateProfileSsoUriRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -4888,8 +4677,390 @@ export interface LogAnalyticsGetLogAnalyticsLocationsRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
-export const LogAnalyticsGetLogAnalyticsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GenerateProfileSsoUriRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GenerateProfileSsoUriRequest",
+}) as any as S.Schema<GenerateProfileSsoUriRequest>;
+
+/** The URI required to login to the supplemental portal from the Azure portal. */
+export interface SsoUri {
+  /** The URI used to login to the supplemental portal. */
+  ssoUriValue?: string;
+}
+export const SsoUri = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ssoUriValue: S.optional(S.String),
+  }),
+).annotate({ identifier: "SsoUri" }) as any as S.Schema<SsoUri>;
+
+export interface GetAfdCustomDomainRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the domain under the profile which is unique globally. */
+  customDomainName: string;
+}
+export const GetAfdCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAfdCustomDomainRequest",
+}) as any as S.Schema<GetAfdCustomDomainRequest>;
+
+export interface GetAfdCustomDomainResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the domain to create. */
+  properties?: AFDDomainProperties;
+}
+export const GetAfdCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDDomainProperties),
+  }),
+).annotate({
+  identifier: "GetAfdCustomDomainResponse",
+}) as any as S.Schema<GetAfdCustomDomainResponse>;
+
+export interface GetAfdEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const GetAfdEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAfdEndpointRequest",
+}) as any as S.Schema<GetAfdEndpointRequest>;
+
+/** Resource tags. */
+export type AFDEndpointsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AFDEndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDEndpointsGetResponseTagsMap>;
+
+export interface GetAfdEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AFDEndpointsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: AFDEndpointProperties;
+}
+export const GetAfdEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AFDEndpointsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AFDEndpointProperties),
+  }),
+).annotate({
+  identifier: "GetAfdEndpointResponse",
+}) as any as S.Schema<GetAfdEndpointResponse>;
+
+export interface GetAfdOriginRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** Name of the origin which is unique within the profile. */
+  originName: string;
+}
+export const GetAfdOriginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAfdOriginRequest",
+}) as any as S.Schema<GetAfdOriginRequest>;
+
+export interface GetAfdOriginResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: AFDOriginProperties;
+}
+export const GetAfdOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginProperties),
+  }),
+).annotate({
+  identifier: "GetAfdOriginResponse",
+}) as any as S.Schema<GetAfdOriginResponse>;
+
+export interface GetAfdOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+}
+export const GetAfdOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAfdOriginGroupRequest",
+}) as any as S.Schema<GetAfdOriginGroupRequest>;
+
+export interface GetAfdOriginGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: AFDOriginGroupProperties;
+}
+export const GetAfdOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginGroupProperties),
+  }),
+).annotate({
+  identifier: "GetAfdOriginGroupResponse",
+}) as any as S.Schema<GetAfdOriginGroupResponse>;
+
+export interface GetCustomDomainRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the custom domain within an endpoint. */
+  customDomainName: string;
+}
+export const GetCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains/{customDomainName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomDomainRequest",
+}) as any as S.Schema<GetCustomDomainRequest>;
+
+export interface GetCustomDomainResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the custom domain to create. */
+  properties?: CustomDomainProperties;
+}
+export const GetCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CustomDomainProperties),
+  }),
+).annotate({
+  identifier: "GetCustomDomainResponse",
+}) as any as S.Schema<GetCustomDomainResponse>;
+
+export interface GetEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const GetEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetEndpointRequest",
+}) as any as S.Schema<GetEndpointRequest>;
+
+/** Resource tags. */
+export type EndpointsGetResponseTagsMap = { [key: string]: string | undefined };
+export const EndpointsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EndpointsGetResponseTagsMap>;
+
+export interface GetEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: EndpointsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: EndpointProperties;
+}
+export const GetEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(EndpointsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(EndpointProperties),
+  }),
+).annotate({
+  identifier: "GetEndpointResponse",
+}) as any as S.Schema<GetEndpointResponse>;
+
+export interface GetLogAnalyticLogAnalyticLocationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const GetLogAnalyticLogAnalyticLocationRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -4902,9 +5073,9 @@ export const LogAnalyticsGetLogAnalyticsLocationsRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "LogAnalyticsGetLogAnalyticsLocationsRequest",
-  }) as any as S.Schema<LogAnalyticsGetLogAnalyticsLocationsRequest>;
+).annotate({
+  identifier: "GetLogAnalyticLogAnalyticLocationRequest",
+}) as any as S.Schema<GetLogAnalyticLogAnalyticLocationRequest>;
 
 export interface ContinentsResponseContinentsItem {
   id?: string;
@@ -5027,7 +5198,7 @@ export const LogAnalyticsGetLogAnalyticsMetricsRequestProtocolsList =
     S.String,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsMetricsRequestProtocolsList>;
 
-export interface LogAnalyticsGetLogAnalyticsMetricsRequest {
+export interface GetLogAnalyticLogAnalyticMetricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5046,8 +5217,8 @@ export interface LogAnalyticsGetLogAnalyticsMetricsRequest {
   customDomains: LogAnalyticsGetLogAnalyticsMetricsRequestCustomDomainsList;
   protocols: LogAnalyticsGetLogAnalyticsMetricsRequestProtocolsList;
 }
-export const LogAnalyticsGetLogAnalyticsMetricsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetLogAnalyticLogAnalyticMetricRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -5086,9 +5257,9 @@ export const LogAnalyticsGetLogAnalyticsMetricsRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "LogAnalyticsGetLogAnalyticsMetricsRequest",
-  }) as any as S.Schema<LogAnalyticsGetLogAnalyticsMetricsRequest>;
+).annotate({
+  identifier: "GetLogAnalyticLogAnalyticMetricRequest",
+}) as any as S.Schema<GetLogAnalyticLogAnalyticMetricRequest>;
 
 export type MetricsGranularity = "PT5M" | "PT1H" | "P1D";
 export const MetricsGranularity = /*@__PURE__*/ S.String;
@@ -5223,7 +5394,7 @@ export const LogAnalyticsGetLogAnalyticsRankingsRequestCustomDomainsList =
     S.String,
   ) as any as S.Schema<LogAnalyticsGetLogAnalyticsRankingsRequestCustomDomainsList>;
 
-export interface LogAnalyticsGetLogAnalyticsRankingsRequest {
+export interface GetLogAnalyticLogAnalyticRankingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5237,8 +5408,8 @@ export interface LogAnalyticsGetLogAnalyticsRankingsRequest {
   dateTimeEnd: string;
   customDomains?: LogAnalyticsGetLogAnalyticsRankingsRequestCustomDomainsList;
 }
-export const LogAnalyticsGetLogAnalyticsRankingsRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetLogAnalyticLogAnalyticRankingRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -5265,9 +5436,9 @@ export const LogAnalyticsGetLogAnalyticsRankingsRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "LogAnalyticsGetLogAnalyticsRankingsRequest",
-  }) as any as S.Schema<LogAnalyticsGetLogAnalyticsRankingsRequest>;
+).annotate({
+  identifier: "GetLogAnalyticLogAnalyticRankingRequest",
+}) as any as S.Schema<GetLogAnalyticLogAnalyticRankingRequest>;
 
 export interface RankingsResponseTablesPropertiesItemsMetricsItem {
   metric?: string;
@@ -5346,7 +5517,7 @@ export const RankingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RankingsResponse",
 }) as any as S.Schema<RankingsResponse>;
 
-export interface LogAnalyticsGetLogAnalyticsResourcesRequest {
+export interface GetLogAnalyticLogAnalyticResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5354,8 +5525,8 @@ export interface LogAnalyticsGetLogAnalyticsResourcesRequest {
   /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
   profileName: string;
 }
-export const LogAnalyticsGetLogAnalyticsResourcesRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetLogAnalyticLogAnalyticResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -5368,9 +5539,9 @@ export const LogAnalyticsGetLogAnalyticsResourcesRequest =
         apiVersion: "2026-07-01",
       }),
     ),
-  ).annotate({
-    identifier: "LogAnalyticsGetLogAnalyticsResourcesRequest",
-  }) as any as S.Schema<LogAnalyticsGetLogAnalyticsResourcesRequest>;
+).annotate({
+  identifier: "GetLogAnalyticLogAnalyticResourceRequest",
+}) as any as S.Schema<GetLogAnalyticLogAnalyticResourceRequest>;
 
 export interface ResourcesResponseEndpointsPropertiesItemsItem {
   id?: string;
@@ -5510,7 +5681,7 @@ export const LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesList =
     LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesItem,
   ) as any as S.Schema<LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesList>;
 
-export interface LogAnalyticsGetWafLogAnalyticsMetricsRequest {
+export interface GetLogAnalyticWafLogAnalyticMetricRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5527,7 +5698,7 @@ export interface LogAnalyticsGetWafLogAnalyticsMetricsRequest {
   groupBy?: LogAnalyticsGetWafLogAnalyticsMetricsRequestGroupByList;
   ruleTypes?: LogAnalyticsGetWafLogAnalyticsMetricsRequestRuleTypesList;
 }
-export const LogAnalyticsGetWafLogAnalyticsMetricsRequest =
+export const GetLogAnalyticWafLogAnalyticMetricRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -5561,8 +5732,8 @@ export const LogAnalyticsGetWafLogAnalyticsMetricsRequest =
       }),
     ),
   ).annotate({
-    identifier: "LogAnalyticsGetWafLogAnalyticsMetricsRequest",
-  }) as any as S.Schema<LogAnalyticsGetWafLogAnalyticsMetricsRequest>;
+    identifier: "GetLogAnalyticWafLogAnalyticMetricRequest",
+  }) as any as S.Schema<GetLogAnalyticWafLogAnalyticMetricRequest>;
 
 export type WafMetricsGranularity = "PT5M" | "PT1H" | "P1D";
 export const WafMetricsGranularity = /*@__PURE__*/ S.String;
@@ -5696,7 +5867,7 @@ export const LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesList =
     LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesItem,
   ) as any as S.Schema<LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesList>;
 
-export interface LogAnalyticsGetWafLogAnalyticsRankingsRequest {
+export interface GetLogAnalyticWafLogAnalyticRankingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -5711,7 +5882,7 @@ export interface LogAnalyticsGetWafLogAnalyticsRankingsRequest {
   actions?: LogAnalyticsGetWafLogAnalyticsRankingsRequestActionsList;
   ruleTypes?: LogAnalyticsGetWafLogAnalyticsRankingsRequestRuleTypesList;
 }
-export const LogAnalyticsGetWafLogAnalyticsRankingsRequest =
+export const GetLogAnalyticWafLogAnalyticRankingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -5745,8 +5916,8 @@ export const LogAnalyticsGetWafLogAnalyticsRankingsRequest =
       }),
     ),
   ).annotate({
-    identifier: "LogAnalyticsGetWafLogAnalyticsRankingsRequest",
-  }) as any as S.Schema<LogAnalyticsGetWafLogAnalyticsRankingsRequest>;
+    identifier: "GetLogAnalyticWafLogAnalyticRankingRequest",
+  }) as any as S.Schema<GetLogAnalyticWafLogAnalyticRankingRequest>;
 
 export type WafRankingsResponseGroupsList = Array<string>;
 export const WafRankingsResponseGroupsList = /*@__PURE__*/ S.Array(
@@ -5805,882 +5976,7 @@ export const WafRankingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WafRankingsResponse",
 }) as any as S.Schema<WafRankingsResponse>;
 
-export interface ManagedRuleSetsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const ManagedRuleSetsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManagedRuleSetsListRequest",
-}) as any as S.Schema<ManagedRuleSetsListRequest>;
-
-/** Describes a managed rule definition. */
-export interface ManagedRuleDefinition {
-  /** Identifier for the managed rule. */
-  ruleId?: string;
-  /** Describes the functionality of the managed rule. */
-  description?: string;
-}
-export const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleId: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedRuleDefinition",
-}) as any as S.Schema<ManagedRuleDefinition>;
-
-/** List of rules within the managed rule group. */
-export type ManagedRuleGroupDefinitionRulesList = Array<ManagedRuleDefinition>;
-export const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ S.Array(
-  ManagedRuleDefinition,
-) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
-
-/** Describes a managed rule group. */
-export interface ManagedRuleGroupDefinition {
-  /** Name of the managed rule group. */
-  ruleGroupName?: string;
-  /** Description of the managed rule group. */
-  description?: string;
-  /** List of rules within the managed rule group. */
-  rules?: ManagedRuleGroupDefinitionRulesList;
-}
-export const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleGroupName: S.optional(S.String),
-    description: S.optional(S.String),
-    rules: S.optional(ManagedRuleGroupDefinitionRulesList),
-  }),
-).annotate({
-  identifier: "ManagedRuleGroupDefinition",
-}) as any as S.Schema<ManagedRuleGroupDefinition>;
-
-/** Rule groups of the managed rule set. */
-export type ManagedRuleSetDefinitionPropertiesRuleGroupsList =
-  Array<ManagedRuleGroupDefinition>;
-export const ManagedRuleSetDefinitionPropertiesRuleGroupsList =
-  /*@__PURE__*/ S.Array(
-    ManagedRuleGroupDefinition,
-  ) as any as S.Schema<ManagedRuleSetDefinitionPropertiesRuleGroupsList>;
-
-/** Properties for a managed rule set definition. */
-export interface ManagedRuleSetDefinitionProperties {
-  /** Provisioning state of the managed rule set. */
-  provisioningState?: string;
-  /** Type of the managed rule set. */
-  ruleSetType?: string;
-  /** Version of the managed rule set type. */
-  ruleSetVersion?: string;
-  /** Rule groups of the managed rule set. */
-  ruleGroups?: ManagedRuleSetDefinitionPropertiesRuleGroupsList;
-}
-export const ManagedRuleSetDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(S.String),
-    ruleSetType: S.optional(S.String),
-    ruleSetVersion: S.optional(S.String),
-    ruleGroups: S.optional(ManagedRuleSetDefinitionPropertiesRuleGroupsList),
-  }),
-).annotate({
-  identifier: "ManagedRuleSetDefinitionProperties",
-}) as any as S.Schema<ManagedRuleSetDefinitionProperties>;
-
-/** Describes a managed rule set definition. */
-export interface ManagedRuleSetDefinition {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Describes managed rule set definition properties. */
-  properties?: ManagedRuleSetDefinitionProperties;
-  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
-  sku?: Sku;
-}
-export const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagedRuleSetDefinitionProperties),
-    sku: S.optional(Sku),
-  }),
-).annotate({
-  identifier: "ManagedRuleSetDefinition",
-}) as any as S.Schema<ManagedRuleSetDefinition>;
-
-/** The ManagedRuleSetDefinition items on this page */
-export type ManagedRuleSetDefinitionListValueList =
-  Array<ManagedRuleSetDefinition>;
-export const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ S.Array(
-  ManagedRuleSetDefinition,
-) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
-
-/** List of managed rule set definitions available for use in a policy. */
-export interface ManagedRuleSetDefinitionList {
-  /** The ManagedRuleSetDefinition items on this page */
-  value: ManagedRuleSetDefinitionListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ManagedRuleSetDefinitionList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ManagedRuleSetDefinitionListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManagedRuleSetDefinitionList",
-}) as any as S.Schema<ManagedRuleSetDefinitionList>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Cdn/operations",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** The object that represents the operation. */
-export interface OperationDisplay {
-  /** Service provider: Microsoft.Cdn */
-  provider?: string;
-  /** Resource on which the operation is performed: Profile, endpoint, etc. */
-  resource?: string;
-  /** Operation type: Read, write, delete, etc. */
-  operation?: string;
-  /** Description of operation. */
-  description?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** Log specification of operation. */
-export interface LogSpecification {
-  /** Name of log specification. */
-  name?: string;
-  /** Display name of log specification. */
-  displayName?: string;
-  /** Blob duration of specification. */
-  blobDuration?: string;
-  /** Pattern to filter based on name */
-  logFilterPattern?: string;
-}
-export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    blobDuration: S.optional(S.String),
-    logFilterPattern: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LogSpecification",
-}) as any as S.Schema<LogSpecification>;
-
-/** Log specifications of operation. */
-export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
-  LogSpecification,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
-
-/** Retention policy of a resource metric. */
-export interface MetricAvailability {
-  timeGrain?: string;
-  blobDuration?: string;
-}
-export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    timeGrain: S.optional(S.String),
-    blobDuration: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MetricAvailability",
-}) as any as S.Schema<MetricAvailability>;
-
-/** Retention policies of a resource metric. */
-export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
-export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
-  MetricAvailability,
-) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
-
-/** The supported time grain types for the metrics. */
-export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-export const MetricSpecificationSupportedTimeGrainTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
-
-/** Type of operation: get, read, delete, etc. */
-export interface DimensionProperties {
-  /** Name of dimension. */
-  name?: string;
-  /** Display name of dimension. */
-  displayName?: string;
-  /** Internal name of dimension. */
-  internalName?: string;
-}
-export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    internalName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DimensionProperties",
-}) as any as S.Schema<DimensionProperties>;
-
-/** The dimensions of metric */
-export type MetricSpecificationDimensionsList = Array<DimensionProperties>;
-export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
-  DimensionProperties,
-) as any as S.Schema<MetricSpecificationDimensionsList>;
-
-/** Metric specification of operation. */
-export interface MetricSpecification {
-  /** Name of metric specification. */
-  name?: string;
-  /** Display name of metric specification. */
-  displayName?: string;
-  /** Display description of metric specification. */
-  displayDescription?: string;
-  /** The metric unit. Possible values include: 'Bytes', 'Count', 'Milliseconds'. */
-  unit?: string;
-  /** The metric aggregation type. Possible values include: 'Average', 'Count', 'Total'. */
-  aggregationType?: string;
-  /** Retention policies of a resource metric. */
-  availabilities?: MetricSpecificationAvailabilitiesList;
-  /** The supported time grain types for the metrics. */
-  supportedTimeGrainTypes?: MetricSpecificationSupportedTimeGrainTypesList;
-  /** The dimensions of metric */
-  dimensions?: MetricSpecificationDimensionsList;
-  /** Property to specify whether to fill gap with zero. */
-  fillGapWithZero?: boolean;
-  /** Pattern to filter based on name */
-  metricFilterPattern?: string;
-  /** Property to specify metric is internal or not. */
-  isInternal?: boolean;
-}
-export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    displayName: S.optional(S.String),
-    displayDescription: S.optional(S.String),
-    unit: S.optional(S.String),
-    aggregationType: S.optional(S.String),
-    availabilities: S.optional(MetricSpecificationAvailabilitiesList),
-    supportedTimeGrainTypes: S.optional(
-      MetricSpecificationSupportedTimeGrainTypesList,
-    ),
-    dimensions: S.optional(MetricSpecificationDimensionsList),
-    fillGapWithZero: S.optional(S.Boolean),
-    metricFilterPattern: S.optional(S.String),
-    isInternal: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MetricSpecification",
-}) as any as S.Schema<MetricSpecification>;
-
-/** Metric specifications of operation. */
-export type ServiceSpecificationMetricSpecificationsList =
-  Array<MetricSpecification>;
-export const ServiceSpecificationMetricSpecificationsList =
-  /*@__PURE__*/ S.Array(
-    MetricSpecification,
-  ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
-/** One property of operation, include log specifications. */
-export interface ServiceSpecification {
-  /** Log specifications of operation. */
-  logSpecifications?: ServiceSpecificationLogSpecificationsList;
-  /** Metric specifications of operation. */
-  metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
-}
-export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
-    metricSpecifications: S.optional(
-      ServiceSpecificationMetricSpecificationsList,
-    ),
-  }),
-).annotate({
-  identifier: "ServiceSpecification",
-}) as any as S.Schema<ServiceSpecification>;
-
-/** Properties of operation, include metric specifications. */
-export interface OperationProperties {
-  /** One property of operation, include metric specifications. */
-  serviceSpecification?: ServiceSpecification;
-}
-export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceSpecification: S.optional(ServiceSpecification),
-  }),
-).annotate({
-  identifier: "OperationProperties",
-}) as any as S.Schema<OperationProperties>;
-
-/** CDN REST API operation */
-export interface Operation {
-  /** Operation name: {provider}/{resource}/{operation} */
-  name?: string;
-  /** Indicates whether the operation is a data action */
-  isDataAction?: boolean;
-  /** The object that represents the operation. */
-  display?: OperationDisplay;
-  /** The origin of operations. */
-  origin?: string;
-  /** Properties of operation, include metric specifications. */
-  properties?: OperationProperties;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationDisplay),
-    origin: S.optional(S.String),
-    properties: S.optional(OperationProperties),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of CDN operations supported by the CDN resource provider. */
-export type OperationsListResultValueList = Array<Operation>;
-export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationsListResultValueList>;
-
-/** Result of the request to list CDN operations. It contains a list of operations and a URL link to get the next set of results. */
-export interface OperationsListResult {
-  /** List of CDN operations supported by the CDN resource provider. */
-  value: OperationsListResultValueList;
-  /** URL to get the next set of operation list results if there are any. */
-  nextLink?: string;
-}
-export const OperationsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: OperationsListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResult",
-}) as any as S.Schema<OperationsListResult>;
-
-/** The source of the content being delivered via CDN within given origin group. */
-export type OriginGroupPropertiesOriginsList = Array<ResourceReference>;
-export const OriginGroupPropertiesOriginsList = /*@__PURE__*/ S.Array(
-  ResourceReference,
-) as any as S.Schema<OriginGroupPropertiesOriginsList>;
-
-/** Resource status of the origin group. */
-export type OriginGroupResourceState = "Creating" | "Active" | "Deleting";
-export const OriginGroupResourceState = /*@__PURE__*/ S.String;
-
-/** Provisioning status of the origin group. */
-export type OriginGroupProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Updating"
-  | "Deleting"
-  | "Creating";
-export const OriginGroupProvisioningState = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the origin group. */
-export interface OriginGroupProperties {
-  /** Health probe settings to the origin that is used to determine the health of the origin. */
-  healthProbeSettings?: HealthProbeParameters;
-  /** The source of the content being delivered via CDN within given origin group. */
-  origins?: OriginGroupPropertiesOriginsList;
-  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
-  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
-  /** The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported. */
-  responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
-  /** Resource status of the origin group. */
-  resourceState?: OriginGroupResourceState | (string & {});
-  /** Provisioning status of the origin group. */
-  provisioningState?: OriginGroupProvisioningState | (string & {});
-}
-export const OriginGroupProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthProbeSettings: S.optional(HealthProbeParameters),
-    origins: S.optional(OriginGroupPropertiesOriginsList),
-    trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(S.Number),
-    responseBasedOriginErrorDetectionSettings: S.optional(
-      ResponseBasedOriginErrorDetectionParameters,
-    ),
-    resourceState: S.optional(OriginGroupResourceState),
-    provisioningState: S.optional(OriginGroupProvisioningState),
-  }),
-).annotate({
-  identifier: "OriginGroupProperties",
-}) as any as S.Schema<OriginGroupProperties>;
-
-export interface OriginGroupsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: OriginGroupProperties;
-}
-export const OriginGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    properties: S.optional(OriginGroupProperties),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginGroupsCreateRequest",
-}) as any as S.Schema<OriginGroupsCreateRequest>;
-
-export interface OriginGroupsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: OriginGroupProperties;
-}
-export const OriginGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OriginGroupProperties),
-  }),
-).annotate({
-  identifier: "OriginGroupsCreateResponse",
-}) as any as S.Schema<OriginGroupsCreateResponse>;
-
-export interface OriginGroupsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-}
-export const OriginGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginGroupsDeleteRequest",
-}) as any as S.Schema<OriginGroupsDeleteRequest>;
-
-export interface OriginGroupsDeleteResponse {}
-export const OriginGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OriginGroupsDeleteResponse",
-}) as any as S.Schema<OriginGroupsDeleteResponse>;
-
-export interface OriginGroupsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-}
-export const OriginGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginGroupsGetRequest",
-}) as any as S.Schema<OriginGroupsGetRequest>;
-
-export interface OriginGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: OriginGroupProperties;
-}
-export const OriginGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OriginGroupProperties),
-  }),
-).annotate({
-  identifier: "OriginGroupsGetResponse",
-}) as any as S.Schema<OriginGroupsGetResponse>;
-
-export interface OriginGroupsListByEndpointRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const OriginGroupsListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginGroupsListByEndpointRequest",
-}) as any as S.Schema<OriginGroupsListByEndpointRequest>;
-
-/** Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN. */
-export interface OriginGroup {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: OriginGroupProperties;
-}
-export const OriginGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OriginGroupProperties),
-  }),
-).annotate({ identifier: "OriginGroup" }) as any as S.Schema<OriginGroup>;
-
-/** The OriginGroup items on this page */
-export type OriginGroupListResultValueList = Array<OriginGroup>;
-export const OriginGroupListResultValueList = /*@__PURE__*/ S.Array(
-  OriginGroup,
-) as any as S.Schema<OriginGroupListResultValueList>;
-
-/** The response of a OriginGroup list operation. */
-export interface OriginGroupListResult {
-  /** The OriginGroup items on this page */
-  value: OriginGroupListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const OriginGroupListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: OriginGroupListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OriginGroupListResult",
-}) as any as S.Schema<OriginGroupListResult>;
-
-/** The source of the content being delivered via CDN within given origin group. */
-export type OriginGroupUpdatePropertiesParametersOriginsList =
-  Array<ResourceReference>;
-export const OriginGroupUpdatePropertiesParametersOriginsList =
-  /*@__PURE__*/ S.Array(
-    ResourceReference,
-  ) as any as S.Schema<OriginGroupUpdatePropertiesParametersOriginsList>;
-
-/** The JSON object that contains the properties of the origin group. */
-export interface OriginGroupUpdatePropertiesParameters {
-  /** Health probe settings to the origin that is used to determine the health of the origin. */
-  healthProbeSettings?: HealthProbeParameters;
-  /** The source of the content being delivered via CDN within given origin group. */
-  origins?: OriginGroupUpdatePropertiesParametersOriginsList;
-  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
-  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
-  /** The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported. */
-  responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
-}
-export const OriginGroupUpdatePropertiesParameters = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      healthProbeSettings: S.optional(HealthProbeParameters),
-      origins: S.optional(OriginGroupUpdatePropertiesParametersOriginsList),
-      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(
-        S.Number,
-      ),
-      responseBasedOriginErrorDetectionSettings: S.optional(
-        ResponseBasedOriginErrorDetectionParameters,
-      ),
-    }),
-).annotate({
-  identifier: "OriginGroupUpdatePropertiesParameters",
-}) as any as S.Schema<OriginGroupUpdatePropertiesParameters>;
-
-export interface OriginGroupsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin group which is unique within the endpoint. */
-  originGroupName: string;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: OriginGroupUpdatePropertiesParameters;
-}
-export const OriginGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originGroupName: S.String.pipe(T.Label()),
-    properties: S.optional(OriginGroupUpdatePropertiesParameters),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginGroupsUpdateRequest",
-}) as any as S.Schema<OriginGroupsUpdateRequest>;
-
-export interface OriginGroupsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin group. */
-  properties?: OriginGroupProperties;
-}
-export const OriginGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OriginGroupProperties),
-  }),
-).annotate({
-  identifier: "OriginGroupsUpdateResponse",
-}) as any as S.Schema<OriginGroupsUpdateResponse>;
-
-/** Resource status of the origin. */
-export type OriginResourceState = "Creating" | "Active" | "Deleting";
-export const OriginResourceState = /*@__PURE__*/ S.String;
-
-/** Provisioning status of the origin. */
-export type OriginProvisioningState =
-  | "Succeeded"
-  | "Failed"
-  | "Updating"
-  | "Deleting"
-  | "Creating";
-export const OriginProvisioningState = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the origin. */
-export interface OriginProperties {
-  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
-  hostName: string;
-  /** The value of the HTTP port. Must be between 1 and 65535. */
-  httpPort?: number;
-  /** The value of the HTTPS port. Must be between 1 and 65535. */
-  httpsPort?: number;
-  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
-  originHostHeader?: string;
-  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
-  priority?: number;
-  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
-  weight?: number;
-  /** Origin is enabled for load balancing or not */
-  enabled?: boolean;
-  /** The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private' */
-  privateLinkAlias?: string;
-  /** The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private' */
-  privateLinkResourceId?: string;
-  /** The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated */
-  privateLinkLocation?: string;
-  /** A custom message to be included in the approval request to connect to the Private Link. */
-  privateLinkApprovalMessage?: string;
-  /** Resource status of the origin. */
-  resourceState?: OriginResourceState | (string & {});
-  /** Provisioning status of the origin. */
-  provisioningState?: OriginProvisioningState | (string & {});
-  /** The approval status for the connection to the Private Link */
-  privateEndpointStatus?: PrivateEndpointStatus | (string & {});
-}
-export const OriginProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostName: S.String,
-    httpPort: S.optional(S.Number),
-    httpsPort: S.optional(S.Number),
-    originHostHeader: S.optional(S.String),
-    priority: S.optional(S.Number),
-    weight: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    privateLinkAlias: S.optional(S.String),
-    privateLinkResourceId: S.optional(S.String),
-    privateLinkLocation: S.optional(S.String),
-    privateLinkApprovalMessage: S.optional(S.String),
-    resourceState: S.optional(OriginResourceState),
-    provisioningState: S.optional(OriginProvisioningState),
-    privateEndpointStatus: S.optional(PrivateEndpointStatus),
-  }),
-).annotate({
-  identifier: "OriginProperties",
-}) as any as S.Schema<OriginProperties>;
-
-export interface OriginsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin which is unique within the endpoint. */
-  originName: string;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: OriginProperties;
-}
-export const OriginsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-    properties: S.optional(OriginProperties),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginsCreateRequest",
-}) as any as S.Schema<OriginsCreateRequest>;
-
-export interface OriginsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: OriginProperties;
-}
-export const OriginsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OriginProperties),
-  }),
-).annotate({
-  identifier: "OriginsCreateResponse",
-}) as any as S.Schema<OriginsCreateResponse>;
-
-export interface OriginsDeleteRequest {
+export interface GetOriginRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6692,45 +5988,7 @@ export interface OriginsDeleteRequest {
   /** Name of the origin which is unique within the endpoint. */
   originName: string;
 }
-export const OriginsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "OriginsDeleteRequest",
-}) as any as S.Schema<OriginsDeleteRequest>;
-
-export interface OriginsDeleteResponse {}
-export const OriginsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OriginsDeleteResponse",
-}) as any as S.Schema<OriginsDeleteResponse>;
-
-export interface OriginsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin which is unique within the endpoint. */
-  originName: string;
-}
-export const OriginsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -6746,10 +6004,10 @@ export const OriginsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OriginsGetRequest",
-}) as any as S.Schema<OriginsGetRequest>;
+  identifier: "GetOriginRequest",
+}) as any as S.Schema<GetOriginRequest>;
 
-export interface OriginsGetResponse {
+export interface GetOriginResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -6761,7 +6019,7 @@ export interface OriginsGetResponse {
   /** The JSON object that contains the properties of the origin. */
   properties?: OriginProperties;
 }
-export const OriginsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -6770,10 +6028,10 @@ export const OriginsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(OriginProperties),
   }),
 ).annotate({
-  identifier: "OriginsGetResponse",
-}) as any as S.Schema<OriginsGetResponse>;
+  identifier: "GetOriginResponse",
+}) as any as S.Schema<GetOriginResponse>;
 
-export interface OriginsListByEndpointRequest {
+export interface GetOriginGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -6782,27 +6040,29 @@ export interface OriginsListByEndpointRequest {
   profileName: string;
   /** Name of the endpoint under the profile which is unique globally. */
   endpointName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
 }
-export const OriginsListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
     profileName: S.String.pipe(T.Label()),
     endpointName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
       code: 200,
       apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
-  identifier: "OriginsListByEndpointRequest",
-}) as any as S.Schema<OriginsListByEndpointRequest>;
+  identifier: "GetOriginGroupRequest",
+}) as any as S.Schema<GetOriginGroupRequest>;
 
-/** CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
-export interface Origin {
+export interface GetOriginGroupResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -6811,150 +6071,52 @@ export interface Origin {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: OriginProperties;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: OriginGroupProperties;
 }
-export const Origin = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(OriginProperties),
-  }),
-).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
-
-/** The Origin items on this page */
-export type OriginListResultValueList = Array<Origin>;
-export const OriginListResultValueList = /*@__PURE__*/ S.Array(
-  Origin,
-) as any as S.Schema<OriginListResultValueList>;
-
-/** The response of a Origin list operation. */
-export interface OriginListResult {
-  /** The Origin items on this page */
-  value: OriginListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const OriginListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: OriginListResultValueList,
-    nextLink: S.optional(S.String),
+    properties: S.optional(OriginGroupProperties),
   }),
 ).annotate({
-  identifier: "OriginListResult",
-}) as any as S.Schema<OriginListResult>;
+  identifier: "GetOriginGroupResponse",
+}) as any as S.Schema<GetOriginGroupResponse>;
 
-/** The JSON object that contains the properties of the origin. */
-export interface OriginUpdatePropertiesParameters {
-  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
-  hostName?: string;
-  /** The value of the HTTP port. Must be between 1 and 65535. */
-  httpPort?: number;
-  /** The value of the HTTPS port. Must be between 1 and 65535. */
-  httpsPort?: number;
-  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
-  originHostHeader?: string;
-  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
-  priority?: number;
-  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
-  weight?: number;
-  /** Origin is enabled for load balancing or not */
-  enabled?: boolean;
-  /** The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private' */
-  privateLinkAlias?: string;
-  /** The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private' */
-  privateLinkResourceId?: string;
-  /** The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated */
-  privateLinkLocation?: string;
-  /** A custom message to be included in the approval request to connect to the Private Link. */
-  privateLinkApprovalMessage?: string;
-}
-export const OriginUpdatePropertiesParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hostName: S.optional(S.String),
-    httpPort: S.optional(S.Number),
-    httpsPort: S.optional(S.Number),
-    originHostHeader: S.optional(S.String),
-    priority: S.optional(S.Number),
-    weight: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    privateLinkAlias: S.optional(S.String),
-    privateLinkResourceId: S.optional(S.String),
-    privateLinkLocation: S.optional(S.String),
-    privateLinkApprovalMessage: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OriginUpdatePropertiesParameters",
-}) as any as S.Schema<OriginUpdatePropertiesParameters>;
-
-export interface OriginsUpdateRequest {
+export interface GetPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the origin which is unique within the endpoint. */
-  originName: string;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: OriginUpdatePropertiesParameters;
+  /** The name of the CdnWebApplicationFirewallPolicy. */
+  policyName: string;
 }
-export const OriginsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    originName: S.String.pipe(T.Label()),
-    properties: S.optional(OriginUpdatePropertiesParameters),
+    policyName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
       code: 200,
       apiVersion: "2026-07-01",
     }),
   ),
 ).annotate({
-  identifier: "OriginsUpdateRequest",
-}) as any as S.Schema<OriginsUpdateRequest>;
-
-export interface OriginsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the origin. */
-  properties?: OriginProperties;
-}
-export const OriginsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(OriginProperties),
-  }),
-).annotate({
-  identifier: "OriginsUpdateResponse",
-}) as any as S.Schema<OriginsUpdateResponse>;
+  identifier: "GetPolicyRequest",
+}) as any as S.Schema<GetPolicyRequest>;
 
 /** Resource tags. */
-export type PoliciesCreateOrUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+export type PoliciesGetResponseTagsMap = { [key: string]: string | undefined };
+export const PoliciesGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
   S.String,
-) as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
+) as any as S.Schema<PoliciesGetResponseTagsMap>;
 
 /** Describes if the policy is in enabled or disabled state. Defaults to Enabled if not specified. */
 export type PolicyEnabledState = "Disabled" | "Enabled";
@@ -7277,6 +6439,2519 @@ export const ManagedRuleSetList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagedRuleSetList",
 }) as any as S.Schema<ManagedRuleSetList>;
 
+/** Defines the ARM Resource ID for the linked endpoints */
+export interface CdnEndpoint {
+  /** ARM Resource ID string. */
+  id?: string;
+}
+export const CdnEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({ identifier: "CdnEndpoint" }) as any as S.Schema<CdnEndpoint>;
+
+/** Describes Azure CDN endpoints associated with this Web Application Firewall policy. */
+export type CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
+  Array<CdnEndpoint>;
+export const CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
+  /*@__PURE__*/ S.Array(
+    CdnEndpoint,
+  ) as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList>;
+
+/** Key-Value pair representing additional properties for Web Application Firewall policy. */
+export type CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap = {
+  [key: string]: string | undefined;
+};
+export const CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap>;
+
+/** Provisioning state of the WebApplicationFirewallPolicy. */
+export type ProvisioningState = "Creating" | "Succeeded" | "Failed";
+export const ProvisioningState = /*@__PURE__*/ S.String;
+
+/** Resource status of the policy. */
+export type PolicyResourceState =
+  | "Creating"
+  | "Enabling"
+  | "Enabled"
+  | "Disabling"
+  | "Disabled"
+  | "Deleting";
+export const PolicyResourceState = /*@__PURE__*/ S.String;
+
+/** Defines CDN web application firewall policy properties. */
+export interface CdnWebApplicationFirewallPolicyProperties {
+  /** Describes policySettings for policy */
+  policySettings?: PolicySettings;
+  /** Describes rate limit rules inside the policy. */
+  rateLimitRules?: RateLimitRuleList;
+  /** Describes custom rules inside the policy. */
+  customRules?: CustomRuleList;
+  /** Describes managed rules inside the policy. */
+  managedRules?: ManagedRuleSetList;
+  /** Describes Azure CDN endpoints associated with this Web Application Firewall policy. */
+  endpointLinks?: CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList;
+  /** Key-Value pair representing additional properties for Web Application Firewall policy. */
+  extendedProperties?: CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap;
+  /** Provisioning state of the WebApplicationFirewallPolicy. */
+  provisioningState?: ProvisioningState;
+  /** Resource status of the policy. */
+  resourceState?: PolicyResourceState;
+}
+export const CdnWebApplicationFirewallPolicyProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      policySettings: S.optional(PolicySettings),
+      rateLimitRules: S.optional(RateLimitRuleList),
+      customRules: S.optional(CustomRuleList),
+      managedRules: S.optional(ManagedRuleSetList),
+      endpointLinks: S.optional(
+        CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList,
+      ),
+      extendedProperties: S.optional(
+        CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap,
+      ),
+      provisioningState: S.optional(ProvisioningState),
+      resourceState: S.optional(PolicyResourceState),
+    }),
+  ).annotate({
+    identifier: "CdnWebApplicationFirewallPolicyProperties",
+  }) as any as S.Schema<CdnWebApplicationFirewallPolicyProperties>;
+
+export interface GetPolicyResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PoliciesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the web application firewall policy. */
+  properties?: CdnWebApplicationFirewallPolicyProperties;
+  /** Gets a unique read-only string that changes whenever the resource is updated. */
+  etag?: string;
+  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
+  sku: Sku;
+}
+export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PoliciesGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
+    etag: S.optional(S.String),
+    sku: Sku,
+  }),
+).annotate({
+  identifier: "GetPolicyResponse",
+}) as any as S.Schema<GetPolicyResponse>;
+
+export interface GetProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetProfileRequest",
+}) as any as S.Schema<GetProfileRequest>;
+
+/** Resource tags. */
+export type ProfilesGetResponseTagsMap = { [key: string]: string | undefined };
+export const ProfilesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfilesGetResponseTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ProfilesGetResponseIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const ProfilesGetResponseIdentityUserAssignedIdentitiesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    UserAssignedIdentity,
+  ) as any as S.Schema<ProfilesGetResponseIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProfilesGetResponseIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ProfilesGetResponseIdentityUserAssignedIdentitiesMap;
+}
+export const ProfilesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ProfilesGetResponseIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ProfilesGetResponseIdentity",
+}) as any as S.Schema<ProfilesGetResponseIdentity>;
+
+export interface GetProfileResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProfilesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create a profile. */
+  properties?: ProfileProperties;
+  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
+  sku: Sku;
+  /** Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProfilesGetResponseIdentity;
+}
+export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProfilesGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ProfileProperties),
+    sku: Sku,
+    kind: S.optional(S.String),
+    identity: S.optional(ProfilesGetResponseIdentity),
+  }),
+).annotate({
+  identifier: "GetProfileResponse",
+}) as any as S.Schema<GetProfileResponse>;
+
+export interface GetRouteRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the routing rule. */
+  routeName: string;
+}
+export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    routeName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetRouteRequest",
+}) as any as S.Schema<GetRouteRequest>;
+
+export interface GetRouteResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Routes to create. */
+  properties?: RouteProperties;
+}
+export const GetRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RouteProperties),
+  }),
+).annotate({
+  identifier: "GetRouteResponse",
+}) as any as S.Schema<GetRouteResponse>;
+
+export interface GetRuleRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+  /** Name of the delivery rule which is unique within the endpoint. */
+  ruleName: string;
+}
+export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+    ruleName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
+
+export interface GetRuleResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Rules to create. */
+  properties?: RuleProperties;
+}
+export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RuleProperties),
+  }),
+).annotate({
+  identifier: "GetRuleResponse",
+}) as any as S.Schema<GetRuleResponse>;
+
+export interface GetRuleSetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+}
+export const GetRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetRuleSetRequest",
+}) as any as S.Schema<GetRuleSetRequest>;
+
+export interface GetRuleSetResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Rule Set to create. */
+  properties?: RuleSetProperties;
+}
+export const GetRuleSetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RuleSetProperties),
+  }),
+).annotate({
+  identifier: "GetRuleSetResponse",
+}) as any as S.Schema<GetRuleSetResponse>;
+
+export interface GetSecretRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the Secret under the profile. */
+  secretName: string;
+}
+export const GetSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    secretName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSecretRequest",
+}) as any as S.Schema<GetSecretRequest>;
+
+export interface GetSecretResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Secret to create. */
+  properties?: SecretProperties;
+}
+export const GetSecretResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecretProperties),
+  }),
+).annotate({
+  identifier: "GetSecretResponse",
+}) as any as S.Schema<GetSecretResponse>;
+
+export interface GetSecurityPolicyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the security policy under the profile. */
+  securityPolicyName: string;
+}
+export const GetSecurityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    securityPolicyName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetSecurityPolicyRequest",
+}) as any as S.Schema<GetSecurityPolicyRequest>;
+
+export interface GetSecurityPolicyResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The json object that contains properties required to create a security policy */
+  properties?: SecurityPolicyProperties;
+}
+export const GetSecurityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecurityPolicyProperties),
+  }),
+).annotate({
+  identifier: "GetSecurityPolicyResponse",
+}) as any as S.Schema<GetSecurityPolicyResponse>;
+
+export interface ListAfdCustomDomainByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListAfdCustomDomainByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAfdCustomDomainByProfileRequest",
+}) as any as S.Schema<ListAfdCustomDomainByProfileRequest>;
+
+/** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
+export interface AFDDomain {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the domain to create. */
+  properties?: AFDDomainProperties;
+}
+export const AFDDomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDDomainProperties),
+  }),
+).annotate({ identifier: "AFDDomain" }) as any as S.Schema<AFDDomain>;
+
+/** The AFDDomain items on this page */
+export type AFDDomainListResultValueList = Array<AFDDomain>;
+export const AFDDomainListResultValueList = /*@__PURE__*/ S.Array(
+  AFDDomain,
+) as any as S.Schema<AFDDomainListResultValueList>;
+
+/** The response of a AFDDomain list operation. */
+export interface AFDDomainListResult {
+  /** The AFDDomain items on this page */
+  value: AFDDomainListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const AFDDomainListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AFDDomainListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AFDDomainListResult",
+}) as any as S.Schema<AFDDomainListResult>;
+
+export interface ListAfdEndpointByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListAfdEndpointByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAfdEndpointByProfileRequest",
+}) as any as S.Schema<ListAfdEndpointByProfileRequest>;
+
+/** Resource tags. */
+export type AFDEndpointTagsMap = { [key: string]: string | undefined };
+export const AFDEndpointTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDEndpointTagsMap>;
+
+/** Azure Front Door endpoint is the entity within a Azure Front Door profile containing configuration information such as origin, protocol, content caching and delivery behavior. The AzureFrontDoor endpoint uses the URL format <endpointname>.azureedge.net. */
+export interface AFDEndpoint {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AFDEndpointTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: AFDEndpointProperties;
+}
+export const AFDEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AFDEndpointTagsMap),
+    location: S.String,
+    properties: S.optional(AFDEndpointProperties),
+  }),
+).annotate({ identifier: "AFDEndpoint" }) as any as S.Schema<AFDEndpoint>;
+
+/** The AFDEndpoint items on this page */
+export type AFDEndpointListResultValueList = Array<AFDEndpoint>;
+export const AFDEndpointListResultValueList = /*@__PURE__*/ S.Array(
+  AFDEndpoint,
+) as any as S.Schema<AFDEndpointListResultValueList>;
+
+/** The response of a AFDEndpoint list operation. */
+export interface AFDEndpointListResult {
+  /** The AFDEndpoint items on this page */
+  value: AFDEndpointListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const AFDEndpointListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AFDEndpointListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AFDEndpointListResult",
+}) as any as S.Schema<AFDEndpointListResult>;
+
+export interface ListAfdEndpointResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const ListAfdEndpointResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/usages",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAfdEndpointResourceUsageRequest",
+}) as any as S.Schema<ListAfdEndpointResourceUsageRequest>;
+
+/** An enum describing the unit of measurement. */
+export type UsageUnit = "Count";
+export const UsageUnit = /*@__PURE__*/ S.String;
+
+/** The usage names. */
+export interface UsageName {
+  /** A string describing the resource name. */
+  value?: string;
+  /** A localized string describing the resource name. */
+  localizedValue?: string;
+}
+export const UsageName = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+    localizedValue: S.optional(S.String),
+  }),
+).annotate({ identifier: "UsageName" }) as any as S.Schema<UsageName>;
+
+/** Describes resource usage. */
+export interface Usage {
+  /** Resource identifier. */
+  id?: string;
+  /** An enum describing the unit of measurement. */
+  unit: UsageUnit;
+  /** The current value of the usage. */
+  currentValue: number;
+  /** The limit of usage. */
+  limit: number;
+  /** The name of the type of usage. */
+  name: UsageName;
+}
+export const Usage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    unit: UsageUnit,
+    currentValue: S.Number,
+    limit: S.Number,
+    name: UsageName,
+  }),
+).annotate({ identifier: "Usage" }) as any as S.Schema<Usage>;
+
+/** The Usage items on this page */
+export type UsagesListResultValueList = Array<Usage>;
+export const UsagesListResultValueList = /*@__PURE__*/ S.Array(
+  Usage,
+) as any as S.Schema<UsagesListResultValueList>;
+
+/** The list usages operation response. */
+export interface UsagesListResult {
+  /** The Usage items on this page */
+  value: UsagesListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const UsagesListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: UsagesListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UsagesListResult",
+}) as any as S.Schema<UsagesListResult>;
+
+export interface ListAfdOriginByOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+}
+export const ListAfdOriginByOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAfdOriginByOriginGroupRequest",
+}) as any as S.Schema<ListAfdOriginByOriginGroupRequest>;
+
+/** Azure Front Door origin is the source of the content being delivered via Azure Front Door. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
+export interface AFDOrigin {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: AFDOriginProperties;
+}
+export const AFDOrigin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginProperties),
+  }),
+).annotate({ identifier: "AFDOrigin" }) as any as S.Schema<AFDOrigin>;
+
+/** The AFDOrigin items on this page */
+export type AFDOriginListResultValueList = Array<AFDOrigin>;
+export const AFDOriginListResultValueList = /*@__PURE__*/ S.Array(
+  AFDOrigin,
+) as any as S.Schema<AFDOriginListResultValueList>;
+
+/** The response of a AFDOrigin list operation. */
+export interface AFDOriginListResult {
+  /** The AFDOrigin items on this page */
+  value: AFDOriginListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const AFDOriginListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AFDOriginListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AFDOriginListResult",
+}) as any as S.Schema<AFDOriginListResult>;
+
+export interface ListAfdOriginGroupByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListAfdOriginGroupByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAfdOriginGroupByProfileRequest",
+}) as any as S.Schema<ListAfdOriginGroupByProfileRequest>;
+
+/** AFDOrigin group comprising of origins is used for load balancing to origins when the content cannot be served from Azure Front Door. */
+export interface AFDOriginGroup {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: AFDOriginGroupProperties;
+}
+export const AFDOriginGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginGroupProperties),
+  }),
+).annotate({ identifier: "AFDOriginGroup" }) as any as S.Schema<AFDOriginGroup>;
+
+/** The AFDOriginGroup items on this page */
+export type AFDOriginGroupListResultValueList = Array<AFDOriginGroup>;
+export const AFDOriginGroupListResultValueList = /*@__PURE__*/ S.Array(
+  AFDOriginGroup,
+) as any as S.Schema<AFDOriginGroupListResultValueList>;
+
+/** The response of a AFDOriginGroup list operation. */
+export interface AFDOriginGroupListResult {
+  /** The AFDOriginGroup items on this page */
+  value: AFDOriginGroupListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const AFDOriginGroupListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AFDOriginGroupListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AFDOriginGroupListResult",
+}) as any as S.Schema<AFDOriginGroupListResult>;
+
+export interface ListAfdOriginGroupResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+}
+export const ListAfdOriginGroupResourceUsageRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      profileName: S.String.pipe(T.Label()),
+      originGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/usages",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListAfdOriginGroupResourceUsageRequest",
+}) as any as S.Schema<ListAfdOriginGroupResourceUsageRequest>;
+
+export interface ListAfdProfileResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListAfdProfileResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/usages",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAfdProfileResourceUsageRequest",
+}) as any as S.Schema<ListAfdProfileResourceUsageRequest>;
+
+export interface ListCustomDomainByEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const ListCustomDomainByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListCustomDomainByEndpointRequest",
+}) as any as S.Schema<ListCustomDomainByEndpointRequest>;
+
+/** Friendly domain name mapping to the endpoint hostname that the customer provides for branding purposes, e.g. www.contoso.com. */
+export interface CustomDomain {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the custom domain to create. */
+  properties?: CustomDomainProperties;
+}
+export const CustomDomain = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CustomDomainProperties),
+  }),
+).annotate({ identifier: "CustomDomain" }) as any as S.Schema<CustomDomain>;
+
+/** The CustomDomain items on this page */
+export type CustomDomainListResultValueList = Array<CustomDomain>;
+export const CustomDomainListResultValueList = /*@__PURE__*/ S.Array(
+  CustomDomain,
+) as any as S.Schema<CustomDomainListResultValueList>;
+
+/** The response of a CustomDomain list operation. */
+export interface CustomDomainListResult {
+  /** The CustomDomain items on this page */
+  value: CustomDomainListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CustomDomainListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: CustomDomainListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CustomDomainListResult",
+}) as any as S.Schema<CustomDomainListResult>;
+
+export interface ListEdgeNodesRequest {}
+export const ListEdgeNodesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Cdn/edgenodes",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEdgeNodesRequest",
+}) as any as S.Schema<ListEdgeNodesRequest>;
+
+/** CIDR Ip address */
+export interface CidrIpAddress {
+  /** Ip address itself. */
+  baseIpAddress?: string;
+  /** The length of the prefix of the ip address. */
+  prefixLength?: number;
+}
+export const CidrIpAddress = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseIpAddress: S.optional(S.String),
+    prefixLength: S.optional(S.Number),
+  }),
+).annotate({ identifier: "CidrIpAddress" }) as any as S.Schema<CidrIpAddress>;
+
+/** The list of ip v4 addresses. */
+export type IpAddressGroupIpv4AddressesList = Array<CidrIpAddress>;
+export const IpAddressGroupIpv4AddressesList = /*@__PURE__*/ S.Array(
+  CidrIpAddress,
+) as any as S.Schema<IpAddressGroupIpv4AddressesList>;
+
+/** The list of ip v6 addresses. */
+export type IpAddressGroupIpv6AddressesList = Array<CidrIpAddress>;
+export const IpAddressGroupIpv6AddressesList = /*@__PURE__*/ S.Array(
+  CidrIpAddress,
+) as any as S.Schema<IpAddressGroupIpv6AddressesList>;
+
+/** CDN Ip address group */
+export interface IpAddressGroup {
+  /** The delivery region of the ip address group */
+  deliveryRegion?: string;
+  /** The list of ip v4 addresses. */
+  ipv4Addresses?: IpAddressGroupIpv4AddressesList;
+  /** The list of ip v6 addresses. */
+  ipv6Addresses?: IpAddressGroupIpv6AddressesList;
+}
+export const IpAddressGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deliveryRegion: S.optional(S.String),
+    ipv4Addresses: S.optional(IpAddressGroupIpv4AddressesList),
+    ipv6Addresses: S.optional(IpAddressGroupIpv6AddressesList),
+  }),
+).annotate({ identifier: "IpAddressGroup" }) as any as S.Schema<IpAddressGroup>;
+
+/** List of ip address groups. */
+export type EdgeNodePropertiesIpAddressGroupsList = Array<IpAddressGroup>;
+export const EdgeNodePropertiesIpAddressGroupsList = /*@__PURE__*/ S.Array(
+  IpAddressGroup,
+) as any as S.Schema<EdgeNodePropertiesIpAddressGroupsList>;
+
+/** The JSON object that contains the properties required to create an edgenode. */
+export interface EdgeNodeProperties {
+  /** List of ip address groups. */
+  ipAddressGroups: EdgeNodePropertiesIpAddressGroupsList;
+}
+export const EdgeNodeProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipAddressGroups: EdgeNodePropertiesIpAddressGroupsList,
+  }),
+).annotate({
+  identifier: "EdgeNodeProperties",
+}) as any as S.Schema<EdgeNodeProperties>;
+
+/** Edgenode is a global Point of Presence (POP) location used to deliver CDN content to end users. */
+export interface EdgeNode {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties required to create an edgenode. */
+  properties?: EdgeNodeProperties;
+}
+export const EdgeNode = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EdgeNodeProperties),
+  }),
+).annotate({ identifier: "EdgeNode" }) as any as S.Schema<EdgeNode>;
+
+/** The EdgeNode items on this page */
+export type EdgenodeResultValueList = Array<EdgeNode>;
+export const EdgenodeResultValueList = /*@__PURE__*/ S.Array(
+  EdgeNode,
+) as any as S.Schema<EdgenodeResultValueList>;
+
+/** Result of the request to list CDN edgenodes. It contains a list of ip address group and a URL link to get the next set of results. */
+export interface EdgenodeResult {
+  /** The EdgeNode items on this page */
+  value: EdgenodeResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const EdgenodeResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: EdgenodeResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "EdgenodeResult" }) as any as S.Schema<EdgenodeResult>;
+
+export interface ListEndpointByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListEndpointByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEndpointByProfileRequest",
+}) as any as S.Schema<ListEndpointByProfileRequest>;
+
+/** Resource tags. */
+export type EndpointTagsMap = { [key: string]: string | undefined };
+export const EndpointTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EndpointTagsMap>;
+
+/** CDN endpoint is the entity within a CDN profile containing configuration information such as origin, protocol, content caching and delivery behavior. The CDN endpoint uses the URL format <endpointname>.azureedge.net. */
+export interface Endpoint {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: EndpointTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: EndpointProperties;
+}
+export const Endpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(EndpointTagsMap),
+    location: S.String,
+    properties: S.optional(EndpointProperties),
+  }),
+).annotate({ identifier: "Endpoint" }) as any as S.Schema<Endpoint>;
+
+/** The Endpoint items on this page */
+export type EndpointListResultValueList = Array<Endpoint>;
+export const EndpointListResultValueList = /*@__PURE__*/ S.Array(
+  Endpoint,
+) as any as S.Schema<EndpointListResultValueList>;
+
+/** The response of a Endpoint list operation. */
+export interface EndpointListResult {
+  /** The Endpoint items on this page */
+  value: EndpointListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const EndpointListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: EndpointListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EndpointListResult",
+}) as any as S.Schema<EndpointListResult>;
+
+export interface ListEndpointResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const ListEndpointResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/checkResourceUsage",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEndpointResourceUsageRequest",
+}) as any as S.Schema<ListEndpointResourceUsageRequest>;
+
+/** Unit of the usage. e.g. count. */
+export type ResourceUsageUnit = "count";
+export const ResourceUsageUnit = /*@__PURE__*/ S.String;
+
+/** Output of check resource usage API. */
+export interface ResourceUsage {
+  /** Resource type for which the usage is provided. */
+  resourceType?: string;
+  /** Unit of the usage. e.g. count. */
+  unit?: ResourceUsageUnit;
+  /** Actual value of usage on the specified resource type. */
+  currentValue?: number;
+  /** Quota of the specified resource type. */
+  limit?: number;
+}
+export const ResourceUsage = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceType: S.optional(S.String),
+    unit: S.optional(ResourceUsageUnit),
+    currentValue: S.optional(S.Number),
+    limit: S.optional(S.Number),
+  }),
+).annotate({ identifier: "ResourceUsage" }) as any as S.Schema<ResourceUsage>;
+
+/** The ResourceUsage items on this page */
+export type ResourceUsageListResultValueList = Array<ResourceUsage>;
+export const ResourceUsageListResultValueList = /*@__PURE__*/ S.Array(
+  ResourceUsage,
+) as any as S.Schema<ResourceUsageListResultValueList>;
+
+/** Output of check resource usage API. */
+export interface ListResourceUsageResult {
+  /** The ResourceUsage items on this page */
+  value: ResourceUsageListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ListResourceUsageResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ResourceUsageListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListResourceUsageResult",
+}) as any as S.Schema<ListResourceUsageResult>;
+
+export interface ListManagedRuleSetsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListManagedRuleSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/cdnWebApplicationFirewallManagedRuleSets",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListManagedRuleSetsRequest",
+}) as any as S.Schema<ListManagedRuleSetsRequest>;
+
+/** Describes a managed rule definition. */
+export interface ManagedRuleDefinition {
+  /** Identifier for the managed rule. */
+  ruleId?: string;
+  /** Describes the functionality of the managed rule. */
+  description?: string;
+}
+export const ManagedRuleDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleId: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedRuleDefinition",
+}) as any as S.Schema<ManagedRuleDefinition>;
+
+/** List of rules within the managed rule group. */
+export type ManagedRuleGroupDefinitionRulesList = Array<ManagedRuleDefinition>;
+export const ManagedRuleGroupDefinitionRulesList = /*@__PURE__*/ S.Array(
+  ManagedRuleDefinition,
+) as any as S.Schema<ManagedRuleGroupDefinitionRulesList>;
+
+/** Describes a managed rule group. */
+export interface ManagedRuleGroupDefinition {
+  /** Name of the managed rule group. */
+  ruleGroupName?: string;
+  /** Description of the managed rule group. */
+  description?: string;
+  /** List of rules within the managed rule group. */
+  rules?: ManagedRuleGroupDefinitionRulesList;
+}
+export const ManagedRuleGroupDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ruleGroupName: S.optional(S.String),
+    description: S.optional(S.String),
+    rules: S.optional(ManagedRuleGroupDefinitionRulesList),
+  }),
+).annotate({
+  identifier: "ManagedRuleGroupDefinition",
+}) as any as S.Schema<ManagedRuleGroupDefinition>;
+
+/** Rule groups of the managed rule set. */
+export type ManagedRuleSetDefinitionPropertiesRuleGroupsList =
+  Array<ManagedRuleGroupDefinition>;
+export const ManagedRuleSetDefinitionPropertiesRuleGroupsList =
+  /*@__PURE__*/ S.Array(
+    ManagedRuleGroupDefinition,
+  ) as any as S.Schema<ManagedRuleSetDefinitionPropertiesRuleGroupsList>;
+
+/** Properties for a managed rule set definition. */
+export interface ManagedRuleSetDefinitionProperties {
+  /** Provisioning state of the managed rule set. */
+  provisioningState?: string;
+  /** Type of the managed rule set. */
+  ruleSetType?: string;
+  /** Version of the managed rule set type. */
+  ruleSetVersion?: string;
+  /** Rule groups of the managed rule set. */
+  ruleGroups?: ManagedRuleSetDefinitionPropertiesRuleGroupsList;
+}
+export const ManagedRuleSetDefinitionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(S.String),
+    ruleSetType: S.optional(S.String),
+    ruleSetVersion: S.optional(S.String),
+    ruleGroups: S.optional(ManagedRuleSetDefinitionPropertiesRuleGroupsList),
+  }),
+).annotate({
+  identifier: "ManagedRuleSetDefinitionProperties",
+}) as any as S.Schema<ManagedRuleSetDefinitionProperties>;
+
+/** Describes a managed rule set definition. */
+export interface ManagedRuleSetDefinition {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Describes managed rule set definition properties. */
+  properties?: ManagedRuleSetDefinitionProperties;
+  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
+  sku?: Sku;
+}
+export const ManagedRuleSetDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManagedRuleSetDefinitionProperties),
+    sku: S.optional(Sku),
+  }),
+).annotate({
+  identifier: "ManagedRuleSetDefinition",
+}) as any as S.Schema<ManagedRuleSetDefinition>;
+
+/** The ManagedRuleSetDefinition items on this page */
+export type ManagedRuleSetDefinitionListValueList =
+  Array<ManagedRuleSetDefinition>;
+export const ManagedRuleSetDefinitionListValueList = /*@__PURE__*/ S.Array(
+  ManagedRuleSetDefinition,
+) as any as S.Schema<ManagedRuleSetDefinitionListValueList>;
+
+/** List of managed rule set definitions available for use in a policy. */
+export interface ManagedRuleSetDefinitionList {
+  /** The ManagedRuleSetDefinition items on this page */
+  value: ManagedRuleSetDefinitionListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ManagedRuleSetDefinitionList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ManagedRuleSetDefinitionListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManagedRuleSetDefinitionList",
+}) as any as S.Schema<ManagedRuleSetDefinitionList>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Cdn/operations",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** The object that represents the operation. */
+export interface OperationDisplay {
+  /** Service provider: Microsoft.Cdn */
+  provider?: string;
+  /** Resource on which the operation is performed: Profile, endpoint, etc. */
+  resource?: string;
+  /** Operation type: Read, write, delete, etc. */
+  operation?: string;
+  /** Description of operation. */
+  description?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** Log specification of operation. */
+export interface LogSpecification {
+  /** Name of log specification. */
+  name?: string;
+  /** Display name of log specification. */
+  displayName?: string;
+  /** Blob duration of specification. */
+  blobDuration?: string;
+  /** Pattern to filter based on name */
+  logFilterPattern?: string;
+}
+export const LogSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    blobDuration: S.optional(S.String),
+    logFilterPattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LogSpecification",
+}) as any as S.Schema<LogSpecification>;
+
+/** Log specifications of operation. */
+export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
+export const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ S.Array(
+  LogSpecification,
+) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
+
+/** Retention policy of a resource metric. */
+export interface MetricAvailability {
+  timeGrain?: string;
+  blobDuration?: string;
+}
+export const MetricAvailability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    timeGrain: S.optional(S.String),
+    blobDuration: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MetricAvailability",
+}) as any as S.Schema<MetricAvailability>;
+
+/** Retention policies of a resource metric. */
+export type MetricSpecificationAvailabilitiesList = Array<MetricAvailability>;
+export const MetricSpecificationAvailabilitiesList = /*@__PURE__*/ S.Array(
+  MetricAvailability,
+) as any as S.Schema<MetricSpecificationAvailabilitiesList>;
+
+/** The supported time grain types for the metrics. */
+export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
+export const MetricSpecificationSupportedTimeGrainTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
+
+/** Type of operation: get, read, delete, etc. */
+export interface DimensionProperties {
+  /** Name of dimension. */
+  name?: string;
+  /** Display name of dimension. */
+  displayName?: string;
+  /** Internal name of dimension. */
+  internalName?: string;
+}
+export const DimensionProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    internalName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DimensionProperties",
+}) as any as S.Schema<DimensionProperties>;
+
+/** The dimensions of metric */
+export type MetricSpecificationDimensionsList = Array<DimensionProperties>;
+export const MetricSpecificationDimensionsList = /*@__PURE__*/ S.Array(
+  DimensionProperties,
+) as any as S.Schema<MetricSpecificationDimensionsList>;
+
+/** Metric specification of operation. */
+export interface MetricSpecification {
+  /** Name of metric specification. */
+  name?: string;
+  /** Display name of metric specification. */
+  displayName?: string;
+  /** Display description of metric specification. */
+  displayDescription?: string;
+  /** The metric unit. Possible values include: 'Bytes', 'Count', 'Milliseconds'. */
+  unit?: string;
+  /** The metric aggregation type. Possible values include: 'Average', 'Count', 'Total'. */
+  aggregationType?: string;
+  /** Retention policies of a resource metric. */
+  availabilities?: MetricSpecificationAvailabilitiesList;
+  /** The supported time grain types for the metrics. */
+  supportedTimeGrainTypes?: MetricSpecificationSupportedTimeGrainTypesList;
+  /** The dimensions of metric */
+  dimensions?: MetricSpecificationDimensionsList;
+  /** Property to specify whether to fill gap with zero. */
+  fillGapWithZero?: boolean;
+  /** Pattern to filter based on name */
+  metricFilterPattern?: string;
+  /** Property to specify metric is internal or not. */
+  isInternal?: boolean;
+}
+export const MetricSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    displayName: S.optional(S.String),
+    displayDescription: S.optional(S.String),
+    unit: S.optional(S.String),
+    aggregationType: S.optional(S.String),
+    availabilities: S.optional(MetricSpecificationAvailabilitiesList),
+    supportedTimeGrainTypes: S.optional(
+      MetricSpecificationSupportedTimeGrainTypesList,
+    ),
+    dimensions: S.optional(MetricSpecificationDimensionsList),
+    fillGapWithZero: S.optional(S.Boolean),
+    metricFilterPattern: S.optional(S.String),
+    isInternal: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MetricSpecification",
+}) as any as S.Schema<MetricSpecification>;
+
+/** Metric specifications of operation. */
+export type ServiceSpecificationMetricSpecificationsList =
+  Array<MetricSpecification>;
+export const ServiceSpecificationMetricSpecificationsList =
+  /*@__PURE__*/ S.Array(
+    MetricSpecification,
+  ) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
+
+/** One property of operation, include log specifications. */
+export interface ServiceSpecification {
+  /** Log specifications of operation. */
+  logSpecifications?: ServiceSpecificationLogSpecificationsList;
+  /** Metric specifications of operation. */
+  metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
+}
+export const ServiceSpecification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
+    metricSpecifications: S.optional(
+      ServiceSpecificationMetricSpecificationsList,
+    ),
+  }),
+).annotate({
+  identifier: "ServiceSpecification",
+}) as any as S.Schema<ServiceSpecification>;
+
+/** Properties of operation, include metric specifications. */
+export interface OperationProperties {
+  /** One property of operation, include metric specifications. */
+  serviceSpecification?: ServiceSpecification;
+}
+export const OperationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceSpecification: S.optional(ServiceSpecification),
+  }),
+).annotate({
+  identifier: "OperationProperties",
+}) as any as S.Schema<OperationProperties>;
+
+/** CDN REST API operation */
+export interface Operation {
+  /** Operation name: {provider}/{resource}/{operation} */
+  name?: string;
+  /** Indicates whether the operation is a data action */
+  isDataAction?: boolean;
+  /** The object that represents the operation. */
+  display?: OperationDisplay;
+  /** The origin of operations. */
+  origin?: string;
+  /** Properties of operation, include metric specifications. */
+  properties?: OperationProperties;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationDisplay),
+    origin: S.optional(S.String),
+    properties: S.optional(OperationProperties),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of CDN operations supported by the CDN resource provider. */
+export type OperationsListResultValueList = Array<Operation>;
+export const OperationsListResultValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationsListResultValueList>;
+
+/** Result of the request to list CDN operations. It contains a list of operations and a URL link to get the next set of results. */
+export interface ListOperationsResult {
+  /** List of CDN operations supported by the CDN resource provider. */
+  value: OperationsListResultValueList;
+  /** URL to get the next set of operation list results if there are any. */
+  nextLink?: string;
+}
+export const ListOperationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: OperationsListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResult",
+}) as any as S.Schema<ListOperationsResult>;
+
+export interface ListOriginByEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const ListOriginByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOriginByEndpointRequest",
+}) as any as S.Schema<ListOriginByEndpointRequest>;
+
+/** CDN origin is the source of the content being delivered via CDN. When the edge nodes represented by an endpoint do not have the requested content cached, they attempt to fetch it from one or more of the configured origins. */
+export interface Origin {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: OriginProperties;
+}
+export const Origin = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OriginProperties),
+  }),
+).annotate({ identifier: "Origin" }) as any as S.Schema<Origin>;
+
+/** The Origin items on this page */
+export type OriginListResultValueList = Array<Origin>;
+export const OriginListResultValueList = /*@__PURE__*/ S.Array(
+  Origin,
+) as any as S.Schema<OriginListResultValueList>;
+
+/** The response of a Origin list operation. */
+export interface OriginListResult {
+  /** The Origin items on this page */
+  value: OriginListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const OriginListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: OriginListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OriginListResult",
+}) as any as S.Schema<OriginListResult>;
+
+export interface ListOriginGroupByEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const ListOriginGroupByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOriginGroupByEndpointRequest",
+}) as any as S.Schema<ListOriginGroupByEndpointRequest>;
+
+/** Origin group comprising of origins is used for load balancing to origins when the content cannot be served from CDN. */
+export interface OriginGroup {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: OriginGroupProperties;
+}
+export const OriginGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OriginGroupProperties),
+  }),
+).annotate({ identifier: "OriginGroup" }) as any as S.Schema<OriginGroup>;
+
+/** The OriginGroup items on this page */
+export type OriginGroupListResultValueList = Array<OriginGroup>;
+export const OriginGroupListResultValueList = /*@__PURE__*/ S.Array(
+  OriginGroup,
+) as any as S.Schema<OriginGroupListResultValueList>;
+
+/** The response of a OriginGroup list operation. */
+export interface OriginGroupListResult {
+  /** The OriginGroup items on this page */
+  value: OriginGroupListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const OriginGroupListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: OriginGroupListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OriginGroupListResult",
+}) as any as S.Schema<OriginGroupListResult>;
+
+export interface ListPoliciesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListPoliciesRequest",
+}) as any as S.Schema<ListPoliciesRequest>;
+
+/** Resource tags. */
+export type CdnWebApplicationFirewallPolicyTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CdnWebApplicationFirewallPolicyTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CdnWebApplicationFirewallPolicyTagsMap>;
+
+/** Defines web application firewall policy for Azure CDN. */
+export interface CdnWebApplicationFirewallPolicy {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: CdnWebApplicationFirewallPolicyTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the web application firewall policy. */
+  properties?: CdnWebApplicationFirewallPolicyProperties;
+  /** Gets a unique read-only string that changes whenever the resource is updated. */
+  etag?: string;
+  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
+  sku: Sku;
+}
+export const CdnWebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(CdnWebApplicationFirewallPolicyTagsMap),
+    location: S.String,
+    properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
+    etag: S.optional(S.String),
+    sku: Sku,
+  }),
+).annotate({
+  identifier: "CdnWebApplicationFirewallPolicy",
+}) as any as S.Schema<CdnWebApplicationFirewallPolicy>;
+
+/** The CdnWebApplicationFirewallPolicy items on this page */
+export type CdnWebApplicationFirewallPolicyListValueList =
+  Array<CdnWebApplicationFirewallPolicy>;
+export const CdnWebApplicationFirewallPolicyListValueList =
+  /*@__PURE__*/ S.Array(
+    CdnWebApplicationFirewallPolicy,
+  ) as any as S.Schema<CdnWebApplicationFirewallPolicyListValueList>;
+
+/** Defines a list of WebApplicationFirewallPolicies for Azure CDN. It contains a list of WebApplicationFirewallPolicy objects and a URL link to get the next set of results. */
+export interface CdnWebApplicationFirewallPolicyList {
+  /** The CdnWebApplicationFirewallPolicy items on this page */
+  value: CdnWebApplicationFirewallPolicyListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CdnWebApplicationFirewallPolicyList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: CdnWebApplicationFirewallPolicyListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CdnWebApplicationFirewallPolicyList",
+}) as any as S.Schema<CdnWebApplicationFirewallPolicyList>;
+
+export interface ListProfileByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListProfileByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListProfileByResourceGroupRequest",
+}) as any as S.Schema<ListProfileByResourceGroupRequest>;
+
+/** Resource tags. */
+export type ProfileTagsMap = { [key: string]: string | undefined };
+export const ProfileTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProfileTagsMap>;
+
+/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+export type ProfileIdentityUserAssignedIdentitiesMap = {
+  [key: string]: UserAssignedIdentity | undefined;
+};
+export const ProfileIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  UserAssignedIdentity,
+) as any as S.Schema<ProfileIdentityUserAssignedIdentitiesMap>;
+
+/** Managed service identity (system assigned and/or user assigned identities) */
+export interface ProfileIdentity {
+  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  principalId?: string;
+  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
+  tenantId?: string;
+  type: ManagedServiceIdentityType;
+  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
+  userAssignedIdentities?: ProfileIdentityUserAssignedIdentitiesMap;
+}
+export const ProfileIdentity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    principalId: S.optional(S.String),
+    tenantId: S.optional(S.String),
+    type: ManagedServiceIdentityType,
+    userAssignedIdentities: S.optional(
+      ProfileIdentityUserAssignedIdentitiesMap,
+    ),
+  }),
+).annotate({
+  identifier: "ProfileIdentity",
+}) as any as S.Schema<ProfileIdentity>;
+
+/** A profile is a logical grouping of endpoints that share the same settings. */
+export interface Profile {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProfileTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create a profile. */
+  properties?: ProfileProperties;
+  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
+  sku: Sku;
+  /** Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile. */
+  kind?: string;
+  /** Managed service identity (system assigned and/or user assigned identities) */
+  identity?: ProfileIdentity;
+}
+export const Profile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProfileTagsMap),
+    location: S.String,
+    properties: S.optional(ProfileProperties),
+    sku: Sku,
+    kind: S.optional(S.String),
+    identity: S.optional(ProfileIdentity),
+  }),
+).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
+
+/** The Profile items on this page */
+export type ProfileListResultValueList = Array<Profile>;
+export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
+  Profile,
+) as any as S.Schema<ProfileListResultValueList>;
+
+/** The response of a Profile list operation. */
+export interface ProfileListResult {
+  /** The Profile items on this page */
+  value: ProfileListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ProfileListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: ProfileListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ProfileListResult",
+}) as any as S.Schema<ProfileListResult>;
+
+export interface ListProfileResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListProfileResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListProfileResourceUsageRequest",
+}) as any as S.Schema<ListProfileResourceUsageRequest>;
+
+export interface ListProfilesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListProfilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListProfilesRequest",
+}) as any as S.Schema<ListProfilesRequest>;
+
+export interface ListProfileSupportedOptimizationTypesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListProfileSupportedOptimizationTypesRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      profileName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes",
+        code: 200,
+        apiVersion: "2026-07-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProfileSupportedOptimizationTypesRequest",
+  }) as any as S.Schema<ListProfileSupportedOptimizationTypesRequest>;
+
+/** Supported optimization types for a profile. */
+export type SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
+  Array<OptimizationType>;
+export const SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
+  /*@__PURE__*/ S.Array(
+    OptimizationType,
+  ) as any as S.Schema<SupportedOptimizationTypesListResultSupportedOptimizationTypesList>;
+
+/** The result of the GetSupportedOptimizationTypes API */
+export interface SupportedOptimizationTypesListResult {
+  /** Supported optimization types for a profile. */
+  supportedOptimizationTypes?: SupportedOptimizationTypesListResultSupportedOptimizationTypesList;
+}
+export const SupportedOptimizationTypesListResult = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportedOptimizationTypes: S.optional(
+        SupportedOptimizationTypesListResultSupportedOptimizationTypesList,
+      ),
+    }),
+).annotate({
+  identifier: "SupportedOptimizationTypesListResult",
+}) as any as S.Schema<SupportedOptimizationTypesListResult>;
+
+export interface ListResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListResourceUsageRequest",
+}) as any as S.Schema<ListResourceUsageRequest>;
+
+export interface ListRouteByEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const ListRouteByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListRouteByEndpointRequest",
+}) as any as S.Schema<ListRouteByEndpointRequest>;
+
+/** Friendly Routes name mapping to the any Routes or secret related information. */
+export interface Route {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Routes to create. */
+  properties?: RouteProperties;
+}
+export const Route = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RouteProperties),
+  }),
+).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
+
+/** The Route items on this page */
+export type RouteListResultValueList = Array<Route>;
+export const RouteListResultValueList = /*@__PURE__*/ S.Array(
+  Route,
+) as any as S.Schema<RouteListResultValueList>;
+
+/** The response of a Route list operation. */
+export interface RouteListResult {
+  /** The Route items on this page */
+  value: RouteListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RouteListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RouteListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RouteListResult",
+}) as any as S.Schema<RouteListResult>;
+
+export interface ListRuleSetByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListRuleSetByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListRuleSetByProfileRequest",
+}) as any as S.Schema<ListRuleSetByProfileRequest>;
+
+/** Friendly RuleSet name mapping to the any RuleSet or secret related information. */
+export interface RuleSet {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Rule Set to create. */
+  properties?: RuleSetProperties;
+}
+export const RuleSet = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RuleSetProperties),
+  }),
+).annotate({ identifier: "RuleSet" }) as any as S.Schema<RuleSet>;
+
+/** The RuleSet items on this page */
+export type RuleSetListResultValueList = Array<RuleSet>;
+export const RuleSetListResultValueList = /*@__PURE__*/ S.Array(
+  RuleSet,
+) as any as S.Schema<RuleSetListResultValueList>;
+
+/** The response of a RuleSet list operation. */
+export interface RuleSetListResult {
+  /** The RuleSet items on this page */
+  value: RuleSetListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RuleSetListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RuleSetListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RuleSetListResult",
+}) as any as S.Schema<RuleSetListResult>;
+
+export interface ListRuleSetResourceUsageRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+}
+export const ListRuleSetResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListRuleSetResourceUsageRequest",
+}) as any as S.Schema<ListRuleSetResourceUsageRequest>;
+
+export interface ListSecretByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListSecretByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSecretByProfileRequest",
+}) as any as S.Schema<ListSecretByProfileRequest>;
+
+/** Friendly Secret name mapping to the any Secret or secret related information. */
+export interface Secret {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Secret to create. */
+  properties?: SecretProperties;
+}
+export const Secret = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecretProperties),
+  }),
+).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
+
+/** The Secret items on this page */
+export type SecretListResultValueList = Array<Secret>;
+export const SecretListResultValueList = /*@__PURE__*/ S.Array(
+  Secret,
+) as any as S.Schema<SecretListResultValueList>;
+
+/** The response of a Secret list operation. */
+export interface SecretListResult {
+  /** The Secret items on this page */
+  value: SecretListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SecretListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SecretListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SecretListResult",
+}) as any as S.Schema<SecretListResult>;
+
+export interface ListSecurityPolicyByProfileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+}
+export const ListSecurityPolicyByProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListSecurityPolicyByProfileRequest",
+}) as any as S.Schema<ListSecurityPolicyByProfileRequest>;
+
+/** SecurityPolicy association for AzureFrontDoor profile */
+export interface SecurityPolicy {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The json object that contains properties required to create a security policy */
+  properties?: SecurityPolicyProperties;
+}
+export const SecurityPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecurityPolicyProperties),
+  }),
+).annotate({ identifier: "SecurityPolicy" }) as any as S.Schema<SecurityPolicy>;
+
+/** The SecurityPolicy items on this page */
+export type SecurityPolicyListResultValueList = Array<SecurityPolicy>;
+export const SecurityPolicyListResultValueList = /*@__PURE__*/ S.Array(
+  SecurityPolicy,
+) as any as S.Schema<SecurityPolicyListResultValueList>;
+
+/** The response of a SecurityPolicy list operation. */
+export interface SecurityPolicyListResult {
+  /** The SecurityPolicy items on this page */
+  value: SecurityPolicyListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SecurityPolicyListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: SecurityPolicyListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SecurityPolicyListResult",
+}) as any as S.Schema<SecurityPolicyListResult>;
+
+/** The json object that contains properties required to update a security policy */
+export type SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
+export const SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
+
+export interface PatchSecurityPolicyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the security policy under the profile. */
+  securityPolicyName: string;
+  /** The json object that contains properties required to update a security policy */
+  properties?: SecurityPolicyPropertiesInput;
+}
+export const PatchSecurityPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    securityPolicyName: S.String.pipe(T.Label()),
+    properties: S.optional(SecurityPolicyPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "PatchSecurityPolicyRequest",
+}) as any as S.Schema<PatchSecurityPolicyRequest>;
+
+export interface PatchSecurityPolicyResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The json object that contains properties required to create a security policy */
+  properties?: SecurityPolicyProperties;
+}
+export const PatchSecurityPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SecurityPolicyProperties),
+  }),
+).annotate({
+  identifier: "PatchSecurityPolicyResponse",
+}) as any as S.Schema<PatchSecurityPolicyResponse>;
+
+/** Resource tags. */
+export type PoliciesCreateOrUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PoliciesCreateOrUpdateRequestTagsMap>;
+
 /** Key-Value pair representing additional properties for Web Application Firewall policy. */
 export type CdnWebApplicationFirewallPolicyPropertiesInputExtendedPropertiesMap =
   { [key: string]: string | undefined };
@@ -7363,88 +9038,6 @@ export const PoliciesCreateOrUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<PoliciesCreateOrUpdateResponseTagsMap>;
 
-/** Defines the ARM Resource ID for the linked endpoints */
-export interface CdnEndpoint {
-  /** ARM Resource ID string. */
-  id?: string;
-}
-export const CdnEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "CdnEndpoint" }) as any as S.Schema<CdnEndpoint>;
-
-/** Describes Azure CDN endpoints associated with this Web Application Firewall policy. */
-export type CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
-  Array<CdnEndpoint>;
-export const CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList =
-  /*@__PURE__*/ S.Array(
-    CdnEndpoint,
-  ) as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList>;
-
-/** Key-Value pair representing additional properties for Web Application Firewall policy. */
-export type CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap = {
-  [key: string]: string | undefined;
-};
-export const CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap>;
-
-/** Provisioning state of the WebApplicationFirewallPolicy. */
-export type ProvisioningState = "Creating" | "Succeeded" | "Failed";
-export const ProvisioningState = /*@__PURE__*/ S.String;
-
-/** Resource status of the policy. */
-export type PolicyResourceState =
-  | "Creating"
-  | "Enabling"
-  | "Enabled"
-  | "Disabling"
-  | "Disabled"
-  | "Deleting";
-export const PolicyResourceState = /*@__PURE__*/ S.String;
-
-/** Defines CDN web application firewall policy properties. */
-export interface CdnWebApplicationFirewallPolicyProperties {
-  /** Describes policySettings for policy */
-  policySettings?: PolicySettings;
-  /** Describes rate limit rules inside the policy. */
-  rateLimitRules?: RateLimitRuleList;
-  /** Describes custom rules inside the policy. */
-  customRules?: CustomRuleList;
-  /** Describes managed rules inside the policy. */
-  managedRules?: ManagedRuleSetList;
-  /** Describes Azure CDN endpoints associated with this Web Application Firewall policy. */
-  endpointLinks?: CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList;
-  /** Key-Value pair representing additional properties for Web Application Firewall policy. */
-  extendedProperties?: CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap;
-  /** Provisioning state of the WebApplicationFirewallPolicy. */
-  provisioningState?: ProvisioningState;
-  /** Resource status of the policy. */
-  resourceState?: PolicyResourceState;
-}
-export const CdnWebApplicationFirewallPolicyProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      policySettings: S.optional(PolicySettings),
-      rateLimitRules: S.optional(RateLimitRuleList),
-      customRules: S.optional(CustomRuleList),
-      managedRules: S.optional(ManagedRuleSetList),
-      endpointLinks: S.optional(
-        CdnWebApplicationFirewallPolicyPropertiesEndpointLinksList,
-      ),
-      extendedProperties: S.optional(
-        CdnWebApplicationFirewallPolicyPropertiesExtendedPropertiesMap,
-      ),
-      provisioningState: S.optional(ProvisioningState),
-      resourceState: S.optional(PolicyResourceState),
-    }),
-  ).annotate({
-    identifier: "CdnWebApplicationFirewallPolicyProperties",
-  }) as any as S.Schema<CdnWebApplicationFirewallPolicyProperties>;
-
 export interface PoliciesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7480,280 +9073,6 @@ export const PoliciesCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PoliciesCreateOrUpdateResponse",
 }) as any as S.Schema<PoliciesCreateOrUpdateResponse>;
-
-export interface PoliciesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the CdnWebApplicationFirewallPolicy. */
-  policyName: string;
-}
-export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    policyName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesDeleteRequest",
-}) as any as S.Schema<PoliciesDeleteRequest>;
-
-export interface PoliciesDeleteResponse {}
-export const PoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PoliciesDeleteResponse",
-}) as any as S.Schema<PoliciesDeleteResponse>;
-
-export interface PoliciesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the CdnWebApplicationFirewallPolicy. */
-  policyName: string;
-}
-export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    policyName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesGetRequest",
-}) as any as S.Schema<PoliciesGetRequest>;
-
-/** Resource tags. */
-export type PoliciesGetResponseTagsMap = { [key: string]: string | undefined };
-export const PoliciesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesGetResponseTagsMap>;
-
-export interface PoliciesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PoliciesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the web application firewall policy. */
-  properties?: CdnWebApplicationFirewallPolicyProperties;
-  /** Gets a unique read-only string that changes whenever the resource is updated. */
-  etag?: string;
-  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
-  sku: Sku;
-}
-export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PoliciesGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
-    etag: S.optional(S.String),
-    sku: Sku,
-  }),
-).annotate({
-  identifier: "PoliciesGetResponse",
-}) as any as S.Schema<PoliciesGetResponse>;
-
-export interface PoliciesListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesListRequest",
-}) as any as S.Schema<PoliciesListRequest>;
-
-/** Resource tags. */
-export type CdnWebApplicationFirewallPolicyTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CdnWebApplicationFirewallPolicyTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CdnWebApplicationFirewallPolicyTagsMap>;
-
-/** Defines web application firewall policy for Azure CDN. */
-export interface CdnWebApplicationFirewallPolicy {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: CdnWebApplicationFirewallPolicyTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the web application firewall policy. */
-  properties?: CdnWebApplicationFirewallPolicyProperties;
-  /** Gets a unique read-only string that changes whenever the resource is updated. */
-  etag?: string;
-  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
-  sku: Sku;
-}
-export const CdnWebApplicationFirewallPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CdnWebApplicationFirewallPolicyTagsMap),
-    location: S.String,
-    properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
-    etag: S.optional(S.String),
-    sku: Sku,
-  }),
-).annotate({
-  identifier: "CdnWebApplicationFirewallPolicy",
-}) as any as S.Schema<CdnWebApplicationFirewallPolicy>;
-
-/** The CdnWebApplicationFirewallPolicy items on this page */
-export type CdnWebApplicationFirewallPolicyListValueList =
-  Array<CdnWebApplicationFirewallPolicy>;
-export const CdnWebApplicationFirewallPolicyListValueList =
-  /*@__PURE__*/ S.Array(
-    CdnWebApplicationFirewallPolicy,
-  ) as any as S.Schema<CdnWebApplicationFirewallPolicyListValueList>;
-
-/** Defines a list of WebApplicationFirewallPolicies for Azure CDN. It contains a list of WebApplicationFirewallPolicy objects and a URL link to get the next set of results. */
-export interface CdnWebApplicationFirewallPolicyList {
-  /** The CdnWebApplicationFirewallPolicy items on this page */
-  value: CdnWebApplicationFirewallPolicyListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CdnWebApplicationFirewallPolicyList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: CdnWebApplicationFirewallPolicyListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CdnWebApplicationFirewallPolicyList",
-}) as any as S.Schema<CdnWebApplicationFirewallPolicyList>;
-
-/** CdnWebApplicationFirewallPolicy tags */
-export type PoliciesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PoliciesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesUpdateRequestTagsMap>;
-
-export interface PoliciesUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the CdnWebApplicationFirewallPolicy. */
-  policyName: string;
-  /** CdnWebApplicationFirewallPolicy tags */
-  tags?: PoliciesUpdateRequestTagsMap;
-}
-export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    policyName: S.String.pipe(T.Label()),
-    tags: S.optional(PoliciesUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesUpdateRequest",
-}) as any as S.Schema<PoliciesUpdateRequest>;
-
-/** Resource tags. */
-export type PoliciesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const PoliciesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<PoliciesUpdateResponseTagsMap>;
-
-export interface PoliciesUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: PoliciesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the web application firewall policy. */
-  properties?: CdnWebApplicationFirewallPolicyProperties;
-  /** Gets a unique read-only string that changes whenever the resource is updated. */
-  etag?: string;
-  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
-  sku: Sku;
-}
-export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(PoliciesUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
-    etag: S.optional(S.String),
-    sku: Sku,
-  }),
-).annotate({
-  identifier: "PoliciesUpdateResponse",
-}) as any as S.Schema<PoliciesUpdateResponse>;
 
 export interface ProfilesCanMigrateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7958,574 +9277,6 @@ export const MigrateResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "MigrateResult" }) as any as S.Schema<MigrateResult>;
 
-/** Resource tags. */
-export type ProfilesCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProfilesCreateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfilesCreateRequestTagsMap>;
-
-/** The JSON object that contains the properties required to create a profile. */
-export interface ProfilePropertiesInput {
-  /** Send and receive timeout on forwarding request to the origin. When timeout is reached, the request fails and returns. */
-  originResponseTimeoutSeconds?: number;
-  /** Defines rules that scrub sensitive fields in the Azure Front Door profile logs. */
-  logScrubbing?: ProfileLogScrubbing;
-}
-export const ProfilePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originResponseTimeoutSeconds: S.optional(S.Number),
-    logScrubbing: S.optional(ProfileLogScrubbing),
-  }),
-).annotate({
-  identifier: "ProfilePropertiesInput",
-}) as any as S.Schema<ProfilePropertiesInput>;
-
-/** User assigned identity properties */
-export interface UserAssignedIdentityInput {}
-export const UserAssignedIdentityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "UserAssignedIdentityInput",
-}) as any as S.Schema<UserAssignedIdentityInput>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ProfilesCreateRequestIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentityInput | undefined;
-};
-export const ProfilesCreateRequestIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentityInput,
-  ) as any as S.Schema<ProfilesCreateRequestIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProfilesCreateRequestIdentity {
-  type: ManagedServiceIdentityType | (string & {});
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ProfilesCreateRequestIdentityUserAssignedIdentitiesMap;
-}
-export const ProfilesCreateRequestIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ProfilesCreateRequestIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ProfilesCreateRequestIdentity",
-}) as any as S.Schema<ProfilesCreateRequestIdentity>;
-
-export interface ProfilesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Resource tags. */
-  tags?: ProfilesCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create a profile. */
-  properties?: ProfilePropertiesInput;
-  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
-  sku: Sku;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProfilesCreateRequestIdentity;
-}
-export const ProfilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    tags: S.optional(ProfilesCreateRequestTagsMap),
-    location: S.String,
-    properties: S.optional(ProfilePropertiesInput),
-    sku: Sku,
-    identity: S.optional(ProfilesCreateRequestIdentity),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesCreateRequest",
-}) as any as S.Schema<ProfilesCreateRequest>;
-
-/** Resource tags. */
-export type ProfilesCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProfilesCreateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfilesCreateResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ProfilesCreateResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const ProfilesCreateResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<ProfilesCreateResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProfilesCreateResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ProfilesCreateResponseIdentityUserAssignedIdentitiesMap;
-}
-export const ProfilesCreateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ProfilesCreateResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ProfilesCreateResponseIdentity",
-}) as any as S.Schema<ProfilesCreateResponseIdentity>;
-
-export interface ProfilesCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProfilesCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create a profile. */
-  properties?: ProfileProperties;
-  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
-  sku: Sku;
-  /** Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProfilesCreateResponseIdentity;
-}
-export const ProfilesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProfilesCreateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProfileProperties),
-    sku: Sku,
-    kind: S.optional(S.String),
-    identity: S.optional(ProfilesCreateResponseIdentity),
-  }),
-).annotate({
-  identifier: "ProfilesCreateResponse",
-}) as any as S.Schema<ProfilesCreateResponse>;
-
-export interface ProfilesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const ProfilesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesDeleteRequest",
-}) as any as S.Schema<ProfilesDeleteRequest>;
-
-export interface ProfilesDeleteResponse {}
-export const ProfilesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProfilesDeleteResponse",
-}) as any as S.Schema<ProfilesDeleteResponse>;
-
-export interface ProfilesGenerateSsoUriRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const ProfilesGenerateSsoUriRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/generateSsoUri",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesGenerateSsoUriRequest",
-}) as any as S.Schema<ProfilesGenerateSsoUriRequest>;
-
-/** The URI required to login to the supplemental portal from the Azure portal. */
-export interface SsoUri {
-  /** The URI used to login to the supplemental portal. */
-  ssoUriValue?: string;
-}
-export const SsoUri = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ssoUriValue: S.optional(S.String),
-  }),
-).annotate({ identifier: "SsoUri" }) as any as S.Schema<SsoUri>;
-
-export interface ProfilesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesGetRequest",
-}) as any as S.Schema<ProfilesGetRequest>;
-
-/** Resource tags. */
-export type ProfilesGetResponseTagsMap = { [key: string]: string | undefined };
-export const ProfilesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfilesGetResponseTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ProfilesGetResponseIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const ProfilesGetResponseIdentityUserAssignedIdentitiesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    UserAssignedIdentity,
-  ) as any as S.Schema<ProfilesGetResponseIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProfilesGetResponseIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ProfilesGetResponseIdentityUserAssignedIdentitiesMap;
-}
-export const ProfilesGetResponseIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ProfilesGetResponseIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ProfilesGetResponseIdentity",
-}) as any as S.Schema<ProfilesGetResponseIdentity>;
-
-export interface ProfilesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProfilesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create a profile. */
-  properties?: ProfileProperties;
-  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
-  sku: Sku;
-  /** Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProfilesGetResponseIdentity;
-}
-export const ProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProfilesGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProfileProperties),
-    sku: Sku,
-    kind: S.optional(S.String),
-    identity: S.optional(ProfilesGetResponseIdentity),
-  }),
-).annotate({
-  identifier: "ProfilesGetResponse",
-}) as any as S.Schema<ProfilesGetResponse>;
-
-export interface ProfilesListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const ProfilesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/profiles",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesListRequest",
-}) as any as S.Schema<ProfilesListRequest>;
-
-/** Resource tags. */
-export type ProfileTagsMap = { [key: string]: string | undefined };
-export const ProfileTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProfileTagsMap>;
-
-/** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-export type ProfileIdentityUserAssignedIdentitiesMap = {
-  [key: string]: UserAssignedIdentity | undefined;
-};
-export const ProfileIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  UserAssignedIdentity,
-) as any as S.Schema<ProfileIdentityUserAssignedIdentitiesMap>;
-
-/** Managed service identity (system assigned and/or user assigned identities) */
-export interface ProfileIdentity {
-  /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  principalId?: string;
-  /** The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity. */
-  tenantId?: string;
-  type: ManagedServiceIdentityType;
-  /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
-  userAssignedIdentities?: ProfileIdentityUserAssignedIdentitiesMap;
-}
-export const ProfileIdentity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    principalId: S.optional(S.String),
-    tenantId: S.optional(S.String),
-    type: ManagedServiceIdentityType,
-    userAssignedIdentities: S.optional(
-      ProfileIdentityUserAssignedIdentitiesMap,
-    ),
-  }),
-).annotate({
-  identifier: "ProfileIdentity",
-}) as any as S.Schema<ProfileIdentity>;
-
-/** A profile is a logical grouping of endpoints that share the same settings. */
-export interface Profile {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProfileTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** The JSON object that contains the properties required to create a profile. */
-  properties?: ProfileProperties;
-  /** The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile. */
-  sku: Sku;
-  /** Kind of the profile. Used by portal to differentiate traditional CDN profile and new AFD profile. */
-  kind?: string;
-  /** Managed service identity (system assigned and/or user assigned identities) */
-  identity?: ProfileIdentity;
-}
-export const Profile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProfileTagsMap),
-    location: S.String,
-    properties: S.optional(ProfileProperties),
-    sku: Sku,
-    kind: S.optional(S.String),
-    identity: S.optional(ProfileIdentity),
-  }),
-).annotate({ identifier: "Profile" }) as any as S.Schema<Profile>;
-
-/** The Profile items on this page */
-export type ProfileListResultValueList = Array<Profile>;
-export const ProfileListResultValueList = /*@__PURE__*/ S.Array(
-  Profile,
-) as any as S.Schema<ProfileListResultValueList>;
-
-/** The response of a Profile list operation. */
-export interface ProfileListResult {
-  /** The Profile items on this page */
-  value: ProfileListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ProfileListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: ProfileListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ProfileListResult",
-}) as any as S.Schema<ProfileListResult>;
-
-export interface ProfilesListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const ProfilesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesListByResourceGroupRequest",
-}) as any as S.Schema<ProfilesListByResourceGroupRequest>;
-
-export interface ProfilesListResourceUsageRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const ProfilesListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/checkResourceUsage",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProfilesListResourceUsageRequest",
-}) as any as S.Schema<ProfilesListResourceUsageRequest>;
-
-export interface ProfilesListSupportedOptimizationTypesRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const ProfilesListSupportedOptimizationTypesRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/getSupportedOptimizationTypes",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProfilesListSupportedOptimizationTypesRequest",
-  }) as any as S.Schema<ProfilesListSupportedOptimizationTypesRequest>;
-
-/** Supported optimization types for a profile. */
-export type SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
-  Array<OptimizationType>;
-export const SupportedOptimizationTypesListResultSupportedOptimizationTypesList =
-  /*@__PURE__*/ S.Array(
-    OptimizationType,
-  ) as any as S.Schema<SupportedOptimizationTypesListResultSupportedOptimizationTypesList>;
-
-/** The result of the GetSupportedOptimizationTypes API */
-export interface SupportedOptimizationTypesListResult {
-  /** Supported optimization types for a profile. */
-  supportedOptimizationTypes?: SupportedOptimizationTypesListResultSupportedOptimizationTypesList;
-}
-export const SupportedOptimizationTypesListResult = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportedOptimizationTypes: S.optional(
-        SupportedOptimizationTypesListResultSupportedOptimizationTypesList,
-      ),
-    }),
-).annotate({
-  identifier: "SupportedOptimizationTypesListResult",
-}) as any as S.Schema<SupportedOptimizationTypesListResult>;
-
 /** Web Application Firewall Mapping */
 export interface MigrationWebApplicationFirewallMapping {
   /** Migration From Waf policy */
@@ -8651,6 +9402,1022 @@ export const ProfilesMigrationCommitResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesMigrationCommitResponse",
 }) as any as S.Schema<ProfilesMigrationCommitResponse>;
 
+export interface RulesListByRuleSetRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the rule set under the profile which is unique globally. */
+  ruleSetName: string;
+}
+export const RulesListByRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    ruleSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "RulesListByRuleSetRequest",
+}) as any as S.Schema<RulesListByRuleSetRequest>;
+
+/** Friendly Rules name mapping to the any Rules or secret related information. */
+export interface Rule {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the Rules to create. */
+  properties?: RuleProperties;
+}
+export const Rule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(RuleProperties),
+  }),
+).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
+
+/** The Rule items on this page */
+export type RuleListResultValueList = Array<Rule>;
+export const RuleListResultValueList = /*@__PURE__*/ S.Array(
+  Rule,
+) as any as S.Schema<RuleListResultValueList>;
+
+/** The response of a Rule list operation. */
+export interface RuleListResult {
+  /** The Rule items on this page */
+  value: RuleListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const RuleListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: RuleListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "RuleListResult" }) as any as S.Schema<RuleListResult>;
+
+export interface StartEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const StartEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "StartEndpointRequest",
+}) as any as S.Schema<StartEndpointRequest>;
+
+/** Resource tags. */
+export type EndpointsStartResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EndpointsStartResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EndpointsStartResponseTagsMap>;
+
+export interface StartEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: EndpointsStartResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: EndpointProperties;
+}
+export const StartEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(EndpointsStartResponseTagsMap),
+    location: S.String,
+    properties: S.optional(EndpointProperties),
+  }),
+).annotate({
+  identifier: "StartEndpointResponse",
+}) as any as S.Schema<StartEndpointResponse>;
+
+export interface StopEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+}
+export const StopEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "StopEndpointRequest",
+}) as any as S.Schema<StopEndpointRequest>;
+
+/** Resource tags. */
+export type EndpointsStopResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EndpointsStopResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EndpointsStopResponseTagsMap>;
+
+export interface StopEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: EndpointsStopResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: EndpointProperties;
+}
+export const StopEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(EndpointsStopResponseTagsMap),
+    location: S.String,
+    properties: S.optional(EndpointProperties),
+  }),
+).annotate({
+  identifier: "StopEndpointResponse",
+}) as any as S.Schema<StopEndpointResponse>;
+
+/** The JSON object that contains the properties of the domain to create. */
+export interface AFDDomainUpdatePropertiesParametersInput {
+  /** The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default. */
+  tlsSettings?: AFDDomainHttpsParameters;
+  /** The configuration specifying how to enable mutual TLS for the domain, including specifying allowed FQDNs and which server certificate(s) to use. */
+  mtlsSettings?: AFDDomainMtlsParameters;
+  /** Resource reference to the Azure DNS zone */
+  azureDnsZone?: ResourceReference;
+  /** Resource reference to the Azure resource where custom domain ownership was prevalidated */
+  preValidatedCustomDomainResourceId?: ResourceReference;
+}
+export const AFDDomainUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      tlsSettings: S.optional(AFDDomainHttpsParameters),
+      mtlsSettings: S.optional(AFDDomainMtlsParameters),
+      azureDnsZone: S.optional(ResourceReference),
+      preValidatedCustomDomainResourceId: S.optional(ResourceReference),
+    }),
+).annotate({
+  identifier: "AFDDomainUpdatePropertiesParametersInput",
+}) as any as S.Schema<AFDDomainUpdatePropertiesParametersInput>;
+
+export interface UpdateAfdCustomDomainRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the domain under the profile which is unique globally. */
+  customDomainName: string;
+  /** The JSON object that contains the properties of the domain to create. */
+  properties?: AFDDomainUpdatePropertiesParametersInput;
+}
+export const UpdateAfdCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    customDomainName: S.String.pipe(T.Label()),
+    properties: S.optional(AFDDomainUpdatePropertiesParametersInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAfdCustomDomainRequest",
+}) as any as S.Schema<UpdateAfdCustomDomainRequest>;
+
+export interface UpdateAfdCustomDomainResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the domain to create. */
+  properties?: AFDDomainProperties;
+}
+export const UpdateAfdCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDDomainProperties),
+  }),
+).annotate({
+  identifier: "UpdateAfdCustomDomainResponse",
+}) as any as S.Schema<UpdateAfdCustomDomainResponse>;
+
+/** Endpoint tags. */
+export type AFDEndpointsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AFDEndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDEndpointsUpdateRequestTagsMap>;
+
+/** The JSON object containing endpoint update parameters. */
+export interface AFDEndpointPropertiesUpdateParametersInput {
+  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
+  enabledState?: EnabledState | (string & {});
+  /** Set to Disabled by default. If set to Enabled, only custom domains with mTLS enabled can be added to child Route resources. */
+  enforceMtls?: EnforceMtlsEnabledState | (string & {});
+}
+export const AFDEndpointPropertiesUpdateParametersInput =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabledState: S.optional(EnabledState),
+      enforceMtls: S.optional(EnforceMtlsEnabledState),
+    }),
+  ).annotate({
+    identifier: "AFDEndpointPropertiesUpdateParametersInput",
+  }) as any as S.Schema<AFDEndpointPropertiesUpdateParametersInput>;
+
+export interface UpdateAfdEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Endpoint tags. */
+  tags?: AFDEndpointsUpdateRequestTagsMap;
+  /** The JSON object containing endpoint update parameters. */
+  properties?: AFDEndpointPropertiesUpdateParametersInput;
+}
+export const UpdateAfdEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    tags: S.optional(AFDEndpointsUpdateRequestTagsMap),
+    properties: S.optional(AFDEndpointPropertiesUpdateParametersInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAfdEndpointRequest",
+}) as any as S.Schema<UpdateAfdEndpointRequest>;
+
+/** Resource tags. */
+export type AFDEndpointsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AFDEndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AFDEndpointsUpdateResponseTagsMap>;
+
+export interface UpdateAfdEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AFDEndpointsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: AFDEndpointProperties;
+}
+export const UpdateAfdEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AFDEndpointsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AFDEndpointProperties),
+  }),
+).annotate({
+  identifier: "UpdateAfdEndpointResponse",
+}) as any as S.Schema<UpdateAfdEndpointResponse>;
+
+/** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+export type AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList =
+  Array<string>;
+export const AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList>;
+
+/** The JSON object that contains the properties of the origin. */
+export interface AFDOriginUpdatePropertiesParametersInput {
+  /** Resource reference to the Azure origin resource. */
+  azureOrigin?: ResourceReference;
+  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
+  hostName?: string;
+  /** The value of the HTTP port. Must be between 1 and 65535. */
+  httpPort?: number;
+  /** The value of the HTTPS port. Must be between 1 and 65535. */
+  httpsPort?: number;
+  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure Front Door origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
+  originHostHeader?: string;
+  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
+  priority?: number;
+  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
+  weight?: number;
+  /** The properties of the private link resource for private origin. */
+  sharedPrivateLinkResource?: SharedPrivateLinkResourceProperties;
+  /** Whether to enable health probes to be made against backends defined under backendPools. Health probes can only be disabled if there is a single enabled backend in single enabled backend pool. */
+  enabledState?: EnabledState | (string & {});
+  /** Whether to enable certificate name check at origin level */
+  enforceCertificateNameCheck?: boolean;
+  /** The validation mode for certificate name check. Only applicable when enforceCertificateNameCheck is true. */
+  certificateNameCheckValidationMode?:
+    | CertificateNameCheckValidationMode
+    | (string & {});
+  /** The list of custom certificate subjects to validate against. Only applicable when certificateNameCheckValidationMode is 'CustomCertificateSubject'. Must contain 1 or 2 entries. */
+  customCertificateSubjects?: AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList;
+}
+export const AFDOriginUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      azureOrigin: S.optional(ResourceReference),
+      hostName: S.optional(S.String),
+      httpPort: S.optional(S.Number),
+      httpsPort: S.optional(S.Number),
+      originHostHeader: S.optional(S.String),
+      priority: S.optional(S.Number),
+      weight: S.optional(S.Number),
+      sharedPrivateLinkResource: S.optional(
+        SharedPrivateLinkResourceProperties,
+      ),
+      enabledState: S.optional(EnabledState),
+      enforceCertificateNameCheck: S.optional(S.Boolean),
+      certificateNameCheckValidationMode: S.optional(
+        CertificateNameCheckValidationMode,
+      ),
+      customCertificateSubjects: S.optional(
+        AFDOriginUpdatePropertiesParametersInputCustomCertificateSubjectsList,
+      ),
+    }),
+).annotate({
+  identifier: "AFDOriginUpdatePropertiesParametersInput",
+}) as any as S.Schema<AFDOriginUpdatePropertiesParametersInput>;
+
+export interface UpdateAfdOriginRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** Name of the origin which is unique within the profile. */
+  originName: string;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: AFDOriginUpdatePropertiesParametersInput;
+}
+export const UpdateAfdOriginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
+    properties: S.optional(AFDOriginUpdatePropertiesParametersInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAfdOriginRequest",
+}) as any as S.Schema<UpdateAfdOriginRequest>;
+
+export interface UpdateAfdOriginResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: AFDOriginProperties;
+}
+export const UpdateAfdOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginProperties),
+  }),
+).annotate({
+  identifier: "UpdateAfdOriginResponse",
+}) as any as S.Schema<UpdateAfdOriginResponse>;
+
+/** The JSON object that contains the properties of the origin group. */
+export type AFDOriginGroupUpdatePropertiesParametersInput =
+  AFDOriginGroupPropertiesInput;
+export const AFDOriginGroupUpdatePropertiesParametersInput =
+  AFDOriginGroupPropertiesInput;
+
+export interface UpdateAfdOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: AFDOriginGroupPropertiesInput;
+}
+export const UpdateAfdOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    properties: S.optional(AFDOriginGroupPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAfdOriginGroupRequest",
+}) as any as S.Schema<UpdateAfdOriginGroupRequest>;
+
+export interface UpdateAfdOriginGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: AFDOriginGroupProperties;
+}
+export const UpdateAfdOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AFDOriginGroupProperties),
+  }),
+).annotate({
+  identifier: "UpdateAfdOriginGroupResponse",
+}) as any as S.Schema<UpdateAfdOriginGroupResponse>;
+
+/** Endpoint tags. */
+export type EndpointsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EndpointsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EndpointsUpdateRequestTagsMap>;
+
+/** List of content types on which compression applies. The value should be a valid MIME type. */
+export type EndpointPropertiesUpdateParametersContentTypesToCompressList =
+  Array<string>;
+export const EndpointPropertiesUpdateParametersContentTypesToCompressList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EndpointPropertiesUpdateParametersContentTypesToCompressList>;
+
+/** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
+export type EndpointPropertiesUpdateParametersQueryStringCachingBehavior =
+  | "IgnoreQueryString"
+  | "BypassCaching"
+  | "UseQueryString"
+  | "NotSet";
+export const EndpointPropertiesUpdateParametersQueryStringCachingBehavior =
+  /*@__PURE__*/ S.String;
+
+/** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
+export type EndpointPropertiesUpdateParametersGeoFiltersList = Array<GeoFilter>;
+export const EndpointPropertiesUpdateParametersGeoFiltersList =
+  /*@__PURE__*/ S.Array(
+    GeoFilter,
+  ) as any as S.Schema<EndpointPropertiesUpdateParametersGeoFiltersList>;
+
+/** List of keys used to validate the signed URL hashes. */
+export type EndpointPropertiesUpdateParametersUrlSigningKeysList =
+  Array<UrlSigningKey>;
+export const EndpointPropertiesUpdateParametersUrlSigningKeysList =
+  /*@__PURE__*/ S.Array(
+    UrlSigningKey,
+  ) as any as S.Schema<EndpointPropertiesUpdateParametersUrlSigningKeysList>;
+
+/** The JSON object containing endpoint update parameters. */
+export interface EndpointPropertiesUpdateParameters {
+  /** A directory path on the origin that CDN can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
+  originPath?: string;
+  /** List of content types on which compression applies. The value should be a valid MIME type. */
+  contentTypesToCompress?: EndpointPropertiesUpdateParametersContentTypesToCompressList;
+  /** The host header value sent to the origin with each request. This property at Endpoint is only allowed when endpoint uses single origin and can be overridden by the same property specified at origin.If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. */
+  originHostHeader?: string;
+  /** Indicates whether content compression is enabled on CDN. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on CDN when requested content is smaller than 1 byte or larger than 1 MB. */
+  isCompressionEnabled?: boolean;
+  /** Indicates whether HTTP traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed. */
+  isHttpAllowed?: boolean;
+  /** Indicates whether HTTPS traffic is allowed on the endpoint. Default value is true. At least one protocol (HTTP or HTTPS) must be allowed. */
+  isHttpsAllowed?: boolean;
+  /** Defines how CDN caches requests that include query strings. You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL. */
+  queryStringCachingBehavior?:
+    | EndpointPropertiesUpdateParametersQueryStringCachingBehavior
+    | (string & {});
+  /** Specifies what scenario the customer wants this CDN endpoint to optimize for, e.g. Download, Media services. With this information, CDN can apply scenario driven optimization. */
+  optimizationType?: OptimizationType | (string & {});
+  /** Path to a file hosted on the origin which helps accelerate delivery of the dynamic content and calculate the most optimal routes for the CDN. This is relative to the origin path. This property is only relevant when using a single origin. */
+  probePath?: string;
+  /** List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/ */
+  geoFilters?: EndpointPropertiesUpdateParametersGeoFiltersList;
+  /** A reference to the origin group. */
+  defaultOriginGroup?: ResourceReference;
+  /** List of keys used to validate the signed URL hashes. */
+  urlSigningKeys?: EndpointPropertiesUpdateParametersUrlSigningKeysList;
+  /** A policy that specifies the delivery rules to be used for an endpoint. */
+  deliveryPolicy?: EndpointPropertiesUpdateParametersDeliveryPolicy;
+  /** Defines the Web Application Firewall policy for the endpoint (if applicable) */
+  webApplicationFirewallPolicyLink?: ResourceReference;
+}
+export const EndpointPropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originPath: S.optional(S.String),
+    contentTypesToCompress: S.optional(
+      EndpointPropertiesUpdateParametersContentTypesToCompressList,
+    ),
+    originHostHeader: S.optional(S.String),
+    isCompressionEnabled: S.optional(S.Boolean),
+    isHttpAllowed: S.optional(S.Boolean),
+    isHttpsAllowed: S.optional(S.Boolean),
+    queryStringCachingBehavior: S.optional(
+      EndpointPropertiesUpdateParametersQueryStringCachingBehavior,
+    ),
+    optimizationType: S.optional(OptimizationType),
+    probePath: S.optional(S.String),
+    geoFilters: S.optional(EndpointPropertiesUpdateParametersGeoFiltersList),
+    defaultOriginGroup: S.optional(ResourceReference),
+    urlSigningKeys: S.optional(
+      EndpointPropertiesUpdateParametersUrlSigningKeysList,
+    ),
+    deliveryPolicy: S.optional(
+      EndpointPropertiesUpdateParametersDeliveryPolicy,
+    ),
+    webApplicationFirewallPolicyLink: S.optional(ResourceReference),
+  }),
+).annotate({
+  identifier: "EndpointPropertiesUpdateParameters",
+}) as any as S.Schema<EndpointPropertiesUpdateParameters>;
+
+export interface UpdateEndpointRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Endpoint tags. */
+  tags?: EndpointsUpdateRequestTagsMap;
+  /** The JSON object containing endpoint update parameters. */
+  properties?: EndpointPropertiesUpdateParameters;
+}
+export const UpdateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    tags: S.optional(EndpointsUpdateRequestTagsMap),
+    properties: S.optional(EndpointPropertiesUpdateParameters),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateEndpointRequest",
+}) as any as S.Schema<UpdateEndpointRequest>;
+
+/** Resource tags. */
+export type EndpointsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const EndpointsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<EndpointsUpdateResponseTagsMap>;
+
+export interface UpdateEndpointResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: EndpointsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** The JSON object that contains the properties required to create an endpoint. */
+  properties?: EndpointProperties;
+}
+export const UpdateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(EndpointsUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(EndpointProperties),
+  }),
+).annotate({
+  identifier: "UpdateEndpointResponse",
+}) as any as S.Schema<UpdateEndpointResponse>;
+
+/** The JSON object that contains the properties of the origin. */
+export interface OriginUpdatePropertiesParameters {
+  /** The address of the origin. Domain names, IPv4 addresses, and IPv6 addresses are supported.This should be unique across all origins in an endpoint. */
+  hostName?: string;
+  /** The value of the HTTP port. Must be between 1 and 65535. */
+  httpPort?: number;
+  /** The value of the HTTPS port. Must be between 1 and 65535. */
+  httpsPort?: number;
+  /** The host header value sent to the origin with each request. If you leave this blank, the request hostname determines this value. Azure CDN origins, such as Web Apps, Blob Storage, and Cloud Services require this host header value to match the origin hostname by default. This overrides the host header defined at Endpoint */
+  originHostHeader?: string;
+  /** Priority of origin in given origin group for load balancing. Higher priorities will not be used for load balancing if any lower priority origin is healthy.Must be between 1 and 5 */
+  priority?: number;
+  /** Weight of the origin in given origin group for load balancing. Must be between 1 and 1000 */
+  weight?: number;
+  /** Origin is enabled for load balancing or not */
+  enabled?: boolean;
+  /** The Alias of the Private Link resource. Populating this optional field indicates that this origin is 'Private' */
+  privateLinkAlias?: string;
+  /** The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private' */
+  privateLinkResourceId?: string;
+  /** The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated */
+  privateLinkLocation?: string;
+  /** A custom message to be included in the approval request to connect to the Private Link. */
+  privateLinkApprovalMessage?: string;
+}
+export const OriginUpdatePropertiesParameters = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hostName: S.optional(S.String),
+    httpPort: S.optional(S.Number),
+    httpsPort: S.optional(S.Number),
+    originHostHeader: S.optional(S.String),
+    priority: S.optional(S.Number),
+    weight: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    privateLinkAlias: S.optional(S.String),
+    privateLinkResourceId: S.optional(S.String),
+    privateLinkLocation: S.optional(S.String),
+    privateLinkApprovalMessage: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OriginUpdatePropertiesParameters",
+}) as any as S.Schema<OriginUpdatePropertiesParameters>;
+
+export interface UpdateOriginRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the origin which is unique within the endpoint. */
+  originName: string;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: OriginUpdatePropertiesParameters;
+}
+export const UpdateOriginRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    originName: S.String.pipe(T.Label()),
+    properties: S.optional(OriginUpdatePropertiesParameters),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOriginRequest",
+}) as any as S.Schema<UpdateOriginRequest>;
+
+export interface UpdateOriginResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin. */
+  properties?: OriginProperties;
+}
+export const UpdateOriginResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OriginProperties),
+  }),
+).annotate({
+  identifier: "UpdateOriginResponse",
+}) as any as S.Schema<UpdateOriginResponse>;
+
+/** The source of the content being delivered via CDN within given origin group. */
+export type OriginGroupUpdatePropertiesParametersOriginsList =
+  Array<ResourceReference>;
+export const OriginGroupUpdatePropertiesParametersOriginsList =
+  /*@__PURE__*/ S.Array(
+    ResourceReference,
+  ) as any as S.Schema<OriginGroupUpdatePropertiesParametersOriginsList>;
+
+/** The JSON object that contains the properties of the origin group. */
+export interface OriginGroupUpdatePropertiesParameters {
+  /** Health probe settings to the origin that is used to determine the health of the origin. */
+  healthProbeSettings?: HealthProbeParameters;
+  /** The source of the content being delivered via CDN within given origin group. */
+  origins?: OriginGroupUpdatePropertiesParametersOriginsList;
+  /** Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported. */
+  trafficRestorationTimeToHealedOrNewEndpointsInMinutes?: number;
+  /** The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported. */
+  responseBasedOriginErrorDetectionSettings?: ResponseBasedOriginErrorDetectionParameters;
+}
+export const OriginGroupUpdatePropertiesParameters = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      healthProbeSettings: S.optional(HealthProbeParameters),
+      origins: S.optional(OriginGroupUpdatePropertiesParametersOriginsList),
+      trafficRestorationTimeToHealedOrNewEndpointsInMinutes: S.optional(
+        S.Number,
+      ),
+      responseBasedOriginErrorDetectionSettings: S.optional(
+        ResponseBasedOriginErrorDetectionParameters,
+      ),
+    }),
+).annotate({
+  identifier: "OriginGroupUpdatePropertiesParameters",
+}) as any as S.Schema<OriginGroupUpdatePropertiesParameters>;
+
+export interface UpdateOriginGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
+  profileName: string;
+  /** Name of the endpoint under the profile which is unique globally. */
+  endpointName: string;
+  /** Name of the origin group which is unique within the endpoint. */
+  originGroupName: string;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: OriginGroupUpdatePropertiesParameters;
+}
+export const UpdateOriginGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    profileName: S.String.pipe(T.Label()),
+    endpointName: S.String.pipe(T.Label()),
+    originGroupName: S.String.pipe(T.Label()),
+    properties: S.optional(OriginGroupUpdatePropertiesParameters),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOriginGroupRequest",
+}) as any as S.Schema<UpdateOriginGroupRequest>;
+
+export interface UpdateOriginGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The JSON object that contains the properties of the origin group. */
+  properties?: OriginGroupProperties;
+}
+export const UpdateOriginGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(OriginGroupProperties),
+  }),
+).annotate({
+  identifier: "UpdateOriginGroupResponse",
+}) as any as S.Schema<UpdateOriginGroupResponse>;
+
+/** CdnWebApplicationFirewallPolicy tags */
+export type PoliciesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PoliciesUpdateRequestTagsMap>;
+
+export interface UpdatePolicyRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the CdnWebApplicationFirewallPolicy. */
+  policyName: string;
+  /** CdnWebApplicationFirewallPolicy tags */
+  tags?: PoliciesUpdateRequestTagsMap;
+}
+export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    policyName: S.String.pipe(T.Label()),
+    tags: S.optional(PoliciesUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/cdnWebApplicationFirewallPolicies/{policyName}",
+      code: 200,
+      apiVersion: "2026-07-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePolicyRequest",
+}) as any as S.Schema<UpdatePolicyRequest>;
+
+/** Resource tags. */
+export type PoliciesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const PoliciesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<PoliciesUpdateResponseTagsMap>;
+
+export interface UpdatePolicyResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: PoliciesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the web application firewall policy. */
+  properties?: CdnWebApplicationFirewallPolicyProperties;
+  /** Gets a unique read-only string that changes whenever the resource is updated. */
+  etag?: string;
+  /** The pricing tier (defines a CDN provider, feature list and rate) of the CdnWebApplicationFirewallPolicy. */
+  sku: Sku;
+}
+export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(PoliciesUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(CdnWebApplicationFirewallPolicyProperties),
+    etag: S.optional(S.String),
+    sku: Sku,
+  }),
+).annotate({
+  identifier: "UpdatePolicyResponse",
+}) as any as S.Schema<UpdatePolicyResponse>;
+
 /** Profile tags */
 export type ProfilesUpdateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -8703,7 +10470,7 @@ export const ProfilePropertiesUpdateParameters = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilePropertiesUpdateParameters",
 }) as any as S.Schema<ProfilePropertiesUpdateParameters>;
 
-export interface ProfilesUpdateRequest {
+export interface UpdateProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -8717,7 +10484,7 @@ export interface ProfilesUpdateRequest {
   /** The JSON object containing profile update parameters. */
   properties?: ProfilePropertiesUpdateParameters;
 }
-export const ProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -8734,8 +10501,8 @@ export const ProfilesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ProfilesUpdateRequest",
-}) as any as S.Schema<ProfilesUpdateRequest>;
+  identifier: "UpdateProfileRequest",
+}) as any as S.Schema<UpdateProfileRequest>;
 
 /** Resource tags. */
 export type ProfilesUpdateResponseTagsMap = {
@@ -8779,7 +10546,7 @@ export const ProfilesUpdateResponseIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProfilesUpdateResponseIdentity",
 }) as any as S.Schema<ProfilesUpdateResponseIdentity>;
 
-export interface ProfilesUpdateResponse {
+export interface UpdateProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -8801,7 +10568,7 @@ export interface ProfilesUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: ProfilesUpdateResponseIdentity;
 }
-export const ProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -8815,502 +10582,8 @@ export const ProfilesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(ProfilesUpdateResponseIdentity),
   }),
 ).annotate({
-  identifier: "ProfilesUpdateResponse",
-}) as any as S.Schema<ProfilesUpdateResponse>;
-
-export interface ResourceUsageListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const ResourceUsageListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Cdn/checkResourceUsage",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "ResourceUsageListRequest",
-}) as any as S.Schema<ResourceUsageListRequest>;
-
-/** Reference to another resource along with its state. */
-export type ActivatedResourceReferenceInput = ResourceReference;
-export const ActivatedResourceReferenceInput = ResourceReference;
-
-/** Domains referenced by this endpoint. */
-export type RoutePropertiesInputCustomDomainsList = Array<ResourceReference>;
-export const RoutePropertiesInputCustomDomainsList = /*@__PURE__*/ S.Array(
-  ResourceReference,
-) as any as S.Schema<RoutePropertiesInputCustomDomainsList>;
-
-/** rule sets referenced by this endpoint. */
-export type RoutePropertiesInputRuleSetsList = Array<ResourceReference>;
-export const RoutePropertiesInputRuleSetsList = /*@__PURE__*/ S.Array(
-  ResourceReference,
-) as any as S.Schema<RoutePropertiesInputRuleSetsList>;
-
-/** Supported protocols for the customer's endpoint. */
-export type AFDEndpointProtocols = "Http" | "Https";
-export const AFDEndpointProtocols = /*@__PURE__*/ S.String;
-
-/** List of supported protocols for this route. */
-export type RoutePropertiesInputSupportedProtocolsList = Array<
-  AFDEndpointProtocols | (string & {})
->;
-export const RoutePropertiesInputSupportedProtocolsList = /*@__PURE__*/ S.Array(
-  AFDEndpointProtocols,
-) as any as S.Schema<RoutePropertiesInputSupportedProtocolsList>;
-
-/** The route patterns of the rule. */
-export type RoutePropertiesInputPatternsToMatchList = Array<string>;
-export const RoutePropertiesInputPatternsToMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutePropertiesInputPatternsToMatchList>;
-
-/** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
-export type AfdQueryStringCachingBehavior =
-  | "IgnoreQueryString"
-  | "UseQueryString"
-  | "IgnoreSpecifiedQueryStrings"
-  | "IncludeSpecifiedQueryStrings";
-export const AfdQueryStringCachingBehavior = /*@__PURE__*/ S.String;
-
-/** List of content types on which compression applies. The value should be a valid MIME type. */
-export type CompressionSettingsContentTypesToCompressList = Array<string>;
-export const CompressionSettingsContentTypesToCompressList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CompressionSettingsContentTypesToCompressList>;
-
-/** settings for compression. */
-export interface CompressionSettings {
-  /** List of content types on which compression applies. The value should be a valid MIME type. */
-  contentTypesToCompress?: CompressionSettingsContentTypesToCompressList;
-  /** Indicates whether content compression is enabled on AzureFrontDoor. Default value is false. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB. */
-  isCompressionEnabled?: boolean;
-}
-export const CompressionSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentTypesToCompress: S.optional(
-      CompressionSettingsContentTypesToCompressList,
-    ),
-    isCompressionEnabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CompressionSettings",
-}) as any as S.Schema<CompressionSettings>;
-
-/** Caching settings for a caching-type route. To disable caching, do not provide a cacheConfiguration object. */
-export interface AfdRouteCacheConfiguration {
-  /** Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings. */
-  queryStringCachingBehavior?: AfdQueryStringCachingBehavior | (string & {});
-  /** query parameters to include or exclude (comma separated). */
-  queryParameters?: string;
-  /** compression settings. */
-  compressionSettings?: CompressionSettings;
-}
-export const AfdRouteCacheConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queryStringCachingBehavior: S.optional(AfdQueryStringCachingBehavior),
-    queryParameters: S.optional(S.String),
-    compressionSettings: S.optional(CompressionSettings),
-  }),
-).annotate({
-  identifier: "AfdRouteCacheConfiguration",
-}) as any as S.Schema<AfdRouteCacheConfiguration>;
-
-/** Protocol this rule will use when forwarding traffic to backends. */
-export type RoutePropertiesInputForwardingProtocol =
-  | "HttpOnly"
-  | "HttpsOnly"
-  | "MatchRequest";
-export const RoutePropertiesInputForwardingProtocol = /*@__PURE__*/ S.String;
-
-/** whether this route will be linked to the default endpoint domain. */
-export type RoutePropertiesInputLinkToDefaultDomain = "Enabled" | "Disabled";
-export const RoutePropertiesInputLinkToDefaultDomain = /*@__PURE__*/ S.String;
-
-/** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
-export type RoutePropertiesInputHttpsRedirect = "Enabled" | "Disabled";
-export const RoutePropertiesInputHttpsRedirect = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the Routes to create. */
-export interface RoutePropertiesInput {
-  /** Domains referenced by this endpoint. */
-  customDomains?: RoutePropertiesInputCustomDomainsList;
-  /** A reference to the origin group. */
-  originGroup?: ResourceReference;
-  /** A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
-  originPath?: string;
-  /** rule sets referenced by this endpoint. */
-  ruleSets?: RoutePropertiesInputRuleSetsList;
-  /** List of supported protocols for this route. */
-  supportedProtocols?: RoutePropertiesInputSupportedProtocolsList;
-  /** The route patterns of the rule. */
-  patternsToMatch?: RoutePropertiesInputPatternsToMatchList;
-  /** The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object. */
-  cacheConfiguration?: AfdRouteCacheConfiguration;
-  /** Protocol this rule will use when forwarding traffic to backends. */
-  forwardingProtocol?: RoutePropertiesInputForwardingProtocol | (string & {});
-  /** whether this route will be linked to the default endpoint domain. */
-  linkToDefaultDomain?: RoutePropertiesInputLinkToDefaultDomain | (string & {});
-  /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
-  httpsRedirect?: RoutePropertiesInputHttpsRedirect | (string & {});
-  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-  enabledState?: EnabledState | (string & {});
-}
-export const RoutePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customDomains: S.optional(RoutePropertiesInputCustomDomainsList),
-    originGroup: S.optional(ResourceReference),
-    originPath: S.optional(S.String),
-    ruleSets: S.optional(RoutePropertiesInputRuleSetsList),
-    supportedProtocols: S.optional(RoutePropertiesInputSupportedProtocolsList),
-    patternsToMatch: S.optional(RoutePropertiesInputPatternsToMatchList),
-    cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
-    forwardingProtocol: S.optional(RoutePropertiesInputForwardingProtocol),
-    linkToDefaultDomain: S.optional(RoutePropertiesInputLinkToDefaultDomain),
-    httpsRedirect: S.optional(RoutePropertiesInputHttpsRedirect),
-    enabledState: S.optional(EnabledState),
-  }),
-).annotate({
-  identifier: "RoutePropertiesInput",
-}) as any as S.Schema<RoutePropertiesInput>;
-
-export interface RoutesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the routing rule. */
-  routeName: string;
-  /** The JSON object that contains the properties of the Routes to create. */
-  properties?: RoutePropertiesInput;
-}
-export const RoutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    routeName: S.String.pipe(T.Label()),
-    properties: S.optional(RoutePropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RoutesCreateRequest",
-}) as any as S.Schema<RoutesCreateRequest>;
-
-/** Reference to another resource along with its state. */
-export interface ActivatedResourceReference {
-  /** Resource ID. */
-  id?: string;
-  /** Whether the resource is active or inactive */
-  isActive?: boolean;
-}
-export const ActivatedResourceReference = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    isActive: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ActivatedResourceReference",
-}) as any as S.Schema<ActivatedResourceReference>;
-
-/** Domains referenced by this endpoint. */
-export type RoutePropertiesCustomDomainsList =
-  Array<ActivatedResourceReference>;
-export const RoutePropertiesCustomDomainsList = /*@__PURE__*/ S.Array(
-  ActivatedResourceReference,
-) as any as S.Schema<RoutePropertiesCustomDomainsList>;
-
-/** rule sets referenced by this endpoint. */
-export type RoutePropertiesRuleSetsList = Array<ResourceReference>;
-export const RoutePropertiesRuleSetsList = /*@__PURE__*/ S.Array(
-  ResourceReference,
-) as any as S.Schema<RoutePropertiesRuleSetsList>;
-
-/** List of supported protocols for this route. */
-export type RoutePropertiesSupportedProtocolsList = Array<AFDEndpointProtocols>;
-export const RoutePropertiesSupportedProtocolsList = /*@__PURE__*/ S.Array(
-  AFDEndpointProtocols,
-) as any as S.Schema<RoutePropertiesSupportedProtocolsList>;
-
-/** The route patterns of the rule. */
-export type RoutePropertiesPatternsToMatchList = Array<string>;
-export const RoutePropertiesPatternsToMatchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutePropertiesPatternsToMatchList>;
-
-/** Protocol this rule will use when forwarding traffic to backends. */
-export type RoutePropertiesForwardingProtocol =
-  | "HttpOnly"
-  | "HttpsOnly"
-  | "MatchRequest";
-export const RoutePropertiesForwardingProtocol = /*@__PURE__*/ S.String;
-
-/** whether this route will be linked to the default endpoint domain. */
-export type RoutePropertiesLinkToDefaultDomain = "Enabled" | "Disabled";
-export const RoutePropertiesLinkToDefaultDomain = /*@__PURE__*/ S.String;
-
-/** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
-export type RoutePropertiesHttpsRedirect = "Enabled" | "Disabled";
-export const RoutePropertiesHttpsRedirect = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the Routes to create. */
-export interface RouteProperties {
-  /** The name of the endpoint which holds the route. */
-  endpointName?: string;
-  /** Domains referenced by this endpoint. */
-  customDomains?: RoutePropertiesCustomDomainsList;
-  /** A reference to the origin group. */
-  originGroup?: ResourceReference;
-  /** A directory path on the origin that AzureFrontDoor can use to retrieve content from, e.g. contoso.cloudapp.net/originpath. */
-  originPath?: string;
-  /** rule sets referenced by this endpoint. */
-  ruleSets?: RoutePropertiesRuleSetsList;
-  /** List of supported protocols for this route. */
-  supportedProtocols?: RoutePropertiesSupportedProtocolsList;
-  /** The route patterns of the rule. */
-  patternsToMatch?: RoutePropertiesPatternsToMatchList;
-  /** The caching configuration for this route. To disable caching, do not provide a cacheConfiguration object. */
-  cacheConfiguration?: AfdRouteCacheConfiguration;
-  /** Protocol this rule will use when forwarding traffic to backends. */
-  forwardingProtocol?: RoutePropertiesForwardingProtocol;
-  /** whether this route will be linked to the default endpoint domain. */
-  linkToDefaultDomain?: RoutePropertiesLinkToDefaultDomain;
-  /** Whether to automatically redirect HTTP traffic to HTTPS traffic. Note that this is a easy way to set up this rule and it will be the first rule that gets executed. */
-  httpsRedirect?: RoutePropertiesHttpsRedirect;
-  /** Whether to enable use of this rule. Permitted values are 'Enabled' or 'Disabled' */
-  enabledState?: EnabledState;
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-}
-export const RouteProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endpointName: S.optional(S.String),
-    customDomains: S.optional(RoutePropertiesCustomDomainsList),
-    originGroup: S.optional(ResourceReference),
-    originPath: S.optional(S.String),
-    ruleSets: S.optional(RoutePropertiesRuleSetsList),
-    supportedProtocols: S.optional(RoutePropertiesSupportedProtocolsList),
-    patternsToMatch: S.optional(RoutePropertiesPatternsToMatchList),
-    cacheConfiguration: S.optional(AfdRouteCacheConfiguration),
-    forwardingProtocol: S.optional(RoutePropertiesForwardingProtocol),
-    linkToDefaultDomain: S.optional(RoutePropertiesLinkToDefaultDomain),
-    httpsRedirect: S.optional(RoutePropertiesHttpsRedirect),
-    enabledState: S.optional(EnabledState),
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-  }),
-).annotate({
-  identifier: "RouteProperties",
-}) as any as S.Schema<RouteProperties>;
-
-export interface RoutesCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Routes to create. */
-  properties?: RouteProperties;
-}
-export const RoutesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RouteProperties),
-  }),
-).annotate({
-  identifier: "RoutesCreateResponse",
-}) as any as S.Schema<RoutesCreateResponse>;
-
-export interface RoutesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the routing rule. */
-  routeName: string;
-}
-export const RoutesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    routeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RoutesDeleteRequest",
-}) as any as S.Schema<RoutesDeleteRequest>;
-
-export interface RoutesDeleteResponse {}
-export const RoutesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RoutesDeleteResponse",
-}) as any as S.Schema<RoutesDeleteResponse>;
-
-export interface RoutesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-  /** Name of the routing rule. */
-  routeName: string;
-}
-export const RoutesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-    routeName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes/{routeName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RoutesGetRequest",
-}) as any as S.Schema<RoutesGetRequest>;
-
-export interface RoutesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Routes to create. */
-  properties?: RouteProperties;
-}
-export const RoutesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RouteProperties),
-  }),
-).annotate({
-  identifier: "RoutesGetResponse",
-}) as any as S.Schema<RoutesGetResponse>;
-
-export interface RoutesListByEndpointRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the endpoint under the profile which is unique globally. */
-  endpointName: string;
-}
-export const RoutesListByEndpointRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    endpointName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/afdEndpoints/{endpointName}/routes",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RoutesListByEndpointRequest",
-}) as any as S.Schema<RoutesListByEndpointRequest>;
-
-/** Friendly Routes name mapping to the any Routes or secret related information. */
-export interface Route {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Routes to create. */
-  properties?: RouteProperties;
-}
-export const Route = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RouteProperties),
-  }),
-).annotate({ identifier: "Route" }) as any as S.Schema<Route>;
-
-/** The Route items on this page */
-export type RouteListResultValueList = Array<Route>;
-export const RouteListResultValueList = /*@__PURE__*/ S.Array(
-  Route,
-) as any as S.Schema<RouteListResultValueList>;
-
-/** The response of a Route list operation. */
-export interface RouteListResult {
-  /** The Route items on this page */
-  value: RouteListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RouteListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RouteListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RouteListResult",
-}) as any as S.Schema<RouteListResult>;
+  identifier: "UpdateProfileResponse",
+}) as any as S.Schema<UpdateProfileResponse>;
 
 /** Domains referenced by this endpoint. */
 export type RouteUpdatePropertiesParametersInputCustomDomainsList =
@@ -9429,7 +10702,7 @@ export const RouteUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(
   identifier: "RouteUpdatePropertiesParametersInput",
 }) as any as S.Schema<RouteUpdatePropertiesParametersInput>;
 
-export interface RoutesUpdateRequest {
+export interface UpdateRouteRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -9443,7 +10716,7 @@ export interface RoutesUpdateRequest {
   /** The JSON object that contains the properties of the domain to create. */
   properties?: RouteUpdatePropertiesParametersInput;
 }
-export const RoutesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -9460,10 +10733,10 @@ export const RoutesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RoutesUpdateRequest",
-}) as any as S.Schema<RoutesUpdateRequest>;
+  identifier: "UpdateRouteRequest",
+}) as any as S.Schema<UpdateRouteRequest>;
 
-export interface RoutesUpdateResponse {
+export interface UpdateRouteResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -9475,7 +10748,7 @@ export interface RoutesUpdateResponse {
   /** The JSON object that contains the properties of the Routes to create. */
   properties?: RouteProperties;
 }
-export const RoutesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -9484,705 +10757,8 @@ export const RoutesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(RouteProperties),
   }),
 ).annotate({
-  identifier: "RoutesUpdateResponse",
-}) as any as S.Schema<RoutesUpdateResponse>;
-
-/** A list of conditions that must be matched for the actions to be executed */
-export type RulePropertiesInputConditionsList = Array<DeliveryRuleCondition>;
-export const RulePropertiesInputConditionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleCondition,
-) as any as S.Schema<RulePropertiesInputConditionsList>;
-
-/** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type RulePropertiesInputActionsList = Array<DeliveryRuleAction>;
-export const RulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleAction,
-) as any as S.Schema<RulePropertiesInputActionsList>;
-
-/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-export type RulePropertiesInputMatchProcessingBehavior = "Continue" | "Stop";
-export const RulePropertiesInputMatchProcessingBehavior =
-  /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the Rules to create. */
-export interface RulePropertiesInput {
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
-  order?: number;
-  /** A list of conditions that must be matched for the actions to be executed */
-  conditions?: RulePropertiesInputConditionsList;
-  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-  actions?: RulePropertiesInputActionsList;
-  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-  matchProcessingBehavior?:
-    | RulePropertiesInputMatchProcessingBehavior
-    | (string & {});
-}
-export const RulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    order: S.optional(S.Number),
-    conditions: S.optional(RulePropertiesInputConditionsList),
-    actions: S.optional(RulePropertiesInputActionsList),
-    matchProcessingBehavior: S.optional(
-      RulePropertiesInputMatchProcessingBehavior,
-    ),
-  }),
-).annotate({
-  identifier: "RulePropertiesInput",
-}) as any as S.Schema<RulePropertiesInput>;
-
-export interface RulesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-  /** Name of the delivery rule which is unique within the endpoint. */
-  ruleName: string;
-  /** The JSON object that contains the properties of the Rules to create. */
-  properties?: RulePropertiesInput;
-}
-export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-    ruleName: S.String.pipe(T.Label()),
-    properties: S.optional(RulePropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RulesCreateRequest",
-}) as any as S.Schema<RulesCreateRequest>;
-
-/** A list of conditions that must be matched for the actions to be executed */
-export type RulePropertiesConditionsList = Array<DeliveryRuleCondition>;
-export const RulePropertiesConditionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleCondition,
-) as any as S.Schema<RulePropertiesConditionsList>;
-
-/** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type RulePropertiesActionsList = Array<DeliveryRuleAction>;
-export const RulePropertiesActionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleAction,
-) as any as S.Schema<RulePropertiesActionsList>;
-
-/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-export type RulePropertiesMatchProcessingBehavior = "Continue" | "Stop";
-export const RulePropertiesMatchProcessingBehavior = /*@__PURE__*/ S.String;
-
-/** The JSON object that contains the properties of the Rules to create. */
-export interface RuleProperties {
-  /** The name of the rule set containing the rule. */
-  ruleSetName?: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
-  order?: number;
-  /** A list of conditions that must be matched for the actions to be executed */
-  conditions?: RulePropertiesConditionsList;
-  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-  actions?: RulePropertiesActionsList;
-  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-  matchProcessingBehavior?: RulePropertiesMatchProcessingBehavior;
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-}
-export const RuleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleSetName: S.optional(S.String),
-    order: S.optional(S.Number),
-    conditions: S.optional(RulePropertiesConditionsList),
-    actions: S.optional(RulePropertiesActionsList),
-    matchProcessingBehavior: S.optional(RulePropertiesMatchProcessingBehavior),
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-  }),
-).annotate({ identifier: "RuleProperties" }) as any as S.Schema<RuleProperties>;
-
-export interface RulesCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Rules to create. */
-  properties?: RuleProperties;
-}
-export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RuleProperties),
-  }),
-).annotate({
-  identifier: "RulesCreateResponse",
-}) as any as S.Schema<RulesCreateResponse>;
-
-export interface RulesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-  /** Name of the delivery rule which is unique within the endpoint. */
-  ruleName: string;
-}
-export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-    ruleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RulesDeleteRequest",
-}) as any as S.Schema<RulesDeleteRequest>;
-
-export interface RulesDeleteResponse {}
-export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RulesDeleteResponse",
-}) as any as S.Schema<RulesDeleteResponse>;
-
-/** A list of conditions that must be matched for the actions to be executed */
-export type BatchRulePropertiesInputConditionsList =
-  Array<DeliveryRuleCondition>;
-export const BatchRulePropertiesInputConditionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleCondition,
-) as any as S.Schema<BatchRulePropertiesInputConditionsList>;
-
-/** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type BatchRulePropertiesInputActionsList = Array<DeliveryRuleAction>;
-export const BatchRulePropertiesInputActionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleAction,
-) as any as S.Schema<BatchRulePropertiesInputActionsList>;
-
-/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-export type BatchRulePropertiesInputMatchProcessingBehavior =
-  | "Continue"
-  | "Stop";
-export const BatchRulePropertiesInputMatchProcessingBehavior =
-  /*@__PURE__*/ S.String;
-
-/** The JSON object that contains a rule with its name for batch mode operations. */
-export interface BatchRulePropertiesInput {
-  /** Name of the rule. */
-  ruleName: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
-  order?: number;
-  /** A list of conditions that must be matched for the actions to be executed */
-  conditions?: BatchRulePropertiesInputConditionsList;
-  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-  actions?: BatchRulePropertiesInputActionsList;
-  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-  matchProcessingBehavior?:
-    | BatchRulePropertiesInputMatchProcessingBehavior
-    | (string & {});
-}
-export const BatchRulePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleName: S.String,
-    order: S.optional(S.Number),
-    conditions: S.optional(BatchRulePropertiesInputConditionsList),
-    actions: S.optional(BatchRulePropertiesInputActionsList),
-    matchProcessingBehavior: S.optional(
-      BatchRulePropertiesInputMatchProcessingBehavior,
-    ),
-  }),
-).annotate({
-  identifier: "BatchRulePropertiesInput",
-}) as any as S.Schema<BatchRulePropertiesInput>;
-
-/** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
-export type RuleSetPropertiesInputRulesList = Array<BatchRulePropertiesInput>;
-export const RuleSetPropertiesInputRulesList = /*@__PURE__*/ S.Array(
-  BatchRulePropertiesInput,
-) as any as S.Schema<RuleSetPropertiesInputRulesList>;
-
-/** The JSON object that contains the properties of the Rule Set to create. */
-export interface RuleSetPropertiesInput {
-  /** Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set. When batch mode is disabled, rules would need to be processed independently. This property can only be set during rule set creation and cannot be updated later. For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set. */
-  batchMode?: boolean;
-  /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
-  rules?: RuleSetPropertiesInputRulesList;
-}
-export const RuleSetPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    batchMode: S.optional(S.Boolean),
-    rules: S.optional(RuleSetPropertiesInputRulesList),
-  }),
-).annotate({
-  identifier: "RuleSetPropertiesInput",
-}) as any as S.Schema<RuleSetPropertiesInput>;
-
-export interface RuleSetsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-  /** The JSON object that contains the properties of the Rule Set to create. */
-  properties?: RuleSetPropertiesInput;
-}
-export const RuleSetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-    properties: S.optional(RuleSetPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RuleSetsCreateRequest",
-}) as any as S.Schema<RuleSetsCreateRequest>;
-
-/** A list of conditions that must be matched for the actions to be executed */
-export type BatchRulePropertiesConditionsList = Array<DeliveryRuleCondition>;
-export const BatchRulePropertiesConditionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleCondition,
-) as any as S.Schema<BatchRulePropertiesConditionsList>;
-
-/** A list of actions that are executed when all the conditions of a rule are satisfied. */
-export type BatchRulePropertiesActionsList = Array<DeliveryRuleAction>;
-export const BatchRulePropertiesActionsList = /*@__PURE__*/ S.Array(
-  DeliveryRuleAction,
-) as any as S.Schema<BatchRulePropertiesActionsList>;
-
-/** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-export type BatchRulePropertiesMatchProcessingBehavior = "Continue" | "Stop";
-export const BatchRulePropertiesMatchProcessingBehavior =
-  /*@__PURE__*/ S.String;
-
-/** The JSON object that contains a rule with its name for batch mode operations. */
-export interface BatchRuleProperties {
-  /** Name of the rule. */
-  ruleName: string;
-  /** The name of the rule set containing the rule. */
-  ruleSetName?: string;
-  /** The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied. */
-  order?: number;
-  /** A list of conditions that must be matched for the actions to be executed */
-  conditions?: BatchRulePropertiesConditionsList;
-  /** A list of actions that are executed when all the conditions of a rule are satisfied. */
-  actions?: BatchRulePropertiesActionsList;
-  /** If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue. */
-  matchProcessingBehavior?: BatchRulePropertiesMatchProcessingBehavior;
-}
-export const BatchRuleProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ruleName: S.String,
-    ruleSetName: S.optional(S.String),
-    order: S.optional(S.Number),
-    conditions: S.optional(BatchRulePropertiesConditionsList),
-    actions: S.optional(BatchRulePropertiesActionsList),
-    matchProcessingBehavior: S.optional(
-      BatchRulePropertiesMatchProcessingBehavior,
-    ),
-  }),
-).annotate({
-  identifier: "BatchRuleProperties",
-}) as any as S.Schema<BatchRuleProperties>;
-
-/** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
-export type RuleSetPropertiesRulesList = Array<BatchRuleProperties>;
-export const RuleSetPropertiesRulesList = /*@__PURE__*/ S.Array(
-  BatchRuleProperties,
-) as any as S.Schema<RuleSetPropertiesRulesList>;
-
-/** The JSON object that contains the properties of the Rule Set to create. */
-export interface RuleSetProperties {
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-  /** The name of the profile which holds the rule set. */
-  profileName?: string;
-  /** Indicates whether rule set is in batch mode. When batch mode is enabled, rules will be processed in a batch along with the rule set. When batch mode is disabled, rules would need to be processed independently. This property can only be set during rule set creation and cannot be updated later. For switching modes, a new rule set needs to be created with the desired mode and rules need to be migrated to the new rule set. */
-  batchMode?: boolean;
-  /** A list of rules that are part of this rule set provided the rule set is in batch mode. This property will be ignored if the rule set is not in batch mode. */
-  rules?: RuleSetPropertiesRulesList;
-}
-export const RuleSetProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-    profileName: S.optional(S.String),
-    batchMode: S.optional(S.Boolean),
-    rules: S.optional(RuleSetPropertiesRulesList),
-  }),
-).annotate({
-  identifier: "RuleSetProperties",
-}) as any as S.Schema<RuleSetProperties>;
-
-export interface RuleSetsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Rule Set to create. */
-  properties?: RuleSetProperties;
-}
-export const RuleSetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RuleSetProperties),
-  }),
-).annotate({
-  identifier: "RuleSetsCreateResponse",
-}) as any as S.Schema<RuleSetsCreateResponse>;
-
-export interface RuleSetsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-}
-export const RuleSetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RuleSetsDeleteRequest",
-}) as any as S.Schema<RuleSetsDeleteRequest>;
-
-export interface RuleSetsDeleteResponse {}
-export const RuleSetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "RuleSetsDeleteResponse",
-}) as any as S.Schema<RuleSetsDeleteResponse>;
-
-export interface RuleSetsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-}
-export const RuleSetsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RuleSetsGetRequest",
-}) as any as S.Schema<RuleSetsGetRequest>;
-
-export interface RuleSetsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Rule Set to create. */
-  properties?: RuleSetProperties;
-}
-export const RuleSetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RuleSetProperties),
-  }),
-).annotate({
-  identifier: "RuleSetsGetResponse",
-}) as any as S.Schema<RuleSetsGetResponse>;
-
-export interface RuleSetsListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const RuleSetsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RuleSetsListByProfileRequest",
-}) as any as S.Schema<RuleSetsListByProfileRequest>;
-
-/** Friendly RuleSet name mapping to the any RuleSet or secret related information. */
-export interface RuleSet {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Rule Set to create. */
-  properties?: RuleSetProperties;
-}
-export const RuleSet = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RuleSetProperties),
-  }),
-).annotate({ identifier: "RuleSet" }) as any as S.Schema<RuleSet>;
-
-/** The RuleSet items on this page */
-export type RuleSetListResultValueList = Array<RuleSet>;
-export const RuleSetListResultValueList = /*@__PURE__*/ S.Array(
-  RuleSet,
-) as any as S.Schema<RuleSetListResultValueList>;
-
-/** The response of a RuleSet list operation. */
-export interface RuleSetListResult {
-  /** The RuleSet items on this page */
-  value: RuleSetListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RuleSetListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RuleSetListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RuleSetListResult",
-}) as any as S.Schema<RuleSetListResult>;
-
-export interface RuleSetsListResourceUsageRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-}
-export const RuleSetsListResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RuleSetsListResourceUsageRequest",
-}) as any as S.Schema<RuleSetsListResourceUsageRequest>;
-
-export interface RulesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-  /** Name of the delivery rule which is unique within the endpoint. */
-  ruleName: string;
-}
-export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-    ruleName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules/{ruleName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RulesGetRequest",
-}) as any as S.Schema<RulesGetRequest>;
-
-export interface RulesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Rules to create. */
-  properties?: RuleProperties;
-}
-export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RuleProperties),
-  }),
-).annotate({
-  identifier: "RulesGetResponse",
-}) as any as S.Schema<RulesGetResponse>;
-
-export interface RulesListByRuleSetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the rule set under the profile which is unique globally. */
-  ruleSetName: string;
-}
-export const RulesListByRuleSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    ruleSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "RulesListByRuleSetRequest",
-}) as any as S.Schema<RulesListByRuleSetRequest>;
-
-/** Friendly Rules name mapping to the any Rules or secret related information. */
-export interface Rule {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Rules to create. */
-  properties?: RuleProperties;
-}
-export const Rule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(RuleProperties),
-  }),
-).annotate({ identifier: "Rule" }) as any as S.Schema<Rule>;
-
-/** The Rule items on this page */
-export type RuleListResultValueList = Array<Rule>;
-export const RuleListResultValueList = /*@__PURE__*/ S.Array(
-  Rule,
-) as any as S.Schema<RuleListResultValueList>;
-
-/** The response of a Rule list operation. */
-export interface RuleListResult {
-  /** The Rule items on this page */
-  value: RuleListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const RuleListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: RuleListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "RuleListResult" }) as any as S.Schema<RuleListResult>;
+  identifier: "UpdateRouteResponse",
+}) as any as S.Schema<UpdateRouteResponse>;
 
 /** A list of conditions that must be matched for the actions to be executed */
 export type RuleUpdatePropertiesParametersInputConditionsList =
@@ -10233,7 +10809,7 @@ export const RuleUpdatePropertiesParametersInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "RuleUpdatePropertiesParametersInput",
 }) as any as S.Schema<RuleUpdatePropertiesParametersInput>;
 
-export interface RulesUpdateRequest {
+export interface UpdateRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -10247,7 +10823,7 @@ export interface RulesUpdateRequest {
   /** The JSON object that contains the properties of the rule to update. */
   properties?: RuleUpdatePropertiesParametersInput;
 }
-export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -10264,10 +10840,10 @@ export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesUpdateRequest",
-}) as any as S.Schema<RulesUpdateRequest>;
+  identifier: "UpdateRuleRequest",
+}) as any as S.Schema<UpdateRuleRequest>;
 
-export interface RulesUpdateResponse {
+export interface UpdateRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -10279,7 +10855,7 @@ export interface RulesUpdateResponse {
   /** The JSON object that contains the properties of the Rules to create. */
   properties?: RuleProperties;
 }
-export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -10288,590 +10864,8 @@ export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(RuleProperties),
   }),
 ).annotate({
-  identifier: "RulesUpdateResponse",
-}) as any as S.Schema<RulesUpdateResponse>;
-
-/** The json object containing secret parameters */
-export interface SecretParameters {
-  /** The type of the secret resource. */
-  type: SecretType | (string & {});
-}
-export const SecretParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SecretType,
-  }),
-).annotate({
-  identifier: "SecretParameters",
-}) as any as S.Schema<SecretParameters>;
-
-/** The JSON object that contains the properties of the Secret to create. */
-export interface SecretPropertiesInput {
-  /** object which contains secret parameters */
-  parameters?: SecretParameters;
-}
-export const SecretPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(SecretParameters),
-  }),
-).annotate({
-  identifier: "SecretPropertiesInput",
-}) as any as S.Schema<SecretPropertiesInput>;
-
-export interface SecretsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the Secret under the profile. */
-  secretName: string;
-  /** The JSON object that contains the properties of the Secret to create. */
-  properties?: SecretPropertiesInput;
-}
-export const SecretsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    secretName: S.String.pipe(T.Label()),
-    properties: S.optional(SecretPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecretsCreateRequest",
-}) as any as S.Schema<SecretsCreateRequest>;
-
-/** The JSON object that contains the properties of the Secret to create. */
-export interface SecretProperties {
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-  /** The name of the profile which holds the secret. */
-  profileName?: string;
-  /** object which contains secret parameters */
-  parameters?: SecretParameters;
-}
-export const SecretProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-    profileName: S.optional(S.String),
-    parameters: S.optional(SecretParameters),
-  }),
-).annotate({
-  identifier: "SecretProperties",
-}) as any as S.Schema<SecretProperties>;
-
-export interface SecretsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Secret to create. */
-  properties?: SecretProperties;
-}
-export const SecretsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecretProperties),
-  }),
-).annotate({
-  identifier: "SecretsCreateResponse",
-}) as any as S.Schema<SecretsCreateResponse>;
-
-export interface SecretsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the Secret under the profile. */
-  secretName: string;
-}
-export const SecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    secretName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecretsDeleteRequest",
-}) as any as S.Schema<SecretsDeleteRequest>;
-
-export interface SecretsDeleteResponse {}
-export const SecretsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SecretsDeleteResponse",
-}) as any as S.Schema<SecretsDeleteResponse>;
-
-export interface SecretsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the Secret under the profile. */
-  secretName: string;
-}
-export const SecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    secretName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets/{secretName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecretsGetRequest",
-}) as any as S.Schema<SecretsGetRequest>;
-
-export interface SecretsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Secret to create. */
-  properties?: SecretProperties;
-}
-export const SecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecretProperties),
-  }),
-).annotate({
-  identifier: "SecretsGetResponse",
-}) as any as S.Schema<SecretsGetResponse>;
-
-export interface SecretsListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const SecretsListByProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/secrets",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecretsListByProfileRequest",
-}) as any as S.Schema<SecretsListByProfileRequest>;
-
-/** Friendly Secret name mapping to the any Secret or secret related information. */
-export interface Secret {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The JSON object that contains the properties of the Secret to create. */
-  properties?: SecretProperties;
-}
-export const Secret = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecretProperties),
-  }),
-).annotate({ identifier: "Secret" }) as any as S.Schema<Secret>;
-
-/** The Secret items on this page */
-export type SecretListResultValueList = Array<Secret>;
-export const SecretListResultValueList = /*@__PURE__*/ S.Array(
-  Secret,
-) as any as S.Schema<SecretListResultValueList>;
-
-/** The response of a Secret list operation. */
-export interface SecretListResult {
-  /** The Secret items on this page */
-  value: SecretListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SecretListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SecretListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecretListResult",
-}) as any as S.Schema<SecretListResult>;
-
-/** The type of the Security policy to create. */
-export type SecurityPolicyType = "WebApplicationFirewall";
-export const SecurityPolicyType = /*@__PURE__*/ S.String;
-
-/** The json object containing security policy parameters */
-export interface SecurityPolicyPropertiesParameters {
-  /** The type of the Security policy to create. */
-  type: SecurityPolicyType | (string & {});
-}
-export const SecurityPolicyPropertiesParameters = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SecurityPolicyType,
-  }),
-).annotate({
-  identifier: "SecurityPolicyPropertiesParameters",
-}) as any as S.Schema<SecurityPolicyPropertiesParameters>;
-
-/** The json object that contains properties required to create a security policy */
-export interface SecurityPolicyPropertiesInput {
-  /** object which contains security policy parameters */
-  parameters?: SecurityPolicyPropertiesParameters;
-}
-export const SecurityPolicyPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parameters: S.optional(SecurityPolicyPropertiesParameters),
-  }),
-).annotate({
-  identifier: "SecurityPolicyPropertiesInput",
-}) as any as S.Schema<SecurityPolicyPropertiesInput>;
-
-export interface SecurityPoliciesCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the security policy under the profile. */
-  securityPolicyName: string;
-  /** The json object that contains properties required to create a security policy */
-  properties?: SecurityPolicyPropertiesInput;
-}
-export const SecurityPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    securityPolicyName: S.String.pipe(T.Label()),
-    properties: S.optional(SecurityPolicyPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecurityPoliciesCreateRequest",
-}) as any as S.Schema<SecurityPoliciesCreateRequest>;
-
-/** The json object that contains properties required to create a security policy */
-export interface SecurityPolicyProperties {
-  /** Provisioning status */
-  provisioningState?: AfdProvisioningState;
-  deploymentStatus?: DeploymentStatus;
-  /** The name of the profile which holds the security policy. */
-  profileName?: string;
-  /** object which contains security policy parameters */
-  parameters?: SecurityPolicyPropertiesParameters;
-}
-export const SecurityPolicyProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(AfdProvisioningState),
-    deploymentStatus: S.optional(DeploymentStatus),
-    profileName: S.optional(S.String),
-    parameters: S.optional(SecurityPolicyPropertiesParameters),
-  }),
-).annotate({
-  identifier: "SecurityPolicyProperties",
-}) as any as S.Schema<SecurityPolicyProperties>;
-
-export interface SecurityPoliciesCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The json object that contains properties required to create a security policy */
-  properties?: SecurityPolicyProperties;
-}
-export const SecurityPoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecurityPolicyProperties),
-  }),
-).annotate({
-  identifier: "SecurityPoliciesCreateResponse",
-}) as any as S.Schema<SecurityPoliciesCreateResponse>;
-
-export interface SecurityPoliciesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the security policy under the profile. */
-  securityPolicyName: string;
-}
-export const SecurityPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    securityPolicyName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecurityPoliciesDeleteRequest",
-}) as any as S.Schema<SecurityPoliciesDeleteRequest>;
-
-export interface SecurityPoliciesDeleteResponse {}
-export const SecurityPoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SecurityPoliciesDeleteResponse",
-}) as any as S.Schema<SecurityPoliciesDeleteResponse>;
-
-export interface SecurityPoliciesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the security policy under the profile. */
-  securityPolicyName: string;
-}
-export const SecurityPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    securityPolicyName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecurityPoliciesGetRequest",
-}) as any as S.Schema<SecurityPoliciesGetRequest>;
-
-export interface SecurityPoliciesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The json object that contains properties required to create a security policy */
-  properties?: SecurityPolicyProperties;
-}
-export const SecurityPoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecurityPolicyProperties),
-  }),
-).annotate({
-  identifier: "SecurityPoliciesGetResponse",
-}) as any as S.Schema<SecurityPoliciesGetResponse>;
-
-export interface SecurityPoliciesListByProfileRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-}
-export const SecurityPoliciesListByProfileRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      profileName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies",
-        code: 200,
-        apiVersion: "2026-07-01",
-      }),
-    ),
-).annotate({
-  identifier: "SecurityPoliciesListByProfileRequest",
-}) as any as S.Schema<SecurityPoliciesListByProfileRequest>;
-
-/** SecurityPolicy association for AzureFrontDoor profile */
-export interface SecurityPolicy {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The json object that contains properties required to create a security policy */
-  properties?: SecurityPolicyProperties;
-}
-export const SecurityPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecurityPolicyProperties),
-  }),
-).annotate({ identifier: "SecurityPolicy" }) as any as S.Schema<SecurityPolicy>;
-
-/** The SecurityPolicy items on this page */
-export type SecurityPolicyListResultValueList = Array<SecurityPolicy>;
-export const SecurityPolicyListResultValueList = /*@__PURE__*/ S.Array(
-  SecurityPolicy,
-) as any as S.Schema<SecurityPolicyListResultValueList>;
-
-/** The response of a SecurityPolicy list operation. */
-export interface SecurityPolicyListResult {
-  /** The SecurityPolicy items on this page */
-  value: SecurityPolicyListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SecurityPolicyListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: SecurityPolicyListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecurityPolicyListResult",
-}) as any as S.Schema<SecurityPolicyListResult>;
-
-/** The json object that contains properties required to update a security policy */
-export type SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
-export const SecurityPolicyUpdateProperties = SecurityPolicyPropertiesInput;
-
-export interface SecurityPoliciesPatchRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group. */
-  profileName: string;
-  /** Name of the security policy under the profile. */
-  securityPolicyName: string;
-  /** The json object that contains properties required to update a security policy */
-  properties?: SecurityPolicyPropertiesInput;
-}
-export const SecurityPoliciesPatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    profileName: S.String.pipe(T.Label()),
-    securityPolicyName: S.String.pipe(T.Label()),
-    properties: S.optional(SecurityPolicyPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
-      code: 200,
-      apiVersion: "2026-07-01",
-    }),
-  ),
-).annotate({
-  identifier: "SecurityPoliciesPatchRequest",
-}) as any as S.Schema<SecurityPoliciesPatchRequest>;
-
-export interface SecurityPoliciesPatchResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The json object that contains properties required to create a security policy */
-  properties?: SecurityPolicyProperties;
-}
-export const SecurityPoliciesPatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SecurityPolicyProperties),
-  }),
-).annotate({
-  identifier: "SecurityPoliciesPatchResponse",
-}) as any as S.Schema<SecurityPoliciesPatchResponse>;
+  identifier: "UpdateRuleResponse",
+}) as any as S.Schema<UpdateRuleResponse>;
 
 export interface ValidateProbeRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -10914,66 +10908,6 @@ export const ValidateProbeOutput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateProbeOutput",
 }) as any as S.Schema<ValidateProbeOutput>;
 
-export type AFDCustomDomainsCreateError = AzureOpError;
-/** Creates a new domain within the specified profile. */
-export const AFDCustomDomainsCreate: API.OperationMethod<
-  AFDCustomDomainsCreateRequest,
-  AFDCustomDomainsCreateResponse,
-  AFDCustomDomainsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDCustomDomainsCreateRequest,
-  output: AFDCustomDomainsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDCustomDomainsDeleteError = AzureOpError;
-/** Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile. */
-export const AFDCustomDomainsDelete: API.OperationMethod<
-  AFDCustomDomainsDeleteRequest,
-  AFDCustomDomainsDeleteResponse,
-  AFDCustomDomainsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDCustomDomainsDeleteRequest,
-  output: AFDCustomDomainsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDCustomDomainsGetError = AzureOpError;
-/** Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile. */
-export const AFDCustomDomainsGet: API.OperationMethod<
-  AFDCustomDomainsGetRequest,
-  AFDCustomDomainsGetResponse,
-  AFDCustomDomainsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDCustomDomainsGetRequest,
-  output: AFDCustomDomainsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDCustomDomainsListByProfileError = AzureOpError;
-/** Lists existing AzureFrontDoor domains. */
-export const AFDCustomDomainsListByProfile: API.OperationMethod<
-  AFDCustomDomainsListByProfileRequest,
-  AFDDomainListResult,
-  AFDCustomDomainsListByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDCustomDomainsListByProfileRequest,
-  output: AFDDomainListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AFDCustomDomainsRefreshValidationTokenError = AzureOpError;
 /** Updates the domain validation token. */
 export const AFDCustomDomainsRefreshValidationToken: API.OperationMethod<
@@ -10984,96 +10918,6 @@ export const AFDCustomDomainsRefreshValidationToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AFDCustomDomainsRefreshValidationTokenRequest,
   output: AFDCustomDomainsRefreshValidationTokenResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDCustomDomainsUpdateError = AzureOpError;
-/** Updates an existing domain within a profile. */
-export const AFDCustomDomainsUpdate: API.OperationMethod<
-  AFDCustomDomainsUpdateRequest,
-  AFDCustomDomainsUpdateResponse,
-  AFDCustomDomainsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDCustomDomainsUpdateRequest,
-  output: AFDCustomDomainsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDEndpointsCreateError = AzureOpError;
-/** Creates a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
-export const AFDEndpointsCreate: API.OperationMethod<
-  AFDEndpointsCreateRequest,
-  AFDEndpointsCreateResponse,
-  AFDEndpointsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDEndpointsCreateRequest,
-  output: AFDEndpointsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDEndpointsDeleteError = AzureOpError;
-/** Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
-export const AFDEndpointsDelete: API.OperationMethod<
-  AFDEndpointsDeleteRequest,
-  AFDEndpointsDeleteResponse,
-  AFDEndpointsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDEndpointsDeleteRequest,
-  output: AFDEndpointsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDEndpointsGetError = AzureOpError;
-/** Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
-export const AFDEndpointsGet: API.OperationMethod<
-  AFDEndpointsGetRequest,
-  AFDEndpointsGetResponse,
-  AFDEndpointsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDEndpointsGetRequest,
-  output: AFDEndpointsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDEndpointsListByProfileError = AzureOpError;
-/** Lists existing AzureFrontDoor endpoints. */
-export const AFDEndpointsListByProfile: API.OperationMethod<
-  AFDEndpointsListByProfileRequest,
-  AFDEndpointListResult,
-  AFDEndpointsListByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDEndpointsListByProfileRequest,
-  output: AFDEndpointListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDEndpointsListResourceUsageError = AzureOpError;
-/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const AFDEndpointsListResourceUsage: API.OperationMethod<
-  AFDEndpointsListResourceUsageRequest,
-  UsagesListResult,
-  AFDEndpointsListResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDEndpointsListResourceUsageRequest,
-  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11094,21 +10938,6 @@ export const AFDEndpointsPurgeContent: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AFDEndpointsUpdateError = AzureOpError;
-/** Updates an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update domains, use the Update Custom Domain operation. */
-export const AFDEndpointsUpdate: API.OperationMethod<
-  AFDEndpointsUpdateRequest,
-  AFDEndpointsUpdateResponse,
-  AFDEndpointsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDEndpointsUpdateRequest,
-  output: AFDEndpointsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AFDEndpointsValidateCustomDomainError = AzureOpError;
 /** Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS. */
 export const AFDEndpointsValidateCustomDomain: API.OperationMethod<
@@ -11119,216 +10948,6 @@ export const AFDEndpointsValidateCustomDomain: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AFDEndpointsValidateCustomDomainRequest,
   output: ValidateCustomDomainOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginGroupsCreateError = AzureOpError;
-/** Creates a new origin group within the specified profile. */
-export const AFDOriginGroupsCreate: API.OperationMethod<
-  AFDOriginGroupsCreateRequest,
-  AFDOriginGroupsCreateResponse,
-  AFDOriginGroupsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginGroupsCreateRequest,
-  output: AFDOriginGroupsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginGroupsDeleteError = AzureOpError;
-/** Deletes an existing origin group within a profile. */
-export const AFDOriginGroupsDelete: API.OperationMethod<
-  AFDOriginGroupsDeleteRequest,
-  AFDOriginGroupsDeleteResponse,
-  AFDOriginGroupsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginGroupsDeleteRequest,
-  output: AFDOriginGroupsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginGroupsGetError = AzureOpError;
-/** Gets an existing origin group within a profile. */
-export const AFDOriginGroupsGet: API.OperationMethod<
-  AFDOriginGroupsGetRequest,
-  AFDOriginGroupsGetResponse,
-  AFDOriginGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginGroupsGetRequest,
-  output: AFDOriginGroupsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginGroupsListByProfileError = AzureOpError;
-/** Lists all of the existing origin groups within a profile. */
-export const AFDOriginGroupsListByProfile: API.OperationMethod<
-  AFDOriginGroupsListByProfileRequest,
-  AFDOriginGroupListResult,
-  AFDOriginGroupsListByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginGroupsListByProfileRequest,
-  output: AFDOriginGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginGroupsListResourceUsageError = AzureOpError;
-/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const AFDOriginGroupsListResourceUsage: API.OperationMethod<
-  AFDOriginGroupsListResourceUsageRequest,
-  UsagesListResult,
-  AFDOriginGroupsListResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginGroupsListResourceUsageRequest,
-  output: UsagesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginGroupsUpdateError = AzureOpError;
-/** Updates an existing origin group within a profile. */
-export const AFDOriginGroupsUpdate: API.OperationMethod<
-  AFDOriginGroupsUpdateRequest,
-  AFDOriginGroupsUpdateResponse,
-  AFDOriginGroupsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginGroupsUpdateRequest,
-  output: AFDOriginGroupsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginsCreateError = AzureOpError;
-/** Creates a new origin within the specified origin group. */
-export const AFDOriginsCreate: API.OperationMethod<
-  AFDOriginsCreateRequest,
-  AFDOriginsCreateResponse,
-  AFDOriginsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginsCreateRequest,
-  output: AFDOriginsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginsDeleteError = AzureOpError;
-/** Deletes an existing origin within an origin group. */
-export const AFDOriginsDelete: API.OperationMethod<
-  AFDOriginsDeleteRequest,
-  AFDOriginsDeleteResponse,
-  AFDOriginsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginsDeleteRequest,
-  output: AFDOriginsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginsGetError = AzureOpError;
-/** Gets an existing origin within an origin group. */
-export const AFDOriginsGet: API.OperationMethod<
-  AFDOriginsGetRequest,
-  AFDOriginsGetResponse,
-  AFDOriginsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginsGetRequest,
-  output: AFDOriginsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginsListByOriginGroupError = AzureOpError;
-/** Lists all of the existing origins within an origin group. */
-export const AFDOriginsListByOriginGroup: API.OperationMethod<
-  AFDOriginsListByOriginGroupRequest,
-  AFDOriginListResult,
-  AFDOriginsListByOriginGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginsListByOriginGroupRequest,
-  output: AFDOriginListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDOriginsUpdateError = AzureOpError;
-/** Updates an existing origin within an origin group. */
-export const AFDOriginsUpdate: API.OperationMethod<
-  AFDOriginsUpdateRequest,
-  AFDOriginsUpdateResponse,
-  AFDOriginsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDOriginsUpdateRequest,
-  output: AFDOriginsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDProfilesCheckEndpointNameAvailabilityError = AzureOpError;
-/** Check the availability of an afdx endpoint name, and return the globally unique endpoint host name. */
-export const AFDProfilesCheckEndpointNameAvailability: API.OperationMethod<
-  AFDProfilesCheckEndpointNameAvailabilityRequest,
-  CheckEndpointNameAvailabilityOutput,
-  AFDProfilesCheckEndpointNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDProfilesCheckEndpointNameAvailabilityRequest,
-  output: CheckEndpointNameAvailabilityOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDProfilesCheckHostNameAvailabilityError = AzureOpError;
-/** Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS. */
-export const AFDProfilesCheckHostNameAvailability: API.OperationMethod<
-  AFDProfilesCheckHostNameAvailabilityRequest,
-  CheckNameAvailabilityOutput,
-  AFDProfilesCheckHostNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDProfilesCheckHostNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AFDProfilesListResourceUsageError = AzureOpError;
-/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const AFDProfilesListResourceUsage: API.OperationMethod<
-  AFDProfilesListResourceUsageRequest,
-  UsagesListResult,
-  AFDProfilesListResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AFDProfilesListResourceUsageRequest,
-  output: UsagesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11359,6 +10978,36 @@ export const AFDProfilesValidateSecret: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AFDProfilesValidateSecretRequest,
   output: ValidateSecretOutput,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckAfdProfileEndpointNameAvailabilityError = AzureOpError;
+/** Check the availability of an afdx endpoint name, and return the globally unique endpoint host name. */
+export const CheckAfdProfileEndpointNameAvailability: API.OperationMethod<
+  CheckAfdProfileEndpointNameAvailabilityRequest,
+  CheckEndpointNameAvailabilityOutput,
+  CheckAfdProfileEndpointNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckAfdProfileEndpointNameAvailabilityRequest,
+  output: CheckEndpointNameAvailabilityOutput,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckAfdProfileHostNameAvailabilityError = AzureOpError;
+/** Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS. */
+export const CheckAfdProfileHostNameAvailability: API.OperationMethod<
+  CheckAfdProfileHostNameAvailabilityRequest,
+  CheckNameAvailabilityOutput,
+  CheckAfdProfileHostNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckAfdProfileHostNameAvailabilityRequest,
+  output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11409,181 +11058,466 @@ export const CheckNameAvailabilityWithSubscription: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustomDomainsCreateError = AzureOpError;
+export type CreateAfdCustomDomainError = AzureOpError;
+/** Creates a new domain within the specified profile. */
+export const CreateAfdCustomDomain: API.OperationMethod<
+  CreateAfdCustomDomainRequest,
+  CreateAfdCustomDomainResponse,
+  CreateAfdCustomDomainError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateAfdCustomDomainRequest,
+  output: CreateAfdCustomDomainResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateAfdEndpointError = AzureOpError;
+/** Creates a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
+export const CreateAfdEndpoint: API.OperationMethod<
+  CreateAfdEndpointRequest,
+  CreateAfdEndpointResponse,
+  CreateAfdEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateAfdEndpointRequest,
+  output: CreateAfdEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateAfdOriginError = AzureOpError;
+/** Creates a new origin within the specified origin group. */
+export const CreateAfdOrigin: API.OperationMethod<
+  CreateAfdOriginRequest,
+  CreateAfdOriginResponse,
+  CreateAfdOriginError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateAfdOriginRequest,
+  output: CreateAfdOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateAfdOriginGroupError = AzureOpError;
+/** Creates a new origin group within the specified profile. */
+export const CreateAfdOriginGroup: API.OperationMethod<
+  CreateAfdOriginGroupRequest,
+  CreateAfdOriginGroupResponse,
+  CreateAfdOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateAfdOriginGroupRequest,
+  output: CreateAfdOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCustomDomainError = AzureOpError;
 /** Creates a new custom domain within an endpoint. */
-export const CustomDomainsCreate: API.OperationMethod<
-  CustomDomainsCreateRequest,
-  CustomDomainsCreateResponse,
-  CustomDomainsCreateError,
+export const CreateCustomDomain: API.OperationMethod<
+  CreateCustomDomainRequest,
+  CreateCustomDomainResponse,
+  CreateCustomDomainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainsCreateRequest,
-  output: CustomDomainsCreateResponse,
+  input: CreateCustomDomainRequest,
+  output: CreateCustomDomainResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomDomainsDeleteError = AzureOpError;
-/** Deletes an existing custom domain within an endpoint. */
-export const CustomDomainsDelete: API.OperationMethod<
-  CustomDomainsDeleteRequest,
-  CustomDomainsDeleteResponse,
-  CustomDomainsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainsDeleteRequest,
-  output: CustomDomainsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomDomainsDisableCustomHttpsError = AzureOpError;
-/** Disable https delivery of the custom domain. */
-export const CustomDomainsDisableCustomHttps: API.OperationMethod<
-  CustomDomainsDisableCustomHttpsRequest,
-  CustomDomainsDisableCustomHttpsResponse,
-  CustomDomainsDisableCustomHttpsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainsDisableCustomHttpsRequest,
-  output: CustomDomainsDisableCustomHttpsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomDomainsEnableCustomHttpsError = AzureOpError;
-/** Enable https delivery of the custom domain. */
-export const CustomDomainsEnableCustomHttps: API.OperationMethod<
-  CustomDomainsEnableCustomHttpsRequest,
-  CustomDomainsEnableCustomHttpsResponse,
-  CustomDomainsEnableCustomHttpsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainsEnableCustomHttpsRequest,
-  output: CustomDomainsEnableCustomHttpsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomDomainsGetError = AzureOpError;
-/** Gets an existing custom domain within an endpoint. */
-export const CustomDomainsGet: API.OperationMethod<
-  CustomDomainsGetRequest,
-  CustomDomainsGetResponse,
-  CustomDomainsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainsGetRequest,
-  output: CustomDomainsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomDomainsListByEndpointError = AzureOpError;
-/** Lists all of the existing custom domains within an endpoint. */
-export const CustomDomainsListByEndpoint: API.OperationMethod<
-  CustomDomainsListByEndpointRequest,
-  CustomDomainListResult,
-  CustomDomainsListByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainsListByEndpointRequest,
-  output: CustomDomainListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EdgeNodesListError = AzureOpError;
-/** Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users. */
-export const EdgeNodesList: API.OperationMethod<
-  EdgeNodesListRequest,
-  EdgenodeResult,
-  EdgeNodesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EdgeNodesListRequest,
-  output: EdgenodeResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EndpointsCreateError = AzureOpError;
+export type CreateEndpointError = AzureOpError;
 /** Creates a new CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
-export const EndpointsCreate: API.OperationMethod<
-  EndpointsCreateRequest,
-  EndpointsCreateResponse,
-  EndpointsCreateError,
+export const CreateEndpoint: API.OperationMethod<
+  CreateEndpointRequest,
+  CreateEndpointResponse,
+  CreateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsCreateRequest,
-  output: EndpointsCreateResponse,
+  input: CreateEndpointRequest,
+  output: CreateEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointsDeleteError = AzureOpError;
+export type CreateOriginError = AzureOpError;
+/** Creates a new origin within the specified endpoint. */
+export const CreateOrigin: API.OperationMethod<
+  CreateOriginRequest,
+  CreateOriginResponse,
+  CreateOriginError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOriginRequest,
+  output: CreateOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateOriginGroupError = AzureOpError;
+/** Creates a new origin group within the specified endpoint. */
+export const CreateOriginGroup: API.OperationMethod<
+  CreateOriginGroupRequest,
+  CreateOriginGroupResponse,
+  CreateOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOriginGroupRequest,
+  output: CreateOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateProfileError = AzureOpError;
+/** Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group. */
+export const CreateProfile: API.OperationMethod<
+  CreateProfileRequest,
+  CreateProfileResponse,
+  CreateProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProfileRequest,
+  output: CreateProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateRouteError = AzureOpError;
+/** Creates a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
+export const CreateRoute: API.OperationMethod<
+  CreateRouteRequest,
+  CreateRouteResponse,
+  CreateRouteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRouteRequest,
+  output: CreateRouteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateRuleError = AzureOpError;
+/** Creates a new delivery rule within the specified rule set. */
+export const CreateRule: API.OperationMethod<
+  CreateRuleRequest,
+  CreateRuleResponse,
+  CreateRuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateRuleSetError = AzureOpError;
+/** Creates or update a batch rule set within the specified profile along with the rules associate to it. */
+export const CreateRuleSet: API.OperationMethod<
+  CreateRuleSetRequest,
+  CreateRuleSetResponse,
+  CreateRuleSetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRuleSetRequest,
+  output: CreateRuleSetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSecretError = AzureOpError;
+/** Creates a new Secret within the specified profile. */
+export const CreateSecret: API.OperationMethod<
+  CreateSecretRequest,
+  CreateSecretResponse,
+  CreateSecretError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSecretRequest,
+  output: CreateSecretResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSecurityPolicyError = AzureOpError;
+/** Creates a new security policy within the specified profile. */
+export const CreateSecurityPolicy: API.OperationMethod<
+  CreateSecurityPolicyRequest,
+  CreateSecurityPolicyResponse,
+  CreateSecurityPolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSecurityPolicyRequest,
+  output: CreateSecurityPolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAfdCustomDomainError = AzureOpError;
+/** Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile. */
+export const DeleteAfdCustomDomain: API.OperationMethod<
+  DeleteAfdCustomDomainRequest,
+  DeleteAfdCustomDomainResponse,
+  DeleteAfdCustomDomainError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAfdCustomDomainRequest,
+  output: DeleteAfdCustomDomainResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAfdEndpointError = AzureOpError;
+/** Deletes an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
+export const DeleteAfdEndpoint: API.OperationMethod<
+  DeleteAfdEndpointRequest,
+  DeleteAfdEndpointResponse,
+  DeleteAfdEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAfdEndpointRequest,
+  output: DeleteAfdEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAfdOriginError = AzureOpError;
+/** Deletes an existing origin within an origin group. */
+export const DeleteAfdOrigin: API.OperationMethod<
+  DeleteAfdOriginRequest,
+  DeleteAfdOriginResponse,
+  DeleteAfdOriginError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAfdOriginRequest,
+  output: DeleteAfdOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAfdOriginGroupError = AzureOpError;
+/** Deletes an existing origin group within a profile. */
+export const DeleteAfdOriginGroup: API.OperationMethod<
+  DeleteAfdOriginGroupRequest,
+  DeleteAfdOriginGroupResponse,
+  DeleteAfdOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAfdOriginGroupRequest,
+  output: DeleteAfdOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCustomDomainError = AzureOpError;
+/** Deletes an existing custom domain within an endpoint. */
+export const DeleteCustomDomain: API.OperationMethod<
+  DeleteCustomDomainRequest,
+  DeleteCustomDomainResponse,
+  DeleteCustomDomainError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCustomDomainRequest,
+  output: DeleteCustomDomainResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteEndpointError = AzureOpError;
 /** Deletes an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
-export const EndpointsDelete: API.OperationMethod<
-  EndpointsDeleteRequest,
-  EndpointsDeleteResponse,
-  EndpointsDeleteError,
+export const DeleteEndpoint: API.OperationMethod<
+  DeleteEndpointRequest,
+  DeleteEndpointResponse,
+  DeleteEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsDeleteRequest,
-  output: EndpointsDeleteResponse,
+  input: DeleteEndpointRequest,
+  output: DeleteEndpointResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointsGetError = AzureOpError;
-/** Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
-export const EndpointsGet: API.OperationMethod<
-  EndpointsGetRequest,
-  EndpointsGetResponse,
-  EndpointsGetError,
+export type DeleteOriginError = AzureOpError;
+/** Deletes an existing origin within an endpoint. */
+export const DeleteOrigin: API.OperationMethod<
+  DeleteOriginRequest,
+  DeleteOriginResponse,
+  DeleteOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsGetRequest,
-  output: EndpointsGetResponse,
+  input: DeleteOriginRequest,
+  output: DeleteOriginResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointsListByProfileError = AzureOpError;
-/** Lists existing CDN endpoints. */
-export const EndpointsListByProfile: API.OperationMethod<
-  EndpointsListByProfileRequest,
-  EndpointListResult,
-  EndpointsListByProfileError,
+export type DeleteOriginGroupError = AzureOpError;
+/** Deletes an existing origin group within an endpoint. */
+export const DeleteOriginGroup: API.OperationMethod<
+  DeleteOriginGroupRequest,
+  DeleteOriginGroupResponse,
+  DeleteOriginGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsListByProfileRequest,
-  output: EndpointListResult,
+  input: DeleteOriginGroupRequest,
+  output: DeleteOriginGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointsListResourceUsageError = AzureOpError;
-/** Checks the quota and usage of geo filters and custom domains under the given endpoint. */
-export const EndpointsListResourceUsage: API.OperationMethod<
-  EndpointsListResourceUsageRequest,
-  ResourceUsageListResult,
-  EndpointsListResourceUsageError,
+export type DeletePolicyError = AzureOpError;
+/** Deletes Policy */
+export const DeletePolicy: API.OperationMethod<
+  DeletePolicyRequest,
+  DeletePolicyResponse,
+  DeletePolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsListResourceUsageRequest,
-  output: ResourceUsageListResult,
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProfileError = AzureOpError;
+/** Deletes an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters. Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains. */
+export const DeleteProfile: API.OperationMethod<
+  DeleteProfileRequest,
+  DeleteProfileResponse,
+  DeleteProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProfileRequest,
+  output: DeleteProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRouteError = AzureOpError;
+/** Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
+export const DeleteRoute: API.OperationMethod<
+  DeleteRouteRequest,
+  DeleteRouteResponse,
+  DeleteRouteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRouteRequest,
+  output: DeleteRouteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRuleError = AzureOpError;
+/** Deletes an existing delivery rule within a rule set. */
+export const DeleteRule: API.OperationMethod<
+  DeleteRuleRequest,
+  DeleteRuleResponse,
+  DeleteRuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRuleSetError = AzureOpError;
+/** Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile. */
+export const DeleteRuleSet: API.OperationMethod<
+  DeleteRuleSetRequest,
+  DeleteRuleSetResponse,
+  DeleteRuleSetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRuleSetRequest,
+  output: DeleteRuleSetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSecretError = AzureOpError;
+/** Deletes an existing Secret within profile. */
+export const DeleteSecret: API.OperationMethod<
+  DeleteSecretRequest,
+  DeleteSecretResponse,
+  DeleteSecretError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSecretRequest,
+  output: DeleteSecretResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSecurityPolicyError = AzureOpError;
+/** Deletes an existing security policy within profile. */
+export const DeleteSecurityPolicy: API.OperationMethod<
+  DeleteSecurityPolicyRequest,
+  DeleteSecurityPolicyResponse,
+  DeleteSecurityPolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSecurityPolicyRequest,
+  output: DeleteSecurityPolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DisableCustomDomainCustomHttpError = AzureOpError;
+/** Disable https delivery of the custom domain. */
+export const DisableCustomDomainCustomHttp: API.OperationMethod<
+  DisableCustomDomainCustomHttpRequest,
+  DisableCustomDomainCustomHttpResponse,
+  DisableCustomDomainCustomHttpError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DisableCustomDomainCustomHttpRequest,
+  output: DisableCustomDomainCustomHttpResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type EnableCustomDomainCustomHttpError = AzureOpError;
+/** Enable https delivery of the custom domain. */
+export const EnableCustomDomainCustomHttp: API.OperationMethod<
+  EnableCustomDomainCustomHttpRequest,
+  EnableCustomDomainCustomHttpResponse,
+  EnableCustomDomainCustomHttpError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EnableCustomDomainCustomHttpRequest,
+  output: EnableCustomDomainCustomHttpResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11619,51 +11553,6 @@ export const EndpointsPurgeContent: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EndpointsStartError = AzureOpError;
-/** Starts an existing CDN endpoint that is on a stopped state. */
-export const EndpointsStart: API.OperationMethod<
-  EndpointsStartRequest,
-  EndpointsStartResponse,
-  EndpointsStartError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsStartRequest,
-  output: EndpointsStartResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EndpointsStopError = AzureOpError;
-/** Stops an existing running CDN endpoint. */
-export const EndpointsStop: API.OperationMethod<
-  EndpointsStopRequest,
-  EndpointsStopResponse,
-  EndpointsStopError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsStopRequest,
-  output: EndpointsStopResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EndpointsUpdateError = AzureOpError;
-/** Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update custom domains, use the Update Custom Domain operation. */
-export const EndpointsUpdate: API.OperationMethod<
-  EndpointsUpdateRequest,
-  EndpointsUpdateResponse,
-  EndpointsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsUpdateRequest,
-  output: EndpointsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EndpointsValidateCustomDomainError = AzureOpError;
 /** Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS. */
 export const EndpointsValidateCustomDomain: API.OperationMethod<
@@ -11679,271 +11568,736 @@ export const EndpointsValidateCustomDomain: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LogAnalyticsGetLogAnalyticsLocationsError = AzureOpError;
-/** Get all available location names for AFD log analytics report. */
-export const LogAnalyticsGetLogAnalyticsLocations: API.OperationMethod<
-  LogAnalyticsGetLogAnalyticsLocationsRequest,
-  ContinentsResponse,
-  LogAnalyticsGetLogAnalyticsLocationsError,
+export type GenerateProfileSsoUriError = AzureOpError;
+/** Generates a dynamic SSO URI used to sign in to the CDN supplemental portal. Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile. The SSO URI changes approximately every 10 minutes. */
+export const GenerateProfileSsoUri: API.OperationMethod<
+  GenerateProfileSsoUriRequest,
+  SsoUri,
+  GenerateProfileSsoUriError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogAnalyticsGetLogAnalyticsLocationsRequest,
+  input: GenerateProfileSsoUriRequest,
+  output: SsoUri,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAfdCustomDomainError = AzureOpError;
+/** Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile. */
+export const GetAfdCustomDomain: API.OperationMethod<
+  GetAfdCustomDomainRequest,
+  GetAfdCustomDomainResponse,
+  GetAfdCustomDomainError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAfdCustomDomainRequest,
+  output: GetAfdCustomDomainResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAfdEndpointError = AzureOpError;
+/** Gets an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
+export const GetAfdEndpoint: API.OperationMethod<
+  GetAfdEndpointRequest,
+  GetAfdEndpointResponse,
+  GetAfdEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAfdEndpointRequest,
+  output: GetAfdEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAfdOriginError = AzureOpError;
+/** Gets an existing origin within an origin group. */
+export const GetAfdOrigin: API.OperationMethod<
+  GetAfdOriginRequest,
+  GetAfdOriginResponse,
+  GetAfdOriginError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAfdOriginRequest,
+  output: GetAfdOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAfdOriginGroupError = AzureOpError;
+/** Gets an existing origin group within a profile. */
+export const GetAfdOriginGroup: API.OperationMethod<
+  GetAfdOriginGroupRequest,
+  GetAfdOriginGroupResponse,
+  GetAfdOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAfdOriginGroupRequest,
+  output: GetAfdOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCustomDomainError = AzureOpError;
+/** Gets an existing custom domain within an endpoint. */
+export const GetCustomDomain: API.OperationMethod<
+  GetCustomDomainRequest,
+  GetCustomDomainResponse,
+  GetCustomDomainError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCustomDomainRequest,
+  output: GetCustomDomainResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEndpointError = AzureOpError;
+/** Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. */
+export const GetEndpoint: API.OperationMethod<
+  GetEndpointRequest,
+  GetEndpointResponse,
+  GetEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEndpointRequest,
+  output: GetEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetLogAnalyticLogAnalyticLocationError = AzureOpError;
+/** Get all available location names for AFD log analytics report. */
+export const GetLogAnalyticLogAnalyticLocation: API.OperationMethod<
+  GetLogAnalyticLogAnalyticLocationRequest,
+  ContinentsResponse,
+  GetLogAnalyticLogAnalyticLocationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLogAnalyticLogAnalyticLocationRequest,
   output: ContinentsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogAnalyticsGetLogAnalyticsMetricsError = AzureOpError;
+export type GetLogAnalyticLogAnalyticMetricError = AzureOpError;
 /** Get log report for AFD profile */
-export const LogAnalyticsGetLogAnalyticsMetrics: API.OperationMethod<
-  LogAnalyticsGetLogAnalyticsMetricsRequest,
+export const GetLogAnalyticLogAnalyticMetric: API.OperationMethod<
+  GetLogAnalyticLogAnalyticMetricRequest,
   MetricsResponse,
-  LogAnalyticsGetLogAnalyticsMetricsError,
+  GetLogAnalyticLogAnalyticMetricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogAnalyticsGetLogAnalyticsMetricsRequest,
+  input: GetLogAnalyticLogAnalyticMetricRequest,
   output: MetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogAnalyticsGetLogAnalyticsRankingsError = AzureOpError;
+export type GetLogAnalyticLogAnalyticRankingError = AzureOpError;
 /** Get log analytics ranking report for AFD profile */
-export const LogAnalyticsGetLogAnalyticsRankings: API.OperationMethod<
-  LogAnalyticsGetLogAnalyticsRankingsRequest,
+export const GetLogAnalyticLogAnalyticRanking: API.OperationMethod<
+  GetLogAnalyticLogAnalyticRankingRequest,
   RankingsResponse,
-  LogAnalyticsGetLogAnalyticsRankingsError,
+  GetLogAnalyticLogAnalyticRankingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogAnalyticsGetLogAnalyticsRankingsRequest,
+  input: GetLogAnalyticLogAnalyticRankingRequest,
   output: RankingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogAnalyticsGetLogAnalyticsResourcesError = AzureOpError;
+export type GetLogAnalyticLogAnalyticResourceError = AzureOpError;
 /** Get all endpoints and custom domains available for AFD log report */
-export const LogAnalyticsGetLogAnalyticsResources: API.OperationMethod<
-  LogAnalyticsGetLogAnalyticsResourcesRequest,
+export const GetLogAnalyticLogAnalyticResource: API.OperationMethod<
+  GetLogAnalyticLogAnalyticResourceRequest,
   ResourcesResponse,
-  LogAnalyticsGetLogAnalyticsResourcesError,
+  GetLogAnalyticLogAnalyticResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogAnalyticsGetLogAnalyticsResourcesRequest,
+  input: GetLogAnalyticLogAnalyticResourceRequest,
   output: ResourcesResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogAnalyticsGetWafLogAnalyticsMetricsError = AzureOpError;
+export type GetLogAnalyticWafLogAnalyticMetricError = AzureOpError;
 /** Get Waf related log analytics report for AFD profile. */
-export const LogAnalyticsGetWafLogAnalyticsMetrics: API.OperationMethod<
-  LogAnalyticsGetWafLogAnalyticsMetricsRequest,
+export const GetLogAnalyticWafLogAnalyticMetric: API.OperationMethod<
+  GetLogAnalyticWafLogAnalyticMetricRequest,
   WafMetricsResponse,
-  LogAnalyticsGetWafLogAnalyticsMetricsError,
+  GetLogAnalyticWafLogAnalyticMetricError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogAnalyticsGetWafLogAnalyticsMetricsRequest,
+  input: GetLogAnalyticWafLogAnalyticMetricRequest,
   output: WafMetricsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogAnalyticsGetWafLogAnalyticsRankingsError = AzureOpError;
+export type GetLogAnalyticWafLogAnalyticRankingError = AzureOpError;
 /** Get WAF log analytics charts for AFD profile */
-export const LogAnalyticsGetWafLogAnalyticsRankings: API.OperationMethod<
-  LogAnalyticsGetWafLogAnalyticsRankingsRequest,
+export const GetLogAnalyticWafLogAnalyticRanking: API.OperationMethod<
+  GetLogAnalyticWafLogAnalyticRankingRequest,
   WafRankingsResponse,
-  LogAnalyticsGetWafLogAnalyticsRankingsError,
+  GetLogAnalyticWafLogAnalyticRankingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogAnalyticsGetWafLogAnalyticsRankingsRequest,
+  input: GetLogAnalyticWafLogAnalyticRankingRequest,
   output: WafRankingsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ManagedRuleSetsListError = AzureOpError;
-/** Lists all available managed rule sets. */
-export const ManagedRuleSetsList: API.OperationMethod<
-  ManagedRuleSetsListRequest,
-  ManagedRuleSetDefinitionList,
-  ManagedRuleSetsListError,
+export type GetOriginError = AzureOpError;
+/** Gets an existing origin within an endpoint. */
+export const GetOrigin: API.OperationMethod<
+  GetOriginRequest,
+  GetOriginResponse,
+  GetOriginError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedRuleSetsListRequest,
+  input: GetOriginRequest,
+  output: GetOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOriginGroupError = AzureOpError;
+/** Gets an existing origin group within an endpoint. */
+export const GetOriginGroup: API.OperationMethod<
+  GetOriginGroupRequest,
+  GetOriginGroupResponse,
+  GetOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOriginGroupRequest,
+  output: GetOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPolicyError = AzureOpError;
+/** Retrieve protection policy with specified name within a resource group. */
+export const GetPolicy: API.OperationMethod<
+  GetPolicyRequest,
+  GetPolicyResponse,
+  GetPolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetProfileError = AzureOpError;
+/** Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group. */
+export const GetProfile: API.OperationMethod<
+  GetProfileRequest,
+  GetProfileResponse,
+  GetProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProfileRequest,
+  output: GetProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRouteError = AzureOpError;
+/** Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
+export const GetRoute: API.OperationMethod<
+  GetRouteRequest,
+  GetRouteResponse,
+  GetRouteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRouteRequest,
+  output: GetRouteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRuleError = AzureOpError;
+/** Gets an existing delivery rule within a rule set. */
+export const GetRule: API.OperationMethod<
+  GetRuleRequest,
+  GetRuleResponse,
+  GetRuleError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRuleRequest,
+  output: GetRuleResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetRuleSetError = AzureOpError;
+/** Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile. */
+export const GetRuleSet: API.OperationMethod<
+  GetRuleSetRequest,
+  GetRuleSetResponse,
+  GetRuleSetError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRuleSetRequest,
+  output: GetRuleSetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSecretError = AzureOpError;
+/** Gets an existing Secret within a profile. */
+export const GetSecret: API.OperationMethod<
+  GetSecretRequest,
+  GetSecretResponse,
+  GetSecretError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSecretRequest,
+  output: GetSecretResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSecurityPolicyError = AzureOpError;
+/** Gets an existing security policy within a profile. */
+export const GetSecurityPolicy: API.OperationMethod<
+  GetSecurityPolicyRequest,
+  GetSecurityPolicyResponse,
+  GetSecurityPolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSecurityPolicyRequest,
+  output: GetSecurityPolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdCustomDomainByProfileError = AzureOpError;
+/** Lists existing AzureFrontDoor domains. */
+export const ListAfdCustomDomainByProfile: API.OperationMethod<
+  ListAfdCustomDomainByProfileRequest,
+  AFDDomainListResult,
+  ListAfdCustomDomainByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdCustomDomainByProfileRequest,
+  output: AFDDomainListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdEndpointByProfileError = AzureOpError;
+/** Lists existing AzureFrontDoor endpoints. */
+export const ListAfdEndpointByProfile: API.OperationMethod<
+  ListAfdEndpointByProfileRequest,
+  AFDEndpointListResult,
+  ListAfdEndpointByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdEndpointByProfileRequest,
+  output: AFDEndpointListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdEndpointResourceUsageError = AzureOpError;
+/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
+export const ListAfdEndpointResourceUsage: API.OperationMethod<
+  ListAfdEndpointResourceUsageRequest,
+  UsagesListResult,
+  ListAfdEndpointResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdEndpointResourceUsageRequest,
+  output: UsagesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdOriginByOriginGroupError = AzureOpError;
+/** Lists all of the existing origins within an origin group. */
+export const ListAfdOriginByOriginGroup: API.OperationMethod<
+  ListAfdOriginByOriginGroupRequest,
+  AFDOriginListResult,
+  ListAfdOriginByOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdOriginByOriginGroupRequest,
+  output: AFDOriginListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdOriginGroupByProfileError = AzureOpError;
+/** Lists all of the existing origin groups within a profile. */
+export const ListAfdOriginGroupByProfile: API.OperationMethod<
+  ListAfdOriginGroupByProfileRequest,
+  AFDOriginGroupListResult,
+  ListAfdOriginGroupByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdOriginGroupByProfileRequest,
+  output: AFDOriginGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdOriginGroupResourceUsageError = AzureOpError;
+/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
+export const ListAfdOriginGroupResourceUsage: API.OperationMethod<
+  ListAfdOriginGroupResourceUsageRequest,
+  UsagesListResult,
+  ListAfdOriginGroupResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdOriginGroupResourceUsageRequest,
+  output: UsagesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAfdProfileResourceUsageError = AzureOpError;
+/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
+export const ListAfdProfileResourceUsage: API.OperationMethod<
+  ListAfdProfileResourceUsageRequest,
+  UsagesListResult,
+  ListAfdProfileResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAfdProfileResourceUsageRequest,
+  output: UsagesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCustomDomainByEndpointError = AzureOpError;
+/** Lists all of the existing custom domains within an endpoint. */
+export const ListCustomDomainByEndpoint: API.OperationMethod<
+  ListCustomDomainByEndpointRequest,
+  CustomDomainListResult,
+  ListCustomDomainByEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCustomDomainByEndpointRequest,
+  output: CustomDomainListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEdgeNodesError = AzureOpError;
+/** Edgenodes are the global Point of Presence (POP) locations used to deliver CDN content to end users. */
+export const ListEdgeNodes: API.OperationMethod<
+  ListEdgeNodesRequest,
+  EdgenodeResult,
+  ListEdgeNodesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEdgeNodesRequest,
+  output: EdgenodeResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEndpointByProfileError = AzureOpError;
+/** Lists existing CDN endpoints. */
+export const ListEndpointByProfile: API.OperationMethod<
+  ListEndpointByProfileRequest,
+  EndpointListResult,
+  ListEndpointByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEndpointByProfileRequest,
+  output: EndpointListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEndpointResourceUsageError = AzureOpError;
+/** Checks the quota and usage of geo filters and custom domains under the given endpoint. */
+export const ListEndpointResourceUsage: API.OperationMethod<
+  ListEndpointResourceUsageRequest,
+  ListResourceUsageResult,
+  ListEndpointResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEndpointResourceUsageRequest,
+  output: ListResourceUsageResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListManagedRuleSetsError = AzureOpError;
+/** Lists all available managed rule sets. */
+export const ListManagedRuleSets: API.OperationMethod<
+  ListManagedRuleSetsRequest,
+  ManagedRuleSetDefinitionList,
+  ListManagedRuleSetsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListManagedRuleSetsRequest,
   output: ManagedRuleSetDefinitionList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResult,
-  OperationsListError,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResult,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResult,
+  input: ListOperationsRequest,
+  output: ListOperationsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OriginGroupsCreateError = AzureOpError;
-/** Creates a new origin group within the specified endpoint. */
-export const OriginGroupsCreate: API.OperationMethod<
-  OriginGroupsCreateRequest,
-  OriginGroupsCreateResponse,
-  OriginGroupsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginGroupsCreateRequest,
-  output: OriginGroupsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginGroupsDeleteError = AzureOpError;
-/** Deletes an existing origin group within an endpoint. */
-export const OriginGroupsDelete: API.OperationMethod<
-  OriginGroupsDeleteRequest,
-  OriginGroupsDeleteResponse,
-  OriginGroupsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginGroupsDeleteRequest,
-  output: OriginGroupsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginGroupsGetError = AzureOpError;
-/** Gets an existing origin group within an endpoint. */
-export const OriginGroupsGet: API.OperationMethod<
-  OriginGroupsGetRequest,
-  OriginGroupsGetResponse,
-  OriginGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginGroupsGetRequest,
-  output: OriginGroupsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginGroupsListByEndpointError = AzureOpError;
-/** Lists all of the existing origin groups within an endpoint. */
-export const OriginGroupsListByEndpoint: API.OperationMethod<
-  OriginGroupsListByEndpointRequest,
-  OriginGroupListResult,
-  OriginGroupsListByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginGroupsListByEndpointRequest,
-  output: OriginGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginGroupsUpdateError = AzureOpError;
-/** Updates an existing origin group within an endpoint. */
-export const OriginGroupsUpdate: API.OperationMethod<
-  OriginGroupsUpdateRequest,
-  OriginGroupsUpdateResponse,
-  OriginGroupsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginGroupsUpdateRequest,
-  output: OriginGroupsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginsCreateError = AzureOpError;
-/** Creates a new origin within the specified endpoint. */
-export const OriginsCreate: API.OperationMethod<
-  OriginsCreateRequest,
-  OriginsCreateResponse,
-  OriginsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginsCreateRequest,
-  output: OriginsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginsDeleteError = AzureOpError;
-/** Deletes an existing origin within an endpoint. */
-export const OriginsDelete: API.OperationMethod<
-  OriginsDeleteRequest,
-  OriginsDeleteResponse,
-  OriginsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginsDeleteRequest,
-  output: OriginsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginsGetError = AzureOpError;
-/** Gets an existing origin within an endpoint. */
-export const OriginsGet: API.OperationMethod<
-  OriginsGetRequest,
-  OriginsGetResponse,
-  OriginsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OriginsGetRequest,
-  output: OriginsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OriginsListByEndpointError = AzureOpError;
+export type ListOriginByEndpointError = AzureOpError;
 /** Lists all of the existing origins within an endpoint. */
-export const OriginsListByEndpoint: API.OperationMethod<
-  OriginsListByEndpointRequest,
+export const ListOriginByEndpoint: API.OperationMethod<
+  ListOriginByEndpointRequest,
   OriginListResult,
-  OriginsListByEndpointError,
+  ListOriginByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginsListByEndpointRequest,
+  input: ListOriginByEndpointRequest,
   output: OriginListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OriginsUpdateError = AzureOpError;
-/** Updates an existing origin within an endpoint. */
-export const OriginsUpdate: API.OperationMethod<
-  OriginsUpdateRequest,
-  OriginsUpdateResponse,
-  OriginsUpdateError,
+export type ListOriginGroupByEndpointError = AzureOpError;
+/** Lists all of the existing origin groups within an endpoint. */
+export const ListOriginGroupByEndpoint: API.OperationMethod<
+  ListOriginGroupByEndpointRequest,
+  OriginGroupListResult,
+  ListOriginGroupByEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OriginsUpdateRequest,
-  output: OriginsUpdateResponse,
+  input: ListOriginGroupByEndpointRequest,
+  output: OriginGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListPoliciesError = AzureOpError;
+/** Lists all of the protection policies within a resource group. */
+export const ListPolicies: API.OperationMethod<
+  ListPoliciesRequest,
+  CdnWebApplicationFirewallPolicyList,
+  ListPoliciesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPoliciesRequest,
+  output: CdnWebApplicationFirewallPolicyList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProfileByResourceGroupError = AzureOpError;
+/** Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within a resource group. */
+export const ListProfileByResourceGroup: API.OperationMethod<
+  ListProfileByResourceGroupRequest,
+  ProfileListResult,
+  ListProfileByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProfileByResourceGroupRequest,
+  output: ProfileListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProfileResourceUsageError = AzureOpError;
+/** Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile. */
+export const ListProfileResourceUsage: API.OperationMethod<
+  ListProfileResourceUsageRequest,
+  ListResourceUsageResult,
+  ListProfileResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProfileResourceUsageRequest,
+  output: ListResourceUsageResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProfilesError = AzureOpError;
+/** Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within an Azure subscription. */
+export const ListProfiles: API.OperationMethod<
+  ListProfilesRequest,
+  ProfileListResult,
+  ListProfilesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProfilesRequest,
+  output: ProfileListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProfileSupportedOptimizationTypesError = AzureOpError;
+/** Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values. */
+export const ListProfileSupportedOptimizationTypes: API.OperationMethod<
+  ListProfileSupportedOptimizationTypesRequest,
+  SupportedOptimizationTypesListResult,
+  ListProfileSupportedOptimizationTypesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProfileSupportedOptimizationTypesRequest,
+  output: SupportedOptimizationTypesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListResourceUsageError = AzureOpError;
+/** Check the quota and actual usage of the CDN profiles under the given subscription. */
+export const ListResourceUsage: API.OperationMethod<
+  ListResourceUsageRequest,
+  ListResourceUsageResult,
+  ListResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListResourceUsageRequest,
+  output: ListResourceUsageResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRouteByEndpointError = AzureOpError;
+/** Lists all of the existing origins within a profile. */
+export const ListRouteByEndpoint: API.OperationMethod<
+  ListRouteByEndpointRequest,
+  RouteListResult,
+  ListRouteByEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRouteByEndpointRequest,
+  output: RouteListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRuleSetByProfileError = AzureOpError;
+/** Lists existing AzureFrontDoor rule sets within a profile. */
+export const ListRuleSetByProfile: API.OperationMethod<
+  ListRuleSetByProfileRequest,
+  RuleSetListResult,
+  ListRuleSetByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRuleSetByProfileRequest,
+  output: RuleSetListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListRuleSetResourceUsageError = AzureOpError;
+/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
+export const ListRuleSetResourceUsage: API.OperationMethod<
+  ListRuleSetResourceUsageRequest,
+  UsagesListResult,
+  ListRuleSetResourceUsageError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRuleSetResourceUsageRequest,
+  output: UsagesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSecretByProfileError = AzureOpError;
+/** Lists existing AzureFrontDoor secrets. */
+export const ListSecretByProfile: API.OperationMethod<
+  ListSecretByProfileRequest,
+  SecretListResult,
+  ListSecretByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSecretByProfileRequest,
+  output: SecretListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSecurityPolicyByProfileError = AzureOpError;
+/** Lists security policies associated with the profile */
+export const ListSecurityPolicyByProfile: API.OperationMethod<
+  ListSecurityPolicyByProfileRequest,
+  SecurityPolicyListResult,
+  ListSecurityPolicyByProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSecurityPolicyByProfileRequest,
+  output: SecurityPolicyListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type PatchSecurityPolicyError = AzureOpError;
+/** Updates an existing security policy within a profile. */
+export const PatchSecurityPolicy: API.OperationMethod<
+  PatchSecurityPolicyRequest,
+  PatchSecurityPolicyResponse,
+  PatchSecurityPolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSecurityPolicyRequest,
+  output: PatchSecurityPolicyResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -11959,66 +12313,6 @@ export const PoliciesCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PoliciesCreateOrUpdateRequest,
   output: PoliciesCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PoliciesDeleteError = AzureOpError;
-/** Deletes Policy */
-export const PoliciesDelete: API.OperationMethod<
-  PoliciesDeleteRequest,
-  PoliciesDeleteResponse,
-  PoliciesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesDeleteRequest,
-  output: PoliciesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PoliciesGetError = AzureOpError;
-/** Retrieve protection policy with specified name within a resource group. */
-export const PoliciesGet: API.OperationMethod<
-  PoliciesGetRequest,
-  PoliciesGetResponse,
-  PoliciesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesGetRequest,
-  output: PoliciesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PoliciesListError = AzureOpError;
-/** Lists all of the protection policies within a resource group. */
-export const PoliciesList: API.OperationMethod<
-  PoliciesListRequest,
-  CdnWebApplicationFirewallPolicyList,
-  PoliciesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesListRequest,
-  output: CdnWebApplicationFirewallPolicyList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PoliciesUpdateError = AzureOpError;
-/** Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group */
-export const PoliciesUpdate: API.OperationMethod<
-  PoliciesUpdateRequest,
-  PoliciesUpdateResponse,
-  PoliciesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesUpdateRequest,
-  output: PoliciesUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -12069,126 +12363,6 @@ export const ProfilesCdnMigrateToAfd: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProfilesCreateError = AzureOpError;
-/** Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group. */
-export const ProfilesCreate: API.OperationMethod<
-  ProfilesCreateRequest,
-  ProfilesCreateResponse,
-  ProfilesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesCreateRequest,
-  output: ProfilesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesDeleteError = AzureOpError;
-/** Deletes an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters. Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains. */
-export const ProfilesDelete: API.OperationMethod<
-  ProfilesDeleteRequest,
-  ProfilesDeleteResponse,
-  ProfilesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesDeleteRequest,
-  output: ProfilesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesGenerateSsoUriError = AzureOpError;
-/** Generates a dynamic SSO URI used to sign in to the CDN supplemental portal. Supplemental portal is used to configure advanced feature capabilities that are not yet available in the Azure portal, such as core reports in a standard profile; rules engine, advanced HTTP reports, and real-time stats and alerts in a premium profile. The SSO URI changes approximately every 10 minutes. */
-export const ProfilesGenerateSsoUri: API.OperationMethod<
-  ProfilesGenerateSsoUriRequest,
-  SsoUri,
-  ProfilesGenerateSsoUriError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesGenerateSsoUriRequest,
-  output: SsoUri,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesGetError = AzureOpError;
-/** Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group. */
-export const ProfilesGet: API.OperationMethod<
-  ProfilesGetRequest,
-  ProfilesGetResponse,
-  ProfilesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesGetRequest,
-  output: ProfilesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesListError = AzureOpError;
-/** Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within an Azure subscription. */
-export const ProfilesList: API.OperationMethod<
-  ProfilesListRequest,
-  ProfileListResult,
-  ProfilesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesListRequest,
-  output: ProfileListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesListByResourceGroupError = AzureOpError;
-/** Lists all of the Azure Front Door Standard, Azure Front Door Premium, and CDN profiles within a resource group. */
-export const ProfilesListByResourceGroup: API.OperationMethod<
-  ProfilesListByResourceGroupRequest,
-  ProfileListResult,
-  ProfilesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesListByResourceGroupRequest,
-  output: ProfileListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesListResourceUsageError = AzureOpError;
-/** Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile. */
-export const ProfilesListResourceUsage: API.OperationMethod<
-  ProfilesListResourceUsageRequest,
-  ResourceUsageListResult,
-  ProfilesListResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesListResourceUsageRequest,
-  output: ResourceUsageListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProfilesListSupportedOptimizationTypesError = AzureOpError;
-/** Gets the supported optimization types for the current profile. A user can create an endpoint with an optimization type from the listed values. */
-export const ProfilesListSupportedOptimizationTypes: API.OperationMethod<
-  ProfilesListSupportedOptimizationTypesRequest,
-  SupportedOptimizationTypesListResult,
-  ProfilesListSupportedOptimizationTypesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesListSupportedOptimizationTypesRequest,
-  output: SupportedOptimizationTypesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ProfilesMigrateError = AzureOpError;
 /** Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile. The change need to be committed after this. */
 export const ProfilesMigrate: API.OperationMethod<
@@ -12234,231 +12408,6 @@ export const ProfilesMigrationCommit: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProfilesUpdateError = AzureOpError;
-/** Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group. */
-export const ProfilesUpdate: API.OperationMethod<
-  ProfilesUpdateRequest,
-  ProfilesUpdateResponse,
-  ProfilesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesUpdateRequest,
-  output: ProfilesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ResourceUsageListError = AzureOpError;
-/** Check the quota and actual usage of the CDN profiles under the given subscription. */
-export const ResourceUsageList: API.OperationMethod<
-  ResourceUsageListRequest,
-  ResourceUsageListResult,
-  ResourceUsageListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResourceUsageListRequest,
-  output: ResourceUsageListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoutesCreateError = AzureOpError;
-/** Creates a new route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
-export const RoutesCreate: API.OperationMethod<
-  RoutesCreateRequest,
-  RoutesCreateResponse,
-  RoutesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesCreateRequest,
-  output: RoutesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoutesDeleteError = AzureOpError;
-/** Deletes an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
-export const RoutesDelete: API.OperationMethod<
-  RoutesDeleteRequest,
-  RoutesDeleteResponse,
-  RoutesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesDeleteRequest,
-  output: RoutesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoutesGetError = AzureOpError;
-/** Gets an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
-export const RoutesGet: API.OperationMethod<
-  RoutesGetRequest,
-  RoutesGetResponse,
-  RoutesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesGetRequest,
-  output: RoutesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoutesListByEndpointError = AzureOpError;
-/** Lists all of the existing origins within a profile. */
-export const RoutesListByEndpoint: API.OperationMethod<
-  RoutesListByEndpointRequest,
-  RouteListResult,
-  RoutesListByEndpointError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesListByEndpointRequest,
-  output: RouteListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RoutesUpdateError = AzureOpError;
-/** Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
-export const RoutesUpdate: API.OperationMethod<
-  RoutesUpdateRequest,
-  RoutesUpdateResponse,
-  RoutesUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesUpdateRequest,
-  output: RoutesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RulesCreateError = AzureOpError;
-/** Creates a new delivery rule within the specified rule set. */
-export const RulesCreate: API.OperationMethod<
-  RulesCreateRequest,
-  RulesCreateResponse,
-  RulesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesCreateRequest,
-  output: RulesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RulesDeleteError = AzureOpError;
-/** Deletes an existing delivery rule within a rule set. */
-export const RulesDelete: API.OperationMethod<
-  RulesDeleteRequest,
-  RulesDeleteResponse,
-  RulesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesDeleteRequest,
-  output: RulesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuleSetsCreateError = AzureOpError;
-/** Creates or update a batch rule set within the specified profile along with the rules associate to it. */
-export const RuleSetsCreate: API.OperationMethod<
-  RuleSetsCreateRequest,
-  RuleSetsCreateResponse,
-  RuleSetsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuleSetsCreateRequest,
-  output: RuleSetsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuleSetsDeleteError = AzureOpError;
-/** Deletes an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile. */
-export const RuleSetsDelete: API.OperationMethod<
-  RuleSetsDeleteRequest,
-  RuleSetsDeleteResponse,
-  RuleSetsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuleSetsDeleteRequest,
-  output: RuleSetsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuleSetsGetError = AzureOpError;
-/** Gets an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile. */
-export const RuleSetsGet: API.OperationMethod<
-  RuleSetsGetRequest,
-  RuleSetsGetResponse,
-  RuleSetsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuleSetsGetRequest,
-  output: RuleSetsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuleSetsListByProfileError = AzureOpError;
-/** Lists existing AzureFrontDoor rule sets within a profile. */
-export const RuleSetsListByProfile: API.OperationMethod<
-  RuleSetsListByProfileRequest,
-  RuleSetListResult,
-  RuleSetsListByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuleSetsListByProfileRequest,
-  output: RuleSetListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RuleSetsListResourceUsageError = AzureOpError;
-/** Checks the quota and actual usage of endpoints under the given Azure Front Door profile. */
-export const RuleSetsListResourceUsage: API.OperationMethod<
-  RuleSetsListResourceUsageRequest,
-  UsagesListResult,
-  RuleSetsListResourceUsageError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RuleSetsListResourceUsageRequest,
-  output: UsagesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RulesGetError = AzureOpError;
-/** Gets an existing delivery rule within a rule set. */
-export const RulesGet: API.OperationMethod<
-  RulesGetRequest,
-  RulesGetResponse,
-  RulesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesGetRequest,
-  output: RulesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RulesListByRuleSetError = AzureOpError;
 /** Lists all of the existing delivery rules within a rule set. */
 export const RulesListByRuleSet: API.OperationMethod<
@@ -12474,151 +12423,196 @@ export const RulesListByRuleSet: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RulesUpdateError = AzureOpError;
+export type StartEndpointError = AzureOpError;
+/** Starts an existing CDN endpoint that is on a stopped state. */
+export const StartEndpoint: API.OperationMethod<
+  StartEndpointRequest,
+  StartEndpointResponse,
+  StartEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartEndpointRequest,
+  output: StartEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type StopEndpointError = AzureOpError;
+/** Stops an existing running CDN endpoint. */
+export const StopEndpoint: API.OperationMethod<
+  StopEndpointRequest,
+  StopEndpointResponse,
+  StopEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StopEndpointRequest,
+  output: StopEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAfdCustomDomainError = AzureOpError;
+/** Updates an existing domain within a profile. */
+export const UpdateAfdCustomDomain: API.OperationMethod<
+  UpdateAfdCustomDomainRequest,
+  UpdateAfdCustomDomainResponse,
+  UpdateAfdCustomDomainError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAfdCustomDomainRequest,
+  output: UpdateAfdCustomDomainResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAfdEndpointError = AzureOpError;
+/** Updates an existing AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update domains, use the Update Custom Domain operation. */
+export const UpdateAfdEndpoint: API.OperationMethod<
+  UpdateAfdEndpointRequest,
+  UpdateAfdEndpointResponse,
+  UpdateAfdEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAfdEndpointRequest,
+  output: UpdateAfdEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAfdOriginError = AzureOpError;
+/** Updates an existing origin within an origin group. */
+export const UpdateAfdOrigin: API.OperationMethod<
+  UpdateAfdOriginRequest,
+  UpdateAfdOriginResponse,
+  UpdateAfdOriginError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAfdOriginRequest,
+  output: UpdateAfdOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAfdOriginGroupError = AzureOpError;
+/** Updates an existing origin group within a profile. */
+export const UpdateAfdOriginGroup: API.OperationMethod<
+  UpdateAfdOriginGroupRequest,
+  UpdateAfdOriginGroupResponse,
+  UpdateAfdOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAfdOriginGroupRequest,
+  output: UpdateAfdOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateEndpointError = AzureOpError;
+/** Updates an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile. Only tags can be updated after creating an endpoint. To update origins, use the Update Origin operation. To update origin groups, use the Update Origin group operation. To update custom domains, use the Update Custom Domain operation. */
+export const UpdateEndpoint: API.OperationMethod<
+  UpdateEndpointRequest,
+  UpdateEndpointResponse,
+  UpdateEndpointError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEndpointRequest,
+  output: UpdateEndpointResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateOriginError = AzureOpError;
+/** Updates an existing origin within an endpoint. */
+export const UpdateOrigin: API.OperationMethod<
+  UpdateOriginRequest,
+  UpdateOriginResponse,
+  UpdateOriginError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOriginRequest,
+  output: UpdateOriginResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateOriginGroupError = AzureOpError;
+/** Updates an existing origin group within an endpoint. */
+export const UpdateOriginGroup: API.OperationMethod<
+  UpdateOriginGroupRequest,
+  UpdateOriginGroupResponse,
+  UpdateOriginGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOriginGroupRequest,
+  output: UpdateOriginGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePolicyError = AzureOpError;
+/** Update an existing CdnWebApplicationFirewallPolicy with the specified policy name under the specified subscription and resource group */
+export const UpdatePolicy: API.OperationMethod<
+  UpdatePolicyRequest,
+  UpdatePolicyResponse,
+  UpdatePolicyError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePolicyRequest,
+  output: UpdatePolicyResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateProfileError = AzureOpError;
+/** Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group. */
+export const UpdateProfile: API.OperationMethod<
+  UpdateProfileRequest,
+  UpdateProfileResponse,
+  UpdateProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateProfileRequest,
+  output: UpdateProfileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRouteError = AzureOpError;
+/** Updates an existing route with the specified route name under the specified subscription, resource group, profile, and AzureFrontDoor endpoint. */
+export const UpdateRoute: API.OperationMethod<
+  UpdateRouteRequest,
+  UpdateRouteResponse,
+  UpdateRouteError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRouteRequest,
+  output: UpdateRouteResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRuleError = AzureOpError;
 /** Updates an existing delivery rule within a rule set. */
-export const RulesUpdate: API.OperationMethod<
-  RulesUpdateRequest,
-  RulesUpdateResponse,
-  RulesUpdateError,
+export const UpdateRule: API.OperationMethod<
+  UpdateRuleRequest,
+  UpdateRuleResponse,
+  UpdateRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesUpdateRequest,
-  output: RulesUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecretsCreateError = AzureOpError;
-/** Creates a new Secret within the specified profile. */
-export const SecretsCreate: API.OperationMethod<
-  SecretsCreateRequest,
-  SecretsCreateResponse,
-  SecretsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecretsCreateRequest,
-  output: SecretsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecretsDeleteError = AzureOpError;
-/** Deletes an existing Secret within profile. */
-export const SecretsDelete: API.OperationMethod<
-  SecretsDeleteRequest,
-  SecretsDeleteResponse,
-  SecretsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecretsDeleteRequest,
-  output: SecretsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecretsGetError = AzureOpError;
-/** Gets an existing Secret within a profile. */
-export const SecretsGet: API.OperationMethod<
-  SecretsGetRequest,
-  SecretsGetResponse,
-  SecretsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecretsGetRequest,
-  output: SecretsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecretsListByProfileError = AzureOpError;
-/** Lists existing AzureFrontDoor secrets. */
-export const SecretsListByProfile: API.OperationMethod<
-  SecretsListByProfileRequest,
-  SecretListResult,
-  SecretsListByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecretsListByProfileRequest,
-  output: SecretListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecurityPoliciesCreateError = AzureOpError;
-/** Creates a new security policy within the specified profile. */
-export const SecurityPoliciesCreate: API.OperationMethod<
-  SecurityPoliciesCreateRequest,
-  SecurityPoliciesCreateResponse,
-  SecurityPoliciesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecurityPoliciesCreateRequest,
-  output: SecurityPoliciesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecurityPoliciesDeleteError = AzureOpError;
-/** Deletes an existing security policy within profile. */
-export const SecurityPoliciesDelete: API.OperationMethod<
-  SecurityPoliciesDeleteRequest,
-  SecurityPoliciesDeleteResponse,
-  SecurityPoliciesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecurityPoliciesDeleteRequest,
-  output: SecurityPoliciesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecurityPoliciesGetError = AzureOpError;
-/** Gets an existing security policy within a profile. */
-export const SecurityPoliciesGet: API.OperationMethod<
-  SecurityPoliciesGetRequest,
-  SecurityPoliciesGetResponse,
-  SecurityPoliciesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecurityPoliciesGetRequest,
-  output: SecurityPoliciesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecurityPoliciesListByProfileError = AzureOpError;
-/** Lists security policies associated with the profile */
-export const SecurityPoliciesListByProfile: API.OperationMethod<
-  SecurityPoliciesListByProfileRequest,
-  SecurityPolicyListResult,
-  SecurityPoliciesListByProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecurityPoliciesListByProfileRequest,
-  output: SecurityPolicyListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SecurityPoliciesPatchError = AzureOpError;
-/** Updates an existing security policy within a profile. */
-export const SecurityPoliciesPatch: API.OperationMethod<
-  SecurityPoliciesPatchRequest,
-  SecurityPoliciesPatchResponse,
-  SecurityPoliciesPatchError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SecurityPoliciesPatchRequest,
-  output: SecurityPoliciesPatchResponse,
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

@@ -3215,7 +3215,7 @@
         "smithy.api#documentation": "Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses."
       }
     },
-    "com.gcp.admob_v1beta#BatchCreateAccountsAdUnitMappingsRequest": {
+    "com.gcp.admob_v1beta#CreateBatchAccountAdUnitMappingRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3235,10 +3235,10 @@
         }
       }
     },
-    "com.gcp.admob_v1beta#BatchCreateAccountsAdUnitMappings": {
+    "com.gcp.admob_v1beta#CreateBatchAccountAdUnitMapping": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.admob_v1beta#BatchCreateAccountsAdUnitMappingsRequest"
+        "target": "com.gcp.admob_v1beta#CreateBatchAccountAdUnitMappingRequest"
       },
       "output": {
         "target": "com.gcp.admob_v1beta#BatchCreateAdUnitMappingsResponse"

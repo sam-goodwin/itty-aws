@@ -46,7 +46,7 @@ export type ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
 export const ProductTourSerializerCreateUpdateOnlyCreationContextEnum =
   /*@__PURE__*/ S.String;
 
-export interface ProductToursCreateRequest {
+export interface CreateProductTourRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   name?: string;
@@ -63,7 +63,7 @@ export interface ProductToursCreateRequest {
     | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
     | (string & {});
 }
-export const ProductToursCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     name: S.optional(S.String),
@@ -86,8 +86,8 @@ export const ProductToursCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ProductToursCreateRequest",
-}) as any as S.Schema<ProductToursCreateRequest>;
+  identifier: "CreateProductTourRequest",
+}) as any as S.Schema<CreateProductTourRequest>;
 
 export type MinimalFeatureFlagFiltersMap = {
   [key: string]: unknown | undefined;
@@ -251,55 +251,52 @@ export const ProductTourSerializerCreateUpdateOnlyOutput =
     identifier: "ProductTourSerializerCreateUpdateOnlyOutput",
   }) as any as S.Schema<ProductTourSerializerCreateUpdateOnlyOutput>;
 
-export interface ProductToursDestroyRequest {
+export interface CreateProductTourPublishDraftRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
   id: string;
+  name?: string;
+  description?: string;
+  linked_flag_id?: number | null;
+  targeting_flag_filters?: unknown;
+  content?: unknown;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  archived?: boolean;
+  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
+  creation_context?:
+    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
+    | (string & {});
 }
-export const ProductToursDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/product_tours/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ProductToursDestroyRequest",
-}) as any as S.Schema<ProductToursDestroyRequest>;
-
-export interface ProductToursDestroyResponse {}
-export const ProductToursDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProductToursDestroyResponse",
-}) as any as S.Schema<ProductToursDestroyResponse>;
-
-export interface ProductToursDiscardDraftDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this product tour. */
-  id: string;
-}
-export const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ S.suspend(
+export const CreateProductTourPublishDraftRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      linked_flag_id: S.optional(S.NullOr(S.Number)),
+      targeting_flag_filters: S.optional(S.Unknown),
+      content: S.optional(S.Unknown),
+      auto_launch: S.optional(S.Boolean),
+      start_date: S.optional(S.NullOr(S.String)),
+      end_date: S.optional(S.NullOr(S.String)),
+      archived: S.optional(S.Boolean),
+      creation_context: S.optional(
+        ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
+      ),
     }).pipe(
       T.Http({
-        method: "DELETE",
-        uri: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
+        method: "POST",
+        uri: "/api/projects/{project_id}/product_tours/{id}/publish_draft/",
         code: 200,
       }),
     ),
 ).annotate({
-  identifier: "ProductToursDiscardDraftDestroyRequest",
-}) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>;
+  identifier: "CreateProductTourPublishDraftRequest",
+}) as any as S.Schema<CreateProductTourPublishDraftRequest>;
 
 /** Return the targeting flag filters, excluding the base exclusion properties. */
 export type ProductTourTargetingFlagFiltersMap = {
@@ -359,52 +356,104 @@ export const ProductTour = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ProductTour" }) as any as S.Schema<ProductTour>;
 
-export interface ProductToursDraftPartialUpdateRequest {
+export interface ListProductToursRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
+  search?: string;
+}
+export const ListProductToursRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/product_tours/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListProductToursRequest",
+}) as any as S.Schema<ListProductToursRequest>;
+
+export type PaginatedProductTourListResultsList = Array<ProductTour>;
+export const PaginatedProductTourListResultsList = /*@__PURE__*/ S.Array(
+  ProductTour,
+) as any as S.Schema<PaginatedProductTourListResultsList>;
+
+export interface PaginatedProductTourList {
+  count?: number;
+  next?: string | null;
+  previous?: string | null;
+  results?: PaginatedProductTourListResultsList;
+}
+export const PaginatedProductTourList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.optional(S.Number),
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: S.optional(PaginatedProductTourListResultsList),
+  }),
+).annotate({
+  identifier: "PaginatedProductTourList",
+}) as any as S.Schema<PaginatedProductTourList>;
+
+export interface ProductToursDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
   id: string;
-  name?: string;
-  description?: string;
-  linked_flag_id?: number | null;
-  targeting_flag_filters?: unknown;
-  content?: unknown;
-  auto_launch?: boolean;
-  start_date?: string | null;
-  end_date?: string | null;
-  archived?: boolean;
-  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?:
-    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
-    | (string & {});
 }
-export const ProductToursDraftPartialUpdateRequest = /*@__PURE__*/ S.suspend(
+export const ProductToursDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/product_tours/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ProductToursDestroyRequest",
+}) as any as S.Schema<ProductToursDestroyRequest>;
+
+export interface ProductToursDestroyResponse {}
+export const ProductToursDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ProductToursDestroyResponse",
+}) as any as S.Schema<ProductToursDestroyResponse>;
+
+export interface ProductToursDiscardDraftDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this product tour. */
+  id: string;
+}
+export const ProductToursDiscardDraftDestroyRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
       id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      linked_flag_id: S.optional(S.NullOr(S.Number)),
-      targeting_flag_filters: S.optional(S.Unknown),
-      content: S.optional(S.Unknown),
-      auto_launch: S.optional(S.Boolean),
-      start_date: S.optional(S.NullOr(S.String)),
-      end_date: S.optional(S.NullOr(S.String)),
-      archived: S.optional(S.Boolean),
-      creation_context: S.optional(
-        ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
-      ),
     }).pipe(
       T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/product_tours/{id}/draft/",
+        method: "DELETE",
+        uri: "/api/projects/{project_id}/product_tours/{id}/discard_draft/",
         code: 200,
       }),
     ),
 ).annotate({
-  identifier: "ProductToursDraftPartialUpdateRequest",
-}) as any as S.Schema<ProductToursDraftPartialUpdateRequest>;
+  identifier: "ProductToursDiscardDraftDestroyRequest",
+}) as any as S.Schema<ProductToursDiscardDraftDestroyRequest>;
 
 export interface ProductToursDraftStatusRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -514,56 +563,63 @@ export const GenerateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GenerateResponse",
 }) as any as S.Schema<GenerateResponse>;
 
-export interface ProductToursListRequest {
+export interface ProductToursRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Match against product tour `name` and `description`. Returns exact (case-insensitive substring) matches only; if no exact match exists, returns similar (fuzzy trigram — typos, prefix-as-you-type) matches instead. Each result's `search_match_type` is `exact` or `similar`. */
-  search?: string;
+  /** A UUID string identifying this product tour. */
+  id: string;
 }
-export const ProductToursListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ProductToursRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
+    id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/api/projects/{project_id}/product_tours/",
+      uri: "/api/projects/{project_id}/product_tours/{id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ProductToursListRequest",
-}) as any as S.Schema<ProductToursListRequest>;
+  identifier: "ProductToursRetrieveRequest",
+}) as any as S.Schema<ProductToursRetrieveRequest>;
 
-export type PaginatedProductTourListResultsList = Array<ProductTour>;
-export const PaginatedProductTourListResultsList = /*@__PURE__*/ S.Array(
-  ProductTour,
-) as any as S.Schema<PaginatedProductTourListResultsList>;
-
-export interface PaginatedProductTourList {
-  count?: number;
-  next?: string | null;
-  previous?: string | null;
-  results?: PaginatedProductTourListResultsList;
+export interface UpdateProductTourRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this product tour. */
+  id: string;
+  name?: string;
+  description?: string;
+  content?: unknown;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  archived?: boolean;
 }
-export const PaginatedProductTourList = /*@__PURE__*/ S.suspend(() =>
+export const UpdateProductTourRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    count: S.optional(S.Number),
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: S.optional(PaginatedProductTourListResultsList),
-  }),
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    content: S.optional(S.Unknown),
+    auto_launch: S.optional(S.Boolean),
+    start_date: S.optional(S.NullOr(S.String)),
+    end_date: S.optional(S.NullOr(S.String)),
+    archived: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/product_tours/{id}/",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "PaginatedProductTourList",
-}) as any as S.Schema<PaginatedProductTourList>;
+  identifier: "UpdateProductTourRequest",
+}) as any as S.Schema<UpdateProductTourRequest>;
 
-export interface ProductToursPartialUpdateRequest {
+export interface UpdateProductTourDraftPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this product tour. */
@@ -582,7 +638,54 @@ export interface ProductToursPartialUpdateRequest {
     | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
     | (string & {});
 }
-export const ProductToursPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateProductTourDraftPartialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      linked_flag_id: S.optional(S.NullOr(S.Number)),
+      targeting_flag_filters: S.optional(S.Unknown),
+      content: S.optional(S.Unknown),
+      auto_launch: S.optional(S.Boolean),
+      start_date: S.optional(S.NullOr(S.String)),
+      end_date: S.optional(S.NullOr(S.String)),
+      archived: S.optional(S.Boolean),
+      creation_context: S.optional(
+        ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/product_tours/{id}/draft/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpdateProductTourDraftPartialRequest",
+}) as any as S.Schema<UpdateProductTourDraftPartialRequest>;
+
+export interface UpdateProductTourPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this product tour. */
+  id: string;
+  name?: string;
+  description?: string;
+  linked_flag_id?: number | null;
+  targeting_flag_filters?: unknown;
+  content?: unknown;
+  auto_launch?: boolean;
+  start_date?: string | null;
+  end_date?: string | null;
+  archived?: boolean;
+  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
+  creation_context?:
+    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
+    | (string & {});
+}
+export const UpdateProductTourPartialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
@@ -606,126 +709,61 @@ export const ProductToursPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ProductToursPartialUpdateRequest",
-}) as any as S.Schema<ProductToursPartialUpdateRequest>;
+  identifier: "UpdateProductTourPartialRequest",
+}) as any as S.Schema<UpdateProductTourPartialRequest>;
 
-export interface ProductToursPublishDraftCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this product tour. */
-  id: string;
-  name?: string;
-  description?: string;
-  linked_flag_id?: number | null;
-  targeting_flag_filters?: unknown;
-  content?: unknown;
-  auto_launch?: boolean;
-  start_date?: string | null;
-  end_date?: string | null;
-  archived?: boolean;
-  /** Where the tour was created/updated from * `app` - app * `toolbar` - toolbar */
-  creation_context?:
-    | ProductTourSerializerCreateUpdateOnlyCreationContextEnum
-    | (string & {});
-}
-export const ProductToursPublishDraftCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      linked_flag_id: S.optional(S.NullOr(S.Number)),
-      targeting_flag_filters: S.optional(S.Unknown),
-      content: S.optional(S.Unknown),
-      auto_launch: S.optional(S.Boolean),
-      start_date: S.optional(S.NullOr(S.String)),
-      end_date: S.optional(S.NullOr(S.String)),
-      archived: S.optional(S.Boolean),
-      creation_context: S.optional(
-        ProductTourSerializerCreateUpdateOnlyCreationContextEnum,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/product_tours/{id}/publish_draft/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ProductToursPublishDraftCreateRequest",
-}) as any as S.Schema<ProductToursPublishDraftCreateRequest>;
-
-export interface ProductToursRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this product tour. */
-  id: string;
-}
-export const ProductToursRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/product_tours/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ProductToursRetrieveRequest",
-}) as any as S.Schema<ProductToursRetrieveRequest>;
-
-export interface ProductToursUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this product tour. */
-  id: string;
-  name?: string;
-  description?: string;
-  content?: unknown;
-  auto_launch?: boolean;
-  start_date?: string | null;
-  end_date?: string | null;
-  archived?: boolean;
-}
-export const ProductToursUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    content: S.optional(S.Unknown),
-    auto_launch: S.optional(S.Boolean),
-    start_date: S.optional(S.NullOr(S.String)),
-    end_date: S.optional(S.NullOr(S.String)),
-    archived: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/product_tours/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ProductToursUpdateRequest",
-}) as any as S.Schema<ProductToursUpdateRequest>;
-
-export type ProductToursCreateError =
+export type CreateProductTourError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** Create, read, update, and manage product tours and their targeting. */
-export const productToursCreate: API.OperationMethod<
-  ProductToursCreateRequest,
+export const createProductTour: API.OperationMethod<
+  CreateProductTourRequest,
   ProductTourSerializerCreateUpdateOnlyOutput,
-  ProductToursCreateError,
+  CreateProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductToursCreateRequest,
+  input: CreateProductTourRequest,
   output: ProductTourSerializerCreateUpdateOnlyOutput,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateProductTourPublishDraftError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Commit draft to live tour. Runs full validation and triggers side effects. Accepts an optional body payload. If provided, merges it into the draft before publishing so the caller can save + publish in a single request. */
+export const createProductTourPublishDraft: API.OperationMethod<
+  CreateProductTourPublishDraftRequest,
+  ProductTour,
+  CreateProductTourPublishDraftError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProductTourPublishDraftRequest,
+  output: ProductTour,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProductToursError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, read, update, and manage product tours and their targeting. */
+export const listProductTours: API.OperationMethod<
+  ListProductToursRequest,
+  PaginatedProductTourList,
+  ListProductToursError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProductToursRequest,
+  output: PaginatedProductTourList,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -760,25 +798,6 @@ export const productToursDiscardDraftDestroy: API.OperationMethod<
   input: ProductToursDiscardDraftDestroyRequest,
   output: ProductTour,
   errors: [Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProductToursDraftPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Save draft content (server-side merge). No side effects triggered. */
-export const productToursDraftPartialUpdate: API.OperationMethod<
-  ProductToursDraftPartialUpdateRequest,
-  ProductTour,
-  ProductToursDraftPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductToursDraftPartialUpdateRequest,
-  output: ProductTour,
-  errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -820,63 +839,6 @@ export const productToursGenerateCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProductToursListError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
-export const productToursList: API.OperationMethod<
-  ProductToursListRequest,
-  PaginatedProductTourList,
-  ProductToursListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductToursListRequest,
-  output: PaginatedProductTourList,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProductToursPartialUpdateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Create, read, update, and manage product tours and their targeting. */
-export const productToursPartialUpdate: API.OperationMethod<
-  ProductToursPartialUpdateRequest,
-  ProductTourSerializerCreateUpdateOnlyOutput,
-  ProductToursPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductToursPartialUpdateRequest,
-  output: ProductTourSerializerCreateUpdateOnlyOutput,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProductToursPublishDraftCreateError =
-  | BadRequest
-  | Forbidden
-  | NotFound
-  | PosthogOpError;
-/** Commit draft to live tour. Runs full validation and triggers side effects. Accepts an optional body payload. If provided, merges it into the draft before publishing so the caller can save + publish in a single request. */
-export const productToursPublishDraftCreate: API.OperationMethod<
-  ProductToursPublishDraftCreateRequest,
-  ProductTour,
-  ProductToursPublishDraftCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductToursPublishDraftCreateRequest,
-  output: ProductTour,
-  errors: [BadRequest, Forbidden, NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ProductToursRetrieveError = Forbidden | NotFound | PosthogOpError;
 /** Create, read, update, and manage product tours and their targeting. */
 export const productToursRetrieve: API.OperationMethod<
@@ -892,20 +854,58 @@ export const productToursRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProductToursUpdateError =
+export type UpdateProductTourError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** Create, read, update, and manage product tours and their targeting. */
-export const productToursUpdate: API.OperationMethod<
-  ProductToursUpdateRequest,
+export const updateProductTour: API.OperationMethod<
+  UpdateProductTourRequest,
   ProductTour,
-  ProductToursUpdateError,
+  UpdateProductTourError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductToursUpdateRequest,
+  input: UpdateProductTourRequest,
   output: ProductTour,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateProductTourDraftPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Save draft content (server-side merge). No side effects triggered. */
+export const updateProductTourDraftPartial: API.OperationMethod<
+  UpdateProductTourDraftPartialRequest,
+  ProductTour,
+  UpdateProductTourDraftPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateProductTourDraftPartialRequest,
+  output: ProductTour,
+  errors: [BadRequest, Forbidden, NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateProductTourPartialError =
+  | BadRequest
+  | Forbidden
+  | NotFound
+  | PosthogOpError;
+/** Create, read, update, and manage product tours and their targeting. */
+export const updateProductTourPartial: API.OperationMethod<
+  UpdateProductTourPartialRequest,
+  ProductTourSerializerCreateUpdateOnlyOutput,
+  UpdateProductTourPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateProductTourPartialRequest,
+  output: ProductTourSerializerCreateUpdateOnlyOutput,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

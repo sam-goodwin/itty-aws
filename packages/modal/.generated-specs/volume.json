@@ -143,7 +143,7 @@
         }
       }
     },
-    "com.modal.volume#VolumeDeleteRequest": {
+    "com.modal.volume#DeleteVolumeRequest": {
       "type": "structure",
       "members": {
         "volumeId": {
@@ -160,10 +160,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.volume#VolumeDelete": {
+    "com.modal.volume#DeleteVolume": {
       "type": "operation",
       "input": {
-        "target": "com.modal.volume#VolumeDeleteRequest"
+        "target": "com.modal.volume#DeleteVolumeRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -176,7 +176,7 @@
         }
       }
     },
-    "com.modal.volume#VolumeGetByIdRequest": {
+    "com.modal.volume#GetVolumeByIdRequest": {
       "type": "structure",
       "members": {
         "volumeId": {
@@ -244,7 +244,7 @@
         }
       }
     },
-    "com.modal.volume#VolumeGetByIdResponse": {
+    "com.modal.volume#GetVolumeByIdResponse": {
       "type": "structure",
       "members": {
         "volumeId": {
@@ -258,13 +258,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.volume#VolumeGetById": {
+    "com.modal.volume#GetVolumeById": {
       "type": "operation",
       "input": {
-        "target": "com.modal.volume#VolumeGetByIdRequest"
+        "target": "com.modal.volume#GetVolumeByIdRequest"
       },
       "output": {
-        "target": "com.modal.volume#VolumeGetByIdResponse"
+        "target": "com.modal.volume#GetVolumeByIdResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -274,7 +274,7 @@
         }
       }
     },
-    "com.modal.volume#VolumeGetFileRequest": {
+    "com.modal.volume#GetVolumeFileRequest": {
       "type": "structure",
       "members": {
         "volumeId": {
@@ -294,7 +294,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.volume#VolumeGetFileResponse": {
+    "com.modal.volume#GetVolumeFileResponse": {
       "type": "structure",
       "members": {
         "data": {
@@ -323,13 +323,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.volume#VolumeGetFile": {
+    "com.modal.volume#GetVolumeFile": {
       "type": "operation",
       "input": {
-        "target": "com.modal.volume#VolumeGetFileRequest"
+        "target": "com.modal.volume#GetVolumeFileRequest"
       },
       "output": {
-        "target": "com.modal.volume#VolumeGetFileResponse"
+        "target": "com.modal.volume#GetVolumeFileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -339,7 +339,7 @@
         }
       }
     },
-    "com.modal.volume#VolumeGetFile2Request": {
+    "com.modal.volume#GetVolumeFile2Request": {
       "type": "structure",
       "members": {
         "volumeId": {
@@ -359,7 +359,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.volume#VolumeGetFile2Response": {
+    "com.modal.volume#GetVolumeFile2Response": {
       "type": "structure",
       "members": {
         "getUrls": {
@@ -385,13 +385,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.volume#VolumeGetFile2": {
+    "com.modal.volume#GetVolumeFile2": {
       "type": "operation",
       "input": {
-        "target": "com.modal.volume#VolumeGetFile2Request"
+        "target": "com.modal.volume#GetVolumeFile2Request"
       },
       "output": {
-        "target": "com.modal.volume#VolumeGetFile2Response"
+        "target": "com.modal.volume#GetVolumeFile2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -567,7 +567,7 @@
         }
       }
     },
-    "com.modal.volume#VolumeListRequest": {
+    "com.modal.volume#ListVolumeRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -610,7 +610,7 @@
         "target": "com.modal.volume#VolumeListItem"
       }
     },
-    "com.modal.volume#VolumeListResponse": {
+    "com.modal.volume#ListVolumeResponse": {
       "type": "structure",
       "members": {
         "items": {
@@ -624,13 +624,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.volume#VolumeList": {
+    "com.modal.volume#ListVolume": {
       "type": "operation",
       "input": {
-        "target": "com.modal.volume#VolumeListRequest"
+        "target": "com.modal.volume#ListVolumeRequest"
       },
       "output": {
-        "target": "com.modal.volume#VolumeListResponse"
+        "target": "com.modal.volume#ListVolumeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -991,16 +991,16 @@
           "target": "com.modal.volume#VolumeCopyFiles2"
         },
         {
-          "target": "com.modal.volume#VolumeDelete"
+          "target": "com.modal.volume#DeleteVolume"
         },
         {
-          "target": "com.modal.volume#VolumeGetById"
+          "target": "com.modal.volume#GetVolumeById"
         },
         {
-          "target": "com.modal.volume#VolumeGetFile"
+          "target": "com.modal.volume#GetVolumeFile"
         },
         {
-          "target": "com.modal.volume#VolumeGetFile2"
+          "target": "com.modal.volume#GetVolumeFile2"
         },
         {
           "target": "com.modal.volume#VolumeGetOrCreate"
@@ -1009,7 +1009,7 @@
           "target": "com.modal.volume#VolumeHeartbeat"
         },
         {
-          "target": "com.modal.volume#VolumeList"
+          "target": "com.modal.volume#ListVolume"
         },
         {
           "target": "com.modal.volume#VolumePutFiles"

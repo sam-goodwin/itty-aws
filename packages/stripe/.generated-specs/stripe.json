@@ -69697,7 +69697,7 @@
         "smithy.api#documentation": "Specifies the scoping of the secret. Requests originating from UI extensions can only access account-scoped secrets or secrets scoped to their own user."
       }
     },
-    "com.stripe.api#PostAppsSecretsDeleteRequest": {
+    "com.stripe.api#DeletePostAppSecretRequest": {
       "type": "structure",
       "members": {
         "expand": {
@@ -69725,10 +69725,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostAppsSecretsDelete": {
+    "com.stripe.api#DeletePostAppSecret": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostAppsSecretsDeleteRequest"
+        "target": "com.stripe.api#DeletePostAppSecretRequest"
       },
       "output": {
         "target": "com.stripe.api#AppsSecret"
@@ -116245,7 +116245,7 @@
         "smithy.api#documentation": "Specifies which fields in the response should be expanded."
       }
     },
-    "com.stripe.api#PostCustomersCustomerSourcesIdVerifyRequest": {
+    "com.stripe.api#VerifyPostCustomerCustomerSourceIdRequest": {
       "type": "structure",
       "members": {
         "customer": {
@@ -116279,10 +116279,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostCustomersCustomerSourcesIdVerify": {
+    "com.stripe.api#VerifyPostCustomerCustomerSourceId": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostCustomersCustomerSourcesIdVerifyRequest"
+        "target": "com.stripe.api#VerifyPostCustomerCustomerSourceIdRequest"
       },
       "output": {
         "target": "com.stripe.api#BankAccount"
@@ -140218,7 +140218,7 @@
         "smithy.api#documentation": "The subscription creation or modification params to apply as a preview. Cannot be used with `schedule` or `schedule_details` fields."
       }
     },
-    "com.stripe.api#PostInvoicesCreatePreviewRequest": {
+    "com.stripe.api#CreatePostInvoicePreviewRequest": {
       "type": "structure",
       "members": {
         "automatic_tax": {
@@ -140316,10 +140316,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostInvoicesCreatePreview": {
+    "com.stripe.api#CreatePostInvoicePreview": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostInvoicesCreatePreviewRequest"
+        "target": "com.stripe.api#CreatePostInvoicePreviewRequest"
       },
       "output": {
         "target": "com.stripe.api#Invoice"
@@ -146362,7 +146362,7 @@
         "smithy.api#documentation": "The line items to update."
       }
     },
-    "com.stripe.api#PostInvoicesInvoiceUpdateLinesRequest": {
+    "com.stripe.api#UpdatePostInvoiceInvoiceLineRequest": {
       "type": "structure",
       "members": {
         "invoice": {
@@ -146396,10 +146396,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostInvoicesInvoiceUpdateLines": {
+    "com.stripe.api#UpdatePostInvoiceInvoiceLine": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostInvoicesInvoiceUpdateLinesRequest"
+        "target": "com.stripe.api#UpdatePostInvoiceInvoiceLineRequest"
       },
       "output": {
         "target": "com.stripe.api#Invoice"
@@ -231755,7 +231755,7 @@
         "smithy.api#documentation": "Specifies which fields in the response should be expanded."
       }
     },
-    "com.stripe.api#PostPaymentIntentsIntentVerifyMicrodepositsRequest": {
+    "com.stripe.api#VerifyPostPaymentIntentIntentMicrodepositRequest": {
       "type": "structure",
       "members": {
         "intent": {
@@ -231788,10 +231788,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostPaymentIntentsIntentVerifyMicrodeposits": {
+    "com.stripe.api#VerifyPostPaymentIntentIntentMicrodeposit": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostPaymentIntentsIntentVerifyMicrodepositsRequest"
+        "target": "com.stripe.api#VerifyPostPaymentIntentIntentMicrodepositRequest"
       },
       "output": {
         "target": "com.stripe.api#PaymentIntent"
@@ -266285,7 +266285,7 @@
         "smithy.api#documentation": "Specifies which fields in the response should be expanded."
       }
     },
-    "com.stripe.api#PostRadarValueListItemsRequest": {
+    "com.stripe.api#ListPostRadarValueItemsRequest": {
       "type": "structure",
       "members": {
         "expand": {
@@ -266313,10 +266313,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostRadarValueListItems": {
+    "com.stripe.api#ListPostRadarValueItems": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostRadarValueListItemsRequest"
+        "target": "com.stripe.api#ListPostRadarValueItemsRequest"
       },
       "output": {
         "target": "com.stripe.api#RadarValueListItem"
@@ -267102,7 +267102,7 @@
         "smithy.api#documentation": "Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`."
       }
     },
-    "com.stripe.api#PostRadarValueListsValueListRequest": {
+    "com.stripe.api#ListPostRadarValueListValueRequest": {
       "type": "structure",
       "members": {
         "value_list": {
@@ -267141,10 +267141,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostRadarValueListsValueList": {
+    "com.stripe.api#ListPostRadarValueListValue": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostRadarValueListsValueListRequest"
+        "target": "com.stripe.api#ListPostRadarValueListValueRequest"
       },
       "output": {
         "target": "com.stripe.api#RadarValueList"
@@ -289880,7 +289880,7 @@
         "smithy.api#documentation": "Specifies which fields in the response should be expanded."
       }
     },
-    "com.stripe.api#PostSetupIntentsIntentVerifyMicrodepositsRequest": {
+    "com.stripe.api#VerifyPostSetupIntentIntentMicrodepositRequest": {
       "type": "structure",
       "members": {
         "intent": {
@@ -289913,10 +289913,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostSetupIntentsIntentVerifyMicrodeposits": {
+    "com.stripe.api#VerifyPostSetupIntentIntentMicrodeposit": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostSetupIntentsIntentVerifyMicrodepositsRequest"
+        "target": "com.stripe.api#VerifyPostSetupIntentIntentMicrodepositRequest"
       },
       "output": {
         "target": "com.stripe.api#SetupIntent"
@@ -292948,7 +292948,7 @@
         "smithy.api#documentation": "The values needed to verify the source."
       }
     },
-    "com.stripe.api#PostSourcesSourceVerifyRequest": {
+    "com.stripe.api#VerifyPostSourceSourceRequest": {
       "type": "structure",
       "members": {
         "source": {
@@ -292976,10 +292976,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostSourcesSourceVerify": {
+    "com.stripe.api#VerifyPostSourceSource": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostSourcesSourceVerifyRequest"
+        "target": "com.stripe.api#VerifyPostSourceSourceRequest"
       },
       "output": {
         "target": "com.stripe.api#Source"
@@ -299022,7 +299022,7 @@
         "smithy.api#documentation": "Specifies which fields in the response should be expanded."
       }
     },
-    "com.stripe.api#PostSubscriptionSchedulesScheduleReleaseRequest": {
+    "com.stripe.api#ReleasePostSubscriptionScheduleScheduleRequest": {
       "type": "structure",
       "members": {
         "schedule": {
@@ -299049,10 +299049,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostSubscriptionSchedulesScheduleRelease": {
+    "com.stripe.api#ReleasePostSubscriptionScheduleSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostSubscriptionSchedulesScheduleReleaseRequest"
+        "target": "com.stripe.api#ReleasePostSubscriptionScheduleScheduleRequest"
       },
       "output": {
         "target": "com.stripe.api#SubscriptionSchedule"
@@ -319589,7 +319589,7 @@
         "smithy.api#documentation": "Set of [key-value pairs](https://docs.stripe.com/api/metadata) that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Individual keys can be unset by posting an empty value to them. All keys can be unset by posting an empty value to `metadata`."
       }
     },
-    "com.stripe.api#PostTaxTransactionsCreateFromCalculationRequest": {
+    "com.stripe.api#CreatePostTaxTransactionFromCalculationRequest": {
       "type": "structure",
       "members": {
         "calculation": {
@@ -320126,10 +320126,10 @@
         "smithy.api#documentation": "If `reversal`, this transaction reverses an earlier transaction."
       }
     },
-    "com.stripe.api#PostTaxTransactionsCreateFromCalculation": {
+    "com.stripe.api#CreatePostTaxTransactionFromCalculation": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostTaxTransactionsCreateFromCalculationRequest"
+        "target": "com.stripe.api#CreatePostTaxTransactionFromCalculationRequest"
       },
       "output": {
         "target": "com.stripe.api#TaxTransaction"
@@ -320274,7 +320274,7 @@
         "smithy.api#documentation": "The shipping cost to reverse."
       }
     },
-    "com.stripe.api#PostTaxTransactionsCreateReversalRequest": {
+    "com.stripe.api#CreatePostTaxTransactionReversalRequest": {
       "type": "structure",
       "members": {
         "expand": {
@@ -320333,10 +320333,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostTaxTransactionsCreateReversal": {
+    "com.stripe.api#CreatePostTaxTransactionReversal": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostTaxTransactionsCreateReversalRequest"
+        "target": "com.stripe.api#CreatePostTaxTransactionReversalRequest"
       },
       "output": {
         "target": "com.stripe.api#TaxTransaction"
@@ -331895,7 +331895,7 @@
         "smithy.api#documentation": "Type of information to display. Only `cart` is currently supported."
       }
     },
-    "com.stripe.api#PostTerminalReadersReaderSetReaderDisplayRequest": {
+    "com.stripe.api#SetPostTerminalReaderReaderReaderDisplayRequest": {
       "type": "structure",
       "members": {
         "reader": {
@@ -331929,10 +331929,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostTerminalReadersReaderSetReaderDisplay": {
+    "com.stripe.api#SetPostTerminalReaderReaderReaderDisplay": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostTerminalReadersReaderSetReaderDisplayRequest"
+        "target": "com.stripe.api#SetPostTerminalReaderReaderReaderDisplayRequest"
       },
       "output": {
         "target": "com.stripe.api#TerminalReader"
@@ -341395,7 +341395,7 @@
         "smithy.api#documentation": "Additional purchase information that is optionally provided by the merchant."
       }
     },
-    "com.stripe.api#PostTestHelpersIssuingTransactionsCreateForceCaptureRequest": {
+    "com.stripe.api#CreatePostTestHelperIssuingTransactionForceCaptureRequest": {
       "type": "structure",
       "members": {
         "amount": {
@@ -341441,10 +341441,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostTestHelpersIssuingTransactionsCreateForceCapture": {
+    "com.stripe.api#CreatePostTestHelperIssuingTransactionForceCapture": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostTestHelpersIssuingTransactionsCreateForceCaptureRequest"
+        "target": "com.stripe.api#CreatePostTestHelperIssuingTransactionForceCaptureRequest"
       },
       "output": {
         "target": "com.stripe.api#IssuingTransaction"
@@ -343810,7 +343810,7 @@
         "smithy.api#documentation": "Additional purchase information that is optionally provided by the merchant."
       }
     },
-    "com.stripe.api#PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequest": {
+    "com.stripe.api#CreatePostTestHelperIssuingTransactionUnlinkedRefundRequest": {
       "type": "structure",
       "members": {
         "amount": {
@@ -343856,10 +343856,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostTestHelpersIssuingTransactionsCreateUnlinkedRefund": {
+    "com.stripe.api#CreatePostTestHelperIssuingTransactionUnlinkedRefund": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostTestHelpersIssuingTransactionsCreateUnlinkedRefundRequest"
+        "target": "com.stripe.api#CreatePostTestHelperIssuingTransactionUnlinkedRefundRequest"
       },
       "output": {
         "target": "com.stripe.api#IssuingTransaction"
@@ -407536,7 +407536,7 @@
         "smithy.api#documentation": "Delete an Event Destination\n\nDelete an event destination."
       }
     },
-    "com.stripe.api#PostV2CoreEventDestinationsIdDisableRequest": {
+    "com.stripe.api#DisablePostV2CoreEventDestinationIdRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -407552,10 +407552,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostV2CoreEventDestinationsIdDisable": {
+    "com.stripe.api#DisablePostV2CoreEventDestinationId": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostV2CoreEventDestinationsIdDisableRequest"
+        "target": "com.stripe.api#DisablePostV2CoreEventDestinationIdRequest"
       },
       "output": {
         "target": "com.stripe.api#V2CoreEventDestination"
@@ -407569,7 +407569,7 @@
         "smithy.api#documentation": "Disable an Event Destination\n\nDisable an event destination."
       }
     },
-    "com.stripe.api#PostV2CoreEventDestinationsIdEnableRequest": {
+    "com.stripe.api#EnablePostV2CoreEventDestinationIdRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -407585,10 +407585,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.stripe.api#PostV2CoreEventDestinationsIdEnable": {
+    "com.stripe.api#EnablePostV2CoreEventDestinationId": {
       "type": "operation",
       "input": {
-        "target": "com.stripe.api#PostV2CoreEventDestinationsIdEnableRequest"
+        "target": "com.stripe.api#EnablePostV2CoreEventDestinationIdRequest"
       },
       "output": {
         "target": "com.stripe.api#V2CoreEventDestination"
@@ -408043,7 +408043,7 @@
           "target": "com.stripe.api#PostAppsSecrets"
         },
         {
-          "target": "com.stripe.api#PostAppsSecretsDelete"
+          "target": "com.stripe.api#DeletePostAppSecret"
         },
         {
           "target": "com.stripe.api#GetAppsSecretsFind"
@@ -408340,7 +408340,7 @@
           "target": "com.stripe.api#DeleteCustomersCustomerSourcesId"
         },
         {
-          "target": "com.stripe.api#PostCustomersCustomerSourcesIdVerify"
+          "target": "com.stripe.api#VerifyPostCustomerCustomerSourceId"
         },
         {
           "target": "com.stripe.api#GetCustomersCustomerTaxIds"
@@ -408529,7 +408529,7 @@
           "target": "com.stripe.api#PostInvoices"
         },
         {
-          "target": "com.stripe.api#PostInvoicesCreatePreview"
+          "target": "com.stripe.api#CreatePostInvoicePreview"
         },
         {
           "target": "com.stripe.api#GetInvoicesSearch"
@@ -408571,7 +408571,7 @@
           "target": "com.stripe.api#PostInvoicesInvoiceSend"
         },
         {
-          "target": "com.stripe.api#PostInvoicesInvoiceUpdateLines"
+          "target": "com.stripe.api#UpdatePostInvoiceInvoiceLine"
         },
         {
           "target": "com.stripe.api#PostInvoicesInvoiceVoid"
@@ -408703,7 +408703,7 @@
           "target": "com.stripe.api#PostPaymentIntentsIntentIncrementAuthorization"
         },
         {
-          "target": "com.stripe.api#PostPaymentIntentsIntentVerifyMicrodeposits"
+          "target": "com.stripe.api#VerifyPostPaymentIntentIntentMicrodeposit"
         },
         {
           "target": "com.stripe.api#GetPaymentLinks"
@@ -408925,7 +408925,7 @@
           "target": "com.stripe.api#GetRadarValueListItems"
         },
         {
-          "target": "com.stripe.api#PostRadarValueListItems"
+          "target": "com.stripe.api#ListPostRadarValueItems"
         },
         {
           "target": "com.stripe.api#GetRadarValueListItemsItem"
@@ -408943,7 +408943,7 @@
           "target": "com.stripe.api#GetRadarValueListsValueList"
         },
         {
-          "target": "com.stripe.api#PostRadarValueListsValueList"
+          "target": "com.stripe.api#ListPostRadarValueListValue"
         },
         {
           "target": "com.stripe.api#DeleteRadarValueListsValueList"
@@ -409009,7 +409009,7 @@
           "target": "com.stripe.api#PostSetupIntentsIntentConfirm"
         },
         {
-          "target": "com.stripe.api#PostSetupIntentsIntentVerifyMicrodeposits"
+          "target": "com.stripe.api#VerifyPostSetupIntentIntentMicrodeposit"
         },
         {
           "target": "com.stripe.api#GetShippingRates"
@@ -409042,7 +409042,7 @@
           "target": "com.stripe.api#GetSourcesSourceSourceTransactions"
         },
         {
-          "target": "com.stripe.api#PostSourcesSourceVerify"
+          "target": "com.stripe.api#VerifyPostSourceSource"
         },
         {
           "target": "com.stripe.api#GetSubscriptionItems"
@@ -409075,7 +409075,7 @@
           "target": "com.stripe.api#PostSubscriptionSchedulesScheduleCancel"
         },
         {
-          "target": "com.stripe.api#PostSubscriptionSchedulesScheduleRelease"
+          "target": "com.stripe.api#ReleasePostSubscriptionScheduleSchedule"
         },
         {
           "target": "com.stripe.api#GetSubscriptions"
@@ -409135,10 +409135,10 @@
           "target": "com.stripe.api#PostTaxSettings"
         },
         {
-          "target": "com.stripe.api#PostTaxTransactionsCreateFromCalculation"
+          "target": "com.stripe.api#CreatePostTaxTransactionFromCalculation"
         },
         {
-          "target": "com.stripe.api#PostTaxTransactionsCreateReversal"
+          "target": "com.stripe.api#CreatePostTaxTransactionReversal"
         },
         {
           "target": "com.stripe.api#GetTaxTransactionsTransaction"
@@ -409249,7 +409249,7 @@
           "target": "com.stripe.api#PostTerminalReadersReaderRefundPayment"
         },
         {
-          "target": "com.stripe.api#PostTerminalReadersReaderSetReaderDisplay"
+          "target": "com.stripe.api#SetPostTerminalReaderReaderReaderDisplay"
         },
         {
           "target": "com.stripe.api#PostTestHelpersConfirmationTokens"
@@ -409303,10 +409303,10 @@
           "target": "com.stripe.api#PostTestHelpersIssuingPersonalizationDesignsPersonalizationDesignReject"
         },
         {
-          "target": "com.stripe.api#PostTestHelpersIssuingTransactionsCreateForceCapture"
+          "target": "com.stripe.api#CreatePostTestHelperIssuingTransactionForceCapture"
         },
         {
-          "target": "com.stripe.api#PostTestHelpersIssuingTransactionsCreateUnlinkedRefund"
+          "target": "com.stripe.api#CreatePostTestHelperIssuingTransactionUnlinkedRefund"
         },
         {
           "target": "com.stripe.api#PostTestHelpersIssuingTransactionsTransactionRefund"
@@ -409618,10 +409618,10 @@
           "target": "com.stripe.api#DeleteV2CoreEventDestinationsId"
         },
         {
-          "target": "com.stripe.api#PostV2CoreEventDestinationsIdDisable"
+          "target": "com.stripe.api#DisablePostV2CoreEventDestinationId"
         },
         {
-          "target": "com.stripe.api#PostV2CoreEventDestinationsIdEnable"
+          "target": "com.stripe.api#EnablePostV2CoreEventDestinationId"
         },
         {
           "target": "com.stripe.api#PostV2CoreEventDestinationsIdPing"

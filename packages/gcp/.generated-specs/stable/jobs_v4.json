@@ -4243,7 +4243,7 @@
         "smithy.api#documentation": "Updates specified company."
       }
     },
-    "com.gcp.jobs_v4#BatchUpdateProjectsTenantsJobsRequest": {
+    "com.gcp.jobs_v4#UpdateBatchProjectTenantJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4263,10 +4263,10 @@
         }
       }
     },
-    "com.gcp.jobs_v4#BatchUpdateProjectsTenantsJobs": {
+    "com.gcp.jobs_v4#UpdateBatchProjectTenantJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.jobs_v4#BatchUpdateProjectsTenantsJobsRequest"
+        "target": "com.gcp.jobs_v4#UpdateBatchProjectTenantJobRequest"
       },
       "output": {
         "target": "com.gcp.jobs_v4#Operation"
@@ -4684,7 +4684,7 @@
         "smithy.api#documentation": "Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes."
       }
     },
-    "com.gcp.jobs_v4#BatchCreateProjectsTenantsJobsRequest": {
+    "com.gcp.jobs_v4#CreateBatchProjectTenantJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4704,10 +4704,10 @@
         }
       }
     },
-    "com.gcp.jobs_v4#BatchCreateProjectsTenantsJobs": {
+    "com.gcp.jobs_v4#CreateBatchProjectTenantJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.jobs_v4#BatchCreateProjectsTenantsJobsRequest"
+        "target": "com.gcp.jobs_v4#CreateBatchProjectTenantJobRequest"
       },
       "output": {
         "target": "com.gcp.jobs_v4#Operation"
@@ -4734,7 +4734,7 @@
         "smithy.api#documentation": "Begins executing a batch create jobs operation."
       }
     },
-    "com.gcp.jobs_v4#BatchDeleteProjectsTenantsJobsRequest": {
+    "com.gcp.jobs_v4#DeleteBatchProjectTenantJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4754,10 +4754,10 @@
         }
       }
     },
-    "com.gcp.jobs_v4#BatchDeleteProjectsTenantsJobs": {
+    "com.gcp.jobs_v4#DeleteBatchProjectTenantJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.jobs_v4#BatchDeleteProjectsTenantsJobsRequest"
+        "target": "com.gcp.jobs_v4#DeleteBatchProjectTenantJobRequest"
       },
       "output": {
         "target": "com.gcp.jobs_v4#Operation"

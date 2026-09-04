@@ -29677,7 +29677,7 @@
         }
       }
     },
-    "com.gcp.displayvideo_v3#BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest": {
+    "com.gcp.displayvideo_v3#ListBulkAdGroupAssignedTargetingOptionAdvertiserAdGroupsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -29725,10 +29725,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v3#BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroups": {
+    "com.gcp.displayvideo_v3#ListBulkAdGroupAssignedTargetingOptionAdvertiserAdGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v3#BulkListAdGroupAssignedTargetingOptionsAdvertisersAdGroupsRequest"
+        "target": "com.gcp.displayvideo_v3#ListBulkAdGroupAssignedTargetingOptionAdvertiserAdGroupsRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v3#BulkListAdGroupAssignedTargetingOptionsResponse"
@@ -31720,7 +31720,7 @@
         "smithy.api#documentation": "Gets a line item."
       }
     },
-    "com.gcp.displayvideo_v3#BulkUpdateAdvertisersLineItemsRequest": {
+    "com.gcp.displayvideo_v3#UpdateBulkAdvertiserLineItemRequest": {
       "type": "structure",
       "members": {
         "advertiserId": {
@@ -31740,10 +31740,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v3#BulkUpdateAdvertisersLineItems": {
+    "com.gcp.displayvideo_v3#UpdateBulkAdvertiserLineItem": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v3#BulkUpdateAdvertisersLineItemsRequest"
+        "target": "com.gcp.displayvideo_v3#UpdateBulkAdvertiserLineItemRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v3#BulkUpdateLineItemsResponse"
@@ -31770,7 +31770,7 @@
         "smithy.api#documentation": "Updates multiple line items. Requests to this endpoint cannot be made concurrently with the following requests updating the same line item: * BulkEditAssignedTargetingOptions * UpdateLineItem * assignedTargetingOptions.create * assignedTargetingOptions.delete YouTube & Partners line items cannot be created or updated using the API."
       }
     },
-    "com.gcp.displayvideo_v3#BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest": {
+    "com.gcp.displayvideo_v3#ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -31818,10 +31818,10 @@
         }
       }
     },
-    "com.gcp.displayvideo_v3#BulkListAssignedTargetingOptionsAdvertisersLineItems": {
+    "com.gcp.displayvideo_v3#ListBulkAssignedTargetingOptionAdvertiserLineItems": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.displayvideo_v3#BulkListAssignedTargetingOptionsAdvertisersLineItemsRequest"
+        "target": "com.gcp.displayvideo_v3#ListBulkAssignedTargetingOptionAdvertiserLineItemsRequest"
       },
       "output": {
         "target": "com.gcp.displayvideo_v3#BulkListAssignedTargetingOptionsResponse"

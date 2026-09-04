@@ -86,10 +86,10 @@
         "smithy.api#documentation": "Withdraw properties details"
       }
     },
-    "com.azure.marketplace#PrivateStoreQueryRequestApproval": {
+    "com.azure.marketplace#RequestPrivateStoreQueryApproval": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreQueryRequestApprovalRequest"
+        "target": "com.azure.marketplace#RequestPrivateStoreQueryApprovalRequest"
       },
       "output": {
         "target": "com.azure.marketplace#QueryRequestApproval"
@@ -225,7 +225,7 @@
         "smithy.api#documentation": "Gets the plan status"
       }
     },
-    "com.azure.marketplace#PrivateStoreQueryRequestApprovalRequest": {
+    "com.azure.marketplace#RequestPrivateStoreQueryApprovalRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -1711,10 +1711,10 @@
         "smithy.api#documentation": "Gets or sets added plans"
       }
     },
-    "com.azure.marketplace#PrivateStoreListSubscriptionsContext": {
+    "com.azure.marketplace#ListPrivateStoreSubscriptionContext": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreListSubscriptionsContextRequest"
+        "target": "com.azure.marketplace#ListPrivateStoreSubscriptionContextRequest"
       },
       "output": {
         "target": "com.azure.marketplace#SubscriptionsContextList"
@@ -1748,7 +1748,7 @@
       },
       "traits": {}
     },
-    "com.azure.marketplace#PrivateStoreListSubscriptionsContextRequest": {
+    "com.azure.marketplace#ListPrivateStoreSubscriptionContextRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -1901,10 +1901,10 @@
       },
       "traits": {}
     },
-    "com.azure.marketplace#PrivateStoreListNewPlansNotifications": {
+    "com.azure.marketplace#ListPrivateStoreNewPlanNotifications": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreListNewPlansNotificationsRequest"
+        "target": "com.azure.marketplace#ListPrivateStoreNewPlanNotificationsRequest"
       },
       "output": {
         "target": "com.azure.marketplace#NewPlansNotificationsList"
@@ -1938,7 +1938,7 @@
       },
       "traits": {}
     },
-    "com.azure.marketplace#PrivateStoreListNewPlansNotificationsRequest": {
+    "com.azure.marketplace#ListPrivateStoreNewPlanNotificationsRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -2466,13 +2466,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferUpsertOfferWithMultiContext": {
+    "com.azure.marketplace#UpsertPrivateStoreCollectionOfferOfferWithMultiContext": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferUpsertOfferWithMultiContextRequest"
+        "target": "com.azure.marketplace#UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest"
       },
       "output": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferUpsertOfferWithMultiContextResponse"
+        "target": "com.azure.marketplace#UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2485,7 +2485,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferUpsertOfferWithMultiContextResponse": {
+    "com.azure.marketplace#UpsertPrivateStoreCollectionOfferOfferWithMultiContextResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2523,7 +2523,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferUpsertOfferWithMultiContextRequest": {
+    "com.azure.marketplace#UpsertPrivateStoreCollectionOfferOfferWithMultiContextRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -2738,10 +2738,10 @@
         "smithy.api#documentation": "Subscription ids list"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferDelete": {
+    "com.azure.marketplace#DeletePrivateStoreCollectionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferDeleteRequest"
+        "target": "com.azure.marketplace#DeletePrivateStoreCollectionOfferRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2757,7 +2757,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferDeleteRequest": {
+    "com.azure.marketplace#DeletePrivateStoreCollectionOfferRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3051,13 +3051,13 @@
         "smithy.api#documentation": "Set the Operation for the POST method. Ping or Delete"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferGet": {
+    "com.azure.marketplace#GetPrivateStoreCollectionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferGetRequest"
+        "target": "com.azure.marketplace#GetPrivateStoreCollectionOfferRequest"
       },
       "output": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferGetResponse"
+        "target": "com.azure.marketplace#GetPrivateStoreCollectionOfferResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3070,7 +3070,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferGetResponse": {
+    "com.azure.marketplace#GetPrivateStoreCollectionOfferResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3108,7 +3108,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferGetRequest": {
+    "com.azure.marketplace#GetPrivateStoreCollectionOfferRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3140,10 +3140,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferList": {
+    "com.azure.marketplace#ListPrivateStoreCollectionOffer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferListRequest"
+        "target": "com.azure.marketplace#ListPrivateStoreCollectionOfferRequest"
       },
       "output": {
         "target": "com.azure.marketplace#OfferListResponse"
@@ -3227,7 +3227,7 @@
         "smithy.api#documentation": "The privateStore offer data structure."
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferListRequest": {
+    "com.azure.marketplace#ListPrivateStoreCollectionOfferRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3251,10 +3251,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferListByContexts": {
+    "com.azure.marketplace#ListPrivateStoreCollectionOfferByContexts": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionOfferListByContextsRequest"
+        "target": "com.azure.marketplace#ListPrivateStoreCollectionOfferByContextsRequest"
       },
       "output": {
         "target": "com.azure.marketplace#CollectionOffersByContextList"
@@ -3332,7 +3332,7 @@
       },
       "traits": {}
     },
-    "com.azure.marketplace#PrivateStoreCollectionOfferListByContextsRequest": {
+    "com.azure.marketplace#ListPrivateStoreCollectionOfferByContextsRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3362,13 +3362,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionDisableApproveAllItems": {
+    "com.azure.marketplace#DisablePrivateStoreCollectionApproveAllItem": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionDisableApproveAllItemsRequest"
+        "target": "com.azure.marketplace#DisablePrivateStoreCollectionApproveAllItemRequest"
       },
       "output": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionDisableApproveAllItemsResponse"
+        "target": "com.azure.marketplace#DisablePrivateStoreCollectionApproveAllItemResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3381,7 +3381,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionDisableApproveAllItemsResponse": {
+    "com.azure.marketplace#DisablePrivateStoreCollectionApproveAllItemResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3505,7 +3505,7 @@
         "smithy.api#documentation": "Gets or sets subscription ids list. Empty list indicates all subscriptions are selected, null indicates no update is done, explicit list indicates the explicit selected subscriptions. On insert, null is considered as bad request"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionDisableApproveAllItemsRequest": {
+    "com.azure.marketplace#DisablePrivateStoreCollectionApproveAllItemRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3610,10 +3610,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionDelete": {
+    "com.azure.marketplace#DeletePrivateStoreCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionDeleteRequest"
+        "target": "com.azure.marketplace#DeletePrivateStoreCollectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3629,7 +3629,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionDeleteRequest": {
+    "com.azure.marketplace#DeletePrivateStoreCollectionRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3836,13 +3836,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionGet": {
+    "com.azure.marketplace#GetPrivateStoreCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionGetRequest"
+        "target": "com.azure.marketplace#GetPrivateStoreCollectionRequest"
       },
       "output": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionGetResponse"
+        "target": "com.azure.marketplace#GetPrivateStoreCollectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3855,7 +3855,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionGetResponse": {
+    "com.azure.marketplace#GetPrivateStoreCollectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3893,7 +3893,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionGetRequest": {
+    "com.azure.marketplace#GetPrivateStoreCollectionRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -3917,10 +3917,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionList": {
+    "com.azure.marketplace#ListPrivateStoreCollection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreCollectionListRequest"
+        "target": "com.azure.marketplace#ListPrivateStoreCollectionRequest"
       },
       "output": {
         "target": "com.azure.marketplace#CollectionsList"
@@ -3996,7 +3996,7 @@
         "smithy.api#documentation": "The Collection data structure."
       }
     },
-    "com.azure.marketplace#PrivateStoreCollectionListRequest": {
+    "com.azure.marketplace#ListPrivateStoreCollectionRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -4756,10 +4756,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#PrivateStoreDelete": {
+    "com.azure.marketplace#DeletePrivateStore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreDeleteRequest"
+        "target": "com.azure.marketplace#DeletePrivateStoreRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4775,7 +4775,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreDeleteRequest": {
+    "com.azure.marketplace#DeletePrivateStoreRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -4957,13 +4957,13 @@
         "smithy.api#documentation": "Indicates private store availability"
       }
     },
-    "com.azure.marketplace#PrivateStoreGet": {
+    "com.azure.marketplace#GetPrivateStore": {
       "type": "operation",
       "input": {
-        "target": "com.azure.marketplace#PrivateStoreGetRequest"
+        "target": "com.azure.marketplace#GetPrivateStoreRequest"
       },
       "output": {
-        "target": "com.azure.marketplace#PrivateStoreGetResponse"
+        "target": "com.azure.marketplace#GetPrivateStoreResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4976,7 +4976,7 @@
         "com.distilled.openapi#apiVersion": "2025-01-01"
       }
     },
-    "com.azure.marketplace#PrivateStoreGetResponse": {
+    "com.azure.marketplace#GetPrivateStoreResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5152,7 +5152,7 @@
         "smithy.api#documentation": "Gets list of associated collection ids"
       }
     },
-    "com.azure.marketplace#PrivateStoreGetRequest": {
+    "com.azure.marketplace#GetPrivateStoreRequest": {
       "type": "structure",
       "members": {
         "privateStoreId": {
@@ -5270,7 +5270,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.marketplace#OperationsList": {
+    "com.azure.marketplace#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -5402,7 +5402,7 @@
           "target": "com.azure.marketplace#PrivateStoreWithdrawPlan"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreQueryRequestApproval"
+          "target": "com.azure.marketplace#RequestPrivateStoreQueryApproval"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreCreateApprovalRequest"
@@ -5432,13 +5432,13 @@
           "target": "com.azure.marketplace#PrivateStoreAcknowledgeOfferNotification"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreListSubscriptionsContext"
+          "target": "com.azure.marketplace#ListPrivateStoreSubscriptionContext"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreListStopSellOffersPlansNotifications"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreListNewPlansNotifications"
+          "target": "com.azure.marketplace#ListPrivateStoreNewPlanNotifications"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreFetchAllSubscriptionsInTenant"
@@ -5456,13 +5456,13 @@
           "target": "com.azure.marketplace#QueryRules"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionOfferUpsertOfferWithMultiContext"
+          "target": "com.azure.marketplace#UpsertPrivateStoreCollectionOfferOfferWithMultiContext"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreCollectionOfferContextsView"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionOfferDelete"
+          "target": "com.azure.marketplace#DeletePrivateStoreCollectionOffer"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreCollectionOfferCreateOrUpdate"
@@ -5471,22 +5471,22 @@
           "target": "com.azure.marketplace#PrivateStoreCollectionOfferPost"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionOfferGet"
+          "target": "com.azure.marketplace#GetPrivateStoreCollectionOffer"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionOfferList"
+          "target": "com.azure.marketplace#ListPrivateStoreCollectionOffer"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionOfferListByContexts"
+          "target": "com.azure.marketplace#ListPrivateStoreCollectionOfferByContexts"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionDisableApproveAllItems"
+          "target": "com.azure.marketplace#DisablePrivateStoreCollectionApproveAllItem"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreCollectionApproveAllItems"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionDelete"
+          "target": "com.azure.marketplace#DeletePrivateStoreCollection"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreCollectionCreateOrUpdate"
@@ -5495,10 +5495,10 @@
           "target": "com.azure.marketplace#PrivateStoreCollectionPost"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionGet"
+          "target": "com.azure.marketplace#GetPrivateStoreCollection"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreCollectionList"
+          "target": "com.azure.marketplace#ListPrivateStoreCollection"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreBulkCollectionsAction"
@@ -5519,19 +5519,19 @@
           "target": "com.azure.marketplace#PrivateStoreAdminRequestApprovalsList"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreDelete"
+          "target": "com.azure.marketplace#DeletePrivateStore"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreCreateOrUpdate"
         },
         {
-          "target": "com.azure.marketplace#PrivateStoreGet"
+          "target": "com.azure.marketplace#GetPrivateStore"
         },
         {
           "target": "com.azure.marketplace#PrivateStoreList2"
         },
         {
-          "target": "com.azure.marketplace#OperationsList"
+          "target": "com.azure.marketplace#ListOperations"
         }
       ],
       "traits": {

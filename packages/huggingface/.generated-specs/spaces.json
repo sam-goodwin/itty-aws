@@ -4996,7 +4996,7 @@
         "smithy.api#documentation": "Execution (runs) accounting, or omitted for visitors without a runs limit"
       }
     },
-    "com.huggingface.spaces#GetZeroGPUQuotaResponse": {
+    "com.huggingface.spaces#GetZeroGpuQuotaResponse": {
       "type": "structure",
       "members": {
         "base": {
@@ -5038,13 +5038,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.huggingface.spaces#GetZeroGPUQuota": {
+    "com.huggingface.spaces#GetZeroGpuQuota": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.huggingface.spaces#GetZeroGPUQuotaResponse"
+        "target": "com.huggingface.spaces#GetZeroGpuQuotaResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6051,7 +6051,7 @@
           "target": "com.huggingface.spaces#ListSpaceTemplates"
         },
         {
-          "target": "com.huggingface.spaces#GetZeroGPUQuota"
+          "target": "com.huggingface.spaces#GetZeroGpuQuota"
         },
         {
           "target": "com.huggingface.spaces#ListSecrets"

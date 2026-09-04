@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.supabase.api#V1GetABranchConfigRequest": {
+    "com.supabase.api#GetV1ABranchConfigRequest": {
       "type": "structure",
       "members": {
         "branch_id_or_ref": {
@@ -189,10 +189,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetABranchConfig": {
+    "com.supabase.api#GetV1ABranchConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetABranchConfigRequest"
+        "target": "com.supabase.api#GetV1ABranchConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#BranchDetailResponse"
@@ -259,7 +259,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateABranchConfigRequest": {
+    "com.supabase.api#UpdateV1ABranchConfigRequest": {
       "type": "structure",
       "members": {
         "branch_id_or_ref": {
@@ -533,10 +533,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateABranchConfig": {
+    "com.supabase.api#UpdateV1ABranchConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateABranchConfigRequest"
+        "target": "com.supabase.api#UpdateV1ABranchConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#BranchResponse"
@@ -561,7 +561,7 @@
         "smithy.api#documentation": "Update database branch config\n\nUpdates the configuration of the specified database branch"
       }
     },
-    "com.supabase.api#V1DeleteABranchRequest": {
+    "com.supabase.api#DeleteV1ABranchRequest": {
       "type": "structure",
       "members": {
         "branch_id_or_ref": {
@@ -608,10 +608,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1DeleteABranch": {
+    "com.supabase.api#DeleteV1ABranch": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteABranchRequest"
+        "target": "com.supabase.api#DeleteV1ABranchRequest"
       },
       "output": {
         "target": "com.supabase.api#BranchDeleteResponse"
@@ -807,7 +807,7 @@
         "smithy.api#documentation": "Resets a database branch\n\nResets the specified database branch"
       }
     },
-    "com.supabase.api#V1RestoreABranchRequest": {
+    "com.supabase.api#RestoreV1ABranchRequest": {
       "type": "structure",
       "members": {
         "branch_id_or_ref": {
@@ -847,10 +847,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1RestoreABranch": {
+    "com.supabase.api#RestoreV1ABranch": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1RestoreABranchRequest"
+        "target": "com.supabase.api#RestoreV1ABranchRequest"
       },
       "output": {
         "target": "com.supabase.api#BranchRestoreResponse"
@@ -1136,7 +1136,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllProjectsResponse": {
+    "com.supabase.api#ListV1AllProjectsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -1151,13 +1151,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListAllProjects": {
+    "com.supabase.api#ListV1AllProjects": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.supabase.api#V1ListAllProjectsResponse"
+        "target": "com.supabase.api#ListV1AllProjectsResponse"
       },
       "errors": [
         {
@@ -1649,7 +1649,7 @@
         "smithy.api#documentation": "Desired instance size. Omit this field to always default to the smallest possible size."
       }
     },
-    "com.supabase.api#V1CreateAProjectRequest": {
+    "com.supabase.api#CreateV1AProjectRequest": {
       "type": "structure",
       "members": {
         "db_pass": {
@@ -1895,10 +1895,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateAProject": {
+    "com.supabase.api#CreateV1AProject": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateAProjectRequest"
+        "target": "com.supabase.api#CreateV1AProjectRequest"
       },
       "output": {
         "target": "com.supabase.api#V1ProjectResponse"
@@ -2088,7 +2088,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAvailableRegionsRequest": {
+    "com.supabase.api#GetV1AvailableRegionRequest": {
       "type": "structure",
       "members": {
         "organization_slug": {
@@ -2715,10 +2715,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAvailableRegions": {
+    "com.supabase.api#GetV1AvailableRegion": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAvailableRegionsRequest"
+        "target": "com.supabase.api#GetV1AvailableRegionRequest"
       },
       "output": {
         "target": "com.supabase.api#RegionsInfo"
@@ -2770,7 +2770,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllOrganizationsResponse": {
+    "com.supabase.api#ListV1AllOrganizationsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -2785,13 +2785,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListAllOrganizations": {
+    "com.supabase.api#ListV1AllOrganizations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.supabase.api#V1ListAllOrganizationsResponse"
+        "target": "com.supabase.api#ListV1AllOrganizationsResponse"
       },
       "errors": [
         {
@@ -2807,7 +2807,7 @@
         "smithy.api#documentation": "List all organizations\n\nReturns a list of organizations that you currently belong to."
       }
     },
-    "com.supabase.api#V1CreateAnOrganizationRequest": {
+    "com.supabase.api#CreateV1AnOrganizationRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -2821,10 +2821,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1CreateAnOrganization": {
+    "com.supabase.api#CreateV1AnOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateAnOrganizationRequest"
+        "target": "com.supabase.api#CreateV1AnOrganizationRequest"
       },
       "output": {
         "target": "com.supabase.api#OrganizationResponseV1"
@@ -2894,7 +2894,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1AuthorizeUserRequest": {
+    "com.supabase.api#AuthorizeV1UserRequest": {
       "type": "structure",
       "members": {
         "client_id": {
@@ -2973,10 +2973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1AuthorizeUser": {
+    "com.supabase.api#AuthorizeV1User": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1AuthorizeUserRequest"
+        "target": "com.supabase.api#AuthorizeV1UserRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3240,7 +3240,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1OauthAuthorizeProjectClaimRequest": {
+    "com.supabase.api#AuthorizeV1OauthProjectClaimRequest": {
       "type": "structure",
       "members": {
         "project_ref": {
@@ -3301,10 +3301,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1OauthAuthorizeProjectClaim": {
+    "com.supabase.api#AuthorizeV1OauthProjectClaim": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1OauthAuthorizeProjectClaimRequest"
+        "target": "com.supabase.api#AuthorizeV1OauthProjectClaimRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3359,7 +3359,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllSnippetsRequest": {
+    "com.supabase.api#ListV1AllSnippetsRequest": {
       "type": "structure",
       "members": {
         "project_ref": {
@@ -3589,10 +3589,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllSnippets": {
+    "com.supabase.api#ListV1AllSnippets": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllSnippetsRequest"
+        "target": "com.supabase.api#ListV1AllSnippetsRequest"
       },
       "output": {
         "target": "com.supabase.api#SnippetList"
@@ -3611,7 +3611,7 @@
         "smithy.api#documentation": "Lists SQL snippets for the logged in user"
       }
     },
-    "com.supabase.api#V1GetASnippetRequest": {
+    "com.supabase.api#GetV1ASnippetRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -3825,10 +3825,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetASnippet": {
+    "com.supabase.api#GetV1ASnippet": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetASnippetRequest"
+        "target": "com.supabase.api#GetV1ASnippetRequest"
       },
       "output": {
         "target": "com.supabase.api#SnippetResponse"
@@ -3877,7 +3877,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProfile": {
+    "com.supabase.api#GetV1Profile": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3894,7 +3894,7 @@
         "smithy.api#documentation": "Gets the user's profile"
       }
     },
-    "com.supabase.api#V1ListActionRunsRequest": {
+    "com.supabase.api#ListV1ActionRunsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -4118,7 +4118,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListActionRunsResponse": {
+    "com.supabase.api#ListV1ActionRunsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -4133,13 +4133,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListActionRuns": {
+    "com.supabase.api#ListV1ActionRuns": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListActionRunsRequest"
+        "target": "com.supabase.api#ListV1ActionRunsRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListActionRunsResponse"
+        "target": "com.supabase.api#ListV1ActionRunsResponse"
       },
       "errors": [
         {
@@ -4158,7 +4158,7 @@
         "smithy.api#documentation": "List all action runs\n\nReturns a paginated list of action runs of the specified project."
       }
     },
-    "com.supabase.api#V1GetActionRunRequest": {
+    "com.supabase.api#GetV1ActionRunRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -4371,10 +4371,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetActionRun": {
+    "com.supabase.api#GetV1ActionRun": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetActionRunRequest"
+        "target": "com.supabase.api#GetV1ActionRunRequest"
       },
       "output": {
         "target": "com.supabase.api#ActionRunResponse"
@@ -4735,7 +4735,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateActionRunStatusRequest": {
+    "com.supabase.api#UpdateV1ActionRunStatusRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -4804,10 +4804,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateActionRunStatus": {
+    "com.supabase.api#UpdateV1ActionRunStatus": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateActionRunStatusRequest"
+        "target": "com.supabase.api#UpdateV1ActionRunStatusRequest"
       },
       "output": {
         "target": "com.supabase.api#UpdateRunStatusResponse"
@@ -4832,7 +4832,7 @@
         "smithy.api#documentation": "Update the status of an action run\n\nUpdates the status of an ongoing action run."
       }
     },
-    "com.supabase.api#V1GetActionRunLogsRequest": {
+    "com.supabase.api#GetV1ActionRunLogRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -4856,10 +4856,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetActionRunLogs": {
+    "com.supabase.api#GetV1ActionRunLog": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetActionRunLogsRequest"
+        "target": "com.supabase.api#GetV1ActionRunLogRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4884,7 +4884,7 @@
         "smithy.api#documentation": "Get the logs of an action run\n\nReturns the logs from the specified action run."
       }
     },
-    "com.supabase.api#V1GetProjectApiKeysRequest": {
+    "com.supabase.api#GetV1ProjectApiKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5015,7 +5015,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectApiKeysResponse": {
+    "com.supabase.api#GetV1ProjectApiKeyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -5030,13 +5030,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1GetProjectApiKeys": {
+    "com.supabase.api#GetV1ProjectApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectApiKeysRequest"
+        "target": "com.supabase.api#GetV1ProjectApiKeyRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1GetProjectApiKeysResponse"
+        "target": "com.supabase.api#GetV1ProjectApiKeyResponse"
       },
       "errors": [
         {
@@ -5083,7 +5083,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateProjectApiKeyRequest": {
+    "com.supabase.api#CreateV1ProjectApiKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5130,10 +5130,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1CreateProjectApiKey": {
+    "com.supabase.api#CreateV1ProjectApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateProjectApiKeyRequest"
+        "target": "com.supabase.api#CreateV1ProjectApiKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#ApiKeyResponse"
@@ -5155,7 +5155,7 @@
         "smithy.api#documentation": "Creates a new API key for the project"
       }
     },
-    "com.supabase.api#V1GetProjectLegacyApiKeysRequest": {
+    "com.supabase.api#GetV1ProjectLegacyApiKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5183,10 +5183,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectLegacyApiKeys": {
+    "com.supabase.api#GetV1ProjectLegacyApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectLegacyApiKeysRequest"
+        "target": "com.supabase.api#GetV1ProjectLegacyApiKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#LegacyApiKeysResponse"
@@ -5208,7 +5208,7 @@
         "smithy.api#documentation": "Check whether JWT based legacy (anon, service_role) API keys are enabled. This API endpoint will be removed in the future, check for HTTP 404 Not Found."
       }
     },
-    "com.supabase.api#V1UpdateProjectLegacyApiKeysRequest": {
+    "com.supabase.api#UpdateV1ProjectLegacyApiKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5232,10 +5232,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateProjectLegacyApiKeys": {
+    "com.supabase.api#UpdateV1ProjectLegacyApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateProjectLegacyApiKeysRequest"
+        "target": "com.supabase.api#UpdateV1ProjectLegacyApiKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#LegacyApiKeysResponse"
@@ -5325,7 +5325,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateProjectApiKeyRequest": {
+    "com.supabase.api#UpdateV1ProjectApiKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5370,10 +5370,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateProjectApiKey": {
+    "com.supabase.api#UpdateV1ProjectApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateProjectApiKeyRequest"
+        "target": "com.supabase.api#UpdateV1ProjectApiKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#ApiKeyResponse"
@@ -5398,7 +5398,7 @@
         "smithy.api#documentation": "Updates an API key for the project"
       }
     },
-    "com.supabase.api#V1DeleteProjectApiKeyRequest": {
+    "com.supabase.api#DeleteV1ProjectApiKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5441,10 +5441,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteProjectApiKey": {
+    "com.supabase.api#DeleteV1ProjectApiKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteProjectApiKeyRequest"
+        "target": "com.supabase.api#DeleteV1ProjectApiKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#ApiKeyResponse"
@@ -5469,7 +5469,7 @@
         "smithy.api#documentation": "Deletes an API key for the project"
       }
     },
-    "com.supabase.api#V1ListAllBranchesRequest": {
+    "com.supabase.api#ListV1AllBranchesRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5492,7 +5492,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllBranchesResponse": {
+    "com.supabase.api#ListV1AllBranchesResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -5507,13 +5507,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListAllBranches": {
+    "com.supabase.api#ListV1AllBranches": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllBranchesRequest"
+        "target": "com.supabase.api#ListV1AllBranchesRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListAllBranchesResponse"
+        "target": "com.supabase.api#ListV1AllBranchesResponse"
       },
       "errors": [
         {
@@ -5738,7 +5738,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateABranchRequest": {
+    "com.supabase.api#CreateV1ABranchRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5799,10 +5799,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1CreateABranch": {
+    "com.supabase.api#CreateV1ABranch": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateABranchRequest"
+        "target": "com.supabase.api#CreateV1ABranchRequest"
       },
       "output": {
         "target": "com.supabase.api#BranchResponse"
@@ -5824,7 +5824,7 @@
         "smithy.api#documentation": "Create a database branch\n\nCreates a database branch from the specified project."
       }
     },
-    "com.supabase.api#V1DisablePreviewBranchingRequest": {
+    "com.supabase.api#DisableV1PreviewBranchingRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5840,10 +5840,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DisablePreviewBranching": {
+    "com.supabase.api#DisableV1PreviewBranching": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DisablePreviewBranchingRequest"
+        "target": "com.supabase.api#DisableV1PreviewBranchingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5868,7 +5868,7 @@
         "smithy.api#documentation": "Disables preview branching\n\nDisables preview branching for the specified project"
       }
     },
-    "com.supabase.api#V1GetABranchRequest": {
+    "com.supabase.api#GetV1ABranchRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -5891,10 +5891,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetABranch": {
+    "com.supabase.api#GetV1ABranch": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetABranchRequest"
+        "target": "com.supabase.api#GetV1ABranchRequest"
       },
       "output": {
         "target": "com.supabase.api#BranchResponse"
@@ -5916,7 +5916,7 @@
         "smithy.api#documentation": "Get a database branch\n\nFetches the specified database branch by its name."
       }
     },
-    "com.supabase.api#V1GetHostnameConfigRequest": {
+    "com.supabase.api#GetV1HostnameConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6226,10 +6226,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetHostnameConfig": {
+    "com.supabase.api#GetV1HostnameConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetHostnameConfigRequest"
+        "target": "com.supabase.api#GetV1HostnameConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#UpdateCustomHostnameResponse"
@@ -6251,7 +6251,7 @@
         "smithy.api#documentation": "[Beta] Gets project's custom hostname config"
       }
     },
-    "com.supabase.api#V1DeleteHostnameConfigRequest": {
+    "com.supabase.api#DeleteV1HostnameConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6274,10 +6274,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteHostnameConfig": {
+    "com.supabase.api#DeleteV1HostnameConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteHostnameConfigRequest"
+        "target": "com.supabase.api#DeleteV1HostnameConfigRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6299,7 +6299,7 @@
         "smithy.api#documentation": "[Beta] Deletes a project's custom hostname configuration"
       }
     },
-    "com.supabase.api#V1UpdateHostnameConfigRequest": {
+    "com.supabase.api#UpdateV1HostnameConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6321,10 +6321,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateHostnameConfig": {
+    "com.supabase.api#UpdateV1HostnameConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateHostnameConfigRequest"
+        "target": "com.supabase.api#UpdateV1HostnameConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#UpdateCustomHostnameResponse"
@@ -6346,7 +6346,7 @@
         "smithy.api#documentation": "[Beta] Updates project's custom hostname configuration"
       }
     },
-    "com.supabase.api#V1VerifyDnsConfigRequest": {
+    "com.supabase.api#VerifyV1DnsConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6362,10 +6362,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1VerifyDnsConfig": {
+    "com.supabase.api#VerifyV1DnsConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1VerifyDnsConfigRequest"
+        "target": "com.supabase.api#VerifyV1DnsConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#UpdateCustomHostnameResponse"
@@ -6428,7 +6428,7 @@
         "smithy.api#documentation": "[Beta] Activates a custom hostname for a project."
       }
     },
-    "com.supabase.api#V1GetJitAccessConfigRequest": {
+    "com.supabase.api#GetV1JitAccessConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6531,7 +6531,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetJitAccessConfigResponse": {
+    "com.supabase.api#GetV1JitAccessConfigResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -6546,13 +6546,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1GetJitAccessConfig": {
+    "com.supabase.api#GetV1JitAccessConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetJitAccessConfigRequest"
+        "target": "com.supabase.api#GetV1JitAccessConfigRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1GetJitAccessConfigResponse"
+        "target": "com.supabase.api#GetV1JitAccessConfigResponse"
       },
       "errors": [
         {
@@ -6589,7 +6589,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateJitAccessConfigRequest": {
+    "com.supabase.api#UpdateV1JitAccessConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6698,7 +6698,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateJitAccessConfigResponse": {
+    "com.supabase.api#UpdateV1JitAccessConfigResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -6713,13 +6713,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1UpdateJitAccessConfig": {
+    "com.supabase.api#UpdateV1JitAccessConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateJitAccessConfigRequest"
+        "target": "com.supabase.api#UpdateV1JitAccessConfigRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1UpdateJitAccessConfigResponse"
+        "target": "com.supabase.api#UpdateV1JitAccessConfigResponse"
       },
       "errors": [
         {
@@ -6738,7 +6738,7 @@
         "smithy.api#documentation": "[Beta] Update project's temporary access configuration."
       }
     },
-    "com.supabase.api#V1ListAllNetworkBansRequest": {
+    "com.supabase.api#ListV1AllNetworkBansRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6773,10 +6773,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllNetworkBans": {
+    "com.supabase.api#ListV1AllNetworkBans": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllNetworkBansRequest"
+        "target": "com.supabase.api#ListV1AllNetworkBansRequest"
       },
       "output": {
         "target": "com.supabase.api#NetworkBanResponse"
@@ -6798,7 +6798,7 @@
         "smithy.api#documentation": "[Beta] Gets project's network bans"
       }
     },
-    "com.supabase.api#V1ListAllNetworkBansEnrichedRequest": {
+    "com.supabase.api#ListV1AllNetworkBanEnrichedRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6857,10 +6857,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllNetworkBansEnriched": {
+    "com.supabase.api#ListV1AllNetworkBanEnriched": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllNetworkBansEnrichedRequest"
+        "target": "com.supabase.api#ListV1AllNetworkBanEnrichedRequest"
       },
       "output": {
         "target": "com.supabase.api#NetworkBanResponseEnriched"
@@ -6891,7 +6891,7 @@
         "smithy.api#documentation": "List of IP addresses to unban."
       }
     },
-    "com.supabase.api#V1DeleteNetworkBansRequest": {
+    "com.supabase.api#DeleteV1NetworkBanRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -6923,10 +6923,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteNetworkBans": {
+    "com.supabase.api#DeleteV1NetworkBan": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteNetworkBansRequest"
+        "target": "com.supabase.api#DeleteV1NetworkBanRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6948,7 +6948,7 @@
         "smithy.api#documentation": "[Beta] Remove network bans."
       }
     },
-    "com.supabase.api#V1GetNetworkRestrictionsRequest": {
+    "com.supabase.api#GetV1NetworkRestrictionRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7093,10 +7093,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetNetworkRestrictions": {
+    "com.supabase.api#GetV1NetworkRestriction": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetNetworkRestrictionsRequest"
+        "target": "com.supabase.api#GetV1NetworkRestrictionRequest"
       },
       "output": {
         "target": "com.supabase.api#NetworkRestrictionsResponse"
@@ -7412,7 +7412,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateNetworkRestrictionsRequest": {
+    "com.supabase.api#UpdateV1NetworkRestrictionRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7434,10 +7434,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateNetworkRestrictions": {
+    "com.supabase.api#UpdateV1NetworkRestriction": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateNetworkRestrictionsRequest"
+        "target": "com.supabase.api#UpdateV1NetworkRestrictionRequest"
       },
       "output": {
         "target": "com.supabase.api#NetworkRestrictionsResponse"
@@ -7459,7 +7459,7 @@
         "smithy.api#documentation": "[Beta] Updates project's network restrictions"
       }
     },
-    "com.supabase.api#V1GetPgsodiumConfigRequest": {
+    "com.supabase.api#GetV1PgsodiumConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7488,10 +7488,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetPgsodiumConfig": {
+    "com.supabase.api#GetV1PgsodiumConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetPgsodiumConfigRequest"
+        "target": "com.supabase.api#GetV1PgsodiumConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#PgsodiumConfigResponse"
@@ -7513,7 +7513,7 @@
         "smithy.api#documentation": "[Beta] Gets project's pgsodium config"
       }
     },
-    "com.supabase.api#V1UpdatePgsodiumConfigRequest": {
+    "com.supabase.api#UpdateV1PgsodiumConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7536,10 +7536,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdatePgsodiumConfig": {
+    "com.supabase.api#UpdateV1PgsodiumConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdatePgsodiumConfigRequest"
+        "target": "com.supabase.api#UpdateV1PgsodiumConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#PgsodiumConfigResponse"
@@ -7561,7 +7561,7 @@
         "smithy.api#documentation": "[Beta] Updates project's pgsodium config. Updating the root_key can cause all data encrypted with the older key to become inaccessible."
       }
     },
-    "com.supabase.api#V1GetPostgrestServiceConfigRequest": {
+    "com.supabase.api#GetV1PostgrestServiceConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7623,10 +7623,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetPostgrestServiceConfig": {
+    "com.supabase.api#GetV1PostgrestServiceConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetPostgrestServiceConfigRequest"
+        "target": "com.supabase.api#GetV1PostgrestServiceConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#PostgrestConfigWithJWTSecretResponse"
@@ -7648,7 +7648,7 @@
         "smithy.api#documentation": "Gets project's postgrest config"
       }
     },
-    "com.supabase.api#V1UpdatePostgrestServiceConfigRequest": {
+    "com.supabase.api#UpdateV1PostgrestServiceConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7719,10 +7719,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdatePostgrestServiceConfig": {
+    "com.supabase.api#UpdateV1PostgrestServiceConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdatePostgrestServiceConfigRequest"
+        "target": "com.supabase.api#UpdateV1PostgrestServiceConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#V1PostgrestConfigResponse"
@@ -7744,7 +7744,7 @@
         "smithy.api#documentation": "Updates project's postgrest config"
       }
     },
-    "com.supabase.api#V1GetProjectRequest": {
+    "com.supabase.api#GetV1ProjectRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7760,10 +7760,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetProject": {
+    "com.supabase.api#GetV1Project": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectRequest"
+        "target": "com.supabase.api#GetV1ProjectRequest"
       },
       "output": {
         "target": "com.supabase.api#V1ProjectWithDatabaseResponse"
@@ -7785,7 +7785,7 @@
         "smithy.api#documentation": "Gets a specific project that belongs to the authenticated user"
       }
     },
-    "com.supabase.api#V1UpdateAProjectRequest": {
+    "com.supabase.api#UpdateV1AProjectRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7831,10 +7831,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateAProject": {
+    "com.supabase.api#UpdateV1AProject": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateAProjectRequest"
+        "target": "com.supabase.api#UpdateV1AProjectRequest"
       },
       "output": {
         "target": "com.supabase.api#V1ProjectRefResponse"
@@ -7856,7 +7856,7 @@
         "smithy.api#documentation": "Updates the given project"
       }
     },
-    "com.supabase.api#V1DeleteAProjectRequest": {
+    "com.supabase.api#DeleteV1AProjectRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7872,10 +7872,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteAProject": {
+    "com.supabase.api#DeleteV1AProject": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteAProjectRequest"
+        "target": "com.supabase.api#DeleteV1AProjectRequest"
       },
       "output": {
         "target": "com.supabase.api#V1ProjectRefResponse"
@@ -7897,7 +7897,7 @@
         "smithy.api#documentation": "Deletes the given project"
       }
     },
-    "com.supabase.api#V1ListAllSecretsRequest": {
+    "com.supabase.api#ListV1AllSecretsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -7941,7 +7941,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllSecretsResponse": {
+    "com.supabase.api#ListV1AllSecretsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -7956,13 +7956,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListAllSecrets": {
+    "com.supabase.api#ListV1AllSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllSecretsRequest"
+        "target": "com.supabase.api#ListV1AllSecretsRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListAllSecretsResponse"
+        "target": "com.supabase.api#ListV1AllSecretsResponse"
       },
       "errors": [
         {
@@ -8007,7 +8007,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1BulkCreateSecretsRequest": {
+    "com.supabase.api#CreateV1BulkSecretRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8030,10 +8030,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1BulkCreateSecrets": {
+    "com.supabase.api#CreateV1BulkSecret": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1BulkCreateSecretsRequest"
+        "target": "com.supabase.api#CreateV1BulkSecretRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8062,7 +8062,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1BulkDeleteSecretsRequest": {
+    "com.supabase.api#DeleteV1BulkSecretRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8085,10 +8085,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1BulkDeleteSecrets": {
+    "com.supabase.api#DeleteV1BulkSecret": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1BulkDeleteSecretsRequest"
+        "target": "com.supabase.api#DeleteV1BulkSecretRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -8110,7 +8110,7 @@
         "smithy.api#documentation": "Bulk delete secrets\n\nDeletes all secrets with the given names from the specified project"
       }
     },
-    "com.supabase.api#V1GetSslEnforcementConfigRequest": {
+    "com.supabase.api#GetV1SslEnforcementConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8156,10 +8156,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetSslEnforcementConfig": {
+    "com.supabase.api#GetV1SslEnforcementConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetSslEnforcementConfigRequest"
+        "target": "com.supabase.api#GetV1SslEnforcementConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#SslEnforcementResponse"
@@ -8193,7 +8193,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateSslEnforcementConfigRequest": {
+    "com.supabase.api#UpdateV1SslEnforcementConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8215,10 +8215,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateSslEnforcementConfig": {
+    "com.supabase.api#UpdateV1SslEnforcementConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateSslEnforcementConfigRequest"
+        "target": "com.supabase.api#UpdateV1SslEnforcementConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#SslEnforcementResponse"
@@ -8240,7 +8240,7 @@
         "smithy.api#documentation": "[Beta] Update project's SSL enforcement configuration."
       }
     },
-    "com.supabase.api#V1GenerateTypescriptTypesRequest": {
+    "com.supabase.api#GenerateV1TypescriptTypeRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8274,10 +8274,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GenerateTypescriptTypes": {
+    "com.supabase.api#GenerateV1TypescriptType": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GenerateTypescriptTypesRequest"
+        "target": "com.supabase.api#GenerateV1TypescriptTypeRequest"
       },
       "output": {
         "target": "com.supabase.api#TypescriptResponse"
@@ -8299,7 +8299,7 @@
         "smithy.api#documentation": "Generate TypeScript types\n\nReturns the TypeScript types of your schema for use with supabase-js."
       }
     },
-    "com.supabase.api#V1GetVanitySubdomainConfigRequest": {
+    "com.supabase.api#GetV1VanitySubdomainConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8354,10 +8354,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetVanitySubdomainConfig": {
+    "com.supabase.api#GetV1VanitySubdomainConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetVanitySubdomainConfigRequest"
+        "target": "com.supabase.api#GetV1VanitySubdomainConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#VanitySubdomainConfigResponse"
@@ -8420,7 +8420,7 @@
         "smithy.api#documentation": "[Beta] Deletes a project's vanity subdomain configuration"
       }
     },
-    "com.supabase.api#V1CheckVanitySubdomainAvailabilityRequest": {
+    "com.supabase.api#CheckV1VanitySubdomainAvailabilityRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -8454,10 +8454,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CheckVanitySubdomainAvailability": {
+    "com.supabase.api#CheckV1VanitySubdomainAvailability": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CheckVanitySubdomainAvailabilityRequest"
+        "target": "com.supabase.api#CheckV1VanitySubdomainAvailabilityRequest"
       },
       "output": {
         "target": "com.supabase.api#SubdomainAvailabilityResponse"
@@ -8642,7 +8642,7 @@
         "smithy.api#documentation": "[Beta] Upgrades the project's Postgres version"
       }
     },
-    "com.supabase.api#V1GetPostgresUpgradeEligibilityRequest": {
+    "com.supabase.api#GetV1PostgresUpgradeEligibilityRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -9446,10 +9446,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetPostgresUpgradeEligibility": {
+    "com.supabase.api#GetV1PostgresUpgradeEligibility": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetPostgresUpgradeEligibilityRequest"
+        "target": "com.supabase.api#GetV1PostgresUpgradeEligibilityRequest"
       },
       "output": {
         "target": "com.supabase.api#ProjectUpgradeEligibilityResponse"
@@ -9471,7 +9471,7 @@
         "smithy.api#documentation": "[Beta] Returns the project's eligibility for upgrades"
       }
     },
-    "com.supabase.api#V1GetPostgresUpgradeStatusRequest": {
+    "com.supabase.api#GetV1PostgresUpgradeStatusRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -9674,10 +9674,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetPostgresUpgradeStatus": {
+    "com.supabase.api#GetV1PostgresUpgradeStatus": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetPostgresUpgradeStatusRequest"
+        "target": "com.supabase.api#GetV1PostgresUpgradeStatusRequest"
       },
       "output": {
         "target": "com.supabase.api#DatabaseUpgradeStatusResponse"
@@ -9699,7 +9699,7 @@
         "smithy.api#documentation": "[Beta] Gets the latest status of the project's upgrade"
       }
     },
-    "com.supabase.api#V1GetReadonlyModeStatusRequest": {
+    "com.supabase.api#GetV1ReadonlyModeStatusRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -9739,10 +9739,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetReadonlyModeStatus": {
+    "com.supabase.api#GetV1ReadonlyModeStatus": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetReadonlyModeStatusRequest"
+        "target": "com.supabase.api#GetV1ReadonlyModeStatusRequest"
       },
       "output": {
         "target": "com.supabase.api#ReadOnlyStatusResponse"
@@ -9764,7 +9764,7 @@
         "smithy.api#documentation": "Returns project's readonly mode status"
       }
     },
-    "com.supabase.api#V1DisableReadonlyModeTemporarilyRequest": {
+    "com.supabase.api#DisableV1ReadonlyModeTemporarilyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -9780,10 +9780,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DisableReadonlyModeTemporarily": {
+    "com.supabase.api#DisableV1ReadonlyModeTemporarily": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DisableReadonlyModeTemporarilyRequest"
+        "target": "com.supabase.api#DisableV1ReadonlyModeTemporarilyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10091,7 +10091,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetServicesHealthRequest": {
+    "com.supabase.api#GetV1ServiceHealthRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -10331,7 +10331,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetServicesHealthResponse": {
+    "com.supabase.api#GetV1ServiceHealthResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -10346,13 +10346,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1GetServicesHealth": {
+    "com.supabase.api#GetV1ServiceHealth": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetServicesHealthRequest"
+        "target": "com.supabase.api#GetV1ServiceHealthRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1GetServicesHealthResponse"
+        "target": "com.supabase.api#GetV1ServiceHealthResponse"
       },
       "errors": [
         {
@@ -10371,7 +10371,7 @@
         "smithy.api#documentation": "Gets project's service health status"
       }
     },
-    "com.supabase.api#V1GetLegacySigningKeyRequest": {
+    "com.supabase.api#GetV1LegacySigningKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -10490,10 +10490,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetLegacySigningKey": {
+    "com.supabase.api#GetV1LegacySigningKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetLegacySigningKeyRequest"
+        "target": "com.supabase.api#GetV1LegacySigningKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#SigningKeyResponse"
@@ -10515,7 +10515,7 @@
         "smithy.api#documentation": "Get the signing key information for the JWT secret imported as signing key for this project. This endpoint will be removed in the future, check for HTTP 404 Not Found."
       }
     },
-    "com.supabase.api#V1CreateLegacySigningKeyRequest": {
+    "com.supabase.api#CreateV1LegacySigningKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -10531,10 +10531,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1CreateLegacySigningKey": {
+    "com.supabase.api#CreateV1LegacySigningKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateLegacySigningKeyRequest"
+        "target": "com.supabase.api#CreateV1LegacySigningKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#SigningKeyResponse"
@@ -10556,7 +10556,7 @@
         "smithy.api#documentation": "Set up the project's existing JWT secret as an in_use JWT signing key. This endpoint will be removed in the future always check for HTTP 404 Not Found."
       }
     },
-    "com.supabase.api#V1GetProjectSigningKeysRequest": {
+    "com.supabase.api#GetV1ProjectSigningKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -10694,10 +10694,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectSigningKeys": {
+    "com.supabase.api#GetV1ProjectSigningKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectSigningKeysRequest"
+        "target": "com.supabase.api#GetV1ProjectSigningKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#SigningKeysResponse"
@@ -11269,7 +11269,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateProjectSigningKeyRequest": {
+    "com.supabase.api#CreateV1ProjectSigningKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -11297,10 +11297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1CreateProjectSigningKey": {
+    "com.supabase.api#CreateV1ProjectSigningKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateProjectSigningKeyRequest"
+        "target": "com.supabase.api#CreateV1ProjectSigningKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#SigningKeyResponse"
@@ -11403,7 +11403,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateProjectSigningKeyRequest": {
+    "com.supabase.api#UpdateV1ProjectSigningKeyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -11432,10 +11432,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateProjectSigningKey": {
+    "com.supabase.api#UpdateV1ProjectSigningKey": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateProjectSigningKeyRequest"
+        "target": "com.supabase.api#UpdateV1ProjectSigningKeyRequest"
       },
       "output": {
         "target": "com.supabase.api#SigningKeyResponse"
@@ -11511,7 +11511,7 @@
         "smithy.api#documentation": "Remove a signing key from a project. Only possible if the key has been in revoked status for a while."
       }
     },
-    "com.supabase.api#V1GetAuthServiceConfigRequest": {
+    "com.supabase.api#GetV1AuthServiceConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -13314,10 +13314,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAuthServiceConfig": {
+    "com.supabase.api#GetV1AuthServiceConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAuthServiceConfigRequest"
+        "target": "com.supabase.api#GetV1AuthServiceConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#AuthConfigResponse"
@@ -13441,7 +13441,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateAuthServiceConfigRequest": {
+    "com.supabase.api#UpdateV1AuthServiceConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -14877,10 +14877,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateAuthServiceConfig": {
+    "com.supabase.api#UpdateV1AuthServiceConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateAuthServiceConfigRequest"
+        "target": "com.supabase.api#UpdateV1AuthServiceConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#AuthConfigResponse"
@@ -14902,7 +14902,7 @@
         "smithy.api#documentation": "Updates a project's auth config"
       }
     },
-    "com.supabase.api#V1ListProjectTpaIntegrationsRequest": {
+    "com.supabase.api#ListV1ProjectTpaIntegrationsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -14985,7 +14985,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListProjectTpaIntegrationsResponse": {
+    "com.supabase.api#ListV1ProjectTpaIntegrationsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -15000,13 +15000,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListProjectTpaIntegrations": {
+    "com.supabase.api#ListV1ProjectTpaIntegrations": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListProjectTpaIntegrationsRequest"
+        "target": "com.supabase.api#ListV1ProjectTpaIntegrationsRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListProjectTpaIntegrationsResponse"
+        "target": "com.supabase.api#ListV1ProjectTpaIntegrationsResponse"
       },
       "errors": [
         {
@@ -15025,7 +15025,7 @@
         "smithy.api#documentation": "Lists all third-party auth integrations"
       }
     },
-    "com.supabase.api#V1CreateProjectTpaIntegrationRequest": {
+    "com.supabase.api#CreateV1ProjectTpaIntegrationRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -15050,10 +15050,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1CreateProjectTpaIntegration": {
+    "com.supabase.api#CreateV1ProjectTpaIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateProjectTpaIntegrationRequest"
+        "target": "com.supabase.api#CreateV1ProjectTpaIntegrationRequest"
       },
       "output": {
         "target": "com.supabase.api#ThirdPartyAuth"
@@ -15075,7 +15075,7 @@
         "smithy.api#documentation": "Creates a new third-party auth integration"
       }
     },
-    "com.supabase.api#V1GetProjectTpaIntegrationRequest": {
+    "com.supabase.api#GetV1ProjectTpaIntegrationRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -15098,10 +15098,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetProjectTpaIntegration": {
+    "com.supabase.api#GetV1ProjectTpaIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectTpaIntegrationRequest"
+        "target": "com.supabase.api#GetV1ProjectTpaIntegrationRequest"
       },
       "output": {
         "target": "com.supabase.api#ThirdPartyAuth"
@@ -15126,7 +15126,7 @@
         "smithy.api#documentation": "Get a third-party integration"
       }
     },
-    "com.supabase.api#V1DeleteProjectTpaIntegrationRequest": {
+    "com.supabase.api#DeleteV1ProjectTpaIntegrationRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -15149,10 +15149,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteProjectTpaIntegration": {
+    "com.supabase.api#DeleteV1ProjectTpaIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteProjectTpaIntegrationRequest"
+        "target": "com.supabase.api#DeleteV1ProjectTpaIntegrationRequest"
       },
       "output": {
         "target": "com.supabase.api#ThirdPartyAuth"
@@ -15218,7 +15218,7 @@
         "smithy.api#documentation": "Pauses the given project"
       }
     },
-    "com.supabase.api#V1RestartAProjectRequest": {
+    "com.supabase.api#RestartV1AProjectRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -15234,10 +15234,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1RestartAProject": {
+    "com.supabase.api#RestartV1AProject": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1RestartAProjectRequest"
+        "target": "com.supabase.api#RestartV1AProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15418,7 +15418,7 @@
         "smithy.api#documentation": "Lists available restore versions for the given project"
       }
     },
-    "com.supabase.api#V1RestoreAProjectRequest": {
+    "com.supabase.api#RestoreV1AProjectRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -15434,10 +15434,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1RestoreAProject": {
+    "com.supabase.api#RestoreV1AProject": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1RestoreAProjectRequest"
+        "target": "com.supabase.api#RestoreV1AProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15500,7 +15500,7 @@
         "smithy.api#documentation": "Cancels the given project restoration"
       }
     },
-    "com.supabase.api#V1ListProjectAddonsRequest": {
+    "com.supabase.api#ListV1ProjectAddonsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -16420,10 +16420,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListProjectAddons": {
+    "com.supabase.api#ListV1ProjectAddons": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListProjectAddonsRequest"
+        "target": "com.supabase.api#ListV1ProjectAddonsRequest"
       },
       "output": {
         "target": "com.supabase.api#ListProjectAddonsResponse"
@@ -16783,7 +16783,7 @@
         "smithy.api#documentation": "Remove billing addons or revert compute instance sizing\n\nDisables the selected addon variant, including rolling the compute instance back to its previous size."
       }
     },
-    "com.supabase.api#V1GetProjectClaimTokenRequest": {
+    "com.supabase.api#GetV1ProjectClaimTokenRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -16829,10 +16829,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectClaimToken": {
+    "com.supabase.api#GetV1ProjectClaimToken": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectClaimTokenRequest"
+        "target": "com.supabase.api#GetV1ProjectClaimTokenRequest"
       },
       "output": {
         "target": "com.supabase.api#ProjectClaimTokenResponse"
@@ -16854,7 +16854,7 @@
         "smithy.api#documentation": "Gets project claim token"
       }
     },
-    "com.supabase.api#V1CreateProjectClaimTokenRequest": {
+    "com.supabase.api#CreateV1ProjectClaimTokenRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -16906,10 +16906,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateProjectClaimToken": {
+    "com.supabase.api#CreateV1ProjectClaimToken": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateProjectClaimTokenRequest"
+        "target": "com.supabase.api#CreateV1ProjectClaimTokenRequest"
       },
       "output": {
         "target": "com.supabase.api#CreateProjectClaimTokenResponse"
@@ -16931,7 +16931,7 @@
         "smithy.api#documentation": "Creates project claim token"
       }
     },
-    "com.supabase.api#V1DeleteProjectClaimTokenRequest": {
+    "com.supabase.api#DeleteV1ProjectClaimTokenRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -16947,10 +16947,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteProjectClaimToken": {
+    "com.supabase.api#DeleteV1ProjectClaimToken": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteProjectClaimTokenRequest"
+        "target": "com.supabase.api#DeleteV1ProjectClaimTokenRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -16972,7 +16972,7 @@
         "smithy.api#documentation": "Revokes project claim token"
       }
     },
-    "com.supabase.api#V1GetProjectLogsRequest": {
+    "com.supabase.api#GetV1ProjectLogRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17111,10 +17111,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectLogs": {
+    "com.supabase.api#GetV1ProjectLog": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectLogsRequest"
+        "target": "com.supabase.api#GetV1ProjectLogRequest"
       },
       "output": {
         "target": "com.supabase.api#AnalyticsResponse"
@@ -17181,7 +17181,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectUsageApiCountRequest": {
+    "com.supabase.api#GetV1ProjectUsageApiCountRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17343,10 +17343,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectUsageApiCount": {
+    "com.supabase.api#GetV1ProjectUsageApiCount": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectUsageApiCountRequest"
+        "target": "com.supabase.api#GetV1ProjectUsageApiCountRequest"
       },
       "output": {
         "target": "com.supabase.api#V1GetUsageApiCountResponse"
@@ -17555,7 +17555,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectFunctionCombinedStatsRequest": {
+    "com.supabase.api#GetV1ProjectFunctionCombinedStatRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17585,10 +17585,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetProjectFunctionCombinedStats": {
+    "com.supabase.api#GetV1ProjectFunctionCombinedStat": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectFunctionCombinedStatsRequest"
+        "target": "com.supabase.api#GetV1ProjectFunctionCombinedStatRequest"
       },
       "output": {
         "target": "com.supabase.api#AnalyticsResponse"
@@ -17651,7 +17651,7 @@
         "smithy.api#documentation": "Scrape a project's metrics\n\nPrometheus scrape endpoint. Returns metrics of a customer project in the Prometheus open exposition format."
       }
     },
-    "com.supabase.api#V1CreateLoginRoleRequest": {
+    "com.supabase.api#CreateV1LoginRoleRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17698,10 +17698,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateLoginRole": {
+    "com.supabase.api#CreateV1LoginRole": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateLoginRoleRequest"
+        "target": "com.supabase.api#CreateV1LoginRoleRequest"
       },
       "output": {
         "target": "com.supabase.api#CreateRoleResponse"
@@ -17723,7 +17723,7 @@
         "smithy.api#documentation": "[Beta] Create a login role for CLI with temporary password"
       }
     },
-    "com.supabase.api#V1DeleteLoginRolesRequest": {
+    "com.supabase.api#DeleteV1LoginRoleRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17763,10 +17763,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1DeleteLoginRoles": {
+    "com.supabase.api#DeleteV1LoginRole": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteLoginRolesRequest"
+        "target": "com.supabase.api#DeleteV1LoginRoleRequest"
       },
       "output": {
         "target": "com.supabase.api#DeleteRolesResponse"
@@ -17788,7 +17788,7 @@
         "smithy.api#documentation": "[Beta] Delete existing login roles used by CLI"
       }
     },
-    "com.supabase.api#V1ListMigrationHistoryRequest": {
+    "com.supabase.api#ListV1MigrationHistoryRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17826,7 +17826,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListMigrationHistoryResponse": {
+    "com.supabase.api#ListV1MigrationHistoryResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -17841,13 +17841,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListMigrationHistory": {
+    "com.supabase.api#ListV1MigrationHistory": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListMigrationHistoryRequest"
+        "target": "com.supabase.api#ListV1MigrationHistoryRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListMigrationHistoryResponse"
+        "target": "com.supabase.api#ListV1MigrationHistoryResponse"
       },
       "errors": [
         {
@@ -17919,7 +17919,7 @@
         "smithy.api#documentation": "Apply a database migration"
       }
     },
-    "com.supabase.api#V1UpsertAMigrationRequest": {
+    "com.supabase.api#UpsertV1AMigrationRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -17947,10 +17947,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpsertAMigration": {
+    "com.supabase.api#UpsertV1AMigration": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpsertAMigrationRequest"
+        "target": "com.supabase.api#UpsertV1AMigrationRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18021,7 +18021,7 @@
         "smithy.api#documentation": "Rollback database migrations and remove them from history table"
       }
     },
-    "com.supabase.api#V1GetAMigrationRequest": {
+    "com.supabase.api#GetV1AMigrationRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -18085,10 +18085,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAMigration": {
+    "com.supabase.api#GetV1AMigration": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAMigrationRequest"
+        "target": "com.supabase.api#GetV1AMigrationRequest"
       },
       "output": {
         "target": "com.supabase.api#V1GetMigrationResponse"
@@ -18287,7 +18287,7 @@
         "smithy.api#documentation": "[Beta] Run a sql query as supabase_read_only_user\n\nAll entity references must be schema qualified."
       }
     },
-    "com.supabase.api#V1EnableDatabaseWebhookRequest": {
+    "com.supabase.api#EnableV1DatabaseWebhookRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -18303,10 +18303,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1EnableDatabaseWebhook": {
+    "com.supabase.api#EnableV1DatabaseWebhook": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1EnableDatabaseWebhookRequest"
+        "target": "com.supabase.api#EnableV1DatabaseWebhookRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18328,7 +18328,7 @@
         "smithy.api#documentation": "[Beta] Enables Database Webhooks on the project"
       }
     },
-    "com.supabase.api#V1UpdateDatabasePasswordRequest": {
+    "com.supabase.api#UpdateV1DatabasePasswordRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -18363,10 +18363,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateDatabasePassword": {
+    "com.supabase.api#UpdateV1DatabasePassword": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateDatabasePasswordRequest"
+        "target": "com.supabase.api#UpdateV1DatabasePasswordRequest"
       },
       "output": {
         "target": "com.supabase.api#V1UpdatePasswordResponse"
@@ -18388,7 +18388,7 @@
         "smithy.api#documentation": "Updates the database password"
       }
     },
-    "com.supabase.api#V1GetJitAccessRequest": {
+    "com.supabase.api#GetV1JitAccessRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -18497,10 +18497,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetJitAccess": {
+    "com.supabase.api#GetV1JitAccess": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetJitAccessRequest"
+        "target": "com.supabase.api#GetV1JitAccessRequest"
       },
       "output": {
         "target": "com.supabase.api#JitAccessResponse"
@@ -18522,7 +18522,7 @@
         "smithy.api#documentation": "Get user-id to role mappings for JIT access\n\nMappings of roles a user can assume in the project database"
       }
     },
-    "com.supabase.api#V1AuthorizeJitAccessRequest": {
+    "com.supabase.api#AuthorizeV1JitAccessRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -18639,10 +18639,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1AuthorizeJitAccess": {
+    "com.supabase.api#AuthorizeV1JitAccess": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1AuthorizeJitAccessRequest"
+        "target": "com.supabase.api#AuthorizeV1JitAccessRequest"
       },
       "output": {
         "target": "com.supabase.api#JitAuthorizeAccessResponse"
@@ -18742,7 +18742,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateJitAccessRequest": {
+    "com.supabase.api#UpdateV1JitAccessRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -18770,10 +18770,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateJitAccess": {
+    "com.supabase.api#UpdateV1JitAccess": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateJitAccessRequest"
+        "target": "com.supabase.api#UpdateV1JitAccessRequest"
       },
       "output": {
         "target": "com.supabase.api#JitAccessResponse"
@@ -18795,7 +18795,7 @@
         "smithy.api#documentation": "Updates a user mapping for JIT access\n\nModifies the roles that can be assumed and for how long"
       }
     },
-    "com.supabase.api#V1ListJitAccessRequest": {
+    "com.supabase.api#ListV1JitAccessRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -19074,10 +19074,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListJitAccess": {
+    "com.supabase.api#ListV1JitAccess": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListJitAccessRequest"
+        "target": "com.supabase.api#ListV1JitAccessRequest"
       },
       "output": {
         "target": "com.supabase.api#JitListAccessResponse"
@@ -19374,7 +19374,7 @@
         "smithy.api#documentation": "Accepts invitation for JIT database access\n\nAccepts the invitation to JIT database access"
       }
     },
-    "com.supabase.api#V1DeleteInviteExternalJitAccessRequest": {
+    "com.supabase.api#DeleteV1InviteExternalJitAccessRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -19397,10 +19397,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteInviteExternalJitAccess": {
+    "com.supabase.api#DeleteV1InviteExternalJitAccess": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteInviteExternalJitAccessRequest"
+        "target": "com.supabase.api#DeleteV1InviteExternalJitAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19419,7 +19419,7 @@
         "smithy.api#documentation": "Deletes the invite for an external user to a database for JIT access\n\nRevokes and deletes the invitation"
       }
     },
-    "com.supabase.api#V1DeleteJitAccessRequest": {
+    "com.supabase.api#DeleteV1JitAccessRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -19442,10 +19442,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteJitAccess": {
+    "com.supabase.api#DeleteV1JitAccess": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteJitAccessRequest"
+        "target": "com.supabase.api#DeleteV1JitAccessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19470,7 +19470,7 @@
         "smithy.api#documentation": "Delete JIT access by user-id\n\nRemove JIT mappings of a user, revoking all JIT database access"
       }
     },
-    "com.supabase.api#V1GetDatabaseOpenapiRequest": {
+    "com.supabase.api#GetV1DatabaseOpenapiRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -19493,7 +19493,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetDatabaseOpenapiResponse": {
+    "com.supabase.api#GetV1DatabaseOpenapiResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -19508,13 +19508,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1GetDatabaseOpenapi": {
+    "com.supabase.api#GetV1DatabaseOpenapi": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetDatabaseOpenapiRequest"
+        "target": "com.supabase.api#GetV1DatabaseOpenapiRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1GetDatabaseOpenapiResponse"
+        "target": "com.supabase.api#GetV1DatabaseOpenapiResponse"
       },
       "errors": [
         {
@@ -19530,7 +19530,7 @@
         "smithy.api#documentation": "Get PostgREST OpenAPI spec\n\nReturns the PostgREST OpenAPI specification for the project. This is the replacement for querying `/rest/v1/` directly with the anon key."
       }
     },
-    "com.supabase.api#V1ListAllFunctionsRequest": {
+    "com.supabase.api#ListV1AllFunctionsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -19640,7 +19640,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllFunctionsResponse": {
+    "com.supabase.api#ListV1AllFunctionsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -19655,13 +19655,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListAllFunctions": {
+    "com.supabase.api#ListV1AllFunctions": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllFunctionsRequest"
+        "target": "com.supabase.api#ListV1AllFunctionsRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListAllFunctionsResponse"
+        "target": "com.supabase.api#ListV1AllFunctionsResponse"
       },
       "errors": [
         {
@@ -19765,7 +19765,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1BulkUpdateFunctionsRequest": {
+    "com.supabase.api#UpdateV1BulkFunctionRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -19894,10 +19894,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1BulkUpdateFunctions": {
+    "com.supabase.api#UpdateV1BulkFunction": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1BulkUpdateFunctionsRequest"
+        "target": "com.supabase.api#UpdateV1BulkFunctionRequest"
       },
       "output": {
         "target": "com.supabase.api#BulkUpdateFunctionResponse"
@@ -20105,7 +20105,7 @@
         "com.distilled.openapi#contentType": "multipart"
       }
     },
-    "com.supabase.api#V1GetAFunctionRequest": {
+    "com.supabase.api#GetV1AFunctionRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20216,10 +20216,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAFunction": {
+    "com.supabase.api#GetV1AFunction": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAFunctionRequest"
+        "target": "com.supabase.api#GetV1AFunctionRequest"
       },
       "output": {
         "target": "com.supabase.api#FunctionSlugResponse"
@@ -20244,7 +20244,7 @@
         "smithy.api#documentation": "Retrieve a function\n\nRetrieves a function with the specified slug and project."
       }
     },
-    "com.supabase.api#V1UpdateAFunctionRequest": {
+    "com.supabase.api#UpdateV1AFunctionRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20313,10 +20313,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateAFunction": {
+    "com.supabase.api#UpdateV1AFunction": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateAFunctionRequest"
+        "target": "com.supabase.api#UpdateV1AFunctionRequest"
       },
       "output": {
         "target": "com.supabase.api#FunctionResponse"
@@ -20341,7 +20341,7 @@
         "smithy.api#documentation": "Update a function\n\nUpdates a function with the specified slug and project."
       }
     },
-    "com.supabase.api#V1DeleteAFunctionRequest": {
+    "com.supabase.api#DeleteV1AFunctionRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20365,10 +20365,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1DeleteAFunction": {
+    "com.supabase.api#DeleteV1AFunction": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteAFunctionRequest"
+        "target": "com.supabase.api#DeleteV1AFunctionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -20393,7 +20393,7 @@
         "smithy.api#documentation": "Delete a function\n\nDeletes a function with the specified slug from the specified project."
       }
     },
-    "com.supabase.api#V1GetAFunctionBodyRequest": {
+    "com.supabase.api#GetV1AFunctionBodyRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20417,7 +20417,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1GetAFunctionBodyResponse": {
+    "com.supabase.api#GetV1AFunctionBodyResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -20432,13 +20432,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1GetAFunctionBody": {
+    "com.supabase.api#GetV1AFunctionBody": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAFunctionBodyRequest"
+        "target": "com.supabase.api#GetV1AFunctionBodyRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1GetAFunctionBodyResponse"
+        "target": "com.supabase.api#GetV1AFunctionBodyResponse"
       },
       "errors": [
         {
@@ -20460,7 +20460,7 @@
         "smithy.api#documentation": "Retrieve a function body\n\nRetrieves a function body for the specified slug and project."
       }
     },
-    "com.supabase.api#V1ListAllBucketsRequest": {
+    "com.supabase.api#ListV1AllBucketsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20525,7 +20525,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllBucketsResponse": {
+    "com.supabase.api#ListV1AllBucketsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -20540,13 +20540,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListAllBuckets": {
+    "com.supabase.api#ListV1AllBuckets": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllBucketsRequest"
+        "target": "com.supabase.api#ListV1AllBucketsRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListAllBucketsResponse"
+        "target": "com.supabase.api#ListV1AllBucketsResponse"
       },
       "errors": [
         {
@@ -20565,7 +20565,7 @@
         "smithy.api#documentation": "Lists all buckets"
       }
     },
-    "com.supabase.api#V1GetDatabaseDiskRequest": {
+    "com.supabase.api#GetV1DatabaseDiskRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20683,10 +20683,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetDatabaseDisk": {
+    "com.supabase.api#GetV1DatabaseDisk": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetDatabaseDiskRequest"
+        "target": "com.supabase.api#GetV1DatabaseDiskRequest"
       },
       "output": {
         "target": "com.supabase.api#DiskResponse"
@@ -20842,7 +20842,7 @@
         "smithy.api#documentation": "Modify database disk"
       }
     },
-    "com.supabase.api#V1GetDiskUtilizationRequest": {
+    "com.supabase.api#GetV1DiskUtilizationRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20900,10 +20900,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetDiskUtilization": {
+    "com.supabase.api#GetV1DiskUtilization": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetDiskUtilizationRequest"
+        "target": "com.supabase.api#GetV1DiskUtilizationRequest"
       },
       "output": {
         "target": "com.supabase.api#DiskUtilMetricsResponse"
@@ -20925,7 +20925,7 @@
         "smithy.api#documentation": "Get disk utilization"
       }
     },
-    "com.supabase.api#V1GetProjectDiskAutoscaleConfigRequest": {
+    "com.supabase.api#GetV1ProjectDiskAutoscaleConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -20971,10 +20971,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectDiskAutoscaleConfig": {
+    "com.supabase.api#GetV1ProjectDiskAutoscaleConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectDiskAutoscaleConfigRequest"
+        "target": "com.supabase.api#GetV1ProjectDiskAutoscaleConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#DiskAutoscaleConfig"
@@ -20996,7 +20996,7 @@
         "smithy.api#documentation": "Gets project disk autoscale config"
       }
     },
-    "com.supabase.api#V1GetStorageConfigRequest": {
+    "com.supabase.api#GetV1StorageConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -21228,10 +21228,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetStorageConfig": {
+    "com.supabase.api#GetV1StorageConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetStorageConfigRequest"
+        "target": "com.supabase.api#GetV1StorageConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#StorageConfigResponse"
@@ -21394,7 +21394,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateStorageConfigRequest": {
+    "com.supabase.api#UpdateV1StorageConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -21419,10 +21419,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateStorageConfig": {
+    "com.supabase.api#UpdateV1StorageConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateStorageConfigRequest"
+        "target": "com.supabase.api#UpdateV1StorageConfigRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -21444,7 +21444,7 @@
         "smithy.api#documentation": "Updates project's storage config"
       }
     },
-    "com.supabase.api#V1GetProjectPgbouncerConfigRequest": {
+    "com.supabase.api#GetV1ProjectPgbouncerConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -21520,10 +21520,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetProjectPgbouncerConfig": {
+    "com.supabase.api#GetV1ProjectPgbouncerConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetProjectPgbouncerConfigRequest"
+        "target": "com.supabase.api#GetV1ProjectPgbouncerConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#V1PgbouncerConfigResponse"
@@ -21545,7 +21545,7 @@
         "smithy.api#documentation": "Get project's pgbouncer config"
       }
     },
-    "com.supabase.api#V1GetPoolerConfigRequest": {
+    "com.supabase.api#GetV1PoolerConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -21687,7 +21687,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetPoolerConfigResponse": {
+    "com.supabase.api#GetV1PoolerConfigResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -21702,13 +21702,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1GetPoolerConfig": {
+    "com.supabase.api#GetV1PoolerConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetPoolerConfigRequest"
+        "target": "com.supabase.api#GetV1PoolerConfigRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1GetPoolerConfigResponse"
+        "target": "com.supabase.api#GetV1PoolerConfigResponse"
       },
       "errors": [
         {
@@ -21747,7 +21747,7 @@
         "smithy.api#documentation": "Dedicated pooler mode for the project"
       }
     },
-    "com.supabase.api#V1UpdatePoolerConfigRequest": {
+    "com.supabase.api#UpdateV1PoolerConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -21794,10 +21794,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdatePoolerConfig": {
+    "com.supabase.api#UpdateV1PoolerConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdatePoolerConfigRequest"
+        "target": "com.supabase.api#UpdateV1PoolerConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#UpdateSupavisorConfigResponse"
@@ -21819,7 +21819,7 @@
         "smithy.api#documentation": "Updates project's supavisor config"
       }
     },
-    "com.supabase.api#V1GetPostgresConfigRequest": {
+    "com.supabase.api#GetV1PostgresConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -21997,10 +21997,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetPostgresConfig": {
+    "com.supabase.api#GetV1PostgresConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetPostgresConfigRequest"
+        "target": "com.supabase.api#GetV1PostgresConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#PostgresConfigResponse"
@@ -22046,7 +22046,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdatePostgresConfigRequest": {
+    "com.supabase.api#UpdateV1PostgresConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -22197,10 +22197,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdatePostgresConfig": {
+    "com.supabase.api#UpdateV1PostgresConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdatePostgresConfigRequest"
+        "target": "com.supabase.api#UpdateV1PostgresConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#PostgresConfigResponse"
@@ -22222,7 +22222,7 @@
         "smithy.api#documentation": "Updates project's Postgres config"
       }
     },
-    "com.supabase.api#V1GetRealtimeConfigRequest": {
+    "com.supabase.api#GetV1RealtimeConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -22339,10 +22339,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetRealtimeConfig": {
+    "com.supabase.api#GetV1RealtimeConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetRealtimeConfigRequest"
+        "target": "com.supabase.api#GetV1RealtimeConfigRequest"
       },
       "output": {
         "target": "com.supabase.api#RealtimeConfigResponse"
@@ -22364,7 +22364,7 @@
         "smithy.api#documentation": "Gets realtime configuration"
       }
     },
-    "com.supabase.api#V1UpdateRealtimeConfigRequest": {
+    "com.supabase.api#UpdateV1RealtimeConfigRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -22452,10 +22452,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateRealtimeConfig": {
+    "com.supabase.api#UpdateV1RealtimeConfig": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateRealtimeConfigRequest"
+        "target": "com.supabase.api#UpdateV1RealtimeConfigRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -22521,7 +22521,7 @@
         "smithy.api#documentation": "Shutdowns realtime connections for a project"
       }
     },
-    "com.supabase.api#V1ListAllSsoProviderRequest": {
+    "com.supabase.api#ListV1AllSsoProviderRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -22721,10 +22721,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllSsoProvider": {
+    "com.supabase.api#ListV1AllSsoProvider": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllSsoProviderRequest"
+        "target": "com.supabase.api#ListV1AllSsoProviderRequest"
       },
       "output": {
         "target": "com.supabase.api#ListProvidersResponse"
@@ -22865,7 +22865,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateASsoProviderRequest": {
+    "com.supabase.api#CreateV1ASsoProviderRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -23068,10 +23068,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1CreateASsoProvider": {
+    "com.supabase.api#CreateV1ASsoProvider": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1CreateASsoProviderRequest"
+        "target": "com.supabase.api#CreateV1ASsoProviderRequest"
       },
       "output": {
         "target": "com.supabase.api#CreateProviderResponse"
@@ -23096,7 +23096,7 @@
         "smithy.api#documentation": "Creates a new SSO provider"
       }
     },
-    "com.supabase.api#V1GetASsoProviderRequest": {
+    "com.supabase.api#GetV1ASsoProviderRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -23284,10 +23284,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetASsoProvider": {
+    "com.supabase.api#GetV1ASsoProvider": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetASsoProviderRequest"
+        "target": "com.supabase.api#GetV1ASsoProviderRequest"
       },
       "output": {
         "target": "com.supabase.api#GetProviderResponse"
@@ -23414,7 +23414,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateASsoProviderRequest": {
+    "com.supabase.api#UpdateV1ASsoProviderRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -23617,10 +23617,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1UpdateASsoProvider": {
+    "com.supabase.api#UpdateV1ASsoProvider": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateASsoProviderRequest"
+        "target": "com.supabase.api#UpdateV1ASsoProviderRequest"
       },
       "output": {
         "target": "com.supabase.api#UpdateProviderResponse"
@@ -23645,7 +23645,7 @@
         "smithy.api#documentation": "Updates a SSO provider by its UUID"
       }
     },
-    "com.supabase.api#V1DeleteASsoProviderRequest": {
+    "com.supabase.api#DeleteV1ASsoProviderRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -23833,10 +23833,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1DeleteASsoProvider": {
+    "com.supabase.api#DeleteV1ASsoProvider": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1DeleteASsoProviderRequest"
+        "target": "com.supabase.api#DeleteV1ASsoProviderRequest"
       },
       "output": {
         "target": "com.supabase.api#DeleteProviderResponse"
@@ -23861,7 +23861,7 @@
         "smithy.api#documentation": "Removes a SSO provider by its UUID"
       }
     },
-    "com.supabase.api#V1ListAllBackupsRequest": {
+    "com.supabase.api#ListV1AllBackupsRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -24004,10 +24004,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListAllBackups": {
+    "com.supabase.api#ListV1AllBackups": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListAllBackupsRequest"
+        "target": "com.supabase.api#ListV1AllBackupsRequest"
       },
       "output": {
         "target": "com.supabase.api#V1BackupsResponse"
@@ -24029,7 +24029,7 @@
         "smithy.api#documentation": "Lists all backups"
       }
     },
-    "com.supabase.api#V1RestorePitrBackupRequest": {
+    "com.supabase.api#RestoreV1PitrBackupRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -24051,10 +24051,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1RestorePitrBackup": {
+    "com.supabase.api#RestoreV1PitrBackup": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1RestorePitrBackupRequest"
+        "target": "com.supabase.api#RestoreV1PitrBackupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -24225,7 +24225,7 @@
         "smithy.api#documentation": "Initiates a creation of a restore point for a database"
       }
     },
-    "com.supabase.api#V1RestorePhysicalBackupRequest": {
+    "com.supabase.api#RestoreV1PhysicalBackupRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -24247,10 +24247,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1RestorePhysicalBackup": {
+    "com.supabase.api#RestoreV1PhysicalBackup": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1RestorePhysicalBackupRequest"
+        "target": "com.supabase.api#RestoreV1PhysicalBackupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -24269,7 +24269,7 @@
         "smithy.api#documentation": "Restores a physical backup for a database"
       }
     },
-    "com.supabase.api#V1GetBackupScheduleRequest": {
+    "com.supabase.api#GetV1BackupScheduleRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -24305,10 +24305,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetBackupSchedule": {
+    "com.supabase.api#GetV1BackupSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetBackupScheduleRequest"
+        "target": "com.supabase.api#GetV1BackupScheduleRequest"
       },
       "output": {
         "target": "com.supabase.api#V1BackupScheduleResponse"
@@ -24330,7 +24330,7 @@
         "smithy.api#documentation": "Gets the backup schedule for a project"
       }
     },
-    "com.supabase.api#V1UpdateBackupScheduleRequest": {
+    "com.supabase.api#UpdateV1BackupScheduleRequest": {
       "type": "structure",
       "members": {
         "ref": {
@@ -24353,10 +24353,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.supabase.api#V1UpdateBackupSchedule": {
+    "com.supabase.api#UpdateV1BackupSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1UpdateBackupScheduleRequest"
+        "target": "com.supabase.api#UpdateV1BackupScheduleRequest"
       },
       "output": {
         "target": "com.supabase.api#V1BackupScheduleResponse"
@@ -24428,7 +24428,7 @@
         "smithy.api#documentation": "Initiates an undo to a given restore point"
       }
     },
-    "com.supabase.api#V1GetOrganizationEntitlementsRequest": {
+    "com.supabase.api#GetV1OrganizationEntitlementRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -25031,10 +25031,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetOrganizationEntitlements": {
+    "com.supabase.api#GetV1OrganizationEntitlement": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetOrganizationEntitlementsRequest"
+        "target": "com.supabase.api#GetV1OrganizationEntitlementRequest"
       },
       "output": {
         "target": "com.supabase.api#V1ListEntitlementsResponse"
@@ -25053,7 +25053,7 @@
         "smithy.api#documentation": "Get entitlements for an organization\n\nReturns the entitlements available to the organization based on their plan and any overrides."
       }
     },
-    "com.supabase.api#V1ListOrganizationMembersRequest": {
+    "com.supabase.api#ListV1OrganizationMembersRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -25116,7 +25116,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1ListOrganizationMembersResponse": {
+    "com.supabase.api#ListV1OrganizationMembersResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -25131,13 +25131,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.supabase.api#V1ListOrganizationMembers": {
+    "com.supabase.api#ListV1OrganizationMembers": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1ListOrganizationMembersRequest"
+        "target": "com.supabase.api#ListV1OrganizationMembersRequest"
       },
       "output": {
-        "target": "com.supabase.api#V1ListOrganizationMembersResponse"
+        "target": "com.supabase.api#ListV1OrganizationMembersResponse"
       },
       "errors": [
         {
@@ -25159,7 +25159,7 @@
         "smithy.api#documentation": "List members of an organization"
       }
     },
-    "com.supabase.api#V1GetAnOrganizationRequest": {
+    "com.supabase.api#GetV1AnOrganizationRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -25324,10 +25324,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAnOrganization": {
+    "com.supabase.api#GetV1AnOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAnOrganizationRequest"
+        "target": "com.supabase.api#GetV1AnOrganizationRequest"
       },
       "output": {
         "target": "com.supabase.api#V1OrganizationSlugResponse"
@@ -25352,7 +25352,7 @@
         "smithy.api#documentation": "Gets information about the organization"
       }
     },
-    "com.supabase.api#V1GetOrganizationProjectClaimRequest": {
+    "com.supabase.api#GetV1OrganizationProjectClaimRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -25650,10 +25650,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetOrganizationProjectClaim": {
+    "com.supabase.api#GetV1OrganizationProjectClaim": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetOrganizationProjectClaimRequest"
+        "target": "com.supabase.api#GetV1OrganizationProjectClaimRequest"
       },
       "output": {
         "target": "com.supabase.api#OrganizationProjectClaimResponse"
@@ -25759,7 +25759,7 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAllProjectsForOrganizationRequest": {
+    "com.supabase.api#GetV1AllProjectForOrganizationRequest": {
       "type": "structure",
       "members": {
         "slug": {
@@ -26310,10 +26310,10 @@
       },
       "traits": {}
     },
-    "com.supabase.api#V1GetAllProjectsForOrganization": {
+    "com.supabase.api#GetV1AllProjectForOrganization": {
       "type": "operation",
       "input": {
-        "target": "com.supabase.api#V1GetAllProjectsForOrganizationRequest"
+        "target": "com.supabase.api#GetV1AllProjectForOrganizationRequest"
       },
       "output": {
         "target": "com.supabase.api#OrganizationProjectsResponse"
@@ -26382,13 +26382,13 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.supabase.api#V1GetABranchConfig"
+          "target": "com.supabase.api#GetV1ABranchConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateABranchConfig"
+          "target": "com.supabase.api#UpdateV1ABranchConfig"
         },
         {
-          "target": "com.supabase.api#V1DeleteABranch"
+          "target": "com.supabase.api#DeleteV1ABranch"
         },
         {
           "target": "com.supabase.api#V1PushABranch"
@@ -26400,28 +26400,28 @@
           "target": "com.supabase.api#V1ResetABranch"
         },
         {
-          "target": "com.supabase.api#V1RestoreABranch"
+          "target": "com.supabase.api#RestoreV1ABranch"
         },
         {
           "target": "com.supabase.api#V1DiffABranch"
         },
         {
-          "target": "com.supabase.api#V1ListAllProjects"
+          "target": "com.supabase.api#ListV1AllProjects"
         },
         {
-          "target": "com.supabase.api#V1CreateAProject"
+          "target": "com.supabase.api#CreateV1AProject"
         },
         {
-          "target": "com.supabase.api#V1GetAvailableRegions"
+          "target": "com.supabase.api#GetV1AvailableRegion"
         },
         {
-          "target": "com.supabase.api#V1ListAllOrganizations"
+          "target": "com.supabase.api#ListV1AllOrganizations"
         },
         {
-          "target": "com.supabase.api#V1CreateAnOrganization"
+          "target": "com.supabase.api#CreateV1AnOrganization"
         },
         {
-          "target": "com.supabase.api#V1AuthorizeUser"
+          "target": "com.supabase.api#AuthorizeV1User"
         },
         {
           "target": "com.supabase.api#V1ExchangeOauthToken"
@@ -26430,148 +26430,148 @@
           "target": "com.supabase.api#V1RevokeToken"
         },
         {
-          "target": "com.supabase.api#V1OauthAuthorizeProjectClaim"
+          "target": "com.supabase.api#AuthorizeV1OauthProjectClaim"
         },
         {
-          "target": "com.supabase.api#V1ListAllSnippets"
+          "target": "com.supabase.api#ListV1AllSnippets"
         },
         {
-          "target": "com.supabase.api#V1GetASnippet"
+          "target": "com.supabase.api#GetV1ASnippet"
         },
         {
-          "target": "com.supabase.api#V1GetProfile"
+          "target": "com.supabase.api#GetV1Profile"
         },
         {
-          "target": "com.supabase.api#V1ListActionRuns"
+          "target": "com.supabase.api#ListV1ActionRuns"
         },
         {
-          "target": "com.supabase.api#V1GetActionRun"
+          "target": "com.supabase.api#GetV1ActionRun"
         },
         {
-          "target": "com.supabase.api#V1UpdateActionRunStatus"
+          "target": "com.supabase.api#UpdateV1ActionRunStatus"
         },
         {
-          "target": "com.supabase.api#V1GetActionRunLogs"
+          "target": "com.supabase.api#GetV1ActionRunLog"
         },
         {
-          "target": "com.supabase.api#V1GetProjectApiKeys"
+          "target": "com.supabase.api#GetV1ProjectApiKey"
         },
         {
-          "target": "com.supabase.api#V1CreateProjectApiKey"
+          "target": "com.supabase.api#CreateV1ProjectApiKey"
         },
         {
-          "target": "com.supabase.api#V1GetProjectLegacyApiKeys"
+          "target": "com.supabase.api#GetV1ProjectLegacyApiKey"
         },
         {
-          "target": "com.supabase.api#V1UpdateProjectLegacyApiKeys"
+          "target": "com.supabase.api#UpdateV1ProjectLegacyApiKey"
         },
         {
           "target": "com.supabase.api#V1GetProjectApiKey"
         },
         {
-          "target": "com.supabase.api#V1UpdateProjectApiKey"
+          "target": "com.supabase.api#UpdateV1ProjectApiKey"
         },
         {
-          "target": "com.supabase.api#V1DeleteProjectApiKey"
+          "target": "com.supabase.api#DeleteV1ProjectApiKey"
         },
         {
-          "target": "com.supabase.api#V1ListAllBranches"
+          "target": "com.supabase.api#ListV1AllBranches"
         },
         {
-          "target": "com.supabase.api#V1CreateABranch"
+          "target": "com.supabase.api#CreateV1ABranch"
         },
         {
-          "target": "com.supabase.api#V1DisablePreviewBranching"
+          "target": "com.supabase.api#DisableV1PreviewBranching"
         },
         {
-          "target": "com.supabase.api#V1GetABranch"
+          "target": "com.supabase.api#GetV1ABranch"
         },
         {
-          "target": "com.supabase.api#V1GetHostnameConfig"
+          "target": "com.supabase.api#GetV1HostnameConfig"
         },
         {
-          "target": "com.supabase.api#V1DeleteHostnameConfig"
+          "target": "com.supabase.api#DeleteV1HostnameConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateHostnameConfig"
+          "target": "com.supabase.api#UpdateV1HostnameConfig"
         },
         {
-          "target": "com.supabase.api#V1VerifyDnsConfig"
+          "target": "com.supabase.api#VerifyV1DnsConfig"
         },
         {
           "target": "com.supabase.api#V1ActivateCustomHostname"
         },
         {
-          "target": "com.supabase.api#V1GetJitAccessConfig"
+          "target": "com.supabase.api#GetV1JitAccessConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateJitAccessConfig"
+          "target": "com.supabase.api#UpdateV1JitAccessConfig"
         },
         {
-          "target": "com.supabase.api#V1ListAllNetworkBans"
+          "target": "com.supabase.api#ListV1AllNetworkBans"
         },
         {
-          "target": "com.supabase.api#V1ListAllNetworkBansEnriched"
+          "target": "com.supabase.api#ListV1AllNetworkBanEnriched"
         },
         {
-          "target": "com.supabase.api#V1DeleteNetworkBans"
+          "target": "com.supabase.api#DeleteV1NetworkBan"
         },
         {
-          "target": "com.supabase.api#V1GetNetworkRestrictions"
+          "target": "com.supabase.api#GetV1NetworkRestriction"
         },
         {
           "target": "com.supabase.api#V1PatchNetworkRestrictions"
         },
         {
-          "target": "com.supabase.api#V1UpdateNetworkRestrictions"
+          "target": "com.supabase.api#UpdateV1NetworkRestriction"
         },
         {
-          "target": "com.supabase.api#V1GetPgsodiumConfig"
+          "target": "com.supabase.api#GetV1PgsodiumConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdatePgsodiumConfig"
+          "target": "com.supabase.api#UpdateV1PgsodiumConfig"
         },
         {
-          "target": "com.supabase.api#V1GetPostgrestServiceConfig"
+          "target": "com.supabase.api#GetV1PostgrestServiceConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdatePostgrestServiceConfig"
+          "target": "com.supabase.api#UpdateV1PostgrestServiceConfig"
         },
         {
-          "target": "com.supabase.api#V1GetProject"
+          "target": "com.supabase.api#GetV1Project"
         },
         {
-          "target": "com.supabase.api#V1UpdateAProject"
+          "target": "com.supabase.api#UpdateV1AProject"
         },
         {
-          "target": "com.supabase.api#V1DeleteAProject"
+          "target": "com.supabase.api#DeleteV1AProject"
         },
         {
-          "target": "com.supabase.api#V1ListAllSecrets"
+          "target": "com.supabase.api#ListV1AllSecrets"
         },
         {
-          "target": "com.supabase.api#V1BulkCreateSecrets"
+          "target": "com.supabase.api#CreateV1BulkSecret"
         },
         {
-          "target": "com.supabase.api#V1BulkDeleteSecrets"
+          "target": "com.supabase.api#DeleteV1BulkSecret"
         },
         {
-          "target": "com.supabase.api#V1GetSslEnforcementConfig"
+          "target": "com.supabase.api#GetV1SslEnforcementConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateSslEnforcementConfig"
+          "target": "com.supabase.api#UpdateV1SslEnforcementConfig"
         },
         {
-          "target": "com.supabase.api#V1GenerateTypescriptTypes"
+          "target": "com.supabase.api#GenerateV1TypescriptType"
         },
         {
-          "target": "com.supabase.api#V1GetVanitySubdomainConfig"
+          "target": "com.supabase.api#GetV1VanitySubdomainConfig"
         },
         {
           "target": "com.supabase.api#V1DeactivateVanitySubdomainConfig"
         },
         {
-          "target": "com.supabase.api#V1CheckVanitySubdomainAvailability"
+          "target": "com.supabase.api#CheckV1VanitySubdomainAvailability"
         },
         {
           "target": "com.supabase.api#V1ActivateVanitySubdomainConfig"
@@ -26580,16 +26580,16 @@
           "target": "com.supabase.api#V1UpgradePostgresVersion"
         },
         {
-          "target": "com.supabase.api#V1GetPostgresUpgradeEligibility"
+          "target": "com.supabase.api#GetV1PostgresUpgradeEligibility"
         },
         {
-          "target": "com.supabase.api#V1GetPostgresUpgradeStatus"
+          "target": "com.supabase.api#GetV1PostgresUpgradeStatus"
         },
         {
-          "target": "com.supabase.api#V1GetReadonlyModeStatus"
+          "target": "com.supabase.api#GetV1ReadonlyModeStatus"
         },
         {
-          "target": "com.supabase.api#V1DisableReadonlyModeTemporarily"
+          "target": "com.supabase.api#DisableV1ReadonlyModeTemporarily"
         },
         {
           "target": "com.supabase.api#V1SetupAReadReplica"
@@ -26598,64 +26598,64 @@
           "target": "com.supabase.api#V1RemoveAReadReplica"
         },
         {
-          "target": "com.supabase.api#V1GetServicesHealth"
+          "target": "com.supabase.api#GetV1ServiceHealth"
         },
         {
-          "target": "com.supabase.api#V1GetLegacySigningKey"
+          "target": "com.supabase.api#GetV1LegacySigningKey"
         },
         {
-          "target": "com.supabase.api#V1CreateLegacySigningKey"
+          "target": "com.supabase.api#CreateV1LegacySigningKey"
         },
         {
-          "target": "com.supabase.api#V1GetProjectSigningKeys"
+          "target": "com.supabase.api#GetV1ProjectSigningKey"
         },
         {
-          "target": "com.supabase.api#V1CreateProjectSigningKey"
+          "target": "com.supabase.api#CreateV1ProjectSigningKey"
         },
         {
           "target": "com.supabase.api#V1GetProjectSigningKey"
         },
         {
-          "target": "com.supabase.api#V1UpdateProjectSigningKey"
+          "target": "com.supabase.api#UpdateV1ProjectSigningKey"
         },
         {
           "target": "com.supabase.api#V1RemoveProjectSigningKey"
         },
         {
-          "target": "com.supabase.api#V1GetAuthServiceConfig"
+          "target": "com.supabase.api#GetV1AuthServiceConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateAuthServiceConfig"
+          "target": "com.supabase.api#UpdateV1AuthServiceConfig"
         },
         {
-          "target": "com.supabase.api#V1ListProjectTpaIntegrations"
+          "target": "com.supabase.api#ListV1ProjectTpaIntegrations"
         },
         {
-          "target": "com.supabase.api#V1CreateProjectTpaIntegration"
+          "target": "com.supabase.api#CreateV1ProjectTpaIntegration"
         },
         {
-          "target": "com.supabase.api#V1GetProjectTpaIntegration"
+          "target": "com.supabase.api#GetV1ProjectTpaIntegration"
         },
         {
-          "target": "com.supabase.api#V1DeleteProjectTpaIntegration"
+          "target": "com.supabase.api#DeleteV1ProjectTpaIntegration"
         },
         {
           "target": "com.supabase.api#V1PauseAProject"
         },
         {
-          "target": "com.supabase.api#V1RestartAProject"
+          "target": "com.supabase.api#RestartV1AProject"
         },
         {
           "target": "com.supabase.api#V1ListAvailableRestoreVersions"
         },
         {
-          "target": "com.supabase.api#V1RestoreAProject"
+          "target": "com.supabase.api#RestoreV1AProject"
         },
         {
           "target": "com.supabase.api#V1CancelAProjectRestoration"
         },
         {
-          "target": "com.supabase.api#V1ListProjectAddons"
+          "target": "com.supabase.api#ListV1ProjectAddons"
         },
         {
           "target": "com.supabase.api#V1ApplyProjectAddon"
@@ -26664,49 +26664,49 @@
           "target": "com.supabase.api#V1RemoveProjectAddon"
         },
         {
-          "target": "com.supabase.api#V1GetProjectClaimToken"
+          "target": "com.supabase.api#GetV1ProjectClaimToken"
         },
         {
-          "target": "com.supabase.api#V1CreateProjectClaimToken"
+          "target": "com.supabase.api#CreateV1ProjectClaimToken"
         },
         {
-          "target": "com.supabase.api#V1DeleteProjectClaimToken"
+          "target": "com.supabase.api#DeleteV1ProjectClaimToken"
         },
         {
-          "target": "com.supabase.api#V1GetProjectLogs"
+          "target": "com.supabase.api#GetV1ProjectLog"
         },
         {
-          "target": "com.supabase.api#V1GetProjectUsageApiCount"
+          "target": "com.supabase.api#GetV1ProjectUsageApiCount"
         },
         {
           "target": "com.supabase.api#V1GetProjectUsageRequestCount"
         },
         {
-          "target": "com.supabase.api#V1GetProjectFunctionCombinedStats"
+          "target": "com.supabase.api#GetV1ProjectFunctionCombinedStat"
         },
         {
           "target": "com.supabase.api#V1ScrapeProjectMetrics"
         },
         {
-          "target": "com.supabase.api#V1CreateLoginRole"
+          "target": "com.supabase.api#CreateV1LoginRole"
         },
         {
-          "target": "com.supabase.api#V1DeleteLoginRoles"
+          "target": "com.supabase.api#DeleteV1LoginRole"
         },
         {
-          "target": "com.supabase.api#V1ListMigrationHistory"
+          "target": "com.supabase.api#ListV1MigrationHistory"
         },
         {
           "target": "com.supabase.api#V1ApplyAMigration"
         },
         {
-          "target": "com.supabase.api#V1UpsertAMigration"
+          "target": "com.supabase.api#UpsertV1AMigration"
         },
         {
           "target": "com.supabase.api#V1RollbackMigrations"
         },
         {
-          "target": "com.supabase.api#V1GetAMigration"
+          "target": "com.supabase.api#GetV1AMigration"
         },
         {
           "target": "com.supabase.api#V1PatchAMigration"
@@ -26718,22 +26718,22 @@
           "target": "com.supabase.api#V1ReadOnlyQuery"
         },
         {
-          "target": "com.supabase.api#V1EnableDatabaseWebhook"
+          "target": "com.supabase.api#EnableV1DatabaseWebhook"
         },
         {
-          "target": "com.supabase.api#V1UpdateDatabasePassword"
+          "target": "com.supabase.api#UpdateV1DatabasePassword"
         },
         {
-          "target": "com.supabase.api#V1GetJitAccess"
+          "target": "com.supabase.api#GetV1JitAccess"
         },
         {
-          "target": "com.supabase.api#V1AuthorizeJitAccess"
+          "target": "com.supabase.api#AuthorizeV1JitAccess"
         },
         {
-          "target": "com.supabase.api#V1UpdateJitAccess"
+          "target": "com.supabase.api#UpdateV1JitAccess"
         },
         {
-          "target": "com.supabase.api#V1ListJitAccess"
+          "target": "com.supabase.api#ListV1JitAccess"
         },
         {
           "target": "com.supabase.api#V1InviteExternalJitAccess"
@@ -26742,100 +26742,100 @@
           "target": "com.supabase.api#V1AcceptInviteExternalJitAccess"
         },
         {
-          "target": "com.supabase.api#V1DeleteInviteExternalJitAccess"
+          "target": "com.supabase.api#DeleteV1InviteExternalJitAccess"
         },
         {
-          "target": "com.supabase.api#V1DeleteJitAccess"
+          "target": "com.supabase.api#DeleteV1JitAccess"
         },
         {
-          "target": "com.supabase.api#V1GetDatabaseOpenapi"
+          "target": "com.supabase.api#GetV1DatabaseOpenapi"
         },
         {
-          "target": "com.supabase.api#V1ListAllFunctions"
+          "target": "com.supabase.api#ListV1AllFunctions"
         },
         {
-          "target": "com.supabase.api#V1BulkUpdateFunctions"
+          "target": "com.supabase.api#UpdateV1BulkFunction"
         },
         {
           "target": "com.supabase.api#V1DeployAFunction"
         },
         {
-          "target": "com.supabase.api#V1GetAFunction"
+          "target": "com.supabase.api#GetV1AFunction"
         },
         {
-          "target": "com.supabase.api#V1UpdateAFunction"
+          "target": "com.supabase.api#UpdateV1AFunction"
         },
         {
-          "target": "com.supabase.api#V1DeleteAFunction"
+          "target": "com.supabase.api#DeleteV1AFunction"
         },
         {
-          "target": "com.supabase.api#V1GetAFunctionBody"
+          "target": "com.supabase.api#GetV1AFunctionBody"
         },
         {
-          "target": "com.supabase.api#V1ListAllBuckets"
+          "target": "com.supabase.api#ListV1AllBuckets"
         },
         {
-          "target": "com.supabase.api#V1GetDatabaseDisk"
+          "target": "com.supabase.api#GetV1DatabaseDisk"
         },
         {
           "target": "com.supabase.api#V1ModifyDatabaseDisk"
         },
         {
-          "target": "com.supabase.api#V1GetDiskUtilization"
+          "target": "com.supabase.api#GetV1DiskUtilization"
         },
         {
-          "target": "com.supabase.api#V1GetProjectDiskAutoscaleConfig"
+          "target": "com.supabase.api#GetV1ProjectDiskAutoscaleConfig"
         },
         {
-          "target": "com.supabase.api#V1GetStorageConfig"
+          "target": "com.supabase.api#GetV1StorageConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateStorageConfig"
+          "target": "com.supabase.api#UpdateV1StorageConfig"
         },
         {
-          "target": "com.supabase.api#V1GetProjectPgbouncerConfig"
+          "target": "com.supabase.api#GetV1ProjectPgbouncerConfig"
         },
         {
-          "target": "com.supabase.api#V1GetPoolerConfig"
+          "target": "com.supabase.api#GetV1PoolerConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdatePoolerConfig"
+          "target": "com.supabase.api#UpdateV1PoolerConfig"
         },
         {
-          "target": "com.supabase.api#V1GetPostgresConfig"
+          "target": "com.supabase.api#GetV1PostgresConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdatePostgresConfig"
+          "target": "com.supabase.api#UpdateV1PostgresConfig"
         },
         {
-          "target": "com.supabase.api#V1GetRealtimeConfig"
+          "target": "com.supabase.api#GetV1RealtimeConfig"
         },
         {
-          "target": "com.supabase.api#V1UpdateRealtimeConfig"
+          "target": "com.supabase.api#UpdateV1RealtimeConfig"
         },
         {
           "target": "com.supabase.api#V1ShutdownRealtime"
         },
         {
-          "target": "com.supabase.api#V1ListAllSsoProvider"
+          "target": "com.supabase.api#ListV1AllSsoProvider"
         },
         {
-          "target": "com.supabase.api#V1CreateASsoProvider"
+          "target": "com.supabase.api#CreateV1ASsoProvider"
         },
         {
-          "target": "com.supabase.api#V1GetASsoProvider"
+          "target": "com.supabase.api#GetV1ASsoProvider"
         },
         {
-          "target": "com.supabase.api#V1UpdateASsoProvider"
+          "target": "com.supabase.api#UpdateV1ASsoProvider"
         },
         {
-          "target": "com.supabase.api#V1DeleteASsoProvider"
+          "target": "com.supabase.api#DeleteV1ASsoProvider"
         },
         {
-          "target": "com.supabase.api#V1ListAllBackups"
+          "target": "com.supabase.api#ListV1AllBackups"
         },
         {
-          "target": "com.supabase.api#V1RestorePitrBackup"
+          "target": "com.supabase.api#RestoreV1PitrBackup"
         },
         {
           "target": "com.supabase.api#V1GetRestorePoint"
@@ -26844,34 +26844,34 @@
           "target": "com.supabase.api#V1CreateRestorePoint"
         },
         {
-          "target": "com.supabase.api#V1RestorePhysicalBackup"
+          "target": "com.supabase.api#RestoreV1PhysicalBackup"
         },
         {
-          "target": "com.supabase.api#V1GetBackupSchedule"
+          "target": "com.supabase.api#GetV1BackupSchedule"
         },
         {
-          "target": "com.supabase.api#V1UpdateBackupSchedule"
+          "target": "com.supabase.api#UpdateV1BackupSchedule"
         },
         {
           "target": "com.supabase.api#V1Undo"
         },
         {
-          "target": "com.supabase.api#V1GetOrganizationEntitlements"
+          "target": "com.supabase.api#GetV1OrganizationEntitlement"
         },
         {
-          "target": "com.supabase.api#V1ListOrganizationMembers"
+          "target": "com.supabase.api#ListV1OrganizationMembers"
         },
         {
-          "target": "com.supabase.api#V1GetAnOrganization"
+          "target": "com.supabase.api#GetV1AnOrganization"
         },
         {
-          "target": "com.supabase.api#V1GetOrganizationProjectClaim"
+          "target": "com.supabase.api#GetV1OrganizationProjectClaim"
         },
         {
           "target": "com.supabase.api#V1ClaimProjectForOrganization"
         },
         {
-          "target": "com.supabase.api#V1GetAllProjectsForOrganization"
+          "target": "com.supabase.api#GetV1AllProjectForOrganization"
         }
       ],
       "traits": {

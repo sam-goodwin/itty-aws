@@ -1042,10 +1042,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#UpdatesDelete": {
+    "com.azure.azurestackhci#DeleteUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#UpdatesDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteUpdateRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1061,7 +1061,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#UpdatesDeleteRequest": {
+    "com.azure.azurestackhci#DeleteUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2062,13 +2062,13 @@
         "smithy.api#documentation": "If update State is HasPrerequisite, this property contains an array of objects describing prerequisite updates before installing this update. Otherwise, it is empty."
       }
     },
-    "com.azure.azurestackhci#UpdatesGet": {
+    "com.azure.azurestackhci#GetUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#UpdatesGetRequest"
+        "target": "com.azure.azurestackhci#GetUpdateRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#UpdatesGetResponse"
+        "target": "com.azure.azurestackhci#GetUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2081,7 +2081,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#UpdatesGetResponse": {
+    "com.azure.azurestackhci#GetUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2125,7 +2125,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#UpdatesGetRequest": {
+    "com.azure.azurestackhci#GetUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2165,10 +2165,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#UpdatesList": {
+    "com.azure.azurestackhci#ListUpdates": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#UpdatesListRequest"
+        "target": "com.azure.azurestackhci#ListUpdatesRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#UpdateList"
@@ -2258,7 +2258,7 @@
         "smithy.api#documentation": "Update details"
       }
     },
-    "com.azure.azurestackhci#UpdatesListRequest": {
+    "com.azure.azurestackhci#ListUpdatesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3034,13 +3034,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersUpdateSecretsLocations": {
+    "com.azure.azurestackhci#UpdateClusterSecretLocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersUpdateSecretsLocationsRequest"
+        "target": "com.azure.azurestackhci#UpdateClusterSecretLocationRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ClustersUpdateSecretsLocationsResponse"
+        "target": "com.azure.azurestackhci#UpdateClusterSecretLocationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3053,7 +3053,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersUpdateSecretsLocationsResponse": {
+    "com.azure.azurestackhci#UpdateClusterSecretLocationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4488,7 +4488,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersUpdateSecretsLocationsRequest": {
+    "com.azure.azurestackhci#UpdateClusterSecretLocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4733,10 +4733,10 @@
         "smithy.api#documentation": "Properties for Log Collection Request"
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsDelete": {
+    "com.azure.azurestackhci#DeleteSecuritySetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#SecuritySettingsDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteSecuritySettingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4752,7 +4752,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsDeleteRequest": {
+    "com.azure.azurestackhci#DeleteSecuritySettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5143,13 +5143,13 @@
         "smithy.api#documentation": "Secured Core Compliance Assignment"
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsGet": {
+    "com.azure.azurestackhci#GetSecuritySetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#SecuritySettingsGetRequest"
+        "target": "com.azure.azurestackhci#GetSecuritySettingRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#SecuritySettingsGetResponse"
+        "target": "com.azure.azurestackhci#GetSecuritySettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5162,7 +5162,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsGetResponse": {
+    "com.azure.azurestackhci#GetSecuritySettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5200,7 +5200,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsGetRequest": {
+    "com.azure.azurestackhci#GetSecuritySettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5240,10 +5240,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsListByClusters": {
+    "com.azure.azurestackhci#ListSecuritySettingByClusters": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#SecuritySettingsListByClustersRequest"
+        "target": "com.azure.azurestackhci#ListSecuritySettingByClustersRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#SecuritySettingListResult"
@@ -5327,7 +5327,7 @@
         "smithy.api#documentation": "Security settings proxy resource"
       }
     },
-    "com.azure.azurestackhci#SecuritySettingsListByClustersRequest": {
+    "com.azure.azurestackhci#ListSecuritySettingByClustersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5359,13 +5359,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#SkusGet": {
+    "com.azure.azurestackhci#GetSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#SkusGetRequest"
+        "target": "com.azure.azurestackhci#GetSkusRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#SkusGetResponse"
+        "target": "com.azure.azurestackhci#GetSkusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5378,7 +5378,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#SkusGetResponse": {
+    "com.azure.azurestackhci#GetSkusResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5504,7 +5504,7 @@
         "smithy.api#documentation": "Array of SKU versions available"
       }
     },
-    "com.azure.azurestackhci#SkusGetRequest": {
+    "com.azure.azurestackhci#GetSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5567,10 +5567,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#SkusListByOffer": {
+    "com.azure.azurestackhci#ListSkusByOffer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#SkusListByOfferRequest"
+        "target": "com.azure.azurestackhci#ListSkusByOfferRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#SkuList"
@@ -5654,7 +5654,7 @@
         "smithy.api#documentation": "Sku details."
       }
     },
-    "com.azure.azurestackhci#SkusListByOfferRequest": {
+    "com.azure.azurestackhci#ListSkusByOfferRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5709,13 +5709,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#OffersGet": {
+    "com.azure.azurestackhci#GetOffer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#OffersGetRequest"
+        "target": "com.azure.azurestackhci#GetOfferRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#OffersGetResponse"
+        "target": "com.azure.azurestackhci#GetOfferResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5728,7 +5728,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#OffersGetResponse": {
+    "com.azure.azurestackhci#GetOfferResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5813,7 +5813,7 @@
         "smithy.api#documentation": "Array of SKU mappings"
       }
     },
-    "com.azure.azurestackhci#OffersGetRequest": {
+    "com.azure.azurestackhci#GetOfferRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5868,10 +5868,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#OffersListByPublisher": {
+    "com.azure.azurestackhci#ListOfferByPublisher": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#OffersListByPublisherRequest"
+        "target": "com.azure.azurestackhci#ListOfferByPublisherRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#OfferList"
@@ -5955,7 +5955,7 @@
         "smithy.api#documentation": "Offer details."
       }
     },
-    "com.azure.azurestackhci#OffersListByPublisherRequest": {
+    "com.azure.azurestackhci#ListOfferByPublisherRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6002,10 +6002,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#OffersListByCluster": {
+    "com.azure.azurestackhci#ListOfferByCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#OffersListByClusterRequest"
+        "target": "com.azure.azurestackhci#ListOfferByClusterRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#OfferList"
@@ -6021,7 +6021,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#OffersListByClusterRequest": {
+    "com.azure.azurestackhci#ListOfferByClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6060,13 +6060,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersExtendSoftwareAssuranceBenefit": {
+    "com.azure.azurestackhci#ExtendClusterSoftwareAssuranceBenefit": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersExtendSoftwareAssuranceBenefitRequest"
+        "target": "com.azure.azurestackhci#ExtendClusterSoftwareAssuranceBenefitRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ClustersExtendSoftwareAssuranceBenefitResponse"
+        "target": "com.azure.azurestackhci#ExtendClusterSoftwareAssuranceBenefitResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6079,7 +6079,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersExtendSoftwareAssuranceBenefitResponse": {
+    "com.azure.azurestackhci#ExtendClusterSoftwareAssuranceBenefitResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6198,7 +6198,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersExtendSoftwareAssuranceBenefitRequest": {
+    "com.azure.azurestackhci#ExtendClusterSoftwareAssuranceBenefitRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6245,10 +6245,10 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#DeploymentSettingsDelete": {
+    "com.azure.azurestackhci#DeleteDeploymentSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#DeploymentSettingsDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteDeploymentSettingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6264,7 +6264,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#DeploymentSettingsDeleteRequest": {
+    "com.azure.azurestackhci#DeleteDeploymentSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8304,13 +8304,13 @@
         "smithy.api#documentation": "Azure resource ids of Arc machines to be part of cluster."
       }
     },
-    "com.azure.azurestackhci#DeploymentSettingsGet": {
+    "com.azure.azurestackhci#GetDeploymentSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#DeploymentSettingsGetRequest"
+        "target": "com.azure.azurestackhci#GetDeploymentSettingRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#DeploymentSettingsGetResponse"
+        "target": "com.azure.azurestackhci#GetDeploymentSettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8323,7 +8323,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#DeploymentSettingsGetResponse": {
+    "com.azure.azurestackhci#GetDeploymentSettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8361,7 +8361,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#DeploymentSettingsGetRequest": {
+    "com.azure.azurestackhci#GetDeploymentSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8401,10 +8401,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#DeploymentSettingsListByClusters": {
+    "com.azure.azurestackhci#ListDeploymentSettingByClusters": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#DeploymentSettingsListByClustersRequest"
+        "target": "com.azure.azurestackhci#ListDeploymentSettingByClustersRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#DeploymentSettingListResult"
@@ -8488,7 +8488,7 @@
         "smithy.api#documentation": "Edge device resource"
       }
     },
-    "com.azure.azurestackhci#DeploymentSettingsListByClustersRequest": {
+    "com.azure.azurestackhci#ListDeploymentSettingByClustersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8520,10 +8520,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersCreateIdentity": {
+    "com.azure.azurestackhci#CreateClusterIdentity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersCreateIdentityRequest"
+        "target": "com.azure.azurestackhci#CreateClusterIdentityRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ClusterIdentityResponse"
@@ -8571,7 +8571,7 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#ClustersCreateIdentityRequest": {
+    "com.azure.azurestackhci#CreateClusterIdentityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9355,10 +9355,10 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#ArcSettingsInitializeDisableProcess": {
+    "com.azure.azurestackhci#DisableArcSettingInitializeProcess": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsInitializeDisableProcessRequest"
+        "target": "com.azure.azurestackhci#DisableArcSettingInitializeProcessRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9374,7 +9374,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ArcSettingsInitializeDisableProcessRequest": {
+    "com.azure.azurestackhci#DisableArcSettingInitializeProcessRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9414,10 +9414,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsGeneratePassword": {
+    "com.azure.azurestackhci#GenerateArcSettingPassword": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsGeneratePasswordRequest"
+        "target": "com.azure.azurestackhci#GenerateArcSettingPasswordRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#PasswordCredential"
@@ -9451,7 +9451,7 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#ArcSettingsGeneratePasswordRequest": {
+    "com.azure.azurestackhci#GenerateArcSettingPasswordRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9564,10 +9564,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ExtensionsDelete": {
+    "com.azure.azurestackhci#DeleteExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ExtensionsDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteExtensionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9583,7 +9583,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ExtensionsDeleteRequest": {
+    "com.azure.azurestackhci#DeleteExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9631,13 +9631,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ExtensionsUpdate": {
+    "com.azure.azurestackhci#UpdateExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ExtensionsUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateExtensionRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ExtensionsUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9650,7 +9650,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ExtensionsUpdateResponse": {
+    "com.azure.azurestackhci#UpdateExtensionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10171,7 +10171,7 @@
         "smithy.api#documentation": "Describes the properties of a Machine Extension. This object mirrors the definition in HybridCompute."
       }
     },
-    "com.azure.azurestackhci#ExtensionsUpdateRequest": {
+    "com.azure.azurestackhci#UpdateExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10271,13 +10271,13 @@
         "smithy.api#documentation": "Describes the properties of a Machine Extension that can be updated."
       }
     },
-    "com.azure.azurestackhci#ExtensionsCreate": {
+    "com.azure.azurestackhci#CreateExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ExtensionsCreateRequest"
+        "target": "com.azure.azurestackhci#CreateExtensionRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ExtensionsCreateResponse"
+        "target": "com.azure.azurestackhci#CreateExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10290,7 +10290,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ExtensionsCreateResponse": {
+    "com.azure.azurestackhci#CreateExtensionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10328,7 +10328,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#ExtensionsCreateRequest": {
+    "com.azure.azurestackhci#CreateExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10396,13 +10396,13 @@
         "smithy.api#documentation": "Status of Arc Extension for a particular node in HCI Cluster."
       }
     },
-    "com.azure.azurestackhci#ExtensionsGet": {
+    "com.azure.azurestackhci#GetExtension": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ExtensionsGetRequest"
+        "target": "com.azure.azurestackhci#GetExtensionRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ExtensionsGetResponse"
+        "target": "com.azure.azurestackhci#GetExtensionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10415,7 +10415,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ExtensionsGetResponse": {
+    "com.azure.azurestackhci#GetExtensionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10453,7 +10453,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#ExtensionsGetRequest": {
+    "com.azure.azurestackhci#GetExtensionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10501,10 +10501,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ExtensionsListByArcSetting": {
+    "com.azure.azurestackhci#ListExtensionByArcSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ExtensionsListByArcSettingRequest"
+        "target": "com.azure.azurestackhci#ListExtensionByArcSettingRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ExtensionList"
@@ -10588,7 +10588,7 @@
         "smithy.api#documentation": "Details of a particular extension in HCI Cluster."
       }
     },
-    "com.azure.azurestackhci#ExtensionsListByArcSettingRequest": {
+    "com.azure.azurestackhci#ListExtensionByArcSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10628,10 +10628,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsCreateIdentity": {
+    "com.azure.azurestackhci#CreateArcSettingIdentity": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsCreateIdentityRequest"
+        "target": "com.azure.azurestackhci#CreateArcSettingIdentityRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ArcIdentityResponse"
@@ -10679,7 +10679,7 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#ArcSettingsCreateIdentityRequest": {
+    "com.azure.azurestackhci#CreateArcSettingIdentityRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10816,10 +10816,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsDelete": {
+    "com.azure.azurestackhci#DeleteArcSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteArcSettingRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -10835,7 +10835,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ArcSettingsDeleteRequest": {
+    "com.azure.azurestackhci#DeleteArcSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10875,13 +10875,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsUpdate": {
+    "com.azure.azurestackhci#UpdateArcSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateArcSettingRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ArcSettingsUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateArcSettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10894,7 +10894,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ArcSettingsUpdateResponse": {
+    "com.azure.azurestackhci#UpdateArcSettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10932,7 +10932,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsUpdateRequest": {
+    "com.azure.azurestackhci#UpdateArcSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11010,13 +11010,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ArcSettingsCreate": {
+    "com.azure.azurestackhci#CreateArcSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsCreateRequest"
+        "target": "com.azure.azurestackhci#CreateArcSettingRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ArcSettingsCreateResponse"
+        "target": "com.azure.azurestackhci#CreateArcSettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11029,7 +11029,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ArcSettingsCreateResponse": {
+    "com.azure.azurestackhci#CreateArcSettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11067,7 +11067,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsCreateRequest": {
+    "com.azure.azurestackhci#CreateArcSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11157,13 +11157,13 @@
         "smithy.api#documentation": "ArcSetting properties."
       }
     },
-    "com.azure.azurestackhci#ArcSettingsGet": {
+    "com.azure.azurestackhci#GetArcSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsGetRequest"
+        "target": "com.azure.azurestackhci#GetArcSettingRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ArcSettingsGetResponse"
+        "target": "com.azure.azurestackhci#GetArcSettingResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11176,7 +11176,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ArcSettingsGetResponse": {
+    "com.azure.azurestackhci#GetArcSettingResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11214,7 +11214,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsGetRequest": {
+    "com.azure.azurestackhci#GetArcSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11254,10 +11254,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ArcSettingsListByCluster": {
+    "com.azure.azurestackhci#ListArcSettingByCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ArcSettingsListByClusterRequest"
+        "target": "com.azure.azurestackhci#ListArcSettingByClusterRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ArcSettingList"
@@ -11341,7 +11341,7 @@
         "smithy.api#documentation": "ArcSetting details."
       }
     },
-    "com.azure.azurestackhci#ArcSettingsListByClusterRequest": {
+    "com.azure.azurestackhci#ListArcSettingByClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11373,10 +11373,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersDelete": {
+    "com.azure.azurestackhci#DeleteCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteClusterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -11392,7 +11392,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersDeleteRequest": {
+    "com.azure.azurestackhci#DeleteClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11424,13 +11424,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersUpdate": {
+    "com.azure.azurestackhci#UpdateCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateClusterRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ClustersUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11443,7 +11443,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersUpdateResponse": {
+    "com.azure.azurestackhci#UpdateClusterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11562,7 +11562,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersUpdateRequest": {
+    "com.azure.azurestackhci#UpdateClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -11695,13 +11695,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersCreate": {
+    "com.azure.azurestackhci#CreateCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersCreateRequest"
+        "target": "com.azure.azurestackhci#CreateClusterRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ClustersCreateResponse"
+        "target": "com.azure.azurestackhci#CreateClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11714,7 +11714,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersCreateResponse": {
+    "com.azure.azurestackhci#CreateClusterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11833,7 +11833,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersCreateRequest": {
+    "com.azure.azurestackhci#CreateClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12060,13 +12060,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersGet": {
+    "com.azure.azurestackhci#GetCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersGetRequest"
+        "target": "com.azure.azurestackhci#GetClusterRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ClustersGetResponse"
+        "target": "com.azure.azurestackhci#GetClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12079,7 +12079,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersGetResponse": {
+    "com.azure.azurestackhci#GetClusterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12198,7 +12198,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersGetRequest": {
+    "com.azure.azurestackhci#GetClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12230,10 +12230,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersListByResourceGroup": {
+    "com.azure.azurestackhci#ListClusterByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersListByResourceGroupRequest"
+        "target": "com.azure.azurestackhci#ListClusterByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ClusterList"
@@ -12398,7 +12398,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#ClustersListByResourceGroupRequest": {
+    "com.azure.azurestackhci#ListClusterByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12422,13 +12422,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ValidatedSolutionRecipesGet": {
+    "com.azure.azurestackhci#GetValidatedSolutionRecipe": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ValidatedSolutionRecipesGetRequest"
+        "target": "com.azure.azurestackhci#GetValidatedSolutionRecipeRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#ValidatedSolutionRecipesGetResponse"
+        "target": "com.azure.azurestackhci#GetValidatedSolutionRecipeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12441,7 +12441,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ValidatedSolutionRecipesGetResponse": {
+    "com.azure.azurestackhci#GetValidatedSolutionRecipeResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12795,7 +12795,7 @@
         "smithy.api#documentation": "Represents information about a validated solution recipe."
       }
     },
-    "com.azure.azurestackhci#ValidatedSolutionRecipesGetRequest": {
+    "com.azure.azurestackhci#GetValidatedSolutionRecipeRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12827,10 +12827,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ValidatedSolutionRecipesListBySubscriptionLocationResource": {
+    "com.azure.azurestackhci#ListValidatedSolutionRecipeBySubscriptionLocationResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ValidatedSolutionRecipesListBySubscriptionLocationResourceRequest"
+        "target": "com.azure.azurestackhci#ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ValidatedSolutionRecipeListResult"
@@ -12914,7 +12914,7 @@
         "smithy.api#documentation": "Represents a validated solution recipe resource."
       }
     },
-    "com.azure.azurestackhci#ValidatedSolutionRecipesListBySubscriptionLocationResourceRequest": {
+    "com.azure.azurestackhci#ListValidatedSolutionRecipeBySubscriptionLocationResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12938,10 +12938,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#ClustersListBySubscription": {
+    "com.azure.azurestackhci#ListClusterBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#ClustersListBySubscriptionRequest"
+        "target": "com.azure.azurestackhci#ListClusterBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#ClusterList"
@@ -12957,7 +12957,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#ClustersListBySubscriptionRequest": {
+    "com.azure.azurestackhci#ListClusterBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -12973,13 +12973,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#OperationsList": {
+    "com.azure.azurestackhci#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.azurestackhci#OperationsListResponse"
+        "target": "com.azure.azurestackhci#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12992,7 +12992,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#OperationsListResponse": {
+    "com.azure.azurestackhci#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -13210,10 +13210,10 @@
         "smithy.api#documentation": "Node Ids against which, current node has to be validated."
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsDelete": {
+    "com.azure.azurestackhci#DeleteEdgeDeviceJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#EdgeDeviceJobsDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteEdgeDeviceJobRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13229,7 +13229,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsDeleteRequest": {
+    "com.azure.azurestackhci#DeleteEdgeDeviceJobRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -13372,13 +13372,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsGet": {
+    "com.azure.azurestackhci#GetEdgeDeviceJob": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#EdgeDeviceJobsGetRequest"
+        "target": "com.azure.azurestackhci#GetEdgeDeviceJobRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#EdgeDeviceJobsGetResponse"
+        "target": "com.azure.azurestackhci#GetEdgeDeviceJobResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13391,7 +13391,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsGetResponse": {
+    "com.azure.azurestackhci#GetEdgeDeviceJobResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13430,7 +13430,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsGetRequest": {
+    "com.azure.azurestackhci#GetEdgeDeviceJobRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -13462,10 +13462,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsListByEdgeDevice": {
+    "com.azure.azurestackhci#ListEdgeDeviceJobByEdgeDevice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#EdgeDeviceJobsListByEdgeDeviceRequest"
+        "target": "com.azure.azurestackhci#ListEdgeDeviceJobByEdgeDeviceRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#EdgeDeviceJobListResult"
@@ -13550,7 +13550,7 @@
         "smithy.api#documentation": "EdgeDevice Jobs resource"
       }
     },
-    "com.azure.azurestackhci#EdgeDeviceJobsListByEdgeDeviceRequest": {
+    "com.azure.azurestackhci#ListEdgeDeviceJobByEdgeDeviceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -13574,10 +13574,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesDelete": {
+    "com.azure.azurestackhci#DeleteEdgeDevice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#EdgeDevicesDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteEdgeDeviceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13593,7 +13593,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesDeleteRequest": {
+    "com.azure.azurestackhci#DeleteEdgeDeviceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -13720,13 +13720,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesGet": {
+    "com.azure.azurestackhci#GetEdgeDevice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#EdgeDevicesGetRequest"
+        "target": "com.azure.azurestackhci#GetEdgeDeviceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#EdgeDevicesGetResponse"
+        "target": "com.azure.azurestackhci#GetEdgeDeviceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13739,7 +13739,7 @@
         "com.distilled.openapi#apiVersion": "2026-04-30"
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesGetResponse": {
+    "com.azure.azurestackhci#GetEdgeDeviceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13778,7 +13778,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesGetRequest": {
+    "com.azure.azurestackhci#GetEdgeDeviceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -13802,10 +13802,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesList": {
+    "com.azure.azurestackhci#ListEdgeDevices": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#EdgeDevicesListRequest"
+        "target": "com.azure.azurestackhci#ListEdgeDevicesRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#EdgeDeviceListResult"
@@ -13890,7 +13890,7 @@
         "smithy.api#documentation": "Edge device resource."
       }
     },
-    "com.azure.azurestackhci#EdgeDevicesListRequest": {
+    "com.azure.azurestackhci#ListEdgeDevicesRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -13906,13 +13906,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GalleryImagesListAll": {
+    "com.azure.azurestackhci#ListGalleryImageAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GalleryImagesListAllRequest"
+        "target": "com.azure.azurestackhci#ListGalleryImageAllRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#GalleryImagesListResult"
+        "target": "com.azure.azurestackhci#ListGalleryImagesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -13925,7 +13925,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GalleryImagesListResult": {
+    "com.azure.azurestackhci#ListGalleryImagesResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -14385,7 +14385,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#GalleryImagesListAllRequest": {
+    "com.azure.azurestackhci#ListGalleryImageAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14401,13 +14401,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GalleryImagesList": {
+    "com.azure.azurestackhci#ListGalleryImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GalleryImagesListRequest"
+        "target": "com.azure.azurestackhci#ListGalleryImagesRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#GalleryImagesListResult"
+        "target": "com.azure.azurestackhci#ListGalleryImagesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -14420,7 +14420,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GalleryImagesListRequest": {
+    "com.azure.azurestackhci#ListGalleryImagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14444,10 +14444,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GalleryImagesDelete": {
+    "com.azure.azurestackhci#DeleteGalleryImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GalleryImagesDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteGalleryImageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -14463,7 +14463,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GalleryImagesDeleteRequest": {
+    "com.azure.azurestackhci#DeleteGalleryImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14495,13 +14495,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GalleryImagesUpdate": {
+    "com.azure.azurestackhci#UpdateGalleryImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GalleryImagesUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateGalleryImageRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#GalleryImagesUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateGalleryImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14514,7 +14514,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GalleryImagesUpdateResponse": {
+    "com.azure.azurestackhci#UpdateGalleryImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14600,7 +14600,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#GalleryImagesUpdateRequest": {
+    "com.azure.azurestackhci#UpdateGalleryImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -14995,13 +14995,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#GalleryImagesGet": {
+    "com.azure.azurestackhci#GetGalleryImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GalleryImagesGetRequest"
+        "target": "com.azure.azurestackhci#GetGalleryImageRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#GalleryImagesGetResponse"
+        "target": "com.azure.azurestackhci#GetGalleryImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15014,7 +15014,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GalleryImagesGetResponse": {
+    "com.azure.azurestackhci#GetGalleryImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15100,7 +15100,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#GalleryImagesGetRequest": {
+    "com.azure.azurestackhci#GetGalleryImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15132,13 +15132,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksListAll": {
+    "com.azure.azurestackhci#ListLogicalNetworkAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#LogicalNetworksListAllRequest"
+        "target": "com.azure.azurestackhci#ListLogicalNetworkAllRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#LogicalNetworksListResult"
+        "target": "com.azure.azurestackhci#ListLogicalNetworksResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -15151,7 +15151,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksListResult": {
+    "com.azure.azurestackhci#ListLogicalNetworksResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -15726,7 +15726,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksListAllRequest": {
+    "com.azure.azurestackhci#ListLogicalNetworkAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15742,13 +15742,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksList": {
+    "com.azure.azurestackhci#ListLogicalNetworks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#LogicalNetworksListRequest"
+        "target": "com.azure.azurestackhci#ListLogicalNetworksRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#LogicalNetworksListResult"
+        "target": "com.azure.azurestackhci#ListLogicalNetworksResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -15761,7 +15761,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksListRequest": {
+    "com.azure.azurestackhci#ListLogicalNetworksRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15785,10 +15785,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksDelete": {
+    "com.azure.azurestackhci#DeleteLogicalNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#LogicalNetworksDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteLogicalNetworkRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15804,7 +15804,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksDeleteRequest": {
+    "com.azure.azurestackhci#DeleteLogicalNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -15836,13 +15836,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksUpdate": {
+    "com.azure.azurestackhci#UpdateLogicalNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#LogicalNetworksUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateLogicalNetworkRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#LogicalNetworksUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateLogicalNetworkResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15855,7 +15855,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksUpdateResponse": {
+    "com.azure.azurestackhci#UpdateLogicalNetworkResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15941,7 +15941,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksUpdateRequest": {
+    "com.azure.azurestackhci#UpdateLogicalNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16438,13 +16438,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksGet": {
+    "com.azure.azurestackhci#GetLogicalNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#LogicalNetworksGetRequest"
+        "target": "com.azure.azurestackhci#GetLogicalNetworkRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#LogicalNetworksGetResponse"
+        "target": "com.azure.azurestackhci#GetLogicalNetworkResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16456,7 +16456,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksGetResponse": {
+    "com.azure.azurestackhci#GetLogicalNetworkResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16542,7 +16542,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#LogicalNetworksGetRequest": {
+    "com.azure.azurestackhci#GetLogicalNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16574,13 +16574,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesListAll": {
+    "com.azure.azurestackhci#ListMarketplaceGalleryImageAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesListAllRequest"
+        "target": "com.azure.azurestackhci#ListMarketplaceGalleryImageAllRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesListResult"
+        "target": "com.azure.azurestackhci#ListMarketplaceGalleryImagesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -16593,7 +16593,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesListResult": {
+    "com.azure.azurestackhci#ListMarketplaceGalleryImagesResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -16943,7 +16943,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesListAllRequest": {
+    "com.azure.azurestackhci#ListMarketplaceGalleryImageAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -16959,13 +16959,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesList": {
+    "com.azure.azurestackhci#ListMarketplaceGalleryImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesListRequest"
+        "target": "com.azure.azurestackhci#ListMarketplaceGalleryImagesRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesListResult"
+        "target": "com.azure.azurestackhci#ListMarketplaceGalleryImagesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -16978,7 +16978,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesListRequest": {
+    "com.azure.azurestackhci#ListMarketplaceGalleryImagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17002,10 +17002,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesDelete": {
+    "com.azure.azurestackhci#DeleteMarketplaceGalleryImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteMarketplaceGalleryImageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17021,7 +17021,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesDeleteRequest": {
+    "com.azure.azurestackhci#DeleteMarketplaceGalleryImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17053,13 +17053,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesUpdate": {
+    "com.azure.azurestackhci#UpdateMarketplaceGalleryImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateMarketplaceGalleryImageRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateMarketplaceGalleryImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17072,7 +17072,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesUpdateResponse": {
+    "com.azure.azurestackhci#UpdateMarketplaceGalleryImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17158,7 +17158,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesUpdateRequest": {
+    "com.azure.azurestackhci#UpdateMarketplaceGalleryImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17498,13 +17498,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesGet": {
+    "com.azure.azurestackhci#GetMarketplaceGalleryImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesGetRequest"
+        "target": "com.azure.azurestackhci#GetMarketplaceGalleryImageRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#MarketplaceGalleryImagesGetResponse"
+        "target": "com.azure.azurestackhci#GetMarketplaceGalleryImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17517,7 +17517,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesGetResponse": {
+    "com.azure.azurestackhci#GetMarketplaceGalleryImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -17603,7 +17603,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#MarketplaceGalleryImagesGetRequest": {
+    "com.azure.azurestackhci#GetMarketplaceGalleryImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -17635,13 +17635,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesListAll": {
+    "com.azure.azurestackhci#ListNetworkInterfaceAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesListAllRequest"
+        "target": "com.azure.azurestackhci#ListNetworkInterfaceAllRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesListResult"
+        "target": "com.azure.azurestackhci#ListNetworkInterfacesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -17654,7 +17654,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesListResult": {
+    "com.azure.azurestackhci#ListNetworkInterfacesResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -18001,7 +18001,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesListAllRequest": {
+    "com.azure.azurestackhci#ListNetworkInterfaceAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18017,13 +18017,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesList": {
+    "com.azure.azurestackhci#ListNetworkInterfaces": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesListRequest"
+        "target": "com.azure.azurestackhci#ListNetworkInterfacesRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesListResult"
+        "target": "com.azure.azurestackhci#ListNetworkInterfacesResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -18036,7 +18036,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesListRequest": {
+    "com.azure.azurestackhci#ListNetworkInterfacesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18060,10 +18060,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesDelete": {
+    "com.azure.azurestackhci#DeleteNetworkInterface": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteNetworkInterfaceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18079,7 +18079,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesDeleteRequest": {
+    "com.azure.azurestackhci#DeleteNetworkInterfaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18111,13 +18111,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesUpdate": {
+    "com.azure.azurestackhci#UpdateNetworkInterface": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateNetworkInterfaceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateNetworkInterfaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18130,7 +18130,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesUpdateResponse": {
+    "com.azure.azurestackhci#UpdateNetworkInterfaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18216,7 +18216,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesUpdateRequest": {
+    "com.azure.azurestackhci#UpdateNetworkInterfaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18546,13 +18546,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesGet": {
+    "com.azure.azurestackhci#GetNetworkInterface": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesGetRequest"
+        "target": "com.azure.azurestackhci#GetNetworkInterfaceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#NetworkInterfacesGetResponse"
+        "target": "com.azure.azurestackhci#GetNetworkInterfaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18565,7 +18565,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesGetResponse": {
+    "com.azure.azurestackhci#GetNetworkInterfaceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18651,7 +18651,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#NetworkInterfacesGetRequest": {
+    "com.azure.azurestackhci#GetNetworkInterfaceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18683,13 +18683,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#StorageContainersListAll": {
+    "com.azure.azurestackhci#ListStorageContainerAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#StorageContainersListAllRequest"
+        "target": "com.azure.azurestackhci#ListStorageContainerAllRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#StorageContainersListResult"
+        "target": "com.azure.azurestackhci#ListStorageContainersResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -18702,7 +18702,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#StorageContainersListResult": {
+    "com.azure.azurestackhci#ListStorageContainersResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -18954,7 +18954,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#StorageContainersListAllRequest": {
+    "com.azure.azurestackhci#ListStorageContainerAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -18970,13 +18970,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#StorageContainersList": {
+    "com.azure.azurestackhci#ListStorageContainers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#StorageContainersListRequest"
+        "target": "com.azure.azurestackhci#ListStorageContainersRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#StorageContainersListResult"
+        "target": "com.azure.azurestackhci#ListStorageContainersResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -18989,7 +18989,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#StorageContainersListRequest": {
+    "com.azure.azurestackhci#ListStorageContainersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19013,10 +19013,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#StorageContainersDelete": {
+    "com.azure.azurestackhci#DeleteStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#StorageContainersDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteStorageContainerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19032,7 +19032,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#StorageContainersDeleteRequest": {
+    "com.azure.azurestackhci#DeleteStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19064,13 +19064,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#StorageContainersUpdate": {
+    "com.azure.azurestackhci#UpdateStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#StorageContainersUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateStorageContainerRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#StorageContainersUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateStorageContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19083,7 +19083,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#StorageContainersUpdateResponse": {
+    "com.azure.azurestackhci#UpdateStorageContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19169,7 +19169,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#StorageContainersUpdateRequest": {
+    "com.azure.azurestackhci#UpdateStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19425,13 +19425,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#StorageContainersGet": {
+    "com.azure.azurestackhci#GetStorageContainer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#StorageContainersGetRequest"
+        "target": "com.azure.azurestackhci#GetStorageContainerRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#StorageContainersGetResponse"
+        "target": "com.azure.azurestackhci#GetStorageContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19444,7 +19444,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#StorageContainersGetResponse": {
+    "com.azure.azurestackhci#GetStorageContainerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19530,7 +19530,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#StorageContainersGetRequest": {
+    "com.azure.azurestackhci#GetStorageContainerRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19562,13 +19562,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksListAll": {
+    "com.azure.azurestackhci#ListVirtualHardDiskAll": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksListAllRequest"
+        "target": "com.azure.azurestackhci#ListVirtualHardDiskAllRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksListResult"
+        "target": "com.azure.azurestackhci#ListVirtualHardDisksResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -19581,7 +19581,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksListResult": {
+    "com.azure.azurestackhci#ListVirtualHardDisksResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -19893,7 +19893,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksListAllRequest": {
+    "com.azure.azurestackhci#ListVirtualHardDiskAllRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19909,13 +19909,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksList": {
+    "com.azure.azurestackhci#ListVirtualHardDisks": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksListRequest"
+        "target": "com.azure.azurestackhci#ListVirtualHardDisksRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksListResult"
+        "target": "com.azure.azurestackhci#ListVirtualHardDisksResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -19928,7 +19928,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksListRequest": {
+    "com.azure.azurestackhci#ListVirtualHardDisksRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -19952,10 +19952,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksDelete": {
+    "com.azure.azurestackhci#DeleteVirtualHardDisk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteVirtualHardDiskRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19971,7 +19971,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksDeleteRequest": {
+    "com.azure.azurestackhci#DeleteVirtualHardDiskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20003,13 +20003,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksUpdate": {
+    "com.azure.azurestackhci#UpdateVirtualHardDisk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateVirtualHardDiskRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateVirtualHardDiskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20022,7 +20022,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksUpdateResponse": {
+    "com.azure.azurestackhci#UpdateVirtualHardDiskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20108,7 +20108,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksUpdateRequest": {
+    "com.azure.azurestackhci#UpdateVirtualHardDiskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20436,13 +20436,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksGet": {
+    "com.azure.azurestackhci#GetVirtualHardDisk": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksGetRequest"
+        "target": "com.azure.azurestackhci#GetVirtualHardDiskRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualHardDisksGetResponse"
+        "target": "com.azure.azurestackhci#GetVirtualHardDiskResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20455,7 +20455,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksGetResponse": {
+    "com.azure.azurestackhci#GetVirtualHardDiskResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20541,7 +20541,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.azurestackhci#VirtualHardDisksGetRequest": {
+    "com.azure.azurestackhci#GetVirtualHardDiskRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -20573,10 +20573,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GuestAgentsList": {
+    "com.azure.azurestackhci#ListGuestAgents": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GuestAgentsListRequest"
+        "target": "com.azure.azurestackhci#ListGuestAgentsRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#GuestAgentList"
@@ -20740,7 +20740,7 @@
         "smithy.api#documentation": "Username / Password Credentials to connect to guest."
       }
     },
-    "com.azure.azurestackhci#GuestAgentsListRequest": {
+    "com.azure.azurestackhci#ListGuestAgentsRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -20756,10 +20756,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GuestAgentDelete": {
+    "com.azure.azurestackhci#DeleteGuestAgent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GuestAgentDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteGuestAgentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -20775,7 +20775,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GuestAgentDeleteRequest": {
+    "com.azure.azurestackhci#DeleteGuestAgentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -20791,13 +20791,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#GuestAgentCreate": {
+    "com.azure.azurestackhci#CreateGuestAgent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GuestAgentCreateRequest"
+        "target": "com.azure.azurestackhci#CreateGuestAgentRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#GuestAgentCreateResponse"
+        "target": "com.azure.azurestackhci#CreateGuestAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20810,7 +20810,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GuestAgentCreateResponse": {
+    "com.azure.azurestackhci#CreateGuestAgentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20849,7 +20849,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#GuestAgentCreateRequest": {
+    "com.azure.azurestackhci#CreateGuestAgentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -20892,13 +20892,13 @@
         "smithy.api#documentation": "Defines the resource properties."
       }
     },
-    "com.azure.azurestackhci#GuestAgentGet": {
+    "com.azure.azurestackhci#GetGuestAgent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#GuestAgentGetRequest"
+        "target": "com.azure.azurestackhci#GetGuestAgentRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#GuestAgentGetResponse"
+        "target": "com.azure.azurestackhci#GetGuestAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20911,7 +20911,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#GuestAgentGetResponse": {
+    "com.azure.azurestackhci#GetGuestAgentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20950,7 +20950,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#GuestAgentGetRequest": {
+    "com.azure.azurestackhci#GetGuestAgentRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -21142,13 +21142,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#HybridIdentityMetadataGet": {
+    "com.azure.azurestackhci#GetHybridIdentityMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#HybridIdentityMetadataGetRequest"
+        "target": "com.azure.azurestackhci#GetHybridIdentityMetadataRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#HybridIdentityMetadataGetResponse"
+        "target": "com.azure.azurestackhci#GetHybridIdentityMetadataResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21161,7 +21161,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#HybridIdentityMetadataGetResponse": {
+    "com.azure.azurestackhci#GetHybridIdentityMetadataResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21200,7 +21200,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.azurestackhci#HybridIdentityMetadataGetRequest": {
+    "com.azure.azurestackhci#GetHybridIdentityMetadataRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -21216,10 +21216,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesList": {
+    "com.azure.azurestackhci#ListVirtualMachineInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesListRequest"
+        "target": "com.azure.azurestackhci#ListVirtualMachineInstancesRequest"
       },
       "output": {
         "target": "com.azure.azurestackhci#VirtualMachineInstanceListResult"
@@ -22492,7 +22492,7 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesListRequest": {
+    "com.azure.azurestackhci#ListVirtualMachineInstancesRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -22508,13 +22508,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesRestart": {
+    "com.azure.azurestackhci#RestartVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesRestartRequest"
+        "target": "com.azure.azurestackhci#RestartVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesRestartResponse"
+        "target": "com.azure.azurestackhci#RestartVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22527,7 +22527,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesRestartResponse": {
+    "com.azure.azurestackhci#RestartVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22634,7 +22634,7 @@
         "smithy.api#documentation": "The complex type of the extended location."
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesRestartRequest": {
+    "com.azure.azurestackhci#RestartVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -22650,13 +22650,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesStop": {
+    "com.azure.azurestackhci#StopVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesStopRequest"
+        "target": "com.azure.azurestackhci#StopVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesStopResponse"
+        "target": "com.azure.azurestackhci#StopVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22669,7 +22669,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesStopResponse": {
+    "com.azure.azurestackhci#StopVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22776,7 +22776,7 @@
         "smithy.api#documentation": "The complex type of the extended location."
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesStopRequest": {
+    "com.azure.azurestackhci#StopVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -22792,13 +22792,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesStart": {
+    "com.azure.azurestackhci#StartVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesStartRequest"
+        "target": "com.azure.azurestackhci#StartVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesStartResponse"
+        "target": "com.azure.azurestackhci#StartVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22811,7 +22811,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesStartResponse": {
+    "com.azure.azurestackhci#StartVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22918,7 +22918,7 @@
         "smithy.api#documentation": "The complex type of the extended location."
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesStartRequest": {
+    "com.azure.azurestackhci#StartVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -22934,10 +22934,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesDelete": {
+    "com.azure.azurestackhci#DeleteVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesDeleteRequest"
+        "target": "com.azure.azurestackhci#DeleteVirtualMachineInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -22953,7 +22953,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesDeleteRequest": {
+    "com.azure.azurestackhci#DeleteVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -22969,13 +22969,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesUpdate": {
+    "com.azure.azurestackhci#UpdateVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesUpdateRequest"
+        "target": "com.azure.azurestackhci#UpdateVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesUpdateResponse"
+        "target": "com.azure.azurestackhci#UpdateVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22988,7 +22988,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesUpdateResponse": {
+    "com.azure.azurestackhci#UpdateVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23095,7 +23095,7 @@
         "smithy.api#documentation": "The complex type of the extended location."
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesUpdateRequest": {
+    "com.azure.azurestackhci#UpdateVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -24215,13 +24215,13 @@
       },
       "traits": {}
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesGet": {
+    "com.azure.azurestackhci#GetVirtualMachineInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesGetRequest"
+        "target": "com.azure.azurestackhci#GetVirtualMachineInstanceRequest"
       },
       "output": {
-        "target": "com.azure.azurestackhci#VirtualMachineInstancesGetResponse"
+        "target": "com.azure.azurestackhci#GetVirtualMachineInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24234,7 +24234,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesGetResponse": {
+    "com.azure.azurestackhci#GetVirtualMachineInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -24341,7 +24341,7 @@
         "smithy.api#documentation": "The complex type of the extended location."
       }
     },
-    "com.azure.azurestackhci#VirtualMachineInstancesGetRequest": {
+    "com.azure.azurestackhci#GetVirtualMachineInstanceRequest": {
       "type": "structure",
       "members": {
         "resourceUri": {
@@ -24383,16 +24383,16 @@
           "target": "com.azure.azurestackhci#UpdatesPost"
         },
         {
-          "target": "com.azure.azurestackhci#UpdatesDelete"
+          "target": "com.azure.azurestackhci#DeleteUpdate"
         },
         {
           "target": "com.azure.azurestackhci#UpdatesPut"
         },
         {
-          "target": "com.azure.azurestackhci#UpdatesGet"
+          "target": "com.azure.azurestackhci#GetUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#UpdatesList"
+          "target": "com.azure.azurestackhci#ListUpdates"
         },
         {
           "target": "com.azure.azurestackhci#UpdateSummariesOperationGroupCheckUpdates"
@@ -24413,55 +24413,55 @@
           "target": "com.azure.azurestackhci#UpdateSummariesList2"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersUpdateSecretsLocations"
+          "target": "com.azure.azurestackhci#UpdateClusterSecretLocation"
         },
         {
           "target": "com.azure.azurestackhci#ClustersTriggerLogCollection"
         },
         {
-          "target": "com.azure.azurestackhci#SecuritySettingsDelete"
+          "target": "com.azure.azurestackhci#DeleteSecuritySetting"
         },
         {
           "target": "com.azure.azurestackhci#SecuritySettingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#SecuritySettingsGet"
+          "target": "com.azure.azurestackhci#GetSecuritySetting"
         },
         {
-          "target": "com.azure.azurestackhci#SecuritySettingsListByClusters"
+          "target": "com.azure.azurestackhci#ListSecuritySettingByClusters"
         },
         {
-          "target": "com.azure.azurestackhci#SkusGet"
+          "target": "com.azure.azurestackhci#GetSkus"
         },
         {
-          "target": "com.azure.azurestackhci#SkusListByOffer"
+          "target": "com.azure.azurestackhci#ListSkusByOffer"
         },
         {
-          "target": "com.azure.azurestackhci#OffersGet"
+          "target": "com.azure.azurestackhci#GetOffer"
         },
         {
-          "target": "com.azure.azurestackhci#OffersListByPublisher"
+          "target": "com.azure.azurestackhci#ListOfferByPublisher"
         },
         {
-          "target": "com.azure.azurestackhci#OffersListByCluster"
+          "target": "com.azure.azurestackhci#ListOfferByCluster"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersExtendSoftwareAssuranceBenefit"
+          "target": "com.azure.azurestackhci#ExtendClusterSoftwareAssuranceBenefit"
         },
         {
-          "target": "com.azure.azurestackhci#DeploymentSettingsDelete"
+          "target": "com.azure.azurestackhci#DeleteDeploymentSetting"
         },
         {
           "target": "com.azure.azurestackhci#DeploymentSettingsCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#DeploymentSettingsGet"
+          "target": "com.azure.azurestackhci#GetDeploymentSetting"
         },
         {
-          "target": "com.azure.azurestackhci#DeploymentSettingsListByClusters"
+          "target": "com.azure.azurestackhci#ListDeploymentSettingByClusters"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersCreateIdentity"
+          "target": "com.azure.azurestackhci#CreateClusterIdentity"
         },
         {
           "target": "com.azure.azurestackhci#ClustersConfigureRemoteSupport"
@@ -24470,253 +24470,253 @@
           "target": "com.azure.azurestackhci#ArcSettingsReconcile"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsInitializeDisableProcess"
+          "target": "com.azure.azurestackhci#DisableArcSettingInitializeProcess"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsGeneratePassword"
+          "target": "com.azure.azurestackhci#GenerateArcSettingPassword"
         },
         {
           "target": "com.azure.azurestackhci#ExtensionsUpgrade"
         },
         {
-          "target": "com.azure.azurestackhci#ExtensionsDelete"
+          "target": "com.azure.azurestackhci#DeleteExtension"
         },
         {
-          "target": "com.azure.azurestackhci#ExtensionsUpdate"
+          "target": "com.azure.azurestackhci#UpdateExtension"
         },
         {
-          "target": "com.azure.azurestackhci#ExtensionsCreate"
+          "target": "com.azure.azurestackhci#CreateExtension"
         },
         {
-          "target": "com.azure.azurestackhci#ExtensionsGet"
+          "target": "com.azure.azurestackhci#GetExtension"
         },
         {
-          "target": "com.azure.azurestackhci#ExtensionsListByArcSetting"
+          "target": "com.azure.azurestackhci#ListExtensionByArcSetting"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsCreateIdentity"
+          "target": "com.azure.azurestackhci#CreateArcSettingIdentity"
         },
         {
           "target": "com.azure.azurestackhci#ArcSettingsConsentAndInstallDefaultExtensions"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsDelete"
+          "target": "com.azure.azurestackhci#DeleteArcSetting"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsUpdate"
+          "target": "com.azure.azurestackhci#UpdateArcSetting"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsCreate"
+          "target": "com.azure.azurestackhci#CreateArcSetting"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsGet"
+          "target": "com.azure.azurestackhci#GetArcSetting"
         },
         {
-          "target": "com.azure.azurestackhci#ArcSettingsListByCluster"
+          "target": "com.azure.azurestackhci#ListArcSettingByCluster"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersDelete"
+          "target": "com.azure.azurestackhci#DeleteCluster"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersUpdate"
+          "target": "com.azure.azurestackhci#UpdateCluster"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersCreate"
+          "target": "com.azure.azurestackhci#CreateCluster"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersGet"
+          "target": "com.azure.azurestackhci#GetCluster"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersListByResourceGroup"
+          "target": "com.azure.azurestackhci#ListClusterByResourceGroup"
         },
         {
-          "target": "com.azure.azurestackhci#ValidatedSolutionRecipesGet"
+          "target": "com.azure.azurestackhci#GetValidatedSolutionRecipe"
         },
         {
-          "target": "com.azure.azurestackhci#ValidatedSolutionRecipesListBySubscriptionLocationResource"
+          "target": "com.azure.azurestackhci#ListValidatedSolutionRecipeBySubscriptionLocationResource"
         },
         {
-          "target": "com.azure.azurestackhci#ClustersListBySubscription"
+          "target": "com.azure.azurestackhci#ListClusterBySubscription"
         },
         {
-          "target": "com.azure.azurestackhci#OperationsList"
+          "target": "com.azure.azurestackhci#ListOperations"
         },
         {
           "target": "com.azure.azurestackhci#EdgeDevicesValidate"
         },
         {
-          "target": "com.azure.azurestackhci#EdgeDeviceJobsDelete"
+          "target": "com.azure.azurestackhci#DeleteEdgeDeviceJob"
         },
         {
           "target": "com.azure.azurestackhci#EdgeDeviceJobsCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#EdgeDeviceJobsGet"
+          "target": "com.azure.azurestackhci#GetEdgeDeviceJob"
         },
         {
-          "target": "com.azure.azurestackhci#EdgeDeviceJobsListByEdgeDevice"
+          "target": "com.azure.azurestackhci#ListEdgeDeviceJobByEdgeDevice"
         },
         {
-          "target": "com.azure.azurestackhci#EdgeDevicesDelete"
+          "target": "com.azure.azurestackhci#DeleteEdgeDevice"
         },
         {
           "target": "com.azure.azurestackhci#EdgeDevicesCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#EdgeDevicesGet"
+          "target": "com.azure.azurestackhci#GetEdgeDevice"
         },
         {
-          "target": "com.azure.azurestackhci#EdgeDevicesList"
+          "target": "com.azure.azurestackhci#ListEdgeDevices"
         },
         {
-          "target": "com.azure.azurestackhci#GalleryImagesListAll"
+          "target": "com.azure.azurestackhci#ListGalleryImageAll"
         },
         {
-          "target": "com.azure.azurestackhci#GalleryImagesList"
+          "target": "com.azure.azurestackhci#ListGalleryImages"
         },
         {
-          "target": "com.azure.azurestackhci#GalleryImagesDelete"
+          "target": "com.azure.azurestackhci#DeleteGalleryImage"
         },
         {
-          "target": "com.azure.azurestackhci#GalleryImagesUpdate"
+          "target": "com.azure.azurestackhci#UpdateGalleryImage"
         },
         {
           "target": "com.azure.azurestackhci#GalleryImagesCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#GalleryImagesGet"
+          "target": "com.azure.azurestackhci#GetGalleryImage"
         },
         {
-          "target": "com.azure.azurestackhci#LogicalNetworksListAll"
+          "target": "com.azure.azurestackhci#ListLogicalNetworkAll"
         },
         {
-          "target": "com.azure.azurestackhci#LogicalNetworksList"
+          "target": "com.azure.azurestackhci#ListLogicalNetworks"
         },
         {
-          "target": "com.azure.azurestackhci#LogicalNetworksDelete"
+          "target": "com.azure.azurestackhci#DeleteLogicalNetwork"
         },
         {
-          "target": "com.azure.azurestackhci#LogicalNetworksUpdate"
+          "target": "com.azure.azurestackhci#UpdateLogicalNetwork"
         },
         {
           "target": "com.azure.azurestackhci#LogicalNetworksCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#LogicalNetworksGet"
+          "target": "com.azure.azurestackhci#GetLogicalNetwork"
         },
         {
-          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesListAll"
+          "target": "com.azure.azurestackhci#ListMarketplaceGalleryImageAll"
         },
         {
-          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesList"
+          "target": "com.azure.azurestackhci#ListMarketplaceGalleryImages"
         },
         {
-          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesDelete"
+          "target": "com.azure.azurestackhci#DeleteMarketplaceGalleryImage"
         },
         {
-          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesUpdate"
+          "target": "com.azure.azurestackhci#UpdateMarketplaceGalleryImage"
         },
         {
           "target": "com.azure.azurestackhci#MarketplaceGalleryImagesCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#MarketplaceGalleryImagesGet"
+          "target": "com.azure.azurestackhci#GetMarketplaceGalleryImage"
         },
         {
-          "target": "com.azure.azurestackhci#NetworkInterfacesListAll"
+          "target": "com.azure.azurestackhci#ListNetworkInterfaceAll"
         },
         {
-          "target": "com.azure.azurestackhci#NetworkInterfacesList"
+          "target": "com.azure.azurestackhci#ListNetworkInterfaces"
         },
         {
-          "target": "com.azure.azurestackhci#NetworkInterfacesDelete"
+          "target": "com.azure.azurestackhci#DeleteNetworkInterface"
         },
         {
-          "target": "com.azure.azurestackhci#NetworkInterfacesUpdate"
+          "target": "com.azure.azurestackhci#UpdateNetworkInterface"
         },
         {
           "target": "com.azure.azurestackhci#NetworkInterfacesCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#NetworkInterfacesGet"
+          "target": "com.azure.azurestackhci#GetNetworkInterface"
         },
         {
-          "target": "com.azure.azurestackhci#StorageContainersListAll"
+          "target": "com.azure.azurestackhci#ListStorageContainerAll"
         },
         {
-          "target": "com.azure.azurestackhci#StorageContainersList"
+          "target": "com.azure.azurestackhci#ListStorageContainers"
         },
         {
-          "target": "com.azure.azurestackhci#StorageContainersDelete"
+          "target": "com.azure.azurestackhci#DeleteStorageContainer"
         },
         {
-          "target": "com.azure.azurestackhci#StorageContainersUpdate"
+          "target": "com.azure.azurestackhci#UpdateStorageContainer"
         },
         {
           "target": "com.azure.azurestackhci#StorageContainersCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#StorageContainersGet"
+          "target": "com.azure.azurestackhci#GetStorageContainer"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualHardDisksListAll"
+          "target": "com.azure.azurestackhci#ListVirtualHardDiskAll"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualHardDisksList"
+          "target": "com.azure.azurestackhci#ListVirtualHardDisks"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualHardDisksDelete"
+          "target": "com.azure.azurestackhci#DeleteVirtualHardDisk"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualHardDisksUpdate"
+          "target": "com.azure.azurestackhci#UpdateVirtualHardDisk"
         },
         {
           "target": "com.azure.azurestackhci#VirtualHardDisksCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualHardDisksGet"
+          "target": "com.azure.azurestackhci#GetVirtualHardDisk"
         },
         {
-          "target": "com.azure.azurestackhci#GuestAgentsList"
+          "target": "com.azure.azurestackhci#ListGuestAgents"
         },
         {
-          "target": "com.azure.azurestackhci#GuestAgentDelete"
+          "target": "com.azure.azurestackhci#DeleteGuestAgent"
         },
         {
-          "target": "com.azure.azurestackhci#GuestAgentCreate"
+          "target": "com.azure.azurestackhci#CreateGuestAgent"
         },
         {
-          "target": "com.azure.azurestackhci#GuestAgentGet"
+          "target": "com.azure.azurestackhci#GetGuestAgent"
         },
         {
           "target": "com.azure.azurestackhci#HybridIdentityMetadataList2"
         },
         {
-          "target": "com.azure.azurestackhci#HybridIdentityMetadataGet"
+          "target": "com.azure.azurestackhci#GetHybridIdentityMetadata"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesList"
+          "target": "com.azure.azurestackhci#ListVirtualMachineInstances"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesRestart"
+          "target": "com.azure.azurestackhci#RestartVirtualMachineInstance"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesStop"
+          "target": "com.azure.azurestackhci#StopVirtualMachineInstance"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesStart"
+          "target": "com.azure.azurestackhci#StartVirtualMachineInstance"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesDelete"
+          "target": "com.azure.azurestackhci#DeleteVirtualMachineInstance"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesUpdate"
+          "target": "com.azure.azurestackhci#UpdateVirtualMachineInstance"
         },
         {
           "target": "com.azure.azurestackhci#VirtualMachineInstancesCreateOrUpdate"
         },
         {
-          "target": "com.azure.azurestackhci#VirtualMachineInstancesGet"
+          "target": "com.azure.azurestackhci#GetVirtualMachineInstance"
         }
       ],
       "traits": {

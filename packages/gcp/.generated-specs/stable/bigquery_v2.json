@@ -4040,7 +4040,7 @@
         "smithy.api#documentation": "[Alpha] Information of a multi-statement transaction."
       }
     },
-    "com.gcp.bigquery_v2#BatchDeleteRowAccessPoliciesRequest": {
+    "com.gcp.bigquery_v2#DeleteBatchRowAccessPolicyRequest": {
       "type": "structure",
       "members": {
         "force": {
@@ -16021,7 +16021,7 @@
           }
         },
         "body": {
-          "target": "com.gcp.bigquery_v2#BatchDeleteRowAccessPoliciesRequest",
+          "target": "com.gcp.bigquery_v2#DeleteBatchRowAccessPolicyRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -16029,7 +16029,7 @@
         }
       }
     },
-    "com.gcp.bigquery_v2#BatchDeleteRowAccessPolicies": {
+    "com.gcp.bigquery_v2#DeleteBatchRowAccessPolicy": {
       "type": "operation",
       "input": {
         "target": "com.gcp.bigquery_v2#BatchDeleteRowAccessPoliciesRequest_"

@@ -138,8 +138,8 @@ export const CopilotSettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "CopilotSettingsCreateOrUpdateResponse",
 }) as any as S.Schema<CopilotSettingsCreateOrUpdateResponse>;
 
-export interface CopilotSettingsDeleteRequest {}
-export const CopilotSettingsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCopilotSettingRequest {}
+export const DeleteCopilotSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "DELETE",
@@ -149,18 +149,18 @@ export const CopilotSettingsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CopilotSettingsDeleteRequest",
-}) as any as S.Schema<CopilotSettingsDeleteRequest>;
+  identifier: "DeleteCopilotSettingRequest",
+}) as any as S.Schema<DeleteCopilotSettingRequest>;
 
-export interface CopilotSettingsDeleteResponse {}
-export const CopilotSettingsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCopilotSettingResponse {}
+export const DeleteCopilotSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CopilotSettingsDeleteResponse",
-}) as any as S.Schema<CopilotSettingsDeleteResponse>;
+  identifier: "DeleteCopilotSettingResponse",
+}) as any as S.Schema<DeleteCopilotSettingResponse>;
 
-export interface CopilotSettingsGetRequest {}
-export const CopilotSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetCopilotSettingRequest {}
+export const GetCopilotSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -170,10 +170,10 @@ export const CopilotSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CopilotSettingsGetRequest",
-}) as any as S.Schema<CopilotSettingsGetRequest>;
+  identifier: "GetCopilotSettingRequest",
+}) as any as S.Schema<GetCopilotSettingRequest>;
 
-export interface CopilotSettingsGetResponse {
+export interface GetCopilotSettingResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -185,7 +185,7 @@ export interface CopilotSettingsGetResponse {
   /** The resource-specific properties for this resource. */
   properties?: CopilotSettingsProperties;
 }
-export const CopilotSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCopilotSettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -194,68 +194,11 @@ export const CopilotSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(CopilotSettingsProperties),
   }),
 ).annotate({
-  identifier: "CopilotSettingsGetResponse",
-}) as any as S.Schema<CopilotSettingsGetResponse>;
+  identifier: "GetCopilotSettingResponse",
+}) as any as S.Schema<GetCopilotSettingResponse>;
 
-/** The updatable properties of the CopilotSettingsResource. */
-export interface CopilotSettingsResourceUpdateProperties {
-  /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
-  accessControlEnabled?: boolean;
-}
-export const CopilotSettingsResourceUpdateProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accessControlEnabled: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "CopilotSettingsResourceUpdateProperties",
-}) as any as S.Schema<CopilotSettingsResourceUpdateProperties>;
-
-export interface CopilotSettingsUpdateRequest {
-  /** The resource-specific properties for this resource. */
-  properties?: CopilotSettingsResourceUpdateProperties;
-}
-export const CopilotSettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    properties: S.optional(CopilotSettingsResourceUpdateProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/providers/Microsoft.PortalServices/copilotSettings/default",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "CopilotSettingsUpdateRequest",
-}) as any as S.Schema<CopilotSettingsUpdateRequest>;
-
-export interface CopilotSettingsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The resource-specific properties for this resource. */
-  properties?: CopilotSettingsProperties;
-}
-export const CopilotSettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(CopilotSettingsProperties),
-  }),
-).annotate({
-  identifier: "CopilotSettingsUpdateResponse",
-}) as any as S.Schema<CopilotSettingsUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -265,8 +208,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
@@ -327,20 +270,20 @@ export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
 
-export interface OperationsListResponse {
+export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: OperationsListResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResponseValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
 /** The contents of the file. */
 export type PortalTenantCompilefileRequestContentsMap = {
@@ -411,6 +354,63 @@ export const PortalTenantCompilefileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PortalTenantCompilefileResponse",
 }) as any as S.Schema<PortalTenantCompilefileResponse>;
 
+/** The updatable properties of the CopilotSettingsResource. */
+export interface CopilotSettingsResourceUpdateProperties {
+  /** Boolean indicating if role-based access control is enabled for copilot in this tenant. */
+  accessControlEnabled?: boolean;
+}
+export const CopilotSettingsResourceUpdateProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accessControlEnabled: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "CopilotSettingsResourceUpdateProperties",
+}) as any as S.Schema<CopilotSettingsResourceUpdateProperties>;
+
+export interface UpdateCopilotSettingRequest {
+  /** The resource-specific properties for this resource. */
+  properties?: CopilotSettingsResourceUpdateProperties;
+}
+export const UpdateCopilotSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    properties: S.optional(CopilotSettingsResourceUpdateProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/providers/Microsoft.PortalServices/copilotSettings/default",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCopilotSettingRequest",
+}) as any as S.Schema<UpdateCopilotSettingRequest>;
+
+export interface UpdateCopilotSettingResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The resource-specific properties for this resource. */
+  properties?: CopilotSettingsProperties;
+}
+export const UpdateCopilotSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(CopilotSettingsProperties),
+  }),
+).annotate({
+  identifier: "UpdateCopilotSettingResponse",
+}) as any as S.Schema<UpdateCopilotSettingResponse>;
+
 export type CopilotSettingsCreateOrUpdateError = AzureOpError;
 /** Create a CopilotSettingsResource */
 export const CopilotSettingsCreateOrUpdate: API.OperationMethod<
@@ -426,61 +426,46 @@ export const CopilotSettingsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CopilotSettingsDeleteError = AzureOpError;
+export type DeleteCopilotSettingError = AzureOpError;
 /** Delete a CopilotSettingsResource */
-export const CopilotSettingsDelete: API.OperationMethod<
-  CopilotSettingsDeleteRequest,
-  CopilotSettingsDeleteResponse,
-  CopilotSettingsDeleteError,
+export const DeleteCopilotSetting: API.OperationMethod<
+  DeleteCopilotSettingRequest,
+  DeleteCopilotSettingResponse,
+  DeleteCopilotSettingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopilotSettingsDeleteRequest,
-  output: CopilotSettingsDeleteResponse,
+  input: DeleteCopilotSettingRequest,
+  output: DeleteCopilotSettingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CopilotSettingsGetError = AzureOpError;
+export type GetCopilotSettingError = AzureOpError;
 /** Get a CopilotSettingsResource */
-export const CopilotSettingsGet: API.OperationMethod<
-  CopilotSettingsGetRequest,
-  CopilotSettingsGetResponse,
-  CopilotSettingsGetError,
+export const GetCopilotSetting: API.OperationMethod<
+  GetCopilotSettingRequest,
+  GetCopilotSettingResponse,
+  GetCopilotSettingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopilotSettingsGetRequest,
-  output: CopilotSettingsGetResponse,
+  input: GetCopilotSettingRequest,
+  output: GetCopilotSettingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CopilotSettingsUpdateError = AzureOpError;
-/** Update a CopilotSettingsResource */
-export const CopilotSettingsUpdate: API.OperationMethod<
-  CopilotSettingsUpdateRequest,
-  CopilotSettingsUpdateResponse,
-  CopilotSettingsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CopilotSettingsUpdateRequest,
-  output: CopilotSettingsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -496,6 +481,21 @@ export const PortalTenantCompilefile: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PortalTenantCompilefileRequest,
   output: PortalTenantCompilefileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCopilotSettingError = AzureOpError;
+/** Update a CopilotSettingsResource */
+export const UpdateCopilotSetting: API.OperationMethod<
+  UpdateCopilotSettingRequest,
+  UpdateCopilotSettingResponse,
+  UpdateCopilotSettingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCopilotSettingRequest,
+  output: UpdateCopilotSettingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

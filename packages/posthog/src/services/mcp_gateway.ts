@@ -11,89 +11,380 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface McpGatewayAuditCountsRetrieveRequest {
+/** * `members` - members * `agents` - agents */
+export type AudienceEnum = "members" | "agents";
+export const AudienceEnum = /*@__PURE__*/ S.String;
+
+/** * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+export type MCPPolicyPresetEnum = "allow" | "user" | "ask" | "block";
+export const MCPPolicyPresetEnum = /*@__PURE__*/ S.String;
+
+export interface CreateMcpGatewayConfigApplyPresetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Only count calls made by this service account. */
-  actor_service_account_id?: string;
+  /** Which audience's baseline to overwrite. * `members` - members * `agents` - agents */
+  audience: AudienceEnum | (string & {});
+  /** Preset to apply. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+  preset: MCPPolicyPresetEnum | (string & {});
 }
-export const McpGatewayAuditCountsRetrieveRequest = /*@__PURE__*/ S.suspend(
+export const CreateMcpGatewayConfigApplyPresetRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      actor_service_account_id: S.optional(S.String.pipe(T.Query())),
+      audience: AudienceEnum,
+      preset: MCPPolicyPresetEnum,
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/mcp_gateway/audit/counts/",
+        method: "POST",
+        uri: "/api/projects/{project_id}/mcp_gateway/config/apply_preset/",
         code: 200,
       }),
     ),
 ).annotate({
-  identifier: "McpGatewayAuditCountsRetrieveRequest",
-}) as any as S.Schema<McpGatewayAuditCountsRetrieveRequest>;
+  identifier: "CreateMcpGatewayConfigApplyPresetRequest",
+}) as any as S.Schema<CreateMcpGatewayConfigApplyPresetRequest>;
 
-export interface AuditCounts {
-  /** Every audited tool call visible to the requesting user. */
-  all: number;
-  /** Visible calls made by service accounts. */
-  agents: number;
-  /** Visible calls that were approved or are awaiting approval. */
-  approvals: number;
-  /** Visible calls the gateway blocked. */
-  blocked: number;
+export type BlankEnum = "";
+export const BlankEnum = /*@__PURE__*/ S.String;
+
+/** Baseline preset for members. Empty until an admin applies one from Team settings. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+export type TeamMCPGatewayConfigMemberDefaultPreset =
+  | MCPPolicyPresetEnum
+  | BlankEnum;
+export const TeamMCPGatewayConfigMemberDefaultPreset =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TeamMCPGatewayConfigMemberDefaultPreset>;
+
+/** Baseline preset deriving default policies for tools an agent has no explicit row for. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+export type TeamMCPGatewayConfigAgentDefaultPreset =
+  | MCPPolicyPresetEnum
+  | BlankEnum;
+export const TeamMCPGatewayConfigAgentDefaultPreset =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<TeamMCPGatewayConfigAgentDefaultPreset>;
+
+/** Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new. */
+export type TeamMCPGatewayConfigRegisteredTemplateIdsList = Array<string>;
+export const TeamMCPGatewayConfigRegisteredTemplateIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<TeamMCPGatewayConfigRegisteredTemplateIdsList>;
+
+export interface TeamMCPGatewayConfig {
+  /** Whether non-admin members may register custom MCP servers with the gateway. */
+  allow_custom_servers?: boolean;
+  /** Whether non-admin members may share their available MCP connections with agents and manage agent tool policies. */
+  allow_member_agent_access?: boolean;
+  /** Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server's own toggle always wins. */
+  default_servers_enabled?: boolean;
+  /** Baseline preset for members. Empty until an admin applies one from Team settings. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+  member_default_preset?: TeamMCPGatewayConfigMemberDefaultPreset;
+  /** Baseline preset deriving default policies for tools an agent has no explicit row for. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+  agent_default_preset?: TeamMCPGatewayConfigAgentDefaultPreset;
+  /** Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new. */
+  registered_template_ids: TeamMCPGatewayConfigRegisteredTemplateIdsList;
+  /** Whether the requesting user can administer the gateway (org admin or explicit project admin). */
+  is_admin: boolean;
 }
-export const AuditCounts = /*@__PURE__*/ S.suspend(() =>
+export const TeamMCPGatewayConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    all: S.Number,
-    agents: S.Number,
-    approvals: S.Number,
-    blocked: S.Number,
+    allow_custom_servers: S.optional(S.Boolean),
+    allow_member_agent_access: S.optional(S.Boolean),
+    default_servers_enabled: S.optional(S.Boolean),
+    member_default_preset: S.optional(TeamMCPGatewayConfigMemberDefaultPreset),
+    agent_default_preset: S.optional(TeamMCPGatewayConfigAgentDefaultPreset),
+    registered_template_ids: TeamMCPGatewayConfigRegisteredTemplateIdsList,
+    is_admin: S.Boolean,
   }),
-).annotate({ identifier: "AuditCounts" }) as any as S.Schema<AuditCounts>;
+).annotate({
+  identifier: "TeamMCPGatewayConfig",
+}) as any as S.Schema<TeamMCPGatewayConfig>;
 
-export type McpGatewayAuditListRequestQuickFilter =
-  | "all"
-  | "agents"
-  | "approvals"
-  | "blocked";
-export const McpGatewayAuditListRequestQuickFilter = /*@__PURE__*/ S.String;
+/** * `everyone` - Everyone * `members` - Members * `agents` - Agents */
+export type AppliesToEnum = "everyone" | "members" | "agents";
+export const AppliesToEnum = /*@__PURE__*/ S.String;
 
-export interface McpGatewayAuditListRequest {
+/** * `needs_approval` - Require approval * `do_not_use` - Block */
+export type EffectEnum = "needs_approval" | "do_not_use";
+export const EffectEnum = /*@__PURE__*/ S.String;
+
+export interface CreateMcpGatewayRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Only calls made by this service account. */
-  actor_service_account_id?: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** all, agents (agent calls only), approvals (approved or pending), or blocked. * `all` - all * `agents` - agents * `approvals` - approvals * `blocked` - blocked */
-  quick_filter?: McpGatewayAuditListRequestQuickFilter | (string & {});
+  /** Short rule name shown wherever the rule locks a tool. */
+  name: string;
+  /** Why this guardrail exists. */
+  description?: string;
+  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
+  applies_to?: AppliesToEnum | (string & {});
+  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
+  effect?: EffectEnum | (string & {});
+  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
+  tool_pattern?: string;
+  /** Disabled rules are kept but not evaluated. */
+  enabled?: boolean;
 }
-export const McpGatewayAuditListRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMcpGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    actor_service_account_id: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    quick_filter: S.optional(
-      McpGatewayAuditListRequestQuickFilter.pipe(T.Query()),
-    ),
+    name: S.String,
+    description: S.optional(S.String),
+    applies_to: S.optional(AppliesToEnum),
+    effect: S.optional(EffectEnum),
+    tool_pattern: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/mcp_gateway/audit/",
+      method: "POST",
+      uri: "/api/projects/{project_id}/mcp_gateway/rules/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "McpGatewayAuditListRequest",
-}) as any as S.Schema<McpGatewayAuditListRequest>;
+  identifier: "CreateMcpGatewayRuleRequest",
+}) as any as S.Schema<CreateMcpGatewayRuleRequest>;
 
-/** * `auto` - Auto-approved * `approved` - Approved * `pending` - Awaiting approval * `blocked` - Blocked */
-export type MCPAuditDecisionEnum = "auto" | "approved" | "pending" | "blocked";
-export const MCPAuditDecisionEnum = /*@__PURE__*/ S.String;
+export interface MCPOrgRule {
+  id: string;
+  /** Short rule name shown wherever the rule locks a tool. */
+  name: string;
+  /** Why this guardrail exists. */
+  description?: string;
+  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
+  applies_to?: AppliesToEnum;
+  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
+  effect?: EffectEnum;
+  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
+  tool_pattern?: string;
+  /** Disabled rules are kept but not evaluated. */
+  enabled?: boolean;
+  created_at: string;
+  updated_at: string;
+}
+export const MCPOrgRule = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    description: S.optional(S.String),
+    applies_to: S.optional(AppliesToEnum),
+    effect: S.optional(EffectEnum),
+    tool_pattern: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    created_at: S.String,
+    updated_at: S.String,
+  }),
+).annotate({ identifier: "MCPOrgRule" }) as any as S.Schema<MCPOrgRule>;
+
+/** * `team` - Team default * `member` - Member * `agent` - Agent */
+export type ScopeTypeEnum = "team" | "member" | "agent";
+export const ScopeTypeEnum = /*@__PURE__*/ S.String;
+
+/** * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
+export type MCPToolApprovalStateEnum =
+  | "approved"
+  | "needs_approval"
+  | "do_not_use";
+export const MCPToolApprovalStateEnum = /*@__PURE__*/ S.String;
+
+export interface ToolPolicyEntry {
+  /** Tool to set the policy for, up to 200 characters. */
+  tool_name: string;
+  /** State to apply for this scope. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
+  policy_state: MCPToolApprovalStateEnum | (string & {});
+}
+export const ToolPolicyEntry = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tool_name: S.String,
+    policy_state: MCPToolApprovalStateEnum,
+  }),
+).annotate({
+  identifier: "ToolPolicyEntry",
+}) as any as S.Schema<ToolPolicyEntry>;
+
+/** Per-tool states to upsert for the scope. At most 1,000 entries per request. */
+export type McpGatewayServersPoliciesCreateRequestPoliciesList =
+  Array<ToolPolicyEntry>;
+export const McpGatewayServersPoliciesCreateRequestPoliciesList =
+  /*@__PURE__*/ S.Array(
+    ToolPolicyEntry,
+  ) as any as S.Schema<McpGatewayServersPoliciesCreateRequestPoliciesList>;
+
+export interface CreateMcpGatewayServerPolicyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp gateway server. */
+  id: string;
+  /** Which scope to resolve: the team default, one member, or one agent. * `team` - Team default * `member` - Member * `agent` - Agent */
+  scope_type?: ScopeTypeEnum | (string & {});
+  /** Member scope target. Defaults to the requesting user. */
+  scope_user_id?: number;
+  /** Agent scope target. Required when scope_type is agent. */
+  scope_service_account_id?: string;
+  /** Per-tool states to upsert for the scope. At most 1,000 entries per request. */
+  policies: McpGatewayServersPoliciesCreateRequestPoliciesList;
+}
+export const CreateMcpGatewayServerPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    scope_type: S.optional(ScopeTypeEnum),
+    scope_user_id: S.optional(S.Number),
+    scope_service_account_id: S.optional(S.String),
+    policies: McpGatewayServersPoliciesCreateRequestPoliciesList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/policies/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateMcpGatewayServerPolicyRequest",
+}) as any as S.Schema<CreateMcpGatewayServerPolicyRequest>;
+
+/** JSON Schema describing the tool's input arguments. */
+export type ResolvedToolPolicyInputSchemaMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResolvedToolPolicyInputSchemaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResolvedToolPolicyInputSchemaMap>;
+
+/** * `rule` - rule * `scope` - scope * `team` - team * `preset` - preset * `legacy` - legacy * `default` - default */
+export type DecidedByEnum =
+  | "rule"
+  | "scope"
+  | "team"
+  | "preset"
+  | "legacy"
+  | "default";
+export const DecidedByEnum = /*@__PURE__*/ S.String;
+
+/** One tool with its effective policy for the requested scope. */
+export interface ResolvedToolPolicy {
+  /** Tool name as exposed by the upstream server. */
+  tool_name: string;
+  /** Tool description from the upstream server. */
+  description: string;
+  /** JSON Schema describing the tool's input arguments. */
+  input_schema: ResolvedToolPolicyInputSchemaMap;
+  /** Whether the canonical gateway heuristic treats this tool as destructive. */
+  is_destructive: boolean;
+  /** Effective state for the scope. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
+  policy_state: MCPToolApprovalStateEnum;
+  /** What the team-level chain (row or preset) yields, ignoring the scope. Null when the team imposes nothing. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
+  team_state: MCPToolApprovalStateEnum | null;
+  /** True when no state is editable for this scope (a rule match or a Blocked team ceiling). */
+  locked: boolean;
+  /** Which policy layer decided the state. * `rule` - rule * `scope` - scope * `team` - team * `preset` - preset * `legacy` - legacy * `default` - default */
+  decided_by: DecidedByEnum;
+  /** Matching org rule name, when decided_by is rule. */
+  rule_name: string;
+  /** Matching org rule description, when decided_by is rule. */
+  rule_description: string;
+}
+export const ResolvedToolPolicy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tool_name: S.String,
+    description: S.String,
+    input_schema: ResolvedToolPolicyInputSchemaMap,
+    is_destructive: S.Boolean,
+    policy_state: MCPToolApprovalStateEnum,
+    team_state: S.NullOr(MCPToolApprovalStateEnum),
+    locked: S.Boolean,
+    decided_by: DecidedByEnum,
+    rule_name: S.String,
+    rule_description: S.String,
+  }),
+).annotate({
+  identifier: "ResolvedToolPolicy",
+}) as any as S.Schema<ResolvedToolPolicy>;
+
+export type PaginatedResolvedToolPolicyListResultsList =
+  Array<ResolvedToolPolicy>;
+export const PaginatedResolvedToolPolicyListResultsList = /*@__PURE__*/ S.Array(
+  ResolvedToolPolicy,
+) as any as S.Schema<PaginatedResolvedToolPolicyListResultsList>;
+
+export interface PaginatedResolvedToolPolicyList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedResolvedToolPolicyListResultsList;
+}
+export const PaginatedResolvedToolPolicyList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedResolvedToolPolicyListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedResolvedToolPolicyList",
+}) as any as S.Schema<PaginatedResolvedToolPolicyList>;
+
+/** * `personal` - Personal * `team` - Team */
+export type MCPAgentGrantScopeEnum = "personal" | "team";
+export const MCPAgentGrantScopeEnum = /*@__PURE__*/ S.String;
+
+/** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
+export type McpGatewayServiceAccountsAccessCreateRequestPoliciesList =
+  Array<ToolPolicyEntry>;
+export const McpGatewayServiceAccountsAccessCreateRequestPoliciesList =
+  /*@__PURE__*/ S.Array(
+    ToolPolicyEntry,
+  ) as any as S.Schema<McpGatewayServiceAccountsAccessCreateRequestPoliciesList>;
+
+export interface CreateMcpGatewayServiceAccountAccessRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp service account. */
+  id: string;
+  /** Gateway server to share or stop sharing. */
+  gateway_server_id: string;
+  /** True shares the caller's own connection with the agent, false removes the caller's share. */
+  enabled: boolean;
+  /** Applies to the caller's own share, and only alongside enabled=true. 'personal' lets the agent use the connection when it works for the caller. 'team' lets it use the connection for the whole project's agent runs, including runs nobody started. It never lets another person use the connection. Defaults to personal, so re-sharing without this field resets the caller's share to personal. * `personal` - Personal * `team` - Team */
+  scope?: MCPAgentGrantScopeEnum | (string & {});
+  /** Only valid with enabled=false. Removes every member's share of this server with this agent, along with the agent's tool policies for it. Project admins only. */
+  all?: boolean;
+  /** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
+  policies?: McpGatewayServiceAccountsAccessCreateRequestPoliciesList;
+}
+export const CreateMcpGatewayServiceAccountAccessRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      gateway_server_id: S.String,
+      enabled: S.Boolean,
+      scope: S.optional(MCPAgentGrantScopeEnum),
+      all: S.optional(S.Boolean),
+      policies: S.optional(
+        McpGatewayServiceAccountsAccessCreateRequestPoliciesList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/mcp_gateway/service_accounts/{id}/access/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateMcpGatewayServiceAccountAccessRequest",
+  }) as any as S.Schema<CreateMcpGatewayServiceAccountAccessRequest>;
+
+export type AgentKeyEnum = "support" | "scout";
+export const AgentKeyEnum = /*@__PURE__*/ S.String;
+
+/** * `active` - Active * `paused` - Paused */
+export type MCPServiceAccountStatusEnum = "active" | "paused";
+export const MCPServiceAccountStatusEnum = /*@__PURE__*/ S.String;
+
+/** Gateway servers configured for this agent. */
+export type MCPServiceAccountServerIdsList = Array<string>;
+export const MCPServiceAccountServerIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<MCPServiceAccountServerIdsList>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -113,9 +404,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export const RoleAtOrganizationEnum = /*@__PURE__*/ S.String;
-
-export type BlankEnum = "";
-export const BlankEnum = /*@__PURE__*/ S.String;
 
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
 export const UserBasicRoleAtOrganization =
@@ -146,6 +434,135 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
+/** * `ready` - ready * `pending_oauth` - pending_oauth * `needs_reauth` - needs_reauth * `disabled` - disabled * `missing_credential` - missing_credential */
+export type ConnectionStateEnum =
+  | "ready"
+  | "pending_oauth"
+  | "needs_reauth"
+  | "disabled"
+  | "missing_credential";
+export const ConnectionStateEnum = /*@__PURE__*/ S.String;
+
+/** A credential-safe summary of a server configured for an agent. */
+export interface MCPServiceAccountServer {
+  /** Gateway server granted to the agent. */
+  id: string;
+  /** The member whose connection the agent uses. */
+  shared_by: UserBasic;
+  /** 'personal' lets the agent use this connection only when working for the member who shared it. 'team' lets it use the connection for the whole project's agent runs. * `personal` - Personal * `team` - Team */
+  scope: MCPAgentGrantScopeEnum;
+  /** Server display name. */
+  name: string;
+  /** Server description. */
+  description: string;
+  /** Deprecated brand icon key. Empty for custom servers. */
+  icon_key: string;
+  /** Brand domain. Empty for custom servers. */
+  icon_domain: string;
+  /** Whether the credential delegated to the agent is ready to use. * `ready` - ready * `pending_oauth` - pending_oauth * `needs_reauth` - needs_reauth * `disabled` - disabled * `missing_credential` - missing_credential */
+  connection_state: ConnectionStateEnum;
+}
+export const MCPServiceAccountServer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    shared_by: UserBasic,
+    scope: MCPAgentGrantScopeEnum,
+    name: S.String,
+    description: S.String,
+    icon_key: S.String,
+    icon_domain: S.String,
+    connection_state: ConnectionStateEnum,
+  }),
+).annotate({
+  identifier: "MCPServiceAccountServer",
+}) as any as S.Schema<MCPServiceAccountServer>;
+
+/** Credential-safe summaries of the gateway servers configured for this agent. */
+export type MCPServiceAccountServersList = Array<MCPServiceAccountServer>;
+export const MCPServiceAccountServersList = /*@__PURE__*/ S.Array(
+  MCPServiceAccountServer,
+) as any as S.Schema<MCPServiceAccountServersList>;
+
+export interface MCPServiceAccount {
+  id: string;
+  name: string;
+  description: string;
+  /** Stable internal identity handle for this PostHog agent. */
+  handle: string;
+  /** Stable PostHog agent identifier. */
+  agent_key: AgentKeyEnum;
+  /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
+  status: MCPServiceAccountStatusEnum;
+  /** Gateway servers configured for this agent. */
+  server_ids: MCPServiceAccountServerIdsList;
+  /** Credential-safe summaries of the gateway servers configured for this agent. */
+  servers: MCPServiceAccountServersList;
+  /** When the agent last made a call through the gateway. */
+  last_active_at: string | null;
+  created_at: string;
+  updated_at: string;
+}
+export const MCPServiceAccount = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    description: S.String,
+    handle: S.String,
+    agent_key: AgentKeyEnum,
+    status: MCPServiceAccountStatusEnum,
+    server_ids: MCPServiceAccountServerIdsList,
+    servers: MCPServiceAccountServersList,
+    last_active_at: S.NullOr(S.String),
+    created_at: S.String,
+    updated_at: S.String,
+  }),
+).annotate({
+  identifier: "MCPServiceAccount",
+}) as any as S.Schema<MCPServiceAccount>;
+
+export type McpGatewayAuditListRequestQuickFilter =
+  | "all"
+  | "agents"
+  | "approvals"
+  | "blocked";
+export const McpGatewayAuditListRequestQuickFilter = /*@__PURE__*/ S.String;
+
+export interface ListMcpGatewayAuditRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Only calls made by this service account. */
+  actor_service_account_id?: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** all, agents (agent calls only), approvals (approved or pending), or blocked. * `all` - all * `agents` - agents * `approvals` - approvals * `blocked` - blocked */
+  quick_filter?: McpGatewayAuditListRequestQuickFilter | (string & {});
+}
+export const ListMcpGatewayAuditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    actor_service_account_id: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    quick_filter: S.optional(
+      McpGatewayAuditListRequestQuickFilter.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/mcp_gateway/audit/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListMcpGatewayAuditRequest",
+}) as any as S.Schema<ListMcpGatewayAuditRequest>;
+
+/** * `auto` - Auto-approved * `approved` - Approved * `pending` - Awaiting approval * `blocked` - Blocked */
+export type MCPAuditDecisionEnum = "auto" | "approved" | "pending" | "blocked";
+export const MCPAuditDecisionEnum = /*@__PURE__*/ S.String;
+
 export interface AuditActorServiceAccount {
   /** Service account id. */
   id: string;
@@ -163,10 +580,6 @@ export const AuditActorServiceAccount = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AuditActorServiceAccount",
 }) as any as S.Schema<AuditActorServiceAccount>;
-
-/** * `personal` - Personal * `team` - Team */
-export type MCPAgentGrantScopeEnum = "personal" | "team";
-export const MCPAgentGrantScopeEnum = /*@__PURE__*/ S.String;
 
 /** Scope of the agent grant the call used. Blank for member calls. * `personal` - Personal * `team` - Team */
 export type MCPAuditEventGrantScope = MCPAgentGrantScopeEnum | BlankEnum;
@@ -230,116 +643,11 @@ export const PaginatedMCPAuditEventList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedMCPAuditEventList",
 }) as any as S.Schema<PaginatedMCPAuditEventList>;
 
-export interface McpGatewayAuditRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp audit event. */
-  id: string;
-}
-export const McpGatewayAuditRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/mcp_gateway/audit/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayAuditRetrieveRequest",
-}) as any as S.Schema<McpGatewayAuditRetrieveRequest>;
-
-/** * `members` - members * `agents` - agents */
-export type AudienceEnum = "members" | "agents";
-export const AudienceEnum = /*@__PURE__*/ S.String;
-
-/** * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-export type MCPPolicyPresetEnum = "allow" | "user" | "ask" | "block";
-export const MCPPolicyPresetEnum = /*@__PURE__*/ S.String;
-
-export interface McpGatewayConfigApplyPresetCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Which audience's baseline to overwrite. * `members` - members * `agents` - agents */
-  audience: AudienceEnum | (string & {});
-  /** Preset to apply. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-  preset: MCPPolicyPresetEnum | (string & {});
-}
-export const McpGatewayConfigApplyPresetCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      audience: AudienceEnum,
-      preset: MCPPolicyPresetEnum,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_gateway/config/apply_preset/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "McpGatewayConfigApplyPresetCreateRequest",
-}) as any as S.Schema<McpGatewayConfigApplyPresetCreateRequest>;
-
-/** Baseline preset for members. Empty until an admin applies one from Team settings. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-export type TeamMCPGatewayConfigMemberDefaultPreset =
-  | MCPPolicyPresetEnum
-  | BlankEnum;
-export const TeamMCPGatewayConfigMemberDefaultPreset =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TeamMCPGatewayConfigMemberDefaultPreset>;
-
-/** Baseline preset deriving default policies for tools an agent has no explicit row for. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-export type TeamMCPGatewayConfigAgentDefaultPreset =
-  | MCPPolicyPresetEnum
-  | BlankEnum;
-export const TeamMCPGatewayConfigAgentDefaultPreset =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<TeamMCPGatewayConfigAgentDefaultPreset>;
-
-/** Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new. */
-export type TeamMCPGatewayConfigRegisteredTemplateIdsList = Array<string>;
-export const TeamMCPGatewayConfigRegisteredTemplateIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TeamMCPGatewayConfigRegisteredTemplateIdsList>;
-
-export interface TeamMCPGatewayConfig {
-  /** Whether non-admin members may register custom MCP servers with the gateway. */
-  allow_custom_servers?: boolean;
-  /** Whether non-admin members may share their available MCP connections with agents and manage agent tool policies. */
-  allow_member_agent_access?: boolean;
-  /** Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server's own toggle always wins. */
-  default_servers_enabled?: boolean;
-  /** Baseline preset for members. Empty until an admin applies one from Team settings. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-  member_default_preset?: TeamMCPGatewayConfigMemberDefaultPreset;
-  /** Baseline preset deriving default policies for tools an agent has no explicit row for. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-  agent_default_preset?: TeamMCPGatewayConfigAgentDefaultPreset;
-  /** Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new. */
-  registered_template_ids: TeamMCPGatewayConfigRegisteredTemplateIdsList;
-  /** Whether the requesting user can administer the gateway (org admin or explicit project admin). */
-  is_admin: boolean;
-}
-export const TeamMCPGatewayConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allow_custom_servers: S.optional(S.Boolean),
-    allow_member_agent_access: S.optional(S.Boolean),
-    default_servers_enabled: S.optional(S.Boolean),
-    member_default_preset: S.optional(TeamMCPGatewayConfigMemberDefaultPreset),
-    agent_default_preset: S.optional(TeamMCPGatewayConfigAgentDefaultPreset),
-    registered_template_ids: TeamMCPGatewayConfigRegisteredTemplateIdsList,
-    is_admin: S.Boolean,
-  }),
-).annotate({
-  identifier: "TeamMCPGatewayConfig",
-}) as any as S.Schema<TeamMCPGatewayConfig>;
-
-export interface McpGatewayConfigListRequest {
+export interface ListMcpGatewayConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const McpGatewayConfigListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMcpGatewayConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
   }).pipe(
@@ -350,84 +658,10 @@ export const McpGatewayConfigListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "McpGatewayConfigListRequest",
-}) as any as S.Schema<McpGatewayConfigListRequest>;
+  identifier: "ListMcpGatewayConfigRequest",
+}) as any as S.Schema<ListMcpGatewayConfigRequest>;
 
-export interface McpGatewayConfigSetAllServersEnabledCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** True enables every MCP server for the team; false disables them all. Applies to every registered server and becomes the default for untouched and future catalog servers. */
-  enabled: boolean;
-}
-export const McpGatewayConfigSetAllServersEnabledCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_gateway/config/set_all_servers_enabled/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "McpGatewayConfigSetAllServersEnabledCreateRequest",
-  }) as any as S.Schema<McpGatewayConfigSetAllServersEnabledCreateRequest>;
-
-/** Baseline preset for members. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-export type McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset =
-  | MCPPolicyPresetEnum
-  | BlankEnum;
-export const McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset>;
-
-/** Baseline preset for agents. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-export type McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset =
-  | MCPPolicyPresetEnum
-  | BlankEnum;
-export const McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset>;
-
-export interface McpGatewayConfigUpdateSettingsCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Whether non-admin members may register custom MCP servers. */
-  allow_custom_servers?: boolean;
-  /** Whether non-admin members may share their available MCP connections with agents and manage agent tool policies. */
-  allow_member_agent_access?: boolean;
-  /** Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server's own toggle always wins. */
-  default_servers_enabled?: boolean;
-  /** Baseline preset for members. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-  member_default_preset?: McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset;
-  /** Baseline preset for agents. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
-  agent_default_preset?: McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset;
-}
-export const McpGatewayConfigUpdateSettingsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      allow_custom_servers: S.optional(S.Boolean),
-      allow_member_agent_access: S.optional(S.Boolean),
-      default_servers_enabled: S.optional(S.Boolean),
-      member_default_preset: S.optional(
-        McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset,
-      ),
-      agent_default_preset: S.optional(
-        McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_gateway/config/update_settings/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "McpGatewayConfigUpdateSettingsCreateRequest",
-  }) as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequest>;
-
-export interface McpGatewayMembersListRequest {
+export interface ListMcpGatewayMembersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -435,7 +669,7 @@ export interface McpGatewayMembersListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const McpGatewayMembersListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMcpGatewayMembersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -448,8 +682,8 @@ export const McpGatewayMembersListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "McpGatewayMembersListRequest",
-}) as any as S.Schema<McpGatewayMembersListRequest>;
+  identifier: "ListMcpGatewayMembersRequest",
+}) as any as S.Schema<ListMcpGatewayMembersRequest>;
 
 /** Gateway servers the member has a personal connection to. */
 export type GatewayMemberSummaryConnectedServerIdsList = Array<string>;
@@ -509,164 +743,7 @@ export const PaginatedGatewayMemberSummaryList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedGatewayMemberSummaryList",
 }) as any as S.Schema<PaginatedGatewayMemberSummaryList>;
 
-export interface McpGatewayMembersRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-}
-export const McpGatewayMembersRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/mcp_gateway/members/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayMembersRetrieveRequest",
-}) as any as S.Schema<McpGatewayMembersRetrieveRequest>;
-
-export interface McpGatewayMembersSetAccessCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-  /** Gateway server to toggle for the member. */
-  gateway_server_id: string;
-  /** False turns the server off for the member; true restores it. */
-  enabled: boolean;
-}
-export const McpGatewayMembersSetAccessCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      gateway_server_id: S.String,
-      enabled: S.Boolean,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_gateway/members/{id}/set_access/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "McpGatewayMembersSetAccessCreateRequest",
-}) as any as S.Schema<McpGatewayMembersSetAccessCreateRequest>;
-
-export interface McpGatewayMembersSetAccessCreateResponse {}
-export const McpGatewayMembersSetAccessCreateResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "McpGatewayMembersSetAccessCreateResponse",
-}) as any as S.Schema<McpGatewayMembersSetAccessCreateResponse>;
-
-/** * `everyone` - Everyone * `members` - Members * `agents` - Agents */
-export type AppliesToEnum = "everyone" | "members" | "agents";
-export const AppliesToEnum = /*@__PURE__*/ S.String;
-
-/** * `needs_approval` - Require approval * `do_not_use` - Block */
-export type EffectEnum = "needs_approval" | "do_not_use";
-export const EffectEnum = /*@__PURE__*/ S.String;
-
-export interface McpGatewayRulesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Short rule name shown wherever the rule locks a tool. */
-  name: string;
-  /** Why this guardrail exists. */
-  description?: string;
-  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
-  applies_to?: AppliesToEnum | (string & {});
-  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
-  effect?: EffectEnum | (string & {});
-  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
-  tool_pattern?: string;
-  /** Disabled rules are kept but not evaluated. */
-  enabled?: boolean;
-}
-export const McpGatewayRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    name: S.String,
-    description: S.optional(S.String),
-    applies_to: S.optional(AppliesToEnum),
-    effect: S.optional(EffectEnum),
-    tool_pattern: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/mcp_gateway/rules/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayRulesCreateRequest",
-}) as any as S.Schema<McpGatewayRulesCreateRequest>;
-
-export interface MCPOrgRule {
-  id: string;
-  /** Short rule name shown wherever the rule locks a tool. */
-  name: string;
-  /** Why this guardrail exists. */
-  description?: string;
-  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
-  applies_to?: AppliesToEnum;
-  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
-  effect?: EffectEnum;
-  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
-  tool_pattern?: string;
-  /** Disabled rules are kept but not evaluated. */
-  enabled?: boolean;
-  created_at: string;
-  updated_at: string;
-}
-export const MCPOrgRule = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.optional(S.String),
-    applies_to: S.optional(AppliesToEnum),
-    effect: S.optional(EffectEnum),
-    tool_pattern: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({ identifier: "MCPOrgRule" }) as any as S.Schema<MCPOrgRule>;
-
-export interface McpGatewayRulesDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp org rule. */
-  id: string;
-}
-export const McpGatewayRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayRulesDestroyRequest",
-}) as any as S.Schema<McpGatewayRulesDestroyRequest>;
-
-export interface McpGatewayRulesDestroyResponse {}
-export const McpGatewayRulesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "McpGatewayRulesDestroyResponse",
-}) as any as S.Schema<McpGatewayRulesDestroyResponse>;
-
-export interface McpGatewayRulesListRequest {
+export interface ListMcpGatewayRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -674,7 +751,7 @@ export interface McpGatewayRulesListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const McpGatewayRulesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMcpGatewayRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -687,8 +764,8 @@ export const McpGatewayRulesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "McpGatewayRulesListRequest",
-}) as any as S.Schema<McpGatewayRulesListRequest>;
+  identifier: "ListMcpGatewayRulesRequest",
+}) as any as S.Schema<ListMcpGatewayRulesRequest>;
 
 export type PaginatedMCPOrgRuleListResultsList = Array<MCPOrgRule>;
 export const PaginatedMCPOrgRuleListResultsList = /*@__PURE__*/ S.Array(
@@ -712,134 +789,7 @@ export const PaginatedMCPOrgRuleList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedMCPOrgRuleList",
 }) as any as S.Schema<PaginatedMCPOrgRuleList>;
 
-export interface McpGatewayRulesPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp org rule. */
-  id: string;
-  /** Short rule name shown wherever the rule locks a tool. */
-  name?: string;
-  /** Why this guardrail exists. */
-  description?: string;
-  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
-  applies_to?: AppliesToEnum | (string & {});
-  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
-  effect?: EffectEnum | (string & {});
-  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
-  tool_pattern?: string;
-  /** Disabled rules are kept but not evaluated. */
-  enabled?: boolean;
-}
-export const McpGatewayRulesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    applies_to: S.optional(AppliesToEnum),
-    effect: S.optional(EffectEnum),
-    tool_pattern: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayRulesPartialUpdateRequest",
-}) as any as S.Schema<McpGatewayRulesPartialUpdateRequest>;
-
-export interface McpGatewayRulesRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp org rule. */
-  id: string;
-}
-export const McpGatewayRulesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayRulesRetrieveRequest",
-}) as any as S.Schema<McpGatewayRulesRetrieveRequest>;
-
-export interface McpGatewayRulesUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp org rule. */
-  id: string;
-  /** Short rule name shown wherever the rule locks a tool. */
-  name: string;
-  /** Why this guardrail exists. */
-  description?: string;
-  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
-  applies_to?: AppliesToEnum | (string & {});
-  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
-  effect?: EffectEnum | (string & {});
-  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
-  tool_pattern?: string;
-  /** Disabled rules are kept but not evaluated. */
-  enabled?: boolean;
-}
-export const McpGatewayRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.String,
-    description: S.optional(S.String),
-    applies_to: S.optional(AppliesToEnum),
-    effect: S.optional(EffectEnum),
-    tool_pattern: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayRulesUpdateRequest",
-}) as any as S.Schema<McpGatewayRulesUpdateRequest>;
-
-export interface McpGatewayServersDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp gateway server. */
-  id: string;
-}
-export const McpGatewayServersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayServersDestroyRequest",
-}) as any as S.Schema<McpGatewayServersDestroyRequest>;
-
-export interface McpGatewayServersDestroyResponse {}
-export const McpGatewayServersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "McpGatewayServersDestroyResponse",
-}) as any as S.Schema<McpGatewayServersDestroyResponse>;
-
-export interface McpGatewayServersListRequest {
+export interface ListMcpGatewayServersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -847,7 +797,7 @@ export interface McpGatewayServersListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const McpGatewayServersListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMcpGatewayServersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -860,8 +810,8 @@ export const McpGatewayServersListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "McpGatewayServersListRequest",
-}) as any as S.Schema<McpGatewayServersListRequest>;
+  identifier: "ListMcpGatewayServersRequest",
+}) as any as S.Schema<ListMcpGatewayServersRequest>;
 
 /** * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
 export type MCPServerCategoryEnum =
@@ -932,10 +882,6 @@ export const GatewayYourConnection = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GatewayYourConnection",
 }) as any as S.Schema<GatewayYourConnection>;
-
-/** * `active` - Active * `paused` - Paused */
-export type MCPServiceAccountStatusEnum = "active" | "paused";
-export const MCPServiceAccountStatusEnum = /*@__PURE__*/ S.String;
 
 /** One agent's access to a gateway server, on behalf of one member. */
 export interface GatewayAgentAccess {
@@ -1067,210 +1013,320 @@ export const PaginatedMCPGatewayServerList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedMCPGatewayServerList",
 }) as any as S.Schema<PaginatedMCPGatewayServerList>;
 
-export interface McpGatewayServersPartialUpdateRequest {
+export interface ListMcpGatewayServiceAccountsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** A UUID string identifying this mcp gateway server. */
-  id: string;
-  /** Display name shown across the gateway. */
-  name?: string;
-  /** Short description shown on server cards. */
-  description?: string;
-  /** Catalog category used for filter chips. * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
-  category?: MCPServerCategoryEnum | (string & {});
-  /** Whether the team can see and call the server. Turning it off also blocks agent access. */
-  is_team_enabled?: boolean;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
 }
-export const McpGatewayServersPartialUpdateRequest = /*@__PURE__*/ S.suspend(
+export const ListMcpGatewayServiceAccountsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      description: S.optional(S.String),
-      category: S.optional(MCPServerCategoryEnum),
-      is_team_enabled: S.optional(S.Boolean),
+      limit: S.optional(S.Number.pipe(T.Query())),
+      offset: S.optional(S.Number.pipe(T.Query())),
     }).pipe(
       T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/",
+        method: "GET",
+        uri: "/api/projects/{project_id}/mcp_gateway/service_accounts/",
         code: 200,
       }),
     ),
 ).annotate({
-  identifier: "McpGatewayServersPartialUpdateRequest",
-}) as any as S.Schema<McpGatewayServersPartialUpdateRequest>;
+  identifier: "ListMcpGatewayServiceAccountsRequest",
+}) as any as S.Schema<ListMcpGatewayServiceAccountsRequest>;
 
-export interface MCPGatewayServerUpdate {
-  /** Display name shown across the gateway. */
-  name?: string;
-  /** Short description shown on server cards. */
-  description?: string;
-  /** Catalog category used for filter chips. * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
-  category?: MCPServerCategoryEnum;
-  /** Whether the team can see and call the server. Turning it off also blocks agent access. */
-  is_team_enabled?: boolean;
-}
-export const MCPGatewayServerUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    category: S.optional(MCPServerCategoryEnum),
-    is_team_enabled: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MCPGatewayServerUpdate",
-}) as any as S.Schema<MCPGatewayServerUpdate>;
+export type PaginatedMCPServiceAccountListResultsList =
+  Array<MCPServiceAccount>;
+export const PaginatedMCPServiceAccountListResultsList = /*@__PURE__*/ S.Array(
+  MCPServiceAccount,
+) as any as S.Schema<PaginatedMCPServiceAccountListResultsList>;
 
-/** * `team` - Team default * `member` - Member * `agent` - Agent */
-export type ScopeTypeEnum = "team" | "member" | "agent";
-export const ScopeTypeEnum = /*@__PURE__*/ S.String;
-
-/** * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
-export type MCPToolApprovalStateEnum =
-  | "approved"
-  | "needs_approval"
-  | "do_not_use";
-export const MCPToolApprovalStateEnum = /*@__PURE__*/ S.String;
-
-export interface ToolPolicyEntry {
-  /** Tool to set the policy for, up to 200 characters. */
-  tool_name: string;
-  /** State to apply for this scope. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
-  policy_state: MCPToolApprovalStateEnum | (string & {});
-}
-export const ToolPolicyEntry = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tool_name: S.String,
-    policy_state: MCPToolApprovalStateEnum,
-  }),
-).annotate({
-  identifier: "ToolPolicyEntry",
-}) as any as S.Schema<ToolPolicyEntry>;
-
-/** Per-tool states to upsert for the scope. At most 1,000 entries per request. */
-export type McpGatewayServersPoliciesCreateRequestPoliciesList =
-  Array<ToolPolicyEntry>;
-export const McpGatewayServersPoliciesCreateRequestPoliciesList =
-  /*@__PURE__*/ S.Array(
-    ToolPolicyEntry,
-  ) as any as S.Schema<McpGatewayServersPoliciesCreateRequestPoliciesList>;
-
-export interface McpGatewayServersPoliciesCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp gateway server. */
-  id: string;
-  /** Which scope to resolve: the team default, one member, or one agent. * `team` - Team default * `member` - Member * `agent` - Agent */
-  scope_type?: ScopeTypeEnum | (string & {});
-  /** Member scope target. Defaults to the requesting user. */
-  scope_user_id?: number;
-  /** Agent scope target. Required when scope_type is agent. */
-  scope_service_account_id?: string;
-  /** Per-tool states to upsert for the scope. At most 1,000 entries per request. */
-  policies: McpGatewayServersPoliciesCreateRequestPoliciesList;
-}
-export const McpGatewayServersPoliciesCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      scope_type: S.optional(ScopeTypeEnum),
-      scope_user_id: S.optional(S.Number),
-      scope_service_account_id: S.optional(S.String),
-      policies: McpGatewayServersPoliciesCreateRequestPoliciesList,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/policies/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "McpGatewayServersPoliciesCreateRequest",
-}) as any as S.Schema<McpGatewayServersPoliciesCreateRequest>;
-
-/** JSON Schema describing the tool's input arguments. */
-export type ResolvedToolPolicyInputSchemaMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResolvedToolPolicyInputSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResolvedToolPolicyInputSchemaMap>;
-
-/** * `rule` - rule * `scope` - scope * `team` - team * `preset` - preset * `legacy` - legacy * `default` - default */
-export type DecidedByEnum =
-  | "rule"
-  | "scope"
-  | "team"
-  | "preset"
-  | "legacy"
-  | "default";
-export const DecidedByEnum = /*@__PURE__*/ S.String;
-
-/** One tool with its effective policy for the requested scope. */
-export interface ResolvedToolPolicy {
-  /** Tool name as exposed by the upstream server. */
-  tool_name: string;
-  /** Tool description from the upstream server. */
-  description: string;
-  /** JSON Schema describing the tool's input arguments. */
-  input_schema: ResolvedToolPolicyInputSchemaMap;
-  /** Whether the canonical gateway heuristic treats this tool as destructive. */
-  is_destructive: boolean;
-  /** Effective state for the scope. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
-  policy_state: MCPToolApprovalStateEnum;
-  /** What the team-level chain (row or preset) yields, ignoring the scope. Null when the team imposes nothing. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
-  team_state: MCPToolApprovalStateEnum | null;
-  /** True when no state is editable for this scope (a rule match or a Blocked team ceiling). */
-  locked: boolean;
-  /** Which policy layer decided the state. * `rule` - rule * `scope` - scope * `team` - team * `preset` - preset * `legacy` - legacy * `default` - default */
-  decided_by: DecidedByEnum;
-  /** Matching org rule name, when decided_by is rule. */
-  rule_name: string;
-  /** Matching org rule description, when decided_by is rule. */
-  rule_description: string;
-}
-export const ResolvedToolPolicy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tool_name: S.String,
-    description: S.String,
-    input_schema: ResolvedToolPolicyInputSchemaMap,
-    is_destructive: S.Boolean,
-    policy_state: MCPToolApprovalStateEnum,
-    team_state: S.NullOr(MCPToolApprovalStateEnum),
-    locked: S.Boolean,
-    decided_by: DecidedByEnum,
-    rule_name: S.String,
-    rule_description: S.String,
-  }),
-).annotate({
-  identifier: "ResolvedToolPolicy",
-}) as any as S.Schema<ResolvedToolPolicy>;
-
-export type PaginatedResolvedToolPolicyListResultsList =
-  Array<ResolvedToolPolicy>;
-export const PaginatedResolvedToolPolicyListResultsList = /*@__PURE__*/ S.Array(
-  ResolvedToolPolicy,
-) as any as S.Schema<PaginatedResolvedToolPolicyListResultsList>;
-
-export interface PaginatedResolvedToolPolicyList {
+export interface PaginatedMCPServiceAccountList {
   count: number;
   next?: string | null;
   previous?: string | null;
-  results: PaginatedResolvedToolPolicyListResultsList;
+  results: PaginatedMCPServiceAccountListResultsList;
 }
-export const PaginatedResolvedToolPolicyList = /*@__PURE__*/ S.suspend(() =>
+export const PaginatedMCPServiceAccountList = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     next: S.optional(S.NullOr(S.String)),
     previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedResolvedToolPolicyListResultsList,
+    results: PaginatedMCPServiceAccountListResultsList,
   }),
 ).annotate({
-  identifier: "PaginatedResolvedToolPolicyList",
-}) as any as S.Schema<PaginatedResolvedToolPolicyList>;
+  identifier: "PaginatedMCPServiceAccountList",
+}) as any as S.Schema<PaginatedMCPServiceAccountList>;
+
+export interface McpGatewayAuditCountsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Only count calls made by this service account. */
+  actor_service_account_id?: string;
+}
+export const McpGatewayAuditCountsRetrieveRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      actor_service_account_id: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/api/projects/{project_id}/mcp_gateway/audit/counts/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "McpGatewayAuditCountsRetrieveRequest",
+}) as any as S.Schema<McpGatewayAuditCountsRetrieveRequest>;
+
+export interface AuditCounts {
+  /** Every audited tool call visible to the requesting user. */
+  all: number;
+  /** Visible calls made by service accounts. */
+  agents: number;
+  /** Visible calls that were approved or are awaiting approval. */
+  approvals: number;
+  /** Visible calls the gateway blocked. */
+  blocked: number;
+}
+export const AuditCounts = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    all: S.Number,
+    agents: S.Number,
+    approvals: S.Number,
+    blocked: S.Number,
+  }),
+).annotate({ identifier: "AuditCounts" }) as any as S.Schema<AuditCounts>;
+
+export interface McpGatewayAuditRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp audit event. */
+  id: string;
+}
+export const McpGatewayAuditRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/mcp_gateway/audit/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "McpGatewayAuditRetrieveRequest",
+}) as any as S.Schema<McpGatewayAuditRetrieveRequest>;
+
+export interface McpGatewayConfigSetAllServersEnabledCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** True enables every MCP server for the team; false disables them all. Applies to every registered server and becomes the default for untouched and future catalog servers. */
+  enabled: boolean;
+}
+export const McpGatewayConfigSetAllServersEnabledCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      enabled: S.Boolean,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/mcp_gateway/config/set_all_servers_enabled/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "McpGatewayConfigSetAllServersEnabledCreateRequest",
+  }) as any as S.Schema<McpGatewayConfigSetAllServersEnabledCreateRequest>;
+
+/** Baseline preset for members. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+export type McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset =
+  | MCPPolicyPresetEnum
+  | BlankEnum;
+export const McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset>;
+
+/** Baseline preset for agents. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+export type McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset =
+  | MCPPolicyPresetEnum
+  | BlankEnum;
+export const McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset =
+  /*@__PURE__*/ S.Unknown as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset>;
+
+export interface McpGatewayConfigUpdateSettingsCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Whether non-admin members may register custom MCP servers. */
+  allow_custom_servers?: boolean;
+  /** Whether non-admin members may share their available MCP connections with agents and manage agent tool policies. */
+  allow_member_agent_access?: boolean;
+  /** Whether servers with no gateway registration — including catalog templates published later — are enabled for the team. A registered server's own toggle always wins. */
+  default_servers_enabled?: boolean;
+  /** Baseline preset for members. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+  member_default_preset?: McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset;
+  /** Baseline preset for agents. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
+  agent_default_preset?: McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset;
+}
+export const McpGatewayConfigUpdateSettingsCreateRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      allow_custom_servers: S.optional(S.Boolean),
+      allow_member_agent_access: S.optional(S.Boolean),
+      default_servers_enabled: S.optional(S.Boolean),
+      member_default_preset: S.optional(
+        McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset,
+      ),
+      agent_default_preset: S.optional(
+        McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/mcp_gateway/config/update_settings/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "McpGatewayConfigUpdateSettingsCreateRequest",
+  }) as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequest>;
+
+export interface McpGatewayMembersRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  id: string;
+}
+export const McpGatewayMembersRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/mcp_gateway/members/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "McpGatewayMembersRetrieveRequest",
+}) as any as S.Schema<McpGatewayMembersRetrieveRequest>;
+
+export interface McpGatewayMembersSetAccessCreateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  id: string;
+  /** Gateway server to toggle for the member. */
+  gateway_server_id: string;
+  /** False turns the server off for the member; true restores it. */
+  enabled: boolean;
+}
+export const McpGatewayMembersSetAccessCreateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      gateway_server_id: S.String,
+      enabled: S.Boolean,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/mcp_gateway/members/{id}/set_access/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "McpGatewayMembersSetAccessCreateRequest",
+}) as any as S.Schema<McpGatewayMembersSetAccessCreateRequest>;
+
+export interface McpGatewayMembersSetAccessCreateResponse {}
+export const McpGatewayMembersSetAccessCreateResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "McpGatewayMembersSetAccessCreateResponse",
+}) as any as S.Schema<McpGatewayMembersSetAccessCreateResponse>;
+
+export interface McpGatewayRulesDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp org rule. */
+  id: string;
+}
+export const McpGatewayRulesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "McpGatewayRulesDestroyRequest",
+}) as any as S.Schema<McpGatewayRulesDestroyRequest>;
+
+export interface McpGatewayRulesDestroyResponse {}
+export const McpGatewayRulesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "McpGatewayRulesDestroyResponse",
+}) as any as S.Schema<McpGatewayRulesDestroyResponse>;
+
+export interface McpGatewayRulesRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp org rule. */
+  id: string;
+}
+export const McpGatewayRulesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "McpGatewayRulesRetrieveRequest",
+}) as any as S.Schema<McpGatewayRulesRetrieveRequest>;
+
+export interface McpGatewayServersDestroyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp gateway server. */
+  id: string;
+}
+export const McpGatewayServersDestroyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "McpGatewayServersDestroyRequest",
+}) as any as S.Schema<McpGatewayServersDestroyRequest>;
+
+export interface McpGatewayServersDestroyResponse {}
+export const McpGatewayServersDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "McpGatewayServersDestroyResponse",
+}) as any as S.Schema<McpGatewayServersDestroyResponse>;
 
 export interface McpGatewayServersRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1358,266 +1414,6 @@ export const McpGatewayServersToolsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "McpGatewayServersToolsRetrieveRequest",
 }) as any as S.Schema<McpGatewayServersToolsRetrieveRequest>;
 
-export interface McpGatewayServersUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp gateway server. */
-  id: string;
-  /** Display name shown across the gateway. */
-  name?: string;
-  /** Short description shown on server cards. */
-  description?: string;
-  /** Catalog category used for filter chips. * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
-  category?: MCPServerCategoryEnum | (string & {});
-  /** Whether the team can see and call the server. Turning it off also blocks agent access. */
-  is_team_enabled?: boolean;
-}
-export const McpGatewayServersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    description: S.optional(S.String),
-    category: S.optional(MCPServerCategoryEnum),
-    is_team_enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "McpGatewayServersUpdateRequest",
-}) as any as S.Schema<McpGatewayServersUpdateRequest>;
-
-/** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
-export type McpGatewayServiceAccountsAccessCreateRequestPoliciesList =
-  Array<ToolPolicyEntry>;
-export const McpGatewayServiceAccountsAccessCreateRequestPoliciesList =
-  /*@__PURE__*/ S.Array(
-    ToolPolicyEntry,
-  ) as any as S.Schema<McpGatewayServiceAccountsAccessCreateRequestPoliciesList>;
-
-export interface McpGatewayServiceAccountsAccessCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp service account. */
-  id: string;
-  /** Gateway server to share or stop sharing. */
-  gateway_server_id: string;
-  /** True shares the caller's own connection with the agent, false removes the caller's share. */
-  enabled: boolean;
-  /** Applies to the caller's own share, and only alongside enabled=true. 'personal' lets the agent use the connection when it works for the caller. 'team' lets it use the connection for the whole project's agent runs, including runs nobody started. It never lets another person use the connection. Defaults to personal, so re-sharing without this field resets the caller's share to personal. * `personal` - Personal * `team` - Team */
-  scope?: MCPAgentGrantScopeEnum | (string & {});
-  /** Only valid with enabled=false. Removes every member's share of this server with this agent, along with the agent's tool policies for it. Project admins only. */
-  all?: boolean;
-  /** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
-  policies?: McpGatewayServiceAccountsAccessCreateRequestPoliciesList;
-}
-export const McpGatewayServiceAccountsAccessCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      gateway_server_id: S.String,
-      enabled: S.Boolean,
-      scope: S.optional(MCPAgentGrantScopeEnum),
-      all: S.optional(S.Boolean),
-      policies: S.optional(
-        McpGatewayServiceAccountsAccessCreateRequestPoliciesList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/mcp_gateway/service_accounts/{id}/access/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "McpGatewayServiceAccountsAccessCreateRequest",
-  }) as any as S.Schema<McpGatewayServiceAccountsAccessCreateRequest>;
-
-export type AgentKeyEnum = "support" | "scout";
-export const AgentKeyEnum = /*@__PURE__*/ S.String;
-
-/** Gateway servers configured for this agent. */
-export type MCPServiceAccountServerIdsList = Array<string>;
-export const MCPServiceAccountServerIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<MCPServiceAccountServerIdsList>;
-
-/** * `ready` - ready * `pending_oauth` - pending_oauth * `needs_reauth` - needs_reauth * `disabled` - disabled * `missing_credential` - missing_credential */
-export type ConnectionStateEnum =
-  | "ready"
-  | "pending_oauth"
-  | "needs_reauth"
-  | "disabled"
-  | "missing_credential";
-export const ConnectionStateEnum = /*@__PURE__*/ S.String;
-
-/** A credential-safe summary of a server configured for an agent. */
-export interface MCPServiceAccountServer {
-  /** Gateway server granted to the agent. */
-  id: string;
-  /** The member whose connection the agent uses. */
-  shared_by: UserBasic;
-  /** 'personal' lets the agent use this connection only when working for the member who shared it. 'team' lets it use the connection for the whole project's agent runs. * `personal` - Personal * `team` - Team */
-  scope: MCPAgentGrantScopeEnum;
-  /** Server display name. */
-  name: string;
-  /** Server description. */
-  description: string;
-  /** Deprecated brand icon key. Empty for custom servers. */
-  icon_key: string;
-  /** Brand domain. Empty for custom servers. */
-  icon_domain: string;
-  /** Whether the credential delegated to the agent is ready to use. * `ready` - ready * `pending_oauth` - pending_oauth * `needs_reauth` - needs_reauth * `disabled` - disabled * `missing_credential` - missing_credential */
-  connection_state: ConnectionStateEnum;
-}
-export const MCPServiceAccountServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    shared_by: UserBasic,
-    scope: MCPAgentGrantScopeEnum,
-    name: S.String,
-    description: S.String,
-    icon_key: S.String,
-    icon_domain: S.String,
-    connection_state: ConnectionStateEnum,
-  }),
-).annotate({
-  identifier: "MCPServiceAccountServer",
-}) as any as S.Schema<MCPServiceAccountServer>;
-
-/** Credential-safe summaries of the gateway servers configured for this agent. */
-export type MCPServiceAccountServersList = Array<MCPServiceAccountServer>;
-export const MCPServiceAccountServersList = /*@__PURE__*/ S.Array(
-  MCPServiceAccountServer,
-) as any as S.Schema<MCPServiceAccountServersList>;
-
-export interface MCPServiceAccount {
-  id: string;
-  name: string;
-  description: string;
-  /** Stable internal identity handle for this PostHog agent. */
-  handle: string;
-  /** Stable PostHog agent identifier. */
-  agent_key: AgentKeyEnum;
-  /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
-  status: MCPServiceAccountStatusEnum;
-  /** Gateway servers configured for this agent. */
-  server_ids: MCPServiceAccountServerIdsList;
-  /** Credential-safe summaries of the gateway servers configured for this agent. */
-  servers: MCPServiceAccountServersList;
-  /** When the agent last made a call through the gateway. */
-  last_active_at: string | null;
-  created_at: string;
-  updated_at: string;
-}
-export const MCPServiceAccount = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    description: S.String,
-    handle: S.String,
-    agent_key: AgentKeyEnum,
-    status: MCPServiceAccountStatusEnum,
-    server_ids: MCPServiceAccountServerIdsList,
-    servers: MCPServiceAccountServersList,
-    last_active_at: S.NullOr(S.String),
-    created_at: S.String,
-    updated_at: S.String,
-  }),
-).annotate({
-  identifier: "MCPServiceAccount",
-}) as any as S.Schema<MCPServiceAccount>;
-
-export interface McpGatewayServiceAccountsListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const McpGatewayServiceAccountsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      limit: S.optional(S.Number.pipe(T.Query())),
-      offset: S.optional(S.Number.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/api/projects/{project_id}/mcp_gateway/service_accounts/",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "McpGatewayServiceAccountsListRequest",
-}) as any as S.Schema<McpGatewayServiceAccountsListRequest>;
-
-export type PaginatedMCPServiceAccountListResultsList =
-  Array<MCPServiceAccount>;
-export const PaginatedMCPServiceAccountListResultsList = /*@__PURE__*/ S.Array(
-  MCPServiceAccount,
-) as any as S.Schema<PaginatedMCPServiceAccountListResultsList>;
-
-export interface PaginatedMCPServiceAccountList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedMCPServiceAccountListResultsList;
-}
-export const PaginatedMCPServiceAccountList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedMCPServiceAccountListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedMCPServiceAccountList",
-}) as any as S.Schema<PaginatedMCPServiceAccountList>;
-
-export interface McpGatewayServiceAccountsPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this mcp service account. */
-  id: string;
-  /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
-  status?: MCPServiceAccountStatusEnum | (string & {});
-}
-export const McpGatewayServiceAccountsPartialUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      status: S.optional(MCPServiceAccountStatusEnum),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/projects/{project_id}/mcp_gateway/service_accounts/{id}/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "McpGatewayServiceAccountsPartialUpdateRequest",
-  }) as any as S.Schema<McpGatewayServiceAccountsPartialUpdateRequest>;
-
-export interface MCPServiceAccountUpdate {
-  /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
-  status?: MCPServiceAccountStatusEnum;
-}
-export const MCPServiceAccountUpdate = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(MCPServiceAccountStatusEnum),
-  }),
-).annotate({
-  identifier: "MCPServiceAccountUpdate",
-}) as any as S.Schema<MCPServiceAccountUpdate>;
-
 export interface McpGatewayServiceAccountsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1640,7 +1436,173 @@ export const McpGatewayServiceAccountsRetrieveRequest = /*@__PURE__*/ S.suspend(
   identifier: "McpGatewayServiceAccountsRetrieveRequest",
 }) as any as S.Schema<McpGatewayServiceAccountsRetrieveRequest>;
 
-export interface McpGatewayServiceAccountsUpdateRequest {
+export interface UpdateMcpGatewayRuleRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp org rule. */
+  id: string;
+  /** Short rule name shown wherever the rule locks a tool. */
+  name: string;
+  /** Why this guardrail exists. */
+  description?: string;
+  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
+  applies_to?: AppliesToEnum | (string & {});
+  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
+  effect?: EffectEnum | (string & {});
+  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
+  tool_pattern?: string;
+  /** Disabled rules are kept but not evaluated. */
+  enabled?: boolean;
+}
+export const UpdateMcpGatewayRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.String,
+    description: S.optional(S.String),
+    applies_to: S.optional(AppliesToEnum),
+    effect: S.optional(EffectEnum),
+    tool_pattern: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMcpGatewayRuleRequest",
+}) as any as S.Schema<UpdateMcpGatewayRuleRequest>;
+
+export interface UpdateMcpGatewayRulePartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp org rule. */
+  id: string;
+  /** Short rule name shown wherever the rule locks a tool. */
+  name?: string;
+  /** Why this guardrail exists. */
+  description?: string;
+  /** Audience the rule constrains. * `everyone` - Everyone * `members` - Members * `agents` - Agents */
+  applies_to?: AppliesToEnum | (string & {});
+  /** State the rule forces on matching tools. * `needs_approval` - Require approval * `do_not_use` - Block */
+  effect?: EffectEnum | (string & {});
+  /** fnmatch pattern against tool names. Blank matches destructive tools heuristically. */
+  tool_pattern?: string;
+  /** Disabled rules are kept but not evaluated. */
+  enabled?: boolean;
+}
+export const UpdateMcpGatewayRulePartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    applies_to: S.optional(AppliesToEnum),
+    effect: S.optional(EffectEnum),
+    tool_pattern: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/mcp_gateway/rules/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMcpGatewayRulePartialRequest",
+}) as any as S.Schema<UpdateMcpGatewayRulePartialRequest>;
+
+export interface UpdateMcpGatewayServerRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp gateway server. */
+  id: string;
+  /** Display name shown across the gateway. */
+  name?: string;
+  /** Short description shown on server cards. */
+  description?: string;
+  /** Catalog category used for filter chips. * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
+  category?: MCPServerCategoryEnum | (string & {});
+  /** Whether the team can see and call the server. Turning it off also blocks agent access. */
+  is_team_enabled?: boolean;
+}
+export const UpdateMcpGatewayServerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    category: S.optional(MCPServerCategoryEnum),
+    is_team_enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMcpGatewayServerRequest",
+}) as any as S.Schema<UpdateMcpGatewayServerRequest>;
+
+export interface MCPGatewayServerUpdate {
+  /** Display name shown across the gateway. */
+  name?: string;
+  /** Short description shown on server cards. */
+  description?: string;
+  /** Catalog category used for filter chips. * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
+  category?: MCPServerCategoryEnum;
+  /** Whether the team can see and call the server. Turning it off also blocks agent access. */
+  is_team_enabled?: boolean;
+}
+export const MCPGatewayServerUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    description: S.optional(S.String),
+    category: S.optional(MCPServerCategoryEnum),
+    is_team_enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MCPGatewayServerUpdate",
+}) as any as S.Schema<MCPGatewayServerUpdate>;
+
+export interface UpdateMcpGatewayServerPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp gateway server. */
+  id: string;
+  /** Display name shown across the gateway. */
+  name?: string;
+  /** Short description shown on server cards. */
+  description?: string;
+  /** Catalog category used for filter chips. * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
+  category?: MCPServerCategoryEnum | (string & {});
+  /** Whether the team can see and call the server. Turning it off also blocks agent access. */
+  is_team_enabled?: boolean;
+}
+export const UpdateMcpGatewayServerPartialRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      description: S.optional(S.String),
+      category: S.optional(MCPServerCategoryEnum),
+      is_team_enabled: S.optional(S.Boolean),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/mcp_gateway/servers/{id}/",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpdateMcpGatewayServerPartialRequest",
+}) as any as S.Schema<UpdateMcpGatewayServerPartialRequest>;
+
+export interface UpdateMcpGatewayServiceAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp service account. */
@@ -1648,7 +1610,7 @@ export interface McpGatewayServiceAccountsUpdateRequest {
   /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
   status?: MCPServiceAccountStatusEnum | (string & {});
 }
-export const McpGatewayServiceAccountsUpdateRequest = /*@__PURE__*/ S.suspend(
+export const UpdateMcpGatewayServiceAccountRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -1662,8 +1624,195 @@ export const McpGatewayServiceAccountsUpdateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "McpGatewayServiceAccountsUpdateRequest",
-}) as any as S.Schema<McpGatewayServiceAccountsUpdateRequest>;
+  identifier: "UpdateMcpGatewayServiceAccountRequest",
+}) as any as S.Schema<UpdateMcpGatewayServiceAccountRequest>;
+
+export interface MCPServiceAccountUpdate {
+  /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
+  status?: MCPServiceAccountStatusEnum;
+}
+export const MCPServiceAccountUpdate = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(MCPServiceAccountStatusEnum),
+  }),
+).annotate({
+  identifier: "MCPServiceAccountUpdate",
+}) as any as S.Schema<MCPServiceAccountUpdate>;
+
+export interface UpdateMcpGatewayServiceAccountPartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this mcp service account. */
+  id: string;
+  /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
+  status?: MCPServiceAccountStatusEnum | (string & {});
+}
+export const UpdateMcpGatewayServiceAccountPartialRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      status: S.optional(MCPServiceAccountStatusEnum),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/api/projects/{project_id}/mcp_gateway/service_accounts/{id}/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateMcpGatewayServiceAccountPartialRequest",
+  }) as any as S.Schema<UpdateMcpGatewayServiceAccountPartialRequest>;
+
+export type CreateMcpGatewayConfigApplyPresetError = PosthogOpError;
+/** Set the policy baseline for members or agents (admin-only). */
+export const createMcpGatewayConfigApplyPreset: API.OperationMethod<
+  CreateMcpGatewayConfigApplyPresetRequest,
+  TeamMCPGatewayConfig,
+  CreateMcpGatewayConfigApplyPresetError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMcpGatewayConfigApplyPresetRequest,
+  output: TeamMCPGatewayConfig,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateMcpGatewayRuleError = PosthogOpError;
+/** Team guardrails evaluated before any scope policy. */
+export const createMcpGatewayRule: API.OperationMethod<
+  CreateMcpGatewayRuleRequest,
+  MCPOrgRule,
+  CreateMcpGatewayRuleError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMcpGatewayRuleRequest,
+  output: MCPOrgRule,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateMcpGatewayServerPolicyError = PosthogOpError;
+/** Upsert per-tool states for a scope, returning the re-resolved catalog. */
+export const createMcpGatewayServerPolicy: API.OperationMethod<
+  CreateMcpGatewayServerPolicyRequest,
+  PaginatedResolvedToolPolicyList,
+  CreateMcpGatewayServerPolicyError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMcpGatewayServerPolicyRequest,
+  output: PaginatedResolvedToolPolicyList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateMcpGatewayServiceAccountAccessError = PosthogOpError;
+/** Share, or stop sharing, one gateway server with this agent. Sharing is personal. `enabled=true` delegates the caller's own connection, and the agent may use it only when acting for the caller, unless the caller sends `scope=team` to lend it to the project's agent runs generally. Scope only ever applies to the caller's own share: it is their credential to lend, so no admin permission is involved and no member can change someone else's share. `enabled=false` removes the caller's own share and leaves other members' shares, and the agent's tool policies, in place. Project admins can send `all=true` alongside `enabled=false` to remove every member's share of this server with this agent, along with the agent's tool policies for it. */
+export const createMcpGatewayServiceAccountAccess: API.OperationMethod<
+  CreateMcpGatewayServiceAccountAccessRequest,
+  MCPServiceAccount,
+  CreateMcpGatewayServiceAccountAccessError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMcpGatewayServiceAccountAccessRequest,
+  output: MCPServiceAccount,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMcpGatewayAuditError = PosthogOpError;
+/** Read-only trail of proxied tool calls. Project admins see all calls. Members see calls made through their connections, including calls made by agents using connections they shared. */
+export const listMcpGatewayAudit: API.OperationMethod<
+  ListMcpGatewayAuditRequest,
+  PaginatedMCPAuditEventList,
+  ListMcpGatewayAuditError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMcpGatewayAuditRequest,
+  output: PaginatedMCPAuditEventList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMcpGatewayConfigError = PosthogOpError;
+/** The team's gateway settings, plus whether the caller can administer them. */
+export const listMcpGatewayConfig: API.OperationMethod<
+  ListMcpGatewayConfigRequest,
+  TeamMCPGatewayConfig,
+  ListMcpGatewayConfigError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMcpGatewayConfigRequest,
+  output: TeamMCPGatewayConfig,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMcpGatewayMembersError = PosthogOpError;
+/** Admin overview of each member's gateway posture, plus the per-member server kill switch. */
+export const listMcpGatewayMembers: API.OperationMethod<
+  ListMcpGatewayMembersRequest,
+  PaginatedGatewayMemberSummaryList,
+  ListMcpGatewayMembersError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMcpGatewayMembersRequest,
+  output: PaginatedGatewayMemberSummaryList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMcpGatewayRulesError = PosthogOpError;
+/** Team guardrails evaluated before any scope policy. */
+export const listMcpGatewayRules: API.OperationMethod<
+  ListMcpGatewayRulesRequest,
+  PaginatedMCPOrgRuleList,
+  ListMcpGatewayRulesError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMcpGatewayRulesRequest,
+  output: PaginatedMCPOrgRuleList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMcpGatewayServersError = PosthogOpError;
+/** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
+export const listMcpGatewayServers: API.OperationMethod<
+  ListMcpGatewayServersRequest,
+  PaginatedMCPGatewayServerList,
+  ListMcpGatewayServersError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMcpGatewayServersRequest,
+  output: PaginatedMCPGatewayServerList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListMcpGatewayServiceAccountsError = PosthogOpError;
+/** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
+export const listMcpGatewayServiceAccounts: API.OperationMethod<
+  ListMcpGatewayServiceAccountsRequest,
+  PaginatedMCPServiceAccountList,
+  ListMcpGatewayServiceAccountsError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMcpGatewayServiceAccountsRequest,
+  output: PaginatedMCPServiceAccountList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
 
 export type McpGatewayAuditCountsRetrieveError = PosthogOpError;
 /** Totals backing the quick-filter chips. */
@@ -1680,21 +1829,6 @@ export const mcpGatewayAuditCountsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpGatewayAuditListError = PosthogOpError;
-/** Read-only trail of proxied tool calls. Project admins see all calls. Members see calls made through their connections, including calls made by agents using connections they shared. */
-export const mcpGatewayAuditList: API.OperationMethod<
-  McpGatewayAuditListRequest,
-  PaginatedMCPAuditEventList,
-  McpGatewayAuditListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayAuditListRequest,
-  output: PaginatedMCPAuditEventList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpGatewayAuditRetrieveError = PosthogOpError;
 /** Read-only trail of proxied tool calls. Project admins see all calls. Members see calls made through their connections, including calls made by agents using connections they shared. */
 export const mcpGatewayAuditRetrieve: API.OperationMethod<
@@ -1705,36 +1839,6 @@ export const mcpGatewayAuditRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: McpGatewayAuditRetrieveRequest,
   output: MCPAuditEvent,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayConfigApplyPresetCreateError = PosthogOpError;
-/** Set the policy baseline for members or agents (admin-only). */
-export const mcpGatewayConfigApplyPresetCreate: API.OperationMethod<
-  McpGatewayConfigApplyPresetCreateRequest,
-  TeamMCPGatewayConfig,
-  McpGatewayConfigApplyPresetCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayConfigApplyPresetCreateRequest,
-  output: TeamMCPGatewayConfig,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayConfigListError = PosthogOpError;
-/** The team's gateway settings, plus whether the caller can administer them. */
-export const mcpGatewayConfigList: API.OperationMethod<
-  McpGatewayConfigListRequest,
-  TeamMCPGatewayConfig,
-  McpGatewayConfigListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayConfigListRequest,
-  output: TeamMCPGatewayConfig,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1770,21 +1874,6 @@ export const mcpGatewayConfigUpdateSettingsCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpGatewayMembersListError = PosthogOpError;
-/** Admin overview of each member's gateway posture, plus the per-member server kill switch. */
-export const mcpGatewayMembersList: API.OperationMethod<
-  McpGatewayMembersListRequest,
-  PaginatedGatewayMemberSummaryList,
-  McpGatewayMembersListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayMembersListRequest,
-  output: PaginatedGatewayMemberSummaryList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpGatewayMembersRetrieveError = PosthogOpError;
 /** Admin overview of each member's gateway posture, plus the per-member server kill switch. */
 export const mcpGatewayMembersRetrieve: API.OperationMethod<
@@ -1815,21 +1904,6 @@ export const mcpGatewayMembersSetAccessCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpGatewayRulesCreateError = PosthogOpError;
-/** Team guardrails evaluated before any scope policy. */
-export const mcpGatewayRulesCreate: API.OperationMethod<
-  McpGatewayRulesCreateRequest,
-  MCPOrgRule,
-  McpGatewayRulesCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayRulesCreateRequest,
-  output: MCPOrgRule,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpGatewayRulesDestroyError = PosthogOpError;
 /** Team guardrails evaluated before any scope policy. */
 export const mcpGatewayRulesDestroy: API.OperationMethod<
@@ -1840,36 +1914,6 @@ export const mcpGatewayRulesDestroy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: McpGatewayRulesDestroyRequest,
   output: McpGatewayRulesDestroyResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayRulesListError = PosthogOpError;
-/** Team guardrails evaluated before any scope policy. */
-export const mcpGatewayRulesList: API.OperationMethod<
-  McpGatewayRulesListRequest,
-  PaginatedMCPOrgRuleList,
-  McpGatewayRulesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayRulesListRequest,
-  output: PaginatedMCPOrgRuleList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayRulesPartialUpdateError = PosthogOpError;
-/** Team guardrails evaluated before any scope policy. */
-export const mcpGatewayRulesPartialUpdate: API.OperationMethod<
-  McpGatewayRulesPartialUpdateRequest,
-  MCPOrgRule,
-  McpGatewayRulesPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayRulesPartialUpdateRequest,
-  output: MCPOrgRule,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1890,21 +1934,6 @@ export const mcpGatewayRulesRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpGatewayRulesUpdateError = PosthogOpError;
-/** Team guardrails evaluated before any scope policy. */
-export const mcpGatewayRulesUpdate: API.OperationMethod<
-  McpGatewayRulesUpdateRequest,
-  MCPOrgRule,
-  McpGatewayRulesUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayRulesUpdateRequest,
-  output: MCPOrgRule,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpGatewayServersDestroyError = PosthogOpError;
 /** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
 export const mcpGatewayServersDestroy: API.OperationMethod<
@@ -1915,51 +1944,6 @@ export const mcpGatewayServersDestroy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: McpGatewayServersDestroyRequest,
   output: McpGatewayServersDestroyResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayServersListError = PosthogOpError;
-/** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
-export const mcpGatewayServersList: API.OperationMethod<
-  McpGatewayServersListRequest,
-  PaginatedMCPGatewayServerList,
-  McpGatewayServersListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServersListRequest,
-  output: PaginatedMCPGatewayServerList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayServersPartialUpdateError = PosthogOpError;
-/** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
-export const mcpGatewayServersPartialUpdate: API.OperationMethod<
-  McpGatewayServersPartialUpdateRequest,
-  MCPGatewayServerUpdate,
-  McpGatewayServersPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServersPartialUpdateRequest,
-  output: MCPGatewayServerUpdate,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayServersPoliciesCreateError = PosthogOpError;
-/** Upsert per-tool states for a scope, returning the re-resolved catalog. */
-export const mcpGatewayServersPoliciesCreate: API.OperationMethod<
-  McpGatewayServersPoliciesCreateRequest,
-  PaginatedResolvedToolPolicyList,
-  McpGatewayServersPoliciesCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServersPoliciesCreateRequest,
-  output: PaginatedResolvedToolPolicyList,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2010,66 +1994,6 @@ export const mcpGatewayServersToolsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpGatewayServersUpdateError = PosthogOpError;
-/** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
-export const mcpGatewayServersUpdate: API.OperationMethod<
-  McpGatewayServersUpdateRequest,
-  MCPGatewayServerUpdate,
-  McpGatewayServersUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServersUpdateRequest,
-  output: MCPGatewayServerUpdate,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayServiceAccountsAccessCreateError = PosthogOpError;
-/** Share, or stop sharing, one gateway server with this agent. Sharing is personal. `enabled=true` delegates the caller's own connection, and the agent may use it only when acting for the caller, unless the caller sends `scope=team` to lend it to the project's agent runs generally. Scope only ever applies to the caller's own share: it is their credential to lend, so no admin permission is involved and no member can change someone else's share. `enabled=false` removes the caller's own share and leaves other members' shares, and the agent's tool policies, in place. Project admins can send `all=true` alongside `enabled=false` to remove every member's share of this server with this agent, along with the agent's tool policies for it. */
-export const mcpGatewayServiceAccountsAccessCreate: API.OperationMethod<
-  McpGatewayServiceAccountsAccessCreateRequest,
-  MCPServiceAccount,
-  McpGatewayServiceAccountsAccessCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServiceAccountsAccessCreateRequest,
-  output: MCPServiceAccount,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayServiceAccountsListError = PosthogOpError;
-/** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
-export const mcpGatewayServiceAccountsList: API.OperationMethod<
-  McpGatewayServiceAccountsListRequest,
-  PaginatedMCPServiceAccountList,
-  McpGatewayServiceAccountsListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServiceAccountsListRequest,
-  output: PaginatedMCPServiceAccountList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type McpGatewayServiceAccountsPartialUpdateError = PosthogOpError;
-/** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
-export const mcpGatewayServiceAccountsPartialUpdate: API.OperationMethod<
-  McpGatewayServiceAccountsPartialUpdateRequest,
-  MCPServiceAccountUpdate,
-  McpGatewayServiceAccountsPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServiceAccountsPartialUpdateRequest,
-  output: MCPServiceAccountUpdate,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type McpGatewayServiceAccountsRetrieveError = PosthogOpError;
 /** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
 export const mcpGatewayServiceAccountsRetrieve: API.OperationMethod<
@@ -2085,15 +2009,90 @@ export const mcpGatewayServiceAccountsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type McpGatewayServiceAccountsUpdateError = PosthogOpError;
-/** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
-export const mcpGatewayServiceAccountsUpdate: API.OperationMethod<
-  McpGatewayServiceAccountsUpdateRequest,
-  MCPServiceAccountUpdate,
-  McpGatewayServiceAccountsUpdateError,
+export type UpdateMcpGatewayRuleError = PosthogOpError;
+/** Team guardrails evaluated before any scope policy. */
+export const updateMcpGatewayRule: API.OperationMethod<
+  UpdateMcpGatewayRuleRequest,
+  MCPOrgRule,
+  UpdateMcpGatewayRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServiceAccountsUpdateRequest,
+  input: UpdateMcpGatewayRuleRequest,
+  output: MCPOrgRule,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateMcpGatewayRulePartialError = PosthogOpError;
+/** Team guardrails evaluated before any scope policy. */
+export const updateMcpGatewayRulePartial: API.OperationMethod<
+  UpdateMcpGatewayRulePartialRequest,
+  MCPOrgRule,
+  UpdateMcpGatewayRulePartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMcpGatewayRulePartialRequest,
+  output: MCPOrgRule,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateMcpGatewayServerError = PosthogOpError;
+/** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
+export const updateMcpGatewayServer: API.OperationMethod<
+  UpdateMcpGatewayServerRequest,
+  MCPGatewayServerUpdate,
+  UpdateMcpGatewayServerError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMcpGatewayServerRequest,
+  output: MCPGatewayServerUpdate,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateMcpGatewayServerPartialError = PosthogOpError;
+/** The team's gateway server registry. The registry is sparse: rows appear through the install/share/OAuth-start flows in views.py, or when an admin toggles an untouched catalog template here (`set_template_enabled`). Servers with no row follow the team config's `default_servers_enabled`. */
+export const updateMcpGatewayServerPartial: API.OperationMethod<
+  UpdateMcpGatewayServerPartialRequest,
+  MCPGatewayServerUpdate,
+  UpdateMcpGatewayServerPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMcpGatewayServerPartialRequest,
+  output: MCPGatewayServerUpdate,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateMcpGatewayServiceAccountError = PosthogOpError;
+/** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
+export const updateMcpGatewayServiceAccount: API.OperationMethod<
+  UpdateMcpGatewayServiceAccountRequest,
+  MCPServiceAccountUpdate,
+  UpdateMcpGatewayServiceAccountError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMcpGatewayServiceAccountRequest,
+  output: MCPServiceAccountUpdate,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateMcpGatewayServiceAccountPartialError = PosthogOpError;
+/** PostHog's built-in agents and their MCP access grants. The catalog is fixed. Projects can pause an agent's MCP access and grant or revoke servers, but cannot create, rename, rotate, or delete agents. */
+export const updateMcpGatewayServiceAccountPartial: API.OperationMethod<
+  UpdateMcpGatewayServiceAccountPartialRequest,
+  MCPServiceAccountUpdate,
+  UpdateMcpGatewayServiceAccountPartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMcpGatewayServiceAccountPartialRequest,
   output: MCPServiceAccountUpdate,
   errors: [],
   protocol: PosthogProtocol,

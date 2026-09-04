@@ -305,7 +305,7 @@
       },
       "traits": {}
     },
-    "com.posthog.integrations#IntegrationsListRequest": {
+    "com.posthog.integrations#ListIntegrationsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -870,10 +870,10 @@
       },
       "traits": {}
     },
-    "com.posthog.integrations#IntegrationsList": {
+    "com.posthog.integrations#ListIntegrations": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsListRequest"
+        "target": "com.posthog.integrations#ListIntegrationsRequest"
       },
       "output": {
         "target": "com.posthog.integrations#PaginatedIntegrationConfigList"
@@ -897,7 +897,7 @@
         }
       }
     },
-    "com.posthog.integrations#IntegrationsCreateRequest": {
+    "com.posthog.integrations#CreateIntegrationRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -919,10 +919,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsCreate": {
+    "com.posthog.integrations#CreateIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsCreateRequest"
+        "target": "com.posthog.integrations#CreateIntegrationRequest"
       },
       "output": {
         "target": "com.posthog.integrations#IntegrationConfig"
@@ -1458,7 +1458,7 @@
         }
       }
     },
-    "com.posthog.integrations#IntegrationsEmailPartialUpdateRequest": {
+    "com.posthog.integrations#UpdateIntegrationEmailPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1488,10 +1488,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsEmailPartialUpdate": {
+    "com.posthog.integrations#UpdateIntegrationEmailPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsEmailPartialUpdateRequest"
+        "target": "com.posthog.integrations#UpdateIntegrationEmailPartialRequest"
       },
       "output": {
         "target": "com.posthog.integrations#IntegrationConfig"
@@ -1846,7 +1846,7 @@
         }
       }
     },
-    "com.posthog.integrations#IntegrationsGithubReposRefreshCreateRequest": {
+    "com.posthog.integrations#CreateIntegrationGithubReposRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1897,10 +1897,10 @@
         "smithy.api#documentation": "The refreshed repository cache."
       }
     },
-    "com.posthog.integrations#IntegrationsGithubReposRefreshCreate": {
+    "com.posthog.integrations#CreateIntegrationGithubReposRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsGithubReposRefreshCreateRequest"
+        "target": "com.posthog.integrations#CreateIntegrationGithubReposRefreshRequest"
       },
       "output": {
         "target": "com.posthog.integrations#GitHubReposRefreshResponse"
@@ -2465,7 +2465,7 @@
         }
       }
     },
-    "com.posthog.integrations#IntegrationsAuthorizeRetrieveRequest": {
+    "com.posthog.integrations#AuthorizeIntegrationRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2481,10 +2481,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsAuthorizeRetrieve": {
+    "com.posthog.integrations#AuthorizeIntegrationRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsAuthorizeRetrieveRequest"
+        "target": "com.posthog.integrations#AuthorizeIntegrationRetrieveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2505,7 +2505,7 @@
         }
       }
     },
-    "com.posthog.integrations#IntegrationsDomainConnectApplyUrlCreateRequest": {
+    "com.posthog.integrations#CreateIntegrationDomainConnectApplyUrlRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2527,10 +2527,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsDomainConnectApplyUrlCreate": {
+    "com.posthog.integrations#CreateIntegrationDomainConnectApplyUrl": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsDomainConnectApplyUrlCreateRequest"
+        "target": "com.posthog.integrations#CreateIntegrationDomainConnectApplyUrlRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2555,7 +2555,7 @@
         "smithy.api#documentation": "Unified endpoint for generating Domain Connect apply URLs.\n\nAccepts a context (\"email\" or \"proxy\") and the relevant resource ID.\nThe backend resolves the domain, template variables, and service ID\nbased on context, then builds the signed apply URL."
       }
     },
-    "com.posthog.integrations#IntegrationsDomainConnectCheckRetrieveRequest": {
+    "com.posthog.integrations#CheckIntegrationDomainConnectRetrieveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2571,10 +2571,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsDomainConnectCheckRetrieve": {
+    "com.posthog.integrations#CheckIntegrationDomainConnectRetrieve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsDomainConnectCheckRetrieveRequest"
+        "target": "com.posthog.integrations#CheckIntegrationDomainConnectRetrieveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2694,7 +2694,7 @@
         "smithy.api#documentation": "List GitHub installations this project can link.\n\nA GitHub App installs once per organization, so a second project links an existing\ninstallation rather than reinstalling. This backs the picker: when more than one option\nexists, the client passes the chosen installation_id to github/link_existing. The list also\nincludes installations the user's personal GitHub link can see but that aren't linked to any\nproject yet (``source_team_id: null``) — orphan installations approved on GitHub outside\nPostHog's callback, which ``github/link_existing`` can adopt."
       }
     },
-    "com.posthog.integrations#IntegrationsGithubLinkExistingCreateRequest": {
+    "com.posthog.integrations#CreateIntegrationGithubLinkExistingRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2723,10 +2723,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsGithubLinkExistingCreate": {
+    "com.posthog.integrations#CreateIntegrationGithubLinkExisting": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsGithubLinkExistingCreateRequest"
+        "target": "com.posthog.integrations#CreateIntegrationGithubLinkExistingRequest"
       },
       "output": {
         "target": "com.posthog.integrations#IntegrationConfig"
@@ -2818,7 +2818,7 @@
         "smithy.api#documentation": "Mint a User OAuth URL to bootstrap a fresh `code` when the install flow returns without one."
       }
     },
-    "com.posthog.integrations#IntegrationsGithubPrepareCallbackCreateRequest": {
+    "com.posthog.integrations#CreateIntegrationGithubPrepareCallbackRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2846,10 +2846,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.integrations#IntegrationsGithubPrepareCallbackCreate": {
+    "com.posthog.integrations#CreateIntegrationGithubPrepareCallback": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.integrations#IntegrationsGithubPrepareCallbackCreateRequest"
+        "target": "com.posthog.integrations#CreateIntegrationGithubPrepareCallbackRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2967,10 +2967,10 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.integrations#IntegrationsList"
+          "target": "com.posthog.integrations#ListIntegrations"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsCreate"
+          "target": "com.posthog.integrations#CreateIntegration"
         },
         {
           "target": "com.posthog.integrations#IntegrationsRetrieve"
@@ -3000,7 +3000,7 @@
           "target": "com.posthog.integrations#IntegrationsClickupWorkspacesRetrieve"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsEmailPartialUpdate"
+          "target": "com.posthog.integrations#UpdateIntegrationEmailPartial"
         },
         {
           "target": "com.posthog.integrations#IntegrationsEmailVerifyCreate"
@@ -3012,7 +3012,7 @@
           "target": "com.posthog.integrations#IntegrationsGithubReposRetrieve"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsGithubReposRefreshCreate"
+          "target": "com.posthog.integrations#CreateIntegrationGithubReposRefresh"
         },
         {
           "target": "com.posthog.integrations#IntegrationsGithubTeamsRetrieve"
@@ -3039,25 +3039,25 @@
           "target": "com.posthog.integrations#IntegrationsTwilioPhoneNumbersRetrieve"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsAuthorizeRetrieve"
+          "target": "com.posthog.integrations#AuthorizeIntegrationRetrieve"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsDomainConnectApplyUrlCreate"
+          "target": "com.posthog.integrations#CreateIntegrationDomainConnectApplyUrl"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsDomainConnectCheckRetrieve"
+          "target": "com.posthog.integrations#CheckIntegrationDomainConnectRetrieve"
         },
         {
           "target": "com.posthog.integrations#IntegrationsGithubAvailableInstallationsRetrieve"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsGithubLinkExistingCreate"
+          "target": "com.posthog.integrations#CreateIntegrationGithubLinkExisting"
         },
         {
           "target": "com.posthog.integrations#IntegrationsGithubOauthAuthorizeCreate"
         },
         {
-          "target": "com.posthog.integrations#IntegrationsGithubPrepareCallbackCreate"
+          "target": "com.posthog.integrations#CreateIntegrationGithubPrepareCallback"
         },
         {
           "target": "com.posthog.integrations#IntegrationsRequestAccessCreate"

@@ -9089,7 +9089,7 @@
         "smithy.api#documentation": "Gets a session. Returns `NOT_FOUND` if the session doesn't exist. This is mainly useful for determining whether a session is still alive."
       }
     },
-    "com.gcp.spanner_v1#BatchCreateProjectsInstancesDatabasesSessionsRequest": {
+    "com.gcp.spanner_v1#CreateBatchProjectInstanceDatabaseSessionRequest": {
       "type": "structure",
       "members": {
         "database": {
@@ -9109,10 +9109,10 @@
         }
       }
     },
-    "com.gcp.spanner_v1#BatchCreateProjectsInstancesDatabasesSessions": {
+    "com.gcp.spanner_v1#CreateBatchProjectInstanceDatabaseSession": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.spanner_v1#BatchCreateProjectsInstancesDatabasesSessionsRequest"
+        "target": "com.gcp.spanner_v1#CreateBatchProjectInstanceDatabaseSessionRequest"
       },
       "output": {
         "target": "com.gcp.spanner_v1#BatchCreateSessionsResponse"

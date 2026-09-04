@@ -1891,7 +1891,7 @@
         "smithy.api#documentation": "Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent."
       }
     },
-    "com.gcp.serviceusage_v1beta1#BatchEnableServicesRequest": {
+    "com.gcp.serviceusage_v1beta1#EnableBatchServiceRequest": {
       "type": "structure",
       "members": {
         "serviceIds": {
@@ -3578,7 +3578,7 @@
         "target": "com.gcp.serviceusage_v1beta1#BillingDestination"
       }
     },
-    "com.gcp.serviceusage_v1beta1#BatchEnableServicesResponse": {
+    "com.gcp.serviceusage_v1beta1#EnableBatchServiceResponse": {
       "type": "structure",
       "members": {
         "failures": {
@@ -5882,7 +5882,7 @@
           }
         },
         "body": {
-          "target": "com.gcp.serviceusage_v1beta1#BatchEnableServicesRequest",
+          "target": "com.gcp.serviceusage_v1beta1#EnableBatchServiceRequest",
           "traits": {
             "smithy.api#httpPayload": {},
             "smithy.api#documentation": "Request body"
@@ -5890,7 +5890,7 @@
         }
       }
     },
-    "com.gcp.serviceusage_v1beta1#BatchEnableServices": {
+    "com.gcp.serviceusage_v1beta1#EnableBatchService": {
       "type": "operation",
       "input": {
         "target": "com.gcp.serviceusage_v1beta1#BatchEnableServicesRequest_"

@@ -13085,7 +13085,7 @@
         }
       }
     },
-    "com.gcp.migrationcenter_v1alpha1#BatchUpdateProjectsLocationsAssetsRequest": {
+    "com.gcp.migrationcenter_v1alpha1#UpdateBatchProjectLocationAssetRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -13105,10 +13105,10 @@
         }
       }
     },
-    "com.gcp.migrationcenter_v1alpha1#BatchUpdateProjectsLocationsAssets": {
+    "com.gcp.migrationcenter_v1alpha1#UpdateBatchProjectLocationAsset": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.migrationcenter_v1alpha1#BatchUpdateProjectsLocationsAssetsRequest"
+        "target": "com.gcp.migrationcenter_v1alpha1#UpdateBatchProjectLocationAssetRequest"
       },
       "output": {
         "target": "com.gcp.migrationcenter_v1alpha1#BatchUpdateAssetsResponse"
@@ -13135,7 +13135,7 @@
         "smithy.api#documentation": "Updates the parameters of a list of assets."
       }
     },
-    "com.gcp.migrationcenter_v1alpha1#BatchDeleteProjectsLocationsAssetsRequest": {
+    "com.gcp.migrationcenter_v1alpha1#DeleteBatchProjectLocationAssetRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -13155,10 +13155,10 @@
         }
       }
     },
-    "com.gcp.migrationcenter_v1alpha1#BatchDeleteProjectsLocationsAssets": {
+    "com.gcp.migrationcenter_v1alpha1#DeleteBatchProjectLocationAsset": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.migrationcenter_v1alpha1#BatchDeleteProjectsLocationsAssetsRequest"
+        "target": "com.gcp.migrationcenter_v1alpha1#DeleteBatchProjectLocationAssetRequest"
       },
       "output": {
         "target": "com.gcp.migrationcenter_v1alpha1#Empty"

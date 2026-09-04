@@ -224,7 +224,7 @@
         "smithy.api#documentation": "A DocumentChunk represents a piece of content from a Document in the DeveloperKnowledge corpus. To fetch the entire document content, pass the `parent` to DeveloperKnowledge.GetDocument or DeveloperKnowledge.BatchGetDocuments."
       }
     },
-    "com.gcp.developerknowledge_v1#BatchGetDocumentsResponse": {
+    "com.gcp.developerknowledge_v1#GetBatchDocumentResponse": {
       "type": "structure",
       "members": {
         "documents": {
@@ -591,7 +591,7 @@
         }
       }
     },
-    "com.gcp.developerknowledge_v1#BatchGetDocumentsRequest": {
+    "com.gcp.developerknowledge_v1#GetBatchDocumentRequest": {
       "type": "structure",
       "members": {
         "names": {
@@ -610,13 +610,13 @@
         }
       }
     },
-    "com.gcp.developerknowledge_v1#BatchGetDocuments": {
+    "com.gcp.developerknowledge_v1#GetBatchDocument": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.developerknowledge_v1#BatchGetDocumentsRequest"
+        "target": "com.gcp.developerknowledge_v1#GetBatchDocumentRequest"
       },
       "output": {
-        "target": "com.gcp.developerknowledge_v1#BatchGetDocumentsResponse"
+        "target": "com.gcp.developerknowledge_v1#GetBatchDocumentResponse"
       },
       "errors": [
         {

@@ -77,7 +77,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesListRequest": {
+    "com.posthog.dashboard_templates#ListDashboardTemplatesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -491,10 +491,10 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesList": {
+    "com.posthog.dashboard_templates#ListDashboardTemplates": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboard_templates#DashboardTemplatesListRequest"
+        "target": "com.posthog.dashboard_templates#ListDashboardTemplatesRequest"
       },
       "output": {
         "target": "com.posthog.dashboard_templates#PaginatedDashboardTemplateList"
@@ -544,7 +544,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesCreateRequest": {
+    "com.posthog.dashboard_templates#CreateDashboardTemplateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -617,10 +617,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesCreate": {
+    "com.posthog.dashboard_templates#CreateDashboardTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboard_templates#DashboardTemplatesCreateRequest"
+        "target": "com.posthog.dashboard_templates#CreateDashboardTemplateRequest"
       },
       "output": {
         "target": "com.posthog.dashboard_templates#DashboardTemplate"
@@ -718,7 +718,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesUpdateRequest": {
+    "com.posthog.dashboard_templates#UpdateDashboardTemplateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -799,10 +799,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesUpdate": {
+    "com.posthog.dashboard_templates#UpdateDashboardTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboard_templates#DashboardTemplatesUpdateRequest"
+        "target": "com.posthog.dashboard_templates#UpdateDashboardTemplateRequest"
       },
       "output": {
         "target": "com.posthog.dashboard_templates#DashboardTemplate"
@@ -852,7 +852,7 @@
       },
       "traits": {}
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesPartialUpdateRequest": {
+    "com.posthog.dashboard_templates#UpdateDashboardTemplatePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -933,10 +933,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesPartialUpdate": {
+    "com.posthog.dashboard_templates#UpdateDashboardTemplatePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboard_templates#DashboardTemplatesPartialUpdateRequest"
+        "target": "com.posthog.dashboard_templates#UpdateDashboardTemplatePartialRequest"
       },
       "output": {
         "target": "com.posthog.dashboard_templates#DashboardTemplate"
@@ -1009,7 +1009,7 @@
         "smithy.api#documentation": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true"
       }
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesCopyBetweenProjectsCreateRequest": {
+    "com.posthog.dashboard_templates#CreateDashboardTemplateCopyBetweenProjectRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1031,10 +1031,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.dashboard_templates#DashboardTemplatesCopyBetweenProjectsCreate": {
+    "com.posthog.dashboard_templates#CreateDashboardTemplateCopyBetweenProject": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.dashboard_templates#DashboardTemplatesCopyBetweenProjectsCreateRequest"
+        "target": "com.posthog.dashboard_templates#CreateDashboardTemplateCopyBetweenProjectRequest"
       },
       "output": {
         "target": "com.posthog.dashboard_templates#DashboardTemplate"
@@ -1103,25 +1103,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.dashboard_templates#DashboardTemplatesList"
+          "target": "com.posthog.dashboard_templates#ListDashboardTemplates"
         },
         {
-          "target": "com.posthog.dashboard_templates#DashboardTemplatesCreate"
+          "target": "com.posthog.dashboard_templates#CreateDashboardTemplate"
         },
         {
           "target": "com.posthog.dashboard_templates#DashboardTemplatesRetrieve"
         },
         {
-          "target": "com.posthog.dashboard_templates#DashboardTemplatesUpdate"
+          "target": "com.posthog.dashboard_templates#UpdateDashboardTemplate"
         },
         {
-          "target": "com.posthog.dashboard_templates#DashboardTemplatesPartialUpdate"
+          "target": "com.posthog.dashboard_templates#UpdateDashboardTemplatePartial"
         },
         {
           "target": "com.posthog.dashboard_templates#DashboardTemplatesDestroy"
         },
         {
-          "target": "com.posthog.dashboard_templates#DashboardTemplatesCopyBetweenProjectsCreate"
+          "target": "com.posthog.dashboard_templates#CreateDashboardTemplateCopyBetweenProject"
         }
       ],
       "traits": {

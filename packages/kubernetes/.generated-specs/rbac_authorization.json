@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.rbac_authorization#GetRbacAuthorizationAPIGroup": {
+    "com.kubernetes.rbac_authorization#GetRbacAuthorizationApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.rbac_authorization#GetRbacAuthorizationV1APIResources": {
+    "com.kubernetes.rbac_authorization#GetRbacAuthorizationV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -4522,7 +4522,7 @@
         "smithy.api#documentation": "list or watch objects of kind Role"
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleBindingListRequest": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRoleBindingRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -4635,10 +4635,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleBindingList": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRoleBinding": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleBindingListRequest"
+        "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRoleBindingRequest"
       },
       "output": {
         "target": "com.kubernetes.rbac_authorization#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -4769,7 +4769,7 @@
         "smithy.api#documentation": "watch changes to an object of kind ClusterRoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleListRequest": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRoleRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -4861,10 +4861,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleList": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRole": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleListRequest"
+        "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRoleRequest"
       },
       "output": {
         "target": "com.kubernetes.rbac_authorization#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -4995,7 +4995,7 @@
         "smithy.api#documentation": "watch changes to an object of kind ClusterRole. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleBindingListRequest": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRoleBindingRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -5095,10 +5095,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleBindingList": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRoleBinding": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleBindingListRequest"
+        "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRoleBindingRequest"
       },
       "output": {
         "target": "com.kubernetes.rbac_authorization#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -5237,7 +5237,7 @@
         "smithy.api#documentation": "watch changes to an object of kind RoleBinding. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleListRequest": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRoleRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -5337,10 +5337,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleList": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRole": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleListRequest"
+        "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRoleRequest"
       },
       "output": {
         "target": "com.kubernetes.rbac_authorization#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -5479,7 +5479,7 @@
         "smithy.api#documentation": "watch changes to an object of kind Role. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleBindingForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -5571,10 +5571,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleBindingListForAllNamespaces": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleBindingForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleBindingListForAllNamespacesRequest"
+        "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleBindingForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.rbac_authorization#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -5588,7 +5588,7 @@
         "smithy.api#documentation": "watch individual changes to a list of RoleBinding. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleListForAllNamespacesRequest": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -5680,10 +5680,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleListForAllNamespaces": {
+    "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleListForAllNamespacesRequest"
+        "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.rbac_authorization#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -5741,10 +5741,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.rbac_authorization#GetRbacAuthorizationAPIGroup"
+          "target": "com.kubernetes.rbac_authorization#GetRbacAuthorizationApiGroup"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#GetRbacAuthorizationV1APIResources"
+          "target": "com.kubernetes.rbac_authorization#GetRbacAuthorizationV1ApiResources"
         },
         {
           "target": "com.kubernetes.rbac_authorization#ListRbacAuthorizationV1ClusterRoleBinding"
@@ -5837,34 +5837,34 @@
           "target": "com.kubernetes.rbac_authorization#ListRbacAuthorizationV1RoleForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleBindingList"
+          "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRoleBinding"
         },
         {
           "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleBinding"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRoleList"
+          "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1ClusterRole"
         },
         {
           "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1ClusterRole"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleBindingList"
+          "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRoleBinding"
         },
         {
           "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleBinding"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRoleList"
+          "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1NamespacedRole"
         },
         {
           "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1NamespacedRole"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleBindingListForAllNamespaces"
+          "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleBindingForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.rbac_authorization#WatchRbacAuthorizationV1RoleListForAllNamespaces"
+          "target": "com.kubernetes.rbac_authorization#ListWatchRbacAuthorizationV1RoleForAllNamespaces"
         }
       ],
       "traits": {

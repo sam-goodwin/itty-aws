@@ -4463,7 +4463,7 @@
         }
       }
     },
-    "com.gcp.cloudbuild_v2#BatchCreateProjectsLocationsConnectionsRepositoriesRequest": {
+    "com.gcp.cloudbuild_v2#CreateBatchProjectLocationConnectionRepositoryRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4483,10 +4483,10 @@
         }
       }
     },
-    "com.gcp.cloudbuild_v2#BatchCreateProjectsLocationsConnectionsRepositories": {
+    "com.gcp.cloudbuild_v2#CreateBatchProjectLocationConnectionRepository": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudbuild_v2#BatchCreateProjectsLocationsConnectionsRepositoriesRequest"
+        "target": "com.gcp.cloudbuild_v2#CreateBatchProjectLocationConnectionRepositoryRequest"
       },
       "output": {
         "target": "com.gcp.cloudbuild_v2#Operation"

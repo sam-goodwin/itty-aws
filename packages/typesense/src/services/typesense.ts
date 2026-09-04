@@ -687,7 +687,7 @@ export const CreateNLSearchModelRequestStopSequencesList =
     S.String,
   ) as any as S.Schema<CreateNLSearchModelRequestStopSequencesList>;
 
-export interface CreateNLSearchModelRequest {
+export interface CreateNlSearchModelRequest {
   /** Name of the NL model to use */
   model_name?: string;
   /** API key for the NL model service */
@@ -727,7 +727,7 @@ export interface CreateNLSearchModelRequest {
   /** Optional ID for the NL search model */
   id?: string;
 }
-export const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateNlSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -750,8 +750,8 @@ export const CreateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
     id: S.optional(S.String),
   }).pipe(T.Http({ method: "POST", uri: "/nl_search_models", code: 200 })),
 ).annotate({
-  identifier: "CreateNLSearchModelRequest",
-}) as any as S.Schema<CreateNLSearchModelRequest>;
+  identifier: "CreateNlSearchModelRequest",
+}) as any as S.Schema<CreateNlSearchModelRequest>;
 
 /** Stop sequences for the NL model (Google-specific) */
 export type CreateNLSearchModelResponseStopSequencesList = Array<string>;
@@ -760,7 +760,7 @@ export const CreateNLSearchModelResponseStopSequencesList =
     S.String,
   ) as any as S.Schema<CreateNLSearchModelResponseStopSequencesList>;
 
-export interface CreateNLSearchModelResponse {
+export interface CreateNlSearchModelResponse {
   /** Name of the NL model to use */
   model_name?: string;
   /** API key for the NL model service */
@@ -800,7 +800,7 @@ export interface CreateNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const CreateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateNlSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -823,8 +823,8 @@ export const CreateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
   }),
 ).annotate({
-  identifier: "CreateNLSearchModelResponse",
-}) as any as S.Schema<CreateNLSearchModelResponse>;
+  identifier: "CreateNlSearchModelResponse",
+}) as any as S.Schema<CreateNlSearchModelResponse>;
 
 export interface DebugRequest {}
 export const DebugRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1237,19 +1237,19 @@ export const ApiKeyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ApiKeyDeleteResponse",
 }) as any as S.Schema<ApiKeyDeleteResponse>;
 
-export interface DeleteNLSearchModelRequest {
+export interface DeleteNlSearchModelRequest {
   /** The ID of the NL search model to delete */
   modelId: string;
 }
-export const DeleteNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteNlSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/nl_search_models/{modelId}", code: 200 }),
   ),
 ).annotate({
-  identifier: "DeleteNLSearchModelRequest",
-}) as any as S.Schema<DeleteNLSearchModelRequest>;
+  identifier: "DeleteNlSearchModelRequest",
+}) as any as S.Schema<DeleteNlSearchModelRequest>;
 
 export interface NLSearchModelDeleteSchema {
   /** ID of the deleted NL search model */
@@ -2062,7 +2062,7 @@ export const ImportStemmingDictionaryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ImportStemmingDictionaryResponse",
 }) as any as S.Schema<ImportStemmingDictionaryResponse>;
 
-export interface IndexDocumentRequest {
+export interface ListDocumentRequest {
   /** The name of the collection to add the document to */
   collectionName: string;
   /** Additional action to perform */
@@ -2070,7 +2070,7 @@ export interface IndexDocumentRequest {
   /** Dealing with Dirty Data */
   dirty_values?: DirtyValues | (string & {});
 }
-export const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDocumentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     collectionName: S.String.pipe(T.Label()),
     action: S.optional(IndexAction.pipe(T.Query())),
@@ -2083,15 +2083,15 @@ export const IndexDocumentRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "IndexDocumentRequest",
-}) as any as S.Schema<IndexDocumentRequest>;
+  identifier: "ListDocumentRequest",
+}) as any as S.Schema<ListDocumentRequest>;
 
-export type IndexDocumentResponse = unknown;
-export const IndexDocumentResponse = /*@__PURE__*/ S.suspend(() =>
+export type ListDocumentResponse = unknown;
+export const ListDocumentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Unknown.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "IndexDocumentResponse",
-}) as any as S.Schema<IndexDocumentResponse>;
+  identifier: "ListDocumentResponse",
+}) as any as S.Schema<ListDocumentResponse>;
 
 export interface ListStemmingDictionariesRequest {}
 export const ListStemmingDictionariesRequest = /*@__PURE__*/ S.suspend(() =>
@@ -2953,6 +2953,19 @@ export const MultiSearchResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MultiSearchResult",
 }) as any as S.Schema<MultiSearchResult>;
 
+export interface RequestToggleSlowLogRequest {
+  log_slow_requests_time_ms: number;
+}
+export const RequestToggleSlowLogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    log_slow_requests_time_ms: S.Number.pipe(
+      T.Body("log-slow-requests-time-ms"),
+    ),
+  }).pipe(T.Http({ method: "POST", uri: "/config", code: 200 })),
+).annotate({
+  identifier: "RequestToggleSlowLogRequest",
+}) as any as S.Schema<RequestToggleSlowLogRequest>;
+
 export interface RetrieveAllConversationModelsRequest {}
 export const RetrieveAllConversationModelsRequest = /*@__PURE__*/ S.suspend(
   () =>
@@ -3653,23 +3666,26 @@ export const RetrieveConversationModelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveConversationModelResponse",
 }) as any as S.Schema<RetrieveConversationModelResponse>;
 
-export interface RetrieveCurationSetRequest {
-  /** The name of the curation set to retrieve */
+export interface RetrieveCurationSetItemRequest {
+  /** The name of the curation set */
   curationSetName: string;
+  /** The id of the curation item to retrieve */
+  itemId: string;
 }
-export const RetrieveCurationSetRequest = /*@__PURE__*/ S.suspend(() =>
+export const RetrieveCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     curationSetName: S.String.pipe(T.Label()),
+    itemId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/curation_sets/{curationSetName}",
+      uri: "/curation_sets/{curationSetName}/items/{itemId}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "RetrieveCurationSetRequest",
-}) as any as S.Schema<RetrieveCurationSetRequest>;
+  identifier: "RetrieveCurationSetItemRequest",
+}) as any as S.Schema<RetrieveCurationSetItemRequest>;
 
 /** List of tag values to associate with this curation rule. */
 export type CurationRuleTagsList = Array<string>;
@@ -3716,10 +3732,12 @@ export const CurationInclude = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CurationInclude>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type CurationItemCreateSchemaIncludesList = Array<CurationInclude>;
-export const CurationItemCreateSchemaIncludesList = /*@__PURE__*/ S.Array(
-  CurationInclude,
-) as any as S.Schema<CurationItemCreateSchemaIncludesList>;
+export type RetrieveCurationSetItemResponseIncludesList =
+  Array<CurationInclude>;
+export const RetrieveCurationSetItemResponseIncludesList =
+  /*@__PURE__*/ S.Array(
+    CurationInclude,
+  ) as any as S.Schema<RetrieveCurationSetItemResponseIncludesList>;
 
 export interface CurationExclude {
   /** document id that should be excluded from the search results. */
@@ -3732,112 +3750,6 @@ export const CurationExclude = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CurationExclude",
 }) as any as S.Schema<CurationExclude>;
-
-/** List of document `id`s that should be excluded from the search results. */
-export type CurationItemCreateSchemaExcludesList = Array<CurationExclude>;
-export const CurationItemCreateSchemaExcludesList = /*@__PURE__*/ S.Array(
-  CurationExclude,
-) as any as S.Schema<CurationItemCreateSchemaExcludesList>;
-
-export interface CurationItemCreateSchema {
-  rule: CurationRule;
-  /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-  includes?: CurationItemCreateSchemaIncludesList;
-  /** List of document `id`s that should be excluded from the search results. */
-  excludes?: CurationItemCreateSchemaExcludesList;
-  /** A filter by clause that is applied to any search query that matches the curation rule. */
-  filter_by?: string;
-  /** Indicates whether search query tokens that exist in the curation's rule should be removed from the search query. */
-  remove_matched_tokens?: boolean;
-  /** Return a custom JSON object in the Search API response, when this rule is triggered. This can can be used to display a pre-defined message (eg: a promotion banner) on the front-end when a particular rule is triggered. */
-  metadata?: unknown;
-  /** A sort by clause that is applied to any search query that matches the curation rule. */
-  sort_by?: string;
-  /** Replaces the current search query with this value, when the search query matches the curation rule. */
-  replace_query?: string;
-  /** When set to true, the filter conditions of the query is applied to the curated records as well. Default: false. */
-  filter_curated_hits?: boolean;
-  /** A Unix timestamp that indicates the date/time from which the curation will be active. You can use this to create rules that start applying from a future point in time. */
-  effective_from_ts?: number;
-  /** A Unix timestamp that indicates the date/time until which the curation will be active. You can use this to create rules that stop applying after a period of time. */
-  effective_to_ts?: number;
-  /** When set to true, curation processing will stop at the first matching rule. When set to false curation processing will continue and multiple curation actions will be triggered in sequence. Curations are processed in the lexical sort order of their id field. */
-  stop_processing?: boolean;
-  /** ID of the curation item */
-  id?: string;
-}
-export const CurationItemCreateSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    rule: CurationRule,
-    includes: S.optional(CurationItemCreateSchemaIncludesList),
-    excludes: S.optional(CurationItemCreateSchemaExcludesList),
-    filter_by: S.optional(S.String),
-    remove_matched_tokens: S.optional(S.Boolean),
-    metadata: S.optional(S.Unknown),
-    sort_by: S.optional(S.String),
-    replace_query: S.optional(S.String),
-    filter_curated_hits: S.optional(S.Boolean),
-    effective_from_ts: S.optional(S.Number),
-    effective_to_ts: S.optional(S.Number),
-    stop_processing: S.optional(S.Boolean),
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CurationItemCreateSchema",
-}) as any as S.Schema<CurationItemCreateSchema>;
-
-/** Array of curation items */
-export type RetrieveCurationSetResponseItemsList =
-  Array<CurationItemCreateSchema>;
-export const RetrieveCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
-  CurationItemCreateSchema,
-) as any as S.Schema<RetrieveCurationSetResponseItemsList>;
-
-export interface RetrieveCurationSetResponse {
-  /** Array of curation items */
-  items: RetrieveCurationSetResponseItemsList;
-  /** Optional description for the curation set */
-  description?: string;
-  name: string;
-}
-export const RetrieveCurationSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: RetrieveCurationSetResponseItemsList,
-    description: S.optional(S.String),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "RetrieveCurationSetResponse",
-}) as any as S.Schema<RetrieveCurationSetResponse>;
-
-export interface RetrieveCurationSetItemRequest {
-  /** The name of the curation set */
-  curationSetName: string;
-  /** The id of the curation item to retrieve */
-  itemId: string;
-}
-export const RetrieveCurationSetItemRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    curationSetName: S.String.pipe(T.Label()),
-    itemId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/curation_sets/{curationSetName}/items/{itemId}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RetrieveCurationSetItemRequest",
-}) as any as S.Schema<RetrieveCurationSetItemRequest>;
-
-/** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type RetrieveCurationSetItemResponseIncludesList =
-  Array<CurationInclude>;
-export const RetrieveCurationSetItemResponseIncludesList =
-  /*@__PURE__*/ S.Array(
-    CurationInclude,
-  ) as any as S.Schema<RetrieveCurationSetItemResponseIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
 export type RetrieveCurationSetItemResponseExcludesList =
@@ -3894,42 +3806,33 @@ export const RetrieveCurationSetItemResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveCurationSetItemResponse",
 }) as any as S.Schema<RetrieveCurationSetItemResponse>;
 
-export interface RetrieveCurationSetItemsRequest {
-  /** The name of the curation set to retrieve items for */
-  curationSetName: string;
-}
-export const RetrieveCurationSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    curationSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/curation_sets/{curationSetName}/items",
-      code: 200,
-    }),
+export interface RetrieveCurationSetsRequest {}
+export const RetrieveCurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/curation_sets", code: 200 }),
   ),
 ).annotate({
-  identifier: "RetrieveCurationSetItemsRequest",
-}) as any as S.Schema<RetrieveCurationSetItemsRequest>;
+  identifier: "RetrieveCurationSetsRequest",
+}) as any as S.Schema<RetrieveCurationSetsRequest>;
 
 /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-export type CurationItemSchemaIncludesList = Array<CurationInclude>;
-export const CurationItemSchemaIncludesList = /*@__PURE__*/ S.Array(
+export type CurationItemCreateSchemaIncludesList = Array<CurationInclude>;
+export const CurationItemCreateSchemaIncludesList = /*@__PURE__*/ S.Array(
   CurationInclude,
-) as any as S.Schema<CurationItemSchemaIncludesList>;
+) as any as S.Schema<CurationItemCreateSchemaIncludesList>;
 
 /** List of document `id`s that should be excluded from the search results. */
-export type CurationItemSchemaExcludesList = Array<CurationExclude>;
-export const CurationItemSchemaExcludesList = /*@__PURE__*/ S.Array(
+export type CurationItemCreateSchemaExcludesList = Array<CurationExclude>;
+export const CurationItemCreateSchemaExcludesList = /*@__PURE__*/ S.Array(
   CurationExclude,
-) as any as S.Schema<CurationItemSchemaExcludesList>;
+) as any as S.Schema<CurationItemCreateSchemaExcludesList>;
 
-export interface CurationItemSchema {
+export interface CurationItemCreateSchema {
   rule: CurationRule;
   /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
-  includes?: CurationItemSchemaIncludesList;
+  includes?: CurationItemCreateSchemaIncludesList;
   /** List of document `id`s that should be excluded from the search results. */
-  excludes?: CurationItemSchemaExcludesList;
+  excludes?: CurationItemCreateSchemaExcludesList;
   /** A filter by clause that is applied to any search query that matches the curation rule. */
   filter_by?: string;
   /** Indicates whether search query tokens that exist in the curation's rule should be removed from the search query. */
@@ -3949,13 +3852,13 @@ export interface CurationItemSchema {
   /** When set to true, curation processing will stop at the first matching rule. When set to false curation processing will continue and multiple curation actions will be triggered in sequence. Curations are processed in the lexical sort order of their id field. */
   stop_processing?: boolean;
   /** ID of the curation item */
-  id: string;
+  id?: string;
 }
-export const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
+export const CurationItemCreateSchema = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     rule: CurationRule,
-    includes: S.optional(CurationItemSchemaIncludesList),
-    excludes: S.optional(CurationItemSchemaExcludesList),
+    includes: S.optional(CurationItemCreateSchemaIncludesList),
+    excludes: S.optional(CurationItemCreateSchemaExcludesList),
     filter_by: S.optional(S.String),
     remove_matched_tokens: S.optional(S.Boolean),
     metadata: S.optional(S.Unknown),
@@ -3965,34 +3868,11 @@ export const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
     effective_from_ts: S.optional(S.Number),
     effective_to_ts: S.optional(S.Number),
     stop_processing: S.optional(S.Boolean),
-    id: S.String,
+    id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CurationItemSchema",
-}) as any as S.Schema<CurationItemSchema>;
-
-export type RetrieveCurationSetItemsResponseBodyList =
-  Array<CurationItemSchema>;
-export const RetrieveCurationSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
-  CurationItemSchema,
-) as any as S.Schema<RetrieveCurationSetItemsResponseBodyList>;
-
-export type RetrieveCurationSetItemsResponse =
-  RetrieveCurationSetItemsResponseBodyList;
-export const RetrieveCurationSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
-  RetrieveCurationSetItemsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RetrieveCurationSetItemsResponse",
-}) as any as S.Schema<RetrieveCurationSetItemsResponse>;
-
-export interface RetrieveCurationSetsRequest {}
-export const RetrieveCurationSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/curation_sets", code: 200 }),
-  ),
-).annotate({
-  identifier: "RetrieveCurationSetsRequest",
-}) as any as S.Schema<RetrieveCurationSetsRequest>;
+  identifier: "CurationItemCreateSchema",
+}) as any as S.Schema<CurationItemCreateSchema>;
 
 /** Array of curation items */
 export type CurationSetSchemaItemsList = Array<CurationItemCreateSchema>;
@@ -4238,17 +4118,12 @@ export const RetrievePresetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrievePresetResponse",
 }) as any as S.Schema<RetrievePresetResponse>;
 
-export interface RetrieveStopwordsSetRequest {
-  /** The ID of the stopwords set to retrieve. */
-  setId: string;
-}
-export const RetrieveStopwordsSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    setId: S.String.pipe(T.Label()),
-  }).pipe(T.Http({ method: "GET", uri: "/stopwords/{setId}", code: 200 })),
+export interface RetrieveStopwordsSetsRequest {}
+export const RetrieveStopwordsSetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stopwords", code: 200 })),
 ).annotate({
-  identifier: "RetrieveStopwordsSetRequest",
-}) as any as S.Schema<RetrieveStopwordsSetRequest>;
+  identifier: "RetrieveStopwordsSetsRequest",
+}) as any as S.Schema<RetrieveStopwordsSetsRequest>;
 
 export type StopwordsSetSchemaStopwordsList = Array<string>;
 export const StopwordsSetSchemaStopwordsList = /*@__PURE__*/ S.Array(
@@ -4270,24 +4145,6 @@ export const StopwordsSetSchema = /*@__PURE__*/ S.suspend(() =>
   identifier: "StopwordsSetSchema",
 }) as any as S.Schema<StopwordsSetSchema>;
 
-export interface StopwordsSetRetrieveSchema {
-  stopwords: StopwordsSetSchema;
-}
-export const StopwordsSetRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    stopwords: StopwordsSetSchema,
-  }),
-).annotate({
-  identifier: "StopwordsSetRetrieveSchema",
-}) as any as S.Schema<StopwordsSetRetrieveSchema>;
-
-export interface RetrieveStopwordsSetsRequest {}
-export const RetrieveStopwordsSetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/stopwords", code: 200 })),
-).annotate({
-  identifier: "RetrieveStopwordsSetsRequest",
-}) as any as S.Schema<RetrieveStopwordsSetsRequest>;
-
 export type StopwordsSetsRetrieveAllSchemaStopwordsList =
   Array<StopwordsSetSchema>;
 export const StopwordsSetsRetrieveAllSchemaStopwordsList =
@@ -4305,77 +4162,6 @@ export const StopwordsSetsRetrieveAllSchema = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "StopwordsSetsRetrieveAllSchema",
 }) as any as S.Schema<StopwordsSetsRetrieveAllSchema>;
-
-export interface RetrieveSynonymSetRequest {
-  /** The name of the synonym set to retrieve */
-  synonymSetName: string;
-}
-export const RetrieveSynonymSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    synonymSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}", code: 200 }),
-  ),
-).annotate({
-  identifier: "RetrieveSynonymSetRequest",
-}) as any as S.Schema<RetrieveSynonymSetRequest>;
-
-/** Array of words that should be considered as synonyms */
-export type SynonymItemSchemaSynonymsList = Array<string>;
-export const SynonymItemSchemaSynonymsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SynonymItemSchemaSynonymsList>;
-
-/** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
-export type SynonymItemSchemaSymbolsToIndexList = Array<string>;
-export const SynonymItemSchemaSymbolsToIndexList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SynonymItemSchemaSymbolsToIndexList>;
-
-export interface SynonymItemSchema {
-  /** Unique identifier for the synonym item */
-  id: string;
-  /** Array of words that should be considered as synonyms */
-  synonyms: SynonymItemSchemaSynonymsList;
-  /** For 1-way synonyms, indicates the root word that words in the synonyms parameter map to */
-  root?: string;
-  /** Locale for the synonym, leave blank to use the standard tokenizer */
-  locale?: string;
-  /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
-  symbols_to_index?: SynonymItemSchemaSymbolsToIndexList;
-}
-export const SynonymItemSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    synonyms: SynonymItemSchemaSynonymsList,
-    root: S.optional(S.String),
-    locale: S.optional(S.String),
-    symbols_to_index: S.optional(SynonymItemSchemaSymbolsToIndexList),
-  }),
-).annotate({
-  identifier: "SynonymItemSchema",
-}) as any as S.Schema<SynonymItemSchema>;
-
-/** Array of synonym items */
-export type RetrieveSynonymSetResponseItemsList = Array<SynonymItemSchema>;
-export const RetrieveSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
-  SynonymItemSchema,
-) as any as S.Schema<RetrieveSynonymSetResponseItemsList>;
-
-export interface RetrieveSynonymSetResponse {
-  /** Array of synonym items */
-  items: RetrieveSynonymSetResponseItemsList;
-  /** Name of the synonym set */
-  name: string;
-}
-export const RetrieveSynonymSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    items: RetrieveSynonymSetResponseItemsList,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "RetrieveSynonymSetResponse",
-}) as any as S.Schema<RetrieveSynonymSetResponse>;
 
 export interface RetrieveSynonymSetItemRequest {
   /** The name of the synonym set */
@@ -4437,43 +4223,48 @@ export const RetrieveSynonymSetItemResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RetrieveSynonymSetItemResponse",
 }) as any as S.Schema<RetrieveSynonymSetItemResponse>;
 
-export interface RetrieveSynonymSetItemsRequest {
-  /** The name of the synonym set to retrieve items for */
-  synonymSetName: string;
-}
-export const RetrieveSynonymSetItemsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    synonymSetName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/synonym_sets/{synonymSetName}/items",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RetrieveSynonymSetItemsRequest",
-}) as any as S.Schema<RetrieveSynonymSetItemsRequest>;
-
-export type RetrieveSynonymSetItemsResponseBodyList = Array<SynonymItemSchema>;
-export const RetrieveSynonymSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
-  SynonymItemSchema,
-) as any as S.Schema<RetrieveSynonymSetItemsResponseBodyList>;
-
-export type RetrieveSynonymSetItemsResponse =
-  RetrieveSynonymSetItemsResponseBodyList;
-export const RetrieveSynonymSetItemsResponse = /*@__PURE__*/ S.suspend(() =>
-  RetrieveSynonymSetItemsResponseBodyList.pipe(T.RawResponseRoot()),
-).annotate({
-  identifier: "RetrieveSynonymSetItemsResponse",
-}) as any as S.Schema<RetrieveSynonymSetItemsResponse>;
-
 export interface RetrieveSynonymSetsRequest {}
 export const RetrieveSynonymSetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/synonym_sets", code: 200 })),
 ).annotate({
   identifier: "RetrieveSynonymSetsRequest",
 }) as any as S.Schema<RetrieveSynonymSetsRequest>;
+
+/** Array of words that should be considered as synonyms */
+export type SynonymItemSchemaSynonymsList = Array<string>;
+export const SynonymItemSchemaSynonymsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SynonymItemSchemaSynonymsList>;
+
+/** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
+export type SynonymItemSchemaSymbolsToIndexList = Array<string>;
+export const SynonymItemSchemaSymbolsToIndexList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SynonymItemSchemaSymbolsToIndexList>;
+
+export interface SynonymItemSchema {
+  /** Unique identifier for the synonym item */
+  id: string;
+  /** Array of words that should be considered as synonyms */
+  synonyms: SynonymItemSchemaSynonymsList;
+  /** For 1-way synonyms, indicates the root word that words in the synonyms parameter map to */
+  root?: string;
+  /** Locale for the synonym, leave blank to use the standard tokenizer */
+  locale?: string;
+  /** By default, special characters are dropped from synonyms. Use this attribute to specify which special characters should be indexed as is */
+  symbols_to_index?: SynonymItemSchemaSymbolsToIndexList;
+}
+export const SynonymItemSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    synonyms: SynonymItemSchemaSynonymsList,
+    root: S.optional(S.String),
+    locale: S.optional(S.String),
+    symbols_to_index: S.optional(SynonymItemSchemaSymbolsToIndexList),
+  }),
+).annotate({
+  identifier: "SynonymItemSchema",
+}) as any as S.Schema<SynonymItemSchema>;
 
 /** Array of synonym items */
 export type SynonymSetSchemaItemsList = Array<SynonymItemSchema>;
@@ -4598,6 +4389,228 @@ export const SearchResult = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SearchResult" }) as any as S.Schema<SearchResult>;
 
+export interface SetRetrieveCurationRequest {
+  /** The name of the curation set to retrieve */
+  curationSetName: string;
+}
+export const SetRetrieveCurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    curationSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/curation_sets/{curationSetName}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetRetrieveCurationRequest",
+}) as any as S.Schema<SetRetrieveCurationRequest>;
+
+/** Array of curation items */
+export type RetrieveCurationSetResponseItemsList =
+  Array<CurationItemCreateSchema>;
+export const RetrieveCurationSetResponseItemsList = /*@__PURE__*/ S.Array(
+  CurationItemCreateSchema,
+) as any as S.Schema<RetrieveCurationSetResponseItemsList>;
+
+export interface SetRetrieveCurationResponse {
+  /** Array of curation items */
+  items: RetrieveCurationSetResponseItemsList;
+  /** Optional description for the curation set */
+  description?: string;
+  name: string;
+}
+export const SetRetrieveCurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: RetrieveCurationSetResponseItemsList,
+    description: S.optional(S.String),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "SetRetrieveCurationResponse",
+}) as any as S.Schema<SetRetrieveCurationResponse>;
+
+export interface SetRetrieveCurationItemRequest {
+  /** The name of the curation set to retrieve items for */
+  curationSetName: string;
+}
+export const SetRetrieveCurationItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    curationSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/curation_sets/{curationSetName}/items",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetRetrieveCurationItemRequest",
+}) as any as S.Schema<SetRetrieveCurationItemRequest>;
+
+/** List of document `id`s that should be included in the search results with their corresponding `position`s. */
+export type CurationItemSchemaIncludesList = Array<CurationInclude>;
+export const CurationItemSchemaIncludesList = /*@__PURE__*/ S.Array(
+  CurationInclude,
+) as any as S.Schema<CurationItemSchemaIncludesList>;
+
+/** List of document `id`s that should be excluded from the search results. */
+export type CurationItemSchemaExcludesList = Array<CurationExclude>;
+export const CurationItemSchemaExcludesList = /*@__PURE__*/ S.Array(
+  CurationExclude,
+) as any as S.Schema<CurationItemSchemaExcludesList>;
+
+export interface CurationItemSchema {
+  rule: CurationRule;
+  /** List of document `id`s that should be included in the search results with their corresponding `position`s. */
+  includes?: CurationItemSchemaIncludesList;
+  /** List of document `id`s that should be excluded from the search results. */
+  excludes?: CurationItemSchemaExcludesList;
+  /** A filter by clause that is applied to any search query that matches the curation rule. */
+  filter_by?: string;
+  /** Indicates whether search query tokens that exist in the curation's rule should be removed from the search query. */
+  remove_matched_tokens?: boolean;
+  /** Return a custom JSON object in the Search API response, when this rule is triggered. This can can be used to display a pre-defined message (eg: a promotion banner) on the front-end when a particular rule is triggered. */
+  metadata?: unknown;
+  /** A sort by clause that is applied to any search query that matches the curation rule. */
+  sort_by?: string;
+  /** Replaces the current search query with this value, when the search query matches the curation rule. */
+  replace_query?: string;
+  /** When set to true, the filter conditions of the query is applied to the curated records as well. Default: false. */
+  filter_curated_hits?: boolean;
+  /** A Unix timestamp that indicates the date/time from which the curation will be active. You can use this to create rules that start applying from a future point in time. */
+  effective_from_ts?: number;
+  /** A Unix timestamp that indicates the date/time until which the curation will be active. You can use this to create rules that stop applying after a period of time. */
+  effective_to_ts?: number;
+  /** When set to true, curation processing will stop at the first matching rule. When set to false curation processing will continue and multiple curation actions will be triggered in sequence. Curations are processed in the lexical sort order of their id field. */
+  stop_processing?: boolean;
+  /** ID of the curation item */
+  id: string;
+}
+export const CurationItemSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    rule: CurationRule,
+    includes: S.optional(CurationItemSchemaIncludesList),
+    excludes: S.optional(CurationItemSchemaExcludesList),
+    filter_by: S.optional(S.String),
+    remove_matched_tokens: S.optional(S.Boolean),
+    metadata: S.optional(S.Unknown),
+    sort_by: S.optional(S.String),
+    replace_query: S.optional(S.String),
+    filter_curated_hits: S.optional(S.Boolean),
+    effective_from_ts: S.optional(S.Number),
+    effective_to_ts: S.optional(S.Number),
+    stop_processing: S.optional(S.Boolean),
+    id: S.String,
+  }),
+).annotate({
+  identifier: "CurationItemSchema",
+}) as any as S.Schema<CurationItemSchema>;
+
+export type RetrieveCurationSetItemsResponseBodyList =
+  Array<CurationItemSchema>;
+export const RetrieveCurationSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
+  CurationItemSchema,
+) as any as S.Schema<RetrieveCurationSetItemsResponseBodyList>;
+
+export type SetRetrieveCurationItemResponse =
+  RetrieveCurationSetItemsResponseBodyList;
+export const SetRetrieveCurationItemResponse = /*@__PURE__*/ S.suspend(() =>
+  RetrieveCurationSetItemsResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "SetRetrieveCurationItemResponse",
+}) as any as S.Schema<SetRetrieveCurationItemResponse>;
+
+export interface SetRetrieveStopwordRequest {
+  /** The ID of the stopwords set to retrieve. */
+  setId: string;
+}
+export const SetRetrieveStopwordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    setId: S.String.pipe(T.Label()),
+  }).pipe(T.Http({ method: "GET", uri: "/stopwords/{setId}", code: 200 })),
+).annotate({
+  identifier: "SetRetrieveStopwordRequest",
+}) as any as S.Schema<SetRetrieveStopwordRequest>;
+
+export interface StopwordsSetRetrieveSchema {
+  stopwords: StopwordsSetSchema;
+}
+export const StopwordsSetRetrieveSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    stopwords: StopwordsSetSchema,
+  }),
+).annotate({
+  identifier: "StopwordsSetRetrieveSchema",
+}) as any as S.Schema<StopwordsSetRetrieveSchema>;
+
+export interface SetRetrieveSynonymRequest {
+  /** The name of the synonym set to retrieve */
+  synonymSetName: string;
+}
+export const SetRetrieveSynonymRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    synonymSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/synonym_sets/{synonymSetName}", code: 200 }),
+  ),
+).annotate({
+  identifier: "SetRetrieveSynonymRequest",
+}) as any as S.Schema<SetRetrieveSynonymRequest>;
+
+/** Array of synonym items */
+export type RetrieveSynonymSetResponseItemsList = Array<SynonymItemSchema>;
+export const RetrieveSynonymSetResponseItemsList = /*@__PURE__*/ S.Array(
+  SynonymItemSchema,
+) as any as S.Schema<RetrieveSynonymSetResponseItemsList>;
+
+export interface SetRetrieveSynonymResponse {
+  /** Array of synonym items */
+  items: RetrieveSynonymSetResponseItemsList;
+  /** Name of the synonym set */
+  name: string;
+}
+export const SetRetrieveSynonymResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    items: RetrieveSynonymSetResponseItemsList,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "SetRetrieveSynonymResponse",
+}) as any as S.Schema<SetRetrieveSynonymResponse>;
+
+export interface SetRetrieveSynonymItemRequest {
+  /** The name of the synonym set to retrieve items for */
+  synonymSetName: string;
+}
+export const SetRetrieveSynonymItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    synonymSetName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/synonym_sets/{synonymSetName}/items",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetRetrieveSynonymItemRequest",
+}) as any as S.Schema<SetRetrieveSynonymItemRequest>;
+
+export type RetrieveSynonymSetItemsResponseBodyList = Array<SynonymItemSchema>;
+export const RetrieveSynonymSetItemsResponseBodyList = /*@__PURE__*/ S.Array(
+  SynonymItemSchema,
+) as any as S.Schema<RetrieveSynonymSetItemsResponseBodyList>;
+
+export type SetRetrieveSynonymItemResponse =
+  RetrieveSynonymSetItemsResponseBodyList;
+export const SetRetrieveSynonymItemResponse = /*@__PURE__*/ S.suspend(() =>
+  RetrieveSynonymSetItemsResponseBodyList.pipe(T.RawResponseRoot()),
+).annotate({
+  identifier: "SetRetrieveSynonymItemResponse",
+}) as any as S.Schema<SetRetrieveSynonymItemResponse>;
+
 export interface TakeSnapshotRequest {
   /** The directory on the server where the snapshot should be saved. */
   snapshot_path: string;
@@ -4609,19 +4622,6 @@ export const TakeSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TakeSnapshotRequest",
 }) as any as S.Schema<TakeSnapshotRequest>;
-
-export interface ToggleSlowRequestLogRequest {
-  log_slow_requests_time_ms: number;
-}
-export const ToggleSlowRequestLogRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    log_slow_requests_time_ms: S.Number.pipe(
-      T.Body("log-slow-requests-time-ms"),
-    ),
-  }).pipe(T.Http({ method: "POST", uri: "/config", code: 200 })),
-).annotate({
-  identifier: "ToggleSlowRequestLogRequest",
-}) as any as S.Schema<ToggleSlowRequestLogRequest>;
 
 /** A list of fields for querying, filtering and faceting */
 export type UpdateCollectionRequestFieldsList = Array<Field>;
@@ -4857,7 +4857,7 @@ export const UpdateNLSearchModelRequestStopSequencesList =
     S.String,
   ) as any as S.Schema<UpdateNLSearchModelRequestStopSequencesList>;
 
-export interface UpdateNLSearchModelRequest {
+export interface UpdateNlSearchModelRequest {
   /** The ID of the NL search model to update */
   modelId: string;
   /** Name of the NL model to use */
@@ -4899,7 +4899,7 @@ export interface UpdateNLSearchModelRequest {
   /** Optional ID for the NL search model */
   id?: string;
 }
-export const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateNlSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modelId: S.String.pipe(T.Label()),
     model_name: S.optional(S.String),
@@ -4925,8 +4925,8 @@ export const UpdateNLSearchModelRequest = /*@__PURE__*/ S.suspend(() =>
     T.Http({ method: "PUT", uri: "/nl_search_models/{modelId}", code: 200 }),
   ),
 ).annotate({
-  identifier: "UpdateNLSearchModelRequest",
-}) as any as S.Schema<UpdateNLSearchModelRequest>;
+  identifier: "UpdateNlSearchModelRequest",
+}) as any as S.Schema<UpdateNlSearchModelRequest>;
 
 /** Stop sequences for the NL model (Google-specific) */
 export type UpdateNLSearchModelResponseStopSequencesList = Array<string>;
@@ -4935,7 +4935,7 @@ export const UpdateNLSearchModelResponseStopSequencesList =
     S.String,
   ) as any as S.Schema<UpdateNLSearchModelResponseStopSequencesList>;
 
-export interface UpdateNLSearchModelResponse {
+export interface UpdateNlSearchModelResponse {
   /** Name of the NL model to use */
   model_name?: string;
   /** API key for the NL model service */
@@ -4975,7 +4975,7 @@ export interface UpdateNLSearchModelResponse {
   /** Optional ID for the NL search model */
   id: string;
 }
-export const UpdateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateNlSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     model_name: S.optional(S.String),
     api_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
@@ -4998,8 +4998,8 @@ export const UpdateNLSearchModelResponse = /*@__PURE__*/ S.suspend(() =>
     id: S.String,
   }),
 ).annotate({
-  identifier: "UpdateNLSearchModelResponse",
-}) as any as S.Schema<UpdateNLSearchModelResponse>;
+  identifier: "UpdateNlSearchModelResponse",
+}) as any as S.Schema<UpdateNlSearchModelResponse>;
 
 export interface UpsertAliasRequest {
   /** The name of the alias to create/update */
@@ -5754,16 +5754,16 @@ export const createKey: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateNLSearchModelError = BadRequest | TypesenseOpError;
+export type CreateNlSearchModelError = BadRequest | TypesenseOpError;
 /** Create a NL search model Create a new NL search model. */
-export const createNLSearchModel: API.OperationMethod<
-  CreateNLSearchModelRequest,
-  CreateNLSearchModelResponse,
-  CreateNLSearchModelError,
+export const createNlSearchModel: API.OperationMethod<
+  CreateNlSearchModelRequest,
+  CreateNlSearchModelResponse,
+  CreateNlSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNLSearchModelRequest,
-  output: CreateNLSearchModelResponse,
+  input: CreateNlSearchModelRequest,
+  output: CreateNlSearchModelResponse,
   errors: [BadRequest],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -5919,15 +5919,15 @@ export const deleteKey: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteNLSearchModelError = NotFound | TypesenseOpError;
+export type DeleteNlSearchModelError = NotFound | TypesenseOpError;
 /** Delete a NL search model Delete a specific NL search model by its ID. */
-export const deleteNLSearchModel: API.OperationMethod<
-  DeleteNLSearchModelRequest,
+export const deleteNlSearchModel: API.OperationMethod<
+  DeleteNlSearchModelRequest,
   NLSearchModelDeleteSchema,
-  DeleteNLSearchModelError,
+  DeleteNlSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNLSearchModelRequest,
+  input: DeleteNlSearchModelRequest,
   output: NLSearchModelDeleteSchema,
   errors: [NotFound],
   protocol: TypesenseProtocol,
@@ -6234,16 +6234,16 @@ export const importStemmingDictionary: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type IndexDocumentError = NotFound | TypesenseOpError;
+export type ListDocumentError = NotFound | TypesenseOpError;
 /** Index a document A document to be indexed in a given collection must conform to the schema of the collection. */
-export const indexDocument: API.OperationMethod<
-  IndexDocumentRequest,
-  IndexDocumentResponse,
-  IndexDocumentError,
+export const listDocument: API.OperationMethod<
+  ListDocumentRequest,
+  ListDocumentResponse,
+  ListDocumentError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IndexDocumentRequest,
-  output: IndexDocumentResponse,
+  input: ListDocumentRequest,
+  output: ListDocumentResponse,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -6275,6 +6275,21 @@ export const multiSearch: API.OperationMethod<
   input: MultiSearchRequest,
   output: MultiSearchResult,
   errors: [BadRequest],
+  protocol: TypesenseProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RequestToggleSlowLogError = TypesenseOpError;
+/** Toggle Slow Request Log Enable logging of requests that take over a defined threshold of time. Default is `-1` which disables slow request logging. Slow requests are logged to the primary log file, with the prefix SLOW REQUEST. */
+export const requestToggleSlowLog: API.OperationMethod<
+  RequestToggleSlowLogRequest,
+  SuccessStatus,
+  RequestToggleSlowLogError,
+  TypesenseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestToggleSlowLogRequest,
+  output: SuccessStatus,
+  errors: [],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
 }));
@@ -6384,21 +6399,6 @@ export const retrieveConversationModel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetrieveCurationSetError = NotFound | TypesenseOpError;
-/** Retrieve a curation set Retrieve a specific curation set by its name */
-export const retrieveCurationSet: API.OperationMethod<
-  RetrieveCurationSetRequest,
-  RetrieveCurationSetResponse,
-  RetrieveCurationSetError,
-  TypesenseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RetrieveCurationSetRequest,
-  output: RetrieveCurationSetResponse,
-  errors: [NotFound],
-  protocol: TypesenseProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RetrieveCurationSetItemError = NotFound | TypesenseOpError;
 /** Retrieve a curation set item Retrieve a specific curation item by its id */
 export const retrieveCurationSetItem: API.OperationMethod<
@@ -6409,21 +6409,6 @@ export const retrieveCurationSetItem: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RetrieveCurationSetItemRequest,
   output: RetrieveCurationSetItemResponse,
-  errors: [NotFound],
-  protocol: TypesenseProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RetrieveCurationSetItemsError = NotFound | TypesenseOpError;
-/** List items in a curation set Retrieve all curation items in a set */
-export const retrieveCurationSetItems: API.OperationMethod<
-  RetrieveCurationSetItemsRequest,
-  RetrieveCurationSetItemsResponse,
-  RetrieveCurationSetItemsError,
-  TypesenseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RetrieveCurationSetItemsRequest,
-  output: RetrieveCurationSetItemsResponse,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -6489,21 +6474,6 @@ export const retrievePreset: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetrieveStopwordsSetError = NotFound | TypesenseOpError;
-/** Retrieves a stopwords set. Retrieve the details of a stopwords set, given it's name. */
-export const retrieveStopwordsSet: API.OperationMethod<
-  RetrieveStopwordsSetRequest,
-  StopwordsSetRetrieveSchema,
-  RetrieveStopwordsSetError,
-  TypesenseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RetrieveStopwordsSetRequest,
-  output: StopwordsSetRetrieveSchema,
-  errors: [NotFound],
-  protocol: TypesenseProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RetrieveStopwordsSetsError = TypesenseOpError;
 /** Retrieves all stopwords sets. Retrieve the details of all stopwords sets */
 export const retrieveStopwordsSets: API.OperationMethod<
@@ -6519,21 +6489,6 @@ export const retrieveStopwordsSets: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RetrieveSynonymSetError = NotFound | TypesenseOpError;
-/** Retrieve a synonym set Retrieve a specific synonym set by its name */
-export const retrieveSynonymSet: API.OperationMethod<
-  RetrieveSynonymSetRequest,
-  RetrieveSynonymSetResponse,
-  RetrieveSynonymSetError,
-  TypesenseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RetrieveSynonymSetRequest,
-  output: RetrieveSynonymSetResponse,
-  errors: [NotFound],
-  protocol: TypesenseProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RetrieveSynonymSetItemError = NotFound | TypesenseOpError;
 /** Retrieve a synonym set item Retrieve a specific synonym item by its id */
 export const retrieveSynonymSetItem: API.OperationMethod<
@@ -6544,21 +6499,6 @@ export const retrieveSynonymSetItem: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RetrieveSynonymSetItemRequest,
   output: RetrieveSynonymSetItemResponse,
-  errors: [NotFound],
-  protocol: TypesenseProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RetrieveSynonymSetItemsError = NotFound | TypesenseOpError;
-/** List items in a synonym set Retrieve all synonym items in a set */
-export const retrieveSynonymSetItems: API.OperationMethod<
-  RetrieveSynonymSetItemsRequest,
-  RetrieveSynonymSetItemsResponse,
-  RetrieveSynonymSetItemsError,
-  TypesenseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RetrieveSynonymSetItemsRequest,
-  output: RetrieveSynonymSetItemsResponse,
   errors: [NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,
@@ -6594,6 +6534,81 @@ export const searchCollection: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type SetRetrieveCurationError = NotFound | TypesenseOpError;
+/** Retrieve a curation set Retrieve a specific curation set by its name */
+export const setRetrieveCuration: API.OperationMethod<
+  SetRetrieveCurationRequest,
+  SetRetrieveCurationResponse,
+  SetRetrieveCurationError,
+  TypesenseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetRetrieveCurationRequest,
+  output: SetRetrieveCurationResponse,
+  errors: [NotFound],
+  protocol: TypesenseProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetRetrieveCurationItemError = NotFound | TypesenseOpError;
+/** List items in a curation set Retrieve all curation items in a set */
+export const setRetrieveCurationItem: API.OperationMethod<
+  SetRetrieveCurationItemRequest,
+  SetRetrieveCurationItemResponse,
+  SetRetrieveCurationItemError,
+  TypesenseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetRetrieveCurationItemRequest,
+  output: SetRetrieveCurationItemResponse,
+  errors: [NotFound],
+  protocol: TypesenseProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetRetrieveStopwordError = NotFound | TypesenseOpError;
+/** Retrieves a stopwords set. Retrieve the details of a stopwords set, given it's name. */
+export const setRetrieveStopword: API.OperationMethod<
+  SetRetrieveStopwordRequest,
+  StopwordsSetRetrieveSchema,
+  SetRetrieveStopwordError,
+  TypesenseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetRetrieveStopwordRequest,
+  output: StopwordsSetRetrieveSchema,
+  errors: [NotFound],
+  protocol: TypesenseProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetRetrieveSynonymError = NotFound | TypesenseOpError;
+/** Retrieve a synonym set Retrieve a specific synonym set by its name */
+export const setRetrieveSynonym: API.OperationMethod<
+  SetRetrieveSynonymRequest,
+  SetRetrieveSynonymResponse,
+  SetRetrieveSynonymError,
+  TypesenseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetRetrieveSynonymRequest,
+  output: SetRetrieveSynonymResponse,
+  errors: [NotFound],
+  protocol: TypesenseProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetRetrieveSynonymItemError = NotFound | TypesenseOpError;
+/** List items in a synonym set Retrieve all synonym items in a set */
+export const setRetrieveSynonymItem: API.OperationMethod<
+  SetRetrieveSynonymItemRequest,
+  SetRetrieveSynonymItemResponse,
+  SetRetrieveSynonymItemError,
+  TypesenseOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetRetrieveSynonymItemRequest,
+  output: SetRetrieveSynonymItemResponse,
+  errors: [NotFound],
+  protocol: TypesenseProtocol,
+  retry: Retry.Retry,
+}));
+
 export type TakeSnapshotError = TypesenseOpError;
 /** Creates a point-in-time snapshot of a Typesense node's state and data in the specified directory. Creates a point-in-time snapshot of a Typesense node's state and data in the specified directory. You can then backup the snapshot directory that gets created and later restore it as a data directory, as needed. */
 export const takeSnapshot: API.OperationMethod<
@@ -6603,21 +6618,6 @@ export const takeSnapshot: API.OperationMethod<
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: TakeSnapshotRequest,
-  output: SuccessStatus,
-  errors: [],
-  protocol: TypesenseProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ToggleSlowRequestLogError = TypesenseOpError;
-/** Toggle Slow Request Log Enable logging of requests that take over a defined threshold of time. Default is `-1` which disables slow request logging. Slow requests are logged to the primary log file, with the prefix SLOW REQUEST. */
-export const toggleSlowRequestLog: API.OperationMethod<
-  ToggleSlowRequestLogRequest,
-  SuccessStatus,
-  ToggleSlowRequestLogError,
-  TypesenseOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ToggleSlowRequestLogRequest,
   output: SuccessStatus,
   errors: [],
   protocol: TypesenseProtocol,
@@ -6687,16 +6687,16 @@ export const updateDocuments: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UpdateNLSearchModelError = BadRequest | NotFound | TypesenseOpError;
+export type UpdateNlSearchModelError = BadRequest | NotFound | TypesenseOpError;
 /** Update a NL search model Update an existing NL search model. */
-export const updateNLSearchModel: API.OperationMethod<
-  UpdateNLSearchModelRequest,
-  UpdateNLSearchModelResponse,
-  UpdateNLSearchModelError,
+export const updateNlSearchModel: API.OperationMethod<
+  UpdateNlSearchModelRequest,
+  UpdateNlSearchModelResponse,
+  UpdateNlSearchModelError,
   TypesenseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNLSearchModelRequest,
-  output: UpdateNLSearchModelResponse,
+  input: UpdateNlSearchModelRequest,
+  output: UpdateNlSearchModelResponse,
   errors: [BadRequest, NotFound],
   protocol: TypesenseProtocol,
   retry: Retry.Retry,

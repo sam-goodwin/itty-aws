@@ -62,6 +62,132 @@ export const CheckNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckNameAvailabilityResult",
 }) as any as S.Schema<CheckNameAvailabilityResult>;
 
+export interface CreateManagementGroupSubscriptionRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** Subscription ID. */
+  subscriptionId: string;
+}
+export const CreateManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
+        code: 200,
+        apiVersion: "2023-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "CreateManagementGroupSubscriptionRequest",
+}) as any as S.Schema<CreateManagementGroupSubscriptionRequest>;
+
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
+/** The ID of the parent management group. */
+export interface DescendantParentGroupInfo {
+  /** The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
+  id?: string;
+}
+export const DescendantParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DescendantParentGroupInfo",
+}) as any as S.Schema<DescendantParentGroupInfo>;
+
+/** The generic properties of subscription under a management group. */
+export interface SubscriptionUnderManagementGroupProperties {
+  /** The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000 */
+  tenant?: string;
+  /** The friendly name of the subscription. */
+  displayName?: string;
+  /** The ID of the parent management group. */
+  parent?: DescendantParentGroupInfo | null;
+  /** The state of the subscription. */
+  state?: string;
+}
+export const SubscriptionUnderManagementGroupProperties =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      tenant: S.optional(S.String),
+      displayName: S.optional(S.String),
+      parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
+      state: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SubscriptionUnderManagementGroupProperties",
+  }) as any as S.Schema<SubscriptionUnderManagementGroupProperties>;
+
+export interface CreateManagementGroupSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The generic properties of subscription under a management group. */
+  properties?: SubscriptionUnderManagementGroupProperties;
+}
+export const CreateManagementGroupSubscriptionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(SubscriptionUnderManagementGroupProperties),
+    }),
+  ).annotate({
+    identifier: "CreateManagementGroupSubscriptionResponse",
+  }) as any as S.Schema<CreateManagementGroupSubscriptionResponse>;
+
 /** The provisioning state of the serviceGroup. For example, Running */
 export type ProvisioningState =
   | "NotStarted"
@@ -156,48 +282,6 @@ export const CreateOrUpdateServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOrUpdateServiceGroupRequest",
 }) as any as S.Schema<CreateOrUpdateServiceGroupRequest>;
 
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
 /** The serviceGroup tags. */
 export type CreateOrUpdateServiceGroupResponseTagsMap = {
   [key: string]: string | undefined;
@@ -237,6 +321,87 @@ export const CreateOrUpdateServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateOrUpdateServiceGroupResponse",
 }) as any as S.Schema<CreateOrUpdateServiceGroupResponse>;
 
+export interface DeleteHierarchySettingRequest {
+  /** Management Group ID. */
+  groupId: string;
+}
+export const DeleteHierarchySettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteHierarchySettingRequest",
+}) as any as S.Schema<DeleteHierarchySettingRequest>;
+
+export interface DeleteHierarchySettingResponse {}
+export const DeleteHierarchySettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteHierarchySettingResponse",
+}) as any as S.Schema<DeleteHierarchySettingResponse>;
+
+export interface DeleteManagementGroupRequest {
+  /** Management Group ID. */
+  groupId: string;
+}
+export const DeleteManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteManagementGroupRequest",
+}) as any as S.Schema<DeleteManagementGroupRequest>;
+
+export interface DeleteManagementGroupResponse {}
+export const DeleteManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteManagementGroupResponse",
+}) as any as S.Schema<DeleteManagementGroupResponse>;
+
+export interface DeleteManagementGroupSubscriptionRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** Subscription ID. */
+  subscriptionId: string;
+}
+export const DeleteManagementGroupSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
+        code: 200,
+        apiVersion: "2023-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteManagementGroupSubscriptionRequest",
+}) as any as S.Schema<DeleteManagementGroupSubscriptionRequest>;
+
+export interface DeleteManagementGroupSubscriptionResponse {}
+export const DeleteManagementGroupSubscriptionResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteManagementGroupSubscriptionResponse",
+  }) as any as S.Schema<DeleteManagementGroupSubscriptionResponse>;
+
 export interface DeleteServiceGroupRequest {
   /** ServiceGroup Name. */
   serviceGroupName: string;
@@ -263,218 +428,24 @@ export const DeleteServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteServiceGroupResponse",
 }) as any as S.Schema<DeleteServiceGroupResponse>;
 
-export type EntitiesListRequestSearch =
-  | "AllowedParents"
-  | "AllowedChildren"
-  | "ParentAndFirstLevelChildren"
-  | "ParentOnly"
-  | "ChildrenOnly";
-export const EntitiesListRequestSearch = /*@__PURE__*/ S.String;
-
-export type EntitiesListRequestView =
-  | "FullHierarchy"
-  | "GroupsOnly"
-  | "SubscriptionsOnly"
-  | "Audit";
-export const EntitiesListRequestView = /*@__PURE__*/ S.String;
-
-export interface EntitiesListRequest {
-  /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
-  _skiptoken?: string;
-  /** Number of entities to skip over when retrieving results. Passing this in will override $skipToken. */
-  _skip?: number;
-  /** Number of elements to return when retrieving results. Passing this in will override $skipToken. */
-  _top?: number;
-  /** This parameter specifies the fields to include in the response. Can include any combination of Name,DisplayName,Type,ParentDisplayNameChain,ParentChain, e.g. '$select=Name,DisplayName,Type,ParentDisplayNameChain,ParentNameChain'. When specified the $select parameter can override select in $skipToken. */
-  _select?: string;
-  /** The $search parameter is used in conjunction with the $filter parameter to return three different outputs depending on the parameter passed in. With $search=AllowedParents the API will return the entity info of all groups that the requested entity will be able to reparent to as determined by the user's permissions. With $search=AllowedChildren the API will return the entity info of all entities that can be added as children of the requested entity. With $search=ParentAndFirstLevelChildren the API will return the parent and first level of children that the user has either direct access to or indirect access via one of their descendants. With $search=ParentOnly the API will return only the group if the user has access to at least one of the descendants of the group. With $search=ChildrenOnly the API will return only the first level of children of the group entity info specified in $filter. The user must have direct access to the children entities or one of it's descendants for it to show up in the results. */
-  _search?: EntitiesListRequestSearch | (string & {});
-  /** The filter parameter allows you to filter on the the name or display name fields. You can check for equality on the name field (e.g. name eq '{entityName}') and you can check for substrings on either the name or display name fields(e.g. contains(name, '{substringToSearch}'), contains(displayName, '{substringToSearch')). Note that the '{entityName}' and '{substringToSearch}' fields are checked case insensitively. */
-  _filter?: string;
-  /** The view parameter allows clients to filter the type of data that is returned by the getEntities call. */
-  _view?: EntitiesListRequestView | (string & {});
-  /** A filter which allows the get entities call to focus on a particular group (i.e. "$filter=name eq 'groupName'") */
-  groupName?: string;
+export interface GetHierarchySettingRequest {
+  /** Management Group ID. */
+  groupId: string;
 }
-export const EntitiesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetHierarchySettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    _select: S.optional(S.String.pipe(T.Query("$select"))),
-    _search: S.optional(EntitiesListRequestSearch.pipe(T.Query("$search"))),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _view: S.optional(EntitiesListRequestView.pipe(T.Query("$view"))),
-    groupName: S.optional(S.String.pipe(T.Query())),
+    groupId: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.Management/getEntities",
+      method: "GET",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
       code: 200,
       apiVersion: "2023-04-01",
     }),
   ),
 ).annotate({
-  identifier: "EntitiesListRequest",
-}) as any as S.Schema<EntitiesListRequest>;
-
-/** (Optional) The ID of the parent management group. */
-export interface EntityParentGroupInfo {
-  /** The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
-  id?: string;
-}
-export const EntityParentGroupInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EntityParentGroupInfo",
-}) as any as S.Schema<EntityParentGroupInfo>;
-
-/** The users specific permissions to this item. */
-export type Permissions = "noaccess" | "view" | "edit" | "delete";
-export const Permissions = /*@__PURE__*/ S.String;
-
-/** The parent display name chain from the root group to the immediate parent */
-export type EntityInfoPropertiesParentDisplayNameChainList = Array<string>;
-export const EntityInfoPropertiesParentDisplayNameChainList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
-
-/** The parent name chain from the root group to the immediate parent */
-export type EntityInfoPropertiesParentNameChainList = Array<string>;
-export const EntityInfoPropertiesParentNameChainList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
-
-/** The generic properties of an entity. */
-export interface EntityInfoProperties {
-  /** The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000 */
-  tenantId?: string | null;
-  /** The friendly name of the management group. */
-  displayName?: string | null;
-  /** (Optional) The ID of the parent management group. */
-  parent?: EntityParentGroupInfo | null;
-  /** The users specific permissions to this item. */
-  permissions?: Permissions | null;
-  /** The users specific permissions to this item. */
-  inheritedPermissions?: Permissions | null;
-  /** Number of Descendants */
-  numberOfDescendants?: number | null;
-  /** Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group. */
-  numberOfChildren?: number | null;
-  /** Number of children is the number of Groups that are exactly one level underneath the current Group. */
-  numberOfChildGroups?: number | null;
-  /** The parent display name chain from the root group to the immediate parent */
-  parentDisplayNameChain?: EntityInfoPropertiesParentDisplayNameChainList | null;
-  /** The parent name chain from the root group to the immediate parent */
-  parentNameChain?: EntityInfoPropertiesParentNameChainList | null;
-}
-export const EntityInfoProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tenantId: S.optional(S.NullOr(S.String)),
-    displayName: S.optional(S.NullOr(S.String)),
-    parent: S.optional(S.NullOr(EntityParentGroupInfo)),
-    permissions: S.optional(S.NullOr(Permissions)),
-    inheritedPermissions: S.optional(S.NullOr(Permissions)),
-    numberOfDescendants: S.optional(S.NullOr(S.Number)),
-    numberOfChildren: S.optional(S.NullOr(S.Number)),
-    numberOfChildGroups: S.optional(S.NullOr(S.Number)),
-    parentDisplayNameChain: S.optional(
-      S.NullOr(EntityInfoPropertiesParentDisplayNameChainList),
-    ),
-    parentNameChain: S.optional(
-      S.NullOr(EntityInfoPropertiesParentNameChainList),
-    ),
-  }),
-).annotate({
-  identifier: "EntityInfoProperties",
-}) as any as S.Schema<EntityInfoProperties>;
-
-/** The entity. */
-export interface EntityInfo {
-  /** The fully qualified ID for the entity. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
-  id?: string | null;
-  /** The type of the resource. For example, Microsoft.Management/managementGroups */
-  type?: string | null;
-  /** The name of the entity. For example, 00000000-0000-0000-0000-000000000000 */
-  name?: string;
-  /** The generic properties of an entity. */
-  properties?: EntityInfoProperties | null;
-}
-export const EntityInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.NullOr(S.String)),
-    type: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.String),
-    properties: S.optional(S.NullOr(EntityInfoProperties)),
-  }),
-).annotate({ identifier: "EntityInfo" }) as any as S.Schema<EntityInfo>;
-
-/** The EntityInfo items on this page */
-export type EntityListResultValueList = Array<EntityInfo>;
-export const EntityListResultValueList = /*@__PURE__*/ S.Array(
-  EntityInfo,
-) as any as S.Schema<EntityListResultValueList>;
-
-/** Describes the result of the request to view entities. */
-export interface EntityListResult {
-  /** The EntityInfo items on this page */
-  value: EntityListResultValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-  /** Total count of records that match the filter. */
-  count?: number;
-}
-export const EntityListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: EntityListResultValueList,
-    nextLink: S.optional(S.String),
-    count: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EntityListResult",
-}) as any as S.Schema<EntityListResult>;
-
-/** The properties of the request to create or update Management Group settings */
-export interface CreateOrUpdateSettingsProperties {
-  /** Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access. */
-  requireAuthorizationForGroupCreation?: boolean;
-  /** Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup */
-  defaultManagementGroup?: string;
-}
-export const CreateOrUpdateSettingsProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    requireAuthorizationForGroupCreation: S.optional(S.Boolean),
-    defaultManagementGroup: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CreateOrUpdateSettingsProperties",
-}) as any as S.Schema<CreateOrUpdateSettingsProperties>;
-
-export interface HierarchySettingsCreateOrUpdateRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** The properties of the request to create or update Management Group settings */
-  properties?: CreateOrUpdateSettingsProperties;
-}
-export const HierarchySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      properties: S.optional(CreateOrUpdateSettingsProperties),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "HierarchySettingsCreateOrUpdateRequest",
-}) as any as S.Schema<HierarchySettingsCreateOrUpdateRequest>;
+  identifier: "GetHierarchySettingRequest",
+}) as any as S.Schema<GetHierarchySettingRequest>;
 
 /** The generic properties of hierarchy settings. */
 export interface HierarchySettingsProperties {
@@ -495,7 +466,7 @@ export const HierarchySettingsProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "HierarchySettingsProperties",
 }) as any as S.Schema<HierarchySettingsProperties>;
 
-export interface HierarchySettingsCreateOrUpdateResponse {
+export interface GetHierarchySettingResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -507,77 +478,7 @@ export interface HierarchySettingsCreateOrUpdateResponse {
   /** The generic properties of hierarchy settings. */
   properties?: HierarchySettingsProperties;
 }
-export const HierarchySettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(HierarchySettingsProperties),
-    }),
-).annotate({
-  identifier: "HierarchySettingsCreateOrUpdateResponse",
-}) as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>;
-
-export interface HierarchySettingsDeleteRequest {
-  /** Management Group ID. */
-  groupId: string;
-}
-export const HierarchySettingsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "HierarchySettingsDeleteRequest",
-}) as any as S.Schema<HierarchySettingsDeleteRequest>;
-
-export interface HierarchySettingsDeleteResponse {}
-export const HierarchySettingsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "HierarchySettingsDeleteResponse",
-}) as any as S.Schema<HierarchySettingsDeleteResponse>;
-
-export interface HierarchySettingsGetRequest {
-  /** Management Group ID. */
-  groupId: string;
-}
-export const HierarchySettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "HierarchySettingsGetRequest",
-}) as any as S.Schema<HierarchySettingsGetRequest>;
-
-export interface HierarchySettingsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of hierarchy settings. */
-  properties?: HierarchySettingsProperties;
-}
-export const HierarchySettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetHierarchySettingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -586,177 +487,44 @@ export const HierarchySettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(HierarchySettingsProperties),
   }),
 ).annotate({
-  identifier: "HierarchySettingsGetResponse",
-}) as any as S.Schema<HierarchySettingsGetResponse>;
+  identifier: "GetHierarchySettingResponse",
+}) as any as S.Schema<GetHierarchySettingResponse>;
 
-export interface HierarchySettingsListRequest {
+export type ManagementGroupsGetRequestExpand =
+  | "children"
+  | "path"
+  | "ancestors";
+export const ManagementGroupsGetRequestExpand = /*@__PURE__*/ S.String;
+
+export interface GetManagementGroupRequest {
   /** Management Group ID. */
   groupId: string;
+  /** The $expand=children query string parameter allows clients to request inclusion of children in the response payload. $expand=path includes the path from the root group to the current group. $expand=ancestors includes the ancestor Ids of the current group. */
+  _expand?: ManagementGroupsGetRequestExpand | (string & {});
+  /** The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that $expand=children must be passed up if $recurse is set to true. */
+  _recurse?: boolean;
+  /** A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription') */
+  _filter?: string;
 }
-export const HierarchySettingsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     groupId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "HierarchySettingsListRequest",
-}) as any as S.Schema<HierarchySettingsListRequest>;
-
-/** The hierarchy settings resource. */
-export interface HierarchySettingsInfo {
-  /** The fully qualified ID for the settings object. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default. */
-  id?: string;
-  /** The type of the resource. For example, Microsoft.Management/managementGroups/settings. */
-  type?: string;
-  /** The name of the object. In this case, default. */
-  name?: string;
-  /** The generic properties of hierarchy settings. */
-  properties?: HierarchySettingsProperties;
-}
-export const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    type: S.optional(S.String),
-    name: S.optional(S.String),
-    properties: S.optional(HierarchySettingsProperties),
-  }),
-).annotate({
-  identifier: "HierarchySettingsInfo",
-}) as any as S.Schema<HierarchySettingsInfo>;
-
-/** The list of hierarchy settings. */
-export type HierarchySettingsListValueList = Array<HierarchySettingsInfo>;
-export const HierarchySettingsListValueList = /*@__PURE__*/ S.Array(
-  HierarchySettingsInfo,
-) as any as S.Schema<HierarchySettingsListValueList>;
-
-/** Lists all hierarchy settings. */
-export interface HierarchySettingsList {
-  /** The list of hierarchy settings. */
-  value?: HierarchySettingsListValueList;
-  /** The URL to use for getting the next set of results. */
-  _nextLink?: string;
-}
-export const HierarchySettingsList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(HierarchySettingsListValueList),
-    _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
-  }),
-).annotate({
-  identifier: "HierarchySettingsList",
-}) as any as S.Schema<HierarchySettingsList>;
-
-export interface HierarchySettingsUpdateRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** The properties of the request to create or update Management Group settings */
-  properties?: CreateOrUpdateSettingsProperties;
-}
-export const HierarchySettingsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.String.pipe(T.Label()),
-    properties: S.optional(CreateOrUpdateSettingsProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "HierarchySettingsUpdateRequest",
-}) as any as S.Schema<HierarchySettingsUpdateRequest>;
-
-export interface HierarchySettingsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of hierarchy settings. */
-  properties?: HierarchySettingsProperties;
-}
-export const HierarchySettingsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(HierarchySettingsProperties),
-  }),
-).annotate({
-  identifier: "HierarchySettingsUpdateResponse",
-}) as any as S.Schema<HierarchySettingsUpdateResponse>;
-
-/** (Optional) The ID of the parent management group used during creation. */
-export type CreateParentGroupInfoInput = EntityParentGroupInfo;
-export const CreateParentGroupInfoInput = EntityParentGroupInfo;
-
-/** The details of a management group used during creation. */
-export interface CreateManagementGroupDetailsInput {
-  /** (Optional) The ID of the parent management group used during creation. */
-  parent?: EntityParentGroupInfo;
-}
-export const CreateManagementGroupDetailsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.optional(EntityParentGroupInfo),
-  }),
-).annotate({
-  identifier: "CreateManagementGroupDetailsInput",
-}) as any as S.Schema<CreateManagementGroupDetailsInput>;
-
-/** The generic properties of a management group used during creation. */
-export interface CreateManagementGroupPropertiesInput {
-  /** The friendly name of the management group. If no value is passed then this field will be set to the groupId. */
-  displayName?: string | null;
-  /** The details of a management group used during creation. */
-  details?: CreateManagementGroupDetailsInput;
-}
-export const CreateManagementGroupPropertiesInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      displayName: S.optional(S.NullOr(S.String)),
-      details: S.optional(CreateManagementGroupDetailsInput),
-    }),
-).annotate({
-  identifier: "CreateManagementGroupPropertiesInput",
-}) as any as S.Schema<CreateManagementGroupPropertiesInput>;
-
-export interface ManagementGroupsCreateOrUpdateRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** The name of the management group. For example, 00000000-0000-0000-0000-000000000000 */
-  name?: string;
-  /** The generic properties of a management group used during creation. */
-  properties?: CreateManagementGroupPropertiesInput;
-}
-export const ManagementGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      properties: S.optional(CreateManagementGroupPropertiesInput),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
+    _expand: S.optional(
+      ManagementGroupsGetRequestExpand.pipe(T.Query("$expand")),
     ),
+    _recurse: S.optional(S.Boolean.pipe(T.Query("$recurse"))),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
 ).annotate({
-  identifier: "ManagementGroupsCreateOrUpdateRequest",
-}) as any as S.Schema<ManagementGroupsCreateOrUpdateRequest>;
+  identifier: "GetManagementGroupRequest",
+}) as any as S.Schema<GetManagementGroupRequest>;
 
 /** (Optional) The ID of the parent management group. */
 export interface ParentGroupInfo {
@@ -916,7 +684,7 @@ export const ManagementGroupProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagementGroupProperties",
 }) as any as S.Schema<ManagementGroupProperties>;
 
-export interface ManagementGroupsCreateOrUpdateResponse {
+export interface GetManagementGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -928,94 +696,7 @@ export interface ManagementGroupsCreateOrUpdateResponse {
   /** The generic properties of a management group. */
   properties?: ManagementGroupProperties;
 }
-export const ManagementGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ManagementGroupProperties),
-    }),
-).annotate({
-  identifier: "ManagementGroupsCreateOrUpdateResponse",
-}) as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>;
-
-export interface ManagementGroupsDeleteRequest {
-  /** Management Group ID. */
-  groupId: string;
-}
-export const ManagementGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManagementGroupsDeleteRequest",
-}) as any as S.Schema<ManagementGroupsDeleteRequest>;
-
-export interface ManagementGroupsDeleteResponse {}
-export const ManagementGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ManagementGroupsDeleteResponse",
-}) as any as S.Schema<ManagementGroupsDeleteResponse>;
-
-export type ManagementGroupsGetRequestExpand =
-  | "children"
-  | "path"
-  | "ancestors";
-export const ManagementGroupsGetRequestExpand = /*@__PURE__*/ S.String;
-
-export interface ManagementGroupsGetRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** The $expand=children query string parameter allows clients to request inclusion of children in the response payload. $expand=path includes the path from the root group to the current group. $expand=ancestors includes the ancestor Ids of the current group. */
-  _expand?: ManagementGroupsGetRequestExpand | (string & {});
-  /** The $recurse=true query string parameter allows clients to request inclusion of entire hierarchy in the response payload. Note that $expand=children must be passed up if $recurse is set to true. */
-  _recurse?: boolean;
-  /** A filter which allows the exclusion of subscriptions from results (i.e. '$filter=children.childType ne Subscription') */
-  _filter?: string;
-}
-export const ManagementGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.String.pipe(T.Label()),
-    _expand: S.optional(
-      ManagementGroupsGetRequestExpand.pipe(T.Query("$expand")),
-    ),
-    _recurse: S.optional(S.Boolean.pipe(T.Query("$recurse"))),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManagementGroupsGetRequest",
-}) as any as S.Schema<ManagementGroupsGetRequest>;
-
-export interface ManagementGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of a management group. */
-  properties?: ManagementGroupProperties;
-}
-export const ManagementGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1024,10 +705,10 @@ export const ManagementGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(ManagementGroupProperties),
   }),
 ).annotate({
-  identifier: "ManagementGroupsGetResponse",
-}) as any as S.Schema<ManagementGroupsGetResponse>;
+  identifier: "GetManagementGroupResponse",
+}) as any as S.Schema<GetManagementGroupResponse>;
 
-export interface ManagementGroupsGetDescendantsRequest {
+export interface GetManagementGroupDescendantRequest {
   /** Management Group ID. */
   groupId: string;
   /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
@@ -1035,39 +716,34 @@ export interface ManagementGroupsGetDescendantsRequest {
   /** Number of elements to return when retrieving results. Passing this in will override $skipToken. */
   _top?: number;
 }
-export const ManagementGroupsGetDescendantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/descendants",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
+export const GetManagementGroupDescendantRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/descendants",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
 ).annotate({
-  identifier: "ManagementGroupsGetDescendantsRequest",
-}) as any as S.Schema<ManagementGroupsGetDescendantsRequest>;
-
-/** The ID of the parent management group. */
-export type DescendantParentGroupInfo = EntityParentGroupInfo;
-export const DescendantParentGroupInfo = EntityParentGroupInfo;
+  identifier: "GetManagementGroupDescendantRequest",
+}) as any as S.Schema<GetManagementGroupDescendantRequest>;
 
 /** The generic properties of an descendant. */
 export interface DescendantInfoProperties {
   /** The friendly name of the management group. */
   displayName?: string | null;
   /** The ID of the parent management group. */
-  parent?: EntityParentGroupInfo | null;
+  parent?: DescendantParentGroupInfo | null;
 }
 export const DescendantInfoProperties = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     displayName: S.optional(S.NullOr(S.String)),
-    parent: S.optional(S.NullOr(EntityParentGroupInfo)),
+    parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
   }),
 ).annotate({
   identifier: "DescendantInfoProperties",
@@ -1115,11 +791,483 @@ export const DescendantListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "DescendantListResult",
 }) as any as S.Schema<DescendantListResult>;
 
-export interface ManagementGroupsListRequest {
+export interface GetManagementGroupSubscriptionSubscriptionRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** Subscription ID. */
+  subscriptionId: string;
+}
+export const GetManagementGroupSubscriptionSubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
+        code: 200,
+        apiVersion: "2023-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetManagementGroupSubscriptionSubscriptionRequest",
+  }) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionRequest>;
+
+export interface GetManagementGroupSubscriptionSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The generic properties of subscription under a management group. */
+  properties?: SubscriptionUnderManagementGroupProperties;
+}
+export const GetManagementGroupSubscriptionSubscriptionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(SubscriptionUnderManagementGroupProperties),
+    }),
+  ).annotate({
+    identifier: "GetManagementGroupSubscriptionSubscriptionResponse",
+  }) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionResponse>;
+
+export interface GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest {
+  /** Management Group ID. */
+  groupId: string;
   /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-export const ManagementGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions",
+        code: 200,
+        apiVersion: "2023-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest",
+  }) as any as S.Schema<GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest>;
+
+/** The details of subscription under management group. */
+export interface SubscriptionUnderManagementGroup {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The generic properties of subscription under a management group. */
+  properties?: SubscriptionUnderManagementGroupProperties;
+}
+export const SubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(SubscriptionUnderManagementGroupProperties),
+  }),
+).annotate({
+  identifier: "SubscriptionUnderManagementGroup",
+}) as any as S.Schema<SubscriptionUnderManagementGroup>;
+
+/** The SubscriptionUnderManagementGroup items on this page */
+export type ListSubscriptionUnderManagementGroupValueList =
+  Array<SubscriptionUnderManagementGroup>;
+export const ListSubscriptionUnderManagementGroupValueList =
+  /*@__PURE__*/ S.Array(
+    SubscriptionUnderManagementGroup,
+  ) as any as S.Schema<ListSubscriptionUnderManagementGroupValueList>;
+
+/** The details of all subscriptions under management group. */
+export interface ListSubscriptionUnderManagementGroup {
+  /** The SubscriptionUnderManagementGroup items on this page */
+  value: ListSubscriptionUnderManagementGroupValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ListSubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: ListSubscriptionUnderManagementGroupValueList,
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ListSubscriptionUnderManagementGroup",
+}) as any as S.Schema<ListSubscriptionUnderManagementGroup>;
+
+export interface GetServiceGroupRequest {
+  /** ServiceGroup Name. */
+  serviceGroupName: string;
+}
+export const GetServiceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
+      code: 200,
+      apiVersion: "2026-08-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceGroupRequest",
+}) as any as S.Schema<GetServiceGroupRequest>;
+
+/** The serviceGroup tags. */
+export type ServiceGroupsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ServiceGroupsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ServiceGroupsGetResponseTagsMap>;
+
+export interface GetServiceGroupResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** ServiceGroup creation request body parameters. */
+  properties?: ServiceGroupProperties;
+  /** The kind of the serviceGroup. */
+  kind?: string;
+  /** The serviceGroup tags. */
+  tags?: ServiceGroupsGetResponseTagsMap;
+}
+export const GetServiceGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ServiceGroupProperties),
+    kind: S.optional(S.String),
+    tags: S.optional(ServiceGroupsGetResponseTagsMap),
+  }),
+).annotate({
+  identifier: "GetServiceGroupResponse",
+}) as any as S.Schema<GetServiceGroupResponse>;
+
+/** The properties of the request to create or update Management Group settings */
+export interface CreateOrUpdateSettingsProperties {
+  /** Indicates whether RBAC access is required upon group creation under the root Management Group. If set to true, user will require Microsoft.Management/managementGroups/write action on the root Management Group scope in order to create new Groups directly under the root. This will prevent new users from creating new Management Groups, unless they are given access. */
+  requireAuthorizationForGroupCreation?: boolean;
+  /** Settings that sets the default Management Group under which new subscriptions get added in this tenant. For example, /providers/Microsoft.Management/managementGroups/defaultGroup */
+  defaultManagementGroup?: string;
+}
+export const CreateOrUpdateSettingsProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    requireAuthorizationForGroupCreation: S.optional(S.Boolean),
+    defaultManagementGroup: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateOrUpdateSettingsProperties",
+}) as any as S.Schema<CreateOrUpdateSettingsProperties>;
+
+export interface HierarchySettingsCreateOrUpdateRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** The properties of the request to create or update Management Group settings */
+  properties?: CreateOrUpdateSettingsProperties;
+}
+export const HierarchySettingsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      properties: S.optional(CreateOrUpdateSettingsProperties),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+        code: 200,
+        apiVersion: "2023-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "HierarchySettingsCreateOrUpdateRequest",
+}) as any as S.Schema<HierarchySettingsCreateOrUpdateRequest>;
+
+export interface HierarchySettingsCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The generic properties of hierarchy settings. */
+  properties?: HierarchySettingsProperties;
+}
+export const HierarchySettingsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(HierarchySettingsProperties),
+    }),
+).annotate({
+  identifier: "HierarchySettingsCreateOrUpdateResponse",
+}) as any as S.Schema<HierarchySettingsCreateOrUpdateResponse>;
+
+export interface HierarchySettingsListRequest {
+  /** Management Group ID. */
+  groupId: string;
+}
+export const HierarchySettingsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "HierarchySettingsListRequest",
+}) as any as S.Schema<HierarchySettingsListRequest>;
+
+/** The hierarchy settings resource. */
+export interface HierarchySettingsInfo {
+  /** The fully qualified ID for the settings object. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000/settings/default. */
+  id?: string;
+  /** The type of the resource. For example, Microsoft.Management/managementGroups/settings. */
+  type?: string;
+  /** The name of the object. In this case, default. */
+  name?: string;
+  /** The generic properties of hierarchy settings. */
+  properties?: HierarchySettingsProperties;
+}
+export const HierarchySettingsInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    type: S.optional(S.String),
+    name: S.optional(S.String),
+    properties: S.optional(HierarchySettingsProperties),
+  }),
+).annotate({
+  identifier: "HierarchySettingsInfo",
+}) as any as S.Schema<HierarchySettingsInfo>;
+
+/** The list of hierarchy settings. */
+export type HierarchySettingsListValueList = Array<HierarchySettingsInfo>;
+export const HierarchySettingsListValueList = /*@__PURE__*/ S.Array(
+  HierarchySettingsInfo,
+) as any as S.Schema<HierarchySettingsListValueList>;
+
+/** Lists all hierarchy settings. */
+export interface HierarchySettingsList {
+  /** The list of hierarchy settings. */
+  value?: HierarchySettingsListValueList;
+  /** The URL to use for getting the next set of results. */
+  _nextLink?: string;
+}
+export const HierarchySettingsList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(HierarchySettingsListValueList),
+    _nextLink: S.optional(S.String.pipe(T.Body("@nextLink"))),
+  }),
+).annotate({
+  identifier: "HierarchySettingsList",
+}) as any as S.Schema<HierarchySettingsList>;
+
+export type EntitiesListRequestSearch =
+  | "AllowedParents"
+  | "AllowedChildren"
+  | "ParentAndFirstLevelChildren"
+  | "ParentOnly"
+  | "ChildrenOnly";
+export const EntitiesListRequestSearch = /*@__PURE__*/ S.String;
+
+export type EntitiesListRequestView =
+  | "FullHierarchy"
+  | "GroupsOnly"
+  | "SubscriptionsOnly"
+  | "Audit";
+export const EntitiesListRequestView = /*@__PURE__*/ S.String;
+
+export interface ListEntitiesRequest {
+  /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
+  _skiptoken?: string;
+  /** Number of entities to skip over when retrieving results. Passing this in will override $skipToken. */
+  _skip?: number;
+  /** Number of elements to return when retrieving results. Passing this in will override $skipToken. */
+  _top?: number;
+  /** This parameter specifies the fields to include in the response. Can include any combination of Name,DisplayName,Type,ParentDisplayNameChain,ParentChain, e.g. '$select=Name,DisplayName,Type,ParentDisplayNameChain,ParentNameChain'. When specified the $select parameter can override select in $skipToken. */
+  _select?: string;
+  /** The $search parameter is used in conjunction with the $filter parameter to return three different outputs depending on the parameter passed in. With $search=AllowedParents the API will return the entity info of all groups that the requested entity will be able to reparent to as determined by the user's permissions. With $search=AllowedChildren the API will return the entity info of all entities that can be added as children of the requested entity. With $search=ParentAndFirstLevelChildren the API will return the parent and first level of children that the user has either direct access to or indirect access via one of their descendants. With $search=ParentOnly the API will return only the group if the user has access to at least one of the descendants of the group. With $search=ChildrenOnly the API will return only the first level of children of the group entity info specified in $filter. The user must have direct access to the children entities or one of it's descendants for it to show up in the results. */
+  _search?: EntitiesListRequestSearch | (string & {});
+  /** The filter parameter allows you to filter on the the name or display name fields. You can check for equality on the name field (e.g. name eq '{entityName}') and you can check for substrings on either the name or display name fields(e.g. contains(name, '{substringToSearch}'), contains(displayName, '{substringToSearch')). Note that the '{entityName}' and '{substringToSearch}' fields are checked case insensitively. */
+  _filter?: string;
+  /** The view parameter allows clients to filter the type of data that is returned by the getEntities call. */
+  _view?: EntitiesListRequestView | (string & {});
+  /** A filter which allows the get entities call to focus on a particular group (i.e. "$filter=name eq 'groupName'") */
+  groupName?: string;
+}
+export const ListEntitiesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+    _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    _select: S.optional(S.String.pipe(T.Query("$select"))),
+    _search: S.optional(EntitiesListRequestSearch.pipe(T.Query("$search"))),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _view: S.optional(EntitiesListRequestView.pipe(T.Query("$view"))),
+    groupName: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.Management/getEntities",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEntitiesRequest",
+}) as any as S.Schema<ListEntitiesRequest>;
+
+/** (Optional) The ID of the parent management group. */
+export type EntityParentGroupInfo = DescendantParentGroupInfo;
+export const EntityParentGroupInfo = DescendantParentGroupInfo;
+
+/** The users specific permissions to this item. */
+export type Permissions = "noaccess" | "view" | "edit" | "delete";
+export const Permissions = /*@__PURE__*/ S.String;
+
+/** The parent display name chain from the root group to the immediate parent */
+export type EntityInfoPropertiesParentDisplayNameChainList = Array<string>;
+export const EntityInfoPropertiesParentDisplayNameChainList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EntityInfoPropertiesParentDisplayNameChainList>;
+
+/** The parent name chain from the root group to the immediate parent */
+export type EntityInfoPropertiesParentNameChainList = Array<string>;
+export const EntityInfoPropertiesParentNameChainList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EntityInfoPropertiesParentNameChainList>;
+
+/** The generic properties of an entity. */
+export interface EntityInfoProperties {
+  /** The AAD Tenant ID associated with the entity. For example, 00000000-0000-0000-0000-000000000000 */
+  tenantId?: string | null;
+  /** The friendly name of the management group. */
+  displayName?: string | null;
+  /** (Optional) The ID of the parent management group. */
+  parent?: DescendantParentGroupInfo | null;
+  /** The users specific permissions to this item. */
+  permissions?: Permissions | null;
+  /** The users specific permissions to this item. */
+  inheritedPermissions?: Permissions | null;
+  /** Number of Descendants */
+  numberOfDescendants?: number | null;
+  /** Number of children is the number of Groups and Subscriptions that are exactly one level underneath the current Group. */
+  numberOfChildren?: number | null;
+  /** Number of children is the number of Groups that are exactly one level underneath the current Group. */
+  numberOfChildGroups?: number | null;
+  /** The parent display name chain from the root group to the immediate parent */
+  parentDisplayNameChain?: EntityInfoPropertiesParentDisplayNameChainList | null;
+  /** The parent name chain from the root group to the immediate parent */
+  parentNameChain?: EntityInfoPropertiesParentNameChainList | null;
+}
+export const EntityInfoProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tenantId: S.optional(S.NullOr(S.String)),
+    displayName: S.optional(S.NullOr(S.String)),
+    parent: S.optional(S.NullOr(DescendantParentGroupInfo)),
+    permissions: S.optional(S.NullOr(Permissions)),
+    inheritedPermissions: S.optional(S.NullOr(Permissions)),
+    numberOfDescendants: S.optional(S.NullOr(S.Number)),
+    numberOfChildren: S.optional(S.NullOr(S.Number)),
+    numberOfChildGroups: S.optional(S.NullOr(S.Number)),
+    parentDisplayNameChain: S.optional(
+      S.NullOr(EntityInfoPropertiesParentDisplayNameChainList),
+    ),
+    parentNameChain: S.optional(
+      S.NullOr(EntityInfoPropertiesParentNameChainList),
+    ),
+  }),
+).annotate({
+  identifier: "EntityInfoProperties",
+}) as any as S.Schema<EntityInfoProperties>;
+
+/** The entity. */
+export interface EntityInfo {
+  /** The fully qualified ID for the entity. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
+  id?: string | null;
+  /** The type of the resource. For example, Microsoft.Management/managementGroups */
+  type?: string | null;
+  /** The name of the entity. For example, 00000000-0000-0000-0000-000000000000 */
+  name?: string;
+  /** The generic properties of an entity. */
+  properties?: EntityInfoProperties | null;
+}
+export const EntityInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.NullOr(S.String)),
+    type: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.String),
+    properties: S.optional(S.NullOr(EntityInfoProperties)),
+  }),
+).annotate({ identifier: "EntityInfo" }) as any as S.Schema<EntityInfo>;
+
+/** The EntityInfo items on this page */
+export type EntityListResultValueList = Array<EntityInfo>;
+export const EntityListResultValueList = /*@__PURE__*/ S.Array(
+  EntityInfo,
+) as any as S.Schema<EntityListResultValueList>;
+
+/** Describes the result of the request to view entities. */
+export interface EntityListResult {
+  /** The EntityInfo items on this page */
+  value: EntityListResultValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+  /** Total count of records that match the filter. */
+  count?: number;
+}
+export const EntityListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: EntityListResultValueList,
+    nextLink: S.optional(S.String),
+    count: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EntityListResult",
+}) as any as S.Schema<EntityListResult>;
+
+export interface ListManagementGroupsRequest {
+  /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
+  _skiptoken?: string;
+}
+export const ListManagementGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
   }).pipe(
@@ -1131,8 +1279,8 @@ export const ManagementGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ManagementGroupsListRequest",
-}) as any as S.Schema<ManagementGroupsListRequest>;
+  identifier: "ListManagementGroupsRequest",
+}) as any as S.Schema<ListManagementGroupsRequest>;
 
 /** The generic properties of a management group. */
 export interface ManagementGroupInfoProperties {
@@ -1194,279 +1342,8 @@ export const ManagementGroupListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManagementGroupListResult",
 }) as any as S.Schema<ManagementGroupListResult>;
 
-export interface ManagementGroupSubscriptionsCreateRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** Subscription ID. */
-  subscriptionId: string;
-}
-export const ManagementGroupSubscriptionsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ManagementGroupSubscriptionsCreateRequest",
-  }) as any as S.Schema<ManagementGroupSubscriptionsCreateRequest>;
-
-/** The generic properties of subscription under a management group. */
-export interface SubscriptionUnderManagementGroupProperties {
-  /** The AAD Tenant ID associated with the subscription. For example, 00000000-0000-0000-0000-000000000000 */
-  tenant?: string;
-  /** The friendly name of the subscription. */
-  displayName?: string;
-  /** The ID of the parent management group. */
-  parent?: EntityParentGroupInfo | null;
-  /** The state of the subscription. */
-  state?: string;
-}
-export const SubscriptionUnderManagementGroupProperties =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      tenant: S.optional(S.String),
-      displayName: S.optional(S.String),
-      parent: S.optional(S.NullOr(EntityParentGroupInfo)),
-      state: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SubscriptionUnderManagementGroupProperties",
-  }) as any as S.Schema<SubscriptionUnderManagementGroupProperties>;
-
-export interface ManagementGroupSubscriptionsCreateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of subscription under a management group. */
-  properties?: SubscriptionUnderManagementGroupProperties;
-}
-export const ManagementGroupSubscriptionsCreateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(SubscriptionUnderManagementGroupProperties),
-    }),
-  ).annotate({
-    identifier: "ManagementGroupSubscriptionsCreateResponse",
-  }) as any as S.Schema<ManagementGroupSubscriptionsCreateResponse>;
-
-export interface ManagementGroupSubscriptionsDeleteRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** Subscription ID. */
-  subscriptionId: string;
-}
-export const ManagementGroupSubscriptionsDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ManagementGroupSubscriptionsDeleteRequest",
-  }) as any as S.Schema<ManagementGroupSubscriptionsDeleteRequest>;
-
-export interface ManagementGroupSubscriptionsDeleteResponse {}
-export const ManagementGroupSubscriptionsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "ManagementGroupSubscriptionsDeleteResponse",
-  }) as any as S.Schema<ManagementGroupSubscriptionsDeleteResponse>;
-
-export interface ManagementGroupSubscriptionsGetSubscriptionRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** Subscription ID. */
-  subscriptionId: string;
-}
-export const ManagementGroupSubscriptionsGetSubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions/{subscriptionId}",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ManagementGroupSubscriptionsGetSubscriptionRequest",
-  }) as any as S.Schema<ManagementGroupSubscriptionsGetSubscriptionRequest>;
-
-export interface ManagementGroupSubscriptionsGetSubscriptionResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of subscription under a management group. */
-  properties?: SubscriptionUnderManagementGroupProperties;
-}
-export const ManagementGroupSubscriptionsGetSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(SubscriptionUnderManagementGroupProperties),
-    }),
-  ).annotate({
-    identifier: "ManagementGroupSubscriptionsGetSubscriptionResponse",
-  }) as any as S.Schema<ManagementGroupSubscriptionsGetSubscriptionResponse>;
-
-export interface ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** Page continuation token is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a token parameter that specifies a starting point to use for subsequent calls. */
-  _skiptoken?: string;
-}
-export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      groupId: S.String.pipe(T.Label()),
-      _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Management/managementGroups/{groupId}/subscriptions",
-        code: 200,
-        apiVersion: "2023-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest",
-  }) as any as S.Schema<ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest>;
-
-/** The details of subscription under management group. */
-export interface SubscriptionUnderManagementGroup {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of subscription under a management group. */
-  properties?: SubscriptionUnderManagementGroupProperties;
-}
-export const SubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(SubscriptionUnderManagementGroupProperties),
-  }),
-).annotate({
-  identifier: "SubscriptionUnderManagementGroup",
-}) as any as S.Schema<SubscriptionUnderManagementGroup>;
-
-/** The SubscriptionUnderManagementGroup items on this page */
-export type ListSubscriptionUnderManagementGroupValueList =
-  Array<SubscriptionUnderManagementGroup>;
-export const ListSubscriptionUnderManagementGroupValueList =
-  /*@__PURE__*/ S.Array(
-    SubscriptionUnderManagementGroup,
-  ) as any as S.Schema<ListSubscriptionUnderManagementGroupValueList>;
-
-/** The details of all subscriptions under management group. */
-export interface ListSubscriptionUnderManagementGroup {
-  /** The SubscriptionUnderManagementGroup items on this page */
-  value: ListSubscriptionUnderManagementGroupValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ListSubscriptionUnderManagementGroup = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: ListSubscriptionUnderManagementGroupValueList,
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ListSubscriptionUnderManagementGroup",
-}) as any as S.Schema<ListSubscriptionUnderManagementGroup>;
-
-export interface ManagementGroupsUpdateRequest {
-  /** Management Group ID. */
-  groupId: string;
-  /** The friendly name of the management group. */
-  displayName?: string;
-  /** (Optional) The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
-  parentGroupId?: string;
-}
-export const ManagementGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    groupId: S.String.pipe(T.Label()),
-    displayName: S.optional(S.String),
-    parentGroupId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
-      code: 200,
-      apiVersion: "2023-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManagementGroupsUpdateRequest",
-}) as any as S.Schema<ManagementGroupsUpdateRequest>;
-
-export interface ManagementGroupsUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The generic properties of a management group. */
-  properties?: ManagementGroupProperties;
-}
-export const ManagementGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManagementGroupProperties),
-  }),
-).annotate({
-  identifier: "ManagementGroupsUpdateResponse",
-}) as any as S.Schema<ManagementGroupsUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1476,8 +1353,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
@@ -1538,51 +1415,83 @@ export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
   Operation,
 ) as any as S.Schema<OperationsListResponseValueList>;
 
-export interface OperationsListResponse {
+export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: OperationsListResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(OperationsListResponseValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
 
-export interface ServiceGroupsGetRequest {
-  /** ServiceGroup Name. */
-  serviceGroupName: string;
+/** (Optional) The ID of the parent management group used during creation. */
+export type CreateParentGroupInfoInput = DescendantParentGroupInfo;
+export const CreateParentGroupInfoInput = DescendantParentGroupInfo;
+
+/** The details of a management group used during creation. */
+export interface CreateManagementGroupDetailsInput {
+  /** (Optional) The ID of the parent management group used during creation. */
+  parent?: DescendantParentGroupInfo;
 }
-export const ServiceGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateManagementGroupDetailsInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    serviceGroupName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Management/serviceGroups/{serviceGroupName}",
-      code: 200,
-      apiVersion: "2026-08-01",
-    }),
-  ),
+    parent: S.optional(DescendantParentGroupInfo),
+  }),
 ).annotate({
-  identifier: "ServiceGroupsGetRequest",
-}) as any as S.Schema<ServiceGroupsGetRequest>;
+  identifier: "CreateManagementGroupDetailsInput",
+}) as any as S.Schema<CreateManagementGroupDetailsInput>;
 
-/** The serviceGroup tags. */
-export type ServiceGroupsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ServiceGroupsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ServiceGroupsGetResponseTagsMap>;
+/** The generic properties of a management group used during creation. */
+export interface CreateManagementGroupPropertiesInput {
+  /** The friendly name of the management group. If no value is passed then this field will be set to the groupId. */
+  displayName?: string | null;
+  /** The details of a management group used during creation. */
+  details?: CreateManagementGroupDetailsInput;
+}
+export const CreateManagementGroupPropertiesInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      displayName: S.optional(S.NullOr(S.String)),
+      details: S.optional(CreateManagementGroupDetailsInput),
+    }),
+).annotate({
+  identifier: "CreateManagementGroupPropertiesInput",
+}) as any as S.Schema<CreateManagementGroupPropertiesInput>;
 
-export interface ServiceGroupsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+export interface ManagementGroupsCreateOrUpdateRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** The name of the management group. For example, 00000000-0000-0000-0000-000000000000 */
+  name?: string;
+  /** The generic properties of a management group used during creation. */
+  properties?: CreateManagementGroupPropertiesInput;
+}
+export const ManagementGroupsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      groupId: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      properties: S.optional(CreateManagementGroupPropertiesInput),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
+        code: 200,
+        apiVersion: "2023-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "ManagementGroupsCreateOrUpdateRequest",
+}) as any as S.Schema<ManagementGroupsCreateOrUpdateRequest>;
+
+export interface ManagementGroupsCreateOrUpdateResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
   name?: string;
@@ -1590,26 +1499,21 @@ export interface ServiceGroupsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** ServiceGroup creation request body parameters. */
-  properties?: ServiceGroupProperties;
-  /** The kind of the serviceGroup. */
-  kind?: string;
-  /** The serviceGroup tags. */
-  tags?: ServiceGroupsGetResponseTagsMap;
+  /** The generic properties of a management group. */
+  properties?: ManagementGroupProperties;
 }
-export const ServiceGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceGroupProperties),
-    kind: S.optional(S.String),
-    tags: S.optional(ServiceGroupsGetResponseTagsMap),
-  }),
+export const ManagementGroupsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ManagementGroupProperties),
+    }),
 ).annotate({
-  identifier: "ServiceGroupsGetResponse",
-}) as any as S.Schema<ServiceGroupsGetResponse>;
+  identifier: "ManagementGroupsCreateOrUpdateResponse",
+}) as any as S.Schema<ManagementGroupsCreateOrUpdateResponse>;
 
 export interface StartTenantBackfillRequest {}
 export const StartTenantBackfillRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1664,6 +1568,101 @@ export const TenantBackfillStatusRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TenantBackfillStatusRequest",
 }) as any as S.Schema<TenantBackfillStatusRequest>;
+
+export interface UpdateHierarchySettingRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** The properties of the request to create or update Management Group settings */
+  properties?: CreateOrUpdateSettingsProperties;
+}
+export const UpdateHierarchySettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    properties: S.optional(CreateOrUpdateSettingsProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}/settings/default",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateHierarchySettingRequest",
+}) as any as S.Schema<UpdateHierarchySettingRequest>;
+
+export interface UpdateHierarchySettingResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The generic properties of hierarchy settings. */
+  properties?: HierarchySettingsProperties;
+}
+export const UpdateHierarchySettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(HierarchySettingsProperties),
+  }),
+).annotate({
+  identifier: "UpdateHierarchySettingResponse",
+}) as any as S.Schema<UpdateHierarchySettingResponse>;
+
+export interface UpdateManagementGroupRequest {
+  /** Management Group ID. */
+  groupId: string;
+  /** The friendly name of the management group. */
+  displayName?: string;
+  /** (Optional) The fully qualified ID for the parent management group. For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000 */
+  parentGroupId?: string;
+}
+export const UpdateManagementGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    groupId: S.String.pipe(T.Label()),
+    displayName: S.optional(S.String),
+    parentGroupId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/providers/Microsoft.Management/managementGroups/{groupId}",
+      code: 200,
+      apiVersion: "2023-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateManagementGroupRequest",
+}) as any as S.Schema<UpdateManagementGroupRequest>;
+
+export interface UpdateManagementGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The generic properties of a management group. */
+  properties?: ManagementGroupProperties;
+}
+export const UpdateManagementGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManagementGroupProperties),
+  }),
+).annotate({
+  identifier: "UpdateManagementGroupResponse",
+}) as any as S.Schema<UpdateManagementGroupResponse>;
 
 /** The serviceGroup tags. */
 export type UpdateServiceGroupRequestTagsMap = {
@@ -1756,6 +1755,21 @@ export const CheckNameAvailability: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateManagementGroupSubscriptionError = AzureOpError;
+/** Associates existing subscription with the management group. */
+export const CreateManagementGroupSubscription: API.OperationMethod<
+  CreateManagementGroupSubscriptionRequest,
+  CreateManagementGroupSubscriptionResponse,
+  CreateManagementGroupSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateManagementGroupSubscriptionRequest,
+  output: CreateManagementGroupSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CreateOrUpdateServiceGroupError = AzureOpError;
 /** Create or Update a serviceGroup */
 export const CreateOrUpdateServiceGroup: API.OperationMethod<
@@ -1766,6 +1780,51 @@ export const CreateOrUpdateServiceGroup: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateOrUpdateServiceGroupRequest,
   output: CreateOrUpdateServiceGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteHierarchySettingError = AzureOpError;
+/** Deletes the hierarchy settings defined at the Management Group level. */
+export const DeleteHierarchySetting: API.OperationMethod<
+  DeleteHierarchySettingRequest,
+  DeleteHierarchySettingResponse,
+  DeleteHierarchySettingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHierarchySettingRequest,
+  output: DeleteHierarchySettingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteManagementGroupError = AzureOpError;
+/** Delete management group. If a management group contains child resources, the request will fail. */
+export const DeleteManagementGroup: API.OperationMethod<
+  DeleteManagementGroupRequest,
+  DeleteManagementGroupResponse,
+  DeleteManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteManagementGroupRequest,
+  output: DeleteManagementGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteManagementGroupSubscriptionError = AzureOpError;
+/** De-associates subscription from the management group. */
+export const DeleteManagementGroupSubscription: API.OperationMethod<
+  DeleteManagementGroupSubscriptionRequest,
+  DeleteManagementGroupSubscriptionResponse,
+  DeleteManagementGroupSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteManagementGroupSubscriptionRequest,
+  output: DeleteManagementGroupSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,16 +1845,92 @@ export const DeleteServiceGroup: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EntitiesListError = AzureOpError;
-/** List all entities (Management Groups, Subscriptions, etc.) for the authenticated user. */
-export const EntitiesList: API.OperationMethod<
-  EntitiesListRequest,
-  EntityListResult,
-  EntitiesListError,
+export type GetHierarchySettingError = AzureOpError;
+/** Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy. */
+export const GetHierarchySetting: API.OperationMethod<
+  GetHierarchySettingRequest,
+  GetHierarchySettingResponse,
+  GetHierarchySettingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EntitiesListRequest,
-  output: EntityListResult,
+  input: GetHierarchySettingRequest,
+  output: GetHierarchySettingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetManagementGroupError = AzureOpError;
+/** Get the details of the management group. */
+export const GetManagementGroup: API.OperationMethod<
+  GetManagementGroupRequest,
+  GetManagementGroupResponse,
+  GetManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagementGroupRequest,
+  output: GetManagementGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetManagementGroupDescendantError = AzureOpError;
+/** List all entities that descend from a management group. */
+export const GetManagementGroupDescendant: API.OperationMethod<
+  GetManagementGroupDescendantRequest,
+  DescendantListResult,
+  GetManagementGroupDescendantError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagementGroupDescendantRequest,
+  output: DescendantListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetManagementGroupSubscriptionSubscriptionError = AzureOpError;
+/** Retrieves details about given subscription which is associated with the management group. */
+export const GetManagementGroupSubscriptionSubscription: API.OperationMethod<
+  GetManagementGroupSubscriptionSubscriptionRequest,
+  GetManagementGroupSubscriptionSubscriptionResponse,
+  GetManagementGroupSubscriptionSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagementGroupSubscriptionSubscriptionRequest,
+  output: GetManagementGroupSubscriptionSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetManagementGroupSubscriptionSubscriptionUnderManagementGroupError =
+  AzureOpError;
+/** Retrieves details about all subscriptions which are associated with the management group. */
+export const GetManagementGroupSubscriptionSubscriptionUnderManagementGroup: API.OperationMethod<
+  GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest,
+  ListSubscriptionUnderManagementGroup,
+  GetManagementGroupSubscriptionSubscriptionUnderManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManagementGroupSubscriptionSubscriptionUnderManagementGroupRequest,
+  output: ListSubscriptionUnderManagementGroup,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetServiceGroupError = AzureOpError;
+/** Get the details of the serviceGroup */
+export const GetServiceGroup: API.OperationMethod<
+  GetServiceGroupRequest,
+  GetServiceGroupResponse,
+  GetServiceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetServiceGroupRequest,
+  output: GetServiceGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,36 +1951,6 @@ export const HierarchySettingsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HierarchySettingsDeleteError = AzureOpError;
-/** Deletes the hierarchy settings defined at the Management Group level. */
-export const HierarchySettingsDelete: API.OperationMethod<
-  HierarchySettingsDeleteRequest,
-  HierarchySettingsDeleteResponse,
-  HierarchySettingsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HierarchySettingsDeleteRequest,
-  output: HierarchySettingsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type HierarchySettingsGetError = AzureOpError;
-/** Gets the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy. */
-export const HierarchySettingsGet: API.OperationMethod<
-  HierarchySettingsGetRequest,
-  HierarchySettingsGetResponse,
-  HierarchySettingsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HierarchySettingsGetRequest,
-  output: HierarchySettingsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type HierarchySettingsList2Error = AzureOpError;
 /** Gets all the hierarchy settings defined at the Management Group level. Settings can only be set on the root Management Group of the hierarchy. */
 export const HierarchySettingsList2: API.OperationMethod<
@@ -1861,16 +1966,46 @@ export const HierarchySettingsList2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type HierarchySettingsUpdateError = AzureOpError;
-/** Updates the hierarchy settings defined at the Management Group level. */
-export const HierarchySettingsUpdate: API.OperationMethod<
-  HierarchySettingsUpdateRequest,
-  HierarchySettingsUpdateResponse,
-  HierarchySettingsUpdateError,
+export type ListEntitiesError = AzureOpError;
+/** List all entities (Management Groups, Subscriptions, etc.) for the authenticated user. */
+export const ListEntities: API.OperationMethod<
+  ListEntitiesRequest,
+  EntityListResult,
+  ListEntitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HierarchySettingsUpdateRequest,
-  output: HierarchySettingsUpdateResponse,
+  input: ListEntitiesRequest,
+  output: EntityListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListManagementGroupsError = AzureOpError;
+/** List management groups for the authenticated user. */
+export const ListManagementGroups: API.OperationMethod<
+  ListManagementGroupsRequest,
+  ManagementGroupListResult,
+  ListManagementGroupsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListManagementGroupsRequest,
+  output: ManagementGroupListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,173 +2021,6 @@ export const ManagementGroupsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ManagementGroupsCreateOrUpdateRequest,
   output: ManagementGroupsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupsDeleteError = AzureOpError;
-/** Delete management group. If a management group contains child resources, the request will fail. */
-export const ManagementGroupsDelete: API.OperationMethod<
-  ManagementGroupsDeleteRequest,
-  ManagementGroupsDeleteResponse,
-  ManagementGroupsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupsDeleteRequest,
-  output: ManagementGroupsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupsGetError = AzureOpError;
-/** Get the details of the management group. */
-export const ManagementGroupsGet: API.OperationMethod<
-  ManagementGroupsGetRequest,
-  ManagementGroupsGetResponse,
-  ManagementGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupsGetRequest,
-  output: ManagementGroupsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupsGetDescendantsError = AzureOpError;
-/** List all entities that descend from a management group. */
-export const ManagementGroupsGetDescendants: API.OperationMethod<
-  ManagementGroupsGetDescendantsRequest,
-  DescendantListResult,
-  ManagementGroupsGetDescendantsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupsGetDescendantsRequest,
-  output: DescendantListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupsListError = AzureOpError;
-/** List management groups for the authenticated user. */
-export const ManagementGroupsList: API.OperationMethod<
-  ManagementGroupsListRequest,
-  ManagementGroupListResult,
-  ManagementGroupsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupsListRequest,
-  output: ManagementGroupListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupSubscriptionsCreateError = AzureOpError;
-/** Associates existing subscription with the management group. */
-export const ManagementGroupSubscriptionsCreate: API.OperationMethod<
-  ManagementGroupSubscriptionsCreateRequest,
-  ManagementGroupSubscriptionsCreateResponse,
-  ManagementGroupSubscriptionsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupSubscriptionsCreateRequest,
-  output: ManagementGroupSubscriptionsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupSubscriptionsDeleteError = AzureOpError;
-/** De-associates subscription from the management group. */
-export const ManagementGroupSubscriptionsDelete: API.OperationMethod<
-  ManagementGroupSubscriptionsDeleteRequest,
-  ManagementGroupSubscriptionsDeleteResponse,
-  ManagementGroupSubscriptionsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupSubscriptionsDeleteRequest,
-  output: ManagementGroupSubscriptionsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupSubscriptionsGetSubscriptionError = AzureOpError;
-/** Retrieves details about given subscription which is associated with the management group. */
-export const ManagementGroupSubscriptionsGetSubscription: API.OperationMethod<
-  ManagementGroupSubscriptionsGetSubscriptionRequest,
-  ManagementGroupSubscriptionsGetSubscriptionResponse,
-  ManagementGroupSubscriptionsGetSubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupSubscriptionsGetSubscriptionRequest,
-  output: ManagementGroupSubscriptionsGetSubscriptionResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupError =
-  AzureOpError;
-/** Retrieves details about all subscriptions which are associated with the management group. */
-export const ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroup: API.OperationMethod<
-  ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest,
-  ListSubscriptionUnderManagementGroup,
-  ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    ManagementGroupSubscriptionsGetSubscriptionsUnderManagementGroupRequest,
-  output: ListSubscriptionUnderManagementGroup,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManagementGroupsUpdateError = AzureOpError;
-/** Update a management group. */
-export const ManagementGroupsUpdate: API.OperationMethod<
-  ManagementGroupsUpdateRequest,
-  ManagementGroupsUpdateResponse,
-  ManagementGroupsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManagementGroupsUpdateRequest,
-  output: ManagementGroupsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceGroupsGetError = AzureOpError;
-/** Get the details of the serviceGroup */
-export const ServiceGroupsGet: API.OperationMethod<
-  ServiceGroupsGetRequest,
-  ServiceGroupsGetResponse,
-  ServiceGroupsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceGroupsGetRequest,
-  output: ServiceGroupsGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2083,6 +2051,36 @@ export const TenantBackfillStatus: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TenantBackfillStatusRequest,
   output: TenantBackfillStatusResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateHierarchySettingError = AzureOpError;
+/** Updates the hierarchy settings defined at the Management Group level. */
+export const UpdateHierarchySetting: API.OperationMethod<
+  UpdateHierarchySettingRequest,
+  UpdateHierarchySettingResponse,
+  UpdateHierarchySettingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHierarchySettingRequest,
+  output: UpdateHierarchySettingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateManagementGroupError = AzureOpError;
+/** Update a management group. */
+export const UpdateManagementGroup: API.OperationMethod<
+  UpdateManagementGroupRequest,
+  UpdateManagementGroupResponse,
+  UpdateManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateManagementGroupRequest,
+  output: UpdateManagementGroupResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

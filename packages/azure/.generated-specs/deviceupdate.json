@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.deviceupdate#OperationsList": {
+    "com.azure.deviceupdate#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.deviceupdate#OperationsListResponse"
+        "target": "com.azure.deviceupdate#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#OperationsListResponse": {
+    "com.azure.deviceupdate#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -175,10 +175,10 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesDelete": {
+    "com.azure.deviceupdate#DeletePrivateEndpointConnectionProxy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesDeleteRequest"
+        "target": "com.azure.deviceupdate#DeletePrivateEndpointConnectionProxyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -194,7 +194,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesDeleteRequest": {
+    "com.azure.deviceupdate#DeletePrivateEndpointConnectionProxyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1073,13 +1073,13 @@
         "smithy.api#documentation": "List of private link service connections that need manual approval."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesGet": {
+    "com.azure.deviceupdate#GetPrivateEndpointConnectionProxy": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesGetRequest"
+        "target": "com.azure.deviceupdate#GetPrivateEndpointConnectionProxyRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesGetResponse"
+        "target": "com.azure.deviceupdate#GetPrivateEndpointConnectionProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1092,7 +1092,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesGetResponse": {
+    "com.azure.deviceupdate#GetPrivateEndpointConnectionProxyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1162,7 +1162,7 @@
         "smithy.api#documentation": "Private endpoint connection proxy object property bag."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesGetRequest": {
+    "com.azure.deviceupdate#GetPrivateEndpointConnectionProxyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1202,10 +1202,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties": {
+    "com.azure.deviceupdate#UpdatePrivateEndpointConnectionProxyPrivateEndpointProperty": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesRequest"
+        "target": "com.azure.deviceupdate#UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertyRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1221,7 +1221,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesUpdatePrivateEndpointPropertiesRequest": {
+    "com.azure.deviceupdate#UpdatePrivateEndpointConnectionProxyPrivateEndpointPropertyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1375,10 +1375,10 @@
         "smithy.api#documentation": "Private endpoint connection proxy object property bag."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesListByAccount": {
+    "com.azure.deviceupdate#ListPrivateEndpointConnectionProxyByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesListByAccountRequest"
+        "target": "com.azure.deviceupdate#ListPrivateEndpointConnectionProxyByAccountRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxyListResult"
@@ -1493,7 +1493,7 @@
         "smithy.api#documentation": "Private endpoint connection proxy object property bag."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionProxiesListByAccountRequest": {
+    "com.azure.deviceupdate#ListPrivateEndpointConnectionProxyByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1525,13 +1525,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#PrivateLinkResourcesGet": {
+    "com.azure.deviceupdate#GetPrivateLinkResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateLinkResourcesGetRequest"
+        "target": "com.azure.deviceupdate#GetPrivateLinkResourceRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#PrivateLinkResourcesGetResponse"
+        "target": "com.azure.deviceupdate#GetPrivateLinkResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1544,7 +1544,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateLinkResourcesGetResponse": {
+    "com.azure.deviceupdate#GetPrivateLinkResourceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1659,7 +1659,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.deviceupdate#PrivateLinkResourcesGetRequest": {
+    "com.azure.deviceupdate#GetPrivateLinkResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1699,10 +1699,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#PrivateLinkResourcesListByAccount": {
+    "com.azure.deviceupdate#ListPrivateLinkResourceByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateLinkResourcesListByAccountRequest"
+        "target": "com.azure.deviceupdate#ListPrivateLinkResourceByAccountRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate#PrivateLinkResourceListResult"
@@ -1786,7 +1786,7 @@
         "smithy.api#documentation": "The group information for creating a private endpoint on an Account"
       }
     },
-    "com.azure.deviceupdate#PrivateLinkResourcesListByAccountRequest": {
+    "com.azure.deviceupdate#ListPrivateLinkResourceByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1818,10 +1818,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsDelete": {
+    "com.azure.deviceupdate#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.deviceupdate#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1837,7 +1837,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.deviceupdate#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2139,13 +2139,13 @@
         "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsGet": {
+    "com.azure.deviceupdate#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.deviceupdate#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.deviceupdate#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2158,7 +2158,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.deviceupdate#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2197,7 +2197,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.deviceupdate#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2237,13 +2237,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsListByAccount": {
+    "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionsListByAccountRequest"
+        "target": "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccountRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#PrivateEndpointConnectionsListByAccountResponse"
+        "target": "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2256,7 +2256,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsListByAccountResponse": {
+    "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccountResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -2318,7 +2318,7 @@
         "smithy.api#documentation": "The Private Endpoint Connection resource."
       }
     },
-    "com.azure.deviceupdate#PrivateEndpointConnectionsListByAccountRequest": {
+    "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2350,10 +2350,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#InstancesDelete": {
+    "com.azure.deviceupdate#DeleteInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#InstancesDeleteRequest"
+        "target": "com.azure.deviceupdate#DeleteInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2369,7 +2369,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#InstancesDeleteRequest": {
+    "com.azure.deviceupdate#DeleteInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2409,13 +2409,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#InstancesUpdate": {
+    "com.azure.deviceupdate#UpdateInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#InstancesUpdateRequest"
+        "target": "com.azure.deviceupdate#UpdateInstanceRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#InstancesUpdateResponse"
+        "target": "com.azure.deviceupdate#UpdateInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2428,7 +2428,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#InstancesUpdateResponse": {
+    "com.azure.deviceupdate#UpdateInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2638,7 +2638,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#InstancesUpdateRequest": {
+    "com.azure.deviceupdate#UpdateInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2696,13 +2696,13 @@
         "smithy.api#documentation": "List of key value pairs that describe the resource. This will overwrite the existing tags."
       }
     },
-    "com.azure.deviceupdate#InstancesCreate": {
+    "com.azure.deviceupdate#CreateInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#InstancesCreateRequest"
+        "target": "com.azure.deviceupdate#CreateInstanceRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#InstancesCreateResponse"
+        "target": "com.azure.deviceupdate#CreateInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2715,7 +2715,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#InstancesCreateResponse": {
+    "com.azure.deviceupdate#CreateInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2867,7 +2867,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#InstancesCreateRequest": {
+    "com.azure.deviceupdate#CreateInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2971,13 +2971,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#InstancesGet": {
+    "com.azure.deviceupdate#GetInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#InstancesGetRequest"
+        "target": "com.azure.deviceupdate#GetInstanceRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#InstancesGetResponse"
+        "target": "com.azure.deviceupdate#GetInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2990,7 +2990,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#InstancesGetResponse": {
+    "com.azure.deviceupdate#GetInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3142,7 +3142,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#InstancesGetRequest": {
+    "com.azure.deviceupdate#GetInstanceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3182,10 +3182,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#InstancesListByAccount": {
+    "com.azure.deviceupdate#ListInstanceByAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#InstancesListByAccountRequest"
+        "target": "com.azure.deviceupdate#ListInstanceByAccountRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate#InstanceList"
@@ -3382,7 +3382,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#InstancesListByAccountRequest": {
+    "com.azure.deviceupdate#ListInstanceByAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3414,10 +3414,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#AccountsDelete": {
+    "com.azure.deviceupdate#DeleteAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#AccountsDeleteRequest"
+        "target": "com.azure.deviceupdate#DeleteAccountRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3433,7 +3433,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#AccountsDeleteRequest": {
+    "com.azure.deviceupdate#DeleteAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3465,13 +3465,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#AccountsUpdate": {
+    "com.azure.deviceupdate#UpdateAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#AccountsUpdateRequest"
+        "target": "com.azure.deviceupdate#UpdateAccountRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#AccountsUpdateResponse"
+        "target": "com.azure.deviceupdate#UpdateAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3484,7 +3484,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#AccountsUpdateResponse": {
+    "com.azure.deviceupdate#UpdateAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3895,7 +3895,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#AccountsUpdateRequest": {
+    "com.azure.deviceupdate#UpdateAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3996,13 +3996,13 @@
         "smithy.api#documentation": "List of key value pairs that describe the resource. This will overwrite the existing tags."
       }
     },
-    "com.azure.deviceupdate#AccountsCreate": {
+    "com.azure.deviceupdate#CreateAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#AccountsCreateRequest"
+        "target": "com.azure.deviceupdate#CreateAccountRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#AccountsCreateResponse"
+        "target": "com.azure.deviceupdate#CreateAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4015,7 +4015,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#AccountsCreateResponse": {
+    "com.azure.deviceupdate#CreateAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4307,7 +4307,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#AccountsCreateRequest": {
+    "com.azure.deviceupdate#CreateAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4492,13 +4492,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#AccountsGet": {
+    "com.azure.deviceupdate#GetAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#AccountsGetRequest"
+        "target": "com.azure.deviceupdate#GetAccountRequest"
       },
       "output": {
-        "target": "com.azure.deviceupdate#AccountsGetResponse"
+        "target": "com.azure.deviceupdate#GetAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4511,7 +4511,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#AccountsGetResponse": {
+    "com.azure.deviceupdate#GetAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4803,7 +4803,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#AccountsGetRequest": {
+    "com.azure.deviceupdate#GetAccountRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4835,10 +4835,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#AccountsListByResourceGroup": {
+    "com.azure.deviceupdate#ListAccountByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#AccountsListByResourceGroupRequest"
+        "target": "com.azure.deviceupdate#ListAccountByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate#AccountList"
@@ -5175,7 +5175,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.deviceupdate#AccountsListByResourceGroupRequest": {
+    "com.azure.deviceupdate#ListAccountByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5199,10 +5199,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.deviceupdate#AccountsListBySubscription": {
+    "com.azure.deviceupdate#ListAccountBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.deviceupdate#AccountsListBySubscriptionRequest"
+        "target": "com.azure.deviceupdate#ListAccountBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.deviceupdate#AccountList"
@@ -5218,7 +5218,7 @@
         "com.distilled.openapi#apiVersion": "2023-07-01"
       }
     },
-    "com.azure.deviceupdate#AccountsListBySubscriptionRequest": {
+    "com.azure.deviceupdate#ListAccountBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5332,76 +5332,76 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.deviceupdate#OperationsList"
+          "target": "com.azure.deviceupdate#ListOperations"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesDelete"
+          "target": "com.azure.deviceupdate#DeletePrivateEndpointConnectionProxy"
         },
         {
           "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesCreateOrUpdate"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesGet"
+          "target": "com.azure.deviceupdate#GetPrivateEndpointConnectionProxy"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesUpdatePrivateEndpointProperties"
+          "target": "com.azure.deviceupdate#UpdatePrivateEndpointConnectionProxyPrivateEndpointProperty"
         },
         {
           "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesValidate"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionProxiesListByAccount"
+          "target": "com.azure.deviceupdate#ListPrivateEndpointConnectionProxyByAccount"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateLinkResourcesGet"
+          "target": "com.azure.deviceupdate#GetPrivateLinkResource"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateLinkResourcesListByAccount"
+          "target": "com.azure.deviceupdate#ListPrivateLinkResourceByAccount"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.deviceupdate#DeletePrivateEndpointConnection"
         },
         {
           "target": "com.azure.deviceupdate#PrivateEndpointConnectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionsGet"
+          "target": "com.azure.deviceupdate#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.deviceupdate#PrivateEndpointConnectionsListByAccount"
+          "target": "com.azure.deviceupdate#ListPrivateEndpointConnectionByAccount"
         },
         {
-          "target": "com.azure.deviceupdate#InstancesDelete"
+          "target": "com.azure.deviceupdate#DeleteInstance"
         },
         {
-          "target": "com.azure.deviceupdate#InstancesUpdate"
+          "target": "com.azure.deviceupdate#UpdateInstance"
         },
         {
-          "target": "com.azure.deviceupdate#InstancesCreate"
+          "target": "com.azure.deviceupdate#CreateInstance"
         },
         {
-          "target": "com.azure.deviceupdate#InstancesGet"
+          "target": "com.azure.deviceupdate#GetInstance"
         },
         {
-          "target": "com.azure.deviceupdate#InstancesListByAccount"
+          "target": "com.azure.deviceupdate#ListInstanceByAccount"
         },
         {
-          "target": "com.azure.deviceupdate#AccountsDelete"
+          "target": "com.azure.deviceupdate#DeleteAccount"
         },
         {
-          "target": "com.azure.deviceupdate#AccountsUpdate"
+          "target": "com.azure.deviceupdate#UpdateAccount"
         },
         {
-          "target": "com.azure.deviceupdate#AccountsCreate"
+          "target": "com.azure.deviceupdate#CreateAccount"
         },
         {
-          "target": "com.azure.deviceupdate#AccountsGet"
+          "target": "com.azure.deviceupdate#GetAccount"
         },
         {
-          "target": "com.azure.deviceupdate#AccountsListByResourceGroup"
+          "target": "com.azure.deviceupdate#ListAccountByResourceGroup"
         },
         {
-          "target": "com.azure.deviceupdate#AccountsListBySubscription"
+          "target": "com.azure.deviceupdate#ListAccountBySubscription"
         },
         {
           "target": "com.azure.deviceupdate#CheckNameAvailability"

@@ -11,7 +11,7 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface WarehouseModelPathsListRequest {
+export interface ListWarehouseModelPathsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Number of results to return per page. */
@@ -19,7 +19,7 @@ export interface WarehouseModelPathsListRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-export const WarehouseModelPathsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListWarehouseModelPathsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -32,8 +32,8 @@ export const WarehouseModelPathsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WarehouseModelPathsListRequest",
-}) as any as S.Schema<WarehouseModelPathsListRequest>;
+  identifier: "ListWarehouseModelPathsRequest",
+}) as any as S.Schema<ListWarehouseModelPathsRequest>;
 
 export type DataWarehouseModelPathPathList = Array<string>;
 export const DataWarehouseModelPathPathList = /*@__PURE__*/ S.Array(
@@ -161,14 +161,14 @@ export const WarehouseModelPathsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "WarehouseModelPathsRetrieveRequest",
 }) as any as S.Schema<WarehouseModelPathsRetrieveRequest>;
 
-export type WarehouseModelPathsListError = PosthogOpError;
-export const warehouseModelPathsList: API.OperationMethod<
-  WarehouseModelPathsListRequest,
+export type ListWarehouseModelPathsError = PosthogOpError;
+export const listWarehouseModelPaths: API.OperationMethod<
+  ListWarehouseModelPathsRequest,
   PaginatedDataWarehouseModelPathList,
-  WarehouseModelPathsListError,
+  ListWarehouseModelPathsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WarehouseModelPathsListRequest,
+  input: ListWarehouseModelPathsRequest,
   output: PaginatedDataWarehouseModelPathList,
   errors: [],
   protocol: PosthogProtocol,

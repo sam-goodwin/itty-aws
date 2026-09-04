@@ -24,7 +24,7 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsListRequest": {
+    "com.posthog.event_definitions#ListEventDefinitionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -399,10 +399,10 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsList": {
+    "com.posthog.event_definitions#ListEventDefinitions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_definitions#EventDefinitionsListRequest"
+        "target": "com.posthog.event_definitions#ListEventDefinitionsRequest"
       },
       "output": {
         "target": "com.posthog.event_definitions#PaginatedEnterpriseEventDefinitionList"
@@ -440,7 +440,7 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsCreateRequest": {
+    "com.posthog.event_definitions#CreateEventDefinitionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -499,10 +499,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_definitions#EventDefinitionsCreate": {
+    "com.posthog.event_definitions#CreateEventDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_definitions#EventDefinitionsCreateRequest"
+        "target": "com.posthog.event_definitions#CreateEventDefinitionRequest"
       },
       "output": {
         "target": "com.posthog.event_definitions#EnterpriseEventDefinition"
@@ -588,7 +588,7 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsUpdateRequest": {
+    "com.posthog.event_definitions#UpdateEventDefinitionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -655,10 +655,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_definitions#EventDefinitionsUpdate": {
+    "com.posthog.event_definitions#UpdateEventDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_definitions#EventDefinitionsUpdateRequest"
+        "target": "com.posthog.event_definitions#UpdateEventDefinitionRequest"
       },
       "output": {
         "target": "com.posthog.event_definitions#EnterpriseEventDefinition"
@@ -696,7 +696,7 @@
       },
       "traits": {}
     },
-    "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequest": {
+    "com.posthog.event_definitions#UpdateEventDefinitionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -763,10 +763,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.event_definitions#EventDefinitionsPartialUpdate": {
+    "com.posthog.event_definitions#UpdateEventDefinitionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.event_definitions#EventDefinitionsPartialUpdateRequest"
+        "target": "com.posthog.event_definitions#UpdateEventDefinitionPartialRequest"
       },
       "output": {
         "target": "com.posthog.event_definitions#EnterpriseEventDefinition"
@@ -1330,19 +1330,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.event_definitions#EventDefinitionsList"
+          "target": "com.posthog.event_definitions#ListEventDefinitions"
         },
         {
-          "target": "com.posthog.event_definitions#EventDefinitionsCreate"
+          "target": "com.posthog.event_definitions#CreateEventDefinition"
         },
         {
           "target": "com.posthog.event_definitions#EventDefinitionsRetrieve"
         },
         {
-          "target": "com.posthog.event_definitions#EventDefinitionsUpdate"
+          "target": "com.posthog.event_definitions#UpdateEventDefinition"
         },
         {
-          "target": "com.posthog.event_definitions#EventDefinitionsPartialUpdate"
+          "target": "com.posthog.event_definitions#UpdateEventDefinitionPartial"
         },
         {
           "target": "com.posthog.event_definitions#EventDefinitionsDestroy"

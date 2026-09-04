@@ -334,13 +334,13 @@
         "smithy.api#documentation": "The resource IDs of the database resources to be unlinked."
       }
     },
-    "com.azure.redisenterprise#PrivateLinkResourcesListByCluster": {
+    "com.azure.redisenterprise#ListPrivateLinkResourceByCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#PrivateLinkResourcesListByClusterRequest"
+        "target": "com.azure.redisenterprise#ListPrivateLinkResourceByClusterRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#PrivateLinkResourcesListByClusterResponse"
+        "target": "com.azure.redisenterprise#ListPrivateLinkResourceByClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -353,7 +353,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#PrivateLinkResourcesListByClusterResponse": {
+    "com.azure.redisenterprise#ListPrivateLinkResourceByClusterResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -452,7 +452,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.redisenterprise#PrivateLinkResourcesListByClusterRequest": {
+    "com.azure.redisenterprise#ListPrivateLinkResourceByClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -484,10 +484,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsDelete": {
+    "com.azure.redisenterprise#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.redisenterprise#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -503,7 +503,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.redisenterprise#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -793,13 +793,13 @@
         "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsGet": {
+    "com.azure.redisenterprise#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.redisenterprise#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.redisenterprise#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -812,7 +812,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.redisenterprise#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -844,7 +844,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.redisenterprise#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -884,13 +884,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsList": {
+    "com.azure.redisenterprise#ListPrivateEndpointConnections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#PrivateEndpointConnectionsListRequest"
+        "target": "com.azure.redisenterprise#ListPrivateEndpointConnectionsRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#PrivateEndpointConnectionsListResponse"
+        "target": "com.azure.redisenterprise#ListPrivateEndpointConnectionsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -903,7 +903,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsListResponse": {
+    "com.azure.redisenterprise#ListPrivateEndpointConnectionsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -958,7 +958,7 @@
         "smithy.api#documentation": "The Private Endpoint Connection resource."
       }
     },
-    "com.azure.redisenterprise#PrivateEndpointConnectionsListRequest": {
+    "com.azure.redisenterprise#ListPrivateEndpointConnectionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -990,10 +990,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseListSkusForScaling": {
+    "com.azure.redisenterprise#ListRedisEnterpriseSkusForScaling": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseListSkusForScalingRequest"
+        "target": "com.azure.redisenterprise#ListRedisEnterpriseSkusForScalingRequest"
       },
       "output": {
         "target": "com.azure.redisenterprise#SkuDetailsList"
@@ -1052,7 +1052,7 @@
         "smithy.api#documentation": "Details of a Redis Enterprise cluster SKU."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseListSkusForScalingRequest": {
+    "com.azure.redisenterprise#ListRedisEnterpriseSkusForScalingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1290,10 +1290,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#AccessPolicyAssignmentDelete": {
+    "com.azure.redisenterprise#DeleteAccessPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#AccessPolicyAssignmentDeleteRequest"
+        "target": "com.azure.redisenterprise#DeleteAccessPolicyAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1309,7 +1309,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#AccessPolicyAssignmentDeleteRequest": {
+    "com.azure.redisenterprise#DeleteAccessPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1498,13 +1498,13 @@
         "smithy.api#documentation": "The user associated with the access policy."
       }
     },
-    "com.azure.redisenterprise#AccessPolicyAssignmentGet": {
+    "com.azure.redisenterprise#GetAccessPolicyAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#AccessPolicyAssignmentGetRequest"
+        "target": "com.azure.redisenterprise#GetAccessPolicyAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#AccessPolicyAssignmentGetResponse"
+        "target": "com.azure.redisenterprise#GetAccessPolicyAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1517,7 +1517,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#AccessPolicyAssignmentGetResponse": {
+    "com.azure.redisenterprise#GetAccessPolicyAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1549,7 +1549,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.redisenterprise#AccessPolicyAssignmentGetRequest": {
+    "com.azure.redisenterprise#GetAccessPolicyAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1844,10 +1844,10 @@
         "smithy.api#documentation": "Which access key to regenerate."
       }
     },
-    "com.azure.redisenterprise#DatabasesListKeys": {
+    "com.azure.redisenterprise#ListDatabaseKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#DatabasesListKeysRequest"
+        "target": "com.azure.redisenterprise#ListDatabaseKeysRequest"
       },
       "output": {
         "target": "com.azure.redisenterprise#AccessKeys"
@@ -1863,7 +1863,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#DatabasesListKeysRequest": {
+    "com.azure.redisenterprise#ListDatabaseKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1903,10 +1903,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#DatabasesDelete": {
+    "com.azure.redisenterprise#DeleteDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#DatabasesDeleteRequest"
+        "target": "com.azure.redisenterprise#DeleteDatabaseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1922,7 +1922,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#DatabasesDeleteRequest": {
+    "com.azure.redisenterprise#DeleteDatabaseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1962,13 +1962,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#DatabasesUpdate": {
+    "com.azure.redisenterprise#UpdateDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#DatabasesUpdateRequest"
+        "target": "com.azure.redisenterprise#UpdateDatabaseRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#DatabasesUpdateResponse"
+        "target": "com.azure.redisenterprise#UpdateDatabaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1981,7 +1981,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#DatabasesUpdateResponse": {
+    "com.azure.redisenterprise#UpdateDatabaseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2534,7 +2534,7 @@
         "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
       }
     },
-    "com.azure.redisenterprise#DatabasesUpdateRequest": {
+    "com.azure.redisenterprise#UpdateDatabaseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2843,13 +2843,13 @@
         "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
       }
     },
-    "com.azure.redisenterprise#DatabasesCreate": {
+    "com.azure.redisenterprise#CreateDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#DatabasesCreateRequest"
+        "target": "com.azure.redisenterprise#CreateDatabaseRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#DatabasesCreateResponse"
+        "target": "com.azure.redisenterprise#CreateDatabaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2862,7 +2862,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#DatabasesCreateResponse": {
+    "com.azure.redisenterprise#CreateDatabaseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2894,7 +2894,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.redisenterprise#DatabasesCreateRequest": {
+    "com.azure.redisenterprise#CreateDatabaseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3182,13 +3182,13 @@
         "smithy.api#documentation": "Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols. Default is TLS-encrypted."
       }
     },
-    "com.azure.redisenterprise#DatabasesGet": {
+    "com.azure.redisenterprise#GetDatabase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#DatabasesGetRequest"
+        "target": "com.azure.redisenterprise#GetDatabaseRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#DatabasesGetResponse"
+        "target": "com.azure.redisenterprise#GetDatabaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3201,7 +3201,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#DatabasesGetResponse": {
+    "com.azure.redisenterprise#GetDatabaseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3233,7 +3233,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.redisenterprise#DatabasesGetRequest": {
+    "com.azure.redisenterprise#GetDatabaseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3273,10 +3273,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#DatabasesListByCluster": {
+    "com.azure.redisenterprise#ListDatabaseByCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#DatabasesListByClusterRequest"
+        "target": "com.azure.redisenterprise#ListDatabaseByClusterRequest"
       },
       "output": {
         "target": "com.azure.redisenterprise#DatabaseList"
@@ -3353,7 +3353,7 @@
         "smithy.api#documentation": "Describes a database on the Redis Enterprise cluster"
       }
     },
-    "com.azure.redisenterprise#DatabasesListByClusterRequest": {
+    "com.azure.redisenterprise#ListDatabaseByClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3385,10 +3385,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseList": {
+    "com.azure.redisenterprise#ListRedisEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseListRequest"
+        "target": "com.azure.redisenterprise#ListRedisEnterpriseRequest"
       },
       "output": {
         "target": "com.azure.redisenterprise#ClusterList"
@@ -4270,7 +4270,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseListRequest": {
+    "com.azure.redisenterprise#ListRedisEnterpriseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4286,10 +4286,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseListByResourceGroup": {
+    "com.azure.redisenterprise#ListRedisEnterpriseByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseListByResourceGroupRequest"
+        "target": "com.azure.redisenterprise#ListRedisEnterpriseByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.redisenterprise#ClusterList"
@@ -4305,7 +4305,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseListByResourceGroupRequest": {
+    "com.azure.redisenterprise#ListRedisEnterpriseByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4329,10 +4329,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseDelete": {
+    "com.azure.redisenterprise#DeleteRedisEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseDeleteRequest"
+        "target": "com.azure.redisenterprise#DeleteRedisEnterpriseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4348,7 +4348,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseDeleteRequest": {
+    "com.azure.redisenterprise#DeleteRedisEnterpriseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4380,13 +4380,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseUpdate": {
+    "com.azure.redisenterprise#UpdateRedisEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseUpdateRequest"
+        "target": "com.azure.redisenterprise#UpdateRedisEnterpriseRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseUpdateResponse"
+        "target": "com.azure.redisenterprise#UpdateRedisEnterpriseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4399,7 +4399,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseUpdateResponse": {
+    "com.azure.redisenterprise#UpdateRedisEnterpriseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4516,7 +4516,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseUpdateRequest": {
+    "com.azure.redisenterprise#UpdateRedisEnterpriseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4793,13 +4793,13 @@
         "smithy.api#documentation": "Enabled by default. If highAvailability is disabled, the data set is not replicated. This affects the availability SLA, and increases the risk of data loss."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseCreate": {
+    "com.azure.redisenterprise#CreateRedisEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseCreateRequest"
+        "target": "com.azure.redisenterprise#CreateRedisEnterpriseRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseCreateResponse"
+        "target": "com.azure.redisenterprise#CreateRedisEnterpriseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4812,7 +4812,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseCreateResponse": {
+    "com.azure.redisenterprise#CreateRedisEnterpriseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4929,7 +4929,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseCreateRequest": {
+    "com.azure.redisenterprise#CreateRedisEnterpriseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5211,13 +5211,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseGet": {
+    "com.azure.redisenterprise#GetRedisEnterprise": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseGetRequest"
+        "target": "com.azure.redisenterprise#GetRedisEnterpriseRequest"
       },
       "output": {
-        "target": "com.azure.redisenterprise#RedisEnterpriseGetResponse"
+        "target": "com.azure.redisenterprise#GetRedisEnterpriseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5230,7 +5230,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseGetResponse": {
+    "com.azure.redisenterprise#GetRedisEnterpriseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5347,7 +5347,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redisenterprise#RedisEnterpriseGetRequest": {
+    "com.azure.redisenterprise#GetRedisEnterpriseRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5379,10 +5379,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#OperationsStatusGet": {
+    "com.azure.redisenterprise#GetOperationStatus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redisenterprise#OperationsStatusGetRequest"
+        "target": "com.azure.redisenterprise#GetOperationStatusRequest"
       },
       "output": {
         "target": "com.azure.redisenterprise#OperationStatus"
@@ -5532,7 +5532,7 @@
         "smithy.api#documentation": "The error details."
       }
     },
-    "com.azure.redisenterprise#OperationsStatusGetRequest": {
+    "com.azure.redisenterprise#GetOperationStatusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5564,13 +5564,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redisenterprise#OperationsList": {
+    "com.azure.redisenterprise#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.redisenterprise#OperationsListResponse"
+        "target": "com.azure.redisenterprise#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5583,7 +5583,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-01"
       }
     },
-    "com.azure.redisenterprise#OperationsListResponse": {
+    "com.azure.redisenterprise#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -5739,34 +5739,34 @@
           "target": "com.azure.redisenterprise#DatabasesForceUnlink"
         },
         {
-          "target": "com.azure.redisenterprise#PrivateLinkResourcesListByCluster"
+          "target": "com.azure.redisenterprise#ListPrivateLinkResourceByCluster"
         },
         {
-          "target": "com.azure.redisenterprise#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.redisenterprise#DeletePrivateEndpointConnection"
         },
         {
           "target": "com.azure.redisenterprise#PrivateEndpointConnectionsPut"
         },
         {
-          "target": "com.azure.redisenterprise#PrivateEndpointConnectionsGet"
+          "target": "com.azure.redisenterprise#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.redisenterprise#PrivateEndpointConnectionsList"
+          "target": "com.azure.redisenterprise#ListPrivateEndpointConnections"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseListSkusForScaling"
+          "target": "com.azure.redisenterprise#ListRedisEnterpriseSkusForScaling"
         },
         {
           "target": "com.azure.redisenterprise#AccessPolicyAssignmentList2"
         },
         {
-          "target": "com.azure.redisenterprise#AccessPolicyAssignmentDelete"
+          "target": "com.azure.redisenterprise#DeleteAccessPolicyAssignment"
         },
         {
           "target": "com.azure.redisenterprise#AccessPolicyAssignmentCreateUpdate"
         },
         {
-          "target": "com.azure.redisenterprise#AccessPolicyAssignmentGet"
+          "target": "com.azure.redisenterprise#GetAccessPolicyAssignment"
         },
         {
           "target": "com.azure.redisenterprise#DatabasesExport"
@@ -5778,46 +5778,46 @@
           "target": "com.azure.redisenterprise#DatabasesRegenerateKey"
         },
         {
-          "target": "com.azure.redisenterprise#DatabasesListKeys"
+          "target": "com.azure.redisenterprise#ListDatabaseKeys"
         },
         {
-          "target": "com.azure.redisenterprise#DatabasesDelete"
+          "target": "com.azure.redisenterprise#DeleteDatabase"
         },
         {
-          "target": "com.azure.redisenterprise#DatabasesUpdate"
+          "target": "com.azure.redisenterprise#UpdateDatabase"
         },
         {
-          "target": "com.azure.redisenterprise#DatabasesCreate"
+          "target": "com.azure.redisenterprise#CreateDatabase"
         },
         {
-          "target": "com.azure.redisenterprise#DatabasesGet"
+          "target": "com.azure.redisenterprise#GetDatabase"
         },
         {
-          "target": "com.azure.redisenterprise#DatabasesListByCluster"
+          "target": "com.azure.redisenterprise#ListDatabaseByCluster"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseList"
+          "target": "com.azure.redisenterprise#ListRedisEnterprise"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseListByResourceGroup"
+          "target": "com.azure.redisenterprise#ListRedisEnterpriseByResourceGroup"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseDelete"
+          "target": "com.azure.redisenterprise#DeleteRedisEnterprise"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseUpdate"
+          "target": "com.azure.redisenterprise#UpdateRedisEnterprise"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseCreate"
+          "target": "com.azure.redisenterprise#CreateRedisEnterprise"
         },
         {
-          "target": "com.azure.redisenterprise#RedisEnterpriseGet"
+          "target": "com.azure.redisenterprise#GetRedisEnterprise"
         },
         {
-          "target": "com.azure.redisenterprise#OperationsStatusGet"
+          "target": "com.azure.redisenterprise#GetOperationStatus"
         },
         {
-          "target": "com.azure.redisenterprise#OperationsList"
+          "target": "com.azure.redisenterprise#ListOperations"
         }
       ],
       "traits": {

@@ -10234,7 +10234,7 @@
         "smithy.api#documentation": "Gets the specified occurrence."
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsOccurrencesRequest": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectOccurrenceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10254,10 +10254,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsOccurrences": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectOccurrence": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsOccurrencesRequest"
+        "target": "com.gcp.containeranalysis_v1beta1#CreateBatchProjectOccurrenceRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1beta1#BatchCreateOccurrencesResponse"
@@ -11061,7 +11061,7 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsNotesRequest": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectNoteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11081,10 +11081,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsNotes": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectNote": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsNotesRequest"
+        "target": "com.gcp.containeranalysis_v1beta1#CreateBatchProjectNoteRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1beta1#BatchCreateNotesResponse"
@@ -11610,7 +11610,7 @@
         "smithy.api#documentation": "Gets a summary of the number and severity of occurrences."
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsLocationsOccurrencesRequest": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectLocationOccurrenceRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11630,10 +11630,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsLocationsOccurrences": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectLocationOccurrence": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsLocationsOccurrencesRequest"
+        "target": "com.gcp.containeranalysis_v1beta1#CreateBatchProjectLocationOccurrenceRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1beta1#BatchCreateOccurrencesResponse"
@@ -11917,7 +11917,7 @@
         "smithy.api#documentation": "Generates an SBOM and other dependency information for the given resource."
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsLocationsNotesRequest": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectLocationNoteRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11937,10 +11937,10 @@
         }
       }
     },
-    "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsLocationsNotes": {
+    "com.gcp.containeranalysis_v1beta1#CreateBatchProjectLocationNote": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.containeranalysis_v1beta1#BatchCreateProjectsLocationsNotesRequest"
+        "target": "com.gcp.containeranalysis_v1beta1#CreateBatchProjectLocationNoteRequest"
       },
       "output": {
         "target": "com.gcp.containeranalysis_v1beta1#BatchCreateNotesResponse"

@@ -85,47 +85,6 @@ export const ChannelWikiPage = /*@__PURE__*/ S.suspend(() =>
   identifier: "ChannelWikiPage",
 }) as any as S.Schema<ChannelWikiPage>;
 
-export interface ContextLayerCommitsCreateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** A `git bundle` carrying the ref to land, created in the agent's clone (for example `git bundle create out.bundle origin/main..main`). */
-  bundle: string;
-  /** Optional run summary stored in the landed commit body. */
-  summary?: string;
-  /** Land a dated dreaming branch (`dream/<YYYY-MM-DD>`) as one merge commit instead of rebasing onto `main`. Omit for ordinary commits on `main`. */
-  branch?: string | null;
-}
-export const ContextLayerCommitsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.String.pipe(T.Label()),
-    bundle: S.String,
-    summary: S.optional(S.String),
-    branch: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/organizations/{organization_id}/context_layer/commits/",
-      code: 200,
-      contentType: "form-urlencoded",
-    }),
-  ),
-).annotate({
-  identifier: "ContextLayerCommitsCreateRequest",
-}) as any as S.Schema<ContextLayerCommitsCreateRequest>;
-
-/** Response shape for the wiki's current state. */
-export interface ContextLayerStatus {
-  /** Commit sha of the wiki's current head. */
-  head_sha: string;
-}
-export const ContextLayerStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    head_sha: S.String,
-  }),
-).annotate({
-  identifier: "ContextLayerStatus",
-}) as any as S.Schema<ContextLayerStatus>;
-
 export interface ContextLayerEnableCreateRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
   organization_id: string;
@@ -143,6 +102,19 @@ export const ContextLayerEnableCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ContextLayerEnableCreateRequest",
 }) as any as S.Schema<ContextLayerEnableCreateRequest>;
+
+/** Response shape for the wiki's current state. */
+export interface ContextLayerStatus {
+  /** Commit sha of the wiki's current head. */
+  head_sha: string;
+}
+export const ContextLayerStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    head_sha: S.String,
+  }),
+).annotate({
+  identifier: "ContextLayerStatus",
+}) as any as S.Schema<ContextLayerStatus>;
 
 export interface ContextLayerExportRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -216,33 +188,6 @@ export const WikiPage = /*@__PURE__*/ S.suspend(() =>
     updated_at: S.String,
   }),
 ).annotate({ identifier: "WikiPage" }) as any as S.Schema<WikiPage>;
-
-export interface ContextLayerPagesUpdateRequest {
-  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
-  organization_id: string;
-  /** Repo-relative Markdown path inside the wiki's structure, for example `projects/12/spaces/general.md`. */
-  path: string;
-  /** The complete Markdown content for the page. */
-  content: string;
-  /** Optimistic-concurrency guard: the head sha the edit is based on. A moved head is rejected with 409 and the current head; omit to write unguarded. */
-  base_head?: string | null;
-}
-export const ContextLayerPagesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organization_id: S.String.pipe(T.Label()),
-    path: S.String,
-    content: S.String,
-    base_head: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/api/organizations/{organization_id}/context_layer/pages/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ContextLayerPagesUpdateRequest",
-}) as any as S.Schema<ContextLayerPagesUpdateRequest>;
 
 export interface ContextLayerStatusRetrieveRequest {
   /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
@@ -358,6 +303,61 @@ export const WikiHealthReport = /*@__PURE__*/ S.suspend(() =>
   identifier: "WikiHealthReport",
 }) as any as S.Schema<WikiHealthReport>;
 
+export interface CreateContextLayerCommitRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** A `git bundle` carrying the ref to land, created in the agent's clone (for example `git bundle create out.bundle origin/main..main`). */
+  bundle: string;
+  /** Optional run summary stored in the landed commit body. */
+  summary?: string;
+  /** Land a dated dreaming branch (`dream/<YYYY-MM-DD>`) as one merge commit instead of rebasing onto `main`. Omit for ordinary commits on `main`. */
+  branch?: string | null;
+}
+export const CreateContextLayerCommitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+    bundle: S.String,
+    summary: S.optional(S.String),
+    branch: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/organizations/{organization_id}/context_layer/commits/",
+      code: 200,
+      contentType: "form-urlencoded",
+    }),
+  ),
+).annotate({
+  identifier: "CreateContextLayerCommitRequest",
+}) as any as S.Schema<CreateContextLayerCommitRequest>;
+
+export interface UpdateContextLayerPageRequest {
+  /** ID of the organization you're trying to access. To find the ID of the organization, make a call to /api/organizations/. */
+  organization_id: string;
+  /** Repo-relative Markdown path inside the wiki's structure, for example `projects/12/spaces/general.md`. */
+  path: string;
+  /** The complete Markdown content for the page. */
+  content: string;
+  /** Optimistic-concurrency guard: the head sha the edit is based on. A moved head is rejected with 409 and the current head; omit to write unguarded. */
+  base_head?: string | null;
+}
+export const UpdateContextLayerPageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organization_id: S.String.pipe(T.Label()),
+    path: S.String,
+    content: S.String,
+    base_head: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/api/organizations/{organization_id}/context_layer/pages/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateContextLayerPageRequest",
+}) as any as S.Schema<UpdateContextLayerPageRequest>;
+
 export type ContextLayerChannelPagesRetrieveError = NotFound | PosthogOpError;
 /** Resolve a channel's wiki page The organization's context wiki: a git repo of Markdown pages hosted by PostHog. */
 export const contextLayerChannelPagesRetrieve: API.OperationMethod<
@@ -369,24 +369,6 @@ export const contextLayerChannelPagesRetrieve: API.OperationMethod<
   input: ContextLayerChannelPagesRetrieveRequest,
   output: ChannelWikiPage,
   errors: [NotFound],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ContextLayerCommitsCreateError =
-  | BadRequest
-  | Conflict
-  | PosthogOpError;
-/** Land agent commits from a git bundle The organization's context wiki: a git repo of Markdown pages hosted by PostHog. */
-export const contextLayerCommitsCreate: API.OperationMethod<
-  ContextLayerCommitsCreateRequest,
-  ContextLayerStatus,
-  ContextLayerCommitsCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContextLayerCommitsCreateRequest,
-  output: ContextLayerStatus,
-  errors: [BadRequest, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -436,25 +418,6 @@ export const contextLayerPagesRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ContextLayerPagesUpdateError =
-  | BadRequest
-  | Forbidden
-  | Conflict
-  | PosthogOpError;
-/** Create or replace a wiki page The organization's context wiki: a git repo of Markdown pages hosted by PostHog. */
-export const contextLayerPagesUpdate: API.OperationMethod<
-  ContextLayerPagesUpdateRequest,
-  ContextLayerStatus,
-  ContextLayerPagesUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContextLayerPagesUpdateRequest,
-  output: ContextLayerStatus,
-  errors: [BadRequest, Forbidden, Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ContextLayerStatusRetrieveError = NotFound | PosthogOpError;
 /** Get the wiki head The organization's context wiki: a git repo of Markdown pages hosted by PostHog. */
 export const contextLayerStatusRetrieve: API.OperationMethod<
@@ -496,6 +459,43 @@ export const contextLayerWikiReportRetrieve: API.OperationMethod<
   input: ContextLayerWikiReportRetrieveRequest,
   output: WikiHealthReport,
   errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateContextLayerCommitError =
+  | BadRequest
+  | Conflict
+  | PosthogOpError;
+/** Land agent commits from a git bundle The organization's context wiki: a git repo of Markdown pages hosted by PostHog. */
+export const createContextLayerCommit: API.OperationMethod<
+  CreateContextLayerCommitRequest,
+  ContextLayerStatus,
+  CreateContextLayerCommitError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateContextLayerCommitRequest,
+  output: ContextLayerStatus,
+  errors: [BadRequest, Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateContextLayerPageError =
+  | BadRequest
+  | Forbidden
+  | Conflict
+  | PosthogOpError;
+/** Create or replace a wiki page The organization's context wiki: a git repo of Markdown pages hosted by PostHog. */
+export const updateContextLayerPage: API.OperationMethod<
+  UpdateContextLayerPageRequest,
+  ContextLayerStatus,
+  UpdateContextLayerPageError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateContextLayerPageRequest,
+  output: ContextLayerStatus,
+  errors: [BadRequest, Forbidden, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));

@@ -13,171 +13,6 @@ import * as Retry from "../retry.ts";
 
 export type { RailwayOpError, RailwayOpContext };
 
-export type ProjectRole = "ADMIN" | "MEMBER" | "VIEWER";
-export const ProjectRole = /*@__PURE__*/ S.String;
-
-export interface AccessGroupCreateInput {
-  name: string;
-  role: ProjectRole | (string & {});
-  workspaceId: string;
-}
-export const AccessGroupCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    role: ProjectRole,
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "AccessGroupCreateInput",
-}) as any as S.Schema<AccessGroupCreateInput>;
-
-export interface AccessGroupCreateRequest {
-  input: AccessGroupCreateInput;
-}
-export const AccessGroupCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: AccessGroupCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation accessGroupCreate($input: AccessGroupCreateInput!) {\n  accessGroupCreate(input: $input) {\n    createdAt\n    id\n    name\n    role\n    source\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
-        operationName: "accessGroupCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "AccessGroupCreateRequest",
-}) as any as S.Schema<AccessGroupCreateRequest>;
-
-export type AccessGroupSource = "MANUAL";
-export const AccessGroupSource = /*@__PURE__*/ S.String;
-
-export type Plan = "FREE" | "HOBBY" | "PRO";
-export const Plan = /*@__PURE__*/ S.String;
-
-export type SubscriptionModel = "FREE" | "TEAM" | "USER";
-export const SubscriptionModel = /*@__PURE__*/ S.String;
-
-export type SupportTierOverride = "BUSINESS_CLASS" | "BUSINESS_CLASS_TRIAL";
-export const SupportTierOverride = /*@__PURE__*/ S.String;
-
-export type AccessGroupCreateResponseWorkspaceUsersWithout2FAList =
-  Array<string>;
-export const AccessGroupCreateResponseWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AccessGroupCreateResponseWorkspaceUsersWithout2FAList>;
-
-export interface AccessGroupCreateResponseWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
-  createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
-  id: string;
-  name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  restrictProjectVisibilityToGroups: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: AccessGroupCreateResponseWorkspaceUsersWithout2FAList;
-}
-export const AccessGroupCreateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adoptionLevel: S.Number,
-    allowDeprecatedRegions: S.NullOr(S.Boolean),
-    avatar: S.NullOr(S.String),
-    banReason: S.NullOr(S.String),
-    createdAt: S.String,
-    discordRole: S.NullOr(S.String),
-    has2FAEnforcement: S.Boolean,
-    hasAutomaticDiagnosis: S.Boolean,
-    hasGuardrailsAccess: S.Boolean,
-    hasHipaaBAA: S.Boolean,
-    hasSAML: S.Boolean,
-    id: S.String,
-    name: S.String,
-    plan: Plan,
-    preferredRegion: S.NullOr(S.String),
-    redactedDueTo2FAPending: S.Boolean,
-    restrictProjectVisibilityToGroups: S.Boolean,
-    slackChannelId: S.NullOr(S.String),
-    subscriptionModel: SubscriptionModel,
-    subscriptionPlanLimit: S.NullOr(S.Unknown),
-    supportTierOverride: S.NullOr(SupportTierOverride),
-    updatedAt: S.String,
-    usersWithout2FA: AccessGroupCreateResponseWorkspaceUsersWithout2FAList,
-  }),
-).annotate({
-  identifier: "AccessGroupCreateResponseWorkspace",
-}) as any as S.Schema<AccessGroupCreateResponseWorkspace>;
-
-/** Selection set for `accessGroupCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface AccessGroupCreateResponse {
-  createdAt: string;
-  id: string;
-  name: string;
-  role: ProjectRole;
-  source: AccessGroupSource;
-  updatedAt: string;
-  workspace: AccessGroupCreateResponseWorkspace;
-  workspaceId: string;
-}
-export const AccessGroupCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    id: S.String,
-    name: S.String,
-    role: ProjectRole,
-    source: AccessGroupSource,
-    updatedAt: S.String,
-    workspace: AccessGroupCreateResponseWorkspace,
-    workspaceId: S.String,
-  }).pipe(T.ResponsePath("accessGroupCreate")),
-).annotate({
-  identifier: "AccessGroupCreateResponse",
-}) as any as S.Schema<AccessGroupCreateResponse>;
-
-export interface AccessGroupDeleteRequest {
-  id: string;
-}
-export const AccessGroupDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation accessGroupDelete($id: String!) {\n  accessGroupDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "accessGroupDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "AccessGroupDeleteRequest",
-}) as any as S.Schema<AccessGroupDeleteRequest>;
-
-export type AccessGroupDeleteResponse = boolean;
-export const AccessGroupDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("accessGroupDelete")),
-).annotate({
-  identifier: "AccessGroupDeleteResponse",
-}) as any as S.Schema<AccessGroupDeleteResponse>;
-
 export interface AccessGroupMemberInput {
   accessGroupId: string;
   userId: string;
@@ -210,6 +45,12 @@ export const AccessGroupMemberAddRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessGroupMemberAddRequest",
 }) as any as S.Schema<AccessGroupMemberAddRequest>;
+
+export type ProjectRole = "ADMIN" | "MEMBER" | "VIEWER";
+export const ProjectRole = /*@__PURE__*/ S.String;
+
+export type AccessGroupSource = "MANUAL";
+export const AccessGroupSource = /*@__PURE__*/ S.String;
 
 export interface AccessGroupMemberAddResponseAccessGroup {
   createdAt: string;
@@ -576,129 +417,6 @@ export const AccessGroupProjectDetachResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessGroupProjectDetachResponse",
 }) as any as S.Schema<AccessGroupProjectDetachResponse>;
 
-export interface AccessGroupUpdateInput {
-  name?: string | null;
-  role?: ProjectRole | (string & {}) | null;
-}
-export const AccessGroupUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    role: S.optional(S.NullOr(ProjectRole)),
-  }),
-).annotate({
-  identifier: "AccessGroupUpdateInput",
-}) as any as S.Schema<AccessGroupUpdateInput>;
-
-export interface AccessGroupUpdateRequest {
-  id: string;
-  input: AccessGroupUpdateInput;
-}
-export const AccessGroupUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: AccessGroupUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation accessGroupUpdate($id: String!, $input: AccessGroupUpdateInput!) {\n  accessGroupUpdate(id: $id, input: $input) {\n    createdAt\n    id\n    name\n    role\n    source\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
-        operationName: "accessGroupUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "AccessGroupUpdateRequest",
-}) as any as S.Schema<AccessGroupUpdateRequest>;
-
-export type AccessGroupUpdateResponseWorkspaceUsersWithout2FAList =
-  Array<string>;
-export const AccessGroupUpdateResponseWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AccessGroupUpdateResponseWorkspaceUsersWithout2FAList>;
-
-export interface AccessGroupUpdateResponseWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
-  createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
-  id: string;
-  name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  restrictProjectVisibilityToGroups: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: AccessGroupUpdateResponseWorkspaceUsersWithout2FAList;
-}
-export const AccessGroupUpdateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adoptionLevel: S.Number,
-    allowDeprecatedRegions: S.NullOr(S.Boolean),
-    avatar: S.NullOr(S.String),
-    banReason: S.NullOr(S.String),
-    createdAt: S.String,
-    discordRole: S.NullOr(S.String),
-    has2FAEnforcement: S.Boolean,
-    hasAutomaticDiagnosis: S.Boolean,
-    hasGuardrailsAccess: S.Boolean,
-    hasHipaaBAA: S.Boolean,
-    hasSAML: S.Boolean,
-    id: S.String,
-    name: S.String,
-    plan: Plan,
-    preferredRegion: S.NullOr(S.String),
-    redactedDueTo2FAPending: S.Boolean,
-    restrictProjectVisibilityToGroups: S.Boolean,
-    slackChannelId: S.NullOr(S.String),
-    subscriptionModel: SubscriptionModel,
-    subscriptionPlanLimit: S.NullOr(S.Unknown),
-    supportTierOverride: S.NullOr(SupportTierOverride),
-    updatedAt: S.String,
-    usersWithout2FA: AccessGroupUpdateResponseWorkspaceUsersWithout2FAList,
-  }),
-).annotate({
-  identifier: "AccessGroupUpdateResponseWorkspace",
-}) as any as S.Schema<AccessGroupUpdateResponseWorkspace>;
-
-/** Selection set for `accessGroupUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface AccessGroupUpdateResponse {
-  createdAt: string;
-  id: string;
-  name: string;
-  role: ProjectRole;
-  source: AccessGroupSource;
-  updatedAt: string;
-  workspace: AccessGroupUpdateResponseWorkspace;
-  workspaceId: string;
-}
-export const AccessGroupUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    id: S.String,
-    name: S.String,
-    role: ProjectRole,
-    source: AccessGroupSource,
-    updatedAt: S.String,
-    workspace: AccessGroupUpdateResponseWorkspace,
-    workspaceId: S.String,
-  }).pipe(T.ResponsePath("accessGroupUpdate")),
-).annotate({
-  identifier: "AccessGroupUpdateResponse",
-}) as any as S.Schema<AccessGroupUpdateResponse>;
-
 export interface AdminVolumeInstancesForVolumeRequest {
   volumeId: string;
 }
@@ -937,48 +655,6 @@ export const AgentUsageResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AgentUsageResponse",
 }) as any as S.Schema<AgentUsageResponse>;
 
-export interface AgentUsageLimitSetInput {
-  hardLimitCents: number;
-  softLimitCents?: number | null;
-  workspaceId: string;
-}
-export const AgentUsageLimitSetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hardLimitCents: S.Number,
-    softLimitCents: S.optional(S.NullOr(S.Number)),
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "AgentUsageLimitSetInput",
-}) as any as S.Schema<AgentUsageLimitSetInput>;
-
-export interface AgentUsageLimitSetRequest {
-  input: AgentUsageLimitSetInput;
-}
-export const AgentUsageLimitSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: AgentUsageLimitSetInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation agentUsageLimitSet($input: AgentUsageLimitSetInput!) {\n  agentUsageLimitSet(input: $input) {\n    __typename\n  }\n}",
-        operationName: "agentUsageLimitSet",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "AgentUsageLimitSetRequest",
-}) as any as S.Schema<AgentUsageLimitSetRequest>;
-
-export type AgentUsageLimitSetResponse = boolean;
-export const AgentUsageLimitSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("agentUsageLimitSet")),
-).annotate({
-  identifier: "AgentUsageLimitSetResponse",
-}) as any as S.Schema<AgentUsageLimitSetResponse>;
-
 export interface AllPlatformFeatureFlagsRequest {}
 export const AllPlatformFeatureFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({})
@@ -1110,73 +786,6 @@ export const ApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ApiTokenResponse",
 }) as any as S.Schema<ApiTokenResponse>;
-
-export interface ApiTokenCreateInput {
-  name: string;
-  workspaceId?: string | null;
-}
-export const ApiTokenCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    workspaceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ApiTokenCreateInput",
-}) as any as S.Schema<ApiTokenCreateInput>;
-
-export interface ApiTokenCreateRequest {
-  input: ApiTokenCreateInput;
-}
-export const ApiTokenCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ApiTokenCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation apiTokenCreate($input: ApiTokenCreateInput!) {\n  apiTokenCreate(input: $input) {\n    __typename\n  }\n}",
-        operationName: "apiTokenCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ApiTokenCreateRequest",
-}) as any as S.Schema<ApiTokenCreateRequest>;
-
-export type ApiTokenCreateResponse = string;
-export const ApiTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("apiTokenCreate")),
-).annotate({
-  identifier: "ApiTokenCreateResponse",
-}) as any as S.Schema<ApiTokenCreateResponse>;
-
-export interface ApiTokenDeleteRequest {
-  id: string;
-}
-export const ApiTokenDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation apiTokenDelete($id: String!) {\n  apiTokenDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "apiTokenDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ApiTokenDeleteRequest",
-}) as any as S.Schema<ApiTokenDeleteRequest>;
-
-export type ApiTokenDeleteResponse = boolean;
-export const ApiTokenDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("apiTokenDelete")),
-).annotate({
-  identifier: "ApiTokenDeleteResponse",
-}) as any as S.Schema<ApiTokenDeleteResponse>;
 
 export interface ApiTokensRequest {
   after?: string | null;
@@ -1620,126 +1229,6 @@ export const BotScopeBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BotScopeBindingsResponse",
 }) as any as S.Schema<BotScopeBindingsResponse>;
 
-export interface BucketCreateInput {
-  /** [unimplemented] The environment to deploy the bucket instances into. If `null`, the bucket will not be deployed to any environment. `undefined` will deploy to all environments. */
-  environmentId?: string | null;
-  /** The name of the bucket */
-  name?: string | null;
-  /** The project to create the bucket in */
-  projectId: string;
-}
-export const BucketCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    projectId: S.String,
-  }),
-).annotate({
-  identifier: "BucketCreateInput",
-}) as any as S.Schema<BucketCreateInput>;
-
-export interface BucketCreateRequest {
-  input: BucketCreateInput;
-}
-export const BucketCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: BucketCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation bucketCreate($input: BucketCreateInput!) {\n  bucketCreate(input: $input) {\n    createdAt\n    deletedAt\n    groupId\n    id\n    name\n    parentServiceId\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    updatedAt\n  }\n}",
-        operationName: "bucketCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "BucketCreateRequest",
-}) as any as S.Schema<BucketCreateRequest>;
-
-export type BucketCreateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const BucketCreateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<BucketCreateResponseProjectFeatureFlagsList>;
-
-export interface BucketCreateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: BucketCreateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const BucketCreateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: BucketCreateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "BucketCreateResponseProject",
-}) as any as S.Schema<BucketCreateResponseProject>;
-
-/** Selection set for `bucketCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface BucketCreateResponse {
-  createdAt: string;
-  deletedAt: string | null;
-  groupId: string | null;
-  id: string;
-  name: string;
-  parentServiceId: string | null;
-  project: BucketCreateResponseProject;
-  projectId: string;
-  updatedAt: string;
-}
-export const BucketCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    groupId: S.NullOr(S.String),
-    id: S.String,
-    name: S.String,
-    parentServiceId: S.NullOr(S.String),
-    project: BucketCreateResponseProject,
-    projectId: S.String,
-    updatedAt: S.String,
-  }).pipe(T.ResponsePath("bucketCreate")),
-).annotate({
-  identifier: "BucketCreateResponse",
-}) as any as S.Schema<BucketCreateResponse>;
-
 export interface BucketCredentialsResetRequest {
   bucketId: string;
   environmentId: string;
@@ -1888,121 +1377,6 @@ export const BucketS3CredentialsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "BucketS3CredentialsResponse",
 }) as any as S.Schema<BucketS3CredentialsResponse>;
-
-export interface BucketUpdateInput {
-  name: string;
-}
-export const BucketUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-  }),
-).annotate({
-  identifier: "BucketUpdateInput",
-}) as any as S.Schema<BucketUpdateInput>;
-
-export interface BucketUpdateRequest {
-  id: string;
-  input: BucketUpdateInput;
-}
-export const BucketUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: BucketUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation bucketUpdate($id: String!, $input: BucketUpdateInput!) {\n  bucketUpdate(id: $id, input: $input) {\n    createdAt\n    deletedAt\n    groupId\n    id\n    name\n    parentServiceId\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    updatedAt\n  }\n}",
-        operationName: "bucketUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "BucketUpdateRequest",
-}) as any as S.Schema<BucketUpdateRequest>;
-
-export type BucketUpdateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const BucketUpdateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<BucketUpdateResponseProjectFeatureFlagsList>;
-
-export interface BucketUpdateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: BucketUpdateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const BucketUpdateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: BucketUpdateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "BucketUpdateResponseProject",
-}) as any as S.Schema<BucketUpdateResponseProject>;
-
-/** Selection set for `bucketUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface BucketUpdateResponse {
-  createdAt: string;
-  deletedAt: string | null;
-  groupId: string | null;
-  id: string;
-  name: string;
-  parentServiceId: string | null;
-  project: BucketUpdateResponseProject;
-  projectId: string;
-  updatedAt: string;
-}
-export const BucketUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    groupId: S.NullOr(S.String),
-    id: S.String,
-    name: S.String,
-    parentServiceId: S.NullOr(S.String),
-    project: BucketUpdateResponseProject,
-    projectId: S.String,
-    updatedAt: S.String,
-  }).pipe(T.ResponsePath("bucketUpdate")),
-).annotate({
-  identifier: "BucketUpdateResponse",
-}) as any as S.Schema<BucketUpdateResponse>;
 
 export interface BuildLogsRequest {
   deploymentId: string;
@@ -2656,152 +2030,6 @@ export const CloudAgentConsoleSessionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CloudAgentConsoleSessionsResponse",
 }) as any as S.Schema<CloudAgentConsoleSessionsResponse>;
 
-/** Repo to clone into the agent's workspace: exactly one of repo/serviceId. */
-export interface CloudAgentSourceInput {
-  /** Ref to check out; defaults to the repo's default branch. */
-  branch?: string | null;
-  /** GitHub repo as owner/repo. */
-  repo?: string | null;
-  /** Resolve the repo from this service's connected source. */
-  serviceId?: string | null;
-}
-export const CloudAgentSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.NullOr(S.String)),
-    serviceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CloudAgentSourceInput",
-}) as any as S.Schema<CloudAgentSourceInput>;
-
-export interface CloudAgentCreateInput {
-  environmentId: string;
-  name?: string | null;
-  /** Region to run the agent in, e.g. us-west2. Defaults to the workspace's preferred region when agents are available there. */
-  region?: string | null;
-  source?: CloudAgentSourceInput | null;
-  variables?: unknown | null;
-}
-export const CloudAgentCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    name: S.optional(S.NullOr(S.String)),
-    region: S.optional(S.NullOr(S.String)),
-    source: S.optional(S.NullOr(CloudAgentSourceInput)),
-    variables: S.optional(S.NullOr(S.Unknown)),
-  }),
-).annotate({
-  identifier: "CloudAgentCreateInput",
-}) as any as S.Schema<CloudAgentCreateInput>;
-
-export interface CloudAgentCreateRequest {
-  input: CloudAgentCreateInput;
-}
-export const CloudAgentCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: CloudAgentCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation cloudAgentCreate($input: CloudAgentCreateInput!) {\n  cloudAgentCreate(input: $input) {\n    agentWsUrl\n    consoleTargetId\n    createdAt\n    domain\n    domains {\n      domain\n      port\n      prefix\n    }\n    environmentId\n    id\n    name\n    projectId\n    region\n    sessions {\n      harness\n      lastEventKind\n      latestPrompt\n      prompt\n      sessionId\n      sessionName\n      state\n      taskId\n      terminal\n      updatedAt\n    }\n    source {\n      branch\n      repo\n      serviceId\n      status\n    }\n    status\n  }\n}",
-        operationName: "cloudAgentCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "CloudAgentCreateRequest",
-}) as any as S.Schema<CloudAgentCreateRequest>;
-
-export type CloudAgentCreateResponseDomainsItem = CloudAgentResponseDomainsItem;
-export const CloudAgentCreateResponseDomainsItem =
-  CloudAgentResponseDomainsItem;
-
-export type CloudAgentCreateResponseDomainsList =
-  Array<CloudAgentResponseDomainsItem>;
-export const CloudAgentCreateResponseDomainsList = /*@__PURE__*/ S.Array(
-  CloudAgentResponseDomainsItem,
-) as any as S.Schema<CloudAgentCreateResponseDomainsList>;
-
-export type CloudAgentCreateResponseSessionsItem =
-  CloudAgentResponseSessionsItem;
-export const CloudAgentCreateResponseSessionsItem =
-  CloudAgentResponseSessionsItem;
-
-export type CloudAgentCreateResponseSessionsList =
-  Array<CloudAgentResponseSessionsItem>;
-export const CloudAgentCreateResponseSessionsList = /*@__PURE__*/ S.Array(
-  CloudAgentResponseSessionsItem,
-) as any as S.Schema<CloudAgentCreateResponseSessionsList>;
-
-export type CloudAgentCreateResponseSource = CloudAgentResponseSource;
-export const CloudAgentCreateResponseSource = CloudAgentResponseSource;
-
-/** Selection set for `cloudAgentCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface CloudAgentCreateResponse {
-  agentWsUrl: string | null;
-  consoleTargetId: string | null;
-  createdAt: string;
-  domain: string | null;
-  domains: CloudAgentCreateResponseDomainsList;
-  environmentId: string;
-  id: string;
-  name: string;
-  projectId: string;
-  region: string | null;
-  sessions: CloudAgentCreateResponseSessionsList;
-  source: CloudAgentResponseSource | null;
-  status: CloudAgentStatus;
-}
-export const CloudAgentCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    agentWsUrl: S.NullOr(S.String),
-    consoleTargetId: S.NullOr(S.String),
-    createdAt: S.String,
-    domain: S.NullOr(S.String),
-    domains: CloudAgentCreateResponseDomainsList,
-    environmentId: S.String,
-    id: S.String,
-    name: S.String,
-    projectId: S.String,
-    region: S.NullOr(S.String),
-    sessions: CloudAgentCreateResponseSessionsList,
-    source: S.NullOr(CloudAgentResponseSource),
-    status: CloudAgentStatus,
-  }).pipe(T.ResponsePath("cloudAgentCreate")),
-).annotate({
-  identifier: "CloudAgentCreateResponse",
-}) as any as S.Schema<CloudAgentCreateResponse>;
-
-export interface CloudAgentDeleteRequest {
-  id: string;
-}
-export const CloudAgentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation cloudAgentDelete($id: ID!) {\n  cloudAgentDelete(id: $id)\n}",
-        operationName: "cloudAgentDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "CloudAgentDeleteRequest",
-}) as any as S.Schema<CloudAgentDeleteRequest>;
-
-export type CloudAgentDeleteResponse = boolean;
-export const CloudAgentDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("cloudAgentDelete")),
-).annotate({
-  identifier: "CloudAgentDeleteResponse",
-}) as any as S.Schema<CloudAgentDeleteResponse>;
-
 export interface CloudAgentHarnessTokenRequest {
   environmentId: string;
   id: string;
@@ -3199,27 +2427,455 @@ export const ComplianceAgreementsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ComplianceAgreementsResponse",
 }) as any as S.Schema<ComplianceAgreementsResponse>;
 
-export interface CustomDomainRequest {
-  id: string;
-  projectId: string;
+export interface CreateAccessGroupInput {
+  name: string;
+  role: ProjectRole | (string & {});
+  workspaceId: string;
 }
-export const CustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAccessGroupInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.String,
-    projectId: S.String,
+    name: S.String,
+    role: ProjectRole,
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "CreateAccessGroupInput",
+}) as any as S.Schema<CreateAccessGroupInput>;
+
+export interface CreateAccessGroupRequest {
+  input: CreateAccessGroupInput;
+}
+export const CreateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateAccessGroupInput,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
         query:
-          "query customDomain($id: String!, $projectId: String!) {\n  customDomain(id: $id, projectId: $projectId) {\n    cdnMode\n    cnameCheck {\n      link\n      message\n      status\n    }\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    isRailwayDomain\n    projectId\n    serviceId\n    status {\n      cdnProvider\n      certificateErrorMessage\n      certificateErrorType\n      certificateRetryable\n      certificateStatus\n      certificateStatusDetailed\n      verificationDnsHost\n      verificationToken\n      verified\n    }\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}",
-        operationName: "customDomain",
-        type: "query",
+          "mutation accessGroupCreate($input: AccessGroupCreateInput!) {\n  accessGroupCreate(input: $input) {\n    createdAt\n    id\n    name\n    role\n    source\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+        operationName: "accessGroupCreate",
+        type: "mutation",
       }),
     ),
 ).annotate({
-  identifier: "CustomDomainRequest",
-}) as any as S.Schema<CustomDomainRequest>;
+  identifier: "CreateAccessGroupRequest",
+}) as any as S.Schema<CreateAccessGroupRequest>;
+
+export type Plan = "FREE" | "HOBBY" | "PRO";
+export const Plan = /*@__PURE__*/ S.String;
+
+export type SubscriptionModel = "FREE" | "TEAM" | "USER";
+export const SubscriptionModel = /*@__PURE__*/ S.String;
+
+export type SupportTierOverride = "BUSINESS_CLASS" | "BUSINESS_CLASS_TRIAL";
+export const SupportTierOverride = /*@__PURE__*/ S.String;
+
+export type AccessGroupCreateResponseWorkspaceUsersWithout2FAList =
+  Array<string>;
+export const AccessGroupCreateResponseWorkspaceUsersWithout2FAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessGroupCreateResponseWorkspaceUsersWithout2FAList>;
+
+export interface AccessGroupCreateResponseWorkspace {
+  adoptionLevel: number;
+  allowDeprecatedRegions: boolean | null;
+  avatar: string | null;
+  banReason: string | null;
+  createdAt: string;
+  discordRole: string | null;
+  has2FAEnforcement: boolean;
+  hasAutomaticDiagnosis: boolean;
+  hasGuardrailsAccess: boolean;
+  hasHipaaBAA: boolean;
+  hasSAML: boolean;
+  id: string;
+  name: string;
+  plan: Plan;
+  preferredRegion: string | null;
+  redactedDueTo2FAPending: boolean;
+  restrictProjectVisibilityToGroups: boolean;
+  slackChannelId: string | null;
+  subscriptionModel: SubscriptionModel;
+  subscriptionPlanLimit: unknown | null;
+  supportTierOverride: SupportTierOverride | null;
+  updatedAt: string;
+  usersWithout2FA: AccessGroupCreateResponseWorkspaceUsersWithout2FAList;
+}
+export const AccessGroupCreateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adoptionLevel: S.Number,
+    allowDeprecatedRegions: S.NullOr(S.Boolean),
+    avatar: S.NullOr(S.String),
+    banReason: S.NullOr(S.String),
+    createdAt: S.String,
+    discordRole: S.NullOr(S.String),
+    has2FAEnforcement: S.Boolean,
+    hasAutomaticDiagnosis: S.Boolean,
+    hasGuardrailsAccess: S.Boolean,
+    hasHipaaBAA: S.Boolean,
+    hasSAML: S.Boolean,
+    id: S.String,
+    name: S.String,
+    plan: Plan,
+    preferredRegion: S.NullOr(S.String),
+    redactedDueTo2FAPending: S.Boolean,
+    restrictProjectVisibilityToGroups: S.Boolean,
+    slackChannelId: S.NullOr(S.String),
+    subscriptionModel: SubscriptionModel,
+    subscriptionPlanLimit: S.NullOr(S.Unknown),
+    supportTierOverride: S.NullOr(SupportTierOverride),
+    updatedAt: S.String,
+    usersWithout2FA: AccessGroupCreateResponseWorkspaceUsersWithout2FAList,
+  }),
+).annotate({
+  identifier: "AccessGroupCreateResponseWorkspace",
+}) as any as S.Schema<AccessGroupCreateResponseWorkspace>;
+
+/** Selection set for `accessGroupCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateAccessGroupResponse {
+  createdAt: string;
+  id: string;
+  name: string;
+  role: ProjectRole;
+  source: AccessGroupSource;
+  updatedAt: string;
+  workspace: AccessGroupCreateResponseWorkspace;
+  workspaceId: string;
+}
+export const CreateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    id: S.String,
+    name: S.String,
+    role: ProjectRole,
+    source: AccessGroupSource,
+    updatedAt: S.String,
+    workspace: AccessGroupCreateResponseWorkspace,
+    workspaceId: S.String,
+  }).pipe(T.ResponsePath("accessGroupCreate")),
+).annotate({
+  identifier: "CreateAccessGroupResponse",
+}) as any as S.Schema<CreateAccessGroupResponse>;
+
+export interface CreateApiTokenInput {
+  name: string;
+  workspaceId?: string | null;
+}
+export const CreateApiTokenInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    workspaceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "CreateApiTokenInput",
+}) as any as S.Schema<CreateApiTokenInput>;
+
+export interface CreateApiTokenRequest {
+  input: CreateApiTokenInput;
+}
+export const CreateApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateApiTokenInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation apiTokenCreate($input: ApiTokenCreateInput!) {\n  apiTokenCreate(input: $input) {\n    __typename\n  }\n}",
+        operationName: "apiTokenCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateApiTokenRequest",
+}) as any as S.Schema<CreateApiTokenRequest>;
+
+export type CreateApiTokenResponse = string;
+export const CreateApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("apiTokenCreate")),
+).annotate({
+  identifier: "CreateApiTokenResponse",
+}) as any as S.Schema<CreateApiTokenResponse>;
+
+export interface CreateBucketInput {
+  /** [unimplemented] The environment to deploy the bucket instances into. If `null`, the bucket will not be deployed to any environment. `undefined` will deploy to all environments. */
+  environmentId?: string | null;
+  /** The name of the bucket */
+  name?: string | null;
+  /** The project to create the bucket in */
+  projectId: string;
+}
+export const CreateBucketInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "CreateBucketInput",
+}) as any as S.Schema<CreateBucketInput>;
+
+export interface CreateBucketRequest {
+  input: CreateBucketInput;
+}
+export const CreateBucketRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateBucketInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation bucketCreate($input: BucketCreateInput!) {\n  bucketCreate(input: $input) {\n    createdAt\n    deletedAt\n    groupId\n    id\n    name\n    parentServiceId\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    updatedAt\n  }\n}",
+        operationName: "bucketCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateBucketRequest",
+}) as any as S.Schema<CreateBucketRequest>;
+
+export type BucketCreateResponseProjectFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const BucketCreateResponseProjectFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    ActiveProjectFeatureFlag,
+  ) as any as S.Schema<BucketCreateResponseProjectFeatureFlagsList>;
+
+export interface BucketCreateResponseProject {
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: BucketCreateResponseProjectFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  teamId: string | null;
+  updatedAt: string;
+  workspaceId: string | null;
+}
+export const BucketCreateResponseProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: BucketCreateResponseProjectFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "BucketCreateResponseProject",
+}) as any as S.Schema<BucketCreateResponseProject>;
+
+/** Selection set for `bucketCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateBucketResponse {
+  createdAt: string;
+  deletedAt: string | null;
+  groupId: string | null;
+  id: string;
+  name: string;
+  parentServiceId: string | null;
+  project: BucketCreateResponseProject;
+  projectId: string;
+  updatedAt: string;
+}
+export const CreateBucketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    groupId: S.NullOr(S.String),
+    id: S.String,
+    name: S.String,
+    parentServiceId: S.NullOr(S.String),
+    project: BucketCreateResponseProject,
+    projectId: S.String,
+    updatedAt: S.String,
+  }).pipe(T.ResponsePath("bucketCreate")),
+).annotate({
+  identifier: "CreateBucketResponse",
+}) as any as S.Schema<CreateBucketResponse>;
+
+/** Repo to clone into the agent's workspace: exactly one of repo/serviceId. */
+export interface CloudAgentSourceInput {
+  /** Ref to check out; defaults to the repo's default branch. */
+  branch?: string | null;
+  /** GitHub repo as owner/repo. */
+  repo?: string | null;
+  /** Resolve the repo from this service's connected source. */
+  serviceId?: string | null;
+}
+export const CloudAgentSourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    repo: S.optional(S.NullOr(S.String)),
+    serviceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "CloudAgentSourceInput",
+}) as any as S.Schema<CloudAgentSourceInput>;
+
+export interface CreateCloudAgentInput {
+  environmentId: string;
+  name?: string | null;
+  /** Region to run the agent in, e.g. us-west2. Defaults to the workspace's preferred region when agents are available there. */
+  region?: string | null;
+  source?: CloudAgentSourceInput | null;
+  variables?: unknown | null;
+}
+export const CreateCloudAgentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    name: S.optional(S.NullOr(S.String)),
+    region: S.optional(S.NullOr(S.String)),
+    source: S.optional(S.NullOr(CloudAgentSourceInput)),
+    variables: S.optional(S.NullOr(S.Unknown)),
+  }),
+).annotate({
+  identifier: "CreateCloudAgentInput",
+}) as any as S.Schema<CreateCloudAgentInput>;
+
+export interface CreateCloudAgentRequest {
+  input: CreateCloudAgentInput;
+}
+export const CreateCloudAgentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateCloudAgentInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation cloudAgentCreate($input: CloudAgentCreateInput!) {\n  cloudAgentCreate(input: $input) {\n    agentWsUrl\n    consoleTargetId\n    createdAt\n    domain\n    domains {\n      domain\n      port\n      prefix\n    }\n    environmentId\n    id\n    name\n    projectId\n    region\n    sessions {\n      harness\n      lastEventKind\n      latestPrompt\n      prompt\n      sessionId\n      sessionName\n      state\n      taskId\n      terminal\n      updatedAt\n    }\n    source {\n      branch\n      repo\n      serviceId\n      status\n    }\n    status\n  }\n}",
+        operationName: "cloudAgentCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateCloudAgentRequest",
+}) as any as S.Schema<CreateCloudAgentRequest>;
+
+export type CloudAgentCreateResponseDomainsItem = CloudAgentResponseDomainsItem;
+export const CloudAgentCreateResponseDomainsItem =
+  CloudAgentResponseDomainsItem;
+
+export type CloudAgentCreateResponseDomainsList =
+  Array<CloudAgentResponseDomainsItem>;
+export const CloudAgentCreateResponseDomainsList = /*@__PURE__*/ S.Array(
+  CloudAgentResponseDomainsItem,
+) as any as S.Schema<CloudAgentCreateResponseDomainsList>;
+
+export type CloudAgentCreateResponseSessionsItem =
+  CloudAgentResponseSessionsItem;
+export const CloudAgentCreateResponseSessionsItem =
+  CloudAgentResponseSessionsItem;
+
+export type CloudAgentCreateResponseSessionsList =
+  Array<CloudAgentResponseSessionsItem>;
+export const CloudAgentCreateResponseSessionsList = /*@__PURE__*/ S.Array(
+  CloudAgentResponseSessionsItem,
+) as any as S.Schema<CloudAgentCreateResponseSessionsList>;
+
+export type CloudAgentCreateResponseSource = CloudAgentResponseSource;
+export const CloudAgentCreateResponseSource = CloudAgentResponseSource;
+
+/** Selection set for `cloudAgentCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateCloudAgentResponse {
+  agentWsUrl: string | null;
+  consoleTargetId: string | null;
+  createdAt: string;
+  domain: string | null;
+  domains: CloudAgentCreateResponseDomainsList;
+  environmentId: string;
+  id: string;
+  name: string;
+  projectId: string;
+  region: string | null;
+  sessions: CloudAgentCreateResponseSessionsList;
+  source: CloudAgentResponseSource | null;
+  status: CloudAgentStatus;
+}
+export const CreateCloudAgentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    agentWsUrl: S.NullOr(S.String),
+    consoleTargetId: S.NullOr(S.String),
+    createdAt: S.String,
+    domain: S.NullOr(S.String),
+    domains: CloudAgentCreateResponseDomainsList,
+    environmentId: S.String,
+    id: S.String,
+    name: S.String,
+    projectId: S.String,
+    region: S.NullOr(S.String),
+    sessions: CloudAgentCreateResponseSessionsList,
+    source: S.NullOr(CloudAgentResponseSource),
+    status: CloudAgentStatus,
+  }).pipe(T.ResponsePath("cloudAgentCreate")),
+).annotate({
+  identifier: "CreateCloudAgentResponse",
+}) as any as S.Schema<CreateCloudAgentResponse>;
+
+export interface CreateCustomDomainInput {
+  domain: string;
+  environmentId: string;
+  projectId: string;
+  serviceId: string;
+  targetPort?: number | null;
+}
+export const CreateCustomDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String,
+    environmentId: S.String,
+    projectId: S.String,
+    serviceId: S.String,
+    targetPort: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "CreateCustomDomainInput",
+}) as any as S.Schema<CreateCustomDomainInput>;
+
+export interface CreateCustomDomainRequest {
+  input: CreateCustomDomainInput;
+}
+export const CreateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateCustomDomainInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation customDomainCreate($input: CustomDomainCreateInput!) {\n  customDomainCreate(input: $input) {\n    cdnMode\n    cnameCheck {\n      link\n      message\n      status\n    }\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    isRailwayDomain\n    projectId\n    serviceId\n    status {\n      cdnProvider\n      certificateErrorMessage\n      certificateErrorType\n      certificateRetryable\n      certificateStatus\n      certificateStatusDetailed\n      verificationDnsHost\n      verificationToken\n      verified\n    }\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}",
+        operationName: "customDomainCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateCustomDomainRequest",
+}) as any as S.Schema<CreateCustomDomainRequest>;
 
 export type CnameCheckStatus =
   | "ERROR"
@@ -3229,20 +2885,21 @@ export type CnameCheckStatus =
   | "WAITING";
 export const CnameCheckStatus = /*@__PURE__*/ S.String;
 
-export interface CustomDomainResponseCnameCheck {
+export interface CustomDomainCreateResponseCnameCheck {
   link: string | null;
   message: string;
   status: CnameCheckStatus;
 }
-export const CustomDomainResponseCnameCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    link: S.NullOr(S.String),
-    message: S.String,
-    status: CnameCheckStatus,
-  }),
+export const CustomDomainCreateResponseCnameCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      link: S.NullOr(S.String),
+      message: S.String,
+      status: CnameCheckStatus,
+    }),
 ).annotate({
-  identifier: "CustomDomainResponseCnameCheck",
-}) as any as S.Schema<CustomDomainResponseCnameCheck>;
+  identifier: "CustomDomainCreateResponseCnameCheck",
+}) as any as S.Schema<CustomDomainCreateResponseCnameCheck>;
 
 export type CDNProvider =
   | "DETECTED_CDN_PROVIDER_CLOUDFLARE"
@@ -3286,7 +2943,7 @@ export type CertificateStatusDetailed =
   | "UNRECOGNIZED";
 export const CertificateStatusDetailed = /*@__PURE__*/ S.String;
 
-export interface CustomDomainResponseStatus {
+export interface CustomDomainCreateResponseStatus {
   cdnProvider: CDNProvider | null;
   certificateErrorMessage: string | null;
   certificateErrorType: CertificateErrorType | null;
@@ -3297,7 +2954,7 @@ export interface CustomDomainResponseStatus {
   verificationToken: string | null;
   verified: boolean;
 }
-export const CustomDomainResponseStatus = /*@__PURE__*/ S.suspend(() =>
+export const CustomDomainCreateResponseStatus = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cdnProvider: S.NullOr(CDNProvider),
     certificateErrorMessage: S.NullOr(S.String),
@@ -3310,8 +2967,8 @@ export const CustomDomainResponseStatus = /*@__PURE__*/ S.suspend(() =>
     verified: S.Boolean,
   }),
 ).annotate({
-  identifier: "CustomDomainResponseStatus",
-}) as any as S.Schema<CustomDomainResponseStatus>;
+  identifier: "CustomDomainCreateResponseStatus",
+}) as any as S.Schema<CustomDomainCreateResponseStatus>;
 
 export type CustomDomainSyncStatus =
   | "ACTIVE"
@@ -3322,10 +2979,10 @@ export type CustomDomainSyncStatus =
   | "UPDATING";
 export const CustomDomainSyncStatus = /*@__PURE__*/ S.String;
 
-/** Selection set for `customDomain` (unwrapped from the GraphQL `data` envelope). */
-export interface CustomDomainResponse {
+/** Selection set for `customDomainCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateCustomDomainResponse {
   cdnMode: string | null;
-  cnameCheck: CustomDomainResponseCnameCheck;
+  cnameCheck: CustomDomainCreateResponseCnameCheck;
   createdAt: string | null;
   deletedAt: string | null;
   domain: string;
@@ -3335,15 +2992,15 @@ export interface CustomDomainResponse {
   isRailwayDomain: boolean;
   projectId: string | null;
   serviceId: string;
-  status: CustomDomainResponseStatus;
+  status: CustomDomainCreateResponseStatus;
   syncStatus: CustomDomainSyncStatus;
   targetPort: number | null;
   updatedAt: string | null;
 }
-export const CustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cdnMode: S.NullOr(S.String),
-    cnameCheck: CustomDomainResponseCnameCheck,
+    cnameCheck: CustomDomainCreateResponseCnameCheck,
     createdAt: S.NullOr(S.String),
     deletedAt: S.NullOr(S.String),
     domain: S.String,
@@ -3353,7 +3010,2135 @@ export const CustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
     isRailwayDomain: S.Boolean,
     projectId: S.NullOr(S.String),
     serviceId: S.String,
-    status: CustomDomainResponseStatus,
+    status: CustomDomainCreateResponseStatus,
+    syncStatus: CustomDomainSyncStatus,
+    targetPort: S.NullOr(S.Number),
+    updatedAt: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("customDomainCreate")),
+).annotate({
+  identifier: "CreateCustomDomainResponse",
+}) as any as S.Schema<CreateCustomDomainResponse>;
+
+export interface CreateCustomerFreePlanSubscriptionRequest {
+  id: string;
+}
+export const CreateCustomerFreePlanSubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation customerCreateFreePlanSubscription($id: String!) {\n  customerCreateFreePlanSubscription(id: $id) {\n    __typename\n  }\n}",
+          operationName: "customerCreateFreePlanSubscription",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "CreateCustomerFreePlanSubscriptionRequest",
+  }) as any as S.Schema<CreateCustomerFreePlanSubscriptionRequest>;
+
+export type CreateCustomerFreePlanSubscriptionResponse = boolean;
+export const CreateCustomerFreePlanSubscriptionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("customerCreateFreePlanSubscription"),
+    ),
+  ).annotate({
+    identifier: "CreateCustomerFreePlanSubscriptionResponse",
+  }) as any as S.Schema<CreateCustomerFreePlanSubscriptionResponse>;
+
+export interface CreateDeploymentInstanceExecutionInput {
+  serviceInstanceId: string;
+}
+export const CreateDeploymentInstanceExecutionInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      serviceInstanceId: S.String,
+    }),
+).annotate({
+  identifier: "CreateDeploymentInstanceExecutionInput",
+}) as any as S.Schema<CreateDeploymentInstanceExecutionInput>;
+
+export interface CreateDeploymentInstanceExecutionRequest {
+  input: CreateDeploymentInstanceExecutionInput;
+}
+export const CreateDeploymentInstanceExecutionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      input: CreateDeploymentInstanceExecutionInput,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation deploymentInstanceExecutionCreate($input: DeploymentInstanceExecutionCreateInput!) {\n  deploymentInstanceExecutionCreate(input: $input) {\n    __typename\n  }\n}",
+          operationName: "deploymentInstanceExecutionCreate",
+          type: "mutation",
+        }),
+      ),
+).annotate({
+  identifier: "CreateDeploymentInstanceExecutionRequest",
+}) as any as S.Schema<CreateDeploymentInstanceExecutionRequest>;
+
+export type CreateDeploymentInstanceExecutionResponse = boolean;
+export const CreateDeploymentInstanceExecutionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("deploymentInstanceExecutionCreate"),
+    ),
+  ).annotate({
+    identifier: "CreateDeploymentInstanceExecutionResponse",
+  }) as any as S.Schema<CreateDeploymentInstanceExecutionResponse>;
+
+export interface CreateDeploymentTriggerInput {
+  branch: string;
+  checkSuites?: boolean | null;
+  environmentId: string;
+  projectId: string;
+  provider: string;
+  repository: string;
+  rootDirectory?: string | null;
+  serviceId: string;
+}
+export const CreateDeploymentTriggerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.String,
+    checkSuites: S.optional(S.NullOr(S.Boolean)),
+    environmentId: S.String,
+    projectId: S.String,
+    provider: S.String,
+    repository: S.String,
+    rootDirectory: S.optional(S.NullOr(S.String)),
+    serviceId: S.String,
+  }),
+).annotate({
+  identifier: "CreateDeploymentTriggerInput",
+}) as any as S.Schema<CreateDeploymentTriggerInput>;
+
+export interface CreateDeploymentTriggerRequest {
+  input: CreateDeploymentTriggerInput;
+}
+export const CreateDeploymentTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateDeploymentTriggerInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation deploymentTriggerCreate($input: DeploymentTriggerCreateInput!) {\n  deploymentTriggerCreate(input: $input) {\n    baseEnvironmentOverrideId\n    branch\n    checkSuites\n    environmentId\n    id\n    projectId\n    provider\n    repository\n    serviceId\n    validCheckSuites\n  }\n}",
+        operationName: "deploymentTriggerCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateDeploymentTriggerRequest",
+}) as any as S.Schema<CreateDeploymentTriggerRequest>;
+
+/** Selection set for `deploymentTriggerCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateDeploymentTriggerResponse {
+  baseEnvironmentOverrideId: string | null;
+  branch: string;
+  checkSuites: boolean;
+  environmentId: string;
+  id: string;
+  projectId: string;
+  provider: string;
+  repository: string;
+  serviceId: string | null;
+  validCheckSuites: number;
+}
+export const CreateDeploymentTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentOverrideId: S.NullOr(S.String),
+    branch: S.String,
+    checkSuites: S.Boolean,
+    environmentId: S.String,
+    id: S.String,
+    projectId: S.String,
+    provider: S.String,
+    repository: S.String,
+    serviceId: S.NullOr(S.String),
+    validCheckSuites: S.Number,
+  }).pipe(T.ResponsePath("deploymentTriggerCreate")),
+).annotate({
+  identifier: "CreateDeploymentTriggerResponse",
+}) as any as S.Schema<CreateDeploymentTriggerResponse>;
+
+export interface EgressGatewayCreateInput {
+  environmentId: string;
+  region?: string | null;
+  serviceId: string;
+}
+export const EgressGatewayCreateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    region: S.optional(S.NullOr(S.String)),
+    serviceId: S.String,
+  }),
+).annotate({
+  identifier: "EgressGatewayCreateInput",
+}) as any as S.Schema<EgressGatewayCreateInput>;
+
+export interface CreateEgressGatewayAssociationRequest {
+  input: EgressGatewayCreateInput;
+}
+export const CreateEgressGatewayAssociationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      input: EgressGatewayCreateInput,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation egressGatewayAssociationCreate($input: EgressGatewayCreateInput!) {\n  egressGatewayAssociationCreate(input: $input) {\n    ipv4\n    region\n    zone\n  }\n}",
+          operationName: "egressGatewayAssociationCreate",
+          type: "mutation",
+        }),
+      ),
+).annotate({
+  identifier: "CreateEgressGatewayAssociationRequest",
+}) as any as S.Schema<CreateEgressGatewayAssociationRequest>;
+
+export interface EgressGatewayAssociationCreateResultItem {
+  ipv4: string;
+  region: string;
+  zone: string | null;
+}
+export const EgressGatewayAssociationCreateResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      ipv4: S.String,
+      region: S.String,
+      zone: S.NullOr(S.String),
+    }),
+).annotate({
+  identifier: "EgressGatewayAssociationCreateResultItem",
+}) as any as S.Schema<EgressGatewayAssociationCreateResultItem>;
+
+export type EgressGatewayAssociationCreateResultList =
+  Array<EgressGatewayAssociationCreateResultItem>;
+export const EgressGatewayAssociationCreateResultList = /*@__PURE__*/ S.Array(
+  EgressGatewayAssociationCreateResultItem,
+) as any as S.Schema<EgressGatewayAssociationCreateResultList>;
+
+export type CreateEgressGatewayAssociationResponse =
+  EgressGatewayAssociationCreateResultList;
+export const CreateEgressGatewayAssociationResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    EgressGatewayAssociationCreateResultList.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("egressGatewayAssociationCreate"),
+    ),
+).annotate({
+  identifier: "CreateEgressGatewayAssociationResponse",
+}) as any as S.Schema<CreateEgressGatewayAssociationResponse>;
+
+export interface CreateEnvironmentInput {
+  /** If true, the changes will be applied in the background and the mutation will return immediately. If false, the mutation will wait for the changes to be applied before returning. */
+  applyChangesInBackground?: boolean | null;
+  ephemeral?: boolean | null;
+  name: string;
+  projectId: string;
+  /** When committing the changes immediately, skip any initial deployments. */
+  skipInitialDeploys?: boolean | null;
+  /** Create the environment with all of the services, volumes, configuration, and variables from this source environment. */
+  sourceEnvironmentId?: string | null;
+  /** Stage the initial changes for the environment. If false (default), the changes will be committed immediately. */
+  stageInitialChanges?: boolean | null;
+}
+export const CreateEnvironmentInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applyChangesInBackground: S.optional(S.NullOr(S.Boolean)),
+    ephemeral: S.optional(S.NullOr(S.Boolean)),
+    name: S.String,
+    projectId: S.String,
+    skipInitialDeploys: S.optional(S.NullOr(S.Boolean)),
+    sourceEnvironmentId: S.optional(S.NullOr(S.String)),
+    stageInitialChanges: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "CreateEnvironmentInput",
+}) as any as S.Schema<CreateEnvironmentInput>;
+
+export interface CreateEnvironmentRequest {
+  input: CreateEnvironmentInput;
+}
+export const CreateEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateEnvironmentInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation environmentCreate($input: EnvironmentCreateInput!) {\n  environmentCreate(input: $input) {\n    canAccess\n    canvasGroupRefs\n    configEtag\n    createdAt\n    deletedAt\n    iacPartials\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}",
+        operationName: "environmentCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateEnvironmentRequest",
+}) as any as S.Schema<CreateEnvironmentRequest>;
+
+export interface EnvironmentCreateResponseMeta {
+  baseBranch: string | null;
+  branch: string | null;
+  latestSuccessfulGitHubDeploymentId: number | null;
+  prCommentId: number | null;
+  prNumber: number | null;
+  prRepo: string | null;
+  prTitle: string | null;
+  skippedResourceIds: unknown | null;
+}
+export const EnvironmentCreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseBranch: S.NullOr(S.String),
+    branch: S.NullOr(S.String),
+    latestSuccessfulGitHubDeploymentId: S.NullOr(S.Number),
+    prCommentId: S.NullOr(S.Number),
+    prNumber: S.NullOr(S.Number),
+    prRepo: S.NullOr(S.String),
+    prTitle: S.NullOr(S.String),
+    skippedResourceIds: S.NullOr(S.Unknown),
+  }),
+).annotate({
+  identifier: "EnvironmentCreateResponseMeta",
+}) as any as S.Schema<EnvironmentCreateResponseMeta>;
+
+/** Selection set for `environmentCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateEnvironmentResponse {
+  canAccess: boolean;
+  canvasGroupRefs: unknown;
+  configEtag: string;
+  createdAt: string;
+  deletedAt: string | null;
+  iacPartials: unknown | null;
+  id: string;
+  isEphemeral: boolean;
+  meta: EnvironmentCreateResponseMeta | null;
+  name: string;
+  projectId: string;
+  unmergedChangesCount: number | null;
+  updatedAt: string;
+}
+export const CreateEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    canAccess: S.Boolean,
+    canvasGroupRefs: S.Unknown,
+    configEtag: S.String,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    iacPartials: S.NullOr(S.Unknown),
+    id: S.String,
+    isEphemeral: S.Boolean,
+    meta: S.NullOr(EnvironmentCreateResponseMeta),
+    name: S.String,
+    projectId: S.String,
+    unmergedChangesCount: S.NullOr(S.Number),
+    updatedAt: S.String,
+  }).pipe(T.ResponsePath("environmentCreate")),
+).annotate({
+  identifier: "CreateEnvironmentResponse",
+}) as any as S.Schema<CreateEnvironmentResponse>;
+
+export interface CreateIntegrationInput {
+  config: unknown;
+  integrationAuthId?: string | null;
+  name: string;
+  projectId: string;
+}
+export const CreateIntegrationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    config: S.Unknown,
+    integrationAuthId: S.optional(S.NullOr(S.String)),
+    name: S.String,
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "CreateIntegrationInput",
+}) as any as S.Schema<CreateIntegrationInput>;
+
+export interface CreateIntegrationRequest {
+  input: CreateIntegrationInput;
+}
+export const CreateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateIntegrationInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation integrationCreate($input: IntegrationCreateInput!) {\n  integrationCreate(input: $input) {\n    config\n    id\n    name\n    projectId\n  }\n}",
+        operationName: "integrationCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateIntegrationRequest",
+}) as any as S.Schema<CreateIntegrationRequest>;
+
+/** Selection set for `integrationCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateIntegrationResponse {
+  config: unknown;
+  id: string;
+  name: string;
+  projectId: string;
+}
+export const CreateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    config: S.Unknown,
+    id: S.String,
+    name: S.String,
+    projectId: S.String,
+  }).pipe(T.ResponsePath("integrationCreate")),
+).annotate({
+  identifier: "CreateIntegrationResponse",
+}) as any as S.Schema<CreateIntegrationResponse>;
+
+export interface CreateJobApplicationInput {
+  email: string;
+  jobId: string;
+  name: string;
+  why: string;
+}
+export const CreateJobApplicationInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    jobId: S.String,
+    name: S.String,
+    why: S.String,
+  }),
+).annotate({
+  identifier: "CreateJobApplicationInput",
+}) as any as S.Schema<CreateJobApplicationInput>;
+
+export interface CreateJobApplicationRequest {
+  input: CreateJobApplicationInput;
+  resume: unknown;
+}
+export const CreateJobApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateJobApplicationInput,
+    resume: S.Unknown,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation jobApplicationCreate($input: JobApplicationCreateInput!, $resume: Upload!) {\n  jobApplicationCreate(input: $input, resume: $resume) {\n    __typename\n  }\n}",
+        operationName: "jobApplicationCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateJobApplicationRequest",
+}) as any as S.Schema<CreateJobApplicationRequest>;
+
+export type CreateJobApplicationResponse = boolean;
+export const CreateJobApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("jobApplicationCreate"),
+  ),
+).annotate({
+  identifier: "CreateJobApplicationResponse",
+}) as any as S.Schema<CreateJobApplicationResponse>;
+
+export interface CreateLoginSessionRequest {}
+export const CreateLoginSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({})
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query: "mutation loginSessionCreate {\n  loginSessionCreate\n}",
+        operationName: "loginSessionCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateLoginSessionRequest",
+}) as any as S.Schema<CreateLoginSessionRequest>;
+
+export type CreateLoginSessionResponse = string;
+export const CreateLoginSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("loginSessionCreate")),
+).annotate({
+  identifier: "CreateLoginSessionResponse",
+}) as any as S.Schema<CreateLoginSessionResponse>;
+
+export type DocumentList = Array<unknown>;
+export const DocumentList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<DocumentList>;
+
+export type NotificationSeverity = "CRITICAL" | "INFO" | "NOTICE" | "WARNING";
+export const NotificationSeverity = /*@__PURE__*/ S.String;
+
+export type NotificationSeverityList = Array<
+  NotificationSeverity | (string & {})
+>;
+export const NotificationSeverityList = /*@__PURE__*/ S.Array(
+  NotificationSeverity,
+) as any as S.Schema<NotificationSeverityList>;
+
+export interface CreateNotificationRuleInput {
+  channelConfigs: DocumentList;
+  ephemeralEnvironments?: boolean | null;
+  eventTypes: StringList;
+  projectId?: string | null;
+  severities?: NotificationSeverityList | null;
+  workspaceId: string;
+}
+export const CreateNotificationRuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channelConfigs: DocumentList,
+    ephemeralEnvironments: S.optional(S.NullOr(S.Boolean)),
+    eventTypes: StringList,
+    projectId: S.optional(S.NullOr(S.String)),
+    severities: S.optional(S.NullOr(NotificationSeverityList)),
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "CreateNotificationRuleInput",
+}) as any as S.Schema<CreateNotificationRuleInput>;
+
+export interface CreateNotificationRuleRequest {
+  input: CreateNotificationRuleInput;
+}
+export const CreateNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateNotificationRuleInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation notificationRuleCreate($input: CreateNotificationRuleInput!) {\n  notificationRuleCreate(input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}",
+        operationName: "notificationRuleCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateNotificationRuleRequest",
+}) as any as S.Schema<CreateNotificationRuleRequest>;
+
+export interface NotificationRuleCreateResponseChannelsItem {
+  config: unknown;
+  createdAt: string;
+  id: string;
+  updatedAt: string;
+  workspaceId: string;
+}
+export const NotificationRuleCreateResponseChannelsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      config: S.Unknown,
+      createdAt: S.String,
+      id: S.String,
+      updatedAt: S.String,
+      workspaceId: S.String,
+    }),
+  ).annotate({
+    identifier: "NotificationRuleCreateResponseChannelsItem",
+  }) as any as S.Schema<NotificationRuleCreateResponseChannelsItem>;
+
+export type NotificationRuleCreateResponseChannelsList =
+  Array<NotificationRuleCreateResponseChannelsItem>;
+export const NotificationRuleCreateResponseChannelsList = /*@__PURE__*/ S.Array(
+  NotificationRuleCreateResponseChannelsItem,
+) as any as S.Schema<NotificationRuleCreateResponseChannelsList>;
+
+export type NotificationRuleCreateResponseEventTypesList = Array<string>;
+export const NotificationRuleCreateResponseEventTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NotificationRuleCreateResponseEventTypesList>;
+
+export type NotificationRuleCreateResponseSeveritiesList =
+  Array<NotificationSeverity>;
+export const NotificationRuleCreateResponseSeveritiesList =
+  /*@__PURE__*/ S.Array(
+    NotificationSeverity,
+  ) as any as S.Schema<NotificationRuleCreateResponseSeveritiesList>;
+
+/** Selection set for `notificationRuleCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateNotificationRuleResponse {
+  channels: NotificationRuleCreateResponseChannelsList;
+  createdAt: string;
+  environmentId: string | null;
+  ephemeralEnvironments: boolean | null;
+  eventTypes: NotificationRuleCreateResponseEventTypesList;
+  id: string;
+  projectId: string | null;
+  serviceId: string | null;
+  severities: NotificationRuleCreateResponseSeveritiesList;
+  updatedAt: string;
+  workspaceId: string;
+}
+export const CreateNotificationRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channels: NotificationRuleCreateResponseChannelsList,
+    createdAt: S.String,
+    environmentId: S.NullOr(S.String),
+    ephemeralEnvironments: S.NullOr(S.Boolean),
+    eventTypes: NotificationRuleCreateResponseEventTypesList,
+    id: S.String,
+    projectId: S.NullOr(S.String),
+    serviceId: S.NullOr(S.String),
+    severities: NotificationRuleCreateResponseSeveritiesList,
+    updatedAt: S.String,
+    workspaceId: S.String,
+  }).pipe(T.ResponsePath("notificationRuleCreate")),
+).annotate({
+  identifier: "CreateNotificationRuleResponse",
+}) as any as S.Schema<CreateNotificationRuleResponse>;
+
+export type HttpMetricKind = "LATENCY" | "REQUESTS" | "STATUS_RATIO";
+export const HttpMetricKind = /*@__PURE__*/ S.String;
+
+export type MetricMeasurement =
+  | "BACKUP_USAGE_GB"
+  | "CPU_LIMIT"
+  | "CPU_USAGE"
+  | "CPU_USAGE_2"
+  | "DISK_USAGE_GB"
+  | "EPHEMERAL_DISK_USAGE_GB"
+  | "MEASUREMENT_UNSPECIFIED"
+  | "MEMORY_LIMIT_GB"
+  | "MEMORY_USAGE_GB"
+  | "NETWORK_RX_GB"
+  | "NETWORK_TX_GB"
+  | "UNRECOGNIZED";
+export const MetricMeasurement = /*@__PURE__*/ S.String;
+
+export type MetricMeasurementList = Array<MetricMeasurement | (string & {})>;
+export const MetricMeasurementList = /*@__PURE__*/ S.Array(
+  MetricMeasurement,
+) as any as S.Schema<MetricMeasurementList>;
+
+export type ProjectUsageProperty =
+  | "BACKUP_USAGE"
+  | "CPU_USAGE"
+  | "CURRENT_USAGE"
+  | "DISK_USAGE"
+  | "ESTIMATED_USAGE"
+  | "MEMORY_USAGE"
+  | "NETWORK_USAGE";
+export const ProjectUsageProperty = /*@__PURE__*/ S.String;
+
+export type ProjectUsagePropertyList = Array<
+  ProjectUsageProperty | (string & {})
+>;
+export const ProjectUsagePropertyList = /*@__PURE__*/ S.Array(
+  ProjectUsageProperty,
+) as any as S.Schema<ProjectUsagePropertyList>;
+
+export interface ObservabilityDashboardItemConfigInput {
+  httpMetric?: HttpMetricKind | (string & {}) | null;
+  logsFilter?: string | null;
+  measurements?: MetricMeasurementList | null;
+  projectUsageProperties?: ProjectUsagePropertyList | null;
+  resourceIds?: StringList | null;
+}
+export const ObservabilityDashboardItemConfigInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      httpMetric: S.optional(S.NullOr(HttpMetricKind)),
+      logsFilter: S.optional(S.NullOr(S.String)),
+      measurements: S.optional(S.NullOr(MetricMeasurementList)),
+      projectUsageProperties: S.optional(S.NullOr(ProjectUsagePropertyList)),
+      resourceIds: S.optional(S.NullOr(StringList)),
+    }),
+).annotate({
+  identifier: "ObservabilityDashboardItemConfigInput",
+}) as any as S.Schema<ObservabilityDashboardItemConfigInput>;
+
+export type ObservabilityDashboardItemType =
+  | "DNS_LOGS_ITEM"
+  | "HTTP_LOGS_ITEM"
+  | "HTTP_METRICS_ITEM"
+  | "NETWORK_LOGS_ITEM"
+  | "PROJECT_USAGE_ITEM"
+  | "SERVICE_LOGS_ITEM"
+  | "SERVICE_METRICS_ITEM"
+  | "VOLUME_METRICS_ITEM";
+export const ObservabilityDashboardItemType = /*@__PURE__*/ S.String;
+
+export interface ObservabilityDashboardItemCreateInput {
+  config: ObservabilityDashboardItemConfigInput;
+  description?: string | null;
+  id: string;
+  name: string;
+  type: ObservabilityDashboardItemType | (string & {});
+}
+export const ObservabilityDashboardItemCreateInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      config: ObservabilityDashboardItemConfigInput,
+      description: S.optional(S.NullOr(S.String)),
+      id: S.String,
+      name: S.String,
+      type: ObservabilityDashboardItemType,
+    }),
+).annotate({
+  identifier: "ObservabilityDashboardItemCreateInput",
+}) as any as S.Schema<ObservabilityDashboardItemCreateInput>;
+
+export interface UpdateObservabilityDashboardInput {
+  dashboardItem: ObservabilityDashboardItemCreateInput;
+  displayConfig: unknown;
+  id: string;
+}
+export const UpdateObservabilityDashboardInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dashboardItem: ObservabilityDashboardItemCreateInput,
+    displayConfig: S.Unknown,
+    id: S.String,
+  }),
+).annotate({
+  identifier: "UpdateObservabilityDashboardInput",
+}) as any as S.Schema<UpdateObservabilityDashboardInput>;
+
+export type ObservabilityDashboardUpdateInputList =
+  Array<UpdateObservabilityDashboardInput>;
+export const ObservabilityDashboardUpdateInputList = /*@__PURE__*/ S.Array(
+  UpdateObservabilityDashboardInput,
+) as any as S.Schema<ObservabilityDashboardUpdateInputList>;
+
+export interface CreateObservabilityDashboardInput {
+  environmentId: string;
+  /** If no items are provided, a default dashboard will be created. */
+  items?: ObservabilityDashboardUpdateInputList | null;
+}
+export const CreateObservabilityDashboardInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    items: S.optional(S.NullOr(ObservabilityDashboardUpdateInputList)),
+  }),
+).annotate({
+  identifier: "CreateObservabilityDashboardInput",
+}) as any as S.Schema<CreateObservabilityDashboardInput>;
+
+export interface CreateObservabilityDashboardRequest {
+  input: CreateObservabilityDashboardInput;
+}
+export const CreateObservabilityDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateObservabilityDashboardInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation observabilityDashboardCreate($input: ObservabilityDashboardCreateInput!) {\n  observabilityDashboardCreate(input: $input) {\n    __typename\n  }\n}",
+        operationName: "observabilityDashboardCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateObservabilityDashboardRequest",
+}) as any as S.Schema<CreateObservabilityDashboardRequest>;
+
+export type CreateObservabilityDashboardResponse = boolean;
+export const CreateObservabilityDashboardResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("observabilityDashboardCreate"),
+    ),
+).annotate({
+  identifier: "CreateObservabilityDashboardResponse",
+}) as any as S.Schema<CreateObservabilityDashboardResponse>;
+
+export interface ProjectCreateRepo {
+  branch: string;
+  fullRepoName: string;
+}
+export const ProjectCreateRepo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.String,
+    fullRepoName: S.String,
+  }),
+).annotate({
+  identifier: "ProjectCreateRepo",
+}) as any as S.Schema<ProjectCreateRepo>;
+
+export type PublicRuntime = "LEGACY" | "UNSPECIFIED" | "V2";
+export const PublicRuntime = /*@__PURE__*/ S.String;
+
+export interface CreateProjectInput {
+  defaultEnvironmentName?: string | null;
+  description?: string | null;
+  isMonorepo?: boolean | null;
+  isPublic?: boolean | null;
+  name?: string | null;
+  prDeploys?: boolean | null;
+  repo?: ProjectCreateRepo | null;
+  runtime?: PublicRuntime | (string & {}) | null;
+  workspaceId?: string | null;
+}
+export const CreateProjectInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultEnvironmentName: S.optional(S.NullOr(S.String)),
+    description: S.optional(S.NullOr(S.String)),
+    isMonorepo: S.optional(S.NullOr(S.Boolean)),
+    isPublic: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.NullOr(S.String)),
+    prDeploys: S.optional(S.NullOr(S.Boolean)),
+    repo: S.optional(S.NullOr(ProjectCreateRepo)),
+    runtime: S.optional(S.NullOr(PublicRuntime)),
+    workspaceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "CreateProjectInput",
+}) as any as S.Schema<CreateProjectInput>;
+
+export interface CreateProjectRequest {
+  input: CreateProjectInput;
+}
+export const CreateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateProjectInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectCreate($input: ProjectCreateInput!) {\n  projectCreate(input: $input) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      iacPartials\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+        operationName: "projectCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectRequest",
+}) as any as S.Schema<CreateProjectRequest>;
+
+export type ProjectCreateResponseBaseEnvironment =
+  AdminVolumeInstancesForVolumeResultItemEnvironment;
+export const ProjectCreateResponseBaseEnvironment =
+  AdminVolumeInstancesForVolumeResultItemEnvironment;
+
+export type ProjectCreateResponseFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const ProjectCreateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
+  ActiveProjectFeatureFlag,
+) as any as S.Schema<ProjectCreateResponseFeatureFlagsList>;
+
+export interface ProjectCreateResponseMembersItem {
+  avatar: string | null;
+  email: string;
+  id: string;
+  name: string | null;
+  role: ProjectRole;
+}
+export const ProjectCreateResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    avatar: S.NullOr(S.String),
+    email: S.String,
+    id: S.String,
+    name: S.NullOr(S.String),
+    role: ProjectRole,
+  }),
+).annotate({
+  identifier: "ProjectCreateResponseMembersItem",
+}) as any as S.Schema<ProjectCreateResponseMembersItem>;
+
+export type ProjectCreateResponseMembersList =
+  Array<ProjectCreateResponseMembersItem>;
+export const ProjectCreateResponseMembersList = /*@__PURE__*/ S.Array(
+  ProjectCreateResponseMembersItem,
+) as any as S.Schema<ProjectCreateResponseMembersList>;
+
+export interface ProjectCreateResponseTeam {
+  adoptionLevel: number;
+  avatar: string | null;
+  createdAt: string;
+  id: string;
+  name: string;
+  preferredRegion: string | null;
+  slackChannelId: string | null;
+  supportTierOverride: SupportTierOverride | null;
+  updatedAt: string;
+}
+export const ProjectCreateResponseTeam = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adoptionLevel: S.Number,
+    avatar: S.NullOr(S.String),
+    createdAt: S.String,
+    id: S.String,
+    name: S.String,
+    preferredRegion: S.NullOr(S.String),
+    slackChannelId: S.NullOr(S.String),
+    supportTierOverride: S.NullOr(SupportTierOverride),
+    updatedAt: S.String,
+  }),
+).annotate({
+  identifier: "ProjectCreateResponseTeam",
+}) as any as S.Schema<ProjectCreateResponseTeam>;
+
+export type ProjectCreateResponseWorkspaceUsersWithout2FAList = Array<string>;
+export const ProjectCreateResponseWorkspaceUsersWithout2FAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProjectCreateResponseWorkspaceUsersWithout2FAList>;
+
+export interface ProjectCreateResponseWorkspace {
+  adoptionLevel: number;
+  allowDeprecatedRegions: boolean | null;
+  avatar: string | null;
+  banReason: string | null;
+  createdAt: string;
+  discordRole: string | null;
+  has2FAEnforcement: boolean;
+  hasAutomaticDiagnosis: boolean;
+  hasGuardrailsAccess: boolean;
+  hasHipaaBAA: boolean;
+  hasSAML: boolean;
+  id: string;
+  name: string;
+  plan: Plan;
+  preferredRegion: string | null;
+  redactedDueTo2FAPending: boolean;
+  restrictProjectVisibilityToGroups: boolean;
+  slackChannelId: string | null;
+  subscriptionModel: SubscriptionModel;
+  subscriptionPlanLimit: unknown | null;
+  supportTierOverride: SupportTierOverride | null;
+  updatedAt: string;
+  usersWithout2FA: ProjectCreateResponseWorkspaceUsersWithout2FAList;
+}
+export const ProjectCreateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adoptionLevel: S.Number,
+    allowDeprecatedRegions: S.NullOr(S.Boolean),
+    avatar: S.NullOr(S.String),
+    banReason: S.NullOr(S.String),
+    createdAt: S.String,
+    discordRole: S.NullOr(S.String),
+    has2FAEnforcement: S.Boolean,
+    hasAutomaticDiagnosis: S.Boolean,
+    hasGuardrailsAccess: S.Boolean,
+    hasHipaaBAA: S.Boolean,
+    hasSAML: S.Boolean,
+    id: S.String,
+    name: S.String,
+    plan: Plan,
+    preferredRegion: S.NullOr(S.String),
+    redactedDueTo2FAPending: S.Boolean,
+    restrictProjectVisibilityToGroups: S.Boolean,
+    slackChannelId: S.NullOr(S.String),
+    subscriptionModel: SubscriptionModel,
+    subscriptionPlanLimit: S.NullOr(S.Unknown),
+    supportTierOverride: S.NullOr(SupportTierOverride),
+    updatedAt: S.String,
+    usersWithout2FA: ProjectCreateResponseWorkspaceUsersWithout2FAList,
+  }),
+).annotate({
+  identifier: "ProjectCreateResponseWorkspace",
+}) as any as S.Schema<ProjectCreateResponseWorkspace>;
+
+/** Selection set for `projectCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateProjectResponse {
+  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: ProjectCreateResponseFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  members: ProjectCreateResponseMembersList;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  team: ProjectCreateResponseTeam | null;
+  teamId: string | null;
+  updatedAt: string;
+  workspace: ProjectCreateResponseWorkspace | null;
+  workspaceId: string | null;
+}
+export const CreateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironment: S.NullOr(
+      AdminVolumeInstancesForVolumeResultItemEnvironment,
+    ),
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: ProjectCreateResponseFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    members: ProjectCreateResponseMembersList,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    team: S.NullOr(ProjectCreateResponseTeam),
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspace: S.NullOr(ProjectCreateResponseWorkspace),
+    workspaceId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("projectCreate")),
+).annotate({
+  identifier: "CreateProjectResponse",
+}) as any as S.Schema<CreateProjectResponse>;
+
+export interface ProjectInvitee {
+  email: string;
+  role: ProjectRole | (string & {});
+}
+export const ProjectInvitee = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    role: ProjectRole,
+  }),
+).annotate({ identifier: "ProjectInvitee" }) as any as S.Schema<ProjectInvitee>;
+
+export interface CreateProjectInvitationRequest {
+  id: string;
+  input: ProjectInvitee;
+}
+export const CreateProjectInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: ProjectInvitee,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectInvitationCreate($id: String!, $input: ProjectInvitee!) {\n  projectInvitationCreate(id: $id, input: $input) {\n    email\n    expiresAt\n    id\n    inviter {\n      email\n      name\n    }\n    isExpired\n    project {\n      id\n      name\n    }\n  }\n}",
+        operationName: "projectInvitationCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectInvitationRequest",
+}) as any as S.Schema<CreateProjectInvitationRequest>;
+
+export interface ProjectInvitationCreateResponseInviter {
+  email: string;
+  name: string | null;
+}
+export const ProjectInvitationCreateResponseInviter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      email: S.String,
+      name: S.NullOr(S.String),
+    }),
+).annotate({
+  identifier: "ProjectInvitationCreateResponseInviter",
+}) as any as S.Schema<ProjectInvitationCreateResponseInviter>;
+
+export type ProjectInvitationCreateResponseProject =
+  ApiTokenResponseWorkspacesItem;
+export const ProjectInvitationCreateResponseProject =
+  ApiTokenResponseWorkspacesItem;
+
+/** Selection set for `projectInvitationCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateProjectInvitationResponse {
+  email: string;
+  expiresAt: string;
+  id: string;
+  inviter: ProjectInvitationCreateResponseInviter | null;
+  isExpired: boolean;
+  project: ApiTokenResponseWorkspacesItem;
+}
+export const CreateProjectInvitationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    email: S.String,
+    expiresAt: S.String,
+    id: S.String,
+    inviter: S.NullOr(ProjectInvitationCreateResponseInviter),
+    isExpired: S.Boolean,
+    project: ApiTokenResponseWorkspacesItem,
+  }).pipe(T.ResponsePath("projectInvitationCreate")),
+).annotate({
+  identifier: "CreateProjectInvitationResponse",
+}) as any as S.Schema<CreateProjectInvitationResponse>;
+
+export interface CreateProjectTokenInput {
+  environmentId: string;
+  name: string;
+  projectId: string;
+}
+export const CreateProjectTokenInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    name: S.String,
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "CreateProjectTokenInput",
+}) as any as S.Schema<CreateProjectTokenInput>;
+
+export interface CreateProjectTokenRequest {
+  input: CreateProjectTokenInput;
+}
+export const CreateProjectTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateProjectTokenInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectTokenCreate($input: ProjectTokenCreateInput!) {\n  projectTokenCreate(input: $input) {\n    __typename\n  }\n}",
+        operationName: "projectTokenCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateProjectTokenRequest",
+}) as any as S.Schema<CreateProjectTokenRequest>;
+
+export type CreateProjectTokenResponse = string;
+export const CreateProjectTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("projectTokenCreate")),
+).annotate({
+  identifier: "CreateProjectTokenResponse",
+}) as any as S.Schema<CreateProjectTokenResponse>;
+
+export type RailwayDomainDnsRecordType =
+  | "A"
+  | "AAAA"
+  | "ANAME"
+  | "CNAME"
+  | "MX"
+  | "NS"
+  | "SRV"
+  | "TXT";
+export const RailwayDomainDnsRecordType = /*@__PURE__*/ S.String;
+
+export interface CreateRailwayDomainDnsRecordInput {
+  answer: string;
+  domain: string;
+  host: string;
+  priority?: number | null;
+  ttl?: number | null;
+  type: RailwayDomainDnsRecordType | (string & {});
+  workspaceId: string;
+}
+export const CreateRailwayDomainDnsRecordInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    answer: S.String,
+    domain: S.String,
+    host: S.String,
+    priority: S.optional(S.NullOr(S.Number)),
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: RailwayDomainDnsRecordType,
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "CreateRailwayDomainDnsRecordInput",
+}) as any as S.Schema<CreateRailwayDomainDnsRecordInput>;
+
+export interface CreateRailwayDomainDnsRecordRequest {
+  input: CreateRailwayDomainDnsRecordInput;
+}
+export const CreateRailwayDomainDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateRailwayDomainDnsRecordInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation railwayDomainDnsRecordCreate($input: RailwayDomainDnsRecordCreateInput!) {\n  railwayDomainDnsRecordCreate(input: $input) {\n    answer\n    domainName\n    fqdn\n    host\n    id\n    priority\n    ttl\n    type\n  }\n}",
+        operationName: "railwayDomainDnsRecordCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateRailwayDomainDnsRecordRequest",
+}) as any as S.Schema<CreateRailwayDomainDnsRecordRequest>;
+
+/** Selection set for `railwayDomainDnsRecordCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateRailwayDomainDnsRecordResponse {
+  answer: string;
+  domainName: string;
+  fqdn: string;
+  host: string;
+  id: number;
+  priority: number | null;
+  ttl: number;
+  type: RailwayDomainDnsRecordType;
+}
+export const CreateRailwayDomainDnsRecordResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      answer: S.String,
+      domainName: S.String,
+      fqdn: S.String,
+      host: S.String,
+      id: S.Number,
+      priority: S.NullOr(S.Number),
+      ttl: S.Number,
+      type: RailwayDomainDnsRecordType,
+    }).pipe(T.ResponsePath("railwayDomainDnsRecordCreate")),
+).annotate({
+  identifier: "CreateRailwayDomainDnsRecordResponse",
+}) as any as S.Schema<CreateRailwayDomainDnsRecordResponse>;
+
+export type SandboxNetworkIsolation = "ISOLATED" | "PRIVATE";
+export const SandboxNetworkIsolation = /*@__PURE__*/ S.String;
+
+export interface SandboxTemplateInput {
+  /** Build a template by running these shell instructions on the base image. Mutually exclusive with name. */
+  instructions?: StringList | null;
+  /** Boot from a saved checkpoint with this name (one captured from a sandbox). Mutually exclusive with instructions. */
+  name?: string | null;
+  /** Placement region for the build sandbox. The resulting checkpoint lives in this region, and sandboxes created from the template boot there. Defaults to the platform default; only the cold build consults it (a built template's own region wins). */
+  region?: string | null;
+  /** Environment variables available to the template's build instructions. Values may contain Railway variable references (e.g. ${{shared.FOO}}, ${{ServiceName.BAR}}), resolved at build time. */
+  variables?: unknown | null;
+}
+export const SandboxTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    instructions: S.optional(S.NullOr(StringList)),
+    name: S.optional(S.NullOr(S.String)),
+    region: S.optional(S.NullOr(S.String)),
+    variables: S.optional(S.NullOr(S.Unknown)),
+  }),
+).annotate({
+  identifier: "SandboxTemplateInput",
+}) as any as S.Schema<SandboxTemplateInput>;
+
+export interface CreateSandboxInput {
+  environmentId: string;
+  idleTimeoutMinutes?: number | null;
+  /** Network access for the sandbox. Defaults to ISOLATED (no private network access). */
+  networkIsolation?: SandboxNetworkIsolation | (string & {}) | null;
+  /** Region to place the sandbox in (e.g. us-west2, us-east4-eqdc4a). Defaults to the platform default region when omitted. */
+  region?: string | null;
+  /** Fork an existing running sandbox in this environment. Mutually exclusive with template. */
+  sourceSandboxId?: string | null;
+  template?: SandboxTemplateInput | null;
+  /** Environment variables baked into the sandbox, available to every command. Values may contain Railway variable references (e.g. ${{shared.FOO}}, ${{ServiceName.BAR}}), resolved at create time. */
+  variables?: unknown | null;
+}
+export const CreateSandboxInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    idleTimeoutMinutes: S.optional(S.NullOr(S.Number)),
+    networkIsolation: S.optional(S.NullOr(SandboxNetworkIsolation)),
+    region: S.optional(S.NullOr(S.String)),
+    sourceSandboxId: S.optional(S.NullOr(S.String)),
+    template: S.optional(S.NullOr(SandboxTemplateInput)),
+    variables: S.optional(S.NullOr(S.Unknown)),
+  }),
+).annotate({
+  identifier: "CreateSandboxInput",
+}) as any as S.Schema<CreateSandboxInput>;
+
+export interface CreateSandboxRequest {
+  input: CreateSandboxInput;
+}
+export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateSandboxInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sandboxCreate($input: SandboxCreateInput!) {\n  sandboxCreate(input: $input) {\n    createdAt\n    environmentId\n    id\n    idleTimeoutMinutes\n    networkIsolation\n    region\n    status\n  }\n}",
+        operationName: "sandboxCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSandboxRequest",
+}) as any as S.Schema<CreateSandboxRequest>;
+
+export type SandboxStatus =
+  | "CREATING"
+  | "DESTROYED"
+  | "DESTROYING"
+  | "FAILED"
+  | "RUNNING";
+export const SandboxStatus = /*@__PURE__*/ S.String;
+
+/** Selection set for `sandboxCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateSandboxResponse {
+  createdAt: string;
+  environmentId: string;
+  id: string;
+  idleTimeoutMinutes: number | null;
+  networkIsolation: SandboxNetworkIsolation;
+  region: string;
+  status: SandboxStatus;
+}
+export const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    environmentId: S.String,
+    id: S.String,
+    idleTimeoutMinutes: S.NullOr(S.Number),
+    networkIsolation: SandboxNetworkIsolation,
+    region: S.String,
+    status: SandboxStatus,
+  }).pipe(T.ResponsePath("sandboxCreate")),
+).annotate({
+  identifier: "CreateSandboxResponse",
+}) as any as S.Schema<CreateSandboxResponse>;
+
+export interface CreateSandboxCheckpointRequest {
+  environmentId: string;
+  name: string;
+  sandboxId: string;
+}
+export const CreateSandboxCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    name: S.String,
+    sandboxId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sandboxCheckpointCreate($environmentId: String!, $name: String!, $sandboxId: String!) {\n  sandboxCheckpointCreate(environmentId: $environmentId, name: $name, sandboxId: $sandboxId) {\n    createdAt\n    environmentId\n    id\n    key\n  }\n}",
+        operationName: "sandboxCheckpointCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSandboxCheckpointRequest",
+}) as any as S.Schema<CreateSandboxCheckpointRequest>;
+
+/** Selection set for `sandboxCheckpointCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateSandboxCheckpointResponse {
+  createdAt: string;
+  environmentId: string;
+  id: string;
+  key: string;
+}
+export const CreateSandboxCheckpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    environmentId: S.String,
+    id: S.String,
+    key: S.String,
+  }).pipe(T.ResponsePath("sandboxCheckpointCreate")),
+).annotate({
+  identifier: "CreateSandboxCheckpointResponse",
+}) as any as S.Schema<CreateSandboxCheckpointResponse>;
+
+/** Private Docker registry credentials. Only available for Pro plan deployments. */
+export interface RegistryCredentialsInput {
+  password: string;
+  username: string;
+}
+export const RegistryCredentialsInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    password: S.String,
+    username: S.String,
+  }),
+).annotate({
+  identifier: "RegistryCredentialsInput",
+}) as any as S.Schema<RegistryCredentialsInput>;
+
+export interface ServiceSourceInput {
+  image?: string | null;
+  repo?: string | null;
+}
+export const ServiceSourceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    image: S.optional(S.NullOr(S.String)),
+    repo: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "ServiceSourceInput",
+}) as any as S.Schema<ServiceSourceInput>;
+
+export interface CreateServiceInput {
+  branch?: string | null;
+  /** Environment ID. If the specified environment is a fork, the service will only be created in it. Otherwise it will created in all environments that are not forks of other environments */
+  environmentId?: string | null;
+  icon?: string | null;
+  name?: string | null;
+  projectId: string;
+  registryCredentials?: RegistryCredentialsInput | null;
+  source?: ServiceSourceInput | null;
+  /** Template ID. Required when templateServiceId is provided. */
+  templateId?: string | null;
+  /** Template service ID within the template's serializedConfig. Required when templateId is provided. */
+  templateServiceId?: string | null;
+  variables?: unknown | null;
+}
+export const CreateServiceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    environmentId: S.optional(S.NullOr(S.String)),
+    icon: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    projectId: S.String,
+    registryCredentials: S.optional(S.NullOr(RegistryCredentialsInput)),
+    source: S.optional(S.NullOr(ServiceSourceInput)),
+    templateId: S.optional(S.NullOr(S.String)),
+    templateServiceId: S.optional(S.NullOr(S.String)),
+    variables: S.optional(S.NullOr(S.Unknown)),
+  }),
+).annotate({
+  identifier: "CreateServiceInput",
+}) as any as S.Schema<CreateServiceInput>;
+
+export interface CreateServiceRequest {
+  input: CreateServiceInput;
+}
+export const CreateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateServiceInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation serviceCreate($input: ServiceCreateInput!) {\n  serviceCreate(input: $input) {\n    createdAt\n    deletedAt\n    featureFlags\n    groupId\n    hasHiddenRegistryCredentialsFromTemplate\n    icon\n    id\n    isRestricted\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    templateId\n    templateServiceId\n    templateThreadSlug\n    updatedAt\n  }\n}",
+        operationName: "serviceCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateServiceRequest",
+}) as any as S.Schema<CreateServiceRequest>;
+
+export type ServiceCreateResponseFeatureFlagsList =
+  Array<ActiveServiceFeatureFlag>;
+export const ServiceCreateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
+  ActiveServiceFeatureFlag,
+) as any as S.Schema<ServiceCreateResponseFeatureFlagsList>;
+
+export type ServiceCreateResponseProjectFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const ServiceCreateResponseProjectFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    ActiveProjectFeatureFlag,
+  ) as any as S.Schema<ServiceCreateResponseProjectFeatureFlagsList>;
+
+export interface ServiceCreateResponseProject {
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: ServiceCreateResponseProjectFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  teamId: string | null;
+  updatedAt: string;
+  workspaceId: string | null;
+}
+export const ServiceCreateResponseProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: ServiceCreateResponseProjectFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "ServiceCreateResponseProject",
+}) as any as S.Schema<ServiceCreateResponseProject>;
+
+/** Selection set for `serviceCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateServiceResponse {
+  createdAt: string;
+  deletedAt: string | null;
+  featureFlags: ServiceCreateResponseFeatureFlagsList;
+  groupId: string | null;
+  hasHiddenRegistryCredentialsFromTemplate: boolean;
+  icon: string | null;
+  id: string;
+  isRestricted: boolean;
+  name: string;
+  project: ServiceCreateResponseProject;
+  projectId: string;
+  templateId: string | null;
+  templateServiceId: string | null;
+  templateThreadSlug: string | null;
+  updatedAt: string;
+}
+export const CreateServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    featureFlags: ServiceCreateResponseFeatureFlagsList,
+    groupId: S.NullOr(S.String),
+    hasHiddenRegistryCredentialsFromTemplate: S.Boolean,
+    icon: S.NullOr(S.String),
+    id: S.String,
+    isRestricted: S.Boolean,
+    name: S.String,
+    project: ServiceCreateResponseProject,
+    projectId: S.String,
+    templateId: S.NullOr(S.String),
+    templateServiceId: S.NullOr(S.String),
+    templateThreadSlug: S.NullOr(S.String),
+    updatedAt: S.String,
+  }).pipe(T.ResponsePath("serviceCreate")),
+).annotate({
+  identifier: "CreateServiceResponse",
+}) as any as S.Schema<CreateServiceResponse>;
+
+export interface CreateServiceDomainInput {
+  environmentId: string;
+  serviceId: string;
+  targetPort?: number | null;
+}
+export const CreateServiceDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    serviceId: S.String,
+    targetPort: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "CreateServiceDomainInput",
+}) as any as S.Schema<CreateServiceDomainInput>;
+
+export interface CreateServiceDomainRequest {
+  input: CreateServiceDomainInput;
+}
+export const CreateServiceDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateServiceDomainInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation serviceDomainCreate($input: ServiceDomainCreateInput!) {\n  serviceDomainCreate(input: $input) {\n    cdnMode\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    newDomainName\n    newHostLabel\n    projectId\n    serviceId\n    suffix\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}",
+        operationName: "serviceDomainCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateServiceDomainRequest",
+}) as any as S.Schema<CreateServiceDomainRequest>;
+
+export type ServiceDomainSyncStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETED"
+  | "DELETING"
+  | "UNSPECIFIED"
+  | "UPDATING";
+export const ServiceDomainSyncStatus = /*@__PURE__*/ S.String;
+
+/** Selection set for `serviceDomainCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateServiceDomainResponse {
+  cdnMode: string | null;
+  createdAt: string | null;
+  deletedAt: string | null;
+  domain: string;
+  edgeId: string | null;
+  environmentId: string;
+  id: string;
+  newDomainName: string | null;
+  newHostLabel: string | null;
+  projectId: string | null;
+  serviceId: string;
+  suffix: string | null;
+  syncStatus: ServiceDomainSyncStatus;
+  targetPort: number | null;
+  updatedAt: string | null;
+}
+export const CreateServiceDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cdnMode: S.NullOr(S.String),
+    createdAt: S.NullOr(S.String),
+    deletedAt: S.NullOr(S.String),
+    domain: S.String,
+    edgeId: S.NullOr(S.String),
+    environmentId: S.String,
+    id: S.String,
+    newDomainName: S.NullOr(S.String),
+    newHostLabel: S.NullOr(S.String),
+    projectId: S.NullOr(S.String),
+    serviceId: S.String,
+    suffix: S.NullOr(S.String),
+    syncStatus: ServiceDomainSyncStatus,
+    targetPort: S.NullOr(S.Number),
+    updatedAt: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("serviceDomainCreate")),
+).annotate({
+  identifier: "CreateServiceDomainResponse",
+}) as any as S.Schema<CreateServiceDomainResponse>;
+
+export interface CreateSshPublicKeyInput {
+  name: string;
+  publicKey: string;
+  workspaceId?: string | null;
+}
+export const CreateSshPublicKeyInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    publicKey: S.String,
+    workspaceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "CreateSshPublicKeyInput",
+}) as any as S.Schema<CreateSshPublicKeyInput>;
+
+export interface CreateSshPublicKeyRequest {
+  input: CreateSshPublicKeyInput;
+}
+export const CreateSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateSshPublicKeyInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sshPublicKeyCreate($input: SshPublicKeyCreateInput!) {\n  sshPublicKeyCreate(input: $input) {\n    createdAt\n    fingerprint\n    id\n    name\n    publicKey\n    updatedAt\n    userId\n    workspaceId\n  }\n}",
+        operationName: "sshPublicKeyCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSshPublicKeyRequest",
+}) as any as S.Schema<CreateSshPublicKeyRequest>;
+
+/** Selection set for `sshPublicKeyCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateSshPublicKeyResponse {
+  createdAt: string;
+  fingerprint: string;
+  id: string;
+  name: string;
+  publicKey: string;
+  updatedAt: string;
+  userId: string | null;
+  workspaceId: string | null;
+}
+export const CreateSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    fingerprint: S.String,
+    id: S.String,
+    name: S.String,
+    publicKey: S.String,
+    updatedAt: S.String,
+    userId: S.NullOr(S.String),
+    workspaceId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("sshPublicKeyCreate")),
+).annotate({
+  identifier: "CreateSshPublicKeyResponse",
+}) as any as S.Schema<CreateSshPublicKeyResponse>;
+
+export interface TCPProxyCreateInput {
+  applicationPort: number;
+  environmentId: string;
+  serviceId: string;
+}
+export const TCPProxyCreateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationPort: S.Number,
+    environmentId: S.String,
+    serviceId: S.String,
+  }),
+).annotate({
+  identifier: "TCPProxyCreateInput",
+}) as any as S.Schema<TCPProxyCreateInput>;
+
+export interface CreateTcpProxyRequest {
+  input: TCPProxyCreateInput;
+}
+export const CreateTcpProxyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: TCPProxyCreateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation tcpProxyCreate($input: TCPProxyCreateInput!) {\n  tcpProxyCreate(input: $input) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}",
+        operationName: "tcpProxyCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateTcpProxyRequest",
+}) as any as S.Schema<CreateTcpProxyRequest>;
+
+export type TCPProxySyncStatus =
+  | "ACTIVE"
+  | "CREATING"
+  | "DELETED"
+  | "DELETING"
+  | "UNSPECIFIED"
+  | "UPDATING";
+export const TCPProxySyncStatus = /*@__PURE__*/ S.String;
+
+/** Selection set for `tcpProxyCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateTcpProxyResponse {
+  applicationPort: number;
+  createdAt: string | null;
+  deletedAt: string | null;
+  domain: string;
+  environmentId: string;
+  id: string;
+  proxyPort: number;
+  serviceId: string;
+  syncStatus: TCPProxySyncStatus;
+  updatedAt: string | null;
+}
+export const CreateTcpProxyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applicationPort: S.Number,
+    createdAt: S.NullOr(S.String),
+    deletedAt: S.NullOr(S.String),
+    domain: S.String,
+    environmentId: S.String,
+    id: S.String,
+    proxyPort: S.Number,
+    serviceId: S.String,
+    syncStatus: TCPProxySyncStatus,
+    updatedAt: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("tcpProxyCreate")),
+).annotate({
+  identifier: "CreateTcpProxyResponse",
+}) as any as S.Schema<CreateTcpProxyResponse>;
+
+export interface WorkspaceTrustedDomainCreateInput {
+  domainName: string;
+  role: string;
+  workspaceId: string;
+}
+export const WorkspaceTrustedDomainCreateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainName: S.String,
+    role: S.String,
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "WorkspaceTrustedDomainCreateInput",
+}) as any as S.Schema<WorkspaceTrustedDomainCreateInput>;
+
+export interface CreateTrustedDomainRequest {
+  input: WorkspaceTrustedDomainCreateInput;
+}
+export const CreateTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: WorkspaceTrustedDomainCreateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation trustedDomainCreate($input: WorkspaceTrustedDomainCreateInput!) {\n  trustedDomainCreate(input: $input) {\n    domainName\n    id\n    role\n    status\n    verificationData {\n      dnsHost\n      token\n    }\n    verificationType\n    workspaceId\n  }\n}",
+        operationName: "trustedDomainCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateTrustedDomainRequest",
+}) as any as S.Schema<CreateTrustedDomainRequest>;
+
+export type TrustedDomainStatus = "FAILED" | "PENDING" | "VERIFIED";
+export const TrustedDomainStatus = /*@__PURE__*/ S.String;
+
+export interface TrustedDomainCreateResponseVerificationData {
+  dnsHost: string | null;
+  token: string | null;
+}
+export const TrustedDomainCreateResponseVerificationData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dnsHost: S.NullOr(S.String),
+      token: S.NullOr(S.String),
+    }),
+  ).annotate({
+    identifier: "TrustedDomainCreateResponseVerificationData",
+  }) as any as S.Schema<TrustedDomainCreateResponseVerificationData>;
+
+/** Selection set for `trustedDomainCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateTrustedDomainResponse {
+  domainName: string;
+  id: string;
+  role: string;
+  status: TrustedDomainStatus;
+  verificationData: TrustedDomainCreateResponseVerificationData;
+  verificationType: string;
+  workspaceId: string;
+}
+export const CreateTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainName: S.String,
+    id: S.String,
+    role: S.String,
+    status: TrustedDomainStatus,
+    verificationData: TrustedDomainCreateResponseVerificationData,
+    verificationType: S.String,
+    workspaceId: S.String,
+  }).pipe(T.ResponsePath("trustedDomainCreate")),
+).annotate({
+  identifier: "CreateTrustedDomainResponse",
+}) as any as S.Schema<CreateTrustedDomainResponse>;
+
+export interface CreateTwoFactorInfoInput {
+  token: string;
+}
+export const CreateTwoFactorInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    token: S.String,
+  }),
+).annotate({
+  identifier: "CreateTwoFactorInfoInput",
+}) as any as S.Schema<CreateTwoFactorInfoInput>;
+
+export interface CreateTwoFactorInfoRequest {
+  input: CreateTwoFactorInfoInput;
+}
+export const CreateTwoFactorInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateTwoFactorInfoInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation twoFactorInfoCreate($input: TwoFactorInfoCreateInput!) {\n  twoFactorInfoCreate(input: $input) {\n    recoveryCodes\n  }\n}",
+        operationName: "twoFactorInfoCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateTwoFactorInfoRequest",
+}) as any as S.Schema<CreateTwoFactorInfoRequest>;
+
+export type TwoFactorInfoCreateResponseRecoveryCodesList = Array<string>;
+export const TwoFactorInfoCreateResponseRecoveryCodesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<TwoFactorInfoCreateResponseRecoveryCodesList>;
+
+/** Selection set for `twoFactorInfoCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateTwoFactorInfoResponse {
+  recoveryCodes: TwoFactorInfoCreateResponseRecoveryCodesList;
+}
+export const CreateTwoFactorInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recoveryCodes: TwoFactorInfoCreateResponseRecoveryCodesList,
+  }).pipe(T.ResponsePath("twoFactorInfoCreate")),
+).annotate({
+  identifier: "CreateTwoFactorInfoResponse",
+}) as any as S.Schema<CreateTwoFactorInfoResponse>;
+
+export interface CreateVolumeInput {
+  /** The environment to deploy the volume instances into. If `null`, the volume will not be deployed to any environment. `undefined` will deploy to all environments. */
+  environmentId?: string | null;
+  /** The path in the container to mount the volume to */
+  mountPath: string;
+  /** The project to create the volume in */
+  projectId: string;
+  /** The region to create the volume instances in. If not provided, the default region will be used. */
+  region?: string | null;
+  /** The service to attach the volume to. If not provided, the volume will be disconnected. */
+  serviceId?: string | null;
+}
+export const CreateVolumeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.NullOr(S.String)),
+    mountPath: S.String,
+    projectId: S.String,
+    region: S.optional(S.NullOr(S.String)),
+    serviceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "CreateVolumeInput",
+}) as any as S.Schema<CreateVolumeInput>;
+
+export interface CreateVolumeRequest {
+  input: CreateVolumeInput;
+}
+export const CreateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateVolumeInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeCreate($input: VolumeCreateInput!) {\n  volumeCreate(input: $input) {\n    createdAt\n    id\n    name\n    projectId\n    volumeInstances(first: 10) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
+        operationName: "volumeCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateVolumeRequest",
+}) as any as S.Schema<CreateVolumeRequest>;
+
+export interface EnvironmentResponseVolumeInstancesEdgesItemNode {
+  createdAt: string;
+  currentSizeMB: number;
+  deletedAt: string | null;
+  environmentId: string;
+  id: string;
+  isPendingDeletion: boolean;
+  mountPath: string;
+  region: string | null;
+  serviceId: string | null;
+  sizeMB: number;
+  state: VolumeState | null;
+  volume: AdminVolumeInstancesForVolumeResultItemVolume;
+  volumeId: string;
+}
+export const EnvironmentResponseVolumeInstancesEdgesItemNode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String,
+      currentSizeMB: S.Number,
+      deletedAt: S.NullOr(S.String),
+      environmentId: S.String,
+      id: S.String,
+      isPendingDeletion: S.Boolean,
+      mountPath: S.String,
+      region: S.NullOr(S.String),
+      serviceId: S.NullOr(S.String),
+      sizeMB: S.Number,
+      state: S.NullOr(VolumeState),
+      volume: AdminVolumeInstancesForVolumeResultItemVolume,
+      volumeId: S.String,
+    }),
+  ).annotate({
+    identifier: "EnvironmentResponseVolumeInstancesEdgesItemNode",
+  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItemNode>;
+
+export interface EnvironmentResponseVolumeInstancesEdgesItem {
+  node: EnvironmentResponseVolumeInstancesEdgesItemNode;
+}
+export const EnvironmentResponseVolumeInstancesEdgesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      node: EnvironmentResponseVolumeInstancesEdgesItemNode,
+    }),
+  ).annotate({
+    identifier: "EnvironmentResponseVolumeInstancesEdgesItem",
+  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItem>;
+
+export type EnvironmentResponseVolumeInstancesEdgesList =
+  Array<EnvironmentResponseVolumeInstancesEdgesItem>;
+export const EnvironmentResponseVolumeInstancesEdgesList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentResponseVolumeInstancesEdgesItem,
+  ) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesList>;
+
+export interface EnvironmentResponseVolumeInstances {
+  edges: EnvironmentResponseVolumeInstancesEdgesList;
+}
+export const EnvironmentResponseVolumeInstances = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    edges: EnvironmentResponseVolumeInstancesEdgesList,
+  }),
+).annotate({
+  identifier: "EnvironmentResponseVolumeInstances",
+}) as any as S.Schema<EnvironmentResponseVolumeInstances>;
+
+/** Selection set for `volumeCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateVolumeResponse {
+  createdAt: string;
+  id: string;
+  name: string;
+  projectId: string;
+  volumeInstances: EnvironmentResponseVolumeInstances;
+}
+export const CreateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    id: S.String,
+    name: S.String,
+    projectId: S.String,
+    volumeInstances: EnvironmentResponseVolumeInstances,
+  }).pipe(T.ResponsePath("volumeCreate")),
+).annotate({
+  identifier: "CreateVolumeResponse",
+}) as any as S.Schema<CreateVolumeResponse>;
+
+export interface CreateVolumeInstanceBackupRequest {
+  /** Optional name/label for the backup. Defaults to 'Manual' if not provided. */
+  name?: string | null;
+  /** The id of the volume instance to create a backup of */
+  volumeInstanceId: string;
+}
+export const CreateVolumeInstanceBackupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.NullOr(S.String)),
+    volumeInstanceId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeInstanceBackupCreate($name: String, $volumeInstanceId: String!) {\n  volumeInstanceBackupCreate(name: $name, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}",
+        operationName: "volumeInstanceBackupCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateVolumeInstanceBackupRequest",
+}) as any as S.Schema<CreateVolumeInstanceBackupRequest>;
+
+/** Selection set for `volumeInstanceBackupCreate` (unwrapped from the GraphQL `data` envelope). */
+export interface CreateVolumeInstanceBackupResponse {
+  workflowId: string | null;
+}
+export const CreateVolumeInstanceBackupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("volumeInstanceBackupCreate")),
+).annotate({
+  identifier: "CreateVolumeInstanceBackupResponse",
+}) as any as S.Schema<CreateVolumeInstanceBackupResponse>;
+
+export interface CreateWorkspaceInviteCodeInput {
+  role: string;
+}
+export const CreateWorkspaceInviteCodeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    role: S.String,
+  }),
+).annotate({
+  identifier: "CreateWorkspaceInviteCodeInput",
+}) as any as S.Schema<CreateWorkspaceInviteCodeInput>;
+
+export interface CreateWorkspaceInviteCodeRequest {
+  input: CreateWorkspaceInviteCodeInput;
+  workspaceId: string;
+}
+export const CreateWorkspaceInviteCodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: CreateWorkspaceInviteCodeInput,
+    workspaceId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation workspaceInviteCodeCreate($input: WorkspaceInviteCodeCreateInput!, $workspaceId: String!) {\n  workspaceInviteCodeCreate(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
+        operationName: "workspaceInviteCodeCreate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "CreateWorkspaceInviteCodeRequest",
+}) as any as S.Schema<CreateWorkspaceInviteCodeRequest>;
+
+export type CreateWorkspaceInviteCodeResponse = string;
+export const CreateWorkspaceInviteCodeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.String.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("workspaceInviteCodeCreate"),
+  ),
+).annotate({
+  identifier: "CreateWorkspaceInviteCodeResponse",
+}) as any as S.Schema<CreateWorkspaceInviteCodeResponse>;
+
+export interface CustomDomainRequest {
+  id: string;
+  projectId: string;
+}
+export const CustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    projectId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "query customDomain($id: String!, $projectId: String!) {\n  customDomain(id: $id, projectId: $projectId) {\n    cdnMode\n    cnameCheck {\n      link\n      message\n      status\n    }\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    isRailwayDomain\n    projectId\n    serviceId\n    status {\n      cdnProvider\n      certificateErrorMessage\n      certificateErrorType\n      certificateRetryable\n      certificateStatus\n      certificateStatusDetailed\n      verificationDnsHost\n      verificationToken\n      verified\n    }\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}",
+        operationName: "customDomain",
+        type: "query",
+      }),
+    ),
+).annotate({
+  identifier: "CustomDomainRequest",
+}) as any as S.Schema<CustomDomainRequest>;
+
+export type CustomDomainResponseCnameCheck =
+  CustomDomainCreateResponseCnameCheck;
+export const CustomDomainResponseCnameCheck =
+  CustomDomainCreateResponseCnameCheck;
+
+export type CustomDomainResponseStatus = CustomDomainCreateResponseStatus;
+export const CustomDomainResponseStatus = CustomDomainCreateResponseStatus;
+
+/** Selection set for `customDomain` (unwrapped from the GraphQL `data` envelope). */
+export interface CustomDomainResponse {
+  cdnMode: string | null;
+  cnameCheck: CustomDomainCreateResponseCnameCheck;
+  createdAt: string | null;
+  deletedAt: string | null;
+  domain: string;
+  edgeId: string | null;
+  environmentId: string;
+  id: string;
+  isRailwayDomain: boolean;
+  projectId: string | null;
+  serviceId: string;
+  status: CustomDomainCreateResponseStatus;
+  syncStatus: CustomDomainSyncStatus;
+  targetPort: number | null;
+  updatedAt: string | null;
+}
+export const CustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cdnMode: S.NullOr(S.String),
+    cnameCheck: CustomDomainCreateResponseCnameCheck,
+    createdAt: S.NullOr(S.String),
+    deletedAt: S.NullOr(S.String),
+    domain: S.String,
+    edgeId: S.NullOr(S.String),
+    environmentId: S.String,
+    id: S.String,
+    isRailwayDomain: S.Boolean,
+    projectId: S.NullOr(S.String),
+    serviceId: S.String,
+    status: CustomDomainCreateResponseStatus,
     syncStatus: CustomDomainSyncStatus,
     targetPort: S.NullOr(S.Number),
     updatedAt: S.NullOr(S.String),
@@ -3396,120 +5181,6 @@ export const CustomDomainAvailableResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomDomainAvailableResponse",
 }) as any as S.Schema<CustomDomainAvailableResponse>;
 
-export interface CustomDomainCreateInput {
-  domain: string;
-  environmentId: string;
-  projectId: string;
-  serviceId: string;
-  targetPort?: number | null;
-}
-export const CustomDomainCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String,
-    environmentId: S.String,
-    projectId: S.String,
-    serviceId: S.String,
-    targetPort: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "CustomDomainCreateInput",
-}) as any as S.Schema<CustomDomainCreateInput>;
-
-export interface CustomDomainCreateRequest {
-  input: CustomDomainCreateInput;
-}
-export const CustomDomainCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: CustomDomainCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation customDomainCreate($input: CustomDomainCreateInput!) {\n  customDomainCreate(input: $input) {\n    cdnMode\n    cnameCheck {\n      link\n      message\n      status\n    }\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    isRailwayDomain\n    projectId\n    serviceId\n    status {\n      cdnProvider\n      certificateErrorMessage\n      certificateErrorType\n      certificateRetryable\n      certificateStatus\n      certificateStatusDetailed\n      verificationDnsHost\n      verificationToken\n      verified\n    }\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}",
-        operationName: "customDomainCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "CustomDomainCreateRequest",
-}) as any as S.Schema<CustomDomainCreateRequest>;
-
-export type CustomDomainCreateResponseCnameCheck =
-  CustomDomainResponseCnameCheck;
-export const CustomDomainCreateResponseCnameCheck =
-  CustomDomainResponseCnameCheck;
-
-export type CustomDomainCreateResponseStatus = CustomDomainResponseStatus;
-export const CustomDomainCreateResponseStatus = CustomDomainResponseStatus;
-
-/** Selection set for `customDomainCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface CustomDomainCreateResponse {
-  cdnMode: string | null;
-  cnameCheck: CustomDomainResponseCnameCheck;
-  createdAt: string | null;
-  deletedAt: string | null;
-  domain: string;
-  edgeId: string | null;
-  environmentId: string;
-  id: string;
-  isRailwayDomain: boolean;
-  projectId: string | null;
-  serviceId: string;
-  status: CustomDomainResponseStatus;
-  syncStatus: CustomDomainSyncStatus;
-  targetPort: number | null;
-  updatedAt: string | null;
-}
-export const CustomDomainCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cdnMode: S.NullOr(S.String),
-    cnameCheck: CustomDomainResponseCnameCheck,
-    createdAt: S.NullOr(S.String),
-    deletedAt: S.NullOr(S.String),
-    domain: S.String,
-    edgeId: S.NullOr(S.String),
-    environmentId: S.String,
-    id: S.String,
-    isRailwayDomain: S.Boolean,
-    projectId: S.NullOr(S.String),
-    serviceId: S.String,
-    status: CustomDomainResponseStatus,
-    syncStatus: CustomDomainSyncStatus,
-    targetPort: S.NullOr(S.Number),
-    updatedAt: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("customDomainCreate")),
-).annotate({
-  identifier: "CustomDomainCreateResponse",
-}) as any as S.Schema<CustomDomainCreateResponse>;
-
-export interface CustomDomainDeleteRequest {
-  id: string;
-}
-export const CustomDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id)\n}",
-        operationName: "customDomainDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "CustomDomainDeleteRequest",
-}) as any as S.Schema<CustomDomainDeleteRequest>;
-
-export type CustomDomainDeleteResponse = boolean;
-export const CustomDomainDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("customDomainDelete")),
-).annotate({
-  identifier: "CustomDomainDeleteResponse",
-}) as any as S.Schema<CustomDomainDeleteResponse>;
-
 export interface CustomDomainIssueCertificateRequest {
   id: string;
 }
@@ -3540,69 +5211,6 @@ export const CustomDomainIssueCertificateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CustomDomainIssueCertificateResponse",
 }) as any as S.Schema<CustomDomainIssueCertificateResponse>;
-
-export interface CustomDomainUpdateRequest {
-  environmentId: string;
-  id: string;
-  targetPort?: number | null;
-}
-export const CustomDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    id: S.String,
-    targetPort: S.optional(S.NullOr(S.Number)),
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort)\n}",
-        operationName: "customDomainUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "CustomDomainUpdateRequest",
-}) as any as S.Schema<CustomDomainUpdateRequest>;
-
-export type CustomDomainUpdateResponse = boolean;
-export const CustomDomainUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("customDomainUpdate")),
-).annotate({
-  identifier: "CustomDomainUpdateResponse",
-}) as any as S.Schema<CustomDomainUpdateResponse>;
-
-export interface CustomerCreateFreePlanSubscriptionRequest {
-  id: string;
-}
-export const CustomerCreateFreePlanSubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation customerCreateFreePlanSubscription($id: String!) {\n  customerCreateFreePlanSubscription(id: $id) {\n    __typename\n  }\n}",
-          operationName: "customerCreateFreePlanSubscription",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "CustomerCreateFreePlanSubscriptionRequest",
-  }) as any as S.Schema<CustomerCreateFreePlanSubscriptionRequest>;
-
-export type CustomerCreateFreePlanSubscriptionResponse = boolean;
-export const CustomerCreateFreePlanSubscriptionResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("customerCreateFreePlanSubscription"),
-    ),
-  ).annotate({
-    identifier: "CustomerCreateFreePlanSubscriptionResponse",
-  }) as any as S.Schema<CustomerCreateFreePlanSubscriptionResponse>;
 
 export interface CustomerTogglePayoutsToCreditsInput {
   isWithdrawingToCredits: boolean;
@@ -3648,6 +5256,954 @@ export const CustomerTogglePayoutsToCreditsResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "CustomerTogglePayoutsToCreditsResponse",
 }) as any as S.Schema<CustomerTogglePayoutsToCreditsResponse>;
+
+export interface DeleteAccessGroupRequest {
+  id: string;
+}
+export const DeleteAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation accessGroupDelete($id: String!) {\n  accessGroupDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "accessGroupDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteAccessGroupRequest",
+}) as any as S.Schema<DeleteAccessGroupRequest>;
+
+export type DeleteAccessGroupResponse = boolean;
+export const DeleteAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("accessGroupDelete")),
+).annotate({
+  identifier: "DeleteAccessGroupResponse",
+}) as any as S.Schema<DeleteAccessGroupResponse>;
+
+export interface DeleteApiTokenRequest {
+  id: string;
+}
+export const DeleteApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation apiTokenDelete($id: String!) {\n  apiTokenDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "apiTokenDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteApiTokenRequest",
+}) as any as S.Schema<DeleteApiTokenRequest>;
+
+export type DeleteApiTokenResponse = boolean;
+export const DeleteApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("apiTokenDelete")),
+).annotate({
+  identifier: "DeleteApiTokenResponse",
+}) as any as S.Schema<DeleteApiTokenResponse>;
+
+export interface DeleteCloudAgentRequest {
+  id: string;
+}
+export const DeleteCloudAgentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation cloudAgentDelete($id: ID!) {\n  cloudAgentDelete(id: $id)\n}",
+        operationName: "cloudAgentDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteCloudAgentRequest",
+}) as any as S.Schema<DeleteCloudAgentRequest>;
+
+export type DeleteCloudAgentResponse = boolean;
+export const DeleteCloudAgentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("cloudAgentDelete")),
+).annotate({
+  identifier: "DeleteCloudAgentResponse",
+}) as any as S.Schema<DeleteCloudAgentResponse>;
+
+export interface DeleteCustomDomainRequest {
+  id: string;
+}
+export const DeleteCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation customDomainDelete($id: String!) {\n  customDomainDelete(id: $id)\n}",
+        operationName: "customDomainDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteCustomDomainRequest",
+}) as any as S.Schema<DeleteCustomDomainRequest>;
+
+export type DeleteCustomDomainResponse = boolean;
+export const DeleteCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("customDomainDelete")),
+).annotate({
+  identifier: "DeleteCustomDomainResponse",
+}) as any as S.Schema<DeleteCustomDomainResponse>;
+
+export interface DeleteDeploymentTriggerRequest {
+  id: string;
+}
+export const DeleteDeploymentTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation deploymentTriggerDelete($id: String!) {\n  deploymentTriggerDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "deploymentTriggerDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteDeploymentTriggerRequest",
+}) as any as S.Schema<DeleteDeploymentTriggerRequest>;
+
+export type DeleteDeploymentTriggerResponse = boolean;
+export const DeleteDeploymentTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("deploymentTriggerDelete"),
+  ),
+).annotate({
+  identifier: "DeleteDeploymentTriggerResponse",
+}) as any as S.Schema<DeleteDeploymentTriggerResponse>;
+
+export interface DeleteEnvironmentRequest {
+  id: string;
+}
+export const DeleteEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}",
+        operationName: "environmentDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteEnvironmentRequest",
+}) as any as S.Schema<DeleteEnvironmentRequest>;
+
+export type DeleteEnvironmentResponse = boolean;
+export const DeleteEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("environmentDelete")),
+).annotate({
+  identifier: "DeleteEnvironmentResponse",
+}) as any as S.Schema<DeleteEnvironmentResponse>;
+
+export interface DeleteIntegrationRequest {
+  id: string;
+}
+export const DeleteIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation integrationDelete($id: String!) {\n  integrationDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "integrationDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteIntegrationRequest",
+}) as any as S.Schema<DeleteIntegrationRequest>;
+
+export type DeleteIntegrationResponse = boolean;
+export const DeleteIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("integrationDelete")),
+).annotate({
+  identifier: "DeleteIntegrationResponse",
+}) as any as S.Schema<DeleteIntegrationResponse>;
+
+export interface DeleteNotificationRuleRequest {
+  id: string;
+}
+export const DeleteNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation notificationRuleDelete($id: String!) {\n  notificationRuleDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "notificationRuleDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteNotificationRuleRequest",
+}) as any as S.Schema<DeleteNotificationRuleRequest>;
+
+export type DeleteNotificationRuleResponse = boolean;
+export const DeleteNotificationRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("notificationRuleDelete"),
+  ),
+).annotate({
+  identifier: "DeleteNotificationRuleResponse",
+}) as any as S.Schema<DeleteNotificationRuleResponse>;
+
+export interface DeletePasskeyRequest {
+  id: string;
+}
+export const DeletePasskeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation passkeyDelete($id: String!) {\n  passkeyDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "passkeyDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeletePasskeyRequest",
+}) as any as S.Schema<DeletePasskeyRequest>;
+
+export type DeletePasskeyResponse = boolean;
+export const DeletePasskeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("passkeyDelete")),
+).annotate({
+  identifier: "DeletePasskeyResponse",
+}) as any as S.Schema<DeletePasskeyResponse>;
+
+export interface DeletePrivateNetworkEndpointRequest {
+  id: string;
+}
+export const DeletePrivateNetworkEndpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id)\n}",
+        operationName: "privateNetworkEndpointDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeletePrivateNetworkEndpointRequest",
+}) as any as S.Schema<DeletePrivateNetworkEndpointRequest>;
+
+export type DeletePrivateNetworkEndpointResponse = boolean;
+export const DeletePrivateNetworkEndpointResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("privateNetworkEndpointDelete"),
+    ),
+).annotate({
+  identifier: "DeletePrivateNetworkEndpointResponse",
+}) as any as S.Schema<DeletePrivateNetworkEndpointResponse>;
+
+export interface DeletePrivateNetworkForEnvironmentRequest {
+  environmentId: string;
+}
+export const DeletePrivateNetworkForEnvironmentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environmentId: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId)\n}",
+          operationName: "privateNetworksForEnvironmentDelete",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "DeletePrivateNetworkForEnvironmentRequest",
+  }) as any as S.Schema<DeletePrivateNetworkForEnvironmentRequest>;
+
+export type DeletePrivateNetworkForEnvironmentResponse = boolean;
+export const DeletePrivateNetworkForEnvironmentResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("privateNetworksForEnvironmentDelete"),
+    ),
+  ).annotate({
+    identifier: "DeletePrivateNetworkForEnvironmentResponse",
+  }) as any as S.Schema<DeletePrivateNetworkForEnvironmentResponse>;
+
+export interface DeleteProjectRequest {
+  id: string;
+}
+export const DeleteProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectDelete($id: String!) {\n  projectDelete(id: $id)\n}",
+        operationName: "projectDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectRequest",
+}) as any as S.Schema<DeleteProjectRequest>;
+
+export type DeleteProjectResponse = boolean;
+export const DeleteProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("projectDelete")),
+).annotate({
+  identifier: "DeleteProjectResponse",
+}) as any as S.Schema<DeleteProjectResponse>;
+
+export interface DeleteProjectInvitationRequest {
+  id: string;
+}
+export const DeleteProjectInvitationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectInvitationDelete($id: String!) {\n  projectInvitationDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "projectInvitationDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectInvitationRequest",
+}) as any as S.Schema<DeleteProjectInvitationRequest>;
+
+export type DeleteProjectInvitationResponse = boolean;
+export const DeleteProjectInvitationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("projectInvitationDelete"),
+  ),
+).annotate({
+  identifier: "DeleteProjectInvitationResponse",
+}) as any as S.Schema<DeleteProjectInvitationResponse>;
+
+export interface DeleteProjectScheduleRequest {
+  id: string;
+}
+export const DeleteProjectScheduleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectScheduleDelete($id: String!) {\n  projectScheduleDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "projectScheduleDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectScheduleRequest",
+}) as any as S.Schema<DeleteProjectScheduleRequest>;
+
+export type DeleteProjectScheduleResponse = boolean;
+export const DeleteProjectScheduleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("projectScheduleDelete"),
+  ),
+).annotate({
+  identifier: "DeleteProjectScheduleResponse",
+}) as any as S.Schema<DeleteProjectScheduleResponse>;
+
+export interface DeleteProjectScheduleCancelRequest {
+  id: string;
+}
+export const DeleteProjectScheduleCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectScheduleDeleteCancel($id: String!) {\n  projectScheduleDeleteCancel(id: $id) {\n    __typename\n  }\n}",
+        operationName: "projectScheduleDeleteCancel",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectScheduleCancelRequest",
+}) as any as S.Schema<DeleteProjectScheduleCancelRequest>;
+
+export type DeleteProjectScheduleCancelResponse = boolean;
+export const DeleteProjectScheduleCancelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("projectScheduleDeleteCancel"),
+  ),
+).annotate({
+  identifier: "DeleteProjectScheduleCancelResponse",
+}) as any as S.Schema<DeleteProjectScheduleCancelResponse>;
+
+export interface DeleteProjectScheduleForceRequest {
+  id: string;
+}
+export const DeleteProjectScheduleForceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectScheduleDeleteForce($id: String!) {\n  projectScheduleDeleteForce(id: $id) {\n    __typename\n  }\n}",
+        operationName: "projectScheduleDeleteForce",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectScheduleForceRequest",
+}) as any as S.Schema<DeleteProjectScheduleForceRequest>;
+
+export type DeleteProjectScheduleForceResponse = boolean;
+export const DeleteProjectScheduleForceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("projectScheduleDeleteForce"),
+  ),
+).annotate({
+  identifier: "DeleteProjectScheduleForceResponse",
+}) as any as S.Schema<DeleteProjectScheduleForceResponse>;
+
+export interface DeleteProjectTokenRequest {
+  id: string;
+}
+export const DeleteProjectTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectTokenDelete($id: String!) {\n  projectTokenDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "projectTokenDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteProjectTokenRequest",
+}) as any as S.Schema<DeleteProjectTokenRequest>;
+
+export type DeleteProjectTokenResponse = boolean;
+export const DeleteProjectTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("projectTokenDelete")),
+).annotate({
+  identifier: "DeleteProjectTokenResponse",
+}) as any as S.Schema<DeleteProjectTokenResponse>;
+
+export interface DeleteRailwayDomainDnsRecordInput {
+  domain: string;
+  recordId: number;
+  workspaceId: string;
+}
+export const DeleteRailwayDomainDnsRecordInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String,
+    recordId: S.Number,
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "DeleteRailwayDomainDnsRecordInput",
+}) as any as S.Schema<DeleteRailwayDomainDnsRecordInput>;
+
+export interface DeleteRailwayDomainDnsRecordRequest {
+  input: DeleteRailwayDomainDnsRecordInput;
+}
+export const DeleteRailwayDomainDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: DeleteRailwayDomainDnsRecordInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation railwayDomainDnsRecordDelete($input: RailwayDomainDnsRecordDeleteInput!) {\n  railwayDomainDnsRecordDelete(input: $input) {\n    __typename\n  }\n}",
+        operationName: "railwayDomainDnsRecordDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteRailwayDomainDnsRecordRequest",
+}) as any as S.Schema<DeleteRailwayDomainDnsRecordRequest>;
+
+export type DeleteRailwayDomainDnsRecordResponse = boolean;
+export const DeleteRailwayDomainDnsRecordResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("railwayDomainDnsRecordDelete"),
+    ),
+).annotate({
+  identifier: "DeleteRailwayDomainDnsRecordResponse",
+}) as any as S.Schema<DeleteRailwayDomainDnsRecordResponse>;
+
+export interface DeleteSandboxCheckpointRequest {
+  environmentId: string;
+  id: string;
+}
+export const DeleteSandboxCheckpointRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sandboxCheckpointDelete($environmentId: String!, $id: ID!) {\n  sandboxCheckpointDelete(environmentId: $environmentId, id: $id) {\n    __typename\n  }\n}",
+        operationName: "sandboxCheckpointDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSandboxCheckpointRequest",
+}) as any as S.Schema<DeleteSandboxCheckpointRequest>;
+
+export type DeleteSandboxCheckpointResponse = boolean;
+export const DeleteSandboxCheckpointResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("sandboxCheckpointDelete"),
+  ),
+).annotate({
+  identifier: "DeleteSandboxCheckpointResponse",
+}) as any as S.Schema<DeleteSandboxCheckpointResponse>;
+
+export interface DeleteServiceRequest {
+  /** [Experimental] Environment ID. If the environment is a forked environment, the service will only be deleted in the specified environment, otherwise it will deleted in all environments that are not forks of other environments */
+  environmentId?: string | null;
+  id: string;
+}
+export const DeleteServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.NullOr(S.String)),
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id)\n}",
+        operationName: "serviceDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteServiceRequest",
+}) as any as S.Schema<DeleteServiceRequest>;
+
+export type DeleteServiceResponse = boolean;
+export const DeleteServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("serviceDelete")),
+).annotate({
+  identifier: "DeleteServiceResponse",
+}) as any as S.Schema<DeleteServiceResponse>;
+
+export interface DeleteServiceDomainRequest {
+  id: string;
+}
+export const DeleteServiceDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}",
+        operationName: "serviceDomainDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteServiceDomainRequest",
+}) as any as S.Schema<DeleteServiceDomainRequest>;
+
+export type DeleteServiceDomainResponse = boolean;
+export const DeleteServiceDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("serviceDomainDelete")),
+).annotate({
+  identifier: "DeleteServiceDomainResponse",
+}) as any as S.Schema<DeleteServiceDomainResponse>;
+
+export interface DeleteSessionRequest {
+  id: string;
+}
+export const DeleteSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sessionDelete($id: String!) {\n  sessionDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "sessionDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSessionRequest",
+}) as any as S.Schema<DeleteSessionRequest>;
+
+export type DeleteSessionResponse = boolean;
+export const DeleteSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("sessionDelete")),
+).annotate({
+  identifier: "DeleteSessionResponse",
+}) as any as S.Schema<DeleteSessionResponse>;
+
+export interface DeleteSshPublicKeyRequest {
+  id: string;
+}
+export const DeleteSshPublicKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sshPublicKeyDelete($id: String!) {\n  sshPublicKeyDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "sshPublicKeyDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSshPublicKeyRequest",
+}) as any as S.Schema<DeleteSshPublicKeyRequest>;
+
+export type DeleteSshPublicKeyResponse = boolean;
+export const DeleteSshPublicKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("sshPublicKeyDelete")),
+).annotate({
+  identifier: "DeleteSshPublicKeyResponse",
+}) as any as S.Schema<DeleteSshPublicKeyResponse>;
+
+export interface DeleteTcpProxyRequest {
+  id: string;
+}
+export const DeleteTcpProxyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}",
+        operationName: "tcpProxyDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteTcpProxyRequest",
+}) as any as S.Schema<DeleteTcpProxyRequest>;
+
+export type DeleteTcpProxyResponse = boolean;
+export const DeleteTcpProxyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("tcpProxyDelete")),
+).annotate({
+  identifier: "DeleteTcpProxyResponse",
+}) as any as S.Schema<DeleteTcpProxyResponse>;
+
+export interface DeleteTemplateInput {
+  workspaceId?: string | null;
+}
+export const DeleteTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "DeleteTemplateInput",
+}) as any as S.Schema<DeleteTemplateInput>;
+
+export interface DeleteTemplateRequest {
+  id: string;
+  input: DeleteTemplateInput;
+}
+export const DeleteTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: DeleteTemplateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation templateDelete($id: String!, $input: TemplateDeleteInput!) {\n  templateDelete(id: $id, input: $input) {\n    __typename\n  }\n}",
+        operationName: "templateDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteTemplateRequest",
+}) as any as S.Schema<DeleteTemplateRequest>;
+
+export type DeleteTemplateResponse = boolean;
+export const DeleteTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("templateDelete")),
+).annotate({
+  identifier: "DeleteTemplateResponse",
+}) as any as S.Schema<DeleteTemplateResponse>;
+
+export interface DeleteTrustedDomainRequest {
+  id: string;
+}
+export const DeleteTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation trustedDomainDelete($id: String!) {\n  trustedDomainDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "trustedDomainDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteTrustedDomainRequest",
+}) as any as S.Schema<DeleteTrustedDomainRequest>;
+
+export type DeleteTrustedDomainResponse = boolean;
+export const DeleteTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("trustedDomainDelete")),
+).annotate({
+  identifier: "DeleteTrustedDomainResponse",
+}) as any as S.Schema<DeleteTrustedDomainResponse>;
+
+export interface DeleteTwoFactorInfoRequest {}
+export const DeleteTwoFactorInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({})
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation twoFactorInfoDelete {\n  twoFactorInfoDelete {\n    __typename\n  }\n}",
+        operationName: "twoFactorInfoDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteTwoFactorInfoRequest",
+}) as any as S.Schema<DeleteTwoFactorInfoRequest>;
+
+export type DeleteTwoFactorInfoResponse = boolean;
+export const DeleteTwoFactorInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("twoFactorInfoDelete")),
+).annotate({
+  identifier: "DeleteTwoFactorInfoResponse",
+}) as any as S.Schema<DeleteTwoFactorInfoResponse>;
+
+export interface DeleteUserRequest {}
+export const DeleteUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({})
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query: "mutation userDelete {\n  userDelete {\n    __typename\n  }\n}",
+        operationName: "userDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteUserRequest",
+}) as any as S.Schema<DeleteUserRequest>;
+
+export type DeleteUserResponse = boolean;
+export const DeleteUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userDelete")),
+).annotate({
+  identifier: "DeleteUserResponse",
+}) as any as S.Schema<DeleteUserResponse>;
+
+export interface DeleteVariableInput {
+  environmentId: string;
+  name: string;
+  projectId: string;
+  serviceId?: string | null;
+}
+export const DeleteVariableInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    name: S.String,
+    projectId: S.String,
+    serviceId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "DeleteVariableInput",
+}) as any as S.Schema<DeleteVariableInput>;
+
+export interface DeleteVariableRequest {
+  input: DeleteVariableInput;
+}
+export const DeleteVariableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: DeleteVariableInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}",
+        operationName: "variableDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteVariableRequest",
+}) as any as S.Schema<DeleteVariableRequest>;
+
+export type DeleteVariableResponse = boolean;
+export const DeleteVariableResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("variableDelete")),
+).annotate({
+  identifier: "DeleteVariableResponse",
+}) as any as S.Schema<DeleteVariableResponse>;
+
+export interface DeleteVolumeRequest {
+  volumeId: string;
+}
+export const DeleteVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}",
+        operationName: "volumeDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteVolumeRequest",
+}) as any as S.Schema<DeleteVolumeRequest>;
+
+export type DeleteVolumeResponse = boolean;
+export const DeleteVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("volumeDelete")),
+).annotate({
+  identifier: "DeleteVolumeResponse",
+}) as any as S.Schema<DeleteVolumeResponse>;
+
+export interface DeleteVolumeInstanceBackupRequest {
+  /** The volume instance's backup id */
+  volumeInstanceBackupId: string;
+  /** The volume instance's id */
+  volumeInstanceId: string;
+}
+export const DeleteVolumeInstanceBackupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    volumeInstanceBackupId: S.String,
+    volumeInstanceId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeInstanceBackupDelete($volumeInstanceBackupId: String!, $volumeInstanceId: String!) {\n  volumeInstanceBackupDelete(volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}",
+        operationName: "volumeInstanceBackupDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteVolumeInstanceBackupRequest",
+}) as any as S.Schema<DeleteVolumeInstanceBackupRequest>;
+
+/** Selection set for `volumeInstanceBackupDelete` (unwrapped from the GraphQL `data` envelope). */
+export interface DeleteVolumeInstanceBackupResponse {
+  workflowId: string | null;
+}
+export const DeleteVolumeInstanceBackupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("volumeInstanceBackupDelete")),
+).annotate({
+  identifier: "DeleteVolumeInstanceBackupResponse",
+}) as any as S.Schema<DeleteVolumeInstanceBackupResponse>;
+
+export interface DeleteWorkspaceRequest {
+  id: string;
+}
+export const DeleteWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation workspaceDelete($id: String!) {\n  workspaceDelete(id: $id) {\n    __typename\n  }\n}",
+        operationName: "workspaceDelete",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteWorkspaceRequest",
+}) as any as S.Schema<DeleteWorkspaceRequest>;
+
+export type DeleteWorkspaceResponse = boolean;
+export const DeleteWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("workspaceDelete")),
+).annotate({
+  identifier: "DeleteWorkspaceResponse",
+}) as any as S.Schema<DeleteWorkspaceResponse>;
 
 export interface DeploymentRequest {
   id: string;
@@ -4034,50 +6590,6 @@ export const DeploymentEventsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentEventsResponse",
 }) as any as S.Schema<DeploymentEventsResponse>;
 
-export interface DeploymentInstanceExecutionCreateInput {
-  serviceInstanceId: string;
-}
-export const DeploymentInstanceExecutionCreateInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      serviceInstanceId: S.String,
-    }),
-).annotate({
-  identifier: "DeploymentInstanceExecutionCreateInput",
-}) as any as S.Schema<DeploymentInstanceExecutionCreateInput>;
-
-export interface DeploymentInstanceExecutionCreateRequest {
-  input: DeploymentInstanceExecutionCreateInput;
-}
-export const DeploymentInstanceExecutionCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      input: DeploymentInstanceExecutionCreateInput,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation deploymentInstanceExecutionCreate($input: DeploymentInstanceExecutionCreateInput!) {\n  deploymentInstanceExecutionCreate(input: $input) {\n    __typename\n  }\n}",
-          operationName: "deploymentInstanceExecutionCreate",
-          type: "mutation",
-        }),
-      ),
-).annotate({
-  identifier: "DeploymentInstanceExecutionCreateRequest",
-}) as any as S.Schema<DeploymentInstanceExecutionCreateRequest>;
-
-export type DeploymentInstanceExecutionCreateResponse = boolean;
-export const DeploymentInstanceExecutionCreateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("deploymentInstanceExecutionCreate"),
-    ),
-  ).annotate({
-    identifier: "DeploymentInstanceExecutionCreateResponse",
-  }) as any as S.Schema<DeploymentInstanceExecutionCreateResponse>;
-
 export interface DeploymentInstanceExecutionListInput {
   environmentId: string;
   serviceId: string;
@@ -4440,33 +6952,6 @@ export const DeploymentRemoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentRemoveResponse",
 }) as any as S.Schema<DeploymentRemoveResponse>;
 
-export interface DeploymentRestartRequest {
-  id: string;
-}
-export const DeploymentRestartRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id)\n}",
-        operationName: "deploymentRestart",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "DeploymentRestartRequest",
-}) as any as S.Schema<DeploymentRestartRequest>;
-
-export type DeploymentRestartResponse = boolean;
-export const DeploymentRestartResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("deploymentRestart")),
-).annotate({
-  identifier: "DeploymentRestartResponse",
-}) as any as S.Schema<DeploymentRestartResponse>;
-
 export interface DeploymentRollbackRequest {
   id: string;
 }
@@ -4763,138 +7248,6 @@ export const DeploymentSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeploymentSnapshotResponse",
 }) as any as S.Schema<DeploymentSnapshotResponse>;
 
-export interface DeploymentStopRequest {
-  id: string;
-}
-export const DeploymentStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id)\n}",
-        operationName: "deploymentStop",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "DeploymentStopRequest",
-}) as any as S.Schema<DeploymentStopRequest>;
-
-export type DeploymentStopResponse = boolean;
-export const DeploymentStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("deploymentStop")),
-).annotate({
-  identifier: "DeploymentStopResponse",
-}) as any as S.Schema<DeploymentStopResponse>;
-
-export interface DeploymentTriggerCreateInput {
-  branch: string;
-  checkSuites?: boolean | null;
-  environmentId: string;
-  projectId: string;
-  provider: string;
-  repository: string;
-  rootDirectory?: string | null;
-  serviceId: string;
-}
-export const DeploymentTriggerCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.String,
-    checkSuites: S.optional(S.NullOr(S.Boolean)),
-    environmentId: S.String,
-    projectId: S.String,
-    provider: S.String,
-    repository: S.String,
-    rootDirectory: S.optional(S.NullOr(S.String)),
-    serviceId: S.String,
-  }),
-).annotate({
-  identifier: "DeploymentTriggerCreateInput",
-}) as any as S.Schema<DeploymentTriggerCreateInput>;
-
-export interface DeploymentTriggerCreateRequest {
-  input: DeploymentTriggerCreateInput;
-}
-export const DeploymentTriggerCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: DeploymentTriggerCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation deploymentTriggerCreate($input: DeploymentTriggerCreateInput!) {\n  deploymentTriggerCreate(input: $input) {\n    baseEnvironmentOverrideId\n    branch\n    checkSuites\n    environmentId\n    id\n    projectId\n    provider\n    repository\n    serviceId\n    validCheckSuites\n  }\n}",
-        operationName: "deploymentTriggerCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "DeploymentTriggerCreateRequest",
-}) as any as S.Schema<DeploymentTriggerCreateRequest>;
-
-/** Selection set for `deploymentTriggerCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface DeploymentTriggerCreateResponse {
-  baseEnvironmentOverrideId: string | null;
-  branch: string;
-  checkSuites: boolean;
-  environmentId: string;
-  id: string;
-  projectId: string;
-  provider: string;
-  repository: string;
-  serviceId: string | null;
-  validCheckSuites: number;
-}
-export const DeploymentTriggerCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentOverrideId: S.NullOr(S.String),
-    branch: S.String,
-    checkSuites: S.Boolean,
-    environmentId: S.String,
-    id: S.String,
-    projectId: S.String,
-    provider: S.String,
-    repository: S.String,
-    serviceId: S.NullOr(S.String),
-    validCheckSuites: S.Number,
-  }).pipe(T.ResponsePath("deploymentTriggerCreate")),
-).annotate({
-  identifier: "DeploymentTriggerCreateResponse",
-}) as any as S.Schema<DeploymentTriggerCreateResponse>;
-
-export interface DeploymentTriggerDeleteRequest {
-  id: string;
-}
-export const DeploymentTriggerDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation deploymentTriggerDelete($id: String!) {\n  deploymentTriggerDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "deploymentTriggerDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "DeploymentTriggerDeleteRequest",
-}) as any as S.Schema<DeploymentTriggerDeleteRequest>;
-
-export type DeploymentTriggerDeleteResponse = boolean;
-export const DeploymentTriggerDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("deploymentTriggerDelete"),
-  ),
-).annotate({
-  identifier: "DeploymentTriggerDeleteResponse",
-}) as any as S.Schema<DeploymentTriggerDeleteResponse>;
-
 export interface DeploymentTriggersRequest {
   after?: string | null;
   before?: string | null;
@@ -4992,75 +7345,6 @@ export const DeploymentTriggersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DeploymentTriggersResponse",
 }) as any as S.Schema<DeploymentTriggersResponse>;
-
-export interface DeploymentTriggerUpdateInput {
-  branch?: string | null;
-  checkSuites?: boolean | null;
-  repository?: string | null;
-  rootDirectory?: string | null;
-}
-export const DeploymentTriggerUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    checkSuites: S.optional(S.NullOr(S.Boolean)),
-    repository: S.optional(S.NullOr(S.String)),
-    rootDirectory: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "DeploymentTriggerUpdateInput",
-}) as any as S.Schema<DeploymentTriggerUpdateInput>;
-
-export interface DeploymentTriggerUpdateRequest {
-  id: string;
-  input: DeploymentTriggerUpdateInput;
-}
-export const DeploymentTriggerUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: DeploymentTriggerUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation deploymentTriggerUpdate($id: String!, $input: DeploymentTriggerUpdateInput!) {\n  deploymentTriggerUpdate(id: $id, input: $input) {\n    baseEnvironmentOverrideId\n    branch\n    checkSuites\n    environmentId\n    id\n    projectId\n    provider\n    repository\n    serviceId\n    validCheckSuites\n  }\n}",
-        operationName: "deploymentTriggerUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "DeploymentTriggerUpdateRequest",
-}) as any as S.Schema<DeploymentTriggerUpdateRequest>;
-
-/** Selection set for `deploymentTriggerUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface DeploymentTriggerUpdateResponse {
-  baseEnvironmentOverrideId: string | null;
-  branch: string;
-  checkSuites: boolean;
-  environmentId: string;
-  id: string;
-  projectId: string;
-  provider: string;
-  repository: string;
-  serviceId: string | null;
-  validCheckSuites: number;
-}
-export const DeploymentTriggerUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentOverrideId: S.NullOr(S.String),
-    branch: S.String,
-    checkSuites: S.Boolean,
-    environmentId: S.String,
-    id: S.String,
-    projectId: S.String,
-    provider: S.String,
-    repository: S.String,
-    serviceId: S.NullOr(S.String),
-    validCheckSuites: S.Number,
-  }).pipe(T.ResponsePath("deploymentTriggerUpdate")),
-).annotate({
-  identifier: "DeploymentTriggerUpdateResponse",
-}) as any as S.Schema<DeploymentTriggerUpdateResponse>;
 
 export interface DisablePitrForHaClusterInput {
   /** Environment containing the cluster */
@@ -5353,15 +7637,6 @@ export const DomainsResponseCustomDomainsList = /*@__PURE__*/ S.Array(
   DomainsResponseCustomDomainsItem,
 ) as any as S.Schema<DomainsResponseCustomDomainsList>;
 
-export type ServiceDomainSyncStatus =
-  | "ACTIVE"
-  | "CREATING"
-  | "DELETED"
-  | "DELETING"
-  | "UNSPECIFIED"
-  | "UPDATING";
-export const ServiceDomainSyncStatus = /*@__PURE__*/ S.String;
-
 export interface DomainsResponseServiceDomainsItem {
   cdnMode: string | null;
   createdAt: string | null;
@@ -5420,76 +7695,6 @@ export const DomainsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DomainsResponse",
 }) as any as S.Schema<DomainsResponse>;
-
-export interface EgressGatewayCreateInput {
-  environmentId: string;
-  region?: string | null;
-  serviceId: string;
-}
-export const EgressGatewayCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    region: S.optional(S.NullOr(S.String)),
-    serviceId: S.String,
-  }),
-).annotate({
-  identifier: "EgressGatewayCreateInput",
-}) as any as S.Schema<EgressGatewayCreateInput>;
-
-export interface EgressGatewayAssociationCreateRequest {
-  input: EgressGatewayCreateInput;
-}
-export const EgressGatewayAssociationCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      input: EgressGatewayCreateInput,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation egressGatewayAssociationCreate($input: EgressGatewayCreateInput!) {\n  egressGatewayAssociationCreate(input: $input) {\n    ipv4\n    region\n    zone\n  }\n}",
-          operationName: "egressGatewayAssociationCreate",
-          type: "mutation",
-        }),
-      ),
-).annotate({
-  identifier: "EgressGatewayAssociationCreateRequest",
-}) as any as S.Schema<EgressGatewayAssociationCreateRequest>;
-
-export interface EgressGatewayAssociationCreateResultItem {
-  ipv4: string;
-  region: string;
-  zone: string | null;
-}
-export const EgressGatewayAssociationCreateResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      ipv4: S.String,
-      region: S.String,
-      zone: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "EgressGatewayAssociationCreateResultItem",
-}) as any as S.Schema<EgressGatewayAssociationCreateResultItem>;
-
-export type EgressGatewayAssociationCreateResultList =
-  Array<EgressGatewayAssociationCreateResultItem>;
-export const EgressGatewayAssociationCreateResultList = /*@__PURE__*/ S.Array(
-  EgressGatewayAssociationCreateResultItem,
-) as any as S.Schema<EgressGatewayAssociationCreateResultList>;
-
-export type EgressGatewayAssociationCreateResponse =
-  EgressGatewayAssociationCreateResultList;
-export const EgressGatewayAssociationCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    EgressGatewayAssociationCreateResultList.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("egressGatewayAssociationCreate"),
-    ),
-).annotate({
-  identifier: "EgressGatewayAssociationCreateResponse",
-}) as any as S.Schema<EgressGatewayAssociationCreateResponse>;
 
 export interface EgressGatewayServiceTargetInput {
   allEnvironments?: boolean | null;
@@ -6059,96 +8264,8 @@ export const EnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentRequest",
 }) as any as S.Schema<EnvironmentRequest>;
 
-export interface EnvironmentResponseMeta {
-  baseBranch: string | null;
-  branch: string | null;
-  latestSuccessfulGitHubDeploymentId: number | null;
-  prCommentId: number | null;
-  prNumber: number | null;
-  prRepo: string | null;
-  prTitle: string | null;
-  skippedResourceIds: unknown | null;
-}
-export const EnvironmentResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseBranch: S.NullOr(S.String),
-    branch: S.NullOr(S.String),
-    latestSuccessfulGitHubDeploymentId: S.NullOr(S.Number),
-    prCommentId: S.NullOr(S.Number),
-    prNumber: S.NullOr(S.Number),
-    prRepo: S.NullOr(S.String),
-    prTitle: S.NullOr(S.String),
-    skippedResourceIds: S.NullOr(S.Unknown),
-  }),
-).annotate({
-  identifier: "EnvironmentResponseMeta",
-}) as any as S.Schema<EnvironmentResponseMeta>;
-
-export interface EnvironmentResponseVolumeInstancesEdgesItemNode {
-  createdAt: string;
-  currentSizeMB: number;
-  deletedAt: string | null;
-  environmentId: string;
-  id: string;
-  isPendingDeletion: boolean;
-  mountPath: string;
-  region: string | null;
-  serviceId: string | null;
-  sizeMB: number;
-  state: VolumeState | null;
-  volume: AdminVolumeInstancesForVolumeResultItemVolume;
-  volumeId: string;
-}
-export const EnvironmentResponseVolumeInstancesEdgesItemNode =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String,
-      currentSizeMB: S.Number,
-      deletedAt: S.NullOr(S.String),
-      environmentId: S.String,
-      id: S.String,
-      isPendingDeletion: S.Boolean,
-      mountPath: S.String,
-      region: S.NullOr(S.String),
-      serviceId: S.NullOr(S.String),
-      sizeMB: S.Number,
-      state: S.NullOr(VolumeState),
-      volume: AdminVolumeInstancesForVolumeResultItemVolume,
-      volumeId: S.String,
-    }),
-  ).annotate({
-    identifier: "EnvironmentResponseVolumeInstancesEdgesItemNode",
-  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItemNode>;
-
-export interface EnvironmentResponseVolumeInstancesEdgesItem {
-  node: EnvironmentResponseVolumeInstancesEdgesItemNode;
-}
-export const EnvironmentResponseVolumeInstancesEdgesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      node: EnvironmentResponseVolumeInstancesEdgesItemNode,
-    }),
-  ).annotate({
-    identifier: "EnvironmentResponseVolumeInstancesEdgesItem",
-  }) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesItem>;
-
-export type EnvironmentResponseVolumeInstancesEdgesList =
-  Array<EnvironmentResponseVolumeInstancesEdgesItem>;
-export const EnvironmentResponseVolumeInstancesEdgesList =
-  /*@__PURE__*/ S.Array(
-    EnvironmentResponseVolumeInstancesEdgesItem,
-  ) as any as S.Schema<EnvironmentResponseVolumeInstancesEdgesList>;
-
-export interface EnvironmentResponseVolumeInstances {
-  edges: EnvironmentResponseVolumeInstancesEdgesList;
-}
-export const EnvironmentResponseVolumeInstances = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    edges: EnvironmentResponseVolumeInstancesEdgesList,
-  }),
-).annotate({
-  identifier: "EnvironmentResponseVolumeInstances",
-}) as any as S.Schema<EnvironmentResponseVolumeInstances>;
+export type EnvironmentResponseMeta = EnvironmentCreateResponseMeta;
+export const EnvironmentResponseMeta = EnvironmentCreateResponseMeta;
 
 /** Selection set for `environment` (unwrapped from the GraphQL `data` envelope). */
 export interface EnvironmentResponse {
@@ -6160,7 +8277,7 @@ export interface EnvironmentResponse {
   iacPartials: unknown | null;
   id: string;
   isEphemeral: boolean;
-  meta: EnvironmentResponseMeta | null;
+  meta: EnvironmentCreateResponseMeta | null;
   name: string;
   projectId: string;
   unmergedChangesCount: number | null;
@@ -6178,7 +8295,7 @@ export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
     iacPartials: S.NullOr(S.Unknown),
     id: S.String,
     isEphemeral: S.Boolean,
-    meta: S.NullOr(EnvironmentResponseMeta),
+    meta: S.NullOr(EnvironmentCreateResponseMeta),
     name: S.String,
     projectId: S.String,
     unmergedChangesCount: S.NullOr(S.Number),
@@ -6189,310 +8306,6 @@ export const EnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnvironmentResponse",
 }) as any as S.Schema<EnvironmentResponse>;
-
-export interface EnvironmentApplyChangeSetRequest {
-  /** Snapshot token from Environment.configEtag the plan was computed against. When set, the apply is rejected if the environment has changed since. */
-  baseConfigEtag?: string | null;
-  commitMessage?: string | null;
-  environmentId: string;
-  input: unknown;
-  /** Defaults to true for compatibility. Async-capable clients set false and poll environmentChangeSetApply. */
-  waitForCompletion?: boolean | null;
-}
-export const EnvironmentApplyChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseConfigEtag: S.optional(S.NullOr(S.String)),
-    commitMessage: S.optional(S.NullOr(S.String)),
-    environmentId: S.String,
-    input: S.Unknown,
-    waitForCompletion: S.optional(S.NullOr(S.Boolean)),
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation environmentApplyChangeSet($baseConfigEtag: String, $commitMessage: String, $environmentId: String!, $input: JSON!, $waitForCompletion: Boolean) {\n  environmentApplyChangeSet(baseConfigEtag: $baseConfigEtag, commitMessage: $commitMessage, environmentId: $environmentId, input: $input, waitForCompletion: $waitForCompletion) {\n    changes {\n      kind\n      outputs\n      path\n      status\n      summary\n    }\n    deploymentId\n    diagnostics\n    id\n    stagedPatchId\n    status\n  }\n}",
-        operationName: "environmentApplyChangeSet",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "EnvironmentApplyChangeSetRequest",
-}) as any as S.Schema<EnvironmentApplyChangeSetRequest>;
-
-export interface EnvironmentApplyChangeSetResponseChangesItem {
-  kind: string;
-  outputs: unknown | null;
-  path: string | null;
-  status: string;
-  summary: string | null;
-}
-export const EnvironmentApplyChangeSetResponseChangesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kind: S.String,
-      outputs: S.NullOr(S.Unknown),
-      path: S.NullOr(S.String),
-      status: S.String,
-      summary: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentApplyChangeSetResponseChangesItem",
-  }) as any as S.Schema<EnvironmentApplyChangeSetResponseChangesItem>;
-
-export type EnvironmentApplyChangeSetResponseChangesList =
-  Array<EnvironmentApplyChangeSetResponseChangesItem>;
-export const EnvironmentApplyChangeSetResponseChangesList =
-  /*@__PURE__*/ S.Array(
-    EnvironmentApplyChangeSetResponseChangesItem,
-  ) as any as S.Schema<EnvironmentApplyChangeSetResponseChangesList>;
-
-/** Selection set for `environmentApplyChangeSet` (unwrapped from the GraphQL `data` envelope). */
-export interface EnvironmentApplyChangeSetResponse {
-  changes: EnvironmentApplyChangeSetResponseChangesList;
-  deploymentId: string | null;
-  diagnostics: unknown;
-  id: string;
-  stagedPatchId: string | null;
-  status: string;
-}
-export const EnvironmentApplyChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changes: EnvironmentApplyChangeSetResponseChangesList,
-    deploymentId: S.NullOr(S.String),
-    diagnostics: S.Unknown,
-    id: S.String,
-    stagedPatchId: S.NullOr(S.String),
-    status: S.String,
-  }).pipe(T.ResponsePath("environmentApplyChangeSet")),
-).annotate({
-  identifier: "EnvironmentApplyChangeSetResponse",
-}) as any as S.Schema<EnvironmentApplyChangeSetResponse>;
-
-export interface EnvironmentChangeSetApplyRequest {
-  environmentId: string;
-  id: string;
-}
-export const EnvironmentChangeSetApplyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "query environmentChangeSetApply($environmentId: String!, $id: String!) {\n  environmentChangeSetApply(environmentId: $environmentId, id: $id) {\n    changes {\n      kind\n      outputs\n      path\n      status\n      summary\n    }\n    deploymentId\n    diagnostics\n    id\n    stagedPatchId\n    status\n  }\n}",
-        operationName: "environmentChangeSetApply",
-        type: "query",
-      }),
-    ),
-).annotate({
-  identifier: "EnvironmentChangeSetApplyRequest",
-}) as any as S.Schema<EnvironmentChangeSetApplyRequest>;
-
-export type EnvironmentChangeSetApplyResponseChangesItem =
-  EnvironmentApplyChangeSetResponseChangesItem;
-export const EnvironmentChangeSetApplyResponseChangesItem =
-  EnvironmentApplyChangeSetResponseChangesItem;
-
-export type EnvironmentChangeSetApplyResponseChangesList =
-  Array<EnvironmentApplyChangeSetResponseChangesItem>;
-export const EnvironmentChangeSetApplyResponseChangesList =
-  /*@__PURE__*/ S.Array(
-    EnvironmentApplyChangeSetResponseChangesItem,
-  ) as any as S.Schema<EnvironmentChangeSetApplyResponseChangesList>;
-
-/** Selection set for `environmentChangeSetApply` (unwrapped from the GraphQL `data` envelope). */
-export interface EnvironmentChangeSetApplyResponse {
-  changes: EnvironmentChangeSetApplyResponseChangesList;
-  deploymentId: string | null;
-  diagnostics: unknown;
-  id: string;
-  stagedPatchId: string | null;
-  status: string;
-}
-export const EnvironmentChangeSetApplyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changes: EnvironmentChangeSetApplyResponseChangesList,
-    deploymentId: S.NullOr(S.String),
-    diagnostics: S.Unknown,
-    id: S.String,
-    stagedPatchId: S.NullOr(S.String),
-    status: S.String,
-  }).pipe(T.ResponsePath("environmentChangeSetApply")),
-).annotate({
-  identifier: "EnvironmentChangeSetApplyResponse",
-}) as any as S.Schema<EnvironmentChangeSetApplyResponse>;
-
-export interface EnvironmentConfigPlanCommentUpsertInput {
-  environmentId: string;
-  /** GitHub Actions OIDC token (id-token: write) with audience `railway`. Its `repository` claim proves the caller runs in the repo the comment is posted to. */
-  githubOidcToken: string;
-  /** Structured plan summary: { changes: [{ kind?, summary }], destructive, sourceTree, configEtag, changeSetHash, cliVersion? }. The comment body is composed server-side. */
-  plan: unknown;
-  prNumber: number;
-}
-export const EnvironmentConfigPlanCommentUpsertInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String,
-      githubOidcToken: S.String,
-      plan: S.Unknown,
-      prNumber: S.Number,
-    }),
-).annotate({
-  identifier: "EnvironmentConfigPlanCommentUpsertInput",
-}) as any as S.Schema<EnvironmentConfigPlanCommentUpsertInput>;
-
-export interface EnvironmentConfigPlanCommentUpsertRequest {
-  input: EnvironmentConfigPlanCommentUpsertInput;
-}
-export const EnvironmentConfigPlanCommentUpsertRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      input: EnvironmentConfigPlanCommentUpsertInput,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation environmentConfigPlanCommentUpsert($input: EnvironmentConfigPlanCommentUpsertInput!) {\n  environmentConfigPlanCommentUpsert(input: $input) {\n    commentId\n    url\n  }\n}",
-          operationName: "environmentConfigPlanCommentUpsert",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "EnvironmentConfigPlanCommentUpsertRequest",
-  }) as any as S.Schema<EnvironmentConfigPlanCommentUpsertRequest>;
-
-/** Selection set for `environmentConfigPlanCommentUpsert` (unwrapped from the GraphQL `data` envelope). */
-export interface EnvironmentConfigPlanCommentUpsertResponse {
-  commentId: string;
-  url: string;
-}
-export const EnvironmentConfigPlanCommentUpsertResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      commentId: S.String,
-      url: S.String,
-    }).pipe(T.ResponsePath("environmentConfigPlanCommentUpsert")),
-  ).annotate({
-    identifier: "EnvironmentConfigPlanCommentUpsertResponse",
-  }) as any as S.Schema<EnvironmentConfigPlanCommentUpsertResponse>;
-
-export interface EnvironmentCreateInput {
-  /** If true, the changes will be applied in the background and the mutation will return immediately. If false, the mutation will wait for the changes to be applied before returning. */
-  applyChangesInBackground?: boolean | null;
-  ephemeral?: boolean | null;
-  name: string;
-  projectId: string;
-  /** When committing the changes immediately, skip any initial deployments. */
-  skipInitialDeploys?: boolean | null;
-  /** Create the environment with all of the services, volumes, configuration, and variables from this source environment. */
-  sourceEnvironmentId?: string | null;
-  /** Stage the initial changes for the environment. If false (default), the changes will be committed immediately. */
-  stageInitialChanges?: boolean | null;
-}
-export const EnvironmentCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applyChangesInBackground: S.optional(S.NullOr(S.Boolean)),
-    ephemeral: S.optional(S.NullOr(S.Boolean)),
-    name: S.String,
-    projectId: S.String,
-    skipInitialDeploys: S.optional(S.NullOr(S.Boolean)),
-    sourceEnvironmentId: S.optional(S.NullOr(S.String)),
-    stageInitialChanges: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "EnvironmentCreateInput",
-}) as any as S.Schema<EnvironmentCreateInput>;
-
-export interface EnvironmentCreateRequest {
-  input: EnvironmentCreateInput;
-}
-export const EnvironmentCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: EnvironmentCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation environmentCreate($input: EnvironmentCreateInput!) {\n  environmentCreate(input: $input) {\n    canAccess\n    canvasGroupRefs\n    configEtag\n    createdAt\n    deletedAt\n    iacPartials\n    id\n    isEphemeral\n    meta {\n      baseBranch\n      branch\n      latestSuccessfulGitHubDeploymentId\n      prCommentId\n      prNumber\n      prRepo\n      prTitle\n      skippedResourceIds\n    }\n    name\n    projectId\n    unmergedChangesCount\n    updatedAt\n  }\n}",
-        operationName: "environmentCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "EnvironmentCreateRequest",
-}) as any as S.Schema<EnvironmentCreateRequest>;
-
-export type EnvironmentCreateResponseMeta = EnvironmentResponseMeta;
-export const EnvironmentCreateResponseMeta = EnvironmentResponseMeta;
-
-/** Selection set for `environmentCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface EnvironmentCreateResponse {
-  canAccess: boolean;
-  canvasGroupRefs: unknown;
-  configEtag: string;
-  createdAt: string;
-  deletedAt: string | null;
-  iacPartials: unknown | null;
-  id: string;
-  isEphemeral: boolean;
-  meta: EnvironmentResponseMeta | null;
-  name: string;
-  projectId: string;
-  unmergedChangesCount: number | null;
-  updatedAt: string;
-}
-export const EnvironmentCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    canAccess: S.Boolean,
-    canvasGroupRefs: S.Unknown,
-    configEtag: S.String,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    iacPartials: S.NullOr(S.Unknown),
-    id: S.String,
-    isEphemeral: S.Boolean,
-    meta: S.NullOr(EnvironmentResponseMeta),
-    name: S.String,
-    projectId: S.String,
-    unmergedChangesCount: S.NullOr(S.Number),
-    updatedAt: S.String,
-  }).pipe(T.ResponsePath("environmentCreate")),
-).annotate({
-  identifier: "EnvironmentCreateResponse",
-}) as any as S.Schema<EnvironmentCreateResponse>;
-
-export interface EnvironmentDeleteRequest {
-  id: string;
-}
-export const EnvironmentDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation environmentDelete($id: String!) {\n  environmentDelete(id: $id)\n}",
-        operationName: "environmentDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "EnvironmentDeleteRequest",
-}) as any as S.Schema<EnvironmentDeleteRequest>;
-
-export type EnvironmentDeleteResponse = boolean;
-export const EnvironmentDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("environmentDelete")),
-).annotate({
-  identifier: "EnvironmentDeleteResponse",
-}) as any as S.Schema<EnvironmentDeleteResponse>;
 
 export interface EnvironmentHasLegacyStaticEgressRequest {
   environmentId: string;
@@ -6612,83 +8425,6 @@ export const EnvironmentLogsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentLogsResponse",
 }) as any as S.Schema<EnvironmentLogsResponse>;
 
-export interface EnvironmentPatchRequest {
-  id: string;
-}
-export const EnvironmentPatchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "query environmentPatch($id: String!) {\n  environmentPatch(id: $id) {\n    appliedAt\n    appliedBy {\n      avatar\n      email\n      id\n      name\n      username\n    }\n    createdAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      iacPartials\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    id\n    lastAppliedError\n    message\n    status\n    updatedAt\n  }\n}",
-        operationName: "environmentPatch",
-        type: "query",
-      }),
-    ),
-).annotate({
-  identifier: "EnvironmentPatchRequest",
-}) as any as S.Schema<EnvironmentPatchRequest>;
-
-export interface EnvironmentPatchResponseAppliedBy {
-  avatar: string | null;
-  email: string;
-  id: string;
-  name: string | null;
-  username: string | null;
-}
-export const EnvironmentPatchResponseAppliedBy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.NullOr(S.String),
-    email: S.String,
-    id: S.String,
-    name: S.NullOr(S.String),
-    username: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "EnvironmentPatchResponseAppliedBy",
-}) as any as S.Schema<EnvironmentPatchResponseAppliedBy>;
-
-export type EnvironmentPatchResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const EnvironmentPatchResponseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type EnvironmentPatchStatus = "APPLYING" | "COMMITTED" | "STAGED";
-export const EnvironmentPatchStatus = /*@__PURE__*/ S.String;
-
-/** Selection set for `environmentPatch` (unwrapped from the GraphQL `data` envelope). */
-export interface EnvironmentPatchResponse {
-  appliedAt: string | null;
-  appliedBy: EnvironmentPatchResponseAppliedBy | null;
-  createdAt: string;
-  environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
-  environmentId: string;
-  id: string;
-  lastAppliedError: string | null;
-  message: string | null;
-  status: EnvironmentPatchStatus;
-  updatedAt: string;
-}
-export const EnvironmentPatchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    appliedAt: S.NullOr(S.String),
-    appliedBy: S.NullOr(EnvironmentPatchResponseAppliedBy),
-    createdAt: S.String,
-    environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
-    environmentId: S.String,
-    id: S.String,
-    lastAppliedError: S.NullOr(S.String),
-    message: S.NullOr(S.String),
-    status: EnvironmentPatchStatus,
-    updatedAt: S.String,
-  }).pipe(T.ResponsePath("environmentPatch")),
-).annotate({
-  identifier: "EnvironmentPatchResponse",
-}) as any as S.Schema<EnvironmentPatchResponse>;
-
 export interface EnvironmentPatchCommitRequest {
   commitMessage?: string | null;
   environmentId: string;
@@ -6787,19 +8523,37 @@ export const EnvironmentPatchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentPatchesRequest",
 }) as any as S.Schema<EnvironmentPatchesRequest>;
 
-export type EnvironmentPatchesResponseEdgesItemNodeAppliedBy =
-  EnvironmentPatchResponseAppliedBy;
+export interface EnvironmentPatchesResponseEdgesItemNodeAppliedBy {
+  avatar: string | null;
+  email: string;
+  id: string;
+  name: string | null;
+  username: string | null;
+}
 export const EnvironmentPatchesResponseEdgesItemNodeAppliedBy =
-  EnvironmentPatchResponseAppliedBy;
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avatar: S.NullOr(S.String),
+      email: S.String,
+      id: S.String,
+      name: S.NullOr(S.String),
+      username: S.NullOr(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentPatchesResponseEdgesItemNodeAppliedBy",
+  }) as any as S.Schema<EnvironmentPatchesResponseEdgesItemNodeAppliedBy>;
 
 export type EnvironmentPatchesResponseEdgesItemNodeEnvironment =
   AdminVolumeInstancesForVolumeResultItemEnvironment;
 export const EnvironmentPatchesResponseEdgesItemNodeEnvironment =
   AdminVolumeInstancesForVolumeResultItemEnvironment;
 
+export type EnvironmentPatchStatus = "APPLYING" | "COMMITTED" | "STAGED";
+export const EnvironmentPatchStatus = /*@__PURE__*/ S.String;
+
 export interface EnvironmentPatchesResponseEdgesItemNode {
   appliedAt: string | null;
-  appliedBy: EnvironmentPatchResponseAppliedBy | null;
+  appliedBy: EnvironmentPatchesResponseEdgesItemNodeAppliedBy | null;
   createdAt: string;
   environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
   environmentId: string;
@@ -6813,7 +8567,7 @@ export const EnvironmentPatchesResponseEdgesItemNode = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       appliedAt: S.NullOr(S.String),
-      appliedBy: S.NullOr(EnvironmentPatchResponseAppliedBy),
+      appliedBy: S.NullOr(EnvironmentPatchesResponseEdgesItemNodeAppliedBy),
       createdAt: S.String,
       environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
       environmentId: S.String,
@@ -6863,55 +8617,25 @@ export const EnvironmentPatchesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentPatchesResponse",
 }) as any as S.Schema<EnvironmentPatchesResponse>;
 
-export interface EnvironmentPreviewChangeSetRequest {
-  environmentId: string;
-  input: unknown;
+export interface EnvironmentRenameInput {
+  name: string;
 }
-export const EnvironmentPreviewChangeSetRequest = /*@__PURE__*/ S.suspend(() =>
+export const EnvironmentRenameInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    environmentId: S.String,
-    input: S.Unknown,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation environmentPreviewChangeSet($environmentId: String!, $input: JSON!) {\n  environmentPreviewChangeSet(environmentId: $environmentId, input: $input) {\n    changeSet\n    diagnostics\n    effects\n  }\n}",
-        operationName: "environmentPreviewChangeSet",
-        type: "mutation",
-      }),
-    ),
+    name: S.String,
+  }),
 ).annotate({
-  identifier: "EnvironmentPreviewChangeSetRequest",
-}) as any as S.Schema<EnvironmentPreviewChangeSetRequest>;
-
-/** Selection set for `environmentPreviewChangeSet` (unwrapped from the GraphQL `data` envelope). */
-export interface EnvironmentPreviewChangeSetResponse {
-  changeSet: unknown;
-  diagnostics: unknown;
-  effects: unknown;
-}
-export const EnvironmentPreviewChangeSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    changeSet: S.Unknown,
-    diagnostics: S.Unknown,
-    effects: S.Unknown,
-  }).pipe(T.ResponsePath("environmentPreviewChangeSet")),
-).annotate({
-  identifier: "EnvironmentPreviewChangeSetResponse",
-}) as any as S.Schema<EnvironmentPreviewChangeSetResponse>;
-
-export type EnvironmentRenameInput = BucketUpdateInput;
-export const EnvironmentRenameInput = BucketUpdateInput;
+  identifier: "EnvironmentRenameInput",
+}) as any as S.Schema<EnvironmentRenameInput>;
 
 export interface EnvironmentRenameRequest {
   id: string;
-  input: BucketUpdateInput;
+  input: EnvironmentRenameInput;
 }
 export const EnvironmentRenameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    input: BucketUpdateInput,
+    input: EnvironmentRenameInput,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
@@ -6926,8 +8650,8 @@ export const EnvironmentRenameRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnvironmentRenameRequest",
 }) as any as S.Schema<EnvironmentRenameRequest>;
 
-export type EnvironmentRenameResponseMeta = EnvironmentResponseMeta;
-export const EnvironmentRenameResponseMeta = EnvironmentResponseMeta;
+export type EnvironmentRenameResponseMeta = EnvironmentCreateResponseMeta;
+export const EnvironmentRenameResponseMeta = EnvironmentCreateResponseMeta;
 
 /** Selection set for `environmentRename` (unwrapped from the GraphQL `data` envelope). */
 export interface EnvironmentRenameResponse {
@@ -6939,7 +8663,7 @@ export interface EnvironmentRenameResponse {
   iacPartials: unknown | null;
   id: string;
   isEphemeral: boolean;
-  meta: EnvironmentResponseMeta | null;
+  meta: EnvironmentCreateResponseMeta | null;
   name: string;
   projectId: string;
   unmergedChangesCount: number | null;
@@ -6955,7 +8679,7 @@ export const EnvironmentRenameResponse = /*@__PURE__*/ S.suspend(() =>
     iacPartials: S.NullOr(S.Unknown),
     id: S.String,
     isEphemeral: S.Boolean,
-    meta: S.NullOr(EnvironmentResponseMeta),
+    meta: S.NullOr(EnvironmentCreateResponseMeta),
     name: S.String,
     projectId: S.String,
     unmergedChangesCount: S.NullOr(S.Number),
@@ -7084,9 +8808,9 @@ export const EnvironmentStageChangesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentStageChangesRequest>;
 
 export type EnvironmentStageChangesResponseAppliedBy =
-  EnvironmentPatchResponseAppliedBy;
+  EnvironmentPatchesResponseEdgesItemNodeAppliedBy;
 export const EnvironmentStageChangesResponseAppliedBy =
-  EnvironmentPatchResponseAppliedBy;
+  EnvironmentPatchesResponseEdgesItemNodeAppliedBy;
 
 export type EnvironmentStageChangesResponseEnvironment =
   AdminVolumeInstancesForVolumeResultItemEnvironment;
@@ -7096,7 +8820,7 @@ export const EnvironmentStageChangesResponseEnvironment =
 /** Selection set for `environmentStageChanges` (unwrapped from the GraphQL `data` envelope). */
 export interface EnvironmentStageChangesResponse {
   appliedAt: string | null;
-  appliedBy: EnvironmentPatchResponseAppliedBy | null;
+  appliedBy: EnvironmentPatchesResponseEdgesItemNodeAppliedBy | null;
   createdAt: string;
   environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
   environmentId: string;
@@ -7109,7 +8833,7 @@ export interface EnvironmentStageChangesResponse {
 export const EnvironmentStageChangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedAt: S.NullOr(S.String),
-    appliedBy: S.NullOr(EnvironmentPatchResponseAppliedBy),
+    appliedBy: S.NullOr(EnvironmentPatchesResponseEdgesItemNodeAppliedBy),
     createdAt: S.String,
     environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
     environmentId: S.String,
@@ -7144,9 +8868,9 @@ export const EnvironmentStagedChangesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EnvironmentStagedChangesRequest>;
 
 export type EnvironmentStagedChangesResponseAppliedBy =
-  EnvironmentPatchResponseAppliedBy;
+  EnvironmentPatchesResponseEdgesItemNodeAppliedBy;
 export const EnvironmentStagedChangesResponseAppliedBy =
-  EnvironmentPatchResponseAppliedBy;
+  EnvironmentPatchesResponseEdgesItemNodeAppliedBy;
 
 export type EnvironmentStagedChangesResponseEnvironment =
   AdminVolumeInstancesForVolumeResultItemEnvironment;
@@ -7156,7 +8880,7 @@ export const EnvironmentStagedChangesResponseEnvironment =
 /** Selection set for `environmentStagedChanges` (unwrapped from the GraphQL `data` envelope). */
 export interface EnvironmentStagedChangesResponse {
   appliedAt: string | null;
-  appliedBy: EnvironmentPatchResponseAppliedBy | null;
+  appliedBy: EnvironmentPatchesResponseEdgesItemNodeAppliedBy | null;
   createdAt: string;
   environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
   environmentId: string;
@@ -7169,7 +8893,7 @@ export interface EnvironmentStagedChangesResponse {
 export const EnvironmentStagedChangesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appliedAt: S.NullOr(S.String),
-    appliedBy: S.NullOr(EnvironmentPatchResponseAppliedBy),
+    appliedBy: S.NullOr(EnvironmentPatchesResponseEdgesItemNodeAppliedBy),
     createdAt: S.String,
     environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
     environmentId: S.String,
@@ -7259,26 +8983,6 @@ export const EnvironmentUnskipServiceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EnvironmentUnskipServiceResponse",
 }) as any as S.Schema<EnvironmentUnskipServiceResponse>;
-
-export type MetricMeasurement =
-  | "BACKUP_USAGE_GB"
-  | "CPU_LIMIT"
-  | "CPU_USAGE"
-  | "CPU_USAGE_2"
-  | "DISK_USAGE_GB"
-  | "EPHEMERAL_DISK_USAGE_GB"
-  | "MEASUREMENT_UNSPECIFIED"
-  | "MEMORY_LIMIT_GB"
-  | "MEMORY_USAGE_GB"
-  | "NETWORK_RX_GB"
-  | "NETWORK_TX_GB"
-  | "UNRECOGNIZED";
-export const MetricMeasurement = /*@__PURE__*/ S.String;
-
-export type MetricMeasurementList = Array<MetricMeasurement | (string & {})>;
-export const MetricMeasurementList = /*@__PURE__*/ S.Array(
-  MetricMeasurement,
-) as any as S.Schema<MetricMeasurementList>;
 
 export interface EstimatedUsageRequest {
   /** Whether to include deleted projects in estimations. */
@@ -7520,6 +9224,52 @@ export const EventsResponse = /*@__PURE__*/ S.suspend(() =>
     pageInfo: ApiTokensResponsePageInfo,
   }).pipe(T.ResponsePath("events")),
 ).annotate({ identifier: "EventsResponse" }) as any as S.Schema<EventsResponse>;
+
+export interface ExecSandboxRequest {
+  command: string;
+  environmentId: string;
+  id: string;
+  timeoutSec?: number | null;
+}
+export const ExecSandboxRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    command: S.String,
+    environmentId: S.String,
+    id: S.String,
+    timeoutSec: S.optional(S.NullOr(S.Number)),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation sandboxExec($command: String!, $environmentId: String!, $id: String!, $timeoutSec: Int) {\n  sandboxExec(command: $command, environmentId: $environmentId, id: $id, timeoutSec: $timeoutSec) {\n    exitCode\n    stderr\n    stdout\n    timedOut\n    truncated\n  }\n}",
+        operationName: "sandboxExec",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "ExecSandboxRequest",
+}) as any as S.Schema<ExecSandboxRequest>;
+
+/** Selection set for `sandboxExec` (unwrapped from the GraphQL `data` envelope). */
+export interface ExecSandboxResponse {
+  exitCode: number;
+  stderr: string;
+  stdout: string;
+  timedOut: boolean;
+  truncated: boolean;
+}
+export const ExecSandboxResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exitCode: S.Number,
+    stderr: S.String,
+    stdout: S.String,
+    timedOut: S.Boolean,
+    truncated: S.Boolean,
+  }).pipe(T.ResponsePath("sandboxExec")),
+).annotate({
+  identifier: "ExecSandboxResponse",
+}) as any as S.Schema<ExecSandboxResponse>;
 
 export interface ExternalWorkspacesRequest {
   projectId?: string | null;
@@ -7904,6 +9654,40 @@ export const FunctionRuntimesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FunctionRuntimesResponse",
 }) as any as S.Schema<FunctionRuntimesResponse>;
 
+export interface GenerateRecoveryCodeRequest {}
+export const GenerateRecoveryCodeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({})
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation recoveryCodeGenerate {\n  recoveryCodeGenerate {\n    recoveryCodes\n  }\n}",
+        operationName: "recoveryCodeGenerate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateRecoveryCodeRequest",
+}) as any as S.Schema<GenerateRecoveryCodeRequest>;
+
+export type RecoveryCodeGenerateResponseRecoveryCodesList = Array<string>;
+export const RecoveryCodeGenerateResponseRecoveryCodesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecoveryCodeGenerateResponseRecoveryCodesList>;
+
+/** Selection set for `recoveryCodeGenerate` (unwrapped from the GraphQL `data` envelope). */
+export interface GenerateRecoveryCodeResponse {
+  recoveryCodes: RecoveryCodeGenerateResponseRecoveryCodesList;
+}
+export const GenerateRecoveryCodeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recoveryCodes: RecoveryCodeGenerateResponseRecoveryCodesList,
+  }).pipe(T.ResponsePath("recoveryCodeGenerate")),
+).annotate({
+  identifier: "GenerateRecoveryCodeResponse",
+}) as any as S.Schema<GenerateRecoveryCodeResponse>;
+
 export interface ShellTokenInput {
   environmentId: string;
   instanceId: string;
@@ -7951,6 +9735,210 @@ export const GenerateShellTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GenerateShellTokenResponse",
 }) as any as S.Schema<GenerateShellTokenResponse>;
+
+export interface GenerateTemplateInput {
+  environmentId?: string | null;
+  projectId: string;
+}
+export const GenerateTemplateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.NullOr(S.String)),
+    projectId: S.String,
+  }),
+).annotate({
+  identifier: "GenerateTemplateInput",
+}) as any as S.Schema<GenerateTemplateInput>;
+
+export interface GenerateTemplateRequest {
+  input: GenerateTemplateInput;
+}
+export const GenerateTemplateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: GenerateTemplateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation templateGenerate($input: TemplateGenerateInput!) {\n  templateGenerate(input: $input) {\n    activeProjects\n    canvasConfig\n    category\n    code\n    communityThreadSlug\n    config\n    createdAt\n    creator {\n      avatar\n      hasPublicProfile\n      name\n      username\n    }\n    demoProjectId\n    description\n    guides {\n      post\n      video\n    }\n    health\n    id\n    image\n    isApproved\n    isV2Template\n    isVerified\n    languages\n    maintainer {\n      avatar\n      id\n      name\n    }\n    metadata\n    name\n    projects\n    readme\n    recentProjects\n    serializedConfig\n    similarTemplates {\n      code\n      createdAt\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    status\n    supportHealthMetrics\n    tags\n    teamId\n    totalPayout\n    updatedAt\n    workspaceId\n  }\n}",
+        operationName: "templateGenerate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "GenerateTemplateRequest",
+}) as any as S.Schema<GenerateTemplateRequest>;
+
+export interface TemplateGenerateResponseCreator {
+  avatar: string | null;
+  hasPublicProfile: boolean;
+  name: string | null;
+  username: string | null;
+}
+export const TemplateGenerateResponseCreator = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    avatar: S.NullOr(S.String),
+    hasPublicProfile: S.Boolean,
+    name: S.NullOr(S.String),
+    username: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "TemplateGenerateResponseCreator",
+}) as any as S.Schema<TemplateGenerateResponseCreator>;
+
+export interface TemplateGenerateResponseGuides {
+  post: string | null;
+  video: string | null;
+}
+export const TemplateGenerateResponseGuides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    post: S.NullOr(S.String),
+    video: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "TemplateGenerateResponseGuides",
+}) as any as S.Schema<TemplateGenerateResponseGuides>;
+
+export type TemplateGenerateResponseLanguagesList = Array<string>;
+export const TemplateGenerateResponseLanguagesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TemplateGenerateResponseLanguagesList>;
+
+export interface TemplateGenerateResponseMaintainer {
+  avatar: string | null;
+  id: string;
+  name: string;
+}
+export const TemplateGenerateResponseMaintainer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    avatar: S.NullOr(S.String),
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "TemplateGenerateResponseMaintainer",
+}) as any as S.Schema<TemplateGenerateResponseMaintainer>;
+
+export interface TemplateGenerateResponseSimilarTemplatesItem {
+  code: string;
+  createdAt: string;
+  deploys: number;
+  description: string | null;
+  health: number | null;
+  image: string | null;
+  name: string;
+  teamId: string | null;
+  userId: string | null;
+  workspaceId: string | null;
+}
+export const TemplateGenerateResponseSimilarTemplatesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.String,
+      createdAt: S.String,
+      deploys: S.Number,
+      description: S.NullOr(S.String),
+      health: S.NullOr(S.Number),
+      image: S.NullOr(S.String),
+      name: S.String,
+      teamId: S.NullOr(S.String),
+      userId: S.NullOr(S.String),
+      workspaceId: S.NullOr(S.String),
+    }),
+  ).annotate({
+    identifier: "TemplateGenerateResponseSimilarTemplatesItem",
+  }) as any as S.Schema<TemplateGenerateResponseSimilarTemplatesItem>;
+
+export type TemplateGenerateResponseSimilarTemplatesList =
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
+export const TemplateGenerateResponseSimilarTemplatesList =
+  /*@__PURE__*/ S.Array(
+    TemplateGenerateResponseSimilarTemplatesItem,
+  ) as any as S.Schema<TemplateGenerateResponseSimilarTemplatesList>;
+
+export type TemplateStatus = "HIDDEN" | "PUBLISHED" | "UNPUBLISHED";
+export const TemplateStatus = /*@__PURE__*/ S.String;
+
+export type TemplateGenerateResponseTagsList = Array<string>;
+export const TemplateGenerateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TemplateGenerateResponseTagsList>;
+
+/** Selection set for `templateGenerate` (unwrapped from the GraphQL `data` envelope). */
+export interface GenerateTemplateResponse {
+  activeProjects: number;
+  canvasConfig: unknown | null;
+  category: string | null;
+  code: string;
+  communityThreadSlug: string | null;
+  config: unknown;
+  createdAt: string;
+  creator: TemplateGenerateResponseCreator | null;
+  demoProjectId: string | null;
+  description: string | null;
+  guides: TemplateGenerateResponseGuides | null;
+  health: number | null;
+  id: string;
+  image: string | null;
+  isApproved: boolean;
+  isV2Template: boolean;
+  isVerified: boolean;
+  languages: TemplateGenerateResponseLanguagesList | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
+  metadata: unknown;
+  name: string;
+  projects: number;
+  readme: string | null;
+  recentProjects: number;
+  serializedConfig: unknown | null;
+  similarTemplates: TemplateGenerateResponseSimilarTemplatesList;
+  status: TemplateStatus;
+  supportHealthMetrics: unknown | null;
+  tags: TemplateGenerateResponseTagsList | null;
+  teamId: string | null;
+  totalPayout: number;
+  updatedAt: string;
+  workspaceId: string | null;
+}
+export const GenerateTemplateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    activeProjects: S.Number,
+    canvasConfig: S.NullOr(S.Unknown),
+    category: S.NullOr(S.String),
+    code: S.String,
+    communityThreadSlug: S.NullOr(S.String),
+    config: S.Unknown,
+    createdAt: S.String,
+    creator: S.NullOr(TemplateGenerateResponseCreator),
+    demoProjectId: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
+    health: S.NullOr(S.Number),
+    id: S.String,
+    image: S.NullOr(S.String),
+    isApproved: S.Boolean,
+    isV2Template: S.Boolean,
+    isVerified: S.Boolean,
+    languages: S.NullOr(TemplateGenerateResponseLanguagesList),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
+    metadata: S.Unknown,
+    name: S.String,
+    projects: S.Number,
+    readme: S.NullOr(S.String),
+    recentProjects: S.Number,
+    serializedConfig: S.NullOr(S.Unknown),
+    similarTemplates: TemplateGenerateResponseSimilarTemplatesList,
+    status: TemplateStatus,
+    supportHealthMetrics: S.NullOr(S.Unknown),
+    tags: S.NullOr(TemplateGenerateResponseTagsList),
+    teamId: S.NullOr(S.String),
+    totalPayout: S.Number,
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("templateGenerate")),
+).annotate({
+  identifier: "GenerateTemplateResponse",
+}) as any as S.Schema<GenerateTemplateResponse>;
 
 export interface GithubIsRepoNameAvailableRequest {
   fullRepoName: string;
@@ -8210,12 +10198,12 @@ export const GithubRepoBranchesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "GithubRepoBranchesRequest",
 }) as any as S.Schema<GithubRepoBranchesRequest>;
 
-export type GithubRepoBranchesResultItem = BucketUpdateInput;
-export const GithubRepoBranchesResultItem = BucketUpdateInput;
+export type GithubRepoBranchesResultItem = EnvironmentRenameInput;
+export const GithubRepoBranchesResultItem = EnvironmentRenameInput;
 
-export type GithubRepoBranchesResultList = Array<BucketUpdateInput>;
+export type GithubRepoBranchesResultList = Array<EnvironmentRenameInput>;
 export const GithubRepoBranchesResultList = /*@__PURE__*/ S.Array(
-  BucketUpdateInput,
+  EnvironmentRenameInput,
 ) as any as S.Schema<GithubRepoBranchesResultList>;
 
 export type GithubRepoBranchesResponse = GithubRepoBranchesResultList;
@@ -8327,36 +10315,6 @@ export const GithubReposResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GithubReposResponse",
 }) as any as S.Schema<GithubReposResponse>;
-
-export type GitHubRepoUpdateInput = EnvironmentTriggersDeployInput;
-export const GitHubRepoUpdateInput = EnvironmentTriggersDeployInput;
-
-export interface GithubRepoUpdateRequest {
-  input: EnvironmentTriggersDeployInput;
-}
-export const GithubRepoUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: EnvironmentTriggersDeployInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation githubRepoUpdate($input: GitHubRepoUpdateInput!) {\n  githubRepoUpdate(input: $input) {\n    __typename\n  }\n}",
-        operationName: "githubRepoUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "GithubRepoUpdateRequest",
-}) as any as S.Schema<GithubRepoUpdateRequest>;
-
-export type GithubRepoUpdateResponse = boolean;
-export const GithubRepoUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("githubRepoUpdate")),
-).annotate({
-  identifier: "GithubRepoUpdateResponse",
-}) as any as S.Schema<GithubRepoUpdateResponse>;
 
 export interface GitHubSshKeysRequest {}
 export const GitHubSshKeysRequest = /*@__PURE__*/ S.suspend(() =>
@@ -8962,88 +10920,6 @@ export const IntegrationAuthsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "IntegrationAuthsResponse",
 }) as any as S.Schema<IntegrationAuthsResponse>;
 
-export interface IntegrationCreateInput {
-  config: unknown;
-  integrationAuthId?: string | null;
-  name: string;
-  projectId: string;
-}
-export const IntegrationCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.Unknown,
-    integrationAuthId: S.optional(S.NullOr(S.String)),
-    name: S.String,
-    projectId: S.String,
-  }),
-).annotate({
-  identifier: "IntegrationCreateInput",
-}) as any as S.Schema<IntegrationCreateInput>;
-
-export interface IntegrationCreateRequest {
-  input: IntegrationCreateInput;
-}
-export const IntegrationCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: IntegrationCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation integrationCreate($input: IntegrationCreateInput!) {\n  integrationCreate(input: $input) {\n    config\n    id\n    name\n    projectId\n  }\n}",
-        operationName: "integrationCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "IntegrationCreateRequest",
-}) as any as S.Schema<IntegrationCreateRequest>;
-
-/** Selection set for `integrationCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface IntegrationCreateResponse {
-  config: unknown;
-  id: string;
-  name: string;
-  projectId: string;
-}
-export const IntegrationCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.Unknown,
-    id: S.String,
-    name: S.String,
-    projectId: S.String,
-  }).pipe(T.ResponsePath("integrationCreate")),
-).annotate({
-  identifier: "IntegrationCreateResponse",
-}) as any as S.Schema<IntegrationCreateResponse>;
-
-export interface IntegrationDeleteRequest {
-  id: string;
-}
-export const IntegrationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation integrationDelete($id: String!) {\n  integrationDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "integrationDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "IntegrationDeleteRequest",
-}) as any as S.Schema<IntegrationDeleteRequest>;
-
-export type IntegrationDeleteResponse = boolean;
-export const IntegrationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("integrationDelete")),
-).annotate({
-  identifier: "IntegrationDeleteResponse",
-}) as any as S.Schema<IntegrationDeleteResponse>;
-
 export interface IntegrationsRequest {
   after?: string | null;
   before?: string | null;
@@ -9124,49 +11000,6 @@ export const IntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "IntegrationsResponse",
 }) as any as S.Schema<IntegrationsResponse>;
-
-export type IntegrationUpdateInput = IntegrationCreateInput;
-export const IntegrationUpdateInput = IntegrationCreateInput;
-
-export interface IntegrationUpdateRequest {
-  id: string;
-  input: IntegrationCreateInput;
-}
-export const IntegrationUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: IntegrationCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation integrationUpdate($id: String!, $input: IntegrationUpdateInput!) {\n  integrationUpdate(id: $id, input: $input) {\n    config\n    id\n    name\n    projectId\n  }\n}",
-        operationName: "integrationUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "IntegrationUpdateRequest",
-}) as any as S.Schema<IntegrationUpdateRequest>;
-
-/** Selection set for `integrationUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface IntegrationUpdateResponse {
-  config: unknown;
-  id: string;
-  name: string;
-  projectId: string;
-}
-export const IntegrationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: S.Unknown,
-    id: S.String,
-    name: S.String,
-    projectId: S.String,
-  }).pipe(T.ResponsePath("integrationUpdate")),
-).annotate({
-  identifier: "IntegrationUpdateResponse",
-}) as any as S.Schema<IntegrationUpdateResponse>;
 
 export interface InviteCodeRequest {
   code: string;
@@ -9294,57 +11127,18 @@ export const InviteCodeUseResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
   ActiveProjectFeatureFlag,
 ) as any as S.Schema<InviteCodeUseResponseFeatureFlagsList>;
 
-export interface InviteCodeUseResponseMembersItem {
-  avatar: string | null;
-  email: string;
-  id: string;
-  name: string | null;
-  role: ProjectRole;
-}
-export const InviteCodeUseResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.NullOr(S.String),
-    email: S.String,
-    id: S.String,
-    name: S.NullOr(S.String),
-    role: ProjectRole,
-  }),
-).annotate({
-  identifier: "InviteCodeUseResponseMembersItem",
-}) as any as S.Schema<InviteCodeUseResponseMembersItem>;
+export type InviteCodeUseResponseMembersItem = ProjectCreateResponseMembersItem;
+export const InviteCodeUseResponseMembersItem =
+  ProjectCreateResponseMembersItem;
 
 export type InviteCodeUseResponseMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
+  Array<ProjectCreateResponseMembersItem>;
 export const InviteCodeUseResponseMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
+  ProjectCreateResponseMembersItem,
 ) as any as S.Schema<InviteCodeUseResponseMembersList>;
 
-export interface InviteCodeUseResponseTeam {
-  adoptionLevel: number;
-  avatar: string | null;
-  createdAt: string;
-  id: string;
-  name: string;
-  preferredRegion: string | null;
-  slackChannelId: string | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-}
-export const InviteCodeUseResponseTeam = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adoptionLevel: S.Number,
-    avatar: S.NullOr(S.String),
-    createdAt: S.String,
-    id: S.String,
-    name: S.String,
-    preferredRegion: S.NullOr(S.String),
-    slackChannelId: S.NullOr(S.String),
-    supportTierOverride: S.NullOr(SupportTierOverride),
-    updatedAt: S.String,
-  }),
-).annotate({
-  identifier: "InviteCodeUseResponseTeam",
-}) as any as S.Schema<InviteCodeUseResponseTeam>;
+export type InviteCodeUseResponseTeam = ProjectCreateResponseTeam;
+export const InviteCodeUseResponseTeam = ProjectCreateResponseTeam;
 
 export type InviteCodeUseResponseWorkspaceUsersWithout2FAList = Array<string>;
 export const InviteCodeUseResponseWorkspaceUsersWithout2FAList =
@@ -9427,7 +11221,7 @@ export interface InviteCodeUseResponse {
   primaryEnvironmentId: string | null;
   subscriptionPlanLimit: unknown;
   subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
+  team: ProjectCreateResponseTeam | null;
   teamId: string | null;
   updatedAt: string;
   workspace: InviteCodeUseResponseWorkspace | null;
@@ -9455,7 +11249,7 @@ export const InviteCodeUseResponse = /*@__PURE__*/ S.suspend(() =>
     primaryEnvironmentId: S.NullOr(S.String),
     subscriptionPlanLimit: S.Unknown,
     subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
+    team: S.NullOr(ProjectCreateResponseTeam),
     teamId: S.NullOr(S.String),
     updatedAt: S.String,
     workspace: S.NullOr(InviteCodeUseResponseWorkspace),
@@ -9465,54 +11259,137 @@ export const InviteCodeUseResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InviteCodeUseResponse",
 }) as any as S.Schema<InviteCodeUseResponse>;
 
-export interface JobApplicationCreateInput {
-  email: string;
-  jobId: string;
-  name: string;
-  why: string;
+export interface ListVolumeInstanceBackupRequest {
+  /** The id of the volume instance to list the backups of */
+  volumeInstanceId: string;
 }
-export const JobApplicationCreateInput = /*@__PURE__*/ S.suspend(() =>
+export const ListVolumeInstanceBackupRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    email: S.String,
-    jobId: S.String,
-    name: S.String,
-    why: S.String,
-  }),
-).annotate({
-  identifier: "JobApplicationCreateInput",
-}) as any as S.Schema<JobApplicationCreateInput>;
-
-export interface JobApplicationCreateRequest {
-  input: JobApplicationCreateInput;
-  resume: unknown;
-}
-export const JobApplicationCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: JobApplicationCreateInput,
-    resume: S.Unknown,
+    volumeInstanceId: S.String,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation jobApplicationCreate($input: JobApplicationCreateInput!, $resume: Upload!) {\n  jobApplicationCreate(input: $input, resume: $resume) {\n    __typename\n  }\n}",
-        operationName: "jobApplicationCreate",
-        type: "mutation",
+          "query volumeInstanceBackupList($volumeInstanceId: String!) {\n  volumeInstanceBackupList(volumeInstanceId: $volumeInstanceId) {\n    createdAt\n    creatorId\n    expiresAt\n    externalId\n    id\n    name\n    referencedMB\n    scheduleId\n    usedMB\n    volumeInstanceSizeMB\n  }\n}",
+        operationName: "volumeInstanceBackupList",
+        type: "query",
       }),
     ),
 ).annotate({
-  identifier: "JobApplicationCreateRequest",
-}) as any as S.Schema<JobApplicationCreateRequest>;
+  identifier: "ListVolumeInstanceBackupRequest",
+}) as any as S.Schema<ListVolumeInstanceBackupRequest>;
 
-export type JobApplicationCreateResponse = boolean;
-export const JobApplicationCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
+export interface VolumeInstanceBackupListResultItem {
+  createdAt: string;
+  creatorId: string | null;
+  expiresAt: string | null;
+  externalId: string;
+  id: string;
+  name: string | null;
+  referencedMB: number | null;
+  scheduleId: string | null;
+  usedMB: number | null;
+  volumeInstanceSizeMB: number | null;
+}
+export const VolumeInstanceBackupListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    creatorId: S.NullOr(S.String),
+    expiresAt: S.NullOr(S.String),
+    externalId: S.String,
+    id: S.String,
+    name: S.NullOr(S.String),
+    referencedMB: S.NullOr(S.Number),
+    scheduleId: S.NullOr(S.String),
+    usedMB: S.NullOr(S.Number),
+    volumeInstanceSizeMB: S.NullOr(S.Number),
+  }),
+).annotate({
+  identifier: "VolumeInstanceBackupListResultItem",
+}) as any as S.Schema<VolumeInstanceBackupListResultItem>;
+
+export type VolumeInstanceBackupListResultList =
+  Array<VolumeInstanceBackupListResultItem>;
+export const VolumeInstanceBackupListResultList = /*@__PURE__*/ S.Array(
+  VolumeInstanceBackupListResultItem,
+) as any as S.Schema<VolumeInstanceBackupListResultList>;
+
+export type ListVolumeInstanceBackupResponse =
+  VolumeInstanceBackupListResultList;
+export const ListVolumeInstanceBackupResponse = /*@__PURE__*/ S.suspend(() =>
+  VolumeInstanceBackupListResultList.pipe(
     T.GraphQLPayloadRoot(),
-    T.ResponsePath("jobApplicationCreate"),
+    T.ResponsePath("volumeInstanceBackupList"),
   ),
 ).annotate({
-  identifier: "JobApplicationCreateResponse",
-}) as any as S.Schema<JobApplicationCreateResponse>;
+  identifier: "ListVolumeInstanceBackupResponse",
+}) as any as S.Schema<ListVolumeInstanceBackupResponse>;
+
+export interface ListVolumeInstanceBackupScheduleRequest {
+  /** The id of the volume instance to list the schedules of */
+  volumeInstanceId: string;
+}
+export const ListVolumeInstanceBackupScheduleRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      volumeInstanceId: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "query volumeInstanceBackupScheduleList($volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleList(volumeInstanceId: $volumeInstanceId) {\n    createdAt\n    cron\n    id\n    kind\n    name\n    retentionSeconds\n  }\n}",
+          operationName: "volumeInstanceBackupScheduleList",
+          type: "query",
+        }),
+      ),
+).annotate({
+  identifier: "ListVolumeInstanceBackupScheduleRequest",
+}) as any as S.Schema<ListVolumeInstanceBackupScheduleRequest>;
+
+export type VolumeInstanceBackupScheduleKind = "DAILY" | "MONTHLY" | "WEEKLY";
+export const VolumeInstanceBackupScheduleKind = /*@__PURE__*/ S.String;
+
+export interface VolumeInstanceBackupScheduleListResultItem {
+  createdAt: string;
+  cron: string;
+  id: string;
+  kind: VolumeInstanceBackupScheduleKind;
+  name: string;
+  retentionSeconds: number | null;
+}
+export const VolumeInstanceBackupScheduleListResultItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String,
+      cron: S.String,
+      id: S.String,
+      kind: VolumeInstanceBackupScheduleKind,
+      name: S.String,
+      retentionSeconds: S.NullOr(S.Number),
+    }),
+  ).annotate({
+    identifier: "VolumeInstanceBackupScheduleListResultItem",
+  }) as any as S.Schema<VolumeInstanceBackupScheduleListResultItem>;
+
+export type VolumeInstanceBackupScheduleListResultList =
+  Array<VolumeInstanceBackupScheduleListResultItem>;
+export const VolumeInstanceBackupScheduleListResultList = /*@__PURE__*/ S.Array(
+  VolumeInstanceBackupScheduleListResultItem,
+) as any as S.Schema<VolumeInstanceBackupScheduleListResultList>;
+
+export type ListVolumeInstanceBackupScheduleResponse =
+  VolumeInstanceBackupScheduleListResultList;
+export const ListVolumeInstanceBackupScheduleResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    VolumeInstanceBackupScheduleListResultList.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("volumeInstanceBackupScheduleList"),
+    ),
+).annotate({
+  identifier: "ListVolumeInstanceBackupScheduleResponse",
+}) as any as S.Schema<ListVolumeInstanceBackupScheduleResponse>;
 
 export interface LoginSessionAuthInput {
   code: string;
@@ -9610,55 +11487,6 @@ export const LoginSessionConsumeResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "LoginSessionConsumeResponse",
 }) as any as S.Schema<LoginSessionConsumeResponse>;
-
-export interface LoginSessionCreateRequest {}
-export const LoginSessionCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({})
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query: "mutation loginSessionCreate {\n  loginSessionCreate\n}",
-        operationName: "loginSessionCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "LoginSessionCreateRequest",
-}) as any as S.Schema<LoginSessionCreateRequest>;
-
-export type LoginSessionCreateResponse = string;
-export const LoginSessionCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("loginSessionCreate")),
-).annotate({
-  identifier: "LoginSessionCreateResponse",
-}) as any as S.Schema<LoginSessionCreateResponse>;
-
-export interface LoginSessionVerifyRequest {
-  code: string;
-}
-export const LoginSessionVerifyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code)\n}",
-        operationName: "loginSessionVerify",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "LoginSessionVerifyRequest",
-}) as any as S.Schema<LoginSessionVerifyRequest>;
-
-export type LoginSessionVerifyResponse = boolean;
-export const LoginSessionVerifyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("loginSessionVerify")),
-).annotate({
-  identifier: "LoginSessionVerifyResponse",
-}) as any as S.Schema<LoginSessionVerifyResponse>;
 
 export interface MeRequest {}
 export const MeRequest = /*@__PURE__*/ S.suspend(() =>
@@ -10305,9 +12133,6 @@ export const NotificationDeliveriesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationDeliveriesRequest",
 }) as any as S.Schema<NotificationDeliveriesRequest>;
 
-export type NotificationSeverity = "CRITICAL" | "INFO" | "NOTICE" | "WARNING";
-export const NotificationSeverity = /*@__PURE__*/ S.String;
-
 export interface NotificationDeliveriesResponseEdgesItemNodeNotificationInstance {
   createdAt: string;
   environmentId: string | null;
@@ -10502,160 +12327,6 @@ export const NotificationDeliveryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "NotificationDeliveryResponse",
 }) as any as S.Schema<NotificationDeliveryResponse>;
 
-export type DocumentList = Array<unknown>;
-export const DocumentList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<DocumentList>;
-
-export type NotificationSeverityList = Array<
-  NotificationSeverity | (string & {})
->;
-export const NotificationSeverityList = /*@__PURE__*/ S.Array(
-  NotificationSeverity,
-) as any as S.Schema<NotificationSeverityList>;
-
-export interface CreateNotificationRuleInput {
-  channelConfigs: DocumentList;
-  ephemeralEnvironments?: boolean | null;
-  eventTypes: StringList;
-  projectId?: string | null;
-  severities?: NotificationSeverityList | null;
-  workspaceId: string;
-}
-export const CreateNotificationRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channelConfigs: DocumentList,
-    ephemeralEnvironments: S.optional(S.NullOr(S.Boolean)),
-    eventTypes: StringList,
-    projectId: S.optional(S.NullOr(S.String)),
-    severities: S.optional(S.NullOr(NotificationSeverityList)),
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "CreateNotificationRuleInput",
-}) as any as S.Schema<CreateNotificationRuleInput>;
-
-export interface NotificationRuleCreateRequest {
-  input: CreateNotificationRuleInput;
-}
-export const NotificationRuleCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: CreateNotificationRuleInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation notificationRuleCreate($input: CreateNotificationRuleInput!) {\n  notificationRuleCreate(input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}",
-        operationName: "notificationRuleCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "NotificationRuleCreateRequest",
-}) as any as S.Schema<NotificationRuleCreateRequest>;
-
-export interface NotificationRuleCreateResponseChannelsItem {
-  config: unknown;
-  createdAt: string;
-  id: string;
-  updatedAt: string;
-  workspaceId: string;
-}
-export const NotificationRuleCreateResponseChannelsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      config: S.Unknown,
-      createdAt: S.String,
-      id: S.String,
-      updatedAt: S.String,
-      workspaceId: S.String,
-    }),
-  ).annotate({
-    identifier: "NotificationRuleCreateResponseChannelsItem",
-  }) as any as S.Schema<NotificationRuleCreateResponseChannelsItem>;
-
-export type NotificationRuleCreateResponseChannelsList =
-  Array<NotificationRuleCreateResponseChannelsItem>;
-export const NotificationRuleCreateResponseChannelsList = /*@__PURE__*/ S.Array(
-  NotificationRuleCreateResponseChannelsItem,
-) as any as S.Schema<NotificationRuleCreateResponseChannelsList>;
-
-export type NotificationRuleCreateResponseEventTypesList = Array<string>;
-export const NotificationRuleCreateResponseEventTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NotificationRuleCreateResponseEventTypesList>;
-
-export type NotificationRuleCreateResponseSeveritiesList =
-  Array<NotificationSeverity>;
-export const NotificationRuleCreateResponseSeveritiesList =
-  /*@__PURE__*/ S.Array(
-    NotificationSeverity,
-  ) as any as S.Schema<NotificationRuleCreateResponseSeveritiesList>;
-
-/** Selection set for `notificationRuleCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface NotificationRuleCreateResponse {
-  channels: NotificationRuleCreateResponseChannelsList;
-  createdAt: string;
-  environmentId: string | null;
-  ephemeralEnvironments: boolean | null;
-  eventTypes: NotificationRuleCreateResponseEventTypesList;
-  id: string;
-  projectId: string | null;
-  serviceId: string | null;
-  severities: NotificationRuleCreateResponseSeveritiesList;
-  updatedAt: string;
-  workspaceId: string;
-}
-export const NotificationRuleCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channels: NotificationRuleCreateResponseChannelsList,
-    createdAt: S.String,
-    environmentId: S.NullOr(S.String),
-    ephemeralEnvironments: S.NullOr(S.Boolean),
-    eventTypes: NotificationRuleCreateResponseEventTypesList,
-    id: S.String,
-    projectId: S.NullOr(S.String),
-    serviceId: S.NullOr(S.String),
-    severities: NotificationRuleCreateResponseSeveritiesList,
-    updatedAt: S.String,
-    workspaceId: S.String,
-  }).pipe(T.ResponsePath("notificationRuleCreate")),
-).annotate({
-  identifier: "NotificationRuleCreateResponse",
-}) as any as S.Schema<NotificationRuleCreateResponse>;
-
-export interface NotificationRuleDeleteRequest {
-  id: string;
-}
-export const NotificationRuleDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation notificationRuleDelete($id: String!) {\n  notificationRuleDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "notificationRuleDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "NotificationRuleDeleteRequest",
-}) as any as S.Schema<NotificationRuleDeleteRequest>;
-
-export type NotificationRuleDeleteResponse = boolean;
-export const NotificationRuleDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("notificationRuleDelete"),
-  ),
-).annotate({
-  identifier: "NotificationRuleDeleteResponse",
-}) as any as S.Schema<NotificationRuleDeleteResponse>;
-
 export interface NotificationRulesRequest {
   projectId?: string | null;
   workspaceId: string;
@@ -10745,238 +12416,6 @@ export const NotificationRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "NotificationRulesResponse",
 }) as any as S.Schema<NotificationRulesResponse>;
-
-export interface UpdateNotificationRuleInput {
-  channelConfigs?: DocumentList | null;
-  ephemeralEnvironments?: boolean | null;
-  eventTypes?: StringList | null;
-  severities?: NotificationSeverityList | null;
-}
-export const UpdateNotificationRuleInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channelConfigs: S.optional(S.NullOr(DocumentList)),
-    ephemeralEnvironments: S.optional(S.NullOr(S.Boolean)),
-    eventTypes: S.optional(S.NullOr(StringList)),
-    severities: S.optional(S.NullOr(NotificationSeverityList)),
-  }),
-).annotate({
-  identifier: "UpdateNotificationRuleInput",
-}) as any as S.Schema<UpdateNotificationRuleInput>;
-
-export interface NotificationRuleUpdateRequest {
-  id: string;
-  input: UpdateNotificationRuleInput;
-}
-export const NotificationRuleUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: UpdateNotificationRuleInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation notificationRuleUpdate($id: String!, $input: UpdateNotificationRuleInput!) {\n  notificationRuleUpdate(id: $id, input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}",
-        operationName: "notificationRuleUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "NotificationRuleUpdateRequest",
-}) as any as S.Schema<NotificationRuleUpdateRequest>;
-
-export type NotificationRuleUpdateResponseChannelsItem =
-  NotificationRuleCreateResponseChannelsItem;
-export const NotificationRuleUpdateResponseChannelsItem =
-  NotificationRuleCreateResponseChannelsItem;
-
-export type NotificationRuleUpdateResponseChannelsList =
-  Array<NotificationRuleCreateResponseChannelsItem>;
-export const NotificationRuleUpdateResponseChannelsList = /*@__PURE__*/ S.Array(
-  NotificationRuleCreateResponseChannelsItem,
-) as any as S.Schema<NotificationRuleUpdateResponseChannelsList>;
-
-export type NotificationRuleUpdateResponseEventTypesList = Array<string>;
-export const NotificationRuleUpdateResponseEventTypesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NotificationRuleUpdateResponseEventTypesList>;
-
-export type NotificationRuleUpdateResponseSeveritiesList =
-  Array<NotificationSeverity>;
-export const NotificationRuleUpdateResponseSeveritiesList =
-  /*@__PURE__*/ S.Array(
-    NotificationSeverity,
-  ) as any as S.Schema<NotificationRuleUpdateResponseSeveritiesList>;
-
-/** Selection set for `notificationRuleUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface NotificationRuleUpdateResponse {
-  channels: NotificationRuleUpdateResponseChannelsList;
-  createdAt: string;
-  environmentId: string | null;
-  ephemeralEnvironments: boolean | null;
-  eventTypes: NotificationRuleUpdateResponseEventTypesList;
-  id: string;
-  projectId: string | null;
-  serviceId: string | null;
-  severities: NotificationRuleUpdateResponseSeveritiesList;
-  updatedAt: string;
-  workspaceId: string;
-}
-export const NotificationRuleUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    channels: NotificationRuleUpdateResponseChannelsList,
-    createdAt: S.String,
-    environmentId: S.NullOr(S.String),
-    ephemeralEnvironments: S.NullOr(S.Boolean),
-    eventTypes: NotificationRuleUpdateResponseEventTypesList,
-    id: S.String,
-    projectId: S.NullOr(S.String),
-    serviceId: S.NullOr(S.String),
-    severities: NotificationRuleUpdateResponseSeveritiesList,
-    updatedAt: S.String,
-    workspaceId: S.String,
-  }).pipe(T.ResponsePath("notificationRuleUpdate")),
-).annotate({
-  identifier: "NotificationRuleUpdateResponse",
-}) as any as S.Schema<NotificationRuleUpdateResponse>;
-
-export type HttpMetricKind = "LATENCY" | "REQUESTS" | "STATUS_RATIO";
-export const HttpMetricKind = /*@__PURE__*/ S.String;
-
-export type ProjectUsageProperty =
-  | "BACKUP_USAGE"
-  | "CPU_USAGE"
-  | "CURRENT_USAGE"
-  | "DISK_USAGE"
-  | "ESTIMATED_USAGE"
-  | "MEMORY_USAGE"
-  | "NETWORK_USAGE";
-export const ProjectUsageProperty = /*@__PURE__*/ S.String;
-
-export type ProjectUsagePropertyList = Array<
-  ProjectUsageProperty | (string & {})
->;
-export const ProjectUsagePropertyList = /*@__PURE__*/ S.Array(
-  ProjectUsageProperty,
-) as any as S.Schema<ProjectUsagePropertyList>;
-
-export interface ObservabilityDashboardItemConfigInput {
-  httpMetric?: HttpMetricKind | (string & {}) | null;
-  logsFilter?: string | null;
-  measurements?: MetricMeasurementList | null;
-  projectUsageProperties?: ProjectUsagePropertyList | null;
-  resourceIds?: StringList | null;
-}
-export const ObservabilityDashboardItemConfigInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      httpMetric: S.optional(S.NullOr(HttpMetricKind)),
-      logsFilter: S.optional(S.NullOr(S.String)),
-      measurements: S.optional(S.NullOr(MetricMeasurementList)),
-      projectUsageProperties: S.optional(S.NullOr(ProjectUsagePropertyList)),
-      resourceIds: S.optional(S.NullOr(StringList)),
-    }),
-).annotate({
-  identifier: "ObservabilityDashboardItemConfigInput",
-}) as any as S.Schema<ObservabilityDashboardItemConfigInput>;
-
-export type ObservabilityDashboardItemType =
-  | "DNS_LOGS_ITEM"
-  | "HTTP_LOGS_ITEM"
-  | "HTTP_METRICS_ITEM"
-  | "NETWORK_LOGS_ITEM"
-  | "PROJECT_USAGE_ITEM"
-  | "SERVICE_LOGS_ITEM"
-  | "SERVICE_METRICS_ITEM"
-  | "VOLUME_METRICS_ITEM";
-export const ObservabilityDashboardItemType = /*@__PURE__*/ S.String;
-
-export interface ObservabilityDashboardItemCreateInput {
-  config: ObservabilityDashboardItemConfigInput;
-  description?: string | null;
-  id: string;
-  name: string;
-  type: ObservabilityDashboardItemType | (string & {});
-}
-export const ObservabilityDashboardItemCreateInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      config: ObservabilityDashboardItemConfigInput,
-      description: S.optional(S.NullOr(S.String)),
-      id: S.String,
-      name: S.String,
-      type: ObservabilityDashboardItemType,
-    }),
-).annotate({
-  identifier: "ObservabilityDashboardItemCreateInput",
-}) as any as S.Schema<ObservabilityDashboardItemCreateInput>;
-
-export interface ObservabilityDashboardUpdateInput {
-  dashboardItem: ObservabilityDashboardItemCreateInput;
-  displayConfig: unknown;
-  id: string;
-}
-export const ObservabilityDashboardUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dashboardItem: ObservabilityDashboardItemCreateInput,
-    displayConfig: S.Unknown,
-    id: S.String,
-  }),
-).annotate({
-  identifier: "ObservabilityDashboardUpdateInput",
-}) as any as S.Schema<ObservabilityDashboardUpdateInput>;
-
-export type ObservabilityDashboardUpdateInputList =
-  Array<ObservabilityDashboardUpdateInput>;
-export const ObservabilityDashboardUpdateInputList = /*@__PURE__*/ S.Array(
-  ObservabilityDashboardUpdateInput,
-) as any as S.Schema<ObservabilityDashboardUpdateInputList>;
-
-export interface ObservabilityDashboardCreateInput {
-  environmentId: string;
-  /** If no items are provided, a default dashboard will be created. */
-  items?: ObservabilityDashboardUpdateInputList | null;
-}
-export const ObservabilityDashboardCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    items: S.optional(S.NullOr(ObservabilityDashboardUpdateInputList)),
-  }),
-).annotate({
-  identifier: "ObservabilityDashboardCreateInput",
-}) as any as S.Schema<ObservabilityDashboardCreateInput>;
-
-export interface ObservabilityDashboardCreateRequest {
-  input: ObservabilityDashboardCreateInput;
-}
-export const ObservabilityDashboardCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ObservabilityDashboardCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation observabilityDashboardCreate($input: ObservabilityDashboardCreateInput!) {\n  observabilityDashboardCreate(input: $input) {\n    __typename\n  }\n}",
-        operationName: "observabilityDashboardCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ObservabilityDashboardCreateRequest",
-}) as any as S.Schema<ObservabilityDashboardCreateRequest>;
-
-export type ObservabilityDashboardCreateResponse = boolean;
-export const ObservabilityDashboardCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("observabilityDashboardCreate"),
-    ),
-).annotate({
-  identifier: "ObservabilityDashboardCreateResponse",
-}) as any as S.Schema<ObservabilityDashboardCreateResponse>;
 
 export interface ObservabilityDashboardResetRequest {
   id: string;
@@ -11109,66 +12548,6 @@ export const ObservabilityDashboardsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ObservabilityDashboardsResponse",
 }) as any as S.Schema<ObservabilityDashboardsResponse>;
 
-export interface ObservabilityDashboardUpdateRequest {
-  id: string;
-  input: ObservabilityDashboardUpdateInputList;
-}
-export const ObservabilityDashboardUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: ObservabilityDashboardUpdateInputList,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation observabilityDashboardUpdate($id: String!, $input: [ObservabilityDashboardUpdateInput!]!) {\n  observabilityDashboardUpdate(id: $id, input: $input) {\n    __typename\n  }\n}",
-        operationName: "observabilityDashboardUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ObservabilityDashboardUpdateRequest",
-}) as any as S.Schema<ObservabilityDashboardUpdateRequest>;
-
-export type ObservabilityDashboardUpdateResponse = boolean;
-export const ObservabilityDashboardUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("observabilityDashboardUpdate"),
-    ),
-).annotate({
-  identifier: "ObservabilityDashboardUpdateResponse",
-}) as any as S.Schema<ObservabilityDashboardUpdateResponse>;
-
-export interface PasskeyDeleteRequest {
-  id: string;
-}
-export const PasskeyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation passkeyDelete($id: String!) {\n  passkeyDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "passkeyDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "PasskeyDeleteRequest",
-}) as any as S.Schema<PasskeyDeleteRequest>;
-
-export type PasskeyDeleteResponse = boolean;
-export const PasskeyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("passkeyDelete")),
-).annotate({
-  identifier: "PasskeyDeleteResponse",
-}) as any as S.Schema<PasskeyDeleteResponse>;
-
 export interface PasskeysRequest {
   after?: string | null;
   before?: string | null;
@@ -11268,6 +12647,66 @@ export const PasskeysResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PasskeysResponse",
 }) as any as S.Schema<PasskeysResponse>;
+
+export interface PatchEnvironmentRequest {
+  id: string;
+}
+export const PatchEnvironmentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "query environmentPatch($id: String!) {\n  environmentPatch(id: $id) {\n    appliedAt\n    appliedBy {\n      avatar\n      email\n      id\n      name\n      username\n    }\n    createdAt\n    environment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      iacPartials\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    environmentId\n    id\n    lastAppliedError\n    message\n    status\n    updatedAt\n  }\n}",
+        operationName: "environmentPatch",
+        type: "query",
+      }),
+    ),
+).annotate({
+  identifier: "PatchEnvironmentRequest",
+}) as any as S.Schema<PatchEnvironmentRequest>;
+
+export type EnvironmentPatchResponseAppliedBy =
+  EnvironmentPatchesResponseEdgesItemNodeAppliedBy;
+export const EnvironmentPatchResponseAppliedBy =
+  EnvironmentPatchesResponseEdgesItemNodeAppliedBy;
+
+export type EnvironmentPatchResponseEnvironment =
+  AdminVolumeInstancesForVolumeResultItemEnvironment;
+export const EnvironmentPatchResponseEnvironment =
+  AdminVolumeInstancesForVolumeResultItemEnvironment;
+
+/** Selection set for `environmentPatch` (unwrapped from the GraphQL `data` envelope). */
+export interface PatchEnvironmentResponse {
+  appliedAt: string | null;
+  appliedBy: EnvironmentPatchesResponseEdgesItemNodeAppliedBy | null;
+  createdAt: string;
+  environment: AdminVolumeInstancesForVolumeResultItemEnvironment;
+  environmentId: string;
+  id: string;
+  lastAppliedError: string | null;
+  message: string | null;
+  status: EnvironmentPatchStatus;
+  updatedAt: string;
+}
+export const PatchEnvironmentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    appliedAt: S.NullOr(S.String),
+    appliedBy: S.NullOr(EnvironmentPatchesResponseEdgesItemNodeAppliedBy),
+    createdAt: S.String,
+    environment: AdminVolumeInstancesForVolumeResultItemEnvironment,
+    environmentId: S.String,
+    id: S.String,
+    lastAppliedError: S.NullOr(S.String),
+    message: S.NullOr(S.String),
+    status: EnvironmentPatchStatus,
+    updatedAt: S.String,
+  }).pipe(T.ResponsePath("environmentPatch")),
+).annotate({
+  identifier: "PatchEnvironmentResponse",
+}) as any as S.Schema<PatchEnvironmentResponse>;
 
 export interface PitrHaClusterReplicationHealthRequest {
   environmentId: string;
@@ -11586,85 +13025,6 @@ export const PreferencesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "PreferencesResponse",
 }) as any as S.Schema<PreferencesResponse>;
 
-export interface PreferencesUpdateData {
-  buildFailedEmail?: boolean | null;
-  changelogEmail?: boolean | null;
-  communityEmail?: boolean | null;
-  deployCrashedEmail?: boolean | null;
-  ephemeralEnvironmentEmail?: boolean | null;
-  marketingEmail?: boolean | null;
-  subprocessorUpdatesEmail?: boolean | null;
-  templateQueueEmail?: boolean | null;
-  token?: string | null;
-  usageEmail?: boolean | null;
-}
-export const PreferencesUpdateData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildFailedEmail: S.optional(S.NullOr(S.Boolean)),
-    changelogEmail: S.optional(S.NullOr(S.Boolean)),
-    communityEmail: S.optional(S.NullOr(S.Boolean)),
-    deployCrashedEmail: S.optional(S.NullOr(S.Boolean)),
-    ephemeralEnvironmentEmail: S.optional(S.NullOr(S.Boolean)),
-    marketingEmail: S.optional(S.NullOr(S.Boolean)),
-    subprocessorUpdatesEmail: S.optional(S.NullOr(S.Boolean)),
-    templateQueueEmail: S.optional(S.NullOr(S.Boolean)),
-    token: S.optional(S.NullOr(S.String)),
-    usageEmail: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "PreferencesUpdateData",
-}) as any as S.Schema<PreferencesUpdateData>;
-
-export interface PreferencesUpdateRequest {
-  input: PreferencesUpdateData;
-}
-export const PreferencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: PreferencesUpdateData,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation preferencesUpdate($input: PreferencesUpdateData!) {\n  preferencesUpdate(input: $input) {\n    buildFailedEmail\n    changelogEmail\n    communityEmail\n    deployCrashedEmail\n    ephemeralEnvironmentEmail\n    id\n    marketingEmail\n    subprocessorUpdatesEmail\n    templateQueueEmail\n    usageEmail\n  }\n}",
-        operationName: "preferencesUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "PreferencesUpdateRequest",
-}) as any as S.Schema<PreferencesUpdateRequest>;
-
-/** Selection set for `preferencesUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface PreferencesUpdateResponse {
-  buildFailedEmail: boolean;
-  changelogEmail: boolean;
-  communityEmail: boolean;
-  deployCrashedEmail: boolean;
-  ephemeralEnvironmentEmail: boolean;
-  id: string;
-  marketingEmail: boolean;
-  subprocessorUpdatesEmail: boolean;
-  templateQueueEmail: boolean;
-  usageEmail: boolean;
-}
-export const PreferencesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildFailedEmail: S.Boolean,
-    changelogEmail: S.Boolean,
-    communityEmail: S.Boolean,
-    deployCrashedEmail: S.Boolean,
-    ephemeralEnvironmentEmail: S.Boolean,
-    id: S.String,
-    marketingEmail: S.Boolean,
-    subprocessorUpdatesEmail: S.Boolean,
-    templateQueueEmail: S.Boolean,
-    usageEmail: S.Boolean,
-  }).pipe(T.ResponsePath("preferencesUpdate")),
-).annotate({
-  identifier: "PreferencesUpdateResponse",
-}) as any as S.Schema<PreferencesUpdateResponse>;
-
 export interface PrivateNetworkCreateOrGetInput {
   environmentId: string;
   name: string;
@@ -11900,37 +13260,6 @@ export const PrivateNetworkEndpointCreateOrGetResponse =
     identifier: "PrivateNetworkEndpointCreateOrGetResponse",
   }) as any as S.Schema<PrivateNetworkEndpointCreateOrGetResponse>;
 
-export interface PrivateNetworkEndpointDeleteRequest {
-  id: string;
-}
-export const PrivateNetworkEndpointDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation privateNetworkEndpointDelete($id: String!) {\n  privateNetworkEndpointDelete(id: $id)\n}",
-        operationName: "privateNetworkEndpointDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "PrivateNetworkEndpointDeleteRequest",
-}) as any as S.Schema<PrivateNetworkEndpointDeleteRequest>;
-
-export type PrivateNetworkEndpointDeleteResponse = boolean;
-export const PrivateNetworkEndpointDeleteResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("privateNetworkEndpointDelete"),
-    ),
-).annotate({
-  identifier: "PrivateNetworkEndpointDeleteResponse",
-}) as any as S.Schema<PrivateNetworkEndpointDeleteResponse>;
-
 export interface PrivateNetworkEndpointNameAvailableRequest {
   environmentId: string;
   prefix: string;
@@ -12068,38 +13397,6 @@ export const PrivateNetworksResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PrivateNetworksResponse",
 }) as any as S.Schema<PrivateNetworksResponse>;
-
-export interface PrivateNetworksForEnvironmentDeleteRequest {
-  environmentId: string;
-}
-export const PrivateNetworksForEnvironmentDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation privateNetworksForEnvironmentDelete($environmentId: String!) {\n  privateNetworksForEnvironmentDelete(environmentId: $environmentId)\n}",
-          operationName: "privateNetworksForEnvironmentDelete",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "PrivateNetworksForEnvironmentDeleteRequest",
-  }) as any as S.Schema<PrivateNetworksForEnvironmentDeleteRequest>;
-
-export type PrivateNetworksForEnvironmentDeleteResponse = boolean;
-export const PrivateNetworksForEnvironmentDeleteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("privateNetworksForEnvironmentDelete"),
-    ),
-  ).annotate({
-    identifier: "PrivateNetworksForEnvironmentDeleteResponse",
-  }) as any as S.Schema<PrivateNetworksForEnvironmentDeleteResponse>;
 
 export interface ProjectRequest {
   id: string;
@@ -12338,17 +13635,17 @@ export const ProjectClaimResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
   ActiveProjectFeatureFlag,
 ) as any as S.Schema<ProjectClaimResponseFeatureFlagsList>;
 
-export type ProjectClaimResponseMembersItem = InviteCodeUseResponseMembersItem;
-export const ProjectClaimResponseMembersItem = InviteCodeUseResponseMembersItem;
+export type ProjectClaimResponseMembersItem = ProjectCreateResponseMembersItem;
+export const ProjectClaimResponseMembersItem = ProjectCreateResponseMembersItem;
 
 export type ProjectClaimResponseMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
+  Array<ProjectCreateResponseMembersItem>;
 export const ProjectClaimResponseMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
+  ProjectCreateResponseMembersItem,
 ) as any as S.Schema<ProjectClaimResponseMembersList>;
 
-export type ProjectClaimResponseTeam = InviteCodeUseResponseTeam;
-export const ProjectClaimResponseTeam = InviteCodeUseResponseTeam;
+export type ProjectClaimResponseTeam = ProjectCreateResponseTeam;
+export const ProjectClaimResponseTeam = ProjectCreateResponseTeam;
 
 export type ProjectClaimResponseWorkspaceUsersWithout2FAList = Array<string>;
 export const ProjectClaimResponseWorkspaceUsersWithout2FAList =
@@ -12431,7 +13728,7 @@ export interface ProjectClaimResponse {
   primaryEnvironmentId: string | null;
   subscriptionPlanLimit: unknown;
   subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
+  team: ProjectCreateResponseTeam | null;
   teamId: string | null;
   updatedAt: string;
   workspace: ProjectClaimResponseWorkspace | null;
@@ -12459,7 +13756,7 @@ export const ProjectClaimResponse = /*@__PURE__*/ S.suspend(() =>
     primaryEnvironmentId: S.NullOr(S.String),
     subscriptionPlanLimit: S.Unknown,
     subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
+    team: S.NullOr(ProjectCreateResponseTeam),
     teamId: S.NullOr(S.String),
     updatedAt: S.String,
     workspace: S.NullOr(ProjectClaimResponseWorkspace),
@@ -12511,9 +13808,6 @@ export const ProjectComplianceResponseMemberPermissionsList =
   /*@__PURE__*/ S.Array(
     ProjectComplianceResponseMemberPermissionsItem,
   ) as any as S.Schema<ProjectComplianceResponseMemberPermissionsList>;
-
-export type VolumeInstanceBackupScheduleKind = "DAILY" | "MONTHLY" | "WEEKLY";
-export const VolumeInstanceBackupScheduleKind = /*@__PURE__*/ S.String;
 
 export type ProjectComplianceResponseServiceBackupsItemSchedulesList =
   Array<VolumeInstanceBackupScheduleKind>;
@@ -12602,239 +13896,6 @@ export const ProjectComplianceResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectComplianceResponse",
 }) as any as S.Schema<ProjectComplianceResponse>;
-
-export interface ProjectCreateRepo {
-  branch: string;
-  fullRepoName: string;
-}
-export const ProjectCreateRepo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.String,
-    fullRepoName: S.String,
-  }),
-).annotate({
-  identifier: "ProjectCreateRepo",
-}) as any as S.Schema<ProjectCreateRepo>;
-
-export type PublicRuntime = "LEGACY" | "UNSPECIFIED" | "V2";
-export const PublicRuntime = /*@__PURE__*/ S.String;
-
-export interface ProjectCreateInput {
-  defaultEnvironmentName?: string | null;
-  description?: string | null;
-  isMonorepo?: boolean | null;
-  isPublic?: boolean | null;
-  name?: string | null;
-  prDeploys?: boolean | null;
-  repo?: ProjectCreateRepo | null;
-  runtime?: PublicRuntime | (string & {}) | null;
-  workspaceId?: string | null;
-}
-export const ProjectCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultEnvironmentName: S.optional(S.NullOr(S.String)),
-    description: S.optional(S.NullOr(S.String)),
-    isMonorepo: S.optional(S.NullOr(S.Boolean)),
-    isPublic: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.NullOr(S.String)),
-    prDeploys: S.optional(S.NullOr(S.Boolean)),
-    repo: S.optional(S.NullOr(ProjectCreateRepo)),
-    runtime: S.optional(S.NullOr(PublicRuntime)),
-    workspaceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ProjectCreateInput",
-}) as any as S.Schema<ProjectCreateInput>;
-
-export interface ProjectCreateRequest {
-  input: ProjectCreateInput;
-}
-export const ProjectCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ProjectCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectCreate($input: ProjectCreateInput!) {\n  projectCreate(input: $input) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      iacPartials\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
-        operationName: "projectCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectCreateRequest",
-}) as any as S.Schema<ProjectCreateRequest>;
-
-export type ProjectCreateResponseBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const ProjectCreateResponseBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type ProjectCreateResponseFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const ProjectCreateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActiveProjectFeatureFlag,
-) as any as S.Schema<ProjectCreateResponseFeatureFlagsList>;
-
-export type ProjectCreateResponseMembersItem = InviteCodeUseResponseMembersItem;
-export const ProjectCreateResponseMembersItem =
-  InviteCodeUseResponseMembersItem;
-
-export type ProjectCreateResponseMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
-export const ProjectCreateResponseMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
-) as any as S.Schema<ProjectCreateResponseMembersList>;
-
-export type ProjectCreateResponseTeam = InviteCodeUseResponseTeam;
-export const ProjectCreateResponseTeam = InviteCodeUseResponseTeam;
-
-export type ProjectCreateResponseWorkspaceUsersWithout2FAList = Array<string>;
-export const ProjectCreateResponseWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectCreateResponseWorkspaceUsersWithout2FAList>;
-
-export interface ProjectCreateResponseWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
-  createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
-  id: string;
-  name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  restrictProjectVisibilityToGroups: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: ProjectCreateResponseWorkspaceUsersWithout2FAList;
-}
-export const ProjectCreateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adoptionLevel: S.Number,
-    allowDeprecatedRegions: S.NullOr(S.Boolean),
-    avatar: S.NullOr(S.String),
-    banReason: S.NullOr(S.String),
-    createdAt: S.String,
-    discordRole: S.NullOr(S.String),
-    has2FAEnforcement: S.Boolean,
-    hasAutomaticDiagnosis: S.Boolean,
-    hasGuardrailsAccess: S.Boolean,
-    hasHipaaBAA: S.Boolean,
-    hasSAML: S.Boolean,
-    id: S.String,
-    name: S.String,
-    plan: Plan,
-    preferredRegion: S.NullOr(S.String),
-    redactedDueTo2FAPending: S.Boolean,
-    restrictProjectVisibilityToGroups: S.Boolean,
-    slackChannelId: S.NullOr(S.String),
-    subscriptionModel: SubscriptionModel,
-    subscriptionPlanLimit: S.NullOr(S.Unknown),
-    supportTierOverride: S.NullOr(SupportTierOverride),
-    updatedAt: S.String,
-    usersWithout2FA: ProjectCreateResponseWorkspaceUsersWithout2FAList,
-  }),
-).annotate({
-  identifier: "ProjectCreateResponseWorkspace",
-}) as any as S.Schema<ProjectCreateResponseWorkspace>;
-
-/** Selection set for `projectCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface ProjectCreateResponse {
-  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: ProjectCreateResponseFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  members: ProjectCreateResponseMembersList;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
-  teamId: string | null;
-  updatedAt: string;
-  workspace: ProjectCreateResponseWorkspace | null;
-  workspaceId: string | null;
-}
-export const ProjectCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironment: S.NullOr(
-      AdminVolumeInstancesForVolumeResultItemEnvironment,
-    ),
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ProjectCreateResponseFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    members: ProjectCreateResponseMembersList,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspace: S.NullOr(ProjectCreateResponseWorkspace),
-    workspaceId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("projectCreate")),
-).annotate({
-  identifier: "ProjectCreateResponse",
-}) as any as S.Schema<ProjectCreateResponse>;
-
-export interface ProjectDeleteRequest {
-  id: string;
-}
-export const ProjectDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectDelete($id: String!) {\n  projectDelete(id: $id)\n}",
-        operationName: "projectDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectDeleteRequest",
-}) as any as S.Schema<ProjectDeleteRequest>;
-
-export type ProjectDeleteResponse = boolean;
-export const ProjectDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("projectDelete")),
-).annotate({
-  identifier: "ProjectDeleteResponse",
-}) as any as S.Schema<ProjectDeleteResponse>;
 
 export interface ProjectFeatureFlagToggleInput {
   flag: ActiveProjectFeatureFlag | (string & {});
@@ -12973,110 +14034,6 @@ export const ProjectInvitationAcceptResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectInvitationAcceptResponse",
 }) as any as S.Schema<ProjectInvitationAcceptResponse>;
-
-export interface ProjectInvitee {
-  email: string;
-  role: ProjectRole | (string & {});
-}
-export const ProjectInvitee = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.String,
-    role: ProjectRole,
-  }),
-).annotate({ identifier: "ProjectInvitee" }) as any as S.Schema<ProjectInvitee>;
-
-export interface ProjectInvitationCreateRequest {
-  id: string;
-  input: ProjectInvitee;
-}
-export const ProjectInvitationCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: ProjectInvitee,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectInvitationCreate($id: String!, $input: ProjectInvitee!) {\n  projectInvitationCreate(id: $id, input: $input) {\n    email\n    expiresAt\n    id\n    inviter {\n      email\n      name\n    }\n    isExpired\n    project {\n      id\n      name\n    }\n  }\n}",
-        operationName: "projectInvitationCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectInvitationCreateRequest",
-}) as any as S.Schema<ProjectInvitationCreateRequest>;
-
-export interface ProjectInvitationCreateResponseInviter {
-  email: string;
-  name: string | null;
-}
-export const ProjectInvitationCreateResponseInviter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      email: S.String,
-      name: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "ProjectInvitationCreateResponseInviter",
-}) as any as S.Schema<ProjectInvitationCreateResponseInviter>;
-
-export type ProjectInvitationCreateResponseProject =
-  ApiTokenResponseWorkspacesItem;
-export const ProjectInvitationCreateResponseProject =
-  ApiTokenResponseWorkspacesItem;
-
-/** Selection set for `projectInvitationCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface ProjectInvitationCreateResponse {
-  email: string;
-  expiresAt: string;
-  id: string;
-  inviter: ProjectInvitationCreateResponseInviter | null;
-  isExpired: boolean;
-  project: ApiTokenResponseWorkspacesItem;
-}
-export const ProjectInvitationCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    email: S.String,
-    expiresAt: S.String,
-    id: S.String,
-    inviter: S.NullOr(ProjectInvitationCreateResponseInviter),
-    isExpired: S.Boolean,
-    project: ApiTokenResponseWorkspacesItem,
-  }).pipe(T.ResponsePath("projectInvitationCreate")),
-).annotate({
-  identifier: "ProjectInvitationCreateResponse",
-}) as any as S.Schema<ProjectInvitationCreateResponse>;
-
-export interface ProjectInvitationDeleteRequest {
-  id: string;
-}
-export const ProjectInvitationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectInvitationDelete($id: String!) {\n  projectInvitationDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "projectInvitationDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectInvitationDeleteRequest",
-}) as any as S.Schema<ProjectInvitationDeleteRequest>;
-
-export type ProjectInvitationDeleteResponse = boolean;
-export const ProjectInvitationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("projectInvitationDelete"),
-  ),
-).annotate({
-  identifier: "ProjectInvitationDeleteResponse",
-}) as any as S.Schema<ProjectInvitationDeleteResponse>;
 
 export interface ProjectInvitationResendRequest {
   id: string;
@@ -13451,13 +14408,13 @@ export const ProjectMemberRemoveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectMemberRemoveRequest",
 }) as any as S.Schema<ProjectMemberRemoveRequest>;
 
-export type ProjectMemberRemoveResultItem = InviteCodeUseResponseMembersItem;
-export const ProjectMemberRemoveResultItem = InviteCodeUseResponseMembersItem;
+export type ProjectMemberRemoveResultItem = ProjectCreateResponseMembersItem;
+export const ProjectMemberRemoveResultItem = ProjectCreateResponseMembersItem;
 
 export type ProjectMemberRemoveResultList =
-  Array<InviteCodeUseResponseMembersItem>;
+  Array<ProjectCreateResponseMembersItem>;
 export const ProjectMemberRemoveResultList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
+  ProjectCreateResponseMembersItem,
 ) as any as S.Schema<ProjectMemberRemoveResultList>;
 
 export type ProjectMemberRemoveResponse = ProjectMemberRemoveResultList;
@@ -13490,12 +14447,12 @@ export const ProjectMembersRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProjectMembersRequest",
 }) as any as S.Schema<ProjectMembersRequest>;
 
-export type ProjectMembersResultItem = InviteCodeUseResponseMembersItem;
-export const ProjectMembersResultItem = InviteCodeUseResponseMembersItem;
+export type ProjectMembersResultItem = ProjectCreateResponseMembersItem;
+export const ProjectMembersResultItem = ProjectCreateResponseMembersItem;
 
-export type ProjectMembersResultList = Array<InviteCodeUseResponseMembersItem>;
+export type ProjectMembersResultList = Array<ProjectCreateResponseMembersItem>;
 export const ProjectMembersResultList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
+  ProjectCreateResponseMembersItem,
 ) as any as S.Schema<ProjectMembersResultList>;
 
 export type ProjectMembersResponse = ProjectMembersResultList;
@@ -13507,49 +14464,6 @@ export const ProjectMembersResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectMembersResponse",
 }) as any as S.Schema<ProjectMembersResponse>;
-
-export type ProjectMemberUpdateInput = ProjectMemberAddInput;
-export const ProjectMemberUpdateInput = ProjectMemberAddInput;
-
-export interface ProjectMemberUpdateRequest {
-  input: ProjectMemberAddInput;
-}
-export const ProjectMemberUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ProjectMemberAddInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectMemberUpdate($input: ProjectMemberUpdateInput!) {\n  projectMemberUpdate(input: $input) {\n    avatar\n    email\n    id\n    name\n    role\n  }\n}",
-        operationName: "projectMemberUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectMemberUpdateRequest",
-}) as any as S.Schema<ProjectMemberUpdateRequest>;
-
-/** Selection set for `projectMemberUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface ProjectMemberUpdateResponse {
-  avatar: string | null;
-  email: string;
-  id: string;
-  name: string | null;
-  role: ProjectRole;
-}
-export const ProjectMemberUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.NullOr(S.String),
-    email: S.String,
-    id: S.String,
-    name: S.NullOr(S.String),
-    role: ProjectRole,
-  }).pipe(T.ResponsePath("projectMemberUpdate")),
-).annotate({
-  identifier: "ProjectMemberUpdateResponse",
-}) as any as S.Schema<ProjectMemberUpdateResponse>;
 
 export interface ProjectResourceAccessRequest {
   projectId: string;
@@ -13764,18 +14678,18 @@ export const ProjectsByIdsResultItemFeatureFlagsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ProjectsByIdsResultItemFeatureFlagsList>;
 
 export type ProjectsByIdsResultItemMembersItem =
-  InviteCodeUseResponseMembersItem;
+  ProjectCreateResponseMembersItem;
 export const ProjectsByIdsResultItemMembersItem =
-  InviteCodeUseResponseMembersItem;
+  ProjectCreateResponseMembersItem;
 
 export type ProjectsByIdsResultItemMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
+  Array<ProjectCreateResponseMembersItem>;
 export const ProjectsByIdsResultItemMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
+  ProjectCreateResponseMembersItem,
 ) as any as S.Schema<ProjectsByIdsResultItemMembersList>;
 
-export type ProjectsByIdsResultItemTeam = InviteCodeUseResponseTeam;
-export const ProjectsByIdsResultItemTeam = InviteCodeUseResponseTeam;
+export type ProjectsByIdsResultItemTeam = ProjectCreateResponseTeam;
+export const ProjectsByIdsResultItemTeam = ProjectCreateResponseTeam;
 
 export type ProjectsByIdsResultItemWorkspaceUsersWithout2FAList = Array<string>;
 export const ProjectsByIdsResultItemWorkspaceUsersWithout2FAList =
@@ -13857,7 +14771,7 @@ export interface ProjectsByIdsResultItem {
   primaryEnvironmentId: string | null;
   subscriptionPlanLimit: unknown;
   subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
+  team: ProjectCreateResponseTeam | null;
   teamId: string | null;
   updatedAt: string;
   workspace: ProjectsByIdsResultItemWorkspace | null;
@@ -13885,7 +14799,7 @@ export const ProjectsByIdsResultItem = /*@__PURE__*/ S.suspend(() =>
     primaryEnvironmentId: S.NullOr(S.String),
     subscriptionPlanLimit: S.Unknown,
     subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
+    team: S.NullOr(ProjectCreateResponseTeam),
     teamId: S.NullOr(S.String),
     updatedAt: S.String,
     workspace: S.NullOr(ProjectsByIdsResultItemWorkspace),
@@ -13909,96 +14823,6 @@ export const ProjectsByIdsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectsByIdsResponse",
 }) as any as S.Schema<ProjectsByIdsResponse>;
-
-export interface ProjectScheduleDeleteRequest {
-  id: string;
-}
-export const ProjectScheduleDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectScheduleDelete($id: String!) {\n  projectScheduleDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "projectScheduleDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectScheduleDeleteRequest",
-}) as any as S.Schema<ProjectScheduleDeleteRequest>;
-
-export type ProjectScheduleDeleteResponse = boolean;
-export const ProjectScheduleDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("projectScheduleDelete"),
-  ),
-).annotate({
-  identifier: "ProjectScheduleDeleteResponse",
-}) as any as S.Schema<ProjectScheduleDeleteResponse>;
-
-export interface ProjectScheduleDeleteCancelRequest {
-  id: string;
-}
-export const ProjectScheduleDeleteCancelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectScheduleDeleteCancel($id: String!) {\n  projectScheduleDeleteCancel(id: $id) {\n    __typename\n  }\n}",
-        operationName: "projectScheduleDeleteCancel",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectScheduleDeleteCancelRequest",
-}) as any as S.Schema<ProjectScheduleDeleteCancelRequest>;
-
-export type ProjectScheduleDeleteCancelResponse = boolean;
-export const ProjectScheduleDeleteCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("projectScheduleDeleteCancel"),
-  ),
-).annotate({
-  identifier: "ProjectScheduleDeleteCancelResponse",
-}) as any as S.Schema<ProjectScheduleDeleteCancelResponse>;
-
-export interface ProjectScheduleDeleteForceRequest {
-  id: string;
-}
-export const ProjectScheduleDeleteForceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectScheduleDeleteForce($id: String!) {\n  projectScheduleDeleteForce(id: $id) {\n    __typename\n  }\n}",
-        operationName: "projectScheduleDeleteForce",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectScheduleDeleteForceRequest",
-}) as any as S.Schema<ProjectScheduleDeleteForceRequest>;
-
-export type ProjectScheduleDeleteForceResponse = boolean;
-export const ProjectScheduleDeleteForceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("projectScheduleDeleteForce"),
-  ),
-).annotate({
-  identifier: "ProjectScheduleDeleteForceResponse",
-}) as any as S.Schema<ProjectScheduleDeleteForceResponse>;
 
 export interface ProjectServiceUsageRequest {
   /** Project ID cursor returned from the previous page. */
@@ -14182,75 +15006,6 @@ export const ProjectTokenResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectTokenResponse",
 }) as any as S.Schema<ProjectTokenResponse>;
-
-export interface ProjectTokenCreateInput {
-  environmentId: string;
-  name: string;
-  projectId: string;
-}
-export const ProjectTokenCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    name: S.String,
-    projectId: S.String,
-  }),
-).annotate({
-  identifier: "ProjectTokenCreateInput",
-}) as any as S.Schema<ProjectTokenCreateInput>;
-
-export interface ProjectTokenCreateRequest {
-  input: ProjectTokenCreateInput;
-}
-export const ProjectTokenCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ProjectTokenCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectTokenCreate($input: ProjectTokenCreateInput!) {\n  projectTokenCreate(input: $input) {\n    __typename\n  }\n}",
-        operationName: "projectTokenCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectTokenCreateRequest",
-}) as any as S.Schema<ProjectTokenCreateRequest>;
-
-export type ProjectTokenCreateResponse = string;
-export const ProjectTokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("projectTokenCreate")),
-).annotate({
-  identifier: "ProjectTokenCreateResponse",
-}) as any as S.Schema<ProjectTokenCreateResponse>;
-
-export interface ProjectTokenDeleteRequest {
-  id: string;
-}
-export const ProjectTokenDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectTokenDelete($id: String!) {\n  projectTokenDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "projectTokenDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectTokenDeleteRequest",
-}) as any as S.Schema<ProjectTokenDeleteRequest>;
-
-export type ProjectTokenDeleteResponse = boolean;
-export const ProjectTokenDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("projectTokenDelete")),
-).annotate({
-  identifier: "ProjectTokenDeleteResponse",
-}) as any as S.Schema<ProjectTokenDeleteResponse>;
 
 export interface ProjectTokensRequest {
   after?: string | null;
@@ -14528,196 +15283,6 @@ export const ProjectTransferInitiateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ProjectTransferInitiateResponse",
 }) as any as S.Schema<ProjectTransferInitiateResponse>;
-
-export interface ProjectUpdateInput {
-  baseEnvironmentId?: string | null;
-  /** Enable/disable pull request environments for PRs created by bots */
-  botPrEnvironments?: boolean | null;
-  description?: string | null;
-  /** Enable focused PR environments that only deploy services affected by changed files */
-  focusedPrEnvironments?: boolean | null;
-  isPublic?: boolean | null;
-  name?: string | null;
-  prDeploys?: boolean | null;
-}
-export const ProjectUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.optional(S.NullOr(S.String)),
-    botPrEnvironments: S.optional(S.NullOr(S.Boolean)),
-    description: S.optional(S.NullOr(S.String)),
-    focusedPrEnvironments: S.optional(S.NullOr(S.Boolean)),
-    isPublic: S.optional(S.NullOr(S.Boolean)),
-    name: S.optional(S.NullOr(S.String)),
-    prDeploys: S.optional(S.NullOr(S.Boolean)),
-  }),
-).annotate({
-  identifier: "ProjectUpdateInput",
-}) as any as S.Schema<ProjectUpdateInput>;
-
-export interface ProjectUpdateRequest {
-  id: string;
-  input: ProjectUpdateInput;
-}
-export const ProjectUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: ProjectUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation projectUpdate($id: String!, $input: ProjectUpdateInput!) {\n  projectUpdate(id: $id, input: $input) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      iacPartials\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
-        operationName: "projectUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ProjectUpdateRequest",
-}) as any as S.Schema<ProjectUpdateRequest>;
-
-export type ProjectUpdateResponseBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-export const ProjectUpdateResponseBaseEnvironment =
-  AdminVolumeInstancesForVolumeResultItemEnvironment;
-
-export type ProjectUpdateResponseFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const ProjectUpdateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActiveProjectFeatureFlag,
-) as any as S.Schema<ProjectUpdateResponseFeatureFlagsList>;
-
-export type ProjectUpdateResponseMembersItem = InviteCodeUseResponseMembersItem;
-export const ProjectUpdateResponseMembersItem =
-  InviteCodeUseResponseMembersItem;
-
-export type ProjectUpdateResponseMembersList =
-  Array<InviteCodeUseResponseMembersItem>;
-export const ProjectUpdateResponseMembersList = /*@__PURE__*/ S.Array(
-  InviteCodeUseResponseMembersItem,
-) as any as S.Schema<ProjectUpdateResponseMembersList>;
-
-export type ProjectUpdateResponseTeam = InviteCodeUseResponseTeam;
-export const ProjectUpdateResponseTeam = InviteCodeUseResponseTeam;
-
-export type ProjectUpdateResponseWorkspaceUsersWithout2FAList = Array<string>;
-export const ProjectUpdateResponseWorkspaceUsersWithout2FAList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ProjectUpdateResponseWorkspaceUsersWithout2FAList>;
-
-export interface ProjectUpdateResponseWorkspace {
-  adoptionLevel: number;
-  allowDeprecatedRegions: boolean | null;
-  avatar: string | null;
-  banReason: string | null;
-  createdAt: string;
-  discordRole: string | null;
-  has2FAEnforcement: boolean;
-  hasAutomaticDiagnosis: boolean;
-  hasGuardrailsAccess: boolean;
-  hasHipaaBAA: boolean;
-  hasSAML: boolean;
-  id: string;
-  name: string;
-  plan: Plan;
-  preferredRegion: string | null;
-  redactedDueTo2FAPending: boolean;
-  restrictProjectVisibilityToGroups: boolean;
-  slackChannelId: string | null;
-  subscriptionModel: SubscriptionModel;
-  subscriptionPlanLimit: unknown | null;
-  supportTierOverride: SupportTierOverride | null;
-  updatedAt: string;
-  usersWithout2FA: ProjectUpdateResponseWorkspaceUsersWithout2FAList;
-}
-export const ProjectUpdateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adoptionLevel: S.Number,
-    allowDeprecatedRegions: S.NullOr(S.Boolean),
-    avatar: S.NullOr(S.String),
-    banReason: S.NullOr(S.String),
-    createdAt: S.String,
-    discordRole: S.NullOr(S.String),
-    has2FAEnforcement: S.Boolean,
-    hasAutomaticDiagnosis: S.Boolean,
-    hasGuardrailsAccess: S.Boolean,
-    hasHipaaBAA: S.Boolean,
-    hasSAML: S.Boolean,
-    id: S.String,
-    name: S.String,
-    plan: Plan,
-    preferredRegion: S.NullOr(S.String),
-    redactedDueTo2FAPending: S.Boolean,
-    restrictProjectVisibilityToGroups: S.Boolean,
-    slackChannelId: S.NullOr(S.String),
-    subscriptionModel: SubscriptionModel,
-    subscriptionPlanLimit: S.NullOr(S.Unknown),
-    supportTierOverride: S.NullOr(SupportTierOverride),
-    updatedAt: S.String,
-    usersWithout2FA: ProjectUpdateResponseWorkspaceUsersWithout2FAList,
-  }),
-).annotate({
-  identifier: "ProjectUpdateResponseWorkspace",
-}) as any as S.Schema<ProjectUpdateResponseWorkspace>;
-
-/** Selection set for `projectUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface ProjectUpdateResponse {
-  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: ProjectUpdateResponseFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  members: ProjectUpdateResponseMembersList;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  team: InviteCodeUseResponseTeam | null;
-  teamId: string | null;
-  updatedAt: string;
-  workspace: ProjectUpdateResponseWorkspace | null;
-  workspaceId: string | null;
-}
-export const ProjectUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironment: S.NullOr(
-      AdminVolumeInstancesForVolumeResultItemEnvironment,
-    ),
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ProjectUpdateResponseFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    members: ProjectUpdateResponseMembersList,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    team: S.NullOr(InviteCodeUseResponseTeam),
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspace: S.NullOr(ProjectUpdateResponseWorkspace),
-    workspaceId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("projectUpdate")),
-).annotate({
-  identifier: "ProjectUpdateResponse",
-}) as any as S.Schema<ProjectUpdateResponse>;
 
 export interface ProjectWorkspaceMembersRequest {
   projectId: string;
@@ -15102,133 +15667,6 @@ export const RailwayDomainByNameResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RailwayDomainByNameResponse",
 }) as any as S.Schema<RailwayDomainByNameResponse>;
 
-export type RailwayDomainDnsRecordType =
-  | "A"
-  | "AAAA"
-  | "ANAME"
-  | "CNAME"
-  | "MX"
-  | "NS"
-  | "SRV"
-  | "TXT";
-export const RailwayDomainDnsRecordType = /*@__PURE__*/ S.String;
-
-export interface RailwayDomainDnsRecordCreateInput {
-  answer: string;
-  domain: string;
-  host: string;
-  priority?: number | null;
-  ttl?: number | null;
-  type: RailwayDomainDnsRecordType | (string & {});
-  workspaceId: string;
-}
-export const RailwayDomainDnsRecordCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    answer: S.String,
-    domain: S.String,
-    host: S.String,
-    priority: S.optional(S.NullOr(S.Number)),
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: RailwayDomainDnsRecordType,
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "RailwayDomainDnsRecordCreateInput",
-}) as any as S.Schema<RailwayDomainDnsRecordCreateInput>;
-
-export interface RailwayDomainDnsRecordCreateRequest {
-  input: RailwayDomainDnsRecordCreateInput;
-}
-export const RailwayDomainDnsRecordCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: RailwayDomainDnsRecordCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation railwayDomainDnsRecordCreate($input: RailwayDomainDnsRecordCreateInput!) {\n  railwayDomainDnsRecordCreate(input: $input) {\n    answer\n    domainName\n    fqdn\n    host\n    id\n    priority\n    ttl\n    type\n  }\n}",
-        operationName: "railwayDomainDnsRecordCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "RailwayDomainDnsRecordCreateRequest",
-}) as any as S.Schema<RailwayDomainDnsRecordCreateRequest>;
-
-/** Selection set for `railwayDomainDnsRecordCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface RailwayDomainDnsRecordCreateResponse {
-  answer: string;
-  domainName: string;
-  fqdn: string;
-  host: string;
-  id: number;
-  priority: number | null;
-  ttl: number;
-  type: RailwayDomainDnsRecordType;
-}
-export const RailwayDomainDnsRecordCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      answer: S.String,
-      domainName: S.String,
-      fqdn: S.String,
-      host: S.String,
-      id: S.Number,
-      priority: S.NullOr(S.Number),
-      ttl: S.Number,
-      type: RailwayDomainDnsRecordType,
-    }).pipe(T.ResponsePath("railwayDomainDnsRecordCreate")),
-).annotate({
-  identifier: "RailwayDomainDnsRecordCreateResponse",
-}) as any as S.Schema<RailwayDomainDnsRecordCreateResponse>;
-
-export interface RailwayDomainDnsRecordDeleteInput {
-  domain: string;
-  recordId: number;
-  workspaceId: string;
-}
-export const RailwayDomainDnsRecordDeleteInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String,
-    recordId: S.Number,
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "RailwayDomainDnsRecordDeleteInput",
-}) as any as S.Schema<RailwayDomainDnsRecordDeleteInput>;
-
-export interface RailwayDomainDnsRecordDeleteRequest {
-  input: RailwayDomainDnsRecordDeleteInput;
-}
-export const RailwayDomainDnsRecordDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: RailwayDomainDnsRecordDeleteInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation railwayDomainDnsRecordDelete($input: RailwayDomainDnsRecordDeleteInput!) {\n  railwayDomainDnsRecordDelete(input: $input) {\n    __typename\n  }\n}",
-        operationName: "railwayDomainDnsRecordDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "RailwayDomainDnsRecordDeleteRequest",
-}) as any as S.Schema<RailwayDomainDnsRecordDeleteRequest>;
-
-export type RailwayDomainDnsRecordDeleteResponse = boolean;
-export const RailwayDomainDnsRecordDeleteResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("railwayDomainDnsRecordDelete"),
-    ),
-).annotate({
-  identifier: "RailwayDomainDnsRecordDeleteResponse",
-}) as any as S.Schema<RailwayDomainDnsRecordDeleteResponse>;
-
 export interface RailwayDomainDnsRecordsRequest {
   domain: string;
   workspaceId: string;
@@ -15291,132 +15729,6 @@ export const RailwayDomainDnsRecordsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RailwayDomainDnsRecordsResponse",
 }) as any as S.Schema<RailwayDomainDnsRecordsResponse>;
-
-export interface RailwayDomainDnsRecordUpdateInput {
-  answer: string;
-  domain: string;
-  host: string;
-  priority?: number | null;
-  recordId: number;
-  ttl?: number | null;
-  type: RailwayDomainDnsRecordType | (string & {});
-  workspaceId: string;
-}
-export const RailwayDomainDnsRecordUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    answer: S.String,
-    domain: S.String,
-    host: S.String,
-    priority: S.optional(S.NullOr(S.Number)),
-    recordId: S.Number,
-    ttl: S.optional(S.NullOr(S.Number)),
-    type: RailwayDomainDnsRecordType,
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "RailwayDomainDnsRecordUpdateInput",
-}) as any as S.Schema<RailwayDomainDnsRecordUpdateInput>;
-
-export interface RailwayDomainDnsRecordUpdateRequest {
-  input: RailwayDomainDnsRecordUpdateInput;
-}
-export const RailwayDomainDnsRecordUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: RailwayDomainDnsRecordUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation railwayDomainDnsRecordUpdate($input: RailwayDomainDnsRecordUpdateInput!) {\n  railwayDomainDnsRecordUpdate(input: $input) {\n    answer\n    domainName\n    fqdn\n    host\n    id\n    priority\n    ttl\n    type\n  }\n}",
-        operationName: "railwayDomainDnsRecordUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "RailwayDomainDnsRecordUpdateRequest",
-}) as any as S.Schema<RailwayDomainDnsRecordUpdateRequest>;
-
-/** Selection set for `railwayDomainDnsRecordUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface RailwayDomainDnsRecordUpdateResponse {
-  answer: string;
-  domainName: string;
-  fqdn: string;
-  host: string;
-  id: number;
-  priority: number | null;
-  ttl: number;
-  type: RailwayDomainDnsRecordType;
-}
-export const RailwayDomainDnsRecordUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      answer: S.String,
-      domainName: S.String,
-      fqdn: S.String,
-      host: S.String,
-      id: S.Number,
-      priority: S.NullOr(S.Number),
-      ttl: S.Number,
-      type: RailwayDomainDnsRecordType,
-    }).pipe(T.ResponsePath("railwayDomainDnsRecordUpdate")),
-).annotate({
-  identifier: "RailwayDomainDnsRecordUpdateResponse",
-}) as any as S.Schema<RailwayDomainDnsRecordUpdateResponse>;
-
-export interface RailwayDomainNameserversSetInput {
-  id: string;
-  /** Hostnames of the nameservers to delegate to (2-13). Pass an empty list to reset to Name.com's account-level defaults for this domain. */
-  nameservers: StringList;
-}
-export const RailwayDomainNameserversSetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nameservers: StringList,
-  }),
-).annotate({
-  identifier: "RailwayDomainNameserversSetInput",
-}) as any as S.Schema<RailwayDomainNameserversSetInput>;
-
-export interface RailwayDomainNameserversSetRequest {
-  input: RailwayDomainNameserversSetInput;
-}
-export const RailwayDomainNameserversSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: RailwayDomainNameserversSetInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation railwayDomainNameserversSet($input: RailwayDomainNameserversSetInput!) {\n  railwayDomainNameserversSet(input: $input) {\n    isDefault\n    nameservers\n  }\n}",
-        operationName: "railwayDomainNameserversSet",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "RailwayDomainNameserversSetRequest",
-}) as any as S.Schema<RailwayDomainNameserversSetRequest>;
-
-export type RailwayDomainNameserversSetResponseNameserversList = Array<string>;
-export const RailwayDomainNameserversSetResponseNameserversList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RailwayDomainNameserversSetResponseNameserversList>;
-
-/** Selection set for `railwayDomainNameserversSet` (unwrapped from the GraphQL `data` envelope). */
-export interface RailwayDomainNameserversSetResponse {
-  isDefault: boolean;
-  nameservers: RailwayDomainNameserversSetResponseNameserversList;
-}
-export const RailwayDomainNameserversSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isDefault: S.Boolean,
-    nameservers: RailwayDomainNameserversSetResponseNameserversList,
-  }).pipe(T.ResponsePath("railwayDomainNameserversSet")),
-).annotate({
-  identifier: "RailwayDomainNameserversSetResponse",
-}) as any as S.Schema<RailwayDomainNameserversSetResponse>;
 
 export interface RailwayDomainsRequest {
   status?: RailwayDomainStatus | (string & {}) | null;
@@ -15522,143 +15834,6 @@ export const RailwayDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RailwayDomainsResponse",
 }) as any as S.Schema<RailwayDomainsResponse>;
 
-export interface RailwayDomainUpdateInput {
-  autoRenewEnabled?: boolean | null;
-  id: string;
-}
-export const RailwayDomainUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRenewEnabled: S.optional(S.NullOr(S.Boolean)),
-    id: S.String,
-  }),
-).annotate({
-  identifier: "RailwayDomainUpdateInput",
-}) as any as S.Schema<RailwayDomainUpdateInput>;
-
-export interface RailwayDomainUpdateRequest {
-  input: RailwayDomainUpdateInput;
-}
-export const RailwayDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: RailwayDomainUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation railwayDomainUpdate($input: RailwayDomainUpdateInput!) {\n  railwayDomainUpdate(input: $input) {\n    autoRenewEnabled\n    connectedServiceInstances {\n      environmentId\n      projectId\n      serviceId\n      serviceName\n    }\n    createdAt\n    domain\n    id\n    nameservers {\n      isDefault\n      nameservers\n    }\n    nextBillingDate\n    purchasePrice\n    registrationYears\n    renewalPrice\n    status\n    workspaceId\n    workspaceName\n  }\n}",
-        operationName: "railwayDomainUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "RailwayDomainUpdateRequest",
-}) as any as S.Schema<RailwayDomainUpdateRequest>;
-
-export type RailwayDomainUpdateResponseConnectedServiceInstancesItem =
-  RailwayDomainResponseConnectedServiceInstancesItem;
-export const RailwayDomainUpdateResponseConnectedServiceInstancesItem =
-  RailwayDomainResponseConnectedServiceInstancesItem;
-
-export type RailwayDomainUpdateResponseConnectedServiceInstancesList =
-  Array<RailwayDomainResponseConnectedServiceInstancesItem>;
-export const RailwayDomainUpdateResponseConnectedServiceInstancesList =
-  /*@__PURE__*/ S.Array(
-    RailwayDomainResponseConnectedServiceInstancesItem,
-  ) as any as S.Schema<RailwayDomainUpdateResponseConnectedServiceInstancesList>;
-
-export type RailwayDomainUpdateResponseNameserversNameserversList =
-  Array<string>;
-export const RailwayDomainUpdateResponseNameserversNameserversList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RailwayDomainUpdateResponseNameserversNameserversList>;
-
-export interface RailwayDomainUpdateResponseNameservers {
-  isDefault: boolean;
-  nameservers: RailwayDomainUpdateResponseNameserversNameserversList;
-}
-export const RailwayDomainUpdateResponseNameservers = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      isDefault: S.Boolean,
-      nameservers: RailwayDomainUpdateResponseNameserversNameserversList,
-    }),
-).annotate({
-  identifier: "RailwayDomainUpdateResponseNameservers",
-}) as any as S.Schema<RailwayDomainUpdateResponseNameservers>;
-
-/** Selection set for `railwayDomainUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface RailwayDomainUpdateResponse {
-  autoRenewEnabled: boolean;
-  connectedServiceInstances: RailwayDomainUpdateResponseConnectedServiceInstancesList;
-  createdAt: string;
-  domain: string;
-  id: string;
-  nameservers: RailwayDomainUpdateResponseNameservers;
-  nextBillingDate: string | null;
-  purchasePrice: number;
-  registrationYears: number;
-  renewalPrice: number;
-  status: RailwayDomainStatus;
-  workspaceId: string;
-  workspaceName: string | null;
-}
-export const RailwayDomainUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoRenewEnabled: S.Boolean,
-    connectedServiceInstances:
-      RailwayDomainUpdateResponseConnectedServiceInstancesList,
-    createdAt: S.String,
-    domain: S.String,
-    id: S.String,
-    nameservers: RailwayDomainUpdateResponseNameservers,
-    nextBillingDate: S.NullOr(S.String),
-    purchasePrice: S.Number,
-    registrationYears: S.Number,
-    renewalPrice: S.Number,
-    status: RailwayDomainStatus,
-    workspaceId: S.String,
-    workspaceName: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("railwayDomainUpdate")),
-).annotate({
-  identifier: "RailwayDomainUpdateResponse",
-}) as any as S.Schema<RailwayDomainUpdateResponse>;
-
-export interface RecoveryCodeGenerateRequest {}
-export const RecoveryCodeGenerateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({})
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation recoveryCodeGenerate {\n  recoveryCodeGenerate {\n    recoveryCodes\n  }\n}",
-        operationName: "recoveryCodeGenerate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "RecoveryCodeGenerateRequest",
-}) as any as S.Schema<RecoveryCodeGenerateRequest>;
-
-export type RecoveryCodeGenerateResponseRecoveryCodesList = Array<string>;
-export const RecoveryCodeGenerateResponseRecoveryCodesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecoveryCodeGenerateResponseRecoveryCodesList>;
-
-/** Selection set for `recoveryCodeGenerate` (unwrapped from the GraphQL `data` envelope). */
-export interface RecoveryCodeGenerateResponse {
-  recoveryCodes: RecoveryCodeGenerateResponseRecoveryCodesList;
-}
-export const RecoveryCodeGenerateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recoveryCodes: RecoveryCodeGenerateResponseRecoveryCodesList,
-  }).pipe(T.ResponsePath("recoveryCodeGenerate")),
-).annotate({
-  identifier: "RecoveryCodeGenerateResponse",
-}) as any as S.Schema<RecoveryCodeGenerateResponse>;
-
 export interface RecoveryCodeValidateInput {
   code: string;
   twoFactorLinkingKey?: string | null;
@@ -15752,62 +15927,6 @@ export const ReferralInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ReferralInfoResponse",
 }) as any as S.Schema<ReferralInfoResponse>;
-
-export interface ReferralInfoUpdateInput {
-  code: string;
-  workspaceId: string;
-}
-export const ReferralInfoUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "ReferralInfoUpdateInput",
-}) as any as S.Schema<ReferralInfoUpdateInput>;
-
-export interface ReferralInfoUpdateRequest {
-  input: ReferralInfoUpdateInput;
-}
-export const ReferralInfoUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ReferralInfoUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation referralInfoUpdate($input: ReferralInfoUpdateInput!) {\n  referralInfoUpdate(input: $input) {\n    code\n    id\n    referralStats {\n      credited\n      pending\n    }\n    status\n  }\n}",
-        operationName: "referralInfoUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ReferralInfoUpdateRequest",
-}) as any as S.Schema<ReferralInfoUpdateRequest>;
-
-export type ReferralInfoUpdateResponseReferralStats =
-  ReferralInfoResponseReferralStats;
-export const ReferralInfoUpdateResponseReferralStats =
-  ReferralInfoResponseReferralStats;
-
-/** Selection set for `referralInfoUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface ReferralInfoUpdateResponse {
-  code: string;
-  id: string;
-  referralStats: ReferralInfoResponseReferralStats;
-  status: string;
-}
-export const ReferralInfoUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    id: S.String,
-    referralStats: ReferralInfoResponseReferralStats,
-    status: S.String,
-  }).pipe(T.ResponsePath("referralInfoUpdate")),
-).annotate({
-  identifier: "ReferralInfoUpdateResponse",
-}) as any as S.Schema<ReferralInfoUpdateResponse>;
 
 export interface RegionsRequest {
   projectId?: string | null;
@@ -15922,6 +16041,117 @@ export const ResourceAccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceAccessResponse",
 }) as any as S.Schema<ResourceAccessResponse>;
 
+export interface RestartDeploymentRequest {
+  id: string;
+}
+export const RestartDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation deploymentRestart($id: String!) {\n  deploymentRestart(id: $id)\n}",
+        operationName: "deploymentRestart",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "RestartDeploymentRequest",
+}) as any as S.Schema<RestartDeploymentRequest>;
+
+export type RestartDeploymentResponse = boolean;
+export const RestartDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("deploymentRestart")),
+).annotate({
+  identifier: "RestartDeploymentResponse",
+}) as any as S.Schema<RestartDeploymentResponse>;
+
+export interface RestoreVolumeInstanceBackupRequest {
+  /** Optional: for HA cluster restores, service IDs of replicas that should also receive the backup */
+  replicaServiceIds?: StringList | null;
+  /** The id of the backup to be restored from */
+  volumeInstanceBackupId: string;
+  /** The id of the volume instance to be restored from */
+  volumeInstanceId: string;
+  /** Service IDs whose volumes should be wiped (replaced with fresh empty volumes) as part of this restore */
+  wipeServiceIds?: StringList | null;
+}
+export const RestoreVolumeInstanceBackupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    replicaServiceIds: S.optional(S.NullOr(StringList)),
+    volumeInstanceBackupId: S.String,
+    volumeInstanceId: S.String,
+    wipeServiceIds: S.optional(S.NullOr(StringList)),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeInstanceBackupRestore($replicaServiceIds: [String!], $volumeInstanceBackupId: String!, $volumeInstanceId: String!, $wipeServiceIds: [String!]) {\n  volumeInstanceBackupRestore(replicaServiceIds: $replicaServiceIds, volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId, wipeServiceIds: $wipeServiceIds) {\n    workflowId\n  }\n}",
+        operationName: "volumeInstanceBackupRestore",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "RestoreVolumeInstanceBackupRequest",
+}) as any as S.Schema<RestoreVolumeInstanceBackupRequest>;
+
+/** Selection set for `volumeInstanceBackupRestore` (unwrapped from the GraphQL `data` envelope). */
+export interface RestoreVolumeInstanceBackupResponse {
+  workflowId: string | null;
+}
+export const RestoreVolumeInstanceBackupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("volumeInstanceBackupRestore")),
+).annotate({
+  identifier: "RestoreVolumeInstanceBackupResponse",
+}) as any as S.Schema<RestoreVolumeInstanceBackupResponse>;
+
+export interface RestoreVolumeInstancePitrRequest {
+  /** Optional name for the new restored service. Defaults to '<source>-restored-YYYYMMDD-HHMM'. */
+  newServiceName?: string | null;
+  /** Opaque identifier for one archive history, from the multi-history picker when the source bucket holds more than one. It scopes both the restore-window pre-check and the restored fork's archive source, treating the selected history as frozen. Pass null to restore the source's current history. */
+  sourceRepoPath?: string | null;
+  /** Point-in-time target. Must be within the available restore window. */
+  targetTimestamp: string;
+  /** The id of the volume instance to restore from */
+  volumeInstanceId: string;
+}
+export const RestoreVolumeInstancePitrRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    newServiceName: S.optional(S.NullOr(S.String)),
+    sourceRepoPath: S.optional(S.NullOr(S.String)),
+    targetTimestamp: S.String,
+    volumeInstanceId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeInstancePITRRestore($newServiceName: String, $sourceRepoPath: String, $targetTimestamp: DateTime!, $volumeInstanceId: String!) {\n  volumeInstancePITRRestore(newServiceName: $newServiceName, sourceRepoPath: $sourceRepoPath, targetTimestamp: $targetTimestamp, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}",
+        operationName: "volumeInstancePITRRestore",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "RestoreVolumeInstancePitrRequest",
+}) as any as S.Schema<RestoreVolumeInstancePitrRequest>;
+
+/** Selection set for `volumeInstancePITRRestore` (unwrapped from the GraphQL `data` envelope). */
+export interface RestoreVolumeInstancePitrResponse {
+  workflowId: string | null;
+}
+export const RestoreVolumeInstancePitrResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workflowId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("volumeInstancePITRRestore")),
+).annotate({
+  identifier: "RestoreVolumeInstancePitrResponse",
+}) as any as S.Schema<RestoreVolumeInstancePitrResponse>;
+
 export interface SandboxRequest {
   environmentId: string;
   id: string;
@@ -15941,17 +16171,6 @@ export const SandboxRequest = /*@__PURE__*/ S.suspend(() =>
       }),
     ),
 ).annotate({ identifier: "SandboxRequest" }) as any as S.Schema<SandboxRequest>;
-
-export type SandboxNetworkIsolation = "ISOLATED" | "PRIVATE";
-export const SandboxNetworkIsolation = /*@__PURE__*/ S.String;
-
-export type SandboxStatus =
-  | "CREATING"
-  | "DESTROYED"
-  | "DESTROYING"
-  | "FAILED"
-  | "RUNNING";
-export const SandboxStatus = /*@__PURE__*/ S.String;
 
 /** Selection set for `sandbox` (unwrapped from the GraphQL `data` envelope). */
 export interface SandboxResponse {
@@ -15976,80 +16195,6 @@ export const SandboxResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SandboxResponse",
 }) as any as S.Schema<SandboxResponse>;
-
-export interface SandboxCheckpointCreateRequest {
-  environmentId: string;
-  name: string;
-  sandboxId: string;
-}
-export const SandboxCheckpointCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    name: S.String,
-    sandboxId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sandboxCheckpointCreate($environmentId: String!, $name: String!, $sandboxId: String!) {\n  sandboxCheckpointCreate(environmentId: $environmentId, name: $name, sandboxId: $sandboxId) {\n    createdAt\n    environmentId\n    id\n    key\n  }\n}",
-        operationName: "sandboxCheckpointCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxCheckpointCreateRequest",
-}) as any as S.Schema<SandboxCheckpointCreateRequest>;
-
-/** Selection set for `sandboxCheckpointCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface SandboxCheckpointCreateResponse {
-  createdAt: string;
-  environmentId: string;
-  id: string;
-  key: string;
-}
-export const SandboxCheckpointCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environmentId: S.String,
-    id: S.String,
-    key: S.String,
-  }).pipe(T.ResponsePath("sandboxCheckpointCreate")),
-).annotate({
-  identifier: "SandboxCheckpointCreateResponse",
-}) as any as S.Schema<SandboxCheckpointCreateResponse>;
-
-export interface SandboxCheckpointDeleteRequest {
-  environmentId: string;
-  id: string;
-}
-export const SandboxCheckpointDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sandboxCheckpointDelete($environmentId: String!, $id: ID!) {\n  sandboxCheckpointDelete(environmentId: $environmentId, id: $id) {\n    __typename\n  }\n}",
-        operationName: "sandboxCheckpointDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxCheckpointDeleteRequest",
-}) as any as S.Schema<SandboxCheckpointDeleteRequest>;
-
-export type SandboxCheckpointDeleteResponse = boolean;
-export const SandboxCheckpointDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("sandboxCheckpointDelete"),
-  ),
-).annotate({
-  identifier: "SandboxCheckpointDeleteResponse",
-}) as any as S.Schema<SandboxCheckpointDeleteResponse>;
 
 export interface SandboxCheckpointRenameRequest {
   environmentId: string;
@@ -16144,98 +16289,6 @@ export const SandboxCheckpointsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SandboxCheckpointsResponse",
 }) as any as S.Schema<SandboxCheckpointsResponse>;
-
-export interface SandboxTemplateInput {
-  /** Build a template by running these shell instructions on the base image. Mutually exclusive with name. */
-  instructions?: StringList | null;
-  /** Boot from a saved checkpoint with this name (one captured from a sandbox). Mutually exclusive with instructions. */
-  name?: string | null;
-  /** Placement region for the build sandbox. The resulting checkpoint lives in this region, and sandboxes created from the template boot there. Defaults to the platform default; only the cold build consults it (a built template's own region wins). */
-  region?: string | null;
-  /** Environment variables available to the template's build instructions. Values may contain Railway variable references (e.g. ${{shared.FOO}}, ${{ServiceName.BAR}}), resolved at build time. */
-  variables?: unknown | null;
-}
-export const SandboxTemplateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    instructions: S.optional(S.NullOr(StringList)),
-    name: S.optional(S.NullOr(S.String)),
-    region: S.optional(S.NullOr(S.String)),
-    variables: S.optional(S.NullOr(S.Unknown)),
-  }),
-).annotate({
-  identifier: "SandboxTemplateInput",
-}) as any as S.Schema<SandboxTemplateInput>;
-
-export interface SandboxCreateInput {
-  environmentId: string;
-  idleTimeoutMinutes?: number | null;
-  /** Network access for the sandbox. Defaults to ISOLATED (no private network access). */
-  networkIsolation?: SandboxNetworkIsolation | (string & {}) | null;
-  /** Region to place the sandbox in (e.g. us-west2, us-east4-eqdc4a). Defaults to the platform default region when omitted. */
-  region?: string | null;
-  /** Fork an existing running sandbox in this environment. Mutually exclusive with template. */
-  sourceSandboxId?: string | null;
-  template?: SandboxTemplateInput | null;
-  /** Environment variables baked into the sandbox, available to every command. Values may contain Railway variable references (e.g. ${{shared.FOO}}, ${{ServiceName.BAR}}), resolved at create time. */
-  variables?: unknown | null;
-}
-export const SandboxCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    idleTimeoutMinutes: S.optional(S.NullOr(S.Number)),
-    networkIsolation: S.optional(S.NullOr(SandboxNetworkIsolation)),
-    region: S.optional(S.NullOr(S.String)),
-    sourceSandboxId: S.optional(S.NullOr(S.String)),
-    template: S.optional(S.NullOr(SandboxTemplateInput)),
-    variables: S.optional(S.NullOr(S.Unknown)),
-  }),
-).annotate({
-  identifier: "SandboxCreateInput",
-}) as any as S.Schema<SandboxCreateInput>;
-
-export interface SandboxCreateRequest {
-  input: SandboxCreateInput;
-}
-export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: SandboxCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sandboxCreate($input: SandboxCreateInput!) {\n  sandboxCreate(input: $input) {\n    createdAt\n    environmentId\n    id\n    idleTimeoutMinutes\n    networkIsolation\n    region\n    status\n  }\n}",
-        operationName: "sandboxCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxCreateRequest",
-}) as any as S.Schema<SandboxCreateRequest>;
-
-/** Selection set for `sandboxCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface SandboxCreateResponse {
-  createdAt: string;
-  environmentId: string;
-  id: string;
-  idleTimeoutMinutes: number | null;
-  networkIsolation: SandboxNetworkIsolation;
-  region: string;
-  status: SandboxStatus;
-}
-export const SandboxCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    environmentId: S.String,
-    id: S.String,
-    idleTimeoutMinutes: S.NullOr(S.Number),
-    networkIsolation: SandboxNetworkIsolation,
-    region: S.String,
-    status: SandboxStatus,
-  }).pipe(T.ResponsePath("sandboxCreate")),
-).annotate({
-  identifier: "SandboxCreateResponse",
-}) as any as S.Schema<SandboxCreateResponse>;
 
 export interface SandboxDestroyRequest {
   environmentId: string;
@@ -16368,52 +16421,6 @@ export const SandboxesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SandboxesResponse",
 }) as any as S.Schema<SandboxesResponse>;
-
-export interface SandboxExecRequest {
-  command: string;
-  environmentId: string;
-  id: string;
-  timeoutSec?: number | null;
-}
-export const SandboxExecRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    command: S.String,
-    environmentId: S.String,
-    id: S.String,
-    timeoutSec: S.optional(S.NullOr(S.Number)),
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sandboxExec($command: String!, $environmentId: String!, $id: String!, $timeoutSec: Int) {\n  sandboxExec(command: $command, environmentId: $environmentId, id: $id, timeoutSec: $timeoutSec) {\n    exitCode\n    stderr\n    stdout\n    timedOut\n    truncated\n  }\n}",
-        operationName: "sandboxExec",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SandboxExecRequest",
-}) as any as S.Schema<SandboxExecRequest>;
-
-/** Selection set for `sandboxExec` (unwrapped from the GraphQL `data` envelope). */
-export interface SandboxExecResponse {
-  exitCode: number;
-  stderr: string;
-  stdout: string;
-  timedOut: boolean;
-  truncated: boolean;
-}
-export const SandboxExecResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exitCode: S.Number,
-    stderr: S.String,
-    stdout: S.String,
-    timedOut: S.Boolean,
-    truncated: S.Boolean,
-  }).pipe(T.ResponsePath("sandboxExec")),
-).annotate({
-  identifier: "SandboxExecResponse",
-}) as any as S.Schema<SandboxExecResponse>;
 
 export interface SandboxHeartbeatRequest {
   environmentId: string;
@@ -16830,215 +16837,6 @@ export const ServiceConnectResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceConnectResponse",
 }) as any as S.Schema<ServiceConnectResponse>;
 
-/** Private Docker registry credentials. Only available for Pro plan deployments. */
-export interface RegistryCredentialsInput {
-  password: string;
-  username: string;
-}
-export const RegistryCredentialsInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    password: S.String,
-    username: S.String,
-  }),
-).annotate({
-  identifier: "RegistryCredentialsInput",
-}) as any as S.Schema<RegistryCredentialsInput>;
-
-export interface ServiceSourceInput {
-  image?: string | null;
-  repo?: string | null;
-}
-export const ServiceSourceInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    image: S.optional(S.NullOr(S.String)),
-    repo: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ServiceSourceInput",
-}) as any as S.Schema<ServiceSourceInput>;
-
-export interface ServiceCreateInput {
-  branch?: string | null;
-  /** Environment ID. If the specified environment is a fork, the service will only be created in it. Otherwise it will created in all environments that are not forks of other environments */
-  environmentId?: string | null;
-  icon?: string | null;
-  name?: string | null;
-  projectId: string;
-  registryCredentials?: RegistryCredentialsInput | null;
-  source?: ServiceSourceInput | null;
-  /** Template ID. Required when templateServiceId is provided. */
-  templateId?: string | null;
-  /** Template service ID within the template's serializedConfig. Required when templateId is provided. */
-  templateServiceId?: string | null;
-  variables?: unknown | null;
-}
-export const ServiceCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    environmentId: S.optional(S.NullOr(S.String)),
-    icon: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    projectId: S.String,
-    registryCredentials: S.optional(S.NullOr(RegistryCredentialsInput)),
-    source: S.optional(S.NullOr(ServiceSourceInput)),
-    templateId: S.optional(S.NullOr(S.String)),
-    templateServiceId: S.optional(S.NullOr(S.String)),
-    variables: S.optional(S.NullOr(S.Unknown)),
-  }),
-).annotate({
-  identifier: "ServiceCreateInput",
-}) as any as S.Schema<ServiceCreateInput>;
-
-export interface ServiceCreateRequest {
-  input: ServiceCreateInput;
-}
-export const ServiceCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ServiceCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceCreate($input: ServiceCreateInput!) {\n  serviceCreate(input: $input) {\n    createdAt\n    deletedAt\n    featureFlags\n    groupId\n    hasHiddenRegistryCredentialsFromTemplate\n    icon\n    id\n    isRestricted\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    templateId\n    templateServiceId\n    templateThreadSlug\n    updatedAt\n  }\n}",
-        operationName: "serviceCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceCreateRequest",
-}) as any as S.Schema<ServiceCreateRequest>;
-
-export type ServiceCreateResponseFeatureFlagsList =
-  Array<ActiveServiceFeatureFlag>;
-export const ServiceCreateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActiveServiceFeatureFlag,
-) as any as S.Schema<ServiceCreateResponseFeatureFlagsList>;
-
-export type ServiceCreateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const ServiceCreateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<ServiceCreateResponseProjectFeatureFlagsList>;
-
-export interface ServiceCreateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: ServiceCreateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const ServiceCreateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ServiceCreateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ServiceCreateResponseProject",
-}) as any as S.Schema<ServiceCreateResponseProject>;
-
-/** Selection set for `serviceCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface ServiceCreateResponse {
-  createdAt: string;
-  deletedAt: string | null;
-  featureFlags: ServiceCreateResponseFeatureFlagsList;
-  groupId: string | null;
-  hasHiddenRegistryCredentialsFromTemplate: boolean;
-  icon: string | null;
-  id: string;
-  isRestricted: boolean;
-  name: string;
-  project: ServiceCreateResponseProject;
-  projectId: string;
-  templateId: string | null;
-  templateServiceId: string | null;
-  templateThreadSlug: string | null;
-  updatedAt: string;
-}
-export const ServiceCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    featureFlags: ServiceCreateResponseFeatureFlagsList,
-    groupId: S.NullOr(S.String),
-    hasHiddenRegistryCredentialsFromTemplate: S.Boolean,
-    icon: S.NullOr(S.String),
-    id: S.String,
-    isRestricted: S.Boolean,
-    name: S.String,
-    project: ServiceCreateResponseProject,
-    projectId: S.String,
-    templateId: S.NullOr(S.String),
-    templateServiceId: S.NullOr(S.String),
-    templateThreadSlug: S.NullOr(S.String),
-    updatedAt: S.String,
-  }).pipe(T.ResponsePath("serviceCreate")),
-).annotate({
-  identifier: "ServiceCreateResponse",
-}) as any as S.Schema<ServiceCreateResponse>;
-
-export interface ServiceDeleteRequest {
-  /** [Experimental] Environment ID. If the environment is a forked environment, the service will only be deleted in the specified environment, otherwise it will deleted in all environments that are not forks of other environments */
-  environmentId?: string | null;
-  id: string;
-}
-export const ServiceDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.NullOr(S.String)),
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceDelete($environmentId: String, $id: String!) {\n  serviceDelete(environmentId: $environmentId, id: $id)\n}",
-        operationName: "serviceDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceDeleteRequest",
-}) as any as S.Schema<ServiceDeleteRequest>;
-
-export type ServiceDeleteResponse = boolean;
-export const ServiceDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("serviceDelete")),
-).annotate({
-  identifier: "ServiceDeleteResponse",
-}) as any as S.Schema<ServiceDeleteResponse>;
-
 export interface ServiceDisconnectRequest {
   id: string;
 }
@@ -17192,154 +16990,6 @@ export const ServiceDomainAvailableResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceDomainAvailableResponse",
 }) as any as S.Schema<ServiceDomainAvailableResponse>;
-
-export interface ServiceDomainCreateInput {
-  environmentId: string;
-  serviceId: string;
-  targetPort?: number | null;
-}
-export const ServiceDomainCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    serviceId: S.String,
-    targetPort: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ServiceDomainCreateInput",
-}) as any as S.Schema<ServiceDomainCreateInput>;
-
-export interface ServiceDomainCreateRequest {
-  input: ServiceDomainCreateInput;
-}
-export const ServiceDomainCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ServiceDomainCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceDomainCreate($input: ServiceDomainCreateInput!) {\n  serviceDomainCreate(input: $input) {\n    cdnMode\n    createdAt\n    deletedAt\n    domain\n    edgeId\n    environmentId\n    id\n    newDomainName\n    newHostLabel\n    projectId\n    serviceId\n    suffix\n    syncStatus\n    targetPort\n    updatedAt\n  }\n}",
-        operationName: "serviceDomainCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceDomainCreateRequest",
-}) as any as S.Schema<ServiceDomainCreateRequest>;
-
-/** Selection set for `serviceDomainCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface ServiceDomainCreateResponse {
-  cdnMode: string | null;
-  createdAt: string | null;
-  deletedAt: string | null;
-  domain: string;
-  edgeId: string | null;
-  environmentId: string;
-  id: string;
-  newDomainName: string | null;
-  newHostLabel: string | null;
-  projectId: string | null;
-  serviceId: string;
-  suffix: string | null;
-  syncStatus: ServiceDomainSyncStatus;
-  targetPort: number | null;
-  updatedAt: string | null;
-}
-export const ServiceDomainCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cdnMode: S.NullOr(S.String),
-    createdAt: S.NullOr(S.String),
-    deletedAt: S.NullOr(S.String),
-    domain: S.String,
-    edgeId: S.NullOr(S.String),
-    environmentId: S.String,
-    id: S.String,
-    newDomainName: S.NullOr(S.String),
-    newHostLabel: S.NullOr(S.String),
-    projectId: S.NullOr(S.String),
-    serviceId: S.String,
-    suffix: S.NullOr(S.String),
-    syncStatus: ServiceDomainSyncStatus,
-    targetPort: S.NullOr(S.Number),
-    updatedAt: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("serviceDomainCreate")),
-).annotate({
-  identifier: "ServiceDomainCreateResponse",
-}) as any as S.Schema<ServiceDomainCreateResponse>;
-
-export interface ServiceDomainDeleteRequest {
-  id: string;
-}
-export const ServiceDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceDomainDelete($id: String!) {\n  serviceDomainDelete(id: $id)\n}",
-        operationName: "serviceDomainDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceDomainDeleteRequest",
-}) as any as S.Schema<ServiceDomainDeleteRequest>;
-
-export type ServiceDomainDeleteResponse = boolean;
-export const ServiceDomainDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("serviceDomainDelete")),
-).annotate({
-  identifier: "ServiceDomainDeleteResponse",
-}) as any as S.Schema<ServiceDomainDeleteResponse>;
-
-export interface ServiceDomainUpdateInput {
-  domain: string;
-  environmentId: string;
-  serviceDomainId: string;
-  serviceId: string;
-  targetPort?: number | null;
-}
-export const ServiceDomainUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domain: S.String,
-    environmentId: S.String,
-    serviceDomainId: S.String,
-    serviceId: S.String,
-    targetPort: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ServiceDomainUpdateInput",
-}) as any as S.Schema<ServiceDomainUpdateInput>;
-
-export interface ServiceDomainUpdateRequest {
-  input: ServiceDomainUpdateInput;
-}
-export const ServiceDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ServiceDomainUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input)\n}",
-        operationName: "serviceDomainUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceDomainUpdateRequest",
-}) as any as S.Schema<ServiceDomainUpdateRequest>;
-
-export type ServiceDomainUpdateResponse = boolean;
-export const ServiceDomainUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("serviceDomainUpdate")),
-).annotate({
-  identifier: "ServiceDomainUpdateResponse",
-}) as any as S.Schema<ServiceDomainUpdateResponse>;
 
 export interface ServiceFeatureFlagToggleInput {
   flag: ActiveServiceFeatureFlag | (string & {});
@@ -17737,58 +17387,6 @@ export const ServiceInstanceAutoDeployStatusResponse = /*@__PURE__*/ S.suspend(
   identifier: "ServiceInstanceAutoDeployStatusResponse",
 }) as any as S.Schema<ServiceInstanceAutoDeployStatusResponse>;
 
-export interface ServiceInstanceAutoDeployUpdateInput {
-  enabled: boolean;
-  environmentId: string;
-  projectId: string;
-  serviceId: string;
-}
-export const ServiceInstanceAutoDeployUpdateInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      environmentId: S.String,
-      projectId: S.String,
-      serviceId: S.String,
-    }),
-).annotate({
-  identifier: "ServiceInstanceAutoDeployUpdateInput",
-}) as any as S.Schema<ServiceInstanceAutoDeployUpdateInput>;
-
-export interface ServiceInstanceAutoDeployUpdateRequest {
-  input: ServiceInstanceAutoDeployUpdateInput;
-}
-export const ServiceInstanceAutoDeployUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      input: ServiceInstanceAutoDeployUpdateInput,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation serviceInstanceAutoDeployUpdate($input: ServiceInstanceAutoDeployUpdateInput!) {\n  serviceInstanceAutoDeployUpdate(input: $input) {\n    enabled\n  }\n}",
-          operationName: "serviceInstanceAutoDeployUpdate",
-          type: "mutation",
-        }),
-      ),
-).annotate({
-  identifier: "ServiceInstanceAutoDeployUpdateRequest",
-}) as any as S.Schema<ServiceInstanceAutoDeployUpdateRequest>;
-
-/** Selection set for `serviceInstanceAutoDeployUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface ServiceInstanceAutoDeployUpdateResponse {
-  enabled: boolean;
-}
-export const ServiceInstanceAutoDeployUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-    }).pipe(T.ResponsePath("serviceInstanceAutoDeployUpdate")),
-).annotate({
-  identifier: "ServiceInstanceAutoDeployUpdateResponse",
-}) as any as S.Schema<ServiceInstanceAutoDeployUpdateResponse>;
-
 export interface AutoUpdateScheduleWindowInput {
   /** UTC weekday: 0 (Sunday) through 6 (Saturday) */
   day: number;
@@ -17849,77 +17447,6 @@ export const ServiceInstanceAutoUpdateScheduleUpdateResponse =
   ).annotate({
     identifier: "ServiceInstanceAutoUpdateScheduleUpdateResponse",
   }) as any as S.Schema<ServiceInstanceAutoUpdateScheduleUpdateResponse>;
-
-export interface ServiceInstanceAutoUpdateSnoozeRequest {
-  environmentId: string;
-  serviceId: string;
-  /** How many days to skip, from now (default 7 — covers any weekly schedule shape). Between 1 and 14. */
-  snoozeDays?: number | null;
-}
-export const ServiceInstanceAutoUpdateSnoozeRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      environmentId: S.String,
-      serviceId: S.String,
-      snoozeDays: S.optional(S.NullOr(S.Number)),
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation serviceInstanceAutoUpdateSnooze($environmentId: String!, $serviceId: String!, $snoozeDays: Int) {\n  serviceInstanceAutoUpdateSnooze(environmentId: $environmentId, serviceId: $serviceId, snoozeDays: $snoozeDays) {\n    __typename\n  }\n}",
-          operationName: "serviceInstanceAutoUpdateSnooze",
-          type: "mutation",
-        }),
-      ),
-).annotate({
-  identifier: "ServiceInstanceAutoUpdateSnoozeRequest",
-}) as any as S.Schema<ServiceInstanceAutoUpdateSnoozeRequest>;
-
-export type ServiceInstanceAutoUpdateSnoozeResponse = boolean;
-export const ServiceInstanceAutoUpdateSnoozeResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("serviceInstanceAutoUpdateSnooze"),
-    ),
-).annotate({
-  identifier: "ServiceInstanceAutoUpdateSnoozeResponse",
-}) as any as S.Schema<ServiceInstanceAutoUpdateSnoozeResponse>;
-
-export interface ServiceInstanceAutoUpdateSnoozeClearRequest {
-  environmentId: string;
-  serviceId: string;
-}
-export const ServiceInstanceAutoUpdateSnoozeClearRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      environmentId: S.String,
-      serviceId: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation serviceInstanceAutoUpdateSnoozeClear($environmentId: String!, $serviceId: String!) {\n  serviceInstanceAutoUpdateSnoozeClear(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}",
-          operationName: "serviceInstanceAutoUpdateSnoozeClear",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "ServiceInstanceAutoUpdateSnoozeClearRequest",
-  }) as any as S.Schema<ServiceInstanceAutoUpdateSnoozeClearRequest>;
-
-export type ServiceInstanceAutoUpdateSnoozeClearResponse = boolean;
-export const ServiceInstanceAutoUpdateSnoozeClearResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("serviceInstanceAutoUpdateSnoozeClear"),
-    ),
-  ).annotate({
-    identifier: "ServiceInstanceAutoUpdateSnoozeClearResponse",
-  }) as any as S.Schema<ServiceInstanceAutoUpdateSnoozeClearResponse>;
 
 export interface ServiceInstanceDeployRequest {
   commitSha?: string | null;
@@ -18088,55 +17615,6 @@ export const ServiceInstanceLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceInstanceLimitsResponse",
 }) as any as S.Schema<ServiceInstanceLimitsResponse>;
 
-export interface ServiceInstanceLimitsUpdateInput {
-  environmentId: string;
-  /** Amount of memory in GB to allocate to the service instance */
-  memoryGB?: number | null;
-  serviceId: string;
-  /** Number of vCPUs to allocate to the service instance */
-  vCPUs?: number | null;
-}
-export const ServiceInstanceLimitsUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    memoryGB: S.optional(S.NullOr(S.Number)),
-    serviceId: S.String,
-    vCPUs: S.optional(S.NullOr(S.Number)),
-  }),
-).annotate({
-  identifier: "ServiceInstanceLimitsUpdateInput",
-}) as any as S.Schema<ServiceInstanceLimitsUpdateInput>;
-
-export interface ServiceInstanceLimitsUpdateRequest {
-  input: ServiceInstanceLimitsUpdateInput;
-}
-export const ServiceInstanceLimitsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: ServiceInstanceLimitsUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceInstanceLimitsUpdate($input: ServiceInstanceLimitsUpdateInput!) {\n  serviceInstanceLimitsUpdate(input: $input) {\n    __typename\n  }\n}",
-        operationName: "serviceInstanceLimitsUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceInstanceLimitsUpdateRequest",
-}) as any as S.Schema<ServiceInstanceLimitsUpdateRequest>;
-
-export type ServiceInstanceLimitsUpdateResponse = boolean;
-export const ServiceInstanceLimitsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("serviceInstanceLimitsUpdate"),
-  ),
-).annotate({
-  identifier: "ServiceInstanceLimitsUpdateResponse",
-}) as any as S.Schema<ServiceInstanceLimitsUpdateResponse>;
-
 export interface ServiceInstanceRedeployRequest {
   environmentId: string;
   serviceId: string;
@@ -18168,98 +17646,6 @@ export const ServiceInstanceRedeployResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ServiceInstanceRedeployResponse",
 }) as any as S.Schema<ServiceInstanceRedeployResponse>;
-
-export interface ServiceInstanceUpdateInput {
-  buildCommand?: string | null;
-  builder?: Builder | (string & {}) | null;
-  cronSchedule?: string | null;
-  dockerfilePath?: string | null;
-  drainingSeconds?: number | null;
-  healthcheckPath?: string | null;
-  healthcheckTimeout?: number | null;
-  ipv6EgressEnabled?: boolean | null;
-  multiRegionConfig?: unknown | null;
-  nixpacksPlan?: unknown | null;
-  numReplicas?: number | null;
-  overlapSeconds?: number | null;
-  preDeployCommand?: StringList | null;
-  preDeployTimeoutSeconds?: number | null;
-  railwayConfigFile?: string | null;
-  region?: string | null;
-  registryCredentials?: RegistryCredentialsInput | null;
-  restartPolicyMaxRetries?: number | null;
-  restartPolicyType?: RestartPolicyType | (string & {}) | null;
-  rootDirectory?: string | null;
-  sleepApplication?: boolean | null;
-  source?: ServiceSourceInput | null;
-  startCommand?: string | null;
-  watchPatterns?: StringList | null;
-}
-export const ServiceInstanceUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildCommand: S.optional(S.NullOr(S.String)),
-    builder: S.optional(S.NullOr(Builder)),
-    cronSchedule: S.optional(S.NullOr(S.String)),
-    dockerfilePath: S.optional(S.NullOr(S.String)),
-    drainingSeconds: S.optional(S.NullOr(S.Number)),
-    healthcheckPath: S.optional(S.NullOr(S.String)),
-    healthcheckTimeout: S.optional(S.NullOr(S.Number)),
-    ipv6EgressEnabled: S.optional(S.NullOr(S.Boolean)),
-    multiRegionConfig: S.optional(S.NullOr(S.Unknown)),
-    nixpacksPlan: S.optional(S.NullOr(S.Unknown)),
-    numReplicas: S.optional(S.NullOr(S.Number)),
-    overlapSeconds: S.optional(S.NullOr(S.Number)),
-    preDeployCommand: S.optional(S.NullOr(StringList)),
-    preDeployTimeoutSeconds: S.optional(S.NullOr(S.Number)),
-    railwayConfigFile: S.optional(S.NullOr(S.String)),
-    region: S.optional(S.NullOr(S.String)),
-    registryCredentials: S.optional(S.NullOr(RegistryCredentialsInput)),
-    restartPolicyMaxRetries: S.optional(S.NullOr(S.Number)),
-    restartPolicyType: S.optional(S.NullOr(RestartPolicyType)),
-    rootDirectory: S.optional(S.NullOr(S.String)),
-    sleepApplication: S.optional(S.NullOr(S.Boolean)),
-    source: S.optional(S.NullOr(ServiceSourceInput)),
-    startCommand: S.optional(S.NullOr(S.String)),
-    watchPatterns: S.optional(S.NullOr(StringList)),
-  }),
-).annotate({
-  identifier: "ServiceInstanceUpdateInput",
-}) as any as S.Schema<ServiceInstanceUpdateInput>;
-
-export interface ServiceInstanceUpdateRequest {
-  /** [Experimental] Environment ID. If the environment is a fork, the service will only be updated in it. Otherwise it will updated in all environments that are not forks of other environments */
-  environmentId?: string | null;
-  input: ServiceInstanceUpdateInput;
-  serviceId: string;
-}
-export const ServiceInstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.NullOr(S.String)),
-    input: ServiceInstanceUpdateInput,
-    serviceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}",
-        operationName: "serviceInstanceUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceInstanceUpdateRequest",
-}) as any as S.Schema<ServiceInstanceUpdateRequest>;
-
-export type ServiceInstanceUpdateResponse = boolean;
-export const ServiceInstanceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("serviceInstanceUpdate"),
-  ),
-).annotate({
-  identifier: "ServiceInstanceUpdateResponse",
-}) as any as S.Schema<ServiceInstanceUpdateResponse>;
 
 export interface ServiceInstanceVulnRemediationDismissRequest {
   environmentId: string;
@@ -18451,168 +17837,6 @@ export const ServiceRemoveUpstreamUrlResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ServiceRemoveUpstreamUrlResponse",
 }) as any as S.Schema<ServiceRemoveUpstreamUrlResponse>;
 
-export interface ServiceUpdateInput {
-  icon?: string | null;
-  name?: string | null;
-}
-export const ServiceUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    icon: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "ServiceUpdateInput",
-}) as any as S.Schema<ServiceUpdateInput>;
-
-export interface ServiceUpdateRequest {
-  id: string;
-  input: ServiceUpdateInput;
-}
-export const ServiceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: ServiceUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation serviceUpdate($id: String!, $input: ServiceUpdateInput!) {\n  serviceUpdate(id: $id, input: $input) {\n    createdAt\n    deletedAt\n    featureFlags\n    groupId\n    hasHiddenRegistryCredentialsFromTemplate\n    icon\n    id\n    isRestricted\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    templateId\n    templateServiceId\n    templateThreadSlug\n    updatedAt\n  }\n}",
-        operationName: "serviceUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "ServiceUpdateRequest",
-}) as any as S.Schema<ServiceUpdateRequest>;
-
-export type ServiceUpdateResponseFeatureFlagsList =
-  Array<ActiveServiceFeatureFlag>;
-export const ServiceUpdateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
-  ActiveServiceFeatureFlag,
-) as any as S.Schema<ServiceUpdateResponseFeatureFlagsList>;
-
-export type ServiceUpdateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const ServiceUpdateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<ServiceUpdateResponseProjectFeatureFlagsList>;
-
-export interface ServiceUpdateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: ServiceUpdateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const ServiceUpdateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: ServiceUpdateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "ServiceUpdateResponseProject",
-}) as any as S.Schema<ServiceUpdateResponseProject>;
-
-/** Selection set for `serviceUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface ServiceUpdateResponse {
-  createdAt: string;
-  deletedAt: string | null;
-  featureFlags: ServiceUpdateResponseFeatureFlagsList;
-  groupId: string | null;
-  hasHiddenRegistryCredentialsFromTemplate: boolean;
-  icon: string | null;
-  id: string;
-  isRestricted: boolean;
-  name: string;
-  project: ServiceUpdateResponseProject;
-  projectId: string;
-  templateId: string | null;
-  templateServiceId: string | null;
-  templateThreadSlug: string | null;
-  updatedAt: string;
-}
-export const ServiceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    featureFlags: ServiceUpdateResponseFeatureFlagsList,
-    groupId: S.NullOr(S.String),
-    hasHiddenRegistryCredentialsFromTemplate: S.Boolean,
-    icon: S.NullOr(S.String),
-    id: S.String,
-    isRestricted: S.Boolean,
-    name: S.String,
-    project: ServiceUpdateResponseProject,
-    projectId: S.String,
-    templateId: S.NullOr(S.String),
-    templateServiceId: S.NullOr(S.String),
-    templateThreadSlug: S.NullOr(S.String),
-    updatedAt: S.String,
-  }).pipe(T.ResponsePath("serviceUpdate")),
-).annotate({
-  identifier: "ServiceUpdateResponse",
-}) as any as S.Schema<ServiceUpdateResponse>;
-
-export interface SessionDeleteRequest {
-  id: string;
-}
-export const SessionDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sessionDelete($id: String!) {\n  sessionDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "sessionDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SessionDeleteRequest",
-}) as any as S.Schema<SessionDeleteRequest>;
-
-export type SessionDeleteResponse = boolean;
-export const SessionDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("sessionDelete")),
-).annotate({
-  identifier: "SessionDeleteResponse",
-}) as any as S.Schema<SessionDeleteResponse>;
-
 export interface SessionsRequest {
   after?: string | null;
   before?: string | null;
@@ -18699,6 +17923,275 @@ export const SessionsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SessionsResponse",
 }) as any as S.Schema<SessionsResponse>;
+
+export interface SetAgentUsageLimitInput {
+  hardLimitCents: number;
+  softLimitCents?: number | null;
+  workspaceId: string;
+}
+export const SetAgentUsageLimitInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hardLimitCents: S.Number,
+    softLimitCents: S.optional(S.NullOr(S.Number)),
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "SetAgentUsageLimitInput",
+}) as any as S.Schema<SetAgentUsageLimitInput>;
+
+export interface SetAgentUsageLimitRequest {
+  input: SetAgentUsageLimitInput;
+}
+export const SetAgentUsageLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: SetAgentUsageLimitInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation agentUsageLimitSet($input: AgentUsageLimitSetInput!) {\n  agentUsageLimitSet(input: $input) {\n    __typename\n  }\n}",
+        operationName: "agentUsageLimitSet",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "SetAgentUsageLimitRequest",
+}) as any as S.Schema<SetAgentUsageLimitRequest>;
+
+export type SetAgentUsageLimitResponse = boolean;
+export const SetAgentUsageLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("agentUsageLimitSet")),
+).annotate({
+  identifier: "SetAgentUsageLimitResponse",
+}) as any as S.Schema<SetAgentUsageLimitResponse>;
+
+export interface SetEnvironmentApplyChangeRequest {
+  /** Snapshot token from Environment.configEtag the plan was computed against. When set, the apply is rejected if the environment has changed since. */
+  baseConfigEtag?: string | null;
+  commitMessage?: string | null;
+  environmentId: string;
+  input: unknown;
+  /** Defaults to true for compatibility. Async-capable clients set false and poll environmentChangeSetApply. */
+  waitForCompletion?: boolean | null;
+}
+export const SetEnvironmentApplyChangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseConfigEtag: S.optional(S.NullOr(S.String)),
+    commitMessage: S.optional(S.NullOr(S.String)),
+    environmentId: S.String,
+    input: S.Unknown,
+    waitForCompletion: S.optional(S.NullOr(S.Boolean)),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation environmentApplyChangeSet($baseConfigEtag: String, $commitMessage: String, $environmentId: String!, $input: JSON!, $waitForCompletion: Boolean) {\n  environmentApplyChangeSet(baseConfigEtag: $baseConfigEtag, commitMessage: $commitMessage, environmentId: $environmentId, input: $input, waitForCompletion: $waitForCompletion) {\n    changes {\n      kind\n      outputs\n      path\n      status\n      summary\n    }\n    deploymentId\n    diagnostics\n    id\n    stagedPatchId\n    status\n  }\n}",
+        operationName: "environmentApplyChangeSet",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "SetEnvironmentApplyChangeRequest",
+}) as any as S.Schema<SetEnvironmentApplyChangeRequest>;
+
+export interface EnvironmentApplyChangeSetResponseChangesItem {
+  kind: string;
+  outputs: unknown | null;
+  path: string | null;
+  status: string;
+  summary: string | null;
+}
+export const EnvironmentApplyChangeSetResponseChangesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kind: S.String,
+      outputs: S.NullOr(S.Unknown),
+      path: S.NullOr(S.String),
+      status: S.String,
+      summary: S.NullOr(S.String),
+    }),
+  ).annotate({
+    identifier: "EnvironmentApplyChangeSetResponseChangesItem",
+  }) as any as S.Schema<EnvironmentApplyChangeSetResponseChangesItem>;
+
+export type EnvironmentApplyChangeSetResponseChangesList =
+  Array<EnvironmentApplyChangeSetResponseChangesItem>;
+export const EnvironmentApplyChangeSetResponseChangesList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentApplyChangeSetResponseChangesItem,
+  ) as any as S.Schema<EnvironmentApplyChangeSetResponseChangesList>;
+
+/** Selection set for `environmentApplyChangeSet` (unwrapped from the GraphQL `data` envelope). */
+export interface SetEnvironmentApplyChangeResponse {
+  changes: EnvironmentApplyChangeSetResponseChangesList;
+  deploymentId: string | null;
+  diagnostics: unknown;
+  id: string;
+  stagedPatchId: string | null;
+  status: string;
+}
+export const SetEnvironmentApplyChangeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changes: EnvironmentApplyChangeSetResponseChangesList,
+    deploymentId: S.NullOr(S.String),
+    diagnostics: S.Unknown,
+    id: S.String,
+    stagedPatchId: S.NullOr(S.String),
+    status: S.String,
+  }).pipe(T.ResponsePath("environmentApplyChangeSet")),
+).annotate({
+  identifier: "SetEnvironmentApplyChangeResponse",
+}) as any as S.Schema<SetEnvironmentApplyChangeResponse>;
+
+export interface SetEnvironmentChangeApplyRequest {
+  environmentId: string;
+  id: string;
+}
+export const SetEnvironmentChangeApplyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "query environmentChangeSetApply($environmentId: String!, $id: String!) {\n  environmentChangeSetApply(environmentId: $environmentId, id: $id) {\n    changes {\n      kind\n      outputs\n      path\n      status\n      summary\n    }\n    deploymentId\n    diagnostics\n    id\n    stagedPatchId\n    status\n  }\n}",
+        operationName: "environmentChangeSetApply",
+        type: "query",
+      }),
+    ),
+).annotate({
+  identifier: "SetEnvironmentChangeApplyRequest",
+}) as any as S.Schema<SetEnvironmentChangeApplyRequest>;
+
+export type EnvironmentChangeSetApplyResponseChangesItem =
+  EnvironmentApplyChangeSetResponseChangesItem;
+export const EnvironmentChangeSetApplyResponseChangesItem =
+  EnvironmentApplyChangeSetResponseChangesItem;
+
+export type EnvironmentChangeSetApplyResponseChangesList =
+  Array<EnvironmentApplyChangeSetResponseChangesItem>;
+export const EnvironmentChangeSetApplyResponseChangesList =
+  /*@__PURE__*/ S.Array(
+    EnvironmentApplyChangeSetResponseChangesItem,
+  ) as any as S.Schema<EnvironmentChangeSetApplyResponseChangesList>;
+
+/** Selection set for `environmentChangeSetApply` (unwrapped from the GraphQL `data` envelope). */
+export interface SetEnvironmentChangeApplyResponse {
+  changes: EnvironmentChangeSetApplyResponseChangesList;
+  deploymentId: string | null;
+  diagnostics: unknown;
+  id: string;
+  stagedPatchId: string | null;
+  status: string;
+}
+export const SetEnvironmentChangeApplyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changes: EnvironmentChangeSetApplyResponseChangesList,
+    deploymentId: S.NullOr(S.String),
+    diagnostics: S.Unknown,
+    id: S.String,
+    stagedPatchId: S.NullOr(S.String),
+    status: S.String,
+  }).pipe(T.ResponsePath("environmentChangeSetApply")),
+).annotate({
+  identifier: "SetEnvironmentChangeApplyResponse",
+}) as any as S.Schema<SetEnvironmentChangeApplyResponse>;
+
+export interface SetEnvironmentPreviewChangeRequest {
+  environmentId: string;
+  input: unknown;
+}
+export const SetEnvironmentPreviewChangeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    input: S.Unknown,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation environmentPreviewChangeSet($environmentId: String!, $input: JSON!) {\n  environmentPreviewChangeSet(environmentId: $environmentId, input: $input) {\n    changeSet\n    diagnostics\n    effects\n  }\n}",
+        operationName: "environmentPreviewChangeSet",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "SetEnvironmentPreviewChangeRequest",
+}) as any as S.Schema<SetEnvironmentPreviewChangeRequest>;
+
+/** Selection set for `environmentPreviewChangeSet` (unwrapped from the GraphQL `data` envelope). */
+export interface SetEnvironmentPreviewChangeResponse {
+  changeSet: unknown;
+  diagnostics: unknown;
+  effects: unknown;
+}
+export const SetEnvironmentPreviewChangeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    changeSet: S.Unknown,
+    diagnostics: S.Unknown,
+    effects: S.Unknown,
+  }).pipe(T.ResponsePath("environmentPreviewChangeSet")),
+).annotate({
+  identifier: "SetEnvironmentPreviewChangeResponse",
+}) as any as S.Schema<SetEnvironmentPreviewChangeResponse>;
+
+export interface SetRailwayDomainNameserverInput {
+  id: string;
+  /** Hostnames of the nameservers to delegate to (2-13). Pass an empty list to reset to Name.com's account-level defaults for this domain. */
+  nameservers: StringList;
+}
+export const SetRailwayDomainNameserverInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    nameservers: StringList,
+  }),
+).annotate({
+  identifier: "SetRailwayDomainNameserverInput",
+}) as any as S.Schema<SetRailwayDomainNameserverInput>;
+
+export interface SetRailwayDomainNameserverRequest {
+  input: SetRailwayDomainNameserverInput;
+}
+export const SetRailwayDomainNameserverRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: SetRailwayDomainNameserverInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation railwayDomainNameserversSet($input: RailwayDomainNameserversSetInput!) {\n  railwayDomainNameserversSet(input: $input) {\n    isDefault\n    nameservers\n  }\n}",
+        operationName: "railwayDomainNameserversSet",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "SetRailwayDomainNameserverRequest",
+}) as any as S.Schema<SetRailwayDomainNameserverRequest>;
+
+export type RailwayDomainNameserversSetResponseNameserversList = Array<string>;
+export const RailwayDomainNameserversSetResponseNameserversList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RailwayDomainNameserversSetResponseNameserversList>;
+
+/** Selection set for `railwayDomainNameserversSet` (unwrapped from the GraphQL `data` envelope). */
+export interface SetRailwayDomainNameserverResponse {
+  isDefault: boolean;
+  nameservers: RailwayDomainNameserversSetResponseNameserversList;
+}
+export const SetRailwayDomainNameserverResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isDefault: S.Boolean,
+    nameservers: RailwayDomainNameserversSetResponseNameserversList,
+  }).pipe(T.ResponsePath("railwayDomainNameserversSet")),
+).annotate({
+  identifier: "SetRailwayDomainNameserverResponse",
+}) as any as S.Schema<SetRailwayDomainNameserverResponse>;
 
 export interface SetServiceUnderAttackModeInput {
   durationSeconds?: number | null;
@@ -18830,6 +18323,127 @@ export const SetupAgentEventTrackResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SetupAgentEventTrackResponse",
 }) as any as S.Schema<SetupAgentEventTrackResponse>;
+
+export interface SetUsageLimitInput {
+  customerId: string;
+  hardLimitDollars?: number | null;
+  softLimitDollars: number;
+}
+export const SetUsageLimitInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerId: S.String,
+    hardLimitDollars: S.optional(S.NullOr(S.Number)),
+    softLimitDollars: S.Number,
+  }),
+).annotate({
+  identifier: "SetUsageLimitInput",
+}) as any as S.Schema<SetUsageLimitInput>;
+
+export interface SetUsageLimitRequest {
+  input: SetUsageLimitInput;
+}
+export const SetUsageLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: SetUsageLimitInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation usageLimitSet($input: UsageLimitSetInput!) {\n  usageLimitSet(input: $input)\n}",
+        operationName: "usageLimitSet",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "SetUsageLimitRequest",
+}) as any as S.Schema<SetUsageLimitRequest>;
+
+export type SetUsageLimitResponse = boolean;
+export const SetUsageLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("usageLimitSet")),
+).annotate({
+  identifier: "SetUsageLimitResponse",
+}) as any as S.Schema<SetUsageLimitResponse>;
+
+export type UserFlagList = Array<UserFlag | (string & {})>;
+export const UserFlagList = /*@__PURE__*/ S.Array(
+  UserFlag,
+) as any as S.Schema<UserFlagList>;
+
+export interface SetUserFlagInput {
+  flags: UserFlagList;
+  userId?: string | null;
+}
+export const SetUserFlagInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: UserFlagList,
+    userId: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "SetUserFlagInput",
+}) as any as S.Schema<SetUserFlagInput>;
+
+export interface SetUserFlagRequest {
+  input: SetUserFlagInput;
+}
+export const SetUserFlagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: SetUserFlagInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation userFlagsSet($input: UserFlagsSetInput!) {\n  userFlagsSet(input: $input) {\n    __typename\n  }\n}",
+        operationName: "userFlagsSet",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "SetUserFlagRequest",
+}) as any as S.Schema<SetUserFlagRequest>;
+
+export type SetUserFlagResponse = boolean;
+export const SetUserFlagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userFlagsSet")),
+).annotate({
+  identifier: "SetUserFlagResponse",
+}) as any as S.Schema<SetUserFlagResponse>;
+
+export interface SetWorkspaceRestrictProjectVisibilityToGroupRequest {
+  enabled: boolean;
+  workspaceId: string;
+}
+export const SetWorkspaceRestrictProjectVisibilityToGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      workspaceId: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation workspaceSetRestrictProjectVisibilityToGroups($enabled: Boolean!, $workspaceId: String!) {\n  workspaceSetRestrictProjectVisibilityToGroups(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
+          operationName: "workspaceSetRestrictProjectVisibilityToGroups",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "SetWorkspaceRestrictProjectVisibilityToGroupRequest",
+  }) as any as S.Schema<SetWorkspaceRestrictProjectVisibilityToGroupRequest>;
+
+export type SetWorkspaceRestrictProjectVisibilityToGroupResponse = boolean;
+export const SetWorkspaceRestrictProjectVisibilityToGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("workspaceSetRestrictProjectVisibilityToGroups"),
+    ),
+  ).annotate({
+    identifier: "SetWorkspaceRestrictProjectVisibilityToGroupResponse",
+  }) as any as S.Schema<SetWorkspaceRestrictProjectVisibilityToGroupResponse>;
 
 export interface SharedVariableConfigureInput {
   disabledServiceIds: StringList;
@@ -19750,94 +19364,6 @@ export const SignalsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SignalsResponse",
 }) as any as S.Schema<SignalsResponse>;
 
-export interface SshPublicKeyCreateInput {
-  name: string;
-  publicKey: string;
-  workspaceId?: string | null;
-}
-export const SshPublicKeyCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    publicKey: S.String,
-    workspaceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SshPublicKeyCreateInput",
-}) as any as S.Schema<SshPublicKeyCreateInput>;
-
-export interface SshPublicKeyCreateRequest {
-  input: SshPublicKeyCreateInput;
-}
-export const SshPublicKeyCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: SshPublicKeyCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sshPublicKeyCreate($input: SshPublicKeyCreateInput!) {\n  sshPublicKeyCreate(input: $input) {\n    createdAt\n    fingerprint\n    id\n    name\n    publicKey\n    updatedAt\n    userId\n    workspaceId\n  }\n}",
-        operationName: "sshPublicKeyCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SshPublicKeyCreateRequest",
-}) as any as S.Schema<SshPublicKeyCreateRequest>;
-
-/** Selection set for `sshPublicKeyCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface SshPublicKeyCreateResponse {
-  createdAt: string;
-  fingerprint: string;
-  id: string;
-  name: string;
-  publicKey: string;
-  updatedAt: string;
-  userId: string | null;
-  workspaceId: string | null;
-}
-export const SshPublicKeyCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    fingerprint: S.String,
-    id: S.String,
-    name: S.String,
-    publicKey: S.String,
-    updatedAt: S.String,
-    userId: S.NullOr(S.String),
-    workspaceId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("sshPublicKeyCreate")),
-).annotate({
-  identifier: "SshPublicKeyCreateResponse",
-}) as any as S.Schema<SshPublicKeyCreateResponse>;
-
-export interface SshPublicKeyDeleteRequest {
-  id: string;
-}
-export const SshPublicKeyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation sshPublicKeyDelete($id: String!) {\n  sshPublicKeyDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "sshPublicKeyDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "SshPublicKeyDeleteRequest",
-}) as any as S.Schema<SshPublicKeyDeleteRequest>;
-
-export type SshPublicKeyDeleteResponse = boolean;
-export const SshPublicKeyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("sshPublicKeyDelete")),
-).annotate({
-  identifier: "SshPublicKeyDeleteResponse",
-}) as any as S.Schema<SshPublicKeyDeleteResponse>;
-
 export interface SshPublicKeysRequest {
   after?: string | null;
   before?: string | null;
@@ -19986,6 +19512,33 @@ export const SshSignupInfoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SshSignupInfoResponse",
 }) as any as S.Schema<SshSignupInfoResponse>;
 
+export interface StopDeploymentRequest {
+  id: string;
+}
+export const StopDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation deploymentStop($id: String!) {\n  deploymentStop(id: $id)\n}",
+        operationName: "deploymentStop",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "StopDeploymentRequest",
+}) as any as S.Schema<StopDeploymentRequest>;
+
+export type StopDeploymentResponse = boolean;
+export const StopDeploymentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("deploymentStop")),
+).annotate({
+  identifier: "StopDeploymentResponse",
+}) as any as S.Schema<StopDeploymentResponse>;
+
 export interface TcpProxiesRequest {
   environmentId: string;
   serviceId: string;
@@ -20007,15 +19560,6 @@ export const TcpProxiesRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TcpProxiesRequest",
 }) as any as S.Schema<TcpProxiesRequest>;
-
-export type TCPProxySyncStatus =
-  | "ACTIVE"
-  | "CREATING"
-  | "DELETED"
-  | "DELETING"
-  | "UNSPECIFIED"
-  | "UPDATING";
-export const TCPProxySyncStatus = /*@__PURE__*/ S.String;
 
 export interface TcpProxiesResultItem {
   applicationPort: number;
@@ -20061,98 +19605,6 @@ export const TcpProxiesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TcpProxiesResponse",
 }) as any as S.Schema<TcpProxiesResponse>;
 
-export interface TCPProxyCreateInput {
-  applicationPort: number;
-  environmentId: string;
-  serviceId: string;
-}
-export const TCPProxyCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationPort: S.Number,
-    environmentId: S.String,
-    serviceId: S.String,
-  }),
-).annotate({
-  identifier: "TCPProxyCreateInput",
-}) as any as S.Schema<TCPProxyCreateInput>;
-
-export interface TcpProxyCreateRequest {
-  input: TCPProxyCreateInput;
-}
-export const TcpProxyCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: TCPProxyCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation tcpProxyCreate($input: TCPProxyCreateInput!) {\n  tcpProxyCreate(input: $input) {\n    applicationPort\n    createdAt\n    deletedAt\n    domain\n    environmentId\n    id\n    proxyPort\n    serviceId\n    syncStatus\n    updatedAt\n  }\n}",
-        operationName: "tcpProxyCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TcpProxyCreateRequest",
-}) as any as S.Schema<TcpProxyCreateRequest>;
-
-/** Selection set for `tcpProxyCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface TcpProxyCreateResponse {
-  applicationPort: number;
-  createdAt: string | null;
-  deletedAt: string | null;
-  domain: string;
-  environmentId: string;
-  id: string;
-  proxyPort: number;
-  serviceId: string;
-  syncStatus: TCPProxySyncStatus;
-  updatedAt: string | null;
-}
-export const TcpProxyCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applicationPort: S.Number,
-    createdAt: S.NullOr(S.String),
-    deletedAt: S.NullOr(S.String),
-    domain: S.String,
-    environmentId: S.String,
-    id: S.String,
-    proxyPort: S.Number,
-    serviceId: S.String,
-    syncStatus: TCPProxySyncStatus,
-    updatedAt: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("tcpProxyCreate")),
-).annotate({
-  identifier: "TcpProxyCreateResponse",
-}) as any as S.Schema<TcpProxyCreateResponse>;
-
-export interface TcpProxyDeleteRequest {
-  id: string;
-}
-export const TcpProxyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation tcpProxyDelete($id: String!) {\n  tcpProxyDelete(id: $id)\n}",
-        operationName: "tcpProxyDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TcpProxyDeleteRequest",
-}) as any as S.Schema<TcpProxyDeleteRequest>;
-
-export type TcpProxyDeleteResponse = boolean;
-export const TcpProxyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("tcpProxyDelete")),
-).annotate({
-  identifier: "TcpProxyDeleteResponse",
-}) as any as S.Schema<TcpProxyDeleteResponse>;
-
 export interface TemplateRequest {
   code?: string | null;
   id?: string | null;
@@ -20179,94 +19631,30 @@ export const TemplateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateRequest",
 }) as any as S.Schema<TemplateRequest>;
 
-export interface TemplateResponseCreator {
-  avatar: string | null;
-  hasPublicProfile: boolean;
-  name: string | null;
-  username: string | null;
-}
-export const TemplateResponseCreator = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.NullOr(S.String),
-    hasPublicProfile: S.Boolean,
-    name: S.NullOr(S.String),
-    username: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "TemplateResponseCreator",
-}) as any as S.Schema<TemplateResponseCreator>;
+export type TemplateResponseCreator = TemplateGenerateResponseCreator;
+export const TemplateResponseCreator = TemplateGenerateResponseCreator;
 
-export interface TemplateResponseGuides {
-  post: string | null;
-  video: string | null;
-}
-export const TemplateResponseGuides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    post: S.NullOr(S.String),
-    video: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "TemplateResponseGuides",
-}) as any as S.Schema<TemplateResponseGuides>;
+export type TemplateResponseGuides = TemplateGenerateResponseGuides;
+export const TemplateResponseGuides = TemplateGenerateResponseGuides;
 
 export type TemplateResponseLanguagesList = Array<string>;
 export const TemplateResponseLanguagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplateResponseLanguagesList>;
 
-export interface TemplateResponseMaintainer {
-  avatar: string | null;
-  id: string;
-  name: string;
-}
-export const TemplateResponseMaintainer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.NullOr(S.String),
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "TemplateResponseMaintainer",
-}) as any as S.Schema<TemplateResponseMaintainer>;
+export type TemplateResponseMaintainer = TemplateGenerateResponseMaintainer;
+export const TemplateResponseMaintainer = TemplateGenerateResponseMaintainer;
 
-export interface TemplateResponseSimilarTemplatesItem {
-  code: string;
-  createdAt: string;
-  deploys: number;
-  description: string | null;
-  health: number | null;
-  image: string | null;
-  name: string;
-  teamId: string | null;
-  userId: string | null;
-  workspaceId: string | null;
-}
-export const TemplateResponseSimilarTemplatesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      code: S.String,
-      createdAt: S.String,
-      deploys: S.Number,
-      description: S.NullOr(S.String),
-      health: S.NullOr(S.Number),
-      image: S.NullOr(S.String),
-      name: S.String,
-      teamId: S.NullOr(S.String),
-      userId: S.NullOr(S.String),
-      workspaceId: S.NullOr(S.String),
-    }),
-).annotate({
-  identifier: "TemplateResponseSimilarTemplatesItem",
-}) as any as S.Schema<TemplateResponseSimilarTemplatesItem>;
+export type TemplateResponseSimilarTemplatesItem =
+  TemplateGenerateResponseSimilarTemplatesItem;
+export const TemplateResponseSimilarTemplatesItem =
+  TemplateGenerateResponseSimilarTemplatesItem;
 
 export type TemplateResponseSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
 export const TemplateResponseSimilarTemplatesList = /*@__PURE__*/ S.Array(
-  TemplateResponseSimilarTemplatesItem,
+  TemplateGenerateResponseSimilarTemplatesItem,
 ) as any as S.Schema<TemplateResponseSimilarTemplatesList>;
-
-export type TemplateStatus = "HIDDEN" | "PUBLISHED" | "UNPUBLISHED";
-export const TemplateStatus = /*@__PURE__*/ S.String;
 
 export type TemplateResponseTagsList = Array<string>;
 export const TemplateResponseTagsList = /*@__PURE__*/ S.Array(
@@ -20282,10 +19670,10 @@ export interface TemplateResponse {
   communityThreadSlug: string | null;
   config: unknown;
   createdAt: string;
-  creator: TemplateResponseCreator | null;
+  creator: TemplateGenerateResponseCreator | null;
   demoProjectId: string | null;
   description: string | null;
-  guides: TemplateResponseGuides | null;
+  guides: TemplateGenerateResponseGuides | null;
   health: number | null;
   id: string;
   image: string | null;
@@ -20293,7 +19681,7 @@ export interface TemplateResponse {
   isV2Template: boolean;
   isVerified: boolean;
   languages: TemplateResponseLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
   metadata: unknown;
   name: string;
   projects: number;
@@ -20318,10 +19706,10 @@ export const TemplateResponse = /*@__PURE__*/ S.suspend(() =>
     communityThreadSlug: S.NullOr(S.String),
     config: S.Unknown,
     createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
+    creator: S.NullOr(TemplateGenerateResponseCreator),
     demoProjectId: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
     health: S.NullOr(S.Number),
     id: S.String,
     image: S.NullOr(S.String),
@@ -20329,7 +19717,7 @@ export const TemplateResponse = /*@__PURE__*/ S.suspend(() =>
     isV2Template: S.Boolean,
     isVerified: S.Boolean,
     languages: S.NullOr(TemplateResponseLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
     metadata: S.Unknown,
     name: S.String,
     projects: S.Number,
@@ -20382,29 +19770,31 @@ export const TemplateCloneRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateCloneRequest",
 }) as any as S.Schema<TemplateCloneRequest>;
 
-export type TemplateCloneResponseCreator = TemplateResponseCreator;
-export const TemplateCloneResponseCreator = TemplateResponseCreator;
+export type TemplateCloneResponseCreator = TemplateGenerateResponseCreator;
+export const TemplateCloneResponseCreator = TemplateGenerateResponseCreator;
 
-export type TemplateCloneResponseGuides = TemplateResponseGuides;
-export const TemplateCloneResponseGuides = TemplateResponseGuides;
+export type TemplateCloneResponseGuides = TemplateGenerateResponseGuides;
+export const TemplateCloneResponseGuides = TemplateGenerateResponseGuides;
 
 export type TemplateCloneResponseLanguagesList = Array<string>;
 export const TemplateCloneResponseLanguagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplateCloneResponseLanguagesList>;
 
-export type TemplateCloneResponseMaintainer = TemplateResponseMaintainer;
-export const TemplateCloneResponseMaintainer = TemplateResponseMaintainer;
+export type TemplateCloneResponseMaintainer =
+  TemplateGenerateResponseMaintainer;
+export const TemplateCloneResponseMaintainer =
+  TemplateGenerateResponseMaintainer;
 
 export type TemplateCloneResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 export const TemplateCloneResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 
 export type TemplateCloneResponseSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
 export const TemplateCloneResponseSimilarTemplatesList = /*@__PURE__*/ S.Array(
-  TemplateResponseSimilarTemplatesItem,
+  TemplateGenerateResponseSimilarTemplatesItem,
 ) as any as S.Schema<TemplateCloneResponseSimilarTemplatesList>;
 
 export type TemplateCloneResponseTagsList = Array<string>;
@@ -20421,10 +19811,10 @@ export interface TemplateCloneResponse {
   communityThreadSlug: string | null;
   config: unknown;
   createdAt: string;
-  creator: TemplateResponseCreator | null;
+  creator: TemplateGenerateResponseCreator | null;
   demoProjectId: string | null;
   description: string | null;
-  guides: TemplateResponseGuides | null;
+  guides: TemplateGenerateResponseGuides | null;
   health: number | null;
   id: string;
   image: string | null;
@@ -20432,7 +19822,7 @@ export interface TemplateCloneResponse {
   isV2Template: boolean;
   isVerified: boolean;
   languages: TemplateCloneResponseLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
   metadata: unknown;
   name: string;
   projects: number;
@@ -20457,10 +19847,10 @@ export const TemplateCloneResponse = /*@__PURE__*/ S.suspend(() =>
     communityThreadSlug: S.NullOr(S.String),
     config: S.Unknown,
     createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
+    creator: S.NullOr(TemplateGenerateResponseCreator),
     demoProjectId: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
     health: S.NullOr(S.Number),
     id: S.String,
     image: S.NullOr(S.String),
@@ -20468,7 +19858,7 @@ export const TemplateCloneResponse = /*@__PURE__*/ S.suspend(() =>
     isV2Template: S.Boolean,
     isVerified: S.Boolean,
     languages: S.NullOr(TemplateCloneResponseLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
     metadata: S.Unknown,
     name: S.String,
     projects: S.Number,
@@ -20487,46 +19877,6 @@ export const TemplateCloneResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TemplateCloneResponse",
 }) as any as S.Schema<TemplateCloneResponse>;
-
-export interface TemplateDeleteInput {
-  workspaceId?: string | null;
-}
-export const TemplateDeleteInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workspaceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "TemplateDeleteInput",
-}) as any as S.Schema<TemplateDeleteInput>;
-
-export interface TemplateDeleteRequest {
-  id: string;
-  input: TemplateDeleteInput;
-}
-export const TemplateDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: TemplateDeleteInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation templateDelete($id: String!, $input: TemplateDeleteInput!) {\n  templateDelete(id: $id, input: $input) {\n    __typename\n  }\n}",
-        operationName: "templateDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TemplateDeleteRequest",
-}) as any as S.Schema<TemplateDeleteRequest>;
-
-export type TemplateDeleteResponse = boolean;
-export const TemplateDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("templateDelete")),
-).annotate({
-  identifier: "TemplateDeleteResponse",
-}) as any as S.Schema<TemplateDeleteResponse>;
 
 export interface TemplateDeployV2Input {
   environmentId?: string | null;
@@ -20586,146 +19936,6 @@ export const TemplateDeployV2Response = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TemplateDeployV2Response",
 }) as any as S.Schema<TemplateDeployV2Response>;
-
-export interface TemplateGenerateInput {
-  environmentId?: string | null;
-  projectId: string;
-}
-export const TemplateGenerateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.NullOr(S.String)),
-    projectId: S.String,
-  }),
-).annotate({
-  identifier: "TemplateGenerateInput",
-}) as any as S.Schema<TemplateGenerateInput>;
-
-export interface TemplateGenerateRequest {
-  input: TemplateGenerateInput;
-}
-export const TemplateGenerateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: TemplateGenerateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation templateGenerate($input: TemplateGenerateInput!) {\n  templateGenerate(input: $input) {\n    activeProjects\n    canvasConfig\n    category\n    code\n    communityThreadSlug\n    config\n    createdAt\n    creator {\n      avatar\n      hasPublicProfile\n      name\n      username\n    }\n    demoProjectId\n    description\n    guides {\n      post\n      video\n    }\n    health\n    id\n    image\n    isApproved\n    isV2Template\n    isVerified\n    languages\n    maintainer {\n      avatar\n      id\n      name\n    }\n    metadata\n    name\n    projects\n    readme\n    recentProjects\n    serializedConfig\n    similarTemplates {\n      code\n      createdAt\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    status\n    supportHealthMetrics\n    tags\n    teamId\n    totalPayout\n    updatedAt\n    workspaceId\n  }\n}",
-        operationName: "templateGenerate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TemplateGenerateRequest",
-}) as any as S.Schema<TemplateGenerateRequest>;
-
-export type TemplateGenerateResponseCreator = TemplateResponseCreator;
-export const TemplateGenerateResponseCreator = TemplateResponseCreator;
-
-export type TemplateGenerateResponseGuides = TemplateResponseGuides;
-export const TemplateGenerateResponseGuides = TemplateResponseGuides;
-
-export type TemplateGenerateResponseLanguagesList = Array<string>;
-export const TemplateGenerateResponseLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplateGenerateResponseLanguagesList>;
-
-export type TemplateGenerateResponseMaintainer = TemplateResponseMaintainer;
-export const TemplateGenerateResponseMaintainer = TemplateResponseMaintainer;
-
-export type TemplateGenerateResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
-export const TemplateGenerateResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
-
-export type TemplateGenerateResponseSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
-export const TemplateGenerateResponseSimilarTemplatesList =
-  /*@__PURE__*/ S.Array(
-    TemplateResponseSimilarTemplatesItem,
-  ) as any as S.Schema<TemplateGenerateResponseSimilarTemplatesList>;
-
-export type TemplateGenerateResponseTagsList = Array<string>;
-export const TemplateGenerateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplateGenerateResponseTagsList>;
-
-/** Selection set for `templateGenerate` (unwrapped from the GraphQL `data` envelope). */
-export interface TemplateGenerateResponse {
-  activeProjects: number;
-  canvasConfig: unknown | null;
-  category: string | null;
-  code: string;
-  communityThreadSlug: string | null;
-  config: unknown;
-  createdAt: string;
-  creator: TemplateResponseCreator | null;
-  demoProjectId: string | null;
-  description: string | null;
-  guides: TemplateResponseGuides | null;
-  health: number | null;
-  id: string;
-  image: string | null;
-  isApproved: boolean;
-  isV2Template: boolean;
-  isVerified: boolean;
-  languages: TemplateGenerateResponseLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
-  metadata: unknown;
-  name: string;
-  projects: number;
-  readme: string | null;
-  recentProjects: number;
-  serializedConfig: unknown | null;
-  similarTemplates: TemplateGenerateResponseSimilarTemplatesList;
-  status: TemplateStatus;
-  supportHealthMetrics: unknown | null;
-  tags: TemplateGenerateResponseTagsList | null;
-  teamId: string | null;
-  totalPayout: number;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const TemplateGenerateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeProjects: S.Number,
-    canvasConfig: S.NullOr(S.Unknown),
-    category: S.NullOr(S.String),
-    code: S.String,
-    communityThreadSlug: S.NullOr(S.String),
-    config: S.Unknown,
-    createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
-    demoProjectId: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
-    health: S.NullOr(S.Number),
-    id: S.String,
-    image: S.NullOr(S.String),
-    isApproved: S.Boolean,
-    isV2Template: S.Boolean,
-    isVerified: S.Boolean,
-    languages: S.NullOr(TemplateGenerateResponseLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
-    metadata: S.Unknown,
-    name: S.String,
-    projects: S.Number,
-    readme: S.NullOr(S.String),
-    recentProjects: S.Number,
-    serializedConfig: S.NullOr(S.Unknown),
-    similarTemplates: TemplateGenerateResponseSimilarTemplatesList,
-    status: TemplateStatus,
-    supportHealthMetrics: S.NullOr(S.Unknown),
-    tags: S.NullOr(TemplateGenerateResponseTagsList),
-    teamId: S.NullOr(S.String),
-    totalPayout: S.Number,
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("templateGenerate")),
-).annotate({
-  identifier: "TemplateGenerateResponse",
-}) as any as S.Schema<TemplateGenerateResponse>;
 
 export interface TemplateMetricsRequest {
   id: string;
@@ -20818,30 +20028,32 @@ export const TemplatePublishRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplatePublishRequest",
 }) as any as S.Schema<TemplatePublishRequest>;
 
-export type TemplatePublishResponseCreator = TemplateResponseCreator;
-export const TemplatePublishResponseCreator = TemplateResponseCreator;
+export type TemplatePublishResponseCreator = TemplateGenerateResponseCreator;
+export const TemplatePublishResponseCreator = TemplateGenerateResponseCreator;
 
-export type TemplatePublishResponseGuides = TemplateResponseGuides;
-export const TemplatePublishResponseGuides = TemplateResponseGuides;
+export type TemplatePublishResponseGuides = TemplateGenerateResponseGuides;
+export const TemplatePublishResponseGuides = TemplateGenerateResponseGuides;
 
 export type TemplatePublishResponseLanguagesList = Array<string>;
 export const TemplatePublishResponseLanguagesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TemplatePublishResponseLanguagesList>;
 
-export type TemplatePublishResponseMaintainer = TemplateResponseMaintainer;
-export const TemplatePublishResponseMaintainer = TemplateResponseMaintainer;
+export type TemplatePublishResponseMaintainer =
+  TemplateGenerateResponseMaintainer;
+export const TemplatePublishResponseMaintainer =
+  TemplateGenerateResponseMaintainer;
 
 export type TemplatePublishResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 export const TemplatePublishResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 
 export type TemplatePublishResponseSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
 export const TemplatePublishResponseSimilarTemplatesList =
   /*@__PURE__*/ S.Array(
-    TemplateResponseSimilarTemplatesItem,
+    TemplateGenerateResponseSimilarTemplatesItem,
   ) as any as S.Schema<TemplatePublishResponseSimilarTemplatesList>;
 
 export type TemplatePublishResponseTagsList = Array<string>;
@@ -20858,10 +20070,10 @@ export interface TemplatePublishResponse {
   communityThreadSlug: string | null;
   config: unknown;
   createdAt: string;
-  creator: TemplateResponseCreator | null;
+  creator: TemplateGenerateResponseCreator | null;
   demoProjectId: string | null;
   description: string | null;
-  guides: TemplateResponseGuides | null;
+  guides: TemplateGenerateResponseGuides | null;
   health: number | null;
   id: string;
   image: string | null;
@@ -20869,7 +20081,7 @@ export interface TemplatePublishResponse {
   isV2Template: boolean;
   isVerified: boolean;
   languages: TemplatePublishResponseLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
   metadata: unknown;
   name: string;
   projects: number;
@@ -20894,10 +20106,10 @@ export const TemplatePublishResponse = /*@__PURE__*/ S.suspend(() =>
     communityThreadSlug: S.NullOr(S.String),
     config: S.Unknown,
     createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
+    creator: S.NullOr(TemplateGenerateResponseCreator),
     demoProjectId: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
     health: S.NullOr(S.Number),
     id: S.String,
     image: S.NullOr(S.String),
@@ -20905,7 +20117,7 @@ export const TemplatePublishResponse = /*@__PURE__*/ S.suspend(() =>
     isV2Template: S.Boolean,
     isVerified: S.Boolean,
     languages: S.NullOr(TemplatePublishResponseLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
     metadata: S.Unknown,
     name: S.String,
     projects: S.Number,
@@ -21018,11 +20230,15 @@ export const TemplatesRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplatesRequest",
 }) as any as S.Schema<TemplatesRequest>;
 
-export type TemplatesResponseEdgesItemNodeCreator = TemplateResponseCreator;
-export const TemplatesResponseEdgesItemNodeCreator = TemplateResponseCreator;
+export type TemplatesResponseEdgesItemNodeCreator =
+  TemplateGenerateResponseCreator;
+export const TemplatesResponseEdgesItemNodeCreator =
+  TemplateGenerateResponseCreator;
 
-export type TemplatesResponseEdgesItemNodeGuides = TemplateResponseGuides;
-export const TemplatesResponseEdgesItemNodeGuides = TemplateResponseGuides;
+export type TemplatesResponseEdgesItemNodeGuides =
+  TemplateGenerateResponseGuides;
+export const TemplatesResponseEdgesItemNodeGuides =
+  TemplateGenerateResponseGuides;
 
 export type TemplatesResponseEdgesItemNodeLanguagesList = Array<string>;
 export const TemplatesResponseEdgesItemNodeLanguagesList =
@@ -21031,20 +20247,20 @@ export const TemplatesResponseEdgesItemNodeLanguagesList =
   ) as any as S.Schema<TemplatesResponseEdgesItemNodeLanguagesList>;
 
 export type TemplatesResponseEdgesItemNodeMaintainer =
-  TemplateResponseMaintainer;
+  TemplateGenerateResponseMaintainer;
 export const TemplatesResponseEdgesItemNodeMaintainer =
-  TemplateResponseMaintainer;
+  TemplateGenerateResponseMaintainer;
 
 export type TemplatesResponseEdgesItemNodeSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 export const TemplatesResponseEdgesItemNodeSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 
 export type TemplatesResponseEdgesItemNodeSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
 export const TemplatesResponseEdgesItemNodeSimilarTemplatesList =
   /*@__PURE__*/ S.Array(
-    TemplateResponseSimilarTemplatesItem,
+    TemplateGenerateResponseSimilarTemplatesItem,
   ) as any as S.Schema<TemplatesResponseEdgesItemNodeSimilarTemplatesList>;
 
 export type TemplatesResponseEdgesItemNodeTagsList = Array<string>;
@@ -21060,10 +20276,10 @@ export interface TemplatesResponseEdgesItemNode {
   communityThreadSlug: string | null;
   config: unknown;
   createdAt: string;
-  creator: TemplateResponseCreator | null;
+  creator: TemplateGenerateResponseCreator | null;
   demoProjectId: string | null;
   description: string | null;
-  guides: TemplateResponseGuides | null;
+  guides: TemplateGenerateResponseGuides | null;
   health: number | null;
   id: string;
   image: string | null;
@@ -21071,7 +20287,7 @@ export interface TemplatesResponseEdgesItemNode {
   isV2Template: boolean;
   isVerified: boolean;
   languages: TemplatesResponseEdgesItemNodeLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
   metadata: unknown;
   name: string;
   projects: number;
@@ -21096,10 +20312,10 @@ export const TemplatesResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
     communityThreadSlug: S.NullOr(S.String),
     config: S.Unknown,
     createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
+    creator: S.NullOr(TemplateGenerateResponseCreator),
     demoProjectId: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
     health: S.NullOr(S.Number),
     id: S.String,
     image: S.NullOr(S.String),
@@ -21107,7 +20323,7 @@ export const TemplatesResponseEdgesItemNode = /*@__PURE__*/ S.suspend(() =>
     isV2Template: S.Boolean,
     isVerified: S.Boolean,
     languages: S.NullOr(TemplatesResponseEdgesItemNodeLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
     metadata: S.Unknown,
     name: S.String,
     projects: S.Number,
@@ -21353,11 +20569,15 @@ export const TemplateSourceForProjectRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TemplateSourceForProjectRequest",
 }) as any as S.Schema<TemplateSourceForProjectRequest>;
 
-export type TemplateSourceForProjectResponseCreator = TemplateResponseCreator;
-export const TemplateSourceForProjectResponseCreator = TemplateResponseCreator;
+export type TemplateSourceForProjectResponseCreator =
+  TemplateGenerateResponseCreator;
+export const TemplateSourceForProjectResponseCreator =
+  TemplateGenerateResponseCreator;
 
-export type TemplateSourceForProjectResponseGuides = TemplateResponseGuides;
-export const TemplateSourceForProjectResponseGuides = TemplateResponseGuides;
+export type TemplateSourceForProjectResponseGuides =
+  TemplateGenerateResponseGuides;
+export const TemplateSourceForProjectResponseGuides =
+  TemplateGenerateResponseGuides;
 
 export type TemplateSourceForProjectResponseLanguagesList = Array<string>;
 export const TemplateSourceForProjectResponseLanguagesList =
@@ -21366,20 +20586,20 @@ export const TemplateSourceForProjectResponseLanguagesList =
   ) as any as S.Schema<TemplateSourceForProjectResponseLanguagesList>;
 
 export type TemplateSourceForProjectResponseMaintainer =
-  TemplateResponseMaintainer;
+  TemplateGenerateResponseMaintainer;
 export const TemplateSourceForProjectResponseMaintainer =
-  TemplateResponseMaintainer;
+  TemplateGenerateResponseMaintainer;
 
 export type TemplateSourceForProjectResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 export const TemplateSourceForProjectResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 
 export type TemplateSourceForProjectResponseSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
 export const TemplateSourceForProjectResponseSimilarTemplatesList =
   /*@__PURE__*/ S.Array(
-    TemplateResponseSimilarTemplatesItem,
+    TemplateGenerateResponseSimilarTemplatesItem,
   ) as any as S.Schema<TemplateSourceForProjectResponseSimilarTemplatesList>;
 
 export type TemplateSourceForProjectResponseTagsList = Array<string>;
@@ -21396,10 +20616,10 @@ export interface TemplateSourceForProjectResponse {
   communityThreadSlug: string | null;
   config: unknown;
   createdAt: string;
-  creator: TemplateResponseCreator | null;
+  creator: TemplateGenerateResponseCreator | null;
   demoProjectId: string | null;
   description: string | null;
-  guides: TemplateResponseGuides | null;
+  guides: TemplateGenerateResponseGuides | null;
   health: number | null;
   id: string;
   image: string | null;
@@ -21407,7 +20627,7 @@ export interface TemplateSourceForProjectResponse {
   isV2Template: boolean;
   isVerified: boolean;
   languages: TemplateSourceForProjectResponseLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
   metadata: unknown;
   name: string;
   projects: number;
@@ -21432,10 +20652,10 @@ export const TemplateSourceForProjectResponse = /*@__PURE__*/ S.suspend(() =>
     communityThreadSlug: S.NullOr(S.String),
     config: S.Unknown,
     createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
+    creator: S.NullOr(TemplateGenerateResponseCreator),
     demoProjectId: S.NullOr(S.String),
     description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
     health: S.NullOr(S.Number),
     id: S.String,
     image: S.NullOr(S.String),
@@ -21443,7 +20663,7 @@ export const TemplateSourceForProjectResponse = /*@__PURE__*/ S.suspend(() =>
     isV2Template: S.Boolean,
     isVerified: S.Boolean,
     languages: S.NullOr(TemplateSourceForProjectResponseLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
     metadata: S.Unknown,
     name: S.String,
     projects: S.Number,
@@ -21489,243 +20709,6 @@ export const TemplateUnpublishResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TemplateUnpublishResponse",
 }) as any as S.Schema<TemplateUnpublishResponse>;
-
-export interface TemplateVolumeUpdateRequest {
-  serviceId: string;
-  sizeMB?: number | null;
-  templateId: string;
-  volumeId: string;
-}
-export const TemplateVolumeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceId: S.String,
-    sizeMB: S.optional(S.NullOr(S.Number)),
-    templateId: S.String,
-    volumeId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation templateVolumeUpdate($serviceId: String!, $sizeMB: Int, $templateId: String!, $volumeId: String!) {\n  templateVolumeUpdate(serviceId: $serviceId, sizeMB: $sizeMB, templateId: $templateId, volumeId: $volumeId) {\n    activeProjects\n    canvasConfig\n    category\n    code\n    communityThreadSlug\n    config\n    createdAt\n    creator {\n      avatar\n      hasPublicProfile\n      name\n      username\n    }\n    demoProjectId\n    description\n    guides {\n      post\n      video\n    }\n    health\n    id\n    image\n    isApproved\n    isV2Template\n    isVerified\n    languages\n    maintainer {\n      avatar\n      id\n      name\n    }\n    metadata\n    name\n    projects\n    readme\n    recentProjects\n    serializedConfig\n    similarTemplates {\n      code\n      createdAt\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    status\n    supportHealthMetrics\n    tags\n    teamId\n    totalPayout\n    updatedAt\n    workspaceId\n  }\n}",
-        operationName: "templateVolumeUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TemplateVolumeUpdateRequest",
-}) as any as S.Schema<TemplateVolumeUpdateRequest>;
-
-export type TemplateVolumeUpdateResponseCreator = TemplateResponseCreator;
-export const TemplateVolumeUpdateResponseCreator = TemplateResponseCreator;
-
-export type TemplateVolumeUpdateResponseGuides = TemplateResponseGuides;
-export const TemplateVolumeUpdateResponseGuides = TemplateResponseGuides;
-
-export type TemplateVolumeUpdateResponseLanguagesList = Array<string>;
-export const TemplateVolumeUpdateResponseLanguagesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplateVolumeUpdateResponseLanguagesList>;
-
-export type TemplateVolumeUpdateResponseMaintainer = TemplateResponseMaintainer;
-export const TemplateVolumeUpdateResponseMaintainer =
-  TemplateResponseMaintainer;
-
-export type TemplateVolumeUpdateResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
-export const TemplateVolumeUpdateResponseSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
-
-export type TemplateVolumeUpdateResponseSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
-export const TemplateVolumeUpdateResponseSimilarTemplatesList =
-  /*@__PURE__*/ S.Array(
-    TemplateResponseSimilarTemplatesItem,
-  ) as any as S.Schema<TemplateVolumeUpdateResponseSimilarTemplatesList>;
-
-export type TemplateVolumeUpdateResponseTagsList = Array<string>;
-export const TemplateVolumeUpdateResponseTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TemplateVolumeUpdateResponseTagsList>;
-
-/** Selection set for `templateVolumeUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface TemplateVolumeUpdateResponse {
-  activeProjects: number;
-  canvasConfig: unknown | null;
-  category: string | null;
-  code: string;
-  communityThreadSlug: string | null;
-  config: unknown;
-  createdAt: string;
-  creator: TemplateResponseCreator | null;
-  demoProjectId: string | null;
-  description: string | null;
-  guides: TemplateResponseGuides | null;
-  health: number | null;
-  id: string;
-  image: string | null;
-  isApproved: boolean;
-  isV2Template: boolean;
-  isVerified: boolean;
-  languages: TemplateVolumeUpdateResponseLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
-  metadata: unknown;
-  name: string;
-  projects: number;
-  readme: string | null;
-  recentProjects: number;
-  serializedConfig: unknown | null;
-  similarTemplates: TemplateVolumeUpdateResponseSimilarTemplatesList;
-  status: TemplateStatus;
-  supportHealthMetrics: unknown | null;
-  tags: TemplateVolumeUpdateResponseTagsList | null;
-  teamId: string | null;
-  totalPayout: number;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const TemplateVolumeUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    activeProjects: S.Number,
-    canvasConfig: S.NullOr(S.Unknown),
-    category: S.NullOr(S.String),
-    code: S.String,
-    communityThreadSlug: S.NullOr(S.String),
-    config: S.Unknown,
-    createdAt: S.String,
-    creator: S.NullOr(TemplateResponseCreator),
-    demoProjectId: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    guides: S.NullOr(TemplateResponseGuides),
-    health: S.NullOr(S.Number),
-    id: S.String,
-    image: S.NullOr(S.String),
-    isApproved: S.Boolean,
-    isV2Template: S.Boolean,
-    isVerified: S.Boolean,
-    languages: S.NullOr(TemplateVolumeUpdateResponseLanguagesList),
-    maintainer: S.NullOr(TemplateResponseMaintainer),
-    metadata: S.Unknown,
-    name: S.String,
-    projects: S.Number,
-    readme: S.NullOr(S.String),
-    recentProjects: S.Number,
-    serializedConfig: S.NullOr(S.Unknown),
-    similarTemplates: TemplateVolumeUpdateResponseSimilarTemplatesList,
-    status: TemplateStatus,
-    supportHealthMetrics: S.NullOr(S.Unknown),
-    tags: S.NullOr(TemplateVolumeUpdateResponseTagsList),
-    teamId: S.NullOr(S.String),
-    totalPayout: S.Number,
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("templateVolumeUpdate")),
-).annotate({
-  identifier: "TemplateVolumeUpdateResponse",
-}) as any as S.Schema<TemplateVolumeUpdateResponse>;
-
-export interface WorkspaceTrustedDomainCreateInput {
-  domainName: string;
-  role: string;
-  workspaceId: string;
-}
-export const WorkspaceTrustedDomainCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.String,
-    role: S.String,
-    workspaceId: S.String,
-  }),
-).annotate({
-  identifier: "WorkspaceTrustedDomainCreateInput",
-}) as any as S.Schema<WorkspaceTrustedDomainCreateInput>;
-
-export interface TrustedDomainCreateRequest {
-  input: WorkspaceTrustedDomainCreateInput;
-}
-export const TrustedDomainCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: WorkspaceTrustedDomainCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation trustedDomainCreate($input: WorkspaceTrustedDomainCreateInput!) {\n  trustedDomainCreate(input: $input) {\n    domainName\n    id\n    role\n    status\n    verificationData {\n      dnsHost\n      token\n    }\n    verificationType\n    workspaceId\n  }\n}",
-        operationName: "trustedDomainCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TrustedDomainCreateRequest",
-}) as any as S.Schema<TrustedDomainCreateRequest>;
-
-export type TrustedDomainStatus = "FAILED" | "PENDING" | "VERIFIED";
-export const TrustedDomainStatus = /*@__PURE__*/ S.String;
-
-export interface TrustedDomainCreateResponseVerificationData {
-  dnsHost: string | null;
-  token: string | null;
-}
-export const TrustedDomainCreateResponseVerificationData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dnsHost: S.NullOr(S.String),
-      token: S.NullOr(S.String),
-    }),
-  ).annotate({
-    identifier: "TrustedDomainCreateResponseVerificationData",
-  }) as any as S.Schema<TrustedDomainCreateResponseVerificationData>;
-
-/** Selection set for `trustedDomainCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface TrustedDomainCreateResponse {
-  domainName: string;
-  id: string;
-  role: string;
-  status: TrustedDomainStatus;
-  verificationData: TrustedDomainCreateResponseVerificationData;
-  verificationType: string;
-  workspaceId: string;
-}
-export const TrustedDomainCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.String,
-    id: S.String,
-    role: S.String,
-    status: TrustedDomainStatus,
-    verificationData: TrustedDomainCreateResponseVerificationData,
-    verificationType: S.String,
-    workspaceId: S.String,
-  }).pipe(T.ResponsePath("trustedDomainCreate")),
-).annotate({
-  identifier: "TrustedDomainCreateResponse",
-}) as any as S.Schema<TrustedDomainCreateResponse>;
-
-export interface TrustedDomainDeleteRequest {
-  id: string;
-}
-export const TrustedDomainDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation trustedDomainDelete($id: String!) {\n  trustedDomainDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "trustedDomainDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TrustedDomainDeleteRequest",
-}) as any as S.Schema<TrustedDomainDeleteRequest>;
-
-export type TrustedDomainDeleteResponse = boolean;
-export const TrustedDomainDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("trustedDomainDelete")),
-).annotate({
-  identifier: "TrustedDomainDeleteResponse",
-}) as any as S.Schema<TrustedDomainDeleteResponse>;
 
 export interface TrustedDomainRetriggerVerificationRequest {
   id: string;
@@ -21870,68 +20853,6 @@ export const TrustedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TrustedDomainsResponse",
 }) as any as S.Schema<TrustedDomainsResponse>;
 
-export interface WorkspaceTrustedDomainUpdateInput {
-  id: string;
-  role: string;
-}
-export const WorkspaceTrustedDomainUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    role: S.String,
-  }),
-).annotate({
-  identifier: "WorkspaceTrustedDomainUpdateInput",
-}) as any as S.Schema<WorkspaceTrustedDomainUpdateInput>;
-
-export interface TrustedDomainUpdateRequest {
-  input: WorkspaceTrustedDomainUpdateInput;
-}
-export const TrustedDomainUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: WorkspaceTrustedDomainUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation trustedDomainUpdate($input: WorkspaceTrustedDomainUpdateInput!) {\n  trustedDomainUpdate(input: $input) {\n    domainName\n    id\n    role\n    status\n    verificationData {\n      dnsHost\n      token\n    }\n    verificationType\n    workspaceId\n  }\n}",
-        operationName: "trustedDomainUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TrustedDomainUpdateRequest",
-}) as any as S.Schema<TrustedDomainUpdateRequest>;
-
-export type TrustedDomainUpdateResponseVerificationData =
-  TrustedDomainCreateResponseVerificationData;
-export const TrustedDomainUpdateResponseVerificationData =
-  TrustedDomainCreateResponseVerificationData;
-
-/** Selection set for `trustedDomainUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface TrustedDomainUpdateResponse {
-  domainName: string;
-  id: string;
-  role: string;
-  status: TrustedDomainStatus;
-  verificationData: TrustedDomainCreateResponseVerificationData;
-  verificationType: string;
-  workspaceId: string;
-}
-export const TrustedDomainUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    domainName: S.String,
-    id: S.String,
-    role: S.String,
-    status: TrustedDomainStatus,
-    verificationData: TrustedDomainCreateResponseVerificationData,
-    verificationType: S.String,
-    workspaceId: S.String,
-  }).pipe(T.ResponsePath("trustedDomainUpdate")),
-).annotate({
-  identifier: "TrustedDomainUpdateResponse",
-}) as any as S.Schema<TrustedDomainUpdateResponse>;
-
 export interface TwoFactorInfoRequest {}
 export const TwoFactorInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({})
@@ -21961,78 +20882,6 @@ export const TwoFactorInfoResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TwoFactorInfoResponse",
 }) as any as S.Schema<TwoFactorInfoResponse>;
-
-export interface TwoFactorInfoCreateInput {
-  token: string;
-}
-export const TwoFactorInfoCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.String,
-  }),
-).annotate({
-  identifier: "TwoFactorInfoCreateInput",
-}) as any as S.Schema<TwoFactorInfoCreateInput>;
-
-export interface TwoFactorInfoCreateRequest {
-  input: TwoFactorInfoCreateInput;
-}
-export const TwoFactorInfoCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: TwoFactorInfoCreateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation twoFactorInfoCreate($input: TwoFactorInfoCreateInput!) {\n  twoFactorInfoCreate(input: $input) {\n    recoveryCodes\n  }\n}",
-        operationName: "twoFactorInfoCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TwoFactorInfoCreateRequest",
-}) as any as S.Schema<TwoFactorInfoCreateRequest>;
-
-export type TwoFactorInfoCreateResponseRecoveryCodesList = Array<string>;
-export const TwoFactorInfoCreateResponseRecoveryCodesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TwoFactorInfoCreateResponseRecoveryCodesList>;
-
-/** Selection set for `twoFactorInfoCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface TwoFactorInfoCreateResponse {
-  recoveryCodes: TwoFactorInfoCreateResponseRecoveryCodesList;
-}
-export const TwoFactorInfoCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recoveryCodes: TwoFactorInfoCreateResponseRecoveryCodesList,
-  }).pipe(T.ResponsePath("twoFactorInfoCreate")),
-).annotate({
-  identifier: "TwoFactorInfoCreateResponse",
-}) as any as S.Schema<TwoFactorInfoCreateResponse>;
-
-export interface TwoFactorInfoDeleteRequest {}
-export const TwoFactorInfoDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({})
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation twoFactorInfoDelete {\n  twoFactorInfoDelete {\n    __typename\n  }\n}",
-        operationName: "twoFactorInfoDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "TwoFactorInfoDeleteRequest",
-}) as any as S.Schema<TwoFactorInfoDeleteRequest>;
-
-export type TwoFactorInfoDeleteResponse = boolean;
-export const TwoFactorInfoDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("twoFactorInfoDelete")),
-).annotate({
-  identifier: "TwoFactorInfoDeleteResponse",
-}) as any as S.Schema<TwoFactorInfoDeleteResponse>;
 
 export interface TwoFactorInfoSecretRequest {}
 export const TwoFactorInfoSecretRequest = /*@__PURE__*/ S.suspend(() =>
@@ -22106,6 +20955,1261 @@ export const TwoFactorInfoValidateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "TwoFactorInfoValidateResponse",
 }) as any as S.Schema<TwoFactorInfoValidateResponse>;
+
+export interface UpdateAccessGroupInput {
+  name?: string | null;
+  role?: ProjectRole | (string & {}) | null;
+}
+export const UpdateAccessGroupInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.NullOr(S.String)),
+    role: S.optional(S.NullOr(ProjectRole)),
+  }),
+).annotate({
+  identifier: "UpdateAccessGroupInput",
+}) as any as S.Schema<UpdateAccessGroupInput>;
+
+export interface UpdateAccessGroupRequest {
+  id: string;
+  input: UpdateAccessGroupInput;
+}
+export const UpdateAccessGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: UpdateAccessGroupInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation accessGroupUpdate($id: String!, $input: AccessGroupUpdateInput!) {\n  accessGroupUpdate(id: $id, input: $input) {\n    createdAt\n    id\n    name\n    role\n    source\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+        operationName: "accessGroupUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateAccessGroupRequest",
+}) as any as S.Schema<UpdateAccessGroupRequest>;
+
+export type AccessGroupUpdateResponseWorkspaceUsersWithout2FAList =
+  Array<string>;
+export const AccessGroupUpdateResponseWorkspaceUsersWithout2FAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AccessGroupUpdateResponseWorkspaceUsersWithout2FAList>;
+
+export interface AccessGroupUpdateResponseWorkspace {
+  adoptionLevel: number;
+  allowDeprecatedRegions: boolean | null;
+  avatar: string | null;
+  banReason: string | null;
+  createdAt: string;
+  discordRole: string | null;
+  has2FAEnforcement: boolean;
+  hasAutomaticDiagnosis: boolean;
+  hasGuardrailsAccess: boolean;
+  hasHipaaBAA: boolean;
+  hasSAML: boolean;
+  id: string;
+  name: string;
+  plan: Plan;
+  preferredRegion: string | null;
+  redactedDueTo2FAPending: boolean;
+  restrictProjectVisibilityToGroups: boolean;
+  slackChannelId: string | null;
+  subscriptionModel: SubscriptionModel;
+  subscriptionPlanLimit: unknown | null;
+  supportTierOverride: SupportTierOverride | null;
+  updatedAt: string;
+  usersWithout2FA: AccessGroupUpdateResponseWorkspaceUsersWithout2FAList;
+}
+export const AccessGroupUpdateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adoptionLevel: S.Number,
+    allowDeprecatedRegions: S.NullOr(S.Boolean),
+    avatar: S.NullOr(S.String),
+    banReason: S.NullOr(S.String),
+    createdAt: S.String,
+    discordRole: S.NullOr(S.String),
+    has2FAEnforcement: S.Boolean,
+    hasAutomaticDiagnosis: S.Boolean,
+    hasGuardrailsAccess: S.Boolean,
+    hasHipaaBAA: S.Boolean,
+    hasSAML: S.Boolean,
+    id: S.String,
+    name: S.String,
+    plan: Plan,
+    preferredRegion: S.NullOr(S.String),
+    redactedDueTo2FAPending: S.Boolean,
+    restrictProjectVisibilityToGroups: S.Boolean,
+    slackChannelId: S.NullOr(S.String),
+    subscriptionModel: SubscriptionModel,
+    subscriptionPlanLimit: S.NullOr(S.Unknown),
+    supportTierOverride: S.NullOr(SupportTierOverride),
+    updatedAt: S.String,
+    usersWithout2FA: AccessGroupUpdateResponseWorkspaceUsersWithout2FAList,
+  }),
+).annotate({
+  identifier: "AccessGroupUpdateResponseWorkspace",
+}) as any as S.Schema<AccessGroupUpdateResponseWorkspace>;
+
+/** Selection set for `accessGroupUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateAccessGroupResponse {
+  createdAt: string;
+  id: string;
+  name: string;
+  role: ProjectRole;
+  source: AccessGroupSource;
+  updatedAt: string;
+  workspace: AccessGroupUpdateResponseWorkspace;
+  workspaceId: string;
+}
+export const UpdateAccessGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    id: S.String,
+    name: S.String,
+    role: ProjectRole,
+    source: AccessGroupSource,
+    updatedAt: S.String,
+    workspace: AccessGroupUpdateResponseWorkspace,
+    workspaceId: S.String,
+  }).pipe(T.ResponsePath("accessGroupUpdate")),
+).annotate({
+  identifier: "UpdateAccessGroupResponse",
+}) as any as S.Schema<UpdateAccessGroupResponse>;
+
+export type UpdateBucketInput = EnvironmentRenameInput;
+export const UpdateBucketInput = EnvironmentRenameInput;
+
+export interface UpdateBucketRequest {
+  id: string;
+  input: EnvironmentRenameInput;
+}
+export const UpdateBucketRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: EnvironmentRenameInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation bucketUpdate($id: String!, $input: BucketUpdateInput!) {\n  bucketUpdate(id: $id, input: $input) {\n    createdAt\n    deletedAt\n    groupId\n    id\n    name\n    parentServiceId\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    updatedAt\n  }\n}",
+        operationName: "bucketUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateBucketRequest",
+}) as any as S.Schema<UpdateBucketRequest>;
+
+export type BucketUpdateResponseProjectFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const BucketUpdateResponseProjectFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    ActiveProjectFeatureFlag,
+  ) as any as S.Schema<BucketUpdateResponseProjectFeatureFlagsList>;
+
+export interface BucketUpdateResponseProject {
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: BucketUpdateResponseProjectFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  teamId: string | null;
+  updatedAt: string;
+  workspaceId: string | null;
+}
+export const BucketUpdateResponseProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: BucketUpdateResponseProjectFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "BucketUpdateResponseProject",
+}) as any as S.Schema<BucketUpdateResponseProject>;
+
+/** Selection set for `bucketUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateBucketResponse {
+  createdAt: string;
+  deletedAt: string | null;
+  groupId: string | null;
+  id: string;
+  name: string;
+  parentServiceId: string | null;
+  project: BucketUpdateResponseProject;
+  projectId: string;
+  updatedAt: string;
+}
+export const UpdateBucketResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    groupId: S.NullOr(S.String),
+    id: S.String,
+    name: S.String,
+    parentServiceId: S.NullOr(S.String),
+    project: BucketUpdateResponseProject,
+    projectId: S.String,
+    updatedAt: S.String,
+  }).pipe(T.ResponsePath("bucketUpdate")),
+).annotate({
+  identifier: "UpdateBucketResponse",
+}) as any as S.Schema<UpdateBucketResponse>;
+
+export interface UpdateCustomDomainRequest {
+  environmentId: string;
+  id: string;
+  targetPort?: number | null;
+}
+export const UpdateCustomDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    id: S.String,
+    targetPort: S.optional(S.NullOr(S.Number)),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation customDomainUpdate($environmentId: String!, $id: String!, $targetPort: Int) {\n  customDomainUpdate(environmentId: $environmentId, id: $id, targetPort: $targetPort)\n}",
+        operationName: "customDomainUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateCustomDomainRequest",
+}) as any as S.Schema<UpdateCustomDomainRequest>;
+
+export type UpdateCustomDomainResponse = boolean;
+export const UpdateCustomDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("customDomainUpdate")),
+).annotate({
+  identifier: "UpdateCustomDomainResponse",
+}) as any as S.Schema<UpdateCustomDomainResponse>;
+
+export interface UpdateDeploymentTriggerInput {
+  branch?: string | null;
+  checkSuites?: boolean | null;
+  repository?: string | null;
+  rootDirectory?: string | null;
+}
+export const UpdateDeploymentTriggerInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    checkSuites: S.optional(S.NullOr(S.Boolean)),
+    repository: S.optional(S.NullOr(S.String)),
+    rootDirectory: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "UpdateDeploymentTriggerInput",
+}) as any as S.Schema<UpdateDeploymentTriggerInput>;
+
+export interface UpdateDeploymentTriggerRequest {
+  id: string;
+  input: UpdateDeploymentTriggerInput;
+}
+export const UpdateDeploymentTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: UpdateDeploymentTriggerInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation deploymentTriggerUpdate($id: String!, $input: DeploymentTriggerUpdateInput!) {\n  deploymentTriggerUpdate(id: $id, input: $input) {\n    baseEnvironmentOverrideId\n    branch\n    checkSuites\n    environmentId\n    id\n    projectId\n    provider\n    repository\n    serviceId\n    validCheckSuites\n  }\n}",
+        operationName: "deploymentTriggerUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateDeploymentTriggerRequest",
+}) as any as S.Schema<UpdateDeploymentTriggerRequest>;
+
+/** Selection set for `deploymentTriggerUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateDeploymentTriggerResponse {
+  baseEnvironmentOverrideId: string | null;
+  branch: string;
+  checkSuites: boolean;
+  environmentId: string;
+  id: string;
+  projectId: string;
+  provider: string;
+  repository: string;
+  serviceId: string | null;
+  validCheckSuites: number;
+}
+export const UpdateDeploymentTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentOverrideId: S.NullOr(S.String),
+    branch: S.String,
+    checkSuites: S.Boolean,
+    environmentId: S.String,
+    id: S.String,
+    projectId: S.String,
+    provider: S.String,
+    repository: S.String,
+    serviceId: S.NullOr(S.String),
+    validCheckSuites: S.Number,
+  }).pipe(T.ResponsePath("deploymentTriggerUpdate")),
+).annotate({
+  identifier: "UpdateDeploymentTriggerResponse",
+}) as any as S.Schema<UpdateDeploymentTriggerResponse>;
+
+export type GitHubRepoUpdateInput = EnvironmentTriggersDeployInput;
+export const GitHubRepoUpdateInput = EnvironmentTriggersDeployInput;
+
+export interface UpdateGithubRepoRequest {
+  input: EnvironmentTriggersDeployInput;
+}
+export const UpdateGithubRepoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: EnvironmentTriggersDeployInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation githubRepoUpdate($input: GitHubRepoUpdateInput!) {\n  githubRepoUpdate(input: $input) {\n    __typename\n  }\n}",
+        operationName: "githubRepoUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateGithubRepoRequest",
+}) as any as S.Schema<UpdateGithubRepoRequest>;
+
+export type UpdateGithubRepoResponse = boolean;
+export const UpdateGithubRepoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("githubRepoUpdate")),
+).annotate({
+  identifier: "UpdateGithubRepoResponse",
+}) as any as S.Schema<UpdateGithubRepoResponse>;
+
+export type UpdateIntegrationInput = CreateIntegrationInput;
+export const UpdateIntegrationInput = CreateIntegrationInput;
+
+export interface UpdateIntegrationRequest {
+  id: string;
+  input: CreateIntegrationInput;
+}
+export const UpdateIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: CreateIntegrationInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation integrationUpdate($id: String!, $input: IntegrationUpdateInput!) {\n  integrationUpdate(id: $id, input: $input) {\n    config\n    id\n    name\n    projectId\n  }\n}",
+        operationName: "integrationUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateIntegrationRequest",
+}) as any as S.Schema<UpdateIntegrationRequest>;
+
+/** Selection set for `integrationUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateIntegrationResponse {
+  config: unknown;
+  id: string;
+  name: string;
+  projectId: string;
+}
+export const UpdateIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    config: S.Unknown,
+    id: S.String,
+    name: S.String,
+    projectId: S.String,
+  }).pipe(T.ResponsePath("integrationUpdate")),
+).annotate({
+  identifier: "UpdateIntegrationResponse",
+}) as any as S.Schema<UpdateIntegrationResponse>;
+
+export interface UpdateNotificationRuleInput {
+  channelConfigs?: DocumentList | null;
+  ephemeralEnvironments?: boolean | null;
+  eventTypes?: StringList | null;
+  severities?: NotificationSeverityList | null;
+}
+export const UpdateNotificationRuleInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channelConfigs: S.optional(S.NullOr(DocumentList)),
+    ephemeralEnvironments: S.optional(S.NullOr(S.Boolean)),
+    eventTypes: S.optional(S.NullOr(StringList)),
+    severities: S.optional(S.NullOr(NotificationSeverityList)),
+  }),
+).annotate({
+  identifier: "UpdateNotificationRuleInput",
+}) as any as S.Schema<UpdateNotificationRuleInput>;
+
+export interface UpdateNotificationRuleRequest {
+  id: string;
+  input: UpdateNotificationRuleInput;
+}
+export const UpdateNotificationRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: UpdateNotificationRuleInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation notificationRuleUpdate($id: String!, $input: UpdateNotificationRuleInput!) {\n  notificationRuleUpdate(id: $id, input: $input) {\n    channels {\n      config\n      createdAt\n      id\n      updatedAt\n      workspaceId\n    }\n    createdAt\n    environmentId\n    ephemeralEnvironments\n    eventTypes\n    id\n    projectId\n    serviceId\n    severities\n    updatedAt\n    workspaceId\n  }\n}",
+        operationName: "notificationRuleUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateNotificationRuleRequest",
+}) as any as S.Schema<UpdateNotificationRuleRequest>;
+
+export type NotificationRuleUpdateResponseChannelsItem =
+  NotificationRuleCreateResponseChannelsItem;
+export const NotificationRuleUpdateResponseChannelsItem =
+  NotificationRuleCreateResponseChannelsItem;
+
+export type NotificationRuleUpdateResponseChannelsList =
+  Array<NotificationRuleCreateResponseChannelsItem>;
+export const NotificationRuleUpdateResponseChannelsList = /*@__PURE__*/ S.Array(
+  NotificationRuleCreateResponseChannelsItem,
+) as any as S.Schema<NotificationRuleUpdateResponseChannelsList>;
+
+export type NotificationRuleUpdateResponseEventTypesList = Array<string>;
+export const NotificationRuleUpdateResponseEventTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NotificationRuleUpdateResponseEventTypesList>;
+
+export type NotificationRuleUpdateResponseSeveritiesList =
+  Array<NotificationSeverity>;
+export const NotificationRuleUpdateResponseSeveritiesList =
+  /*@__PURE__*/ S.Array(
+    NotificationSeverity,
+  ) as any as S.Schema<NotificationRuleUpdateResponseSeveritiesList>;
+
+/** Selection set for `notificationRuleUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateNotificationRuleResponse {
+  channels: NotificationRuleUpdateResponseChannelsList;
+  createdAt: string;
+  environmentId: string | null;
+  ephemeralEnvironments: boolean | null;
+  eventTypes: NotificationRuleUpdateResponseEventTypesList;
+  id: string;
+  projectId: string | null;
+  serviceId: string | null;
+  severities: NotificationRuleUpdateResponseSeveritiesList;
+  updatedAt: string;
+  workspaceId: string;
+}
+export const UpdateNotificationRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    channels: NotificationRuleUpdateResponseChannelsList,
+    createdAt: S.String,
+    environmentId: S.NullOr(S.String),
+    ephemeralEnvironments: S.NullOr(S.Boolean),
+    eventTypes: NotificationRuleUpdateResponseEventTypesList,
+    id: S.String,
+    projectId: S.NullOr(S.String),
+    serviceId: S.NullOr(S.String),
+    severities: NotificationRuleUpdateResponseSeveritiesList,
+    updatedAt: S.String,
+    workspaceId: S.String,
+  }).pipe(T.ResponsePath("notificationRuleUpdate")),
+).annotate({
+  identifier: "UpdateNotificationRuleResponse",
+}) as any as S.Schema<UpdateNotificationRuleResponse>;
+
+export interface UpdateObservabilityDashboardRequest {
+  id: string;
+  input: ObservabilityDashboardUpdateInputList;
+}
+export const UpdateObservabilityDashboardRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: ObservabilityDashboardUpdateInputList,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation observabilityDashboardUpdate($id: String!, $input: [ObservabilityDashboardUpdateInput!]!) {\n  observabilityDashboardUpdate(id: $id, input: $input) {\n    __typename\n  }\n}",
+        operationName: "observabilityDashboardUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateObservabilityDashboardRequest",
+}) as any as S.Schema<UpdateObservabilityDashboardRequest>;
+
+export type UpdateObservabilityDashboardResponse = boolean;
+export const UpdateObservabilityDashboardResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("observabilityDashboardUpdate"),
+    ),
+).annotate({
+  identifier: "UpdateObservabilityDashboardResponse",
+}) as any as S.Schema<UpdateObservabilityDashboardResponse>;
+
+export interface PreferencesUpdateData {
+  buildFailedEmail?: boolean | null;
+  changelogEmail?: boolean | null;
+  communityEmail?: boolean | null;
+  deployCrashedEmail?: boolean | null;
+  ephemeralEnvironmentEmail?: boolean | null;
+  marketingEmail?: boolean | null;
+  subprocessorUpdatesEmail?: boolean | null;
+  templateQueueEmail?: boolean | null;
+  token?: string | null;
+  usageEmail?: boolean | null;
+}
+export const PreferencesUpdateData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buildFailedEmail: S.optional(S.NullOr(S.Boolean)),
+    changelogEmail: S.optional(S.NullOr(S.Boolean)),
+    communityEmail: S.optional(S.NullOr(S.Boolean)),
+    deployCrashedEmail: S.optional(S.NullOr(S.Boolean)),
+    ephemeralEnvironmentEmail: S.optional(S.NullOr(S.Boolean)),
+    marketingEmail: S.optional(S.NullOr(S.Boolean)),
+    subprocessorUpdatesEmail: S.optional(S.NullOr(S.Boolean)),
+    templateQueueEmail: S.optional(S.NullOr(S.Boolean)),
+    token: S.optional(S.NullOr(S.String)),
+    usageEmail: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "PreferencesUpdateData",
+}) as any as S.Schema<PreferencesUpdateData>;
+
+export interface UpdatePreferenceRequest {
+  input: PreferencesUpdateData;
+}
+export const UpdatePreferenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: PreferencesUpdateData,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation preferencesUpdate($input: PreferencesUpdateData!) {\n  preferencesUpdate(input: $input) {\n    buildFailedEmail\n    changelogEmail\n    communityEmail\n    deployCrashedEmail\n    ephemeralEnvironmentEmail\n    id\n    marketingEmail\n    subprocessorUpdatesEmail\n    templateQueueEmail\n    usageEmail\n  }\n}",
+        operationName: "preferencesUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdatePreferenceRequest",
+}) as any as S.Schema<UpdatePreferenceRequest>;
+
+/** Selection set for `preferencesUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdatePreferenceResponse {
+  buildFailedEmail: boolean;
+  changelogEmail: boolean;
+  communityEmail: boolean;
+  deployCrashedEmail: boolean;
+  ephemeralEnvironmentEmail: boolean;
+  id: string;
+  marketingEmail: boolean;
+  subprocessorUpdatesEmail: boolean;
+  templateQueueEmail: boolean;
+  usageEmail: boolean;
+}
+export const UpdatePreferenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buildFailedEmail: S.Boolean,
+    changelogEmail: S.Boolean,
+    communityEmail: S.Boolean,
+    deployCrashedEmail: S.Boolean,
+    ephemeralEnvironmentEmail: S.Boolean,
+    id: S.String,
+    marketingEmail: S.Boolean,
+    subprocessorUpdatesEmail: S.Boolean,
+    templateQueueEmail: S.Boolean,
+    usageEmail: S.Boolean,
+  }).pipe(T.ResponsePath("preferencesUpdate")),
+).annotate({
+  identifier: "UpdatePreferenceResponse",
+}) as any as S.Schema<UpdatePreferenceResponse>;
+
+export interface UpdateProjectInput {
+  baseEnvironmentId?: string | null;
+  /** Enable/disable pull request environments for PRs created by bots */
+  botPrEnvironments?: boolean | null;
+  description?: string | null;
+  /** Enable focused PR environments that only deploy services affected by changed files */
+  focusedPrEnvironments?: boolean | null;
+  isPublic?: boolean | null;
+  name?: string | null;
+  prDeploys?: boolean | null;
+}
+export const UpdateProjectInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentId: S.optional(S.NullOr(S.String)),
+    botPrEnvironments: S.optional(S.NullOr(S.Boolean)),
+    description: S.optional(S.NullOr(S.String)),
+    focusedPrEnvironments: S.optional(S.NullOr(S.Boolean)),
+    isPublic: S.optional(S.NullOr(S.Boolean)),
+    name: S.optional(S.NullOr(S.String)),
+    prDeploys: S.optional(S.NullOr(S.Boolean)),
+  }),
+).annotate({
+  identifier: "UpdateProjectInput",
+}) as any as S.Schema<UpdateProjectInput>;
+
+export interface UpdateProjectRequest {
+  id: string;
+  input: UpdateProjectInput;
+}
+export const UpdateProjectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: UpdateProjectInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectUpdate($id: String!, $input: ProjectUpdateInput!) {\n  projectUpdate(id: $id, input: $input) {\n    baseEnvironment {\n      canAccess\n      canvasGroupRefs\n      configEtag\n      createdAt\n      deletedAt\n      iacPartials\n      id\n      isEphemeral\n      name\n      projectId\n      unmergedChangesCount\n      updatedAt\n    }\n    baseEnvironmentId\n    botPrEnvironments\n    createdAt\n    deletedAt\n    description\n    expiredAt\n    featureFlags\n    focusedPrEnvironments\n    id\n    isPublic\n    isTempProject\n    members {\n      avatar\n      email\n      id\n      name\n      role\n    }\n    name\n    prDeploys\n    primaryEnvironmentId\n    subscriptionPlanLimit\n    subscriptionType\n    team {\n      adoptionLevel\n      avatar\n      createdAt\n      id\n      name\n      preferredRegion\n      slackChannelId\n      supportTierOverride\n      updatedAt\n    }\n    teamId\n    updatedAt\n    workspace {\n      adoptionLevel\n      allowDeprecatedRegions\n      avatar\n      banReason\n      createdAt\n      discordRole\n      has2FAEnforcement\n      hasAutomaticDiagnosis\n      hasGuardrailsAccess\n      hasHipaaBAA\n      hasSAML\n      id\n      name\n      plan\n      preferredRegion\n      redactedDueTo2FAPending\n      restrictProjectVisibilityToGroups\n      slackChannelId\n      subscriptionModel\n      subscriptionPlanLimit\n      supportTierOverride\n      updatedAt\n      usersWithout2FA\n    }\n    workspaceId\n  }\n}",
+        operationName: "projectUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateProjectRequest",
+}) as any as S.Schema<UpdateProjectRequest>;
+
+export type ProjectUpdateResponseBaseEnvironment =
+  AdminVolumeInstancesForVolumeResultItemEnvironment;
+export const ProjectUpdateResponseBaseEnvironment =
+  AdminVolumeInstancesForVolumeResultItemEnvironment;
+
+export type ProjectUpdateResponseFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const ProjectUpdateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
+  ActiveProjectFeatureFlag,
+) as any as S.Schema<ProjectUpdateResponseFeatureFlagsList>;
+
+export type ProjectUpdateResponseMembersItem = ProjectCreateResponseMembersItem;
+export const ProjectUpdateResponseMembersItem =
+  ProjectCreateResponseMembersItem;
+
+export type ProjectUpdateResponseMembersList =
+  Array<ProjectCreateResponseMembersItem>;
+export const ProjectUpdateResponseMembersList = /*@__PURE__*/ S.Array(
+  ProjectCreateResponseMembersItem,
+) as any as S.Schema<ProjectUpdateResponseMembersList>;
+
+export type ProjectUpdateResponseTeam = ProjectCreateResponseTeam;
+export const ProjectUpdateResponseTeam = ProjectCreateResponseTeam;
+
+export type ProjectUpdateResponseWorkspaceUsersWithout2FAList = Array<string>;
+export const ProjectUpdateResponseWorkspaceUsersWithout2FAList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ProjectUpdateResponseWorkspaceUsersWithout2FAList>;
+
+export interface ProjectUpdateResponseWorkspace {
+  adoptionLevel: number;
+  allowDeprecatedRegions: boolean | null;
+  avatar: string | null;
+  banReason: string | null;
+  createdAt: string;
+  discordRole: string | null;
+  has2FAEnforcement: boolean;
+  hasAutomaticDiagnosis: boolean;
+  hasGuardrailsAccess: boolean;
+  hasHipaaBAA: boolean;
+  hasSAML: boolean;
+  id: string;
+  name: string;
+  plan: Plan;
+  preferredRegion: string | null;
+  redactedDueTo2FAPending: boolean;
+  restrictProjectVisibilityToGroups: boolean;
+  slackChannelId: string | null;
+  subscriptionModel: SubscriptionModel;
+  subscriptionPlanLimit: unknown | null;
+  supportTierOverride: SupportTierOverride | null;
+  updatedAt: string;
+  usersWithout2FA: ProjectUpdateResponseWorkspaceUsersWithout2FAList;
+}
+export const ProjectUpdateResponseWorkspace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adoptionLevel: S.Number,
+    allowDeprecatedRegions: S.NullOr(S.Boolean),
+    avatar: S.NullOr(S.String),
+    banReason: S.NullOr(S.String),
+    createdAt: S.String,
+    discordRole: S.NullOr(S.String),
+    has2FAEnforcement: S.Boolean,
+    hasAutomaticDiagnosis: S.Boolean,
+    hasGuardrailsAccess: S.Boolean,
+    hasHipaaBAA: S.Boolean,
+    hasSAML: S.Boolean,
+    id: S.String,
+    name: S.String,
+    plan: Plan,
+    preferredRegion: S.NullOr(S.String),
+    redactedDueTo2FAPending: S.Boolean,
+    restrictProjectVisibilityToGroups: S.Boolean,
+    slackChannelId: S.NullOr(S.String),
+    subscriptionModel: SubscriptionModel,
+    subscriptionPlanLimit: S.NullOr(S.Unknown),
+    supportTierOverride: S.NullOr(SupportTierOverride),
+    updatedAt: S.String,
+    usersWithout2FA: ProjectUpdateResponseWorkspaceUsersWithout2FAList,
+  }),
+).annotate({
+  identifier: "ProjectUpdateResponseWorkspace",
+}) as any as S.Schema<ProjectUpdateResponseWorkspace>;
+
+/** Selection set for `projectUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateProjectResponse {
+  baseEnvironment: AdminVolumeInstancesForVolumeResultItemEnvironment | null;
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: ProjectUpdateResponseFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  members: ProjectUpdateResponseMembersList;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  team: ProjectCreateResponseTeam | null;
+  teamId: string | null;
+  updatedAt: string;
+  workspace: ProjectUpdateResponseWorkspace | null;
+  workspaceId: string | null;
+}
+export const UpdateProjectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironment: S.NullOr(
+      AdminVolumeInstancesForVolumeResultItemEnvironment,
+    ),
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: ProjectUpdateResponseFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    members: ProjectUpdateResponseMembersList,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    team: S.NullOr(ProjectCreateResponseTeam),
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspace: S.NullOr(ProjectUpdateResponseWorkspace),
+    workspaceId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("projectUpdate")),
+).annotate({
+  identifier: "UpdateProjectResponse",
+}) as any as S.Schema<UpdateProjectResponse>;
+
+export type UpdateProjectMemberInput = ProjectMemberAddInput;
+export const UpdateProjectMemberInput = ProjectMemberAddInput;
+
+export interface UpdateProjectMemberRequest {
+  input: ProjectMemberAddInput;
+}
+export const UpdateProjectMemberRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: ProjectMemberAddInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation projectMemberUpdate($input: ProjectMemberUpdateInput!) {\n  projectMemberUpdate(input: $input) {\n    avatar\n    email\n    id\n    name\n    role\n  }\n}",
+        operationName: "projectMemberUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateProjectMemberRequest",
+}) as any as S.Schema<UpdateProjectMemberRequest>;
+
+/** Selection set for `projectMemberUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateProjectMemberResponse {
+  avatar: string | null;
+  email: string;
+  id: string;
+  name: string | null;
+  role: ProjectRole;
+}
+export const UpdateProjectMemberResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    avatar: S.NullOr(S.String),
+    email: S.String,
+    id: S.String,
+    name: S.NullOr(S.String),
+    role: ProjectRole,
+  }).pipe(T.ResponsePath("projectMemberUpdate")),
+).annotate({
+  identifier: "UpdateProjectMemberResponse",
+}) as any as S.Schema<UpdateProjectMemberResponse>;
+
+export interface UpdateRailwayDomainInput {
+  autoRenewEnabled?: boolean | null;
+  id: string;
+}
+export const UpdateRailwayDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoRenewEnabled: S.optional(S.NullOr(S.Boolean)),
+    id: S.String,
+  }),
+).annotate({
+  identifier: "UpdateRailwayDomainInput",
+}) as any as S.Schema<UpdateRailwayDomainInput>;
+
+export interface UpdateRailwayDomainRequest {
+  input: UpdateRailwayDomainInput;
+}
+export const UpdateRailwayDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpdateRailwayDomainInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation railwayDomainUpdate($input: RailwayDomainUpdateInput!) {\n  railwayDomainUpdate(input: $input) {\n    autoRenewEnabled\n    connectedServiceInstances {\n      environmentId\n      projectId\n      serviceId\n      serviceName\n    }\n    createdAt\n    domain\n    id\n    nameservers {\n      isDefault\n      nameservers\n    }\n    nextBillingDate\n    purchasePrice\n    registrationYears\n    renewalPrice\n    status\n    workspaceId\n    workspaceName\n  }\n}",
+        operationName: "railwayDomainUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateRailwayDomainRequest",
+}) as any as S.Schema<UpdateRailwayDomainRequest>;
+
+export type RailwayDomainUpdateResponseConnectedServiceInstancesItem =
+  RailwayDomainResponseConnectedServiceInstancesItem;
+export const RailwayDomainUpdateResponseConnectedServiceInstancesItem =
+  RailwayDomainResponseConnectedServiceInstancesItem;
+
+export type RailwayDomainUpdateResponseConnectedServiceInstancesList =
+  Array<RailwayDomainResponseConnectedServiceInstancesItem>;
+export const RailwayDomainUpdateResponseConnectedServiceInstancesList =
+  /*@__PURE__*/ S.Array(
+    RailwayDomainResponseConnectedServiceInstancesItem,
+  ) as any as S.Schema<RailwayDomainUpdateResponseConnectedServiceInstancesList>;
+
+export type RailwayDomainUpdateResponseNameserversNameserversList =
+  Array<string>;
+export const RailwayDomainUpdateResponseNameserversNameserversList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RailwayDomainUpdateResponseNameserversNameserversList>;
+
+export interface RailwayDomainUpdateResponseNameservers {
+  isDefault: boolean;
+  nameservers: RailwayDomainUpdateResponseNameserversNameserversList;
+}
+export const RailwayDomainUpdateResponseNameservers = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      isDefault: S.Boolean,
+      nameservers: RailwayDomainUpdateResponseNameserversNameserversList,
+    }),
+).annotate({
+  identifier: "RailwayDomainUpdateResponseNameservers",
+}) as any as S.Schema<RailwayDomainUpdateResponseNameservers>;
+
+/** Selection set for `railwayDomainUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateRailwayDomainResponse {
+  autoRenewEnabled: boolean;
+  connectedServiceInstances: RailwayDomainUpdateResponseConnectedServiceInstancesList;
+  createdAt: string;
+  domain: string;
+  id: string;
+  nameservers: RailwayDomainUpdateResponseNameservers;
+  nextBillingDate: string | null;
+  purchasePrice: number;
+  registrationYears: number;
+  renewalPrice: number;
+  status: RailwayDomainStatus;
+  workspaceId: string;
+  workspaceName: string | null;
+}
+export const UpdateRailwayDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoRenewEnabled: S.Boolean,
+    connectedServiceInstances:
+      RailwayDomainUpdateResponseConnectedServiceInstancesList,
+    createdAt: S.String,
+    domain: S.String,
+    id: S.String,
+    nameservers: RailwayDomainUpdateResponseNameservers,
+    nextBillingDate: S.NullOr(S.String),
+    purchasePrice: S.Number,
+    registrationYears: S.Number,
+    renewalPrice: S.Number,
+    status: RailwayDomainStatus,
+    workspaceId: S.String,
+    workspaceName: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("railwayDomainUpdate")),
+).annotate({
+  identifier: "UpdateRailwayDomainResponse",
+}) as any as S.Schema<UpdateRailwayDomainResponse>;
+
+export interface UpdateRailwayDomainDnsRecordInput {
+  answer: string;
+  domain: string;
+  host: string;
+  priority?: number | null;
+  recordId: number;
+  ttl?: number | null;
+  type: RailwayDomainDnsRecordType | (string & {});
+  workspaceId: string;
+}
+export const UpdateRailwayDomainDnsRecordInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    answer: S.String,
+    domain: S.String,
+    host: S.String,
+    priority: S.optional(S.NullOr(S.Number)),
+    recordId: S.Number,
+    ttl: S.optional(S.NullOr(S.Number)),
+    type: RailwayDomainDnsRecordType,
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "UpdateRailwayDomainDnsRecordInput",
+}) as any as S.Schema<UpdateRailwayDomainDnsRecordInput>;
+
+export interface UpdateRailwayDomainDnsRecordRequest {
+  input: UpdateRailwayDomainDnsRecordInput;
+}
+export const UpdateRailwayDomainDnsRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpdateRailwayDomainDnsRecordInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation railwayDomainDnsRecordUpdate($input: RailwayDomainDnsRecordUpdateInput!) {\n  railwayDomainDnsRecordUpdate(input: $input) {\n    answer\n    domainName\n    fqdn\n    host\n    id\n    priority\n    ttl\n    type\n  }\n}",
+        operationName: "railwayDomainDnsRecordUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateRailwayDomainDnsRecordRequest",
+}) as any as S.Schema<UpdateRailwayDomainDnsRecordRequest>;
+
+/** Selection set for `railwayDomainDnsRecordUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateRailwayDomainDnsRecordResponse {
+  answer: string;
+  domainName: string;
+  fqdn: string;
+  host: string;
+  id: number;
+  priority: number | null;
+  ttl: number;
+  type: RailwayDomainDnsRecordType;
+}
+export const UpdateRailwayDomainDnsRecordResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      answer: S.String,
+      domainName: S.String,
+      fqdn: S.String,
+      host: S.String,
+      id: S.Number,
+      priority: S.NullOr(S.Number),
+      ttl: S.Number,
+      type: RailwayDomainDnsRecordType,
+    }).pipe(T.ResponsePath("railwayDomainDnsRecordUpdate")),
+).annotate({
+  identifier: "UpdateRailwayDomainDnsRecordResponse",
+}) as any as S.Schema<UpdateRailwayDomainDnsRecordResponse>;
+
+export interface UpdateReferralInfoInput {
+  code: string;
+  workspaceId: string;
+}
+export const UpdateReferralInfoInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    workspaceId: S.String,
+  }),
+).annotate({
+  identifier: "UpdateReferralInfoInput",
+}) as any as S.Schema<UpdateReferralInfoInput>;
+
+export interface UpdateReferralInfoRequest {
+  input: UpdateReferralInfoInput;
+}
+export const UpdateReferralInfoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpdateReferralInfoInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation referralInfoUpdate($input: ReferralInfoUpdateInput!) {\n  referralInfoUpdate(input: $input) {\n    code\n    id\n    referralStats {\n      credited\n      pending\n    }\n    status\n  }\n}",
+        operationName: "referralInfoUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateReferralInfoRequest",
+}) as any as S.Schema<UpdateReferralInfoRequest>;
+
+export type ReferralInfoUpdateResponseReferralStats =
+  ReferralInfoResponseReferralStats;
+export const ReferralInfoUpdateResponseReferralStats =
+  ReferralInfoResponseReferralStats;
+
+/** Selection set for `referralInfoUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateReferralInfoResponse {
+  code: string;
+  id: string;
+  referralStats: ReferralInfoResponseReferralStats;
+  status: string;
+}
+export const UpdateReferralInfoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    id: S.String,
+    referralStats: ReferralInfoResponseReferralStats,
+    status: S.String,
+  }).pipe(T.ResponsePath("referralInfoUpdate")),
+).annotate({
+  identifier: "UpdateReferralInfoResponse",
+}) as any as S.Schema<UpdateReferralInfoResponse>;
+
+export interface UpdateServiceInput {
+  icon?: string | null;
+  name?: string | null;
+}
+export const UpdateServiceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    icon: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "UpdateServiceInput",
+}) as any as S.Schema<UpdateServiceInput>;
+
+export interface UpdateServiceRequest {
+  id: string;
+  input: UpdateServiceInput;
+}
+export const UpdateServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: UpdateServiceInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation serviceUpdate($id: String!, $input: ServiceUpdateInput!) {\n  serviceUpdate(id: $id, input: $input) {\n    createdAt\n    deletedAt\n    featureFlags\n    groupId\n    hasHiddenRegistryCredentialsFromTemplate\n    icon\n    id\n    isRestricted\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n    templateId\n    templateServiceId\n    templateThreadSlug\n    updatedAt\n  }\n}",
+        operationName: "serviceUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateServiceRequest",
+}) as any as S.Schema<UpdateServiceRequest>;
+
+export type ServiceUpdateResponseFeatureFlagsList =
+  Array<ActiveServiceFeatureFlag>;
+export const ServiceUpdateResponseFeatureFlagsList = /*@__PURE__*/ S.Array(
+  ActiveServiceFeatureFlag,
+) as any as S.Schema<ServiceUpdateResponseFeatureFlagsList>;
+
+export type ServiceUpdateResponseProjectFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const ServiceUpdateResponseProjectFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    ActiveProjectFeatureFlag,
+  ) as any as S.Schema<ServiceUpdateResponseProjectFeatureFlagsList>;
+
+export interface ServiceUpdateResponseProject {
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: ServiceUpdateResponseProjectFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  teamId: string | null;
+  updatedAt: string;
+  workspaceId: string | null;
+}
+export const ServiceUpdateResponseProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: ServiceUpdateResponseProjectFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "ServiceUpdateResponseProject",
+}) as any as S.Schema<ServiceUpdateResponseProject>;
+
+/** Selection set for `serviceUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateServiceResponse {
+  createdAt: string;
+  deletedAt: string | null;
+  featureFlags: ServiceUpdateResponseFeatureFlagsList;
+  groupId: string | null;
+  hasHiddenRegistryCredentialsFromTemplate: boolean;
+  icon: string | null;
+  id: string;
+  isRestricted: boolean;
+  name: string;
+  project: ServiceUpdateResponseProject;
+  projectId: string;
+  templateId: string | null;
+  templateServiceId: string | null;
+  templateThreadSlug: string | null;
+  updatedAt: string;
+}
+export const UpdateServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    featureFlags: ServiceUpdateResponseFeatureFlagsList,
+    groupId: S.NullOr(S.String),
+    hasHiddenRegistryCredentialsFromTemplate: S.Boolean,
+    icon: S.NullOr(S.String),
+    id: S.String,
+    isRestricted: S.Boolean,
+    name: S.String,
+    project: ServiceUpdateResponseProject,
+    projectId: S.String,
+    templateId: S.NullOr(S.String),
+    templateServiceId: S.NullOr(S.String),
+    templateThreadSlug: S.NullOr(S.String),
+    updatedAt: S.String,
+  }).pipe(T.ResponsePath("serviceUpdate")),
+).annotate({
+  identifier: "UpdateServiceResponse",
+}) as any as S.Schema<UpdateServiceResponse>;
+
+export interface UpdateServiceDomainInput {
+  domain: string;
+  environmentId: string;
+  serviceDomainId: string;
+  serviceId: string;
+  targetPort?: number | null;
+}
+export const UpdateServiceDomainInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domain: S.String,
+    environmentId: S.String,
+    serviceDomainId: S.String,
+    serviceId: S.String,
+    targetPort: S.optional(S.NullOr(S.Number)),
+  }),
+).annotate({
+  identifier: "UpdateServiceDomainInput",
+}) as any as S.Schema<UpdateServiceDomainInput>;
+
+export interface UpdateServiceDomainRequest {
+  input: UpdateServiceDomainInput;
+}
+export const UpdateServiceDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpdateServiceDomainInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation serviceDomainUpdate($input: ServiceDomainUpdateInput!) {\n  serviceDomainUpdate(input: $input)\n}",
+        operationName: "serviceDomainUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateServiceDomainRequest",
+}) as any as S.Schema<UpdateServiceDomainRequest>;
+
+export type UpdateServiceDomainResponse = boolean;
+export const UpdateServiceDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("serviceDomainUpdate")),
+).annotate({
+  identifier: "UpdateServiceDomainResponse",
+}) as any as S.Schema<UpdateServiceDomainResponse>;
 
 export interface UpdateServiceEdgeConfigInput {
   config: EdgeConfigInput;
@@ -22239,400 +22343,491 @@ export const UpdateServiceEdgeRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateServiceEdgeRulesResponse",
 }) as any as S.Schema<UpdateServiceEdgeRulesResponse>;
 
-export interface UpsertSlackChannelRequest {
-  workspaceId: string;
+export interface UpdateServiceInstanceInput {
+  buildCommand?: string | null;
+  builder?: Builder | (string & {}) | null;
+  cronSchedule?: string | null;
+  dockerfilePath?: string | null;
+  drainingSeconds?: number | null;
+  healthcheckPath?: string | null;
+  healthcheckTimeout?: number | null;
+  ipv6EgressEnabled?: boolean | null;
+  multiRegionConfig?: unknown | null;
+  nixpacksPlan?: unknown | null;
+  numReplicas?: number | null;
+  overlapSeconds?: number | null;
+  preDeployCommand?: StringList | null;
+  preDeployTimeoutSeconds?: number | null;
+  railwayConfigFile?: string | null;
+  region?: string | null;
+  registryCredentials?: RegistryCredentialsInput | null;
+  restartPolicyMaxRetries?: number | null;
+  restartPolicyType?: RestartPolicyType | (string & {}) | null;
+  rootDirectory?: string | null;
+  sleepApplication?: boolean | null;
+  source?: ServiceSourceInput | null;
+  startCommand?: string | null;
+  watchPatterns?: StringList | null;
 }
-export const UpsertSlackChannelRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateServiceInstanceInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    workspaceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation upsertSlackChannel($workspaceId: String!) {\n  upsertSlackChannel(workspaceId: $workspaceId) {\n    __typename\n  }\n}",
-        operationName: "upsertSlackChannel",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "UpsertSlackChannelRequest",
-}) as any as S.Schema<UpsertSlackChannelRequest>;
-
-export type UpsertSlackChannelResponse = boolean;
-export const UpsertSlackChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("upsertSlackChannel")),
-).annotate({
-  identifier: "UpsertSlackChannelResponse",
-}) as any as S.Schema<UpsertSlackChannelResponse>;
-
-export interface UsageRequest {
-  endDate?: string | null;
-  /** What to group the aggregated usage by. By default, it is grouped over the entire project. */
-  groupBy?: MetricTagList | null;
-  /** Whether to include deleted projects in the usage. */
-  includeDeleted?: boolean | null;
-  measurements: MetricMeasurementList;
-  projectId?: string | null;
-  startDate?: string | null;
-  workspaceId?: string | null;
-}
-export const UsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endDate: S.optional(S.NullOr(S.String)),
-    groupBy: S.optional(S.NullOr(MetricTagList)),
-    includeDeleted: S.optional(S.NullOr(S.Boolean)),
-    measurements: MetricMeasurementList,
-    projectId: S.optional(S.NullOr(S.String)),
-    startDate: S.optional(S.NullOr(S.String)),
-    workspaceId: S.optional(S.NullOr(S.String)),
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "query usage($endDate: DateTime, $groupBy: [MetricTag!], $includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $startDate: DateTime, $workspaceId: String) {\n  usage(endDate: $endDate, groupBy: $groupBy, includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, startDate: $startDate, workspaceId: $workspaceId) {\n    measurement\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      region\n      serviceId\n      volumeId\n      volumeInstanceId\n    }\n    value\n  }\n}",
-        operationName: "usage",
-        type: "query",
-      }),
-    ),
-).annotate({ identifier: "UsageRequest" }) as any as S.Schema<UsageRequest>;
-
-export type UsageResultItemTags = MetricsResultItemTags;
-export const UsageResultItemTags = MetricsResultItemTags;
-
-export interface UsageResultItem {
-  measurement: MetricMeasurement;
-  tags: MetricsResultItemTags;
-  value: number;
-}
-export const UsageResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    measurement: MetricMeasurement,
-    tags: MetricsResultItemTags,
-    value: S.Number,
+    buildCommand: S.optional(S.NullOr(S.String)),
+    builder: S.optional(S.NullOr(Builder)),
+    cronSchedule: S.optional(S.NullOr(S.String)),
+    dockerfilePath: S.optional(S.NullOr(S.String)),
+    drainingSeconds: S.optional(S.NullOr(S.Number)),
+    healthcheckPath: S.optional(S.NullOr(S.String)),
+    healthcheckTimeout: S.optional(S.NullOr(S.Number)),
+    ipv6EgressEnabled: S.optional(S.NullOr(S.Boolean)),
+    multiRegionConfig: S.optional(S.NullOr(S.Unknown)),
+    nixpacksPlan: S.optional(S.NullOr(S.Unknown)),
+    numReplicas: S.optional(S.NullOr(S.Number)),
+    overlapSeconds: S.optional(S.NullOr(S.Number)),
+    preDeployCommand: S.optional(S.NullOr(StringList)),
+    preDeployTimeoutSeconds: S.optional(S.NullOr(S.Number)),
+    railwayConfigFile: S.optional(S.NullOr(S.String)),
+    region: S.optional(S.NullOr(S.String)),
+    registryCredentials: S.optional(S.NullOr(RegistryCredentialsInput)),
+    restartPolicyMaxRetries: S.optional(S.NullOr(S.Number)),
+    restartPolicyType: S.optional(S.NullOr(RestartPolicyType)),
+    rootDirectory: S.optional(S.NullOr(S.String)),
+    sleepApplication: S.optional(S.NullOr(S.Boolean)),
+    source: S.optional(S.NullOr(ServiceSourceInput)),
+    startCommand: S.optional(S.NullOr(S.String)),
+    watchPatterns: S.optional(S.NullOr(StringList)),
   }),
 ).annotate({
-  identifier: "UsageResultItem",
-}) as any as S.Schema<UsageResultItem>;
+  identifier: "UpdateServiceInstanceInput",
+}) as any as S.Schema<UpdateServiceInstanceInput>;
 
-export type UsageResultList = Array<UsageResultItem>;
-export const UsageResultList = /*@__PURE__*/ S.Array(
-  UsageResultItem,
-) as any as S.Schema<UsageResultList>;
-
-export type UsageResponse = UsageResultList;
-export const UsageResponse = /*@__PURE__*/ S.suspend(() =>
-  UsageResultList.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("usage")),
-).annotate({ identifier: "UsageResponse" }) as any as S.Schema<UsageResponse>;
-
-export interface UsageLimitRemoveInput {
-  customerId: string;
+export interface UpdateServiceInstanceRequest {
+  /** [Experimental] Environment ID. If the environment is a fork, the service will only be updated in it. Otherwise it will updated in all environments that are not forks of other environments */
+  environmentId?: string | null;
+  input: UpdateServiceInstanceInput;
+  serviceId: string;
 }
-export const UsageLimitRemoveInput = /*@__PURE__*/ S.suspend(() =>
+export const UpdateServiceInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    customerId: S.String,
-  }),
-).annotate({
-  identifier: "UsageLimitRemoveInput",
-}) as any as S.Schema<UsageLimitRemoveInput>;
-
-export interface UsageLimitRemoveRequest {
-  input: UsageLimitRemoveInput;
-}
-export const UsageLimitRemoveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: UsageLimitRemoveInput,
+    environmentId: S.optional(S.NullOr(S.String)),
+    input: UpdateServiceInstanceInput,
+    serviceId: S.String,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input)\n}",
-        operationName: "usageLimitRemove",
+          "mutation serviceInstanceUpdate($environmentId: String, $input: ServiceInstanceUpdateInput!, $serviceId: String!) {\n  serviceInstanceUpdate(environmentId: $environmentId, input: $input, serviceId: $serviceId)\n}",
+        operationName: "serviceInstanceUpdate",
         type: "mutation",
       }),
     ),
 ).annotate({
-  identifier: "UsageLimitRemoveRequest",
-}) as any as S.Schema<UsageLimitRemoveRequest>;
+  identifier: "UpdateServiceInstanceRequest",
+}) as any as S.Schema<UpdateServiceInstanceRequest>;
 
-export type UsageLimitRemoveResponse = boolean;
-export const UsageLimitRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("usageLimitRemove")),
-).annotate({
-  identifier: "UsageLimitRemoveResponse",
-}) as any as S.Schema<UsageLimitRemoveResponse>;
-
-export interface UsageLimitSetInput {
-  customerId: string;
-  hardLimitDollars?: number | null;
-  softLimitDollars: number;
-}
-export const UsageLimitSetInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerId: S.String,
-    hardLimitDollars: S.optional(S.NullOr(S.Number)),
-    softLimitDollars: S.Number,
-  }),
-).annotate({
-  identifier: "UsageLimitSetInput",
-}) as any as S.Schema<UsageLimitSetInput>;
-
-export interface UsageLimitSetRequest {
-  input: UsageLimitSetInput;
-}
-export const UsageLimitSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: UsageLimitSetInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation usageLimitSet($input: UsageLimitSetInput!) {\n  usageLimitSet(input: $input)\n}",
-        operationName: "usageLimitSet",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "UsageLimitSetRequest",
-}) as any as S.Schema<UsageLimitSetRequest>;
-
-export type UsageLimitSetResponse = boolean;
-export const UsageLimitSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("usageLimitSet")),
-).annotate({
-  identifier: "UsageLimitSetResponse",
-}) as any as S.Schema<UsageLimitSetResponse>;
-
-export interface UserBetaLeaveRequest {}
-export const UserBetaLeaveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({})
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation userBetaLeave {\n  userBetaLeave {\n    __typename\n  }\n}",
-        operationName: "userBetaLeave",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "UserBetaLeaveRequest",
-}) as any as S.Schema<UserBetaLeaveRequest>;
-
-export type UserBetaLeaveResponse = boolean;
-export const UserBetaLeaveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userBetaLeave")),
-).annotate({
-  identifier: "UserBetaLeaveResponse",
-}) as any as S.Schema<UserBetaLeaveResponse>;
-
-export interface UserDeleteRequest {}
-export const UserDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({})
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query: "mutation userDelete {\n  userDelete {\n    __typename\n  }\n}",
-        operationName: "userDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "UserDeleteRequest",
-}) as any as S.Schema<UserDeleteRequest>;
-
-export type UserDeleteResponse = boolean;
-export const UserDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userDelete")),
-).annotate({
-  identifier: "UserDeleteResponse",
-}) as any as S.Schema<UserDeleteResponse>;
-
-export interface UserDiscordDisconnectRequest {}
-export const UserDiscordDisconnectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({})
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation userDiscordDisconnect {\n  userDiscordDisconnect {\n    __typename\n  }\n}",
-        operationName: "userDiscordDisconnect",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "UserDiscordDisconnectRequest",
-}) as any as S.Schema<UserDiscordDisconnectRequest>;
-
-export type UserDiscordDisconnectResponse = boolean;
-export const UserDiscordDisconnectResponse = /*@__PURE__*/ S.suspend(() =>
+export type UpdateServiceInstanceResponse = boolean;
+export const UpdateServiceInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(
     T.GraphQLPayloadRoot(),
-    T.ResponsePath("userDiscordDisconnect"),
+    T.ResponsePath("serviceInstanceUpdate"),
   ),
 ).annotate({
-  identifier: "UserDiscordDisconnectResponse",
-}) as any as S.Schema<UserDiscordDisconnectResponse>;
+  identifier: "UpdateServiceInstanceResponse",
+}) as any as S.Schema<UpdateServiceInstanceResponse>;
 
-export type UserFlagList = Array<UserFlag | (string & {})>;
-export const UserFlagList = /*@__PURE__*/ S.Array(
-  UserFlag,
-) as any as S.Schema<UserFlagList>;
-
-export interface UserFlagsRemoveInput {
-  flags: UserFlagList;
-  userId?: string | null;
+export interface UpdateServiceInstanceAutoDeployInput {
+  enabled: boolean;
+  environmentId: string;
+  projectId: string;
+  serviceId: string;
 }
-export const UserFlagsRemoveInput = /*@__PURE__*/ S.suspend(() =>
+export const UpdateServiceInstanceAutoDeployInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      environmentId: S.String,
+      projectId: S.String,
+      serviceId: S.String,
+    }),
+).annotate({
+  identifier: "UpdateServiceInstanceAutoDeployInput",
+}) as any as S.Schema<UpdateServiceInstanceAutoDeployInput>;
+
+export interface UpdateServiceInstanceAutoDeployRequest {
+  input: UpdateServiceInstanceAutoDeployInput;
+}
+export const UpdateServiceInstanceAutoDeployRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      input: UpdateServiceInstanceAutoDeployInput,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation serviceInstanceAutoDeployUpdate($input: ServiceInstanceAutoDeployUpdateInput!) {\n  serviceInstanceAutoDeployUpdate(input: $input) {\n    enabled\n  }\n}",
+          operationName: "serviceInstanceAutoDeployUpdate",
+          type: "mutation",
+        }),
+      ),
+).annotate({
+  identifier: "UpdateServiceInstanceAutoDeployRequest",
+}) as any as S.Schema<UpdateServiceInstanceAutoDeployRequest>;
+
+/** Selection set for `serviceInstanceAutoDeployUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateServiceInstanceAutoDeployResponse {
+  enabled: boolean;
+}
+export const UpdateServiceInstanceAutoDeployResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+    }).pipe(T.ResponsePath("serviceInstanceAutoDeployUpdate")),
+).annotate({
+  identifier: "UpdateServiceInstanceAutoDeployResponse",
+}) as any as S.Schema<UpdateServiceInstanceAutoDeployResponse>;
+
+export interface UpdateServiceInstanceAutoSnoozeRequest {
+  environmentId: string;
+  serviceId: string;
+  /** How many days to skip, from now (default 7 — covers any weekly schedule shape). Between 1 and 14. */
+  snoozeDays?: number | null;
+}
+export const UpdateServiceInstanceAutoSnoozeRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      environmentId: S.String,
+      serviceId: S.String,
+      snoozeDays: S.optional(S.NullOr(S.Number)),
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation serviceInstanceAutoUpdateSnooze($environmentId: String!, $serviceId: String!, $snoozeDays: Int) {\n  serviceInstanceAutoUpdateSnooze(environmentId: $environmentId, serviceId: $serviceId, snoozeDays: $snoozeDays) {\n    __typename\n  }\n}",
+          operationName: "serviceInstanceAutoUpdateSnooze",
+          type: "mutation",
+        }),
+      ),
+).annotate({
+  identifier: "UpdateServiceInstanceAutoSnoozeRequest",
+}) as any as S.Schema<UpdateServiceInstanceAutoSnoozeRequest>;
+
+export type UpdateServiceInstanceAutoSnoozeResponse = boolean;
+export const UpdateServiceInstanceAutoSnoozeResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("serviceInstanceAutoUpdateSnooze"),
+    ),
+).annotate({
+  identifier: "UpdateServiceInstanceAutoSnoozeResponse",
+}) as any as S.Schema<UpdateServiceInstanceAutoSnoozeResponse>;
+
+export interface UpdateServiceInstanceAutoSnoozeClearRequest {
+  environmentId: string;
+  serviceId: string;
+}
+export const UpdateServiceInstanceAutoSnoozeClearRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      environmentId: S.String,
+      serviceId: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation serviceInstanceAutoUpdateSnoozeClear($environmentId: String!, $serviceId: String!) {\n  serviceInstanceAutoUpdateSnoozeClear(environmentId: $environmentId, serviceId: $serviceId) {\n    __typename\n  }\n}",
+          operationName: "serviceInstanceAutoUpdateSnoozeClear",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "UpdateServiceInstanceAutoSnoozeClearRequest",
+  }) as any as S.Schema<UpdateServiceInstanceAutoSnoozeClearRequest>;
+
+export type UpdateServiceInstanceAutoSnoozeClearResponse = boolean;
+export const UpdateServiceInstanceAutoSnoozeClearResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("serviceInstanceAutoUpdateSnoozeClear"),
+    ),
+  ).annotate({
+    identifier: "UpdateServiceInstanceAutoSnoozeClearResponse",
+  }) as any as S.Schema<UpdateServiceInstanceAutoSnoozeClearResponse>;
+
+export interface UpdateServiceInstanceLimitInput {
+  environmentId: string;
+  /** Amount of memory in GB to allocate to the service instance */
+  memoryGB?: number | null;
+  serviceId: string;
+  /** Number of vCPUs to allocate to the service instance */
+  vCPUs?: number | null;
+}
+export const UpdateServiceInstanceLimitInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flags: UserFlagList,
-    userId: S.optional(S.NullOr(S.String)),
+    environmentId: S.String,
+    memoryGB: S.optional(S.NullOr(S.Number)),
+    serviceId: S.String,
+    vCPUs: S.optional(S.NullOr(S.Number)),
   }),
 ).annotate({
-  identifier: "UserFlagsRemoveInput",
-}) as any as S.Schema<UserFlagsRemoveInput>;
+  identifier: "UpdateServiceInstanceLimitInput",
+}) as any as S.Schema<UpdateServiceInstanceLimitInput>;
 
-export interface UserFlagsRemoveRequest {
-  input: UserFlagsRemoveInput;
+export interface UpdateServiceInstanceLimitRequest {
+  input: UpdateServiceInstanceLimitInput;
 }
-export const UserFlagsRemoveRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateServiceInstanceLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    input: UserFlagsRemoveInput,
+    input: UpdateServiceInstanceLimitInput,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation userFlagsRemove($input: UserFlagsRemoveInput!) {\n  userFlagsRemove(input: $input) {\n    __typename\n  }\n}",
-        operationName: "userFlagsRemove",
+          "mutation serviceInstanceLimitsUpdate($input: ServiceInstanceLimitsUpdateInput!) {\n  serviceInstanceLimitsUpdate(input: $input) {\n    __typename\n  }\n}",
+        operationName: "serviceInstanceLimitsUpdate",
         type: "mutation",
       }),
     ),
 ).annotate({
-  identifier: "UserFlagsRemoveRequest",
-}) as any as S.Schema<UserFlagsRemoveRequest>;
+  identifier: "UpdateServiceInstanceLimitRequest",
+}) as any as S.Schema<UpdateServiceInstanceLimitRequest>;
 
-export type UserFlagsRemoveResponse = boolean;
-export const UserFlagsRemoveResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userFlagsRemove")),
+export type UpdateServiceInstanceLimitResponse = boolean;
+export const UpdateServiceInstanceLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("serviceInstanceLimitsUpdate"),
+  ),
 ).annotate({
-  identifier: "UserFlagsRemoveResponse",
-}) as any as S.Schema<UserFlagsRemoveResponse>;
+  identifier: "UpdateServiceInstanceLimitResponse",
+}) as any as S.Schema<UpdateServiceInstanceLimitResponse>;
 
-export type UserFlagsSetInput = UserFlagsRemoveInput;
-export const UserFlagsSetInput = UserFlagsRemoveInput;
-
-export interface UserFlagsSetRequest {
-  input: UserFlagsRemoveInput;
+export interface UpdateTemplateVolumeRequest {
+  serviceId: string;
+  sizeMB?: number | null;
+  templateId: string;
+  volumeId: string;
 }
-export const UserFlagsSetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTemplateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    input: UserFlagsRemoveInput,
+    serviceId: S.String,
+    sizeMB: S.optional(S.NullOr(S.Number)),
+    templateId: S.String,
+    volumeId: S.String,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation userFlagsSet($input: UserFlagsSetInput!) {\n  userFlagsSet(input: $input) {\n    __typename\n  }\n}",
-        operationName: "userFlagsSet",
+          "mutation templateVolumeUpdate($serviceId: String!, $sizeMB: Int, $templateId: String!, $volumeId: String!) {\n  templateVolumeUpdate(serviceId: $serviceId, sizeMB: $sizeMB, templateId: $templateId, volumeId: $volumeId) {\n    activeProjects\n    canvasConfig\n    category\n    code\n    communityThreadSlug\n    config\n    createdAt\n    creator {\n      avatar\n      hasPublicProfile\n      name\n      username\n    }\n    demoProjectId\n    description\n    guides {\n      post\n      video\n    }\n    health\n    id\n    image\n    isApproved\n    isV2Template\n    isVerified\n    languages\n    maintainer {\n      avatar\n      id\n      name\n    }\n    metadata\n    name\n    projects\n    readme\n    recentProjects\n    serializedConfig\n    similarTemplates {\n      code\n      createdAt\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    status\n    supportHealthMetrics\n    tags\n    teamId\n    totalPayout\n    updatedAt\n    workspaceId\n  }\n}",
+        operationName: "templateVolumeUpdate",
         type: "mutation",
       }),
     ),
 ).annotate({
-  identifier: "UserFlagsSetRequest",
-}) as any as S.Schema<UserFlagsSetRequest>;
+  identifier: "UpdateTemplateVolumeRequest",
+}) as any as S.Schema<UpdateTemplateVolumeRequest>;
 
-export type UserFlagsSetResponse = boolean;
-export const UserFlagsSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userFlagsSet")),
-).annotate({
-  identifier: "UserFlagsSetResponse",
-}) as any as S.Schema<UserFlagsSetResponse>;
+export type TemplateVolumeUpdateResponseCreator =
+  TemplateGenerateResponseCreator;
+export const TemplateVolumeUpdateResponseCreator =
+  TemplateGenerateResponseCreator;
 
-export interface UserProfileRequest {
-  username: string;
-}
-export const UserProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    username: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "query userProfile($username: String!) {\n  userProfile(username: $username) {\n    avatar\n    createdAt\n    id\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    publishedTemplates {\n      code\n      createdAt\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    totalDeploys\n    username\n  }\n}",
-        operationName: "userProfile",
-        type: "query",
-      }),
-    ),
-).annotate({
-  identifier: "UserProfileRequest",
-}) as any as S.Schema<UserProfileRequest>;
+export type TemplateVolumeUpdateResponseGuides = TemplateGenerateResponseGuides;
+export const TemplateVolumeUpdateResponseGuides =
+  TemplateGenerateResponseGuides;
 
-export type UserProfileResponseProfile = MeResponseProfile;
-export const UserProfileResponseProfile = MeResponseProfile;
+export type TemplateVolumeUpdateResponseLanguagesList = Array<string>;
+export const TemplateVolumeUpdateResponseLanguagesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TemplateVolumeUpdateResponseLanguagesList>;
 
-export type UserProfileResponsePublishedTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
-export const UserProfileResponsePublishedTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+export type TemplateVolumeUpdateResponseMaintainer =
+  TemplateGenerateResponseMaintainer;
+export const TemplateVolumeUpdateResponseMaintainer =
+  TemplateGenerateResponseMaintainer;
 
-export type UserProfileResponsePublishedTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
-export const UserProfileResponsePublishedTemplatesList = /*@__PURE__*/ S.Array(
-  TemplateResponseSimilarTemplatesItem,
-) as any as S.Schema<UserProfileResponsePublishedTemplatesList>;
+export type TemplateVolumeUpdateResponseSimilarTemplatesItem =
+  TemplateGenerateResponseSimilarTemplatesItem;
+export const TemplateVolumeUpdateResponseSimilarTemplatesItem =
+  TemplateGenerateResponseSimilarTemplatesItem;
 
-/** Selection set for `userProfile` (unwrapped from the GraphQL `data` envelope). */
-export interface UserProfileResponse {
-  avatar: string | null;
+export type TemplateVolumeUpdateResponseSimilarTemplatesList =
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
+export const TemplateVolumeUpdateResponseSimilarTemplatesList =
+  /*@__PURE__*/ S.Array(
+    TemplateGenerateResponseSimilarTemplatesItem,
+  ) as any as S.Schema<TemplateVolumeUpdateResponseSimilarTemplatesList>;
+
+export type TemplateVolumeUpdateResponseTagsList = Array<string>;
+export const TemplateVolumeUpdateResponseTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TemplateVolumeUpdateResponseTagsList>;
+
+/** Selection set for `templateVolumeUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateTemplateVolumeResponse {
+  activeProjects: number;
+  canvasConfig: unknown | null;
+  category: string | null;
+  code: string;
+  communityThreadSlug: string | null;
+  config: unknown;
   createdAt: string;
+  creator: TemplateGenerateResponseCreator | null;
+  demoProjectId: string | null;
+  description: string | null;
+  guides: TemplateGenerateResponseGuides | null;
+  health: number | null;
   id: string;
-  name: string | null;
-  profile: MeResponseProfile;
-  publishedTemplates: UserProfileResponsePublishedTemplatesList;
-  totalDeploys: number;
-  username: string | null;
+  image: string | null;
+  isApproved: boolean;
+  isV2Template: boolean;
+  isVerified: boolean;
+  languages: TemplateVolumeUpdateResponseLanguagesList | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
+  metadata: unknown;
+  name: string;
+  projects: number;
+  readme: string | null;
+  recentProjects: number;
+  serializedConfig: unknown | null;
+  similarTemplates: TemplateVolumeUpdateResponseSimilarTemplatesList;
+  status: TemplateStatus;
+  supportHealthMetrics: unknown | null;
+  tags: TemplateVolumeUpdateResponseTagsList | null;
+  teamId: string | null;
+  totalPayout: number;
+  updatedAt: string;
+  workspaceId: string | null;
 }
-export const UserProfileResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTemplateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    avatar: S.NullOr(S.String),
+    activeProjects: S.Number,
+    canvasConfig: S.NullOr(S.Unknown),
+    category: S.NullOr(S.String),
+    code: S.String,
+    communityThreadSlug: S.NullOr(S.String),
+    config: S.Unknown,
     createdAt: S.String,
+    creator: S.NullOr(TemplateGenerateResponseCreator),
+    demoProjectId: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    guides: S.NullOr(TemplateGenerateResponseGuides),
+    health: S.NullOr(S.Number),
     id: S.String,
-    name: S.NullOr(S.String),
-    profile: MeResponseProfile,
-    publishedTemplates: UserProfileResponsePublishedTemplatesList,
-    totalDeploys: S.Number,
-    username: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("userProfile")),
+    image: S.NullOr(S.String),
+    isApproved: S.Boolean,
+    isV2Template: S.Boolean,
+    isVerified: S.Boolean,
+    languages: S.NullOr(TemplateVolumeUpdateResponseLanguagesList),
+    maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
+    metadata: S.Unknown,
+    name: S.String,
+    projects: S.Number,
+    readme: S.NullOr(S.String),
+    recentProjects: S.Number,
+    serializedConfig: S.NullOr(S.Unknown),
+    similarTemplates: TemplateVolumeUpdateResponseSimilarTemplatesList,
+    status: TemplateStatus,
+    supportHealthMetrics: S.NullOr(S.Unknown),
+    tags: S.NullOr(TemplateVolumeUpdateResponseTagsList),
+    teamId: S.NullOr(S.String),
+    totalPayout: S.Number,
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("templateVolumeUpdate")),
 ).annotate({
-  identifier: "UserProfileResponse",
-}) as any as S.Schema<UserProfileResponse>;
+  identifier: "UpdateTemplateVolumeResponse",
+}) as any as S.Schema<UpdateTemplateVolumeResponse>;
 
-export interface UserProfileUpdateInput {
+export interface WorkspaceTrustedDomainUpdateInput {
+  id: string;
+  role: string;
+}
+export const WorkspaceTrustedDomainUpdateInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    role: S.String,
+  }),
+).annotate({
+  identifier: "WorkspaceTrustedDomainUpdateInput",
+}) as any as S.Schema<WorkspaceTrustedDomainUpdateInput>;
+
+export interface UpdateTrustedDomainRequest {
+  input: WorkspaceTrustedDomainUpdateInput;
+}
+export const UpdateTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: WorkspaceTrustedDomainUpdateInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation trustedDomainUpdate($input: WorkspaceTrustedDomainUpdateInput!) {\n  trustedDomainUpdate(input: $input) {\n    domainName\n    id\n    role\n    status\n    verificationData {\n      dnsHost\n      token\n    }\n    verificationType\n    workspaceId\n  }\n}",
+        operationName: "trustedDomainUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateTrustedDomainRequest",
+}) as any as S.Schema<UpdateTrustedDomainRequest>;
+
+export type TrustedDomainUpdateResponseVerificationData =
+  TrustedDomainCreateResponseVerificationData;
+export const TrustedDomainUpdateResponseVerificationData =
+  TrustedDomainCreateResponseVerificationData;
+
+/** Selection set for `trustedDomainUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateTrustedDomainResponse {
+  domainName: string;
+  id: string;
+  role: string;
+  status: TrustedDomainStatus;
+  verificationData: TrustedDomainCreateResponseVerificationData;
+  verificationType: string;
+  workspaceId: string;
+}
+export const UpdateTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    domainName: S.String,
+    id: S.String,
+    role: S.String,
+    status: TrustedDomainStatus,
+    verificationData: TrustedDomainCreateResponseVerificationData,
+    verificationType: S.String,
+    workspaceId: S.String,
+  }).pipe(T.ResponsePath("trustedDomainUpdate")),
+).annotate({
+  identifier: "UpdateTrustedDomainResponse",
+}) as any as S.Schema<UpdateTrustedDomainResponse>;
+
+export interface UpdateUserProfileInput {
   bio?: string | null;
   isPublic: boolean;
   website?: string | null;
 }
-export const UserProfileUpdateInput = /*@__PURE__*/ S.suspend(() =>
+export const UpdateUserProfileInput = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bio: S.optional(S.NullOr(S.String)),
     isPublic: S.Boolean,
     website: S.optional(S.NullOr(S.String)),
   }),
 ).annotate({
-  identifier: "UserProfileUpdateInput",
-}) as any as S.Schema<UserProfileUpdateInput>;
+  identifier: "UpdateUserProfileInput",
+}) as any as S.Schema<UpdateUserProfileInput>;
 
-export interface UserProfileUpdateRequest {
-  input: UserProfileUpdateInput;
+export interface UpdateUserProfileRequest {
+  input: UpdateUserProfileInput;
 }
-export const UserProfileUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateUserProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    input: UserProfileUpdateInput,
+    input: UpdateUserProfileInput,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
@@ -22644,18 +22839,18 @@ export const UserProfileUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       }),
     ),
 ).annotate({
-  identifier: "UserProfileUpdateRequest",
-}) as any as S.Schema<UserProfileUpdateRequest>;
+  identifier: "UpdateUserProfileRequest",
+}) as any as S.Schema<UpdateUserProfileRequest>;
 
-export type UserProfileUpdateResponse = boolean;
-export const UserProfileUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export type UpdateUserProfileResponse = boolean;
+export const UpdateUserProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userProfileUpdate")),
 ).annotate({
-  identifier: "UserProfileUpdateResponse",
-}) as any as S.Schema<UserProfileUpdateResponse>;
+  identifier: "UpdateUserProfileResponse",
+}) as any as S.Schema<UpdateUserProfileResponse>;
 
-export interface UserTermsUpdateRequest {}
-export const UserTermsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export interface UpdateUserTermRequest {}
+export const UpdateUserTermRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({})
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
@@ -22667,8 +22862,8 @@ export const UserTermsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       }),
     ),
 ).annotate({
-  identifier: "UserTermsUpdateRequest",
-}) as any as S.Schema<UserTermsUpdateRequest>;
+  identifier: "UpdateUserTermRequest",
+}) as any as S.Schema<UpdateUserTermRequest>;
 
 export type UserTermsUpdateResponseApiTokenRateLimit =
   MeResponseApiTokenRateLimit;
@@ -22826,7 +23021,7 @@ export const UserTermsUpdateResponseWorkspacesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UserTermsUpdateResponseWorkspacesList>;
 
 /** Selection set for `userTermsUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface UserTermsUpdateResponse {
+export interface UpdateUserTermResponse {
   agreedFairUse: boolean;
   apiTokenRateLimit: MeResponseApiTokenRateLimit | null;
   avatar: string | null;
@@ -22854,7 +23049,7 @@ export interface UserTermsUpdateResponse {
   workspace: UserTermsUpdateResponseWorkspace | null;
   workspaces: UserTermsUpdateResponseWorkspacesList;
 }
-export const UserTermsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateUserTermResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     agreedFairUse: S.Boolean,
     apiTokenRateLimit: S.NullOr(MeResponseApiTokenRateLimit),
@@ -22884,8 +23079,798 @@ export const UserTermsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     workspaces: UserTermsUpdateResponseWorkspacesList,
   }).pipe(T.ResponsePath("userTermsUpdate")),
 ).annotate({
-  identifier: "UserTermsUpdateResponse",
-}) as any as S.Schema<UserTermsUpdateResponse>;
+  identifier: "UpdateUserTermResponse",
+}) as any as S.Schema<UpdateUserTermResponse>;
+
+export interface UpdateVolumeInput {
+  /** The name of the volume */
+  name?: string | null;
+}
+export const UpdateVolumeInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "UpdateVolumeInput",
+}) as any as S.Schema<UpdateVolumeInput>;
+
+export interface UpdateVolumeRequest {
+  input: UpdateVolumeInput;
+  volumeId: string;
+}
+export const UpdateVolumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpdateVolumeInput,
+    volumeId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeUpdate($input: VolumeUpdateInput!, $volumeId: String!) {\n  volumeUpdate(input: $input, volumeId: $volumeId) {\n    createdAt\n    id\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n  }\n}",
+        operationName: "volumeUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateVolumeRequest",
+}) as any as S.Schema<UpdateVolumeRequest>;
+
+export type VolumeUpdateResponseProjectFeatureFlagsList =
+  Array<ActiveProjectFeatureFlag>;
+export const VolumeUpdateResponseProjectFeatureFlagsList =
+  /*@__PURE__*/ S.Array(
+    ActiveProjectFeatureFlag,
+  ) as any as S.Schema<VolumeUpdateResponseProjectFeatureFlagsList>;
+
+export interface VolumeUpdateResponseProject {
+  baseEnvironmentId: string | null;
+  botPrEnvironments: boolean;
+  createdAt: string;
+  deletedAt: string | null;
+  description: string | null;
+  expiredAt: string | null;
+  featureFlags: VolumeUpdateResponseProjectFeatureFlagsList;
+  focusedPrEnvironments: boolean;
+  id: string;
+  isPublic: boolean;
+  isTempProject: boolean;
+  name: string;
+  prDeploys: boolean;
+  primaryEnvironmentId: string | null;
+  subscriptionPlanLimit: unknown;
+  subscriptionType: SubscriptionPlanType;
+  teamId: string | null;
+  updatedAt: string;
+  workspaceId: string | null;
+}
+export const VolumeUpdateResponseProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    baseEnvironmentId: S.NullOr(S.String),
+    botPrEnvironments: S.Boolean,
+    createdAt: S.String,
+    deletedAt: S.NullOr(S.String),
+    description: S.NullOr(S.String),
+    expiredAt: S.NullOr(S.String),
+    featureFlags: VolumeUpdateResponseProjectFeatureFlagsList,
+    focusedPrEnvironments: S.Boolean,
+    id: S.String,
+    isPublic: S.Boolean,
+    isTempProject: S.Boolean,
+    name: S.String,
+    prDeploys: S.Boolean,
+    primaryEnvironmentId: S.NullOr(S.String),
+    subscriptionPlanLimit: S.Unknown,
+    subscriptionType: SubscriptionPlanType,
+    teamId: S.NullOr(S.String),
+    updatedAt: S.String,
+    workspaceId: S.NullOr(S.String),
+  }),
+).annotate({
+  identifier: "VolumeUpdateResponseProject",
+}) as any as S.Schema<VolumeUpdateResponseProject>;
+
+/** Selection set for `volumeUpdate` (unwrapped from the GraphQL `data` envelope). */
+export interface UpdateVolumeResponse {
+  createdAt: string;
+  id: string;
+  name: string;
+  project: VolumeUpdateResponseProject;
+  projectId: string;
+}
+export const UpdateVolumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String,
+    id: S.String,
+    name: S.String,
+    project: VolumeUpdateResponseProject,
+    projectId: S.String,
+  }).pipe(T.ResponsePath("volumeUpdate")),
+).annotate({
+  identifier: "UpdateVolumeResponse",
+}) as any as S.Schema<UpdateVolumeResponse>;
+
+export interface UpdateVolumeInstanceInput {
+  /** The mount path of the volume instance. If not provided, the mount path will not be updated. */
+  mountPath?: string | null;
+  /** The service to attach the volume to. If not provided, the volume will be disconnected. */
+  serviceId?: string | null;
+  /** The state of the volume instance. If not provided, the state will not be updated. */
+  state?: VolumeState | (string & {}) | null;
+}
+export const UpdateVolumeInstanceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mountPath: S.optional(S.NullOr(S.String)),
+    serviceId: S.optional(S.NullOr(S.String)),
+    state: S.optional(S.NullOr(VolumeState)),
+  }),
+).annotate({
+  identifier: "UpdateVolumeInstanceInput",
+}) as any as S.Schema<UpdateVolumeInstanceInput>;
+
+export interface UpdateVolumeInstanceRequest {
+  /** The environment of the volume instance to update. If null, all instances for the volume will be updated */
+  environmentId?: string | null;
+  input: UpdateVolumeInstanceInput;
+  /** The id of the volume to update */
+  volumeId: string;
+}
+export const UpdateVolumeInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.optional(S.NullOr(S.String)),
+    input: UpdateVolumeInstanceInput,
+    volumeId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId)\n}",
+        operationName: "volumeInstanceUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateVolumeInstanceRequest",
+}) as any as S.Schema<UpdateVolumeInstanceRequest>;
+
+export type UpdateVolumeInstanceResponse = boolean;
+export const UpdateVolumeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("volumeInstanceUpdate"),
+  ),
+).annotate({
+  identifier: "UpdateVolumeInstanceResponse",
+}) as any as S.Schema<UpdateVolumeInstanceResponse>;
+
+export type VolumeInstanceBackupScheduleKindList = Array<
+  VolumeInstanceBackupScheduleKind | (string & {})
+>;
+export const VolumeInstanceBackupScheduleKindList = /*@__PURE__*/ S.Array(
+  VolumeInstanceBackupScheduleKind,
+) as any as S.Schema<VolumeInstanceBackupScheduleKindList>;
+
+export interface UpdateVolumeInstanceBackupScheduleRequest {
+  /** The frequency/retention of the backups */
+  kinds: VolumeInstanceBackupScheduleKindList;
+  /** The id of the volume instance to create a backup of */
+  volumeInstanceId: string;
+}
+export const UpdateVolumeInstanceBackupScheduleRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      kinds: VolumeInstanceBackupScheduleKindList,
+      volumeInstanceId: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation volumeInstanceBackupScheduleUpdate($kinds: [VolumeInstanceBackupScheduleKind!]!, $volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleUpdate(kinds: $kinds, volumeInstanceId: $volumeInstanceId)\n}",
+          operationName: "volumeInstanceBackupScheduleUpdate",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "UpdateVolumeInstanceBackupScheduleRequest",
+  }) as any as S.Schema<UpdateVolumeInstanceBackupScheduleRequest>;
+
+export type UpdateVolumeInstanceBackupScheduleResponse = boolean;
+export const UpdateVolumeInstanceBackupScheduleResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("volumeInstanceBackupScheduleUpdate"),
+    ),
+  ).annotate({
+    identifier: "UpdateVolumeInstanceBackupScheduleResponse",
+  }) as any as S.Schema<UpdateVolumeInstanceBackupScheduleResponse>;
+
+export interface UpdateWorkspaceInput {
+  avatar?: string | null;
+  name?: string | null;
+  preferredRegion?: string | null;
+}
+export const UpdateWorkspaceInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    avatar: S.optional(S.NullOr(S.String)),
+    name: S.optional(S.NullOr(S.String)),
+    preferredRegion: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "UpdateWorkspaceInput",
+}) as any as S.Schema<UpdateWorkspaceInput>;
+
+export interface UpdateWorkspaceRequest {
+  id: string;
+  input: UpdateWorkspaceInput;
+}
+export const UpdateWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    input: UpdateWorkspaceInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation workspaceUpdate($id: String!, $input: WorkspaceUpdateInput!) {\n  workspaceUpdate(id: $id, input: $input) {\n    __typename\n  }\n}",
+        operationName: "workspaceUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateWorkspaceRequest",
+}) as any as S.Schema<UpdateWorkspaceRequest>;
+
+export type UpdateWorkspaceResponse = boolean;
+export const UpdateWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("workspaceUpdate")),
+).annotate({
+  identifier: "UpdateWorkspaceResponse",
+}) as any as S.Schema<UpdateWorkspaceResponse>;
+
+export type WorkspacePolicyName =
+  | "RESTRICT_DEPLOYS_TO_ALLOWED_SOURCES"
+  | "RESTRICT_PUBLIC_TCP_PROXIES"
+  | "RESTRICT_RAILWAY_DOMAIN_GENERATION";
+export const WorkspacePolicyName = /*@__PURE__*/ S.String;
+
+export interface UpdateWorkspacePolicyItemInput {
+  enabled: boolean;
+  policy: WorkspacePolicyName | (string & {});
+}
+export const UpdateWorkspacePolicyItemInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    policy: WorkspacePolicyName,
+  }),
+).annotate({
+  identifier: "UpdateWorkspacePolicyItemInput",
+}) as any as S.Schema<UpdateWorkspacePolicyItemInput>;
+
+export interface UpdateWorkspacePolicyItemRequest {
+  enabled?: boolean | null;
+  input?: UpdateWorkspacePolicyItemInput | null;
+  policy?: WorkspacePolicyName | (string & {}) | null;
+  workspaceId: string;
+}
+export const UpdateWorkspacePolicyItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.NullOr(S.Boolean)),
+    input: S.optional(S.NullOr(UpdateWorkspacePolicyItemInput)),
+    policy: S.optional(S.NullOr(WorkspacePolicyName)),
+    workspaceId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation workspacePolicyItemUpdate($enabled: Boolean, $input: WorkspacePolicyItemUpdateInput, $policy: WorkspacePolicyName, $workspaceId: String!) {\n  workspacePolicyItemUpdate(enabled: $enabled, input: $input, policy: $policy, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
+        operationName: "workspacePolicyItemUpdate",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateWorkspacePolicyItemRequest",
+}) as any as S.Schema<UpdateWorkspacePolicyItemRequest>;
+
+export type UpdateWorkspacePolicyItemResponse = boolean;
+export const UpdateWorkspacePolicyItemResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("workspacePolicyItemUpdate"),
+  ),
+).annotate({
+  identifier: "UpdateWorkspacePolicyItemResponse",
+}) as any as S.Schema<UpdateWorkspacePolicyItemResponse>;
+
+export interface UpdateWorkspaceTwoFactorEnforcementRequest {
+  enabled: boolean;
+  workspaceId: string;
+}
+export const UpdateWorkspaceTwoFactorEnforcementRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      workspaceId: S.String,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation workspaceTwoFactorEnforcementUpdate($enabled: Boolean!, $workspaceId: String!) {\n  workspaceTwoFactorEnforcementUpdate(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
+          operationName: "workspaceTwoFactorEnforcementUpdate",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "UpdateWorkspaceTwoFactorEnforcementRequest",
+  }) as any as S.Schema<UpdateWorkspaceTwoFactorEnforcementRequest>;
+
+export type UpdateWorkspaceTwoFactorEnforcementResponse = boolean;
+export const UpdateWorkspaceTwoFactorEnforcementResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Boolean.pipe(
+      T.GraphQLPayloadRoot(),
+      T.ResponsePath("workspaceTwoFactorEnforcementUpdate"),
+    ),
+  ).annotate({
+    identifier: "UpdateWorkspaceTwoFactorEnforcementResponse",
+  }) as any as S.Schema<UpdateWorkspaceTwoFactorEnforcementResponse>;
+
+export interface UpsertEnvironmentConfigPlanCommentInput {
+  environmentId: string;
+  /** GitHub Actions OIDC token (id-token: write) with audience `railway`. Its `repository` claim proves the caller runs in the repo the comment is posted to. */
+  githubOidcToken: string;
+  /** Structured plan summary: { changes: [{ kind?, summary }], destructive, sourceTree, configEtag, changeSetHash, cliVersion? }. The comment body is composed server-side. */
+  plan: unknown;
+  prNumber: number;
+}
+export const UpsertEnvironmentConfigPlanCommentInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      environmentId: S.String,
+      githubOidcToken: S.String,
+      plan: S.Unknown,
+      prNumber: S.Number,
+    }),
+).annotate({
+  identifier: "UpsertEnvironmentConfigPlanCommentInput",
+}) as any as S.Schema<UpsertEnvironmentConfigPlanCommentInput>;
+
+export interface UpsertEnvironmentConfigPlanCommentRequest {
+  input: UpsertEnvironmentConfigPlanCommentInput;
+}
+export const UpsertEnvironmentConfigPlanCommentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      input: UpsertEnvironmentConfigPlanCommentInput,
+    })
+      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+      .pipe(
+        T.GraphQLOp({
+          query:
+            "mutation environmentConfigPlanCommentUpsert($input: EnvironmentConfigPlanCommentUpsertInput!) {\n  environmentConfigPlanCommentUpsert(input: $input) {\n    commentId\n    url\n  }\n}",
+          operationName: "environmentConfigPlanCommentUpsert",
+          type: "mutation",
+        }),
+      ),
+  ).annotate({
+    identifier: "UpsertEnvironmentConfigPlanCommentRequest",
+  }) as any as S.Schema<UpsertEnvironmentConfigPlanCommentRequest>;
+
+/** Selection set for `environmentConfigPlanCommentUpsert` (unwrapped from the GraphQL `data` envelope). */
+export interface UpsertEnvironmentConfigPlanCommentResponse {
+  commentId: string;
+  url: string;
+}
+export const UpsertEnvironmentConfigPlanCommentResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      commentId: S.String,
+      url: S.String,
+    }).pipe(T.ResponsePath("environmentConfigPlanCommentUpsert")),
+  ).annotate({
+    identifier: "UpsertEnvironmentConfigPlanCommentResponse",
+  }) as any as S.Schema<UpsertEnvironmentConfigPlanCommentResponse>;
+
+export interface UpsertSlackChannelRequest {
+  workspaceId: string;
+}
+export const UpsertSlackChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    workspaceId: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation upsertSlackChannel($workspaceId: String!) {\n  upsertSlackChannel(workspaceId: $workspaceId) {\n    __typename\n  }\n}",
+        operationName: "upsertSlackChannel",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpsertSlackChannelRequest",
+}) as any as S.Schema<UpsertSlackChannelRequest>;
+
+export type UpsertSlackChannelResponse = boolean;
+export const UpsertSlackChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("upsertSlackChannel")),
+).annotate({
+  identifier: "UpsertSlackChannelResponse",
+}) as any as S.Schema<UpsertSlackChannelResponse>;
+
+export interface UpsertVariableInput {
+  environmentId: string;
+  name: string;
+  projectId: string;
+  serviceId?: string | null;
+  /** Skip deploys for affected services */
+  skipDeploys?: boolean | null;
+  value: string;
+}
+export const UpsertVariableInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    name: S.String,
+    projectId: S.String,
+    serviceId: S.optional(S.NullOr(S.String)),
+    skipDeploys: S.optional(S.NullOr(S.Boolean)),
+    value: S.String,
+  }),
+).annotate({
+  identifier: "UpsertVariableInput",
+}) as any as S.Schema<UpsertVariableInput>;
+
+export interface UpsertVariableRequest {
+  input: UpsertVariableInput;
+}
+export const UpsertVariableRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpsertVariableInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input)\n}",
+        operationName: "variableUpsert",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpsertVariableRequest",
+}) as any as S.Schema<UpsertVariableRequest>;
+
+export type UpsertVariableResponse = boolean;
+export const UpsertVariableResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("variableUpsert")),
+).annotate({
+  identifier: "UpsertVariableResponse",
+}) as any as S.Schema<UpsertVariableResponse>;
+
+export interface UpsertVariableCollectionInput {
+  environmentId: string;
+  projectId: string;
+  /** When set to true, removes all existing variables before upserting the new collection. */
+  replace?: boolean | null;
+  serviceId?: string | null;
+  /** Skip deploys for affected services */
+  skipDeploys?: boolean | null;
+  variables: unknown;
+}
+export const UpsertVariableCollectionInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentId: S.String,
+    projectId: S.String,
+    replace: S.optional(S.NullOr(S.Boolean)),
+    serviceId: S.optional(S.NullOr(S.String)),
+    skipDeploys: S.optional(S.NullOr(S.Boolean)),
+    variables: S.Unknown,
+  }),
+).annotate({
+  identifier: "UpsertVariableCollectionInput",
+}) as any as S.Schema<UpsertVariableCollectionInput>;
+
+export interface UpsertVariableCollectionRequest {
+  input: UpsertVariableCollectionInput;
+}
+export const UpsertVariableCollectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UpsertVariableCollectionInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation variableCollectionUpsert($input: VariableCollectionUpsertInput!) {\n  variableCollectionUpsert(input: $input) {\n    __typename\n  }\n}",
+        operationName: "variableCollectionUpsert",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpsertVariableCollectionRequest",
+}) as any as S.Schema<UpsertVariableCollectionRequest>;
+
+export type UpsertVariableCollectionResponse = boolean;
+export const UpsertVariableCollectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("variableCollectionUpsert"),
+  ),
+).annotate({
+  identifier: "UpsertVariableCollectionResponse",
+}) as any as S.Schema<UpsertVariableCollectionResponse>;
+
+export interface UpsertWorkspaceSlackChannelRequest {
+  id: string;
+}
+export const UpsertWorkspaceSlackChannelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation workspaceUpsertSlackChannel($id: String!) {\n  workspaceUpsertSlackChannel(id: $id) {\n    __typename\n  }\n}",
+        operationName: "workspaceUpsertSlackChannel",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UpsertWorkspaceSlackChannelRequest",
+}) as any as S.Schema<UpsertWorkspaceSlackChannelRequest>;
+
+export type UpsertWorkspaceSlackChannelResponse = boolean;
+export const UpsertWorkspaceSlackChannelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("workspaceUpsertSlackChannel"),
+  ),
+).annotate({
+  identifier: "UpsertWorkspaceSlackChannelResponse",
+}) as any as S.Schema<UpsertWorkspaceSlackChannelResponse>;
+
+export interface UsageRequest {
+  endDate?: string | null;
+  /** What to group the aggregated usage by. By default, it is grouped over the entire project. */
+  groupBy?: MetricTagList | null;
+  /** Whether to include deleted projects in the usage. */
+  includeDeleted?: boolean | null;
+  measurements: MetricMeasurementList;
+  projectId?: string | null;
+  startDate?: string | null;
+  workspaceId?: string | null;
+}
+export const UsageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endDate: S.optional(S.NullOr(S.String)),
+    groupBy: S.optional(S.NullOr(MetricTagList)),
+    includeDeleted: S.optional(S.NullOr(S.Boolean)),
+    measurements: MetricMeasurementList,
+    projectId: S.optional(S.NullOr(S.String)),
+    startDate: S.optional(S.NullOr(S.String)),
+    workspaceId: S.optional(S.NullOr(S.String)),
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "query usage($endDate: DateTime, $groupBy: [MetricTag!], $includeDeleted: Boolean, $measurements: [MetricMeasurement!]!, $projectId: String, $startDate: DateTime, $workspaceId: String) {\n  usage(endDate: $endDate, groupBy: $groupBy, includeDeleted: $includeDeleted, measurements: $measurements, projectId: $projectId, startDate: $startDate, workspaceId: $workspaceId) {\n    measurement\n    tags {\n      deploymentId\n      deploymentInstanceId\n      environmentId\n      pluginId\n      projectId\n      region\n      serviceId\n      volumeId\n      volumeInstanceId\n    }\n    value\n  }\n}",
+        operationName: "usage",
+        type: "query",
+      }),
+    ),
+).annotate({ identifier: "UsageRequest" }) as any as S.Schema<UsageRequest>;
+
+export type UsageResultItemTags = MetricsResultItemTags;
+export const UsageResultItemTags = MetricsResultItemTags;
+
+export interface UsageResultItem {
+  measurement: MetricMeasurement;
+  tags: MetricsResultItemTags;
+  value: number;
+}
+export const UsageResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    measurement: MetricMeasurement,
+    tags: MetricsResultItemTags,
+    value: S.Number,
+  }),
+).annotate({
+  identifier: "UsageResultItem",
+}) as any as S.Schema<UsageResultItem>;
+
+export type UsageResultList = Array<UsageResultItem>;
+export const UsageResultList = /*@__PURE__*/ S.Array(
+  UsageResultItem,
+) as any as S.Schema<UsageResultList>;
+
+export type UsageResponse = UsageResultList;
+export const UsageResponse = /*@__PURE__*/ S.suspend(() =>
+  UsageResultList.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("usage")),
+).annotate({ identifier: "UsageResponse" }) as any as S.Schema<UsageResponse>;
+
+export interface UsageLimitRemoveInput {
+  customerId: string;
+}
+export const UsageLimitRemoveInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerId: S.String,
+  }),
+).annotate({
+  identifier: "UsageLimitRemoveInput",
+}) as any as S.Schema<UsageLimitRemoveInput>;
+
+export interface UsageLimitRemoveRequest {
+  input: UsageLimitRemoveInput;
+}
+export const UsageLimitRemoveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: UsageLimitRemoveInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation usageLimitRemove($input: UsageLimitRemoveInput!) {\n  usageLimitRemove(input: $input)\n}",
+        operationName: "usageLimitRemove",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UsageLimitRemoveRequest",
+}) as any as S.Schema<UsageLimitRemoveRequest>;
+
+export type UsageLimitRemoveResponse = boolean;
+export const UsageLimitRemoveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("usageLimitRemove")),
+).annotate({
+  identifier: "UsageLimitRemoveResponse",
+}) as any as S.Schema<UsageLimitRemoveResponse>;
+
+export interface UserBetaLeaveRequest {}
+export const UserBetaLeaveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({})
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation userBetaLeave {\n  userBetaLeave {\n    __typename\n  }\n}",
+        operationName: "userBetaLeave",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UserBetaLeaveRequest",
+}) as any as S.Schema<UserBetaLeaveRequest>;
+
+export type UserBetaLeaveResponse = boolean;
+export const UserBetaLeaveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userBetaLeave")),
+).annotate({
+  identifier: "UserBetaLeaveResponse",
+}) as any as S.Schema<UserBetaLeaveResponse>;
+
+export interface UserDiscordDisconnectRequest {}
+export const UserDiscordDisconnectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({})
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation userDiscordDisconnect {\n  userDiscordDisconnect {\n    __typename\n  }\n}",
+        operationName: "userDiscordDisconnect",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UserDiscordDisconnectRequest",
+}) as any as S.Schema<UserDiscordDisconnectRequest>;
+
+export type UserDiscordDisconnectResponse = boolean;
+export const UserDiscordDisconnectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(
+    T.GraphQLPayloadRoot(),
+    T.ResponsePath("userDiscordDisconnect"),
+  ),
+).annotate({
+  identifier: "UserDiscordDisconnectResponse",
+}) as any as S.Schema<UserDiscordDisconnectResponse>;
+
+export type UserFlagsRemoveInput = SetUserFlagInput;
+export const UserFlagsRemoveInput = SetUserFlagInput;
+
+export interface UserFlagsRemoveRequest {
+  input: SetUserFlagInput;
+}
+export const UserFlagsRemoveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    input: SetUserFlagInput,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "mutation userFlagsRemove($input: UserFlagsRemoveInput!) {\n  userFlagsRemove(input: $input) {\n    __typename\n  }\n}",
+        operationName: "userFlagsRemove",
+        type: "mutation",
+      }),
+    ),
+).annotate({
+  identifier: "UserFlagsRemoveRequest",
+}) as any as S.Schema<UserFlagsRemoveRequest>;
+
+export type UserFlagsRemoveResponse = boolean;
+export const UserFlagsRemoveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("userFlagsRemove")),
+).annotate({
+  identifier: "UserFlagsRemoveResponse",
+}) as any as S.Schema<UserFlagsRemoveResponse>;
+
+export interface UserProfileRequest {
+  username: string;
+}
+export const UserProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    username: S.String,
+  })
+    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
+    .pipe(
+      T.GraphQLOp({
+        query:
+          "query userProfile($username: String!) {\n  userProfile(username: $username) {\n    avatar\n    createdAt\n    id\n    name\n    profile {\n      bio\n      isPublic\n      website\n    }\n    publishedTemplates {\n      code\n      createdAt\n      deploys\n      description\n      health\n      image\n      name\n      teamId\n      userId\n      workspaceId\n    }\n    totalDeploys\n    username\n  }\n}",
+        operationName: "userProfile",
+        type: "query",
+      }),
+    ),
+).annotate({
+  identifier: "UserProfileRequest",
+}) as any as S.Schema<UserProfileRequest>;
+
+export type UserProfileResponseProfile = MeResponseProfile;
+export const UserProfileResponseProfile = MeResponseProfile;
+
+export type UserProfileResponsePublishedTemplatesItem =
+  TemplateGenerateResponseSimilarTemplatesItem;
+export const UserProfileResponsePublishedTemplatesItem =
+  TemplateGenerateResponseSimilarTemplatesItem;
+
+export type UserProfileResponsePublishedTemplatesList =
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
+export const UserProfileResponsePublishedTemplatesList = /*@__PURE__*/ S.Array(
+  TemplateGenerateResponseSimilarTemplatesItem,
+) as any as S.Schema<UserProfileResponsePublishedTemplatesList>;
+
+/** Selection set for `userProfile` (unwrapped from the GraphQL `data` envelope). */
+export interface UserProfileResponse {
+  avatar: string | null;
+  createdAt: string;
+  id: string;
+  name: string | null;
+  profile: MeResponseProfile;
+  publishedTemplates: UserProfileResponsePublishedTemplatesList;
+  totalDeploys: number;
+  username: string | null;
+}
+export const UserProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    avatar: S.NullOr(S.String),
+    createdAt: S.String,
+    id: S.String,
+    name: S.NullOr(S.String),
+    profile: MeResponseProfile,
+    publishedTemplates: UserProfileResponsePublishedTemplatesList,
+    totalDeploys: S.Number,
+    username: S.NullOr(S.String),
+  }).pipe(T.ResponsePath("userProfile")),
+).annotate({
+  identifier: "UserProfileResponse",
+}) as any as S.Schema<UserProfileResponse>;
 
 export interface ValidateServiceEdgeRulesInput {
   edgeRules: unknown;
@@ -22953,103 +23938,6 @@ export const ValidateServiceEdgeRulesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ValidateServiceEdgeRulesResponse",
 }) as any as S.Schema<ValidateServiceEdgeRulesResponse>;
-
-export interface VariableCollectionUpsertInput {
-  environmentId: string;
-  projectId: string;
-  /** When set to true, removes all existing variables before upserting the new collection. */
-  replace?: boolean | null;
-  serviceId?: string | null;
-  /** Skip deploys for affected services */
-  skipDeploys?: boolean | null;
-  variables: unknown;
-}
-export const VariableCollectionUpsertInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    projectId: S.String,
-    replace: S.optional(S.NullOr(S.Boolean)),
-    serviceId: S.optional(S.NullOr(S.String)),
-    skipDeploys: S.optional(S.NullOr(S.Boolean)),
-    variables: S.Unknown,
-  }),
-).annotate({
-  identifier: "VariableCollectionUpsertInput",
-}) as any as S.Schema<VariableCollectionUpsertInput>;
-
-export interface VariableCollectionUpsertRequest {
-  input: VariableCollectionUpsertInput;
-}
-export const VariableCollectionUpsertRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: VariableCollectionUpsertInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation variableCollectionUpsert($input: VariableCollectionUpsertInput!) {\n  variableCollectionUpsert(input: $input) {\n    __typename\n  }\n}",
-        operationName: "variableCollectionUpsert",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VariableCollectionUpsertRequest",
-}) as any as S.Schema<VariableCollectionUpsertRequest>;
-
-export type VariableCollectionUpsertResponse = boolean;
-export const VariableCollectionUpsertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("variableCollectionUpsert"),
-  ),
-).annotate({
-  identifier: "VariableCollectionUpsertResponse",
-}) as any as S.Schema<VariableCollectionUpsertResponse>;
-
-export interface VariableDeleteInput {
-  environmentId: string;
-  name: string;
-  projectId: string;
-  serviceId?: string | null;
-}
-export const VariableDeleteInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    name: S.String,
-    projectId: S.String,
-    serviceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "VariableDeleteInput",
-}) as any as S.Schema<VariableDeleteInput>;
-
-export interface VariableDeleteRequest {
-  input: VariableDeleteInput;
-}
-export const VariableDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: VariableDeleteInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation variableDelete($input: VariableDeleteInput!) {\n  variableDelete(input: $input)\n}",
-        operationName: "variableDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VariableDeleteRequest",
-}) as any as S.Schema<VariableDeleteRequest>;
-
-export type VariableDeleteResponse = boolean;
-export const VariableDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("variableDelete")),
-).annotate({
-  identifier: "VariableDeleteResponse",
-}) as any as S.Schema<VariableDeleteResponse>;
 
 export interface VariablesRequest {
   environmentId: string;
@@ -23121,55 +24009,6 @@ export const VariablesForServiceDeploymentResponse = /*@__PURE__*/ S.suspend(
   identifier: "VariablesForServiceDeploymentResponse",
 }) as any as S.Schema<VariablesForServiceDeploymentResponse>;
 
-export interface VariableUpsertInput {
-  environmentId: string;
-  name: string;
-  projectId: string;
-  serviceId?: string | null;
-  /** Skip deploys for affected services */
-  skipDeploys?: boolean | null;
-  value: string;
-}
-export const VariableUpsertInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.String,
-    name: S.String,
-    projectId: S.String,
-    serviceId: S.optional(S.NullOr(S.String)),
-    skipDeploys: S.optional(S.NullOr(S.Boolean)),
-    value: S.String,
-  }),
-).annotate({
-  identifier: "VariableUpsertInput",
-}) as any as S.Schema<VariableUpsertInput>;
-
-export interface VariableUpsertRequest {
-  input: VariableUpsertInput;
-}
-export const VariableUpsertRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: VariableUpsertInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation variableUpsert($input: VariableUpsertInput!) {\n  variableUpsert(input: $input)\n}",
-        operationName: "variableUpsert",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VariableUpsertRequest",
-}) as any as S.Schema<VariableUpsertRequest>;
-
-export type VariableUpsertResponse = boolean;
-export const VariableUpsertResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("variableUpsert")),
-).annotate({
-  identifier: "VariableUpsertResponse",
-}) as any as S.Schema<VariableUpsertResponse>;
-
 export interface VercelInfoRequest {}
 export const VercelInfoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({})
@@ -23223,96 +24062,32 @@ export const VercelInfoResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VercelInfoResponse",
 }) as any as S.Schema<VercelInfoResponse>;
 
-export interface VolumeCreateInput {
-  /** The environment to deploy the volume instances into. If `null`, the volume will not be deployed to any environment. `undefined` will deploy to all environments. */
-  environmentId?: string | null;
-  /** The path in the container to mount the volume to */
-  mountPath: string;
-  /** The project to create the volume in */
-  projectId: string;
-  /** The region to create the volume instances in. If not provided, the default region will be used. */
-  region?: string | null;
-  /** The service to attach the volume to. If not provided, the volume will be disconnected. */
-  serviceId?: string | null;
+export interface VerifyLoginSessionRequest {
+  code: string;
 }
-export const VolumeCreateInput = /*@__PURE__*/ S.suspend(() =>
+export const VerifyLoginSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    environmentId: S.optional(S.NullOr(S.String)),
-    mountPath: S.String,
-    projectId: S.String,
-    region: S.optional(S.NullOr(S.String)),
-    serviceId: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "VolumeCreateInput",
-}) as any as S.Schema<VolumeCreateInput>;
-
-export interface VolumeCreateRequest {
-  input: VolumeCreateInput;
-}
-export const VolumeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: VolumeCreateInput,
+    code: S.String,
   })
     .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
     .pipe(
       T.GraphQLOp({
         query:
-          "mutation volumeCreate($input: VolumeCreateInput!) {\n  volumeCreate(input: $input) {\n    createdAt\n    id\n    name\n    projectId\n    volumeInstances(first: 10) {\n      edges {\n        node {\n          createdAt\n          currentSizeMB\n          deletedAt\n          environmentId\n          id\n          isPendingDeletion\n          mountPath\n          region\n          serviceId\n          sizeMB\n          state\n          volume {\n            createdAt\n            id\n            name\n            projectId\n          }\n          volumeId\n        }\n      }\n    }\n  }\n}",
-        operationName: "volumeCreate",
+          "mutation loginSessionVerify($code: String!) {\n  loginSessionVerify(code: $code)\n}",
+        operationName: "loginSessionVerify",
         type: "mutation",
       }),
     ),
 ).annotate({
-  identifier: "VolumeCreateRequest",
-}) as any as S.Schema<VolumeCreateRequest>;
+  identifier: "VerifyLoginSessionRequest",
+}) as any as S.Schema<VerifyLoginSessionRequest>;
 
-/** Selection set for `volumeCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface VolumeCreateResponse {
-  createdAt: string;
-  id: string;
-  name: string;
-  projectId: string;
-  volumeInstances: EnvironmentResponseVolumeInstances;
-}
-export const VolumeCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    id: S.String,
-    name: S.String,
-    projectId: S.String,
-    volumeInstances: EnvironmentResponseVolumeInstances,
-  }).pipe(T.ResponsePath("volumeCreate")),
+export type VerifyLoginSessionResponse = boolean;
+export const VerifyLoginSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("loginSessionVerify")),
 ).annotate({
-  identifier: "VolumeCreateResponse",
-}) as any as S.Schema<VolumeCreateResponse>;
-
-export interface VolumeDeleteRequest {
-  volumeId: string;
-}
-export const VolumeDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeDelete($volumeId: String!) {\n  volumeDelete(volumeId: $volumeId)\n}",
-        operationName: "volumeDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeDeleteRequest",
-}) as any as S.Schema<VolumeDeleteRequest>;
-
-export type VolumeDeleteResponse = boolean;
-export const VolumeDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("volumeDelete")),
-).annotate({
-  identifier: "VolumeDeleteResponse",
-}) as any as S.Schema<VolumeDeleteResponse>;
+  identifier: "VerifyLoginSessionResponse",
+}) as any as S.Schema<VerifyLoginSessionResponse>;
 
 export interface VolumeInstanceRequest {
   id: string;
@@ -23423,145 +24198,6 @@ export const VolumeInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VolumeInstanceResponse",
 }) as any as S.Schema<VolumeInstanceResponse>;
 
-export interface VolumeInstanceBackupCreateRequest {
-  /** Optional name/label for the backup. Defaults to 'Manual' if not provided. */
-  name?: string | null;
-  /** The id of the volume instance to create a backup of */
-  volumeInstanceId: string;
-}
-export const VolumeInstanceBackupCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-    volumeInstanceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeInstanceBackupCreate($name: String, $volumeInstanceId: String!) {\n  volumeInstanceBackupCreate(name: $name, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}",
-        operationName: "volumeInstanceBackupCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeInstanceBackupCreateRequest",
-}) as any as S.Schema<VolumeInstanceBackupCreateRequest>;
-
-/** Selection set for `volumeInstanceBackupCreate` (unwrapped from the GraphQL `data` envelope). */
-export interface VolumeInstanceBackupCreateResponse {
-  workflowId: string | null;
-}
-export const VolumeInstanceBackupCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("volumeInstanceBackupCreate")),
-).annotate({
-  identifier: "VolumeInstanceBackupCreateResponse",
-}) as any as S.Schema<VolumeInstanceBackupCreateResponse>;
-
-export interface VolumeInstanceBackupDeleteRequest {
-  /** The volume instance's backup id */
-  volumeInstanceBackupId: string;
-  /** The volume instance's id */
-  volumeInstanceId: string;
-}
-export const VolumeInstanceBackupDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeInstanceBackupId: S.String,
-    volumeInstanceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeInstanceBackupDelete($volumeInstanceBackupId: String!, $volumeInstanceId: String!) {\n  volumeInstanceBackupDelete(volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}",
-        operationName: "volumeInstanceBackupDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeInstanceBackupDeleteRequest",
-}) as any as S.Schema<VolumeInstanceBackupDeleteRequest>;
-
-/** Selection set for `volumeInstanceBackupDelete` (unwrapped from the GraphQL `data` envelope). */
-export interface VolumeInstanceBackupDeleteResponse {
-  workflowId: string | null;
-}
-export const VolumeInstanceBackupDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("volumeInstanceBackupDelete")),
-).annotate({
-  identifier: "VolumeInstanceBackupDeleteResponse",
-}) as any as S.Schema<VolumeInstanceBackupDeleteResponse>;
-
-export interface VolumeInstanceBackupListRequest {
-  /** The id of the volume instance to list the backups of */
-  volumeInstanceId: string;
-}
-export const VolumeInstanceBackupListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    volumeInstanceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "query volumeInstanceBackupList($volumeInstanceId: String!) {\n  volumeInstanceBackupList(volumeInstanceId: $volumeInstanceId) {\n    createdAt\n    creatorId\n    expiresAt\n    externalId\n    id\n    name\n    referencedMB\n    scheduleId\n    usedMB\n    volumeInstanceSizeMB\n  }\n}",
-        operationName: "volumeInstanceBackupList",
-        type: "query",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeInstanceBackupListRequest",
-}) as any as S.Schema<VolumeInstanceBackupListRequest>;
-
-export interface VolumeInstanceBackupListResultItem {
-  createdAt: string;
-  creatorId: string | null;
-  expiresAt: string | null;
-  externalId: string;
-  id: string;
-  name: string | null;
-  referencedMB: number | null;
-  scheduleId: string | null;
-  usedMB: number | null;
-  volumeInstanceSizeMB: number | null;
-}
-export const VolumeInstanceBackupListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    creatorId: S.NullOr(S.String),
-    expiresAt: S.NullOr(S.String),
-    externalId: S.String,
-    id: S.String,
-    name: S.NullOr(S.String),
-    referencedMB: S.NullOr(S.Number),
-    scheduleId: S.NullOr(S.String),
-    usedMB: S.NullOr(S.Number),
-    volumeInstanceSizeMB: S.NullOr(S.Number),
-  }),
-).annotate({
-  identifier: "VolumeInstanceBackupListResultItem",
-}) as any as S.Schema<VolumeInstanceBackupListResultItem>;
-
-export type VolumeInstanceBackupListResultList =
-  Array<VolumeInstanceBackupListResultItem>;
-export const VolumeInstanceBackupListResultList = /*@__PURE__*/ S.Array(
-  VolumeInstanceBackupListResultItem,
-) as any as S.Schema<VolumeInstanceBackupListResultList>;
-
-export type VolumeInstanceBackupListResponse =
-  VolumeInstanceBackupListResultList;
-export const VolumeInstanceBackupListResponse = /*@__PURE__*/ S.suspend(() =>
-  VolumeInstanceBackupListResultList.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("volumeInstanceBackupList"),
-  ),
-).annotate({
-  identifier: "VolumeInstanceBackupListResponse",
-}) as any as S.Schema<VolumeInstanceBackupListResponse>;
-
 export interface VolumeInstanceBackupLockRequest {
   /** The id of the backup to lock */
   volumeInstanceBackupId: string;
@@ -23595,357 +24231,6 @@ export const VolumeInstanceBackupLockResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "VolumeInstanceBackupLockResponse",
 }) as any as S.Schema<VolumeInstanceBackupLockResponse>;
-
-export interface VolumeInstanceBackupRestoreRequest {
-  /** Optional: for HA cluster restores, service IDs of replicas that should also receive the backup */
-  replicaServiceIds?: StringList | null;
-  /** The id of the backup to be restored from */
-  volumeInstanceBackupId: string;
-  /** The id of the volume instance to be restored from */
-  volumeInstanceId: string;
-  /** Service IDs whose volumes should be wiped (replaced with fresh empty volumes) as part of this restore */
-  wipeServiceIds?: StringList | null;
-}
-export const VolumeInstanceBackupRestoreRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    replicaServiceIds: S.optional(S.NullOr(StringList)),
-    volumeInstanceBackupId: S.String,
-    volumeInstanceId: S.String,
-    wipeServiceIds: S.optional(S.NullOr(StringList)),
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeInstanceBackupRestore($replicaServiceIds: [String!], $volumeInstanceBackupId: String!, $volumeInstanceId: String!, $wipeServiceIds: [String!]) {\n  volumeInstanceBackupRestore(replicaServiceIds: $replicaServiceIds, volumeInstanceBackupId: $volumeInstanceBackupId, volumeInstanceId: $volumeInstanceId, wipeServiceIds: $wipeServiceIds) {\n    workflowId\n  }\n}",
-        operationName: "volumeInstanceBackupRestore",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeInstanceBackupRestoreRequest",
-}) as any as S.Schema<VolumeInstanceBackupRestoreRequest>;
-
-/** Selection set for `volumeInstanceBackupRestore` (unwrapped from the GraphQL `data` envelope). */
-export interface VolumeInstanceBackupRestoreResponse {
-  workflowId: string | null;
-}
-export const VolumeInstanceBackupRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("volumeInstanceBackupRestore")),
-).annotate({
-  identifier: "VolumeInstanceBackupRestoreResponse",
-}) as any as S.Schema<VolumeInstanceBackupRestoreResponse>;
-
-export interface VolumeInstanceBackupScheduleListRequest {
-  /** The id of the volume instance to list the schedules of */
-  volumeInstanceId: string;
-}
-export const VolumeInstanceBackupScheduleListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      volumeInstanceId: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "query volumeInstanceBackupScheduleList($volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleList(volumeInstanceId: $volumeInstanceId) {\n    createdAt\n    cron\n    id\n    kind\n    name\n    retentionSeconds\n  }\n}",
-          operationName: "volumeInstanceBackupScheduleList",
-          type: "query",
-        }),
-      ),
-).annotate({
-  identifier: "VolumeInstanceBackupScheduleListRequest",
-}) as any as S.Schema<VolumeInstanceBackupScheduleListRequest>;
-
-export interface VolumeInstanceBackupScheduleListResultItem {
-  createdAt: string;
-  cron: string;
-  id: string;
-  kind: VolumeInstanceBackupScheduleKind;
-  name: string;
-  retentionSeconds: number | null;
-}
-export const VolumeInstanceBackupScheduleListResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String,
-      cron: S.String,
-      id: S.String,
-      kind: VolumeInstanceBackupScheduleKind,
-      name: S.String,
-      retentionSeconds: S.NullOr(S.Number),
-    }),
-  ).annotate({
-    identifier: "VolumeInstanceBackupScheduleListResultItem",
-  }) as any as S.Schema<VolumeInstanceBackupScheduleListResultItem>;
-
-export type VolumeInstanceBackupScheduleListResultList =
-  Array<VolumeInstanceBackupScheduleListResultItem>;
-export const VolumeInstanceBackupScheduleListResultList = /*@__PURE__*/ S.Array(
-  VolumeInstanceBackupScheduleListResultItem,
-) as any as S.Schema<VolumeInstanceBackupScheduleListResultList>;
-
-export type VolumeInstanceBackupScheduleListResponse =
-  VolumeInstanceBackupScheduleListResultList;
-export const VolumeInstanceBackupScheduleListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    VolumeInstanceBackupScheduleListResultList.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("volumeInstanceBackupScheduleList"),
-    ),
-).annotate({
-  identifier: "VolumeInstanceBackupScheduleListResponse",
-}) as any as S.Schema<VolumeInstanceBackupScheduleListResponse>;
-
-export type VolumeInstanceBackupScheduleKindList = Array<
-  VolumeInstanceBackupScheduleKind | (string & {})
->;
-export const VolumeInstanceBackupScheduleKindList = /*@__PURE__*/ S.Array(
-  VolumeInstanceBackupScheduleKind,
-) as any as S.Schema<VolumeInstanceBackupScheduleKindList>;
-
-export interface VolumeInstanceBackupScheduleUpdateRequest {
-  /** The frequency/retention of the backups */
-  kinds: VolumeInstanceBackupScheduleKindList;
-  /** The id of the volume instance to create a backup of */
-  volumeInstanceId: string;
-}
-export const VolumeInstanceBackupScheduleUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      kinds: VolumeInstanceBackupScheduleKindList,
-      volumeInstanceId: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation volumeInstanceBackupScheduleUpdate($kinds: [VolumeInstanceBackupScheduleKind!]!, $volumeInstanceId: String!) {\n  volumeInstanceBackupScheduleUpdate(kinds: $kinds, volumeInstanceId: $volumeInstanceId)\n}",
-          operationName: "volumeInstanceBackupScheduleUpdate",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "VolumeInstanceBackupScheduleUpdateRequest",
-  }) as any as S.Schema<VolumeInstanceBackupScheduleUpdateRequest>;
-
-export type VolumeInstanceBackupScheduleUpdateResponse = boolean;
-export const VolumeInstanceBackupScheduleUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("volumeInstanceBackupScheduleUpdate"),
-    ),
-  ).annotate({
-    identifier: "VolumeInstanceBackupScheduleUpdateResponse",
-  }) as any as S.Schema<VolumeInstanceBackupScheduleUpdateResponse>;
-
-export interface VolumeInstancePITRRestoreRequest {
-  /** Optional name for the new restored service. Defaults to '<source>-restored-YYYYMMDD-HHMM'. */
-  newServiceName?: string | null;
-  /** Opaque identifier for one archive history, from the multi-history picker when the source bucket holds more than one. It scopes both the restore-window pre-check and the restored fork's archive source, treating the selected history as frozen. Pass null to restore the source's current history. */
-  sourceRepoPath?: string | null;
-  /** Point-in-time target. Must be within the available restore window. */
-  targetTimestamp: string;
-  /** The id of the volume instance to restore from */
-  volumeInstanceId: string;
-}
-export const VolumeInstancePITRRestoreRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    newServiceName: S.optional(S.NullOr(S.String)),
-    sourceRepoPath: S.optional(S.NullOr(S.String)),
-    targetTimestamp: S.String,
-    volumeInstanceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeInstancePITRRestore($newServiceName: String, $sourceRepoPath: String, $targetTimestamp: DateTime!, $volumeInstanceId: String!) {\n  volumeInstancePITRRestore(newServiceName: $newServiceName, sourceRepoPath: $sourceRepoPath, targetTimestamp: $targetTimestamp, volumeInstanceId: $volumeInstanceId) {\n    workflowId\n  }\n}",
-        operationName: "volumeInstancePITRRestore",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeInstancePITRRestoreRequest",
-}) as any as S.Schema<VolumeInstancePITRRestoreRequest>;
-
-/** Selection set for `volumeInstancePITRRestore` (unwrapped from the GraphQL `data` envelope). */
-export interface VolumeInstancePITRRestoreResponse {
-  workflowId: string | null;
-}
-export const VolumeInstancePITRRestoreResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    workflowId: S.NullOr(S.String),
-  }).pipe(T.ResponsePath("volumeInstancePITRRestore")),
-).annotate({
-  identifier: "VolumeInstancePITRRestoreResponse",
-}) as any as S.Schema<VolumeInstancePITRRestoreResponse>;
-
-export interface VolumeInstanceUpdateInput {
-  /** The mount path of the volume instance. If not provided, the mount path will not be updated. */
-  mountPath?: string | null;
-  /** The service to attach the volume to. If not provided, the volume will be disconnected. */
-  serviceId?: string | null;
-  /** The state of the volume instance. If not provided, the state will not be updated. */
-  state?: VolumeState | (string & {}) | null;
-}
-export const VolumeInstanceUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mountPath: S.optional(S.NullOr(S.String)),
-    serviceId: S.optional(S.NullOr(S.String)),
-    state: S.optional(S.NullOr(VolumeState)),
-  }),
-).annotate({
-  identifier: "VolumeInstanceUpdateInput",
-}) as any as S.Schema<VolumeInstanceUpdateInput>;
-
-export interface VolumeInstanceUpdateRequest {
-  /** The environment of the volume instance to update. If null, all instances for the volume will be updated */
-  environmentId?: string | null;
-  input: VolumeInstanceUpdateInput;
-  /** The id of the volume to update */
-  volumeId: string;
-}
-export const VolumeInstanceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentId: S.optional(S.NullOr(S.String)),
-    input: VolumeInstanceUpdateInput,
-    volumeId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeInstanceUpdate($environmentId: String, $input: VolumeInstanceUpdateInput!, $volumeId: String!) {\n  volumeInstanceUpdate(environmentId: $environmentId, input: $input, volumeId: $volumeId)\n}",
-        operationName: "volumeInstanceUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeInstanceUpdateRequest",
-}) as any as S.Schema<VolumeInstanceUpdateRequest>;
-
-export type VolumeInstanceUpdateResponse = boolean;
-export const VolumeInstanceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("volumeInstanceUpdate"),
-  ),
-).annotate({
-  identifier: "VolumeInstanceUpdateResponse",
-}) as any as S.Schema<VolumeInstanceUpdateResponse>;
-
-export interface VolumeUpdateInput {
-  /** The name of the volume */
-  name?: string | null;
-}
-export const VolumeUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "VolumeUpdateInput",
-}) as any as S.Schema<VolumeUpdateInput>;
-
-export interface VolumeUpdateRequest {
-  input: VolumeUpdateInput;
-  volumeId: string;
-}
-export const VolumeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: VolumeUpdateInput,
-    volumeId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation volumeUpdate($input: VolumeUpdateInput!, $volumeId: String!) {\n  volumeUpdate(input: $input, volumeId: $volumeId) {\n    createdAt\n    id\n    name\n    project {\n      baseEnvironmentId\n      botPrEnvironments\n      createdAt\n      deletedAt\n      description\n      expiredAt\n      featureFlags\n      focusedPrEnvironments\n      id\n      isPublic\n      isTempProject\n      name\n      prDeploys\n      primaryEnvironmentId\n      subscriptionPlanLimit\n      subscriptionType\n      teamId\n      updatedAt\n      workspaceId\n    }\n    projectId\n  }\n}",
-        operationName: "volumeUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "VolumeUpdateRequest",
-}) as any as S.Schema<VolumeUpdateRequest>;
-
-export type VolumeUpdateResponseProjectFeatureFlagsList =
-  Array<ActiveProjectFeatureFlag>;
-export const VolumeUpdateResponseProjectFeatureFlagsList =
-  /*@__PURE__*/ S.Array(
-    ActiveProjectFeatureFlag,
-  ) as any as S.Schema<VolumeUpdateResponseProjectFeatureFlagsList>;
-
-export interface VolumeUpdateResponseProject {
-  baseEnvironmentId: string | null;
-  botPrEnvironments: boolean;
-  createdAt: string;
-  deletedAt: string | null;
-  description: string | null;
-  expiredAt: string | null;
-  featureFlags: VolumeUpdateResponseProjectFeatureFlagsList;
-  focusedPrEnvironments: boolean;
-  id: string;
-  isPublic: boolean;
-  isTempProject: boolean;
-  name: string;
-  prDeploys: boolean;
-  primaryEnvironmentId: string | null;
-  subscriptionPlanLimit: unknown;
-  subscriptionType: SubscriptionPlanType;
-  teamId: string | null;
-  updatedAt: string;
-  workspaceId: string | null;
-}
-export const VolumeUpdateResponseProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    baseEnvironmentId: S.NullOr(S.String),
-    botPrEnvironments: S.Boolean,
-    createdAt: S.String,
-    deletedAt: S.NullOr(S.String),
-    description: S.NullOr(S.String),
-    expiredAt: S.NullOr(S.String),
-    featureFlags: VolumeUpdateResponseProjectFeatureFlagsList,
-    focusedPrEnvironments: S.Boolean,
-    id: S.String,
-    isPublic: S.Boolean,
-    isTempProject: S.Boolean,
-    name: S.String,
-    prDeploys: S.Boolean,
-    primaryEnvironmentId: S.NullOr(S.String),
-    subscriptionPlanLimit: S.Unknown,
-    subscriptionType: SubscriptionPlanType,
-    teamId: S.NullOr(S.String),
-    updatedAt: S.String,
-    workspaceId: S.NullOr(S.String),
-  }),
-).annotate({
-  identifier: "VolumeUpdateResponseProject",
-}) as any as S.Schema<VolumeUpdateResponseProject>;
-
-/** Selection set for `volumeUpdate` (unwrapped from the GraphQL `data` envelope). */
-export interface VolumeUpdateResponse {
-  createdAt: string;
-  id: string;
-  name: string;
-  project: VolumeUpdateResponseProject;
-  projectId: string;
-}
-export const VolumeUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String,
-    id: S.String,
-    name: S.String,
-    project: VolumeUpdateResponseProject,
-    projectId: S.String,
-  }).pipe(T.ResponsePath("volumeUpdate")),
-).annotate({
-  identifier: "VolumeUpdateResponse",
-}) as any as S.Schema<VolumeUpdateResponse>;
 
 export interface WebhookTestRequest {
   payload: string;
@@ -24271,8 +24556,8 @@ export const WorkspaceResponseReferredUsersList = /*@__PURE__*/ S.Array(
   WorkspaceResponseReferredUsersItem,
 ) as any as S.Schema<WorkspaceResponseReferredUsersList>;
 
-export type WorkspaceResponseTeam = InviteCodeUseResponseTeam;
-export const WorkspaceResponseTeam = InviteCodeUseResponseTeam;
+export type WorkspaceResponseTeam = ProjectCreateResponseTeam;
+export const WorkspaceResponseTeam = ProjectCreateResponseTeam;
 
 export type WorkspaceResponseUsersWithout2FAList = Array<string>;
 export const WorkspaceResponseUsersWithout2FAList = /*@__PURE__*/ S.Array(
@@ -24308,7 +24593,7 @@ export interface WorkspaceResponse {
   subscriptionModel: SubscriptionModel;
   subscriptionPlanLimit: unknown | null;
   supportTierOverride: SupportTierOverride | null;
-  team: InviteCodeUseResponseTeam | null;
+  team: ProjectCreateResponseTeam | null;
   updatedAt: string;
   usersWithout2FA: WorkspaceResponseUsersWithout2FAList;
 }
@@ -24341,7 +24626,7 @@ export const WorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
     subscriptionModel: SubscriptionModel,
     subscriptionPlanLimit: S.NullOr(S.Unknown),
     supportTierOverride: S.NullOr(SupportTierOverride),
-    team: S.NullOr(InviteCodeUseResponseTeam),
+    team: S.NullOr(ProjectCreateResponseTeam),
     updatedAt: S.String,
     usersWithout2FA: WorkspaceResponseUsersWithout2FAList,
   }).pipe(T.ResponsePath("workspace")),
@@ -24488,8 +24773,8 @@ export const WorkspaceByCodeResponseReferredUsersList = /*@__PURE__*/ S.Array(
   WorkspaceResponseReferredUsersItem,
 ) as any as S.Schema<WorkspaceByCodeResponseReferredUsersList>;
 
-export type WorkspaceByCodeResponseTeam = InviteCodeUseResponseTeam;
-export const WorkspaceByCodeResponseTeam = InviteCodeUseResponseTeam;
+export type WorkspaceByCodeResponseTeam = ProjectCreateResponseTeam;
+export const WorkspaceByCodeResponseTeam = ProjectCreateResponseTeam;
 
 export type WorkspaceByCodeResponseUsersWithout2FAList = Array<string>;
 export const WorkspaceByCodeResponseUsersWithout2FAList = /*@__PURE__*/ S.Array(
@@ -24525,7 +24810,7 @@ export interface WorkspaceByCodeResponse {
   subscriptionModel: SubscriptionModel;
   subscriptionPlanLimit: unknown | null;
   supportTierOverride: SupportTierOverride | null;
-  team: InviteCodeUseResponseTeam | null;
+  team: ProjectCreateResponseTeam | null;
   updatedAt: string;
   usersWithout2FA: WorkspaceByCodeResponseUsersWithout2FAList;
 }
@@ -24558,40 +24843,13 @@ export const WorkspaceByCodeResponse = /*@__PURE__*/ S.suspend(() =>
     subscriptionModel: SubscriptionModel,
     subscriptionPlanLimit: S.NullOr(S.Unknown),
     supportTierOverride: S.NullOr(SupportTierOverride),
-    team: S.NullOr(InviteCodeUseResponseTeam),
+    team: S.NullOr(ProjectCreateResponseTeam),
     updatedAt: S.String,
     usersWithout2FA: WorkspaceByCodeResponseUsersWithout2FAList,
   }).pipe(T.ResponsePath("workspaceByCode")),
 ).annotate({
   identifier: "WorkspaceByCodeResponse",
 }) as any as S.Schema<WorkspaceByCodeResponse>;
-
-export interface WorkspaceDeleteRequest {
-  id: string;
-}
-export const WorkspaceDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation workspaceDelete($id: String!) {\n  workspaceDelete(id: $id) {\n    __typename\n  }\n}",
-        operationName: "workspaceDelete",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "WorkspaceDeleteRequest",
-}) as any as S.Schema<WorkspaceDeleteRequest>;
-
-export type WorkspaceDeleteResponse = boolean;
-export const WorkspaceDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("workspaceDelete")),
-).annotate({
-  identifier: "WorkspaceDeleteResponse",
-}) as any as S.Schema<WorkspaceDeleteResponse>;
 
 export interface WorkspaceIdentityProvidersRequest {
   after?: string | null;
@@ -24775,49 +25033,6 @@ export const WorkspaceIdentityProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspaceIdentityProvidersResponse",
 }) as any as S.Schema<WorkspaceIdentityProvidersResponse>;
 
-export interface WorkspaceInviteCodeCreateInput {
-  role: string;
-}
-export const WorkspaceInviteCodeCreateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    role: S.String,
-  }),
-).annotate({
-  identifier: "WorkspaceInviteCodeCreateInput",
-}) as any as S.Schema<WorkspaceInviteCodeCreateInput>;
-
-export interface WorkspaceInviteCodeCreateRequest {
-  input: WorkspaceInviteCodeCreateInput;
-  workspaceId: string;
-}
-export const WorkspaceInviteCodeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    input: WorkspaceInviteCodeCreateInput,
-    workspaceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation workspaceInviteCodeCreate($input: WorkspaceInviteCodeCreateInput!, $workspaceId: String!) {\n  workspaceInviteCodeCreate(input: $input, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
-        operationName: "workspaceInviteCodeCreate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "WorkspaceInviteCodeCreateRequest",
-}) as any as S.Schema<WorkspaceInviteCodeCreateRequest>;
-
-export type WorkspaceInviteCodeCreateResponse = string;
-export const WorkspaceInviteCodeCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.String.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("workspaceInviteCodeCreate"),
-  ),
-).annotate({
-  identifier: "WorkspaceInviteCodeCreateResponse",
-}) as any as S.Schema<WorkspaceInviteCodeCreateResponse>;
-
 export interface WorkspaceInviteCodeUseRequest {
   code: string;
 }
@@ -24961,8 +25176,8 @@ export const WorkspaceInviteCodeUseResponseReferredUsersList =
     WorkspaceResponseReferredUsersItem,
   ) as any as S.Schema<WorkspaceInviteCodeUseResponseReferredUsersList>;
 
-export type WorkspaceInviteCodeUseResponseTeam = InviteCodeUseResponseTeam;
-export const WorkspaceInviteCodeUseResponseTeam = InviteCodeUseResponseTeam;
+export type WorkspaceInviteCodeUseResponseTeam = ProjectCreateResponseTeam;
+export const WorkspaceInviteCodeUseResponseTeam = ProjectCreateResponseTeam;
 
 export type WorkspaceInviteCodeUseResponseUsersWithout2FAList = Array<string>;
 export const WorkspaceInviteCodeUseResponseUsersWithout2FAList =
@@ -24999,7 +25214,7 @@ export interface WorkspaceInviteCodeUseResponse {
   subscriptionModel: SubscriptionModel;
   subscriptionPlanLimit: unknown | null;
   supportTierOverride: SupportTierOverride | null;
-  team: InviteCodeUseResponseTeam | null;
+  team: ProjectCreateResponseTeam | null;
   updatedAt: string;
   usersWithout2FA: WorkspaceInviteCodeUseResponseUsersWithout2FAList;
 }
@@ -25032,7 +25247,7 @@ export const WorkspaceInviteCodeUseResponse = /*@__PURE__*/ S.suspend(() =>
     subscriptionModel: SubscriptionModel,
     subscriptionPlanLimit: S.NullOr(S.Unknown),
     supportTierOverride: S.NullOr(SupportTierOverride),
-    team: S.NullOr(InviteCodeUseResponseTeam),
+    team: S.NullOr(ProjectCreateResponseTeam),
     updatedAt: S.String,
     usersWithout2FA: WorkspaceInviteCodeUseResponseUsersWithout2FAList,
   }).pipe(T.ResponsePath("workspaceInviteCodeUse")),
@@ -25312,61 +25527,6 @@ export const WorkspacePolicyDeploySourceAllowlistRemoveResponse =
     identifier: "WorkspacePolicyDeploySourceAllowlistRemoveResponse",
   }) as any as S.Schema<WorkspacePolicyDeploySourceAllowlistRemoveResponse>;
 
-export type WorkspacePolicyName =
-  | "RESTRICT_DEPLOYS_TO_ALLOWED_SOURCES"
-  | "RESTRICT_PUBLIC_TCP_PROXIES"
-  | "RESTRICT_RAILWAY_DOMAIN_GENERATION";
-export const WorkspacePolicyName = /*@__PURE__*/ S.String;
-
-export interface WorkspacePolicyItemUpdateInput {
-  enabled: boolean;
-  policy: WorkspacePolicyName | (string & {});
-}
-export const WorkspacePolicyItemUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    policy: WorkspacePolicyName,
-  }),
-).annotate({
-  identifier: "WorkspacePolicyItemUpdateInput",
-}) as any as S.Schema<WorkspacePolicyItemUpdateInput>;
-
-export interface WorkspacePolicyItemUpdateRequest {
-  enabled?: boolean | null;
-  input?: WorkspacePolicyItemUpdateInput | null;
-  policy?: WorkspacePolicyName | (string & {}) | null;
-  workspaceId: string;
-}
-export const WorkspacePolicyItemUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.NullOr(S.Boolean)),
-    input: S.optional(S.NullOr(WorkspacePolicyItemUpdateInput)),
-    policy: S.optional(S.NullOr(WorkspacePolicyName)),
-    workspaceId: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation workspacePolicyItemUpdate($enabled: Boolean, $input: WorkspacePolicyItemUpdateInput, $policy: WorkspacePolicyName, $workspaceId: String!) {\n  workspacePolicyItemUpdate(enabled: $enabled, input: $input, policy: $policy, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
-        operationName: "workspacePolicyItemUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "WorkspacePolicyItemUpdateRequest",
-}) as any as S.Schema<WorkspacePolicyItemUpdateRequest>;
-
-export type WorkspacePolicyItemUpdateResponse = boolean;
-export const WorkspacePolicyItemUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("workspacePolicyItemUpdate"),
-  ),
-).annotate({
-  identifier: "WorkspacePolicyItemUpdateResponse",
-}) as any as S.Schema<WorkspacePolicyItemUpdateResponse>;
-
 export interface WorkspacePolicySelectableDeploySourcesRequest {
   sourceType: WorkspacePolicyDeploySourceType | (string & {});
   workspaceId: string;
@@ -25427,40 +25587,6 @@ export const WorkspacePolicySelectableDeploySourcesResponse =
     identifier: "WorkspacePolicySelectableDeploySourcesResponse",
   }) as any as S.Schema<WorkspacePolicySelectableDeploySourcesResponse>;
 
-export interface WorkspaceSetRestrictProjectVisibilityToGroupsRequest {
-  enabled: boolean;
-  workspaceId: string;
-}
-export const WorkspaceSetRestrictProjectVisibilityToGroupsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      workspaceId: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation workspaceSetRestrictProjectVisibilityToGroups($enabled: Boolean!, $workspaceId: String!) {\n  workspaceSetRestrictProjectVisibilityToGroups(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
-          operationName: "workspaceSetRestrictProjectVisibilityToGroups",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "WorkspaceSetRestrictProjectVisibilityToGroupsRequest",
-  }) as any as S.Schema<WorkspaceSetRestrictProjectVisibilityToGroupsRequest>;
-
-export type WorkspaceSetRestrictProjectVisibilityToGroupsResponse = boolean;
-export const WorkspaceSetRestrictProjectVisibilityToGroupsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("workspaceSetRestrictProjectVisibilityToGroups"),
-    ),
-  ).annotate({
-    identifier: "WorkspaceSetRestrictProjectVisibilityToGroupsResponse",
-  }) as any as S.Schema<WorkspaceSetRestrictProjectVisibilityToGroupsResponse>;
-
 export interface WorkspaceTemplatesRequest {
   after?: string | null;
   before?: string | null;
@@ -25490,14 +25616,14 @@ export const WorkspaceTemplatesRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WorkspaceTemplatesRequest>;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeCreator =
-  TemplateResponseCreator;
+  TemplateGenerateResponseCreator;
 export const WorkspaceTemplatesResponseEdgesItemNodeCreator =
-  TemplateResponseCreator;
+  TemplateGenerateResponseCreator;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeGuides =
-  TemplateResponseGuides;
+  TemplateGenerateResponseGuides;
 export const WorkspaceTemplatesResponseEdgesItemNodeGuides =
-  TemplateResponseGuides;
+  TemplateGenerateResponseGuides;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeLanguagesList =
   Array<string>;
@@ -25507,20 +25633,20 @@ export const WorkspaceTemplatesResponseEdgesItemNodeLanguagesList =
   ) as any as S.Schema<WorkspaceTemplatesResponseEdgesItemNodeLanguagesList>;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeMaintainer =
-  TemplateResponseMaintainer;
+  TemplateGenerateResponseMaintainer;
 export const WorkspaceTemplatesResponseEdgesItemNodeMaintainer =
-  TemplateResponseMaintainer;
+  TemplateGenerateResponseMaintainer;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 export const WorkspaceTemplatesResponseEdgesItemNodeSimilarTemplatesItem =
-  TemplateResponseSimilarTemplatesItem;
+  TemplateGenerateResponseSimilarTemplatesItem;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeSimilarTemplatesList =
-  Array<TemplateResponseSimilarTemplatesItem>;
+  Array<TemplateGenerateResponseSimilarTemplatesItem>;
 export const WorkspaceTemplatesResponseEdgesItemNodeSimilarTemplatesList =
   /*@__PURE__*/ S.Array(
-    TemplateResponseSimilarTemplatesItem,
+    TemplateGenerateResponseSimilarTemplatesItem,
   ) as any as S.Schema<WorkspaceTemplatesResponseEdgesItemNodeSimilarTemplatesList>;
 
 export type WorkspaceTemplatesResponseEdgesItemNodeTagsList = Array<string>;
@@ -25537,10 +25663,10 @@ export interface WorkspaceTemplatesResponseEdgesItemNode {
   communityThreadSlug: string | null;
   config: unknown;
   createdAt: string;
-  creator: TemplateResponseCreator | null;
+  creator: TemplateGenerateResponseCreator | null;
   demoProjectId: string | null;
   description: string | null;
-  guides: TemplateResponseGuides | null;
+  guides: TemplateGenerateResponseGuides | null;
   health: number | null;
   id: string;
   image: string | null;
@@ -25548,7 +25674,7 @@ export interface WorkspaceTemplatesResponseEdgesItemNode {
   isV2Template: boolean;
   isVerified: boolean;
   languages: WorkspaceTemplatesResponseEdgesItemNodeLanguagesList | null;
-  maintainer: TemplateResponseMaintainer | null;
+  maintainer: TemplateGenerateResponseMaintainer | null;
   metadata: unknown;
   name: string;
   projects: number;
@@ -25574,10 +25700,10 @@ export const WorkspaceTemplatesResponseEdgesItemNode = /*@__PURE__*/ S.suspend(
       communityThreadSlug: S.NullOr(S.String),
       config: S.Unknown,
       createdAt: S.String,
-      creator: S.NullOr(TemplateResponseCreator),
+      creator: S.NullOr(TemplateGenerateResponseCreator),
       demoProjectId: S.NullOr(S.String),
       description: S.NullOr(S.String),
-      guides: S.NullOr(TemplateResponseGuides),
+      guides: S.NullOr(TemplateGenerateResponseGuides),
       health: S.NullOr(S.Number),
       id: S.String,
       image: S.NullOr(S.String),
@@ -25585,7 +25711,7 @@ export const WorkspaceTemplatesResponseEdgesItemNode = /*@__PURE__*/ S.suspend(
       isV2Template: S.Boolean,
       isVerified: S.Boolean,
       languages: S.NullOr(WorkspaceTemplatesResponseEdgesItemNodeLanguagesList),
-      maintainer: S.NullOr(TemplateResponseMaintainer),
+      maintainer: S.NullOr(TemplateGenerateResponseMaintainer),
       metadata: S.Unknown,
       name: S.String,
       projects: S.Number,
@@ -25641,114 +25767,6 @@ export const WorkspaceTemplatesResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "WorkspaceTemplatesResponse",
 }) as any as S.Schema<WorkspaceTemplatesResponse>;
-
-export interface WorkspaceTwoFactorEnforcementUpdateRequest {
-  enabled: boolean;
-  workspaceId: string;
-}
-export const WorkspaceTwoFactorEnforcementUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-      workspaceId: S.String,
-    })
-      .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-      .pipe(
-        T.GraphQLOp({
-          query:
-            "mutation workspaceTwoFactorEnforcementUpdate($enabled: Boolean!, $workspaceId: String!) {\n  workspaceTwoFactorEnforcementUpdate(enabled: $enabled, workspaceId: $workspaceId) {\n    __typename\n  }\n}",
-          operationName: "workspaceTwoFactorEnforcementUpdate",
-          type: "mutation",
-        }),
-      ),
-  ).annotate({
-    identifier: "WorkspaceTwoFactorEnforcementUpdateRequest",
-  }) as any as S.Schema<WorkspaceTwoFactorEnforcementUpdateRequest>;
-
-export type WorkspaceTwoFactorEnforcementUpdateResponse = boolean;
-export const WorkspaceTwoFactorEnforcementUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Boolean.pipe(
-      T.GraphQLPayloadRoot(),
-      T.ResponsePath("workspaceTwoFactorEnforcementUpdate"),
-    ),
-  ).annotate({
-    identifier: "WorkspaceTwoFactorEnforcementUpdateResponse",
-  }) as any as S.Schema<WorkspaceTwoFactorEnforcementUpdateResponse>;
-
-export interface WorkspaceUpdateInput {
-  avatar?: string | null;
-  name?: string | null;
-  preferredRegion?: string | null;
-}
-export const WorkspaceUpdateInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    avatar: S.optional(S.NullOr(S.String)),
-    name: S.optional(S.NullOr(S.String)),
-    preferredRegion: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "WorkspaceUpdateInput",
-}) as any as S.Schema<WorkspaceUpdateInput>;
-
-export interface WorkspaceUpdateRequest {
-  id: string;
-  input: WorkspaceUpdateInput;
-}
-export const WorkspaceUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    input: WorkspaceUpdateInput,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation workspaceUpdate($id: String!, $input: WorkspaceUpdateInput!) {\n  workspaceUpdate(id: $id, input: $input) {\n    __typename\n  }\n}",
-        operationName: "workspaceUpdate",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "WorkspaceUpdateRequest",
-}) as any as S.Schema<WorkspaceUpdateRequest>;
-
-export type WorkspaceUpdateResponse = boolean;
-export const WorkspaceUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(T.GraphQLPayloadRoot(), T.ResponsePath("workspaceUpdate")),
-).annotate({
-  identifier: "WorkspaceUpdateResponse",
-}) as any as S.Schema<WorkspaceUpdateResponse>;
-
-export interface WorkspaceUpsertSlackChannelRequest {
-  id: string;
-}
-export const WorkspaceUpsertSlackChannelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  })
-    .pipe(T.Http({ method: "POST", uri: "/graphql/v2", code: 200 }))
-    .pipe(
-      T.GraphQLOp({
-        query:
-          "mutation workspaceUpsertSlackChannel($id: String!) {\n  workspaceUpsertSlackChannel(id: $id) {\n    __typename\n  }\n}",
-        operationName: "workspaceUpsertSlackChannel",
-        type: "mutation",
-      }),
-    ),
-).annotate({
-  identifier: "WorkspaceUpsertSlackChannelRequest",
-}) as any as S.Schema<WorkspaceUpsertSlackChannelRequest>;
-
-export type WorkspaceUpsertSlackChannelResponse = boolean;
-export const WorkspaceUpsertSlackChannelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Boolean.pipe(
-    T.GraphQLPayloadRoot(),
-    T.ResponsePath("workspaceUpsertSlackChannel"),
-  ),
-).annotate({
-  identifier: "WorkspaceUpsertSlackChannelResponse",
-}) as any as S.Schema<WorkspaceUpsertSlackChannelResponse>;
 
 export interface WorkspaceUsageTotalsRequest {
   endDate?: string | null;
@@ -25882,36 +25900,6 @@ export const WorkspaceUserRemoveResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "WorkspaceUserRemoveResponse",
 }) as any as S.Schema<WorkspaceUserRemoveResponse>;
 
-export type AccessGroupCreateError = RailwayOpError;
-/** Create an access group in a workspace. */
-export const accessGroupCreate: API.OperationMethod<
-  AccessGroupCreateRequest,
-  AccessGroupCreateResponse,
-  AccessGroupCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccessGroupCreateRequest,
-  output: AccessGroupCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AccessGroupDeleteError = RailwayOpError;
-/** Delete an access group. */
-export const accessGroupDelete: API.OperationMethod<
-  AccessGroupDeleteRequest,
-  AccessGroupDeleteResponse,
-  AccessGroupDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccessGroupDeleteRequest,
-  output: AccessGroupDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AccessGroupMemberAddError = RailwayOpError;
 /** Add a workspace member to an access group. */
 export const accessGroupMemberAdd: API.OperationMethod<
@@ -25972,21 +25960,6 @@ export const accessGroupProjectDetach: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AccessGroupUpdateError = RailwayOpError;
-/** Update an access group's name or role. */
-export const accessGroupUpdate: API.OperationMethod<
-  AccessGroupUpdateRequest,
-  AccessGroupUpdateResponse,
-  AccessGroupUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccessGroupUpdateRequest,
-  output: AccessGroupUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AdminVolumeInstancesForVolumeError = RailwayOpError;
 /** Get all volume instances for a given volume */
 export const adminVolumeInstancesForVolume: API.OperationMethod<
@@ -26017,21 +25990,6 @@ export const agentUsage: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type AgentUsageLimitSetError = RailwayOpError;
-/** Set agent usage limit for a workspace */
-export const agentUsageLimitSet: API.OperationMethod<
-  AgentUsageLimitSetRequest,
-  AgentUsageLimitSetResponse,
-  AgentUsageLimitSetError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AgentUsageLimitSetRequest,
-  output: AgentUsageLimitSetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type AllPlatformFeatureFlagsError = RailwayOpError;
 /** Returns the platform feature flags enabled for the current user */
 export const allPlatformFeatureFlags: API.OperationMethod<
@@ -26057,36 +26015,6 @@ export const apiToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ApiTokenRequest,
   output: ApiTokenResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ApiTokenCreateError = RailwayOpError;
-/** Creates a new API token. */
-export const apiTokenCreate: API.OperationMethod<
-  ApiTokenCreateRequest,
-  ApiTokenCreateResponse,
-  ApiTokenCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ApiTokenCreateRequest,
-  output: ApiTokenCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ApiTokenDeleteError = RailwayOpError;
-/** Deletes an API token. */
-export const apiTokenDelete: API.OperationMethod<
-  ApiTokenDeleteRequest,
-  ApiTokenDeleteResponse,
-  ApiTokenDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ApiTokenDeleteRequest,
-  output: ApiTokenDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -26221,21 +26149,6 @@ export const botScopeBindings: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BucketCreateError = RailwayOpError;
-/** Create a bucket in a project */
-export const bucketCreate: API.OperationMethod<
-  BucketCreateRequest,
-  BucketCreateResponse,
-  BucketCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BucketCreateRequest,
-  output: BucketCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BucketCredentialsResetError = RailwayOpError;
 /** Reset the credentials for a bucket in an environment */
 export const bucketCredentialsReset: API.OperationMethod<
@@ -26276,21 +26189,6 @@ export const bucketS3Credentials: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: BucketS3CredentialsRequest,
   output: BucketS3CredentialsResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BucketUpdateError = RailwayOpError;
-/** Updates a bucket. */
-export const bucketUpdate: API.OperationMethod<
-  BucketUpdateRequest,
-  BucketUpdateResponse,
-  BucketUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BucketUpdateRequest,
-  output: BucketUpdateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -26458,36 +26356,6 @@ export const cloudAgentConsoleSessions: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
-export type CloudAgentCreateError = RailwayOpError;
-/** Create a cloud agent. */
-export const cloudAgentCreate: API.OperationMethod<
-  CloudAgentCreateRequest,
-  CloudAgentCreateResponse,
-  CloudAgentCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudAgentCreateRequest,
-  output: CloudAgentCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CloudAgentDeleteError = RailwayOpError;
-/** Delete a cloud agent. */
-export const cloudAgentDelete: API.OperationMethod<
-  CloudAgentDeleteRequest,
-  CloudAgentDeleteResponse,
-  CloudAgentDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudAgentDeleteRequest,
-  output: CloudAgentDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CloudAgentHarnessTokenError = RailwayOpError;
 /** Mint a short-lived (5m) JWT for the agent's harness WebSocket (see agentWsUrl). The in-VM gate verifies signature/exp/aud and pins it to this agent. Mint one per dial; the token only has to survive the upgrade. */
 export const cloudAgentHarnessToken: API.OperationMethod<
@@ -26578,6 +26446,456 @@ export const complianceAgreements: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateAccessGroupError = RailwayOpError;
+/** Create an access group in a workspace. */
+export const createAccessGroup: API.OperationMethod<
+  CreateAccessGroupRequest,
+  CreateAccessGroupResponse,
+  CreateAccessGroupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateAccessGroupRequest,
+  output: CreateAccessGroupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateApiTokenError = RailwayOpError;
+/** Creates a new API token. */
+export const createApiToken: API.OperationMethod<
+  CreateApiTokenRequest,
+  CreateApiTokenResponse,
+  CreateApiTokenError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateApiTokenRequest,
+  output: CreateApiTokenResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBucketError = RailwayOpError;
+/** Create a bucket in a project */
+export const createBucket: API.OperationMethod<
+  CreateBucketRequest,
+  CreateBucketResponse,
+  CreateBucketError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBucketRequest,
+  output: CreateBucketResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCloudAgentError = RailwayOpError;
+/** Create a cloud agent. */
+export const createCloudAgent: API.OperationMethod<
+  CreateCloudAgentRequest,
+  CreateCloudAgentResponse,
+  CreateCloudAgentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCloudAgentRequest,
+  output: CreateCloudAgentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCustomDomainError = RailwayOpError;
+/** Creates a new custom domain. */
+export const createCustomDomain: API.OperationMethod<
+  CreateCustomDomainRequest,
+  CreateCustomDomainResponse,
+  CreateCustomDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCustomDomainRequest,
+  output: CreateCustomDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCustomerFreePlanSubscriptionError = RailwayOpError;
+/** Create a free plan subscription for a customer */
+export const createCustomerFreePlanSubscription: API.OperationMethod<
+  CreateCustomerFreePlanSubscriptionRequest,
+  CreateCustomerFreePlanSubscriptionResponse,
+  CreateCustomerFreePlanSubscriptionError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCustomerFreePlanSubscriptionRequest,
+  output: CreateCustomerFreePlanSubscriptionResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateDeploymentInstanceExecutionError = RailwayOpError;
+/** Invoke a deployment instance execution. */
+export const createDeploymentInstanceExecution: API.OperationMethod<
+  CreateDeploymentInstanceExecutionRequest,
+  CreateDeploymentInstanceExecutionResponse,
+  CreateDeploymentInstanceExecutionError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDeploymentInstanceExecutionRequest,
+  output: CreateDeploymentInstanceExecutionResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateDeploymentTriggerError = RailwayOpError;
+/** Creates a deployment trigger. */
+export const createDeploymentTrigger: API.OperationMethod<
+  CreateDeploymentTriggerRequest,
+  CreateDeploymentTriggerResponse,
+  CreateDeploymentTriggerError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDeploymentTriggerRequest,
+  output: CreateDeploymentTriggerResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateEgressGatewayAssociationError = RailwayOpError;
+/** Create a new egress gateway association for a service instance */
+export const createEgressGatewayAssociation: API.OperationMethod<
+  CreateEgressGatewayAssociationRequest,
+  CreateEgressGatewayAssociationResponse,
+  CreateEgressGatewayAssociationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEgressGatewayAssociationRequest,
+  output: CreateEgressGatewayAssociationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateEnvironmentError = RailwayOpError;
+/** Creates a new environment. */
+export const createEnvironment: API.OperationMethod<
+  CreateEnvironmentRequest,
+  CreateEnvironmentResponse,
+  CreateEnvironmentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEnvironmentRequest,
+  output: CreateEnvironmentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateIntegrationError = RailwayOpError;
+/** Create an integration for a project */
+export const createIntegration: API.OperationMethod<
+  CreateIntegrationRequest,
+  CreateIntegrationResponse,
+  CreateIntegrationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateIntegrationRequest,
+  output: CreateIntegrationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateJobApplicationError = RailwayOpError;
+/** Creates a new job application. */
+export const createJobApplication: API.OperationMethod<
+  CreateJobApplicationRequest,
+  CreateJobApplicationResponse,
+  CreateJobApplicationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateJobApplicationRequest,
+  output: CreateJobApplicationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateLoginSessionError = RailwayOpError;
+/** Start a CLI login session */
+export const createLoginSession: API.OperationMethod<
+  CreateLoginSessionRequest,
+  CreateLoginSessionResponse,
+  CreateLoginSessionError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLoginSessionRequest,
+  output: CreateLoginSessionResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateNotificationRuleError = RailwayOpError;
+/** Create a new notification rule */
+export const createNotificationRule: API.OperationMethod<
+  CreateNotificationRuleRequest,
+  CreateNotificationRuleResponse,
+  CreateNotificationRuleError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateNotificationRuleRequest,
+  output: CreateNotificationRuleResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateObservabilityDashboardError = RailwayOpError;
+/** Create an observability dashboard */
+export const createObservabilityDashboard: API.OperationMethod<
+  CreateObservabilityDashboardRequest,
+  CreateObservabilityDashboardResponse,
+  CreateObservabilityDashboardError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateObservabilityDashboardRequest,
+  output: CreateObservabilityDashboardResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateProjectError = RailwayOpError;
+/** Creates a new project. */
+export const createProject: API.OperationMethod<
+  CreateProjectRequest,
+  CreateProjectResponse,
+  CreateProjectError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProjectRequest,
+  output: CreateProjectResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateProjectInvitationError = RailwayOpError;
+/** Create an invitation for a project */
+export const createProjectInvitation: API.OperationMethod<
+  CreateProjectInvitationRequest,
+  CreateProjectInvitationResponse,
+  CreateProjectInvitationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProjectInvitationRequest,
+  output: CreateProjectInvitationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateProjectTokenError = RailwayOpError;
+/** Create a token for a project that has access to a specific environment */
+export const createProjectToken: API.OperationMethod<
+  CreateProjectTokenRequest,
+  CreateProjectTokenResponse,
+  CreateProjectTokenError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProjectTokenRequest,
+  output: CreateProjectTokenResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateRailwayDomainDnsRecordError = RailwayOpError;
+/** Create a DNS record for a Railway domain */
+export const createRailwayDomainDnsRecord: API.OperationMethod<
+  CreateRailwayDomainDnsRecordRequest,
+  CreateRailwayDomainDnsRecordResponse,
+  CreateRailwayDomainDnsRecordError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateRailwayDomainDnsRecordRequest,
+  output: CreateRailwayDomainDnsRecordResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSandboxError = RailwayOpError;
+/** Create a sandbox in an environment. */
+export const createSandbox: API.OperationMethod<
+  CreateSandboxRequest,
+  CreateSandboxResponse,
+  CreateSandboxError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSandboxRequest,
+  output: CreateSandboxResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSandboxCheckpointError = RailwayOpError;
+/** Capture a running sandbox's current disk into a reusable, named checkpoint. Synchronous: the checkpoint is ready when this returns. */
+export const createSandboxCheckpoint: API.OperationMethod<
+  CreateSandboxCheckpointRequest,
+  CreateSandboxCheckpointResponse,
+  CreateSandboxCheckpointError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSandboxCheckpointRequest,
+  output: CreateSandboxCheckpointResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateServiceError = RailwayOpError;
+/** Creates a new service. */
+export const createService: API.OperationMethod<
+  CreateServiceRequest,
+  CreateServiceResponse,
+  CreateServiceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateServiceRequest,
+  output: CreateServiceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateServiceDomainError = RailwayOpError;
+/** Creates a new service domain. */
+export const createServiceDomain: API.OperationMethod<
+  CreateServiceDomainRequest,
+  CreateServiceDomainResponse,
+  CreateServiceDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateServiceDomainRequest,
+  output: CreateServiceDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSshPublicKeyError = RailwayOpError;
+/** Creates a new SSH public key. When workspaceId is provided (or omitted under a workspace-scoped API token, in which case it defaults to the token's workspace), the key is owned by the workspace and can be used by anyone authenticating as that workspace via native SSH; requires workspace ADMIN access. Otherwise the key is owned by the authenticated user. */
+export const createSshPublicKey: API.OperationMethod<
+  CreateSshPublicKeyRequest,
+  CreateSshPublicKeyResponse,
+  CreateSshPublicKeyError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSshPublicKeyRequest,
+  output: CreateSshPublicKeyResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateTcpProxyError = RailwayOpError;
+/** Creates a new TCP proxy for a service instance. */
+export const createTcpProxy: API.OperationMethod<
+  CreateTcpProxyRequest,
+  CreateTcpProxyResponse,
+  CreateTcpProxyError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTcpProxyRequest,
+  output: CreateTcpProxyResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateTrustedDomainError = RailwayOpError;
+/** Create a new trusted domain for this workspace */
+export const createTrustedDomain: API.OperationMethod<
+  CreateTrustedDomainRequest,
+  CreateTrustedDomainResponse,
+  CreateTrustedDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTrustedDomainRequest,
+  output: CreateTrustedDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateTwoFactorInfoError = RailwayOpError;
+/** Setup 2FA authorization for authenticated user. */
+export const createTwoFactorInfo: API.OperationMethod<
+  CreateTwoFactorInfoRequest,
+  CreateTwoFactorInfoResponse,
+  CreateTwoFactorInfoError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTwoFactorInfoRequest,
+  output: CreateTwoFactorInfoResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateVolumeError = RailwayOpError;
+/** Create a persistent volume in a project */
+export const createVolume: API.OperationMethod<
+  CreateVolumeRequest,
+  CreateVolumeResponse,
+  CreateVolumeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateVolumeRequest,
+  output: CreateVolumeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateVolumeInstanceBackupError = RailwayOpError;
+/** Create backup of a volume instance */
+export const createVolumeInstanceBackup: API.OperationMethod<
+  CreateVolumeInstanceBackupRequest,
+  CreateVolumeInstanceBackupResponse,
+  CreateVolumeInstanceBackupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateVolumeInstanceBackupRequest,
+  output: CreateVolumeInstanceBackupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateWorkspaceInviteCodeError = RailwayOpError;
+/** Get an invite code for a workspace and role */
+export const createWorkspaceInviteCode: API.OperationMethod<
+  CreateWorkspaceInviteCodeRequest,
+  CreateWorkspaceInviteCodeResponse,
+  CreateWorkspaceInviteCodeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWorkspaceInviteCodeRequest,
+  output: CreateWorkspaceInviteCodeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CustomDomainError = RailwayOpError;
 /** Fetch details for a custom domain */
 export const customDomain: API.OperationMethod<
@@ -26608,36 +26926,6 @@ export const customDomainAvailable: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustomDomainCreateError = RailwayOpError;
-/** Creates a new custom domain. */
-export const customDomainCreate: API.OperationMethod<
-  CustomDomainCreateRequest,
-  CustomDomainCreateResponse,
-  CustomDomainCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainCreateRequest,
-  output: CustomDomainCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomDomainDeleteError = RailwayOpError;
-/** Deletes a custom domain. */
-export const customDomainDelete: API.OperationMethod<
-  CustomDomainDeleteRequest,
-  CustomDomainDeleteResponse,
-  CustomDomainDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainDeleteRequest,
-  output: CustomDomainDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CustomDomainIssueCertificateError = RailwayOpError;
 /** Issues a new certificate */
 export const customDomainIssueCertificate: API.OperationMethod<
@@ -26653,36 +26941,6 @@ export const customDomainIssueCertificate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustomDomainUpdateError = RailwayOpError;
-/** Updates a custom domain. */
-export const customDomainUpdate: API.OperationMethod<
-  CustomDomainUpdateRequest,
-  CustomDomainUpdateResponse,
-  CustomDomainUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomDomainUpdateRequest,
-  output: CustomDomainUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomerCreateFreePlanSubscriptionError = RailwayOpError;
-/** Create a free plan subscription for a customer */
-export const customerCreateFreePlanSubscription: API.OperationMethod<
-  CustomerCreateFreePlanSubscriptionRequest,
-  CustomerCreateFreePlanSubscriptionResponse,
-  CustomerCreateFreePlanSubscriptionError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomerCreateFreePlanSubscriptionRequest,
-  output: CustomerCreateFreePlanSubscriptionResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CustomerTogglePayoutsToCreditsError = RailwayOpError;
 /** Toggle whether a customer is automatically withdrawing to credits */
 export const customerTogglePayoutsToCredits: API.OperationMethod<
@@ -26693,6 +26951,486 @@ export const customerTogglePayoutsToCredits: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomerTogglePayoutsToCreditsRequest,
   output: CustomerTogglePayoutsToCreditsResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAccessGroupError = RailwayOpError;
+/** Delete an access group. */
+export const deleteAccessGroup: API.OperationMethod<
+  DeleteAccessGroupRequest,
+  DeleteAccessGroupResponse,
+  DeleteAccessGroupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAccessGroupRequest,
+  output: DeleteAccessGroupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteApiTokenError = RailwayOpError;
+/** Deletes an API token. */
+export const deleteApiToken: API.OperationMethod<
+  DeleteApiTokenRequest,
+  DeleteApiTokenResponse,
+  DeleteApiTokenError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteApiTokenRequest,
+  output: DeleteApiTokenResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCloudAgentError = RailwayOpError;
+/** Delete a cloud agent. */
+export const deleteCloudAgent: API.OperationMethod<
+  DeleteCloudAgentRequest,
+  DeleteCloudAgentResponse,
+  DeleteCloudAgentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCloudAgentRequest,
+  output: DeleteCloudAgentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCustomDomainError = RailwayOpError;
+/** Deletes a custom domain. */
+export const deleteCustomDomain: API.OperationMethod<
+  DeleteCustomDomainRequest,
+  DeleteCustomDomainResponse,
+  DeleteCustomDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCustomDomainRequest,
+  output: DeleteCustomDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteDeploymentTriggerError = RailwayOpError;
+/** Deletes a deployment trigger. */
+export const deleteDeploymentTrigger: API.OperationMethod<
+  DeleteDeploymentTriggerRequest,
+  DeleteDeploymentTriggerResponse,
+  DeleteDeploymentTriggerError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDeploymentTriggerRequest,
+  output: DeleteDeploymentTriggerResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteEnvironmentError = RailwayOpError;
+/** Deletes an environment. */
+export const deleteEnvironment: API.OperationMethod<
+  DeleteEnvironmentRequest,
+  DeleteEnvironmentResponse,
+  DeleteEnvironmentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteEnvironmentRequest,
+  output: DeleteEnvironmentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteIntegrationError = RailwayOpError;
+/** Delete an integration for a project */
+export const deleteIntegration: API.OperationMethod<
+  DeleteIntegrationRequest,
+  DeleteIntegrationResponse,
+  DeleteIntegrationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteIntegrationRequest,
+  output: DeleteIntegrationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteNotificationRuleError = RailwayOpError;
+/** Delete a notification rule */
+export const deleteNotificationRule: API.OperationMethod<
+  DeleteNotificationRuleRequest,
+  DeleteNotificationRuleResponse,
+  DeleteNotificationRuleError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteNotificationRuleRequest,
+  output: DeleteNotificationRuleResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePasskeyError = RailwayOpError;
+/** Deletes a Passkey */
+export const deletePasskey: API.OperationMethod<
+  DeletePasskeyRequest,
+  DeletePasskeyResponse,
+  DeletePasskeyError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePasskeyRequest,
+  output: DeletePasskeyResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePrivateNetworkEndpointError = RailwayOpError;
+/** Delete a private network endpoint. */
+export const deletePrivateNetworkEndpoint: API.OperationMethod<
+  DeletePrivateNetworkEndpointRequest,
+  DeletePrivateNetworkEndpointResponse,
+  DeletePrivateNetworkEndpointError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePrivateNetworkEndpointRequest,
+  output: DeletePrivateNetworkEndpointResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeletePrivateNetworkForEnvironmentError = RailwayOpError;
+/** Delete all private networks for an environment. */
+export const deletePrivateNetworkForEnvironment: API.OperationMethod<
+  DeletePrivateNetworkForEnvironmentRequest,
+  DeletePrivateNetworkForEnvironmentResponse,
+  DeletePrivateNetworkForEnvironmentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePrivateNetworkForEnvironmentRequest,
+  output: DeletePrivateNetworkForEnvironmentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectError = RailwayOpError;
+/** Deletes a project. */
+export const deleteProject: API.OperationMethod<
+  DeleteProjectRequest,
+  DeleteProjectResponse,
+  DeleteProjectError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectRequest,
+  output: DeleteProjectResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectInvitationError = RailwayOpError;
+/** Delete an invitation for a project */
+export const deleteProjectInvitation: API.OperationMethod<
+  DeleteProjectInvitationRequest,
+  DeleteProjectInvitationResponse,
+  DeleteProjectInvitationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectInvitationRequest,
+  output: DeleteProjectInvitationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectScheduleError = RailwayOpError;
+/** Deletes a project with a 48 hour grace period. */
+export const deleteProjectSchedule: API.OperationMethod<
+  DeleteProjectScheduleRequest,
+  DeleteProjectScheduleResponse,
+  DeleteProjectScheduleError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectScheduleRequest,
+  output: DeleteProjectScheduleResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectScheduleCancelError = RailwayOpError;
+/** Cancel scheduled deletion of a project */
+export const deleteProjectScheduleCancel: API.OperationMethod<
+  DeleteProjectScheduleCancelRequest,
+  DeleteProjectScheduleCancelResponse,
+  DeleteProjectScheduleCancelError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectScheduleCancelRequest,
+  output: DeleteProjectScheduleCancelResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectScheduleForceError = RailwayOpError;
+/** Force delete a scheduled deletion of a project (skips the grace period) */
+export const deleteProjectScheduleForce: API.OperationMethod<
+  DeleteProjectScheduleForceRequest,
+  DeleteProjectScheduleForceResponse,
+  DeleteProjectScheduleForceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectScheduleForceRequest,
+  output: DeleteProjectScheduleForceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProjectTokenError = RailwayOpError;
+/** Delete a project token */
+export const deleteProjectToken: API.OperationMethod<
+  DeleteProjectTokenRequest,
+  DeleteProjectTokenResponse,
+  DeleteProjectTokenError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProjectTokenRequest,
+  output: DeleteProjectTokenResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteRailwayDomainDnsRecordError = RailwayOpError;
+/** Delete a DNS record for a Railway domain */
+export const deleteRailwayDomainDnsRecord: API.OperationMethod<
+  DeleteRailwayDomainDnsRecordRequest,
+  DeleteRailwayDomainDnsRecordResponse,
+  DeleteRailwayDomainDnsRecordError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRailwayDomainDnsRecordRequest,
+  output: DeleteRailwayDomainDnsRecordResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSandboxCheckpointError = RailwayOpError;
+/** Delete a sandbox checkpoint. */
+export const deleteSandboxCheckpoint: API.OperationMethod<
+  DeleteSandboxCheckpointRequest,
+  DeleteSandboxCheckpointResponse,
+  DeleteSandboxCheckpointError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSandboxCheckpointRequest,
+  output: DeleteSandboxCheckpointResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceError = RailwayOpError;
+/** Deletes a service. */
+export const deleteService: API.OperationMethod<
+  DeleteServiceRequest,
+  DeleteServiceResponse,
+  DeleteServiceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceRequest,
+  output: DeleteServiceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteServiceDomainError = RailwayOpError;
+/** Deletes a service domain. */
+export const deleteServiceDomain: API.OperationMethod<
+  DeleteServiceDomainRequest,
+  DeleteServiceDomainResponse,
+  DeleteServiceDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteServiceDomainRequest,
+  output: DeleteServiceDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSessionError = RailwayOpError;
+/** Deletes a session. */
+export const deleteSession: API.OperationMethod<
+  DeleteSessionRequest,
+  DeleteSessionResponse,
+  DeleteSessionError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSessionRequest,
+  output: DeleteSessionResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSshPublicKeyError = RailwayOpError;
+/** Deletes an SSH public key. */
+export const deleteSshPublicKey: API.OperationMethod<
+  DeleteSshPublicKeyRequest,
+  DeleteSshPublicKeyResponse,
+  DeleteSshPublicKeyError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSshPublicKeyRequest,
+  output: DeleteSshPublicKeyResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTcpProxyError = RailwayOpError;
+/** Deletes a TCP proxy by id */
+export const deleteTcpProxy: API.OperationMethod<
+  DeleteTcpProxyRequest,
+  DeleteTcpProxyResponse,
+  DeleteTcpProxyError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTcpProxyRequest,
+  output: DeleteTcpProxyResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTemplateError = RailwayOpError;
+/** Deletes a template. */
+export const deleteTemplate: API.OperationMethod<
+  DeleteTemplateRequest,
+  DeleteTemplateResponse,
+  DeleteTemplateError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTemplateRequest,
+  output: DeleteTemplateResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTrustedDomainError = RailwayOpError;
+/** Delete a trusted domain */
+export const deleteTrustedDomain: API.OperationMethod<
+  DeleteTrustedDomainRequest,
+  DeleteTrustedDomainResponse,
+  DeleteTrustedDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTrustedDomainRequest,
+  output: DeleteTrustedDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTwoFactorInfoError = RailwayOpError;
+/** Deletes the TwoFactorInfo for the authenticated user. */
+export const deleteTwoFactorInfo: API.OperationMethod<
+  DeleteTwoFactorInfoRequest,
+  DeleteTwoFactorInfoResponse,
+  DeleteTwoFactorInfoError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTwoFactorInfoRequest,
+  output: DeleteTwoFactorInfoResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteUserError = RailwayOpError;
+/** Delete the currently authenticated user */
+export const deleteUser: API.OperationMethod<
+  DeleteUserRequest,
+  DeleteUserResponse,
+  DeleteUserError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteUserRequest,
+  output: DeleteUserResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteVariableError = RailwayOpError;
+/** Deletes a variable. */
+export const deleteVariable: API.OperationMethod<
+  DeleteVariableRequest,
+  DeleteVariableResponse,
+  DeleteVariableError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteVariableRequest,
+  output: DeleteVariableResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteVolumeError = RailwayOpError;
+/** Delete a persistent volume in a project */
+export const deleteVolume: API.OperationMethod<
+  DeleteVolumeRequest,
+  DeleteVolumeResponse,
+  DeleteVolumeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteVolumeRequest,
+  output: DeleteVolumeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteVolumeInstanceBackupError = RailwayOpError;
+/** Deletes volume instance backup */
+export const deleteVolumeInstanceBackup: API.OperationMethod<
+  DeleteVolumeInstanceBackupRequest,
+  DeleteVolumeInstanceBackupResponse,
+  DeleteVolumeInstanceBackupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteVolumeInstanceBackupRequest,
+  output: DeleteVolumeInstanceBackupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteWorkspaceError = RailwayOpError;
+/** Delete a workspace and all data associated with it */
+export const deleteWorkspace: API.OperationMethod<
+  DeleteWorkspaceRequest,
+  DeleteWorkspaceResponse,
+  DeleteWorkspaceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWorkspaceRequest,
+  output: DeleteWorkspaceResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -26770,21 +27508,6 @@ export const deploymentEvents: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
-export type DeploymentInstanceExecutionCreateError = RailwayOpError;
-/** Invoke a deployment instance execution. */
-export const deploymentInstanceExecutionCreate: API.OperationMethod<
-  DeploymentInstanceExecutionCreateRequest,
-  DeploymentInstanceExecutionCreateResponse,
-  DeploymentInstanceExecutionCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentInstanceExecutionCreateRequest,
-  output: DeploymentInstanceExecutionCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DeploymentInstanceExecutionsError = RailwayOpError;
 /** Get the deployment instance executions for a deployment. */
 export const deploymentInstanceExecutions: API.PaginatedOperationMethod<
@@ -26857,21 +27580,6 @@ export const deploymentRemove: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeploymentRestartError = RailwayOpError;
-/** Restarts a deployment. */
-export const deploymentRestart: API.OperationMethod<
-  DeploymentRestartRequest,
-  DeploymentRestartResponse,
-  DeploymentRestartError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentRestartRequest,
-  output: DeploymentRestartResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DeploymentRollbackError = RailwayOpError;
 /** Rolls back to a deployment. */
 export const deploymentRollback: API.OperationMethod<
@@ -26929,51 +27637,6 @@ export const deploymentSnapshot: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeploymentStopError = RailwayOpError;
-/** Stops a deployment. */
-export const deploymentStop: API.OperationMethod<
-  DeploymentStopRequest,
-  DeploymentStopResponse,
-  DeploymentStopError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentStopRequest,
-  output: DeploymentStopResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeploymentTriggerCreateError = RailwayOpError;
-/** Creates a deployment trigger. */
-export const deploymentTriggerCreate: API.OperationMethod<
-  DeploymentTriggerCreateRequest,
-  DeploymentTriggerCreateResponse,
-  DeploymentTriggerCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentTriggerCreateRequest,
-  output: DeploymentTriggerCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeploymentTriggerDeleteError = RailwayOpError;
-/** Deletes a deployment trigger. */
-export const deploymentTriggerDelete: API.OperationMethod<
-  DeploymentTriggerDeleteRequest,
-  DeploymentTriggerDeleteResponse,
-  DeploymentTriggerDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentTriggerDeleteRequest,
-  output: DeploymentTriggerDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DeploymentTriggersError = RailwayOpError;
 /** All deployment triggers. */
 export const deploymentTriggers: API.PaginatedOperationMethod<
@@ -27000,21 +27663,6 @@ export const deploymentTriggers: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
-
-export type DeploymentTriggerUpdateError = RailwayOpError;
-/** Updates a deployment trigger. */
-export const deploymentTriggerUpdate: API.OperationMethod<
-  DeploymentTriggerUpdateRequest,
-  DeploymentTriggerUpdateResponse,
-  DeploymentTriggerUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentTriggerUpdateRequest,
-  output: DeploymentTriggerUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
 
 export type DisablePitrForHaClusterError = RailwayOpError;
 /** Disables point-in-time recovery on a Postgres HA cluster with the same rolling rollout as enable. The backup bucket is left intact, so existing backup history is preserved. */
@@ -27086,21 +27734,6 @@ export const domains: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DomainsRequest,
   output: DomainsResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EgressGatewayAssociationCreateError = RailwayOpError;
-/** Create a new egress gateway association for a service instance */
-export const egressGatewayAssociationCreate: API.OperationMethod<
-  EgressGatewayAssociationCreateRequest,
-  EgressGatewayAssociationCreateResponse,
-  EgressGatewayAssociationCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EgressGatewayAssociationCreateRequest,
-  output: EgressGatewayAssociationCreateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -27286,81 +27919,6 @@ export const environment: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EnvironmentApplyChangeSetError = RailwayOpError;
-/** Experimental: applies an intent-level RailwayChangeSet and returns operation results. */
-export const environmentApplyChangeSet: API.OperationMethod<
-  EnvironmentApplyChangeSetRequest,
-  EnvironmentApplyChangeSetResponse,
-  EnvironmentApplyChangeSetError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentApplyChangeSetRequest,
-  output: EnvironmentApplyChangeSetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentChangeSetApplyError = RailwayOpError;
-/** Returns the status or completed result of an asynchronous RailwayChangeSet apply. */
-export const environmentChangeSetApply: API.OperationMethod<
-  EnvironmentChangeSetApplyRequest,
-  EnvironmentChangeSetApplyResponse,
-  EnvironmentChangeSetApplyError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentChangeSetApplyRequest,
-  output: EnvironmentChangeSetApplyResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentConfigPlanCommentUpsertError = RailwayOpError;
-/** Posts or updates a `railway config plan` comment on a GitHub pull request under the Railway app identity. The caller proves it runs in the target repo with a GitHub Actions OIDC token; the comment body is composed server-side from the structured plan. */
-export const environmentConfigPlanCommentUpsert: API.OperationMethod<
-  EnvironmentConfigPlanCommentUpsertRequest,
-  EnvironmentConfigPlanCommentUpsertResponse,
-  EnvironmentConfigPlanCommentUpsertError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentConfigPlanCommentUpsertRequest,
-  output: EnvironmentConfigPlanCommentUpsertResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentCreateError = RailwayOpError;
-/** Creates a new environment. */
-export const environmentCreate: API.OperationMethod<
-  EnvironmentCreateRequest,
-  EnvironmentCreateResponse,
-  EnvironmentCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentCreateRequest,
-  output: EnvironmentCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentDeleteError = RailwayOpError;
-/** Deletes an environment. */
-export const environmentDelete: API.OperationMethod<
-  EnvironmentDeleteRequest,
-  EnvironmentDeleteResponse,
-  EnvironmentDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentDeleteRequest,
-  output: EnvironmentDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type EnvironmentHasLegacyStaticEgressError = RailwayOpError;
 /** Whether any service in the environment is on legacy static egress (not HA). Used to surface the HA migration banner. */
 export const environmentHasLegacyStaticEgress: API.OperationMethod<
@@ -27386,21 +27944,6 @@ export const environmentLogs: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: EnvironmentLogsRequest,
   output: EnvironmentLogsResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EnvironmentPatchError = RailwayOpError;
-/** Get a single environment patch by ID */
-export const environmentPatch: API.OperationMethod<
-  EnvironmentPatchRequest,
-  EnvironmentPatchResponse,
-  EnvironmentPatchError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentPatchRequest,
-  output: EnvironmentPatchResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -27462,21 +28005,6 @@ export const environmentPatches: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
-
-export type EnvironmentPreviewChangeSetError = RailwayOpError;
-/** Experimental: previews an intent-level RailwayChangeSet without side effects. */
-export const environmentPreviewChangeSet: API.OperationMethod<
-  EnvironmentPreviewChangeSetRequest,
-  EnvironmentPreviewChangeSetResponse,
-  EnvironmentPreviewChangeSetError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentPreviewChangeSetRequest,
-  output: EnvironmentPreviewChangeSetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
 
 export type EnvironmentRenameError = RailwayOpError;
 /** Renames an environment. */
@@ -27622,6 +28150,21 @@ export const events: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
+export type ExecSandboxError = RailwayOpError;
+/** Execute a command inside a running sandbox. */
+export const execSandbox: API.OperationMethod<
+  ExecSandboxRequest,
+  ExecSandboxResponse,
+  ExecSandboxError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ExecSandboxRequest,
+  output: ExecSandboxResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ExternalWorkspacesError = RailwayOpError;
 /** Get the workspaces the user doesn't belong to, but needs access (like when invited to a project) */
 export const externalWorkspaces: API.OperationMethod<
@@ -27712,6 +28255,21 @@ export const functionRuntimes: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GenerateRecoveryCodeError = RailwayOpError;
+/** Generates a new set of recovery codes for the authenticated user. */
+export const generateRecoveryCode: API.OperationMethod<
+  GenerateRecoveryCodeRequest,
+  GenerateRecoveryCodeResponse,
+  GenerateRecoveryCodeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateRecoveryCodeRequest,
+  output: GenerateRecoveryCodeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GenerateShellTokenError = RailwayOpError;
 /** Mints a 5-minute JWT for opening a browser WS session against tcp-proxy. */
 export const generateShellToken: API.OperationMethod<
@@ -27722,6 +28280,21 @@ export const generateShellToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GenerateShellTokenRequest,
   output: GenerateShellTokenResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GenerateTemplateError = RailwayOpError;
+/** Generate a template for a project */
+export const generateTemplate: API.OperationMethod<
+  GenerateTemplateRequest,
+  GenerateTemplateResponse,
+  GenerateTemplateError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateTemplateRequest,
+  output: GenerateTemplateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -27842,21 +28415,6 @@ export const githubRepos: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GithubReposRequest,
   output: GithubReposResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GithubRepoUpdateError = RailwayOpError;
-/** Updates a GitHub repo through the linked template */
-export const githubRepoUpdate: API.OperationMethod<
-  GithubRepoUpdateRequest,
-  GithubRepoUpdateResponse,
-  GithubRepoUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GithubRepoUpdateRequest,
-  output: GithubRepoUpdateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28024,36 +28582,6 @@ export const integrationAuths: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
-export type IntegrationCreateError = RailwayOpError;
-/** Create an integration for a project */
-export const integrationCreate: API.OperationMethod<
-  IntegrationCreateRequest,
-  IntegrationCreateResponse,
-  IntegrationCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationCreateRequest,
-  output: IntegrationCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type IntegrationDeleteError = RailwayOpError;
-/** Delete an integration for a project */
-export const integrationDelete: API.OperationMethod<
-  IntegrationDeleteRequest,
-  IntegrationDeleteResponse,
-  IntegrationDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationDeleteRequest,
-  output: IntegrationDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type IntegrationsError = RailwayOpError;
 /** Get all integrations for a project */
 export const integrations: API.PaginatedOperationMethod<
@@ -28080,21 +28608,6 @@ export const integrations: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
-
-export type IntegrationUpdateError = RailwayOpError;
-/** Update an integration for a project */
-export const integrationUpdate: API.OperationMethod<
-  IntegrationUpdateRequest,
-  IntegrationUpdateResponse,
-  IntegrationUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationUpdateRequest,
-  output: IntegrationUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
 
 export type InviteCodeError = RailwayOpError;
 /** Get an invite code by the code */
@@ -28126,16 +28639,31 @@ export const inviteCodeUse: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type JobApplicationCreateError = RailwayOpError;
-/** Creates a new job application. */
-export const jobApplicationCreate: API.OperationMethod<
-  JobApplicationCreateRequest,
-  JobApplicationCreateResponse,
-  JobApplicationCreateError,
+export type ListVolumeInstanceBackupError = RailwayOpError;
+/** List backups of a volume instance */
+export const listVolumeInstanceBackup: API.OperationMethod<
+  ListVolumeInstanceBackupRequest,
+  ListVolumeInstanceBackupResponse,
+  ListVolumeInstanceBackupError,
   RailwayOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobApplicationCreateRequest,
-  output: JobApplicationCreateResponse,
+  input: ListVolumeInstanceBackupRequest,
+  output: ListVolumeInstanceBackupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListVolumeInstanceBackupScheduleError = RailwayOpError;
+/** List backups schedules of a volume instance */
+export const listVolumeInstanceBackupSchedule: API.OperationMethod<
+  ListVolumeInstanceBackupScheduleRequest,
+  ListVolumeInstanceBackupScheduleResponse,
+  ListVolumeInstanceBackupScheduleError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListVolumeInstanceBackupScheduleRequest,
+  output: ListVolumeInstanceBackupScheduleResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28181,36 +28709,6 @@ export const loginSessionConsume: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LoginSessionConsumeRequest,
   output: LoginSessionConsumeResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LoginSessionCreateError = RailwayOpError;
-/** Start a CLI login session */
-export const loginSessionCreate: API.OperationMethod<
-  LoginSessionCreateRequest,
-  LoginSessionCreateResponse,
-  LoginSessionCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LoginSessionCreateRequest,
-  output: LoginSessionCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LoginSessionVerifyError = RailwayOpError;
-/** Verify if a login session is valid */
-export const loginSessionVerify: API.OperationMethod<
-  LoginSessionVerifyRequest,
-  LoginSessionVerifyResponse,
-  LoginSessionVerifyError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LoginSessionVerifyRequest,
-  output: LoginSessionVerifyResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28333,36 +28831,6 @@ export const notificationDelivery: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotificationRuleCreateError = RailwayOpError;
-/** Create a new notification rule */
-export const notificationRuleCreate: API.OperationMethod<
-  NotificationRuleCreateRequest,
-  NotificationRuleCreateResponse,
-  NotificationRuleCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotificationRuleCreateRequest,
-  output: NotificationRuleCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotificationRuleDeleteError = RailwayOpError;
-/** Delete a notification rule */
-export const notificationRuleDelete: API.OperationMethod<
-  NotificationRuleDeleteRequest,
-  NotificationRuleDeleteResponse,
-  NotificationRuleDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotificationRuleDeleteRequest,
-  output: NotificationRuleDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type NotificationRulesError = RailwayOpError;
 /** Get all notification rules for a workspace and project */
 export const notificationRules: API.OperationMethod<
@@ -28373,36 +28841,6 @@ export const notificationRules: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: NotificationRulesRequest,
   output: NotificationRulesResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotificationRuleUpdateError = RailwayOpError;
-/** Update a notification rule */
-export const notificationRuleUpdate: API.OperationMethod<
-  NotificationRuleUpdateRequest,
-  NotificationRuleUpdateResponse,
-  NotificationRuleUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotificationRuleUpdateRequest,
-  output: NotificationRuleUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ObservabilityDashboardCreateError = RailwayOpError;
-/** Create an observability dashboard */
-export const observabilityDashboardCreate: API.OperationMethod<
-  ObservabilityDashboardCreateRequest,
-  ObservabilityDashboardCreateResponse,
-  ObservabilityDashboardCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ObservabilityDashboardCreateRequest,
-  output: ObservabilityDashboardCreateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28450,36 +28888,6 @@ export const observabilityDashboards: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
-export type ObservabilityDashboardUpdateError = RailwayOpError;
-/** Update an observability dashboard */
-export const observabilityDashboardUpdate: API.OperationMethod<
-  ObservabilityDashboardUpdateRequest,
-  ObservabilityDashboardUpdateResponse,
-  ObservabilityDashboardUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ObservabilityDashboardUpdateRequest,
-  output: ObservabilityDashboardUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PasskeyDeleteError = RailwayOpError;
-/** Deletes a Passkey */
-export const passkeyDelete: API.OperationMethod<
-  PasskeyDeleteRequest,
-  PasskeyDeleteResponse,
-  PasskeyDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PasskeyDeleteRequest,
-  output: PasskeyDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PasskeysError = RailwayOpError;
 /** Gets all passkeys for the authenticated user */
 export const passkeys: API.PaginatedOperationMethod<
@@ -28506,6 +28914,21 @@ export const passkeys: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
+
+export type PatchEnvironmentError = RailwayOpError;
+/** Get a single environment patch by ID */
+export const patchEnvironment: API.OperationMethod<
+  PatchEnvironmentRequest,
+  PatchEnvironmentResponse,
+  PatchEnvironmentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchEnvironmentRequest,
+  output: PatchEnvironmentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
 
 export type PitrHaClusterReplicationHealthError = RailwayOpError;
 /** Live replication health for a Postgres HA cluster. Use it to gate the Enable/Disable PITR buttons so a rollout can't start while a replica is too far behind to rejoin. Returns null when the service isn't an HA root. */
@@ -28567,21 +28990,6 @@ export const preferences: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PreferencesUpdateError = RailwayOpError;
-/** Update the email preferences for a user */
-export const preferencesUpdate: API.OperationMethod<
-  PreferencesUpdateRequest,
-  PreferencesUpdateResponse,
-  PreferencesUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PreferencesUpdateRequest,
-  output: PreferencesUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PrivateNetworkCreateOrGetError = RailwayOpError;
 /** Create or get a private network. */
 export const privateNetworkCreateOrGet: API.OperationMethod<
@@ -28622,21 +29030,6 @@ export const privateNetworkEndpointCreateOrGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PrivateNetworkEndpointCreateOrGetRequest,
   output: PrivateNetworkEndpointCreateOrGetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PrivateNetworkEndpointDeleteError = RailwayOpError;
-/** Delete a private network endpoint. */
-export const privateNetworkEndpointDelete: API.OperationMethod<
-  PrivateNetworkEndpointDeleteRequest,
-  PrivateNetworkEndpointDeleteResponse,
-  PrivateNetworkEndpointDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateNetworkEndpointDeleteRequest,
-  output: PrivateNetworkEndpointDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28687,21 +29080,6 @@ export const privateNetworks: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type PrivateNetworksForEnvironmentDeleteError = RailwayOpError;
-/** Delete all private networks for an environment. */
-export const privateNetworksForEnvironmentDelete: API.OperationMethod<
-  PrivateNetworksForEnvironmentDeleteRequest,
-  PrivateNetworksForEnvironmentDeleteResponse,
-  PrivateNetworksForEnvironmentDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PrivateNetworksForEnvironmentDeleteRequest,
-  output: PrivateNetworksForEnvironmentDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ProjectError = RailwayOpError;
 /** Get a project by ID */
 export const project: API.OperationMethod<
@@ -28742,36 +29120,6 @@ export const projectCompliance: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProjectComplianceRequest,
   output: ProjectComplianceResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectCreateError = RailwayOpError;
-/** Creates a new project. */
-export const projectCreate: API.OperationMethod<
-  ProjectCreateRequest,
-  ProjectCreateResponse,
-  ProjectCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectCreateRequest,
-  output: ProjectCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectDeleteError = RailwayOpError;
-/** Deletes a project. */
-export const projectDelete: API.OperationMethod<
-  ProjectDeleteRequest,
-  ProjectDeleteResponse,
-  ProjectDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectDeleteRequest,
-  output: ProjectDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28832,36 +29180,6 @@ export const projectInvitationAccept: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProjectInvitationAcceptRequest,
   output: ProjectInvitationAcceptResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectInvitationCreateError = RailwayOpError;
-/** Create an invitation for a project */
-export const projectInvitationCreate: API.OperationMethod<
-  ProjectInvitationCreateRequest,
-  ProjectInvitationCreateResponse,
-  ProjectInvitationCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectInvitationCreateRequest,
-  output: ProjectInvitationCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectInvitationDeleteError = RailwayOpError;
-/** Delete an invitation for a project */
-export const projectInvitationDelete: API.OperationMethod<
-  ProjectInvitationDeleteRequest,
-  ProjectInvitationDeleteResponse,
-  ProjectInvitationDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectInvitationDeleteRequest,
-  output: ProjectInvitationDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -28987,21 +29305,6 @@ export const projectMembers: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProjectMemberUpdateError = RailwayOpError;
-/** Change the role for a user within a project */
-export const projectMemberUpdate: API.OperationMethod<
-  ProjectMemberUpdateRequest,
-  ProjectMemberUpdateResponse,
-  ProjectMemberUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectMemberUpdateRequest,
-  output: ProjectMemberUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ProjectResourceAccessError = RailwayOpError;
 /** Get resource access rules for project-specific actions */
 export const projectResourceAccess: API.OperationMethod<
@@ -29059,51 +29362,6 @@ export const projectsByIds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProjectScheduleDeleteError = RailwayOpError;
-/** Deletes a project with a 48 hour grace period. */
-export const projectScheduleDelete: API.OperationMethod<
-  ProjectScheduleDeleteRequest,
-  ProjectScheduleDeleteResponse,
-  ProjectScheduleDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectScheduleDeleteRequest,
-  output: ProjectScheduleDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectScheduleDeleteCancelError = RailwayOpError;
-/** Cancel scheduled deletion of a project */
-export const projectScheduleDeleteCancel: API.OperationMethod<
-  ProjectScheduleDeleteCancelRequest,
-  ProjectScheduleDeleteCancelResponse,
-  ProjectScheduleDeleteCancelError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectScheduleDeleteCancelRequest,
-  output: ProjectScheduleDeleteCancelResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectScheduleDeleteForceError = RailwayOpError;
-/** Force delete a scheduled deletion of a project (skips the grace period) */
-export const projectScheduleDeleteForce: API.OperationMethod<
-  ProjectScheduleDeleteForceRequest,
-  ProjectScheduleDeleteForceResponse,
-  ProjectScheduleDeleteForceError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectScheduleDeleteForceRequest,
-  output: ProjectScheduleDeleteForceResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ProjectServiceUsageError = RailwayOpError;
 /** Get paginated usage grouped by project and service for a workspace. */
 export const projectServiceUsage: API.OperationMethod<
@@ -29129,36 +29387,6 @@ export const projectToken: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProjectTokenRequest,
   output: ProjectTokenResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectTokenCreateError = RailwayOpError;
-/** Create a token for a project that has access to a specific environment */
-export const projectTokenCreate: API.OperationMethod<
-  ProjectTokenCreateRequest,
-  ProjectTokenCreateResponse,
-  ProjectTokenCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectTokenCreateRequest,
-  output: ProjectTokenCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectTokenDeleteError = RailwayOpError;
-/** Delete a project token */
-export const projectTokenDelete: API.OperationMethod<
-  ProjectTokenDeleteRequest,
-  ProjectTokenDeleteResponse,
-  ProjectTokenDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectTokenDeleteRequest,
-  output: ProjectTokenDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -29231,21 +29459,6 @@ export const projectTransferInitiate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ProjectTransferInitiateRequest,
   output: ProjectTransferInitiateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProjectUpdateError = RailwayOpError;
-/** Updates a project. */
-export const projectUpdate: API.OperationMethod<
-  ProjectUpdateRequest,
-  ProjectUpdateResponse,
-  ProjectUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProjectUpdateRequest,
-  output: ProjectUpdateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -29341,36 +29554,6 @@ export const railwayDomainByName: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RailwayDomainDnsRecordCreateError = RailwayOpError;
-/** Create a DNS record for a Railway domain */
-export const railwayDomainDnsRecordCreate: API.OperationMethod<
-  RailwayDomainDnsRecordCreateRequest,
-  RailwayDomainDnsRecordCreateResponse,
-  RailwayDomainDnsRecordCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RailwayDomainDnsRecordCreateRequest,
-  output: RailwayDomainDnsRecordCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RailwayDomainDnsRecordDeleteError = RailwayOpError;
-/** Delete a DNS record for a Railway domain */
-export const railwayDomainDnsRecordDelete: API.OperationMethod<
-  RailwayDomainDnsRecordDeleteRequest,
-  RailwayDomainDnsRecordDeleteResponse,
-  RailwayDomainDnsRecordDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RailwayDomainDnsRecordDeleteRequest,
-  output: RailwayDomainDnsRecordDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RailwayDomainDnsRecordsError = RailwayOpError;
 /** List DNS records for a Railway domain */
 export const railwayDomainDnsRecords: API.OperationMethod<
@@ -29386,36 +29569,6 @@ export const railwayDomainDnsRecords: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type RailwayDomainDnsRecordUpdateError = RailwayOpError;
-/** Update a DNS record for a Railway domain */
-export const railwayDomainDnsRecordUpdate: API.OperationMethod<
-  RailwayDomainDnsRecordUpdateRequest,
-  RailwayDomainDnsRecordUpdateResponse,
-  RailwayDomainDnsRecordUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RailwayDomainDnsRecordUpdateRequest,
-  output: RailwayDomainDnsRecordUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RailwayDomainNameserversSetError = RailwayOpError;
-/** Delegate the domain's authoritative nameservers to an external DNS provider, or reset to Railway defaults by passing an empty list. */
-export const railwayDomainNameserversSet: API.OperationMethod<
-  RailwayDomainNameserversSetRequest,
-  RailwayDomainNameserversSetResponse,
-  RailwayDomainNameserversSetError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RailwayDomainNameserversSetRequest,
-  output: RailwayDomainNameserversSetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RailwayDomainsError = RailwayOpError;
 /** Get Railway domains for a workspace */
 export const railwayDomains: API.OperationMethod<
@@ -29426,36 +29579,6 @@ export const railwayDomains: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RailwayDomainsRequest,
   output: RailwayDomainsResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RailwayDomainUpdateError = RailwayOpError;
-/** Update a Railway domain's settings */
-export const railwayDomainUpdate: API.OperationMethod<
-  RailwayDomainUpdateRequest,
-  RailwayDomainUpdateResponse,
-  RailwayDomainUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RailwayDomainUpdateRequest,
-  output: RailwayDomainUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RecoveryCodeGenerateError = RailwayOpError;
-/** Generates a new set of recovery codes for the authenticated user. */
-export const recoveryCodeGenerate: API.OperationMethod<
-  RecoveryCodeGenerateRequest,
-  RecoveryCodeGenerateResponse,
-  RecoveryCodeGenerateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecoveryCodeGenerateRequest,
-  output: RecoveryCodeGenerateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -29491,21 +29614,6 @@ export const referralInfo: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReferralInfoUpdateError = RailwayOpError;
-/** Updates the ReferralInfo for the authenticated user. */
-export const referralInfoUpdate: API.OperationMethod<
-  ReferralInfoUpdateRequest,
-  ReferralInfoUpdateResponse,
-  ReferralInfoUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReferralInfoUpdateRequest,
-  output: ReferralInfoUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type RegionsError = RailwayOpError;
 /** List available regions */
 export const regions: API.OperationMethod<
@@ -29536,6 +29644,51 @@ export const resourceAccess: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type RestartDeploymentError = RailwayOpError;
+/** Restarts a deployment. */
+export const restartDeployment: API.OperationMethod<
+  RestartDeploymentRequest,
+  RestartDeploymentResponse,
+  RestartDeploymentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestartDeploymentRequest,
+  output: RestartDeploymentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RestoreVolumeInstanceBackupError = RailwayOpError;
+/** Restore a volume instance from a backup */
+export const restoreVolumeInstanceBackup: API.OperationMethod<
+  RestoreVolumeInstanceBackupRequest,
+  RestoreVolumeInstanceBackupResponse,
+  RestoreVolumeInstanceBackupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestoreVolumeInstanceBackupRequest,
+  output: RestoreVolumeInstanceBackupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type RestoreVolumeInstancePitrError = RailwayOpError;
+/** Point-in-time restore. Creates a brand-new database service in the project, recovered to the target timestamp from the source service's backup history. The source service stays online and untouched. */
+export const restoreVolumeInstancePitr: API.OperationMethod<
+  RestoreVolumeInstancePitrRequest,
+  RestoreVolumeInstancePitrResponse,
+  RestoreVolumeInstancePitrError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RestoreVolumeInstancePitrRequest,
+  output: RestoreVolumeInstancePitrResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type SandboxError = RailwayOpError;
 /** Get a sandbox by id. */
 export const sandbox: API.OperationMethod<
@@ -29546,36 +29699,6 @@ export const sandbox: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SandboxRequest,
   output: SandboxResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxCheckpointCreateError = RailwayOpError;
-/** Capture a running sandbox's current disk into a reusable, named checkpoint. Synchronous: the checkpoint is ready when this returns. */
-export const sandboxCheckpointCreate: API.OperationMethod<
-  SandboxCheckpointCreateRequest,
-  SandboxCheckpointCreateResponse,
-  SandboxCheckpointCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCheckpointCreateRequest,
-  output: SandboxCheckpointCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxCheckpointDeleteError = RailwayOpError;
-/** Delete a sandbox checkpoint. */
-export const sandboxCheckpointDelete: API.OperationMethod<
-  SandboxCheckpointDeleteRequest,
-  SandboxCheckpointDeleteResponse,
-  SandboxCheckpointDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCheckpointDeleteRequest,
-  output: SandboxCheckpointDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -29606,21 +29729,6 @@ export const sandboxCheckpoints: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SandboxCheckpointsRequest,
   output: SandboxCheckpointsResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxCreateError = RailwayOpError;
-/** Create a sandbox in an environment. */
-export const sandboxCreate: API.OperationMethod<
-  SandboxCreateRequest,
-  SandboxCreateResponse,
-  SandboxCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCreateRequest,
-  output: SandboxCreateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -29667,21 +29775,6 @@ export const sandboxes: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
-
-export type SandboxExecError = RailwayOpError;
-/** Execute a command inside a running sandbox. */
-export const sandboxExec: API.OperationMethod<
-  SandboxExecRequest,
-  SandboxExecResponse,
-  SandboxExecError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxExecRequest,
-  output: SandboxExecResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
 
 export type SandboxHeartbeatError = RailwayOpError;
 /** Extend a sandbox's lifetime. */
@@ -29770,36 +29863,6 @@ export const serviceConnect: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ServiceCreateError = RailwayOpError;
-/** Creates a new service. */
-export const serviceCreate: API.OperationMethod<
-  ServiceCreateRequest,
-  ServiceCreateResponse,
-  ServiceCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceCreateRequest,
-  output: ServiceCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceDeleteError = RailwayOpError;
-/** Deletes a service. */
-export const serviceDelete: API.OperationMethod<
-  ServiceDeleteRequest,
-  ServiceDeleteResponse,
-  ServiceDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceDeleteRequest,
-  output: ServiceDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ServiceDisconnectError = RailwayOpError;
 /** Disconnect a service from a repo */
 export const serviceDisconnect: API.OperationMethod<
@@ -29825,51 +29888,6 @@ export const serviceDomainAvailable: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ServiceDomainAvailableRequest,
   output: ServiceDomainAvailableResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceDomainCreateError = RailwayOpError;
-/** Creates a new service domain. */
-export const serviceDomainCreate: API.OperationMethod<
-  ServiceDomainCreateRequest,
-  ServiceDomainCreateResponse,
-  ServiceDomainCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceDomainCreateRequest,
-  output: ServiceDomainCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceDomainDeleteError = RailwayOpError;
-/** Deletes a service domain. */
-export const serviceDomainDelete: API.OperationMethod<
-  ServiceDomainDeleteRequest,
-  ServiceDomainDeleteResponse,
-  ServiceDomainDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceDomainDeleteRequest,
-  output: ServiceDomainDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceDomainUpdateError = RailwayOpError;
-/** Updates a service domain. */
-export const serviceDomainUpdate: API.OperationMethod<
-  ServiceDomainUpdateRequest,
-  ServiceDomainUpdateResponse,
-  ServiceDomainUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceDomainUpdateRequest,
-  output: ServiceDomainUpdateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -29935,21 +29953,6 @@ export const serviceInstanceAutoDeployStatus: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ServiceInstanceAutoDeployUpdateError = RailwayOpError;
-/** Enables or disables auto-deploy for a service instance. */
-export const serviceInstanceAutoDeployUpdate: API.OperationMethod<
-  ServiceInstanceAutoDeployUpdateRequest,
-  ServiceInstanceAutoDeployUpdateResponse,
-  ServiceInstanceAutoDeployUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceInstanceAutoDeployUpdateRequest,
-  output: ServiceInstanceAutoDeployUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ServiceInstanceAutoUpdateScheduleUpdateError = RailwayOpError;
 /** Update the auto-update maintenance window for a service instance, applied immediately (no config staging, no redeploy). Only the schedule changes — the update policy is untouched. */
 export const serviceInstanceAutoUpdateScheduleUpdate: API.OperationMethod<
@@ -29960,36 +29963,6 @@ export const serviceInstanceAutoUpdateScheduleUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ServiceInstanceAutoUpdateScheduleUpdateRequest,
   output: ServiceInstanceAutoUpdateScheduleUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceInstanceAutoUpdateSnoozeError = RailwayOpError;
-/** Skip the next scheduled auto-update occurrence for a service instance, applied immediately (no config staging, no redeploy). The recurring maintenance window and update policy are untouched — this only delays the next fire. */
-export const serviceInstanceAutoUpdateSnooze: API.OperationMethod<
-  ServiceInstanceAutoUpdateSnoozeRequest,
-  ServiceInstanceAutoUpdateSnoozeResponse,
-  ServiceInstanceAutoUpdateSnoozeError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceInstanceAutoUpdateSnoozeRequest,
-  output: ServiceInstanceAutoUpdateSnoozeResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceInstanceAutoUpdateSnoozeClearError = RailwayOpError;
-/** Undo an active auto-update skip for a service instance, applied immediately (no config staging, no redeploy). The recurring maintenance window and update policy are untouched — the next scheduled occurrence fires normally again. */
-export const serviceInstanceAutoUpdateSnoozeClear: API.OperationMethod<
-  ServiceInstanceAutoUpdateSnoozeClearRequest,
-  ServiceInstanceAutoUpdateSnoozeClearResponse,
-  ServiceInstanceAutoUpdateSnoozeClearError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceInstanceAutoUpdateSnoozeClearRequest,
-  output: ServiceInstanceAutoUpdateSnoozeClearResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -30070,21 +30043,6 @@ export const serviceInstanceLimits: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ServiceInstanceLimitsUpdateError = RailwayOpError;
-/** Update the resource limits for a service instance */
-export const serviceInstanceLimitsUpdate: API.OperationMethod<
-  ServiceInstanceLimitsUpdateRequest,
-  ServiceInstanceLimitsUpdateResponse,
-  ServiceInstanceLimitsUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceInstanceLimitsUpdateRequest,
-  output: ServiceInstanceLimitsUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ServiceInstanceRedeployError = RailwayOpError;
 /** Redeploy a service instance */
 export const serviceInstanceRedeploy: API.OperationMethod<
@@ -30095,21 +30053,6 @@ export const serviceInstanceRedeploy: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ServiceInstanceRedeployRequest,
   output: ServiceInstanceRedeployResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServiceInstanceUpdateError = RailwayOpError;
-/** Update a service instance */
-export const serviceInstanceUpdate: API.OperationMethod<
-  ServiceInstanceUpdateRequest,
-  ServiceInstanceUpdateResponse,
-  ServiceInstanceUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceInstanceUpdateRequest,
-  output: ServiceInstanceUpdateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -30160,36 +30103,6 @@ export const serviceRemoveUpstreamUrl: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ServiceUpdateError = RailwayOpError;
-/** Updates a service. */
-export const serviceUpdate: API.OperationMethod<
-  ServiceUpdateRequest,
-  ServiceUpdateResponse,
-  ServiceUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServiceUpdateRequest,
-  output: ServiceUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SessionDeleteError = RailwayOpError;
-/** Deletes a session. */
-export const sessionDelete: API.OperationMethod<
-  SessionDeleteRequest,
-  SessionDeleteResponse,
-  SessionDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionDeleteRequest,
-  output: SessionDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SessionsError = RailwayOpError;
 /** Gets all sessions for authenticated user. */
 export const sessions: API.PaginatedOperationMethod<
@@ -30217,6 +30130,81 @@ export const sessions: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
+export type SetAgentUsageLimitError = RailwayOpError;
+/** Set agent usage limit for a workspace */
+export const setAgentUsageLimit: API.OperationMethod<
+  SetAgentUsageLimitRequest,
+  SetAgentUsageLimitResponse,
+  SetAgentUsageLimitError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetAgentUsageLimitRequest,
+  output: SetAgentUsageLimitResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetEnvironmentApplyChangeError = RailwayOpError;
+/** Experimental: applies an intent-level RailwayChangeSet and returns operation results. */
+export const setEnvironmentApplyChange: API.OperationMethod<
+  SetEnvironmentApplyChangeRequest,
+  SetEnvironmentApplyChangeResponse,
+  SetEnvironmentApplyChangeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetEnvironmentApplyChangeRequest,
+  output: SetEnvironmentApplyChangeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetEnvironmentChangeApplyError = RailwayOpError;
+/** Returns the status or completed result of an asynchronous RailwayChangeSet apply. */
+export const setEnvironmentChangeApply: API.OperationMethod<
+  SetEnvironmentChangeApplyRequest,
+  SetEnvironmentChangeApplyResponse,
+  SetEnvironmentChangeApplyError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetEnvironmentChangeApplyRequest,
+  output: SetEnvironmentChangeApplyResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetEnvironmentPreviewChangeError = RailwayOpError;
+/** Experimental: previews an intent-level RailwayChangeSet without side effects. */
+export const setEnvironmentPreviewChange: API.OperationMethod<
+  SetEnvironmentPreviewChangeRequest,
+  SetEnvironmentPreviewChangeResponse,
+  SetEnvironmentPreviewChangeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetEnvironmentPreviewChangeRequest,
+  output: SetEnvironmentPreviewChangeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetRailwayDomainNameserverError = RailwayOpError;
+/** Delegate the domain's authoritative nameservers to an external DNS provider, or reset to Railway defaults by passing an empty list. */
+export const setRailwayDomainNameserver: API.OperationMethod<
+  SetRailwayDomainNameserverRequest,
+  SetRailwayDomainNameserverResponse,
+  SetRailwayDomainNameserverError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetRailwayDomainNameserverRequest,
+  output: SetRailwayDomainNameserverResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type SetServiceUnderAttackModeError = RailwayOpError;
 /** Enables or disables Under Attack Mode for a service. While enabled, the edge serves a browser challenge to unverified visitors of the service's edge-routed domains; non-browser clients (APIs, webhooks) without a clearance cookie are rejected with a 429. Optionally time-boxed via durationSeconds, after which the mode disarms automatically. */
 export const setServiceUnderAttackMode: API.OperationMethod<
@@ -30242,6 +30230,51 @@ export const setupAgentEventTrack: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SetupAgentEventTrackRequest,
   output: SetupAgentEventTrackResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetUsageLimitError = RailwayOpError;
+/** Set the usage limit for a customer */
+export const setUsageLimit: API.OperationMethod<
+  SetUsageLimitRequest,
+  SetUsageLimitResponse,
+  SetUsageLimitError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetUsageLimitRequest,
+  output: SetUsageLimitResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetUserFlagError = RailwayOpError;
+/** Set flags on the authenticated user. */
+export const setUserFlag: API.OperationMethod<
+  SetUserFlagRequest,
+  SetUserFlagResponse,
+  SetUserFlagError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetUserFlagRequest,
+  output: SetUserFlagResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetWorkspaceRestrictProjectVisibilityToGroupError = RailwayOpError;
+/** Control whether non-admin project visibility is restricted to access groups and direct project permissions. */
+export const setWorkspaceRestrictProjectVisibilityToGroup: API.OperationMethod<
+  SetWorkspaceRestrictProjectVisibilityToGroupRequest,
+  SetWorkspaceRestrictProjectVisibilityToGroupResponse,
+  SetWorkspaceRestrictProjectVisibilityToGroupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetWorkspaceRestrictProjectVisibilityToGroupRequest,
+  output: SetWorkspaceRestrictProjectVisibilityToGroupResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -30427,36 +30460,6 @@ export const signals: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SshPublicKeyCreateError = RailwayOpError;
-/** Creates a new SSH public key. When workspaceId is provided (or omitted under a workspace-scoped API token, in which case it defaults to the token's workspace), the key is owned by the workspace and can be used by anyone authenticating as that workspace via native SSH; requires workspace ADMIN access. Otherwise the key is owned by the authenticated user. */
-export const sshPublicKeyCreate: API.OperationMethod<
-  SshPublicKeyCreateRequest,
-  SshPublicKeyCreateResponse,
-  SshPublicKeyCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SshPublicKeyCreateRequest,
-  output: SshPublicKeyCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SshPublicKeyDeleteError = RailwayOpError;
-/** Deletes an SSH public key. */
-export const sshPublicKeyDelete: API.OperationMethod<
-  SshPublicKeyDeleteRequest,
-  SshPublicKeyDeleteResponse,
-  SshPublicKeyDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SshPublicKeyDeleteRequest,
-  output: SshPublicKeyDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SshPublicKeysError = RailwayOpError;
 /** Gets SSH public keys. If workspaceId is provided, returns the keys owned by that workspace (requires workspace MEMBER access). Under a workspace-scoped API token, workspaceId defaults to the token's workspace when omitted; otherwise returns the authenticated user's personal keys. */
 export const sshPublicKeys: API.PaginatedOperationMethod<
@@ -30514,6 +30517,21 @@ export const sshSignupInfo: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type StopDeploymentError = RailwayOpError;
+/** Stops a deployment. */
+export const stopDeployment: API.OperationMethod<
+  StopDeploymentRequest,
+  StopDeploymentResponse,
+  StopDeploymentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StopDeploymentRequest,
+  output: StopDeploymentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type TcpProxiesError = RailwayOpError;
 /** All TCP proxies for a service instance */
 export const tcpProxies: API.OperationMethod<
@@ -30524,36 +30542,6 @@ export const tcpProxies: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TcpProxiesRequest,
   output: TcpProxiesResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TcpProxyCreateError = RailwayOpError;
-/** Creates a new TCP proxy for a service instance. */
-export const tcpProxyCreate: API.OperationMethod<
-  TcpProxyCreateRequest,
-  TcpProxyCreateResponse,
-  TcpProxyCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TcpProxyCreateRequest,
-  output: TcpProxyCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TcpProxyDeleteError = RailwayOpError;
-/** Deletes a TCP proxy by id */
-export const tcpProxyDelete: API.OperationMethod<
-  TcpProxyDeleteRequest,
-  TcpProxyDeleteResponse,
-  TcpProxyDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TcpProxyDeleteRequest,
-  output: TcpProxyDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -30589,21 +30577,6 @@ export const templateClone: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TemplateDeleteError = RailwayOpError;
-/** Deletes a template. */
-export const templateDelete: API.OperationMethod<
-  TemplateDeleteRequest,
-  TemplateDeleteResponse,
-  TemplateDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TemplateDeleteRequest,
-  output: TemplateDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type TemplateDeployV2Error = RailwayOpError;
 /** Deploys a template using the serialized template config */
 export const templateDeployV2: API.OperationMethod<
@@ -30614,21 +30587,6 @@ export const templateDeployV2: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TemplateDeployV2Request,
   output: TemplateDeployV2Response,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TemplateGenerateError = RailwayOpError;
-/** Generate a template for a project */
-export const templateGenerate: API.OperationMethod<
-  TemplateGenerateRequest,
-  TemplateGenerateResponse,
-  TemplateGenerateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TemplateGenerateRequest,
-  output: TemplateGenerateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -30793,51 +30751,6 @@ export const templateUnpublish: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TemplateVolumeUpdateError = RailwayOpError;
-/** Sets the default size (in MB) for a volume mount in a template's config. New volumes created when the template is deployed are provisioned at this size, clamped to the deployer's plan maximum. Pass sizeMB: null to clear the pre-size and fall back to the plan default. Editing a template requires maintainer access. */
-export const templateVolumeUpdate: API.OperationMethod<
-  TemplateVolumeUpdateRequest,
-  TemplateVolumeUpdateResponse,
-  TemplateVolumeUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TemplateVolumeUpdateRequest,
-  output: TemplateVolumeUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TrustedDomainCreateError = RailwayOpError;
-/** Create a new trusted domain for this workspace */
-export const trustedDomainCreate: API.OperationMethod<
-  TrustedDomainCreateRequest,
-  TrustedDomainCreateResponse,
-  TrustedDomainCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedDomainCreateRequest,
-  output: TrustedDomainCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TrustedDomainDeleteError = RailwayOpError;
-/** Delete a trusted domain */
-export const trustedDomainDelete: API.OperationMethod<
-  TrustedDomainDeleteRequest,
-  TrustedDomainDeleteResponse,
-  TrustedDomainDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedDomainDeleteRequest,
-  output: TrustedDomainDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type TrustedDomainRetriggerVerificationError = RailwayOpError;
 /** Retrigger verification for a failed trusted domain */
 export const trustedDomainRetriggerVerification: API.OperationMethod<
@@ -30880,21 +30793,6 @@ export const trustedDomains: API.PaginatedOperationMethod<
   paginateRelay,
 ) as any;
 
-export type TrustedDomainUpdateError = RailwayOpError;
-/** Update the role of a trusted domain */
-export const trustedDomainUpdate: API.OperationMethod<
-  TrustedDomainUpdateRequest,
-  TrustedDomainUpdateResponse,
-  TrustedDomainUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TrustedDomainUpdateRequest,
-  output: TrustedDomainUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type TwoFactorInfoError = RailwayOpError;
 /** Gets the TwoFactorInfo for the authenticated user. */
 export const twoFactorInfo: API.OperationMethod<
@@ -30905,36 +30803,6 @@ export const twoFactorInfo: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TwoFactorInfoRequest,
   output: TwoFactorInfoResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TwoFactorInfoCreateError = RailwayOpError;
-/** Setup 2FA authorization for authenticated user. */
-export const twoFactorInfoCreate: API.OperationMethod<
-  TwoFactorInfoCreateRequest,
-  TwoFactorInfoCreateResponse,
-  TwoFactorInfoCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TwoFactorInfoCreateRequest,
-  output: TwoFactorInfoCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TwoFactorInfoDeleteError = RailwayOpError;
-/** Deletes the TwoFactorInfo for the authenticated user. */
-export const twoFactorInfoDelete: API.OperationMethod<
-  TwoFactorInfoDeleteRequest,
-  TwoFactorInfoDeleteResponse,
-  TwoFactorInfoDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TwoFactorInfoDeleteRequest,
-  output: TwoFactorInfoDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -30970,6 +30838,246 @@ export const twoFactorInfoValidate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateAccessGroupError = RailwayOpError;
+/** Update an access group's name or role. */
+export const updateAccessGroup: API.OperationMethod<
+  UpdateAccessGroupRequest,
+  UpdateAccessGroupResponse,
+  UpdateAccessGroupError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAccessGroupRequest,
+  output: UpdateAccessGroupResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBucketError = RailwayOpError;
+/** Updates a bucket. */
+export const updateBucket: API.OperationMethod<
+  UpdateBucketRequest,
+  UpdateBucketResponse,
+  UpdateBucketError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBucketRequest,
+  output: UpdateBucketResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCustomDomainError = RailwayOpError;
+/** Updates a custom domain. */
+export const updateCustomDomain: API.OperationMethod<
+  UpdateCustomDomainRequest,
+  UpdateCustomDomainResponse,
+  UpdateCustomDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCustomDomainRequest,
+  output: UpdateCustomDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateDeploymentTriggerError = RailwayOpError;
+/** Updates a deployment trigger. */
+export const updateDeploymentTrigger: API.OperationMethod<
+  UpdateDeploymentTriggerRequest,
+  UpdateDeploymentTriggerResponse,
+  UpdateDeploymentTriggerError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDeploymentTriggerRequest,
+  output: UpdateDeploymentTriggerResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateGithubRepoError = RailwayOpError;
+/** Updates a GitHub repo through the linked template */
+export const updateGithubRepo: API.OperationMethod<
+  UpdateGithubRepoRequest,
+  UpdateGithubRepoResponse,
+  UpdateGithubRepoError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateGithubRepoRequest,
+  output: UpdateGithubRepoResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateIntegrationError = RailwayOpError;
+/** Update an integration for a project */
+export const updateIntegration: API.OperationMethod<
+  UpdateIntegrationRequest,
+  UpdateIntegrationResponse,
+  UpdateIntegrationError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateIntegrationRequest,
+  output: UpdateIntegrationResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateNotificationRuleError = RailwayOpError;
+/** Update a notification rule */
+export const updateNotificationRule: API.OperationMethod<
+  UpdateNotificationRuleRequest,
+  UpdateNotificationRuleResponse,
+  UpdateNotificationRuleError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateNotificationRuleRequest,
+  output: UpdateNotificationRuleResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateObservabilityDashboardError = RailwayOpError;
+/** Update an observability dashboard */
+export const updateObservabilityDashboard: API.OperationMethod<
+  UpdateObservabilityDashboardRequest,
+  UpdateObservabilityDashboardResponse,
+  UpdateObservabilityDashboardError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateObservabilityDashboardRequest,
+  output: UpdateObservabilityDashboardResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdatePreferenceError = RailwayOpError;
+/** Update the email preferences for a user */
+export const updatePreference: API.OperationMethod<
+  UpdatePreferenceRequest,
+  UpdatePreferenceResponse,
+  UpdatePreferenceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePreferenceRequest,
+  output: UpdatePreferenceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateProjectError = RailwayOpError;
+/** Updates a project. */
+export const updateProject: API.OperationMethod<
+  UpdateProjectRequest,
+  UpdateProjectResponse,
+  UpdateProjectError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateProjectRequest,
+  output: UpdateProjectResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateProjectMemberError = RailwayOpError;
+/** Change the role for a user within a project */
+export const updateProjectMember: API.OperationMethod<
+  UpdateProjectMemberRequest,
+  UpdateProjectMemberResponse,
+  UpdateProjectMemberError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateProjectMemberRequest,
+  output: UpdateProjectMemberResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRailwayDomainError = RailwayOpError;
+/** Update a Railway domain's settings */
+export const updateRailwayDomain: API.OperationMethod<
+  UpdateRailwayDomainRequest,
+  UpdateRailwayDomainResponse,
+  UpdateRailwayDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRailwayDomainRequest,
+  output: UpdateRailwayDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateRailwayDomainDnsRecordError = RailwayOpError;
+/** Update a DNS record for a Railway domain */
+export const updateRailwayDomainDnsRecord: API.OperationMethod<
+  UpdateRailwayDomainDnsRecordRequest,
+  UpdateRailwayDomainDnsRecordResponse,
+  UpdateRailwayDomainDnsRecordError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRailwayDomainDnsRecordRequest,
+  output: UpdateRailwayDomainDnsRecordResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateReferralInfoError = RailwayOpError;
+/** Updates the ReferralInfo for the authenticated user. */
+export const updateReferralInfo: API.OperationMethod<
+  UpdateReferralInfoRequest,
+  UpdateReferralInfoResponse,
+  UpdateReferralInfoError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateReferralInfoRequest,
+  output: UpdateReferralInfoResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceError = RailwayOpError;
+/** Updates a service. */
+export const updateService: API.OperationMethod<
+  UpdateServiceRequest,
+  UpdateServiceResponse,
+  UpdateServiceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceRequest,
+  output: UpdateServiceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceDomainError = RailwayOpError;
+/** Updates a service domain. */
+export const updateServiceDomain: API.OperationMethod<
+  UpdateServiceDomainRequest,
+  UpdateServiceDomainResponse,
+  UpdateServiceDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceDomainRequest,
+  output: UpdateServiceDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpdateServiceEdgeConfigError = RailwayOpError;
 /** Updates the edge config (caching settings) for a service. */
 export const updateServiceEdgeConfig: API.OperationMethod<
@@ -31000,6 +31108,246 @@ export const updateServiceEdgeRules: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type UpdateServiceInstanceError = RailwayOpError;
+/** Update a service instance */
+export const updateServiceInstance: API.OperationMethod<
+  UpdateServiceInstanceRequest,
+  UpdateServiceInstanceResponse,
+  UpdateServiceInstanceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceInstanceRequest,
+  output: UpdateServiceInstanceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceInstanceAutoDeployError = RailwayOpError;
+/** Enables or disables auto-deploy for a service instance. */
+export const updateServiceInstanceAutoDeploy: API.OperationMethod<
+  UpdateServiceInstanceAutoDeployRequest,
+  UpdateServiceInstanceAutoDeployResponse,
+  UpdateServiceInstanceAutoDeployError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceInstanceAutoDeployRequest,
+  output: UpdateServiceInstanceAutoDeployResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceInstanceAutoSnoozeError = RailwayOpError;
+/** Skip the next scheduled auto-update occurrence for a service instance, applied immediately (no config staging, no redeploy). The recurring maintenance window and update policy are untouched — this only delays the next fire. */
+export const updateServiceInstanceAutoSnooze: API.OperationMethod<
+  UpdateServiceInstanceAutoSnoozeRequest,
+  UpdateServiceInstanceAutoSnoozeResponse,
+  UpdateServiceInstanceAutoSnoozeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceInstanceAutoSnoozeRequest,
+  output: UpdateServiceInstanceAutoSnoozeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceInstanceAutoSnoozeClearError = RailwayOpError;
+/** Undo an active auto-update skip for a service instance, applied immediately (no config staging, no redeploy). The recurring maintenance window and update policy are untouched — the next scheduled occurrence fires normally again. */
+export const updateServiceInstanceAutoSnoozeClear: API.OperationMethod<
+  UpdateServiceInstanceAutoSnoozeClearRequest,
+  UpdateServiceInstanceAutoSnoozeClearResponse,
+  UpdateServiceInstanceAutoSnoozeClearError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceInstanceAutoSnoozeClearRequest,
+  output: UpdateServiceInstanceAutoSnoozeClearResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateServiceInstanceLimitError = RailwayOpError;
+/** Update the resource limits for a service instance */
+export const updateServiceInstanceLimit: API.OperationMethod<
+  UpdateServiceInstanceLimitRequest,
+  UpdateServiceInstanceLimitResponse,
+  UpdateServiceInstanceLimitError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateServiceInstanceLimitRequest,
+  output: UpdateServiceInstanceLimitResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateTemplateVolumeError = RailwayOpError;
+/** Sets the default size (in MB) for a volume mount in a template's config. New volumes created when the template is deployed are provisioned at this size, clamped to the deployer's plan maximum. Pass sizeMB: null to clear the pre-size and fall back to the plan default. Editing a template requires maintainer access. */
+export const updateTemplateVolume: API.OperationMethod<
+  UpdateTemplateVolumeRequest,
+  UpdateTemplateVolumeResponse,
+  UpdateTemplateVolumeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTemplateVolumeRequest,
+  output: UpdateTemplateVolumeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateTrustedDomainError = RailwayOpError;
+/** Update the role of a trusted domain */
+export const updateTrustedDomain: API.OperationMethod<
+  UpdateTrustedDomainRequest,
+  UpdateTrustedDomainResponse,
+  UpdateTrustedDomainError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTrustedDomainRequest,
+  output: UpdateTrustedDomainResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateUserProfileError = RailwayOpError;
+/** Updates the profile for the authenticated user */
+export const updateUserProfile: API.OperationMethod<
+  UpdateUserProfileRequest,
+  UpdateUserProfileResponse,
+  UpdateUserProfileError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateUserProfileRequest,
+  output: UpdateUserProfileResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateUserTermError = RailwayOpError;
+/** Update date of TermsAgreedOn */
+export const updateUserTerm: API.OperationMethod<
+  UpdateUserTermRequest,
+  UpdateUserTermResponse,
+  UpdateUserTermError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateUserTermRequest,
+  output: UpdateUserTermResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateVolumeError = RailwayOpError;
+/** Update a persistent volume in a project */
+export const updateVolume: API.OperationMethod<
+  UpdateVolumeRequest,
+  UpdateVolumeResponse,
+  UpdateVolumeError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateVolumeRequest,
+  output: UpdateVolumeResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateVolumeInstanceError = RailwayOpError;
+/** Update a volume instance. If no environmentId is provided, all volume instances for the volume will be updated. */
+export const updateVolumeInstance: API.OperationMethod<
+  UpdateVolumeInstanceRequest,
+  UpdateVolumeInstanceResponse,
+  UpdateVolumeInstanceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateVolumeInstanceRequest,
+  output: UpdateVolumeInstanceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateVolumeInstanceBackupScheduleError = RailwayOpError;
+/** Manage schedule for backups of a volume instance */
+export const updateVolumeInstanceBackupSchedule: API.OperationMethod<
+  UpdateVolumeInstanceBackupScheduleRequest,
+  UpdateVolumeInstanceBackupScheduleResponse,
+  UpdateVolumeInstanceBackupScheduleError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateVolumeInstanceBackupScheduleRequest,
+  output: UpdateVolumeInstanceBackupScheduleResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWorkspaceError = RailwayOpError;
+/** Update a workspace by id */
+export const updateWorkspace: API.OperationMethod<
+  UpdateWorkspaceRequest,
+  UpdateWorkspaceResponse,
+  UpdateWorkspaceError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWorkspaceRequest,
+  output: UpdateWorkspaceResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWorkspacePolicyItemError = RailwayOpError;
+/** Enable or disable a workspace policy. Enterprise workspaces only. */
+export const updateWorkspacePolicyItem: API.OperationMethod<
+  UpdateWorkspacePolicyItemRequest,
+  UpdateWorkspacePolicyItemResponse,
+  UpdateWorkspacePolicyItemError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWorkspacePolicyItemRequest,
+  output: UpdateWorkspacePolicyItemResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateWorkspaceTwoFactorEnforcementError = RailwayOpError;
+/** Enable or disable 2FA enforcement for a workspace */
+export const updateWorkspaceTwoFactorEnforcement: API.OperationMethod<
+  UpdateWorkspaceTwoFactorEnforcementRequest,
+  UpdateWorkspaceTwoFactorEnforcementResponse,
+  UpdateWorkspaceTwoFactorEnforcementError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWorkspaceTwoFactorEnforcementRequest,
+  output: UpdateWorkspaceTwoFactorEnforcementResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpsertEnvironmentConfigPlanCommentError = RailwayOpError;
+/** Posts or updates a `railway config plan` comment on a GitHub pull request under the Railway app identity. The caller proves it runs in the target repo with a GitHub Actions OIDC token; the comment body is composed server-side from the structured plan. */
+export const upsertEnvironmentConfigPlanComment: API.OperationMethod<
+  UpsertEnvironmentConfigPlanCommentRequest,
+  UpsertEnvironmentConfigPlanCommentResponse,
+  UpsertEnvironmentConfigPlanCommentError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpsertEnvironmentConfigPlanCommentRequest,
+  output: UpsertEnvironmentConfigPlanCommentResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
 export type UpsertSlackChannelError = RailwayOpError;
 /** Generate a Slack channel for a workspace */
 export const upsertSlackChannel: API.OperationMethod<
@@ -31010,6 +31358,51 @@ export const upsertSlackChannel: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpsertSlackChannelRequest,
   output: UpsertSlackChannelResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpsertVariableError = RailwayOpError;
+/** Upserts a variable. */
+export const upsertVariable: API.OperationMethod<
+  UpsertVariableRequest,
+  UpsertVariableResponse,
+  UpsertVariableError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpsertVariableRequest,
+  output: UpsertVariableResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpsertVariableCollectionError = RailwayOpError;
+/** Upserts a collection of variables. */
+export const upsertVariableCollection: API.OperationMethod<
+  UpsertVariableCollectionRequest,
+  UpsertVariableCollectionResponse,
+  UpsertVariableCollectionError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpsertVariableCollectionRequest,
+  output: UpsertVariableCollectionResponse,
+  errors: [UnknownRailwayError, RailwayParseError],
+  protocol: RailwayGraphqlProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpsertWorkspaceSlackChannelError = RailwayOpError;
+/** Generate a Slack channel for a workspace */
+export const upsertWorkspaceSlackChannel: API.OperationMethod<
+  UpsertWorkspaceSlackChannelRequest,
+  UpsertWorkspaceSlackChannelResponse,
+  UpsertWorkspaceSlackChannelError,
+  RailwayOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpsertWorkspaceSlackChannelRequest,
+  output: UpsertWorkspaceSlackChannelResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -31045,21 +31438,6 @@ export const usageLimitRemove: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UsageLimitSetError = RailwayOpError;
-/** Set the usage limit for a customer */
-export const usageLimitSet: API.OperationMethod<
-  UsageLimitSetRequest,
-  UsageLimitSetResponse,
-  UsageLimitSetError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UsageLimitSetRequest,
-  output: UsageLimitSetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type UserBetaLeaveError = RailwayOpError;
 /** Unsubscribe from the Beta program. */
 export const userBetaLeave: API.OperationMethod<
@@ -31070,21 +31448,6 @@ export const userBetaLeave: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UserBetaLeaveRequest,
   output: UserBetaLeaveResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserDeleteError = RailwayOpError;
-/** Delete the currently authenticated user */
-export const userDelete: API.OperationMethod<
-  UserDeleteRequest,
-  UserDeleteResponse,
-  UserDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserDeleteRequest,
-  output: UserDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -31120,21 +31483,6 @@ export const userFlagsRemove: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UserFlagsSetError = RailwayOpError;
-/** Set flags on the authenticated user. */
-export const userFlagsSet: API.OperationMethod<
-  UserFlagsSetRequest,
-  UserFlagsSetResponse,
-  UserFlagsSetError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserFlagsSetRequest,
-  output: UserFlagsSetResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type UserProfileError = RailwayOpError;
 /** Get the public profile for a user */
 export const userProfile: API.OperationMethod<
@@ -31150,36 +31498,6 @@ export const userProfile: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type UserProfileUpdateError = RailwayOpError;
-/** Updates the profile for the authenticated user */
-export const userProfileUpdate: API.OperationMethod<
-  UserProfileUpdateRequest,
-  UserProfileUpdateResponse,
-  UserProfileUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserProfileUpdateRequest,
-  output: UserProfileUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UserTermsUpdateError = RailwayOpError;
-/** Update date of TermsAgreedOn */
-export const userTermsUpdate: API.OperationMethod<
-  UserTermsUpdateRequest,
-  UserTermsUpdateResponse,
-  UserTermsUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UserTermsUpdateRequest,
-  output: UserTermsUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ValidateServiceEdgeRulesError = RailwayOpError;
 /** Validates an edge ruleset without writing it — returns the same diagnostics updateServiceEdgeRules would reject with (empty list = valid). For live feedback in rule editors. */
 export const validateServiceEdgeRules: API.OperationMethod<
@@ -31190,36 +31508,6 @@ export const validateServiceEdgeRules: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ValidateServiceEdgeRulesRequest,
   output: ValidateServiceEdgeRulesResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VariableCollectionUpsertError = RailwayOpError;
-/** Upserts a collection of variables. */
-export const variableCollectionUpsert: API.OperationMethod<
-  VariableCollectionUpsertRequest,
-  VariableCollectionUpsertResponse,
-  VariableCollectionUpsertError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableCollectionUpsertRequest,
-  output: VariableCollectionUpsertResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VariableDeleteError = RailwayOpError;
-/** Deletes a variable. */
-export const variableDelete: API.OperationMethod<
-  VariableDeleteRequest,
-  VariableDeleteResponse,
-  VariableDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableDeleteRequest,
-  output: VariableDeleteResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -31255,21 +31543,6 @@ export const variablesForServiceDeployment: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VariableUpsertError = RailwayOpError;
-/** Upserts a variable. */
-export const variableUpsert: API.OperationMethod<
-  VariableUpsertRequest,
-  VariableUpsertResponse,
-  VariableUpsertError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VariableUpsertRequest,
-  output: VariableUpsertResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type VercelInfoError = RailwayOpError;
 /** Get information about the user's Vercel accounts */
 export const vercelInfo: API.OperationMethod<
@@ -31285,31 +31558,16 @@ export const vercelInfo: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VolumeCreateError = RailwayOpError;
-/** Create a persistent volume in a project */
-export const volumeCreate: API.OperationMethod<
-  VolumeCreateRequest,
-  VolumeCreateResponse,
-  VolumeCreateError,
+export type VerifyLoginSessionError = RailwayOpError;
+/** Verify if a login session is valid */
+export const verifyLoginSession: API.OperationMethod<
+  VerifyLoginSessionRequest,
+  VerifyLoginSessionResponse,
+  VerifyLoginSessionError,
   RailwayOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumeCreateRequest,
-  output: VolumeCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeDeleteError = RailwayOpError;
-/** Delete a persistent volume in a project */
-export const volumeDelete: API.OperationMethod<
-  VolumeDeleteRequest,
-  VolumeDeleteResponse,
-  VolumeDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeDeleteRequest,
-  output: VolumeDeleteResponse,
+  input: VerifyLoginSessionRequest,
+  output: VerifyLoginSessionResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -31330,51 +31588,6 @@ export const volumeInstance: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type VolumeInstanceBackupCreateError = RailwayOpError;
-/** Create backup of a volume instance */
-export const volumeInstanceBackupCreate: API.OperationMethod<
-  VolumeInstanceBackupCreateRequest,
-  VolumeInstanceBackupCreateResponse,
-  VolumeInstanceBackupCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceBackupCreateRequest,
-  output: VolumeInstanceBackupCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstanceBackupDeleteError = RailwayOpError;
-/** Deletes volume instance backup */
-export const volumeInstanceBackupDelete: API.OperationMethod<
-  VolumeInstanceBackupDeleteRequest,
-  VolumeInstanceBackupDeleteResponse,
-  VolumeInstanceBackupDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceBackupDeleteRequest,
-  output: VolumeInstanceBackupDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstanceBackupListError = RailwayOpError;
-/** List backups of a volume instance */
-export const volumeInstanceBackupList: API.OperationMethod<
-  VolumeInstanceBackupListRequest,
-  VolumeInstanceBackupListResponse,
-  VolumeInstanceBackupListError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceBackupListRequest,
-  output: VolumeInstanceBackupListResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type VolumeInstanceBackupLockError = RailwayOpError;
 /** Removes backup expiration date */
 export const volumeInstanceBackupLock: API.OperationMethod<
@@ -31385,96 +31598,6 @@ export const volumeInstanceBackupLock: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: VolumeInstanceBackupLockRequest,
   output: VolumeInstanceBackupLockResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstanceBackupRestoreError = RailwayOpError;
-/** Restore a volume instance from a backup */
-export const volumeInstanceBackupRestore: API.OperationMethod<
-  VolumeInstanceBackupRestoreRequest,
-  VolumeInstanceBackupRestoreResponse,
-  VolumeInstanceBackupRestoreError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceBackupRestoreRequest,
-  output: VolumeInstanceBackupRestoreResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstanceBackupScheduleListError = RailwayOpError;
-/** List backups schedules of a volume instance */
-export const volumeInstanceBackupScheduleList: API.OperationMethod<
-  VolumeInstanceBackupScheduleListRequest,
-  VolumeInstanceBackupScheduleListResponse,
-  VolumeInstanceBackupScheduleListError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceBackupScheduleListRequest,
-  output: VolumeInstanceBackupScheduleListResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstanceBackupScheduleUpdateError = RailwayOpError;
-/** Manage schedule for backups of a volume instance */
-export const volumeInstanceBackupScheduleUpdate: API.OperationMethod<
-  VolumeInstanceBackupScheduleUpdateRequest,
-  VolumeInstanceBackupScheduleUpdateResponse,
-  VolumeInstanceBackupScheduleUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceBackupScheduleUpdateRequest,
-  output: VolumeInstanceBackupScheduleUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstancePITRRestoreError = RailwayOpError;
-/** Point-in-time restore. Creates a brand-new database service in the project, recovered to the target timestamp from the source service's backup history. The source service stays online and untouched. */
-export const volumeInstancePITRRestore: API.OperationMethod<
-  VolumeInstancePITRRestoreRequest,
-  VolumeInstancePITRRestoreResponse,
-  VolumeInstancePITRRestoreError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstancePITRRestoreRequest,
-  output: VolumeInstancePITRRestoreResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeInstanceUpdateError = RailwayOpError;
-/** Update a volume instance. If no environmentId is provided, all volume instances for the volume will be updated. */
-export const volumeInstanceUpdate: API.OperationMethod<
-  VolumeInstanceUpdateRequest,
-  VolumeInstanceUpdateResponse,
-  VolumeInstanceUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeInstanceUpdateRequest,
-  output: VolumeInstanceUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type VolumeUpdateError = RailwayOpError;
-/** Update a persistent volume in a project */
-export const volumeUpdate: API.OperationMethod<
-  VolumeUpdateRequest,
-  VolumeUpdateResponse,
-  VolumeUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VolumeUpdateRequest,
-  output: VolumeUpdateResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -31540,21 +31663,6 @@ export const workspaceByCode: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WorkspaceDeleteError = RailwayOpError;
-/** Delete a workspace and all data associated with it */
-export const workspaceDelete: API.OperationMethod<
-  WorkspaceDeleteRequest,
-  WorkspaceDeleteResponse,
-  WorkspaceDeleteError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceDeleteRequest,
-  output: WorkspaceDeleteResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WorkspaceIdentityProvidersError = RailwayOpError;
 /** Gets all identity providers of a workspace */
 export const workspaceIdentityProviders: API.PaginatedOperationMethod<
@@ -31581,21 +31689,6 @@ export const workspaceIdentityProviders: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
-
-export type WorkspaceInviteCodeCreateError = RailwayOpError;
-/** Get an invite code for a workspace and role */
-export const workspaceInviteCodeCreate: API.OperationMethod<
-  WorkspaceInviteCodeCreateRequest,
-  WorkspaceInviteCodeCreateResponse,
-  WorkspaceInviteCodeCreateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceInviteCodeCreateRequest,
-  output: WorkspaceInviteCodeCreateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
 
 export type WorkspaceInviteCodeUseError = RailwayOpError;
 /** Use an invite code to join a workspace */
@@ -31687,21 +31780,6 @@ export const workspacePolicyDeploySourceAllowlistRemove: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type WorkspacePolicyItemUpdateError = RailwayOpError;
-/** Enable or disable a workspace policy. Enterprise workspaces only. */
-export const workspacePolicyItemUpdate: API.OperationMethod<
-  WorkspacePolicyItemUpdateRequest,
-  WorkspacePolicyItemUpdateResponse,
-  WorkspacePolicyItemUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspacePolicyItemUpdateRequest,
-  output: WorkspacePolicyItemUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
 export type WorkspacePolicySelectableDeploySourcesError = RailwayOpError;
 /** List deploy sources that can be added to a workspace policy. */
 export const workspacePolicySelectableDeploySources: API.OperationMethod<
@@ -31712,21 +31790,6 @@ export const workspacePolicySelectableDeploySources: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WorkspacePolicySelectableDeploySourcesRequest,
   output: WorkspacePolicySelectableDeploySourcesResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WorkspaceSetRestrictProjectVisibilityToGroupsError = RailwayOpError;
-/** Control whether non-admin project visibility is restricted to access groups and direct project permissions. */
-export const workspaceSetRestrictProjectVisibilityToGroups: API.OperationMethod<
-  WorkspaceSetRestrictProjectVisibilityToGroupsRequest,
-  WorkspaceSetRestrictProjectVisibilityToGroupsResponse,
-  WorkspaceSetRestrictProjectVisibilityToGroupsError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceSetRestrictProjectVisibilityToGroupsRequest,
-  output: WorkspaceSetRestrictProjectVisibilityToGroupsResponse,
   errors: [UnknownRailwayError, RailwayParseError],
   protocol: RailwayGraphqlProtocol,
   retry: Retry.Retry,
@@ -31758,51 +31821,6 @@ export const workspaceTemplates: API.PaginatedOperationMethod<
   }),
   paginateRelay,
 ) as any;
-
-export type WorkspaceTwoFactorEnforcementUpdateError = RailwayOpError;
-/** Enable or disable 2FA enforcement for a workspace */
-export const workspaceTwoFactorEnforcementUpdate: API.OperationMethod<
-  WorkspaceTwoFactorEnforcementUpdateRequest,
-  WorkspaceTwoFactorEnforcementUpdateResponse,
-  WorkspaceTwoFactorEnforcementUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceTwoFactorEnforcementUpdateRequest,
-  output: WorkspaceTwoFactorEnforcementUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WorkspaceUpdateError = RailwayOpError;
-/** Update a workspace by id */
-export const workspaceUpdate: API.OperationMethod<
-  WorkspaceUpdateRequest,
-  WorkspaceUpdateResponse,
-  WorkspaceUpdateError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceUpdateRequest,
-  output: WorkspaceUpdateResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WorkspaceUpsertSlackChannelError = RailwayOpError;
-/** Generate a Slack channel for a workspace */
-export const workspaceUpsertSlackChannel: API.OperationMethod<
-  WorkspaceUpsertSlackChannelRequest,
-  WorkspaceUpsertSlackChannelResponse,
-  WorkspaceUpsertSlackChannelError,
-  RailwayOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceUpsertSlackChannelRequest,
-  output: WorkspaceUpsertSlackChannelResponse,
-  errors: [UnknownRailwayError, RailwayParseError],
-  protocol: RailwayGraphqlProtocol,
-  retry: Retry.Retry,
-}));
 
 export type WorkspaceUsageTotalsError = RailwayOpError;
 /** Workspace-wide SUM of the same UI usage rollup as `usage` grouped by project. Use this for the usage-page header so it does not wait on per-project rows. Deleted projects that still bill are included when `includeDeleted` is true. */

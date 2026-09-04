@@ -919,148 +919,6 @@ export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse =
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse",
   }) as any as S.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse>;
 
-export type GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum =
-  | "RISK_LEVEL_UNSPECIFIED"
-  | "LOW"
-  | "MODERATE"
-  | "SEVERE";
-export const GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum =
-  /*@__PURE__*/ S.String;
-
-export type GoogleCloudApigeeV1SecurityIncidentObservabilityEnum =
-  | "OBSERVABILITY_UNSPECIFIED"
-  | "ACTIVE"
-  | "ARCHIVED";
-export const GoogleCloudApigeeV1SecurityIncidentObservabilityEnum =
-  /*@__PURE__*/ S.String;
-
-/** Represents an SecurityIncident resource. */
-export interface GoogleCloudApigeeV1SecurityIncident {
-  /** Output only. The time when events associated with the incident were last detected. */
-  lastDetectedTime?: string;
-  /** Output only. Risk level of the incident. */
-  riskLevel?: GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum | (string & {});
-  /** Output only. Detection types which are part of the incident. Examples: Flooder, OAuth Abuser, Static Content Scraper, Anomaly Detection. */
-  detectionTypes?: StringList;
-  /** Output only. The time when the incident observability was last changed. */
-  lastObservabilityChangeTime?: string;
-  /** Output only. The time when events associated with the incident were first detected. */
-  firstDetectedTime?: string;
-  /** Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111 */
-  name?: string;
-  /** Optional. Indicates if the user archived this incident. */
-  observability?:
-    | GoogleCloudApigeeV1SecurityIncidentObservabilityEnum
-    | (string & {});
-  /** Total traffic detected as part of the incident. */
-  trafficCount?: string;
-  /** Optional. Display name of the security incident. */
-  displayName?: string;
-}
-export const GoogleCloudApigeeV1SecurityIncident = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lastDetectedTime: S.optional(S.String),
-    riskLevel: S.optional(GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum),
-    detectionTypes: S.optional(StringList),
-    lastObservabilityChangeTime: S.optional(S.String),
-    firstDetectedTime: S.optional(S.String),
-    name: S.optional(S.String),
-    observability: S.optional(
-      GoogleCloudApigeeV1SecurityIncidentObservabilityEnum,
-    ),
-    trafficCount: S.optional(S.String),
-    displayName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "GoogleCloudApigeeV1SecurityIncident",
-}) as any as S.Schema<GoogleCloudApigeeV1SecurityIncident>;
-
-/** Request for UpdateSecurityIncident. */
-export interface GoogleCloudApigeeV1UpdateSecurityIncidentRequest {
-  /** Required. The list of fields to update. Allowed fields are: LINT.IfChange(allowed_update_fields_comment) - observability LINT.ThenChange() */
-  updateMask?: string;
-  /** Required. The security incident to update. Must contain all existing populated fields of the current incident. */
-  securityIncident?: GoogleCloudApigeeV1SecurityIncident;
-}
-export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      updateMask: S.optional(S.String),
-      securityIncident: S.optional(GoogleCloudApigeeV1SecurityIncident),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1UpdateSecurityIncidentRequest",
-  }) as any as S.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
-
-export type GoogleCloudApigeeV1UpdateSecurityIncidentRequestList =
-  Array<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
-export const GoogleCloudApigeeV1UpdateSecurityIncidentRequestList =
-  /*@__PURE__*/ S.Array(
-    GoogleCloudApigeeV1UpdateSecurityIncidentRequest,
-  ) as any as S.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequestList>;
-
-/** Request for BatchUpdateSecurityIncident. */
-export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest {
-  /** Optional. Required. The request message specifying the resources to update. A maximum of 1000 can be modified in a batch. */
-  requests?: GoogleCloudApigeeV1UpdateSecurityIncidentRequestList;
-}
-export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      requests: S.optional(
-        GoogleCloudApigeeV1UpdateSecurityIncidentRequestList,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest",
-  }) as any as S.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest>;
-
-export interface BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest {
-  /** Optional. The parent resource shared by all security incidents being updated. If this is set, the parent field in the UpdateSecurityIncidentRequest messages must either be empty or match this field. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest;
-}
-export const BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/securityIncidents:batchUpdate",
-        baseUrl: "https://apigee.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest",
-  }) as any as S.Schema<BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest>;
-
-export type GoogleCloudApigeeV1SecurityIncidentList =
-  Array<GoogleCloudApigeeV1SecurityIncident>;
-export const GoogleCloudApigeeV1SecurityIncidentList = /*@__PURE__*/ S.Array(
-  GoogleCloudApigeeV1SecurityIncident,
-) as any as S.Schema<GoogleCloudApigeeV1SecurityIncidentList>;
-
-/** Response for BatchUpdateSecurityIncident. */
-export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse {
-  /** Output only. Updated security incidents */
-  securityIncidents?: GoogleCloudApigeeV1SecurityIncidentList;
-}
-export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      securityIncidents: S.optional(GoogleCloudApigeeV1SecurityIncidentList),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse",
-  }) as any as S.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse>;
-
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface GoogleTypeInterval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -11471,6 +11329,62 @@ export const GetOrganizationsEnvironmentsSecurityIncidentsRequest =
     identifier: "GetOrganizationsEnvironmentsSecurityIncidentsRequest",
   }) as any as S.Schema<GetOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
+export type GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum =
+  | "RISK_LEVEL_UNSPECIFIED"
+  | "LOW"
+  | "MODERATE"
+  | "SEVERE";
+export const GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum =
+  /*@__PURE__*/ S.String;
+
+export type GoogleCloudApigeeV1SecurityIncidentObservabilityEnum =
+  | "OBSERVABILITY_UNSPECIFIED"
+  | "ACTIVE"
+  | "ARCHIVED";
+export const GoogleCloudApigeeV1SecurityIncidentObservabilityEnum =
+  /*@__PURE__*/ S.String;
+
+/** Represents an SecurityIncident resource. */
+export interface GoogleCloudApigeeV1SecurityIncident {
+  /** Output only. The time when events associated with the incident were last detected. */
+  lastDetectedTime?: string;
+  /** Output only. Risk level of the incident. */
+  riskLevel?: GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum | (string & {});
+  /** Output only. Detection types which are part of the incident. Examples: Flooder, OAuth Abuser, Static Content Scraper, Anomaly Detection. */
+  detectionTypes?: StringList;
+  /** Output only. The time when the incident observability was last changed. */
+  lastObservabilityChangeTime?: string;
+  /** Output only. The time when events associated with the incident were first detected. */
+  firstDetectedTime?: string;
+  /** Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111 */
+  name?: string;
+  /** Optional. Indicates if the user archived this incident. */
+  observability?:
+    | GoogleCloudApigeeV1SecurityIncidentObservabilityEnum
+    | (string & {});
+  /** Total traffic detected as part of the incident. */
+  trafficCount?: string;
+  /** Optional. Display name of the security incident. */
+  displayName?: string;
+}
+export const GoogleCloudApigeeV1SecurityIncident = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lastDetectedTime: S.optional(S.String),
+    riskLevel: S.optional(GoogleCloudApigeeV1SecurityIncidentRiskLevelEnum),
+    detectionTypes: S.optional(StringList),
+    lastObservabilityChangeTime: S.optional(S.String),
+    firstDetectedTime: S.optional(S.String),
+    name: S.optional(S.String),
+    observability: S.optional(
+      GoogleCloudApigeeV1SecurityIncidentObservabilityEnum,
+    ),
+    trafficCount: S.optional(S.String),
+    displayName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GoogleCloudApigeeV1SecurityIncident",
+}) as any as S.Schema<GoogleCloudApigeeV1SecurityIncident>;
+
 export interface GetOrganizationsEnvironmentsSecurityReportsRequest {
   /** Required. Name of the security report to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}`. */
   name: string;
@@ -14506,6 +14420,12 @@ export const ListOrganizationsEnvironmentsSecurityIncidentsRequest =
     identifier: "ListOrganizationsEnvironmentsSecurityIncidentsRequest",
   }) as any as S.Schema<ListOrganizationsEnvironmentsSecurityIncidentsRequest>;
 
+export type GoogleCloudApigeeV1SecurityIncidentList =
+  Array<GoogleCloudApigeeV1SecurityIncident>;
+export const GoogleCloudApigeeV1SecurityIncidentList = /*@__PURE__*/ S.Array(
+  GoogleCloudApigeeV1SecurityIncident,
+) as any as S.Schema<GoogleCloudApigeeV1SecurityIncidentList>;
+
 /** Response for ListSecurityIncidents. */
 export interface GoogleCloudApigeeV1ListSecurityIncidentsResponse {
   /** List of security incidents in the organization */
@@ -17046,6 +16966,86 @@ export const UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest =
     identifier: "UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest",
   }) as any as S.Schema<UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest>;
 
+/** Request for UpdateSecurityIncident. */
+export interface GoogleCloudApigeeV1UpdateSecurityIncidentRequest {
+  /** Required. The list of fields to update. Allowed fields are: LINT.IfChange(allowed_update_fields_comment) - observability LINT.ThenChange() */
+  updateMask?: string;
+  /** Required. The security incident to update. Must contain all existing populated fields of the current incident. */
+  securityIncident?: GoogleCloudApigeeV1SecurityIncident;
+}
+export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      updateMask: S.optional(S.String),
+      securityIncident: S.optional(GoogleCloudApigeeV1SecurityIncident),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudApigeeV1UpdateSecurityIncidentRequest",
+  }) as any as S.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
+
+export type GoogleCloudApigeeV1UpdateSecurityIncidentRequestList =
+  Array<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
+export const GoogleCloudApigeeV1UpdateSecurityIncidentRequestList =
+  /*@__PURE__*/ S.Array(
+    GoogleCloudApigeeV1UpdateSecurityIncidentRequest,
+  ) as any as S.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequestList>;
+
+/** Request for BatchUpdateSecurityIncident. */
+export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest {
+  /** Optional. Required. The request message specifying the resources to update. A maximum of 1000 can be modified in a batch. */
+  requests?: GoogleCloudApigeeV1UpdateSecurityIncidentRequestList;
+}
+export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      requests: S.optional(
+        GoogleCloudApigeeV1UpdateSecurityIncidentRequestList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest",
+  }) as any as S.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest>;
+
+export interface UpdateBatchOrganizationEnvironmentSecurityIncidentRequest {
+  /** Optional. The parent resource shared by all security incidents being updated. If this is set, the parent field in the UpdateSecurityIncidentRequest messages must either be empty or match this field. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest;
+}
+export const UpdateBatchOrganizationEnvironmentSecurityIncidentRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/securityIncidents:batchUpdate",
+        baseUrl: "https://apigee.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBatchOrganizationEnvironmentSecurityIncidentRequest",
+  }) as any as S.Schema<UpdateBatchOrganizationEnvironmentSecurityIncidentRequest>;
+
+/** Response for BatchUpdateSecurityIncident. */
+export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse {
+  /** Output only. Updated security incidents */
+  securityIncidents?: GoogleCloudApigeeV1SecurityIncidentList;
+}
+export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      securityIncidents: S.optional(GoogleCloudApigeeV1SecurityIncidentList),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse",
+  }) as any as S.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse>;
+
 export interface UpdateControlPlaneAccessOrganizationsRequest {
   /** Identifier. The resource name of the ControlPlaneAccess. Format: "organizations/{org}/controlPlaneAccess" */
   name: string;
@@ -18024,26 +18024,6 @@ export const batchComputeOrganizationsSecurityAssessmentResults: API.OperationMe
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchComputeOrganizationsSecurityAssessmentResultsRequest,
   output: GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchUpdateOrganizationsEnvironmentsSecurityIncidentsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** BatchUpdateSecurityIncident updates multiple existing security incidents. */
-export const batchUpdateOrganizationsEnvironmentsSecurityIncidents: API.OperationMethod<
-  BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest,
-  GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse,
-  BatchUpdateOrganizationsEnvironmentsSecurityIncidentsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateOrganizationsEnvironmentsSecurityIncidentsRequest,
-  output: GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -24400,6 +24380,26 @@ export const updateAppGroupAppKeyOrganizationsAppgroupsAppsKeys: API.OperationMe
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateAppGroupAppKeyOrganizationsAppgroupsAppsKeysRequest,
   output: GoogleCloudApigeeV1AppGroupAppKey,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBatchOrganizationEnvironmentSecurityIncidentError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** BatchUpdateSecurityIncident updates multiple existing security incidents. */
+export const updateBatchOrganizationEnvironmentSecurityIncident: API.OperationMethod<
+  UpdateBatchOrganizationEnvironmentSecurityIncidentRequest,
+  GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse,
+  UpdateBatchOrganizationEnvironmentSecurityIncidentError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBatchOrganizationEnvironmentSecurityIncidentRequest,
+  output: GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

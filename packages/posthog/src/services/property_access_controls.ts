@@ -15,7 +15,7 @@ export type { PosthogOpError, PosthogOpContext };
 export type AccessLevelEnum = "read_write" | "read" | "none";
 export const AccessLevelEnum = /*@__PURE__*/ S.String;
 
-export interface PropertyAccessControlsCreateRequest {
+export interface CreatePropertyAccessControlRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The property definition ID this rule applies to. */
@@ -27,7 +27,7 @@ export interface PropertyAccessControlsCreateRequest {
   /** The role UUID to set an override for. */
   role?: string | null;
 }
-export const PropertyAccessControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePropertyAccessControlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     property_definition_id: S.String,
@@ -42,8 +42,8 @@ export const PropertyAccessControlsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PropertyAccessControlsCreateRequest",
-}) as any as S.Schema<PropertyAccessControlsCreateRequest>;
+  identifier: "CreatePropertyAccessControlRequest",
+}) as any as S.Schema<CreatePropertyAccessControlRequest>;
 
 /** Serializes a single access control rule DTO. */
 export interface PropertyAccessControlRule {
@@ -164,15 +164,15 @@ export const PropertyAccessControlState = /*@__PURE__*/ S.suspend(() =>
   identifier: "PropertyAccessControlState",
 }) as any as S.Schema<PropertyAccessControlState>;
 
-export type PropertyAccessControlsCreateError = PosthogOpError;
+export type CreatePropertyAccessControlError = PosthogOpError;
 /** Create or update a property access control rule. */
-export const propertyAccessControlsCreate: API.OperationMethod<
-  PropertyAccessControlsCreateRequest,
+export const createPropertyAccessControl: API.OperationMethod<
+  CreatePropertyAccessControlRequest,
   PropertyAccessControlRule,
-  PropertyAccessControlsCreateError,
+  CreatePropertyAccessControlError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PropertyAccessControlsCreateRequest,
+  input: CreatePropertyAccessControlRequest,
   output: PropertyAccessControlRule,
   errors: [],
   protocol: PosthogProtocol,

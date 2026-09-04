@@ -11766,7 +11766,7 @@
         "smithy.api#documentation": "Returns a `Printer` resource (printer's config)."
       }
     },
-    "com.gcp.admin_directory_v1#BatchCreatePrintersCustomersChromePrintersRequest": {
+    "com.gcp.admin_directory_v1#CreateBatchPrinterCustomerChromePrinterRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11786,10 +11786,10 @@
         }
       }
     },
-    "com.gcp.admin_directory_v1#BatchCreatePrintersCustomersChromePrinters": {
+    "com.gcp.admin_directory_v1#CreateBatchPrinterCustomerChromePrinter": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.admin_directory_v1#BatchCreatePrintersCustomersChromePrintersRequest"
+        "target": "com.gcp.admin_directory_v1#CreateBatchPrinterCustomerChromePrinterRequest"
       },
       "output": {
         "target": "com.gcp.admin_directory_v1#BatchCreatePrintersResponse"
@@ -11909,7 +11909,7 @@
         "smithy.api#documentation": "Deletes a `Printer`."
       }
     },
-    "com.gcp.admin_directory_v1#BatchDeletePrintersCustomersChromePrintersRequest": {
+    "com.gcp.admin_directory_v1#DeleteBatchPrinterCustomerChromePrinterRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11929,10 +11929,10 @@
         }
       }
     },
-    "com.gcp.admin_directory_v1#BatchDeletePrintersCustomersChromePrinters": {
+    "com.gcp.admin_directory_v1#DeleteBatchPrinterCustomerChromePrinter": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.admin_directory_v1#BatchDeletePrintersCustomersChromePrintersRequest"
+        "target": "com.gcp.admin_directory_v1#DeleteBatchPrinterCustomerChromePrinterRequest"
       },
       "output": {
         "target": "com.gcp.admin_directory_v1#BatchDeletePrintersResponse"
@@ -12225,7 +12225,7 @@
         }
       }
     },
-    "com.gcp.admin_directory_v1#BatchDeletePrintServersCustomersChromePrintServersRequest": {
+    "com.gcp.admin_directory_v1#DeleteBatchPrintServerCustomerChromePrintServerRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -12245,10 +12245,10 @@
         }
       }
     },
-    "com.gcp.admin_directory_v1#BatchDeletePrintServersCustomersChromePrintServers": {
+    "com.gcp.admin_directory_v1#DeleteBatchPrintServerCustomerChromePrintServer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.admin_directory_v1#BatchDeletePrintServersCustomersChromePrintServersRequest"
+        "target": "com.gcp.admin_directory_v1#DeleteBatchPrintServerCustomerChromePrintServerRequest"
       },
       "output": {
         "target": "com.gcp.admin_directory_v1#BatchDeletePrintServersResponse"
@@ -12355,7 +12355,7 @@
         "smithy.api#documentation": "Returns a print server's configuration."
       }
     },
-    "com.gcp.admin_directory_v1#BatchCreatePrintServersCustomersChromePrintServersRequest": {
+    "com.gcp.admin_directory_v1#CreateBatchPrintServerCustomerChromePrintServerRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -12375,10 +12375,10 @@
         }
       }
     },
-    "com.gcp.admin_directory_v1#BatchCreatePrintServersCustomersChromePrintServers": {
+    "com.gcp.admin_directory_v1#CreateBatchPrintServerCustomerChromePrintServer": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.admin_directory_v1#BatchCreatePrintServersCustomersChromePrintServersRequest"
+        "target": "com.gcp.admin_directory_v1#CreateBatchPrintServerCustomerChromePrintServerRequest"
       },
       "output": {
         "target": "com.gcp.admin_directory_v1#BatchCreatePrintServersResponse"

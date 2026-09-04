@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.hybridaks#OperationsList": {
+    "com.azure.hybridaks#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.hybridaks#OperationsListResponse"
+        "target": "com.azure.hybridaks#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#OperationsListResponse": {
+    "com.azure.hybridaks#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -175,10 +175,10 @@
         "smithy.api#documentation": "Localized display information for this particular operation."
       }
     },
-    "com.azure.hybridaks#VMSkusList": {
+    "com.azure.hybridaks#ListVmSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#VMSkusListRequest"
+        "target": "com.azure.hybridaks#ListVmSkusRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#VmSkuProfileList"
@@ -548,7 +548,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.hybridaks#VMSkusListRequest": {
+    "com.azure.hybridaks#ListVmSkusRequest": {
       "type": "structure",
       "members": {
         "customLocationResourceUri": {
@@ -564,10 +564,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#DeleteVMSkus": {
+    "com.azure.hybridaks#DeleteVmSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#DeleteVMSkusRequest"
+        "target": "com.azure.hybridaks#DeleteVmSkusRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -583,7 +583,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#DeleteVMSkusRequest": {
+    "com.azure.hybridaks#DeleteVmSkusRequest": {
       "type": "structure",
       "members": {
         "customLocationResourceUri": {
@@ -699,13 +699,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#GetVMSkus": {
+    "com.azure.hybridaks#GetVmSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#GetVMSkusRequest"
+        "target": "com.azure.hybridaks#GetVmSkusRequest"
       },
       "output": {
-        "target": "com.azure.hybridaks#GetVMSkusResponse"
+        "target": "com.azure.hybridaks#GetVmSkusResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -718,7 +718,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#GetVMSkusResponse": {
+    "com.azure.hybridaks#GetVmSkusResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -780,7 +780,7 @@
         "smithy.api#documentation": "List of supported VM SKUs."
       }
     },
-    "com.azure.hybridaks#GetVMSkusRequest": {
+    "com.azure.hybridaks#GetVmSkusRequest": {
       "type": "structure",
       "members": {
         "customLocationResourceUri": {
@@ -796,10 +796,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#KubernetesVersionsList": {
+    "com.azure.hybridaks#ListKuberneteVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#KubernetesVersionsListRequest"
+        "target": "com.azure.hybridaks#ListKuberneteVersionsRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#KubernetesVersionProfileList"
@@ -1049,7 +1049,7 @@
         "smithy.api#documentation": "The particular KubernetesVersion Image OS Type (Linux, Windows)"
       }
     },
-    "com.azure.hybridaks#KubernetesVersionsListRequest": {
+    "com.azure.hybridaks#ListKuberneteVersionsRequest": {
       "type": "structure",
       "members": {
         "customLocationResourceUri": {
@@ -1297,10 +1297,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesListAdminKubeconfig": {
+    "com.azure.hybridaks#ListProvisionedClusterInstanceAdminKubeconfig": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesListAdminKubeconfigRequest"
+        "target": "com.azure.hybridaks#ListProvisionedClusterInstanceAdminKubeconfigRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#ListCredentialResponse"
@@ -1404,7 +1404,7 @@
       },
       "traits": {}
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesListAdminKubeconfigRequest": {
+    "com.azure.hybridaks#ListProvisionedClusterInstanceAdminKubeconfigRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -1420,10 +1420,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesListUserKubeconfig": {
+    "com.azure.hybridaks#ListProvisionedClusterInstanceUserKubeconfig": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesListUserKubeconfigRequest"
+        "target": "com.azure.hybridaks#ListProvisionedClusterInstanceUserKubeconfigRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#ListCredentialResponse"
@@ -1439,7 +1439,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesListUserKubeconfigRequest": {
+    "com.azure.hybridaks#ListProvisionedClusterInstanceUserKubeconfigRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -1455,10 +1455,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#AgentPoolListByProvisionedCluster": {
+    "com.azure.hybridaks#ListAgentPoolByProvisionedCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#AgentPoolListByProvisionedClusterRequest"
+        "target": "com.azure.hybridaks#ListAgentPoolByProvisionedClusterRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#AgentPoolListResult"
@@ -1728,7 +1728,7 @@
         "smithy.api#documentation": "OSType to be used to specify OS type for the VMs. Choose from Linux and Windows. Default to Linux. Possible values include: 'Linux', 'Windows'"
       }
     },
-    "com.azure.hybridaks#AgentPoolListByProvisionedClusterRequest": {
+    "com.azure.hybridaks#ListAgentPoolByProvisionedClusterRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -1744,10 +1744,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#AgentPoolDelete": {
+    "com.azure.hybridaks#DeleteAgentPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#AgentPoolDeleteRequest"
+        "target": "com.azure.hybridaks#DeleteAgentPoolRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1763,7 +1763,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#AgentPoolDeleteRequest": {
+    "com.azure.hybridaks#DeleteAgentPoolRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -2043,13 +2043,13 @@
         "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
       }
     },
-    "com.azure.hybridaks#AgentPoolGet": {
+    "com.azure.hybridaks#GetAgentPool": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#AgentPoolGetRequest"
+        "target": "com.azure.hybridaks#GetAgentPoolRequest"
       },
       "output": {
-        "target": "com.azure.hybridaks#AgentPoolGetResponse"
+        "target": "com.azure.hybridaks#GetAgentPoolResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2062,7 +2062,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#AgentPoolGetResponse": {
+    "com.azure.hybridaks#GetAgentPoolResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2118,7 +2118,7 @@
         "smithy.api#documentation": "Resource tags"
       }
     },
-    "com.azure.hybridaks#AgentPoolGetRequest": {
+    "com.azure.hybridaks#GetAgentPoolRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -2142,10 +2142,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataListByCluster": {
+    "com.azure.hybridaks#ListHybridIdentityMetadataByCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#HybridIdentityMetadataListByClusterRequest"
+        "target": "com.azure.hybridaks#ListHybridIdentityMetadataByClusterRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#HybridIdentityMetadataList"
@@ -2253,7 +2253,7 @@
         "smithy.api#documentation": "Defines the resource properties for the hybrid identity metadata."
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataListByClusterRequest": {
+    "com.azure.hybridaks#ListHybridIdentityMetadataByClusterRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -2269,10 +2269,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataDelete": {
+    "com.azure.hybridaks#DeleteHybridIdentityMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#HybridIdentityMetadataDeleteRequest"
+        "target": "com.azure.hybridaks#DeleteHybridIdentityMetadataRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2288,7 +2288,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataDeleteRequest": {
+    "com.azure.hybridaks#DeleteHybridIdentityMetadataRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -2405,13 +2405,13 @@
         "smithy.api#documentation": "Defines the resource properties for the hybrid identity metadata."
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataGet": {
+    "com.azure.hybridaks#GetHybridIdentityMetadata": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#HybridIdentityMetadataGetRequest"
+        "target": "com.azure.hybridaks#GetHybridIdentityMetadataRequest"
       },
       "output": {
-        "target": "com.azure.hybridaks#HybridIdentityMetadataGetResponse"
+        "target": "com.azure.hybridaks#GetHybridIdentityMetadataResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2424,7 +2424,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataGetResponse": {
+    "com.azure.hybridaks#GetHybridIdentityMetadataResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2463,7 +2463,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.hybridaks#HybridIdentityMetadataGetRequest": {
+    "com.azure.hybridaks#GetHybridIdentityMetadataRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -2479,13 +2479,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesGetUpgradeProfile": {
+    "com.azure.hybridaks#GetProvisionedClusterInstanceUpgradeProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesGetUpgradeProfileRequest"
+        "target": "com.azure.hybridaks#GetProvisionedClusterInstanceUpgradeProfileRequest"
       },
       "output": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesGetUpgradeProfileResponse"
+        "target": "com.azure.hybridaks#GetProvisionedClusterInstanceUpgradeProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2498,7 +2498,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesGetUpgradeProfileResponse": {
+    "com.azure.hybridaks#GetProvisionedClusterInstanceUpgradeProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2607,7 +2607,7 @@
         "smithy.api#documentation": "The upgrade properties."
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesGetUpgradeProfileRequest": {
+    "com.azure.hybridaks#GetProvisionedClusterInstanceUpgradeProfileRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -2623,10 +2623,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesList": {
+    "com.azure.hybridaks#ListProvisionedClusterInstances": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesListRequest"
+        "target": "com.azure.hybridaks#ListProvisionedClusterInstancesRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#ProvisionedClusterListResult"
@@ -3448,7 +3448,7 @@
       },
       "traits": {}
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesListRequest": {
+    "com.azure.hybridaks#ListProvisionedClusterInstancesRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -3464,10 +3464,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesDelete": {
+    "com.azure.hybridaks#DeleteProvisionedClusterInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesDeleteRequest"
+        "target": "com.azure.hybridaks#DeleteProvisionedClusterInstanceRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3483,7 +3483,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesDeleteRequest": {
+    "com.azure.hybridaks#DeleteProvisionedClusterInstanceRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -3902,13 +3902,13 @@
         "smithy.api#documentation": "The node labels to be persisted across all nodes in agent pool."
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesGet": {
+    "com.azure.hybridaks#GetProvisionedClusterInstance": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesGetRequest"
+        "target": "com.azure.hybridaks#GetProvisionedClusterInstanceRequest"
       },
       "output": {
-        "target": "com.azure.hybridaks#ProvisionedClusterInstancesGetResponse"
+        "target": "com.azure.hybridaks#GetProvisionedClusterInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3921,7 +3921,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesGetResponse": {
+    "com.azure.hybridaks#GetProvisionedClusterInstanceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3959,7 +3959,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.hybridaks#ProvisionedClusterInstancesGetRequest": {
+    "com.azure.hybridaks#GetProvisionedClusterInstanceRequest": {
       "type": "structure",
       "members": {
         "connectedClusterResourceUri": {
@@ -3975,10 +3975,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#VirtualNetworksListBySubscription": {
+    "com.azure.hybridaks#ListVirtualNetworkBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#VirtualNetworksListBySubscriptionRequest"
+        "target": "com.azure.hybridaks#ListVirtualNetworkBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#VirtualNetworksListResult"
@@ -4386,7 +4386,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.hybridaks#VirtualNetworksListBySubscriptionRequest": {
+    "com.azure.hybridaks#ListVirtualNetworkBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4402,10 +4402,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#VirtualNetworksListByResourceGroup": {
+    "com.azure.hybridaks#ListVirtualNetworkByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#VirtualNetworksListByResourceGroupRequest"
+        "target": "com.azure.hybridaks#ListVirtualNetworkByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.hybridaks#VirtualNetworksListResult"
@@ -4421,7 +4421,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#VirtualNetworksListByResourceGroupRequest": {
+    "com.azure.hybridaks#ListVirtualNetworkByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4445,10 +4445,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#VirtualNetworksDelete": {
+    "com.azure.hybridaks#DeleteVirtualNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#VirtualNetworksDeleteRequest"
+        "target": "com.azure.hybridaks#DeleteVirtualNetworkRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4464,7 +4464,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#VirtualNetworksDeleteRequest": {
+    "com.azure.hybridaks#DeleteVirtualNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4496,13 +4496,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.hybridaks#VirtualNetworksUpdate": {
+    "com.azure.hybridaks#UpdateVirtualNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.azure.hybridaks#VirtualNetworksUpdateRequest"
+        "target": "com.azure.hybridaks#UpdateVirtualNetworkRequest"
       },
       "output": {
-        "target": "com.azure.hybridaks#VirtualNetworksUpdateResponse"
+        "target": "com.azure.hybridaks#UpdateVirtualNetworkResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4515,7 +4515,7 @@
         "com.distilled.openapi#apiVersion": "2024-01-01"
       }
     },
-    "com.azure.hybridaks#VirtualNetworksUpdateResponse": {
+    "com.azure.hybridaks#UpdateVirtualNetworkResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4615,7 +4615,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.hybridaks#VirtualNetworksUpdateRequest": {
+    "com.azure.hybridaks#UpdateVirtualNetworkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5188,22 +5188,22 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.hybridaks#OperationsList"
+          "target": "com.azure.hybridaks#ListOperations"
         },
         {
-          "target": "com.azure.hybridaks#VMSkusList"
+          "target": "com.azure.hybridaks#ListVmSkus"
         },
         {
-          "target": "com.azure.hybridaks#DeleteVMSkus"
+          "target": "com.azure.hybridaks#DeleteVmSkus"
         },
         {
           "target": "com.azure.hybridaks#PutVMSkus"
         },
         {
-          "target": "com.azure.hybridaks#GetVMSkus"
+          "target": "com.azure.hybridaks#GetVmSkus"
         },
         {
-          "target": "com.azure.hybridaks#KubernetesVersionsList"
+          "target": "com.azure.hybridaks#ListKuberneteVersions"
         },
         {
           "target": "com.azure.hybridaks#DeleteKubernetesVersions"
@@ -5215,61 +5215,61 @@
           "target": "com.azure.hybridaks#GetKubernetesVersions"
         },
         {
-          "target": "com.azure.hybridaks#ProvisionedClusterInstancesListAdminKubeconfig"
+          "target": "com.azure.hybridaks#ListProvisionedClusterInstanceAdminKubeconfig"
         },
         {
-          "target": "com.azure.hybridaks#ProvisionedClusterInstancesListUserKubeconfig"
+          "target": "com.azure.hybridaks#ListProvisionedClusterInstanceUserKubeconfig"
         },
         {
-          "target": "com.azure.hybridaks#AgentPoolListByProvisionedCluster"
+          "target": "com.azure.hybridaks#ListAgentPoolByProvisionedCluster"
         },
         {
-          "target": "com.azure.hybridaks#AgentPoolDelete"
+          "target": "com.azure.hybridaks#DeleteAgentPool"
         },
         {
           "target": "com.azure.hybridaks#AgentPoolCreateOrUpdate"
         },
         {
-          "target": "com.azure.hybridaks#AgentPoolGet"
+          "target": "com.azure.hybridaks#GetAgentPool"
         },
         {
-          "target": "com.azure.hybridaks#HybridIdentityMetadataListByCluster"
+          "target": "com.azure.hybridaks#ListHybridIdentityMetadataByCluster"
         },
         {
-          "target": "com.azure.hybridaks#HybridIdentityMetadataDelete"
+          "target": "com.azure.hybridaks#DeleteHybridIdentityMetadata"
         },
         {
           "target": "com.azure.hybridaks#HybridIdentityMetadataPut"
         },
         {
-          "target": "com.azure.hybridaks#HybridIdentityMetadataGet"
+          "target": "com.azure.hybridaks#GetHybridIdentityMetadata"
         },
         {
-          "target": "com.azure.hybridaks#ProvisionedClusterInstancesGetUpgradeProfile"
+          "target": "com.azure.hybridaks#GetProvisionedClusterInstanceUpgradeProfile"
         },
         {
-          "target": "com.azure.hybridaks#ProvisionedClusterInstancesList"
+          "target": "com.azure.hybridaks#ListProvisionedClusterInstances"
         },
         {
-          "target": "com.azure.hybridaks#ProvisionedClusterInstancesDelete"
+          "target": "com.azure.hybridaks#DeleteProvisionedClusterInstance"
         },
         {
           "target": "com.azure.hybridaks#ProvisionedClusterInstancesCreateOrUpdate"
         },
         {
-          "target": "com.azure.hybridaks#ProvisionedClusterInstancesGet"
+          "target": "com.azure.hybridaks#GetProvisionedClusterInstance"
         },
         {
-          "target": "com.azure.hybridaks#VirtualNetworksListBySubscription"
+          "target": "com.azure.hybridaks#ListVirtualNetworkBySubscription"
         },
         {
-          "target": "com.azure.hybridaks#VirtualNetworksListByResourceGroup"
+          "target": "com.azure.hybridaks#ListVirtualNetworkByResourceGroup"
         },
         {
-          "target": "com.azure.hybridaks#VirtualNetworksDelete"
+          "target": "com.azure.hybridaks#DeleteVirtualNetwork"
         },
         {
-          "target": "com.azure.hybridaks#VirtualNetworksUpdate"
+          "target": "com.azure.hybridaks#UpdateVirtualNetwork"
         },
         {
           "target": "com.azure.hybridaks#VirtualNetworksCreateOrUpdate"

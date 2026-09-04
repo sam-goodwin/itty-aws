@@ -83,7 +83,7 @@
         "smithy.api#documentation": "Resolve a channel's wiki page\n\nThe organization's context wiki: a git repo of Markdown pages hosted by PostHog."
       }
     },
-    "com.posthog.context_layer#ContextLayerCommitsCreateRequest": {
+    "com.posthog.context_layer#CreateContextLayerCommitRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -134,10 +134,10 @@
         "smithy.api#documentation": "Response shape for the wiki's current state."
       }
     },
-    "com.posthog.context_layer#ContextLayerCommitsCreate": {
+    "com.posthog.context_layer#CreateContextLayerCommit": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.context_layer#ContextLayerCommitsCreateRequest"
+        "target": "com.posthog.context_layer#CreateContextLayerCommitRequest"
       },
       "output": {
         "target": "com.posthog.context_layer#ContextLayerStatus"
@@ -331,7 +331,7 @@
         "smithy.api#documentation": "Read a wiki page\n\nThe organization's context wiki: a git repo of Markdown pages hosted by PostHog."
       }
     },
-    "com.posthog.context_layer#ContextLayerPagesUpdateRequest": {
+    "com.posthog.context_layer#UpdateContextLayerPageRequest": {
       "type": "structure",
       "members": {
         "organization_id": {
@@ -368,10 +368,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.context_layer#ContextLayerPagesUpdate": {
+    "com.posthog.context_layer#UpdateContextLayerPage": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.context_layer#ContextLayerPagesUpdateRequest"
+        "target": "com.posthog.context_layer#UpdateContextLayerPageRequest"
       },
       "output": {
         "target": "com.posthog.context_layer#ContextLayerStatus"
@@ -652,7 +652,7 @@
           "target": "com.posthog.context_layer#ContextLayerChannelPagesRetrieve"
         },
         {
-          "target": "com.posthog.context_layer#ContextLayerCommitsCreate"
+          "target": "com.posthog.context_layer#CreateContextLayerCommit"
         },
         {
           "target": "com.posthog.context_layer#ContextLayerEnableCreate"
@@ -664,7 +664,7 @@
           "target": "com.posthog.context_layer#ContextLayerPagesRetrieve"
         },
         {
-          "target": "com.posthog.context_layer#ContextLayerPagesUpdate"
+          "target": "com.posthog.context_layer#UpdateContextLayerPage"
         },
         {
           "target": "com.posthog.context_layer#ContextLayerStatusRetrieve"

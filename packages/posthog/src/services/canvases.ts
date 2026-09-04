@@ -168,34 +168,29 @@ export const CanvasActionsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanvasActionsResponse",
 }) as any as S.Schema<CanvasActionsResponse>;
 
-/** * `retry` - retry * `pin` - pin * `unpin` - unpin * `cancel` - cancel */
-export type CanvasBuildActionActionEnum = "retry" | "pin" | "unpin" | "cancel";
-export const CanvasBuildActionActionEnum = /*@__PURE__*/ S.String;
-
-export interface CanvasesBuildActionCreateRequest {
+export interface CanvasesBuildsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this canvas. */
   id: string;
-  action: CanvasBuildActionActionEnum | (string & {});
-  build_id: string;
+  /** Include the retained ready build for this historical source version. */
+  version_id?: string;
 }
-export const CanvasesBuildActionCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CanvasesBuildsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     id: S.String.pipe(T.Label()),
-    action: CanvasBuildActionActionEnum,
-    build_id: S.String,
+    version_id: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/builds/action/",
+      method: "GET",
+      uri: "/api/projects/{project_id}/canvases/{id}/builds/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CanvasesBuildActionCreateRequest",
-}) as any as S.Schema<CanvasesBuildActionCreateRequest>;
+  identifier: "CanvasesBuildsRetrieveRequest",
+}) as any as S.Schema<CanvasesBuildsRetrieveRequest>;
 
 /** * `queued` - queued * `building` - building * `ready` - ready * `failed` - failed */
 export type BuildStatusEnum = "queued" | "building" | "ready" | "failed";
@@ -360,30 +355,6 @@ export const CanvasBuild = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CanvasBuild" }) as any as S.Schema<CanvasBuild>;
 
-export interface CanvasesBuildsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Include the retained ready build for this historical source version. */
-  version_id?: string;
-}
-export const CanvasesBuildsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    version_id: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/canvases/{id}/builds/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesBuildsRetrieveRequest",
-}) as any as S.Schema<CanvasesBuildsRetrieveRequest>;
-
 /** Most recent builds, newest first (capped at 20; the live build is always included). */
 export type CanvasBuildsResponseBuildsList = Array<CanvasBuild>;
 export const CanvasBuildsResponseBuildsList = /*@__PURE__*/ S.Array(
@@ -409,95 +380,60 @@ export const CanvasBuildsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanvasBuildsResponse",
 }) as any as S.Schema<CanvasBuildsResponse>;
 
-/** * `freeform` - freeform * `grid` - grid * `component` - component */
-export type CanvasKindEnum = "freeform" | "grid" | "component";
-export const CanvasKindEnum = /*@__PURE__*/ S.String;
-
-export interface CanvasesCreateRequest {
+export interface CanvasesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
-  /** Display name for the canvas. */
-  name: string;
-  /** Id of the channel the canvas belongs to. */
-  channel_id: string;
-  /** What to create: 'freeform' (a standalone app), 'component' (a reusable widget for grids — its published project must declare a `component` placement contract), or 'grid' (a composition of components, edited through the layout endpoints). * `freeform` - freeform * `grid` - grid * `component` - component */
-  kind?: CanvasKindEnum | (string & {});
-  /** Short prose describing the canvas. For components this is the store-search text agents match against — say what the widget shows and what its config controls. */
-  description?: string;
-  /** Canvas template identifier. */
-  template_id?: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
 }
-export const CanvasesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CanvasesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
-    name: S.String,
-    channel_id: S.String,
-    kind: S.optional(CanvasKindEnum),
-    description: S.optional(S.String),
-    template_id: S.optional(S.String),
+    id: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/",
+      method: "DELETE",
+      uri: "/api/projects/{project_id}/canvases/{id}/",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "CanvasesCreateRequest",
-}) as any as S.Schema<CanvasesCreateRequest>;
+  identifier: "CanvasesDestroyRequest",
+}) as any as S.Schema<CanvasesDestroyRequest>;
 
-/** A component's grid-size contract, in grid units. */
-export interface CanvasComponentSize {
-  /** Width a new placement starts at, in grid columns. */
-  defaultW: number;
-  /** Height a new placement starts at, in grid rows. */
-  defaultH: number;
-  /** Narrowest width the component renders usefully at. */
-  minW: number;
-  /** Shortest height the component renders usefully at. */
-  minH: number;
-  /** Widest allowed width; omit for no cap below the grid's width. */
-  maxW?: number;
-  /** Tallest allowed height; omit for no cap. */
-  maxH?: number;
-}
-export const CanvasComponentSize = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultW: S.Number,
-    defaultH: S.Number,
-    minW: S.Number,
-    minH: S.Number,
-    maxW: S.optional(S.Number),
-    maxH: S.optional(S.Number),
-  }),
+export interface CanvasesDestroyResponse {}
+export const CanvasesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "CanvasComponentSize",
-}) as any as S.Schema<CanvasComponentSize>;
+  identifier: "CanvasesDestroyResponse",
+}) as any as S.Schema<CanvasesDestroyResponse>;
 
-/** JSON Schema ("type": "object") for a placement's config. The host validates each placement's config against it and passes the validated object to the widget at mount. */
-export type CanvasComponentMetaConfigSchemaMap = {
-  [key: string]: unknown | undefined;
-};
-export const CanvasComponentMetaConfigSchemaMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CanvasComponentMetaConfigSchemaMap>;
-
-/** A component's placement contract: how grid canvases may place and configure it. */
-export interface CanvasComponentMeta {
-  /** Grid-size contract for placements of this component. */
-  size: CanvasComponentSize;
-  /** JSON Schema ("type": "object") for a placement's config. The host validates each placement's config against it and passes the validated object to the widget at mount. */
-  configSchema?: CanvasComponentMetaConfigSchemaMap;
+export interface CanvasesDraftsRetrieveRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
 }
-export const CanvasComponentMeta = /*@__PURE__*/ S.suspend(() =>
+export const CanvasesDraftsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    size: CanvasComponentSize,
-    configSchema: S.optional(CanvasComponentMetaConfigSchemaMap),
-  }),
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/canvases/{id}/drafts/",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "CanvasComponentMeta",
-}) as any as S.Schema<CanvasComponentMeta>;
+  identifier: "CanvasesDraftsRetrieveRequest",
+}) as any as S.Schema<CanvasesDraftsRetrieveRequest>;
 
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
 export const UserBasicHedgehogConfigMap = /*@__PURE__*/ S.Record(
@@ -550,403 +486,6 @@ export const UserBasic = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "UserBasic" }) as any as S.Schema<UserBasic>;
 
-/** A canvas document. Version/build content hangs off the source and build endpoints. */
-export interface Canvas {
-  id: string;
-  name: string;
-  /** What the canvas is: 'freeform' (a standalone app), 'component' (a reusable widget grids place), or 'grid' (a composition of components). * `freeform` - freeform * `grid` - grid * `component` - component */
-  kind: CanvasKindEnum;
-  /** Short prose describing the canvas. For components, the store-search text. */
-  description: string;
-  channel: string;
-  template_id: string;
-  context: string;
-  generation_task_id: string | null;
-  /** Whether the canvas is pinned to its channel. */
-  pinned: boolean;
-  pinned_at: string | null;
-  /** Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish. */
-  current_version_id: string | null;
-  /** Id of the canvas's live (last successful, still-eligible) build. Null until a build completes. */
-  published_build_id: string | null;
-  /** For component-kind canvases: the head version's placement contract (size, optional configSchema). Null for other kinds and unpublished components. */
-  component_meta: CanvasComponentMeta | null;
-  created_by: UserBasic;
-  created_at: string;
-  updated_at: string;
-  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
-  url: string;
-}
-export const Canvas = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    kind: CanvasKindEnum,
-    description: S.String,
-    channel: S.String,
-    template_id: S.String,
-    context: S.String,
-    generation_task_id: S.NullOr(S.String),
-    pinned: S.Boolean,
-    pinned_at: S.NullOr(S.String),
-    current_version_id: S.NullOr(S.String),
-    published_build_id: S.NullOr(S.String),
-    component_meta: S.NullOr(CanvasComponentMeta),
-    created_by: UserBasic,
-    created_at: S.String,
-    updated_at: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "Canvas" }) as any as S.Schema<Canvas>;
-
-export interface CanvasesDestroyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-}
-export const CanvasesDestroyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/api/projects/{project_id}/canvases/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesDestroyRequest",
-}) as any as S.Schema<CanvasesDestroyRequest>;
-
-export interface CanvasesDestroyResponse {}
-export const CanvasesDestroyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CanvasesDestroyResponse",
-}) as any as S.Schema<CanvasesDestroyResponse>;
-
-/** Project files keyed by relative path (forward slashes, no '..'). */
-export type CanvasSourceProjectFilesMap = { [key: string]: string | undefined };
-export const CanvasSourceProjectFilesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CanvasSourceProjectFilesMap>;
-
-/** * `base64` - base64 */
-export type EncodingEnum = "base64";
-export const EncodingEnum = /*@__PURE__*/ S.String;
-
-/** * `image/png` - image/png * `image/jpeg` - image/jpeg * `image/gif` - image/gif * `image/webp` - image/webp * `image/svg+xml` - image/svg+xml * `font/woff` - font/woff * `font/woff2` - font/woff2 * `application/wasm` - application/wasm * `application/octet-stream` - application/octet-stream */
-export type ContentTypeEnum =
-  | "image/png"
-  | "image/jpeg"
-  | "image/gif"
-  | "image/webp"
-  | "image/svg+xml"
-  | "font/woff"
-  | "font/woff2"
-  | "application/wasm"
-  | "application/octet-stream";
-export const ContentTypeEnum = /*@__PURE__*/ S.String;
-
-export interface CanvasSourceAsset {
-  encoding: EncodingEnum | (string & {});
-  contentType: ContentTypeEnum | (string & {});
-  content: string;
-}
-export const CanvasSourceAsset = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    encoding: EncodingEnum,
-    contentType: ContentTypeEnum,
-    content: S.String,
-  }),
-).annotate({
-  identifier: "CanvasSourceAsset",
-}) as any as S.Schema<CanvasSourceAsset>;
-
-/** Optional base64-encoded binary assets keyed by safe project-relative paths. */
-export type CanvasSourceProjectAssetsMap = {
-  [key: string]: CanvasSourceAsset | undefined;
-};
-export const CanvasSourceProjectAssetsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  CanvasSourceAsset,
-) as any as S.Schema<CanvasSourceProjectAssetsMap>;
-
-/** Exact-version dependencies, restricted to the platform-supported set at its pinned versions. */
-export type CanvasSourceProjectDependenciesMap = {
-  [key: string]: string | undefined;
-};
-export const CanvasSourceProjectDependenciesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CanvasSourceProjectDependenciesMap>;
-
-export type CanvasPostHogCapabilitiesInsightsList = Array<string>;
-export const CanvasPostHogCapabilitiesInsightsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasPostHogCapabilitiesInsightsList>;
-
-export type CanvasPostHogCapabilitiesCaptureEventsList = Array<string>;
-export const CanvasPostHogCapabilitiesCaptureEventsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasPostHogCapabilitiesCaptureEventsList>;
-
-/** * `user` - user * `shared` - shared */
-export type CanvasStateScopeEnum = "user" | "shared";
-export const CanvasStateScopeEnum = /*@__PURE__*/ S.String;
-
-/** State scopes the canvas may use via ph.state: 'user' (private to each viewer) and/or 'shared' (one value per canvas, team-visible). */
-export type CanvasPostHogCapabilitiesStateList = Array<
-  CanvasStateScopeEnum | (string & {})
->;
-export const CanvasPostHogCapabilitiesStateList = /*@__PURE__*/ S.Array(
-  CanvasStateScopeEnum,
-) as any as S.Schema<CanvasPostHogCapabilitiesStateList>;
-
-/** Registered action verbs the canvas may invoke via ph.actions (e.g. 'annotations.create', 'tasks.create'). Each executes as the viewer; declaring one shows it in the promote review. */
-export type CanvasPostHogCapabilitiesActionsList = Array<string>;
-export const CanvasPostHogCapabilitiesActionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasPostHogCapabilitiesActionsList>;
-
-export interface CanvasPostHogCapabilities {
-  insights: CanvasPostHogCapabilitiesInsightsList;
-  inlineQueries: boolean;
-  captureEvents: CanvasPostHogCapabilitiesCaptureEventsList;
-  /** State scopes the canvas may use via ph.state: 'user' (private to each viewer) and/or 'shared' (one value per canvas, team-visible). */
-  state?: CanvasPostHogCapabilitiesStateList;
-  /** Registered action verbs the canvas may invoke via ph.actions (e.g. 'annotations.create', 'tasks.create'). Each executes as the viewer; declaring one shows it in the promote review. */
-  actions?: CanvasPostHogCapabilitiesActionsList;
-  agentRequests?: boolean;
-}
-export const CanvasPostHogCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    insights: CanvasPostHogCapabilitiesInsightsList,
-    inlineQueries: S.Boolean,
-    captureEvents: CanvasPostHogCapabilitiesCaptureEventsList,
-    state: S.optional(CanvasPostHogCapabilitiesStateList),
-    actions: S.optional(CanvasPostHogCapabilitiesActionsList),
-    agentRequests: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "CanvasPostHogCapabilities",
-}) as any as S.Schema<CanvasPostHogCapabilities>;
-
-export type CanvasNetworkCapabilitiesOriginsList = Array<string>;
-export const CanvasNetworkCapabilitiesOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasNetworkCapabilitiesOriginsList>;
-
-export interface CanvasNetworkCapabilities {
-  origins: CanvasNetworkCapabilitiesOriginsList;
-}
-export const CanvasNetworkCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: CanvasNetworkCapabilitiesOriginsList,
-  }),
-).annotate({
-  identifier: "CanvasNetworkCapabilities",
-}) as any as S.Schema<CanvasNetworkCapabilities>;
-
-export interface CanvasCapabilities {
-  posthog: CanvasPostHogCapabilities;
-  network: CanvasNetworkCapabilities;
-}
-export const CanvasCapabilities = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    posthog: CanvasPostHogCapabilities,
-    network: CanvasNetworkCapabilities,
-  }),
-).annotate({
-  identifier: "CanvasCapabilities",
-}) as any as S.Schema<CanvasCapabilities>;
-
-/** A canvas's multi-file source project — the canonical write format for canvas source. */
-export interface CanvasSourceProject {
-  /** Source-project schema version. Currently always 1. */
-  schemaVersion: number;
-  /** Project files keyed by relative path (forward slashes, no '..'). */
-  files: CanvasSourceProjectFilesMap;
-  /** Optional base64-encoded binary assets keyed by safe project-relative paths. */
-  assets?: CanvasSourceProjectAssetsMap;
-  /** The project's entry HTML file. Currently always "index.html". */
-  entryHtml: string;
-  /** Exact-version dependencies, restricted to the platform-supported set at its pinned versions. */
-  dependencies?: CanvasSourceProjectDependenciesMap;
-  /** Version of the host-injected `ph` canvas SDK the project targets. */
-  canvasSdkVersion?: string;
-  /** Placement contract, required for (and only allowed on) component-kind canvases: the grid size the component takes and the JSON Schema of its per-placement config. */
-  component?: CanvasComponentMeta;
-  /** Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins. */
-  capabilities?: CanvasCapabilities;
-}
-export const CanvasSourceProject = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    schemaVersion: S.Number,
-    files: CanvasSourceProjectFilesMap,
-    assets: S.optional(CanvasSourceProjectAssetsMap),
-    entryHtml: S.String,
-    dependencies: S.optional(CanvasSourceProjectDependenciesMap),
-    canvasSdkVersion: S.optional(S.String),
-    component: S.optional(CanvasComponentMeta),
-    capabilities: S.optional(CanvasCapabilities),
-  }),
-).annotate({
-  identifier: "CanvasSourceProject",
-}) as any as S.Schema<CanvasSourceProject>;
-
-export interface CanvasesDraftCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** The complete source project to stage as a draft. */
-  project: CanvasSourceProject;
-  /** Short description of the change, stored on the draft's version history entry. */
-  prompt?: string;
-}
-export const CanvasesDraftCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    project: CanvasSourceProject,
-    prompt: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/draft/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesDraftCreateRequest",
-}) as any as S.Schema<CanvasesDraftCreateRequest>;
-
-/** Advisory (warning-severity) diagnostics recorded for the drafted project. */
-export type CanvasSourceDraftResponseDiagnosticsList = Array<CanvasDiagnostic>;
-export const CanvasSourceDraftResponseDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasSourceDraftResponseDiagnosticsList>;
-
-/** Insight short ids the draft newly declares access to. */
-export type CanvasCapabilityWideningInsightsAddedList = Array<string>;
-export const CanvasCapabilityWideningInsightsAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningInsightsAddedList>;
-
-/** Event names the draft newly declares it may capture. */
-export type CanvasCapabilityWideningCaptureEventsAddedList = Array<string>;
-export const CanvasCapabilityWideningCaptureEventsAddedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CanvasCapabilityWideningCaptureEventsAddedList>;
-
-/** Network origins the draft newly declares it may reach. */
-export type CanvasCapabilityWideningNetworkOriginsAddedList = Array<string>;
-export const CanvasCapabilityWideningNetworkOriginsAddedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CanvasCapabilityWideningNetworkOriginsAddedList>;
-
-/** State scopes (user, shared) the draft newly declares for ph.state. */
-export type CanvasCapabilityWideningStateScopesAddedList = Array<string>;
-export const CanvasCapabilityWideningStateScopesAddedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CanvasCapabilityWideningStateScopesAddedList>;
-
-/** Action verbs the draft newly declares it may invoke via ph.actions. */
-export type CanvasCapabilityWideningActionsAddedList = Array<string>;
-export const CanvasCapabilityWideningActionsAddedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CanvasCapabilityWideningActionsAddedList>;
-
-/** How a draft's declared capabilities grow the current head's. A head that predates the capabilities snapshot reports every declaration as an addition. */
-export interface CanvasCapabilityWidening {
-  /** True when the draft declares any capability the current head does not. */
-  widens: boolean;
-  /** Insight short ids the draft newly declares access to. */
-  insights_added: CanvasCapabilityWideningInsightsAddedList;
-  /** Event names the draft newly declares it may capture. */
-  capture_events_added: CanvasCapabilityWideningCaptureEventsAddedList;
-  /** True when the draft enables inline queries and the current head does not. */
-  inline_queries_enabled: boolean;
-  /** True when the draft enables requests to the canvas's authoring agent and the current head does not. */
-  agent_requests_enabled: boolean;
-  /** Network origins the draft newly declares it may reach. */
-  network_origins_added: CanvasCapabilityWideningNetworkOriginsAddedList;
-  /** State scopes (user, shared) the draft newly declares for ph.state. */
-  state_scopes_added: CanvasCapabilityWideningStateScopesAddedList;
-  /** Action verbs the draft newly declares it may invoke via ph.actions. */
-  actions_added: CanvasCapabilityWideningActionsAddedList;
-}
-export const CanvasCapabilityWidening = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    widens: S.Boolean,
-    insights_added: CanvasCapabilityWideningInsightsAddedList,
-    capture_events_added: CanvasCapabilityWideningCaptureEventsAddedList,
-    inline_queries_enabled: S.Boolean,
-    agent_requests_enabled: S.Boolean,
-    network_origins_added: CanvasCapabilityWideningNetworkOriginsAddedList,
-    state_scopes_added: CanvasCapabilityWideningStateScopesAddedList,
-    actions_added: CanvasCapabilityWideningActionsAddedList,
-  }),
-).annotate({
-  identifier: "CanvasCapabilityWidening",
-}) as any as S.Schema<CanvasCapabilityWidening>;
-
-/** Result of staging a draft build. */
-export interface CanvasSourceDraftResponse {
-  /** Id of the draft source version this request created. */
-  version_id: string;
-  /** The queued draft build; poll `builds` until it is terminal. */
-  build: CanvasBuild;
-  /** Advisory (warning-severity) diagnostics recorded for the drafted project. */
-  diagnostics: CanvasSourceDraftResponseDiagnosticsList;
-  /** What the draft's declared capabilities grant beyond the current head's. Review before promoting. */
-  capability_widening: CanvasCapabilityWidening;
-}
-export const CanvasSourceDraftResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    version_id: S.String,
-    build: CanvasBuild,
-    diagnostics: CanvasSourceDraftResponseDiagnosticsList,
-    capability_widening: CanvasCapabilityWidening,
-  }),
-).annotate({
-  identifier: "CanvasSourceDraftResponse",
-}) as any as S.Schema<CanvasSourceDraftResponse>;
-
-export interface CanvasesDraftsRetrieveRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-}
-export const CanvasesDraftsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/canvases/{id}/drafts/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesDraftsRetrieveRequest",
-}) as any as S.Schema<CanvasesDraftsRetrieveRequest>;
-
 /** A staged draft version and the status of its latest build. Preview a draft's files with `source?version_id=`, then make it live with `promote`. */
 export interface CanvasDraft {
   /** Id of the draft source version. */
@@ -994,138 +533,6 @@ export const PaginatedCanvasDraftList = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "PaginatedCanvasDraftList",
 }) as any as S.Schema<PaginatedCanvasDraftList>;
-
-/** One per-file edit: set a file's content, or delete it. */
-export interface CanvasSourceEditOperation {
-  /** Project-relative path of the file to write or delete (e.g. "src/canvas.tsx"). */
-  path: string;
-  /** The file's complete new content. Null (or omitted) deletes the file. */
-  content?: string | null;
-}
-export const CanvasSourceEditOperation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    path: S.String,
-    content: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "CanvasSourceEditOperation",
-}) as any as S.Schema<CanvasSourceEditOperation>;
-
-/** Edits applied in order to the canvas's current source project. */
-export type CanvasesEditCreateRequestOperationsList =
-  Array<CanvasSourceEditOperation>;
-export const CanvasesEditCreateRequestOperationsList = /*@__PURE__*/ S.Array(
-  CanvasSourceEditOperation,
-) as any as S.Schema<CanvasesEditCreateRequestOperationsList>;
-
-export interface CanvasesEditCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Edits applied in order to the canvas's current source project. */
-  operations: CanvasesEditCreateRequestOperationsList;
-  /** Short description of the change, stored on the appended version history entry. */
-  prompt?: string;
-  /** Optional new display name for the canvas. */
-  name?: string;
-  /** Required optimistic-concurrency guard: the current_version_id the edits are based on (null when the canvas has never been published). Diff edits against a moved head are rejected with 409 version_conflict — they cannot be published unguarded. */
-  expected_current_version_id: string | null;
-}
-export const CanvasesEditCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    operations: CanvasesEditCreateRequestOperationsList,
-    prompt: S.optional(S.String),
-    name: S.optional(S.String),
-    expected_current_version_id: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/edit/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesEditCreateRequest",
-}) as any as S.Schema<CanvasesEditCreateRequest>;
-
-/** Identity and version pointers for one canvas. */
-export interface CanvasSummary {
-  /** The canvas's id. */
-  id: string;
-  /** Display name of the canvas. */
-  name: string;
-  /** The canvas's kind (freeform, component, or grid). * `freeform` - freeform * `grid` - grid * `component` - component */
-  kind: CanvasKindEnum;
-  /** Id of the channel the canvas belongs to. */
-  channel_id: string;
-  /** Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish. */
-  current_version_id: string | null;
-  /** Id of the canvas's live (last successful, still-eligible) build. Null until a build completes. */
-  published_build_id: string | null;
-  /** When the canvas was created. */
-  created_at: string;
-  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
-  url: string;
-}
-export const CanvasSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    kind: CanvasKindEnum,
-    channel_id: S.String,
-    current_version_id: S.NullOr(S.String),
-    published_build_id: S.NullOr(S.String),
-    created_at: S.String,
-    url: S.String,
-  }),
-).annotate({ identifier: "CanvasSummary" }) as any as S.Schema<CanvasSummary>;
-
-/** Advisory (warning-severity) diagnostics recorded for the published project. */
-export type CanvasSourcePublishResponseDiagnosticsList =
-  Array<CanvasDiagnostic>;
-export const CanvasSourcePublishResponseDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasSourcePublishResponseDiagnosticsList>;
-
-/** Result of a successful source-project publish. */
-export interface CanvasSourcePublishResponse {
-  /** The canvas after the publish, including the new version pointer. */
-  canvas: CanvasSummary;
-  /** Id of the source version this publish created. */
-  current_version_id: string;
-  /** Advisory (warning-severity) diagnostics recorded for the published project. */
-  diagnostics: CanvasSourcePublishResponseDiagnosticsList;
-}
-export const CanvasSourcePublishResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    canvas: CanvasSummary,
-    current_version_id: S.String,
-    diagnostics: CanvasSourcePublishResponseDiagnosticsList,
-  }),
-).annotate({
-  identifier: "CanvasSourcePublishResponse",
-}) as any as S.Schema<CanvasSourcePublishResponse>;
-
-export interface CanvasesHomeCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-}
-export const CanvasesHomeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/home/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesHomeCreateRequest",
-}) as any as S.Schema<CanvasesHomeCreateRequest>;
 
 /** * `set_grid` - set_grid * `add_placement` - add_placement * `update_placement` - update_placement * `remove_placement` - remove_placement */
 export type CanvasLayoutOpEnum =
@@ -1326,6 +733,42 @@ export const CanvasesLayoutPatchCreateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanvasesLayoutPatchCreateRequest",
 }) as any as S.Schema<CanvasesLayoutPatchCreateRequest>;
 
+/** * `freeform` - freeform * `grid` - grid * `component` - component */
+export type CanvasKindEnum = "freeform" | "grid" | "component";
+export const CanvasKindEnum = /*@__PURE__*/ S.String;
+
+/** Identity and version pointers for one canvas. */
+export interface CanvasSummary {
+  /** The canvas's id. */
+  id: string;
+  /** Display name of the canvas. */
+  name: string;
+  /** The canvas's kind (freeform, component, or grid). * `freeform` - freeform * `grid` - grid * `component` - component */
+  kind: CanvasKindEnum;
+  /** Id of the channel the canvas belongs to. */
+  channel_id: string;
+  /** Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish. */
+  current_version_id: string | null;
+  /** Id of the canvas's live (last successful, still-eligible) build. Null until a build completes. */
+  published_build_id: string | null;
+  /** When the canvas was created. */
+  created_at: string;
+  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
+  url: string;
+}
+export const CanvasSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    kind: CanvasKindEnum,
+    channel_id: S.String,
+    current_version_id: S.NullOr(S.String),
+    published_build_id: S.NullOr(S.String),
+    created_at: S.String,
+    url: S.String,
+  }),
+).annotate({ identifier: "CanvasSummary" }) as any as S.Schema<CanvasSummary>;
+
 /** * `1` - 1 */
 export type CanvasLayoutSchemaVersionEnum = 1;
 export const CanvasLayoutSchemaVersionEnum = /*@__PURE__*/ S.Number;
@@ -1372,36 +815,6 @@ export const CanvasLayoutPublishResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanvasLayoutPublishResponse",
 }) as any as S.Schema<CanvasLayoutPublishResponse>;
 
-export interface CanvasesLayoutPublishCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** The complete layout document to publish. */
-  layout: CanvasLayout;
-  /** Short description of the change, stored on the appended version history entry. */
-  prompt?: string;
-  /** Optimistic-concurrency guard: the current_version_id the layout was based on (null when the canvas has no versions yet). A moved head is rejected with 409 version_conflict. Omit to publish unguarded. */
-  expected_current_version_id?: string | null;
-}
-export const CanvasesLayoutPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    layout: CanvasLayout,
-    prompt: S.optional(S.String),
-    expected_current_version_id: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/layout/publish/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesLayoutPublishCreateRequest",
-}) as any as S.Schema<CanvasesLayoutPublishCreateRequest>;
-
 export interface CanvasesLayoutRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1444,222 +857,6 @@ export const CanvasLayoutResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanvasLayoutResponse",
 }) as any as S.Schema<CanvasLayoutResponse>;
-
-export type CanvasesListRequestKind = "component" | "freeform" | "grid";
-export const CanvasesListRequestKind = /*@__PURE__*/ S.String;
-
-export interface CanvasesListRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** Only return canvases in this channel. */
-  channel?: string;
-  /** Only return canvases of this kind. kind=component lists the component store. */
-  kind?: CanvasesListRequestKind | (string & {});
-  /** Number of results to return per page. */
-  limit?: number;
-  /** The initial index from which to return the results. */
-  offset?: number;
-  /** Only return canvases whose name or description contains this text (case-insensitive). */
-  search?: string;
-}
-export const CanvasesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    channel: S.optional(S.String.pipe(T.Query())),
-    kind: S.optional(CanvasesListRequestKind.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/api/projects/{project_id}/canvases/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesListRequest",
-}) as any as S.Schema<CanvasesListRequest>;
-
-export type PaginatedCanvasListResultsList = Array<Canvas>;
-export const PaginatedCanvasListResultsList = /*@__PURE__*/ S.Array(
-  Canvas,
-) as any as S.Schema<PaginatedCanvasListResultsList>;
-
-export interface PaginatedCanvasList {
-  count: number;
-  next?: string | null;
-  previous?: string | null;
-  results: PaginatedCanvasListResultsList;
-}
-export const PaginatedCanvasList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    next: S.optional(S.NullOr(S.String)),
-    previous: S.optional(S.NullOr(S.String)),
-    results: PaginatedCanvasListResultsList,
-  }),
-).annotate({
-  identifier: "PaginatedCanvasList",
-}) as any as S.Schema<PaginatedCanvasList>;
-
-export interface CanvasesPartialUpdateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Updated display name. */
-  name?: string;
-  /** Updated author context markdown. */
-  context?: string;
-  /** Updated canvas description (for components, the store-search text). */
-  description?: string;
-  /** Id of the space the canvas belongs to. */
-  channel_id?: string;
-  /** Whether the canvas is pinned in its channel. */
-  pinned?: boolean;
-  /** Task currently generating this canvas, or null to clear it. */
-  generation_task_id?: string | null;
-}
-export const CanvasesPartialUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    name: S.optional(S.String),
-    context: S.optional(S.String),
-    description: S.optional(S.String),
-    channel_id: S.optional(S.String),
-    pinned: S.optional(S.Boolean),
-    generation_task_id: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/api/projects/{project_id}/canvases/{id}/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesPartialUpdateRequest",
-}) as any as S.Schema<CanvasesPartialUpdateRequest>;
-
-export interface CanvasesPromoteCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Id of the draft source version to make live. */
-  version_id: string;
-  /** Current source version observed before requesting the promote (null when the canvas has never been published). A moved head is rejected with 409 version_conflict. */
-  expected_current_version_id: string | null;
-}
-export const CanvasesPromoteCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    version_id: S.String,
-    expected_current_version_id: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/promote/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesPromoteCreateRequest",
-}) as any as S.Schema<CanvasesPromoteCreateRequest>;
-
-export interface CanvasesPublishCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** The complete source project to publish. */
-  project: CanvasSourceProject;
-  /** Short description of the change, stored on the appended version history entry. */
-  prompt?: string;
-  /** Optional new display name for the canvas. */
-  name?: string;
-  /** Optimistic-concurrency guard: the current_version_id the publisher based its edits on (null when it read a canvas with no versions yet). When the canvas has since moved past it the publish is rejected with a 409 version_conflict instead of overwriting the newer head. Omit to publish unguarded. */
-  expected_current_version_id?: string | null;
-}
-export const CanvasesPublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    project: CanvasSourceProject,
-    prompt: S.optional(S.String),
-    name: S.optional(S.String),
-    expected_current_version_id: S.optional(S.NullOr(S.String)),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/publish/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesPublishCreateRequest",
-}) as any as S.Schema<CanvasesPublishCreateRequest>;
-
-export interface CanvasesPublishCurrentVersionCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Current source version to publish. A changed head returns a 409 version_conflict. */
-  expected_current_version_id: string;
-}
-export const CanvasesPublishCurrentVersionCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-      expected_current_version_id: S.String,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/canvases/{id}/publish-current-version/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "CanvasesPublishCurrentVersionCreateRequest",
-  }) as any as S.Schema<CanvasesPublishCurrentVersionCreateRequest>;
-
-export interface CanvasesReportErrorCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Id of the build that was rendering when the error occurred. */
-  build_id: string;
-  /** Error class name only, for example TypeError. Values that are not a plain class-name identifier are recorded as 'unknown'. Full error messages and stack traces must stay client-side. */
-  error_type: string;
-}
-export const CanvasesReportErrorCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    build_id: S.String,
-    error_type: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/report_error/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesReportErrorCreateRequest",
-}) as any as S.Schema<CanvasesReportErrorCreateRequest>;
-
-export interface CanvasesReportErrorCreateResponse {}
-export const CanvasesReportErrorCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CanvasesReportErrorCreateResponse",
-}) as any as S.Schema<CanvasesReportErrorCreateResponse>;
 
 export interface CanvasesRequestAgentCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1747,32 +944,107 @@ export const CanvasesRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanvasesRetrieveRequest",
 }) as any as S.Schema<CanvasesRetrieveRequest>;
 
-export interface CanvasesRevertCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Id of the source version to make the head again. */
-  version_id: string;
-  /** Current source version observed before requesting the revert. */
-  expected_current_version_id: string | null;
+/** A component's grid-size contract, in grid units. */
+export interface CanvasComponentSize {
+  /** Width a new placement starts at, in grid columns. */
+  defaultW: number;
+  /** Height a new placement starts at, in grid rows. */
+  defaultH: number;
+  /** Narrowest width the component renders usefully at. */
+  minW: number;
+  /** Shortest height the component renders usefully at. */
+  minH: number;
+  /** Widest allowed width; omit for no cap below the grid's width. */
+  maxW?: number;
+  /** Tallest allowed height; omit for no cap. */
+  maxH?: number;
 }
-export const CanvasesRevertCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CanvasComponentSize = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    version_id: S.String,
-    expected_current_version_id: S.NullOr(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/revert/",
-      code: 200,
-    }),
-  ),
+    defaultW: S.Number,
+    defaultH: S.Number,
+    minW: S.Number,
+    minH: S.Number,
+    maxW: S.optional(S.Number),
+    maxH: S.optional(S.Number),
+  }),
 ).annotate({
-  identifier: "CanvasesRevertCreateRequest",
-}) as any as S.Schema<CanvasesRevertCreateRequest>;
+  identifier: "CanvasComponentSize",
+}) as any as S.Schema<CanvasComponentSize>;
+
+/** JSON Schema ("type": "object") for a placement's config. The host validates each placement's config against it and passes the validated object to the widget at mount. */
+export type CanvasComponentMetaConfigSchemaMap = {
+  [key: string]: unknown | undefined;
+};
+export const CanvasComponentMetaConfigSchemaMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CanvasComponentMetaConfigSchemaMap>;
+
+/** A component's placement contract: how grid canvases may place and configure it. */
+export interface CanvasComponentMeta {
+  /** Grid-size contract for placements of this component. */
+  size: CanvasComponentSize;
+  /** JSON Schema ("type": "object") for a placement's config. The host validates each placement's config against it and passes the validated object to the widget at mount. */
+  configSchema?: CanvasComponentMetaConfigSchemaMap;
+}
+export const CanvasComponentMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    size: CanvasComponentSize,
+    configSchema: S.optional(CanvasComponentMetaConfigSchemaMap),
+  }),
+).annotate({
+  identifier: "CanvasComponentMeta",
+}) as any as S.Schema<CanvasComponentMeta>;
+
+/** A canvas document. Version/build content hangs off the source and build endpoints. */
+export interface Canvas {
+  id: string;
+  name: string;
+  /** What the canvas is: 'freeform' (a standalone app), 'component' (a reusable widget grids place), or 'grid' (a composition of components). * `freeform` - freeform * `grid` - grid * `component` - component */
+  kind: CanvasKindEnum;
+  /** Short prose describing the canvas. For components, the store-search text. */
+  description: string;
+  channel: string;
+  template_id: string;
+  context: string;
+  generation_task_id: string | null;
+  /** Whether the canvas is pinned to its channel. */
+  pinned: boolean;
+  pinned_at: string | null;
+  /** Id of the live source version — pass as expected_current_version_id on publish. Null before the first publish. */
+  current_version_id: string | null;
+  /** Id of the canvas's live (last successful, still-eligible) build. Null until a build completes. */
+  published_build_id: string | null;
+  /** For component-kind canvases: the head version's placement contract (size, optional configSchema). Null for other kinds and unpublished components. */
+  component_meta: CanvasComponentMeta | null;
+  created_by: UserBasic;
+  created_at: string;
+  updated_at: string;
+  /** Canonical link to the canvas in the PostHog app. The only valid way to link to a canvas — share this when pointing a user at it; never construct a canvas URL. */
+  url: string;
+}
+export const Canvas = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    kind: CanvasKindEnum,
+    description: S.String,
+    channel: S.String,
+    template_id: S.String,
+    context: S.String,
+    generation_task_id: S.NullOr(S.String),
+    pinned: S.Boolean,
+    pinned_at: S.NullOr(S.String),
+    current_version_id: S.NullOr(S.String),
+    published_build_id: S.NullOr(S.String),
+    component_meta: S.NullOr(CanvasComponentMeta),
+    created_by: UserBasic,
+    created_at: S.String,
+    updated_at: S.String,
+    url: S.String,
+  }),
+).annotate({ identifier: "Canvas" }) as any as S.Schema<Canvas>;
 
 export interface CanvasesSourceRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
@@ -1797,6 +1069,177 @@ export const CanvasesSourceRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CanvasesSourceRetrieveRequest",
 }) as any as S.Schema<CanvasesSourceRetrieveRequest>;
+
+/** Project files keyed by relative path (forward slashes, no '..'). */
+export type CanvasSourceProjectFilesMap = { [key: string]: string | undefined };
+export const CanvasSourceProjectFilesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CanvasSourceProjectFilesMap>;
+
+/** * `base64` - base64 */
+export type EncodingEnum = "base64";
+export const EncodingEnum = /*@__PURE__*/ S.String;
+
+/** * `image/png` - image/png * `image/jpeg` - image/jpeg * `image/gif` - image/gif * `image/webp` - image/webp * `image/svg+xml` - image/svg+xml * `font/woff` - font/woff * `font/woff2` - font/woff2 * `application/wasm` - application/wasm * `application/octet-stream` - application/octet-stream */
+export type ContentTypeEnum =
+  | "image/png"
+  | "image/jpeg"
+  | "image/gif"
+  | "image/webp"
+  | "image/svg+xml"
+  | "font/woff"
+  | "font/woff2"
+  | "application/wasm"
+  | "application/octet-stream";
+export const ContentTypeEnum = /*@__PURE__*/ S.String;
+
+export interface CanvasSourceAsset {
+  encoding: EncodingEnum | (string & {});
+  contentType: ContentTypeEnum | (string & {});
+  content: string;
+}
+export const CanvasSourceAsset = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    encoding: EncodingEnum,
+    contentType: ContentTypeEnum,
+    content: S.String,
+  }),
+).annotate({
+  identifier: "CanvasSourceAsset",
+}) as any as S.Schema<CanvasSourceAsset>;
+
+/** Optional base64-encoded binary assets keyed by safe project-relative paths. */
+export type CanvasSourceProjectAssetsMap = {
+  [key: string]: CanvasSourceAsset | undefined;
+};
+export const CanvasSourceProjectAssetsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  CanvasSourceAsset,
+) as any as S.Schema<CanvasSourceProjectAssetsMap>;
+
+/** Exact-version dependencies, restricted to the platform-supported set at its pinned versions. */
+export type CanvasSourceProjectDependenciesMap = {
+  [key: string]: string | undefined;
+};
+export const CanvasSourceProjectDependenciesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CanvasSourceProjectDependenciesMap>;
+
+export type CanvasPostHogCapabilitiesInsightsList = Array<string>;
+export const CanvasPostHogCapabilitiesInsightsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CanvasPostHogCapabilitiesInsightsList>;
+
+export type CanvasPostHogCapabilitiesCaptureEventsList = Array<string>;
+export const CanvasPostHogCapabilitiesCaptureEventsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CanvasPostHogCapabilitiesCaptureEventsList>;
+
+/** * `user` - user * `shared` - shared */
+export type CanvasStateScopeEnum = "user" | "shared";
+export const CanvasStateScopeEnum = /*@__PURE__*/ S.String;
+
+/** State scopes the canvas may use via ph.state: 'user' (private to each viewer) and/or 'shared' (one value per canvas, team-visible). */
+export type CanvasPostHogCapabilitiesStateList = Array<
+  CanvasStateScopeEnum | (string & {})
+>;
+export const CanvasPostHogCapabilitiesStateList = /*@__PURE__*/ S.Array(
+  CanvasStateScopeEnum,
+) as any as S.Schema<CanvasPostHogCapabilitiesStateList>;
+
+/** Registered action verbs the canvas may invoke via ph.actions (e.g. 'annotations.create', 'tasks.create'). Each executes as the viewer; declaring one shows it in the promote review. */
+export type CanvasPostHogCapabilitiesActionsList = Array<string>;
+export const CanvasPostHogCapabilitiesActionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CanvasPostHogCapabilitiesActionsList>;
+
+export interface CanvasPostHogCapabilities {
+  insights: CanvasPostHogCapabilitiesInsightsList;
+  inlineQueries: boolean;
+  captureEvents: CanvasPostHogCapabilitiesCaptureEventsList;
+  /** State scopes the canvas may use via ph.state: 'user' (private to each viewer) and/or 'shared' (one value per canvas, team-visible). */
+  state?: CanvasPostHogCapabilitiesStateList;
+  /** Registered action verbs the canvas may invoke via ph.actions (e.g. 'annotations.create', 'tasks.create'). Each executes as the viewer; declaring one shows it in the promote review. */
+  actions?: CanvasPostHogCapabilitiesActionsList;
+  agentRequests?: boolean;
+}
+export const CanvasPostHogCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    insights: CanvasPostHogCapabilitiesInsightsList,
+    inlineQueries: S.Boolean,
+    captureEvents: CanvasPostHogCapabilitiesCaptureEventsList,
+    state: S.optional(CanvasPostHogCapabilitiesStateList),
+    actions: S.optional(CanvasPostHogCapabilitiesActionsList),
+    agentRequests: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CanvasPostHogCapabilities",
+}) as any as S.Schema<CanvasPostHogCapabilities>;
+
+export type CanvasNetworkCapabilitiesOriginsList = Array<string>;
+export const CanvasNetworkCapabilitiesOriginsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CanvasNetworkCapabilitiesOriginsList>;
+
+export interface CanvasNetworkCapabilities {
+  origins: CanvasNetworkCapabilitiesOriginsList;
+}
+export const CanvasNetworkCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origins: CanvasNetworkCapabilitiesOriginsList,
+  }),
+).annotate({
+  identifier: "CanvasNetworkCapabilities",
+}) as any as S.Schema<CanvasNetworkCapabilities>;
+
+export interface CanvasCapabilities {
+  posthog: CanvasPostHogCapabilities;
+  network: CanvasNetworkCapabilities;
+}
+export const CanvasCapabilities = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    posthog: CanvasPostHogCapabilities,
+    network: CanvasNetworkCapabilities,
+  }),
+).annotate({
+  identifier: "CanvasCapabilities",
+}) as any as S.Schema<CanvasCapabilities>;
+
+/** A canvas's multi-file source project — the canonical write format for canvas source. */
+export interface CanvasSourceProject {
+  /** Source-project schema version. Currently always 1. */
+  schemaVersion: number;
+  /** Project files keyed by relative path (forward slashes, no '..'). */
+  files: CanvasSourceProjectFilesMap;
+  /** Optional base64-encoded binary assets keyed by safe project-relative paths. */
+  assets?: CanvasSourceProjectAssetsMap;
+  /** The project's entry HTML file. Currently always "index.html". */
+  entryHtml: string;
+  /** Exact-version dependencies, restricted to the platform-supported set at its pinned versions. */
+  dependencies?: CanvasSourceProjectDependenciesMap;
+  /** Version of the host-injected `ph` canvas SDK the project targets. */
+  canvasSdkVersion?: string;
+  /** Placement contract, required for (and only allowed on) component-kind canvases: the grid size the component takes and the JSON Schema of its per-placement config. */
+  component?: CanvasComponentMeta;
+  /** Bounded capabilities frozen into the built artifact. Declare every insight short id the canvas loads, every event it captures, and inlineQueries when it runs ad-hoc HogQL — the host enforces these at runtime and validation rejects undeclared `ph` calls. Network origins must be exact HTTPS origins. Data fetched by canvas code can be sent to those origins. */
+  capabilities?: CanvasCapabilities;
+}
+export const CanvasSourceProject = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    schemaVersion: S.Number,
+    files: CanvasSourceProjectFilesMap,
+    assets: S.optional(CanvasSourceProjectAssetsMap),
+    entryHtml: S.String,
+    dependencies: S.optional(CanvasSourceProjectDependenciesMap),
+    canvasSdkVersion: S.optional(S.String),
+    component: S.optional(CanvasComponentMeta),
+    capabilities: S.optional(CanvasCapabilities),
+  }),
+).annotate({
+  identifier: "CanvasSourceProject",
+}) as any as S.Schema<CanvasSourceProject>;
 
 /** A canvas's source project plus the version pointer edits must be based on. */
 export interface CanvasSourceResponse {
@@ -1885,82 +1328,6 @@ export const CanvasStateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CanvasStateResponse",
 }) as any as S.Schema<CanvasStateResponse>;
 
-export interface CanvasesStateSetRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** Scope to write into; the canvas must declare it in capabilities.posthog.state. * `user` - user * `shared` - shared */
-  scope: CanvasStateScopeEnum | (string & {});
-  /** Key to write, unique within its scope. */
-  key: string;
-  /** JSON value to store (at most 64 KB serialized), or null to delete the key. */
-  value: unknown;
-}
-export const CanvasesStateSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    scope: CanvasStateScopeEnum,
-    key: S.String,
-    value: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/state/set/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesStateSetRequest",
-}) as any as S.Schema<CanvasesStateSetRequest>;
-
-export interface CanvasesValidateCreateRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  /** A UUID string identifying this canvas. */
-  id: string;
-  /** The candidate source project to validate. */
-  project: CanvasSourceProject;
-}
-export const CanvasesValidateCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    project_id: S.String.pipe(T.Label()),
-    id: S.String.pipe(T.Label()),
-    project: CanvasSourceProject,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/api/projects/{project_id}/canvases/{id}/validate/",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CanvasesValidateCreateRequest",
-}) as any as S.Schema<CanvasesValidateCreateRequest>;
-
-/** Structured diagnostics; errors block publishing, warnings are advisory. */
-export type CanvasValidateResponseDiagnosticsList = Array<CanvasDiagnostic>;
-export const CanvasValidateResponseDiagnosticsList = /*@__PURE__*/ S.Array(
-  CanvasDiagnostic,
-) as any as S.Schema<CanvasValidateResponseDiagnosticsList>;
-
-/** Validation outcome for a candidate source project. */
-export interface CanvasValidateResponse {
-  /** True when the project has no error-severity diagnostics. */
-  valid: boolean;
-  /** Structured diagnostics; errors block publishing, warnings are advisory. */
-  diagnostics: CanvasValidateResponseDiagnosticsList;
-}
-export const CanvasValidateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    valid: S.Boolean,
-    diagnostics: CanvasValidateResponseDiagnosticsList,
-  }),
-).annotate({
-  identifier: "CanvasValidateResponse",
-}) as any as S.Schema<CanvasValidateResponse>;
-
 export interface CanvasesVersionsRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -2038,6 +1405,639 @@ export const PaginatedCanvasVersionList = /*@__PURE__*/ S.suspend(() =>
   identifier: "PaginatedCanvasVersionList",
 }) as any as S.Schema<PaginatedCanvasVersionList>;
 
+export interface CreateCanvaseRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Display name for the canvas. */
+  name: string;
+  /** Id of the channel the canvas belongs to. */
+  channel_id: string;
+  /** What to create: 'freeform' (a standalone app), 'component' (a reusable widget for grids — its published project must declare a `component` placement contract), or 'grid' (a composition of components, edited through the layout endpoints). * `freeform` - freeform * `grid` - grid * `component` - component */
+  kind?: CanvasKindEnum | (string & {});
+  /** Short prose describing the canvas. For components this is the store-search text agents match against — say what the widget shows and what its config controls. */
+  description?: string;
+  /** Canvas template identifier. */
+  template_id?: string;
+}
+export const CreateCanvaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    name: S.String,
+    channel_id: S.String,
+    kind: S.optional(CanvasKindEnum),
+    description: S.optional(S.String),
+    template_id: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseRequest",
+}) as any as S.Schema<CreateCanvaseRequest>;
+
+/** * `retry` - retry * `pin` - pin * `unpin` - unpin * `cancel` - cancel */
+export type CanvasBuildActionActionEnum = "retry" | "pin" | "unpin" | "cancel";
+export const CanvasBuildActionActionEnum = /*@__PURE__*/ S.String;
+
+export interface CreateCanvaseBuildActionRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  action: CanvasBuildActionActionEnum | (string & {});
+  build_id: string;
+}
+export const CreateCanvaseBuildActionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    action: CanvasBuildActionActionEnum,
+    build_id: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/builds/action/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseBuildActionRequest",
+}) as any as S.Schema<CreateCanvaseBuildActionRequest>;
+
+export interface CreateCanvaseDraftRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** The complete source project to stage as a draft. */
+  project: CanvasSourceProject;
+  /** Short description of the change, stored on the draft's version history entry. */
+  prompt?: string;
+}
+export const CreateCanvaseDraftRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    project: CanvasSourceProject,
+    prompt: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/draft/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseDraftRequest",
+}) as any as S.Schema<CreateCanvaseDraftRequest>;
+
+/** Advisory (warning-severity) diagnostics recorded for the drafted project. */
+export type CanvasSourceDraftResponseDiagnosticsList = Array<CanvasDiagnostic>;
+export const CanvasSourceDraftResponseDiagnosticsList = /*@__PURE__*/ S.Array(
+  CanvasDiagnostic,
+) as any as S.Schema<CanvasSourceDraftResponseDiagnosticsList>;
+
+/** Insight short ids the draft newly declares access to. */
+export type CanvasCapabilityWideningInsightsAddedList = Array<string>;
+export const CanvasCapabilityWideningInsightsAddedList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CanvasCapabilityWideningInsightsAddedList>;
+
+/** Event names the draft newly declares it may capture. */
+export type CanvasCapabilityWideningCaptureEventsAddedList = Array<string>;
+export const CanvasCapabilityWideningCaptureEventsAddedList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CanvasCapabilityWideningCaptureEventsAddedList>;
+
+/** Network origins the draft newly declares it may reach. */
+export type CanvasCapabilityWideningNetworkOriginsAddedList = Array<string>;
+export const CanvasCapabilityWideningNetworkOriginsAddedList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CanvasCapabilityWideningNetworkOriginsAddedList>;
+
+/** State scopes (user, shared) the draft newly declares for ph.state. */
+export type CanvasCapabilityWideningStateScopesAddedList = Array<string>;
+export const CanvasCapabilityWideningStateScopesAddedList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CanvasCapabilityWideningStateScopesAddedList>;
+
+/** Action verbs the draft newly declares it may invoke via ph.actions. */
+export type CanvasCapabilityWideningActionsAddedList = Array<string>;
+export const CanvasCapabilityWideningActionsAddedList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CanvasCapabilityWideningActionsAddedList>;
+
+/** How a draft's declared capabilities grow the current head's. A head that predates the capabilities snapshot reports every declaration as an addition. */
+export interface CanvasCapabilityWidening {
+  /** True when the draft declares any capability the current head does not. */
+  widens: boolean;
+  /** Insight short ids the draft newly declares access to. */
+  insights_added: CanvasCapabilityWideningInsightsAddedList;
+  /** Event names the draft newly declares it may capture. */
+  capture_events_added: CanvasCapabilityWideningCaptureEventsAddedList;
+  /** True when the draft enables inline queries and the current head does not. */
+  inline_queries_enabled: boolean;
+  /** True when the draft enables requests to the canvas's authoring agent and the current head does not. */
+  agent_requests_enabled: boolean;
+  /** Network origins the draft newly declares it may reach. */
+  network_origins_added: CanvasCapabilityWideningNetworkOriginsAddedList;
+  /** State scopes (user, shared) the draft newly declares for ph.state. */
+  state_scopes_added: CanvasCapabilityWideningStateScopesAddedList;
+  /** Action verbs the draft newly declares it may invoke via ph.actions. */
+  actions_added: CanvasCapabilityWideningActionsAddedList;
+}
+export const CanvasCapabilityWidening = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    widens: S.Boolean,
+    insights_added: CanvasCapabilityWideningInsightsAddedList,
+    capture_events_added: CanvasCapabilityWideningCaptureEventsAddedList,
+    inline_queries_enabled: S.Boolean,
+    agent_requests_enabled: S.Boolean,
+    network_origins_added: CanvasCapabilityWideningNetworkOriginsAddedList,
+    state_scopes_added: CanvasCapabilityWideningStateScopesAddedList,
+    actions_added: CanvasCapabilityWideningActionsAddedList,
+  }),
+).annotate({
+  identifier: "CanvasCapabilityWidening",
+}) as any as S.Schema<CanvasCapabilityWidening>;
+
+/** Result of staging a draft build. */
+export interface CanvasSourceDraftResponse {
+  /** Id of the draft source version this request created. */
+  version_id: string;
+  /** The queued draft build; poll `builds` until it is terminal. */
+  build: CanvasBuild;
+  /** Advisory (warning-severity) diagnostics recorded for the drafted project. */
+  diagnostics: CanvasSourceDraftResponseDiagnosticsList;
+  /** What the draft's declared capabilities grant beyond the current head's. Review before promoting. */
+  capability_widening: CanvasCapabilityWidening;
+}
+export const CanvasSourceDraftResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    version_id: S.String,
+    build: CanvasBuild,
+    diagnostics: CanvasSourceDraftResponseDiagnosticsList,
+    capability_widening: CanvasCapabilityWidening,
+  }),
+).annotate({
+  identifier: "CanvasSourceDraftResponse",
+}) as any as S.Schema<CanvasSourceDraftResponse>;
+
+/** One per-file edit: set a file's content, or delete it. */
+export interface CanvasSourceEditOperation {
+  /** Project-relative path of the file to write or delete (e.g. "src/canvas.tsx"). */
+  path: string;
+  /** The file's complete new content. Null (or omitted) deletes the file. */
+  content?: string | null;
+}
+export const CanvasSourceEditOperation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    path: S.String,
+    content: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "CanvasSourceEditOperation",
+}) as any as S.Schema<CanvasSourceEditOperation>;
+
+/** Edits applied in order to the canvas's current source project. */
+export type CanvasesEditCreateRequestOperationsList =
+  Array<CanvasSourceEditOperation>;
+export const CanvasesEditCreateRequestOperationsList = /*@__PURE__*/ S.Array(
+  CanvasSourceEditOperation,
+) as any as S.Schema<CanvasesEditCreateRequestOperationsList>;
+
+export interface CreateCanvaseEditRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Edits applied in order to the canvas's current source project. */
+  operations: CanvasesEditCreateRequestOperationsList;
+  /** Short description of the change, stored on the appended version history entry. */
+  prompt?: string;
+  /** Optional new display name for the canvas. */
+  name?: string;
+  /** Required optimistic-concurrency guard: the current_version_id the edits are based on (null when the canvas has never been published). Diff edits against a moved head are rejected with 409 version_conflict — they cannot be published unguarded. */
+  expected_current_version_id: string | null;
+}
+export const CreateCanvaseEditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    operations: CanvasesEditCreateRequestOperationsList,
+    prompt: S.optional(S.String),
+    name: S.optional(S.String),
+    expected_current_version_id: S.NullOr(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/edit/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseEditRequest",
+}) as any as S.Schema<CreateCanvaseEditRequest>;
+
+/** Advisory (warning-severity) diagnostics recorded for the published project. */
+export type CanvasSourcePublishResponseDiagnosticsList =
+  Array<CanvasDiagnostic>;
+export const CanvasSourcePublishResponseDiagnosticsList = /*@__PURE__*/ S.Array(
+  CanvasDiagnostic,
+) as any as S.Schema<CanvasSourcePublishResponseDiagnosticsList>;
+
+/** Result of a successful source-project publish. */
+export interface CanvasSourcePublishResponse {
+  /** The canvas after the publish, including the new version pointer. */
+  canvas: CanvasSummary;
+  /** Id of the source version this publish created. */
+  current_version_id: string;
+  /** Advisory (warning-severity) diagnostics recorded for the published project. */
+  diagnostics: CanvasSourcePublishResponseDiagnosticsList;
+}
+export const CanvasSourcePublishResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    canvas: CanvasSummary,
+    current_version_id: S.String,
+    diagnostics: CanvasSourcePublishResponseDiagnosticsList,
+  }),
+).annotate({
+  identifier: "CanvasSourcePublishResponse",
+}) as any as S.Schema<CanvasSourcePublishResponse>;
+
+export interface CreateCanvaseHomeRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+}
+export const CreateCanvaseHomeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/home/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseHomeRequest",
+}) as any as S.Schema<CreateCanvaseHomeRequest>;
+
+export interface CreateCanvaseLayoutPublishRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** The complete layout document to publish. */
+  layout: CanvasLayout;
+  /** Short description of the change, stored on the appended version history entry. */
+  prompt?: string;
+  /** Optimistic-concurrency guard: the current_version_id the layout was based on (null when the canvas has no versions yet). A moved head is rejected with 409 version_conflict. Omit to publish unguarded. */
+  expected_current_version_id?: string | null;
+}
+export const CreateCanvaseLayoutPublishRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    layout: CanvasLayout,
+    prompt: S.optional(S.String),
+    expected_current_version_id: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/layout/publish/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseLayoutPublishRequest",
+}) as any as S.Schema<CreateCanvaseLayoutPublishRequest>;
+
+export interface CreateCanvasePromoteRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Id of the draft source version to make live. */
+  version_id: string;
+  /** Current source version observed before requesting the promote (null when the canvas has never been published). A moved head is rejected with 409 version_conflict. */
+  expected_current_version_id: string | null;
+}
+export const CreateCanvasePromoteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    version_id: S.String,
+    expected_current_version_id: S.NullOr(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/promote/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvasePromoteRequest",
+}) as any as S.Schema<CreateCanvasePromoteRequest>;
+
+export interface CreateCanvasePublishRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** The complete source project to publish. */
+  project: CanvasSourceProject;
+  /** Short description of the change, stored on the appended version history entry. */
+  prompt?: string;
+  /** Optional new display name for the canvas. */
+  name?: string;
+  /** Optimistic-concurrency guard: the current_version_id the publisher based its edits on (null when it read a canvas with no versions yet). When the canvas has since moved past it the publish is rejected with a 409 version_conflict instead of overwriting the newer head. Omit to publish unguarded. */
+  expected_current_version_id?: string | null;
+}
+export const CreateCanvasePublishRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    project: CanvasSourceProject,
+    prompt: S.optional(S.String),
+    name: S.optional(S.String),
+    expected_current_version_id: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/publish/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvasePublishRequest",
+}) as any as S.Schema<CreateCanvasePublishRequest>;
+
+export interface CreateCanvasePublishCurrentVersionRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Current source version to publish. A changed head returns a 409 version_conflict. */
+  expected_current_version_id: string;
+}
+export const CreateCanvasePublishCurrentVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+      expected_current_version_id: S.String,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/canvases/{id}/publish-current-version/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateCanvasePublishCurrentVersionRequest",
+  }) as any as S.Schema<CreateCanvasePublishCurrentVersionRequest>;
+
+export interface CreateCanvaseReportErrorRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Id of the build that was rendering when the error occurred. */
+  build_id: string;
+  /** Error class name only, for example TypeError. Values that are not a plain class-name identifier are recorded as 'unknown'. Full error messages and stack traces must stay client-side. */
+  error_type: string;
+}
+export const CreateCanvaseReportErrorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    build_id: S.String,
+    error_type: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/report_error/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseReportErrorRequest",
+}) as any as S.Schema<CreateCanvaseReportErrorRequest>;
+
+export interface CreateCanvaseReportErrorResponse {}
+export const CreateCanvaseReportErrorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateCanvaseReportErrorResponse",
+}) as any as S.Schema<CreateCanvaseReportErrorResponse>;
+
+export interface CreateCanvaseRevertRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Id of the source version to make the head again. */
+  version_id: string;
+  /** Current source version observed before requesting the revert. */
+  expected_current_version_id: string | null;
+}
+export const CreateCanvaseRevertRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    version_id: S.String,
+    expected_current_version_id: S.NullOr(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/revert/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseRevertRequest",
+}) as any as S.Schema<CreateCanvaseRevertRequest>;
+
+export interface CreateCanvaseValidateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** The candidate source project to validate. */
+  project: CanvasSourceProject;
+}
+export const CreateCanvaseValidateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    project: CanvasSourceProject,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/validate/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCanvaseValidateRequest",
+}) as any as S.Schema<CreateCanvaseValidateRequest>;
+
+/** Structured diagnostics; errors block publishing, warnings are advisory. */
+export type CanvasValidateResponseDiagnosticsList = Array<CanvasDiagnostic>;
+export const CanvasValidateResponseDiagnosticsList = /*@__PURE__*/ S.Array(
+  CanvasDiagnostic,
+) as any as S.Schema<CanvasValidateResponseDiagnosticsList>;
+
+/** Validation outcome for a candidate source project. */
+export interface CanvasValidateResponse {
+  /** True when the project has no error-severity diagnostics. */
+  valid: boolean;
+  /** Structured diagnostics; errors block publishing, warnings are advisory. */
+  diagnostics: CanvasValidateResponseDiagnosticsList;
+}
+export const CanvasValidateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    valid: S.Boolean,
+    diagnostics: CanvasValidateResponseDiagnosticsList,
+  }),
+).annotate({
+  identifier: "CanvasValidateResponse",
+}) as any as S.Schema<CanvasValidateResponse>;
+
+export type CanvasesListRequestKind = "component" | "freeform" | "grid";
+export const CanvasesListRequestKind = /*@__PURE__*/ S.String;
+
+export interface ListCanvasesRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** Only return canvases in this channel. */
+  channel?: string;
+  /** Only return canvases of this kind. kind=component lists the component store. */
+  kind?: CanvasesListRequestKind | (string & {});
+  /** Number of results to return per page. */
+  limit?: number;
+  /** The initial index from which to return the results. */
+  offset?: number;
+  /** Only return canvases whose name or description contains this text (case-insensitive). */
+  search?: string;
+}
+export const ListCanvasesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    channel: S.optional(S.String.pipe(T.Query())),
+    kind: S.optional(CanvasesListRequestKind.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/api/projects/{project_id}/canvases/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCanvasesRequest",
+}) as any as S.Schema<ListCanvasesRequest>;
+
+export type PaginatedCanvasListResultsList = Array<Canvas>;
+export const PaginatedCanvasListResultsList = /*@__PURE__*/ S.Array(
+  Canvas,
+) as any as S.Schema<PaginatedCanvasListResultsList>;
+
+export interface PaginatedCanvasList {
+  count: number;
+  next?: string | null;
+  previous?: string | null;
+  results: PaginatedCanvasListResultsList;
+}
+export const PaginatedCanvasList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    next: S.optional(S.NullOr(S.String)),
+    previous: S.optional(S.NullOr(S.String)),
+    results: PaginatedCanvasListResultsList,
+  }),
+).annotate({
+  identifier: "PaginatedCanvasList",
+}) as any as S.Schema<PaginatedCanvasList>;
+
+export interface SetCanvaseStateRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Scope to write into; the canvas must declare it in capabilities.posthog.state. * `user` - user * `shared` - shared */
+  scope: CanvasStateScopeEnum | (string & {});
+  /** Key to write, unique within its scope. */
+  key: string;
+  /** JSON value to store (at most 64 KB serialized), or null to delete the key. */
+  value: unknown;
+}
+export const SetCanvaseStateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    scope: CanvasStateScopeEnum,
+    key: S.String,
+    value: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/api/projects/{project_id}/canvases/{id}/state/set/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetCanvaseStateRequest",
+}) as any as S.Schema<SetCanvaseStateRequest>;
+
+export interface UpdateCanvasePartialRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  /** A UUID string identifying this canvas. */
+  id: string;
+  /** Updated display name. */
+  name?: string;
+  /** Updated author context markdown. */
+  context?: string;
+  /** Updated canvas description (for components, the store-search text). */
+  description?: string;
+  /** Id of the space the canvas belongs to. */
+  channel_id?: string;
+  /** Whether the canvas is pinned in its channel. */
+  pinned?: boolean;
+  /** Task currently generating this canvas, or null to clear it. */
+  generation_task_id?: string | null;
+}
+export const UpdateCanvasePartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    project_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+    context: S.optional(S.String),
+    description: S.optional(S.String),
+    channel_id: S.optional(S.String),
+    pinned: S.optional(S.Boolean),
+    generation_task_id: S.optional(S.NullOr(S.String)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/projects/{project_id}/canvases/{id}/",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCanvasePartialRequest",
+}) as any as S.Schema<UpdateCanvasePartialRequest>;
+
 export type CanvasesActionsInvokeError =
   | BadRequest
   | Forbidden
@@ -2071,21 +2071,6 @@ export const canvasesActionsRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CanvasesBuildActionCreateError = PosthogOpError;
-/** Apply a lifecycle action (retry, pin, unpin, cancel) to one build. */
-export const canvasesBuildActionCreate: API.OperationMethod<
-  CanvasesBuildActionCreateRequest,
-  CanvasBuild,
-  CanvasesBuildActionCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesBuildActionCreateRequest,
-  output: CanvasBuild,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CanvasesBuildsRetrieveError = PosthogOpError;
 /** Read the canvas's build lifecycle: live pointers plus recent builds. A publish queues a build; poll this until it is ready (the live pointer advances) or failed (fix the error diagnostics and publish again — the last good build stays live). */
 export const canvasesBuildsRetrieve: API.OperationMethod<
@@ -2097,21 +2082,6 @@ export const canvasesBuildsRetrieve: API.OperationMethod<
   input: CanvasesBuildsRetrieveRequest,
   output: CanvasBuildsResponse,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesCreateError = Forbidden | PosthogOpError;
-/** Create a new, empty canvas in a channel; give it source by publishing a project. */
-export const canvasesCreate: API.OperationMethod<
-  CanvasesCreateRequest,
-  Canvas,
-  CanvasesCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesCreateRequest,
-  output: Canvas,
-  errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2131,21 +2101,6 @@ export const canvasesDestroy: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CanvasesDraftCreateError = BadRequest | PosthogOpError;
-/** Stage a complete source project as a draft version and build it, without publishing. The draft gets the same validation, versioning, and server-side build as a publish, but the canvas's head and live build never move, so nothing changes for viewers. Promote the version with `promote` to make it live. The response reports how the draft's declared capabilities widen the current head's, so growth in access can be reviewed before it ships. No version guard applies: a draft conflicts with nothing. */
-export const canvasesDraftCreate: API.OperationMethod<
-  CanvasesDraftCreateRequest,
-  CanvasSourceDraftResponse,
-  CanvasesDraftCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesDraftCreateRequest,
-  output: CanvasSourceDraftResponse,
-  errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CanvasesDraftsRetrieveError = PosthogOpError;
 /** The canvas's staged draft versions, newest first, each with its latest build status. A draft is a version that was built but never made the head. Preview one with `source?version_id=`, then make it live with `promote`. */
 export const canvasesDraftsRetrieve: API.OperationMethod<
@@ -2157,36 +2112,6 @@ export const canvasesDraftsRetrieve: API.OperationMethod<
   input: CanvasesDraftsRetrieveRequest,
   output: PaginatedCanvasDraftList,
   errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesEditCreateError = BadRequest | Conflict | PosthogOpError;
-/** Publish per-file edits against the canvas's current source project. Diff-aware alternative to sending the complete project: each operation sets a file's content or (content null) deletes it, applied to the head the caller read. `expected_current_version_id` is mandatory here — relative edits against an unverified base could silently merge into someone else's newer work. */
-export const canvasesEditCreate: API.OperationMethod<
-  CanvasesEditCreateRequest,
-  CanvasSourcePublishResponse,
-  CanvasesEditCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesEditCreateRequest,
-  output: CanvasSourcePublishResponse,
-  errors: [BadRequest, Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesHomeCreateError = Forbidden | PosthogOpError;
-/** Get or provision the caller's home canvas. Idempotent: returns the user's existing home canvas, or creates a grid canvas in their personal channel and points their home preference at it. The home surface calls this on open. */
-export const canvasesHomeCreate: API.OperationMethod<
-  CanvasesHomeCreateRequest,
-  Canvas,
-  CanvasesHomeCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesHomeCreateRequest,
-  output: Canvas,
-  errors: [Forbidden],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2209,24 +2134,6 @@ export const canvasesLayoutPatchCreate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CanvasesLayoutPublishCreateError =
-  | BadRequest
-  | Conflict
-  | PosthogOpError;
-/** Publish a complete layout document as the grid canvas's new head version. Layout is data, not code: the new version is live immediately, with no build. Validation errors reject the publish (400) and leave the canvas untouched; a stale `expected_current_version_id` is rejected with 409. */
-export const canvasesLayoutPublishCreate: API.OperationMethod<
-  CanvasesLayoutPublishCreateRequest,
-  CanvasLayoutPublishResponse,
-  CanvasesLayoutPublishCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesLayoutPublishCreateRequest,
-  output: CanvasLayoutPublishResponse,
-  errors: [BadRequest, Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CanvasesLayoutRetrieveError = BadRequest | PosthogOpError;
 /** Read a grid canvas's layout document and its `current_version_id`. Always call this before editing: pass the returned version id as `expected_current_version_id` on publish/patch so concurrent edits are not overwritten. A grid canvas with no versions yet returns the default empty layout with a null version id. */
 export const canvasesLayoutRetrieve: API.OperationMethod<
@@ -2238,98 +2145,6 @@ export const canvasesLayoutRetrieve: API.OperationMethod<
   input: CanvasesLayoutRetrieveRequest,
   output: CanvasLayoutResponse,
   errors: [BadRequest],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesListError = PosthogOpError;
-/** Canvases: agent-built sandboxed browser apps, filed into channels. Source is versioned per publish and built server-side; the canvas app renders the published build's artifact from the isolated artifact origin. */
-export const canvasesList: API.OperationMethod<
-  CanvasesListRequest,
-  PaginatedCanvasList,
-  CanvasesListError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesListRequest,
-  output: PaginatedCanvasList,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesPartialUpdateError = PosthogOpError;
-/** Update canvas metadata, including the space it belongs to. */
-export const canvasesPartialUpdate: API.OperationMethod<
-  CanvasesPartialUpdateRequest,
-  Canvas,
-  CanvasesPartialUpdateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesPartialUpdateRequest,
-  output: Canvas,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesPromoteCreateError = Conflict | PosthogOpError;
-/** Make a draft version the canvas's live head. A draft whose build is ready goes live immediately, with no rebuild; otherwise a fresh build is queued. Returns that build. */
-export const canvasesPromoteCreate: API.OperationMethod<
-  CanvasesPromoteCreateRequest,
-  CanvasBuild,
-  CanvasesPromoteCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesPromoteCreateRequest,
-  output: CanvasBuild,
-  errors: [Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesPublishCreateError = BadRequest | Conflict | PosthogOpError;
-/** Publish a complete source project as the canvas's new head version. Validation errors reject the publish (400) and leave the canvas untouched; a stale `expected_current_version_id` is rejected with 409. A successful publish queues a server-side build. */
-export const canvasesPublishCreate: API.OperationMethod<
-  CanvasesPublishCreateRequest,
-  CanvasSourcePublishResponse,
-  CanvasesPublishCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesPublishCreateRequest,
-  output: CanvasSourcePublishResponse,
-  errors: [BadRequest, Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesPublishCurrentVersionCreateError =
-  | Conflict
-  | PosthogOpError;
-/** Queue a build for the current source version without changing source or metadata. */
-export const canvasesPublishCurrentVersionCreate: API.OperationMethod<
-  CanvasesPublishCurrentVersionCreateRequest,
-  CanvasBuild,
-  CanvasesPublishCurrentVersionCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesPublishCurrentVersionCreateRequest,
-  output: CanvasBuild,
-  errors: [Conflict],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesReportErrorCreateError = NotFound | PosthogOpError;
-/** Report a runtime error observed while rendering a canvas build. Files the report in the authoring task's thread (deduped per build and error type) so the canvas's agent can be asked to fix it. Reports never start an agent run by themselves — dispatch is `request_fix`. Only the error class crosses the server; full messages and stacks stay client-side because rendering sessions can carry viewer data. */
-export const canvasesReportErrorCreate: API.OperationMethod<
-  CanvasesReportErrorCreateRequest,
-  CanvasesReportErrorCreateResponse,
-  CanvasesReportErrorCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesReportErrorCreateRequest,
-  output: CanvasesReportErrorCreateResponse,
-  errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
 }));
@@ -2386,21 +2201,6 @@ export const canvasesRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CanvasesRevertCreateError = PosthogOpError;
-/** Move the canvas's head back to an existing source version and rebuild it. */
-export const canvasesRevertCreate: API.OperationMethod<
-  CanvasesRevertCreateRequest,
-  CanvasBuild,
-  CanvasesRevertCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesRevertCreateRequest,
-  output: CanvasBuild,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CanvasesSourceRetrieveError = PosthogOpError;
 /** Read the canvas's source project and its `current_version_id`. Always call this before editing: edit the returned files, then publish the complete project passing the returned version id as `expected_current_version_id` so concurrent edits are not overwritten. `?version_id=` reads a historical version instead of the head. */
 export const canvasesSourceRetrieve: API.OperationMethod<
@@ -2431,36 +2231,6 @@ export const canvasesStateRetrieve: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CanvasesStateSetError = BadRequest | Forbidden | PosthogOpError;
-/** Write one key of the canvas's runtime state, or delete it with a null value. */
-export const canvasesStateSet: API.OperationMethod<
-  CanvasesStateSetRequest,
-  CanvasStateEntry,
-  CanvasesStateSetError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesStateSetRequest,
-  output: CanvasStateEntry,
-  errors: [BadRequest, Forbidden],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CanvasesValidateCreateError = PosthogOpError;
-/** Validate a candidate source project without publishing it. Side-effect free. */
-export const canvasesValidateCreate: API.OperationMethod<
-  CanvasesValidateCreateRequest,
-  CanvasValidateResponse,
-  CanvasesValidateCreateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CanvasesValidateCreateRequest,
-  output: CanvasValidateResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CanvasesVersionsRetrieveError = PosthogOpError;
 /** The canvas's published source-version history, newest first (metadata only). Drafts are excluded: they are staged versions that have never been the head, so they are not part of the undo/revert timeline. Fetch a draft's files with `source?version_id=` to preview it before promoting. */
 export const canvasesVersionsRetrieve: API.OperationMethod<
@@ -2471,6 +2241,234 @@ export const canvasesVersionsRetrieve: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CanvasesVersionsRetrieveRequest,
   output: PaginatedCanvasVersionList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseError = Forbidden | PosthogOpError;
+/** Create a new, empty canvas in a channel; give it source by publishing a project. */
+export const createCanvase: API.OperationMethod<
+  CreateCanvaseRequest,
+  Canvas,
+  CreateCanvaseError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseRequest,
+  output: Canvas,
+  errors: [Forbidden],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseBuildActionError = PosthogOpError;
+/** Apply a lifecycle action (retry, pin, unpin, cancel) to one build. */
+export const createCanvaseBuildAction: API.OperationMethod<
+  CreateCanvaseBuildActionRequest,
+  CanvasBuild,
+  CreateCanvaseBuildActionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseBuildActionRequest,
+  output: CanvasBuild,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseDraftError = BadRequest | PosthogOpError;
+/** Stage a complete source project as a draft version and build it, without publishing. The draft gets the same validation, versioning, and server-side build as a publish, but the canvas's head and live build never move, so nothing changes for viewers. Promote the version with `promote` to make it live. The response reports how the draft's declared capabilities widen the current head's, so growth in access can be reviewed before it ships. No version guard applies: a draft conflicts with nothing. */
+export const createCanvaseDraft: API.OperationMethod<
+  CreateCanvaseDraftRequest,
+  CanvasSourceDraftResponse,
+  CreateCanvaseDraftError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseDraftRequest,
+  output: CanvasSourceDraftResponse,
+  errors: [BadRequest],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseEditError = BadRequest | Conflict | PosthogOpError;
+/** Publish per-file edits against the canvas's current source project. Diff-aware alternative to sending the complete project: each operation sets a file's content or (content null) deletes it, applied to the head the caller read. `expected_current_version_id` is mandatory here — relative edits against an unverified base could silently merge into someone else's newer work. */
+export const createCanvaseEdit: API.OperationMethod<
+  CreateCanvaseEditRequest,
+  CanvasSourcePublishResponse,
+  CreateCanvaseEditError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseEditRequest,
+  output: CanvasSourcePublishResponse,
+  errors: [BadRequest, Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseHomeError = Forbidden | PosthogOpError;
+/** Get or provision the caller's home canvas. Idempotent: returns the user's existing home canvas, or creates a grid canvas in their personal channel and points their home preference at it. The home surface calls this on open. */
+export const createCanvaseHome: API.OperationMethod<
+  CreateCanvaseHomeRequest,
+  Canvas,
+  CreateCanvaseHomeError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseHomeRequest,
+  output: Canvas,
+  errors: [Forbidden],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseLayoutPublishError =
+  | BadRequest
+  | Conflict
+  | PosthogOpError;
+/** Publish a complete layout document as the grid canvas's new head version. Layout is data, not code: the new version is live immediately, with no build. Validation errors reject the publish (400) and leave the canvas untouched; a stale `expected_current_version_id` is rejected with 409. */
+export const createCanvaseLayoutPublish: API.OperationMethod<
+  CreateCanvaseLayoutPublishRequest,
+  CanvasLayoutPublishResponse,
+  CreateCanvaseLayoutPublishError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseLayoutPublishRequest,
+  output: CanvasLayoutPublishResponse,
+  errors: [BadRequest, Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvasePromoteError = Conflict | PosthogOpError;
+/** Make a draft version the canvas's live head. A draft whose build is ready goes live immediately, with no rebuild; otherwise a fresh build is queued. Returns that build. */
+export const createCanvasePromote: API.OperationMethod<
+  CreateCanvasePromoteRequest,
+  CanvasBuild,
+  CreateCanvasePromoteError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvasePromoteRequest,
+  output: CanvasBuild,
+  errors: [Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvasePublishError = BadRequest | Conflict | PosthogOpError;
+/** Publish a complete source project as the canvas's new head version. Validation errors reject the publish (400) and leave the canvas untouched; a stale `expected_current_version_id` is rejected with 409. A successful publish queues a server-side build. */
+export const createCanvasePublish: API.OperationMethod<
+  CreateCanvasePublishRequest,
+  CanvasSourcePublishResponse,
+  CreateCanvasePublishError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvasePublishRequest,
+  output: CanvasSourcePublishResponse,
+  errors: [BadRequest, Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvasePublishCurrentVersionError = Conflict | PosthogOpError;
+/** Queue a build for the current source version without changing source or metadata. */
+export const createCanvasePublishCurrentVersion: API.OperationMethod<
+  CreateCanvasePublishCurrentVersionRequest,
+  CanvasBuild,
+  CreateCanvasePublishCurrentVersionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvasePublishCurrentVersionRequest,
+  output: CanvasBuild,
+  errors: [Conflict],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseReportErrorError = NotFound | PosthogOpError;
+/** Report a runtime error observed while rendering a canvas build. Files the report in the authoring task's thread (deduped per build and error type) so the canvas's agent can be asked to fix it. Reports never start an agent run by themselves — dispatch is `request_fix`. Only the error class crosses the server; full messages and stacks stay client-side because rendering sessions can carry viewer data. */
+export const createCanvaseReportError: API.OperationMethod<
+  CreateCanvaseReportErrorRequest,
+  CreateCanvaseReportErrorResponse,
+  CreateCanvaseReportErrorError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseReportErrorRequest,
+  output: CreateCanvaseReportErrorResponse,
+  errors: [NotFound],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseRevertError = PosthogOpError;
+/** Move the canvas's head back to an existing source version and rebuild it. */
+export const createCanvaseRevert: API.OperationMethod<
+  CreateCanvaseRevertRequest,
+  CanvasBuild,
+  CreateCanvaseRevertError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseRevertRequest,
+  output: CanvasBuild,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCanvaseValidateError = PosthogOpError;
+/** Validate a candidate source project without publishing it. Side-effect free. */
+export const createCanvaseValidate: API.OperationMethod<
+  CreateCanvaseValidateRequest,
+  CanvasValidateResponse,
+  CreateCanvaseValidateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCanvaseValidateRequest,
+  output: CanvasValidateResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCanvasesError = PosthogOpError;
+/** Canvases: agent-built sandboxed browser apps, filed into channels. Source is versioned per publish and built server-side; the canvas app renders the published build's artifact from the isolated artifact origin. */
+export const listCanvases: API.OperationMethod<
+  ListCanvasesRequest,
+  PaginatedCanvasList,
+  ListCanvasesError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCanvasesRequest,
+  output: PaginatedCanvasList,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SetCanvaseStateError = BadRequest | Forbidden | PosthogOpError;
+/** Write one key of the canvas's runtime state, or delete it with a null value. */
+export const setCanvaseState: API.OperationMethod<
+  SetCanvaseStateRequest,
+  CanvasStateEntry,
+  SetCanvaseStateError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SetCanvaseStateRequest,
+  output: CanvasStateEntry,
+  errors: [BadRequest, Forbidden],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCanvasePartialError = PosthogOpError;
+/** Update canvas metadata, including the space it belongs to. */
+export const updateCanvasePartial: API.OperationMethod<
+  UpdateCanvasePartialRequest,
+  Canvas,
+  UpdateCanvasePartialError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCanvasePartialRequest,
+  output: Canvas,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

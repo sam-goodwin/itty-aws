@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.warehouse_column_statistics#WarehouseColumnStatisticsListRequest": {
+    "com.posthog.warehouse_column_statistics#ListWarehouseColumnStatisticsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -200,10 +200,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_column_statistics#WarehouseColumnStatisticsList": {
+    "com.posthog.warehouse_column_statistics#ListWarehouseColumnStatistics": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_column_statistics#WarehouseColumnStatisticsListRequest"
+        "target": "com.posthog.warehouse_column_statistics#ListWarehouseColumnStatisticsRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_column_statistics#PaginatedWarehouseColumnStatisticsList"
@@ -263,7 +263,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.warehouse_column_statistics#WarehouseColumnStatisticsList"
+          "target": "com.posthog.warehouse_column_statistics#ListWarehouseColumnStatistics"
         },
         {
           "target": "com.posthog.warehouse_column_statistics#WarehouseColumnStatisticsRetrieve"

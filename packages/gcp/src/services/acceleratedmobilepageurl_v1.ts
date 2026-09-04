@@ -76,28 +76,28 @@ export type BatchGetAmpUrlsRequestLookupStrategyEnum =
 export const BatchGetAmpUrlsRequestLookupStrategyEnum = /*@__PURE__*/ S.String;
 
 /** AMP URL request for a batch of URLs. */
-export interface BatchGetAmpUrlsRequest {
+export interface GetBatchAmpUrlRequest {
   /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
   urls?: StringList;
   /** The lookup_strategy being requested. */
   lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum | (string & {});
 }
-export const BatchGetAmpUrlsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchAmpUrlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     urls: S.optional(StringList),
     lookupStrategy: S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
   }),
 ).annotate({
-  identifier: "BatchGetAmpUrlsRequest",
-}) as any as S.Schema<BatchGetAmpUrlsRequest>;
+  identifier: "GetBatchAmpUrlRequest",
+}) as any as S.Schema<GetBatchAmpUrlRequest>;
 
 export interface BatchGetAmpUrlsRequest_ {
   /** Request body */
-  body?: BatchGetAmpUrlsRequest;
+  body?: GetBatchAmpUrlRequest;
 }
 export const BatchGetAmpUrlsRequest_ = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    body: S.optional(BatchGetAmpUrlsRequest.pipe(T.HttpBody())),
+    body: S.optional(GetBatchAmpUrlRequest.pipe(T.HttpBody())),
   }).pipe(
     T.Http({
       method: "POST",
@@ -163,36 +163,36 @@ export const AmpUrlErrorList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<AmpUrlErrorList>;
 
 /** Batch AMP URL response. */
-export interface BatchGetAmpUrlsResponse {
+export interface GetBatchAmpUrlResponse {
   /** For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once. */
   ampUrls?: AmpUrlList;
   /** The errors for requested URLs that have no AMP URL. */
   urlErrors?: AmpUrlErrorList;
 }
-export const BatchGetAmpUrlsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchAmpUrlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ampUrls: S.optional(AmpUrlList),
     urlErrors: S.optional(AmpUrlErrorList),
   }),
 ).annotate({
-  identifier: "BatchGetAmpUrlsResponse",
-}) as any as S.Schema<BatchGetAmpUrlsResponse>;
+  identifier: "GetBatchAmpUrlResponse",
+}) as any as S.Schema<GetBatchAmpUrlResponse>;
 
-export type BatchGetAmpUrlsError =
+export type GetBatchAmpUrlError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format). */
-export const batchGetAmpUrls: API.OperationMethod<
+export const getBatchAmpUrl: API.OperationMethod<
   BatchGetAmpUrlsRequest_,
-  BatchGetAmpUrlsResponse,
-  BatchGetAmpUrlsError,
+  GetBatchAmpUrlResponse,
+  GetBatchAmpUrlError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: BatchGetAmpUrlsRequest_,
-  output: BatchGetAmpUrlsResponse,
+  output: GetBatchAmpUrlResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

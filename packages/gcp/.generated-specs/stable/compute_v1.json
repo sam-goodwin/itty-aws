@@ -104043,7 +104043,7 @@
         "smithy.api#documentation": "Sets the labels on a VpnTunnel. To learn more about labels, read theLabeling\nResources documentation."
       }
     },
-    "com.gcp.compute_v1#AggregatedListVpnTunnelsRequest": {
+    "com.gcp.compute_v1#ListAggregatedVpnTunnelsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -104105,10 +104105,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListVpnTunnels": {
+    "com.gcp.compute_v1#ListAggregatedVpnTunnels": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListVpnTunnelsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedVpnTunnelsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#VpnTunnelAggregatedList"
@@ -105074,7 +105074,7 @@
         "target": "com.gcp.compute_v1#AggregatedListSubnetworksViewsEnum"
       }
     },
-    "com.gcp.compute_v1#AggregatedListSubnetworksRequest": {
+    "com.gcp.compute_v1#ListAggregatedSubnetworksRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -105143,10 +105143,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListSubnetworks": {
+    "com.gcp.compute_v1#ListAggregatedSubnetworks": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListSubnetworksRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedSubnetworksRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#SubnetworkAggregatedList"
@@ -106122,7 +106122,7 @@
         "smithy.api#documentation": "Returns permissions that a caller has on the specified resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkEndpointGroupsRequest": {
+    "com.gcp.compute_v1#ListAggregatedNetworkEndpointGroupsRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -106184,10 +106184,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkEndpointGroups": {
+    "com.gcp.compute_v1#ListAggregatedNetworkEndpointGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNetworkEndpointGroupsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNetworkEndpointGroupsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NetworkEndpointGroupAggregatedList"
@@ -106618,7 +106618,7 @@
         "smithy.api#documentation": "Patch Instance settings"
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetPoolsRequest": {
+    "com.gcp.compute_v1#ListAggregatedTargetPoolsRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -106680,10 +106680,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetPools": {
+    "com.gcp.compute_v1#ListAggregatedTargetPools": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListTargetPoolsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedTargetPoolsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#TargetPoolAggregatedList"
@@ -106782,7 +106782,7 @@
         "smithy.api#documentation": "Sets the Google Cloud Armor security policy for the specified target pool.\nFor more information, seeGoogle\nCloud Armor Overview"
       }
     },
-    "com.gcp.compute_v1#RemoveHealthCheckTargetPoolsRequest": {
+    "com.gcp.compute_v1#CheckRemoveHealthTargetPoolRequest": {
       "type": "structure",
       "members": {
         "requestId": {
@@ -106825,10 +106825,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#RemoveHealthCheckTargetPools": {
+    "com.gcp.compute_v1#CheckRemoveHealthTargetPool": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#RemoveHealthCheckTargetPoolsRequest"
+        "target": "com.gcp.compute_v1#CheckRemoveHealthTargetPoolRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#Operation"
@@ -107060,7 +107060,7 @@
         "smithy.api#documentation": "Gets the most recent health check results for each IP for the\ninstance that is referenced by the given target pool."
       }
     },
-    "com.gcp.compute_v1#AddHealthCheckTargetPoolsRequest": {
+    "com.gcp.compute_v1#CheckAddHealthTargetPoolRequest": {
       "type": "structure",
       "members": {
         "region": {
@@ -107103,10 +107103,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AddHealthCheckTargetPools": {
+    "com.gcp.compute_v1#CheckAddHealthTargetPool": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AddHealthCheckTargetPoolsRequest"
+        "target": "com.gcp.compute_v1#CheckAddHealthTargetPoolRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#Operation"
@@ -109752,7 +109752,7 @@
         "smithy.api#documentation": "Rotates the customer-managed\nencryption key to the latest version for the specified persistent disk."
       }
     },
-    "com.gcp.compute_v1#BulkSetLabelsDisksRequest": {
+    "com.gcp.compute_v1#SetBulkLabelDiskRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -109794,10 +109794,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#BulkSetLabelsDisks": {
+    "com.gcp.compute_v1#SetBulkLabelDisk": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#BulkSetLabelsDisksRequest"
+        "target": "com.gcp.compute_v1#SetBulkLabelDiskRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#Operation"
@@ -110728,7 +110728,7 @@
         "smithy.api#documentation": "Stops asynchronous replication for a consistency group of disks.\nCan be invoked either in the primary or secondary scope."
       }
     },
-    "com.gcp.compute_v1#AggregatedListDisksRequest": {
+    "com.gcp.compute_v1#ListAggregatedDisksRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -110790,10 +110790,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListDisks": {
+    "com.gcp.compute_v1#ListAggregatedDisks": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListDisksRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedDisksRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#DiskAggregatedList"
@@ -111477,7 +111477,7 @@
         "smithy.api#documentation": "Updates a HealthCheck resource in the specified project using the data\nincluded in the request. This method supportsPATCH\nsemantics and uses theJSON merge\npatch format and processing rules."
       }
     },
-    "com.gcp.compute_v1#AggregatedListHealthChecksRequest": {
+    "com.gcp.compute_v1#ListAggregatedHealthChecksRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -111539,10 +111539,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListHealthChecks": {
+    "com.gcp.compute_v1#ListAggregatedHealthChecks": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListHealthChecksRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedHealthChecksRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#HealthChecksAggregatedList"
@@ -112625,7 +112625,7 @@
         "smithy.api#documentation": "Sets the labels on a security policy. To learn more about labels,\nread the Labeling Resources\ndocumentation."
       }
     },
-    "com.gcp.compute_v1#AggregatedListSecurityPoliciesRequest": {
+    "com.gcp.compute_v1#ListAggregatedSecurityPoliciesRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -112687,10 +112687,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListSecurityPolicies": {
+    "com.gcp.compute_v1#ListAggregatedSecurityPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListSecurityPoliciesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedSecurityPoliciesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#SecurityPoliciesAggregatedList"
@@ -113640,7 +113640,7 @@
         "smithy.api#documentation": "Returns the specified node type."
       }
     },
-    "com.gcp.compute_v1#AggregatedListNodeTypesRequest": {
+    "com.gcp.compute_v1#ListAggregatedNodeTypesRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -113702,10 +113702,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNodeTypes": {
+    "com.gcp.compute_v1#ListAggregatedNodeTypes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNodeTypesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNodeTypesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NodeTypeAggregatedList"
@@ -114207,7 +114207,7 @@
         "smithy.api#documentation": "Specifies the instance template to use when creating new instances in this\ngroup. The templates for existing instances in the group do not change\nunless you run recreateInstances, runapplyUpdatesToInstances, or set the group'supdatePolicy.type to PROACTIVE."
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstanceGroupManagersRequest": {
+    "com.gcp.compute_v1#ListAggregatedInstanceGroupManagersRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -114269,10 +114269,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstanceGroupManagers": {
+    "com.gcp.compute_v1#ListAggregatedInstanceGroupManagers": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListInstanceGroupManagersRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedInstanceGroupManagersRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#InstanceGroupManagerAggregatedList"
@@ -115853,7 +115853,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionCommitmentsRequest": {
+    "com.gcp.compute_v1#ListAggregatedRegionCommitmentsRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -115915,10 +115915,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionCommitments": {
+    "com.gcp.compute_v1#ListAggregatedRegionCommitments": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListRegionCommitmentsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedRegionCommitmentsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#CommitmentAggregatedList"
@@ -116082,7 +116082,7 @@
         "smithy.api#documentation": "Returns the specified storage pool type."
       }
     },
-    "com.gcp.compute_v1#AggregatedListStoragePoolTypesRequest": {
+    "com.gcp.compute_v1#ListAggregatedStoragePoolTypesRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -116144,10 +116144,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListStoragePoolTypes": {
+    "com.gcp.compute_v1#ListAggregatedStoragePoolTypes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListStoragePoolTypesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedStoragePoolTypesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#StoragePoolTypeAggregatedList"
@@ -118229,7 +118229,7 @@
         "smithy.api#documentation": "Cancel the specified future reservation."
       }
     },
-    "com.gcp.compute_v1#AggregatedListFutureReservationsRequest": {
+    "com.gcp.compute_v1#ListAggregatedFutureReservationsRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -118291,10 +118291,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListFutureReservations": {
+    "com.gcp.compute_v1#ListAggregatedFutureReservations": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListFutureReservationsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedFutureReservationsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#FutureReservationsAggregatedListResponse"
@@ -118434,7 +118434,7 @@
         "smithy.api#documentation": "Deletes the specified Operations resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListGlobalOperationsRequest": {
+    "com.gcp.compute_v1#ListAggregatedGlobalOperationsRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -118496,10 +118496,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListGlobalOperations": {
+    "com.gcp.compute_v1#ListAggregatedGlobalOperations": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListGlobalOperationsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedGlobalOperationsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#OperationAggregatedList"
@@ -118783,7 +118783,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListAcceleratorTypesRequest": {
+    "com.gcp.compute_v1#ListAggregatedAcceleratorTypesRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -118845,10 +118845,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListAcceleratorTypes": {
+    "com.gcp.compute_v1#ListAggregatedAcceleratorTypes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListAcceleratorTypesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedAcceleratorTypesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#AcceleratorTypeAggregatedList"
@@ -119262,7 +119262,7 @@
         "smithy.api#documentation": "Returns permissions that a caller has on the specified resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionCompositeHealthChecksRequest": {
+    "com.gcp.compute_v1#ListAggregatedRegionCompositeHealthChecksRequest": {
       "type": "structure",
       "members": {
         "returnPartialSuccess": {
@@ -119324,10 +119324,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionCompositeHealthChecks": {
+    "com.gcp.compute_v1#ListAggregatedRegionCompositeHealthChecks": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListRegionCompositeHealthChecksRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedRegionCompositeHealthChecksRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#CompositeHealthCheckAggregatedList"
@@ -121915,7 +121915,7 @@
         "smithy.api#documentation": "Changes the URL map for TargetHttpProxy."
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetHttpProxiesRequest": {
+    "com.gcp.compute_v1#ListAggregatedTargetHttpProxiesRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -121977,10 +121977,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetHttpProxies": {
+    "com.gcp.compute_v1#ListAggregatedTargetHttpProxies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListTargetHttpProxiesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedTargetHttpProxiesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#TargetHttpProxyAggregatedList"
@@ -124874,7 +124874,7 @@
         "smithy.api#documentation": "Perform maintenance on a subset of nodes in the node group."
       }
     },
-    "com.gcp.compute_v1#AggregatedListNodeGroupsRequest": {
+    "com.gcp.compute_v1#ListAggregatedNodeGroupsRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -124936,10 +124936,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNodeGroups": {
+    "com.gcp.compute_v1#ListAggregatedNodeGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNodeGroupsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNodeGroupsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NodeGroupAggregatedList"
@@ -126823,7 +126823,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListPacketMirroringsRequest": {
+    "com.gcp.compute_v1#ListAggregatedPacketMirroringsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -126885,10 +126885,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListPacketMirrorings": {
+    "com.gcp.compute_v1#ListAggregatedPacketMirrorings": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListPacketMirroringsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedPacketMirroringsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#PacketMirroringAggregatedList"
@@ -128575,7 +128575,7 @@
         "smithy.api#documentation": "Returns the specified disk type."
       }
     },
-    "com.gcp.compute_v1#AggregatedListDiskTypesRequest": {
+    "com.gcp.compute_v1#ListAggregatedDiskTypesRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -128637,10 +128637,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListDiskTypes": {
+    "com.gcp.compute_v1#ListAggregatedDiskTypes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListDiskTypesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedDiskTypesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#DiskTypeAggregatedList"
@@ -129973,7 +129973,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListMachineTypesRequest": {
+    "com.gcp.compute_v1#ListAggregatedMachineTypesRequest": {
       "type": "structure",
       "members": {
         "returnPartialSuccess": {
@@ -130035,10 +130035,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListMachineTypes": {
+    "com.gcp.compute_v1#ListAggregatedMachineTypes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListMachineTypesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedMachineTypesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#MachineTypeAggregatedList"
@@ -130431,7 +130431,7 @@
         "smithy.api#documentation": "Returns the specified TargetTcpProxy resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetTcpProxiesRequest": {
+    "com.gcp.compute_v1#ListAggregatedTargetTcpProxiesRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -130493,10 +130493,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetTcpProxies": {
+    "com.gcp.compute_v1#ListAggregatedTargetTcpProxies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListTargetTcpProxiesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedTargetTcpProxiesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#TargetTcpProxyAggregatedList"
@@ -130844,7 +130844,7 @@
         "smithy.api#documentation": "Creates an InterconnectAttachment in the specified project using the data\nincluded in the request."
       }
     },
-    "com.gcp.compute_v1#AggregatedListInterconnectAttachmentsRequest": {
+    "com.gcp.compute_v1#ListAggregatedInterconnectAttachmentsRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -130906,10 +130906,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInterconnectAttachments": {
+    "com.gcp.compute_v1#ListAggregatedInterconnectAttachments": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListInterconnectAttachmentsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedInterconnectAttachmentsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#InterconnectAttachmentAggregatedList"
@@ -131211,7 +131211,7 @@
         "smithy.api#documentation": "Creates an address resource in the specified project by using the data\nincluded in the request."
       }
     },
-    "com.gcp.compute_v1#AggregatedListAddressesRequest": {
+    "com.gcp.compute_v1#ListAggregatedAddressesRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -131273,10 +131273,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListAddresses": {
+    "com.gcp.compute_v1#ListAggregatedAddresses": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListAddressesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedAddressesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#AddressAggregatedList"
@@ -133064,7 +133064,7 @@
         "smithy.api#documentation": "Gets the access control policy for a resource. May be empty if no such\npolicy or resource exists."
       }
     },
-    "com.gcp.compute_v1#AggregatedListResourcePoliciesRequest": {
+    "com.gcp.compute_v1#ListAggregatedResourcePoliciesRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -133126,10 +133126,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListResourcePolicies": {
+    "com.gcp.compute_v1#ListAggregatedResourcePolicies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListResourcePoliciesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedResourcePoliciesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#ResourcePolicyAggregatedList"
@@ -135204,7 +135204,7 @@
         "smithy.api#documentation": "Gets the most recent health check results for this\nregional HealthSource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionHealthSourcesRequest": {
+    "com.gcp.compute_v1#ListAggregatedRegionHealthSourcesRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -135266,10 +135266,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionHealthSources": {
+    "com.gcp.compute_v1#ListAggregatedRegionHealthSources": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListRegionHealthSourcesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedRegionHealthSourcesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#HealthSourceAggregatedList"
@@ -135788,7 +135788,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionNotificationEndpointsRequest": {
+    "com.gcp.compute_v1#ListAggregatedRegionNotificationEndpointsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -135850,10 +135850,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionNotificationEndpoints": {
+    "com.gcp.compute_v1#ListAggregatedRegionNotificationEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListRegionNotificationEndpointsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedRegionNotificationEndpointsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NotificationEndpointAggregatedList"
@@ -136615,7 +136615,7 @@
         "smithy.api#documentation": "Sets the access control policy on the specified resource.\nReplaces any existing policy."
       }
     },
-    "com.gcp.compute_v1#AggregatedListReservationsRequest": {
+    "com.gcp.compute_v1#ListAggregatedReservationsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -136677,10 +136677,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListReservations": {
+    "com.gcp.compute_v1#ListAggregatedReservations": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListReservationsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedReservationsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#ReservationAggregatedList"
@@ -137369,7 +137369,7 @@
         "smithy.api#documentation": "Gets details of a global VM extension policy."
       }
     },
-    "com.gcp.compute_v1#AggregatedListGlobalVmExtensionPoliciesRequest": {
+    "com.gcp.compute_v1#ListAggregatedGlobalVmExtensionPoliciesRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -137431,10 +137431,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListGlobalVmExtensionPolicies": {
+    "com.gcp.compute_v1#ListAggregatedGlobalVmExtensionPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListGlobalVmExtensionPoliciesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedGlobalVmExtensionPoliciesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#VmExtensionPolicyAggregatedListResponse"
@@ -140311,7 +140311,7 @@
         "smithy.api#documentation": "Updates an autoscaler in the specified project using the data\nincluded in the request."
       }
     },
-    "com.gcp.compute_v1#AggregatedListAutoscalersRequest": {
+    "com.gcp.compute_v1#ListAggregatedAutoscalersRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -140373,10 +140373,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListAutoscalers": {
+    "com.gcp.compute_v1#ListAggregatedAutoscalers": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListAutoscalersRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedAutoscalersRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#AutoscalerAggregatedList"
@@ -140923,7 +140923,7 @@
         "smithy.api#documentation": "Patches the specified UrlMap resource with the data included in the\nrequest. This method supportsPATCH\nsemantics and uses theJSON merge\npatch format and processing rules."
       }
     },
-    "com.gcp.compute_v1#AggregatedListUrlMapsRequest": {
+    "com.gcp.compute_v1#ListAggregatedUrlMapsRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -140985,10 +140985,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListUrlMaps": {
+    "com.gcp.compute_v1#ListAggregatedUrlMaps": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListUrlMapsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedUrlMapsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#UrlMapsAggregatedList"
@@ -141599,7 +141599,7 @@
         "smithy.api#documentation": "Returns the specified VPN gateway."
       }
     },
-    "com.gcp.compute_v1#AggregatedListVpnGatewaysRequest": {
+    "com.gcp.compute_v1#ListAggregatedVpnGatewaysRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -141661,10 +141661,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListVpnGateways": {
+    "com.gcp.compute_v1#ListAggregatedVpnGateways": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListVpnGatewaysRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedVpnGatewaysRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#VpnGatewayAggregatedList"
@@ -142116,7 +142116,7 @@
         "smithy.api#documentation": "Changes target URL for forwarding rule. The new target should be of the\nsame type as the old target."
       }
     },
-    "com.gcp.compute_v1#AggregatedListForwardingRulesRequest": {
+    "com.gcp.compute_v1#ListAggregatedForwardingRulesRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -142178,10 +142178,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListForwardingRules": {
+    "com.gcp.compute_v1#ListAggregatedForwardingRules": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListForwardingRulesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedForwardingRulesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#ForwardingRuleAggregatedList"
@@ -143846,7 +143846,7 @@
         "smithy.api#documentation": "Creates a new service in the specified project using the data included in\nthe request."
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkEdgeSecurityServicesRequest": {
+    "com.gcp.compute_v1#ListAggregatedNetworkEdgeSecurityServicesRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -143908,10 +143908,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkEdgeSecurityServices": {
+    "com.gcp.compute_v1#ListAggregatedNetworkEdgeSecurityServices": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNetworkEdgeSecurityServicesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNetworkEdgeSecurityServicesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NetworkEdgeSecurityServiceAggregatedList"
@@ -144650,7 +144650,7 @@
         "smithy.api#documentation": "Creates an instance group in the specified project using the\nparameters that are included in the request."
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstanceGroupsRequest": {
+    "com.gcp.compute_v1#ListAggregatedInstanceGroupsRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -144712,10 +144712,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstanceGroups": {
+    "com.gcp.compute_v1#ListAggregatedInstanceGroups": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListInstanceGroupsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedInstanceGroupsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#InstanceGroupAggregatedList"
@@ -145455,7 +145455,7 @@
         "smithy.api#documentation": "Sets the labels on a instantSnapshot in the given zone. To learn more about\nlabels, read the Labeling\nResources documentation."
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstantSnapshotsRequest": {
+    "com.gcp.compute_v1#ListAggregatedInstantSnapshotsRequest": {
       "type": "structure",
       "members": {
         "returnPartialSuccess": {
@@ -145517,10 +145517,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstantSnapshots": {
+    "com.gcp.compute_v1#ListAggregatedInstantSnapshots": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListInstantSnapshotsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedInstantSnapshotsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#InstantSnapshotAggregatedList"
@@ -146841,7 +146841,7 @@
         "smithy.api#documentation": "Adds a peering to the specified network."
       }
     },
-    "com.gcp.compute_v1#CancelRequestRemovePeeringNetworksRequest": {
+    "com.gcp.compute_v1#RequestCancelRemovePeeringNetworkRequest": {
       "type": "structure",
       "members": {
         "network": {
@@ -146876,10 +146876,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#CancelRequestRemovePeeringNetworks": {
+    "com.gcp.compute_v1#RequestCancelRemovePeeringNetwork": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#CancelRequestRemovePeeringNetworksRequest"
+        "target": "com.gcp.compute_v1#RequestCancelRemovePeeringNetworkRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#Operation"
@@ -147687,7 +147687,7 @@
         "smithy.api#documentation": "Deletes the specified SslCertificate resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListSslCertificatesRequest": {
+    "com.gcp.compute_v1#ListAggregatedSslCertificatesRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -147749,10 +147749,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListSslCertificates": {
+    "com.gcp.compute_v1#ListAggregatedSslCertificates": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListSslCertificatesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedSslCertificatesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#SslCertificateAggregatedList"
@@ -151506,7 +151506,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstancesRequest": {
+    "com.gcp.compute_v1#ListAggregatedInstancesRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -151568,10 +151568,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstances": {
+    "com.gcp.compute_v1#ListAggregatedInstances": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListInstancesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedInstancesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#InstanceAggregatedList"
@@ -153691,7 +153691,7 @@
         "smithy.api#documentation": "Deletes the specified ServiceAttachment in the given scope"
       }
     },
-    "com.gcp.compute_v1#AggregatedListServiceAttachmentsRequest": {
+    "com.gcp.compute_v1#ListAggregatedServiceAttachmentsRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -153753,10 +153753,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListServiceAttachments": {
+    "com.gcp.compute_v1#ListAggregatedServiceAttachments": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListServiceAttachmentsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedServiceAttachmentsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#ServiceAttachmentAggregatedList"
@@ -154171,7 +154171,7 @@
         "smithy.api#documentation": "Sets the access control policy on the specified resource.\nReplaces any existing policy."
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstanceTemplatesRequest": {
+    "com.gcp.compute_v1#ListAggregatedInstanceTemplatesRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -154233,10 +154233,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListInstanceTemplates": {
+    "com.gcp.compute_v1#ListAggregatedInstanceTemplates": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListInstanceTemplatesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedInstanceTemplatesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#InstanceTemplateAggregatedList"
@@ -154541,7 +154541,7 @@
         "smithy.api#documentation": "Returns the specified TargetInstance resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetInstancesRequest": {
+    "com.gcp.compute_v1#ListAggregatedTargetInstancesRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -154603,10 +154603,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetInstances": {
+    "com.gcp.compute_v1#ListAggregatedTargetInstances": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListTargetInstancesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedTargetInstancesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#TargetInstanceAggregatedList"
@@ -158476,7 +158476,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionHealthAggregationPoliciesRequest": {
+    "com.gcp.compute_v1#ListAggregatedRegionHealthAggregationPoliciesRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -158538,10 +158538,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRegionHealthAggregationPolicies": {
+    "com.gcp.compute_v1#ListAggregatedRegionHealthAggregationPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListRegionHealthAggregationPoliciesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedRegionHealthAggregationPoliciesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#HealthAggregationPolicyAggregatedList"
@@ -159175,7 +159175,7 @@
         "smithy.api#documentation": "Deletes the specified storage pool. Deleting a storagePool\nremoves its data permanently and is irreversible. However, deleting a\nstoragePool does not delete any snapshots previously\nmade from the storagePool. You must separately delete\nsnapshots."
       }
     },
-    "com.gcp.compute_v1#AggregatedListStoragePoolsRequest": {
+    "com.gcp.compute_v1#ListAggregatedStoragePoolsRequest": {
       "type": "structure",
       "members": {
         "returnPartialSuccess": {
@@ -159237,10 +159237,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListStoragePools": {
+    "com.gcp.compute_v1#ListAggregatedStoragePools": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListStoragePoolsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedStoragePoolsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#StoragePoolAggregatedList"
@@ -160494,7 +160494,7 @@
         "smithy.api#documentation": "Creates a NodeTemplate resource in the specified project using the data\nincluded in the request."
       }
     },
-    "com.gcp.compute_v1#AggregatedListNodeTemplatesRequest": {
+    "com.gcp.compute_v1#ListAggregatedNodeTemplatesRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -160556,10 +160556,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNodeTemplates": {
+    "com.gcp.compute_v1#ListAggregatedNodeTemplates": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNodeTemplatesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNodeTemplatesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NodeTemplateAggregatedList"
@@ -161107,7 +161107,7 @@
         "smithy.api#documentation": "Returns the specified InterconnectAttachmentGroup resource in the given\nscope."
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetVpnGatewaysRequest": {
+    "com.gcp.compute_v1#ListAggregatedTargetVpnGatewaysRequest": {
       "type": "structure",
       "members": {
         "orderBy": {
@@ -161169,10 +161169,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListTargetVpnGateways": {
+    "com.gcp.compute_v1#ListAggregatedTargetVpnGateways": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListTargetVpnGatewaysRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedTargetVpnGatewaysRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#TargetVpnGatewayAggregatedList"
@@ -162210,7 +162210,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRoutersRequest": {
+    "com.gcp.compute_v1#ListAggregatedRoutersRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -162272,10 +162272,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListRouters": {
+    "com.gcp.compute_v1#ListAggregatedRouters": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListRoutersRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedRoutersRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#RouterAggregatedList"
@@ -163960,7 +163960,7 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListSslPoliciesRequest": {
+    "com.gcp.compute_v1#ListAggregatedSslPoliciesRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -164022,10 +164022,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListSslPolicies": {
+    "com.gcp.compute_v1#ListAggregatedSslPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListSslPoliciesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedSslPoliciesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#SslPoliciesAggregatedList"
@@ -165297,7 +165297,7 @@
         "smithy.api#documentation": "Returns the specified BackendService resource."
       }
     },
-    "com.gcp.compute_v1#AggregatedListBackendServicesRequest": {
+    "com.gcp.compute_v1#ListAggregatedBackendServicesRequest": {
       "type": "structure",
       "members": {
         "includeAllScopes": {
@@ -165359,10 +165359,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListBackendServices": {
+    "com.gcp.compute_v1#ListAggregatedBackendServices": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListBackendServicesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedBackendServicesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#BackendServiceAggregatedList"
@@ -165969,7 +165969,7 @@
         "smithy.api#documentation": "Returns the specified network firewall policy."
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkFirewallPoliciesRequest": {
+    "com.gcp.compute_v1#ListAggregatedNetworkFirewallPoliciesRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -166031,10 +166031,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkFirewallPolicies": {
+    "com.gcp.compute_v1#ListAggregatedNetworkFirewallPolicies": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNetworkFirewallPoliciesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNetworkFirewallPoliciesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NetworkFirewallPolicyAggregatedList"
@@ -168451,7 +168451,7 @@
         "smithy.api#documentation": "Deletes a key for validating requests with signed URLs for this backend\nbucket."
       }
     },
-    "com.gcp.compute_v1#AggregatedListBackendBucketsRequest": {
+    "com.gcp.compute_v1#ListAggregatedBackendBucketsRequest": {
       "type": "structure",
       "members": {
         "maxResults": {
@@ -168513,10 +168513,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListBackendBuckets": {
+    "com.gcp.compute_v1#ListAggregatedBackendBuckets": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListBackendBucketsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedBackendBucketsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#BackendBucketAggregatedList"
@@ -168832,7 +168832,7 @@
         "smithy.api#documentation": "Announces the specified PublicDelegatedPrefix in the given region."
       }
     },
-    "com.gcp.compute_v1#AggregatedListPublicDelegatedPrefixesRequest": {
+    "com.gcp.compute_v1#ListAggregatedPublicDelegatedPrefixesRequest": {
       "type": "structure",
       "members": {
         "serviceProjectNumber": {
@@ -168894,10 +168894,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListPublicDelegatedPrefixes": {
+    "com.gcp.compute_v1#ListAggregatedPublicDelegatedPrefixes": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListPublicDelegatedPrefixesRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedPublicDelegatedPrefixesRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#PublicDelegatedPrefixAggregatedList"
@@ -169822,7 +169822,7 @@
         "smithy.api#documentation": "List all of the ordered rules present in a single specified policy."
       }
     },
-    "com.gcp.compute_v1#TestIamPermissionsRegionHealthCheckServicesRequest": {
+    "com.gcp.compute_v1#CheckTestIamPermissionRegionHealthServiceRequest": {
       "type": "structure",
       "members": {
         "project": {
@@ -169858,10 +169858,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#TestIamPermissionsRegionHealthCheckServices": {
+    "com.gcp.compute_v1#CheckTestIamPermissionRegionHealthService": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#TestIamPermissionsRegionHealthCheckServicesRequest"
+        "target": "com.gcp.compute_v1#CheckTestIamPermissionRegionHealthServiceRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#TestPermissionsResponse"
@@ -169888,7 +169888,7 @@
         "smithy.api#documentation": "Returns permissions that a caller has on the specified resource."
       }
     },
-    "com.gcp.compute_v1#InsertRegionHealthCheckServicesRequest": {
+    "com.gcp.compute_v1#CheckInsertRegionHealthServiceRequest": {
       "type": "structure",
       "members": {
         "requestId": {
@@ -169923,10 +169923,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#InsertRegionHealthCheckServices": {
+    "com.gcp.compute_v1#CheckInsertRegionHealthService": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#InsertRegionHealthCheckServicesRequest"
+        "target": "com.gcp.compute_v1#CheckInsertRegionHealthServiceRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#Operation"
@@ -171299,7 +171299,7 @@
         "smithy.api#documentation": "Allows customers to perform maintenance on a reservation block"
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkAttachmentsRequest": {
+    "com.gcp.compute_v1#ListAggregatedNetworkAttachmentsRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -171361,10 +171361,10 @@
         }
       }
     },
-    "com.gcp.compute_v1#AggregatedListNetworkAttachments": {
+    "com.gcp.compute_v1#ListAggregatedNetworkAttachments": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.compute_v1#AggregatedListNetworkAttachmentsRequest"
+        "target": "com.gcp.compute_v1#ListAggregatedNetworkAttachmentsRequest"
       },
       "output": {
         "target": "com.gcp.compute_v1#NetworkAttachmentAggregatedList"

@@ -2306,7 +2306,7 @@
         "smithy.api#documentation": "Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status."
       }
     },
-    "com.gcp.chromepolicy_v1#BatchDeleteCustomersPoliciesGroupsRequest": {
+    "com.gcp.chromepolicy_v1#DeleteBatchCustomerPolicyGroupRequest": {
       "type": "structure",
       "members": {
         "customer": {
@@ -2326,10 +2326,10 @@
         }
       }
     },
-    "com.gcp.chromepolicy_v1#BatchDeleteCustomersPoliciesGroups": {
+    "com.gcp.chromepolicy_v1#DeleteBatchCustomerPolicyGroup": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.chromepolicy_v1#BatchDeleteCustomersPoliciesGroupsRequest"
+        "target": "com.gcp.chromepolicy_v1#DeleteBatchCustomerPolicyGroupRequest"
       },
       "output": {
         "target": "com.gcp.chromepolicy_v1#GoogleProtobufEmpty"

@@ -6791,7 +6791,7 @@
         "smithy.api#documentation": "Unmerges cells in a Table."
       }
     },
-    "com.gcp.docs_v1#BatchUpdateDocumentsRequest": {
+    "com.gcp.docs_v1#UpdateBatchDocumentRequest": {
       "type": "structure",
       "members": {
         "documentId": {
@@ -6863,10 +6863,10 @@
         ]
       }
     },
-    "com.gcp.docs_v1#BatchUpdateDocuments": {
+    "com.gcp.docs_v1#UpdateBatchDocument": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.docs_v1#BatchUpdateDocumentsRequest"
+        "target": "com.gcp.docs_v1#UpdateBatchDocumentRequest"
       },
       "output": {
         "target": "com.gcp.docs_v1#BatchUpdateDocumentResponse"

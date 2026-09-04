@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.labservices#ImagesUpdate": {
+    "com.azure.labservices#UpdateImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#ImagesUpdateRequest"
+        "target": "com.azure.labservices#UpdateImageRequest"
       },
       "output": {
-        "target": "com.azure.labservices#ImagesUpdateResponse"
+        "target": "com.azure.labservices#UpdateImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#ImagesUpdateResponse": {
+    "com.azure.labservices#UpdateImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -421,7 +421,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#ImagesUpdateRequest": {
+    "com.azure.labservices#UpdateImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -898,13 +898,13 @@
         "smithy.api#documentation": "Property enabled state."
       }
     },
-    "com.azure.labservices#ImagesGet": {
+    "com.azure.labservices#GetImage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#ImagesGetRequest"
+        "target": "com.azure.labservices#GetImageRequest"
       },
       "output": {
-        "target": "com.azure.labservices#ImagesGetResponse"
+        "target": "com.azure.labservices#GetImageResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -917,7 +917,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#ImagesGetResponse": {
+    "com.azure.labservices#GetImageResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1064,7 +1064,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#ImagesGetRequest": {
+    "com.azure.labservices#GetImageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1104,10 +1104,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#ImagesListByLabPlan": {
+    "com.azure.labservices#ListImageByLabPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#ImagesListByLabPlanRequest"
+        "target": "com.azure.labservices#ListImageByLabPlanRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedImages"
@@ -1299,7 +1299,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#ImagesListByLabPlanRequest": {
+    "com.azure.labservices#ListImageByLabPlanRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1401,10 +1401,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabPlansDelete": {
+    "com.azure.labservices#DeleteLabPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabPlansDeleteRequest"
+        "target": "com.azure.labservices#DeleteLabPlanRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1420,7 +1420,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabPlansDeleteRequest": {
+    "com.azure.labservices#DeleteLabPlanRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1452,13 +1452,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabPlansUpdate": {
+    "com.azure.labservices#UpdateLabPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabPlansUpdateRequest"
+        "target": "com.azure.labservices#UpdateLabPlanRequest"
       },
       "output": {
-        "target": "com.azure.labservices#LabPlansUpdateResponse"
+        "target": "com.azure.labservices#UpdateLabPlanResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1471,7 +1471,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabPlansUpdateResponse": {
+    "com.azure.labservices#UpdateLabPlanResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2030,7 +2030,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabPlansUpdateRequest": {
+    "com.azure.labservices#UpdateLabPlanRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2587,13 +2587,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabPlansGet": {
+    "com.azure.labservices#GetLabPlan": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabPlansGetRequest"
+        "target": "com.azure.labservices#GetLabPlanRequest"
       },
       "output": {
-        "target": "com.azure.labservices#LabPlansGetResponse"
+        "target": "com.azure.labservices#GetLabPlanResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2606,7 +2606,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabPlansGetResponse": {
+    "com.azure.labservices#GetLabPlanResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2824,7 +2824,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabPlansGetRequest": {
+    "com.azure.labservices#GetLabPlanRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2856,10 +2856,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabPlansListByResourceGroup": {
+    "com.azure.labservices#ListLabPlanByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabPlansListByResourceGroupRequest"
+        "target": "com.azure.labservices#ListLabPlanByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedLabPlans"
@@ -3122,7 +3122,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabPlansListByResourceGroupRequest": {
+    "com.azure.labservices#ListLabPlanByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3146,10 +3146,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabPlansListBySubscription": {
+    "com.azure.labservices#ListLabPlanBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabPlansListBySubscriptionRequest"
+        "target": "com.azure.labservices#ListLabPlanBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedLabPlans"
@@ -3165,7 +3165,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabPlansListBySubscriptionRequest": {
+    "com.azure.labservices#ListLabPlanBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3188,13 +3188,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#OperationsList": {
+    "com.azure.labservices#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.labservices#OperationsListResponse"
+        "target": "com.azure.labservices#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3207,7 +3207,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#OperationsListResponse": {
+    "com.azure.labservices#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -3448,10 +3448,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabsDelete": {
+    "com.azure.labservices#DeleteLab": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabsDeleteRequest"
+        "target": "com.azure.labservices#DeleteLabRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3467,7 +3467,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabsDeleteRequest": {
+    "com.azure.labservices#DeleteLabRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3499,13 +3499,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabsUpdate": {
+    "com.azure.labservices#UpdateLab": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabsUpdateRequest"
+        "target": "com.azure.labservices#UpdateLabRequest"
       },
       "output": {
-        "target": "com.azure.labservices#LabsUpdateResponse"
+        "target": "com.azure.labservices#UpdateLabResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3518,7 +3518,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabsUpdateResponse": {
+    "com.azure.labservices#UpdateLabResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4366,7 +4366,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabsUpdateRequest": {
+    "com.azure.labservices#UpdateLabRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5306,13 +5306,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabsGet": {
+    "com.azure.labservices#GetLab": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabsGetRequest"
+        "target": "com.azure.labservices#GetLabRequest"
       },
       "output": {
-        "target": "com.azure.labservices#LabsGetResponse"
+        "target": "com.azure.labservices#GetLabResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5325,7 +5325,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabsGetResponse": {
+    "com.azure.labservices#GetLabResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5497,7 +5497,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabsGetRequest": {
+    "com.azure.labservices#GetLabRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5529,10 +5529,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabsListByResourceGroup": {
+    "com.azure.labservices#ListLabByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabsListByResourceGroupRequest"
+        "target": "com.azure.labservices#ListLabByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedLabs"
@@ -5749,7 +5749,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.labservices#LabsListByResourceGroupRequest": {
+    "com.azure.labservices#ListLabByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5773,10 +5773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#LabsListBySubscription": {
+    "com.azure.labservices#ListLabBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#LabsListBySubscriptionRequest"
+        "target": "com.azure.labservices#ListLabBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedLabs"
@@ -5792,7 +5792,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#LabsListBySubscriptionRequest": {
+    "com.azure.labservices#ListLabBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5815,10 +5815,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#OperationResultsGet": {
+    "com.azure.labservices#GetOperationResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#OperationResultsGetRequest"
+        "target": "com.azure.labservices#GetOperationResultRequest"
       },
       "output": {
         "target": "com.azure.labservices#OperationResult"
@@ -6055,7 +6055,7 @@
         "smithy.api#documentation": "The operation status"
       }
     },
-    "com.azure.labservices#OperationResultsGetRequest": {
+    "com.azure.labservices#GetOperationResultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6079,10 +6079,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#SchedulesDelete": {
+    "com.azure.labservices#DeleteSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#SchedulesDeleteRequest"
+        "target": "com.azure.labservices#DeleteScheduleRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -6098,7 +6098,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#SchedulesDeleteRequest": {
+    "com.azure.labservices#DeleteScheduleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6138,13 +6138,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#SchedulesUpdate": {
+    "com.azure.labservices#UpdateSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#SchedulesUpdateRequest"
+        "target": "com.azure.labservices#UpdateScheduleRequest"
       },
       "output": {
-        "target": "com.azure.labservices#SchedulesUpdateResponse"
+        "target": "com.azure.labservices#UpdateScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6157,7 +6157,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#SchedulesUpdateResponse": {
+    "com.azure.labservices#UpdateScheduleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6545,7 +6545,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#SchedulesUpdateRequest": {
+    "com.azure.labservices#UpdateScheduleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6842,13 +6842,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#SchedulesGet": {
+    "com.azure.labservices#GetSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#SchedulesGetRequest"
+        "target": "com.azure.labservices#GetScheduleRequest"
       },
       "output": {
-        "target": "com.azure.labservices#SchedulesGetResponse"
+        "target": "com.azure.labservices#GetScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6861,7 +6861,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#SchedulesGetResponse": {
+    "com.azure.labservices#GetScheduleResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7008,7 +7008,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#SchedulesGetRequest": {
+    "com.azure.labservices#GetScheduleRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7048,10 +7048,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#SchedulesListByLab": {
+    "com.azure.labservices#ListScheduleByLab": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#SchedulesListByLabRequest"
+        "target": "com.azure.labservices#ListScheduleByLabRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedSchedules"
@@ -7243,7 +7243,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#SchedulesListByLabRequest": {
+    "com.azure.labservices#ListScheduleByLabRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7282,10 +7282,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#SkusList": {
+    "com.azure.labservices#ListSkus": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#SkusListRequest"
+        "target": "com.azure.labservices#ListSkusRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedLabServicesSkus"
@@ -7624,7 +7624,7 @@
         "smithy.api#documentation": "The tier of the SKU."
       }
     },
-    "com.azure.labservices#SkusListRequest": {
+    "com.azure.labservices#ListSkusRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7647,10 +7647,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#UsagesListByLocation": {
+    "com.azure.labservices#ListUsageByLocation": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#UsagesListByLocationRequest"
+        "target": "com.azure.labservices#ListUsageByLocationRequest"
       },
       "output": {
         "target": "com.azure.labservices#ListUsagesResult"
@@ -7782,7 +7782,7 @@
         "smithy.api#documentation": "The unit details."
       }
     },
-    "com.azure.labservices#UsagesListByLocationRequest": {
+    "com.azure.labservices#ListUsageByLocationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7878,10 +7878,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#UsersDelete": {
+    "com.azure.labservices#DeleteUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#UsersDeleteRequest"
+        "target": "com.azure.labservices#DeleteUserRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7897,7 +7897,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#UsersDeleteRequest": {
+    "com.azure.labservices#DeleteUserRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7937,13 +7937,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#UsersUpdate": {
+    "com.azure.labservices#UpdateUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#UsersUpdateRequest"
+        "target": "com.azure.labservices#UpdateUserRequest"
       },
       "output": {
-        "target": "com.azure.labservices#UsersUpdateResponse"
+        "target": "com.azure.labservices#UpdateUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7956,7 +7956,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#UsersUpdateResponse": {
+    "com.azure.labservices#UpdateUserResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8294,7 +8294,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#UsersUpdateRequest": {
+    "com.azure.labservices#UpdateUserRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8676,13 +8676,13 @@
         "smithy.api#documentation": "Resource provisioning state."
       }
     },
-    "com.azure.labservices#UsersGet": {
+    "com.azure.labservices#GetUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#UsersGetRequest"
+        "target": "com.azure.labservices#GetUserRequest"
       },
       "output": {
-        "target": "com.azure.labservices#UsersGetResponse"
+        "target": "com.azure.labservices#GetUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8695,7 +8695,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#UsersGetResponse": {
+    "com.azure.labservices#GetUserResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -8842,7 +8842,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#UsersGetRequest": {
+    "com.azure.labservices#GetUserRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8882,10 +8882,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#UsersListByLab": {
+    "com.azure.labservices#ListUserByLab": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#UsersListByLabRequest"
+        "target": "com.azure.labservices#ListUserByLabRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedUsers"
@@ -9077,7 +9077,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#UsersListByLabRequest": {
+    "com.azure.labservices#ListUserByLabRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9308,10 +9308,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#VirtualMachinesStop": {
+    "com.azure.labservices#StopVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#VirtualMachinesStopRequest"
+        "target": "com.azure.labservices#StopVirtualMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9327,7 +9327,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#VirtualMachinesStopRequest": {
+    "com.azure.labservices#StopVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9367,10 +9367,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#VirtualMachinesStart": {
+    "com.azure.labservices#StartVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#VirtualMachinesStartRequest"
+        "target": "com.azure.labservices#StartVirtualMachineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -9386,7 +9386,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#VirtualMachinesStartRequest": {
+    "com.azure.labservices#StartVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9426,13 +9426,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#VirtualMachinesGet": {
+    "com.azure.labservices#GetVirtualMachine": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#VirtualMachinesGetRequest"
+        "target": "com.azure.labservices#GetVirtualMachineRequest"
       },
       "output": {
-        "target": "com.azure.labservices#VirtualMachinesGetResponse"
+        "target": "com.azure.labservices#GetVirtualMachineResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9445,7 +9445,7 @@
         "com.distilled.openapi#apiVersion": "2023-06-07"
       }
     },
-    "com.azure.labservices#VirtualMachinesGetResponse": {
+    "com.azure.labservices#GetVirtualMachineResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9832,7 +9832,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#VirtualMachinesGetRequest": {
+    "com.azure.labservices#GetVirtualMachineRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -9872,10 +9872,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.labservices#VirtualMachinesListByLab": {
+    "com.azure.labservices#ListVirtualMachineByLab": {
       "type": "operation",
       "input": {
-        "target": "com.azure.labservices#VirtualMachinesListByLabRequest"
+        "target": "com.azure.labservices#ListVirtualMachineByLabRequest"
       },
       "output": {
         "target": "com.azure.labservices#PagedVirtualMachines"
@@ -10067,7 +10067,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.labservices#VirtualMachinesListByLabRequest": {
+    "com.azure.labservices#ListVirtualMachineByLabRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -10111,40 +10111,40 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.labservices#ImagesUpdate"
+          "target": "com.azure.labservices#UpdateImage"
         },
         {
           "target": "com.azure.labservices#ImagesCreateOrUpdate"
         },
         {
-          "target": "com.azure.labservices#ImagesGet"
+          "target": "com.azure.labservices#GetImage"
         },
         {
-          "target": "com.azure.labservices#ImagesListByLabPlan"
+          "target": "com.azure.labservices#ListImageByLabPlan"
         },
         {
           "target": "com.azure.labservices#LabPlansSaveImage"
         },
         {
-          "target": "com.azure.labservices#LabPlansDelete"
+          "target": "com.azure.labservices#DeleteLabPlan"
         },
         {
-          "target": "com.azure.labservices#LabPlansUpdate"
+          "target": "com.azure.labservices#UpdateLabPlan"
         },
         {
           "target": "com.azure.labservices#LabPlansCreateOrUpdate"
         },
         {
-          "target": "com.azure.labservices#LabPlansGet"
+          "target": "com.azure.labservices#GetLabPlan"
         },
         {
-          "target": "com.azure.labservices#LabPlansListByResourceGroup"
+          "target": "com.azure.labservices#ListLabPlanByResourceGroup"
         },
         {
-          "target": "com.azure.labservices#LabPlansListBySubscription"
+          "target": "com.azure.labservices#ListLabPlanBySubscription"
         },
         {
-          "target": "com.azure.labservices#OperationsList"
+          "target": "com.azure.labservices#ListOperations"
         },
         {
           "target": "com.azure.labservices#LabsSyncGroup"
@@ -10153,64 +10153,64 @@
           "target": "com.azure.labservices#LabsPublish"
         },
         {
-          "target": "com.azure.labservices#LabsDelete"
+          "target": "com.azure.labservices#DeleteLab"
         },
         {
-          "target": "com.azure.labservices#LabsUpdate"
+          "target": "com.azure.labservices#UpdateLab"
         },
         {
           "target": "com.azure.labservices#LabsCreateOrUpdate"
         },
         {
-          "target": "com.azure.labservices#LabsGet"
+          "target": "com.azure.labservices#GetLab"
         },
         {
-          "target": "com.azure.labservices#LabsListByResourceGroup"
+          "target": "com.azure.labservices#ListLabByResourceGroup"
         },
         {
-          "target": "com.azure.labservices#LabsListBySubscription"
+          "target": "com.azure.labservices#ListLabBySubscription"
         },
         {
-          "target": "com.azure.labservices#OperationResultsGet"
+          "target": "com.azure.labservices#GetOperationResult"
         },
         {
-          "target": "com.azure.labservices#SchedulesDelete"
+          "target": "com.azure.labservices#DeleteSchedule"
         },
         {
-          "target": "com.azure.labservices#SchedulesUpdate"
+          "target": "com.azure.labservices#UpdateSchedule"
         },
         {
           "target": "com.azure.labservices#SchedulesCreateOrUpdate"
         },
         {
-          "target": "com.azure.labservices#SchedulesGet"
+          "target": "com.azure.labservices#GetSchedule"
         },
         {
-          "target": "com.azure.labservices#SchedulesListByLab"
+          "target": "com.azure.labservices#ListScheduleByLab"
         },
         {
-          "target": "com.azure.labservices#SkusList"
+          "target": "com.azure.labservices#ListSkus"
         },
         {
-          "target": "com.azure.labservices#UsagesListByLocation"
+          "target": "com.azure.labservices#ListUsageByLocation"
         },
         {
           "target": "com.azure.labservices#UsersInvite"
         },
         {
-          "target": "com.azure.labservices#UsersDelete"
+          "target": "com.azure.labservices#DeleteUser"
         },
         {
-          "target": "com.azure.labservices#UsersUpdate"
+          "target": "com.azure.labservices#UpdateUser"
         },
         {
           "target": "com.azure.labservices#UsersCreateOrUpdate"
         },
         {
-          "target": "com.azure.labservices#UsersGet"
+          "target": "com.azure.labservices#GetUser"
         },
         {
-          "target": "com.azure.labservices#UsersListByLab"
+          "target": "com.azure.labservices#ListUserByLab"
         },
         {
           "target": "com.azure.labservices#VirtualMachinesResetPassword"
@@ -10222,16 +10222,16 @@
           "target": "com.azure.labservices#VirtualMachinesReimage"
         },
         {
-          "target": "com.azure.labservices#VirtualMachinesStop"
+          "target": "com.azure.labservices#StopVirtualMachine"
         },
         {
-          "target": "com.azure.labservices#VirtualMachinesStart"
+          "target": "com.azure.labservices#StartVirtualMachine"
         },
         {
-          "target": "com.azure.labservices#VirtualMachinesGet"
+          "target": "com.azure.labservices#GetVirtualMachine"
         },
         {
-          "target": "com.azure.labservices#VirtualMachinesListByLab"
+          "target": "com.azure.labservices#ListVirtualMachineByLab"
         }
       ],
       "traits": {

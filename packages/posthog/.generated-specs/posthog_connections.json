@@ -67,7 +67,7 @@
         "smithy.api#documentation": "Query parameters to send to the target."
       }
     },
-    "com.posthog.posthog_connections#PosthogConnectionsForwardCreateRequest": {
+    "com.posthog.posthog_connections#CreatePosthogConnectionForwardRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -136,10 +136,10 @@
       },
       "traits": {}
     },
-    "com.posthog.posthog_connections#PosthogConnectionsForwardCreate": {
+    "com.posthog.posthog_connections#CreatePosthogConnectionForward": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.posthog_connections#PosthogConnectionsForwardCreateRequest"
+        "target": "com.posthog.posthog_connections#CreatePosthogConnectionForwardRequest"
       },
       "output": {
         "target": "com.posthog.posthog_connections#PostHogConnectionForwardResponse"
@@ -246,7 +246,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.posthog_connections#PosthogConnectionsForwardCreate"
+          "target": "com.posthog.posthog_connections#CreatePosthogConnectionForward"
         },
         {
           "target": "com.posthog.posthog_connections#PosthogConnectionsTargetRetrieve"

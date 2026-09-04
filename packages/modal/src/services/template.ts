@@ -12,8 +12,8 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
-export interface TemplateListRequest {}
-export const TemplateListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListTemplateRequest {}
+export const ListTemplateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "POST",
@@ -22,8 +22,8 @@ export const TemplateListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TemplateListRequest",
-}) as any as S.Schema<TemplateListRequest>;
+  identifier: "ListTemplateRequest",
+}) as any as S.Schema<ListTemplateRequest>;
 
 export interface TemplateListResponseTemplateListItem {
   name?: string;
@@ -47,27 +47,27 @@ export const TemplateListResponseTemplateListItemList = /*@__PURE__*/ S.Array(
   TemplateListResponseTemplateListItem,
 ) as any as S.Schema<TemplateListResponseTemplateListItemList>;
 
-export interface TemplateListResponse {
+export interface ListTemplateResponse {
   items?: TemplateListResponseTemplateListItemList;
 }
-export const TemplateListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListTemplateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(TemplateListResponseTemplateListItemList),
   }),
 ).annotate({
-  identifier: "TemplateListResponse",
-}) as any as S.Schema<TemplateListResponse>;
+  identifier: "ListTemplateResponse",
+}) as any as S.Schema<ListTemplateResponse>;
 
-export type TemplateListError = ModalOpError;
+export type ListTemplateError = ModalOpError;
 /** Templates */
-export const templateList: API.OperationMethod<
-  TemplateListRequest,
-  TemplateListResponse,
-  TemplateListError,
+export const listTemplate: API.OperationMethod<
+  ListTemplateRequest,
+  ListTemplateResponse,
+  ListTemplateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TemplateListRequest,
-  output: TemplateListResponse,
+  input: ListTemplateRequest,
+  output: ListTemplateResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

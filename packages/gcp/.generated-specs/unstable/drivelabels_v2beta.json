@@ -3721,7 +3721,7 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchDeleteLabelsRevisionsPermissionsRequest": {
+    "com.gcp.drivelabels_v2beta#DeleteBatchLabelRevisionPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3741,10 +3741,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchDeleteLabelsRevisionsPermissions": {
+    "com.gcp.drivelabels_v2beta#DeleteBatchLabelRevisionPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2beta#BatchDeleteLabelsRevisionsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2beta#DeleteBatchLabelRevisionPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2beta#GoogleProtobufEmpty"
@@ -3771,7 +3771,7 @@
         "smithy.api#documentation": "Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing."
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchUpdateLabelsRevisionsPermissionsRequest": {
+    "com.gcp.drivelabels_v2beta#UpdateBatchLabelRevisionPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3791,10 +3791,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchUpdateLabelsRevisionsPermissions": {
+    "com.gcp.drivelabels_v2beta#UpdateBatchLabelRevisionPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2beta#BatchUpdateLabelsRevisionsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2beta#UpdateBatchLabelRevisionPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2beta#GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse"
@@ -4102,7 +4102,7 @@
         "smithy.api#documentation": "Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing."
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchDeleteLabelsPermissionsRequest": {
+    "com.gcp.drivelabels_v2beta#DeleteBatchLabelPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4122,10 +4122,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchDeleteLabelsPermissions": {
+    "com.gcp.drivelabels_v2beta#DeleteBatchLabelPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2beta#BatchDeleteLabelsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2beta#DeleteBatchLabelPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2beta#GoogleProtobufEmpty"
@@ -4264,7 +4264,7 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchUpdateLabelsPermissionsRequest": {
+    "com.gcp.drivelabels_v2beta#UpdateBatchLabelPermissionRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4284,10 +4284,10 @@
         }
       }
     },
-    "com.gcp.drivelabels_v2beta#BatchUpdateLabelsPermissions": {
+    "com.gcp.drivelabels_v2beta#UpdateBatchLabelPermission": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.drivelabels_v2beta#BatchUpdateLabelsPermissionsRequest"
+        "target": "com.gcp.drivelabels_v2beta#UpdateBatchLabelPermissionRequest"
       },
       "output": {
         "target": "com.gcp.drivelabels_v2beta#GoogleAppsDriveLabelsV2betaBatchUpdateLabelPermissionsResponse"

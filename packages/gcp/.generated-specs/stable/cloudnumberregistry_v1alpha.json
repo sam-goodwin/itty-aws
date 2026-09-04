@@ -2391,7 +2391,7 @@
         "smithy.api#documentation": "Deletes a single CustomRange."
       }
     },
-    "com.gcp.cloudnumberregistry_v1alpha#ShowUtilizationProjectsLocationsCustomRangesRequest": {
+    "com.gcp.cloudnumberregistry_v1alpha#GetUtilizationProjectsLocationsCustomRangesRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -2404,10 +2404,10 @@
         }
       }
     },
-    "com.gcp.cloudnumberregistry_v1alpha#ShowUtilizationProjectsLocationsCustomRanges": {
+    "com.gcp.cloudnumberregistry_v1alpha#GetUtilizationProjectsLocationsCustomRanges": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudnumberregistry_v1alpha#ShowUtilizationProjectsLocationsCustomRangesRequest"
+        "target": "com.gcp.cloudnumberregistry_v1alpha#GetUtilizationProjectsLocationsCustomRangesRequest"
       },
       "output": {
         "target": "com.gcp.cloudnumberregistry_v1alpha#ShowCustomRangeUtilizationResponse"
@@ -3666,7 +3666,7 @@
         }
       }
     },
-    "com.gcp.cloudnumberregistry_v1alpha#ShowUtilizationProjectsLocationsDiscoveredRangesRequest": {
+    "com.gcp.cloudnumberregistry_v1alpha#GetUtilizationProjectsLocationsDiscoveredRangesRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -3679,10 +3679,10 @@
         }
       }
     },
-    "com.gcp.cloudnumberregistry_v1alpha#ShowUtilizationProjectsLocationsDiscoveredRanges": {
+    "com.gcp.cloudnumberregistry_v1alpha#GetUtilizationProjectsLocationsDiscoveredRanges": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudnumberregistry_v1alpha#ShowUtilizationProjectsLocationsDiscoveredRangesRequest"
+        "target": "com.gcp.cloudnumberregistry_v1alpha#GetUtilizationProjectsLocationsDiscoveredRangesRequest"
       },
       "output": {
         "target": "com.gcp.cloudnumberregistry_v1alpha#ShowDiscoveredRangeUtilizationResponse"

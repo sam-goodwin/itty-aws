@@ -7358,7 +7358,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.railway.api#EnvironmentChangeSetApplyRequest": {
+    "com.railway.api#SetEnvironmentChangeApplyRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -7427,7 +7427,7 @@
         "target": "com.railway.api#EnvironmentChangeSetApplyResponseChangesItem"
       }
     },
-    "com.railway.api#EnvironmentChangeSetApplyResponse": {
+    "com.railway.api#SetEnvironmentChangeApplyResponse": {
       "type": "structure",
       "members": {
         "changes": {
@@ -7475,13 +7475,13 @@
         "smithy.api#documentation": "Selection set for `environmentChangeSetApply` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#EnvironmentChangeSetApply": {
+    "com.railway.api#SetEnvironmentChangeApply": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentChangeSetApplyRequest"
+        "target": "com.railway.api#SetEnvironmentChangeApplyRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentChangeSetApplyResponse"
+        "target": "com.railway.api#SetEnvironmentChangeApplyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7763,7 +7763,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.railway.api#EnvironmentPatchRequest": {
+    "com.railway.api#PatchEnvironmentRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -7923,7 +7923,7 @@
         }
       }
     },
-    "com.railway.api#EnvironmentPatchResponse": {
+    "com.railway.api#PatchEnvironmentResponse": {
       "type": "structure",
       "members": {
         "appliedAt": {
@@ -7997,13 +7997,13 @@
         "smithy.api#documentation": "Selection set for `environmentPatch` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#EnvironmentPatch": {
+    "com.railway.api#PatchEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentPatchRequest"
+        "target": "com.railway.api#PatchEnvironmentRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentPatchResponse"
+        "target": "com.railway.api#PatchEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27754,7 +27754,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.railway.api#VolumeInstanceBackupListRequest": {
+    "com.railway.api#ListVolumeInstanceBackupRequest": {
       "type": "structure",
       "members": {
         "volumeInstanceId": {
@@ -27852,7 +27852,7 @@
         "target": "com.railway.api#VolumeInstanceBackupListResultItem"
       }
     },
-    "com.railway.api#VolumeInstanceBackupListResponse": {
+    "com.railway.api#ListVolumeInstanceBackupResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -27869,13 +27869,13 @@
         "com.railway.graphql#responsePath": "volumeInstanceBackupList"
       }
     },
-    "com.railway.api#VolumeInstanceBackupList": {
+    "com.railway.api#ListVolumeInstanceBackup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceBackupListRequest"
+        "target": "com.railway.api#ListVolumeInstanceBackupRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceBackupListResponse"
+        "target": "com.railway.api#ListVolumeInstanceBackupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27887,7 +27887,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.railway.api#VolumeInstanceBackupScheduleListRequest": {
+    "com.railway.api#ListVolumeInstanceBackupScheduleRequest": {
       "type": "structure",
       "members": {
         "volumeInstanceId": {
@@ -27955,7 +27955,7 @@
         "target": "com.railway.api#VolumeInstanceBackupScheduleListResultItem"
       }
     },
-    "com.railway.api#VolumeInstanceBackupScheduleListResponse": {
+    "com.railway.api#ListVolumeInstanceBackupScheduleResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -27972,13 +27972,13 @@
         "com.railway.graphql#responsePath": "volumeInstanceBackupScheduleList"
       }
     },
-    "com.railway.api#VolumeInstanceBackupScheduleList": {
+    "com.railway.api#ListVolumeInstanceBackupSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceBackupScheduleListRequest"
+        "target": "com.railway.api#ListVolumeInstanceBackupScheduleRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceBackupScheduleListResponse"
+        "target": "com.railway.api#ListVolumeInstanceBackupScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -30935,7 +30935,7 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.railway.api#AccessGroupCreateInput": {
+    "com.railway.api#CreateAccessGroupInput": {
       "type": "structure",
       "members": {
         "name": {
@@ -30958,11 +30958,11 @@
         }
       }
     },
-    "com.railway.api#AccessGroupCreateRequest": {
+    "com.railway.api#CreateAccessGroupRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#AccessGroupCreateInput",
+          "target": "com.railway.api#CreateAccessGroupInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -31145,7 +31145,7 @@
         }
       }
     },
-    "com.railway.api#AccessGroupCreateResponse": {
+    "com.railway.api#CreateAccessGroupResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -31203,13 +31203,13 @@
         "smithy.api#documentation": "Selection set for `accessGroupCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#AccessGroupCreate": {
+    "com.railway.api#CreateAccessGroup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#AccessGroupCreateRequest"
+        "target": "com.railway.api#CreateAccessGroupRequest"
       },
       "output": {
-        "target": "com.railway.api#AccessGroupCreateResponse"
+        "target": "com.railway.api#CreateAccessGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -31220,7 +31220,7 @@
         "smithy.api#documentation": "Create an access group in a workspace."
       }
     },
-    "com.railway.api#AccessGroupDeleteRequest": {
+    "com.railway.api#DeleteAccessGroupRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -31239,7 +31239,7 @@
         }
       }
     },
-    "com.railway.api#AccessGroupDeleteResponse": {
+    "com.railway.api#DeleteAccessGroupResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -31256,13 +31256,13 @@
         "com.railway.graphql#responsePath": "accessGroupDelete"
       }
     },
-    "com.railway.api#AccessGroupDelete": {
+    "com.railway.api#DeleteAccessGroup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#AccessGroupDeleteRequest"
+        "target": "com.railway.api#DeleteAccessGroupRequest"
       },
       "output": {
-        "target": "com.railway.api#AccessGroupDeleteResponse"
+        "target": "com.railway.api#DeleteAccessGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -31978,7 +31978,7 @@
         "smithy.api#documentation": "Detach a project from an access group."
       }
     },
-    "com.railway.api#AccessGroupUpdateInput": {
+    "com.railway.api#UpdateAccessGroupInput": {
       "type": "structure",
       "members": {
         "name": {
@@ -31995,7 +31995,7 @@
         }
       }
     },
-    "com.railway.api#AccessGroupUpdateRequest": {
+    "com.railway.api#UpdateAccessGroupRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -32005,7 +32005,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#AccessGroupUpdateInput",
+          "target": "com.railway.api#UpdateAccessGroupInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -32177,7 +32177,7 @@
         }
       }
     },
-    "com.railway.api#AccessGroupUpdateResponse": {
+    "com.railway.api#UpdateAccessGroupResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -32235,13 +32235,13 @@
         "smithy.api#documentation": "Selection set for `accessGroupUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#AccessGroupUpdate": {
+    "com.railway.api#UpdateAccessGroup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#AccessGroupUpdateRequest"
+        "target": "com.railway.api#UpdateAccessGroupRequest"
       },
       "output": {
-        "target": "com.railway.api#AccessGroupUpdateResponse"
+        "target": "com.railway.api#UpdateAccessGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32252,7 +32252,7 @@
         "smithy.api#documentation": "Update an access group's name or role."
       }
     },
-    "com.railway.api#AgentUsageLimitSetInput": {
+    "com.railway.api#SetAgentUsageLimitInput": {
       "type": "structure",
       "members": {
         "hardLimitCents": {
@@ -32275,11 +32275,11 @@
         }
       }
     },
-    "com.railway.api#AgentUsageLimitSetRequest": {
+    "com.railway.api#SetAgentUsageLimitRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#AgentUsageLimitSetInput",
+          "target": "com.railway.api#SetAgentUsageLimitInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -32294,7 +32294,7 @@
         }
       }
     },
-    "com.railway.api#AgentUsageLimitSetResponse": {
+    "com.railway.api#SetAgentUsageLimitResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -32311,13 +32311,13 @@
         "com.railway.graphql#responsePath": "agentUsageLimitSet"
       }
     },
-    "com.railway.api#AgentUsageLimitSet": {
+    "com.railway.api#SetAgentUsageLimit": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#AgentUsageLimitSetRequest"
+        "target": "com.railway.api#SetAgentUsageLimitRequest"
       },
       "output": {
-        "target": "com.railway.api#AgentUsageLimitSetResponse"
+        "target": "com.railway.api#SetAgentUsageLimitResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32328,7 +32328,7 @@
         "smithy.api#documentation": "Set agent usage limit for a workspace"
       }
     },
-    "com.railway.api#ApiTokenCreateInput": {
+    "com.railway.api#CreateApiTokenInput": {
       "type": "structure",
       "members": {
         "name": {
@@ -32345,11 +32345,11 @@
         }
       }
     },
-    "com.railway.api#ApiTokenCreateRequest": {
+    "com.railway.api#CreateApiTokenRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ApiTokenCreateInput",
+          "target": "com.railway.api#CreateApiTokenInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -32364,7 +32364,7 @@
         }
       }
     },
-    "com.railway.api#ApiTokenCreateResponse": {
+    "com.railway.api#CreateApiTokenResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -32381,13 +32381,13 @@
         "com.railway.graphql#responsePath": "apiTokenCreate"
       }
     },
-    "com.railway.api#ApiTokenCreate": {
+    "com.railway.api#CreateApiToken": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ApiTokenCreateRequest"
+        "target": "com.railway.api#CreateApiTokenRequest"
       },
       "output": {
-        "target": "com.railway.api#ApiTokenCreateResponse"
+        "target": "com.railway.api#CreateApiTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32398,7 +32398,7 @@
         "smithy.api#documentation": "Creates a new API token."
       }
     },
-    "com.railway.api#ApiTokenDeleteRequest": {
+    "com.railway.api#DeleteApiTokenRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -32417,7 +32417,7 @@
         }
       }
     },
-    "com.railway.api#ApiTokenDeleteResponse": {
+    "com.railway.api#DeleteApiTokenResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -32434,13 +32434,13 @@
         "com.railway.graphql#responsePath": "apiTokenDelete"
       }
     },
-    "com.railway.api#ApiTokenDelete": {
+    "com.railway.api#DeleteApiToken": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ApiTokenDeleteRequest"
+        "target": "com.railway.api#DeleteApiTokenRequest"
       },
       "output": {
-        "target": "com.railway.api#ApiTokenDeleteResponse"
+        "target": "com.railway.api#DeleteApiTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32574,7 +32574,7 @@
         "smithy.api#documentation": "Remove a Railway agent chat binding. Requires admin on the binding's workspace."
       }
     },
-    "com.railway.api#BucketCreateInput": {
+    "com.railway.api#CreateBucketInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -32600,11 +32600,11 @@
         }
       }
     },
-    "com.railway.api#BucketCreateRequest": {
+    "com.railway.api#CreateBucketRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#BucketCreateInput",
+          "target": "com.railway.api#CreateBucketInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -32751,7 +32751,7 @@
         }
       }
     },
-    "com.railway.api#BucketCreateResponse": {
+    "com.railway.api#CreateBucketResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -32818,13 +32818,13 @@
         "smithy.api#documentation": "Selection set for `bucketCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#BucketCreate": {
+    "com.railway.api#CreateBucket": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#BucketCreateRequest"
+        "target": "com.railway.api#CreateBucketRequest"
       },
       "output": {
-        "target": "com.railway.api#BucketCreateResponse"
+        "target": "com.railway.api#CreateBucketResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -32941,7 +32941,7 @@
         "smithy.api#documentation": "Reset the credentials for a bucket in an environment"
       }
     },
-    "com.railway.api#BucketUpdateInput": {
+    "com.railway.api#UpdateBucketInput": {
       "type": "structure",
       "members": {
         "name": {
@@ -32952,7 +32952,7 @@
         }
       }
     },
-    "com.railway.api#BucketUpdateRequest": {
+    "com.railway.api#UpdateBucketRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -32962,7 +32962,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#BucketUpdateInput",
+          "target": "com.railway.api#UpdateBucketInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -33109,7 +33109,7 @@
         }
       }
     },
-    "com.railway.api#BucketUpdateResponse": {
+    "com.railway.api#UpdateBucketResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -33176,13 +33176,13 @@
         "smithy.api#documentation": "Selection set for `bucketUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#BucketUpdate": {
+    "com.railway.api#UpdateBucket": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#BucketUpdateRequest"
+        "target": "com.railway.api#UpdateBucketRequest"
       },
       "output": {
-        "target": "com.railway.api#BucketUpdateResponse"
+        "target": "com.railway.api#UpdateBucketResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -33672,7 +33672,7 @@
         "smithy.api#documentation": "Track events from the Railway CLI"
       }
     },
-    "com.railway.api#CloudAgentCreateInput": {
+    "com.railway.api#CreateCloudAgentInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -33737,11 +33737,11 @@
         "smithy.api#documentation": "Repo to clone into the agent's workspace: exactly one of repo/serviceId."
       }
     },
-    "com.railway.api#CloudAgentCreateRequest": {
+    "com.railway.api#CreateCloudAgentRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#CloudAgentCreateInput",
+          "target": "com.railway.api#CreateCloudAgentInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -33892,7 +33892,7 @@
         }
       }
     },
-    "com.railway.api#CloudAgentCreateResponse": {
+    "com.railway.api#CreateCloudAgentResponse": {
       "type": "structure",
       "members": {
         "agentWsUrl": {
@@ -33985,13 +33985,13 @@
         "smithy.api#documentation": "Selection set for `cloudAgentCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#CloudAgentCreate": {
+    "com.railway.api#CreateCloudAgent": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#CloudAgentCreateRequest"
+        "target": "com.railway.api#CreateCloudAgentRequest"
       },
       "output": {
-        "target": "com.railway.api#CloudAgentCreateResponse"
+        "target": "com.railway.api#CreateCloudAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -34002,7 +34002,7 @@
         "smithy.api#documentation": "Create a cloud agent."
       }
     },
-    "com.railway.api#CloudAgentDeleteRequest": {
+    "com.railway.api#DeleteCloudAgentRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -34021,7 +34021,7 @@
         }
       }
     },
-    "com.railway.api#CloudAgentDeleteResponse": {
+    "com.railway.api#DeleteCloudAgentResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -34038,13 +34038,13 @@
         "com.railway.graphql#responsePath": "cloudAgentDelete"
       }
     },
-    "com.railway.api#CloudAgentDelete": {
+    "com.railway.api#DeleteCloudAgent": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#CloudAgentDeleteRequest"
+        "target": "com.railway.api#DeleteCloudAgentRequest"
       },
       "output": {
-        "target": "com.railway.api#CloudAgentDeleteResponse"
+        "target": "com.railway.api#DeleteCloudAgentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -34794,7 +34794,7 @@
         "smithy.api#documentation": "Wake a sleeping cloud agent."
       }
     },
-    "com.railway.api#CustomDomainCreateInput": {
+    "com.railway.api#CreateCustomDomainInput": {
       "type": "structure",
       "members": {
         "domain": {
@@ -34829,11 +34829,11 @@
         }
       }
     },
-    "com.railway.api#CustomDomainCreateRequest": {
+    "com.railway.api#CreateCustomDomainRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#CustomDomainCreateInput",
+          "target": "com.railway.api#CreateCustomDomainInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -34938,7 +34938,7 @@
         }
       }
     },
-    "com.railway.api#CustomDomainCreateResponse": {
+    "com.railway.api#CreateCustomDomainResponse": {
       "type": "structure",
       "members": {
         "cdnMode": {
@@ -35045,13 +35045,13 @@
         "smithy.api#documentation": "Selection set for `customDomainCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#CustomDomainCreate": {
+    "com.railway.api#CreateCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#CustomDomainCreateRequest"
+        "target": "com.railway.api#CreateCustomDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#CustomDomainCreateResponse"
+        "target": "com.railway.api#CreateCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35062,7 +35062,7 @@
         "smithy.api#documentation": "Creates a new custom domain."
       }
     },
-    "com.railway.api#CustomDomainDeleteRequest": {
+    "com.railway.api#DeleteCustomDomainRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -35081,7 +35081,7 @@
         }
       }
     },
-    "com.railway.api#CustomDomainDeleteResponse": {
+    "com.railway.api#DeleteCustomDomainResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -35098,13 +35098,13 @@
         "com.railway.graphql#responsePath": "customDomainDelete"
       }
     },
-    "com.railway.api#CustomDomainDelete": {
+    "com.railway.api#DeleteCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#CustomDomainDeleteRequest"
+        "target": "com.railway.api#DeleteCustomDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#CustomDomainDeleteResponse"
+        "target": "com.railway.api#DeleteCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35168,7 +35168,7 @@
         "smithy.api#documentation": "Issues a new certificate"
       }
     },
-    "com.railway.api#CustomDomainUpdateRequest": {
+    "com.railway.api#UpdateCustomDomainRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -35199,7 +35199,7 @@
         }
       }
     },
-    "com.railway.api#CustomDomainUpdateResponse": {
+    "com.railway.api#UpdateCustomDomainResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -35216,13 +35216,13 @@
         "com.railway.graphql#responsePath": "customDomainUpdate"
       }
     },
-    "com.railway.api#CustomDomainUpdate": {
+    "com.railway.api#UpdateCustomDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#CustomDomainUpdateRequest"
+        "target": "com.railway.api#UpdateCustomDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#CustomDomainUpdateResponse"
+        "target": "com.railway.api#UpdateCustomDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35233,7 +35233,7 @@
         "smithy.api#documentation": "Updates a custom domain."
       }
     },
-    "com.railway.api#CustomerCreateFreePlanSubscriptionRequest": {
+    "com.railway.api#CreateCustomerFreePlanSubscriptionRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -35252,7 +35252,7 @@
         }
       }
     },
-    "com.railway.api#CustomerCreateFreePlanSubscriptionResponse": {
+    "com.railway.api#CreateCustomerFreePlanSubscriptionResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -35269,13 +35269,13 @@
         "com.railway.graphql#responsePath": "customerCreateFreePlanSubscription"
       }
     },
-    "com.railway.api#CustomerCreateFreePlanSubscription": {
+    "com.railway.api#CreateCustomerFreePlanSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#CustomerCreateFreePlanSubscriptionRequest"
+        "target": "com.railway.api#CreateCustomerFreePlanSubscriptionRequest"
       },
       "output": {
-        "target": "com.railway.api#CustomerCreateFreePlanSubscriptionResponse"
+        "target": "com.railway.api#CreateCustomerFreePlanSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -35462,7 +35462,7 @@
         "smithy.api#documentation": "Cancels a deployment."
       }
     },
-    "com.railway.api#DeploymentInstanceExecutionCreateInput": {
+    "com.railway.api#CreateDeploymentInstanceExecutionInput": {
       "type": "structure",
       "members": {
         "serviceInstanceId": {
@@ -35473,11 +35473,11 @@
         }
       }
     },
-    "com.railway.api#DeploymentInstanceExecutionCreateRequest": {
+    "com.railway.api#CreateDeploymentInstanceExecutionRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#DeploymentInstanceExecutionCreateInput",
+          "target": "com.railway.api#CreateDeploymentInstanceExecutionInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -35492,7 +35492,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentInstanceExecutionCreateResponse": {
+    "com.railway.api#CreateDeploymentInstanceExecutionResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -35509,13 +35509,13 @@
         "com.railway.graphql#responsePath": "deploymentInstanceExecutionCreate"
       }
     },
-    "com.railway.api#DeploymentInstanceExecutionCreate": {
+    "com.railway.api#CreateDeploymentInstanceExecution": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#DeploymentInstanceExecutionCreateRequest"
+        "target": "com.railway.api#CreateDeploymentInstanceExecutionRequest"
       },
       "output": {
-        "target": "com.railway.api#DeploymentInstanceExecutionCreateResponse"
+        "target": "com.railway.api#CreateDeploymentInstanceExecutionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36041,7 +36041,7 @@
         "smithy.api#documentation": "Removes a deployment."
       }
     },
-    "com.railway.api#DeploymentRestartRequest": {
+    "com.railway.api#RestartDeploymentRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -36060,7 +36060,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentRestartResponse": {
+    "com.railway.api#RestartDeploymentResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -36077,13 +36077,13 @@
         "com.railway.graphql#responsePath": "deploymentRestart"
       }
     },
-    "com.railway.api#DeploymentRestart": {
+    "com.railway.api#RestartDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#DeploymentRestartRequest"
+        "target": "com.railway.api#RestartDeploymentRequest"
       },
       "output": {
-        "target": "com.railway.api#DeploymentRestartResponse"
+        "target": "com.railway.api#RestartDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36147,7 +36147,7 @@
         "smithy.api#documentation": "Rolls back to a deployment."
       }
     },
-    "com.railway.api#DeploymentStopRequest": {
+    "com.railway.api#StopDeploymentRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -36166,7 +36166,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentStopResponse": {
+    "com.railway.api#StopDeploymentResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -36183,13 +36183,13 @@
         "com.railway.graphql#responsePath": "deploymentStop"
       }
     },
-    "com.railway.api#DeploymentStop": {
+    "com.railway.api#StopDeployment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#DeploymentStopRequest"
+        "target": "com.railway.api#StopDeploymentRequest"
       },
       "output": {
-        "target": "com.railway.api#DeploymentStopResponse"
+        "target": "com.railway.api#StopDeploymentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36200,7 +36200,7 @@
         "smithy.api#documentation": "Stops a deployment."
       }
     },
-    "com.railway.api#DeploymentTriggerCreateInput": {
+    "com.railway.api#CreateDeploymentTriggerInput": {
       "type": "structure",
       "members": {
         "branch": {
@@ -36253,11 +36253,11 @@
         }
       }
     },
-    "com.railway.api#DeploymentTriggerCreateRequest": {
+    "com.railway.api#CreateDeploymentTriggerRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#DeploymentTriggerCreateInput",
+          "target": "com.railway.api#CreateDeploymentTriggerInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -36272,7 +36272,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentTriggerCreateResponse": {
+    "com.railway.api#CreateDeploymentTriggerResponse": {
       "type": "structure",
       "members": {
         "baseEnvironmentOverrideId": {
@@ -36344,13 +36344,13 @@
         "smithy.api#documentation": "Selection set for `deploymentTriggerCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#DeploymentTriggerCreate": {
+    "com.railway.api#CreateDeploymentTrigger": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#DeploymentTriggerCreateRequest"
+        "target": "com.railway.api#CreateDeploymentTriggerRequest"
       },
       "output": {
-        "target": "com.railway.api#DeploymentTriggerCreateResponse"
+        "target": "com.railway.api#CreateDeploymentTriggerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36361,7 +36361,7 @@
         "smithy.api#documentation": "Creates a deployment trigger."
       }
     },
-    "com.railway.api#DeploymentTriggerDeleteRequest": {
+    "com.railway.api#DeleteDeploymentTriggerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -36380,7 +36380,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentTriggerDeleteResponse": {
+    "com.railway.api#DeleteDeploymentTriggerResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -36397,13 +36397,13 @@
         "com.railway.graphql#responsePath": "deploymentTriggerDelete"
       }
     },
-    "com.railway.api#DeploymentTriggerDelete": {
+    "com.railway.api#DeleteDeploymentTrigger": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#DeploymentTriggerDeleteRequest"
+        "target": "com.railway.api#DeleteDeploymentTriggerRequest"
       },
       "output": {
-        "target": "com.railway.api#DeploymentTriggerDeleteResponse"
+        "target": "com.railway.api#DeleteDeploymentTriggerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36414,7 +36414,7 @@
         "smithy.api#documentation": "Deletes a deployment trigger."
       }
     },
-    "com.railway.api#DeploymentTriggerUpdateInput": {
+    "com.railway.api#UpdateDeploymentTriggerInput": {
       "type": "structure",
       "members": {
         "branch": {
@@ -36443,7 +36443,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentTriggerUpdateRequest": {
+    "com.railway.api#UpdateDeploymentTriggerRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -36453,7 +36453,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#DeploymentTriggerUpdateInput",
+          "target": "com.railway.api#UpdateDeploymentTriggerInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -36468,7 +36468,7 @@
         }
       }
     },
-    "com.railway.api#DeploymentTriggerUpdateResponse": {
+    "com.railway.api#UpdateDeploymentTriggerResponse": {
       "type": "structure",
       "members": {
         "baseEnvironmentOverrideId": {
@@ -36540,13 +36540,13 @@
         "smithy.api#documentation": "Selection set for `deploymentTriggerUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#DeploymentTriggerUpdate": {
+    "com.railway.api#UpdateDeploymentTrigger": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#DeploymentTriggerUpdateRequest"
+        "target": "com.railway.api#UpdateDeploymentTriggerRequest"
       },
       "output": {
-        "target": "com.railway.api#DeploymentTriggerUpdateResponse"
+        "target": "com.railway.api#UpdateDeploymentTriggerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36818,7 +36818,7 @@
         }
       }
     },
-    "com.railway.api#EgressGatewayAssociationCreateRequest": {
+    "com.railway.api#CreateEgressGatewayAssociationRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -36867,7 +36867,7 @@
         "target": "com.railway.api#EgressGatewayAssociationCreateResultItem"
       }
     },
-    "com.railway.api#EgressGatewayAssociationCreateResponse": {
+    "com.railway.api#CreateEgressGatewayAssociationResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -36884,13 +36884,13 @@
         "com.railway.graphql#responsePath": "egressGatewayAssociationCreate"
       }
     },
-    "com.railway.api#EgressGatewayAssociationCreate": {
+    "com.railway.api#CreateEgressGatewayAssociation": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EgressGatewayAssociationCreateRequest"
+        "target": "com.railway.api#CreateEgressGatewayAssociationRequest"
       },
       "output": {
-        "target": "com.railway.api#EgressGatewayAssociationCreateResponse"
+        "target": "com.railway.api#CreateEgressGatewayAssociationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37687,7 +37687,7 @@
         "smithy.api#documentation": "Enables CDN for a service, creating an edge config and attaching all live domains."
       }
     },
-    "com.railway.api#EnvironmentApplyChangeSetRequest": {
+    "com.railway.api#SetEnvironmentApplyChangeRequest": {
       "type": "structure",
       "members": {
         "baseConfigEtag": {
@@ -37776,7 +37776,7 @@
         "target": "com.railway.api#EnvironmentApplyChangeSetResponseChangesItem"
       }
     },
-    "com.railway.api#EnvironmentApplyChangeSetResponse": {
+    "com.railway.api#SetEnvironmentApplyChangeResponse": {
       "type": "structure",
       "members": {
         "changes": {
@@ -37824,13 +37824,13 @@
         "smithy.api#documentation": "Selection set for `environmentApplyChangeSet` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#EnvironmentApplyChangeSet": {
+    "com.railway.api#SetEnvironmentApplyChange": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentApplyChangeSetRequest"
+        "target": "com.railway.api#SetEnvironmentApplyChangeRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentApplyChangeSetResponse"
+        "target": "com.railway.api#SetEnvironmentApplyChangeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37841,7 +37841,7 @@
         "smithy.api#documentation": "Experimental: applies an intent-level RailwayChangeSet and returns operation results."
       }
     },
-    "com.railway.api#EnvironmentConfigPlanCommentUpsertInput": {
+    "com.railway.api#UpsertEnvironmentConfigPlanCommentInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -37872,11 +37872,11 @@
         }
       }
     },
-    "com.railway.api#EnvironmentConfigPlanCommentUpsertRequest": {
+    "com.railway.api#UpsertEnvironmentConfigPlanCommentRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#EnvironmentConfigPlanCommentUpsertInput",
+          "target": "com.railway.api#UpsertEnvironmentConfigPlanCommentInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -37891,7 +37891,7 @@
         }
       }
     },
-    "com.railway.api#EnvironmentConfigPlanCommentUpsertResponse": {
+    "com.railway.api#UpsertEnvironmentConfigPlanCommentResponse": {
       "type": "structure",
       "members": {
         "commentId": {
@@ -37913,13 +37913,13 @@
         "smithy.api#documentation": "Selection set for `environmentConfigPlanCommentUpsert` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#EnvironmentConfigPlanCommentUpsert": {
+    "com.railway.api#UpsertEnvironmentConfigPlanComment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentConfigPlanCommentUpsertRequest"
+        "target": "com.railway.api#UpsertEnvironmentConfigPlanCommentRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentConfigPlanCommentUpsertResponse"
+        "target": "com.railway.api#UpsertEnvironmentConfigPlanCommentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -37930,7 +37930,7 @@
         "smithy.api#documentation": "Posts or updates a `railway config plan` comment on a GitHub pull request under the Railway app identity. The caller proves it runs in the target repo with a GitHub Actions OIDC token; the comment body is composed server-side from the structured plan."
       }
     },
-    "com.railway.api#EnvironmentCreateInput": {
+    "com.railway.api#CreateEnvironmentInput": {
       "type": "structure",
       "members": {
         "applyChangesInBackground": {
@@ -37981,11 +37981,11 @@
         }
       }
     },
-    "com.railway.api#EnvironmentCreateRequest": {
+    "com.railway.api#CreateEnvironmentRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#EnvironmentCreateInput",
+          "target": "com.railway.api#CreateEnvironmentInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -38061,7 +38061,7 @@
         }
       }
     },
-    "com.railway.api#EnvironmentCreateResponse": {
+    "com.railway.api#CreateEnvironmentResponse": {
       "type": "structure",
       "members": {
         "canAccess": {
@@ -38153,13 +38153,13 @@
         "smithy.api#documentation": "Selection set for `environmentCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#EnvironmentCreate": {
+    "com.railway.api#CreateEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentCreateRequest"
+        "target": "com.railway.api#CreateEnvironmentRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentCreateResponse"
+        "target": "com.railway.api#CreateEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38170,7 +38170,7 @@
         "smithy.api#documentation": "Creates a new environment."
       }
     },
-    "com.railway.api#EnvironmentDeleteRequest": {
+    "com.railway.api#DeleteEnvironmentRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -38189,7 +38189,7 @@
         }
       }
     },
-    "com.railway.api#EnvironmentDeleteResponse": {
+    "com.railway.api#DeleteEnvironmentResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -38206,13 +38206,13 @@
         "com.railway.graphql#responsePath": "environmentDelete"
       }
     },
-    "com.railway.api#EnvironmentDelete": {
+    "com.railway.api#DeleteEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentDeleteRequest"
+        "target": "com.railway.api#DeleteEnvironmentRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentDeleteResponse"
+        "target": "com.railway.api#DeleteEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -38354,7 +38354,7 @@
         "smithy.api#documentation": "Commits the staged changes for a single environment."
       }
     },
-    "com.railway.api#EnvironmentPreviewChangeSetRequest": {
+    "com.railway.api#SetEnvironmentPreviewChangeRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -38379,7 +38379,7 @@
         }
       }
     },
-    "com.railway.api#EnvironmentPreviewChangeSetResponse": {
+    "com.railway.api#SetEnvironmentPreviewChangeResponse": {
       "type": "structure",
       "members": {
         "changeSet": {
@@ -38407,13 +38407,13 @@
         "smithy.api#documentation": "Selection set for `environmentPreviewChangeSet` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#EnvironmentPreviewChangeSet": {
+    "com.railway.api#SetEnvironmentPreviewChange": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#EnvironmentPreviewChangeSetRequest"
+        "target": "com.railway.api#SetEnvironmentPreviewChangeRequest"
       },
       "output": {
-        "target": "com.railway.api#EnvironmentPreviewChangeSetResponse"
+        "target": "com.railway.api#SetEnvironmentPreviewChangeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -39375,7 +39375,7 @@
         }
       }
     },
-    "com.railway.api#GithubRepoUpdateRequest": {
+    "com.railway.api#UpdateGithubRepoRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -39394,7 +39394,7 @@
         }
       }
     },
-    "com.railway.api#GithubRepoUpdateResponse": {
+    "com.railway.api#UpdateGithubRepoResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -39411,13 +39411,13 @@
         "com.railway.graphql#responsePath": "githubRepoUpdate"
       }
     },
-    "com.railway.api#GithubRepoUpdate": {
+    "com.railway.api#UpdateGithubRepo": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#GithubRepoUpdateRequest"
+        "target": "com.railway.api#UpdateGithubRepoRequest"
       },
       "output": {
-        "target": "com.railway.api#GithubRepoUpdateResponse"
+        "target": "com.railway.api#UpdateGithubRepoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -39510,7 +39510,7 @@
         "smithy.api#documentation": "Import variables from a Heroku app into a Railway service. Returns the number of variables imports"
       }
     },
-    "com.railway.api#IntegrationCreateInput": {
+    "com.railway.api#CreateIntegrationInput": {
       "type": "structure",
       "members": {
         "config": {
@@ -39539,11 +39539,11 @@
         }
       }
     },
-    "com.railway.api#IntegrationCreateRequest": {
+    "com.railway.api#CreateIntegrationRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#IntegrationCreateInput",
+          "target": "com.railway.api#CreateIntegrationInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -39558,7 +39558,7 @@
         }
       }
     },
-    "com.railway.api#IntegrationCreateResponse": {
+    "com.railway.api#CreateIntegrationResponse": {
       "type": "structure",
       "members": {
         "config": {
@@ -39592,13 +39592,13 @@
         "smithy.api#documentation": "Selection set for `integrationCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#IntegrationCreate": {
+    "com.railway.api#CreateIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#IntegrationCreateRequest"
+        "target": "com.railway.api#CreateIntegrationRequest"
       },
       "output": {
-        "target": "com.railway.api#IntegrationCreateResponse"
+        "target": "com.railway.api#CreateIntegrationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -39609,7 +39609,7 @@
         "smithy.api#documentation": "Create an integration for a project"
       }
     },
-    "com.railway.api#IntegrationDeleteRequest": {
+    "com.railway.api#DeleteIntegrationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -39628,7 +39628,7 @@
         }
       }
     },
-    "com.railway.api#IntegrationDeleteResponse": {
+    "com.railway.api#DeleteIntegrationResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -39645,13 +39645,13 @@
         "com.railway.graphql#responsePath": "integrationDelete"
       }
     },
-    "com.railway.api#IntegrationDelete": {
+    "com.railway.api#DeleteIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#IntegrationDeleteRequest"
+        "target": "com.railway.api#DeleteIntegrationRequest"
       },
       "output": {
-        "target": "com.railway.api#IntegrationDeleteResponse"
+        "target": "com.railway.api#DeleteIntegrationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -39662,7 +39662,7 @@
         "smithy.api#documentation": "Delete an integration for a project"
       }
     },
-    "com.railway.api#IntegrationUpdateInput": {
+    "com.railway.api#UpdateIntegrationInput": {
       "type": "structure",
       "members": {
         "config": {
@@ -39691,7 +39691,7 @@
         }
       }
     },
-    "com.railway.api#IntegrationUpdateRequest": {
+    "com.railway.api#UpdateIntegrationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -39701,7 +39701,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#IntegrationUpdateInput",
+          "target": "com.railway.api#UpdateIntegrationInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -39716,7 +39716,7 @@
         }
       }
     },
-    "com.railway.api#IntegrationUpdateResponse": {
+    "com.railway.api#UpdateIntegrationResponse": {
       "type": "structure",
       "members": {
         "config": {
@@ -39750,13 +39750,13 @@
         "smithy.api#documentation": "Selection set for `integrationUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#IntegrationUpdate": {
+    "com.railway.api#UpdateIntegration": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#IntegrationUpdateRequest"
+        "target": "com.railway.api#UpdateIntegrationRequest"
       },
       "output": {
-        "target": "com.railway.api#IntegrationUpdateResponse"
+        "target": "com.railway.api#UpdateIntegrationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -40310,7 +40310,7 @@
         "smithy.api#documentation": "Join a project using an invite code"
       }
     },
-    "com.railway.api#JobApplicationCreateInput": {
+    "com.railway.api#CreateJobApplicationInput": {
       "type": "structure",
       "members": {
         "email": {
@@ -40339,11 +40339,11 @@
         }
       }
     },
-    "com.railway.api#JobApplicationCreateRequest": {
+    "com.railway.api#CreateJobApplicationRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#JobApplicationCreateInput",
+          "target": "com.railway.api#CreateJobApplicationInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -40364,7 +40364,7 @@
         }
       }
     },
-    "com.railway.api#JobApplicationCreateResponse": {
+    "com.railway.api#CreateJobApplicationResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -40381,13 +40381,13 @@
         "com.railway.graphql#responsePath": "jobApplicationCreate"
       }
     },
-    "com.railway.api#JobApplicationCreate": {
+    "com.railway.api#CreateJobApplication": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#JobApplicationCreateRequest"
+        "target": "com.railway.api#CreateJobApplicationRequest"
       },
       "output": {
-        "target": "com.railway.api#JobApplicationCreateResponse"
+        "target": "com.railway.api#CreateJobApplicationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -40575,7 +40575,7 @@
         "smithy.api#documentation": "Get a token for a login session if it exists"
       }
     },
-    "com.railway.api#LoginSessionCreateRequest": {
+    "com.railway.api#CreateLoginSessionRequest": {
       "type": "structure",
       "members": {},
       "traits": {
@@ -40587,7 +40587,7 @@
         }
       }
     },
-    "com.railway.api#LoginSessionCreateResponse": {
+    "com.railway.api#CreateLoginSessionResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -40604,13 +40604,13 @@
         "com.railway.graphql#responsePath": "loginSessionCreate"
       }
     },
-    "com.railway.api#LoginSessionCreate": {
+    "com.railway.api#CreateLoginSession": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#LoginSessionCreateRequest"
+        "target": "com.railway.api#CreateLoginSessionRequest"
       },
       "output": {
-        "target": "com.railway.api#LoginSessionCreateResponse"
+        "target": "com.railway.api#CreateLoginSessionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -40621,7 +40621,7 @@
         "smithy.api#documentation": "Start a CLI login session"
       }
     },
-    "com.railway.api#LoginSessionVerifyRequest": {
+    "com.railway.api#VerifyLoginSessionRequest": {
       "type": "structure",
       "members": {
         "code": {
@@ -40640,7 +40640,7 @@
         }
       }
     },
-    "com.railway.api#LoginSessionVerifyResponse": {
+    "com.railway.api#VerifyLoginSessionResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -40657,13 +40657,13 @@
         "com.railway.graphql#responsePath": "loginSessionVerify"
       }
     },
-    "com.railway.api#LoginSessionVerify": {
+    "com.railway.api#VerifyLoginSession": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#LoginSessionVerifyRequest"
+        "target": "com.railway.api#VerifyLoginSessionRequest"
       },
       "output": {
-        "target": "com.railway.api#LoginSessionVerifyResponse"
+        "target": "com.railway.api#VerifyLoginSessionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -40780,7 +40780,7 @@
         "target": "com.railway.api#NotificationSeverity"
       }
     },
-    "com.railway.api#NotificationRuleCreateRequest": {
+    "com.railway.api#CreateNotificationRuleRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -40852,7 +40852,7 @@
         "target": "com.railway.api#NotificationSeverity"
       }
     },
-    "com.railway.api#NotificationRuleCreateResponse": {
+    "com.railway.api#CreateNotificationRuleResponse": {
       "type": "structure",
       "members": {
         "channels": {
@@ -40932,13 +40932,13 @@
         "smithy.api#documentation": "Selection set for `notificationRuleCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#NotificationRuleCreate": {
+    "com.railway.api#CreateNotificationRule": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#NotificationRuleCreateRequest"
+        "target": "com.railway.api#CreateNotificationRuleRequest"
       },
       "output": {
-        "target": "com.railway.api#NotificationRuleCreateResponse"
+        "target": "com.railway.api#CreateNotificationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -40949,7 +40949,7 @@
         "smithy.api#documentation": "Create a new notification rule"
       }
     },
-    "com.railway.api#NotificationRuleDeleteRequest": {
+    "com.railway.api#DeleteNotificationRuleRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -40968,7 +40968,7 @@
         }
       }
     },
-    "com.railway.api#NotificationRuleDeleteResponse": {
+    "com.railway.api#DeleteNotificationRuleResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -40985,13 +40985,13 @@
         "com.railway.graphql#responsePath": "notificationRuleDelete"
       }
     },
-    "com.railway.api#NotificationRuleDelete": {
+    "com.railway.api#DeleteNotificationRule": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#NotificationRuleDeleteRequest"
+        "target": "com.railway.api#DeleteNotificationRuleRequest"
       },
       "output": {
-        "target": "com.railway.api#NotificationRuleDeleteResponse"
+        "target": "com.railway.api#DeleteNotificationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -41031,7 +41031,7 @@
         }
       }
     },
-    "com.railway.api#NotificationRuleUpdateRequest": {
+    "com.railway.api#UpdateNotificationRuleRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -41109,7 +41109,7 @@
         "target": "com.railway.api#NotificationSeverity"
       }
     },
-    "com.railway.api#NotificationRuleUpdateResponse": {
+    "com.railway.api#UpdateNotificationRuleResponse": {
       "type": "structure",
       "members": {
         "channels": {
@@ -41189,13 +41189,13 @@
         "smithy.api#documentation": "Selection set for `notificationRuleUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#NotificationRuleUpdate": {
+    "com.railway.api#UpdateNotificationRule": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#NotificationRuleUpdateRequest"
+        "target": "com.railway.api#UpdateNotificationRuleRequest"
       },
       "output": {
-        "target": "com.railway.api#NotificationRuleUpdateResponse"
+        "target": "com.railway.api#UpdateNotificationRuleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -41206,7 +41206,7 @@
         "smithy.api#documentation": "Update a notification rule"
       }
     },
-    "com.railway.api#ObservabilityDashboardCreateInput": {
+    "com.railway.api#CreateObservabilityDashboardInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -41224,7 +41224,7 @@
         }
       }
     },
-    "com.railway.api#ObservabilityDashboardUpdateInput": {
+    "com.railway.api#UpdateObservabilityDashboardInput": {
       "type": "structure",
       "members": {
         "dashboardItem": {
@@ -41449,14 +41449,14 @@
     "com.railway.api#ObservabilityDashboardUpdateInputList": {
       "type": "list",
       "member": {
-        "target": "com.railway.api#ObservabilityDashboardUpdateInput"
+        "target": "com.railway.api#UpdateObservabilityDashboardInput"
       }
     },
-    "com.railway.api#ObservabilityDashboardCreateRequest": {
+    "com.railway.api#CreateObservabilityDashboardRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ObservabilityDashboardCreateInput",
+          "target": "com.railway.api#CreateObservabilityDashboardInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -41471,7 +41471,7 @@
         }
       }
     },
-    "com.railway.api#ObservabilityDashboardCreateResponse": {
+    "com.railway.api#CreateObservabilityDashboardResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -41488,13 +41488,13 @@
         "com.railway.graphql#responsePath": "observabilityDashboardCreate"
       }
     },
-    "com.railway.api#ObservabilityDashboardCreate": {
+    "com.railway.api#CreateObservabilityDashboard": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ObservabilityDashboardCreateRequest"
+        "target": "com.railway.api#CreateObservabilityDashboardRequest"
       },
       "output": {
-        "target": "com.railway.api#ObservabilityDashboardCreateResponse"
+        "target": "com.railway.api#CreateObservabilityDashboardResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -41558,7 +41558,7 @@
         "smithy.api#documentation": "Reset an observability dashboard to default dashboard items"
       }
     },
-    "com.railway.api#ObservabilityDashboardUpdateRequest": {
+    "com.railway.api#UpdateObservabilityDashboardRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -41583,7 +41583,7 @@
         }
       }
     },
-    "com.railway.api#ObservabilityDashboardUpdateResponse": {
+    "com.railway.api#UpdateObservabilityDashboardResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -41600,13 +41600,13 @@
         "com.railway.graphql#responsePath": "observabilityDashboardUpdate"
       }
     },
-    "com.railway.api#ObservabilityDashboardUpdate": {
+    "com.railway.api#UpdateObservabilityDashboard": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ObservabilityDashboardUpdateRequest"
+        "target": "com.railway.api#UpdateObservabilityDashboardRequest"
       },
       "output": {
-        "target": "com.railway.api#ObservabilityDashboardUpdateResponse"
+        "target": "com.railway.api#UpdateObservabilityDashboardResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -41617,7 +41617,7 @@
         "smithy.api#documentation": "Update an observability dashboard"
       }
     },
-    "com.railway.api#PasskeyDeleteRequest": {
+    "com.railway.api#DeletePasskeyRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -41636,7 +41636,7 @@
         }
       }
     },
-    "com.railway.api#PasskeyDeleteResponse": {
+    "com.railway.api#DeletePasskeyResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -41653,13 +41653,13 @@
         "com.railway.graphql#responsePath": "passkeyDelete"
       }
     },
-    "com.railway.api#PasskeyDelete": {
+    "com.railway.api#DeletePasskey": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#PasskeyDeleteRequest"
+        "target": "com.railway.api#DeletePasskeyRequest"
       },
       "output": {
-        "target": "com.railway.api#PasskeyDeleteResponse"
+        "target": "com.railway.api#DeletePasskeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -41735,7 +41735,7 @@
         }
       }
     },
-    "com.railway.api#PreferencesUpdateRequest": {
+    "com.railway.api#UpdatePreferenceRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -41754,7 +41754,7 @@
         }
       }
     },
-    "com.railway.api#PreferencesUpdateResponse": {
+    "com.railway.api#UpdatePreferenceResponse": {
       "type": "structure",
       "members": {
         "buildFailedEmail": {
@@ -41824,13 +41824,13 @@
         "smithy.api#documentation": "Selection set for `preferencesUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#PreferencesUpdate": {
+    "com.railway.api#UpdatePreference": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#PreferencesUpdateRequest"
+        "target": "com.railway.api#UpdatePreferenceRequest"
       },
       "output": {
-        "target": "com.railway.api#PreferencesUpdateResponse"
+        "target": "com.railway.api#UpdatePreferenceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -42128,7 +42128,7 @@
         "smithy.api#documentation": "Create or get a private network endpoint."
       }
     },
-    "com.railway.api#PrivateNetworkEndpointDeleteRequest": {
+    "com.railway.api#DeletePrivateNetworkEndpointRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -42147,7 +42147,7 @@
         }
       }
     },
-    "com.railway.api#PrivateNetworkEndpointDeleteResponse": {
+    "com.railway.api#DeletePrivateNetworkEndpointResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -42164,13 +42164,13 @@
         "com.railway.graphql#responsePath": "privateNetworkEndpointDelete"
       }
     },
-    "com.railway.api#PrivateNetworkEndpointDelete": {
+    "com.railway.api#DeletePrivateNetworkEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#PrivateNetworkEndpointDeleteRequest"
+        "target": "com.railway.api#DeletePrivateNetworkEndpointRequest"
       },
       "output": {
-        "target": "com.railway.api#PrivateNetworkEndpointDeleteResponse"
+        "target": "com.railway.api#DeletePrivateNetworkEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -42246,7 +42246,7 @@
         "smithy.api#documentation": "Rename a private network endpoint."
       }
     },
-    "com.railway.api#PrivateNetworksForEnvironmentDeleteRequest": {
+    "com.railway.api#DeletePrivateNetworkForEnvironmentRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -42265,7 +42265,7 @@
         }
       }
     },
-    "com.railway.api#PrivateNetworksForEnvironmentDeleteResponse": {
+    "com.railway.api#DeletePrivateNetworkForEnvironmentResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -42282,13 +42282,13 @@
         "com.railway.graphql#responsePath": "privateNetworksForEnvironmentDelete"
       }
     },
-    "com.railway.api#PrivateNetworksForEnvironmentDelete": {
+    "com.railway.api#DeletePrivateNetworkForEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#PrivateNetworksForEnvironmentDeleteRequest"
+        "target": "com.railway.api#DeletePrivateNetworkForEnvironmentRequest"
       },
       "output": {
-        "target": "com.railway.api#PrivateNetworksForEnvironmentDeleteResponse"
+        "target": "com.railway.api#DeletePrivateNetworkForEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -42848,7 +42848,7 @@
         "smithy.api#documentation": "Claims a project."
       }
     },
-    "com.railway.api#ProjectCreateInput": {
+    "com.railway.api#CreateProjectInput": {
       "type": "structure",
       "members": {
         "defaultEnvironmentName": {
@@ -42947,11 +42947,11 @@
         }
       }
     },
-    "com.railway.api#ProjectCreateRequest": {
+    "com.railway.api#CreateProjectRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ProjectCreateInput",
+          "target": "com.railway.api#CreateProjectInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -43315,7 +43315,7 @@
         }
       }
     },
-    "com.railway.api#ProjectCreateResponse": {
+    "com.railway.api#CreateProjectResponse": {
       "type": "structure",
       "members": {
         "baseEnvironment": {
@@ -43473,13 +43473,13 @@
         "smithy.api#documentation": "Selection set for `projectCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ProjectCreate": {
+    "com.railway.api#CreateProject": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectCreateRequest"
+        "target": "com.railway.api#CreateProjectRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectCreateResponse"
+        "target": "com.railway.api#CreateProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -43490,7 +43490,7 @@
         "smithy.api#documentation": "Creates a new project."
       }
     },
-    "com.railway.api#ProjectDeleteRequest": {
+    "com.railway.api#DeleteProjectRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -43509,7 +43509,7 @@
         }
       }
     },
-    "com.railway.api#ProjectDeleteResponse": {
+    "com.railway.api#DeleteProjectResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -43526,13 +43526,13 @@
         "com.railway.graphql#responsePath": "projectDelete"
       }
     },
-    "com.railway.api#ProjectDelete": {
+    "com.railway.api#DeleteProject": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectDeleteRequest"
+        "target": "com.railway.api#DeleteProjectRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectDeleteResponse"
+        "target": "com.railway.api#DeleteProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -43753,7 +43753,7 @@
         }
       }
     },
-    "com.railway.api#ProjectInvitationCreateRequest": {
+    "com.railway.api#CreateProjectInvitationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -43813,7 +43813,7 @@
         }
       }
     },
-    "com.railway.api#ProjectInvitationCreateResponse": {
+    "com.railway.api#CreateProjectInvitationResponse": {
       "type": "structure",
       "members": {
         "email": {
@@ -43860,13 +43860,13 @@
         "smithy.api#documentation": "Selection set for `projectInvitationCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ProjectInvitationCreate": {
+    "com.railway.api#CreateProjectInvitation": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectInvitationCreateRequest"
+        "target": "com.railway.api#CreateProjectInvitationRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectInvitationCreateResponse"
+        "target": "com.railway.api#CreateProjectInvitationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -43877,7 +43877,7 @@
         "smithy.api#documentation": "Create an invitation for a project"
       }
     },
-    "com.railway.api#ProjectInvitationDeleteRequest": {
+    "com.railway.api#DeleteProjectInvitationRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -43896,7 +43896,7 @@
         }
       }
     },
-    "com.railway.api#ProjectInvitationDeleteResponse": {
+    "com.railway.api#DeleteProjectInvitationResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -43913,13 +43913,13 @@
         "com.railway.graphql#responsePath": "projectInvitationDelete"
       }
     },
-    "com.railway.api#ProjectInvitationDelete": {
+    "com.railway.api#DeleteProjectInvitation": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectInvitationDeleteRequest"
+        "target": "com.railway.api#DeleteProjectInvitationRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectInvitationDeleteResponse"
+        "target": "com.railway.api#DeleteProjectInvitationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44391,7 +44391,7 @@
         "smithy.api#documentation": "Remove user from a project"
       }
     },
-    "com.railway.api#ProjectMemberUpdateInput": {
+    "com.railway.api#UpdateProjectMemberInput": {
       "type": "structure",
       "members": {
         "projectId": {
@@ -44414,11 +44414,11 @@
         }
       }
     },
-    "com.railway.api#ProjectMemberUpdateRequest": {
+    "com.railway.api#UpdateProjectMemberRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ProjectMemberUpdateInput",
+          "target": "com.railway.api#UpdateProjectMemberInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -44433,7 +44433,7 @@
         }
       }
     },
-    "com.railway.api#ProjectMemberUpdateResponse": {
+    "com.railway.api#UpdateProjectMemberResponse": {
       "type": "structure",
       "members": {
         "avatar": {
@@ -44475,13 +44475,13 @@
         "smithy.api#documentation": "Selection set for `projectMemberUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ProjectMemberUpdate": {
+    "com.railway.api#UpdateProjectMember": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectMemberUpdateRequest"
+        "target": "com.railway.api#UpdateProjectMemberRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectMemberUpdateResponse"
+        "target": "com.railway.api#UpdateProjectMemberResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44492,7 +44492,7 @@
         "smithy.api#documentation": "Change the role for a user within a project"
       }
     },
-    "com.railway.api#ProjectScheduleDeleteRequest": {
+    "com.railway.api#DeleteProjectScheduleRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -44511,7 +44511,7 @@
         }
       }
     },
-    "com.railway.api#ProjectScheduleDeleteResponse": {
+    "com.railway.api#DeleteProjectScheduleResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -44528,13 +44528,13 @@
         "com.railway.graphql#responsePath": "projectScheduleDelete"
       }
     },
-    "com.railway.api#ProjectScheduleDelete": {
+    "com.railway.api#DeleteProjectSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectScheduleDeleteRequest"
+        "target": "com.railway.api#DeleteProjectScheduleRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectScheduleDeleteResponse"
+        "target": "com.railway.api#DeleteProjectScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44545,7 +44545,7 @@
         "smithy.api#documentation": "Deletes a project with a 48 hour grace period."
       }
     },
-    "com.railway.api#ProjectScheduleDeleteCancelRequest": {
+    "com.railway.api#DeleteProjectScheduleCancelRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -44564,7 +44564,7 @@
         }
       }
     },
-    "com.railway.api#ProjectScheduleDeleteCancelResponse": {
+    "com.railway.api#DeleteProjectScheduleCancelResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -44581,13 +44581,13 @@
         "com.railway.graphql#responsePath": "projectScheduleDeleteCancel"
       }
     },
-    "com.railway.api#ProjectScheduleDeleteCancel": {
+    "com.railway.api#DeleteProjectScheduleCancel": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectScheduleDeleteCancelRequest"
+        "target": "com.railway.api#DeleteProjectScheduleCancelRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectScheduleDeleteCancelResponse"
+        "target": "com.railway.api#DeleteProjectScheduleCancelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44598,7 +44598,7 @@
         "smithy.api#documentation": "Cancel scheduled deletion of a project"
       }
     },
-    "com.railway.api#ProjectScheduleDeleteForceRequest": {
+    "com.railway.api#DeleteProjectScheduleForceRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -44617,7 +44617,7 @@
         }
       }
     },
-    "com.railway.api#ProjectScheduleDeleteForceResponse": {
+    "com.railway.api#DeleteProjectScheduleForceResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -44634,13 +44634,13 @@
         "com.railway.graphql#responsePath": "projectScheduleDeleteForce"
       }
     },
-    "com.railway.api#ProjectScheduleDeleteForce": {
+    "com.railway.api#DeleteProjectScheduleForce": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectScheduleDeleteForceRequest"
+        "target": "com.railway.api#DeleteProjectScheduleForceRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectScheduleDeleteForceResponse"
+        "target": "com.railway.api#DeleteProjectScheduleForceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44651,7 +44651,7 @@
         "smithy.api#documentation": "Force delete a scheduled deletion of a project (skips the grace period)"
       }
     },
-    "com.railway.api#ProjectTokenCreateInput": {
+    "com.railway.api#CreateProjectTokenInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -44674,11 +44674,11 @@
         }
       }
     },
-    "com.railway.api#ProjectTokenCreateRequest": {
+    "com.railway.api#CreateProjectTokenRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ProjectTokenCreateInput",
+          "target": "com.railway.api#CreateProjectTokenInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -44693,7 +44693,7 @@
         }
       }
     },
-    "com.railway.api#ProjectTokenCreateResponse": {
+    "com.railway.api#CreateProjectTokenResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -44710,13 +44710,13 @@
         "com.railway.graphql#responsePath": "projectTokenCreate"
       }
     },
-    "com.railway.api#ProjectTokenCreate": {
+    "com.railway.api#CreateProjectToken": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectTokenCreateRequest"
+        "target": "com.railway.api#CreateProjectTokenRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectTokenCreateResponse"
+        "target": "com.railway.api#CreateProjectTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44727,7 +44727,7 @@
         "smithy.api#documentation": "Create a token for a project that has access to a specific environment"
       }
     },
-    "com.railway.api#ProjectTokenDeleteRequest": {
+    "com.railway.api#DeleteProjectTokenRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -44746,7 +44746,7 @@
         }
       }
     },
-    "com.railway.api#ProjectTokenDeleteResponse": {
+    "com.railway.api#DeleteProjectTokenResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -44763,13 +44763,13 @@
         "com.railway.graphql#responsePath": "projectTokenDelete"
       }
     },
-    "com.railway.api#ProjectTokenDelete": {
+    "com.railway.api#DeleteProjectToken": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectTokenDeleteRequest"
+        "target": "com.railway.api#DeleteProjectTokenRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectTokenDeleteResponse"
+        "target": "com.railway.api#DeleteProjectTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -44996,7 +44996,7 @@
         "smithy.api#documentation": "Initiate the transfer of project ownership"
       }
     },
-    "com.railway.api#ProjectUpdateInput": {
+    "com.railway.api#UpdateProjectInput": {
       "type": "structure",
       "members": {
         "baseEnvironmentId": {
@@ -45045,7 +45045,7 @@
         }
       }
     },
-    "com.railway.api#ProjectUpdateRequest": {
+    "com.railway.api#UpdateProjectRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -45055,7 +45055,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#ProjectUpdateInput",
+          "target": "com.railway.api#UpdateProjectInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -45419,7 +45419,7 @@
         }
       }
     },
-    "com.railway.api#ProjectUpdateResponse": {
+    "com.railway.api#UpdateProjectResponse": {
       "type": "structure",
       "members": {
         "baseEnvironment": {
@@ -45577,13 +45577,13 @@
         "smithy.api#documentation": "Selection set for `projectUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ProjectUpdate": {
+    "com.railway.api#UpdateProject": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ProjectUpdateRequest"
+        "target": "com.railway.api#UpdateProjectRequest"
       },
       "output": {
-        "target": "com.railway.api#ProjectUpdateResponse"
+        "target": "com.railway.api#UpdateProjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -45740,7 +45740,7 @@
         "smithy.api#documentation": "Purges the CDN cache for a service. Bumps the edge config's purge epoch so every edge node treats prior cached entries as stale on next request. Idempotent; returns true even if CDN is disabled for the service."
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordCreateInput": {
+    "com.railway.api#CreateRailwayDomainDnsRecordInput": {
       "type": "structure",
       "members": {
         "answer": {
@@ -45787,11 +45787,11 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordCreateRequest": {
+    "com.railway.api#CreateRailwayDomainDnsRecordRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#RailwayDomainDnsRecordCreateInput",
+          "target": "com.railway.api#CreateRailwayDomainDnsRecordInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -45806,7 +45806,7 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordCreateResponse": {
+    "com.railway.api#CreateRailwayDomainDnsRecordResponse": {
       "type": "structure",
       "members": {
         "answer": {
@@ -45865,13 +45865,13 @@
         "smithy.api#documentation": "Selection set for `railwayDomainDnsRecordCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordCreate": {
+    "com.railway.api#CreateRailwayDomainDnsRecord": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#RailwayDomainDnsRecordCreateRequest"
+        "target": "com.railway.api#CreateRailwayDomainDnsRecordRequest"
       },
       "output": {
-        "target": "com.railway.api#RailwayDomainDnsRecordCreateResponse"
+        "target": "com.railway.api#CreateRailwayDomainDnsRecordResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -45882,7 +45882,7 @@
         "smithy.api#documentation": "Create a DNS record for a Railway domain"
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordDeleteInput": {
+    "com.railway.api#DeleteRailwayDomainDnsRecordInput": {
       "type": "structure",
       "members": {
         "domain": {
@@ -45905,11 +45905,11 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordDeleteRequest": {
+    "com.railway.api#DeleteRailwayDomainDnsRecordRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#RailwayDomainDnsRecordDeleteInput",
+          "target": "com.railway.api#DeleteRailwayDomainDnsRecordInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -45924,7 +45924,7 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordDeleteResponse": {
+    "com.railway.api#DeleteRailwayDomainDnsRecordResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -45941,13 +45941,13 @@
         "com.railway.graphql#responsePath": "railwayDomainDnsRecordDelete"
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordDelete": {
+    "com.railway.api#DeleteRailwayDomainDnsRecord": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#RailwayDomainDnsRecordDeleteRequest"
+        "target": "com.railway.api#DeleteRailwayDomainDnsRecordRequest"
       },
       "output": {
-        "target": "com.railway.api#RailwayDomainDnsRecordDeleteResponse"
+        "target": "com.railway.api#DeleteRailwayDomainDnsRecordResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -45958,7 +45958,7 @@
         "smithy.api#documentation": "Delete a DNS record for a Railway domain"
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordUpdateInput": {
+    "com.railway.api#UpdateRailwayDomainDnsRecordInput": {
       "type": "structure",
       "members": {
         "answer": {
@@ -46011,11 +46011,11 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordUpdateRequest": {
+    "com.railway.api#UpdateRailwayDomainDnsRecordRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#RailwayDomainDnsRecordUpdateInput",
+          "target": "com.railway.api#UpdateRailwayDomainDnsRecordInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -46030,7 +46030,7 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordUpdateResponse": {
+    "com.railway.api#UpdateRailwayDomainDnsRecordResponse": {
       "type": "structure",
       "members": {
         "answer": {
@@ -46089,13 +46089,13 @@
         "smithy.api#documentation": "Selection set for `railwayDomainDnsRecordUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#RailwayDomainDnsRecordUpdate": {
+    "com.railway.api#UpdateRailwayDomainDnsRecord": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#RailwayDomainDnsRecordUpdateRequest"
+        "target": "com.railway.api#UpdateRailwayDomainDnsRecordRequest"
       },
       "output": {
-        "target": "com.railway.api#RailwayDomainDnsRecordUpdateResponse"
+        "target": "com.railway.api#UpdateRailwayDomainDnsRecordResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46106,7 +46106,7 @@
         "smithy.api#documentation": "Update a DNS record for a Railway domain"
       }
     },
-    "com.railway.api#RailwayDomainNameserversSetInput": {
+    "com.railway.api#SetRailwayDomainNameserverInput": {
       "type": "structure",
       "members": {
         "id": {
@@ -46124,11 +46124,11 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainNameserversSetRequest": {
+    "com.railway.api#SetRailwayDomainNameserverRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#RailwayDomainNameserversSetInput",
+          "target": "com.railway.api#SetRailwayDomainNameserverInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -46149,7 +46149,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.railway.api#RailwayDomainNameserversSetResponse": {
+    "com.railway.api#SetRailwayDomainNameserverResponse": {
       "type": "structure",
       "members": {
         "isDefault": {
@@ -46171,13 +46171,13 @@
         "smithy.api#documentation": "Selection set for `railwayDomainNameserversSet` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#RailwayDomainNameserversSet": {
+    "com.railway.api#SetRailwayDomainNameserver": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#RailwayDomainNameserversSetRequest"
+        "target": "com.railway.api#SetRailwayDomainNameserverRequest"
       },
       "output": {
-        "target": "com.railway.api#RailwayDomainNameserversSetResponse"
+        "target": "com.railway.api#SetRailwayDomainNameserverResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46188,7 +46188,7 @@
         "smithy.api#documentation": "Delegate the domain's authoritative nameservers to an external DNS provider, or reset to Railway defaults by passing an empty list."
       }
     },
-    "com.railway.api#RailwayDomainUpdateInput": {
+    "com.railway.api#UpdateRailwayDomainInput": {
       "type": "structure",
       "members": {
         "autoRenewEnabled": {
@@ -46205,11 +46205,11 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainUpdateRequest": {
+    "com.railway.api#UpdateRailwayDomainRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#RailwayDomainUpdateInput",
+          "target": "com.railway.api#UpdateRailwayDomainInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -46283,7 +46283,7 @@
         }
       }
     },
-    "com.railway.api#RailwayDomainUpdateResponse": {
+    "com.railway.api#UpdateRailwayDomainResponse": {
       "type": "structure",
       "members": {
         "autoRenewEnabled": {
@@ -46373,13 +46373,13 @@
         "smithy.api#documentation": "Selection set for `railwayDomainUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#RailwayDomainUpdate": {
+    "com.railway.api#UpdateRailwayDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#RailwayDomainUpdateRequest"
+        "target": "com.railway.api#UpdateRailwayDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#RailwayDomainUpdateResponse"
+        "target": "com.railway.api#UpdateRailwayDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46390,7 +46390,7 @@
         "smithy.api#documentation": "Update a Railway domain's settings"
       }
     },
-    "com.railway.api#RecoveryCodeGenerateRequest": {
+    "com.railway.api#GenerateRecoveryCodeRequest": {
       "type": "structure",
       "members": {},
       "traits": {
@@ -46408,7 +46408,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.railway.api#RecoveryCodeGenerateResponse": {
+    "com.railway.api#GenerateRecoveryCodeResponse": {
       "type": "structure",
       "members": {
         "recoveryCodes": {
@@ -46424,13 +46424,13 @@
         "smithy.api#documentation": "Selection set for `recoveryCodeGenerate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#RecoveryCodeGenerate": {
+    "com.railway.api#GenerateRecoveryCode": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#RecoveryCodeGenerateRequest"
+        "target": "com.railway.api#GenerateRecoveryCodeRequest"
       },
       "output": {
-        "target": "com.railway.api#RecoveryCodeGenerateResponse"
+        "target": "com.railway.api#GenerateRecoveryCodeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46511,7 +46511,7 @@
         "smithy.api#documentation": "Validates a recovery code."
       }
     },
-    "com.railway.api#ReferralInfoUpdateInput": {
+    "com.railway.api#UpdateReferralInfoInput": {
       "type": "structure",
       "members": {
         "code": {
@@ -46528,11 +46528,11 @@
         }
       }
     },
-    "com.railway.api#ReferralInfoUpdateRequest": {
+    "com.railway.api#UpdateReferralInfoRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ReferralInfoUpdateInput",
+          "target": "com.railway.api#UpdateReferralInfoInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -46564,7 +46564,7 @@
         }
       }
     },
-    "com.railway.api#ReferralInfoUpdateResponse": {
+    "com.railway.api#UpdateReferralInfoResponse": {
       "type": "structure",
       "members": {
         "code": {
@@ -46598,13 +46598,13 @@
         "smithy.api#documentation": "Selection set for `referralInfoUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ReferralInfoUpdate": {
+    "com.railway.api#UpdateReferralInfo": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ReferralInfoUpdateRequest"
+        "target": "com.railway.api#UpdateReferralInfoRequest"
       },
       "output": {
-        "target": "com.railway.api#ReferralInfoUpdateResponse"
+        "target": "com.railway.api#UpdateReferralInfoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46615,7 +46615,7 @@
         "smithy.api#documentation": "Updates the ReferralInfo for the authenticated user."
       }
     },
-    "com.railway.api#SandboxCheckpointCreateRequest": {
+    "com.railway.api#CreateSandboxCheckpointRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -46646,7 +46646,7 @@
         }
       }
     },
-    "com.railway.api#SandboxCheckpointCreateResponse": {
+    "com.railway.api#CreateSandboxCheckpointResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -46680,13 +46680,13 @@
         "smithy.api#documentation": "Selection set for `sandboxCheckpointCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#SandboxCheckpointCreate": {
+    "com.railway.api#CreateSandboxCheckpoint": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SandboxCheckpointCreateRequest"
+        "target": "com.railway.api#CreateSandboxCheckpointRequest"
       },
       "output": {
-        "target": "com.railway.api#SandboxCheckpointCreateResponse"
+        "target": "com.railway.api#CreateSandboxCheckpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46697,7 +46697,7 @@
         "smithy.api#documentation": "Capture a running sandbox's current disk into a reusable, named checkpoint. Synchronous: the checkpoint is ready when this returns."
       }
     },
-    "com.railway.api#SandboxCheckpointDeleteRequest": {
+    "com.railway.api#DeleteSandboxCheckpointRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -46722,7 +46722,7 @@
         }
       }
     },
-    "com.railway.api#SandboxCheckpointDeleteResponse": {
+    "com.railway.api#DeleteSandboxCheckpointResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -46739,13 +46739,13 @@
         "com.railway.graphql#responsePath": "sandboxCheckpointDelete"
       }
     },
-    "com.railway.api#SandboxCheckpointDelete": {
+    "com.railway.api#DeleteSandboxCheckpoint": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SandboxCheckpointDeleteRequest"
+        "target": "com.railway.api#DeleteSandboxCheckpointRequest"
       },
       "output": {
-        "target": "com.railway.api#SandboxCheckpointDeleteResponse"
+        "target": "com.railway.api#DeleteSandboxCheckpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -46838,7 +46838,7 @@
         "smithy.api#documentation": "Rename a sandbox checkpoint."
       }
     },
-    "com.railway.api#SandboxCreateInput": {
+    "com.railway.api#CreateSandboxInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -46922,11 +46922,11 @@
         }
       }
     },
-    "com.railway.api#SandboxCreateRequest": {
+    "com.railway.api#CreateSandboxRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#SandboxCreateInput",
+          "target": "com.railway.api#CreateSandboxInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -46941,7 +46941,7 @@
         }
       }
     },
-    "com.railway.api#SandboxCreateResponse": {
+    "com.railway.api#CreateSandboxResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -46994,13 +46994,13 @@
         "smithy.api#documentation": "Selection set for `sandboxCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#SandboxCreate": {
+    "com.railway.api#CreateSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SandboxCreateRequest"
+        "target": "com.railway.api#CreateSandboxRequest"
       },
       "output": {
-        "target": "com.railway.api#SandboxCreateResponse"
+        "target": "com.railway.api#CreateSandboxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -47106,7 +47106,7 @@
         "smithy.api#documentation": "Destroy a sandbox."
       }
     },
-    "com.railway.api#SandboxExecRequest": {
+    "com.railway.api#ExecSandboxRequest": {
       "type": "structure",
       "members": {
         "command": {
@@ -47143,7 +47143,7 @@
         }
       }
     },
-    "com.railway.api#SandboxExecResponse": {
+    "com.railway.api#ExecSandboxResponse": {
       "type": "structure",
       "members": {
         "exitCode": {
@@ -47183,13 +47183,13 @@
         "smithy.api#documentation": "Selection set for `sandboxExec` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#SandboxExec": {
+    "com.railway.api#ExecSandbox": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SandboxExecRequest"
+        "target": "com.railway.api#ExecSandboxRequest"
       },
       "output": {
-        "target": "com.railway.api#SandboxExecResponse"
+        "target": "com.railway.api#ExecSandboxResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -47607,7 +47607,7 @@
         "smithy.api#documentation": "Connect a service to a source"
       }
     },
-    "com.railway.api#ServiceCreateInput": {
+    "com.railway.api#CreateServiceInput": {
       "type": "structure",
       "members": {
         "branch": {
@@ -47712,11 +47712,11 @@
         }
       }
     },
-    "com.railway.api#ServiceCreateRequest": {
+    "com.railway.api#CreateServiceRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ServiceCreateInput",
+          "target": "com.railway.api#CreateServiceInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -47869,7 +47869,7 @@
         }
       }
     },
-    "com.railway.api#ServiceCreateResponse": {
+    "com.railway.api#CreateServiceResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -47975,13 +47975,13 @@
         "smithy.api#documentation": "Selection set for `serviceCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ServiceCreate": {
+    "com.railway.api#CreateService": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceCreateRequest"
+        "target": "com.railway.api#CreateServiceRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceCreateResponse"
+        "target": "com.railway.api#CreateServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -47992,7 +47992,7 @@
         "smithy.api#documentation": "Creates a new service."
       }
     },
-    "com.railway.api#ServiceDeleteRequest": {
+    "com.railway.api#DeleteServiceRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -48018,7 +48018,7 @@
         }
       }
     },
-    "com.railway.api#ServiceDeleteResponse": {
+    "com.railway.api#DeleteServiceResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -48035,13 +48035,13 @@
         "com.railway.graphql#responsePath": "serviceDelete"
       }
     },
-    "com.railway.api#ServiceDelete": {
+    "com.railway.api#DeleteService": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceDeleteRequest"
+        "target": "com.railway.api#DeleteServiceRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceDeleteResponse"
+        "target": "com.railway.api#DeleteServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -48332,7 +48332,7 @@
         "smithy.api#documentation": "Disconnect a service from a repo"
       }
     },
-    "com.railway.api#ServiceDomainCreateInput": {
+    "com.railway.api#CreateServiceDomainInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -48355,11 +48355,11 @@
         }
       }
     },
-    "com.railway.api#ServiceDomainCreateRequest": {
+    "com.railway.api#CreateServiceDomainRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ServiceDomainCreateInput",
+          "target": "com.railway.api#CreateServiceDomainInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -48374,7 +48374,7 @@
         }
       }
     },
-    "com.railway.api#ServiceDomainCreateResponse": {
+    "com.railway.api#CreateServiceDomainResponse": {
       "type": "structure",
       "members": {
         "cdnMode": {
@@ -48484,13 +48484,13 @@
         "smithy.api#documentation": "Selection set for `serviceDomainCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ServiceDomainCreate": {
+    "com.railway.api#CreateServiceDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceDomainCreateRequest"
+        "target": "com.railway.api#CreateServiceDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceDomainCreateResponse"
+        "target": "com.railway.api#CreateServiceDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -48501,7 +48501,7 @@
         "smithy.api#documentation": "Creates a new service domain."
       }
     },
-    "com.railway.api#ServiceDomainDeleteRequest": {
+    "com.railway.api#DeleteServiceDomainRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -48520,7 +48520,7 @@
         }
       }
     },
-    "com.railway.api#ServiceDomainDeleteResponse": {
+    "com.railway.api#DeleteServiceDomainResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -48537,13 +48537,13 @@
         "com.railway.graphql#responsePath": "serviceDomainDelete"
       }
     },
-    "com.railway.api#ServiceDomainDelete": {
+    "com.railway.api#DeleteServiceDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceDomainDeleteRequest"
+        "target": "com.railway.api#DeleteServiceDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceDomainDeleteResponse"
+        "target": "com.railway.api#DeleteServiceDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -48554,7 +48554,7 @@
         "smithy.api#documentation": "Deletes a service domain."
       }
     },
-    "com.railway.api#ServiceDomainUpdateInput": {
+    "com.railway.api#UpdateServiceDomainInput": {
       "type": "structure",
       "members": {
         "domain": {
@@ -48589,11 +48589,11 @@
         }
       }
     },
-    "com.railway.api#ServiceDomainUpdateRequest": {
+    "com.railway.api#UpdateServiceDomainRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ServiceDomainUpdateInput",
+          "target": "com.railway.api#UpdateServiceDomainInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -48608,7 +48608,7 @@
         }
       }
     },
-    "com.railway.api#ServiceDomainUpdateResponse": {
+    "com.railway.api#UpdateServiceDomainResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -48625,13 +48625,13 @@
         "com.railway.graphql#responsePath": "serviceDomainUpdate"
       }
     },
-    "com.railway.api#ServiceDomainUpdate": {
+    "com.railway.api#UpdateServiceDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceDomainUpdateRequest"
+        "target": "com.railway.api#UpdateServiceDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceDomainUpdateResponse"
+        "target": "com.railway.api#UpdateServiceDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -48765,7 +48765,7 @@
         "smithy.api#documentation": "Remove a feature flag for a service"
       }
     },
-    "com.railway.api#ServiceInstanceAutoDeployUpdateInput": {
+    "com.railway.api#UpdateServiceInstanceAutoDeployInput": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -48794,11 +48794,11 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceAutoDeployUpdateRequest": {
+    "com.railway.api#UpdateServiceInstanceAutoDeployRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ServiceInstanceAutoDeployUpdateInput",
+          "target": "com.railway.api#UpdateServiceInstanceAutoDeployInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -48813,7 +48813,7 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceAutoDeployUpdateResponse": {
+    "com.railway.api#UpdateServiceInstanceAutoDeployResponse": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -48829,13 +48829,13 @@
         "smithy.api#documentation": "Selection set for `serviceInstanceAutoDeployUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ServiceInstanceAutoDeployUpdate": {
+    "com.railway.api#UpdateServiceInstanceAutoDeploy": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceInstanceAutoDeployUpdateRequest"
+        "target": "com.railway.api#UpdateServiceInstanceAutoDeployRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceInstanceAutoDeployUpdateResponse"
+        "target": "com.railway.api#UpdateServiceInstanceAutoDeployResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -48944,7 +48944,7 @@
         "smithy.api#documentation": "Update the auto-update maintenance window for a service instance, applied immediately (no config staging, no redeploy). Only the schedule changes — the update policy is untouched."
       }
     },
-    "com.railway.api#ServiceInstanceAutoUpdateSnoozeRequest": {
+    "com.railway.api#UpdateServiceInstanceAutoSnoozeRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -48976,7 +48976,7 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceAutoUpdateSnoozeResponse": {
+    "com.railway.api#UpdateServiceInstanceAutoSnoozeResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -48993,13 +48993,13 @@
         "com.railway.graphql#responsePath": "serviceInstanceAutoUpdateSnooze"
       }
     },
-    "com.railway.api#ServiceInstanceAutoUpdateSnooze": {
+    "com.railway.api#UpdateServiceInstanceAutoSnooze": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceInstanceAutoUpdateSnoozeRequest"
+        "target": "com.railway.api#UpdateServiceInstanceAutoSnoozeRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceInstanceAutoUpdateSnoozeResponse"
+        "target": "com.railway.api#UpdateServiceInstanceAutoSnoozeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49010,7 +49010,7 @@
         "smithy.api#documentation": "Skip the next scheduled auto-update occurrence for a service instance, applied immediately (no config staging, no redeploy). The recurring maintenance window and update policy are untouched — this only delays the next fire."
       }
     },
-    "com.railway.api#ServiceInstanceAutoUpdateSnoozeClearRequest": {
+    "com.railway.api#UpdateServiceInstanceAutoSnoozeClearRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -49035,7 +49035,7 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceAutoUpdateSnoozeClearResponse": {
+    "com.railway.api#UpdateServiceInstanceAutoSnoozeClearResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -49052,13 +49052,13 @@
         "com.railway.graphql#responsePath": "serviceInstanceAutoUpdateSnoozeClear"
       }
     },
-    "com.railway.api#ServiceInstanceAutoUpdateSnoozeClear": {
+    "com.railway.api#UpdateServiceInstanceAutoSnoozeClear": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceInstanceAutoUpdateSnoozeClearRequest"
+        "target": "com.railway.api#UpdateServiceInstanceAutoSnoozeClearRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceInstanceAutoUpdateSnoozeClearResponse"
+        "target": "com.railway.api#UpdateServiceInstanceAutoSnoozeClearResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49205,7 +49205,7 @@
         "smithy.api#documentation": "Deploy a service instance. Returns a deployment ID"
       }
     },
-    "com.railway.api#ServiceInstanceLimitsUpdateInput": {
+    "com.railway.api#UpdateServiceInstanceLimitInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -49236,11 +49236,11 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceLimitsUpdateRequest": {
+    "com.railway.api#UpdateServiceInstanceLimitRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#ServiceInstanceLimitsUpdateInput",
+          "target": "com.railway.api#UpdateServiceInstanceLimitInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -49255,7 +49255,7 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceLimitsUpdateResponse": {
+    "com.railway.api#UpdateServiceInstanceLimitResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -49272,13 +49272,13 @@
         "com.railway.graphql#responsePath": "serviceInstanceLimitsUpdate"
       }
     },
-    "com.railway.api#ServiceInstanceLimitsUpdate": {
+    "com.railway.api#UpdateServiceInstanceLimit": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceInstanceLimitsUpdateRequest"
+        "target": "com.railway.api#UpdateServiceInstanceLimitRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceInstanceLimitsUpdateResponse"
+        "target": "com.railway.api#UpdateServiceInstanceLimitResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49348,7 +49348,7 @@
         "smithy.api#documentation": "Redeploy a service instance"
       }
     },
-    "com.railway.api#ServiceInstanceUpdateInput": {
+    "com.railway.api#UpdateServiceInstanceInput": {
       "type": "structure",
       "members": {
         "buildCommand": {
@@ -49497,7 +49497,7 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceUpdateRequest": {
+    "com.railway.api#UpdateServiceInstanceRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -49508,7 +49508,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#ServiceInstanceUpdateInput",
+          "target": "com.railway.api#UpdateServiceInstanceInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -49529,7 +49529,7 @@
         }
       }
     },
-    "com.railway.api#ServiceInstanceUpdateResponse": {
+    "com.railway.api#UpdateServiceInstanceResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -49546,13 +49546,13 @@
         "com.railway.graphql#responsePath": "serviceInstanceUpdate"
       }
     },
-    "com.railway.api#ServiceInstanceUpdate": {
+    "com.railway.api#UpdateServiceInstance": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceInstanceUpdateRequest"
+        "target": "com.railway.api#UpdateServiceInstanceRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceInstanceUpdateResponse"
+        "target": "com.railway.api#UpdateServiceInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -49961,7 +49961,7 @@
         "smithy.api#documentation": "Remove the upstream URL from all service instances for this service"
       }
     },
-    "com.railway.api#ServiceUpdateInput": {
+    "com.railway.api#UpdateServiceInput": {
       "type": "structure",
       "members": {
         "icon": {
@@ -49978,7 +49978,7 @@
         }
       }
     },
-    "com.railway.api#ServiceUpdateRequest": {
+    "com.railway.api#UpdateServiceRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -49988,7 +49988,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#ServiceUpdateInput",
+          "target": "com.railway.api#UpdateServiceInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -50141,7 +50141,7 @@
         }
       }
     },
-    "com.railway.api#ServiceUpdateResponse": {
+    "com.railway.api#UpdateServiceResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -50247,13 +50247,13 @@
         "smithy.api#documentation": "Selection set for `serviceUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#ServiceUpdate": {
+    "com.railway.api#UpdateService": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#ServiceUpdateRequest"
+        "target": "com.railway.api#UpdateServiceRequest"
       },
       "output": {
-        "target": "com.railway.api#ServiceUpdateResponse"
+        "target": "com.railway.api#UpdateServiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -50264,7 +50264,7 @@
         "smithy.api#documentation": "Updates a service."
       }
     },
-    "com.railway.api#SessionDeleteRequest": {
+    "com.railway.api#DeleteSessionRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -50283,7 +50283,7 @@
         }
       }
     },
-    "com.railway.api#SessionDeleteResponse": {
+    "com.railway.api#DeleteSessionResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -50300,13 +50300,13 @@
         "com.railway.graphql#responsePath": "sessionDelete"
       }
     },
-    "com.railway.api#SessionDelete": {
+    "com.railway.api#DeleteSession": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SessionDeleteRequest"
+        "target": "com.railway.api#DeleteSessionRequest"
       },
       "output": {
-        "target": "com.railway.api#SessionDeleteResponse"
+        "target": "com.railway.api#DeleteSessionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -52089,7 +52089,7 @@
         "smithy.api#documentation": "Remove a rule from a signal."
       }
     },
-    "com.railway.api#SshPublicKeyCreateInput": {
+    "com.railway.api#CreateSshPublicKeyInput": {
       "type": "structure",
       "members": {
         "name": {
@@ -52112,11 +52112,11 @@
         }
       }
     },
-    "com.railway.api#SshPublicKeyCreateRequest": {
+    "com.railway.api#CreateSshPublicKeyRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#SshPublicKeyCreateInput",
+          "target": "com.railway.api#CreateSshPublicKeyInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -52131,7 +52131,7 @@
         }
       }
     },
-    "com.railway.api#SshPublicKeyCreateResponse": {
+    "com.railway.api#CreateSshPublicKeyResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -52191,13 +52191,13 @@
         "smithy.api#documentation": "Selection set for `sshPublicKeyCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#SshPublicKeyCreate": {
+    "com.railway.api#CreateSshPublicKey": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SshPublicKeyCreateRequest"
+        "target": "com.railway.api#CreateSshPublicKeyRequest"
       },
       "output": {
-        "target": "com.railway.api#SshPublicKeyCreateResponse"
+        "target": "com.railway.api#CreateSshPublicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -52208,7 +52208,7 @@
         "smithy.api#documentation": "Creates a new SSH public key. When workspaceId is provided (or omitted under a workspace-scoped API token, in which case it defaults to the token's workspace), the key is owned by the workspace and can be used by anyone authenticating as that workspace via native SSH; requires workspace ADMIN access. Otherwise the key is owned by the authenticated user."
       }
     },
-    "com.railway.api#SshPublicKeyDeleteRequest": {
+    "com.railway.api#DeleteSshPublicKeyRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -52227,7 +52227,7 @@
         }
       }
     },
-    "com.railway.api#SshPublicKeyDeleteResponse": {
+    "com.railway.api#DeleteSshPublicKeyResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -52244,13 +52244,13 @@
         "com.railway.graphql#responsePath": "sshPublicKeyDelete"
       }
     },
-    "com.railway.api#SshPublicKeyDelete": {
+    "com.railway.api#DeleteSshPublicKey": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#SshPublicKeyDeleteRequest"
+        "target": "com.railway.api#DeleteSshPublicKeyRequest"
       },
       "output": {
-        "target": "com.railway.api#SshPublicKeyDeleteResponse"
+        "target": "com.railway.api#DeleteSshPublicKeyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -52314,7 +52314,7 @@
         "smithy.api#documentation": "Approve an SSH signup: register the offered SSH key on the authenticated account so the agent is recognized."
       }
     },
-    "com.railway.api#TcpProxyDeleteRequest": {
+    "com.railway.api#DeleteTcpProxyRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -52333,7 +52333,7 @@
         }
       }
     },
-    "com.railway.api#TcpProxyDeleteResponse": {
+    "com.railway.api#DeleteTcpProxyResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -52350,13 +52350,13 @@
         "com.railway.graphql#responsePath": "tcpProxyDelete"
       }
     },
-    "com.railway.api#TcpProxyDelete": {
+    "com.railway.api#DeleteTcpProxy": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TcpProxyDeleteRequest"
+        "target": "com.railway.api#DeleteTcpProxyRequest"
       },
       "output": {
-        "target": "com.railway.api#TcpProxyDeleteResponse"
+        "target": "com.railway.api#DeleteTcpProxyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -52809,7 +52809,7 @@
         "smithy.api#documentation": "Duplicates an existing template"
       }
     },
-    "com.railway.api#TemplateDeleteInput": {
+    "com.railway.api#DeleteTemplateInput": {
       "type": "structure",
       "members": {
         "workspaceId": {
@@ -52820,7 +52820,7 @@
         }
       }
     },
-    "com.railway.api#TemplateDeleteRequest": {
+    "com.railway.api#DeleteTemplateRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -52830,7 +52830,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#TemplateDeleteInput",
+          "target": "com.railway.api#DeleteTemplateInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -52845,7 +52845,7 @@
         }
       }
     },
-    "com.railway.api#TemplateDeleteResponse": {
+    "com.railway.api#DeleteTemplateResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -52862,13 +52862,13 @@
         "com.railway.graphql#responsePath": "templateDelete"
       }
     },
-    "com.railway.api#TemplateDelete": {
+    "com.railway.api#DeleteTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TemplateDeleteRequest"
+        "target": "com.railway.api#DeleteTemplateRequest"
       },
       "output": {
-        "target": "com.railway.api#TemplateDeleteResponse"
+        "target": "com.railway.api#DeleteTemplateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -52987,7 +52987,7 @@
         "smithy.api#documentation": "Deploys a template using the serialized template config"
       }
     },
-    "com.railway.api#TemplateGenerateInput": {
+    "com.railway.api#GenerateTemplateInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -53004,11 +53004,11 @@
         }
       }
     },
-    "com.railway.api#TemplateGenerateRequest": {
+    "com.railway.api#GenerateTemplateRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#TemplateGenerateInput",
+          "target": "com.railway.api#GenerateTemplateInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -53187,7 +53187,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.railway.api#TemplateGenerateResponse": {
+    "com.railway.api#GenerateTemplateResponse": {
       "type": "structure",
       "members": {
         "activeProjects": {
@@ -53412,13 +53412,13 @@
         "smithy.api#documentation": "Selection set for `templateGenerate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#TemplateGenerate": {
+    "com.railway.api#GenerateTemplate": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TemplateGenerateRequest"
+        "target": "com.railway.api#GenerateTemplateRequest"
       },
       "output": {
-        "target": "com.railway.api#TemplateGenerateResponse"
+        "target": "com.railway.api#GenerateTemplateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -54149,7 +54149,7 @@
         "smithy.api#documentation": "Unpublishes a template."
       }
     },
-    "com.railway.api#TemplateVolumeUpdateRequest": {
+    "com.railway.api#UpdateTemplateVolumeRequest": {
       "type": "structure",
       "members": {
         "serviceId": {
@@ -54350,7 +54350,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.railway.api#TemplateVolumeUpdateResponse": {
+    "com.railway.api#UpdateTemplateVolumeResponse": {
       "type": "structure",
       "members": {
         "activeProjects": {
@@ -54575,13 +54575,13 @@
         "smithy.api#documentation": "Selection set for `templateVolumeUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#TemplateVolumeUpdate": {
+    "com.railway.api#UpdateTemplateVolume": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TemplateVolumeUpdateRequest"
+        "target": "com.railway.api#UpdateTemplateVolumeRequest"
       },
       "output": {
-        "target": "com.railway.api#TemplateVolumeUpdateResponse"
+        "target": "com.railway.api#UpdateTemplateVolumeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -54615,7 +54615,7 @@
         }
       }
     },
-    "com.railway.api#TrustedDomainCreateRequest": {
+    "com.railway.api#CreateTrustedDomainRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -54653,7 +54653,7 @@
         }
       }
     },
-    "com.railway.api#TrustedDomainCreateResponse": {
+    "com.railway.api#CreateTrustedDomainResponse": {
       "type": "structure",
       "members": {
         "domainName": {
@@ -54705,13 +54705,13 @@
         "smithy.api#documentation": "Selection set for `trustedDomainCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#TrustedDomainCreate": {
+    "com.railway.api#CreateTrustedDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TrustedDomainCreateRequest"
+        "target": "com.railway.api#CreateTrustedDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#TrustedDomainCreateResponse"
+        "target": "com.railway.api#CreateTrustedDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -54722,7 +54722,7 @@
         "smithy.api#documentation": "Create a new trusted domain for this workspace"
       }
     },
-    "com.railway.api#TrustedDomainDeleteRequest": {
+    "com.railway.api#DeleteTrustedDomainRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -54741,7 +54741,7 @@
         }
       }
     },
-    "com.railway.api#TrustedDomainDeleteResponse": {
+    "com.railway.api#DeleteTrustedDomainResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -54758,13 +54758,13 @@
         "com.railway.graphql#responsePath": "trustedDomainDelete"
       }
     },
-    "com.railway.api#TrustedDomainDelete": {
+    "com.railway.api#DeleteTrustedDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TrustedDomainDeleteRequest"
+        "target": "com.railway.api#DeleteTrustedDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#TrustedDomainDeleteResponse"
+        "target": "com.railway.api#DeleteTrustedDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -54899,7 +54899,7 @@
         }
       }
     },
-    "com.railway.api#TrustedDomainUpdateRequest": {
+    "com.railway.api#UpdateTrustedDomainRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -54937,7 +54937,7 @@
         }
       }
     },
-    "com.railway.api#TrustedDomainUpdateResponse": {
+    "com.railway.api#UpdateTrustedDomainResponse": {
       "type": "structure",
       "members": {
         "domainName": {
@@ -54989,13 +54989,13 @@
         "smithy.api#documentation": "Selection set for `trustedDomainUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#TrustedDomainUpdate": {
+    "com.railway.api#UpdateTrustedDomain": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TrustedDomainUpdateRequest"
+        "target": "com.railway.api#UpdateTrustedDomainRequest"
       },
       "output": {
-        "target": "com.railway.api#TrustedDomainUpdateResponse"
+        "target": "com.railway.api#UpdateTrustedDomainResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -55006,7 +55006,7 @@
         "smithy.api#documentation": "Update the role of a trusted domain"
       }
     },
-    "com.railway.api#TwoFactorInfoCreateInput": {
+    "com.railway.api#CreateTwoFactorInfoInput": {
       "type": "structure",
       "members": {
         "token": {
@@ -55017,11 +55017,11 @@
         }
       }
     },
-    "com.railway.api#TwoFactorInfoCreateRequest": {
+    "com.railway.api#CreateTwoFactorInfoRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#TwoFactorInfoCreateInput",
+          "target": "com.railway.api#CreateTwoFactorInfoInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -55042,7 +55042,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.railway.api#TwoFactorInfoCreateResponse": {
+    "com.railway.api#CreateTwoFactorInfoResponse": {
       "type": "structure",
       "members": {
         "recoveryCodes": {
@@ -55058,13 +55058,13 @@
         "smithy.api#documentation": "Selection set for `twoFactorInfoCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#TwoFactorInfoCreate": {
+    "com.railway.api#CreateTwoFactorInfo": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TwoFactorInfoCreateRequest"
+        "target": "com.railway.api#CreateTwoFactorInfoRequest"
       },
       "output": {
-        "target": "com.railway.api#TwoFactorInfoCreateResponse"
+        "target": "com.railway.api#CreateTwoFactorInfoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -55075,7 +55075,7 @@
         "smithy.api#documentation": "Setup 2FA authorization for authenticated user."
       }
     },
-    "com.railway.api#TwoFactorInfoDeleteRequest": {
+    "com.railway.api#DeleteTwoFactorInfoRequest": {
       "type": "structure",
       "members": {},
       "traits": {
@@ -55087,7 +55087,7 @@
         }
       }
     },
-    "com.railway.api#TwoFactorInfoDeleteResponse": {
+    "com.railway.api#DeleteTwoFactorInfoResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -55104,13 +55104,13 @@
         "com.railway.graphql#responsePath": "twoFactorInfoDelete"
       }
     },
-    "com.railway.api#TwoFactorInfoDelete": {
+    "com.railway.api#DeleteTwoFactorInfo": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TwoFactorInfoDeleteRequest"
+        "target": "com.railway.api#DeleteTwoFactorInfoRequest"
       },
       "output": {
-        "target": "com.railway.api#TwoFactorInfoDeleteResponse"
+        "target": "com.railway.api#DeleteTwoFactorInfoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -55657,7 +55657,7 @@
         "smithy.api#documentation": "Remove the usage limit for a customer"
       }
     },
-    "com.railway.api#UsageLimitSetInput": {
+    "com.railway.api#SetUsageLimitInput": {
       "type": "structure",
       "members": {
         "customerId": {
@@ -55680,11 +55680,11 @@
         }
       }
     },
-    "com.railway.api#UsageLimitSetRequest": {
+    "com.railway.api#SetUsageLimitRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#UsageLimitSetInput",
+          "target": "com.railway.api#SetUsageLimitInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -55699,7 +55699,7 @@
         }
       }
     },
-    "com.railway.api#UsageLimitSetResponse": {
+    "com.railway.api#SetUsageLimitResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -55716,13 +55716,13 @@
         "com.railway.graphql#responsePath": "usageLimitSet"
       }
     },
-    "com.railway.api#UsageLimitSet": {
+    "com.railway.api#SetUsageLimit": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#UsageLimitSetRequest"
+        "target": "com.railway.api#SetUsageLimitRequest"
       },
       "output": {
-        "target": "com.railway.api#UsageLimitSetResponse"
+        "target": "com.railway.api#SetUsageLimitResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -55779,7 +55779,7 @@
         "smithy.api#documentation": "Unsubscribe from the Beta program."
       }
     },
-    "com.railway.api#UserDeleteRequest": {
+    "com.railway.api#DeleteUserRequest": {
       "type": "structure",
       "members": {},
       "traits": {
@@ -55791,7 +55791,7 @@
         }
       }
     },
-    "com.railway.api#UserDeleteResponse": {
+    "com.railway.api#DeleteUserResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -55808,13 +55808,13 @@
         "com.railway.graphql#responsePath": "userDelete"
       }
     },
-    "com.railway.api#UserDelete": {
+    "com.railway.api#DeleteUser": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#UserDeleteRequest"
+        "target": "com.railway.api#DeleteUserRequest"
       },
       "output": {
-        "target": "com.railway.api#UserDeleteResponse"
+        "target": "com.railway.api#DeleteUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -55947,7 +55947,7 @@
         "smithy.api#documentation": "Remove a flag on the user."
       }
     },
-    "com.railway.api#UserFlagsSetInput": {
+    "com.railway.api#SetUserFlagInput": {
       "type": "structure",
       "members": {
         "flags": {
@@ -55964,11 +55964,11 @@
         }
       }
     },
-    "com.railway.api#UserFlagsSetRequest": {
+    "com.railway.api#SetUserFlagRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#UserFlagsSetInput",
+          "target": "com.railway.api#SetUserFlagInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -55983,7 +55983,7 @@
         }
       }
     },
-    "com.railway.api#UserFlagsSetResponse": {
+    "com.railway.api#SetUserFlagResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -56000,13 +56000,13 @@
         "com.railway.graphql#responsePath": "userFlagsSet"
       }
     },
-    "com.railway.api#UserFlagsSet": {
+    "com.railway.api#SetUserFlag": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#UserFlagsSetRequest"
+        "target": "com.railway.api#SetUserFlagRequest"
       },
       "output": {
-        "target": "com.railway.api#UserFlagsSetResponse"
+        "target": "com.railway.api#SetUserFlagResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -56017,7 +56017,7 @@
         "smithy.api#documentation": "Set flags on the authenticated user."
       }
     },
-    "com.railway.api#UserProfileUpdateInput": {
+    "com.railway.api#UpdateUserProfileInput": {
       "type": "structure",
       "members": {
         "bio": {
@@ -56040,11 +56040,11 @@
         }
       }
     },
-    "com.railway.api#UserProfileUpdateRequest": {
+    "com.railway.api#UpdateUserProfileRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#UserProfileUpdateInput",
+          "target": "com.railway.api#UpdateUserProfileInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -56059,7 +56059,7 @@
         }
       }
     },
-    "com.railway.api#UserProfileUpdateResponse": {
+    "com.railway.api#UpdateUserProfileResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -56076,13 +56076,13 @@
         "com.railway.graphql#responsePath": "userProfileUpdate"
       }
     },
-    "com.railway.api#UserProfileUpdate": {
+    "com.railway.api#UpdateUserProfile": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#UserProfileUpdateRequest"
+        "target": "com.railway.api#UpdateUserProfileRequest"
       },
       "output": {
-        "target": "com.railway.api#UserProfileUpdateResponse"
+        "target": "com.railway.api#UpdateUserProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -56093,7 +56093,7 @@
         "smithy.api#documentation": "Updates the profile for the authenticated user"
       }
     },
-    "com.railway.api#UserTermsUpdateRequest": {
+    "com.railway.api#UpdateUserTermRequest": {
       "type": "structure",
       "members": {},
       "traits": {
@@ -56485,7 +56485,7 @@
         "target": "com.railway.api#UserTermsUpdateResponseWorkspacesItem"
       }
     },
-    "com.railway.api#UserTermsUpdateResponse": {
+    "com.railway.api#UpdateUserTermResponse": {
       "type": "structure",
       "members": {
         "agreedFairUse": {
@@ -56662,13 +56662,13 @@
         "smithy.api#documentation": "Selection set for `userTermsUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#UserTermsUpdate": {
+    "com.railway.api#UpdateUserTerm": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#UserTermsUpdateRequest"
+        "target": "com.railway.api#UpdateUserTermRequest"
       },
       "output": {
-        "target": "com.railway.api#UserTermsUpdateResponse"
+        "target": "com.railway.api#UpdateUserTermResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -56679,7 +56679,7 @@
         "smithy.api#documentation": "Update date of TermsAgreedOn"
       }
     },
-    "com.railway.api#VariableCollectionUpsertInput": {
+    "com.railway.api#UpsertVariableCollectionInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -56722,11 +56722,11 @@
         }
       }
     },
-    "com.railway.api#VariableCollectionUpsertRequest": {
+    "com.railway.api#UpsertVariableCollectionRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#VariableCollectionUpsertInput",
+          "target": "com.railway.api#UpsertVariableCollectionInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -56741,7 +56741,7 @@
         }
       }
     },
-    "com.railway.api#VariableCollectionUpsertResponse": {
+    "com.railway.api#UpsertVariableCollectionResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -56758,13 +56758,13 @@
         "com.railway.graphql#responsePath": "variableCollectionUpsert"
       }
     },
-    "com.railway.api#VariableCollectionUpsert": {
+    "com.railway.api#UpsertVariableCollection": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VariableCollectionUpsertRequest"
+        "target": "com.railway.api#UpsertVariableCollectionRequest"
       },
       "output": {
-        "target": "com.railway.api#VariableCollectionUpsertResponse"
+        "target": "com.railway.api#UpsertVariableCollectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -56775,7 +56775,7 @@
         "smithy.api#documentation": "Upserts a collection of variables."
       }
     },
-    "com.railway.api#VariableDeleteInput": {
+    "com.railway.api#DeleteVariableInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -56804,11 +56804,11 @@
         }
       }
     },
-    "com.railway.api#VariableDeleteRequest": {
+    "com.railway.api#DeleteVariableRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#VariableDeleteInput",
+          "target": "com.railway.api#DeleteVariableInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -56823,7 +56823,7 @@
         }
       }
     },
-    "com.railway.api#VariableDeleteResponse": {
+    "com.railway.api#DeleteVariableResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -56840,13 +56840,13 @@
         "com.railway.graphql#responsePath": "variableDelete"
       }
     },
-    "com.railway.api#VariableDelete": {
+    "com.railway.api#DeleteVariable": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VariableDeleteRequest"
+        "target": "com.railway.api#DeleteVariableRequest"
       },
       "output": {
-        "target": "com.railway.api#VariableDeleteResponse"
+        "target": "com.railway.api#DeleteVariableResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -56857,7 +56857,7 @@
         "smithy.api#documentation": "Deletes a variable."
       }
     },
-    "com.railway.api#VariableUpsertInput": {
+    "com.railway.api#UpsertVariableInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -56899,11 +56899,11 @@
         }
       }
     },
-    "com.railway.api#VariableUpsertRequest": {
+    "com.railway.api#UpsertVariableRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#VariableUpsertInput",
+          "target": "com.railway.api#UpsertVariableInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -56918,7 +56918,7 @@
         }
       }
     },
-    "com.railway.api#VariableUpsertResponse": {
+    "com.railway.api#UpsertVariableResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -56935,13 +56935,13 @@
         "com.railway.graphql#responsePath": "variableUpsert"
       }
     },
-    "com.railway.api#VariableUpsert": {
+    "com.railway.api#UpsertVariable": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VariableUpsertRequest"
+        "target": "com.railway.api#UpsertVariableRequest"
       },
       "output": {
-        "target": "com.railway.api#VariableUpsertResponse"
+        "target": "com.railway.api#UpsertVariableResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -56952,7 +56952,7 @@
         "smithy.api#documentation": "Upserts a variable."
       }
     },
-    "com.railway.api#VolumeCreateInput": {
+    "com.railway.api#CreateVolumeInput": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -56992,11 +56992,11 @@
         }
       }
     },
-    "com.railway.api#VolumeCreateRequest": {
+    "com.railway.api#CreateVolumeRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#VolumeCreateInput",
+          "target": "com.railway.api#CreateVolumeInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -57143,7 +57143,7 @@
         }
       }
     },
-    "com.railway.api#VolumeCreateResponse": {
+    "com.railway.api#CreateVolumeResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -57183,13 +57183,13 @@
         "smithy.api#documentation": "Selection set for `volumeCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#VolumeCreate": {
+    "com.railway.api#CreateVolume": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeCreateRequest"
+        "target": "com.railway.api#CreateVolumeRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeCreateResponse"
+        "target": "com.railway.api#CreateVolumeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57200,7 +57200,7 @@
         "smithy.api#documentation": "Create a persistent volume in a project"
       }
     },
-    "com.railway.api#VolumeDeleteRequest": {
+    "com.railway.api#DeleteVolumeRequest": {
       "type": "structure",
       "members": {
         "volumeId": {
@@ -57219,7 +57219,7 @@
         }
       }
     },
-    "com.railway.api#VolumeDeleteResponse": {
+    "com.railway.api#DeleteVolumeResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -57236,13 +57236,13 @@
         "com.railway.graphql#responsePath": "volumeDelete"
       }
     },
-    "com.railway.api#VolumeDelete": {
+    "com.railway.api#DeleteVolume": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeDeleteRequest"
+        "target": "com.railway.api#DeleteVolumeRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeDeleteResponse"
+        "target": "com.railway.api#DeleteVolumeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57253,7 +57253,7 @@
         "smithy.api#documentation": "Delete a persistent volume in a project"
       }
     },
-    "com.railway.api#VolumeInstanceBackupCreateRequest": {
+    "com.railway.api#CreateVolumeInstanceBackupRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -57280,7 +57280,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstanceBackupCreateResponse": {
+    "com.railway.api#CreateVolumeInstanceBackupResponse": {
       "type": "structure",
       "members": {
         "workflowId": {
@@ -57297,13 +57297,13 @@
         "smithy.api#documentation": "Selection set for `volumeInstanceBackupCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#VolumeInstanceBackupCreate": {
+    "com.railway.api#CreateVolumeInstanceBackup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceBackupCreateRequest"
+        "target": "com.railway.api#CreateVolumeInstanceBackupRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceBackupCreateResponse"
+        "target": "com.railway.api#CreateVolumeInstanceBackupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57314,7 +57314,7 @@
         "smithy.api#documentation": "Create backup of a volume instance"
       }
     },
-    "com.railway.api#VolumeInstanceBackupDeleteRequest": {
+    "com.railway.api#DeleteVolumeInstanceBackupRequest": {
       "type": "structure",
       "members": {
         "volumeInstanceBackupId": {
@@ -57341,7 +57341,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstanceBackupDeleteResponse": {
+    "com.railway.api#DeleteVolumeInstanceBackupResponse": {
       "type": "structure",
       "members": {
         "workflowId": {
@@ -57358,13 +57358,13 @@
         "smithy.api#documentation": "Selection set for `volumeInstanceBackupDelete` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#VolumeInstanceBackupDelete": {
+    "com.railway.api#DeleteVolumeInstanceBackup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceBackupDeleteRequest"
+        "target": "com.railway.api#DeleteVolumeInstanceBackupRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceBackupDeleteResponse"
+        "target": "com.railway.api#DeleteVolumeInstanceBackupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57436,7 +57436,7 @@
         "smithy.api#documentation": "Removes backup expiration date"
       }
     },
-    "com.railway.api#VolumeInstanceBackupRestoreRequest": {
+    "com.railway.api#RestoreVolumeInstanceBackupRequest": {
       "type": "structure",
       "members": {
         "replicaServiceIds": {
@@ -57477,7 +57477,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstanceBackupRestoreResponse": {
+    "com.railway.api#RestoreVolumeInstanceBackupResponse": {
       "type": "structure",
       "members": {
         "workflowId": {
@@ -57494,13 +57494,13 @@
         "smithy.api#documentation": "Selection set for `volumeInstanceBackupRestore` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#VolumeInstanceBackupRestore": {
+    "com.railway.api#RestoreVolumeInstanceBackup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceBackupRestoreRequest"
+        "target": "com.railway.api#RestoreVolumeInstanceBackupRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceBackupRestoreResponse"
+        "target": "com.railway.api#RestoreVolumeInstanceBackupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57517,7 +57517,7 @@
         "target": "com.railway.api#VolumeInstanceBackupScheduleKind"
       }
     },
-    "com.railway.api#VolumeInstanceBackupScheduleUpdateRequest": {
+    "com.railway.api#UpdateVolumeInstanceBackupScheduleRequest": {
       "type": "structure",
       "members": {
         "kinds": {
@@ -57544,7 +57544,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstanceBackupScheduleUpdateResponse": {
+    "com.railway.api#UpdateVolumeInstanceBackupScheduleResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -57561,13 +57561,13 @@
         "com.railway.graphql#responsePath": "volumeInstanceBackupScheduleUpdate"
       }
     },
-    "com.railway.api#VolumeInstanceBackupScheduleUpdate": {
+    "com.railway.api#UpdateVolumeInstanceBackupSchedule": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceBackupScheduleUpdateRequest"
+        "target": "com.railway.api#UpdateVolumeInstanceBackupScheduleRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceBackupScheduleUpdateResponse"
+        "target": "com.railway.api#UpdateVolumeInstanceBackupScheduleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57578,7 +57578,7 @@
         "smithy.api#documentation": "Manage schedule for backups of a volume instance"
       }
     },
-    "com.railway.api#VolumeInstancePITRRestoreRequest": {
+    "com.railway.api#RestoreVolumeInstancePitrRequest": {
       "type": "structure",
       "members": {
         "newServiceName": {
@@ -57619,7 +57619,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstancePITRRestoreResponse": {
+    "com.railway.api#RestoreVolumeInstancePitrResponse": {
       "type": "structure",
       "members": {
         "workflowId": {
@@ -57636,13 +57636,13 @@
         "smithy.api#documentation": "Selection set for `volumeInstancePITRRestore` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#VolumeInstancePITRRestore": {
+    "com.railway.api#RestoreVolumeInstancePitr": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstancePITRRestoreRequest"
+        "target": "com.railway.api#RestoreVolumeInstancePitrRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstancePITRRestoreResponse"
+        "target": "com.railway.api#RestoreVolumeInstancePitrResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57653,7 +57653,7 @@
         "smithy.api#documentation": "Point-in-time restore. Creates a brand-new database service in the project, recovered to the target timestamp from the source service's backup history. The source service stays online and untouched."
       }
     },
-    "com.railway.api#VolumeInstanceUpdateInput": {
+    "com.railway.api#UpdateVolumeInstanceInput": {
       "type": "structure",
       "members": {
         "mountPath": {
@@ -57679,7 +57679,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstanceUpdateRequest": {
+    "com.railway.api#UpdateVolumeInstanceRequest": {
       "type": "structure",
       "members": {
         "environmentId": {
@@ -57690,7 +57690,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#VolumeInstanceUpdateInput",
+          "target": "com.railway.api#UpdateVolumeInstanceInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -57712,7 +57712,7 @@
         }
       }
     },
-    "com.railway.api#VolumeInstanceUpdateResponse": {
+    "com.railway.api#UpdateVolumeInstanceResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -57729,13 +57729,13 @@
         "com.railway.graphql#responsePath": "volumeInstanceUpdate"
       }
     },
-    "com.railway.api#VolumeInstanceUpdate": {
+    "com.railway.api#UpdateVolumeInstance": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeInstanceUpdateRequest"
+        "target": "com.railway.api#UpdateVolumeInstanceRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeInstanceUpdateResponse"
+        "target": "com.railway.api#UpdateVolumeInstanceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -57746,7 +57746,7 @@
         "smithy.api#documentation": "Update a volume instance. If no environmentId is provided, all volume instances for the volume will be updated."
       }
     },
-    "com.railway.api#VolumeUpdateInput": {
+    "com.railway.api#UpdateVolumeInput": {
       "type": "structure",
       "members": {
         "name": {
@@ -57758,11 +57758,11 @@
         }
       }
     },
-    "com.railway.api#VolumeUpdateRequest": {
+    "com.railway.api#UpdateVolumeRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#VolumeUpdateInput",
+          "target": "com.railway.api#UpdateVolumeInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -57915,7 +57915,7 @@
         }
       }
     },
-    "com.railway.api#VolumeUpdateResponse": {
+    "com.railway.api#UpdateVolumeResponse": {
       "type": "structure",
       "members": {
         "createdAt": {
@@ -57955,13 +57955,13 @@
         "smithy.api#documentation": "Selection set for `volumeUpdate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#VolumeUpdate": {
+    "com.railway.api#UpdateVolume": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#VolumeUpdateRequest"
+        "target": "com.railway.api#UpdateVolumeRequest"
       },
       "output": {
-        "target": "com.railway.api#VolumeUpdateResponse"
+        "target": "com.railway.api#UpdateVolumeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -58031,7 +58031,7 @@
         "smithy.api#documentation": "Test a webhook URL by sending a sample payload. Returns the HTTP status code."
       }
     },
-    "com.railway.api#WorkspaceDeleteRequest": {
+    "com.railway.api#DeleteWorkspaceRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -58050,7 +58050,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceDeleteResponse": {
+    "com.railway.api#DeleteWorkspaceResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -58067,13 +58067,13 @@
         "com.railway.graphql#responsePath": "workspaceDelete"
       }
     },
-    "com.railway.api#WorkspaceDelete": {
+    "com.railway.api#DeleteWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspaceDeleteRequest"
+        "target": "com.railway.api#DeleteWorkspaceRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspaceDeleteResponse"
+        "target": "com.railway.api#DeleteWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -58084,7 +58084,7 @@
         "smithy.api#documentation": "Delete a workspace and all data associated with it"
       }
     },
-    "com.railway.api#WorkspaceInviteCodeCreateInput": {
+    "com.railway.api#CreateWorkspaceInviteCodeInput": {
       "type": "structure",
       "members": {
         "role": {
@@ -58095,11 +58095,11 @@
         }
       }
     },
-    "com.railway.api#WorkspaceInviteCodeCreateRequest": {
+    "com.railway.api#CreateWorkspaceInviteCodeRequest": {
       "type": "structure",
       "members": {
         "input": {
-          "target": "com.railway.api#WorkspaceInviteCodeCreateInput",
+          "target": "com.railway.api#CreateWorkspaceInviteCodeInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -58120,7 +58120,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceInviteCodeCreateResponse": {
+    "com.railway.api#CreateWorkspaceInviteCodeResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -58137,13 +58137,13 @@
         "com.railway.graphql#responsePath": "workspaceInviteCodeCreate"
       }
     },
-    "com.railway.api#WorkspaceInviteCodeCreate": {
+    "com.railway.api#CreateWorkspaceInviteCode": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspaceInviteCodeCreateRequest"
+        "target": "com.railway.api#CreateWorkspaceInviteCodeRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspaceInviteCodeCreateResponse"
+        "target": "com.railway.api#CreateWorkspaceInviteCodeResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -59322,7 +59322,7 @@
         "smithy.api#documentation": "Remove a deploy source from a workspace policy allowlist."
       }
     },
-    "com.railway.api#WorkspacePolicyItemUpdateInput": {
+    "com.railway.api#UpdateWorkspacePolicyItemInput": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -59362,7 +59362,7 @@
         }
       }
     },
-    "com.railway.api#WorkspacePolicyItemUpdateRequest": {
+    "com.railway.api#UpdateWorkspacePolicyItemRequest": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -59372,7 +59372,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#WorkspacePolicyItemUpdateInput",
+          "target": "com.railway.api#UpdateWorkspacePolicyItemInput",
           "traits": {
             "com.railway.graphql#nullable": {}
           }
@@ -59399,7 +59399,7 @@
         }
       }
     },
-    "com.railway.api#WorkspacePolicyItemUpdateResponse": {
+    "com.railway.api#UpdateWorkspacePolicyItemResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -59416,13 +59416,13 @@
         "com.railway.graphql#responsePath": "workspacePolicyItemUpdate"
       }
     },
-    "com.railway.api#WorkspacePolicyItemUpdate": {
+    "com.railway.api#UpdateWorkspacePolicyItem": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspacePolicyItemUpdateRequest"
+        "target": "com.railway.api#UpdateWorkspacePolicyItemRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspacePolicyItemUpdateResponse"
+        "target": "com.railway.api#UpdateWorkspacePolicyItemResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -59433,7 +59433,7 @@
         "smithy.api#documentation": "Enable or disable a workspace policy. Enterprise workspaces only."
       }
     },
-    "com.railway.api#WorkspaceSetRestrictProjectVisibilityToGroupsRequest": {
+    "com.railway.api#SetWorkspaceRestrictProjectVisibilityToGroupRequest": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -59458,7 +59458,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceSetRestrictProjectVisibilityToGroupsResponse": {
+    "com.railway.api#SetWorkspaceRestrictProjectVisibilityToGroupResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -59475,13 +59475,13 @@
         "com.railway.graphql#responsePath": "workspaceSetRestrictProjectVisibilityToGroups"
       }
     },
-    "com.railway.api#WorkspaceSetRestrictProjectVisibilityToGroups": {
+    "com.railway.api#SetWorkspaceRestrictProjectVisibilityToGroup": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspaceSetRestrictProjectVisibilityToGroupsRequest"
+        "target": "com.railway.api#SetWorkspaceRestrictProjectVisibilityToGroupRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspaceSetRestrictProjectVisibilityToGroupsResponse"
+        "target": "com.railway.api#SetWorkspaceRestrictProjectVisibilityToGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -59492,7 +59492,7 @@
         "smithy.api#documentation": "Control whether non-admin project visibility is restricted to access groups and direct project permissions."
       }
     },
-    "com.railway.api#WorkspaceTwoFactorEnforcementUpdateRequest": {
+    "com.railway.api#UpdateWorkspaceTwoFactorEnforcementRequest": {
       "type": "structure",
       "members": {
         "enabled": {
@@ -59517,7 +59517,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceTwoFactorEnforcementUpdateResponse": {
+    "com.railway.api#UpdateWorkspaceTwoFactorEnforcementResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -59534,13 +59534,13 @@
         "com.railway.graphql#responsePath": "workspaceTwoFactorEnforcementUpdate"
       }
     },
-    "com.railway.api#WorkspaceTwoFactorEnforcementUpdate": {
+    "com.railway.api#UpdateWorkspaceTwoFactorEnforcement": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspaceTwoFactorEnforcementUpdateRequest"
+        "target": "com.railway.api#UpdateWorkspaceTwoFactorEnforcementRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspaceTwoFactorEnforcementUpdateResponse"
+        "target": "com.railway.api#UpdateWorkspaceTwoFactorEnforcementResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -59551,7 +59551,7 @@
         "smithy.api#documentation": "Enable or disable 2FA enforcement for a workspace"
       }
     },
-    "com.railway.api#WorkspaceUpdateInput": {
+    "com.railway.api#UpdateWorkspaceInput": {
       "type": "structure",
       "members": {
         "avatar": {
@@ -59574,7 +59574,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceUpdateRequest": {
+    "com.railway.api#UpdateWorkspaceRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -59584,7 +59584,7 @@
           }
         },
         "input": {
-          "target": "com.railway.api#WorkspaceUpdateInput",
+          "target": "com.railway.api#UpdateWorkspaceInput",
           "traits": {
             "smithy.api#required": {}
           }
@@ -59599,7 +59599,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceUpdateResponse": {
+    "com.railway.api#UpdateWorkspaceResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -59616,13 +59616,13 @@
         "com.railway.graphql#responsePath": "workspaceUpdate"
       }
     },
-    "com.railway.api#WorkspaceUpdate": {
+    "com.railway.api#UpdateWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspaceUpdateRequest"
+        "target": "com.railway.api#UpdateWorkspaceRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspaceUpdateResponse"
+        "target": "com.railway.api#UpdateWorkspaceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -59633,7 +59633,7 @@
         "smithy.api#documentation": "Update a workspace by id"
       }
     },
-    "com.railway.api#WorkspaceUpsertSlackChannelRequest": {
+    "com.railway.api#UpsertWorkspaceSlackChannelRequest": {
       "type": "structure",
       "members": {
         "id": {
@@ -59652,7 +59652,7 @@
         }
       }
     },
-    "com.railway.api#WorkspaceUpsertSlackChannelResponse": {
+    "com.railway.api#UpsertWorkspaceSlackChannelResponse": {
       "type": "structure",
       "members": {
         "result": {
@@ -59669,13 +59669,13 @@
         "com.railway.graphql#responsePath": "workspaceUpsertSlackChannel"
       }
     },
-    "com.railway.api#WorkspaceUpsertSlackChannel": {
+    "com.railway.api#UpsertWorkspaceSlackChannel": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#WorkspaceUpsertSlackChannelRequest"
+        "target": "com.railway.api#UpsertWorkspaceSlackChannelRequest"
       },
       "output": {
-        "target": "com.railway.api#WorkspaceUpsertSlackChannelResponse"
+        "target": "com.railway.api#UpsertWorkspaceSlackChannelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -59936,7 +59936,7 @@
           "target": "com.railway.api#Environment"
         },
         {
-          "target": "com.railway.api#EnvironmentChangeSetApply"
+          "target": "com.railway.api#SetEnvironmentChangeApply"
         },
         {
           "target": "com.railway.api#EnvironmentHasLegacyStaticEgress"
@@ -59945,7 +59945,7 @@
           "target": "com.railway.api#EnvironmentLogs"
         },
         {
-          "target": "com.railway.api#EnvironmentPatch"
+          "target": "com.railway.api#PatchEnvironment"
         },
         {
           "target": "com.railway.api#EnvironmentPatches"
@@ -60242,10 +60242,10 @@
           "target": "com.railway.api#VolumeInstance"
         },
         {
-          "target": "com.railway.api#VolumeInstanceBackupList"
+          "target": "com.railway.api#ListVolumeInstanceBackup"
         },
         {
-          "target": "com.railway.api#VolumeInstanceBackupScheduleList"
+          "target": "com.railway.api#ListVolumeInstanceBackupSchedule"
         },
         {
           "target": "com.railway.api#WorkflowStatus"
@@ -60272,10 +60272,10 @@
           "target": "com.railway.api#WorkspaceUsageTotals"
         },
         {
-          "target": "com.railway.api#AccessGroupCreate"
+          "target": "com.railway.api#CreateAccessGroup"
         },
         {
-          "target": "com.railway.api#AccessGroupDelete"
+          "target": "com.railway.api#DeleteAccessGroup"
         },
         {
           "target": "com.railway.api#AccessGroupMemberAdd"
@@ -60290,16 +60290,16 @@
           "target": "com.railway.api#AccessGroupProjectDetach"
         },
         {
-          "target": "com.railway.api#AccessGroupUpdate"
+          "target": "com.railway.api#UpdateAccessGroup"
         },
         {
-          "target": "com.railway.api#AgentUsageLimitSet"
+          "target": "com.railway.api#SetAgentUsageLimit"
         },
         {
-          "target": "com.railway.api#ApiTokenCreate"
+          "target": "com.railway.api#CreateApiToken"
         },
         {
-          "target": "com.railway.api#ApiTokenDelete"
+          "target": "com.railway.api#DeleteApiToken"
         },
         {
           "target": "com.railway.api#BaseEnvironmentOverride"
@@ -60308,13 +60308,13 @@
           "target": "com.railway.api#BotScopeBindingRemove"
         },
         {
-          "target": "com.railway.api#BucketCreate"
+          "target": "com.railway.api#CreateBucket"
         },
         {
           "target": "com.railway.api#BucketCredentialsReset"
         },
         {
-          "target": "com.railway.api#BucketUpdate"
+          "target": "com.railway.api#UpdateBucket"
         },
         {
           "target": "com.railway.api#CancelPitrHaWorkflow"
@@ -60332,10 +60332,10 @@
           "target": "com.railway.api#CliEventTrack"
         },
         {
-          "target": "com.railway.api#CloudAgentCreate"
+          "target": "com.railway.api#CreateCloudAgent"
         },
         {
-          "target": "com.railway.api#CloudAgentDelete"
+          "target": "com.railway.api#DeleteCloudAgent"
         },
         {
           "target": "com.railway.api#CloudAgentHarnessToken"
@@ -60350,19 +60350,19 @@
           "target": "com.railway.api#CloudAgentWake"
         },
         {
-          "target": "com.railway.api#CustomDomainCreate"
+          "target": "com.railway.api#CreateCustomDomain"
         },
         {
-          "target": "com.railway.api#CustomDomainDelete"
+          "target": "com.railway.api#DeleteCustomDomain"
         },
         {
           "target": "com.railway.api#CustomDomainIssueCertificate"
         },
         {
-          "target": "com.railway.api#CustomDomainUpdate"
+          "target": "com.railway.api#UpdateCustomDomain"
         },
         {
-          "target": "com.railway.api#CustomerCreateFreePlanSubscription"
+          "target": "com.railway.api#CreateCustomerFreePlanSubscription"
         },
         {
           "target": "com.railway.api#CustomerTogglePayoutsToCredits"
@@ -60374,7 +60374,7 @@
           "target": "com.railway.api#DeploymentCancel"
         },
         {
-          "target": "com.railway.api#DeploymentInstanceExecutionCreate"
+          "target": "com.railway.api#CreateDeploymentInstanceExecution"
         },
         {
           "target": "com.railway.api#DeploymentRedeploy"
@@ -60383,22 +60383,22 @@
           "target": "com.railway.api#DeploymentRemove"
         },
         {
-          "target": "com.railway.api#DeploymentRestart"
+          "target": "com.railway.api#RestartDeployment"
         },
         {
           "target": "com.railway.api#DeploymentRollback"
         },
         {
-          "target": "com.railway.api#DeploymentStop"
+          "target": "com.railway.api#StopDeployment"
         },
         {
-          "target": "com.railway.api#DeploymentTriggerCreate"
+          "target": "com.railway.api#CreateDeploymentTrigger"
         },
         {
-          "target": "com.railway.api#DeploymentTriggerDelete"
+          "target": "com.railway.api#DeleteDeploymentTrigger"
         },
         {
-          "target": "com.railway.api#DeploymentTriggerUpdate"
+          "target": "com.railway.api#UpdateDeploymentTrigger"
         },
         {
           "target": "com.railway.api#DisablePitrForHaCluster"
@@ -60410,7 +60410,7 @@
           "target": "com.railway.api#DockerComposeImport"
         },
         {
-          "target": "com.railway.api#EgressGatewayAssociationCreate"
+          "target": "com.railway.api#CreateEgressGatewayAssociation"
         },
         {
           "target": "com.railway.api#EgressGatewayAssociationsClear"
@@ -60437,16 +60437,16 @@
           "target": "com.railway.api#EnableServiceCdn"
         },
         {
-          "target": "com.railway.api#EnvironmentApplyChangeSet"
+          "target": "com.railway.api#SetEnvironmentApplyChange"
         },
         {
-          "target": "com.railway.api#EnvironmentConfigPlanCommentUpsert"
+          "target": "com.railway.api#UpsertEnvironmentConfigPlanComment"
         },
         {
-          "target": "com.railway.api#EnvironmentCreate"
+          "target": "com.railway.api#CreateEnvironment"
         },
         {
-          "target": "com.railway.api#EnvironmentDelete"
+          "target": "com.railway.api#DeleteEnvironment"
         },
         {
           "target": "com.railway.api#EnvironmentPatchCommit"
@@ -60455,7 +60455,7 @@
           "target": "com.railway.api#EnvironmentPatchCommitStaged"
         },
         {
-          "target": "com.railway.api#EnvironmentPreviewChangeSet"
+          "target": "com.railway.api#SetEnvironmentPreviewChange"
         },
         {
           "target": "com.railway.api#EnvironmentRename"
@@ -60485,25 +60485,25 @@
           "target": "com.railway.api#GithubRepoDeploy"
         },
         {
-          "target": "com.railway.api#GithubRepoUpdate"
+          "target": "com.railway.api#UpdateGithubRepo"
         },
         {
           "target": "com.railway.api#HerokuImportVariables"
         },
         {
-          "target": "com.railway.api#IntegrationCreate"
+          "target": "com.railway.api#CreateIntegration"
         },
         {
-          "target": "com.railway.api#IntegrationDelete"
+          "target": "com.railway.api#DeleteIntegration"
         },
         {
-          "target": "com.railway.api#IntegrationUpdate"
+          "target": "com.railway.api#UpdateIntegration"
         },
         {
           "target": "com.railway.api#InviteCodeUse"
         },
         {
-          "target": "com.railway.api#JobApplicationCreate"
+          "target": "com.railway.api#CreateJobApplication"
         },
         {
           "target": "com.railway.api#LoginSessionAuth"
@@ -60515,37 +60515,37 @@
           "target": "com.railway.api#LoginSessionConsume"
         },
         {
-          "target": "com.railway.api#LoginSessionCreate"
+          "target": "com.railway.api#CreateLoginSession"
         },
         {
-          "target": "com.railway.api#LoginSessionVerify"
+          "target": "com.railway.api#VerifyLoginSession"
         },
         {
           "target": "com.railway.api#NotificationDeliveriesMarkAsRead"
         },
         {
-          "target": "com.railway.api#NotificationRuleCreate"
+          "target": "com.railway.api#CreateNotificationRule"
         },
         {
-          "target": "com.railway.api#NotificationRuleDelete"
+          "target": "com.railway.api#DeleteNotificationRule"
         },
         {
-          "target": "com.railway.api#NotificationRuleUpdate"
+          "target": "com.railway.api#UpdateNotificationRule"
         },
         {
-          "target": "com.railway.api#ObservabilityDashboardCreate"
+          "target": "com.railway.api#CreateObservabilityDashboard"
         },
         {
           "target": "com.railway.api#ObservabilityDashboardReset"
         },
         {
-          "target": "com.railway.api#ObservabilityDashboardUpdate"
+          "target": "com.railway.api#UpdateObservabilityDashboard"
         },
         {
-          "target": "com.railway.api#PasskeyDelete"
+          "target": "com.railway.api#DeletePasskey"
         },
         {
-          "target": "com.railway.api#PreferencesUpdate"
+          "target": "com.railway.api#UpdatePreference"
         },
         {
           "target": "com.railway.api#PrivateNetworkCreateOrGet"
@@ -60554,22 +60554,22 @@
           "target": "com.railway.api#PrivateNetworkEndpointCreateOrGet"
         },
         {
-          "target": "com.railway.api#PrivateNetworkEndpointDelete"
+          "target": "com.railway.api#DeletePrivateNetworkEndpoint"
         },
         {
           "target": "com.railway.api#PrivateNetworkEndpointRename"
         },
         {
-          "target": "com.railway.api#PrivateNetworksForEnvironmentDelete"
+          "target": "com.railway.api#DeletePrivateNetworkForEnvironment"
         },
         {
           "target": "com.railway.api#ProjectClaim"
         },
         {
-          "target": "com.railway.api#ProjectCreate"
+          "target": "com.railway.api#CreateProject"
         },
         {
-          "target": "com.railway.api#ProjectDelete"
+          "target": "com.railway.api#DeleteProject"
         },
         {
           "target": "com.railway.api#ProjectFeatureFlagAdd"
@@ -60581,10 +60581,10 @@
           "target": "com.railway.api#ProjectInvitationAccept"
         },
         {
-          "target": "com.railway.api#ProjectInvitationCreate"
+          "target": "com.railway.api#CreateProjectInvitation"
         },
         {
-          "target": "com.railway.api#ProjectInvitationDelete"
+          "target": "com.railway.api#DeleteProjectInvitation"
         },
         {
           "target": "com.railway.api#ProjectInvitationResend"
@@ -60602,22 +60602,22 @@
           "target": "com.railway.api#ProjectMemberRemove"
         },
         {
-          "target": "com.railway.api#ProjectMemberUpdate"
+          "target": "com.railway.api#UpdateProjectMember"
         },
         {
-          "target": "com.railway.api#ProjectScheduleDelete"
+          "target": "com.railway.api#DeleteProjectSchedule"
         },
         {
-          "target": "com.railway.api#ProjectScheduleDeleteCancel"
+          "target": "com.railway.api#DeleteProjectScheduleCancel"
         },
         {
-          "target": "com.railway.api#ProjectScheduleDeleteForce"
+          "target": "com.railway.api#DeleteProjectScheduleForce"
         },
         {
-          "target": "com.railway.api#ProjectTokenCreate"
+          "target": "com.railway.api#CreateProjectToken"
         },
         {
-          "target": "com.railway.api#ProjectTokenDelete"
+          "target": "com.railway.api#DeleteProjectToken"
         },
         {
           "target": "com.railway.api#ProjectTransfer"
@@ -60629,7 +60629,7 @@
           "target": "com.railway.api#ProjectTransferInitiate"
         },
         {
-          "target": "com.railway.api#ProjectUpdate"
+          "target": "com.railway.api#UpdateProject"
         },
         {
           "target": "com.railway.api#ProviderAuthRemove"
@@ -60638,46 +60638,46 @@
           "target": "com.railway.api#PurgeServiceCache"
         },
         {
-          "target": "com.railway.api#RailwayDomainDnsRecordCreate"
+          "target": "com.railway.api#CreateRailwayDomainDnsRecord"
         },
         {
-          "target": "com.railway.api#RailwayDomainDnsRecordDelete"
+          "target": "com.railway.api#DeleteRailwayDomainDnsRecord"
         },
         {
-          "target": "com.railway.api#RailwayDomainDnsRecordUpdate"
+          "target": "com.railway.api#UpdateRailwayDomainDnsRecord"
         },
         {
-          "target": "com.railway.api#RailwayDomainNameserversSet"
+          "target": "com.railway.api#SetRailwayDomainNameserver"
         },
         {
-          "target": "com.railway.api#RailwayDomainUpdate"
+          "target": "com.railway.api#UpdateRailwayDomain"
         },
         {
-          "target": "com.railway.api#RecoveryCodeGenerate"
+          "target": "com.railway.api#GenerateRecoveryCode"
         },
         {
           "target": "com.railway.api#RecoveryCodeValidate"
         },
         {
-          "target": "com.railway.api#ReferralInfoUpdate"
+          "target": "com.railway.api#UpdateReferralInfo"
         },
         {
-          "target": "com.railway.api#SandboxCheckpointCreate"
+          "target": "com.railway.api#CreateSandboxCheckpoint"
         },
         {
-          "target": "com.railway.api#SandboxCheckpointDelete"
+          "target": "com.railway.api#DeleteSandboxCheckpoint"
         },
         {
           "target": "com.railway.api#SandboxCheckpointRename"
         },
         {
-          "target": "com.railway.api#SandboxCreate"
+          "target": "com.railway.api#CreateSandbox"
         },
         {
           "target": "com.railway.api#SandboxDestroy"
         },
         {
-          "target": "com.railway.api#SandboxExec"
+          "target": "com.railway.api#ExecSandbox"
         },
         {
           "target": "com.railway.api#SandboxHeartbeat"
@@ -60686,22 +60686,22 @@
           "target": "com.railway.api#ServiceConnect"
         },
         {
-          "target": "com.railway.api#ServiceCreate"
+          "target": "com.railway.api#CreateService"
         },
         {
-          "target": "com.railway.api#ServiceDelete"
+          "target": "com.railway.api#DeleteService"
         },
         {
           "target": "com.railway.api#ServiceDisconnect"
         },
         {
-          "target": "com.railway.api#ServiceDomainCreate"
+          "target": "com.railway.api#CreateServiceDomain"
         },
         {
-          "target": "com.railway.api#ServiceDomainDelete"
+          "target": "com.railway.api#DeleteServiceDomain"
         },
         {
-          "target": "com.railway.api#ServiceDomainUpdate"
+          "target": "com.railway.api#UpdateServiceDomain"
         },
         {
           "target": "com.railway.api#ServiceFeatureFlagAdd"
@@ -60710,16 +60710,16 @@
           "target": "com.railway.api#ServiceFeatureFlagRemove"
         },
         {
-          "target": "com.railway.api#ServiceInstanceAutoDeployUpdate"
+          "target": "com.railway.api#UpdateServiceInstanceAutoDeploy"
         },
         {
           "target": "com.railway.api#ServiceInstanceAutoUpdateScheduleUpdate"
         },
         {
-          "target": "com.railway.api#ServiceInstanceAutoUpdateSnooze"
+          "target": "com.railway.api#UpdateServiceInstanceAutoSnooze"
         },
         {
-          "target": "com.railway.api#ServiceInstanceAutoUpdateSnoozeClear"
+          "target": "com.railway.api#UpdateServiceInstanceAutoSnoozeClear"
         },
         {
           "target": "com.railway.api#ServiceInstanceDeploy"
@@ -60728,13 +60728,13 @@
           "target": "com.railway.api#ServiceInstanceDeployV2"
         },
         {
-          "target": "com.railway.api#ServiceInstanceLimitsUpdate"
+          "target": "com.railway.api#UpdateServiceInstanceLimit"
         },
         {
           "target": "com.railway.api#ServiceInstanceRedeploy"
         },
         {
-          "target": "com.railway.api#ServiceInstanceUpdate"
+          "target": "com.railway.api#UpdateServiceInstance"
         },
         {
           "target": "com.railway.api#ServiceInstanceVulnRemediationDismiss"
@@ -60746,10 +60746,10 @@
           "target": "com.railway.api#ServiceRemoveUpstreamUrl"
         },
         {
-          "target": "com.railway.api#ServiceUpdate"
+          "target": "com.railway.api#UpdateService"
         },
         {
-          "target": "com.railway.api#SessionDelete"
+          "target": "com.railway.api#DeleteSession"
         },
         {
           "target": "com.railway.api#SetServiceUnderAttackMode"
@@ -60782,28 +60782,28 @@
           "target": "com.railway.api#SignalRuleUnset"
         },
         {
-          "target": "com.railway.api#SshPublicKeyCreate"
+          "target": "com.railway.api#CreateSshPublicKey"
         },
         {
-          "target": "com.railway.api#SshPublicKeyDelete"
+          "target": "com.railway.api#DeleteSshPublicKey"
         },
         {
           "target": "com.railway.api#SshSignupApprove"
         },
         {
-          "target": "com.railway.api#TcpProxyDelete"
+          "target": "com.railway.api#DeleteTcpProxy"
         },
         {
           "target": "com.railway.api#TemplateClone"
         },
         {
-          "target": "com.railway.api#TemplateDelete"
+          "target": "com.railway.api#DeleteTemplate"
         },
         {
           "target": "com.railway.api#TemplateDeployV2"
         },
         {
-          "target": "com.railway.api#TemplateGenerate"
+          "target": "com.railway.api#GenerateTemplate"
         },
         {
           "target": "com.railway.api#TemplatePublish"
@@ -60818,25 +60818,25 @@
           "target": "com.railway.api#TemplateUnpublish"
         },
         {
-          "target": "com.railway.api#TemplateVolumeUpdate"
+          "target": "com.railway.api#UpdateTemplateVolume"
         },
         {
-          "target": "com.railway.api#TrustedDomainCreate"
+          "target": "com.railway.api#CreateTrustedDomain"
         },
         {
-          "target": "com.railway.api#TrustedDomainDelete"
+          "target": "com.railway.api#DeleteTrustedDomain"
         },
         {
           "target": "com.railway.api#TrustedDomainRetriggerVerification"
         },
         {
-          "target": "com.railway.api#TrustedDomainUpdate"
+          "target": "com.railway.api#UpdateTrustedDomain"
         },
         {
-          "target": "com.railway.api#TwoFactorInfoCreate"
+          "target": "com.railway.api#CreateTwoFactorInfo"
         },
         {
-          "target": "com.railway.api#TwoFactorInfoDelete"
+          "target": "com.railway.api#DeleteTwoFactorInfo"
         },
         {
           "target": "com.railway.api#TwoFactorInfoSecret"
@@ -60857,13 +60857,13 @@
           "target": "com.railway.api#UsageLimitRemove"
         },
         {
-          "target": "com.railway.api#UsageLimitSet"
+          "target": "com.railway.api#SetUsageLimit"
         },
         {
           "target": "com.railway.api#UserBetaLeave"
         },
         {
-          "target": "com.railway.api#UserDelete"
+          "target": "com.railway.api#DeleteUser"
         },
         {
           "target": "com.railway.api#UserDiscordDisconnect"
@@ -60872,61 +60872,61 @@
           "target": "com.railway.api#UserFlagsRemove"
         },
         {
-          "target": "com.railway.api#UserFlagsSet"
+          "target": "com.railway.api#SetUserFlag"
         },
         {
-          "target": "com.railway.api#UserProfileUpdate"
+          "target": "com.railway.api#UpdateUserProfile"
         },
         {
-          "target": "com.railway.api#UserTermsUpdate"
+          "target": "com.railway.api#UpdateUserTerm"
         },
         {
-          "target": "com.railway.api#VariableCollectionUpsert"
+          "target": "com.railway.api#UpsertVariableCollection"
         },
         {
-          "target": "com.railway.api#VariableDelete"
+          "target": "com.railway.api#DeleteVariable"
         },
         {
-          "target": "com.railway.api#VariableUpsert"
+          "target": "com.railway.api#UpsertVariable"
         },
         {
-          "target": "com.railway.api#VolumeCreate"
+          "target": "com.railway.api#CreateVolume"
         },
         {
-          "target": "com.railway.api#VolumeDelete"
+          "target": "com.railway.api#DeleteVolume"
         },
         {
-          "target": "com.railway.api#VolumeInstanceBackupCreate"
+          "target": "com.railway.api#CreateVolumeInstanceBackup"
         },
         {
-          "target": "com.railway.api#VolumeInstanceBackupDelete"
+          "target": "com.railway.api#DeleteVolumeInstanceBackup"
         },
         {
           "target": "com.railway.api#VolumeInstanceBackupLock"
         },
         {
-          "target": "com.railway.api#VolumeInstanceBackupRestore"
+          "target": "com.railway.api#RestoreVolumeInstanceBackup"
         },
         {
-          "target": "com.railway.api#VolumeInstanceBackupScheduleUpdate"
+          "target": "com.railway.api#UpdateVolumeInstanceBackupSchedule"
         },
         {
-          "target": "com.railway.api#VolumeInstancePITRRestore"
+          "target": "com.railway.api#RestoreVolumeInstancePitr"
         },
         {
-          "target": "com.railway.api#VolumeInstanceUpdate"
+          "target": "com.railway.api#UpdateVolumeInstance"
         },
         {
-          "target": "com.railway.api#VolumeUpdate"
+          "target": "com.railway.api#UpdateVolume"
         },
         {
           "target": "com.railway.api#WebhookTest"
         },
         {
-          "target": "com.railway.api#WorkspaceDelete"
+          "target": "com.railway.api#DeleteWorkspace"
         },
         {
-          "target": "com.railway.api#WorkspaceInviteCodeCreate"
+          "target": "com.railway.api#CreateWorkspaceInviteCode"
         },
         {
           "target": "com.railway.api#WorkspaceInviteCodeUse"
@@ -60944,19 +60944,19 @@
           "target": "com.railway.api#WorkspacePolicyDeploySourceAllowlistRemove"
         },
         {
-          "target": "com.railway.api#WorkspacePolicyItemUpdate"
+          "target": "com.railway.api#UpdateWorkspacePolicyItem"
         },
         {
-          "target": "com.railway.api#WorkspaceSetRestrictProjectVisibilityToGroups"
+          "target": "com.railway.api#SetWorkspaceRestrictProjectVisibilityToGroup"
         },
         {
-          "target": "com.railway.api#WorkspaceTwoFactorEnforcementUpdate"
+          "target": "com.railway.api#UpdateWorkspaceTwoFactorEnforcement"
         },
         {
-          "target": "com.railway.api#WorkspaceUpdate"
+          "target": "com.railway.api#UpdateWorkspace"
         },
         {
-          "target": "com.railway.api#WorkspaceUpsertSlackChannel"
+          "target": "com.railway.api#UpsertWorkspaceSlackChannel"
         },
         {
           "target": "com.railway.api#WorkspaceUserInvite"
@@ -60965,7 +60965,7 @@
           "target": "com.railway.api#WorkspaceUserRemove"
         },
         {
-          "target": "com.railway.api#TcpProxyCreate"
+          "target": "com.railway.api#CreateTcpProxy"
         }
       ],
       "traits": {
@@ -60996,7 +60996,7 @@
         }
       }
     },
-    "com.railway.api#TcpProxyCreateRequest": {
+    "com.railway.api#CreateTcpProxyRequest": {
       "type": "structure",
       "members": {
         "input": {
@@ -61015,7 +61015,7 @@
         }
       }
     },
-    "com.railway.api#TcpProxyCreateResponse": {
+    "com.railway.api#CreateTcpProxyResponse": {
       "type": "structure",
       "members": {
         "applicationPort": {
@@ -61088,13 +61088,13 @@
         "smithy.api#documentation": "Selection set for `tcpProxyCreate` (unwrapped from the GraphQL `data` envelope)."
       }
     },
-    "com.railway.api#TcpProxyCreate": {
+    "com.railway.api#CreateTcpProxy": {
       "type": "operation",
       "input": {
-        "target": "com.railway.api#TcpProxyCreateRequest"
+        "target": "com.railway.api#CreateTcpProxyRequest"
       },
       "output": {
-        "target": "com.railway.api#TcpProxyCreateResponse"
+        "target": "com.railway.api#CreateTcpProxyResponse"
       },
       "traits": {
         "smithy.api#http": {

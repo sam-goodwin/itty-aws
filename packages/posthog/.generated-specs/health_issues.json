@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.health_issues#HealthIssuesListRequest": {
+    "com.posthog.health_issues#ListHealthIssuesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -232,10 +232,10 @@
       },
       "traits": {}
     },
-    "com.posthog.health_issues#HealthIssuesList": {
+    "com.posthog.health_issues#ListHealthIssues": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.health_issues#HealthIssuesListRequest"
+        "target": "com.posthog.health_issues#ListHealthIssuesRequest"
       },
       "output": {
         "target": "com.posthog.health_issues#PaginatedHealthIssueList"
@@ -429,7 +429,7 @@
         "smithy.api#documentation": "Get a health issue\n\nFetches a single health issue, enriched with the owning check's rendered explanation: a title, a one-line summary of what's wrong, a deep link to the relevant page, and remediation guidance for how to fix it."
       }
     },
-    "com.posthog.health_issues#HealthIssuesPartialUpdateRequest": {
+    "com.posthog.health_issues#UpdateHealthIssuePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -466,10 +466,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.health_issues#HealthIssuesPartialUpdate": {
+    "com.posthog.health_issues#UpdateHealthIssuePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.health_issues#HealthIssuesPartialUpdateRequest"
+        "target": "com.posthog.health_issues#UpdateHealthIssuePartialRequest"
       },
       "output": {
         "target": "com.posthog.health_issues#HealthIssue"
@@ -482,7 +482,7 @@
         }
       }
     },
-    "com.posthog.health_issues#HealthIssuesResolveCreateRequest": {
+    "com.posthog.health_issues#CreateHealthIssueResolveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -519,10 +519,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.health_issues#HealthIssuesResolveCreate": {
+    "com.posthog.health_issues#CreateHealthIssueResolve": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.health_issues#HealthIssuesResolveCreateRequest"
+        "target": "com.posthog.health_issues#CreateHealthIssueResolveRequest"
       },
       "output": {
         "target": "com.posthog.health_issues#HealthIssue"
@@ -535,7 +535,7 @@
         }
       }
     },
-    "com.posthog.health_issues#HealthIssuesRefreshCreateRequest": {
+    "com.posthog.health_issues#CreateHealthIssueRefreshRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -551,10 +551,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.health_issues#HealthIssuesRefreshCreate": {
+    "com.posthog.health_issues#CreateHealthIssueRefresh": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.health_issues#HealthIssuesRefreshCreateRequest"
+        "target": "com.posthog.health_issues#CreateHealthIssueRefreshRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -676,19 +676,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.health_issues#HealthIssuesList"
+          "target": "com.posthog.health_issues#ListHealthIssues"
         },
         {
           "target": "com.posthog.health_issues#HealthIssuesRetrieve"
         },
         {
-          "target": "com.posthog.health_issues#HealthIssuesPartialUpdate"
+          "target": "com.posthog.health_issues#UpdateHealthIssuePartial"
         },
         {
-          "target": "com.posthog.health_issues#HealthIssuesResolveCreate"
+          "target": "com.posthog.health_issues#CreateHealthIssueResolve"
         },
         {
-          "target": "com.posthog.health_issues#HealthIssuesRefreshCreate"
+          "target": "com.posthog.health_issues#CreateHealthIssueRefresh"
         },
         {
           "target": "com.posthog.health_issues#HealthIssuesSummaryRetrieve"

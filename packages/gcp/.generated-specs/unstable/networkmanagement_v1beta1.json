@@ -7324,7 +7324,7 @@
         "smithy.api#documentation": "Deletes a specific `VpcFlowLogsConfig`."
       }
     },
-    "com.gcp.networkmanagement_v1beta1#ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest": {
+    "com.gcp.networkmanagement_v1beta1#GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest": {
       "type": "structure",
       "members": {
         "resource": {
@@ -7365,10 +7365,10 @@
         }
       }
     },
-    "com.gcp.networkmanagement_v1beta1#ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs": {
+    "com.gcp.networkmanagement_v1beta1#GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigs": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.networkmanagement_v1beta1#ShowEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest"
+        "target": "com.gcp.networkmanagement_v1beta1#GetEffectiveFlowLogsConfigsProjectsLocationsVpcFlowLogsConfigsRequest"
       },
       "output": {
         "target": "com.gcp.networkmanagement_v1beta1#ShowEffectiveFlowLogsConfigsResponse"

@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.saved#SavedListRequest": {
+    "com.posthog.saved#ListSavedRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -477,7 +477,7 @@
       },
       "traits": {}
     },
-    "com.posthog.saved#SavedListResponse": {
+    "com.posthog.saved#ListSavedResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -492,13 +492,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.saved#SavedList": {
+    "com.posthog.saved#ListSaved": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedListRequest"
+        "target": "com.posthog.saved#ListSavedRequest"
       },
       "output": {
-        "target": "com.posthog.saved#SavedListResponse"
+        "target": "com.posthog.saved#ListSavedResponse"
       },
       "errors": [
         {
@@ -529,7 +529,7 @@
         "smithy.api#documentation": "Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths."
       }
     },
-    "com.posthog.saved#SavedCreateRequest": {
+    "com.posthog.saved#CreateSavedRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -590,10 +590,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved#SavedCreate": {
+    "com.posthog.saved#CreateSaved": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedCreateRequest"
+        "target": "com.posthog.saved#CreateSavedRequest"
       },
       "output": {
         "target": "com.posthog.saved#HeatmapScreenshotResponse"
@@ -675,7 +675,7 @@
         "smithy.api#documentation": "Viewport widths (px, 100-3000) to render the heatmap screenshot at — one render per width. Defaults to [320, 375, 425, 768, 1024, 1440, 1920] when omitted. At most 16 widths."
       }
     },
-    "com.posthog.saved#SavedPartialUpdateRequest": {
+    "com.posthog.saved#UpdateSavedPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -742,10 +742,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved#SavedPartialUpdate": {
+    "com.posthog.saved#UpdateSavedPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedPartialUpdateRequest"
+        "target": "com.posthog.saved#UpdateSavedPartialRequest"
       },
       "output": {
         "target": "com.posthog.saved#HeatmapScreenshotResponse"
@@ -818,7 +818,7 @@
         "smithy.api#documentation": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true"
       }
     },
-    "com.posthog.saved#SavedRegenerateCreateRequest": {
+    "com.posthog.saved#CreateSavedRegenerateRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -841,10 +841,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved#SavedRegenerateCreate": {
+    "com.posthog.saved#CreateSavedRegenerate": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedRegenerateCreateRequest"
+        "target": "com.posthog.saved#CreateSavedRegenerateRequest"
       },
       "output": {
         "target": "com.posthog.saved#HeatmapScreenshotResponse"
@@ -887,7 +887,7 @@
         "smithy.api#documentation": "Viewport widths (CSS pixels) the 'images' were captured at, parallel to 'images'."
       }
     },
-    "com.posthog.saved#SavedCaptureCreateRequest": {
+    "com.posthog.saved#CreateSavedCaptureRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -940,10 +940,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved#SavedCaptureCreate": {
+    "com.posthog.saved#CreateSavedCapture": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedCaptureCreateRequest"
+        "target": "com.posthog.saved#CreateSavedCaptureRequest"
       },
       "output": {
         "target": "com.posthog.saved#HeatmapScreenshotResponse"
@@ -959,7 +959,7 @@
         "com.distilled.openapi#contentType": "multipart"
       }
     },
-    "com.posthog.saved#SavedPreflightCreateRequest": {
+    "com.posthog.saved#CreateSavedPreflightRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1065,10 +1065,10 @@
         "smithy.api#documentation": "* `x_frame_options` - x_frame_options\n* `frame_ancestors` - frame_ancestors"
       }
     },
-    "com.posthog.saved#SavedPreflightCreate": {
+    "com.posthog.saved#CreateSavedPreflight": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedPreflightCreateRequest"
+        "target": "com.posthog.saved#CreateSavedPreflightRequest"
       },
       "output": {
         "target": "com.posthog.saved#HeatmapPreflightResponse"
@@ -1082,7 +1082,7 @@
         "smithy.api#documentation": "Check whether a page can back a heatmap\n\nFetch a page URL server-side and report whether it allows being embedded in the live preview iframe, plus the HTTP status it returned. The live preview loads the customer's site directly in their browser, so a site that sends X-Frame-Options or a restrictive frame-ancestors will never render, and a 4xx or 5xx from the site's own host or CDN leaves an empty frame with no explanation. This endpoint makes both cases explainable. The fetch comes from PostHog's own network rather than from the screenshot renderer, so a host that varies its response by IP or user agent can answer this differently than it answers a screenshot render. Settled verdicts are cached briefly, so repeat checks for the same URL do not refetch it."
       }
     },
-    "com.posthog.saved#SavedPrewarmCreateRequest": {
+    "com.posthog.saved#CreateSavedPrewarmRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1111,10 +1111,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.saved#SavedPrewarmCreate": {
+    "com.posthog.saved#CreateSavedPrewarm": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.saved#SavedPrewarmCreateRequest"
+        "target": "com.posthog.saved#CreateSavedPrewarmRequest"
       },
       "output": {
         "target": "com.posthog.saved#HeatmapScreenshotResponse"
@@ -1172,31 +1172,31 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.saved#SavedList"
+          "target": "com.posthog.saved#ListSaved"
         },
         {
-          "target": "com.posthog.saved#SavedCreate"
+          "target": "com.posthog.saved#CreateSaved"
         },
         {
           "target": "com.posthog.saved#SavedRetrieve"
         },
         {
-          "target": "com.posthog.saved#SavedPartialUpdate"
+          "target": "com.posthog.saved#UpdateSavedPartial"
         },
         {
           "target": "com.posthog.saved#SavedDestroy"
         },
         {
-          "target": "com.posthog.saved#SavedRegenerateCreate"
+          "target": "com.posthog.saved#CreateSavedRegenerate"
         },
         {
-          "target": "com.posthog.saved#SavedCaptureCreate"
+          "target": "com.posthog.saved#CreateSavedCapture"
         },
         {
-          "target": "com.posthog.saved#SavedPreflightCreate"
+          "target": "com.posthog.saved#CreateSavedPreflight"
         },
         {
-          "target": "com.posthog.saved#SavedPrewarmCreate"
+          "target": "com.posthog.saved#CreateSavedPrewarm"
         }
       ],
       "traits": {

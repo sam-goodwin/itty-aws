@@ -308,7 +308,7 @@
         "smithy.api#documentation": "Represents a reference to a document."
       }
     },
-    "com.gcp.developerknowledge_v1alpha#BatchGetDocumentsResponse": {
+    "com.gcp.developerknowledge_v1alpha#GetBatchDocumentResponse": {
       "type": "structure",
       "members": {
         "documents": {
@@ -457,7 +457,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.gcp.developerknowledge_v1alpha#BatchGetDocumentsRequest": {
+    "com.gcp.developerknowledge_v1alpha#GetBatchDocumentRequest": {
       "type": "structure",
       "members": {
         "view": {
@@ -476,13 +476,13 @@
         }
       }
     },
-    "com.gcp.developerknowledge_v1alpha#BatchGetDocuments": {
+    "com.gcp.developerknowledge_v1alpha#GetBatchDocument": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.developerknowledge_v1alpha#BatchGetDocumentsRequest"
+        "target": "com.gcp.developerknowledge_v1alpha#GetBatchDocumentRequest"
       },
       "output": {
-        "target": "com.gcp.developerknowledge_v1alpha#BatchGetDocumentsResponse"
+        "target": "com.gcp.developerknowledge_v1alpha#GetBatchDocumentResponse"
       },
       "errors": [
         {

@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.botservice#PrivateLinkResourcesListByBotResource": {
+    "com.azure.botservice#ListPrivateLinkResourceByBotResource": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#PrivateLinkResourcesListByBotResourceRequest"
+        "target": "com.azure.botservice#ListPrivateLinkResourceByBotResourceRequest"
       },
       "output": {
-        "target": "com.azure.botservice#PrivateLinkResourcesListByBotResourceResponse"
+        "target": "com.azure.botservice#ListPrivateLinkResourceByBotResourceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#PrivateLinkResourcesListByBotResourceResponse": {
+    "com.azure.botservice#ListPrivateLinkResourceByBotResourceResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -135,7 +135,7 @@
         "smithy.api#documentation": "The private link resource required member names."
       }
     },
-    "com.azure.botservice#PrivateLinkResourcesListByBotResourceRequest": {
+    "com.azure.botservice#ListPrivateLinkResourceByBotResourceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -167,10 +167,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsDelete": {
+    "com.azure.botservice#DeletePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsDeleteRequest"
+        "target": "com.azure.botservice#DeletePrivateEndpointConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -186,7 +186,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsDeleteRequest": {
+    "com.azure.botservice#DeletePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -226,13 +226,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsCreate": {
+    "com.azure.botservice#CreatePrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsCreateRequest"
+        "target": "com.azure.botservice#CreatePrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsCreateResponse"
+        "target": "com.azure.botservice#CreatePrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -245,7 +245,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsCreateResponse": {
+    "com.azure.botservice#CreatePrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -417,7 +417,7 @@
         "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsCreateRequest": {
+    "com.azure.botservice#CreatePrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -506,13 +506,13 @@
         "smithy.api#documentation": "The Private Endpoint resource."
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsGet": {
+    "com.azure.botservice#GetPrivateEndpointConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsGetRequest"
+        "target": "com.azure.botservice#GetPrivateEndpointConnectionRequest"
       },
       "output": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsGetResponse"
+        "target": "com.azure.botservice#GetPrivateEndpointConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -525,7 +525,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsGetResponse": {
+    "com.azure.botservice#GetPrivateEndpointConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -557,7 +557,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsGetRequest": {
+    "com.azure.botservice#GetPrivateEndpointConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -597,13 +597,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsList": {
+    "com.azure.botservice#ListPrivateEndpointConnections": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsListRequest"
+        "target": "com.azure.botservice#ListPrivateEndpointConnectionsRequest"
       },
       "output": {
-        "target": "com.azure.botservice#PrivateEndpointConnectionsListResponse"
+        "target": "com.azure.botservice#ListPrivateEndpointConnectionsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -616,7 +616,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsListResponse": {
+    "com.azure.botservice#ListPrivateEndpointConnectionsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -671,7 +671,7 @@
         "smithy.api#documentation": "The Private Endpoint Connection resource."
       }
     },
-    "com.azure.botservice#PrivateEndpointConnectionsListRequest": {
+    "com.azure.botservice#ListPrivateEndpointConnectionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -703,10 +703,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#OperationResultsGet": {
+    "com.azure.botservice#GetOperationResult": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#OperationResultsGetRequest"
+        "target": "com.azure.botservice#GetOperationResultRequest"
       },
       "output": {
         "target": "com.azure.botservice#OperationResultsDescription"
@@ -792,7 +792,7 @@
         "smithy.api#documentation": "The status of the operation being performed."
       }
     },
-    "com.azure.botservice#OperationResultsGetRequest": {
+    "com.azure.botservice#GetOperationResultRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -816,10 +816,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#HostSettingsGet": {
+    "com.azure.botservice#GetHostSetting": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#HostSettingsGetRequest"
+        "target": "com.azure.botservice#GetHostSettingRequest"
       },
       "output": {
         "target": "com.azure.botservice#HostSettingsResponse"
@@ -891,7 +891,7 @@
         "smithy.api#documentation": "The response body returned for a request to Bot Service Management to check per subscription hostSettings"
       }
     },
-    "com.azure.botservice#HostSettingsGetRequest": {
+    "com.azure.botservice#GetHostSettingRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -907,10 +907,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotConnectionListByBotService": {
+    "com.azure.botservice#ListBotConnectionByBotService": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionListByBotServiceRequest"
+        "target": "com.azure.botservice#ListBotConnectionByBotServiceRequest"
       },
       "output": {
         "target": "com.azure.botservice#ConnectionSettingResponseList"
@@ -1243,7 +1243,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionListByBotServiceRequest": {
+    "com.azure.botservice#ListBotConnectionByBotServiceRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1275,10 +1275,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotConnectionDelete": {
+    "com.azure.botservice#DeleteBotConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionDeleteRequest"
+        "target": "com.azure.botservice#DeleteBotConnectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1294,7 +1294,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotConnectionDeleteRequest": {
+    "com.azure.botservice#DeleteBotConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1334,13 +1334,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotConnectionUpdate": {
+    "com.azure.botservice#UpdateBotConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionUpdateRequest"
+        "target": "com.azure.botservice#UpdateBotConnectionRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotConnectionUpdateResponse"
+        "target": "com.azure.botservice#UpdateBotConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1353,7 +1353,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotConnectionUpdateResponse": {
+    "com.azure.botservice#UpdateBotConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1443,7 +1443,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionUpdateRequest": {
+    "com.azure.botservice#UpdateBotConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1619,13 +1619,13 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionCreate": {
+    "com.azure.botservice#CreateBotConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionCreateRequest"
+        "target": "com.azure.botservice#CreateBotConnectionRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotConnectionCreateResponse"
+        "target": "com.azure.botservice#CreateBotConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1638,7 +1638,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotConnectionCreateResponse": {
+    "com.azure.botservice#CreateBotConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1728,7 +1728,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionCreateRequest": {
+    "com.azure.botservice#CreateBotConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1817,13 +1817,13 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionGet": {
+    "com.azure.botservice#GetBotConnection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionGetRequest"
+        "target": "com.azure.botservice#GetBotConnectionRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotConnectionGetResponse"
+        "target": "com.azure.botservice#GetBotConnectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1836,7 +1836,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotConnectionGetResponse": {
+    "com.azure.botservice#GetBotConnectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1926,7 +1926,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionGetRequest": {
+    "com.azure.botservice#GetBotConnectionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1966,13 +1966,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotConnectionListWithSecrets": {
+    "com.azure.botservice#ListBotConnectionWithSecrets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionListWithSecretsRequest"
+        "target": "com.azure.botservice#ListBotConnectionWithSecretsRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotConnectionListWithSecretsResponse"
+        "target": "com.azure.botservice#ListBotConnectionWithSecretsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1985,7 +1985,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotConnectionListWithSecretsResponse": {
+    "com.azure.botservice#ListBotConnectionWithSecretsResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2075,7 +2075,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotConnectionListWithSecretsRequest": {
+    "com.azure.botservice#ListBotConnectionWithSecretsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2115,10 +2115,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#QnAMakerEndpointKeysGet": {
+    "com.azure.botservice#GetQnAMakerEndpointKey": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#QnAMakerEndpointKeysGetRequest"
+        "target": "com.azure.botservice#GetQnAMakerEndpointKeyRequest"
       },
       "output": {
         "target": "com.azure.botservice#QnAMakerEndpointKeysResponse"
@@ -2166,7 +2166,7 @@
         "smithy.api#documentation": "Schema for EndpointKeys generate/refresh operations."
       }
     },
-    "com.azure.botservice#QnAMakerEndpointKeysGetRequest": {
+    "com.azure.botservice#GetQnAMakerEndpointKeyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2194,10 +2194,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotConnectionListServiceProviders": {
+    "com.azure.botservice#ListBotConnectionServiceProviders": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotConnectionListServiceProvidersRequest"
+        "target": "com.azure.botservice#ListBotConnectionServiceProvidersRequest"
       },
       "output": {
         "target": "com.azure.botservice#ServiceProviderResponseList"
@@ -2387,7 +2387,7 @@
         "smithy.api#documentation": "the constraints of the bot meta data."
       }
     },
-    "com.azure.botservice#BotConnectionListServiceProvidersRequest": {
+    "com.azure.botservice#ListBotConnectionServiceProvidersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2403,7 +2403,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#OperationsList": {
+    "com.azure.botservice#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -2906,10 +2906,10 @@
       },
       "traits": {}
     },
-    "com.azure.botservice#ChannelsListByResourceGroup": {
+    "com.azure.botservice#ListChannelByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#ChannelsListByResourceGroupRequest"
+        "target": "com.azure.botservice#ListChannelByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.botservice#ChannelResponseList"
@@ -3044,7 +3044,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#ChannelsListByResourceGroupRequest": {
+    "com.azure.botservice#ListChannelByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3076,13 +3076,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#ChannelsListWithKeys": {
+    "com.azure.botservice#ListChannelWithKeys": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#ChannelsListWithKeysRequest"
+        "target": "com.azure.botservice#ListChannelWithKeysRequest"
       },
       "output": {
-        "target": "com.azure.botservice#ChannelsListWithKeysResponse"
+        "target": "com.azure.botservice#ListChannelWithKeysResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3095,7 +3095,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#ChannelsListWithKeysResponse": {
+    "com.azure.botservice#ListChannelWithKeysResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3426,7 +3426,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#ChannelsListWithKeysRequest": {
+    "com.azure.botservice#ListChannelWithKeysRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3586,10 +3586,10 @@
       },
       "traits": {}
     },
-    "com.azure.botservice#ChannelsDelete": {
+    "com.azure.botservice#DeleteChannel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#ChannelsDeleteRequest"
+        "target": "com.azure.botservice#DeleteChannelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3605,7 +3605,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#ChannelsDeleteRequest": {
+    "com.azure.botservice#DeleteChannelRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3645,13 +3645,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#ChannelsUpdate": {
+    "com.azure.botservice#UpdateChannel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#ChannelsUpdateRequest"
+        "target": "com.azure.botservice#UpdateChannelRequest"
       },
       "output": {
-        "target": "com.azure.botservice#ChannelsUpdateResponse"
+        "target": "com.azure.botservice#UpdateChannelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3664,7 +3664,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#ChannelsUpdateResponse": {
+    "com.azure.botservice#UpdateChannelResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3754,7 +3754,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#ChannelsUpdateRequest": {
+    "com.azure.botservice#UpdateChannelRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3991,13 +3991,13 @@
       },
       "traits": {}
     },
-    "com.azure.botservice#ChannelsCreate": {
+    "com.azure.botservice#CreateChannel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#ChannelsCreateRequest"
+        "target": "com.azure.botservice#CreateChannelRequest"
       },
       "output": {
-        "target": "com.azure.botservice#ChannelsCreateResponse"
+        "target": "com.azure.botservice#CreateChannelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4010,7 +4010,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#ChannelsCreateResponse": {
+    "com.azure.botservice#CreateChannelResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4100,7 +4100,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#ChannelsCreateRequest": {
+    "com.azure.botservice#CreateChannelRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4309,13 +4309,13 @@
       },
       "traits": {}
     },
-    "com.azure.botservice#ChannelsGet": {
+    "com.azure.botservice#GetChannel": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#ChannelsGetRequest"
+        "target": "com.azure.botservice#GetChannelRequest"
       },
       "output": {
-        "target": "com.azure.botservice#ChannelsGetResponse"
+        "target": "com.azure.botservice#GetChannelResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4328,7 +4328,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#ChannelsGetResponse": {
+    "com.azure.botservice#GetChannelResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4418,7 +4418,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#ChannelsGetRequest": {
+    "com.azure.botservice#GetChannelRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4458,10 +4458,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotsList": {
+    "com.azure.botservice#ListBots": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotsListRequest"
+        "target": "com.azure.botservice#ListBotsRequest"
       },
       "output": {
         "target": "com.azure.botservice#BotResponseList"
@@ -4958,7 +4958,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotsListRequest": {
+    "com.azure.botservice#ListBotsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4974,10 +4974,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotsListByResourceGroup": {
+    "com.azure.botservice#ListBotByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotsListByResourceGroupRequest"
+        "target": "com.azure.botservice#ListBotByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.botservice#BotResponseList"
@@ -4993,7 +4993,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotsListByResourceGroupRequest": {
+    "com.azure.botservice#ListBotByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5017,10 +5017,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotsDelete": {
+    "com.azure.botservice#DeleteBot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotsDeleteRequest"
+        "target": "com.azure.botservice#DeleteBotRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5036,7 +5036,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotsDeleteRequest": {
+    "com.azure.botservice#DeleteBotRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5068,13 +5068,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.botservice#BotsUpdate": {
+    "com.azure.botservice#UpdateBot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotsUpdateRequest"
+        "target": "com.azure.botservice#UpdateBotRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotsUpdateResponse"
+        "target": "com.azure.botservice#UpdateBotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5087,7 +5087,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotsUpdateResponse": {
+    "com.azure.botservice#UpdateBotResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5177,7 +5177,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotsUpdateRequest": {
+    "com.azure.botservice#UpdateBotRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5513,13 +5513,13 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotsCreate": {
+    "com.azure.botservice#CreateBot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotsCreateRequest"
+        "target": "com.azure.botservice#CreateBotRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotsCreateResponse"
+        "target": "com.azure.botservice#CreateBotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5532,7 +5532,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotsCreateResponse": {
+    "com.azure.botservice#CreateBotResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5622,7 +5622,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotsCreateRequest": {
+    "com.azure.botservice#CreateBotRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5703,13 +5703,13 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotsGet": {
+    "com.azure.botservice#GetBot": {
       "type": "operation",
       "input": {
-        "target": "com.azure.botservice#BotsGetRequest"
+        "target": "com.azure.botservice#GetBotRequest"
       },
       "output": {
-        "target": "com.azure.botservice#BotsGetResponse"
+        "target": "com.azure.botservice#GetBotResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5722,7 +5722,7 @@
         "com.distilled.openapi#apiVersion": "2022-09-15"
       }
     },
-    "com.azure.botservice#BotsGetResponse": {
+    "com.azure.botservice#GetBotResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5812,7 +5812,7 @@
         "smithy.api#documentation": "Contains resource tags defined as key/value pairs."
       }
     },
-    "com.azure.botservice#BotsGetRequest": {
+    "com.azure.botservice#GetBotRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5849,52 +5849,52 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.botservice#PrivateLinkResourcesListByBotResource"
+          "target": "com.azure.botservice#ListPrivateLinkResourceByBotResource"
         },
         {
-          "target": "com.azure.botservice#PrivateEndpointConnectionsDelete"
+          "target": "com.azure.botservice#DeletePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.botservice#PrivateEndpointConnectionsCreate"
+          "target": "com.azure.botservice#CreatePrivateEndpointConnection"
         },
         {
-          "target": "com.azure.botservice#PrivateEndpointConnectionsGet"
+          "target": "com.azure.botservice#GetPrivateEndpointConnection"
         },
         {
-          "target": "com.azure.botservice#PrivateEndpointConnectionsList"
+          "target": "com.azure.botservice#ListPrivateEndpointConnections"
         },
         {
-          "target": "com.azure.botservice#OperationResultsGet"
+          "target": "com.azure.botservice#GetOperationResult"
         },
         {
-          "target": "com.azure.botservice#HostSettingsGet"
+          "target": "com.azure.botservice#GetHostSetting"
         },
         {
-          "target": "com.azure.botservice#BotConnectionListByBotService"
+          "target": "com.azure.botservice#ListBotConnectionByBotService"
         },
         {
-          "target": "com.azure.botservice#BotConnectionDelete"
+          "target": "com.azure.botservice#DeleteBotConnection"
         },
         {
-          "target": "com.azure.botservice#BotConnectionUpdate"
+          "target": "com.azure.botservice#UpdateBotConnection"
         },
         {
-          "target": "com.azure.botservice#BotConnectionCreate"
+          "target": "com.azure.botservice#CreateBotConnection"
         },
         {
-          "target": "com.azure.botservice#BotConnectionGet"
+          "target": "com.azure.botservice#GetBotConnection"
         },
         {
-          "target": "com.azure.botservice#BotConnectionListWithSecrets"
+          "target": "com.azure.botservice#ListBotConnectionWithSecrets"
         },
         {
-          "target": "com.azure.botservice#QnAMakerEndpointKeysGet"
+          "target": "com.azure.botservice#GetQnAMakerEndpointKey"
         },
         {
-          "target": "com.azure.botservice#BotConnectionListServiceProviders"
+          "target": "com.azure.botservice#ListBotConnectionServiceProviders"
         },
         {
-          "target": "com.azure.botservice#OperationsList"
+          "target": "com.azure.botservice#ListOperations"
         },
         {
           "target": "com.azure.botservice#BotsGetCheckNameAvailability"
@@ -5906,40 +5906,40 @@
           "target": "com.azure.botservice#DirectLineRegenerateKeys"
         },
         {
-          "target": "com.azure.botservice#ChannelsListByResourceGroup"
+          "target": "com.azure.botservice#ListChannelByResourceGroup"
         },
         {
-          "target": "com.azure.botservice#ChannelsListWithKeys"
+          "target": "com.azure.botservice#ListChannelWithKeys"
         },
         {
-          "target": "com.azure.botservice#ChannelsDelete"
+          "target": "com.azure.botservice#DeleteChannel"
         },
         {
-          "target": "com.azure.botservice#ChannelsUpdate"
+          "target": "com.azure.botservice#UpdateChannel"
         },
         {
-          "target": "com.azure.botservice#ChannelsCreate"
+          "target": "com.azure.botservice#CreateChannel"
         },
         {
-          "target": "com.azure.botservice#ChannelsGet"
+          "target": "com.azure.botservice#GetChannel"
         },
         {
-          "target": "com.azure.botservice#BotsList"
+          "target": "com.azure.botservice#ListBots"
         },
         {
-          "target": "com.azure.botservice#BotsListByResourceGroup"
+          "target": "com.azure.botservice#ListBotByResourceGroup"
         },
         {
-          "target": "com.azure.botservice#BotsDelete"
+          "target": "com.azure.botservice#DeleteBot"
         },
         {
-          "target": "com.azure.botservice#BotsUpdate"
+          "target": "com.azure.botservice#UpdateBot"
         },
         {
-          "target": "com.azure.botservice#BotsCreate"
+          "target": "com.azure.botservice#CreateBot"
         },
         {
-          "target": "com.azure.botservice#BotsGet"
+          "target": "com.azure.botservice#GetBot"
         }
       ],
       "traits": {

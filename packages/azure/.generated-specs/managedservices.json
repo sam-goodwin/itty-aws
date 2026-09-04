@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.managedservices#OperationsWithScopeList": {
+    "com.azure.managedservices#ListOperationWithScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#OperationsWithScopeListRequest"
+        "target": "com.azure.managedservices#ListOperationWithScopeRequest"
       },
       "output": {
         "target": "com.azure.managedservices#OperationList"
@@ -111,7 +111,7 @@
         "smithy.api#documentation": "The object that represents the operation."
       }
     },
-    "com.azure.managedservices#OperationsWithScopeListRequest": {
+    "com.azure.managedservices#ListOperationWithScopeRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -127,7 +127,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#OperationsList": {
+    "com.azure.managedservices#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -146,10 +146,10 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeGet": {
+    "com.azure.managedservices#GetMarketplaceRegistrationDefinitionWithoutScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeGetRequest"
+        "target": "com.azure.managedservices#GetMarketplaceRegistrationDefinitionWithoutScopeRequest"
       },
       "output": {
         "target": "com.azure.managedservices#MarketplaceRegistrationDefinition"
@@ -455,7 +455,7 @@
         "smithy.api#documentation": "The delegatedRoleDefinitionIds field is required when the roleDefinitionId refers to the User Access Administrator Role. It is the list of role definition ids which define all the permissions that the user in the authorization can assign to other principals."
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeGetRequest": {
+    "com.azure.managedservices#GetMarketplaceRegistrationDefinitionWithoutScopeRequest": {
       "type": "structure",
       "members": {
         "marketplaceIdentifier": {
@@ -471,10 +471,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsGet": {
+    "com.azure.managedservices#GetMarketplaceRegistrationDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsGetRequest"
+        "target": "com.azure.managedservices#GetMarketplaceRegistrationDefinitionRequest"
       },
       "output": {
         "target": "com.azure.managedservices#MarketplaceRegistrationDefinition"
@@ -490,7 +490,7 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsGetRequest": {
+    "com.azure.managedservices#GetMarketplaceRegistrationDefinitionRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -514,10 +514,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeList": {
+    "com.azure.managedservices#ListMarketplaceRegistrationDefinitionWithoutScope": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeListRequest"
+        "target": "com.azure.managedservices#ListMarketplaceRegistrationDefinitionWithoutScopeRequest"
       },
       "output": {
         "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionList"
@@ -562,7 +562,7 @@
         "smithy.api#documentation": "The list of marketplace registration definitions."
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeListRequest": {
+    "com.azure.managedservices#ListMarketplaceRegistrationDefinitionWithoutScopeRequest": {
       "type": "structure",
       "members": {
         "_filter": {
@@ -577,10 +577,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsList": {
+    "com.azure.managedservices#ListMarketplaceRegistrationDefinitions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsListRequest"
+        "target": "com.azure.managedservices#ListMarketplaceRegistrationDefinitionsRequest"
       },
       "output": {
         "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionList"
@@ -596,7 +596,7 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#MarketplaceRegistrationDefinitionsListRequest": {
+    "com.azure.managedservices#ListMarketplaceRegistrationDefinitionsRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -619,10 +619,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#RegistrationAssignmentsList": {
+    "com.azure.managedservices#ListRegistrationAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#RegistrationAssignmentsListRequest"
+        "target": "com.azure.managedservices#ListRegistrationAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.managedservices#RegistrationAssignmentList"
@@ -1232,7 +1232,7 @@
         "smithy.api#documentation": "The current provisioning state of the registration assignment."
       }
     },
-    "com.azure.managedservices#RegistrationAssignmentsListRequest": {
+    "com.azure.managedservices#ListRegistrationAssignmentsRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -1262,10 +1262,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#RegistrationDefinitionsList": {
+    "com.azure.managedservices#ListRegistrationDefinitions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#RegistrationDefinitionsListRequest"
+        "target": "com.azure.managedservices#ListRegistrationDefinitionsRequest"
       },
       "output": {
         "target": "com.azure.managedservices#RegistrationDefinitionList"
@@ -1624,7 +1624,7 @@
         "smithy.api#documentation": "The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant."
       }
     },
-    "com.azure.managedservices#RegistrationDefinitionsListRequest": {
+    "com.azure.managedservices#ListRegistrationDefinitionsRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -1647,10 +1647,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#RegistrationAssignmentsDelete": {
+    "com.azure.managedservices#DeleteRegistrationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#RegistrationAssignmentsDeleteRequest"
+        "target": "com.azure.managedservices#DeleteRegistrationAssignmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1666,7 +1666,7 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#RegistrationAssignmentsDeleteRequest": {
+    "com.azure.managedservices#DeleteRegistrationAssignmentRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -1754,10 +1754,10 @@
         "smithy.api#documentation": "The properties of the registration assignment."
       }
     },
-    "com.azure.managedservices#RegistrationAssignmentsGet": {
+    "com.azure.managedservices#GetRegistrationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#RegistrationAssignmentsGetRequest"
+        "target": "com.azure.managedservices#GetRegistrationAssignmentRequest"
       },
       "output": {
         "target": "com.azure.managedservices#RegistrationAssignment"
@@ -1773,7 +1773,7 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#RegistrationAssignmentsGetRequest": {
+    "com.azure.managedservices#GetRegistrationAssignmentRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -1804,10 +1804,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.managedservices#RegistrationDefinitionsDelete": {
+    "com.azure.managedservices#DeleteRegistrationDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#RegistrationDefinitionsDeleteRequest"
+        "target": "com.azure.managedservices#DeleteRegistrationDefinitionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1823,7 +1823,7 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#RegistrationDefinitionsDeleteRequest": {
+    "com.azure.managedservices#DeleteRegistrationDefinitionRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -1960,10 +1960,10 @@
         "smithy.api#documentation": "The collection of authorization objects describing the access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant."
       }
     },
-    "com.azure.managedservices#RegistrationDefinitionsGet": {
+    "com.azure.managedservices#GetRegistrationDefinition": {
       "type": "operation",
       "input": {
-        "target": "com.azure.managedservices#RegistrationDefinitionsGetRequest"
+        "target": "com.azure.managedservices#GetRegistrationDefinitionRequest"
       },
       "output": {
         "target": "com.azure.managedservices#RegistrationDefinition"
@@ -1979,7 +1979,7 @@
         "com.distilled.openapi#apiVersion": "2022-10-01"
       }
     },
-    "com.azure.managedservices#RegistrationDefinitionsGetRequest": {
+    "com.azure.managedservices#GetRegistrationDefinitionRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -2008,46 +2008,46 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.managedservices#OperationsWithScopeList"
+          "target": "com.azure.managedservices#ListOperationWithScope"
         },
         {
-          "target": "com.azure.managedservices#OperationsList"
+          "target": "com.azure.managedservices#ListOperations"
         },
         {
-          "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeGet"
+          "target": "com.azure.managedservices#GetMarketplaceRegistrationDefinitionWithoutScope"
         },
         {
-          "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsGet"
+          "target": "com.azure.managedservices#GetMarketplaceRegistrationDefinition"
         },
         {
-          "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsWithoutScopeList"
+          "target": "com.azure.managedservices#ListMarketplaceRegistrationDefinitionWithoutScope"
         },
         {
-          "target": "com.azure.managedservices#MarketplaceRegistrationDefinitionsList"
+          "target": "com.azure.managedservices#ListMarketplaceRegistrationDefinitions"
         },
         {
-          "target": "com.azure.managedservices#RegistrationAssignmentsList"
+          "target": "com.azure.managedservices#ListRegistrationAssignments"
         },
         {
-          "target": "com.azure.managedservices#RegistrationDefinitionsList"
+          "target": "com.azure.managedservices#ListRegistrationDefinitions"
         },
         {
-          "target": "com.azure.managedservices#RegistrationAssignmentsDelete"
+          "target": "com.azure.managedservices#DeleteRegistrationAssignment"
         },
         {
           "target": "com.azure.managedservices#RegistrationAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.managedservices#RegistrationAssignmentsGet"
+          "target": "com.azure.managedservices#GetRegistrationAssignment"
         },
         {
-          "target": "com.azure.managedservices#RegistrationDefinitionsDelete"
+          "target": "com.azure.managedservices#DeleteRegistrationDefinition"
         },
         {
           "target": "com.azure.managedservices#RegistrationDefinitionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.managedservices#RegistrationDefinitionsGet"
+          "target": "com.azure.managedservices#GetRegistrationDefinition"
         }
       ],
       "traits": {

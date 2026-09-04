@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.maintenance#UpdatesList": {
+    "com.azure.maintenance#ListUpdates": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#UpdatesListRequest"
+        "target": "com.azure.maintenance#ListUpdatesRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListUpdatesResult"
@@ -237,7 +237,7 @@
         "smithy.api#documentation": "The impact area"
       }
     },
-    "com.azure.maintenance#UpdatesListRequest": {
+    "com.azure.maintenance#ListUpdatesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -285,10 +285,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#UpdatesListParent": {
+    "com.azure.maintenance#ListUpdateParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#UpdatesListParentRequest"
+        "target": "com.azure.maintenance#ListUpdateParentRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListUpdatesResult"
@@ -304,7 +304,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#UpdatesListParentRequest": {
+    "com.azure.maintenance#ListUpdateParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -368,13 +368,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#OperationsList": {
+    "com.azure.maintenance#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.maintenance#OperationsListResult"
+        "target": "com.azure.maintenance#ListOperationsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -387,7 +387,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#OperationsListResult": {
+    "com.azure.maintenance#ListOperationsResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -480,13 +480,13 @@
         "smithy.api#documentation": "Information about an operation"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupDelete": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupDeleteRequest"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentForResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupDeleteResponse"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentForResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -499,7 +499,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupDeleteResponse": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentForResourceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -810,7 +810,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupDeleteRequest": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -842,13 +842,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupUpdate": {
+    "com.azure.maintenance#UpdateConfigurationAssignmentForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupUpdateRequest"
+        "target": "com.azure.maintenance#UpdateConfigurationAssignmentForResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupUpdateResponse"
+        "target": "com.azure.maintenance#UpdateConfigurationAssignmentForResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -861,7 +861,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupUpdateResponse": {
+    "com.azure.maintenance#UpdateConfigurationAssignmentForResourceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1013,7 +1013,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupUpdateRequest": {
+    "com.azure.maintenance#UpdateConfigurationAssignmentForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1272,13 +1272,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupGet": {
+    "com.azure.maintenance#GetConfigurationAssignmentForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupGetRequest"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentForResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupGetResponse"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentForResourceGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1291,7 +1291,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupGetResponse": {
+    "com.azure.maintenance#GetConfigurationAssignmentForResourceGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1443,7 +1443,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupGetRequest": {
+    "com.azure.maintenance#GetConfigurationAssignmentForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1475,13 +1475,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsDelete": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsDeleteRequest"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentForSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsDeleteResponse"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentForSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1494,7 +1494,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsDeleteResponse": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentForSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1646,7 +1646,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsDeleteRequest": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1670,13 +1670,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsUpdate": {
+    "com.azure.maintenance#UpdateConfigurationAssignmentForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsUpdateRequest"
+        "target": "com.azure.maintenance#UpdateConfigurationAssignmentForSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsUpdateResponse"
+        "target": "com.azure.maintenance#UpdateConfigurationAssignmentForSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1689,7 +1689,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsUpdateResponse": {
+    "com.azure.maintenance#UpdateConfigurationAssignmentForSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1841,7 +1841,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsUpdateRequest": {
+    "com.azure.maintenance#UpdateConfigurationAssignmentForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2084,13 +2084,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsGet": {
+    "com.azure.maintenance#GetConfigurationAssignmentForSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsGetRequest"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentForSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsGetResponse"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentForSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2103,7 +2103,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsGetResponse": {
+    "com.azure.maintenance#GetConfigurationAssignmentForSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2255,7 +2255,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsGetRequest": {
+    "com.azure.maintenance#GetConfigurationAssignmentForSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2279,10 +2279,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsWithinSubscriptionList": {
+    "com.azure.maintenance#ListConfigurationAssignmentWithinSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsWithinSubscriptionListRequest"
+        "target": "com.azure.maintenance#ListConfigurationAssignmentWithinSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListConfigurationAssignmentsResult"
@@ -2473,7 +2473,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsWithinSubscriptionListRequest": {
+    "com.azure.maintenance#ListConfigurationAssignmentWithinSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2489,10 +2489,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsForResourceGroupList": {
+    "com.azure.maintenance#ListMaintenanceConfigurationForResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsForResourceGroupListRequest"
+        "target": "com.azure.maintenance#ListMaintenanceConfigurationForResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListMaintenanceConfigurationsResult"
@@ -3029,7 +3029,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsForResourceGroupListRequest": {
+    "com.azure.maintenance#ListMaintenanceConfigurationForResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3053,10 +3053,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsList": {
+    "com.azure.maintenance#ListMaintenanceConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsListRequest"
+        "target": "com.azure.maintenance#ListMaintenanceConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListMaintenanceConfigurationsResult"
@@ -3072,7 +3072,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsListRequest": {
+    "com.azure.maintenance#ListMaintenanceConfigurationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3088,13 +3088,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsDelete": {
+    "com.azure.maintenance#DeleteMaintenanceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsDeleteRequest"
+        "target": "com.azure.maintenance#DeleteMaintenanceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsDeleteResponse"
+        "target": "com.azure.maintenance#DeleteMaintenanceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3107,7 +3107,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsDeleteResponse": {
+    "com.azure.maintenance#DeleteMaintenanceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3277,7 +3277,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsDeleteRequest": {
+    "com.azure.maintenance#DeleteMaintenanceConfigurationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3309,13 +3309,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsUpdate": {
+    "com.azure.maintenance#UpdateMaintenanceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsUpdateRequest"
+        "target": "com.azure.maintenance#UpdateMaintenanceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsUpdateResponse"
+        "target": "com.azure.maintenance#UpdateMaintenanceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3328,7 +3328,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsUpdateResponse": {
+    "com.azure.maintenance#UpdateMaintenanceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3498,7 +3498,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsUpdateRequest": {
+    "com.azure.maintenance#UpdateMaintenanceConfigurationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3811,13 +3811,13 @@
         "smithy.api#documentation": "Gets or sets tags of the resource"
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsGet": {
+    "com.azure.maintenance#GetMaintenanceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsGetRequest"
+        "target": "com.azure.maintenance#GetMaintenanceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#MaintenanceConfigurationsGetResponse"
+        "target": "com.azure.maintenance#GetMaintenanceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3830,7 +3830,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsGetResponse": {
+    "com.azure.maintenance#GetMaintenanceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4000,7 +4000,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#MaintenanceConfigurationsGetRequest": {
+    "com.azure.maintenance#GetMaintenanceConfigurationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4032,10 +4032,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsList": {
+    "com.azure.maintenance#ListConfigurationAssignments": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsListRequest"
+        "target": "com.azure.maintenance#ListConfigurationAssignmentsRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListConfigurationAssignmentsResult"
@@ -4051,7 +4051,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsListRequest": {
+    "com.azure.maintenance#ListConfigurationAssignmentsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4099,10 +4099,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsListParent": {
+    "com.azure.maintenance#ListConfigurationAssignmentParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsListParentRequest"
+        "target": "com.azure.maintenance#ListConfigurationAssignmentParentRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListConfigurationAssignmentsResult"
@@ -4118,7 +4118,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsListParentRequest": {
+    "com.azure.maintenance#ListConfigurationAssignmentParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4182,13 +4182,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsDelete": {
+    "com.azure.maintenance#DeleteConfigurationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsDeleteRequest"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsDeleteResponse"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4201,7 +4201,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsDeleteResponse": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4353,7 +4353,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsDeleteRequest": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4648,13 +4648,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsGet": {
+    "com.azure.maintenance#GetConfigurationAssignment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsGetRequest"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsGetResponse"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4667,7 +4667,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsGetResponse": {
+    "com.azure.maintenance#GetConfigurationAssignmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4819,7 +4819,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsGetRequest": {
+    "com.azure.maintenance#GetConfigurationAssignmentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -4875,13 +4875,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsDeleteParent": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsDeleteParentRequest"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentParentRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsDeleteParentResponse"
+        "target": "com.azure.maintenance#DeleteConfigurationAssignmentParentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4894,7 +4894,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsDeleteParentResponse": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentParentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5046,7 +5046,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsDeleteParentRequest": {
+    "com.azure.maintenance#DeleteConfigurationAssignmentParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5373,13 +5373,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsGetParent": {
+    "com.azure.maintenance#GetConfigurationAssignmentParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsGetParentRequest"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentParentRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ConfigurationAssignmentsGetParentResponse"
+        "target": "com.azure.maintenance#GetConfigurationAssignmentParentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5392,7 +5392,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsGetParentResponse": {
+    "com.azure.maintenance#GetConfigurationAssignmentParentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5544,7 +5544,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ConfigurationAssignmentsGetParentRequest": {
+    "com.azure.maintenance#GetConfigurationAssignmentParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6122,13 +6122,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ApplyUpdatesGet": {
+    "com.azure.maintenance#GetApplyUpdate": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ApplyUpdatesGetRequest"
+        "target": "com.azure.maintenance#GetApplyUpdateRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ApplyUpdatesGetResponse"
+        "target": "com.azure.maintenance#GetApplyUpdateResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6141,7 +6141,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ApplyUpdatesGetResponse": {
+    "com.azure.maintenance#GetApplyUpdateResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6287,7 +6287,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ApplyUpdatesGetRequest": {
+    "com.azure.maintenance#GetApplyUpdateRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6343,13 +6343,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#ApplyUpdatesGetParent": {
+    "com.azure.maintenance#GetApplyUpdateParent": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#ApplyUpdatesGetParentRequest"
+        "target": "com.azure.maintenance#GetApplyUpdateParentRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#ApplyUpdatesGetParentResponse"
+        "target": "com.azure.maintenance#GetApplyUpdateParentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6362,7 +6362,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#ApplyUpdatesGetParentResponse": {
+    "com.azure.maintenance#GetApplyUpdateParentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6508,7 +6508,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#ApplyUpdatesGetParentRequest": {
+    "com.azure.maintenance#GetApplyUpdateParentRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6580,13 +6580,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#PublicMaintenanceConfigurationsGet": {
+    "com.azure.maintenance#GetPublicMaintenanceConfiguration": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#PublicMaintenanceConfigurationsGetRequest"
+        "target": "com.azure.maintenance#GetPublicMaintenanceConfigurationRequest"
       },
       "output": {
-        "target": "com.azure.maintenance#PublicMaintenanceConfigurationsGetResponse"
+        "target": "com.azure.maintenance#GetPublicMaintenanceConfigurationResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6599,7 +6599,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#PublicMaintenanceConfigurationsGetResponse": {
+    "com.azure.maintenance#GetPublicMaintenanceConfigurationResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6769,7 +6769,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.maintenance#PublicMaintenanceConfigurationsGetRequest": {
+    "com.azure.maintenance#GetPublicMaintenanceConfigurationRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6793,10 +6793,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.maintenance#PublicMaintenanceConfigurationsList": {
+    "com.azure.maintenance#ListPublicMaintenanceConfigurations": {
       "type": "operation",
       "input": {
-        "target": "com.azure.maintenance#PublicMaintenanceConfigurationsListRequest"
+        "target": "com.azure.maintenance#ListPublicMaintenanceConfigurationsRequest"
       },
       "output": {
         "target": "com.azure.maintenance#ListMaintenanceConfigurationsResult"
@@ -6812,7 +6812,7 @@
         "com.distilled.openapi#apiVersion": "2023-04-01"
       }
     },
-    "com.azure.maintenance#PublicMaintenanceConfigurationsListRequest": {
+    "com.azure.maintenance#ListPublicMaintenanceConfigurationsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6833,82 +6833,82 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.maintenance#UpdatesList"
+          "target": "com.azure.maintenance#ListUpdates"
         },
         {
-          "target": "com.azure.maintenance#UpdatesListParent"
+          "target": "com.azure.maintenance#ListUpdateParent"
         },
         {
-          "target": "com.azure.maintenance#OperationsList"
+          "target": "com.azure.maintenance#ListOperations"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupDelete"
+          "target": "com.azure.maintenance#DeleteConfigurationAssignmentForResourceGroup"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupUpdate"
+          "target": "com.azure.maintenance#UpdateConfigurationAssignmentForResourceGroup"
         },
         {
           "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupCreateOrUpdate"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsForResourceGroupGet"
+          "target": "com.azure.maintenance#GetConfigurationAssignmentForResourceGroup"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsDelete"
+          "target": "com.azure.maintenance#DeleteConfigurationAssignmentForSubscription"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsUpdate"
+          "target": "com.azure.maintenance#UpdateConfigurationAssignmentForSubscription"
         },
         {
           "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsForSubscriptionsGet"
+          "target": "com.azure.maintenance#GetConfigurationAssignmentForSubscription"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsWithinSubscriptionList"
+          "target": "com.azure.maintenance#ListConfigurationAssignmentWithinSubscription"
         },
         {
-          "target": "com.azure.maintenance#MaintenanceConfigurationsForResourceGroupList"
+          "target": "com.azure.maintenance#ListMaintenanceConfigurationForResourceGroup"
         },
         {
-          "target": "com.azure.maintenance#MaintenanceConfigurationsList"
+          "target": "com.azure.maintenance#ListMaintenanceConfigurations"
         },
         {
-          "target": "com.azure.maintenance#MaintenanceConfigurationsDelete"
+          "target": "com.azure.maintenance#DeleteMaintenanceConfiguration"
         },
         {
-          "target": "com.azure.maintenance#MaintenanceConfigurationsUpdate"
+          "target": "com.azure.maintenance#UpdateMaintenanceConfiguration"
         },
         {
           "target": "com.azure.maintenance#MaintenanceConfigurationsCreateOrUpdate"
         },
         {
-          "target": "com.azure.maintenance#MaintenanceConfigurationsGet"
+          "target": "com.azure.maintenance#GetMaintenanceConfiguration"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsList"
+          "target": "com.azure.maintenance#ListConfigurationAssignments"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsListParent"
+          "target": "com.azure.maintenance#ListConfigurationAssignmentParent"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsDelete"
+          "target": "com.azure.maintenance#DeleteConfigurationAssignment"
         },
         {
           "target": "com.azure.maintenance#ConfigurationAssignmentsCreateOrUpdate"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsGet"
+          "target": "com.azure.maintenance#GetConfigurationAssignment"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsDeleteParent"
+          "target": "com.azure.maintenance#DeleteConfigurationAssignmentParent"
         },
         {
           "target": "com.azure.maintenance#ConfigurationAssignmentsCreateOrUpdateParent"
         },
         {
-          "target": "com.azure.maintenance#ConfigurationAssignmentsGetParent"
+          "target": "com.azure.maintenance#GetConfigurationAssignmentParent"
         },
         {
           "target": "com.azure.maintenance#ApplyUpdatesCreateOrUpdate"
@@ -6917,16 +6917,16 @@
           "target": "com.azure.maintenance#ApplyUpdatesCreateOrUpdateParent"
         },
         {
-          "target": "com.azure.maintenance#ApplyUpdatesGet"
+          "target": "com.azure.maintenance#GetApplyUpdate"
         },
         {
-          "target": "com.azure.maintenance#ApplyUpdatesGetParent"
+          "target": "com.azure.maintenance#GetApplyUpdateParent"
         },
         {
-          "target": "com.azure.maintenance#PublicMaintenanceConfigurationsGet"
+          "target": "com.azure.maintenance#GetPublicMaintenanceConfiguration"
         },
         {
-          "target": "com.azure.maintenance#PublicMaintenanceConfigurationsList"
+          "target": "com.azure.maintenance#ListPublicMaintenanceConfigurations"
         }
       ],
       "traits": {

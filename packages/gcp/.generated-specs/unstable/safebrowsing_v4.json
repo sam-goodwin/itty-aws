@@ -2440,7 +2440,7 @@
         "smithy.api#documentation": "Finds the full hashes that match the requested hash prefixes."
       }
     },
-    "com.gcp.safebrowsing_v4#FetchThreatListUpdatesRequest": {
+    "com.gcp.safebrowsing_v4#ListFetchThreatUpdatesRequest": {
       "type": "structure",
       "members": {
         "body": {
@@ -2452,10 +2452,10 @@
         }
       }
     },
-    "com.gcp.safebrowsing_v4#FetchThreatListUpdates": {
+    "com.gcp.safebrowsing_v4#ListFetchThreatUpdates": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.safebrowsing_v4#FetchThreatListUpdatesRequest"
+        "target": "com.gcp.safebrowsing_v4#ListFetchThreatUpdatesRequest"
       },
       "output": {
         "target": "com.gcp.safebrowsing_v4#GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse"

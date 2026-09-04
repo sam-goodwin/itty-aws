@@ -117,7 +117,7 @@ export const AddressPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressPropertiesInput",
 }) as any as S.Schema<AddressPropertiesInput>;
 
-export interface AddressesCreateRequest {
+export interface CreateAddresseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -131,7 +131,7 @@ export interface AddressesCreateRequest {
   /** Properties of an address. */
   properties: AddressPropertiesInput;
 }
-export const AddressesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAddresseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -148,8 +148,8 @@ export const AddressesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AddressesCreateRequest",
-}) as any as S.Schema<AddressesCreateRequest>;
+  identifier: "CreateAddresseRequest",
+}) as any as S.Schema<CreateAddresseRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -239,7 +239,7 @@ export const AddressProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressProperties",
 }) as any as S.Schema<AddressProperties>;
 
-export interface AddressesCreateResponse {
+export interface CreateAddresseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -255,7 +255,7 @@ export interface AddressesCreateResponse {
   /** Properties of an address. */
   properties: AddressProperties;
 }
-export const AddressesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAddresseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -266,439 +266,8 @@ export const AddressesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: AddressProperties,
   }),
 ).annotate({
-  identifier: "AddressesCreateResponse",
-}) as any as S.Schema<AddressesCreateResponse>;
-
-export interface AddressesDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
-  addressName: string;
-}
-export const AddressesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    addressName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddressesDeleteRequest",
-}) as any as S.Schema<AddressesDeleteRequest>;
-
-export interface AddressesDeleteResponse {}
-export const AddressesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AddressesDeleteResponse",
-}) as any as S.Schema<AddressesDeleteResponse>;
-
-export interface AddressesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
-  addressName: string;
-}
-export const AddressesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    addressName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddressesGetRequest",
-}) as any as S.Schema<AddressesGetRequest>;
-
-/** Resource tags. */
-export type AddressesGetResponseTagsMap = { [key: string]: string | undefined };
-export const AddressesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddressesGetResponseTagsMap>;
-
-export interface AddressesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AddressesGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of an address. */
-  properties: AddressProperties;
-}
-export const AddressesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AddressesGetResponseTagsMap),
-    location: S.String,
-    properties: AddressProperties,
-  }),
-).annotate({
-  identifier: "AddressesGetResponse",
-}) as any as S.Schema<AddressesGetResponse>;
-
-export interface AddressesListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** $filter is supported to filter based on shipping address properties. Filter supports only equals operation. */
-  _filter?: string;
-  /** $skipToken is supported on Get list of addresses, which provides the next page in the list of addresses. */
-  _skipToken?: string;
-  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
-  _top?: number;
-}
-export const AddressesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddressesListByResourceGroupRequest",
-}) as any as S.Schema<AddressesListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type AddressResourceTagsMap = { [key: string]: string | undefined };
-export const AddressResourceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddressResourceTagsMap>;
-
-/** Address Resource. */
-export interface AddressResource {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AddressResourceTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of an address. */
-  properties: AddressProperties;
-}
-export const AddressResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AddressResourceTagsMap),
-    location: S.String,
-    properties: AddressProperties,
-  }),
-).annotate({
-  identifier: "AddressResource",
-}) as any as S.Schema<AddressResource>;
-
-/** The AddressResource items on this page */
-export type AddressResourceListValueList = Array<AddressResource>;
-export const AddressResourceListValueList = /*@__PURE__*/ S.Array(
-  AddressResource,
-) as any as S.Schema<AddressResourceListValueList>;
-
-/** Address Resource Collection. */
-export interface AddressResourceList {
-  /** The AddressResource items on this page */
-  value: AddressResourceListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AddressResourceList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AddressResourceListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AddressResourceList",
-}) as any as S.Schema<AddressResourceList>;
-
-export interface AddressesListBySubscriptionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** $filter is supported to filter based on shipping address properties. Filter supports only equals operation. */
-  _filter?: string;
-  /** $skipToken is supported on Get list of addresses, which provides the next page in the list of addresses. */
-  _skipToken?: string;
-  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
-  _top?: number;
-}
-export const AddressesListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddressesListBySubscriptionRequest",
-}) as any as S.Schema<AddressesListBySubscriptionRequest>;
-
-/** Address Update Properties. */
-export interface AddressUpdateProperties {
-  /** Shipping details for the address. */
-  shippingAddress?: ShippingAddress;
-  /** Contact details for the address. */
-  contactDetails?: ContactDetails;
-}
-export const AddressUpdateProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    shippingAddress: S.optional(ShippingAddress),
-    contactDetails: S.optional(ContactDetails),
-  }),
-).annotate({
-  identifier: "AddressUpdateProperties",
-}) as any as S.Schema<AddressUpdateProperties>;
-
-/** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
-export type AddressesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AddressesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddressesUpdateRequestTagsMap>;
-
-export interface AddressesUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
-  addressName: string;
-  /** Properties of an address to be updated. */
-  properties?: AddressUpdateProperties;
-  /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
-  tags?: AddressesUpdateRequestTagsMap;
-}
-export const AddressesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    addressName: S.String.pipe(T.Label()),
-    properties: S.optional(AddressUpdateProperties),
-    tags: S.optional(AddressesUpdateRequestTagsMap),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "AddressesUpdateRequest",
-}) as any as S.Schema<AddressesUpdateRequest>;
-
-/** Resource tags. */
-export type AddressesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AddressesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AddressesUpdateResponseTagsMap>;
-
-export interface AddressesUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AddressesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of an address. */
-  properties: AddressProperties;
-}
-export const AddressesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AddressesUpdateResponseTagsMap),
-    location: S.String,
-    properties: AddressProperties,
-  }),
-).annotate({
-  identifier: "AddressesUpdateResponse",
-}) as any as S.Schema<AddressesUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.EdgeOrder/operations",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** Localized display information for this particular operation. */
-export interface OperationDisplay {
-  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
-  provider?: string;
-  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
-  resource?: string;
-  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
-  operation?: string;
-  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
-  description?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = /*@__PURE__*/ S.String;
-
-/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
-export const OperationActionType = /*@__PURE__*/ S.String;
-
-/** Details of a REST API operation, returned from the Resource Provider Operations API */
-export interface Operation {
-  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
-  name?: string;
-  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
-  isDataAction?: boolean;
-  /** Localized display information for this particular operation. */
-  display?: OperationDisplay;
-  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-  origin?: OperationOrigin;
-  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-  actionType?: OperationActionType;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationDisplay),
-    origin: S.optional(OperationOrigin),
-    actionType: S.optional(OperationActionType),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Array<Operation>;
-export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationsListResponseValueList>;
-
-export interface OperationsListResponse {
-  /** List of operations supported by the resource provider */
-  value?: OperationsListResponseValueList;
-  /** URL to get the next set of operation list results (if there are any). */
-  nextLink?: string;
-}
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
-
-export interface OrderItemsCancelRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the order item. */
-  orderItemName: string;
-  /** Reason for cancellation. */
-  reason: string;
-}
-export const OrderItemsCancelRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    orderItemName: S.String.pipe(T.Label()),
-    reason: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/cancel",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrderItemsCancelRequest",
-}) as any as S.Schema<OrderItemsCancelRequest>;
-
-export interface OrderItemsCancelResponse {}
-export const OrderItemsCancelResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OrderItemsCancelResponse",
-}) as any as S.Schema<OrderItemsCancelResponse>;
+  identifier: "CreateAddresseResponse",
+}) as any as S.Schema<CreateAddresseResponse>;
 
 /** Resource tags. */
 export type OrderItemsCreateRequestTagsMap = {
@@ -1093,7 +662,7 @@ export const ResourceIdentityInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceIdentityInput",
 }) as any as S.Schema<ResourceIdentityInput>;
 
-export interface OrderItemsCreateRequest {
+export interface CreateOrderItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1109,7 +678,7 @@ export interface OrderItemsCreateRequest {
   /** Msi identity of the resource */
   identity?: ResourceIdentityInput;
 }
-export const OrderItemsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1127,8 +696,8 @@ export const OrderItemsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OrderItemsCreateRequest",
-}) as any as S.Schema<OrderItemsCreateRequest>;
+  identifier: "CreateOrderItemRequest",
+}) as any as S.Schema<CreateOrderItemRequest>;
 
 /** Resource tags. */
 export type OrderItemsCreateResponseTagsMap = {
@@ -1775,7 +1344,7 @@ export const ResourceIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceIdentity",
 }) as any as S.Schema<ResourceIdentity>;
 
-export interface OrderItemsCreateResponse {
+export interface CreateOrderItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -1793,7 +1362,7 @@ export interface OrderItemsCreateResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const OrderItemsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateOrderItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1805,10 +1374,42 @@ export const OrderItemsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(ResourceIdentity),
   }),
 ).annotate({
-  identifier: "OrderItemsCreateResponse",
-}) as any as S.Schema<OrderItemsCreateResponse>;
+  identifier: "CreateOrderItemResponse",
+}) as any as S.Schema<CreateOrderItemResponse>;
 
-export interface OrderItemsDeleteRequest {
+export interface DeleteAddresseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
+  addressName: string;
+}
+export const DeleteAddresseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    addressName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAddresseRequest",
+}) as any as S.Schema<DeleteAddresseRequest>;
+
+export interface DeleteAddresseResponse {}
+export const DeleteAddresseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAddresseResponse",
+}) as any as S.Schema<DeleteAddresseResponse>;
+
+export interface DeleteOrderItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1816,7 +1417,7 @@ export interface OrderItemsDeleteRequest {
   /** The name of the order item. */
   orderItemName: string;
 }
-export const OrderItemsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1830,17 +1431,165 @@ export const OrderItemsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OrderItemsDeleteRequest",
-}) as any as S.Schema<OrderItemsDeleteRequest>;
+  identifier: "DeleteOrderItemRequest",
+}) as any as S.Schema<DeleteOrderItemRequest>;
 
-export interface OrderItemsDeleteResponse {}
-export const OrderItemsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteOrderItemResponse {}
+export const DeleteOrderItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "OrderItemsDeleteResponse",
-}) as any as S.Schema<OrderItemsDeleteResponse>;
+  identifier: "DeleteOrderItemResponse",
+}) as any as S.Schema<DeleteOrderItemResponse>;
 
-export interface OrderItemsGetRequest {
+export interface GetAddresseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
+  addressName: string;
+}
+export const GetAddresseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    addressName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAddresseRequest",
+}) as any as S.Schema<GetAddresseRequest>;
+
+/** Resource tags. */
+export type AddressesGetResponseTagsMap = { [key: string]: string | undefined };
+export const AddressesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AddressesGetResponseTagsMap>;
+
+export interface GetAddresseResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AddressesGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of an address. */
+  properties: AddressProperties;
+}
+export const GetAddresseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AddressesGetResponseTagsMap),
+    location: S.String,
+    properties: AddressProperties,
+  }),
+).annotate({
+  identifier: "GetAddresseResponse",
+}) as any as S.Schema<GetAddresseResponse>;
+
+export interface GetOrderRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the Azure region. */
+  location: string;
+  /** The name of the order. */
+  orderName: string;
+}
+export const GetOrderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    location: S.String.pipe(T.Label()),
+    orderName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/locations/{location}/orders/{orderName}",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetOrderRequest",
+}) as any as S.Schema<GetOrderRequest>;
+
+/** List of order item ARM Ids which are part of an order. */
+export type OrderPropertiesOrderItemIdsList = Array<string>;
+export const OrderPropertiesOrderItemIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OrderPropertiesOrderItemIdsList>;
+
+/** Order status history. */
+export type OrderPropertiesOrderStageHistoryList = Array<StageDetails>;
+export const OrderPropertiesOrderStageHistoryList = /*@__PURE__*/ S.Array(
+  StageDetails,
+) as any as S.Schema<OrderPropertiesOrderStageHistoryList>;
+
+/** Represents order details. */
+export interface OrderProperties {
+  /** List of order item ARM Ids which are part of an order. */
+  orderItemIds?: OrderPropertiesOrderItemIdsList;
+  /** Order current status. */
+  currentStage?: StageDetails;
+  /** Order status history. */
+  orderStageHistory?: OrderPropertiesOrderStageHistoryList;
+  /** Order mode. */
+  orderMode?: OrderMode;
+}
+export const OrderProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderItemIds: S.optional(OrderPropertiesOrderItemIdsList),
+    currentStage: S.optional(StageDetails),
+    orderStageHistory: S.optional(OrderPropertiesOrderStageHistoryList),
+    orderMode: S.optional(OrderMode),
+  }),
+).annotate({
+  identifier: "OrderProperties",
+}) as any as S.Schema<OrderProperties>;
+
+export interface GetOrderResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Order properties. */
+  properties: OrderProperties;
+}
+export const GetOrderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: OrderProperties,
+  }),
+).annotate({
+  identifier: "GetOrderResponse",
+}) as any as S.Schema<GetOrderResponse>;
+
+export interface GetOrderItemRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1850,7 +1599,7 @@ export interface OrderItemsGetRequest {
   /** $expand is supported on parent device details, device details, forward shipping details and reverse shipping details parameters. Each of these can be provided as a comma separated list. Parent Device Details for order item provides details on the devices of the product, Device Details for order item provides details on the devices of the child configurations of the product, Forward and Reverse Shipping details provide forward and reverse shipping details respectively. */
   _expand?: string;
 }
-export const OrderItemsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1865,8 +1614,8 @@ export const OrderItemsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OrderItemsGetRequest",
-}) as any as S.Schema<OrderItemsGetRequest>;
+  identifier: "GetOrderItemRequest",
+}) as any as S.Schema<GetOrderItemRequest>;
 
 /** Resource tags. */
 export type OrderItemsGetResponseTagsMap = {
@@ -1877,7 +1626,7 @@ export const OrderItemsGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<OrderItemsGetResponseTagsMap>;
 
-export interface OrderItemsGetResponse {
+export interface GetOrderItemResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -1895,7 +1644,7 @@ export interface OrderItemsGetResponse {
   /** Msi identity of the resource */
   identity?: ResourceIdentity;
 }
-export const OrderItemsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOrderItemResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1907,10 +1656,315 @@ export const OrderItemsGetResponse = /*@__PURE__*/ S.suspend(() =>
     identity: S.optional(ResourceIdentity),
   }),
 ).annotate({
-  identifier: "OrderItemsGetResponse",
-}) as any as S.Schema<OrderItemsGetResponse>;
+  identifier: "GetOrderItemResponse",
+}) as any as S.Schema<GetOrderItemResponse>;
 
-export interface OrderItemsListByResourceGroupRequest {
+export interface ListAddresseByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** $filter is supported to filter based on shipping address properties. Filter supports only equals operation. */
+  _filter?: string;
+  /** $skipToken is supported on Get list of addresses, which provides the next page in the list of addresses. */
+  _skipToken?: string;
+  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
+  _top?: number;
+}
+export const ListAddresseByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAddresseByResourceGroupRequest",
+}) as any as S.Schema<ListAddresseByResourceGroupRequest>;
+
+/** Resource tags. */
+export type AddressResourceTagsMap = { [key: string]: string | undefined };
+export const AddressResourceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AddressResourceTagsMap>;
+
+/** Address Resource. */
+export interface AddressResource {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AddressResourceTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of an address. */
+  properties: AddressProperties;
+}
+export const AddressResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AddressResourceTagsMap),
+    location: S.String,
+    properties: AddressProperties,
+  }),
+).annotate({
+  identifier: "AddressResource",
+}) as any as S.Schema<AddressResource>;
+
+/** The AddressResource items on this page */
+export type AddressResourceListValueList = Array<AddressResource>;
+export const AddressResourceListValueList = /*@__PURE__*/ S.Array(
+  AddressResource,
+) as any as S.Schema<AddressResourceListValueList>;
+
+/** Address Resource Collection. */
+export interface AddressResourceList {
+  /** The AddressResource items on this page */
+  value: AddressResourceListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const AddressResourceList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AddressResourceListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AddressResourceList",
+}) as any as S.Schema<AddressResourceList>;
+
+export interface ListAddresseBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** $filter is supported to filter based on shipping address properties. Filter supports only equals operation. */
+  _filter?: string;
+  /** $skipToken is supported on Get list of addresses, which provides the next page in the list of addresses. */
+  _skipToken?: string;
+  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
+  _top?: number;
+}
+export const ListAddresseBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/addresses",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAddresseBySubscriptionRequest",
+}) as any as S.Schema<ListAddresseBySubscriptionRequest>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.EdgeOrder/operations",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** Localized display information for this particular operation. */
+export interface OperationDisplay {
+  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
+  provider?: string;
+  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
+  resource?: string;
+  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
+  operation?: string;
+  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
+  description?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+export type OperationOrigin = "user" | "system" | "user,system";
+export const OperationOrigin = /*@__PURE__*/ S.String;
+
+/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+export type OperationActionType = "Internal";
+export const OperationActionType = /*@__PURE__*/ S.String;
+
+/** Details of a REST API operation, returned from the Resource Provider Operations API */
+export interface Operation {
+  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
+  name?: string;
+  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
+  isDataAction?: boolean;
+  /** Localized display information for this particular operation. */
+  display?: OperationDisplay;
+  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+  origin?: OperationOrigin;
+  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+  actionType?: OperationActionType;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationDisplay),
+    origin: S.optional(OperationOrigin),
+    actionType: S.optional(OperationActionType),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of operations supported by the resource provider */
+export type OperationsListResponseValueList = Array<Operation>;
+export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationsListResponseValueList>;
+
+export interface ListOperationsResponse {
+  /** List of operations supported by the resource provider */
+  value?: OperationsListResponseValueList;
+  /** URL to get the next set of operation list results (if there are any). */
+  nextLink?: string;
+}
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export interface ListOrderByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** $skipToken is supported on Get list of orders, which provides the next page in the list of orders. */
+  _skipToken?: string;
+  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
+  _top?: number;
+}
+export const ListOrderByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orders",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrderByResourceGroupRequest",
+}) as any as S.Schema<ListOrderByResourceGroupRequest>;
+
+/** Specifies the properties or parameters for an order. Order is a grouping of one or more order items. */
+export interface OrderResource {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Order properties. */
+  properties: OrderProperties;
+}
+export const OrderResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: OrderProperties,
+  }),
+).annotate({ identifier: "OrderResource" }) as any as S.Schema<OrderResource>;
+
+/** The OrderResource items on this page */
+export type OrderResourceListValueList = Array<OrderResource>;
+export const OrderResourceListValueList = /*@__PURE__*/ S.Array(
+  OrderResource,
+) as any as S.Schema<OrderResourceListValueList>;
+
+/** List of orders. */
+export interface OrderResourceList {
+  /** The OrderResource items on this page */
+  value: OrderResourceListValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const OrderResourceList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: OrderResourceListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OrderResourceList",
+}) as any as S.Schema<OrderResourceList>;
+
+export interface ListOrderBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** $skipToken is supported on Get list of orders, which provides the next page in the list of orders. */
+  _skipToken?: string;
+  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
+  _top?: number;
+}
+export const ListOrderBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orders",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOrderBySubscriptionRequest",
+}) as any as S.Schema<ListOrderBySubscriptionRequest>;
+
+export interface ListOrderItemByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1924,26 +1978,25 @@ export interface OrderItemsListByResourceGroupRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const OrderItemsListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-      _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems",
-        code: 200,
-        apiVersion: "2024-02-01",
-      }),
-    ),
+export const ListOrderItemByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
 ).annotate({
-  identifier: "OrderItemsListByResourceGroupRequest",
-}) as any as S.Schema<OrderItemsListByResourceGroupRequest>;
+  identifier: "ListOrderItemByResourceGroupRequest",
+}) as any as S.Schema<ListOrderItemByResourceGroupRequest>;
 
 /** Resource tags. */
 export type OrderItemResourceTagsMap = { [key: string]: string | undefined };
@@ -2008,7 +2061,7 @@ export const OrderItemResourceList = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrderItemResourceList",
 }) as any as S.Schema<OrderItemResourceList>;
 
-export interface OrderItemsListBySubscriptionRequest {
+export interface ListOrderItemBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** $filter is supported to filter based on order id and order Item Type. Filter supports only equals operation. */
@@ -2020,7 +2073,7 @@ export interface OrderItemsListBySubscriptionRequest {
   /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
   _top?: number;
 }
-export const OrderItemsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListOrderItemBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -2036,383 +2089,8 @@ export const OrderItemsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OrderItemsListBySubscriptionRequest",
-}) as any as S.Schema<OrderItemsListBySubscriptionRequest>;
-
-export interface OrderItemsReturnRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the order item. */
-  orderItemName: string;
-  /** Customer return address. */
-  returnAddress?: AddressPropertiesInput;
-  /** Return Reason. */
-  returnReason: string;
-  /** Service tag (located on the bottom-right corner of the device). */
-  serviceTag?: string;
-  /** Shipping Box required. */
-  shippingBoxRequired?: boolean;
-}
-export const OrderItemsReturnRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    orderItemName: S.String.pipe(T.Label()),
-    returnAddress: S.optional(AddressPropertiesInput),
-    returnReason: S.String,
-    serviceTag: S.optional(S.String),
-    shippingBoxRequired: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/return",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrderItemsReturnRequest",
-}) as any as S.Schema<OrderItemsReturnRequest>;
-
-export interface OrderItemsReturnResponse {}
-export const OrderItemsReturnResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OrderItemsReturnResponse",
-}) as any as S.Schema<OrderItemsReturnResponse>;
-
-/** Additional notification email list. */
-export type OrderItemUpdatePropertiesInputNotificationEmailListList =
-  Array<string>;
-export const OrderItemUpdatePropertiesInputNotificationEmailListList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OrderItemUpdatePropertiesInputNotificationEmailListList>;
-
-/** Represents product details patchable properties. */
-export interface ProductDetailsUpdateParameterInput {
-  /** Device Provisioning Details for Parent. */
-  parentProvisioningDetails?: ProvisioningDetailsInput;
-}
-export const ProductDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parentProvisioningDetails: S.optional(ProvisioningDetailsInput),
-  }),
-).annotate({
-  identifier: "ProductDetailsUpdateParameterInput",
-}) as any as S.Schema<ProductDetailsUpdateParameterInput>;
-
-/** Order item details Patchable Properties. */
-export interface OrderItemDetailsUpdateParameterInput {
-  /** Represents product details. */
-  productDetails?: ProductDetailsUpdateParameterInput;
-  /** Site Related Details. */
-  siteDetails?: SiteDetails;
-}
-export const OrderItemDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      productDetails: S.optional(ProductDetailsUpdateParameterInput),
-      siteDetails: S.optional(SiteDetails),
-    }),
-).annotate({
-  identifier: "OrderItemDetailsUpdateParameterInput",
-}) as any as S.Schema<OrderItemDetailsUpdateParameterInput>;
-
-/** Order item update properties. */
-export interface OrderItemUpdatePropertiesInput {
-  /** Updates forward shipping address and contact details. */
-  forwardAddress?: AddressPropertiesInput;
-  /** Customer preference. */
-  preferences?: Preferences;
-  /** Additional notification email list. */
-  notificationEmailList?: OrderItemUpdatePropertiesInputNotificationEmailListList;
-  /** Represents order item details. */
-  orderItemDetails?: OrderItemDetailsUpdateParameterInput;
-}
-export const OrderItemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    forwardAddress: S.optional(AddressPropertiesInput),
-    preferences: S.optional(Preferences),
-    notificationEmailList: S.optional(
-      OrderItemUpdatePropertiesInputNotificationEmailListList,
-    ),
-    orderItemDetails: S.optional(OrderItemDetailsUpdateParameterInput),
-  }),
-).annotate({
-  identifier: "OrderItemUpdatePropertiesInput",
-}) as any as S.Schema<OrderItemUpdatePropertiesInput>;
-
-/** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
-export type OrderItemsUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OrderItemsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrderItemsUpdateRequestTagsMap>;
-
-export interface OrderItemsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the order item. */
-  orderItemName: string;
-  /** Order item update properties. */
-  properties?: OrderItemUpdatePropertiesInput;
-  /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
-  tags?: OrderItemsUpdateRequestTagsMap;
-  /** Msi identity of the resource */
-  identity?: ResourceIdentityInput;
-}
-export const OrderItemsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    orderItemName: S.String.pipe(T.Label()),
-    properties: S.optional(OrderItemUpdatePropertiesInput),
-    tags: S.optional(OrderItemsUpdateRequestTagsMap),
-    identity: S.optional(ResourceIdentityInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrderItemsUpdateRequest",
-}) as any as S.Schema<OrderItemsUpdateRequest>;
-
-/** Resource tags. */
-export type OrderItemsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const OrderItemsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<OrderItemsUpdateResponseTagsMap>;
-
-export interface OrderItemsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: OrderItemsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Order item properties. */
-  properties: OrderItemProperties;
-  /** Msi identity of the resource */
-  identity?: ResourceIdentity;
-}
-export const OrderItemsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(OrderItemsUpdateResponseTagsMap),
-    location: S.String,
-    properties: OrderItemProperties,
-    identity: S.optional(ResourceIdentity),
-  }),
-).annotate({
-  identifier: "OrderItemsUpdateResponse",
-}) as any as S.Schema<OrderItemsUpdateResponse>;
-
-export interface OrdersGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the Azure region. */
-  location: string;
-  /** The name of the order. */
-  orderName: string;
-}
-export const OrdersGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    location: S.String.pipe(T.Label()),
-    orderName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/locations/{location}/orders/{orderName}",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrdersGetRequest",
-}) as any as S.Schema<OrdersGetRequest>;
-
-/** List of order item ARM Ids which are part of an order. */
-export type OrderPropertiesOrderItemIdsList = Array<string>;
-export const OrderPropertiesOrderItemIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrderPropertiesOrderItemIdsList>;
-
-/** Order status history. */
-export type OrderPropertiesOrderStageHistoryList = Array<StageDetails>;
-export const OrderPropertiesOrderStageHistoryList = /*@__PURE__*/ S.Array(
-  StageDetails,
-) as any as S.Schema<OrderPropertiesOrderStageHistoryList>;
-
-/** Represents order details. */
-export interface OrderProperties {
-  /** List of order item ARM Ids which are part of an order. */
-  orderItemIds?: OrderPropertiesOrderItemIdsList;
-  /** Order current status. */
-  currentStage?: StageDetails;
-  /** Order status history. */
-  orderStageHistory?: OrderPropertiesOrderStageHistoryList;
-  /** Order mode. */
-  orderMode?: OrderMode;
-}
-export const OrderProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderItemIds: S.optional(OrderPropertiesOrderItemIdsList),
-    currentStage: S.optional(StageDetails),
-    orderStageHistory: S.optional(OrderPropertiesOrderStageHistoryList),
-    orderMode: S.optional(OrderMode),
-  }),
-).annotate({
-  identifier: "OrderProperties",
-}) as any as S.Schema<OrderProperties>;
-
-export interface OrdersGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Order properties. */
-  properties: OrderProperties;
-}
-export const OrdersGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: OrderProperties,
-  }),
-).annotate({
-  identifier: "OrdersGetResponse",
-}) as any as S.Schema<OrdersGetResponse>;
-
-export interface OrdersListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** $skipToken is supported on Get list of orders, which provides the next page in the list of orders. */
-  _skipToken?: string;
-  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
-  _top?: number;
-}
-export const OrdersListByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orders",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrdersListByResourceGroupRequest",
-}) as any as S.Schema<OrdersListByResourceGroupRequest>;
-
-/** Specifies the properties or parameters for an order. Order is a grouping of one or more order items. */
-export interface OrderResource {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Order properties. */
-  properties: OrderProperties;
-}
-export const OrderResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: OrderProperties,
-  }),
-).annotate({ identifier: "OrderResource" }) as any as S.Schema<OrderResource>;
-
-/** The OrderResource items on this page */
-export type OrderResourceListValueList = Array<OrderResource>;
-export const OrderResourceListValueList = /*@__PURE__*/ S.Array(
-  OrderResource,
-) as any as S.Schema<OrderResourceListValueList>;
-
-/** List of orders. */
-export interface OrderResourceList {
-  /** The OrderResource items on this page */
-  value: OrderResourceListValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const OrderResourceList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: OrderResourceListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrderResourceList",
-}) as any as S.Schema<OrderResourceList>;
-
-export interface OrdersListBySubscriptionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** $skipToken is supported on Get list of orders, which provides the next page in the list of orders. */
-  _skipToken?: string;
-  /** $top is supported on fetching list of resources. $top=10 means that the first 10 items in the list will be returned to the API caller. */
-  _top?: number;
-}
-export const OrdersListBySubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeOrder/orders",
-      code: 200,
-      apiVersion: "2024-02-01",
-    }),
-  ),
-).annotate({
-  identifier: "OrdersListBySubscriptionRequest",
-}) as any as S.Schema<OrdersListBySubscriptionRequest>;
+  identifier: "ListOrderItemBySubscriptionRequest",
+}) as any as S.Schema<ListOrderItemBySubscriptionRequest>;
 
 /** Type of product filter. */
 export type SupportedFilterTypes = "ShipToCountries" | "DoubleEncryptionStatus";
@@ -2554,7 +2232,7 @@ export const CustomerSubscriptionDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomerSubscriptionDetails",
 }) as any as S.Schema<CustomerSubscriptionDetails>;
 
-export interface ProductsAndConfigurationsListConfigurationsRequest {
+export interface ListProductAndConfigurationConfigurationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** $skipToken is supported on list of configurations, which provides the next page in the list of configurations. */
@@ -2564,7 +2242,7 @@ export interface ProductsAndConfigurationsListConfigurationsRequest {
   /** Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details. */
   customerSubscriptionDetails?: CustomerSubscriptionDetails;
 }
-export const ProductsAndConfigurationsListConfigurationsRequest =
+export const ListProductAndConfigurationConfigurationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2580,8 +2258,8 @@ export const ProductsAndConfigurationsListConfigurationsRequest =
       }),
     ),
   ).annotate({
-    identifier: "ProductsAndConfigurationsListConfigurationsRequest",
-  }) as any as S.Schema<ProductsAndConfigurationsListConfigurationsRequest>;
+    identifier: "ListProductAndConfigurationConfigurationsRequest",
+  }) as any as S.Schema<ListProductAndConfigurationConfigurationsRequest>;
 
 /** Type of description. */
 export type DescriptionType = "Base";
@@ -3211,7 +2889,7 @@ export const ProductsAndConfigurationsListProductFamiliesRequestFilterableProper
     ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesValueList,
   ) as any as S.Schema<ProductsAndConfigurationsListProductFamiliesRequestFilterablePropertiesMap>;
 
-export interface ProductsAndConfigurationsListProductFamiliesRequest {
+export interface ListProductAndConfigurationProductFamiliesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** $expand is supported on configurations parameter for product, which provides details on the configurations for the product. */
@@ -3223,7 +2901,7 @@ export interface ProductsAndConfigurationsListProductFamiliesRequest {
   /** Customer subscription properties. Clients can display available products to unregistered customers by explicitly passing subscription details. */
   customerSubscriptionDetails?: CustomerSubscriptionDetails;
 }
-export const ProductsAndConfigurationsListProductFamiliesRequest =
+export const ListProductAndConfigurationProductFamiliesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -3241,8 +2919,8 @@ export const ProductsAndConfigurationsListProductFamiliesRequest =
       }),
     ),
   ).annotate({
-    identifier: "ProductsAndConfigurationsListProductFamiliesRequest",
-  }) as any as S.Schema<ProductsAndConfigurationsListProductFamiliesRequest>;
+    identifier: "ListProductAndConfigurationProductFamiliesRequest",
+  }) as any as S.Schema<ListProductAndConfigurationProductFamiliesRequest>;
 
 /** Image information for the product system. */
 export type ProductFamilyPropertiesImageInformationList =
@@ -3488,13 +3166,13 @@ export const ProductFamilies = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductFamilies",
 }) as any as S.Schema<ProductFamilies>;
 
-export interface ProductsAndConfigurationsListProductFamiliesMetadataRequest {
+export interface ListProductAndConfigurationProductFamilyMetadataRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** $skipToken is supported on list of product families metadata, which provides the next page in the list of product families metadata. */
   _skipToken?: string;
 }
-export const ProductsAndConfigurationsListProductFamiliesMetadataRequest =
+export const ListProductAndConfigurationProductFamilyMetadataRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -3508,8 +3186,8 @@ export const ProductsAndConfigurationsListProductFamiliesMetadataRequest =
       }),
     ),
   ).annotate({
-    identifier: "ProductsAndConfigurationsListProductFamiliesMetadataRequest",
-  }) as any as S.Schema<ProductsAndConfigurationsListProductFamiliesMetadataRequest>;
+    identifier: "ListProductAndConfigurationProductFamilyMetadataRequest",
+  }) as any as S.Schema<ListProductAndConfigurationProductFamilyMetadataRequest>;
 
 /** Product families metadata details. */
 export interface ProductFamiliesMetadataDetails {
@@ -3547,106 +3225,578 @@ export const ProductFamiliesMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "ProductFamiliesMetadata",
 }) as any as S.Schema<ProductFamiliesMetadata>;
 
-export type AddressesCreateError = AzureOpError;
+export interface OrderItemsCancelRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the order item. */
+  orderItemName: string;
+  /** Reason for cancellation. */
+  reason: string;
+}
+export const OrderItemsCancelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    orderItemName: S.String.pipe(T.Label()),
+    reason: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/cancel",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "OrderItemsCancelRequest",
+}) as any as S.Schema<OrderItemsCancelRequest>;
+
+export interface OrderItemsCancelResponse {}
+export const OrderItemsCancelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "OrderItemsCancelResponse",
+}) as any as S.Schema<OrderItemsCancelResponse>;
+
+export interface OrderItemsReturnRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the order item. */
+  orderItemName: string;
+  /** Customer return address. */
+  returnAddress?: AddressPropertiesInput;
+  /** Return Reason. */
+  returnReason: string;
+  /** Service tag (located on the bottom-right corner of the device). */
+  serviceTag?: string;
+  /** Shipping Box required. */
+  shippingBoxRequired?: boolean;
+}
+export const OrderItemsReturnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    orderItemName: S.String.pipe(T.Label()),
+    returnAddress: S.optional(AddressPropertiesInput),
+    returnReason: S.String,
+    serviceTag: S.optional(S.String),
+    shippingBoxRequired: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}/return",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "OrderItemsReturnRequest",
+}) as any as S.Schema<OrderItemsReturnRequest>;
+
+export interface OrderItemsReturnResponse {}
+export const OrderItemsReturnResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "OrderItemsReturnResponse",
+}) as any as S.Schema<OrderItemsReturnResponse>;
+
+/** Address Update Properties. */
+export interface AddressUpdateProperties {
+  /** Shipping details for the address. */
+  shippingAddress?: ShippingAddress;
+  /** Contact details for the address. */
+  contactDetails?: ContactDetails;
+}
+export const AddressUpdateProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    shippingAddress: S.optional(ShippingAddress),
+    contactDetails: S.optional(ContactDetails),
+  }),
+).annotate({
+  identifier: "AddressUpdateProperties",
+}) as any as S.Schema<AddressUpdateProperties>;
+
+/** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
+export type AddressesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AddressesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AddressesUpdateRequestTagsMap>;
+
+export interface UpdateAddresseRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only. */
+  addressName: string;
+  /** Properties of an address to be updated. */
+  properties?: AddressUpdateProperties;
+  /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
+  tags?: AddressesUpdateRequestTagsMap;
+}
+export const UpdateAddresseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    addressName: S.String.pipe(T.Label()),
+    properties: S.optional(AddressUpdateProperties),
+    tags: S.optional(AddressesUpdateRequestTagsMap),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAddresseRequest",
+}) as any as S.Schema<UpdateAddresseRequest>;
+
+/** Resource tags. */
+export type AddressesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AddressesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AddressesUpdateResponseTagsMap>;
+
+export interface UpdateAddresseResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AddressesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of an address. */
+  properties: AddressProperties;
+}
+export const UpdateAddresseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AddressesUpdateResponseTagsMap),
+    location: S.String,
+    properties: AddressProperties,
+  }),
+).annotate({
+  identifier: "UpdateAddresseResponse",
+}) as any as S.Schema<UpdateAddresseResponse>;
+
+/** Additional notification email list. */
+export type OrderItemUpdatePropertiesInputNotificationEmailListList =
+  Array<string>;
+export const OrderItemUpdatePropertiesInputNotificationEmailListList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OrderItemUpdatePropertiesInputNotificationEmailListList>;
+
+/** Represents product details patchable properties. */
+export interface ProductDetailsUpdateParameterInput {
+  /** Device Provisioning Details for Parent. */
+  parentProvisioningDetails?: ProvisioningDetailsInput;
+}
+export const ProductDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parentProvisioningDetails: S.optional(ProvisioningDetailsInput),
+  }),
+).annotate({
+  identifier: "ProductDetailsUpdateParameterInput",
+}) as any as S.Schema<ProductDetailsUpdateParameterInput>;
+
+/** Order item details Patchable Properties. */
+export interface OrderItemDetailsUpdateParameterInput {
+  /** Represents product details. */
+  productDetails?: ProductDetailsUpdateParameterInput;
+  /** Site Related Details. */
+  siteDetails?: SiteDetails;
+}
+export const OrderItemDetailsUpdateParameterInput = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      productDetails: S.optional(ProductDetailsUpdateParameterInput),
+      siteDetails: S.optional(SiteDetails),
+    }),
+).annotate({
+  identifier: "OrderItemDetailsUpdateParameterInput",
+}) as any as S.Schema<OrderItemDetailsUpdateParameterInput>;
+
+/** Order item update properties. */
+export interface OrderItemUpdatePropertiesInput {
+  /** Updates forward shipping address and contact details. */
+  forwardAddress?: AddressPropertiesInput;
+  /** Customer preference. */
+  preferences?: Preferences;
+  /** Additional notification email list. */
+  notificationEmailList?: OrderItemUpdatePropertiesInputNotificationEmailListList;
+  /** Represents order item details. */
+  orderItemDetails?: OrderItemDetailsUpdateParameterInput;
+}
+export const OrderItemUpdatePropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    forwardAddress: S.optional(AddressPropertiesInput),
+    preferences: S.optional(Preferences),
+    notificationEmailList: S.optional(
+      OrderItemUpdatePropertiesInputNotificationEmailListList,
+    ),
+    orderItemDetails: S.optional(OrderItemDetailsUpdateParameterInput),
+  }),
+).annotate({
+  identifier: "OrderItemUpdatePropertiesInput",
+}) as any as S.Schema<OrderItemUpdatePropertiesInput>;
+
+/** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
+export type OrderItemsUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OrderItemsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OrderItemsUpdateRequestTagsMap>;
+
+export interface UpdateOrderItemRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the order item. */
+  orderItemName: string;
+  /** Order item update properties. */
+  properties?: OrderItemUpdatePropertiesInput;
+  /** The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups). */
+  tags?: OrderItemsUpdateRequestTagsMap;
+  /** Msi identity of the resource */
+  identity?: ResourceIdentityInput;
+}
+export const UpdateOrderItemRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    orderItemName: S.String.pipe(T.Label()),
+    properties: S.optional(OrderItemUpdatePropertiesInput),
+    tags: S.optional(OrderItemsUpdateRequestTagsMap),
+    identity: S.optional(ResourceIdentityInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/orderItems/{orderItemName}",
+      code: 200,
+      apiVersion: "2024-02-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOrderItemRequest",
+}) as any as S.Schema<UpdateOrderItemRequest>;
+
+/** Resource tags. */
+export type OrderItemsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const OrderItemsUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<OrderItemsUpdateResponseTagsMap>;
+
+export interface UpdateOrderItemResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: OrderItemsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Order item properties. */
+  properties: OrderItemProperties;
+  /** Msi identity of the resource */
+  identity?: ResourceIdentity;
+}
+export const UpdateOrderItemResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(OrderItemsUpdateResponseTagsMap),
+    location: S.String,
+    properties: OrderItemProperties,
+    identity: S.optional(ResourceIdentity),
+  }),
+).annotate({
+  identifier: "UpdateOrderItemResponse",
+}) as any as S.Schema<UpdateOrderItemResponse>;
+
+export type CreateAddresseError = AzureOpError;
 /** Create a new address with the specified parameters. Existing address cannot be updated with this API and should instead be updated with the Update address API. */
-export const AddressesCreate: API.OperationMethod<
-  AddressesCreateRequest,
-  AddressesCreateResponse,
-  AddressesCreateError,
+export const CreateAddresse: API.OperationMethod<
+  CreateAddresseRequest,
+  CreateAddresseResponse,
+  CreateAddresseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressesCreateRequest,
-  output: AddressesCreateResponse,
+  input: CreateAddresseRequest,
+  output: CreateAddresseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AddressesDeleteError = AzureOpError;
+export type CreateOrderItemError = AzureOpError;
+/** Create an order item. Existing order item cannot be updated with this api and should instead be updated with the Update order item API. */
+export const CreateOrderItem: API.OperationMethod<
+  CreateOrderItemRequest,
+  CreateOrderItemResponse,
+  CreateOrderItemError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateOrderItemRequest,
+  output: CreateOrderItemResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAddresseError = AzureOpError;
 /** Delete an address. */
-export const AddressesDelete: API.OperationMethod<
-  AddressesDeleteRequest,
-  AddressesDeleteResponse,
-  AddressesDeleteError,
+export const DeleteAddresse: API.OperationMethod<
+  DeleteAddresseRequest,
+  DeleteAddresseResponse,
+  DeleteAddresseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressesDeleteRequest,
-  output: AddressesDeleteResponse,
+  input: DeleteAddresseRequest,
+  output: DeleteAddresseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AddressesGetError = AzureOpError;
+export type DeleteOrderItemError = AzureOpError;
+/** Delete an order item. */
+export const DeleteOrderItem: API.OperationMethod<
+  DeleteOrderItemRequest,
+  DeleteOrderItemResponse,
+  DeleteOrderItemError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOrderItemRequest,
+  output: DeleteOrderItemResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAddresseError = AzureOpError;
 /** Get information about the specified address. */
-export const AddressesGet: API.OperationMethod<
-  AddressesGetRequest,
-  AddressesGetResponse,
-  AddressesGetError,
+export const GetAddresse: API.OperationMethod<
+  GetAddresseRequest,
+  GetAddresseResponse,
+  GetAddresseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressesGetRequest,
-  output: AddressesGetResponse,
+  input: GetAddresseRequest,
+  output: GetAddresseResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AddressesListByResourceGroupError = AzureOpError;
+export type GetOrderError = AzureOpError;
+/** Get an order. */
+export const GetOrder: API.OperationMethod<
+  GetOrderRequest,
+  GetOrderResponse,
+  GetOrderError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrderRequest,
+  output: GetOrderResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetOrderItemError = AzureOpError;
+/** Get an order item. */
+export const GetOrderItem: API.OperationMethod<
+  GetOrderItemRequest,
+  GetOrderItemResponse,
+  GetOrderItemError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrderItemRequest,
+  output: GetOrderItemResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAddresseByResourceGroupError = AzureOpError;
 /** List all the addresses available under the given resource group. */
-export const AddressesListByResourceGroup: API.OperationMethod<
-  AddressesListByResourceGroupRequest,
+export const ListAddresseByResourceGroup: API.OperationMethod<
+  ListAddresseByResourceGroupRequest,
   AddressResourceList,
-  AddressesListByResourceGroupError,
+  ListAddresseByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressesListByResourceGroupRequest,
+  input: ListAddresseByResourceGroupRequest,
   output: AddressResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AddressesListBySubscriptionError = AzureOpError;
+export type ListAddresseBySubscriptionError = AzureOpError;
 /** List all the addresses available under the subscription. */
-export const AddressesListBySubscription: API.OperationMethod<
-  AddressesListBySubscriptionRequest,
+export const ListAddresseBySubscription: API.OperationMethod<
+  ListAddresseBySubscriptionRequest,
   AddressResourceList,
-  AddressesListBySubscriptionError,
+  ListAddresseBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressesListBySubscriptionRequest,
+  input: ListAddresseBySubscriptionRequest,
   output: AddressResourceList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type AddressesUpdateError = AzureOpError;
-/** Update the properties of an existing address. */
-export const AddressesUpdate: API.OperationMethod<
-  AddressesUpdateRequest,
-  AddressesUpdateResponse,
-  AddressesUpdateError,
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddressesUpdateRequest,
-  output: AddressesUpdateResponse,
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
+export type ListOrderByResourceGroupError = AzureOpError;
+/** List orders at resource group level. */
+export const ListOrderByResourceGroup: API.OperationMethod<
+  ListOrderByResourceGroupRequest,
+  OrderResourceList,
+  ListOrderByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
+  input: ListOrderByResourceGroupRequest,
+  output: OrderResourceList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOrderBySubscriptionError = AzureOpError;
+/** List orders at subscription level. */
+export const ListOrderBySubscription: API.OperationMethod<
+  ListOrderBySubscriptionRequest,
+  OrderResourceList,
+  ListOrderBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrderBySubscriptionRequest,
+  output: OrderResourceList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOrderItemByResourceGroupError = AzureOpError;
+/** List order items at resource group level. */
+export const ListOrderItemByResourceGroup: API.OperationMethod<
+  ListOrderItemByResourceGroupRequest,
+  OrderItemResourceList,
+  ListOrderItemByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrderItemByResourceGroupRequest,
+  output: OrderItemResourceList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOrderItemBySubscriptionError = AzureOpError;
+/** List order items at subscription level. */
+export const ListOrderItemBySubscription: API.OperationMethod<
+  ListOrderItemBySubscriptionRequest,
+  OrderItemResourceList,
+  ListOrderItemBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrderItemBySubscriptionRequest,
+  output: OrderItemResourceList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProductAndConfigurationConfigurationsError = AzureOpError;
+/** List configurations for the given product family, product line and product for the given subscription. */
+export const ListProductAndConfigurationConfigurations: API.OperationMethod<
+  ListProductAndConfigurationConfigurationsRequest,
+  Configurations,
+  ListProductAndConfigurationConfigurationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProductAndConfigurationConfigurationsRequest,
+  output: Configurations,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProductAndConfigurationProductFamiliesError = AzureOpError;
+/** List product families for the given subscription. */
+export const ListProductAndConfigurationProductFamilies: API.OperationMethod<
+  ListProductAndConfigurationProductFamiliesRequest,
+  ProductFamilies,
+  ListProductAndConfigurationProductFamiliesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProductAndConfigurationProductFamiliesRequest,
+  output: ProductFamilies,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProductAndConfigurationProductFamilyMetadataError =
+  AzureOpError;
+/** List product families metadata for the given subscription. */
+export const ListProductAndConfigurationProductFamilyMetadata: API.OperationMethod<
+  ListProductAndConfigurationProductFamilyMetadataRequest,
+  ProductFamiliesMetadata,
+  ListProductAndConfigurationProductFamilyMetadataError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProductAndConfigurationProductFamilyMetadataRequest,
+  output: ProductFamiliesMetadata,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3667,81 +3817,6 @@ export const OrderItemsCancel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type OrderItemsCreateError = AzureOpError;
-/** Create an order item. Existing order item cannot be updated with this api and should instead be updated with the Update order item API. */
-export const OrderItemsCreate: API.OperationMethod<
-  OrderItemsCreateRequest,
-  OrderItemsCreateResponse,
-  OrderItemsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrderItemsCreateRequest,
-  output: OrderItemsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrderItemsDeleteError = AzureOpError;
-/** Delete an order item. */
-export const OrderItemsDelete: API.OperationMethod<
-  OrderItemsDeleteRequest,
-  OrderItemsDeleteResponse,
-  OrderItemsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrderItemsDeleteRequest,
-  output: OrderItemsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrderItemsGetError = AzureOpError;
-/** Get an order item. */
-export const OrderItemsGet: API.OperationMethod<
-  OrderItemsGetRequest,
-  OrderItemsGetResponse,
-  OrderItemsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrderItemsGetRequest,
-  output: OrderItemsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrderItemsListByResourceGroupError = AzureOpError;
-/** List order items at resource group level. */
-export const OrderItemsListByResourceGroup: API.OperationMethod<
-  OrderItemsListByResourceGroupRequest,
-  OrderItemResourceList,
-  OrderItemsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrderItemsListByResourceGroupRequest,
-  output: OrderItemResourceList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrderItemsListBySubscriptionError = AzureOpError;
-/** List order items at subscription level. */
-export const OrderItemsListBySubscription: API.OperationMethod<
-  OrderItemsListBySubscriptionRequest,
-  OrderItemResourceList,
-  OrderItemsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrderItemsListBySubscriptionRequest,
-  output: OrderItemResourceList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type OrderItemsReturnError = AzureOpError;
 /** Return order item. */
 export const OrderItemsReturn: API.OperationMethod<
@@ -3757,107 +3832,31 @@ export const OrderItemsReturn: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type OrderItemsUpdateError = AzureOpError;
+export type UpdateAddresseError = AzureOpError;
+/** Update the properties of an existing address. */
+export const UpdateAddresse: API.OperationMethod<
+  UpdateAddresseRequest,
+  UpdateAddresseResponse,
+  UpdateAddresseError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAddresseRequest,
+  output: UpdateAddresseResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateOrderItemError = AzureOpError;
 /** Update the properties of an existing order item. */
-export const OrderItemsUpdate: API.OperationMethod<
-  OrderItemsUpdateRequest,
-  OrderItemsUpdateResponse,
-  OrderItemsUpdateError,
+export const UpdateOrderItem: API.OperationMethod<
+  UpdateOrderItemRequest,
+  UpdateOrderItemResponse,
+  UpdateOrderItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrderItemsUpdateRequest,
-  output: OrderItemsUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrdersGetError = AzureOpError;
-/** Get an order. */
-export const OrdersGet: API.OperationMethod<
-  OrdersGetRequest,
-  OrdersGetResponse,
-  OrdersGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrdersGetRequest,
-  output: OrdersGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrdersListByResourceGroupError = AzureOpError;
-/** List orders at resource group level. */
-export const OrdersListByResourceGroup: API.OperationMethod<
-  OrdersListByResourceGroupRequest,
-  OrderResourceList,
-  OrdersListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrdersListByResourceGroupRequest,
-  output: OrderResourceList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OrdersListBySubscriptionError = AzureOpError;
-/** List orders at subscription level. */
-export const OrdersListBySubscription: API.OperationMethod<
-  OrdersListBySubscriptionRequest,
-  OrderResourceList,
-  OrdersListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrdersListBySubscriptionRequest,
-  output: OrderResourceList,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProductsAndConfigurationsListConfigurationsError = AzureOpError;
-/** List configurations for the given product family, product line and product for the given subscription. */
-export const ProductsAndConfigurationsListConfigurations: API.OperationMethod<
-  ProductsAndConfigurationsListConfigurationsRequest,
-  Configurations,
-  ProductsAndConfigurationsListConfigurationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductsAndConfigurationsListConfigurationsRequest,
-  output: Configurations,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProductsAndConfigurationsListProductFamiliesError = AzureOpError;
-/** List product families for the given subscription. */
-export const ProductsAndConfigurationsListProductFamilies: API.OperationMethod<
-  ProductsAndConfigurationsListProductFamiliesRequest,
-  ProductFamilies,
-  ProductsAndConfigurationsListProductFamiliesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductsAndConfigurationsListProductFamiliesRequest,
-  output: ProductFamilies,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProductsAndConfigurationsListProductFamiliesMetadataError =
-  AzureOpError;
-/** List product families metadata for the given subscription. */
-export const ProductsAndConfigurationsListProductFamiliesMetadata: API.OperationMethod<
-  ProductsAndConfigurationsListProductFamiliesMetadataRequest,
-  ProductFamiliesMetadata,
-  ProductsAndConfigurationsListProductFamiliesMetadataError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProductsAndConfigurationsListProductFamiliesMetadataRequest,
-  output: ProductFamiliesMetadata,
+  input: UpdateOrderItemRequest,
+  output: UpdateOrderItemResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

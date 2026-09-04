@@ -12,6 +12,196 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
+export interface DeleteQueueRequest {
+  queueId?: string;
+}
+export const DeleteQueueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queueId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/QueueDelete",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteQueueRequest",
+}) as any as S.Schema<DeleteQueueRequest>;
+
+export interface DeleteQueueResponse {}
+export const DeleteQueueResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteQueueResponse",
+}) as any as S.Schema<DeleteQueueResponse>;
+
+export interface GetQueueRequest {
+  queueId?: string;
+  timeout?: number;
+  nValues?: number;
+  partitionKey?: string;
+}
+export const GetQueueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queueId: S.optional(S.String),
+    timeout: S.optional(S.Number),
+    nValues: S.optional(S.Number),
+    partitionKey: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/QueueGet",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetQueueRequest",
+}) as any as S.Schema<GetQueueRequest>;
+
+export type BlobList = Array<string>;
+export const BlobList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<BlobList>;
+
+export interface GetQueueResponse {
+  values?: BlobList;
+}
+export const GetQueueResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    values: S.optional(BlobList),
+  }),
+).annotate({
+  identifier: "GetQueueResponse",
+}) as any as S.Schema<GetQueueResponse>;
+
+export interface GetQueueByIdRequest {
+  queueId?: string;
+}
+export const GetQueueByIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queueId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/QueueGetById",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetQueueByIdRequest",
+}) as any as S.Schema<GetQueueByIdRequest>;
+
+export interface CreationInfo {
+  /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
+  createdAt?: number;
+  /** Timestamp of resource creation */
+  createdBy?: string;
+}
+export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.optional(S.Number),
+    createdBy: S.optional(S.String),
+  }),
+).annotate({ identifier: "CreationInfo" }) as any as S.Schema<CreationInfo>;
+
+export interface QueueMetadata {
+  name?: string;
+  creationInfo?: CreationInfo;
+}
+export const QueueMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    creationInfo: S.optional(CreationInfo),
+  }),
+).annotate({ identifier: "QueueMetadata" }) as any as S.Schema<QueueMetadata>;
+
+export interface GetQueueByIdResponse {
+  queueId?: string;
+  metadata?: QueueMetadata;
+}
+export const GetQueueByIdResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queueId: S.optional(S.String),
+    metadata: S.optional(QueueMetadata),
+  }),
+).annotate({
+  identifier: "GetQueueByIdResponse",
+}) as any as S.Schema<GetQueueByIdResponse>;
+
+export interface ListPagination {
+  maxObjects?: number;
+  createdBefore?: number;
+}
+export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxObjects: S.optional(S.Number),
+    createdBefore: S.optional(S.Number),
+  }),
+).annotate({ identifier: "ListPagination" }) as any as S.Schema<ListPagination>;
+
+export interface ListQueueRequest {
+  environmentName?: string;
+  totalSizeLimit?: number;
+  /** Limit on "number of partitions" reported, since checking them is costly */
+  pagination?: ListPagination;
+}
+export const ListQueueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentName: S.optional(S.String),
+    totalSizeLimit: S.optional(S.Number),
+    pagination: S.optional(ListPagination),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/QueueList",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListQueueRequest",
+}) as any as S.Schema<ListQueueRequest>;
+
+export interface QueueListResponseQueueInfo {
+  name?: string;
+  createdAt?: number;
+  /** Superseded by metadata, used by clients up to 1.1.2 */
+  numPartitions?: number;
+  totalSize?: number;
+  queueId?: string;
+  metadata?: QueueMetadata;
+}
+export const QueueListResponseQueueInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+    numPartitions: S.optional(S.Number),
+    totalSize: S.optional(S.Number),
+    queueId: S.optional(S.String),
+    metadata: S.optional(QueueMetadata),
+  }),
+).annotate({
+  identifier: "QueueListResponseQueueInfo",
+}) as any as S.Schema<QueueListResponseQueueInfo>;
+
+export type QueueListResponseQueueInfoList = Array<QueueListResponseQueueInfo>;
+export const QueueListResponseQueueInfoList = /*@__PURE__*/ S.Array(
+  QueueListResponseQueueInfo,
+) as any as S.Schema<QueueListResponseQueueInfoList>;
+
+export interface ListQueueResponse {
+  queues?: QueueListResponseQueueInfoList;
+  environmentName?: string;
+}
+export const ListQueueResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    queues: S.optional(QueueListResponseQueueInfoList),
+    environmentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListQueueResponse",
+}) as any as S.Schema<ListQueueResponse>;
+
 export interface QueueClearRequest {
   queueId?: string;
   partitionKey?: string;
@@ -39,123 +229,6 @@ export const QueueClearResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "QueueClearResponse",
 }) as any as S.Schema<QueueClearResponse>;
-
-export interface QueueDeleteRequest {
-  queueId?: string;
-}
-export const QueueDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queueId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/QueueDelete",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueueDeleteRequest",
-}) as any as S.Schema<QueueDeleteRequest>;
-
-export interface QueueDeleteResponse {}
-export const QueueDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "QueueDeleteResponse",
-}) as any as S.Schema<QueueDeleteResponse>;
-
-export interface QueueGetRequest {
-  queueId?: string;
-  timeout?: number;
-  nValues?: number;
-  partitionKey?: string;
-}
-export const QueueGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queueId: S.optional(S.String),
-    timeout: S.optional(S.Number),
-    nValues: S.optional(S.Number),
-    partitionKey: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/QueueGet",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueueGetRequest",
-}) as any as S.Schema<QueueGetRequest>;
-
-export type BlobList = Array<string>;
-export const BlobList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<BlobList>;
-
-export interface QueueGetResponse {
-  values?: BlobList;
-}
-export const QueueGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    values: S.optional(BlobList),
-  }),
-).annotate({
-  identifier: "QueueGetResponse",
-}) as any as S.Schema<QueueGetResponse>;
-
-export interface QueueGetByIdRequest {
-  queueId?: string;
-}
-export const QueueGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queueId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/QueueGetById",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueueGetByIdRequest",
-}) as any as S.Schema<QueueGetByIdRequest>;
-
-export interface CreationInfo {
-  /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
-  createdAt?: number;
-  /** Timestamp of resource creation */
-  createdBy?: string;
-}
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.Number),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreationInfo" }) as any as S.Schema<CreationInfo>;
-
-export interface QueueMetadata {
-  name?: string;
-  creationInfo?: CreationInfo;
-}
-export const QueueMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    creationInfo: S.optional(CreationInfo),
-  }),
-).annotate({ identifier: "QueueMetadata" }) as any as S.Schema<QueueMetadata>;
-
-export interface QueueGetByIdResponse {
-  queueId?: string;
-  metadata?: QueueMetadata;
-}
-export const QueueGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queueId: S.optional(S.String),
-    metadata: S.optional(QueueMetadata),
-  }),
-).annotate({
-  identifier: "QueueGetByIdResponse",
-}) as any as S.Schema<QueueGetByIdResponse>;
 
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
@@ -257,79 +330,6 @@ export const QueueLenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueueLenResponse",
 }) as any as S.Schema<QueueLenResponse>;
 
-export interface ListPagination {
-  maxObjects?: number;
-  createdBefore?: number;
-}
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxObjects: S.optional(S.Number),
-    createdBefore: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ListPagination" }) as any as S.Schema<ListPagination>;
-
-export interface QueueListRequest {
-  environmentName?: string;
-  totalSizeLimit?: number;
-  /** Limit on "number of partitions" reported, since checking them is costly */
-  pagination?: ListPagination;
-}
-export const QueueListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentName: S.optional(S.String),
-    totalSizeLimit: S.optional(S.Number),
-    pagination: S.optional(ListPagination),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/QueueList",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QueueListRequest",
-}) as any as S.Schema<QueueListRequest>;
-
-export interface QueueListResponseQueueInfo {
-  name?: string;
-  createdAt?: number;
-  /** Superseded by metadata, used by clients up to 1.1.2 */
-  numPartitions?: number;
-  totalSize?: number;
-  queueId?: string;
-  metadata?: QueueMetadata;
-}
-export const QueueListResponseQueueInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    createdAt: S.optional(S.Number),
-    numPartitions: S.optional(S.Number),
-    totalSize: S.optional(S.Number),
-    queueId: S.optional(S.String),
-    metadata: S.optional(QueueMetadata),
-  }),
-).annotate({
-  identifier: "QueueListResponseQueueInfo",
-}) as any as S.Schema<QueueListResponseQueueInfo>;
-
-export type QueueListResponseQueueInfoList = Array<QueueListResponseQueueInfo>;
-export const QueueListResponseQueueInfoList = /*@__PURE__*/ S.Array(
-  QueueListResponseQueueInfo,
-) as any as S.Schema<QueueListResponseQueueInfoList>;
-
-export interface QueueListResponse {
-  queues?: QueueListResponseQueueInfoList;
-  environmentName?: string;
-}
-export const QueueListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    queues: S.optional(QueueListResponseQueueInfoList),
-    environmentName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "QueueListResponse",
-}) as any as S.Schema<QueueListResponse>;
-
 export interface QueueNextItemsRequest {
   queueId?: string;
   partitionKey?: string;
@@ -410,6 +410,62 @@ export const QueuePutResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "QueuePutResponse",
 }) as any as S.Schema<QueuePutResponse>;
 
+export type DeleteQueueError = ModalOpError;
+export const deleteQueue: API.OperationMethod<
+  DeleteQueueRequest,
+  DeleteQueueResponse,
+  DeleteQueueError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteQueueRequest,
+  output: DeleteQueueResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetQueueError = ModalOpError;
+export const getQueue: API.OperationMethod<
+  GetQueueRequest,
+  GetQueueResponse,
+  GetQueueError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQueueRequest,
+  output: GetQueueResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetQueueByIdError = ModalOpError;
+export const getQueueById: API.OperationMethod<
+  GetQueueByIdRequest,
+  GetQueueByIdResponse,
+  GetQueueByIdError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQueueByIdRequest,
+  output: GetQueueByIdResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListQueueError = ModalOpError;
+export const listQueue: API.OperationMethod<
+  ListQueueRequest,
+  ListQueueResponse,
+  ListQueueError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListQueueRequest,
+  output: ListQueueResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
 export type QueueClearError = ModalOpError;
 /** Queues */
 export const queueClear: API.OperationMethod<
@@ -420,48 +476,6 @@ export const queueClear: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: QueueClearRequest,
   output: QueueClearResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueueDeleteError = ModalOpError;
-export const queueDelete: API.OperationMethod<
-  QueueDeleteRequest,
-  QueueDeleteResponse,
-  QueueDeleteError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueueDeleteRequest,
-  output: QueueDeleteResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueueGetError = ModalOpError;
-export const queueGet: API.OperationMethod<
-  QueueGetRequest,
-  QueueGetResponse,
-  QueueGetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueueGetRequest,
-  output: QueueGetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueueGetByIdError = ModalOpError;
-export const queueGetById: API.OperationMethod<
-  QueueGetByIdRequest,
-  QueueGetByIdResponse,
-  QueueGetByIdError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueueGetByIdRequest,
-  output: QueueGetByIdResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -504,20 +518,6 @@ export const queueLen: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: QueueLenRequest,
   output: QueueLenResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type QueueListError = ModalOpError;
-export const queueList: API.OperationMethod<
-  QueueListRequest,
-  QueueListResponse,
-  QueueListError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueueListRequest,
-  output: QueueListResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

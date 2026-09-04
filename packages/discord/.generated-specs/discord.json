@@ -1888,7 +1888,7 @@
         }
       }
     },
-    "com.discord.api#ApplicationsGetActivityInstanceRequest": {
+    "com.discord.api#GetApplicationActivityInstanceRequest": {
       "type": "structure",
       "members": {
         "application_id": {
@@ -2043,10 +2043,10 @@
       },
       "traits": {}
     },
-    "com.discord.api#ApplicationsGetActivityInstance": {
+    "com.discord.api#GetApplicationActivityInstance": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#ApplicationsGetActivityInstanceRequest"
+        "target": "com.discord.api#GetApplicationActivityInstanceRequest"
       },
       "output": {
         "target": "com.discord.api#EmbeddedActivityInstance"
@@ -2070,9 +2070,10 @@
           }
         },
         "file": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.discord#formDataFile": {}
           }
         }
       },
@@ -5062,7 +5063,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkSetApplicationCommandsRequest": {
+    "com.discord.api#SetBulkApplicationCommandRequest": {
       "type": "structure",
       "members": {
         "application_id": {
@@ -5092,7 +5093,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkSetApplicationCommandsResponse": {
+    "com.discord.api#SetBulkApplicationCommandResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -5108,13 +5109,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.discord.api#BulkSetApplicationCommands": {
+    "com.discord.api#SetBulkApplicationCommand": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#BulkSetApplicationCommandsRequest"
+        "target": "com.discord.api#SetBulkApplicationCommandRequest"
       },
       "output": {
-        "target": "com.discord.api#BulkSetApplicationCommandsResponse"
+        "target": "com.discord.api#SetBulkApplicationCommandResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6374,7 +6375,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkSetGuildApplicationCommandsRequest": {
+    "com.discord.api#SetBulkGuildApplicationCommandRequest": {
       "type": "structure",
       "members": {
         "application_id": {
@@ -6411,7 +6412,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkSetGuildApplicationCommandsResponse": {
+    "com.discord.api#SetBulkGuildApplicationCommandResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -6427,13 +6428,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.discord.api#BulkSetGuildApplicationCommands": {
+    "com.discord.api#SetBulkGuildApplicationCommand": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#BulkSetGuildApplicationCommandsRequest"
+        "target": "com.discord.api#SetBulkGuildApplicationCommandRequest"
       },
       "output": {
-        "target": "com.discord.api#BulkSetGuildApplicationCommandsResponse"
+        "target": "com.discord.api#SetBulkGuildApplicationCommandResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16024,7 +16025,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkDeleteMessagesRequest": {
+    "com.discord.api#DeleteBulkMessageRequest": {
       "type": "structure",
       "members": {
         "channel_id": {
@@ -16045,10 +16046,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.discord.api#BulkDeleteMessages": {
+    "com.discord.api#DeleteBulkMessage": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#BulkDeleteMessagesRequest"
+        "target": "com.discord.api#DeleteBulkMessageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -16950,7 +16951,7 @@
         }
       }
     },
-    "com.discord.api#DeprecatedListPinsRequest": {
+    "com.discord.api#ListDeprecatedPinsRequest": {
       "type": "structure",
       "members": {
         "channel_id": {
@@ -16972,7 +16973,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#DeprecatedListPinsResponse": {
+    "com.discord.api#ListDeprecatedPinsResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -16988,13 +16989,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.discord.api#DeprecatedListPins": {
+    "com.discord.api#ListDeprecatedPins": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#DeprecatedListPinsRequest"
+        "target": "com.discord.api#ListDeprecatedPinsRequest"
       },
       "output": {
-        "target": "com.discord.api#DeprecatedListPinsResponse"
+        "target": "com.discord.api#ListDeprecatedPinsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -17004,7 +17005,7 @@
         }
       }
     },
-    "com.discord.api#DeprecatedCreatePinRequest": {
+    "com.discord.api#CreateDeprecatedPinRequest": {
       "type": "structure",
       "members": {
         "channel_id": {
@@ -17026,10 +17027,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.discord.api#DeprecatedCreatePin": {
+    "com.discord.api#CreateDeprecatedPin": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#DeprecatedCreatePinRequest"
+        "target": "com.discord.api#CreateDeprecatedPinRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17042,7 +17043,7 @@
         }
       }
     },
-    "com.discord.api#DeprecatedDeletePinRequest": {
+    "com.discord.api#DeleteDeprecatedPinRequest": {
       "type": "structure",
       "members": {
         "channel_id": {
@@ -17064,10 +17065,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.discord.api#DeprecatedDeletePin": {
+    "com.discord.api#DeleteDeprecatedPin": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#DeprecatedDeletePinRequest"
+        "target": "com.discord.api#DeleteDeprecatedPinRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -24954,7 +24955,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkUpdateGuildChannelsRequest": {
+    "com.discord.api#UpdateBulkGuildChannelRequest": {
       "type": "structure",
       "members": {
         "guild_id": {
@@ -24976,10 +24977,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.discord.api#BulkUpdateGuildChannels": {
+    "com.discord.api#UpdateBulkGuildChannel": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#BulkUpdateGuildChannelsRequest"
+        "target": "com.discord.api#UpdateBulkGuildChannelRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -28705,7 +28706,7 @@
         "smithy.api#documentation": "List join requests for guild, optionally filtered by application status"
       }
     },
-    "com.discord.api#ActionGuildJoinRequestRequest": {
+    "com.discord.api#RequestActionGuildJoinRequest": {
       "type": "structure",
       "members": {
         "guild_id": {
@@ -28740,10 +28741,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.discord.api#ActionGuildJoinRequest": {
+    "com.discord.api#RequestActionGuildJoin": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#ActionGuildJoinRequestRequest"
+        "target": "com.discord.api#RequestActionGuildJoinRequest"
       },
       "output": {
         "target": "com.discord.api#GuildJoinRequestResponse"
@@ -28938,7 +28939,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkUpdateGuildRolesRequest": {
+    "com.discord.api#UpdateBulkGuildRoleRequest": {
       "type": "structure",
       "members": {
         "guild_id": {
@@ -28967,7 +28968,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkUpdateGuildRolesResponse": {
+    "com.discord.api#UpdateBulkGuildRoleResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -28982,13 +28983,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.discord.api#BulkUpdateGuildRoles": {
+    "com.discord.api#UpdateBulkGuildRole": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#BulkUpdateGuildRolesRequest"
+        "target": "com.discord.api#UpdateBulkGuildRoleRequest"
       },
       "output": {
-        "target": "com.discord.api#BulkUpdateGuildRolesResponse"
+        "target": "com.discord.api#UpdateBulkGuildRoleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -30939,9 +30940,10 @@
           }
         },
         "file": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.discord#formDataFile": {}
           }
         }
       },
@@ -34011,9 +34013,10 @@
           }
         },
         "target_users_file": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#required": {}
+            "smithy.api#required": {},
+            "com.distilled.discord#formDataFile": {}
           }
         }
       },
@@ -34805,7 +34808,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkUpdateLobbyMembersRequest": {
+    "com.discord.api#UpdateBulkLobbyMemberRequest": {
       "type": "structure",
       "members": {
         "lobby_id": {
@@ -34835,7 +34838,7 @@
       },
       "traits": {}
     },
-    "com.discord.api#BulkUpdateLobbyMembersResponse": {
+    "com.discord.api#UpdateBulkLobbyMemberResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -34851,13 +34854,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.discord.api#BulkUpdateLobbyMembers": {
+    "com.discord.api#UpdateBulkLobbyMember": {
       "type": "operation",
       "input": {
-        "target": "com.discord.api#BulkUpdateLobbyMembersRequest"
+        "target": "com.discord.api#UpdateBulkLobbyMemberRequest"
       },
       "output": {
-        "target": "com.discord.api#BulkUpdateLobbyMembersResponse"
+        "target": "com.discord.api#UpdateBulkLobbyMemberResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -39737,7 +39740,7 @@
           "target": "com.discord.api#UpdateApplication"
         },
         {
-          "target": "com.discord.api#ApplicationsGetActivityInstance"
+          "target": "com.discord.api#GetApplicationActivityInstance"
         },
         {
           "target": "com.discord.api#UploadApplicationAttachment"
@@ -39749,7 +39752,7 @@
           "target": "com.discord.api#CreateApplicationCommand"
         },
         {
-          "target": "com.discord.api#BulkSetApplicationCommands"
+          "target": "com.discord.api#SetBulkApplicationCommand"
         },
         {
           "target": "com.discord.api#GetApplicationCommand"
@@ -39797,7 +39800,7 @@
           "target": "com.discord.api#CreateGuildApplicationCommand"
         },
         {
-          "target": "com.discord.api#BulkSetGuildApplicationCommands"
+          "target": "com.discord.api#SetBulkGuildApplicationCommand"
         },
         {
           "target": "com.discord.api#ListGuildApplicationCommandPermissions"
@@ -39848,7 +39851,7 @@
           "target": "com.discord.api#CreateMessage"
         },
         {
-          "target": "com.discord.api#BulkDeleteMessages"
+          "target": "com.discord.api#DeleteBulkMessage"
         },
         {
           "target": "com.discord.api#ListPins"
@@ -39899,13 +39902,13 @@
           "target": "com.discord.api#DeleteChannelPermissionOverwrite"
         },
         {
-          "target": "com.discord.api#DeprecatedListPins"
+          "target": "com.discord.api#ListDeprecatedPins"
         },
         {
-          "target": "com.discord.api#DeprecatedCreatePin"
+          "target": "com.discord.api#CreateDeprecatedPin"
         },
         {
-          "target": "com.discord.api#DeprecatedDeletePin"
+          "target": "com.discord.api#DeleteDeprecatedPin"
         },
         {
           "target": "com.discord.api#GetAnswerVoters"
@@ -40022,7 +40025,7 @@
           "target": "com.discord.api#CreateGuildChannel"
         },
         {
-          "target": "com.discord.api#BulkUpdateGuildChannels"
+          "target": "com.discord.api#UpdateBulkGuildChannel"
         },
         {
           "target": "com.discord.api#ListGuildEmojis"
@@ -40106,7 +40109,7 @@
           "target": "com.discord.api#GetGuildJoinRequests"
         },
         {
-          "target": "com.discord.api#ActionGuildJoinRequest"
+          "target": "com.discord.api#RequestActionGuildJoin"
         },
         {
           "target": "com.discord.api#ListGuildRoles"
@@ -40115,7 +40118,7 @@
           "target": "com.discord.api#CreateGuildRole"
         },
         {
-          "target": "com.discord.api#BulkUpdateGuildRoles"
+          "target": "com.discord.api#UpdateBulkGuildRole"
         },
         {
           "target": "com.discord.api#GuildRoleMemberCounts"
@@ -40289,7 +40292,7 @@
           "target": "com.discord.api#CreateLinkedLobbyGuildInviteForSelf"
         },
         {
-          "target": "com.discord.api#BulkUpdateLobbyMembers"
+          "target": "com.discord.api#UpdateBulkLobbyMember"
         },
         {
           "target": "com.discord.api#AddLobbyMember"

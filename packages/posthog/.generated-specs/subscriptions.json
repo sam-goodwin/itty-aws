@@ -59,7 +59,7 @@
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#SubscriptionsListRequest": {
+    "com.posthog.subscriptions#ListSubscriptionsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -720,10 +720,10 @@
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#SubscriptionsList": {
+    "com.posthog.subscriptions#ListSubscriptions": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.subscriptions#SubscriptionsListRequest"
+        "target": "com.posthog.subscriptions#ListSubscriptionsRequest"
       },
       "output": {
         "target": "com.posthog.subscriptions#PaginatedSubscriptionListOutput"
@@ -815,7 +815,7 @@
         "smithy.api#documentation": "Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday."
       }
     },
-    "com.posthog.subscriptions#SubscriptionsCreateRequest": {
+    "com.posthog.subscriptions#CreateSubscriptionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -973,10 +973,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.subscriptions#SubscriptionsCreate": {
+    "com.posthog.subscriptions#CreateSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.subscriptions#SubscriptionsCreateRequest"
+        "target": "com.posthog.subscriptions#CreateSubscriptionRequest"
       },
       "output": {
         "target": "com.posthog.subscriptions#SubscriptionOutput"
@@ -1116,7 +1116,7 @@
         "smithy.api#documentation": "Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday."
       }
     },
-    "com.posthog.subscriptions#SubscriptionsUpdateRequest": {
+    "com.posthog.subscriptions#UpdateSubscriptionRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1282,10 +1282,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.subscriptions#SubscriptionsUpdate": {
+    "com.posthog.subscriptions#UpdateSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.subscriptions#SubscriptionsUpdateRequest"
+        "target": "com.posthog.subscriptions#UpdateSubscriptionRequest"
       },
       "output": {
         "target": "com.posthog.subscriptions#SubscriptionOutput"
@@ -1377,7 +1377,7 @@
         "smithy.api#documentation": "Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday."
       }
     },
-    "com.posthog.subscriptions#SubscriptionsPartialUpdateRequest": {
+    "com.posthog.subscriptions#UpdateSubscriptionPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1543,10 +1543,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.subscriptions#SubscriptionsPartialUpdate": {
+    "com.posthog.subscriptions#UpdateSubscriptionPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.subscriptions#SubscriptionsPartialUpdateRequest"
+        "target": "com.posthog.subscriptions#UpdateSubscriptionPartialRequest"
       },
       "output": {
         "target": "com.posthog.subscriptions#SubscriptionOutput"
@@ -1619,7 +1619,7 @@
         "smithy.api#documentation": "Hard delete of this model is not allowed. Use a patch API call to set \"deleted\" to true"
       }
     },
-    "com.posthog.subscriptions#SubscriptionsTestDeliveryCreateRequest": {
+    "com.posthog.subscriptions#CreateSubscriptionTestDeliveryRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1643,10 +1643,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.subscriptions#SubscriptionsTestDeliveryCreate": {
+    "com.posthog.subscriptions#CreateSubscriptionTestDelivery": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.subscriptions#SubscriptionsTestDeliveryCreateRequest"
+        "target": "com.posthog.subscriptions#CreateSubscriptionTestDeliveryRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1697,7 +1697,7 @@
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#SubscriptionsDeliveriesListRequest": {
+    "com.posthog.subscriptions#ListSubscriptionDeliveriesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2029,10 +2029,10 @@
       },
       "traits": {}
     },
-    "com.posthog.subscriptions#SubscriptionsDeliveriesList": {
+    "com.posthog.subscriptions#ListSubscriptionDeliveries": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.subscriptions#SubscriptionsDeliveriesListRequest"
+        "target": "com.posthog.subscriptions#ListSubscriptionDeliveriesRequest"
       },
       "output": {
         "target": "com.posthog.subscriptions#PaginatedSubscriptionDeliveryList"
@@ -2197,28 +2197,28 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.subscriptions#SubscriptionsList"
+          "target": "com.posthog.subscriptions#ListSubscriptions"
         },
         {
-          "target": "com.posthog.subscriptions#SubscriptionsCreate"
+          "target": "com.posthog.subscriptions#CreateSubscription"
         },
         {
           "target": "com.posthog.subscriptions#SubscriptionsRetrieve"
         },
         {
-          "target": "com.posthog.subscriptions#SubscriptionsUpdate"
+          "target": "com.posthog.subscriptions#UpdateSubscription"
         },
         {
-          "target": "com.posthog.subscriptions#SubscriptionsPartialUpdate"
+          "target": "com.posthog.subscriptions#UpdateSubscriptionPartial"
         },
         {
           "target": "com.posthog.subscriptions#SubscriptionsDestroy"
         },
         {
-          "target": "com.posthog.subscriptions#SubscriptionsTestDeliveryCreate"
+          "target": "com.posthog.subscriptions#CreateSubscriptionTestDelivery"
         },
         {
-          "target": "com.posthog.subscriptions#SubscriptionsDeliveriesList"
+          "target": "com.posthog.subscriptions#ListSubscriptionDeliveries"
         },
         {
           "target": "com.posthog.subscriptions#SubscriptionsDeliveriesRetrieve"

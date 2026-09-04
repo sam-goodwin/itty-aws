@@ -102202,7 +102202,7 @@
       },
       "traits": {}
     },
-    "com.vercel.projects#AcceptProjectTransferRequestRequest": {
+    "com.vercel.projects#RequestAcceptProjectTransferRequest": {
       "type": "structure",
       "members": {
         "code": {
@@ -102368,7 +102368,7 @@
       },
       "traits": {}
     },
-    "com.vercel.projects#AcceptProjectTransferRequestResponse": {
+    "com.vercel.projects#RequestAcceptProjectTransferResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -102383,13 +102383,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.vercel.projects#AcceptProjectTransferRequest": {
+    "com.vercel.projects#RequestAcceptProjectTransfer": {
       "type": "operation",
       "input": {
-        "target": "com.vercel.projects#AcceptProjectTransferRequestRequest"
+        "target": "com.vercel.projects#RequestAcceptProjectTransferRequest"
       },
       "output": {
-        "target": "com.vercel.projects#AcceptProjectTransferRequestResponse"
+        "target": "com.vercel.projects#RequestAcceptProjectTransferResponse"
       },
       "errors": [
         {
@@ -116976,7 +116976,7 @@
           "target": "com.vercel.projects#CreateProjectTransferRequest"
         },
         {
-          "target": "com.vercel.projects#AcceptProjectTransferRequest"
+          "target": "com.vercel.projects#RequestAcceptProjectTransfer"
         },
         {
           "target": "com.vercel.projects#UpdateProjectProtectionBypass"

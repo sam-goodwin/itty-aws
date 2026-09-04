@@ -12,509 +12,29 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface AvailabilityStatusesGetByResourceRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  resourceUri: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
-}
-export const AvailabilityStatusesGetByResourceRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceUri: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses/current",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "AvailabilityStatusesGetByResourceRequest",
-}) as any as S.Schema<AvailabilityStatusesGetByResourceRequest>;
-
-/** Impacted resource status of the resource. */
-export type AvailabilityStateValues =
-  | "Available"
-  | "Unavailable"
-  | "Degraded"
-  | "Unknown";
-export const AvailabilityStateValues = /*@__PURE__*/ S.String;
-
-/** Chronicity of the availability transition. */
-export type ReasonChronicityTypes = "Transient" | "Persistent";
-export const ReasonChronicityTypes = /*@__PURE__*/ S.String;
-
-/** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
-export interface AvailabilityStatusPropertiesRecentlyResolved {
-  /** Timestamp for when the availabilityState changed to Unavailable */
-  unavailableOccuredTime?: string;
-  /** Timestamp when the availabilityState changes to Available. */
-  resolvedTime?: string;
-  /** Brief description of cause of the resource becoming unavailable. */
-  unavailableSummary?: string;
-}
-export const AvailabilityStatusPropertiesRecentlyResolved =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unavailableOccuredTime: S.optional(S.String),
-      resolvedTime: S.optional(S.String),
-      unavailableSummary: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AvailabilityStatusPropertiesRecentlyResolved",
-  }) as any as S.Schema<AvailabilityStatusPropertiesRecentlyResolved>;
-
-/** Lists actions the user can take based on the current availabilityState of the resource. */
-export interface RecommendedAction {
-  /** Recommended action. */
-  action?: string;
-  /** Link to the action */
-  actionUrl?: string;
-  /** the comment for the Action */
-  _ActionUrl_Comment?: string;
-  /** Substring of action, it describes which text should host the action URL. */
-  actionUrlText?: string;
-}
-export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(S.String),
-    actionUrl: S.optional(S.String),
-    _ActionUrl_Comment: S.optional(S.String.pipe(T.Body("_ActionUrl.Comment"))),
-    actionUrlText: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecommendedAction",
-}) as any as S.Schema<RecommendedAction>;
-
-/** Lists actions the user can take based on the current availabilityState of the resource. */
-export type AvailabilityStatusPropertiesRecommendedActionsList =
-  Array<RecommendedAction>;
-export const AvailabilityStatusPropertiesRecommendedActionsList =
-  /*@__PURE__*/ S.Array(
-    RecommendedAction,
-  ) as any as S.Schema<AvailabilityStatusPropertiesRecommendedActionsList>;
-
-/** Status of the service impacting event. */
-export interface ServiceImpactingEventStatus {
-  /** Current status of the event */
-  value?: string;
-}
-export const ServiceImpactingEventStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ServiceImpactingEventStatus",
-}) as any as S.Schema<ServiceImpactingEventStatus>;
-
-/** Properties of the service impacting event. */
-export interface ServiceImpactingEventIncidentProperties {
-  /** Title of the incident. */
-  title?: string;
-  /** Service impacted by the event. */
-  service?: string;
-  /** Region impacted by the event. */
-  region?: string;
-  /** Type of Event. */
-  incidentType?: string;
-}
-export const ServiceImpactingEventIncidentProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      title: S.optional(S.String),
-      service: S.optional(S.String),
-      region: S.optional(S.String),
-      incidentType: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "ServiceImpactingEventIncidentProperties",
-}) as any as S.Schema<ServiceImpactingEventIncidentProperties>;
-
-/** Lists the service impacting events that may be affecting the health of the resource. */
-export interface ServiceImpactingEvent {
-  /** Timestamp for when the event started. */
-  eventStartTime?: string;
-  /** Timestamp for when event was submitted/detected. */
-  eventStatusLastModifiedTime?: string;
-  /** Correlation id for the event */
-  correlationId?: string;
-  /** Status of the service impacting event. */
-  status?: ServiceImpactingEventStatus;
-  /** Properties of the service impacting event. */
-  incidentProperties?: ServiceImpactingEventIncidentProperties;
-}
-export const ServiceImpactingEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    eventStartTime: S.optional(S.String),
-    eventStatusLastModifiedTime: S.optional(S.String),
-    correlationId: S.optional(S.String),
-    status: S.optional(ServiceImpactingEventStatus),
-    incidentProperties: S.optional(ServiceImpactingEventIncidentProperties),
-  }),
-).annotate({
-  identifier: "ServiceImpactingEvent",
-}) as any as S.Schema<ServiceImpactingEvent>;
-
-/** Lists the service impacting events that may be affecting the health of the resource. */
-export type AvailabilityStatusPropertiesServiceImpactingEventsList =
-  Array<ServiceImpactingEvent>;
-export const AvailabilityStatusPropertiesServiceImpactingEventsList =
-  /*@__PURE__*/ S.Array(
-    ServiceImpactingEvent,
-  ) as any as S.Schema<AvailabilityStatusPropertiesServiceImpactingEventsList>;
-
-/** Properties of availability state. */
-export interface AvailabilityStatusProperties {
-  /** Availability status of the resource. When it is null, this availabilityStatus object represents an availability impacting event */
-  availabilityState?: AvailabilityStateValues;
-  /** Title description of the availability status. */
-  title?: string;
-  /** Summary description of the availability status. */
-  summary?: string;
-  /** Details of the availability status. */
-  detailedStatus?: string;
-  /** When the resource's availabilityState is Unavailable, it describes where the health impacting event was originated. Examples are planned, unplanned, user initiated or an outage etc. */
-  reasonType?: string;
-  /** When an event is created, it can either be triggered by a customer or the platform of the resource and this field will illustrate that. This field is connected to the category field in this object. */
-  context?: string;
-  /** When a context field is set to Platform, this field will reflect if the event was planned or unplanned. If the context field does not have a value of Platform, then this field will be ignored. */
-  category?: string;
-  /** The Article Id */
-  articleId?: string;
-  /** When the resource's availabilityState is Unavailable, it provides the Timestamp for when the health impacting event was received. */
-  rootCauseAttributionTime?: string;
-  /** In case of an availability impacting event, it describes when the health impacting event was originated. Examples are Lifecycle, Downtime, Fault Analysis etc. */
-  healthEventType?: string;
-  /** In case of an availability impacting event, it describes where the health impacting event was originated. Examples are PlatformInitiated, UserInitiated etc. */
-  healthEventCause?: string;
-  /** In case of an availability impacting event, it describes the category of a PlatformInitiated health impacting event. Examples are Planned, Unplanned etc. */
-  healthEventCategory?: string;
-  /** It is a unique Id that identifies the event */
-  healthEventId?: string;
-  /** When the resource's availabilityState is Unavailable and the reasonType is not User Initiated, it provides the date and time for when the issue is expected to be resolved. */
-  resolutionETA?: string;
-  /** Timestamp for when last change in health status occurred. */
-  occuredTime?: string;
-  /** Chronicity of the availability transition. */
-  reasonChronicity?: ReasonChronicityTypes;
-  /** Timestamp for when the health was last checked. */
-  reportedTime?: string;
-  /** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
-  recentlyResolved?: AvailabilityStatusPropertiesRecentlyResolved;
-  /** Lists actions the user can take based on the current availabilityState of the resource. */
-  recommendedActions?: AvailabilityStatusPropertiesRecommendedActionsList;
-  /** Lists the service impacting events that may be affecting the health of the resource. */
-  serviceImpactingEvents?: AvailabilityStatusPropertiesServiceImpactingEventsList;
-}
-export const AvailabilityStatusProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    availabilityState: S.optional(AvailabilityStateValues),
-    title: S.optional(S.String),
-    summary: S.optional(S.String),
-    detailedStatus: S.optional(S.String),
-    reasonType: S.optional(S.String),
-    context: S.optional(S.String),
-    category: S.optional(S.String),
-    articleId: S.optional(S.String),
-    rootCauseAttributionTime: S.optional(S.String),
-    healthEventType: S.optional(S.String),
-    healthEventCause: S.optional(S.String),
-    healthEventCategory: S.optional(S.String),
-    healthEventId: S.optional(S.String),
-    resolutionETA: S.optional(S.String),
-    occuredTime: S.optional(S.String),
-    reasonChronicity: S.optional(ReasonChronicityTypes),
-    reportedTime: S.optional(S.String),
-    recentlyResolved: S.optional(AvailabilityStatusPropertiesRecentlyResolved),
-    recommendedActions: S.optional(
-      AvailabilityStatusPropertiesRecommendedActionsList,
-    ),
-    serviceImpactingEvents: S.optional(
-      AvailabilityStatusPropertiesServiceImpactingEventsList,
-    ),
-  }),
-).annotate({
-  identifier: "AvailabilityStatusProperties",
-}) as any as S.Schema<AvailabilityStatusProperties>;
-
-export interface AvailabilityStatusesGetByResourceResponse {
-  /** Azure Resource Manager Identity for the availabilityStatuses resource. */
-  id?: string;
-  name?: string;
-  /** Microsoft.ResourceHealth/AvailabilityStatuses. */
-  type?: string;
-  /** Azure Resource Manager geo location of the resource. */
-  location?: string;
-  /** Properties of availability state. */
-  properties?: AvailabilityStatusProperties;
-}
-export const AvailabilityStatusesGetByResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      location: S.optional(S.String),
-      properties: S.optional(AvailabilityStatusProperties),
-    }),
-  ).annotate({
-    identifier: "AvailabilityStatusesGetByResourceResponse",
-  }) as any as S.Schema<AvailabilityStatusesGetByResourceResponse>;
-
-export interface AvailabilityStatusesListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  resourceUri: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
-}
-export const AvailabilityStatusesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "AvailabilityStatusesListRequest",
-}) as any as S.Schema<AvailabilityStatusesListRequest>;
-
-/** availabilityStatus of a resource. */
-export interface AvailabilityStatus {
-  /** Azure Resource Manager Identity for the availabilityStatuses resource. */
-  id?: string;
-  name?: string;
-  /** Microsoft.ResourceHealth/AvailabilityStatuses. */
-  type?: string;
-  /** Azure Resource Manager geo location of the resource. */
-  location?: string;
-  /** Properties of availability state. */
-  properties?: AvailabilityStatusProperties;
-}
-export const AvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    location: S.optional(S.String),
-    properties: S.optional(AvailabilityStatusProperties),
-  }),
-).annotate({
-  identifier: "AvailabilityStatus",
-}) as any as S.Schema<AvailabilityStatus>;
-
-/** The list of availabilityStatuses. */
-export type AvailabilityStatusListResultValueList = Array<AvailabilityStatus>;
-export const AvailabilityStatusListResultValueList = /*@__PURE__*/ S.Array(
-  AvailabilityStatus,
-) as any as S.Schema<AvailabilityStatusListResultValueList>;
-
-/** The List availabilityStatus operation response. */
-export interface AvailabilityStatusListResult {
-  /** The list of availabilityStatuses. */
-  value: AvailabilityStatusListResultValueList;
-  /** The URI to fetch the next page of availabilityStatuses. Call ListNext() with this URI to fetch the next page of availabilityStatuses. */
-  nextLink?: string;
-}
-export const AvailabilityStatusListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AvailabilityStatusListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AvailabilityStatusListResult",
-}) as any as S.Schema<AvailabilityStatusListResult>;
-
-export interface AvailabilityStatusesListByResourceGroupRequest {
+export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
+  /** Event Id which uniquely identifies ServiceHealth event. */
+  eventTrackingId: string;
 }
-export const AvailabilityStatusesListByResourceGroupRequest =
+export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+      eventTrackingId: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchBillingCommunicationDetails",
         code: 200,
         apiVersion: "2025-05-01",
       }),
     ),
   ).annotate({
-    identifier: "AvailabilityStatusesListByResourceGroupRequest",
-  }) as any as S.Schema<AvailabilityStatusesListByResourceGroupRequest>;
-
-export interface AvailabilityStatusesListBySubscriptionIdRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
-}
-export const AvailabilityStatusesListBySubscriptionIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AvailabilityStatusesListBySubscriptionIdRequest",
-  }) as any as S.Schema<AvailabilityStatusesListBySubscriptionIdRequest>;
-
-export interface ChildAvailabilityStatusesGetByResourceRequest {
-  /** undefined */
-  resourceUri: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
-}
-export const ChildAvailabilityStatusesGetByResourceRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      resourceUri: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses/current",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ChildAvailabilityStatusesGetByResourceRequest",
-  }) as any as S.Schema<ChildAvailabilityStatusesGetByResourceRequest>;
-
-export interface ChildAvailabilityStatusesGetByResourceResponse {
-  /** Azure Resource Manager Identity for the availabilityStatuses resource. */
-  id?: string;
-  name?: string;
-  /** Microsoft.ResourceHealth/AvailabilityStatuses. */
-  type?: string;
-  /** Azure Resource Manager geo location of the resource. */
-  location?: string;
-  /** Properties of availability state. */
-  properties?: AvailabilityStatusProperties;
-}
-export const ChildAvailabilityStatusesGetByResourceResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      location: S.optional(S.String),
-      properties: S.optional(AvailabilityStatusProperties),
-    }),
-  ).annotate({
-    identifier: "ChildAvailabilityStatusesGetByResourceResponse",
-  }) as any as S.Schema<ChildAvailabilityStatusesGetByResourceResponse>;
-
-export interface ChildAvailabilityStatusesListRequest {
-  /** undefined */
-  resourceUri: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
-}
-export const ChildAvailabilityStatusesListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      resourceUri: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-).annotate({
-  identifier: "ChildAvailabilityStatusesListRequest",
-}) as any as S.Schema<ChildAvailabilityStatusesListRequest>;
-
-export interface ChildResourcesListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  resourceUri: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
-  _expand?: string;
-}
-export const ChildResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/childResources",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "ChildResourcesListRequest",
-}) as any as S.Schema<ChildResourcesListRequest>;
-
-export type EmergingIssuesGetRequestIssueName = "default";
-export const EmergingIssuesGetRequestIssueName = /*@__PURE__*/ S.String;
-
-export interface EmergingIssuesGetRequest {
-  /** The name of the emerging issue. */
-  issueName: EmergingIssuesGetRequestIssueName | (string & {});
-}
-export const EmergingIssuesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    issueName: EmergingIssuesGetRequestIssueName.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ResourceHealth/emergingIssues/{issueName}",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "EmergingIssuesGetRequest",
-}) as any as S.Schema<EmergingIssuesGetRequest>;
+    identifier:
+      "EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest",
+  }) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -557,257 +77,6 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
     lastModifiedAt: S.optional(S.String),
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Banner type of emerging issue. */
-export interface StatusBanner {
-  /** The banner title. */
-  title?: string;
-  /** The details of banner. */
-  message?: string;
-  /** The cloud type of this banner. */
-  cloud?: string;
-  /** The last time modified on this banner. */
-  lastModifiedTime?: string;
-}
-export const StatusBanner = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    message: S.optional(S.String),
-    cloud: S.optional(S.String),
-    lastModifiedTime: S.optional(S.String),
-  }),
-).annotate({ identifier: "StatusBanner" }) as any as S.Schema<StatusBanner>;
-
-/** The list of emerging issues of banner type. */
-export type EmergingIssueStatusBannersList = Array<StatusBanner>;
-export const EmergingIssueStatusBannersList = /*@__PURE__*/ S.Array(
-  StatusBanner,
-) as any as S.Schema<EmergingIssueStatusBannersList>;
-
-/** The severity level of this active event. */
-export type SeverityValues = "Information" | "Warning" | "Error";
-export const SeverityValues = /*@__PURE__*/ S.String;
-
-/** The stage of this active event. */
-export type StageValues = "Active" | "Resolve" | "Archived";
-export const StageValues = /*@__PURE__*/ S.String;
-
-/** Object of impacted region. */
-export interface ImpactedRegion {
-  /** The impacted region id. */
-  id?: string;
-  /** The impacted region name. */
-  name?: string;
-}
-export const ImpactedRegion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImpactedRegion" }) as any as S.Schema<ImpactedRegion>;
-
-/** The list of impacted regions for corresponding emerging issues. */
-export type EmergingIssueImpactRegionsList = Array<ImpactedRegion>;
-export const EmergingIssueImpactRegionsList = /*@__PURE__*/ S.Array(
-  ImpactedRegion,
-) as any as S.Schema<EmergingIssueImpactRegionsList>;
-
-/** Object of the emerging issue impact on services and regions. */
-export interface EmergingIssueImpact {
-  /** The impacted service id. */
-  id?: string;
-  /** The impacted service name. */
-  name?: string;
-  /** The list of impacted regions for corresponding emerging issues. */
-  regions?: EmergingIssueImpactRegionsList;
-}
-export const EmergingIssueImpact = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    regions: S.optional(EmergingIssueImpactRegionsList),
-  }),
-).annotate({
-  identifier: "EmergingIssueImpact",
-}) as any as S.Schema<EmergingIssueImpact>;
-
-/** The list of emerging issues impacts. */
-export type StatusActiveEventImpactsList = Array<EmergingIssueImpact>;
-export const StatusActiveEventImpactsList = /*@__PURE__*/ S.Array(
-  EmergingIssueImpact,
-) as any as S.Schema<StatusActiveEventImpactsList>;
-
-/** Active event type of emerging issue. */
-export interface StatusActiveEvent {
-  /** The active event title. */
-  title?: string;
-  /** The details of active event. */
-  description?: string;
-  /** The tracking id of this active event. */
-  trackingId?: string;
-  /** The impact start time on this active event. */
-  startTime?: string;
-  /** The cloud type of this active event. */
-  cloud?: string;
-  /** The severity level of this active event. */
-  severity?: SeverityValues;
-  /** The stage of this active event. */
-  stage?: StageValues;
-  /** The boolean value of this active event if published or not. */
-  published?: boolean;
-  /** The last time modified on this banner. */
-  lastModifiedTime?: string;
-  /** The list of emerging issues impacts. */
-  impacts?: StatusActiveEventImpactsList;
-}
-export const StatusActiveEvent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    title: S.optional(S.String),
-    description: S.optional(S.String),
-    trackingId: S.optional(S.String),
-    startTime: S.optional(S.String),
-    cloud: S.optional(S.String),
-    severity: S.optional(SeverityValues),
-    stage: S.optional(StageValues),
-    published: S.optional(S.Boolean),
-    lastModifiedTime: S.optional(S.String),
-    impacts: S.optional(StatusActiveEventImpactsList),
-  }),
-).annotate({
-  identifier: "StatusActiveEvent",
-}) as any as S.Schema<StatusActiveEvent>;
-
-/** The list of emerging issues of active event type. */
-export type EmergingIssueStatusActiveEventsList = Array<StatusActiveEvent>;
-export const EmergingIssueStatusActiveEventsList = /*@__PURE__*/ S.Array(
-  StatusActiveEvent,
-) as any as S.Schema<EmergingIssueStatusActiveEventsList>;
-
-/** On-going emerging issue from azure status. */
-export interface EmergingIssue {
-  /** Timestamp for when last time refreshed for ongoing emerging issue. */
-  refreshTimestamp?: string;
-  /** The list of emerging issues of banner type. */
-  statusBanners?: EmergingIssueStatusBannersList;
-  /** The list of emerging issues of active event type. */
-  statusActiveEvents?: EmergingIssueStatusActiveEventsList;
-}
-export const EmergingIssue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    refreshTimestamp: S.optional(S.String),
-    statusBanners: S.optional(EmergingIssueStatusBannersList),
-    statusActiveEvents: S.optional(EmergingIssueStatusActiveEventsList),
-  }),
-).annotate({ identifier: "EmergingIssue" }) as any as S.Schema<EmergingIssue>;
-
-export interface EmergingIssuesGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The emerging issue entity properties. */
-  properties?: EmergingIssue;
-}
-export const EmergingIssuesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EmergingIssue),
-  }),
-).annotate({
-  identifier: "EmergingIssuesGetResponse",
-}) as any as S.Schema<EmergingIssuesGetResponse>;
-
-export interface EmergingIssuesListRequest {}
-export const EmergingIssuesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ResourceHealth/emergingIssues",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "EmergingIssuesListRequest",
-}) as any as S.Schema<EmergingIssuesListRequest>;
-
-/** The Get EmergingIssues operation response. */
-export interface EmergingIssuesGetResult {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The emerging issue entity properties. */
-  properties?: EmergingIssue;
-}
-export const EmergingIssuesGetResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EmergingIssue),
-  }),
-).annotate({
-  identifier: "EmergingIssuesGetResult",
-}) as any as S.Schema<EmergingIssuesGetResult>;
-
-/** The list of emerging issues. */
-export type EmergingIssueListResultValueList = Array<EmergingIssuesGetResult>;
-export const EmergingIssueListResultValueList = /*@__PURE__*/ S.Array(
-  EmergingIssuesGetResult,
-) as any as S.Schema<EmergingIssueListResultValueList>;
-
-/** The list of emerging issues. */
-export interface EmergingIssueListResult {
-  /** The list of emerging issues. */
-  value?: EmergingIssueListResultValueList;
-  /** The link used to get the next page of emerging issues. */
-  nextLink?: string;
-}
-export const EmergingIssueListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(EmergingIssueListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EmergingIssueListResult",
-}) as any as S.Schema<EmergingIssueListResult>;
-
-export interface EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** Event Id which uniquely identifies ServiceHealth event. */
-  eventTrackingId: string;
-}
-export const EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      eventTrackingId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/fetchBillingCommunicationDetails",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest",
-  }) as any as S.Schema<EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdRequest>;
 
 /** Type of event. */
 export type EventTypeValues =
@@ -1342,7 +611,500 @@ export const EventFetchDetailsByTenantIdAndTrackingIdResponse =
     identifier: "EventFetchDetailsByTenantIdAndTrackingIdResponse",
   }) as any as S.Schema<EventFetchDetailsByTenantIdAndTrackingIdResponse>;
 
-export interface EventGetBySubscriptionIdAndTrackingIdRequest {
+export interface GetAvailabilityStatusByResourceRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  resourceUri: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const GetAvailabilityStatusByResourceRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceUri: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses/current",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetAvailabilityStatusByResourceRequest",
+}) as any as S.Schema<GetAvailabilityStatusByResourceRequest>;
+
+/** Impacted resource status of the resource. */
+export type AvailabilityStateValues =
+  | "Available"
+  | "Unavailable"
+  | "Degraded"
+  | "Unknown";
+export const AvailabilityStateValues = /*@__PURE__*/ S.String;
+
+/** Chronicity of the availability transition. */
+export type ReasonChronicityTypes = "Transient" | "Persistent";
+export const ReasonChronicityTypes = /*@__PURE__*/ S.String;
+
+/** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
+export interface AvailabilityStatusPropertiesRecentlyResolved {
+  /** Timestamp for when the availabilityState changed to Unavailable */
+  unavailableOccuredTime?: string;
+  /** Timestamp when the availabilityState changes to Available. */
+  resolvedTime?: string;
+  /** Brief description of cause of the resource becoming unavailable. */
+  unavailableSummary?: string;
+}
+export const AvailabilityStatusPropertiesRecentlyResolved =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      unavailableOccuredTime: S.optional(S.String),
+      resolvedTime: S.optional(S.String),
+      unavailableSummary: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AvailabilityStatusPropertiesRecentlyResolved",
+  }) as any as S.Schema<AvailabilityStatusPropertiesRecentlyResolved>;
+
+/** Lists actions the user can take based on the current availabilityState of the resource. */
+export interface RecommendedAction {
+  /** Recommended action. */
+  action?: string;
+  /** Link to the action */
+  actionUrl?: string;
+  /** the comment for the Action */
+  _ActionUrl_Comment?: string;
+  /** Substring of action, it describes which text should host the action URL. */
+  actionUrlText?: string;
+}
+export const RecommendedAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(S.String),
+    actionUrl: S.optional(S.String),
+    _ActionUrl_Comment: S.optional(S.String.pipe(T.Body("_ActionUrl.Comment"))),
+    actionUrlText: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RecommendedAction",
+}) as any as S.Schema<RecommendedAction>;
+
+/** Lists actions the user can take based on the current availabilityState of the resource. */
+export type AvailabilityStatusPropertiesRecommendedActionsList =
+  Array<RecommendedAction>;
+export const AvailabilityStatusPropertiesRecommendedActionsList =
+  /*@__PURE__*/ S.Array(
+    RecommendedAction,
+  ) as any as S.Schema<AvailabilityStatusPropertiesRecommendedActionsList>;
+
+/** Status of the service impacting event. */
+export interface ServiceImpactingEventStatus {
+  /** Current status of the event */
+  value?: string;
+}
+export const ServiceImpactingEventStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ServiceImpactingEventStatus",
+}) as any as S.Schema<ServiceImpactingEventStatus>;
+
+/** Properties of the service impacting event. */
+export interface ServiceImpactingEventIncidentProperties {
+  /** Title of the incident. */
+  title?: string;
+  /** Service impacted by the event. */
+  service?: string;
+  /** Region impacted by the event. */
+  region?: string;
+  /** Type of Event. */
+  incidentType?: string;
+}
+export const ServiceImpactingEventIncidentProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      title: S.optional(S.String),
+      service: S.optional(S.String),
+      region: S.optional(S.String),
+      incidentType: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "ServiceImpactingEventIncidentProperties",
+}) as any as S.Schema<ServiceImpactingEventIncidentProperties>;
+
+/** Lists the service impacting events that may be affecting the health of the resource. */
+export interface ServiceImpactingEvent {
+  /** Timestamp for when the event started. */
+  eventStartTime?: string;
+  /** Timestamp for when event was submitted/detected. */
+  eventStatusLastModifiedTime?: string;
+  /** Correlation id for the event */
+  correlationId?: string;
+  /** Status of the service impacting event. */
+  status?: ServiceImpactingEventStatus;
+  /** Properties of the service impacting event. */
+  incidentProperties?: ServiceImpactingEventIncidentProperties;
+}
+export const ServiceImpactingEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    eventStartTime: S.optional(S.String),
+    eventStatusLastModifiedTime: S.optional(S.String),
+    correlationId: S.optional(S.String),
+    status: S.optional(ServiceImpactingEventStatus),
+    incidentProperties: S.optional(ServiceImpactingEventIncidentProperties),
+  }),
+).annotate({
+  identifier: "ServiceImpactingEvent",
+}) as any as S.Schema<ServiceImpactingEvent>;
+
+/** Lists the service impacting events that may be affecting the health of the resource. */
+export type AvailabilityStatusPropertiesServiceImpactingEventsList =
+  Array<ServiceImpactingEvent>;
+export const AvailabilityStatusPropertiesServiceImpactingEventsList =
+  /*@__PURE__*/ S.Array(
+    ServiceImpactingEvent,
+  ) as any as S.Schema<AvailabilityStatusPropertiesServiceImpactingEventsList>;
+
+/** Properties of availability state. */
+export interface AvailabilityStatusProperties {
+  /** Availability status of the resource. When it is null, this availabilityStatus object represents an availability impacting event */
+  availabilityState?: AvailabilityStateValues;
+  /** Title description of the availability status. */
+  title?: string;
+  /** Summary description of the availability status. */
+  summary?: string;
+  /** Details of the availability status. */
+  detailedStatus?: string;
+  /** When the resource's availabilityState is Unavailable, it describes where the health impacting event was originated. Examples are planned, unplanned, user initiated or an outage etc. */
+  reasonType?: string;
+  /** When an event is created, it can either be triggered by a customer or the platform of the resource and this field will illustrate that. This field is connected to the category field in this object. */
+  context?: string;
+  /** When a context field is set to Platform, this field will reflect if the event was planned or unplanned. If the context field does not have a value of Platform, then this field will be ignored. */
+  category?: string;
+  /** The Article Id */
+  articleId?: string;
+  /** When the resource's availabilityState is Unavailable, it provides the Timestamp for when the health impacting event was received. */
+  rootCauseAttributionTime?: string;
+  /** In case of an availability impacting event, it describes when the health impacting event was originated. Examples are Lifecycle, Downtime, Fault Analysis etc. */
+  healthEventType?: string;
+  /** In case of an availability impacting event, it describes where the health impacting event was originated. Examples are PlatformInitiated, UserInitiated etc. */
+  healthEventCause?: string;
+  /** In case of an availability impacting event, it describes the category of a PlatformInitiated health impacting event. Examples are Planned, Unplanned etc. */
+  healthEventCategory?: string;
+  /** It is a unique Id that identifies the event */
+  healthEventId?: string;
+  /** When the resource's availabilityState is Unavailable and the reasonType is not User Initiated, it provides the date and time for when the issue is expected to be resolved. */
+  resolutionETA?: string;
+  /** Timestamp for when last change in health status occurred. */
+  occuredTime?: string;
+  /** Chronicity of the availability transition. */
+  reasonChronicity?: ReasonChronicityTypes;
+  /** Timestamp for when the health was last checked. */
+  reportedTime?: string;
+  /** An annotation describing a change in the availabilityState to Available from Unavailable with a reasonType of type Unplanned */
+  recentlyResolved?: AvailabilityStatusPropertiesRecentlyResolved;
+  /** Lists actions the user can take based on the current availabilityState of the resource. */
+  recommendedActions?: AvailabilityStatusPropertiesRecommendedActionsList;
+  /** Lists the service impacting events that may be affecting the health of the resource. */
+  serviceImpactingEvents?: AvailabilityStatusPropertiesServiceImpactingEventsList;
+}
+export const AvailabilityStatusProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    availabilityState: S.optional(AvailabilityStateValues),
+    title: S.optional(S.String),
+    summary: S.optional(S.String),
+    detailedStatus: S.optional(S.String),
+    reasonType: S.optional(S.String),
+    context: S.optional(S.String),
+    category: S.optional(S.String),
+    articleId: S.optional(S.String),
+    rootCauseAttributionTime: S.optional(S.String),
+    healthEventType: S.optional(S.String),
+    healthEventCause: S.optional(S.String),
+    healthEventCategory: S.optional(S.String),
+    healthEventId: S.optional(S.String),
+    resolutionETA: S.optional(S.String),
+    occuredTime: S.optional(S.String),
+    reasonChronicity: S.optional(ReasonChronicityTypes),
+    reportedTime: S.optional(S.String),
+    recentlyResolved: S.optional(AvailabilityStatusPropertiesRecentlyResolved),
+    recommendedActions: S.optional(
+      AvailabilityStatusPropertiesRecommendedActionsList,
+    ),
+    serviceImpactingEvents: S.optional(
+      AvailabilityStatusPropertiesServiceImpactingEventsList,
+    ),
+  }),
+).annotate({
+  identifier: "AvailabilityStatusProperties",
+}) as any as S.Schema<AvailabilityStatusProperties>;
+
+export interface GetAvailabilityStatusByResourceResponse {
+  /** Azure Resource Manager Identity for the availabilityStatuses resource. */
+  id?: string;
+  name?: string;
+  /** Microsoft.ResourceHealth/AvailabilityStatuses. */
+  type?: string;
+  /** Azure Resource Manager geo location of the resource. */
+  location?: string;
+  /** Properties of availability state. */
+  properties?: AvailabilityStatusProperties;
+}
+export const GetAvailabilityStatusByResourceResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      location: S.optional(S.String),
+      properties: S.optional(AvailabilityStatusProperties),
+    }),
+).annotate({
+  identifier: "GetAvailabilityStatusByResourceResponse",
+}) as any as S.Schema<GetAvailabilityStatusByResourceResponse>;
+
+export interface GetChildAvailabilityStatusByResourceRequest {
+  /** undefined */
+  resourceUri: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const GetChildAvailabilityStatusByResourceRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      resourceUri: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses/current",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetChildAvailabilityStatusByResourceRequest",
+  }) as any as S.Schema<GetChildAvailabilityStatusByResourceRequest>;
+
+export interface GetChildAvailabilityStatusByResourceResponse {
+  /** Azure Resource Manager Identity for the availabilityStatuses resource. */
+  id?: string;
+  name?: string;
+  /** Microsoft.ResourceHealth/AvailabilityStatuses. */
+  type?: string;
+  /** Azure Resource Manager geo location of the resource. */
+  location?: string;
+  /** Properties of availability state. */
+  properties?: AvailabilityStatusProperties;
+}
+export const GetChildAvailabilityStatusByResourceResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      location: S.optional(S.String),
+      properties: S.optional(AvailabilityStatusProperties),
+    }),
+  ).annotate({
+    identifier: "GetChildAvailabilityStatusByResourceResponse",
+  }) as any as S.Schema<GetChildAvailabilityStatusByResourceResponse>;
+
+export type EmergingIssuesGetRequestIssueName = "default";
+export const EmergingIssuesGetRequestIssueName = /*@__PURE__*/ S.String;
+
+export interface GetEmergingIssueRequest {
+  /** The name of the emerging issue. */
+  issueName: EmergingIssuesGetRequestIssueName | (string & {});
+}
+export const GetEmergingIssueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    issueName: EmergingIssuesGetRequestIssueName.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ResourceHealth/emergingIssues/{issueName}",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetEmergingIssueRequest",
+}) as any as S.Schema<GetEmergingIssueRequest>;
+
+/** Banner type of emerging issue. */
+export interface StatusBanner {
+  /** The banner title. */
+  title?: string;
+  /** The details of banner. */
+  message?: string;
+  /** The cloud type of this banner. */
+  cloud?: string;
+  /** The last time modified on this banner. */
+  lastModifiedTime?: string;
+}
+export const StatusBanner = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.optional(S.String),
+    message: S.optional(S.String),
+    cloud: S.optional(S.String),
+    lastModifiedTime: S.optional(S.String),
+  }),
+).annotate({ identifier: "StatusBanner" }) as any as S.Schema<StatusBanner>;
+
+/** The list of emerging issues of banner type. */
+export type EmergingIssueStatusBannersList = Array<StatusBanner>;
+export const EmergingIssueStatusBannersList = /*@__PURE__*/ S.Array(
+  StatusBanner,
+) as any as S.Schema<EmergingIssueStatusBannersList>;
+
+/** The severity level of this active event. */
+export type SeverityValues = "Information" | "Warning" | "Error";
+export const SeverityValues = /*@__PURE__*/ S.String;
+
+/** The stage of this active event. */
+export type StageValues = "Active" | "Resolve" | "Archived";
+export const StageValues = /*@__PURE__*/ S.String;
+
+/** Object of impacted region. */
+export interface ImpactedRegion {
+  /** The impacted region id. */
+  id?: string;
+  /** The impacted region name. */
+  name?: string;
+}
+export const ImpactedRegion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "ImpactedRegion" }) as any as S.Schema<ImpactedRegion>;
+
+/** The list of impacted regions for corresponding emerging issues. */
+export type EmergingIssueImpactRegionsList = Array<ImpactedRegion>;
+export const EmergingIssueImpactRegionsList = /*@__PURE__*/ S.Array(
+  ImpactedRegion,
+) as any as S.Schema<EmergingIssueImpactRegionsList>;
+
+/** Object of the emerging issue impact on services and regions. */
+export interface EmergingIssueImpact {
+  /** The impacted service id. */
+  id?: string;
+  /** The impacted service name. */
+  name?: string;
+  /** The list of impacted regions for corresponding emerging issues. */
+  regions?: EmergingIssueImpactRegionsList;
+}
+export const EmergingIssueImpact = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    regions: S.optional(EmergingIssueImpactRegionsList),
+  }),
+).annotate({
+  identifier: "EmergingIssueImpact",
+}) as any as S.Schema<EmergingIssueImpact>;
+
+/** The list of emerging issues impacts. */
+export type StatusActiveEventImpactsList = Array<EmergingIssueImpact>;
+export const StatusActiveEventImpactsList = /*@__PURE__*/ S.Array(
+  EmergingIssueImpact,
+) as any as S.Schema<StatusActiveEventImpactsList>;
+
+/** Active event type of emerging issue. */
+export interface StatusActiveEvent {
+  /** The active event title. */
+  title?: string;
+  /** The details of active event. */
+  description?: string;
+  /** The tracking id of this active event. */
+  trackingId?: string;
+  /** The impact start time on this active event. */
+  startTime?: string;
+  /** The cloud type of this active event. */
+  cloud?: string;
+  /** The severity level of this active event. */
+  severity?: SeverityValues;
+  /** The stage of this active event. */
+  stage?: StageValues;
+  /** The boolean value of this active event if published or not. */
+  published?: boolean;
+  /** The last time modified on this banner. */
+  lastModifiedTime?: string;
+  /** The list of emerging issues impacts. */
+  impacts?: StatusActiveEventImpactsList;
+}
+export const StatusActiveEvent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    title: S.optional(S.String),
+    description: S.optional(S.String),
+    trackingId: S.optional(S.String),
+    startTime: S.optional(S.String),
+    cloud: S.optional(S.String),
+    severity: S.optional(SeverityValues),
+    stage: S.optional(StageValues),
+    published: S.optional(S.Boolean),
+    lastModifiedTime: S.optional(S.String),
+    impacts: S.optional(StatusActiveEventImpactsList),
+  }),
+).annotate({
+  identifier: "StatusActiveEvent",
+}) as any as S.Schema<StatusActiveEvent>;
+
+/** The list of emerging issues of active event type. */
+export type EmergingIssueStatusActiveEventsList = Array<StatusActiveEvent>;
+export const EmergingIssueStatusActiveEventsList = /*@__PURE__*/ S.Array(
+  StatusActiveEvent,
+) as any as S.Schema<EmergingIssueStatusActiveEventsList>;
+
+/** On-going emerging issue from azure status. */
+export interface EmergingIssue {
+  /** Timestamp for when last time refreshed for ongoing emerging issue. */
+  refreshTimestamp?: string;
+  /** The list of emerging issues of banner type. */
+  statusBanners?: EmergingIssueStatusBannersList;
+  /** The list of emerging issues of active event type. */
+  statusActiveEvents?: EmergingIssueStatusActiveEventsList;
+}
+export const EmergingIssue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    refreshTimestamp: S.optional(S.String),
+    statusBanners: S.optional(EmergingIssueStatusBannersList),
+    statusActiveEvents: S.optional(EmergingIssueStatusActiveEventsList),
+  }),
+).annotate({ identifier: "EmergingIssue" }) as any as S.Schema<EmergingIssue>;
+
+export interface GetEmergingIssueResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The emerging issue entity properties. */
+  properties?: EmergingIssue;
+}
+export const GetEmergingIssueResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EmergingIssue),
+  }),
+).annotate({
+  identifier: "GetEmergingIssueResponse",
+}) as any as S.Schema<GetEmergingIssueResponse>;
+
+export interface GetEventBySubscriptionIdAndTrackingIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Event Id which uniquely identifies ServiceHealth event. */
@@ -1352,7 +1114,7 @@ export interface EventGetBySubscriptionIdAndTrackingIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-export const EventGetBySubscriptionIdAndTrackingIdRequest =
+export const GetEventBySubscriptionIdAndTrackingIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -1368,10 +1130,10 @@ export const EventGetBySubscriptionIdAndTrackingIdRequest =
       }),
     ),
   ).annotate({
-    identifier: "EventGetBySubscriptionIdAndTrackingIdRequest",
-  }) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdRequest>;
+    identifier: "GetEventBySubscriptionIdAndTrackingIdRequest",
+  }) as any as S.Schema<GetEventBySubscriptionIdAndTrackingIdRequest>;
 
-export interface EventGetBySubscriptionIdAndTrackingIdResponse {
+export interface GetEventBySubscriptionIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1383,7 +1145,7 @@ export interface EventGetBySubscriptionIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventGetBySubscriptionIdAndTrackingIdResponse =
+export const GetEventBySubscriptionIdAndTrackingIdResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -1393,10 +1155,10 @@ export const EventGetBySubscriptionIdAndTrackingIdResponse =
       properties: S.optional(EventProperties),
     }),
   ).annotate({
-    identifier: "EventGetBySubscriptionIdAndTrackingIdResponse",
-  }) as any as S.Schema<EventGetBySubscriptionIdAndTrackingIdResponse>;
+    identifier: "GetEventBySubscriptionIdAndTrackingIdResponse",
+  }) as any as S.Schema<GetEventBySubscriptionIdAndTrackingIdResponse>;
 
-export interface EventGetByTenantIdAndTrackingIdRequest {
+export interface GetEventByTenantIdAndTrackingIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
@@ -1404,7 +1166,7 @@ export interface EventGetByTenantIdAndTrackingIdRequest {
   /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
   queryStartTime?: string;
 }
-export const EventGetByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(
+export const GetEventByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       eventTrackingId: S.String.pipe(T.Label()),
@@ -1419,10 +1181,10 @@ export const EventGetByTenantIdAndTrackingIdRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "EventGetByTenantIdAndTrackingIdRequest",
-}) as any as S.Schema<EventGetByTenantIdAndTrackingIdRequest>;
+  identifier: "GetEventByTenantIdAndTrackingIdRequest",
+}) as any as S.Schema<GetEventByTenantIdAndTrackingIdRequest>;
 
-export interface EventGetByTenantIdAndTrackingIdResponse {
+export interface GetEventByTenantIdAndTrackingIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1434,7 +1196,7 @@ export interface EventGetByTenantIdAndTrackingIdResponse {
   /** Properties of event. */
   properties?: EventProperties;
 }
-export const EventGetByTenantIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(
+export const GetEventByTenantIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -1444,122 +1206,10 @@ export const EventGetByTenantIdAndTrackingIdResponse = /*@__PURE__*/ S.suspend(
       properties: S.optional(EventProperties),
     }),
 ).annotate({
-  identifier: "EventGetByTenantIdAndTrackingIdResponse",
-}) as any as S.Schema<EventGetByTenantIdAndTrackingIdResponse>;
+  identifier: "GetEventByTenantIdAndTrackingIdResponse",
+}) as any as S.Schema<GetEventByTenantIdAndTrackingIdResponse>;
 
-export interface EventsListBySingleResourceRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  resourceUri: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-}
-export const EventsListBySingleResourceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceUri: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/events",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "EventsListBySingleResourceRequest",
-}) as any as S.Schema<EventsListBySingleResourceRequest>;
-
-/** Service health event */
-export interface Event {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of event. */
-  properties?: EventProperties;
-}
-export const Event = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventProperties),
-  }),
-).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
-
-/** The Event items on this page */
-export type EventsValueList = Array<Event>;
-export const EventsValueList = /*@__PURE__*/ S.Array(
-  Event,
-) as any as S.Schema<EventsValueList>;
-
-/** The List events operation response. */
-export interface Events {
-  /** The Event items on this page */
-  value: EventsValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const Events = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: EventsValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
-
-export interface EventsListBySubscriptionIdRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
-  queryStartTime?: string;
-}
-export const EventsListBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    queryStartTime: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "EventsListBySubscriptionIdRequest",
-}) as any as S.Schema<EventsListBySubscriptionIdRequest>;
-
-export interface EventsListByTenantIdRequest {
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-  /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
-  queryStartTime?: string;
-}
-export const EventsListByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    queryStartTime: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ResourceHealth/events",
-      code: 200,
-      apiVersion: "2025-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "EventsListByTenantIdRequest",
-}) as any as S.Schema<EventsListByTenantIdRequest>;
-
-export interface ImpactedResourcesGetRequest {
+export interface GetImpactedResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Event Id which uniquely identifies ServiceHealth event. */
@@ -1567,7 +1217,7 @@ export interface ImpactedResourcesGetRequest {
   /** Name of the Impacted Resource. */
   impactedResourceName: string;
 }
-export const ImpactedResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetImpactedResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     eventTrackingId: S.String.pipe(T.Label()),
@@ -1581,8 +1231,8 @@ export const ImpactedResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ImpactedResourcesGetRequest",
-}) as any as S.Schema<ImpactedResourcesGetRequest>;
+  identifier: "GetImpactedResourceRequest",
+}) as any as S.Schema<GetImpactedResourceRequest>;
 
 /** Key value tuple. */
 export interface KeyValueItem {
@@ -1626,7 +1276,7 @@ export const EventImpactedResourceProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "EventImpactedResourceProperties",
 }) as any as S.Schema<EventImpactedResourceProperties>;
 
-export interface ImpactedResourcesGetResponse {
+export interface GetImpactedResourceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1638,7 +1288,7 @@ export interface ImpactedResourcesGetResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-export const ImpactedResourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetImpactedResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1647,16 +1297,16 @@ export const ImpactedResourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(EventImpactedResourceProperties),
   }),
 ).annotate({
-  identifier: "ImpactedResourcesGetResponse",
-}) as any as S.Schema<ImpactedResourcesGetResponse>;
+  identifier: "GetImpactedResourceResponse",
+}) as any as S.Schema<GetImpactedResourceResponse>;
 
-export interface ImpactedResourcesGetByTenantIdRequest {
+export interface GetImpactedResourceByTenantIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** Name of the Impacted Resource. */
   impactedResourceName: string;
 }
-export const ImpactedResourcesGetByTenantIdRequest = /*@__PURE__*/ S.suspend(
+export const GetImpactedResourceByTenantIdRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       eventTrackingId: S.String.pipe(T.Label()),
@@ -1670,10 +1320,10 @@ export const ImpactedResourcesGetByTenantIdRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ImpactedResourcesGetByTenantIdRequest",
-}) as any as S.Schema<ImpactedResourcesGetByTenantIdRequest>;
+  identifier: "GetImpactedResourceByTenantIdRequest",
+}) as any as S.Schema<GetImpactedResourceByTenantIdRequest>;
 
-export interface ImpactedResourcesGetByTenantIdResponse {
+export interface GetImpactedResourceByTenantIdResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1685,7 +1335,7 @@ export interface ImpactedResourcesGetByTenantIdResponse {
   /** Properties of impacted resource. */
   properties?: EventImpactedResourceProperties;
 }
-export const ImpactedResourcesGetByTenantIdResponse = /*@__PURE__*/ S.suspend(
+export const GetImpactedResourceByTenantIdResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -1695,111 +1345,14 @@ export const ImpactedResourcesGetByTenantIdResponse = /*@__PURE__*/ S.suspend(
       properties: S.optional(EventImpactedResourceProperties),
     }),
 ).annotate({
-  identifier: "ImpactedResourcesGetByTenantIdResponse",
-}) as any as S.Schema<ImpactedResourcesGetByTenantIdResponse>;
+  identifier: "GetImpactedResourceByTenantIdResponse",
+}) as any as S.Schema<GetImpactedResourceByTenantIdResponse>;
 
-export interface ImpactedResourcesListBySubscriptionIdAndEventIdRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** Event Id which uniquely identifies ServiceHealth event. */
-  eventTrackingId: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-}
-export const ImpactedResourcesListBySubscriptionIdAndEventIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      eventTrackingId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImpactedResourcesListBySubscriptionIdAndEventIdRequest",
-  }) as any as S.Schema<ImpactedResourcesListBySubscriptionIdAndEventIdRequest>;
-
-/** Impacted resource for an event. */
-export interface EventImpactedResource {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of impacted resource. */
-  properties?: EventImpactedResourceProperties;
-}
-export const EventImpactedResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventImpactedResourceProperties),
-  }),
-).annotate({
-  identifier: "EventImpactedResource",
-}) as any as S.Schema<EventImpactedResource>;
-
-/** The list of eventImpactedResources. */
-export type EventImpactedResourceListResultValueList =
-  Array<EventImpactedResource>;
-export const EventImpactedResourceListResultValueList = /*@__PURE__*/ S.Array(
-  EventImpactedResource,
-) as any as S.Schema<EventImpactedResourceListResultValueList>;
-
-/** The List of eventImpactedResources operation response. */
-export interface EventImpactedResourceListResult {
-  /** The list of eventImpactedResources. */
-  value: EventImpactedResourceListResultValueList;
-  /** The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource. */
-  nextLink?: string;
-}
-export const EventImpactedResourceListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: EventImpactedResourceListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventImpactedResourceListResult",
-}) as any as S.Schema<EventImpactedResourceListResult>;
-
-export interface ImpactedResourcesListByTenantIdAndEventIdRequest {
-  /** Event Id which uniquely identifies ServiceHealth event. */
-  eventTrackingId: string;
-  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
-  _filter?: string;
-}
-export const ImpactedResourcesListByTenantIdAndEventIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      eventTrackingId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
-        code: 200,
-        apiVersion: "2025-05-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ImpactedResourcesListByTenantIdAndEventIdRequest",
-  }) as any as S.Schema<ImpactedResourcesListByTenantIdAndEventIdRequest>;
-
-export interface MetadataGetEntityRequest {
+export interface GetMetadataEntityRequest {
   /** Name of metadata entity. */
   name: string;
 }
-export const MetadataGetEntityRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetMetadataEntityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String.pipe(T.Label()),
   }).pipe(
@@ -1811,8 +1364,8 @@ export const MetadataGetEntityRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MetadataGetEntityRequest",
-}) as any as S.Schema<MetadataGetEntityRequest>;
+  identifier: "GetMetadataEntityRequest",
+}) as any as S.Schema<GetMetadataEntityRequest>;
 
 /** The list of keys on which this entity depends on. */
 export type MetadataEntityPropertiesDependsOnList = Array<string>;
@@ -1897,7 +1450,7 @@ export const MetadataEntityProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataEntityProperties",
 }) as any as S.Schema<MetadataEntityProperties>;
 
-export interface MetadataGetEntityResponse {
+export interface GetMetadataEntityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1909,7 +1462,7 @@ export interface MetadataGetEntityResponse {
   /** The metadata entity properties. */
   properties?: MetadataEntityProperties;
 }
-export const MetadataGetEntityResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetMetadataEntityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1918,11 +1471,458 @@ export const MetadataGetEntityResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(MetadataEntityProperties),
   }),
 ).annotate({
-  identifier: "MetadataGetEntityResponse",
-}) as any as S.Schema<MetadataGetEntityResponse>;
+  identifier: "GetMetadataEntityResponse",
+}) as any as S.Schema<GetMetadataEntityResponse>;
 
-export interface MetadataListRequest {}
-export const MetadataListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListAvailabilityStatusByResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const ListAvailabilityStatusByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAvailabilityStatusByResourceGroupRequest",
+  }) as any as S.Schema<ListAvailabilityStatusByResourceGroupRequest>;
+
+/** availabilityStatus of a resource. */
+export interface AvailabilityStatus {
+  /** Azure Resource Manager Identity for the availabilityStatuses resource. */
+  id?: string;
+  name?: string;
+  /** Microsoft.ResourceHealth/AvailabilityStatuses. */
+  type?: string;
+  /** Azure Resource Manager geo location of the resource. */
+  location?: string;
+  /** Properties of availability state. */
+  properties?: AvailabilityStatusProperties;
+}
+export const AvailabilityStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    location: S.optional(S.String),
+    properties: S.optional(AvailabilityStatusProperties),
+  }),
+).annotate({
+  identifier: "AvailabilityStatus",
+}) as any as S.Schema<AvailabilityStatus>;
+
+/** The list of availabilityStatuses. */
+export type AvailabilityStatusListResultValueList = Array<AvailabilityStatus>;
+export const AvailabilityStatusListResultValueList = /*@__PURE__*/ S.Array(
+  AvailabilityStatus,
+) as any as S.Schema<AvailabilityStatusListResultValueList>;
+
+/** The List availabilityStatus operation response. */
+export interface AvailabilityStatusListResult {
+  /** The list of availabilityStatuses. */
+  value: AvailabilityStatusListResultValueList;
+  /** The URI to fetch the next page of availabilityStatuses. Call ListNext() with this URI to fetch the next page of availabilityStatuses. */
+  nextLink?: string;
+}
+export const AvailabilityStatusListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AvailabilityStatusListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AvailabilityStatusListResult",
+}) as any as S.Schema<AvailabilityStatusListResult>;
+
+export interface ListAvailabilityStatusBySubscriptionIdRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const ListAvailabilityStatusBySubscriptionIdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListAvailabilityStatusBySubscriptionIdRequest",
+  }) as any as S.Schema<ListAvailabilityStatusBySubscriptionIdRequest>;
+
+export interface ListAvailabilityStatusesRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  resourceUri: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const ListAvailabilityStatusesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/availabilityStatuses",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAvailabilityStatusesRequest",
+}) as any as S.Schema<ListAvailabilityStatusesRequest>;
+
+export interface ListChildAvailabilityStatusesRequest {
+  /** undefined */
+  resourceUri: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const ListChildAvailabilityStatusesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      resourceUri: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+      _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/childAvailabilityStatuses",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListChildAvailabilityStatusesRequest",
+}) as any as S.Schema<ListChildAvailabilityStatusesRequest>;
+
+export interface ListChildResourcesRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  resourceUri: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Setting $expand=recommendedactions in url query expands the recommendedactions in the response. */
+  _expand?: string;
+}
+export const ListChildResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _expand: S.optional(S.String.pipe(T.Query("$expand"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/childResources",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListChildResourcesRequest",
+}) as any as S.Schema<ListChildResourcesRequest>;
+
+export interface ListEmergingIssuesRequest {}
+export const ListEmergingIssuesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ResourceHealth/emergingIssues",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEmergingIssuesRequest",
+}) as any as S.Schema<ListEmergingIssuesRequest>;
+
+/** The Get EmergingIssues operation response. */
+export interface GetEmergingIssueResult {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The emerging issue entity properties. */
+  properties?: EmergingIssue;
+}
+export const GetEmergingIssueResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EmergingIssue),
+  }),
+).annotate({
+  identifier: "GetEmergingIssueResult",
+}) as any as S.Schema<GetEmergingIssueResult>;
+
+/** The list of emerging issues. */
+export type EmergingIssueListResultValueList = Array<GetEmergingIssueResult>;
+export const EmergingIssueListResultValueList = /*@__PURE__*/ S.Array(
+  GetEmergingIssueResult,
+) as any as S.Schema<EmergingIssueListResultValueList>;
+
+/** The list of emerging issues. */
+export interface EmergingIssueListResult {
+  /** The list of emerging issues. */
+  value?: EmergingIssueListResultValueList;
+  /** The link used to get the next page of emerging issues. */
+  nextLink?: string;
+}
+export const EmergingIssueListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(EmergingIssueListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EmergingIssueListResult",
+}) as any as S.Schema<EmergingIssueListResult>;
+
+export interface ListEventBySingleResourceRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  resourceUri: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+}
+export const ListEventBySingleResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceUri: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceUri}/providers/Microsoft.ResourceHealth/events",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventBySingleResourceRequest",
+}) as any as S.Schema<ListEventBySingleResourceRequest>;
+
+/** Service health event */
+export interface Event {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of event. */
+  properties?: EventProperties;
+}
+export const Event = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EventProperties),
+  }),
+).annotate({ identifier: "Event" }) as any as S.Schema<Event>;
+
+/** The Event items on this page */
+export type EventsValueList = Array<Event>;
+export const EventsValueList = /*@__PURE__*/ S.Array(
+  Event,
+) as any as S.Schema<EventsValueList>;
+
+/** The List events operation response. */
+export interface Events {
+  /** The Event items on this page */
+  value: EventsValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const Events = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: EventsValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
+
+export interface ListEventBySubscriptionIdRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
+  queryStartTime?: string;
+}
+export const ListEventBySubscriptionIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    queryStartTime: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventBySubscriptionIdRequest",
+}) as any as S.Schema<ListEventBySubscriptionIdRequest>;
+
+export interface ListEventByTenantIdRequest {
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+  /** Specifies from when to return events (default is 3 days), based on the lastUpdateTime property. For example, queryStartTime = 7/24/2020 OR queryStartTime=7%2F24%2F2020 */
+  queryStartTime?: string;
+}
+export const ListEventByTenantIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    queryStartTime: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ResourceHealth/events",
+      code: 200,
+      apiVersion: "2025-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventByTenantIdRequest",
+}) as any as S.Schema<ListEventByTenantIdRequest>;
+
+export interface ListImpactedResourceBySubscriptionIdAndEventIdRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** Event Id which uniquely identifies ServiceHealth event. */
+  eventTrackingId: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+}
+export const ListImpactedResourceBySubscriptionIdAndEventIdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      eventTrackingId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListImpactedResourceBySubscriptionIdAndEventIdRequest",
+  }) as any as S.Schema<ListImpactedResourceBySubscriptionIdAndEventIdRequest>;
+
+/** Impacted resource for an event. */
+export interface EventImpactedResource {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of impacted resource. */
+  properties?: EventImpactedResourceProperties;
+}
+export const EventImpactedResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EventImpactedResourceProperties),
+  }),
+).annotate({
+  identifier: "EventImpactedResource",
+}) as any as S.Schema<EventImpactedResource>;
+
+/** The list of eventImpactedResources. */
+export type EventImpactedResourceListResultValueList =
+  Array<EventImpactedResource>;
+export const EventImpactedResourceListResultValueList = /*@__PURE__*/ S.Array(
+  EventImpactedResource,
+) as any as S.Schema<EventImpactedResourceListResultValueList>;
+
+/** The List of eventImpactedResources operation response. */
+export interface EventImpactedResourceListResult {
+  /** The list of eventImpactedResources. */
+  value: EventImpactedResourceListResultValueList;
+  /** The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource. */
+  nextLink?: string;
+}
+export const EventImpactedResourceListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: EventImpactedResourceListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventImpactedResourceListResult",
+}) as any as S.Schema<EventImpactedResourceListResult>;
+
+export interface ListImpactedResourceByTenantIdAndEventIdRequest {
+  /** Event Id which uniquely identifies ServiceHealth event. */
+  eventTrackingId: string;
+  /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
+  _filter?: string;
+}
+export const ListImpactedResourceByTenantIdAndEventIdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      eventTrackingId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.ResourceHealth/events/{eventTrackingId}/impactedResources",
+        code: 200,
+        apiVersion: "2025-05-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListImpactedResourceByTenantIdAndEventIdRequest",
+  }) as any as S.Schema<ListImpactedResourceByTenantIdAndEventIdRequest>;
+
+export interface ListMetadataRequest {}
+export const ListMetadataRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1932,8 +1932,8 @@ export const MetadataListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MetadataListRequest",
-}) as any as S.Schema<MetadataListRequest>;
+  identifier: "ListMetadataRequest",
+}) as any as S.Schema<ListMetadataRequest>;
 
 /** The metadata entity contract. */
 export interface MetadataEntity {
@@ -1980,8 +1980,8 @@ export const MetadataEntityListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "MetadataEntityListResult",
 }) as any as S.Schema<MetadataEntityListResult>;
 
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1991,8 +1991,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** Properties of the operation. */
 export interface OperationDisplay {
@@ -2049,7 +2049,7 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
-export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest {
+export interface ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Event Id which uniquely identifies ServiceHealth event. */
@@ -2057,7 +2057,7 @@ export interface SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest =
+export const ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -2073,16 +2073,16 @@ export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequ
     ),
   ).annotate({
     identifier:
-      "SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest",
-  }) as any as S.Schema<SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest>;
+      "ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdRequest",
+  }) as any as S.Schema<ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdRequest>;
 
-export interface SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest {
+export interface ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdRequest {
   /** Event Id which uniquely identifies ServiceHealth event. */
   eventTrackingId: string;
   /** The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN */
   _filter?: string;
 }
-export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest =
+export const ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       eventTrackingId: S.String.pipe(T.Label()),
@@ -2097,143 +2097,8 @@ export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest =
     ),
   ).annotate({
     identifier:
-      "SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest",
-  }) as any as S.Schema<SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest>;
-
-export type AvailabilityStatusesGetByResourceError = AzureOpError;
-/** Gets current availability status for a single resource */
-export const AvailabilityStatusesGetByResource: API.OperationMethod<
-  AvailabilityStatusesGetByResourceRequest,
-  AvailabilityStatusesGetByResourceResponse,
-  AvailabilityStatusesGetByResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AvailabilityStatusesGetByResourceRequest,
-  output: AvailabilityStatusesGetByResourceResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AvailabilityStatusesListError = AzureOpError;
-/** Lists all historical availability transitions and impacting events for a single resource. */
-export const AvailabilityStatusesList: API.OperationMethod<
-  AvailabilityStatusesListRequest,
-  AvailabilityStatusListResult,
-  AvailabilityStatusesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AvailabilityStatusesListRequest,
-  output: AvailabilityStatusListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AvailabilityStatusesListByResourceGroupError = AzureOpError;
-/** Lists the current availability status for all the resources in the resource group. */
-export const AvailabilityStatusesListByResourceGroup: API.OperationMethod<
-  AvailabilityStatusesListByResourceGroupRequest,
-  AvailabilityStatusListResult,
-  AvailabilityStatusesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AvailabilityStatusesListByResourceGroupRequest,
-  output: AvailabilityStatusListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AvailabilityStatusesListBySubscriptionIdError = AzureOpError;
-/** Lists the current availability status for all the resources in the subscription. */
-export const AvailabilityStatusesListBySubscriptionId: API.OperationMethod<
-  AvailabilityStatusesListBySubscriptionIdRequest,
-  AvailabilityStatusListResult,
-  AvailabilityStatusesListBySubscriptionIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AvailabilityStatusesListBySubscriptionIdRequest,
-  output: AvailabilityStatusListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChildAvailabilityStatusesGetByResourceError = AzureOpError;
-/** Gets current availability status for a single resource */
-export const ChildAvailabilityStatusesGetByResource: API.OperationMethod<
-  ChildAvailabilityStatusesGetByResourceRequest,
-  ChildAvailabilityStatusesGetByResourceResponse,
-  ChildAvailabilityStatusesGetByResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChildAvailabilityStatusesGetByResourceRequest,
-  output: ChildAvailabilityStatusesGetByResourceResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChildAvailabilityStatusesListError = AzureOpError;
-/** Lists the historical availability statuses for a single child resource. Use the nextLink property in the response to get the next page of availability status */
-export const ChildAvailabilityStatusesList: API.OperationMethod<
-  ChildAvailabilityStatusesListRequest,
-  AvailabilityStatusListResult,
-  ChildAvailabilityStatusesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChildAvailabilityStatusesListRequest,
-  output: AvailabilityStatusListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChildResourcesListError = AzureOpError;
-/** Lists the all the children and its current health status for a parent resource. Use the nextLink property in the response to get the next page of children current health */
-export const ChildResourcesList: API.OperationMethod<
-  ChildResourcesListRequest,
-  AvailabilityStatusListResult,
-  ChildResourcesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChildResourcesListRequest,
-  output: AvailabilityStatusListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EmergingIssuesGetError = AzureOpError;
-/** Gets Azure services' emerging issues. */
-export const EmergingIssuesGet: API.OperationMethod<
-  EmergingIssuesGetRequest,
-  EmergingIssuesGetResponse,
-  EmergingIssuesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EmergingIssuesGetRequest,
-  output: EmergingIssuesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EmergingIssuesListError = AzureOpError;
-/** Lists Azure services' emerging issues. */
-export const EmergingIssuesList: API.OperationMethod<
-  EmergingIssuesListRequest,
-  EmergingIssueListResult,
-  EmergingIssuesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EmergingIssuesListRequest,
-  output: EmergingIssueListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+      "ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdRequest",
+  }) as any as S.Schema<ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdRequest>;
 
 export type EventFetchBilllingCommunicationDetailsBySubscriptionIdAndTrackingIdError =
   AzureOpError;
@@ -2283,212 +2148,347 @@ export const EventFetchDetailsByTenantIdAndTrackingId: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type EventGetBySubscriptionIdAndTrackingIdError = AzureOpError;
+export type GetAvailabilityStatusByResourceError = AzureOpError;
+/** Gets current availability status for a single resource */
+export const GetAvailabilityStatusByResource: API.OperationMethod<
+  GetAvailabilityStatusByResourceRequest,
+  GetAvailabilityStatusByResourceResponse,
+  GetAvailabilityStatusByResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAvailabilityStatusByResourceRequest,
+  output: GetAvailabilityStatusByResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetChildAvailabilityStatusByResourceError = AzureOpError;
+/** Gets current availability status for a single resource */
+export const GetChildAvailabilityStatusByResource: API.OperationMethod<
+  GetChildAvailabilityStatusByResourceRequest,
+  GetChildAvailabilityStatusByResourceResponse,
+  GetChildAvailabilityStatusByResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetChildAvailabilityStatusByResourceRequest,
+  output: GetChildAvailabilityStatusByResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEmergingIssueError = AzureOpError;
+/** Gets Azure services' emerging issues. */
+export const GetEmergingIssue: API.OperationMethod<
+  GetEmergingIssueRequest,
+  GetEmergingIssueResponse,
+  GetEmergingIssueError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEmergingIssueRequest,
+  output: GetEmergingIssueResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEventBySubscriptionIdAndTrackingIdError = AzureOpError;
 /** Service health event in the subscription by event tracking id */
-export const EventGetBySubscriptionIdAndTrackingId: API.OperationMethod<
-  EventGetBySubscriptionIdAndTrackingIdRequest,
-  EventGetBySubscriptionIdAndTrackingIdResponse,
-  EventGetBySubscriptionIdAndTrackingIdError,
+export const GetEventBySubscriptionIdAndTrackingId: API.OperationMethod<
+  GetEventBySubscriptionIdAndTrackingIdRequest,
+  GetEventBySubscriptionIdAndTrackingIdResponse,
+  GetEventBySubscriptionIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventGetBySubscriptionIdAndTrackingIdRequest,
-  output: EventGetBySubscriptionIdAndTrackingIdResponse,
+  input: GetEventBySubscriptionIdAndTrackingIdRequest,
+  output: GetEventBySubscriptionIdAndTrackingIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EventGetByTenantIdAndTrackingIdError = AzureOpError;
+export type GetEventByTenantIdAndTrackingIdError = AzureOpError;
 /** Service health event in the tenant by event tracking id */
-export const EventGetByTenantIdAndTrackingId: API.OperationMethod<
-  EventGetByTenantIdAndTrackingIdRequest,
-  EventGetByTenantIdAndTrackingIdResponse,
-  EventGetByTenantIdAndTrackingIdError,
+export const GetEventByTenantIdAndTrackingId: API.OperationMethod<
+  GetEventByTenantIdAndTrackingIdRequest,
+  GetEventByTenantIdAndTrackingIdResponse,
+  GetEventByTenantIdAndTrackingIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventGetByTenantIdAndTrackingIdRequest,
-  output: EventGetByTenantIdAndTrackingIdResponse,
+  input: GetEventByTenantIdAndTrackingIdRequest,
+  output: GetEventByTenantIdAndTrackingIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EventsListBySingleResourceError = AzureOpError;
-/** Lists current service health events for given resource. */
-export const EventsListBySingleResource: API.OperationMethod<
-  EventsListBySingleResourceRequest,
-  Events,
-  EventsListBySingleResourceError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EventsListBySingleResourceRequest,
-  output: Events,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EventsListBySubscriptionIdError = AzureOpError;
-/** Lists service health events in the subscription. */
-export const EventsListBySubscriptionId: API.OperationMethod<
-  EventsListBySubscriptionIdRequest,
-  Events,
-  EventsListBySubscriptionIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EventsListBySubscriptionIdRequest,
-  output: Events,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type EventsListByTenantIdError = AzureOpError;
-/** Lists current service health events in the tenant. */
-export const EventsListByTenantId: API.OperationMethod<
-  EventsListByTenantIdRequest,
-  Events,
-  EventsListByTenantIdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EventsListByTenantIdRequest,
-  output: Events,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ImpactedResourcesGetError = AzureOpError;
+export type GetImpactedResourceError = AzureOpError;
 /** Gets the specific impacted resource in the subscription by an event. */
-export const ImpactedResourcesGet: API.OperationMethod<
-  ImpactedResourcesGetRequest,
-  ImpactedResourcesGetResponse,
-  ImpactedResourcesGetError,
+export const GetImpactedResource: API.OperationMethod<
+  GetImpactedResourceRequest,
+  GetImpactedResourceResponse,
+  GetImpactedResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImpactedResourcesGetRequest,
-  output: ImpactedResourcesGetResponse,
+  input: GetImpactedResourceRequest,
+  output: GetImpactedResourceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ImpactedResourcesGetByTenantIdError = AzureOpError;
+export type GetImpactedResourceByTenantIdError = AzureOpError;
 /** Gets the specific impacted resource in the tenant by an event. */
-export const ImpactedResourcesGetByTenantId: API.OperationMethod<
-  ImpactedResourcesGetByTenantIdRequest,
-  ImpactedResourcesGetByTenantIdResponse,
-  ImpactedResourcesGetByTenantIdError,
+export const GetImpactedResourceByTenantId: API.OperationMethod<
+  GetImpactedResourceByTenantIdRequest,
+  GetImpactedResourceByTenantIdResponse,
+  GetImpactedResourceByTenantIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImpactedResourcesGetByTenantIdRequest,
-  output: ImpactedResourcesGetByTenantIdResponse,
+  input: GetImpactedResourceByTenantIdRequest,
+  output: GetImpactedResourceByTenantIdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ImpactedResourcesListBySubscriptionIdAndEventIdError = AzureOpError;
+export type GetMetadataEntityError = AzureOpError;
+/** Gets the list of metadata entities. */
+export const GetMetadataEntity: API.OperationMethod<
+  GetMetadataEntityRequest,
+  GetMetadataEntityResponse,
+  GetMetadataEntityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMetadataEntityRequest,
+  output: GetMetadataEntityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAvailabilityStatusByResourceGroupError = AzureOpError;
+/** Lists the current availability status for all the resources in the resource group. */
+export const ListAvailabilityStatusByResourceGroup: API.OperationMethod<
+  ListAvailabilityStatusByResourceGroupRequest,
+  AvailabilityStatusListResult,
+  ListAvailabilityStatusByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAvailabilityStatusByResourceGroupRequest,
+  output: AvailabilityStatusListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAvailabilityStatusBySubscriptionIdError = AzureOpError;
+/** Lists the current availability status for all the resources in the subscription. */
+export const ListAvailabilityStatusBySubscriptionId: API.OperationMethod<
+  ListAvailabilityStatusBySubscriptionIdRequest,
+  AvailabilityStatusListResult,
+  ListAvailabilityStatusBySubscriptionIdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAvailabilityStatusBySubscriptionIdRequest,
+  output: AvailabilityStatusListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAvailabilityStatusesError = AzureOpError;
+/** Lists all historical availability transitions and impacting events for a single resource. */
+export const ListAvailabilityStatuses: API.OperationMethod<
+  ListAvailabilityStatusesRequest,
+  AvailabilityStatusListResult,
+  ListAvailabilityStatusesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAvailabilityStatusesRequest,
+  output: AvailabilityStatusListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListChildAvailabilityStatusesError = AzureOpError;
+/** Lists the historical availability statuses for a single child resource. Use the nextLink property in the response to get the next page of availability status */
+export const ListChildAvailabilityStatuses: API.OperationMethod<
+  ListChildAvailabilityStatusesRequest,
+  AvailabilityStatusListResult,
+  ListChildAvailabilityStatusesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChildAvailabilityStatusesRequest,
+  output: AvailabilityStatusListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListChildResourcesError = AzureOpError;
+/** Lists the all the children and its current health status for a parent resource. Use the nextLink property in the response to get the next page of children current health */
+export const ListChildResources: API.OperationMethod<
+  ListChildResourcesRequest,
+  AvailabilityStatusListResult,
+  ListChildResourcesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChildResourcesRequest,
+  output: AvailabilityStatusListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEmergingIssuesError = AzureOpError;
+/** Lists Azure services' emerging issues. */
+export const ListEmergingIssues: API.OperationMethod<
+  ListEmergingIssuesRequest,
+  EmergingIssueListResult,
+  ListEmergingIssuesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEmergingIssuesRequest,
+  output: EmergingIssueListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEventBySingleResourceError = AzureOpError;
+/** Lists current service health events for given resource. */
+export const ListEventBySingleResource: API.OperationMethod<
+  ListEventBySingleResourceRequest,
+  Events,
+  ListEventBySingleResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEventBySingleResourceRequest,
+  output: Events,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEventBySubscriptionIdError = AzureOpError;
+/** Lists service health events in the subscription. */
+export const ListEventBySubscriptionId: API.OperationMethod<
+  ListEventBySubscriptionIdRequest,
+  Events,
+  ListEventBySubscriptionIdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEventBySubscriptionIdRequest,
+  output: Events,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEventByTenantIdError = AzureOpError;
+/** Lists current service health events in the tenant. */
+export const ListEventByTenantId: API.OperationMethod<
+  ListEventByTenantIdRequest,
+  Events,
+  ListEventByTenantIdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEventByTenantIdRequest,
+  output: Events,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListImpactedResourceBySubscriptionIdAndEventIdError = AzureOpError;
 /** Lists impacted resources in the subscription by an event. */
-export const ImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMethod<
-  ImpactedResourcesListBySubscriptionIdAndEventIdRequest,
+export const ListImpactedResourceBySubscriptionIdAndEventId: API.OperationMethod<
+  ListImpactedResourceBySubscriptionIdAndEventIdRequest,
   EventImpactedResourceListResult,
-  ImpactedResourcesListBySubscriptionIdAndEventIdError,
+  ListImpactedResourceBySubscriptionIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImpactedResourcesListBySubscriptionIdAndEventIdRequest,
+  input: ListImpactedResourceBySubscriptionIdAndEventIdRequest,
   output: EventImpactedResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ImpactedResourcesListByTenantIdAndEventIdError = AzureOpError;
+export type ListImpactedResourceByTenantIdAndEventIdError = AzureOpError;
 /** Lists impacted resources in the tenant by an event. */
-export const ImpactedResourcesListByTenantIdAndEventId: API.OperationMethod<
-  ImpactedResourcesListByTenantIdAndEventIdRequest,
+export const ListImpactedResourceByTenantIdAndEventId: API.OperationMethod<
+  ListImpactedResourceByTenantIdAndEventIdRequest,
   EventImpactedResourceListResult,
-  ImpactedResourcesListByTenantIdAndEventIdError,
+  ListImpactedResourceByTenantIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImpactedResourcesListByTenantIdAndEventIdRequest,
+  input: ListImpactedResourceByTenantIdAndEventIdRequest,
   output: EventImpactedResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type MetadataGetEntityError = AzureOpError;
+export type ListMetadataError = AzureOpError;
 /** Gets the list of metadata entities. */
-export const MetadataGetEntity: API.OperationMethod<
-  MetadataGetEntityRequest,
-  MetadataGetEntityResponse,
-  MetadataGetEntityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MetadataGetEntityRequest,
-  output: MetadataGetEntityResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MetadataListError = AzureOpError;
-/** Gets the list of metadata entities. */
-export const MetadataList: API.OperationMethod<
-  MetadataListRequest,
+export const ListMetadata: API.OperationMethod<
+  ListMetadataRequest,
   MetadataEntityListResult,
-  MetadataListError,
+  ListMetadataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetadataListRequest,
+  input: ListMetadataRequest,
   output: MetadataEntityListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** Lists available operations for the resourcehealth resource provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationListResult,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdError =
+export type ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdError =
   AzureOpError;
 /** Lists impacted resources in the subscription by an event (Security Advisory). */
-export const SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventId: API.OperationMethod<
-  SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest,
+export const ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventId: API.OperationMethod<
+  ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdRequest,
   EventImpactedResourceListResult,
-  SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdError,
+  ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecurityAdvisoryImpactedResourcesListBySubscriptionIdAndEventIdRequest,
+  input: ListSecurityAdvisoryImpactedResourceBySubscriptionIdAndEventIdRequest,
   output: EventImpactedResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdError =
+export type ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdError =
   AzureOpError;
 /** Lists impacted resources in the tenant by an event (Security Advisory). */
-export const SecurityAdvisoryImpactedResourcesListByTenantIdAndEventId: API.OperationMethod<
-  SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest,
+export const ListSecurityAdvisoryImpactedResourceByTenantIdAndEventId: API.OperationMethod<
+  ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdRequest,
   EventImpactedResourceListResult,
-  SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdError,
+  ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecurityAdvisoryImpactedResourcesListByTenantIdAndEventIdRequest,
+  input: ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdRequest,
   output: EventImpactedResourceListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,

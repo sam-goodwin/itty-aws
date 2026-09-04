@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.containerinstance#SubnetServiceAssociationLinkDelete": {
+    "com.azure.containerinstance#DeleteSubnetServiceAssociationLink": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#SubnetServiceAssociationLinkDeleteRequest"
+        "target": "com.azure.containerinstance#DeleteSubnetServiceAssociationLinkRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#SubnetServiceAssociationLinkDeleteRequest": {
+    "com.azure.containerinstance#DeleteSubnetServiceAssociationLinkRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -157,10 +157,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#SandboxGroupsDelete": {
+    "com.azure.containerinstance#DeleteSandboxGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#SandboxGroupsDeleteRequest"
+        "target": "com.azure.containerinstance#DeleteSandboxGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -176,7 +176,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#SandboxGroupsDeleteRequest": {
+    "com.azure.containerinstance#DeleteSandboxGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -208,13 +208,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#SandboxGroupsUpdate": {
+    "com.azure.containerinstance#UpdateSandboxGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#SandboxGroupsUpdateRequest"
+        "target": "com.azure.containerinstance#UpdateSandboxGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#SandboxGroupsUpdateResponse"
+        "target": "com.azure.containerinstance#UpdateSandboxGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -227,7 +227,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#SandboxGroupsUpdateResponse": {
+    "com.azure.containerinstance#UpdateSandboxGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -593,7 +593,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.containerinstance#SandboxGroupsUpdateRequest": {
+    "com.azure.containerinstance#UpdateSandboxGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -890,13 +890,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#SandboxGroupsGet": {
+    "com.azure.containerinstance#GetSandboxGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#SandboxGroupsGetRequest"
+        "target": "com.azure.containerinstance#GetSandboxGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#SandboxGroupsGetResponse"
+        "target": "com.azure.containerinstance#GetSandboxGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -909,7 +909,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#SandboxGroupsGetResponse": {
+    "com.azure.containerinstance#GetSandboxGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1007,7 +1007,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#SandboxGroupsGetRequest": {
+    "com.azure.containerinstance#GetSandboxGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1039,10 +1039,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#SandboxGroupsListByResourceGroup": {
+    "com.azure.containerinstance#ListSandboxGroupByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#SandboxGroupsListByResourceGroupRequest"
+        "target": "com.azure.containerinstance#ListSandboxGroupByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#SandboxGroupListResult"
@@ -1186,7 +1186,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#SandboxGroupsListByResourceGroupRequest": {
+    "com.azure.containerinstance#ListSandboxGroupByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1210,10 +1210,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsStop": {
+    "com.azure.containerinstance#StopNGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsStopRequest"
+        "target": "com.azure.containerinstance#StopNGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1229,7 +1229,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsStopRequest": {
+    "com.azure.containerinstance#StopNGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1261,10 +1261,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsStart": {
+    "com.azure.containerinstance#StartNGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsStartRequest"
+        "target": "com.azure.containerinstance#StartNGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1280,7 +1280,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsStartRequest": {
+    "com.azure.containerinstance#StartNGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1312,10 +1312,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsRestart": {
+    "com.azure.containerinstance#RestartNGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsRestartRequest"
+        "target": "com.azure.containerinstance#RestartNGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1331,7 +1331,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsRestartRequest": {
+    "com.azure.containerinstance#RestartNGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1363,10 +1363,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsDelete": {
+    "com.azure.containerinstance#DeleteNGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsDeleteRequest"
+        "target": "com.azure.containerinstance#DeleteNGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -1382,7 +1382,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsDeleteRequest": {
+    "com.azure.containerinstance#DeleteNGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1414,13 +1414,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsUpdate": {
+    "com.azure.containerinstance#UpdateNGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsUpdateRequest"
+        "target": "com.azure.containerinstance#UpdateNGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#NGroupsUpdateResponse"
+        "target": "com.azure.containerinstance#UpdateNGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1433,7 +1433,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsUpdateResponse": {
+    "com.azure.containerinstance#UpdateNGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2283,7 +2283,7 @@
       },
       "traits": {}
     },
-    "com.azure.containerinstance#NGroupsUpdateRequest": {
+    "com.azure.containerinstance#UpdateNGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2577,13 +2577,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#NGroupsGet": {
+    "com.azure.containerinstance#GetNGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsGetRequest"
+        "target": "com.azure.containerinstance#GetNGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#NGroupsGetResponse"
+        "target": "com.azure.containerinstance#GetNGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2596,7 +2596,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsGetResponse": {
+    "com.azure.containerinstance#GetNGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2679,7 +2679,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#NGroupsGetRequest": {
+    "com.azure.containerinstance#GetNGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2711,13 +2711,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsListByResourceGroup": {
+    "com.azure.containerinstance#ListNGroupByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsListByResourceGroupRequest"
+        "target": "com.azure.containerinstance#ListNGroupByResourceGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#NGroupsListResult"
+        "target": "com.azure.containerinstance#ListNGroupsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -2730,7 +2730,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsListResult": {
+    "com.azure.containerinstance#ListNGroupsResult": {
       "type": "structure",
       "members": {
         "value": {
@@ -2843,7 +2843,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#NGroupsListByResourceGroupRequest": {
+    "com.azure.containerinstance#ListNGroupByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2867,10 +2867,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsStop": {
+    "com.azure.containerinstance#StopContainerGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsStopRequest"
+        "target": "com.azure.containerinstance#StopContainerGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2886,7 +2886,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsStopRequest": {
+    "com.azure.containerinstance#StopContainerGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2918,10 +2918,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsStart": {
+    "com.azure.containerinstance#StartContainerGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsStartRequest"
+        "target": "com.azure.containerinstance#StartContainerGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2937,7 +2937,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsStartRequest": {
+    "com.azure.containerinstance#StartContainerGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2969,10 +2969,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsRestart": {
+    "com.azure.containerinstance#RestartContainerGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsRestartRequest"
+        "target": "com.azure.containerinstance#RestartContainerGroupRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2988,7 +2988,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsRestartRequest": {
+    "com.azure.containerinstance#RestartContainerGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3020,13 +3020,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsGetOutboundNetworkDependenciesEndpoints": {
+    "com.azure.containerinstance#GetContainerGroupOutboundNetworkDependencyEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsGetOutboundNetworkDependenciesEndpointsRequest"
+        "target": "com.azure.containerinstance#GetContainerGroupOutboundNetworkDependencyEndpointRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#ContainerGroupsGetOutboundNetworkDependenciesEndpointsResponse"
+        "target": "com.azure.containerinstance#GetContainerGroupOutboundNetworkDependencyEndpointResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3039,7 +3039,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsGetOutboundNetworkDependenciesEndpointsResponse": {
+    "com.azure.containerinstance#GetContainerGroupOutboundNetworkDependencyEndpointResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -3063,7 +3063,7 @@
         "smithy.api#documentation": "Response for network dependencies, always empty list."
       }
     },
-    "com.azure.containerinstance#ContainerGroupsGetOutboundNetworkDependenciesEndpointsRequest": {
+    "com.azure.containerinstance#GetContainerGroupOutboundNetworkDependencyEndpointRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3095,10 +3095,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainersListLogs": {
+    "com.azure.containerinstance#ListContainerLogs": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainersListLogsRequest"
+        "target": "com.azure.containerinstance#ListContainerLogsRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#Logs"
@@ -3128,7 +3128,7 @@
         "smithy.api#documentation": "The logs."
       }
     },
-    "com.azure.containerinstance#ContainersListLogsRequest": {
+    "com.azure.containerinstance#ListContainerLogsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -3374,13 +3374,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsDelete": {
+    "com.azure.containerinstance#DeleteContainerGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsDeleteRequest"
+        "target": "com.azure.containerinstance#DeleteContainerGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#ContainerGroupsDeleteResponse"
+        "target": "com.azure.containerinstance#DeleteContainerGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3393,7 +3393,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsDeleteResponse": {
+    "com.azure.containerinstance#DeleteContainerGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5368,7 +5368,7 @@
         "smithy.api#documentation": "The resource tags."
       }
     },
-    "com.azure.containerinstance#ContainerGroupsDeleteRequest": {
+    "com.azure.containerinstance#DeleteContainerGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5400,13 +5400,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsUpdate": {
+    "com.azure.containerinstance#UpdateContainerGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsUpdateRequest"
+        "target": "com.azure.containerinstance#UpdateContainerGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#ContainerGroupsUpdateResponse"
+        "target": "com.azure.containerinstance#UpdateContainerGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5419,7 +5419,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsUpdateResponse": {
+    "com.azure.containerinstance#UpdateContainerGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5503,7 +5503,7 @@
         "smithy.api#documentation": "The resource tags."
       }
     },
-    "com.azure.containerinstance#ContainerGroupsUpdateRequest": {
+    "com.azure.containerinstance#UpdateContainerGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6279,13 +6279,13 @@
         "smithy.api#documentation": "The resource tags."
       }
     },
-    "com.azure.containerinstance#ContainerGroupsGet": {
+    "com.azure.containerinstance#GetContainerGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsGetRequest"
+        "target": "com.azure.containerinstance#GetContainerGroupRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#ContainerGroupsGetResponse"
+        "target": "com.azure.containerinstance#GetContainerGroupResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6298,7 +6298,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsGetResponse": {
+    "com.azure.containerinstance#GetContainerGroupResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6382,7 +6382,7 @@
         "smithy.api#documentation": "The resource tags."
       }
     },
-    "com.azure.containerinstance#ContainerGroupsGetRequest": {
+    "com.azure.containerinstance#GetContainerGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6414,10 +6414,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsListByResourceGroup": {
+    "com.azure.containerinstance#ListContainerGroupByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsListByResourceGroupRequest"
+        "target": "com.azure.containerinstance#ListContainerGroupByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#ContainerGroupListResult"
@@ -6826,7 +6826,7 @@
         "smithy.api#documentation": "The resource tags."
       }
     },
-    "com.azure.containerinstance#ContainerGroupsListByResourceGroupRequest": {
+    "com.azure.containerinstance#ListContainerGroupByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -6850,13 +6850,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#CGProfileGetByRevisionNumber": {
+    "com.azure.containerinstance#GetCgProfileByRevisionNumber": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfileGetByRevisionNumberRequest"
+        "target": "com.azure.containerinstance#GetCgProfileByRevisionNumberRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#CGProfileGetByRevisionNumberResponse"
+        "target": "com.azure.containerinstance#GetCgProfileByRevisionNumberResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6869,7 +6869,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#CGProfileGetByRevisionNumberResponse": {
+    "com.azure.containerinstance#GetCgProfileByRevisionNumberResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7124,7 +7124,7 @@
         "smithy.api#documentation": "The containers within the container group."
       }
     },
-    "com.azure.containerinstance#CGProfileGetByRevisionNumberRequest": {
+    "com.azure.containerinstance#GetCgProfileByRevisionNumberRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7164,10 +7164,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#CGProfileListAllRevisions": {
+    "com.azure.containerinstance#ListCgProfileAllRevisions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfileListAllRevisionsRequest"
+        "target": "com.azure.containerinstance#ListCgProfileAllRevisionsRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#ContainerGroupProfileListResult"
@@ -7290,7 +7290,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#CGProfileListAllRevisionsRequest": {
+    "com.azure.containerinstance#ListCgProfileAllRevisionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7322,10 +7322,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#CGProfileDelete": {
+    "com.azure.containerinstance#DeleteCgProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfileDeleteRequest"
+        "target": "com.azure.containerinstance#DeleteCgProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -7341,7 +7341,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#CGProfileDeleteRequest": {
+    "com.azure.containerinstance#DeleteCgProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7373,13 +7373,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#CGProfileUpdate": {
+    "com.azure.containerinstance#UpdateCgProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfileUpdateRequest"
+        "target": "com.azure.containerinstance#UpdateCgProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#CGProfileUpdateResponse"
+        "target": "com.azure.containerinstance#UpdateCgProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7392,7 +7392,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#CGProfileUpdateResponse": {
+    "com.azure.containerinstance#UpdateCgProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7469,7 +7469,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#CGProfileUpdateRequest": {
+    "com.azure.containerinstance#UpdateCgProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7849,13 +7849,13 @@
         "smithy.api#documentation": "The containers within the container group."
       }
     },
-    "com.azure.containerinstance#CGProfileGet": {
+    "com.azure.containerinstance#GetCgProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfileGetRequest"
+        "target": "com.azure.containerinstance#GetCgProfileRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#CGProfileGetResponse"
+        "target": "com.azure.containerinstance#GetCgProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7868,7 +7868,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#CGProfileGetResponse": {
+    "com.azure.containerinstance#GetCgProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7945,7 +7945,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.containerinstance#CGProfileGetRequest": {
+    "com.azure.containerinstance#GetCgProfileRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -7977,10 +7977,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#CGProfilesListByResourceGroup": {
+    "com.azure.containerinstance#ListCgProfileByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfilesListByResourceGroupRequest"
+        "target": "com.azure.containerinstance#ListCgProfileByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#ContainerGroupProfileListResult"
@@ -7996,7 +7996,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#CGProfilesListByResourceGroupRequest": {
+    "com.azure.containerinstance#ListCgProfileByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8020,10 +8020,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#SandboxGroupsListBySubscription": {
+    "com.azure.containerinstance#ListSandboxGroupBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#SandboxGroupsListBySubscriptionRequest"
+        "target": "com.azure.containerinstance#ListSandboxGroupBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#SandboxGroupListResult"
@@ -8039,7 +8039,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#SandboxGroupsListBySubscriptionRequest": {
+    "com.azure.containerinstance#ListSandboxGroupBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8055,13 +8055,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#NGroupsList": {
+    "com.azure.containerinstance#ListNGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#NGroupsListRequest"
+        "target": "com.azure.containerinstance#ListNGroupsRequest"
       },
       "output": {
-        "target": "com.azure.containerinstance#NGroupsListResult"
+        "target": "com.azure.containerinstance#ListNGroupsResult"
       },
       "traits": {
         "smithy.api#http": {
@@ -8074,7 +8074,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#NGroupsListRequest": {
+    "com.azure.containerinstance#ListNGroupsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8090,10 +8090,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#LocationListUsage": {
+    "com.azure.containerinstance#ListLocationUsage": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#LocationListUsageRequest"
+        "target": "com.azure.containerinstance#ListLocationUsageRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#UsageListResult"
@@ -8196,7 +8196,7 @@
         "smithy.api#documentation": "The name object of the resource"
       }
     },
-    "com.azure.containerinstance#LocationListUsageRequest": {
+    "com.azure.containerinstance#ListLocationUsageRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8220,10 +8220,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#LocationListCapabilities": {
+    "com.azure.containerinstance#ListLocationCapabilities": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#LocationListCapabilitiesRequest"
+        "target": "com.azure.containerinstance#ListLocationCapabilitiesRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#CapabilitiesListResult"
@@ -8338,7 +8338,7 @@
         "smithy.api#documentation": "The supported capabilities."
       }
     },
-    "com.azure.containerinstance#LocationListCapabilitiesRequest": {
+    "com.azure.containerinstance#ListLocationCapabilitiesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8362,10 +8362,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#LocationListCachedImages": {
+    "com.azure.containerinstance#ListLocationCachedImages": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#LocationListCachedImagesRequest"
+        "target": "com.azure.containerinstance#ListLocationCachedImagesRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#CachedImagesListResult"
@@ -8432,7 +8432,7 @@
         "smithy.api#documentation": "The cached image and OS type."
       }
     },
-    "com.azure.containerinstance#LocationListCachedImagesRequest": {
+    "com.azure.containerinstance#ListLocationCachedImagesRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8456,10 +8456,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#ContainerGroupsList": {
+    "com.azure.containerinstance#ListContainerGroups": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#ContainerGroupsListRequest"
+        "target": "com.azure.containerinstance#ListContainerGroupsRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#ContainerGroupListResult"
@@ -8475,7 +8475,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#ContainerGroupsListRequest": {
+    "com.azure.containerinstance#ListContainerGroupsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8491,10 +8491,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#CGProfilesListBySubscription": {
+    "com.azure.containerinstance#ListCgProfileBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.containerinstance#CGProfilesListBySubscriptionRequest"
+        "target": "com.azure.containerinstance#ListCgProfileBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.containerinstance#ContainerGroupProfileListResult"
@@ -8510,7 +8510,7 @@
         "com.distilled.openapi#apiVersion": "2026-07-01"
       }
     },
-    "com.azure.containerinstance#CGProfilesListBySubscriptionRequest": {
+    "com.azure.containerinstance#ListCgProfileBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -8526,7 +8526,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.containerinstance#OperationsList": {
+    "com.azure.containerinstance#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -8666,64 +8666,64 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.containerinstance#SubnetServiceAssociationLinkDelete"
+          "target": "com.azure.containerinstance#DeleteSubnetServiceAssociationLink"
         },
         {
           "target": "com.azure.containerinstance#SandboxGroupsConnect"
         },
         {
-          "target": "com.azure.containerinstance#SandboxGroupsDelete"
+          "target": "com.azure.containerinstance#DeleteSandboxGroup"
         },
         {
-          "target": "com.azure.containerinstance#SandboxGroupsUpdate"
+          "target": "com.azure.containerinstance#UpdateSandboxGroup"
         },
         {
           "target": "com.azure.containerinstance#SandboxGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerinstance#SandboxGroupsGet"
+          "target": "com.azure.containerinstance#GetSandboxGroup"
         },
         {
-          "target": "com.azure.containerinstance#SandboxGroupsListByResourceGroup"
+          "target": "com.azure.containerinstance#ListSandboxGroupByResourceGroup"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsStop"
+          "target": "com.azure.containerinstance#StopNGroup"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsStart"
+          "target": "com.azure.containerinstance#StartNGroup"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsRestart"
+          "target": "com.azure.containerinstance#RestartNGroup"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsDelete"
+          "target": "com.azure.containerinstance#DeleteNGroup"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsUpdate"
+          "target": "com.azure.containerinstance#UpdateNGroup"
         },
         {
           "target": "com.azure.containerinstance#NGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsGet"
+          "target": "com.azure.containerinstance#GetNGroup"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsListByResourceGroup"
+          "target": "com.azure.containerinstance#ListNGroupByResourceGroup"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsStop"
+          "target": "com.azure.containerinstance#StopContainerGroup"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsStart"
+          "target": "com.azure.containerinstance#StartContainerGroup"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsRestart"
+          "target": "com.azure.containerinstance#RestartContainerGroup"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsGetOutboundNetworkDependenciesEndpoints"
+          "target": "com.azure.containerinstance#GetContainerGroupOutboundNetworkDependencyEndpoint"
         },
         {
-          "target": "com.azure.containerinstance#ContainersListLogs"
+          "target": "com.azure.containerinstance#ListContainerLogs"
         },
         {
           "target": "com.azure.containerinstance#ContainersExecuteCommand"
@@ -8732,64 +8732,64 @@
           "target": "com.azure.containerinstance#ContainersAttach"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsDelete"
+          "target": "com.azure.containerinstance#DeleteContainerGroup"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsUpdate"
+          "target": "com.azure.containerinstance#UpdateContainerGroup"
         },
         {
           "target": "com.azure.containerinstance#ContainerGroupsCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsGet"
+          "target": "com.azure.containerinstance#GetContainerGroup"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsListByResourceGroup"
+          "target": "com.azure.containerinstance#ListContainerGroupByResourceGroup"
         },
         {
-          "target": "com.azure.containerinstance#CGProfileGetByRevisionNumber"
+          "target": "com.azure.containerinstance#GetCgProfileByRevisionNumber"
         },
         {
-          "target": "com.azure.containerinstance#CGProfileListAllRevisions"
+          "target": "com.azure.containerinstance#ListCgProfileAllRevisions"
         },
         {
-          "target": "com.azure.containerinstance#CGProfileDelete"
+          "target": "com.azure.containerinstance#DeleteCgProfile"
         },
         {
-          "target": "com.azure.containerinstance#CGProfileUpdate"
+          "target": "com.azure.containerinstance#UpdateCgProfile"
         },
         {
           "target": "com.azure.containerinstance#CGProfileCreateOrUpdate"
         },
         {
-          "target": "com.azure.containerinstance#CGProfileGet"
+          "target": "com.azure.containerinstance#GetCgProfile"
         },
         {
-          "target": "com.azure.containerinstance#CGProfilesListByResourceGroup"
+          "target": "com.azure.containerinstance#ListCgProfileByResourceGroup"
         },
         {
-          "target": "com.azure.containerinstance#SandboxGroupsListBySubscription"
+          "target": "com.azure.containerinstance#ListSandboxGroupBySubscription"
         },
         {
-          "target": "com.azure.containerinstance#NGroupsList"
+          "target": "com.azure.containerinstance#ListNGroups"
         },
         {
-          "target": "com.azure.containerinstance#LocationListUsage"
+          "target": "com.azure.containerinstance#ListLocationUsage"
         },
         {
-          "target": "com.azure.containerinstance#LocationListCapabilities"
+          "target": "com.azure.containerinstance#ListLocationCapabilities"
         },
         {
-          "target": "com.azure.containerinstance#LocationListCachedImages"
+          "target": "com.azure.containerinstance#ListLocationCachedImages"
         },
         {
-          "target": "com.azure.containerinstance#ContainerGroupsList"
+          "target": "com.azure.containerinstance#ListContainerGroups"
         },
         {
-          "target": "com.azure.containerinstance#CGProfilesListBySubscription"
+          "target": "com.azure.containerinstance#ListCgProfileBySubscription"
         },
         {
-          "target": "com.azure.containerinstance#OperationsList"
+          "target": "com.azure.containerinstance#ListOperations"
         }
       ],
       "traits": {

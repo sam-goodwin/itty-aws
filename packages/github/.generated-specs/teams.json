@@ -2084,7 +2084,7 @@
         "smithy.api#documentation": "The role that this user should have in the team."
       }
     },
-    "com.github.teams#AddOrUpdateMembershipForUserInOrgRequest": {
+    "com.github.teams#UpdateOrgAddOrMembershipForUserInRequest": {
       "type": "structure",
       "members": {
         "org": {
@@ -2122,10 +2122,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.github.teams#AddOrUpdateMembershipForUserInOrg": {
+    "com.github.teams#UpdateOrgAddOrMembershipForUserIn": {
       "type": "operation",
       "input": {
-        "target": "com.github.teams#AddOrUpdateMembershipForUserInOrgRequest"
+        "target": "com.github.teams#UpdateOrgAddOrMembershipForUserInRequest"
       },
       "output": {
         "target": "com.github.teams#TeamMembership"
@@ -4046,7 +4046,7 @@
         "smithy.api#documentation": "Check team permissions for a repository\n\nChecks whether a team has `admin`, `push`, `maintain`, `triage`, or `pull` permission for a repository. Repositories inherited through a parent team will also be checked.\n\nYou can also get information about the specified repository, including what permissions the team grants on it, by passing the following custom [media type](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types/) via the `application/vnd.github.v3.repository+json` accept header.\n\nIf a team doesn't have permission for the repository, you will receive a `404 Not Found` response status.\n\nIf the repository is private, you must have at least `read` permission for that repository, and your token must have the `repo` or `admin:org` scope. Otherwise, you will receive a `404 Not Found` response status.\n\n> [!NOTE]\n> You can also specify a team by `org_id` and `team_id` using the route `GET /organizations/{org_id}/team/{team_id}/repos/{owner}/{repo}`."
       }
     },
-    "com.github.teams#AddOrUpdateRepoPermissionsInOrgRequest": {
+    "com.github.teams#UpdateOrgAddOrRepoPermissionInRequest": {
       "type": "structure",
       "members": {
         "org": {
@@ -4092,10 +4092,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.github.teams#AddOrUpdateRepoPermissionsInOrg": {
+    "com.github.teams#UpdateOrgAddOrRepoPermissionIn": {
       "type": "operation",
       "input": {
-        "target": "com.github.teams#AddOrUpdateRepoPermissionsInOrgRequest"
+        "target": "com.github.teams#UpdateOrgAddOrRepoPermissionInRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4380,7 +4380,7 @@
           "target": "com.github.teams#GetMembershipForUserInOrg"
         },
         {
-          "target": "com.github.teams#AddOrUpdateMembershipForUserInOrg"
+          "target": "com.github.teams#UpdateOrgAddOrMembershipForUserIn"
         },
         {
           "target": "com.github.teams#RemoveMembershipForUserInOrg"
@@ -4392,7 +4392,7 @@
           "target": "com.github.teams#CheckPermissionsForRepoInOrg"
         },
         {
-          "target": "com.github.teams#AddOrUpdateRepoPermissionsInOrg"
+          "target": "com.github.teams#UpdateOrgAddOrRepoPermissionIn"
         },
         {
           "target": "com.github.teams#RemoveRepoInOrg"

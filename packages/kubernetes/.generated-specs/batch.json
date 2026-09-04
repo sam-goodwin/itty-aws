@@ -125,7 +125,7 @@
         "smithy.api#documentation": "versions are the versions supported in this group."
       }
     },
-    "com.kubernetes.batch#GetBatchAPIGroup": {
+    "com.kubernetes.batch#GetBatchApiGroup": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -285,7 +285,7 @@
         "smithy.api#documentation": "resources contains the name of the resources and if they are namespaced."
       }
     },
-    "com.kubernetes.batch#GetBatchV1APIResources": {
+    "com.kubernetes.batch#GetBatchV1ApiResources": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -8641,7 +8641,7 @@
         "smithy.api#documentation": "partially update status of the specified Job"
       }
     },
-    "com.kubernetes.batch#WatchBatchV1CronJobListForAllNamespacesRequest": {
+    "com.kubernetes.batch#ListWatchBatchV1CronJobForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -8754,10 +8754,10 @@
         "smithy.api#documentation": "Event represents a single event to a watched resource."
       }
     },
-    "com.kubernetes.batch#WatchBatchV1CronJobListForAllNamespaces": {
+    "com.kubernetes.batch#ListWatchBatchV1CronJobForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.batch#WatchBatchV1CronJobListForAllNamespacesRequest"
+        "target": "com.kubernetes.batch#ListWatchBatchV1CronJobForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.batch#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -8771,7 +8771,7 @@
         "smithy.api#documentation": "watch individual changes to a list of CronJob. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.batch#WatchBatchV1JobListForAllNamespacesRequest": {
+    "com.kubernetes.batch#ListWatchBatchV1JobForAllNamespacesRequest": {
       "type": "structure",
       "members": {
         "allowWatchBookmarks": {
@@ -8863,10 +8863,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.batch#WatchBatchV1JobListForAllNamespaces": {
+    "com.kubernetes.batch#ListWatchBatchV1JobForAllNamespaces": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.batch#WatchBatchV1JobListForAllNamespacesRequest"
+        "target": "com.kubernetes.batch#ListWatchBatchV1JobForAllNamespacesRequest"
       },
       "output": {
         "target": "com.kubernetes.batch#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -8880,7 +8880,7 @@
         "smithy.api#documentation": "watch individual changes to a list of Job. deprecated: use the 'watch' parameter with a list operation instead."
       }
     },
-    "com.kubernetes.batch#WatchBatchV1NamespacedCronJobListRequest": {
+    "com.kubernetes.batch#ListWatchBatchV1NamespacedCronJobRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -8980,10 +8980,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.batch#WatchBatchV1NamespacedCronJobList": {
+    "com.kubernetes.batch#ListWatchBatchV1NamespacedCronJob": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.batch#WatchBatchV1NamespacedCronJobListRequest"
+        "target": "com.kubernetes.batch#ListWatchBatchV1NamespacedCronJobRequest"
       },
       "output": {
         "target": "com.kubernetes.batch#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -9122,7 +9122,7 @@
         "smithy.api#documentation": "watch changes to an object of kind CronJob. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter."
       }
     },
-    "com.kubernetes.batch#WatchBatchV1NamespacedJobListRequest": {
+    "com.kubernetes.batch#ListWatchBatchV1NamespacedJobRequest": {
       "type": "structure",
       "members": {
         "namespace": {
@@ -9222,10 +9222,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.kubernetes.batch#WatchBatchV1NamespacedJobList": {
+    "com.kubernetes.batch#ListWatchBatchV1NamespacedJob": {
       "type": "operation",
       "input": {
-        "target": "com.kubernetes.batch#WatchBatchV1NamespacedJobListRequest"
+        "target": "com.kubernetes.batch#ListWatchBatchV1NamespacedJobRequest"
       },
       "output": {
         "target": "com.kubernetes.batch#IoK8sApimachineryPkgApisMetaV1WatchEvent"
@@ -9408,10 +9408,10 @@
       "version": "unversioned",
       "operations": [
         {
-          "target": "com.kubernetes.batch#GetBatchAPIGroup"
+          "target": "com.kubernetes.batch#GetBatchApiGroup"
         },
         {
-          "target": "com.kubernetes.batch#GetBatchV1APIResources"
+          "target": "com.kubernetes.batch#GetBatchV1ApiResources"
         },
         {
           "target": "com.kubernetes.batch#ListBatchV1CronJobForAllNamespaces"
@@ -9480,19 +9480,19 @@
           "target": "com.kubernetes.batch#PatchBatchV1NamespacedJobStatus"
         },
         {
-          "target": "com.kubernetes.batch#WatchBatchV1CronJobListForAllNamespaces"
+          "target": "com.kubernetes.batch#ListWatchBatchV1CronJobForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.batch#WatchBatchV1JobListForAllNamespaces"
+          "target": "com.kubernetes.batch#ListWatchBatchV1JobForAllNamespaces"
         },
         {
-          "target": "com.kubernetes.batch#WatchBatchV1NamespacedCronJobList"
+          "target": "com.kubernetes.batch#ListWatchBatchV1NamespacedCronJob"
         },
         {
           "target": "com.kubernetes.batch#WatchBatchV1NamespacedCronJob"
         },
         {
-          "target": "com.kubernetes.batch#WatchBatchV1NamespacedJobList"
+          "target": "com.kubernetes.batch#ListWatchBatchV1NamespacedJob"
         },
         {
           "target": "com.kubernetes.batch#WatchBatchV1NamespacedJob"

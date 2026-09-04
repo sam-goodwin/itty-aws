@@ -298,7 +298,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.modal.app#AppCreateRequest": {
+    "com.modal.app#CreateAppRequest": {
       "type": "structure",
       "members": {
         "clientId": {
@@ -324,7 +324,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.app#AppCreateResponse": {
+    "com.modal.app#CreateAppResponse": {
       "type": "structure",
       "members": {
         "appId": {
@@ -341,13 +341,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppCreate": {
+    "com.modal.app#CreateApp": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppCreateRequest"
+        "target": "com.modal.app#CreateAppRequest"
       },
       "output": {
-        "target": "com.modal.app#AppCreateResponse"
+        "target": "com.modal.app#CreateAppResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -862,7 +862,7 @@
         }
       }
     },
-    "com.modal.app#AppGetByDeploymentNameRequest": {
+    "com.modal.app#GetAppByDeploymentNameRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -926,7 +926,7 @@
         "smithy.api#documentation": "tag -> class id"
       }
     },
-    "com.modal.app#AppGetByDeploymentNameResponse": {
+    "com.modal.app#GetAppByDeploymentNameResponse": {
       "type": "structure",
       "members": {
         "appId": {
@@ -955,13 +955,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppGetByDeploymentName": {
+    "com.modal.app#GetAppByDeploymentName": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppGetByDeploymentNameRequest"
+        "target": "com.modal.app#GetAppByDeploymentNameRequest"
       },
       "output": {
-        "target": "com.modal.app#AppGetByDeploymentNameResponse"
+        "target": "com.modal.app#GetAppByDeploymentNameResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -971,7 +971,7 @@
         }
       }
     },
-    "com.modal.app#AppGetInfoRequest": {
+    "com.modal.app#GetAppInfoRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1008,7 +1008,7 @@
         }
       }
     },
-    "com.modal.app#AppGetInfoResponse": {
+    "com.modal.app#GetAppInfoResponse": {
       "type": "structure",
       "members": {
         "info": {
@@ -1019,13 +1019,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppGetInfo": {
+    "com.modal.app#GetAppInfo": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppGetInfoRequest"
+        "target": "com.modal.app#GetAppInfoRequest"
       },
       "output": {
-        "target": "com.modal.app#AppGetInfoResponse"
+        "target": "com.modal.app#GetAppInfoResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1035,7 +1035,7 @@
         }
       }
     },
-    "com.modal.app#AppGetLayoutRequest": {
+    "com.modal.app#GetAppLayoutRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1695,7 +1695,7 @@
         "target": "com.modal.app#Object"
       }
     },
-    "com.modal.app#AppGetLayoutResponse": {
+    "com.modal.app#GetAppLayoutResponse": {
       "type": "structure",
       "members": {
         "appLayout": {
@@ -1706,13 +1706,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppGetLayout": {
+    "com.modal.app#GetAppLayout": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppGetLayoutRequest"
+        "target": "com.modal.app#GetAppLayoutRequest"
       },
       "output": {
-        "target": "com.modal.app#AppGetLayoutResponse"
+        "target": "com.modal.app#GetAppLayoutResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1722,7 +1722,7 @@
         }
       }
     },
-    "com.modal.app#AppGetLifecycleRequest": {
+    "com.modal.app#GetAppLifecycleRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1733,7 +1733,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.app#AppGetLifecycleResponse": {
+    "com.modal.app#GetAppLifecycleResponse": {
       "type": "structure",
       "members": {
         "lifecycle": {
@@ -1744,13 +1744,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppGetLifecycle": {
+    "com.modal.app#GetAppLifecycle": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppGetLifecycleRequest"
+        "target": "com.modal.app#GetAppLifecycleRequest"
       },
       "output": {
-        "target": "com.modal.app#AppGetLifecycleResponse"
+        "target": "com.modal.app#GetAppLifecycleResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1760,7 +1760,7 @@
         }
       }
     },
-    "com.modal.app#AppGetObjectsRequest": {
+    "com.modal.app#GetAppObjectRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1794,7 +1794,7 @@
         "target": "com.modal.app#AppGetObjectsItem"
       }
     },
-    "com.modal.app#AppGetObjectsResponse": {
+    "com.modal.app#GetAppObjectResponse": {
       "type": "structure",
       "members": {
         "items": {
@@ -1805,13 +1805,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppGetObjects": {
+    "com.modal.app#GetAppObject": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppGetObjectsRequest"
+        "target": "com.modal.app#GetAppObjectRequest"
       },
       "output": {
-        "target": "com.modal.app#AppGetObjectsResponse"
+        "target": "com.modal.app#GetAppObjectResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1911,7 +1911,7 @@
         }
       }
     },
-    "com.modal.app#AppGetTagsRequest": {
+    "com.modal.app#GetAppTagRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -1922,7 +1922,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.app#AppGetTagsResponse": {
+    "com.modal.app#GetAppTagResponse": {
       "type": "structure",
       "members": {
         "tags": {
@@ -1933,13 +1933,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppGetTags": {
+    "com.modal.app#GetAppTag": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppGetTagsRequest"
+        "target": "com.modal.app#GetAppTagRequest"
       },
       "output": {
-        "target": "com.modal.app#AppGetTagsResponse"
+        "target": "com.modal.app#GetAppTagResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1976,7 +1976,7 @@
         }
       }
     },
-    "com.modal.app#AppListRequest": {
+    "com.modal.app#ListAppRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -2019,7 +2019,7 @@
         "target": "com.modal.app#AppListResponseAppListItem"
       }
     },
-    "com.modal.app#AppListResponse": {
+    "com.modal.app#ListAppResponse": {
       "type": "structure",
       "members": {
         "apps": {
@@ -2030,13 +2030,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.app#AppList": {
+    "com.modal.app#ListApp": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppListRequest"
+        "target": "com.modal.app#ListAppRequest"
       },
       "output": {
-        "target": "com.modal.app#AppListResponse"
+        "target": "com.modal.app#ListAppResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2378,7 +2378,7 @@
         }
       }
     },
-    "com.modal.app#AppSetObjectsRequest": {
+    "com.modal.app#SetAppObjectRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -2401,10 +2401,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.app#AppSetObjects": {
+    "com.modal.app#SetAppObject": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppSetObjectsRequest"
+        "target": "com.modal.app#SetAppObjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2417,7 +2417,7 @@
         }
       }
     },
-    "com.modal.app#AppSetTagsRequest": {
+    "com.modal.app#SetAppTagRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -2431,10 +2431,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.app#AppSetTags": {
+    "com.modal.app#SetAppTag": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppSetTagsRequest"
+        "target": "com.modal.app#SetAppTagRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2476,7 +2476,7 @@
         }
       }
     },
-    "com.modal.app#AppStopRequest": {
+    "com.modal.app#StopAppRequest": {
       "type": "structure",
       "members": {
         "appId": {
@@ -2490,10 +2490,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.app#AppStop": {
+    "com.modal.app#StopApp": {
       "type": "operation",
       "input": {
-        "target": "com.modal.app#AppStopRequest"
+        "target": "com.modal.app#StopAppRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -2517,7 +2517,7 @@
           "target": "com.modal.app#AppCountLogs"
         },
         {
-          "target": "com.modal.app#AppCreate"
+          "target": "com.modal.app#CreateApp"
         },
         {
           "target": "com.modal.app#AppDeploy"
@@ -2529,31 +2529,31 @@
           "target": "com.modal.app#AppFetchLogs"
         },
         {
-          "target": "com.modal.app#AppGetByDeploymentName"
+          "target": "com.modal.app#GetAppByDeploymentName"
         },
         {
-          "target": "com.modal.app#AppGetInfo"
+          "target": "com.modal.app#GetAppInfo"
         },
         {
-          "target": "com.modal.app#AppGetLayout"
+          "target": "com.modal.app#GetAppLayout"
         },
         {
-          "target": "com.modal.app#AppGetLifecycle"
+          "target": "com.modal.app#GetAppLifecycle"
         },
         {
-          "target": "com.modal.app#AppGetObjects"
+          "target": "com.modal.app#GetAppObject"
         },
         {
           "target": "com.modal.app#AppGetOrCreate"
         },
         {
-          "target": "com.modal.app#AppGetTags"
+          "target": "com.modal.app#GetAppTag"
         },
         {
           "target": "com.modal.app#AppHeartbeat"
         },
         {
-          "target": "com.modal.app#AppList"
+          "target": "com.modal.app#ListApp"
         },
         {
           "target": "com.modal.app#AppLookup"
@@ -2571,13 +2571,13 @@
           "target": "com.modal.app#AppRollover"
         },
         {
-          "target": "com.modal.app#AppSetObjects"
+          "target": "com.modal.app#SetAppObject"
         },
         {
-          "target": "com.modal.app#AppSetTags"
+          "target": "com.modal.app#SetAppTag"
         },
         {
-          "target": "com.modal.app#AppStop"
+          "target": "com.modal.app#StopApp"
         }
       ],
       "traits": {

@@ -2395,7 +2395,7 @@
         "smithy.api#documentation": "Get a JWT token"
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#GetAppsRelease_by_hashRequest": {
+    "com.gcp.firebaseappdistribution_v1alpha#GetAppsReleaseByHashRequest": {
       "type": "structure",
       "members": {
         "mobilesdkAppId": {
@@ -2416,10 +2416,10 @@
         }
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#GetAppsRelease_by_hash": {
+    "com.gcp.firebaseappdistribution_v1alpha#GetAppsReleaseByHash": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappdistribution_v1alpha#GetAppsRelease_by_hashRequest"
+        "target": "com.gcp.firebaseappdistribution_v1alpha#GetAppsReleaseByHashRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappdistribution_v1alpha#GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse"
@@ -2440,7 +2440,7 @@
         "smithy.api#documentation": "GET Release by binary upload hash"
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#Enable_accessAppsReleasesRequest": {
+    "com.gcp.firebaseappdistribution_v1alpha#EnableAccessAppsReleasesRequest": {
       "type": "structure",
       "members": {
         "mobilesdkAppId": {
@@ -2494,10 +2494,10 @@
         ]
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#Enable_accessAppsReleases": {
+    "com.gcp.firebaseappdistribution_v1alpha#EnableAccessAppsReleases": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappdistribution_v1alpha#Enable_accessAppsReleasesRequest"
+        "target": "com.gcp.firebaseappdistribution_v1alpha#EnableAccessAppsReleasesRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappdistribution_v1alpha#GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse"
@@ -2582,7 +2582,7 @@
         "smithy.api#documentation": "Create release notes on a release."
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#GetAppsUpload_statusRequest": {
+    "com.gcp.firebaseappdistribution_v1alpha#GetAppsUploadStatusRequest": {
       "type": "structure",
       "members": {
         "mobilesdkAppId": {
@@ -2603,10 +2603,10 @@
         }
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#GetAppsUpload_status": {
+    "com.gcp.firebaseappdistribution_v1alpha#GetAppsUploadStatus": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappdistribution_v1alpha#GetAppsUpload_statusRequest"
+        "target": "com.gcp.firebaseappdistribution_v1alpha#GetAppsUploadStatusRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappdistribution_v1alpha#GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse"
@@ -3224,7 +3224,7 @@
         "smithy.api#documentation": "Clears cached test runs for a specific test case and device(s)."
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#BatchUpdateProjectsAppsTestCasesRequest": {
+    "com.gcp.firebaseappdistribution_v1alpha#UpdateBatchProjectAppTestCaseRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3244,10 +3244,10 @@
         }
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#BatchUpdateProjectsAppsTestCases": {
+    "com.gcp.firebaseappdistribution_v1alpha#UpdateBatchProjectAppTestCase": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappdistribution_v1alpha#BatchUpdateProjectsAppsTestCasesRequest"
+        "target": "com.gcp.firebaseappdistribution_v1alpha#UpdateBatchProjectAppTestCaseRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappdistribution_v1alpha#GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse"
@@ -3354,7 +3354,7 @@
         "smithy.api#documentation": "Get a test case."
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#BatchDeleteProjectsAppsTestCasesRequest": {
+    "com.gcp.firebaseappdistribution_v1alpha#DeleteBatchProjectAppTestCaseRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -3374,10 +3374,10 @@
         }
       }
     },
-    "com.gcp.firebaseappdistribution_v1alpha#BatchDeleteProjectsAppsTestCases": {
+    "com.gcp.firebaseappdistribution_v1alpha#DeleteBatchProjectAppTestCase": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.firebaseappdistribution_v1alpha#BatchDeleteProjectsAppsTestCasesRequest"
+        "target": "com.gcp.firebaseappdistribution_v1alpha#DeleteBatchProjectAppTestCaseRequest"
       },
       "output": {
         "target": "com.gcp.firebaseappdistribution_v1alpha#GoogleProtobufEmpty"

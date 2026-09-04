@@ -17,13 +17,13 @@
     ]
   },
   "shapes": {
-    "com.azure.billing#PoliciesGetBySubscription": {
+    "com.azure.billing#GetPolicyBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PoliciesGetBySubscriptionRequest"
+        "target": "com.azure.billing#GetPolicyBySubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.billing#PoliciesGetBySubscriptionResponse"
+        "target": "com.azure.billing#GetPolicyBySubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PoliciesGetBySubscriptionResponse": {
+    "com.azure.billing#GetPolicyBySubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -361,7 +361,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.billing#PoliciesGetBySubscriptionRequest": {
+    "com.azure.billing#GetPolicyBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -377,13 +377,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPropertyUpdate": {
+    "com.azure.billing#UpdateBillingProperty": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPropertyUpdateRequest"
+        "target": "com.azure.billing#UpdateBillingPropertyRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPropertyUpdateResponse"
+        "target": "com.azure.billing#UpdateBillingPropertyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -396,7 +396,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPropertyUpdateResponse": {
+    "com.azure.billing#UpdateBillingPropertyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1820,7 +1820,7 @@
         "smithy.api#documentation": "The type of agreement."
       }
     },
-    "com.azure.billing#BillingPropertyUpdateRequest": {
+    "com.azure.billing#UpdateBillingPropertyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1886,13 +1886,13 @@
         "smithy.api#documentation": "A billing property."
       }
     },
-    "com.azure.billing#BillingPropertyGet": {
+    "com.azure.billing#GetBillingProperty": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPropertyGetRequest"
+        "target": "com.azure.billing#GetBillingPropertyRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPropertyGetResponse"
+        "target": "com.azure.billing#GetBillingPropertyResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1905,7 +1905,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPropertyGetResponse": {
+    "com.azure.billing#GetBillingPropertyResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1961,7 +1961,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingPropertyGetRequest": {
+    "com.azure.billing#GetBillingPropertyRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2916,13 +2916,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#RecipientTransfersGet": {
+    "com.azure.billing#GetRecipientTransfer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#RecipientTransfersGetRequest"
+        "target": "com.azure.billing#GetRecipientTransferRequest"
       },
       "output": {
-        "target": "com.azure.billing#RecipientTransfersGetResponse"
+        "target": "com.azure.billing#GetRecipientTransferResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2935,7 +2935,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#RecipientTransfersGetResponse": {
+    "com.azure.billing#GetRecipientTransferResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2991,7 +2991,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#RecipientTransfersGetRequest": {
+    "com.azure.billing#GetRecipientTransferRequest": {
       "type": "structure",
       "members": {
         "transferName": {
@@ -3007,7 +3007,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#RecipientTransfersList": {
+    "com.azure.billing#ListRecipientTransfers": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3112,10 +3112,10 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PaymentMethodsDeleteByUser": {
+    "com.azure.billing#DeletePaymentMethodByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PaymentMethodsDeleteByUserRequest"
+        "target": "com.azure.billing#DeletePaymentMethodByUserRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -3131,7 +3131,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PaymentMethodsDeleteByUserRequest": {
+    "com.azure.billing#DeletePaymentMethodByUserRequest": {
       "type": "structure",
       "members": {
         "paymentMethodName": {
@@ -3147,13 +3147,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PaymentMethodsGetByUser": {
+    "com.azure.billing#GetPaymentMethodByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PaymentMethodsGetByUserRequest"
+        "target": "com.azure.billing#GetPaymentMethodByUserRequest"
       },
       "output": {
-        "target": "com.azure.billing#PaymentMethodsGetByUserResponse"
+        "target": "com.azure.billing#GetPaymentMethodByUserResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3166,7 +3166,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PaymentMethodsGetByUserResponse": {
+    "com.azure.billing#GetPaymentMethodByUserResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -3333,7 +3333,7 @@
         "smithy.api#documentation": "Logo of payment method."
       }
     },
-    "com.azure.billing#PaymentMethodsGetByUserRequest": {
+    "com.azure.billing#GetPaymentMethodByUserRequest": {
       "type": "structure",
       "members": {
         "paymentMethodName": {
@@ -3349,7 +3349,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PaymentMethodsListByUser": {
+    "com.azure.billing#ListPaymentMethodByUser": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -3454,7 +3454,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#OperationsList": {
+    "com.azure.billing#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -4099,13 +4099,13 @@
         "smithy.api#documentation": "Additional information for the billing request."
       }
     },
-    "com.azure.billing#BillingRequestsGet": {
+    "com.azure.billing#GetBillingRequest": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRequestsGetRequest"
+        "target": "com.azure.billing#GetBillingRequestRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRequestsGetResponse"
+        "target": "com.azure.billing#GetBillingRequestResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4118,7 +4118,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRequestsGetResponse": {
+    "com.azure.billing#GetBillingRequestResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -4174,7 +4174,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRequestsGetRequest": {
+    "com.azure.billing#GetBillingRequestRequest": {
       "type": "structure",
       "members": {
         "billingRequestName": {
@@ -4190,10 +4190,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRequestsListByUser": {
+    "com.azure.billing#ListBillingRequestByUser": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRequestsListByUserRequest"
+        "target": "com.azure.billing#ListBillingRequestByUserRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRequestListResult"
@@ -4295,7 +4295,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRequestsListByUserRequest": {
+    "com.azure.billing#ListBillingRequestByUserRequest": {
       "type": "structure",
       "members": {
         "filter": {
@@ -4345,13 +4345,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoicesGet": {
+    "com.azure.billing#GetInvoice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoicesGetRequest"
+        "target": "com.azure.billing#GetInvoiceRequest"
       },
       "output": {
-        "target": "com.azure.billing#InvoicesGetResponse"
+        "target": "com.azure.billing#GetInvoiceResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4364,7 +4364,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoicesGetResponse": {
+    "com.azure.billing#GetInvoiceResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5158,7 +5158,7 @@
         "smithy.api#documentation": "The document numbers for the invoice document."
       }
     },
-    "com.azure.billing#InvoicesGetRequest": {
+    "com.azure.billing#GetInvoiceRequest": {
       "type": "structure",
       "members": {
         "invoiceName": {
@@ -5244,13 +5244,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoicesGetByBillingSubscription": {
+    "com.azure.billing#GetInvoiceByBillingSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoicesGetByBillingSubscriptionRequest"
+        "target": "com.azure.billing#GetInvoiceByBillingSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.billing#InvoicesGetByBillingSubscriptionResponse"
+        "target": "com.azure.billing#GetInvoiceByBillingSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5263,7 +5263,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoicesGetByBillingSubscriptionResponse": {
+    "com.azure.billing#GetInvoiceByBillingSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -5319,7 +5319,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#InvoicesGetByBillingSubscriptionRequest": {
+    "com.azure.billing#GetInvoiceByBillingSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5343,10 +5343,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoicesListByBillingSubscription": {
+    "com.azure.billing#ListInvoiceByBillingSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoicesListByBillingSubscriptionRequest"
+        "target": "com.azure.billing#ListInvoiceByBillingSubscriptionRequest"
       },
       "output": {
         "target": "com.azure.billing#InvoiceListResult"
@@ -5448,7 +5448,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#InvoicesListByBillingSubscriptionRequest": {
+    "com.azure.billing#ListInvoiceByBillingSubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -5807,13 +5807,13 @@
         "smithy.api#documentation": "The properties of payment term."
       }
     },
-    "com.azure.billing#SavingsPlansListByBillingAccount": {
+    "com.azure.billing#ListSavingPlanByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlansListByBillingAccountRequest"
+        "target": "com.azure.billing#ListSavingPlanByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#SavingsPlansListByBillingAccountResponse"
+        "target": "com.azure.billing#ListSavingPlanByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5826,7 +5826,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#SavingsPlansListByBillingAccountResponse": {
+    "com.azure.billing#ListSavingPlanByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -6486,7 +6486,7 @@
         "smithy.api#documentation": "Represents the Savings plan term in ISO 8601 format."
       }
     },
-    "com.azure.billing#SavingsPlansListByBillingAccountRequest": {
+    "com.azure.billing#ListSavingPlanByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -6544,10 +6544,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#SavingsPlansValidateUpdateByBillingAccount": {
+    "com.azure.billing#UpdateSavingPlanValidateByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlansValidateUpdateByBillingAccountRequest"
+        "target": "com.azure.billing#UpdateSavingPlanValidateByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#SavingsPlanValidateResponse"
@@ -6613,7 +6613,7 @@
         "smithy.api#documentation": "Benefit scope response property"
       }
     },
-    "com.azure.billing#SavingsPlansValidateUpdateByBillingAccountRequest": {
+    "com.azure.billing#UpdateSavingPlanValidateByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -6698,13 +6698,13 @@
         "smithy.api#documentation": "Savings plan patch request"
       }
     },
-    "com.azure.billing#SavingsPlansUpdateByBillingAccount": {
+    "com.azure.billing#UpdateSavingPlanByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlansUpdateByBillingAccountRequest"
+        "target": "com.azure.billing#UpdateSavingPlanByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#SavingsPlansUpdateByBillingAccountResponse"
+        "target": "com.azure.billing#UpdateSavingPlanByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6717,7 +6717,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#SavingsPlansUpdateByBillingAccountResponse": {
+    "com.azure.billing#UpdateSavingPlanByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6780,7 +6780,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#SavingsPlansUpdateByBillingAccountRequest": {
+    "com.azure.billing#UpdateSavingPlanByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -6842,13 +6842,13 @@
         "smithy.api#documentation": "Tags for this reservation"
       }
     },
-    "com.azure.billing#SavingsPlansGetByBillingAccount": {
+    "com.azure.billing#GetSavingPlanByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlansGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetSavingPlanByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#SavingsPlansGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetSavingPlanByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -6861,7 +6861,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#SavingsPlansGetByBillingAccountResponse": {
+    "com.azure.billing#GetSavingPlanByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -6924,7 +6924,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#SavingsPlansGetByBillingAccountRequest": {
+    "com.azure.billing#GetSavingPlanByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -6963,10 +6963,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#SavingsPlansListBySavingsPlanOrder": {
+    "com.azure.billing#ListSavingPlanBySavingPlanOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlansListBySavingsPlanOrderRequest"
+        "target": "com.azure.billing#ListSavingPlanBySavingPlanOrderRequest"
       },
       "output": {
         "target": "com.azure.billing#SavingsPlanModelList"
@@ -7012,7 +7012,7 @@
         "smithy.api#documentation": "The SavingsPlanModel items on this page"
       }
     },
-    "com.azure.billing#SavingsPlansListBySavingsPlanOrderRequest": {
+    "com.azure.billing#ListSavingPlanBySavingPlanOrderRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -7036,13 +7036,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#SavingsPlanOrdersGetByBillingAccount": {
+    "com.azure.billing#GetSavingPlanOrderByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlanOrdersGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetSavingPlanOrderByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#SavingsPlanOrdersGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetSavingPlanOrderByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -7055,7 +7055,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#SavingsPlanOrdersGetByBillingAccountResponse": {
+    "com.azure.billing#GetSavingPlanOrderByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -7355,7 +7355,7 @@
         "smithy.api#documentation": "The price."
       }
     },
-    "com.azure.billing#SavingsPlanOrdersGetByBillingAccountRequest": {
+    "com.azure.billing#GetSavingPlanOrderByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -7386,10 +7386,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#SavingsPlanOrdersListByBillingAccount": {
+    "com.azure.billing#ListSavingPlanOrderByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#SavingsPlanOrdersListByBillingAccountRequest"
+        "target": "com.azure.billing#ListSavingPlanOrderByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#SavingsPlanOrderModelList"
@@ -7498,7 +7498,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#SavingsPlanOrdersListByBillingAccountRequest": {
+    "com.azure.billing#ListSavingPlanOrderByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -7909,10 +7909,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ReservationsListByBillingAccount": {
+    "com.azure.billing#ListReservationByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListReservationByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#ReservationsListResult"
@@ -8900,7 +8900,7 @@
         "smithy.api#documentation": "The roll up count summary of reservations in each state"
       }
     },
-    "com.azure.billing#ReservationsListByBillingAccountRequest": {
+    "com.azure.billing#ListReservationByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -8958,13 +8958,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ReservationsUpdateByBillingAccount": {
+    "com.azure.billing#UpdateReservationByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationsUpdateByBillingAccountRequest"
+        "target": "com.azure.billing#UpdateReservationByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#ReservationsUpdateByBillingAccountResponse"
+        "target": "com.azure.billing#UpdateReservationByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -8977,7 +8977,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ReservationsUpdateByBillingAccountResponse": {
+    "com.azure.billing#UpdateReservationByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9048,7 +9048,7 @@
         "smithy.api#documentation": "Tags for this reservation"
       }
     },
-    "com.azure.billing#ReservationsUpdateByBillingAccountRequest": {
+    "com.azure.billing#UpdateReservationByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -9279,13 +9279,13 @@
         "smithy.api#documentation": "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared."
       }
     },
-    "com.azure.billing#ReservationsGetByReservationOrder": {
+    "com.azure.billing#GetReservationByReservationOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationsGetByReservationOrderRequest"
+        "target": "com.azure.billing#GetReservationByReservationOrderRequest"
       },
       "output": {
-        "target": "com.azure.billing#ReservationsGetByReservationOrderResponse"
+        "target": "com.azure.billing#GetReservationByReservationOrderResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9298,7 +9298,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ReservationsGetByReservationOrderResponse": {
+    "com.azure.billing#GetReservationByReservationOrderResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9369,7 +9369,7 @@
         "smithy.api#documentation": "Tags for this reservation"
       }
     },
-    "com.azure.billing#ReservationsGetByReservationOrderRequest": {
+    "com.azure.billing#GetReservationByReservationOrderRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -9408,10 +9408,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ReservationsListByReservationOrder": {
+    "com.azure.billing#ListReservationByReservationOrder": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationsListByReservationOrderRequest"
+        "target": "com.azure.billing#ListReservationByReservationOrderRequest"
       },
       "output": {
         "target": "com.azure.billing#ReservationList"
@@ -9457,7 +9457,7 @@
         "smithy.api#documentation": "The Reservation items on this page"
       }
     },
-    "com.azure.billing#ReservationsListByReservationOrderRequest": {
+    "com.azure.billing#ListReservationByReservationOrderRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -9481,13 +9481,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ReservationOrdersGetByBillingAccount": {
+    "com.azure.billing#GetReservationOrderByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationOrdersGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetReservationOrderByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#ReservationOrdersGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetReservationOrderByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -9500,7 +9500,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ReservationOrdersGetByBillingAccountResponse": {
+    "com.azure.billing#GetReservationOrderByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -9771,7 +9771,7 @@
         "smithy.api#documentation": "Information about payment related to a reservation order."
       }
     },
-    "com.azure.billing#ReservationOrdersGetByBillingAccountRequest": {
+    "com.azure.billing#GetReservationOrderByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -9802,10 +9802,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ReservationOrdersListByBillingAccount": {
+    "com.azure.billing#ListReservationOrderByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationOrdersListByBillingAccountRequest"
+        "target": "com.azure.billing#ListReservationOrderByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#ReservationOrderList"
@@ -9910,7 +9910,7 @@
         "smithy.api#documentation": "Tags for this reservation"
       }
     },
-    "com.azure.billing#ReservationOrdersListByBillingAccountRequest": {
+    "com.azure.billing#ListReservationOrderByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -10507,13 +10507,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ProductsUpdate": {
+    "com.azure.billing#UpdateProduct": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ProductsUpdateRequest"
+        "target": "com.azure.billing#UpdateProductRequest"
       },
       "output": {
-        "target": "com.azure.billing#ProductsUpdateResponse"
+        "target": "com.azure.billing#UpdateProductResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10526,7 +10526,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ProductsUpdateResponse": {
+    "com.azure.billing#UpdateProductResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10582,7 +10582,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#ProductsUpdateRequest": {
+    "com.azure.billing#UpdateProductRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -10670,13 +10670,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#ProductsGet": {
+    "com.azure.billing#GetProduct": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ProductsGetRequest"
+        "target": "com.azure.billing#GetProductRequest"
       },
       "output": {
-        "target": "com.azure.billing#ProductsGetResponse"
+        "target": "com.azure.billing#GetProductResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -10689,7 +10689,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ProductsGetResponse": {
+    "com.azure.billing#GetProductResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -10745,7 +10745,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#ProductsGetRequest": {
+    "com.azure.billing#GetProductRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -10769,10 +10769,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ProductsListByBillingAccount": {
+    "com.azure.billing#ListProductByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ProductsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListProductByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#ProductListResult"
@@ -10874,7 +10874,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#ProductsListByBillingAccountRequest": {
+    "com.azure.billing#ListProductByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -11330,13 +11330,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByBillingAccount": {
+    "com.azure.billing#GetPolicyByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PoliciesGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetPolicyByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#PoliciesGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetPolicyByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11349,7 +11349,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PoliciesGetByBillingAccountResponse": {
+    "com.azure.billing#GetPolicyByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11405,7 +11405,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByBillingAccountRequest": {
+    "com.azure.billing#GetPolicyByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -11421,13 +11421,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PaymentMethodsGetByBillingAccount": {
+    "com.azure.billing#GetPaymentMethodByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PaymentMethodsGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetPaymentMethodByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#PaymentMethodsGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetPaymentMethodByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -11440,7 +11440,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PaymentMethodsGetByBillingAccountResponse": {
+    "com.azure.billing#GetPaymentMethodByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -11496,7 +11496,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PaymentMethodsGetByBillingAccountRequest": {
+    "com.azure.billing#GetPaymentMethodByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -11520,10 +11520,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PaymentMethodsListByBillingAccount": {
+    "com.azure.billing#ListPaymentMethodByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PaymentMethodsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListPaymentMethodByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#PaymentMethodsListResult"
@@ -11539,7 +11539,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PaymentMethodsListByBillingAccountRequest": {
+    "com.azure.billing#ListPaymentMethodByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -11773,10 +11773,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#TransactionsListByInvoice": {
+    "com.azure.billing#ListTransactionByInvoice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransactionsListByInvoiceRequest"
+        "target": "com.azure.billing#ListTransactionByInvoiceRequest"
       },
       "output": {
         "target": "com.azure.billing#TransactionListResult"
@@ -12210,7 +12210,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#TransactionsListByInvoiceRequest": {
+    "com.azure.billing#ListTransactionByInvoiceRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -12276,10 +12276,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#TransactionsGetTransactionSummaryByInvoice": {
+    "com.azure.billing#GetTransactionTransactionSummaryByInvoice": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransactionsGetTransactionSummaryByInvoiceRequest"
+        "target": "com.azure.billing#GetTransactionTransactionSummaryByInvoiceRequest"
       },
       "output": {
         "target": "com.azure.billing#TransactionSummary"
@@ -12339,7 +12339,7 @@
         "smithy.api#documentation": "A transaction summary."
       }
     },
-    "com.azure.billing#TransactionsGetTransactionSummaryByInvoiceRequest": {
+    "com.azure.billing#GetTransactionTransactionSummaryByInvoiceRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -12513,13 +12513,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoicesGetByBillingAccount": {
+    "com.azure.billing#GetInvoiceByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoicesGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetInvoiceByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#InvoicesGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetInvoiceByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12532,7 +12532,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoicesGetByBillingAccountResponse": {
+    "com.azure.billing#GetInvoiceByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -12588,7 +12588,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#InvoicesGetByBillingAccountRequest": {
+    "com.azure.billing#GetInvoiceByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -12612,10 +12612,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoicesListByBillingAccount": {
+    "com.azure.billing#ListInvoiceByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoicesListByBillingAccountRequest"
+        "target": "com.azure.billing#ListInvoiceByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#InvoiceListResult"
@@ -12631,7 +12631,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoicesListByBillingAccountRequest": {
+    "com.azure.billing#ListInvoiceByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -12703,13 +12703,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccount": {
+    "com.azure.billing#CheckBillingPermissionAccessByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccountRequest"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByEnrollmentAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccountResponse"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByEnrollmentAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -12722,7 +12722,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccountResponse": {
+    "com.azure.billing#CheckBillingPermissionAccessByEnrollmentAccountResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -12790,7 +12790,7 @@
         "smithy.api#documentation": "Access Decision, specifies access is allowed or not."
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccountRequest": {
+    "com.azure.billing#CheckBillingPermissionAccessByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -12829,10 +12829,10 @@
         "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByEnrollmentAccount": {
+    "com.azure.billing#ListBillingSubscriptionByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsListByEnrollmentAccountRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionByEnrollmentAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionListResult"
@@ -13461,7 +13461,7 @@
         "smithy.api#documentation": "Details of the beneficiary."
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByEnrollmentAccountRequest": {
+    "com.azure.billing#ListBillingSubscriptionByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -13527,13 +13527,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByEnrollmentAccount": {
+    "com.azure.billing#GetBillingRoleDefinitionByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByEnrollmentAccountRequest"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByEnrollmentAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByEnrollmentAccountResponse"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByEnrollmentAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -13546,7 +13546,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByEnrollmentAccountResponse": {
+    "com.azure.billing#GetBillingRoleDefinitionByEnrollmentAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -13676,7 +13676,7 @@
         "smithy.api#documentation": "The set of actions that the caller is allowed to perform."
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByEnrollmentAccountRequest": {
+    "com.azure.billing#GetBillingRoleDefinitionByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -13708,10 +13708,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByEnrollmentAccount": {
+    "com.azure.billing#ListBillingRoleDefinitionByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionListByEnrollmentAccountRequest"
+        "target": "com.azure.billing#ListBillingRoleDefinitionByEnrollmentAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleDefinitionListResult"
@@ -13813,7 +13813,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByEnrollmentAccountRequest": {
+    "com.azure.billing#ListBillingRoleDefinitionByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -13837,10 +13837,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByEnrollmentAccount": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsDeleteByEnrollmentAccountRequest"
+        "target": "com.azure.billing#DeleteBillingRoleAssignmentByEnrollmentAccountRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13856,7 +13856,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByEnrollmentAccountRequest": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14070,13 +14070,13 @@
         "smithy.api#documentation": "The properties of the billing role assignment."
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccount": {
+    "com.azure.billing#GetBillingRoleAssignmentByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccountRequest"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByEnrollmentAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccountResponse"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByEnrollmentAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14089,7 +14089,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccountResponse": {
+    "com.azure.billing#GetBillingRoleAssignmentByEnrollmentAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14145,7 +14145,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccountRequest": {
+    "com.azure.billing#GetBillingRoleAssignmentByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14177,10 +14177,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByEnrollmentAccount": {
+    "com.azure.billing#ListBillingRoleAssignmentByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsListByEnrollmentAccountRequest"
+        "target": "com.azure.billing#ListBillingRoleAssignmentByEnrollmentAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleAssignmentListResult"
@@ -14196,7 +14196,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByEnrollmentAccountRequest": {
+    "com.azure.billing#ListBillingRoleAssignmentByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14220,10 +14220,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByEnrollmentAccount": {
+    "com.azure.billing#ListBillingPermissionByEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByEnrollmentAccountRequest"
+        "target": "com.azure.billing#ListBillingPermissionByEnrollmentAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -14269,7 +14269,7 @@
         "smithy.api#documentation": "The BillingPermission items on this page"
       }
     },
-    "com.azure.billing#BillingPermissionsListByEnrollmentAccountRequest": {
+    "com.azure.billing#ListBillingPermissionByEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14293,13 +14293,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#EnrollmentAccountsGet": {
+    "com.azure.billing#GetEnrollmentAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#EnrollmentAccountsGetRequest"
+        "target": "com.azure.billing#GetEnrollmentAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#EnrollmentAccountsGetResponse"
+        "target": "com.azure.billing#GetEnrollmentAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14312,7 +14312,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#EnrollmentAccountsGetResponse": {
+    "com.azure.billing#GetEnrollmentAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14436,7 +14436,7 @@
         "smithy.api#documentation": "It is an organizational hierarchy within a billing account to administer and manage azure costs."
       }
     },
-    "com.azure.billing#EnrollmentAccountsGetRequest": {
+    "com.azure.billing#GetEnrollmentAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14460,10 +14460,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#EnrollmentAccountsListByBillingAccount": {
+    "com.azure.billing#ListEnrollmentAccountByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#EnrollmentAccountsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListEnrollmentAccountByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#EnrollmentAccountListResult"
@@ -14565,7 +14565,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#EnrollmentAccountsListByBillingAccountRequest": {
+    "com.azure.billing#ListEnrollmentAccountByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14672,13 +14672,13 @@
       },
       "traits": {}
     },
-    "com.azure.billing#EnrollmentAccountsGetByDepartment": {
+    "com.azure.billing#GetEnrollmentAccountByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#EnrollmentAccountsGetByDepartmentRequest"
+        "target": "com.azure.billing#GetEnrollmentAccountByDepartmentRequest"
       },
       "output": {
-        "target": "com.azure.billing#EnrollmentAccountsGetByDepartmentResponse"
+        "target": "com.azure.billing#GetEnrollmentAccountByDepartmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14691,7 +14691,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#EnrollmentAccountsGetByDepartmentResponse": {
+    "com.azure.billing#GetEnrollmentAccountByDepartmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -14747,7 +14747,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#EnrollmentAccountsGetByDepartmentRequest": {
+    "com.azure.billing#GetEnrollmentAccountByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14779,10 +14779,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#EnrollmentAccountsListByDepartment": {
+    "com.azure.billing#ListEnrollmentAccountByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#EnrollmentAccountsListByDepartmentRequest"
+        "target": "com.azure.billing#ListEnrollmentAccountByDepartmentRequest"
       },
       "output": {
         "target": "com.azure.billing#EnrollmentAccountListResult"
@@ -14798,7 +14798,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#EnrollmentAccountsListByDepartmentRequest": {
+    "com.azure.billing#ListEnrollmentAccountByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14864,13 +14864,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByDepartment": {
+    "com.azure.billing#CheckBillingPermissionAccessByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByDepartmentRequest"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByDepartmentRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByDepartmentResponse"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByDepartmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14883,7 +14883,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByDepartmentResponse": {
+    "com.azure.billing#CheckBillingPermissionAccessByDepartmentResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -14905,7 +14905,7 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByDepartmentRequest": {
+    "com.azure.billing#CheckBillingPermissionAccessByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -14944,13 +14944,13 @@
         "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByDepartment": {
+    "com.azure.billing#GetBillingRoleDefinitionByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByDepartmentRequest"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByDepartmentRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByDepartmentResponse"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByDepartmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -14963,7 +14963,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByDepartmentResponse": {
+    "com.azure.billing#GetBillingRoleDefinitionByDepartmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15019,7 +15019,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByDepartmentRequest": {
+    "com.azure.billing#GetBillingRoleDefinitionByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15051,10 +15051,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByDepartment": {
+    "com.azure.billing#ListBillingRoleDefinitionByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionListByDepartmentRequest"
+        "target": "com.azure.billing#ListBillingRoleDefinitionByDepartmentRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleDefinitionListResult"
@@ -15070,7 +15070,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByDepartmentRequest": {
+    "com.azure.billing#ListBillingRoleDefinitionByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15094,10 +15094,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByDepartment": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsDeleteByDepartmentRequest"
+        "target": "com.azure.billing#DeleteBillingRoleAssignmentByDepartmentRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -15113,7 +15113,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByDepartmentRequest": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15276,13 +15276,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByDepartment": {
+    "com.azure.billing#GetBillingRoleAssignmentByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByDepartmentRequest"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByDepartmentRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByDepartmentResponse"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByDepartmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15295,7 +15295,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByDepartmentResponse": {
+    "com.azure.billing#GetBillingRoleAssignmentByDepartmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15351,7 +15351,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByDepartmentRequest": {
+    "com.azure.billing#GetBillingRoleAssignmentByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15383,10 +15383,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByDepartment": {
+    "com.azure.billing#ListBillingRoleAssignmentByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsListByDepartmentRequest"
+        "target": "com.azure.billing#ListBillingRoleAssignmentByDepartmentRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleAssignmentListResult"
@@ -15402,7 +15402,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByDepartmentRequest": {
+    "com.azure.billing#ListBillingRoleAssignmentByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15426,10 +15426,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByDepartment": {
+    "com.azure.billing#ListBillingPermissionByDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByDepartmentRequest"
+        "target": "com.azure.billing#ListBillingPermissionByDepartmentRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -15445,7 +15445,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsListByDepartmentRequest": {
+    "com.azure.billing#ListBillingPermissionByDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15469,13 +15469,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#DepartmentsGet": {
+    "com.azure.billing#GetDepartment": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#DepartmentsGetRequest"
+        "target": "com.azure.billing#GetDepartmentRequest"
       },
       "output": {
-        "target": "com.azure.billing#DepartmentsGetResponse"
+        "target": "com.azure.billing#GetDepartmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -15488,7 +15488,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#DepartmentsGetResponse": {
+    "com.azure.billing#GetDepartmentResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -15576,7 +15576,7 @@
         "smithy.api#documentation": "Optional grouping of enrollment accounts to segment costs into logical groupings and set budgets."
       }
     },
-    "com.azure.billing#DepartmentsGetRequest": {
+    "com.azure.billing#GetDepartmentRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15600,10 +15600,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#DepartmentsListByBillingAccount": {
+    "com.azure.billing#ListDepartmentByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#DepartmentsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListDepartmentByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#DepartmentListResult"
@@ -15705,7 +15705,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#DepartmentsListByBillingAccountRequest": {
+    "com.azure.billing#ListDepartmentByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -15756,10 +15756,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ProductsListByCustomer": {
+    "com.azure.billing#ListProductByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ProductsListByCustomerRequest"
+        "target": "com.azure.billing#ListProductByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#ProductListResult"
@@ -15775,7 +15775,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ProductsListByCustomerRequest": {
+    "com.azure.billing#ListProductByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16026,13 +16026,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByCustomerAtBillingAccount": {
+    "com.azure.billing#GetPolicyByCustomerAtBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PoliciesGetByCustomerAtBillingAccountRequest"
+        "target": "com.azure.billing#GetPolicyByCustomerAtBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#PoliciesGetByCustomerAtBillingAccountResponse"
+        "target": "com.azure.billing#GetPolicyByCustomerAtBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16045,7 +16045,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PoliciesGetByCustomerAtBillingAccountResponse": {
+    "com.azure.billing#GetPolicyByCustomerAtBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16101,7 +16101,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByCustomerAtBillingAccountRequest": {
+    "com.azure.billing#GetPolicyByCustomerAtBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16125,10 +16125,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByCustomerAtBillingAccount": {
+    "com.azure.billing#ListBillingSubscriptionByCustomerAtBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsListByCustomerAtBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionByCustomerAtBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionListResult"
@@ -16144,7 +16144,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByCustomerAtBillingAccountRequest": {
+    "com.azure.billing#ListBillingSubscriptionByCustomerAtBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16224,10 +16224,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByCustomerAtBillingAccount": {
+    "com.azure.billing#ListBillingPermissionByCustomerAtBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByCustomerAtBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingPermissionByCustomerAtBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -16243,7 +16243,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsListByCustomerAtBillingAccountRequest": {
+    "com.azure.billing#ListBillingPermissionByCustomerAtBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16267,13 +16267,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#CustomersGetByBillingAccount": {
+    "com.azure.billing#GetCustomerByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#CustomersGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetCustomerByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#CustomersGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetCustomerByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16286,7 +16286,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#CustomersGetByBillingAccountResponse": {
+    "com.azure.billing#GetCustomerByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16428,7 +16428,7 @@
         "smithy.api#documentation": "Azure plans enabled for the customer."
       }
     },
-    "com.azure.billing#CustomersGetByBillingAccountRequest": {
+    "com.azure.billing#GetCustomerByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16452,10 +16452,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#CustomersListByBillingAccount": {
+    "com.azure.billing#ListCustomerByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#CustomersListByBillingAccountRequest"
+        "target": "com.azure.billing#ListCustomerByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#CustomerListResult"
@@ -16557,7 +16557,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#CustomersListByBillingAccountRequest": {
+    "com.azure.billing#ListCustomerByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16622,13 +16622,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByBillingAccount": {
+    "com.azure.billing#CreateBillingRoleAssignmentByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByBillingAccountRequest"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByBillingAccountResponse"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16641,7 +16641,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByBillingAccountResponse": {
+    "com.azure.billing#CreateBillingRoleAssignmentByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -16697,7 +16697,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByBillingAccountRequest": {
+    "com.azure.billing#CreateBillingRoleAssignmentByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -16811,13 +16811,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByBillingAccount": {
+    "com.azure.billing#CheckBillingPermissionAccessByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingAccountRequest"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingAccountResponse"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -16830,7 +16830,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByBillingAccountResponse": {
+    "com.azure.billing#CheckBillingPermissionAccessByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -16852,7 +16852,7 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByBillingAccountRequest": {
+    "com.azure.billing#CheckBillingPermissionAccessByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -18319,10 +18319,10 @@
         "smithy.api#documentation": "Cancellation reason."
       }
     },
-    "com.azure.billing#BillingSubscriptionsDelete": {
+    "com.azure.billing#DeleteBillingSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsDeleteRequest"
+        "target": "com.azure.billing#DeleteBillingSubscriptionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -18338,7 +18338,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsDeleteRequest": {
+    "com.azure.billing#DeleteBillingSubscriptionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -18362,13 +18362,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingSubscriptionsUpdate": {
+    "com.azure.billing#UpdateBillingSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsUpdateRequest"
+        "target": "com.azure.billing#UpdateBillingSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingSubscriptionsUpdateResponse"
+        "target": "com.azure.billing#UpdateBillingSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18381,7 +18381,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsUpdateResponse": {
+    "com.azure.billing#UpdateBillingSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18437,7 +18437,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingSubscriptionsUpdateRequest": {
+    "com.azure.billing#UpdateBillingSubscriptionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -18590,13 +18590,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingSubscriptionsGet": {
+    "com.azure.billing#GetBillingSubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsGetRequest"
+        "target": "com.azure.billing#GetBillingSubscriptionRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingSubscriptionsGetResponse"
+        "target": "com.azure.billing#GetBillingSubscriptionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -18609,7 +18609,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsGetResponse": {
+    "com.azure.billing#GetBillingSubscriptionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -18665,7 +18665,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingSubscriptionsGetRequest": {
+    "com.azure.billing#GetBillingSubscriptionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -18696,10 +18696,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByBillingAccount": {
+    "com.azure.billing#ListBillingSubscriptionByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionListResult"
@@ -18715,7 +18715,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingSubscriptionByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19330,13 +19330,13 @@
         "smithy.api#documentation": "A billing subscription alias."
       }
     },
-    "com.azure.billing#BillingSubscriptionsAliasesGet": {
+    "com.azure.billing#GetBillingSubscriptionAliase": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsAliasesGetRequest"
+        "target": "com.azure.billing#GetBillingSubscriptionAliaseRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingSubscriptionsAliasesGetResponse"
+        "target": "com.azure.billing#GetBillingSubscriptionAliaseResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19349,7 +19349,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsAliasesGetResponse": {
+    "com.azure.billing#GetBillingSubscriptionAliaseResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19405,7 +19405,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingSubscriptionsAliasesGetRequest": {
+    "com.azure.billing#GetBillingSubscriptionAliaseRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19429,10 +19429,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingSubscriptionsAliasesListByBillingAccount": {
+    "com.azure.billing#ListBillingSubscriptionAliaseByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsAliasesListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionAliaseByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionAliasListResult"
@@ -19534,7 +19534,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingSubscriptionsAliasesListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingSubscriptionAliaseByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19599,13 +19599,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByBillingAccount": {
+    "com.azure.billing#GetBillingRoleDefinitionByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19618,7 +19618,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByBillingAccountResponse": {
+    "com.azure.billing#GetBillingRoleDefinitionByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19674,7 +19674,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByBillingAccountRequest": {
+    "com.azure.billing#GetBillingRoleDefinitionByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19698,10 +19698,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByBillingAccount": {
+    "com.azure.billing#ListBillingRoleDefinitionByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingRoleDefinitionByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleDefinitionListResult"
@@ -19717,7 +19717,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingRoleDefinitionByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19733,10 +19733,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByBillingAccount": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsDeleteByBillingAccountRequest"
+        "target": "com.azure.billing#DeleteBillingRoleAssignmentByBillingAccountRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -19752,7 +19752,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByBillingAccountRequest": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19899,13 +19899,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByBillingAccount": {
+    "com.azure.billing#GetBillingRoleAssignmentByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -19918,7 +19918,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByBillingAccountResponse": {
+    "com.azure.billing#GetBillingRoleAssignmentByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -19974,7 +19974,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByBillingAccountRequest": {
+    "com.azure.billing#GetBillingRoleAssignmentByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -19998,10 +19998,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByBillingAccount": {
+    "com.azure.billing#ListBillingRoleAssignmentByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingRoleAssignmentByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleAssignmentListResult"
@@ -20017,7 +20017,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingRoleAssignmentByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20054,10 +20054,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRequestsListByBillingAccount": {
+    "com.azure.billing#ListBillingRequestByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRequestsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingRequestByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRequestListResult"
@@ -20073,7 +20073,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRequestsListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingRequestByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20131,10 +20131,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingProfilesValidateDeleteEligibility": {
+    "com.azure.billing#DeleteBillingProfileValidateEligibility": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingProfilesValidateDeleteEligibilityRequest"
+        "target": "com.azure.billing#DeleteBillingProfileValidateEligibilityRequest"
       },
       "output": {
         "target": "com.azure.billing#DeleteBillingProfileEligibilityResult"
@@ -20281,7 +20281,7 @@
         "smithy.api#documentation": "Status describing if billing profile is eligible to be deleted."
       }
     },
-    "com.azure.billing#BillingProfilesValidateDeleteEligibilityRequest": {
+    "com.azure.billing#DeleteBillingProfileValidateEligibilityRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20305,10 +20305,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#TransactionsListByBillingProfile": {
+    "com.azure.billing#ListTransactionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransactionsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListTransactionByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#TransactionListResult"
@@ -20324,7 +20324,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#TransactionsListByBillingProfileRequest": {
+    "com.azure.billing#ListTransactionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20495,10 +20495,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ReservationsListByBillingProfile": {
+    "com.azure.billing#ListReservationByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ReservationsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListReservationByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#ReservationsListResult"
@@ -20514,7 +20514,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ReservationsListByBillingProfileRequest": {
+    "com.azure.billing#ListReservationByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20580,10 +20580,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ProductsListByBillingProfile": {
+    "com.azure.billing#ListProductByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ProductsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListProductByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#ProductListResult"
@@ -20599,7 +20599,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ProductsListByBillingProfileRequest": {
+    "com.azure.billing#ListProductByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20879,13 +20879,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByBillingProfile": {
+    "com.azure.billing#GetPolicyByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PoliciesGetByBillingProfileRequest"
+        "target": "com.azure.billing#GetPolicyByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#PoliciesGetByBillingProfileResponse"
+        "target": "com.azure.billing#GetPolicyByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20898,7 +20898,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PoliciesGetByBillingProfileResponse": {
+    "com.azure.billing#GetPolicyByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -20954,7 +20954,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByBillingProfileRequest": {
+    "com.azure.billing#GetPolicyByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -20978,13 +20978,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PaymentMethodsGetByBillingProfile": {
+    "com.azure.billing#GetPaymentMethodByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PaymentMethodsGetByBillingProfileRequest"
+        "target": "com.azure.billing#GetPaymentMethodByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#PaymentMethodsGetByBillingProfileResponse"
+        "target": "com.azure.billing#GetPaymentMethodByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -20997,7 +20997,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PaymentMethodsGetByBillingProfileResponse": {
+    "com.azure.billing#GetPaymentMethodByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21130,7 +21130,7 @@
         "smithy.api#documentation": "The list of logos for the payment method."
       }
     },
-    "com.azure.billing#PaymentMethodsGetByBillingProfileRequest": {
+    "com.azure.billing#GetPaymentMethodByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -21162,10 +21162,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PaymentMethodsListByBillingProfile": {
+    "com.azure.billing#ListPaymentMethodByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PaymentMethodsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListPaymentMethodByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#PaymentMethodLinksListResult"
@@ -21267,7 +21267,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PaymentMethodsListByBillingProfileRequest": {
+    "com.azure.billing#ListPaymentMethodByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -21291,10 +21291,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoicesListByBillingProfile": {
+    "com.azure.billing#ListInvoiceByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoicesListByBillingProfileRequest"
+        "target": "com.azure.billing#ListInvoiceByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#InvoiceListResult"
@@ -21310,7 +21310,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoicesListByBillingProfileRequest": {
+    "com.azure.billing#ListInvoiceByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -21390,10 +21390,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoiceSectionsValidateDeleteEligibility": {
+    "com.azure.billing#DeleteInvoiceSectionValidateEligibility": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoiceSectionsValidateDeleteEligibilityRequest"
+        "target": "com.azure.billing#DeleteInvoiceSectionValidateEligibilityRequest"
       },
       "output": {
         "target": "com.azure.billing#DeleteInvoiceSectionEligibilityResult"
@@ -21516,7 +21516,7 @@
         "smithy.api#documentation": "Status describing if invoice section is eligible to be deleted."
       }
     },
-    "com.azure.billing#InvoiceSectionsValidateDeleteEligibilityRequest": {
+    "com.azure.billing#DeleteInvoiceSectionValidateEligibilityRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -21851,13 +21851,13 @@
         "smithy.api#documentation": "Request parameters to initiate transfer."
       }
     },
-    "com.azure.billing#TransfersGet": {
+    "com.azure.billing#GetTransfer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransfersGetRequest"
+        "target": "com.azure.billing#GetTransferRequest"
       },
       "output": {
-        "target": "com.azure.billing#TransfersGetResponse"
+        "target": "com.azure.billing#GetTransferResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -21870,7 +21870,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#TransfersGetResponse": {
+    "com.azure.billing#GetTransferResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -21926,7 +21926,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#TransfersGetRequest": {
+    "com.azure.billing#GetTransferRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -21966,10 +21966,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#TransfersList": {
+    "com.azure.billing#ListTransfers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransfersListRequest"
+        "target": "com.azure.billing#ListTransfersRequest"
       },
       "output": {
         "target": "com.azure.billing#TransferDetailsListResult"
@@ -22071,7 +22071,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#TransfersListRequest": {
+    "com.azure.billing#ListTransfersRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22103,10 +22103,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#TransactionsListByInvoiceSection": {
+    "com.azure.billing#ListTransactionByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransactionsListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListTransactionByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#TransactionListResult"
@@ -22122,7 +22122,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#TransactionsListByInvoiceSectionRequest": {
+    "com.azure.billing#ListTransactionByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22309,10 +22309,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#ProductsListByInvoiceSection": {
+    "com.azure.billing#ListProductByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#ProductsListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListProductByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#ProductListResult"
@@ -22328,7 +22328,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#ProductsListByInvoiceSectionRequest": {
+    "com.azure.billing#ListProductByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22402,13 +22402,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByInvoiceSection": {
+    "com.azure.billing#CreateBillingRoleAssignmentByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByInvoiceSectionRequest"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByInvoiceSectionRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByInvoiceSectionResponse"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByInvoiceSectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22421,7 +22421,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByInvoiceSectionResponse": {
+    "com.azure.billing#CreateBillingRoleAssignmentByInvoiceSectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22477,7 +22477,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByInvoiceSectionRequest": {
+    "com.azure.billing#CreateBillingRoleAssignmentByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22552,13 +22552,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSection": {
+    "com.azure.billing#CheckBillingPermissionAccessByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSectionRequest"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByInvoiceSectionRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSectionResponse"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByInvoiceSectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22571,7 +22571,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSectionResponse": {
+    "com.azure.billing#CheckBillingPermissionAccessByInvoiceSectionResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -22593,7 +22593,7 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSectionRequest": {
+    "com.azure.billing#CheckBillingPermissionAccessByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22640,10 +22640,10 @@
         "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByInvoiceSection": {
+    "com.azure.billing#ListBillingSubscriptionByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionListResult"
@@ -22659,7 +22659,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByInvoiceSectionRequest": {
+    "com.azure.billing#ListBillingSubscriptionByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22747,13 +22747,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByInvoiceSection": {
+    "com.azure.billing#GetBillingRoleDefinitionByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByInvoiceSectionRequest"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByInvoiceSectionRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByInvoiceSectionResponse"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByInvoiceSectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22766,7 +22766,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByInvoiceSectionResponse": {
+    "com.azure.billing#GetBillingRoleDefinitionByInvoiceSectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -22822,7 +22822,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByInvoiceSectionRequest": {
+    "com.azure.billing#GetBillingRoleDefinitionByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22862,10 +22862,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByInvoiceSection": {
+    "com.azure.billing#ListBillingRoleDefinitionByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListBillingRoleDefinitionByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleDefinitionListResult"
@@ -22881,7 +22881,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByInvoiceSectionRequest": {
+    "com.azure.billing#ListBillingRoleDefinitionByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22913,10 +22913,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByInvoiceSection": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsDeleteByInvoiceSectionRequest"
+        "target": "com.azure.billing#DeleteBillingRoleAssignmentByInvoiceSectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -22932,7 +22932,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByInvoiceSectionRequest": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -22972,13 +22972,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByInvoiceSection": {
+    "com.azure.billing#GetBillingRoleAssignmentByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByInvoiceSectionRequest"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByInvoiceSectionRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByInvoiceSectionResponse"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByInvoiceSectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -22991,7 +22991,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByInvoiceSectionResponse": {
+    "com.azure.billing#GetBillingRoleAssignmentByInvoiceSectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23047,7 +23047,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByInvoiceSectionRequest": {
+    "com.azure.billing#GetBillingRoleAssignmentByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -23087,10 +23087,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByInvoiceSection": {
+    "com.azure.billing#ListBillingRoleAssignmentByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListBillingRoleAssignmentByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleAssignmentListResult"
@@ -23106,7 +23106,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByInvoiceSectionRequest": {
+    "com.azure.billing#ListBillingRoleAssignmentByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -23159,10 +23159,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRequestsListByInvoiceSection": {
+    "com.azure.billing#ListBillingRequestByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRequestsListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListBillingRequestByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRequestListResult"
@@ -23178,7 +23178,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRequestsListByInvoiceSectionRequest": {
+    "com.azure.billing#ListBillingRequestByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -23252,10 +23252,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByInvoiceSection": {
+    "com.azure.billing#ListBillingPermissionByInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByInvoiceSectionRequest"
+        "target": "com.azure.billing#ListBillingPermissionByInvoiceSectionRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -23271,7 +23271,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsListByInvoiceSectionRequest": {
+    "com.azure.billing#ListBillingPermissionByInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -23303,10 +23303,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoiceSectionsDelete": {
+    "com.azure.billing#DeleteInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoiceSectionsDeleteRequest"
+        "target": "com.azure.billing#DeleteInvoiceSectionRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -23322,7 +23322,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoiceSectionsDeleteRequest": {
+    "com.azure.billing#DeleteInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -23597,13 +23597,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#InvoiceSectionsGet": {
+    "com.azure.billing#GetInvoiceSection": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoiceSectionsGetRequest"
+        "target": "com.azure.billing#GetInvoiceSectionRequest"
       },
       "output": {
-        "target": "com.azure.billing#InvoiceSectionsGetResponse"
+        "target": "com.azure.billing#GetInvoiceSectionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -23616,7 +23616,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#InvoiceSectionsGetResponse": {
+    "com.azure.billing#GetInvoiceSectionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -23672,7 +23672,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#InvoiceSectionsGetRequest": {
+    "com.azure.billing#GetInvoiceSectionRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -23704,10 +23704,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#InvoiceSectionsListByBillingProfile": {
+    "com.azure.billing#ListInvoiceSectionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#InvoiceSectionsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListInvoiceSectionByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#InvoiceSectionListResult"
@@ -23809,7 +23809,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#InvoiceSectionsListByBillingProfileRequest": {
+    "com.azure.billing#ListInvoiceSectionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -24209,13 +24209,13 @@
         "smithy.api#documentation": "Request parameters to initiate transfer."
       }
     },
-    "com.azure.billing#PartnerTransfersGet": {
+    "com.azure.billing#GetPartnerTransfer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PartnerTransfersGetRequest"
+        "target": "com.azure.billing#GetPartnerTransferRequest"
       },
       "output": {
-        "target": "com.azure.billing#PartnerTransfersGetResponse"
+        "target": "com.azure.billing#GetPartnerTransferResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24228,7 +24228,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PartnerTransfersGetResponse": {
+    "com.azure.billing#GetPartnerTransferResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -24284,7 +24284,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PartnerTransfersGetRequest": {
+    "com.azure.billing#GetPartnerTransferRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -24324,10 +24324,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#PartnerTransfersList": {
+    "com.azure.billing#ListPartnerTransfers": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PartnerTransfersListRequest"
+        "target": "com.azure.billing#ListPartnerTransfersRequest"
       },
       "output": {
         "target": "com.azure.billing#PartnerTransferDetailsListResult"
@@ -24429,7 +24429,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PartnerTransfersListRequest": {
+    "com.azure.billing#ListPartnerTransfersRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -24461,10 +24461,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#TransactionsListByCustomer": {
+    "com.azure.billing#ListTransactionByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#TransactionsListByCustomerRequest"
+        "target": "com.azure.billing#ListTransactionByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#TransactionListResult"
@@ -24480,7 +24480,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#TransactionsListByCustomerRequest": {
+    "com.azure.billing#ListTransactionByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -24798,13 +24798,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByCustomer": {
+    "com.azure.billing#GetPolicyByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#PoliciesGetByCustomerRequest"
+        "target": "com.azure.billing#GetPolicyByCustomerRequest"
       },
       "output": {
-        "target": "com.azure.billing#PoliciesGetByCustomerResponse"
+        "target": "com.azure.billing#GetPolicyByCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24817,7 +24817,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#PoliciesGetByCustomerResponse": {
+    "com.azure.billing#GetPolicyByCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -24873,7 +24873,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#PoliciesGetByCustomerRequest": {
+    "com.azure.billing#GetPolicyByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -24925,13 +24925,13 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByCustomer": {
+    "com.azure.billing#CreateBillingRoleAssignmentByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByCustomerRequest"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByCustomerRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByCustomerResponse"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -24944,7 +24944,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByCustomerResponse": {
+    "com.azure.billing#CreateBillingRoleAssignmentByCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25000,7 +25000,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByCustomerRequest": {
+    "com.azure.billing#CreateBillingRoleAssignmentByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25075,13 +25075,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByCustomer": {
+    "com.azure.billing#CheckBillingPermissionAccessByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByCustomerRequest"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByCustomerRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByCustomerResponse"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25094,7 +25094,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByCustomerResponse": {
+    "com.azure.billing#CheckBillingPermissionAccessByCustomerResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -25116,7 +25116,7 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByCustomerRequest": {
+    "com.azure.billing#CheckBillingPermissionAccessByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25163,10 +25163,10 @@
         "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByCustomer": {
+    "com.azure.billing#ListBillingSubscriptionByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsListByCustomerRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionListResult"
@@ -25182,7 +25182,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByCustomerRequest": {
+    "com.azure.billing#ListBillingSubscriptionByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25270,13 +25270,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByCustomer": {
+    "com.azure.billing#GetBillingRoleDefinitionByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByCustomerRequest"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByCustomerRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByCustomerResponse"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25289,7 +25289,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByCustomerResponse": {
+    "com.azure.billing#GetBillingRoleDefinitionByCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25345,7 +25345,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByCustomerRequest": {
+    "com.azure.billing#GetBillingRoleDefinitionByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25385,10 +25385,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByCustomer": {
+    "com.azure.billing#ListBillingRoleDefinitionByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionListByCustomerRequest"
+        "target": "com.azure.billing#ListBillingRoleDefinitionByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleDefinitionListResult"
@@ -25404,7 +25404,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByCustomerRequest": {
+    "com.azure.billing#ListBillingRoleDefinitionByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25436,10 +25436,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByCustomer": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsDeleteByCustomerRequest"
+        "target": "com.azure.billing#DeleteBillingRoleAssignmentByCustomerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -25455,7 +25455,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByCustomerRequest": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25495,13 +25495,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByCustomer": {
+    "com.azure.billing#GetBillingRoleAssignmentByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByCustomerRequest"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByCustomerRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByCustomerResponse"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25514,7 +25514,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByCustomerResponse": {
+    "com.azure.billing#GetBillingRoleAssignmentByCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25570,7 +25570,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByCustomerRequest": {
+    "com.azure.billing#GetBillingRoleAssignmentByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25610,10 +25610,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByCustomer": {
+    "com.azure.billing#ListBillingRoleAssignmentByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsListByCustomerRequest"
+        "target": "com.azure.billing#ListBillingRoleAssignmentByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleAssignmentListResult"
@@ -25629,7 +25629,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByCustomerRequest": {
+    "com.azure.billing#ListBillingRoleAssignmentByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25682,10 +25682,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRequestsListByCustomer": {
+    "com.azure.billing#ListBillingRequestByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRequestsListByCustomerRequest"
+        "target": "com.azure.billing#ListBillingRequestByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRequestListResult"
@@ -25701,7 +25701,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRequestsListByCustomerRequest": {
+    "com.azure.billing#ListBillingRequestByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25775,10 +25775,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByCustomer": {
+    "com.azure.billing#ListBillingPermissionByCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByCustomerRequest"
+        "target": "com.azure.billing#ListBillingPermissionByCustomerRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -25794,7 +25794,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsListByCustomerRequest": {
+    "com.azure.billing#ListBillingPermissionByCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25826,13 +25826,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#CustomersGet": {
+    "com.azure.billing#GetCustomer": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#CustomersGetRequest"
+        "target": "com.azure.billing#GetCustomerRequest"
       },
       "output": {
-        "target": "com.azure.billing#CustomersGetResponse"
+        "target": "com.azure.billing#GetCustomerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -25845,7 +25845,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#CustomersGetResponse": {
+    "com.azure.billing#GetCustomerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -25901,7 +25901,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#CustomersGetRequest": {
+    "com.azure.billing#GetCustomerRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -25933,10 +25933,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#CustomersListByBillingProfile": {
+    "com.azure.billing#ListCustomerByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#CustomersListByBillingProfileRequest"
+        "target": "com.azure.billing#ListCustomerByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#CustomerListResult"
@@ -25952,7 +25952,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#CustomersListByBillingProfileRequest": {
+    "com.azure.billing#ListCustomerByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26025,13 +26025,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByBillingProfile": {
+    "com.azure.billing#CreateBillingRoleAssignmentByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByBillingProfileRequest"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsCreateByBillingProfileResponse"
+        "target": "com.azure.billing#CreateBillingRoleAssignmentByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26044,7 +26044,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByBillingProfileResponse": {
+    "com.azure.billing#CreateBillingRoleAssignmentByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -26100,7 +26100,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsCreateByBillingProfileRequest": {
+    "com.azure.billing#CreateBillingRoleAssignmentByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26167,13 +26167,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByBillingProfile": {
+    "com.azure.billing#CheckBillingPermissionAccessByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingProfileRequest"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingProfileResponse"
+        "target": "com.azure.billing#CheckBillingPermissionAccessByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26186,7 +26186,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByBillingProfileResponse": {
+    "com.azure.billing#CheckBillingPermissionAccessByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -26208,7 +26208,7 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingPermissionsCheckAccessByBillingProfileRequest": {
+    "com.azure.billing#CheckBillingPermissionAccessByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26247,13 +26247,13 @@
         "smithy.api#documentation": "List of actions passed in the request body against which the permissions will be checked."
       }
     },
-    "com.azure.billing#BillingSubscriptionsGetByBillingProfile": {
+    "com.azure.billing#GetBillingSubscriptionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsGetByBillingProfileRequest"
+        "target": "com.azure.billing#GetBillingSubscriptionByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingSubscriptionsGetByBillingProfileResponse"
+        "target": "com.azure.billing#GetBillingSubscriptionByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26266,7 +26266,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsGetByBillingProfileResponse": {
+    "com.azure.billing#GetBillingSubscriptionByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -26322,7 +26322,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingSubscriptionsGetByBillingProfileRequest": {
+    "com.azure.billing#GetBillingSubscriptionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26361,10 +26361,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByBillingProfile": {
+    "com.azure.billing#ListBillingSubscriptionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingSubscriptionsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListBillingSubscriptionByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingSubscriptionListResult"
@@ -26380,7 +26380,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingSubscriptionsListByBillingProfileRequest": {
+    "com.azure.billing#ListBillingSubscriptionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26460,13 +26460,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByBillingProfile": {
+    "com.azure.billing#GetBillingRoleDefinitionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByBillingProfileRequest"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleDefinitionGetByBillingProfileResponse"
+        "target": "com.azure.billing#GetBillingRoleDefinitionByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26479,7 +26479,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByBillingProfileResponse": {
+    "com.azure.billing#GetBillingRoleDefinitionByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -26535,7 +26535,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionGetByBillingProfileRequest": {
+    "com.azure.billing#GetBillingRoleDefinitionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26567,10 +26567,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByBillingProfile": {
+    "com.azure.billing#ListBillingRoleDefinitionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleDefinitionListByBillingProfileRequest"
+        "target": "com.azure.billing#ListBillingRoleDefinitionByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleDefinitionListResult"
@@ -26586,7 +26586,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleDefinitionListByBillingProfileRequest": {
+    "com.azure.billing#ListBillingRoleDefinitionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26610,10 +26610,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByBillingProfile": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsDeleteByBillingProfileRequest"
+        "target": "com.azure.billing#DeleteBillingRoleAssignmentByBillingProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -26629,7 +26629,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsDeleteByBillingProfileRequest": {
+    "com.azure.billing#DeleteBillingRoleAssignmentByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26661,13 +26661,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByBillingProfile": {
+    "com.azure.billing#GetBillingRoleAssignmentByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByBillingProfileRequest"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingRoleAssignmentsGetByBillingProfileResponse"
+        "target": "com.azure.billing#GetBillingRoleAssignmentByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26680,7 +26680,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByBillingProfileResponse": {
+    "com.azure.billing#GetBillingRoleAssignmentByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -26736,7 +26736,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsGetByBillingProfileRequest": {
+    "com.azure.billing#GetBillingRoleAssignmentByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26768,10 +26768,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByBillingProfile": {
+    "com.azure.billing#ListBillingRoleAssignmentByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRoleAssignmentsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListBillingRoleAssignmentByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRoleAssignmentListResult"
@@ -26787,7 +26787,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRoleAssignmentsListByBillingProfileRequest": {
+    "com.azure.billing#ListBillingRoleAssignmentByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26832,10 +26832,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingRequestsListByBillingProfile": {
+    "com.azure.billing#ListBillingRequestByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingRequestsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListBillingRequestByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingRequestListResult"
@@ -26851,7 +26851,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingRequestsListByBillingProfileRequest": {
+    "com.azure.billing#ListBillingRequestByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26917,10 +26917,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByBillingProfile": {
+    "com.azure.billing#ListBillingPermissionByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByBillingProfileRequest"
+        "target": "com.azure.billing#ListBillingPermissionByBillingProfileRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -26936,7 +26936,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsListByBillingProfileRequest": {
+    "com.azure.billing#ListBillingPermissionByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -26960,13 +26960,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#AvailableBalancesGetByBillingProfile": {
+    "com.azure.billing#GetAvailableBalanceByBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AvailableBalancesGetByBillingProfileRequest"
+        "target": "com.azure.billing#GetAvailableBalanceByBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#AvailableBalancesGetByBillingProfileResponse"
+        "target": "com.azure.billing#GetAvailableBalanceByBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -26979,7 +26979,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#AvailableBalancesGetByBillingProfileResponse": {
+    "com.azure.billing#GetAvailableBalanceByBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -27120,7 +27120,7 @@
         "smithy.api#documentation": "A Payment on Account."
       }
     },
-    "com.azure.billing#AvailableBalancesGetByBillingProfileRequest": {
+    "com.azure.billing#GetAvailableBalanceByBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -27144,10 +27144,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingProfilesDelete": {
+    "com.azure.billing#DeleteBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingProfilesDeleteRequest"
+        "target": "com.azure.billing#DeleteBillingProfileRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -27163,7 +27163,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingProfilesDeleteRequest": {
+    "com.azure.billing#DeleteBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -27649,13 +27649,13 @@
         "smithy.api#documentation": "Information about the enabled azure plans."
       }
     },
-    "com.azure.billing#BillingProfilesGet": {
+    "com.azure.billing#GetBillingProfile": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingProfilesGetRequest"
+        "target": "com.azure.billing#GetBillingProfileRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingProfilesGetResponse"
+        "target": "com.azure.billing#GetBillingProfileResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27668,7 +27668,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingProfilesGetResponse": {
+    "com.azure.billing#GetBillingProfileResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -27724,7 +27724,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingProfilesGetRequest": {
+    "com.azure.billing#GetBillingProfileRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -27748,10 +27748,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingProfilesListByBillingAccount": {
+    "com.azure.billing#ListBillingProfileByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingProfilesListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingProfileByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingProfileListResult"
@@ -27853,7 +27853,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingProfilesListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingProfileByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -27918,10 +27918,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingPermissionsListByBillingAccount": {
+    "com.azure.billing#ListBillingPermissionByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingPermissionsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListBillingPermissionByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingPermissionListResult"
@@ -27937,7 +27937,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingPermissionsListByBillingAccountRequest": {
+    "com.azure.billing#ListBillingPermissionByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -27953,13 +27953,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#AvailableBalancesGetByBillingAccount": {
+    "com.azure.billing#GetAvailableBalanceByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AvailableBalancesGetByBillingAccountRequest"
+        "target": "com.azure.billing#GetAvailableBalanceByBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#AvailableBalancesGetByBillingAccountResponse"
+        "target": "com.azure.billing#GetAvailableBalanceByBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -27972,7 +27972,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#AvailableBalancesGetByBillingAccountResponse": {
+    "com.azure.billing#GetAvailableBalanceByBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28028,7 +28028,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#AvailableBalancesGetByBillingAccountRequest": {
+    "com.azure.billing#GetAvailableBalanceByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -28044,10 +28044,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#AssociatedTenantsDelete": {
+    "com.azure.billing#DeleteAssociatedTenant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AssociatedTenantsDeleteRequest"
+        "target": "com.azure.billing#DeleteAssociatedTenantRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -28063,7 +28063,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#AssociatedTenantsDeleteRequest": {
+    "com.azure.billing#DeleteAssociatedTenantRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -28368,13 +28368,13 @@
         "smithy.api#documentation": "An associated tenant."
       }
     },
-    "com.azure.billing#AssociatedTenantsGet": {
+    "com.azure.billing#GetAssociatedTenant": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AssociatedTenantsGetRequest"
+        "target": "com.azure.billing#GetAssociatedTenantRequest"
       },
       "output": {
-        "target": "com.azure.billing#AssociatedTenantsGetResponse"
+        "target": "com.azure.billing#GetAssociatedTenantResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28387,7 +28387,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#AssociatedTenantsGetResponse": {
+    "com.azure.billing#GetAssociatedTenantResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28443,7 +28443,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#AssociatedTenantsGetRequest": {
+    "com.azure.billing#GetAssociatedTenantRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -28467,10 +28467,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#AssociatedTenantsListByBillingAccount": {
+    "com.azure.billing#ListAssociatedTenantByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AssociatedTenantsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListAssociatedTenantByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#AssociatedTenantListResult"
@@ -28572,7 +28572,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#AssociatedTenantsListByBillingAccountRequest": {
+    "com.azure.billing#ListAssociatedTenantByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -28637,13 +28637,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#AgreementsGet": {
+    "com.azure.billing#GetAgreement": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AgreementsGetRequest"
+        "target": "com.azure.billing#GetAgreementRequest"
       },
       "output": {
-        "target": "com.azure.billing#AgreementsGetResponse"
+        "target": "com.azure.billing#GetAgreementResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -28656,7 +28656,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#AgreementsGetResponse": {
+    "com.azure.billing#GetAgreementResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -28956,7 +28956,7 @@
         "smithy.api#documentation": "The mode of acceptance for an agreement."
       }
     },
-    "com.azure.billing#AgreementsGetRequest": {
+    "com.azure.billing#GetAgreementRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -28980,10 +28980,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#AgreementsListByBillingAccount": {
+    "com.azure.billing#ListAgreementByBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#AgreementsListByBillingAccountRequest"
+        "target": "com.azure.billing#ListAgreementByBillingAccountRequest"
       },
       "output": {
         "target": "com.azure.billing#AgreementListResult"
@@ -29085,7 +29085,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#AgreementsListByBillingAccountRequest": {
+    "com.azure.billing#ListAgreementByBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -29213,13 +29213,13 @@
       },
       "traits": {}
     },
-    "com.azure.billing#BillingAccountsUpdate": {
+    "com.azure.billing#UpdateBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingAccountsUpdateRequest"
+        "target": "com.azure.billing#UpdateBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingAccountsUpdateResponse"
+        "target": "com.azure.billing#UpdateBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29232,7 +29232,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingAccountsUpdateResponse": {
+    "com.azure.billing#UpdateBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -29288,7 +29288,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingAccountsUpdateRequest": {
+    "com.azure.billing#UpdateBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -29445,13 +29445,13 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingAccountsGet": {
+    "com.azure.billing#GetBillingAccount": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingAccountsGetRequest"
+        "target": "com.azure.billing#GetBillingAccountRequest"
       },
       "output": {
-        "target": "com.azure.billing#BillingAccountsGetResponse"
+        "target": "com.azure.billing#GetBillingAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -29464,7 +29464,7 @@
         "com.distilled.openapi#apiVersion": "2024-04-01"
       }
     },
-    "com.azure.billing#BillingAccountsGetResponse": {
+    "com.azure.billing#GetBillingAccountResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -29520,7 +29520,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingAccountsGetRequest": {
+    "com.azure.billing#GetBillingAccountRequest": {
       "type": "structure",
       "members": {
         "billingAccountName": {
@@ -29536,10 +29536,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.billing#BillingAccountsList": {
+    "com.azure.billing#ListBillingAccounts": {
       "type": "operation",
       "input": {
-        "target": "com.azure.billing#BillingAccountsListRequest"
+        "target": "com.azure.billing#ListBillingAccountsRequest"
       },
       "output": {
         "target": "com.azure.billing#BillingAccountListResult"
@@ -29641,7 +29641,7 @@
         "smithy.api#documentation": "Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain < > % & \\ ? /"
       }
     },
-    "com.azure.billing#BillingAccountsListRequest": {
+    "com.azure.billing#ListBillingAccountsRequest": {
       "type": "structure",
       "members": {
         "includeAll": {
@@ -29738,13 +29738,13 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.billing#PoliciesGetBySubscription"
+          "target": "com.azure.billing#GetPolicyBySubscription"
         },
         {
-          "target": "com.azure.billing#BillingPropertyUpdate"
+          "target": "com.azure.billing#UpdateBillingProperty"
         },
         {
-          "target": "com.azure.billing#BillingPropertyGet"
+          "target": "com.azure.billing#GetBillingProperty"
         },
         {
           "target": "com.azure.billing#AddressValidate"
@@ -29759,43 +29759,43 @@
           "target": "com.azure.billing#RecipientTransfersAccept"
         },
         {
-          "target": "com.azure.billing#RecipientTransfersGet"
+          "target": "com.azure.billing#GetRecipientTransfer"
         },
         {
-          "target": "com.azure.billing#RecipientTransfersList"
+          "target": "com.azure.billing#ListRecipientTransfers"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsDeleteByUser"
+          "target": "com.azure.billing#DeletePaymentMethodByUser"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsGetByUser"
+          "target": "com.azure.billing#GetPaymentMethodByUser"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsListByUser"
+          "target": "com.azure.billing#ListPaymentMethodByUser"
         },
         {
-          "target": "com.azure.billing#OperationsList"
+          "target": "com.azure.billing#ListOperations"
         },
         {
           "target": "com.azure.billing#BillingRequestsCreateOrUpdate"
         },
         {
-          "target": "com.azure.billing#BillingRequestsGet"
+          "target": "com.azure.billing#GetBillingRequest"
         },
         {
-          "target": "com.azure.billing#BillingRequestsListByUser"
+          "target": "com.azure.billing#ListBillingRequestByUser"
         },
         {
-          "target": "com.azure.billing#InvoicesGet"
+          "target": "com.azure.billing#GetInvoice"
         },
         {
           "target": "com.azure.billing#InvoicesDownloadByBillingSubscription"
         },
         {
-          "target": "com.azure.billing#InvoicesGetByBillingSubscription"
+          "target": "com.azure.billing#GetInvoiceByBillingSubscription"
         },
         {
-          "target": "com.azure.billing#InvoicesListByBillingSubscription"
+          "target": "com.azure.billing#ListInvoiceByBillingSubscription"
         },
         {
           "target": "com.azure.billing#InvoicesDownloadDocumentsByBillingSubscription"
@@ -29804,46 +29804,46 @@
           "target": "com.azure.billing#BillingAccountsValidatePaymentTerms"
         },
         {
-          "target": "com.azure.billing#SavingsPlansListByBillingAccount"
+          "target": "com.azure.billing#ListSavingPlanByBillingAccount"
         },
         {
-          "target": "com.azure.billing#SavingsPlansValidateUpdateByBillingAccount"
+          "target": "com.azure.billing#UpdateSavingPlanValidateByBillingAccount"
         },
         {
-          "target": "com.azure.billing#SavingsPlansUpdateByBillingAccount"
+          "target": "com.azure.billing#UpdateSavingPlanByBillingAccount"
         },
         {
-          "target": "com.azure.billing#SavingsPlansGetByBillingAccount"
+          "target": "com.azure.billing#GetSavingPlanByBillingAccount"
         },
         {
-          "target": "com.azure.billing#SavingsPlansListBySavingsPlanOrder"
+          "target": "com.azure.billing#ListSavingPlanBySavingPlanOrder"
         },
         {
-          "target": "com.azure.billing#SavingsPlanOrdersGetByBillingAccount"
+          "target": "com.azure.billing#GetSavingPlanOrderByBillingAccount"
         },
         {
-          "target": "com.azure.billing#SavingsPlanOrdersListByBillingAccount"
+          "target": "com.azure.billing#ListSavingPlanOrderByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsResolveByBillingAccount"
         },
         {
-          "target": "com.azure.billing#ReservationsListByBillingAccount"
+          "target": "com.azure.billing#ListReservationByBillingAccount"
         },
         {
-          "target": "com.azure.billing#ReservationsUpdateByBillingAccount"
+          "target": "com.azure.billing#UpdateReservationByBillingAccount"
         },
         {
-          "target": "com.azure.billing#ReservationsGetByReservationOrder"
+          "target": "com.azure.billing#GetReservationByReservationOrder"
         },
         {
-          "target": "com.azure.billing#ReservationsListByReservationOrder"
+          "target": "com.azure.billing#ListReservationByReservationOrder"
         },
         {
-          "target": "com.azure.billing#ReservationOrdersGetByBillingAccount"
+          "target": "com.azure.billing#GetReservationOrderByBillingAccount"
         },
         {
-          "target": "com.azure.billing#ReservationOrdersListByBillingAccount"
+          "target": "com.azure.billing#ListReservationOrderByBillingAccount"
         },
         {
           "target": "com.azure.billing#ProductsValidateMoveEligibility"
@@ -29852,25 +29852,25 @@
           "target": "com.azure.billing#ProductsMove"
         },
         {
-          "target": "com.azure.billing#ProductsUpdate"
+          "target": "com.azure.billing#UpdateProduct"
         },
         {
-          "target": "com.azure.billing#ProductsGet"
+          "target": "com.azure.billing#GetProduct"
         },
         {
-          "target": "com.azure.billing#ProductsListByBillingAccount"
+          "target": "com.azure.billing#ListProductByBillingAccount"
         },
         {
           "target": "com.azure.billing#PoliciesCreateOrUpdateByBillingAccount"
         },
         {
-          "target": "com.azure.billing#PoliciesGetByBillingAccount"
+          "target": "com.azure.billing#GetPolicyByBillingAccount"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsGetByBillingAccount"
+          "target": "com.azure.billing#GetPaymentMethodByBillingAccount"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsListByBillingAccount"
+          "target": "com.azure.billing#ListPaymentMethodByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingAccountsListInvoiceSectionsByCreateSubscriptionPermission"
@@ -29879,10 +29879,10 @@
           "target": "com.azure.billing#TransactionsTransactionsDownloadByInvoice"
         },
         {
-          "target": "com.azure.billing#TransactionsListByInvoice"
+          "target": "com.azure.billing#ListTransactionByInvoice"
         },
         {
-          "target": "com.azure.billing#TransactionsGetTransactionSummaryByInvoice"
+          "target": "com.azure.billing#GetTransactionTransactionSummaryByInvoice"
         },
         {
           "target": "com.azure.billing#InvoicesDownloadSummaryByBillingAccount"
@@ -29894,112 +29894,112 @@
           "target": "com.azure.billing#InvoicesAmend"
         },
         {
-          "target": "com.azure.billing#InvoicesGetByBillingAccount"
+          "target": "com.azure.billing#GetInvoiceByBillingAccount"
         },
         {
-          "target": "com.azure.billing#InvoicesListByBillingAccount"
+          "target": "com.azure.billing#ListInvoiceByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsCheckAccessByEnrollmentAccount"
+          "target": "com.azure.billing#CheckBillingPermissionAccessByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsListByEnrollmentAccount"
+          "target": "com.azure.billing#ListBillingSubscriptionByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionGetByEnrollmentAccount"
+          "target": "com.azure.billing#GetBillingRoleDefinitionByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionListByEnrollmentAccount"
+          "target": "com.azure.billing#ListBillingRoleDefinitionByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsDeleteByEnrollmentAccount"
+          "target": "com.azure.billing#DeleteBillingRoleAssignmentByEnrollmentAccount"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsGetByEnrollmentAccount"
+          "target": "com.azure.billing#GetBillingRoleAssignmentByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsListByEnrollmentAccount"
+          "target": "com.azure.billing#ListBillingRoleAssignmentByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByEnrollmentAccount"
+          "target": "com.azure.billing#ListBillingPermissionByEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#EnrollmentAccountsGet"
+          "target": "com.azure.billing#GetEnrollmentAccount"
         },
         {
-          "target": "com.azure.billing#EnrollmentAccountsListByBillingAccount"
+          "target": "com.azure.billing#ListEnrollmentAccountByBillingAccount"
         },
         {
           "target": "com.azure.billing#InvoicesDownloadDocumentsByBillingAccount"
         },
         {
-          "target": "com.azure.billing#EnrollmentAccountsGetByDepartment"
+          "target": "com.azure.billing#GetEnrollmentAccountByDepartment"
         },
         {
-          "target": "com.azure.billing#EnrollmentAccountsListByDepartment"
+          "target": "com.azure.billing#ListEnrollmentAccountByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsCheckAccessByDepartment"
+          "target": "com.azure.billing#CheckBillingPermissionAccessByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionGetByDepartment"
+          "target": "com.azure.billing#GetBillingRoleDefinitionByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionListByDepartment"
+          "target": "com.azure.billing#ListBillingRoleDefinitionByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsDeleteByDepartment"
+          "target": "com.azure.billing#DeleteBillingRoleAssignmentByDepartment"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsGetByDepartment"
+          "target": "com.azure.billing#GetBillingRoleAssignmentByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsListByDepartment"
+          "target": "com.azure.billing#ListBillingRoleAssignmentByDepartment"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByDepartment"
+          "target": "com.azure.billing#ListBillingPermissionByDepartment"
         },
         {
-          "target": "com.azure.billing#DepartmentsGet"
+          "target": "com.azure.billing#GetDepartment"
         },
         {
-          "target": "com.azure.billing#DepartmentsListByBillingAccount"
+          "target": "com.azure.billing#ListDepartmentByBillingAccount"
         },
         {
-          "target": "com.azure.billing#ProductsListByCustomer"
+          "target": "com.azure.billing#ListProductByCustomer"
         },
         {
           "target": "com.azure.billing#PoliciesCreateOrUpdateByCustomerAtBillingAccount"
         },
         {
-          "target": "com.azure.billing#PoliciesGetByCustomerAtBillingAccount"
+          "target": "com.azure.billing#GetPolicyByCustomerAtBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsListByCustomerAtBillingAccount"
+          "target": "com.azure.billing#ListBillingSubscriptionByCustomerAtBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByCustomerAtBillingAccount"
+          "target": "com.azure.billing#ListBillingPermissionByCustomerAtBillingAccount"
         },
         {
-          "target": "com.azure.billing#CustomersGetByBillingAccount"
+          "target": "com.azure.billing#GetCustomerByBillingAccount"
         },
         {
-          "target": "com.azure.billing#CustomersListByBillingAccount"
+          "target": "com.azure.billing#ListCustomerByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsCreateByBillingAccount"
+          "target": "com.azure.billing#CreateBillingRoleAssignmentByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingAccountsConfirmTransition"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingAccount"
+          "target": "com.azure.billing#CheckBillingPermissionAccessByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingAccountsCancelPaymentTerms"
@@ -30020,79 +30020,79 @@
           "target": "com.azure.billing#BillingSubscriptionsCancel"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsDelete"
+          "target": "com.azure.billing#DeleteBillingSubscription"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsUpdate"
+          "target": "com.azure.billing#UpdateBillingSubscription"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsGet"
+          "target": "com.azure.billing#GetBillingSubscription"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsListByBillingAccount"
+          "target": "com.azure.billing#ListBillingSubscriptionByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingSubscriptionsAliasesCreateOrUpdate"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsAliasesGet"
+          "target": "com.azure.billing#GetBillingSubscriptionAliase"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsAliasesListByBillingAccount"
+          "target": "com.azure.billing#ListBillingSubscriptionAliaseByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionGetByBillingAccount"
+          "target": "com.azure.billing#GetBillingRoleDefinitionByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionListByBillingAccount"
+          "target": "com.azure.billing#ListBillingRoleDefinitionByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsDeleteByBillingAccount"
+          "target": "com.azure.billing#DeleteBillingRoleAssignmentByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsCreateOrUpdateByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsGetByBillingAccount"
+          "target": "com.azure.billing#GetBillingRoleAssignmentByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsListByBillingAccount"
+          "target": "com.azure.billing#ListBillingRoleAssignmentByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingRequestsListByBillingAccount"
+          "target": "com.azure.billing#ListBillingRequestByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingProfilesValidateDeleteEligibility"
+          "target": "com.azure.billing#DeleteBillingProfileValidateEligibility"
         },
         {
-          "target": "com.azure.billing#TransactionsListByBillingProfile"
+          "target": "com.azure.billing#ListTransactionByBillingProfile"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsResolveByBillingProfile"
         },
         {
-          "target": "com.azure.billing#ReservationsListByBillingProfile"
+          "target": "com.azure.billing#ListReservationByBillingProfile"
         },
         {
-          "target": "com.azure.billing#ProductsListByBillingProfile"
+          "target": "com.azure.billing#ListProductByBillingProfile"
         },
         {
           "target": "com.azure.billing#PoliciesCreateOrUpdateByBillingProfile"
         },
         {
-          "target": "com.azure.billing#PoliciesGetByBillingProfile"
+          "target": "com.azure.billing#GetPolicyByBillingProfile"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsGetByBillingProfile"
+          "target": "com.azure.billing#GetPaymentMethodByBillingProfile"
         },
         {
-          "target": "com.azure.billing#PaymentMethodsListByBillingProfile"
+          "target": "com.azure.billing#ListPaymentMethodByBillingProfile"
         },
         {
-          "target": "com.azure.billing#InvoicesListByBillingProfile"
+          "target": "com.azure.billing#ListInvoiceByBillingProfile"
         },
         {
-          "target": "com.azure.billing#InvoiceSectionsValidateDeleteEligibility"
+          "target": "com.azure.billing#DeleteInvoiceSectionValidateEligibility"
         },
         {
           "target": "com.azure.billing#TransfersCancel"
@@ -30101,61 +30101,61 @@
           "target": "com.azure.billing#TransfersInitiate"
         },
         {
-          "target": "com.azure.billing#TransfersGet"
+          "target": "com.azure.billing#GetTransfer"
         },
         {
-          "target": "com.azure.billing#TransfersList"
+          "target": "com.azure.billing#ListTransfers"
         },
         {
-          "target": "com.azure.billing#TransactionsListByInvoiceSection"
+          "target": "com.azure.billing#ListTransactionByInvoiceSection"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsResolveByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#ProductsListByInvoiceSection"
+          "target": "com.azure.billing#ListProductByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsCreateByInvoiceSection"
+          "target": "com.azure.billing#CreateBillingRoleAssignmentByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsCheckAccessByInvoiceSection"
+          "target": "com.azure.billing#CheckBillingPermissionAccessByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsListByInvoiceSection"
+          "target": "com.azure.billing#ListBillingSubscriptionByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionGetByInvoiceSection"
+          "target": "com.azure.billing#GetBillingRoleDefinitionByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionListByInvoiceSection"
+          "target": "com.azure.billing#ListBillingRoleDefinitionByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsDeleteByInvoiceSection"
+          "target": "com.azure.billing#DeleteBillingRoleAssignmentByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsGetByInvoiceSection"
+          "target": "com.azure.billing#GetBillingRoleAssignmentByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsListByInvoiceSection"
+          "target": "com.azure.billing#ListBillingRoleAssignmentByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingRequestsListByInvoiceSection"
+          "target": "com.azure.billing#ListBillingRequestByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByInvoiceSection"
+          "target": "com.azure.billing#ListBillingPermissionByInvoiceSection"
         },
         {
-          "target": "com.azure.billing#InvoiceSectionsDelete"
+          "target": "com.azure.billing#DeleteInvoiceSection"
         },
         {
           "target": "com.azure.billing#InvoiceSectionsCreateOrUpdate"
         },
         {
-          "target": "com.azure.billing#InvoiceSectionsGet"
+          "target": "com.azure.billing#GetInvoiceSection"
         },
         {
-          "target": "com.azure.billing#InvoiceSectionsListByBillingProfile"
+          "target": "com.azure.billing#ListInvoiceSectionByBillingProfile"
         },
         {
           "target": "com.azure.billing#PartnerTransfersCancel"
@@ -30164,13 +30164,13 @@
           "target": "com.azure.billing#PartnerTransfersInitiate"
         },
         {
-          "target": "com.azure.billing#PartnerTransfersGet"
+          "target": "com.azure.billing#GetPartnerTransfer"
         },
         {
-          "target": "com.azure.billing#PartnerTransfersList"
+          "target": "com.azure.billing#ListPartnerTransfers"
         },
         {
-          "target": "com.azure.billing#TransactionsListByCustomer"
+          "target": "com.azure.billing#ListTransactionByCustomer"
         },
         {
           "target": "com.azure.billing#BillingRoleAssignmentsResolveByCustomer"
@@ -30179,127 +30179,127 @@
           "target": "com.azure.billing#PoliciesCreateOrUpdateByCustomer"
         },
         {
-          "target": "com.azure.billing#PoliciesGetByCustomer"
+          "target": "com.azure.billing#GetPolicyByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsCreateByCustomer"
+          "target": "com.azure.billing#CreateBillingRoleAssignmentByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsCheckAccessByCustomer"
+          "target": "com.azure.billing#CheckBillingPermissionAccessByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsListByCustomer"
+          "target": "com.azure.billing#ListBillingSubscriptionByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionGetByCustomer"
+          "target": "com.azure.billing#GetBillingRoleDefinitionByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionListByCustomer"
+          "target": "com.azure.billing#ListBillingRoleDefinitionByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsDeleteByCustomer"
+          "target": "com.azure.billing#DeleteBillingRoleAssignmentByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsGetByCustomer"
+          "target": "com.azure.billing#GetBillingRoleAssignmentByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsListByCustomer"
+          "target": "com.azure.billing#ListBillingRoleAssignmentByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingRequestsListByCustomer"
+          "target": "com.azure.billing#ListBillingRequestByCustomer"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByCustomer"
+          "target": "com.azure.billing#ListBillingPermissionByCustomer"
         },
         {
-          "target": "com.azure.billing#CustomersGet"
+          "target": "com.azure.billing#GetCustomer"
         },
         {
-          "target": "com.azure.billing#CustomersListByBillingProfile"
+          "target": "com.azure.billing#ListCustomerByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsCreateByBillingProfile"
+          "target": "com.azure.billing#CreateBillingRoleAssignmentByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsCheckAccessByBillingProfile"
+          "target": "com.azure.billing#CheckBillingPermissionAccessByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsGetByBillingProfile"
+          "target": "com.azure.billing#GetBillingSubscriptionByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingSubscriptionsListByBillingProfile"
+          "target": "com.azure.billing#ListBillingSubscriptionByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionGetByBillingProfile"
+          "target": "com.azure.billing#GetBillingRoleDefinitionByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRoleDefinitionListByBillingProfile"
+          "target": "com.azure.billing#ListBillingRoleDefinitionByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsDeleteByBillingProfile"
+          "target": "com.azure.billing#DeleteBillingRoleAssignmentByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsGetByBillingProfile"
+          "target": "com.azure.billing#GetBillingRoleAssignmentByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRoleAssignmentsListByBillingProfile"
+          "target": "com.azure.billing#ListBillingRoleAssignmentByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingRequestsListByBillingProfile"
+          "target": "com.azure.billing#ListBillingRequestByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByBillingProfile"
+          "target": "com.azure.billing#ListBillingPermissionByBillingProfile"
         },
         {
-          "target": "com.azure.billing#AvailableBalancesGetByBillingProfile"
+          "target": "com.azure.billing#GetAvailableBalanceByBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingProfilesDelete"
+          "target": "com.azure.billing#DeleteBillingProfile"
         },
         {
           "target": "com.azure.billing#BillingProfilesCreateOrUpdate"
         },
         {
-          "target": "com.azure.billing#BillingProfilesGet"
+          "target": "com.azure.billing#GetBillingProfile"
         },
         {
-          "target": "com.azure.billing#BillingProfilesListByBillingAccount"
+          "target": "com.azure.billing#ListBillingProfileByBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingPermissionsListByBillingAccount"
+          "target": "com.azure.billing#ListBillingPermissionByBillingAccount"
         },
         {
-          "target": "com.azure.billing#AvailableBalancesGetByBillingAccount"
+          "target": "com.azure.billing#GetAvailableBalanceByBillingAccount"
         },
         {
-          "target": "com.azure.billing#AssociatedTenantsDelete"
+          "target": "com.azure.billing#DeleteAssociatedTenant"
         },
         {
           "target": "com.azure.billing#AssociatedTenantsCreateOrUpdate"
         },
         {
-          "target": "com.azure.billing#AssociatedTenantsGet"
+          "target": "com.azure.billing#GetAssociatedTenant"
         },
         {
-          "target": "com.azure.billing#AssociatedTenantsListByBillingAccount"
+          "target": "com.azure.billing#ListAssociatedTenantByBillingAccount"
         },
         {
-          "target": "com.azure.billing#AgreementsGet"
+          "target": "com.azure.billing#GetAgreement"
         },
         {
-          "target": "com.azure.billing#AgreementsListByBillingAccount"
+          "target": "com.azure.billing#ListAgreementByBillingAccount"
         },
         {
           "target": "com.azure.billing#BillingAccountsAddPaymentTerms"
         },
         {
-          "target": "com.azure.billing#BillingAccountsUpdate"
+          "target": "com.azure.billing#UpdateBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingAccountsGet"
+          "target": "com.azure.billing#GetBillingAccount"
         },
         {
-          "target": "com.azure.billing#BillingAccountsList"
+          "target": "com.azure.billing#ListBillingAccounts"
         }
       ],
       "traits": {

@@ -17,10 +17,10 @@ export const StringList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StringList>;
 
-export interface MountBatchedCheckExistenceRequest {
+export interface CheckMountBatchedExistenceRequest {
   sha256HexHashes?: StringList;
 }
-export const MountBatchedCheckExistenceRequest = /*@__PURE__*/ S.suspend(() =>
+export const CheckMountBatchedExistenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sha256HexHashes: S.optional(StringList),
   }).pipe(
@@ -31,19 +31,19 @@ export const MountBatchedCheckExistenceRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MountBatchedCheckExistenceRequest",
-}) as any as S.Schema<MountBatchedCheckExistenceRequest>;
+  identifier: "CheckMountBatchedExistenceRequest",
+}) as any as S.Schema<CheckMountBatchedExistenceRequest>;
 
-export interface MountBatchedCheckExistenceResponse {
+export interface CheckMountBatchedExistenceResponse {
   missingSha256HexHashes?: StringList;
 }
-export const MountBatchedCheckExistenceResponse = /*@__PURE__*/ S.suspend(() =>
+export const CheckMountBatchedExistenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     missingSha256HexHashes: S.optional(StringList),
   }),
 ).annotate({
-  identifier: "MountBatchedCheckExistenceResponse",
-}) as any as S.Schema<MountBatchedCheckExistenceResponse>;
+  identifier: "CheckMountBatchedExistenceResponse",
+}) as any as S.Schema<CheckMountBatchedExistenceResponse>;
 
 export type DeploymentNamespace =
   | "DEPLOYMENT_NAMESPACE_UNSPECIFIED"
@@ -165,16 +165,16 @@ export const MountPutFileResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "MountPutFileResponse",
 }) as any as S.Schema<MountPutFileResponse>;
 
-export type MountBatchedCheckExistenceError = ModalOpError;
+export type CheckMountBatchedExistenceError = ModalOpError;
 /** Mounts */
-export const mountBatchedCheckExistence: API.OperationMethod<
-  MountBatchedCheckExistenceRequest,
-  MountBatchedCheckExistenceResponse,
-  MountBatchedCheckExistenceError,
+export const checkMountBatchedExistence: API.OperationMethod<
+  CheckMountBatchedExistenceRequest,
+  CheckMountBatchedExistenceResponse,
+  CheckMountBatchedExistenceError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MountBatchedCheckExistenceRequest,
-  output: MountBatchedCheckExistenceResponse,
+  input: CheckMountBatchedExistenceRequest,
+  output: CheckMountBatchedExistenceResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

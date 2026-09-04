@@ -160,179 +160,6 @@ export const ApproveSingleTenantHsmInstanceProposalResponse =
     identifier: "ApproveSingleTenantHsmInstanceProposalResponse",
   }) as any as S.Schema<ApproveSingleTenantHsmInstanceProposalResponse>;
 
-/** Request message for KeyManagementService.AsymmetricDecrypt. */
-export interface AsymmetricDecryptRequest {
-  /** Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received AsymmetricDecryptRequest.ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to AsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  ciphertextCrc32c?: string;
-  /** Required. The data encrypted with the named CryptoKeyVersion's public key using OAEP. */
-  ciphertext?: string;
-}
-export const AsymmetricDecryptRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ciphertextCrc32c: S.optional(S.String),
-    ciphertext: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AsymmetricDecryptRequest",
-}) as any as S.Schema<AsymmetricDecryptRequest>;
-
-export interface AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
-  /** Required. The resource name of the CryptoKeyVersion to use for decryption. */
-  name: string;
-  /** Request body */
-  body?: AsymmetricDecryptRequest;
-}
-export const AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AsymmetricDecryptRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:asymmetricDecrypt",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-export type AsymmetricDecryptResponseProtectionLevelEnum =
-  | "PROTECTION_LEVEL_UNSPECIFIED"
-  | "SOFTWARE"
-  | "HSM"
-  | "EXTERNAL"
-  | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
-export const AsymmetricDecryptResponseProtectionLevelEnum =
-  /*@__PURE__*/ S.String;
-
-/** Response message for KeyManagementService.AsymmetricDecrypt. */
-export interface AsymmetricDecryptResponse {
-  /** The ProtectionLevel of the CryptoKeyVersion used in decryption. */
-  protectionLevel?: AsymmetricDecryptResponseProtectionLevelEnum;
-  /** Integrity verification field. A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c was received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedCiphertextCrc32c?: boolean;
-  /** Integrity verification field. A CRC32C checksum of the returned AsymmetricDecryptResponse.plaintext. An integrity check of AsymmetricDecryptResponse.plaintext can be performed by computing the CRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  plaintextCrc32c?: string;
-  /** The decrypted data originally encrypted with the matching public key. */
-  plaintext?: string;
-}
-export const AsymmetricDecryptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protectionLevel: S.optional(AsymmetricDecryptResponseProtectionLevelEnum),
-    verifiedCiphertextCrc32c: S.optional(S.Boolean),
-    plaintextCrc32c: S.optional(S.String),
-    plaintext: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AsymmetricDecryptResponse",
-}) as any as S.Schema<AsymmetricDecryptResponse>;
-
-/** A Digest holds a cryptographic message digest. */
-export interface Digest {
-  /** A message digest produced with the SHA-256 algorithm. */
-  sha256?: string;
-  /** A message digest produced with the SHA-384 algorithm. */
-  sha384?: string;
-  /** A message digest produced with the SHA-512 algorithm. */
-  sha512?: string;
-  /** A message digest produced with SHAKE-256, to be used with ML-DSA external-μ algorithms only. See "message representative" note in section 6.2, algorithm 7 of the FIPS-204 standard: https://doi.org/10.6028/nist.fips.204 */
-  externalMu?: string;
-}
-export const Digest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sha256: S.optional(S.String),
-    sha384: S.optional(S.String),
-    sha512: S.optional(S.String),
-    externalMu: S.optional(S.String),
-  }),
-).annotate({ identifier: "Digest" }) as any as S.Schema<Digest>;
-
-/** Request message for KeyManagementService.AsymmetricSign. */
-export interface AsymmetricSignRequest {
-  /** Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If specified, KeyManagementService will verify the integrity of the received AsymmetricSignRequest.digest using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricSignRequest.digest) is equal to AsymmetricSignRequest.digest_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  digestCrc32c?: string;
-  /** Optional. The digest of the data to sign. The digest must be produced with the same digest algorithm as specified by the key version's algorithm. This field may not be supplied if AsymmetricSignRequest.data is supplied. */
-  digest?: Digest;
-  /** Optional. An optional CRC32C checksum of the AsymmetricSignRequest.data. If specified, KeyManagementService will verify the integrity of the received AsymmetricSignRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricSignRequest.data) is equal to AsymmetricSignRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  dataCrc32c?: string;
-  /** Optional. The data to sign. It can't be supplied if AsymmetricSignRequest.digest is supplied. */
-  data?: string;
-}
-export const AsymmetricSignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    digestCrc32c: S.optional(S.String),
-    digest: S.optional(Digest),
-    dataCrc32c: S.optional(S.String),
-    data: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AsymmetricSignRequest",
-}) as any as S.Schema<AsymmetricSignRequest>;
-
-export interface AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
-  /** Required. The resource name of the CryptoKeyVersion to use for signing. */
-  name: string;
-  /** Request body */
-  body?: AsymmetricSignRequest;
-}
-export const AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(AsymmetricSignRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:asymmetricSign",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-export type AsymmetricSignResponseProtectionLevelEnum =
-  | "PROTECTION_LEVEL_UNSPECIFIED"
-  | "SOFTWARE"
-  | "HSM"
-  | "EXTERNAL"
-  | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
-export const AsymmetricSignResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
-
-/** Response message for KeyManagementService.AsymmetricSign. */
-export interface AsymmetricSignResponse {
-  /** Integrity verification field. A flag indicating whether AsymmetricSignRequest.digest_crc32c was received by KeyManagementService and used for the integrity verification of the digest. A false value of this field indicates either that AsymmetricSignRequest.digest_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedDigestCrc32c?: boolean;
-  /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
-  name?: string;
-  /** The created signature. */
-  signature?: string;
-  /** The ProtectionLevel of the CryptoKeyVersion used for signing. */
-  protectionLevel?: AsymmetricSignResponseProtectionLevelEnum;
-  /** Integrity verification field. A flag indicating whether AsymmetricSignRequest.data_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that AsymmetricSignRequest.data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricSignRequest.data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedDataCrc32c?: boolean;
-  /** Integrity verification field. A CRC32C checksum of the returned AsymmetricSignResponse.signature. An integrity check of AsymmetricSignResponse.signature can be performed by computing the CRC32C checksum of AsymmetricSignResponse.signature and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  signatureCrc32c?: string;
-}
-export const AsymmetricSignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verifiedDigestCrc32c: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    signature: S.optional(S.String),
-    protectionLevel: S.optional(AsymmetricSignResponseProtectionLevelEnum),
-    verifiedDataCrc32c: S.optional(S.Boolean),
-    signatureCrc32c: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AsymmetricSignResponse",
-}) as any as S.Schema<AsymmetricSignResponse>;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1554,6 +1381,77 @@ export const DecapsulateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DecapsulateResponse",
 }) as any as S.Schema<DecapsulateResponse>;
 
+/** Request message for KeyManagementService.AsymmetricDecrypt. */
+export interface AsymmetricDecryptRequest {
+  /** Optional. An optional CRC32C checksum of the AsymmetricDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received AsymmetricDecryptRequest.ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricDecryptRequest.ciphertext) is equal to AsymmetricDecryptRequest.ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  ciphertextCrc32c?: string;
+  /** Required. The data encrypted with the named CryptoKeyVersion's public key using OAEP. */
+  ciphertext?: string;
+}
+export const AsymmetricDecryptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ciphertextCrc32c: S.optional(S.String),
+    ciphertext: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AsymmetricDecryptRequest",
+}) as any as S.Schema<AsymmetricDecryptRequest>;
+
+export interface DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest {
+  /** Required. The resource name of the CryptoKeyVersion to use for decryption. */
+  name: string;
+  /** Request body */
+  body?: AsymmetricDecryptRequest;
+}
+export const DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(AsymmetricDecryptRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:asymmetricDecrypt",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest",
+  }) as any as S.Schema<DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest>;
+
+export type AsymmetricDecryptResponseProtectionLevelEnum =
+  | "PROTECTION_LEVEL_UNSPECIFIED"
+  | "SOFTWARE"
+  | "HSM"
+  | "EXTERNAL"
+  | "EXTERNAL_VPC"
+  | "HSM_SINGLE_TENANT";
+export const AsymmetricDecryptResponseProtectionLevelEnum =
+  /*@__PURE__*/ S.String;
+
+/** Response message for KeyManagementService.AsymmetricDecrypt. */
+export interface AsymmetricDecryptResponse {
+  /** The ProtectionLevel of the CryptoKeyVersion used in decryption. */
+  protectionLevel?: AsymmetricDecryptResponseProtectionLevelEnum;
+  /** Integrity verification field. A flag indicating whether AsymmetricDecryptRequest.ciphertext_crc32c was received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field indicates either that AsymmetricDecryptRequest.ciphertext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricDecryptRequest.ciphertext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedCiphertextCrc32c?: boolean;
+  /** Integrity verification field. A CRC32C checksum of the returned AsymmetricDecryptResponse.plaintext. An integrity check of AsymmetricDecryptResponse.plaintext can be performed by computing the CRC32C checksum of AsymmetricDecryptResponse.plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  plaintextCrc32c?: string;
+  /** The decrypted data originally encrypted with the matching public key. */
+  plaintext?: string;
+}
+export const AsymmetricDecryptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protectionLevel: S.optional(AsymmetricDecryptResponseProtectionLevelEnum),
+    verifiedCiphertextCrc32c: S.optional(S.Boolean),
+    plaintextCrc32c: S.optional(S.String),
+    plaintext: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AsymmetricDecryptResponse",
+}) as any as S.Schema<AsymmetricDecryptResponse>;
+
 /** Request message for KeyManagementService.Decrypt. */
 export interface DecryptRequest {
   /** Required. The encrypted data originally returned in EncryptResponse.ciphertext. */
@@ -1626,6 +1524,97 @@ export const DecryptResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DecryptResponse",
 }) as any as S.Schema<DecryptResponse>;
+
+/** Request message for KeyManagementService.RawDecrypt. */
+export interface RawDecryptRequest {
+  /** Optional. Optional data that must match the data originally supplied in RawEncryptRequest.additional_authenticated_data. */
+  additionalAuthenticatedData?: string;
+  /** Optional. An optional CRC32C checksum of the RawDecryptRequest.additional_authenticated_data. If specified, KeyManagementService will verify the integrity of the received additional_authenticated_data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(additional_authenticated_data) is equal to additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  additionalAuthenticatedDataCrc32c?: string;
+  /** The length of the authentication tag that is appended to the end of the ciphertext. If unspecified (0), the default value for the key's algorithm will be used (for AES-GCM, the default value is 16). */
+  tagLength?: number;
+  /** Optional. An optional CRC32C checksum of the RawDecryptRequest.initialization_vector. If specified, KeyManagementService will verify the integrity of the received initialization_vector using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(initialization_vector) is equal to initialization_vector_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  initializationVectorCrc32c?: string;
+  /** Optional. An optional CRC32C checksum of the RawDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(ciphertext) is equal to ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  ciphertextCrc32c?: string;
+  /** Required. The encrypted data originally returned in RawEncryptResponse.ciphertext. */
+  ciphertext?: string;
+  /** Required. The initialization vector (IV) used during encryption, which must match the data originally provided in RawEncryptResponse.initialization_vector. */
+  initializationVector?: string;
+}
+export const RawDecryptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    additionalAuthenticatedData: S.optional(S.String),
+    additionalAuthenticatedDataCrc32c: S.optional(S.String),
+    tagLength: S.optional(S.Number),
+    initializationVectorCrc32c: S.optional(S.String),
+    ciphertextCrc32c: S.optional(S.String),
+    ciphertext: S.optional(S.String),
+    initializationVector: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RawDecryptRequest",
+}) as any as S.Schema<RawDecryptRequest>;
+
+export interface DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest {
+  /** Required. The resource name of the CryptoKeyVersion to use for decryption. */
+  name: string;
+  /** Request body */
+  body?: RawDecryptRequest;
+}
+export const DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RawDecryptRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:rawDecrypt",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest",
+  }) as any as S.Schema<DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest>;
+
+export type RawDecryptResponseProtectionLevelEnum =
+  | "PROTECTION_LEVEL_UNSPECIFIED"
+  | "SOFTWARE"
+  | "HSM"
+  | "EXTERNAL"
+  | "EXTERNAL_VPC"
+  | "HSM_SINGLE_TENANT";
+export const RawDecryptResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
+
+/** Response message for KeyManagementService.RawDecrypt. */
+export interface RawDecryptResponse {
+  /** Integrity verification field. A flag indicating whether RawDecryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the integrity verification of additional_authenticated_data. A false value of this field indicates either that // RawDecryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawDecryptRequest.additional_authenticated_data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedAdditionalAuthenticatedDataCrc32c?: boolean;
+  /** The decrypted data. */
+  plaintext?: string;
+  /** Integrity verification field. A flag indicating whether RawDecryptRequest.ciphertext_crc32c was received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field indicates either that RawDecryptRequest.ciphertext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawDecryptRequest.ciphertext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedCiphertextCrc32c?: boolean;
+  /** The ProtectionLevel of the CryptoKeyVersion used in decryption. */
+  protectionLevel?: RawDecryptResponseProtectionLevelEnum;
+  /** Integrity verification field. A CRC32C checksum of the returned RawDecryptResponse.plaintext. An integrity check of plaintext can be performed by computing the CRC32C checksum of plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  plaintextCrc32c?: string;
+  /** Integrity verification field. A flag indicating whether RawDecryptRequest.initialization_vector_crc32c was received by KeyManagementService and used for the integrity verification of initialization_vector. A false value of this field indicates either that RawDecryptRequest.initialization_vector_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawDecryptRequest.initialization_vector_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedInitializationVectorCrc32c?: boolean;
+}
+export const RawDecryptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    verifiedAdditionalAuthenticatedDataCrc32c: S.optional(S.Boolean),
+    plaintext: S.optional(S.String),
+    verifiedCiphertextCrc32c: S.optional(S.Boolean),
+    protectionLevel: S.optional(RawDecryptResponseProtectionLevelEnum),
+    plaintextCrc32c: S.optional(S.String),
+    verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "RawDecryptResponse",
+}) as any as S.Schema<RawDecryptResponse>;
 
 export interface DeleteProjectsLocationsKeyRingsRequest {
   /** Required. The name of the KeyRing to delete. */
@@ -1816,6 +1805,106 @@ export const EncryptResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "EncryptResponse",
 }) as any as S.Schema<EncryptResponse>;
+
+/** Request message for KeyManagementService.RawEncrypt. */
+export interface RawEncryptRequest {
+  /** Optional. An optional CRC32C checksum of the RawEncryptRequest.initialization_vector. If specified, KeyManagementService will verify the integrity of the received initialization_vector using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(initialization_vector) is equal to initialization_vector_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  initializationVectorCrc32c?: string;
+  /** Optional. An optional CRC32C checksum of the RawEncryptRequest.additional_authenticated_data. If specified, KeyManagementService will verify the integrity of the received additional_authenticated_data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(additional_authenticated_data) is equal to additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  additionalAuthenticatedDataCrc32c?: string;
+  /** Optional. Optional data that, if specified, must also be provided during decryption through RawDecryptRequest.additional_authenticated_data. This field may only be used in conjunction with an algorithm that accepts additional authenticated data (for example, AES-GCM). The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
+  additionalAuthenticatedData?: string;
+  /** Optional. An optional CRC32C checksum of the RawEncryptRequest.plaintext. If specified, KeyManagementService will verify the integrity of the received plaintext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(plaintext) is equal to plaintext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  plaintextCrc32c?: string;
+  /** Optional. A customer-supplied initialization vector that will be used for encryption. If it is not provided for AES-CBC and AES-CTR, one will be generated. It will be returned in RawEncryptResponse.initialization_vector. */
+  initializationVector?: string;
+  /** Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
+  plaintext?: string;
+}
+export const RawEncryptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    initializationVectorCrc32c: S.optional(S.String),
+    additionalAuthenticatedDataCrc32c: S.optional(S.String),
+    additionalAuthenticatedData: S.optional(S.String),
+    plaintextCrc32c: S.optional(S.String),
+    initializationVector: S.optional(S.String),
+    plaintext: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RawEncryptRequest",
+}) as any as S.Schema<RawEncryptRequest>;
+
+export interface EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest {
+  /** Required. The resource name of the CryptoKeyVersion to use for encryption. */
+  name: string;
+  /** Request body */
+  body?: RawEncryptRequest;
+}
+export const EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(RawEncryptRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:rawEncrypt",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest",
+  }) as any as S.Schema<EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest>;
+
+export type RawEncryptResponseProtectionLevelEnum =
+  | "PROTECTION_LEVEL_UNSPECIFIED"
+  | "SOFTWARE"
+  | "HSM"
+  | "EXTERNAL"
+  | "EXTERNAL_VPC"
+  | "HSM_SINGLE_TENANT";
+export const RawEncryptResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
+
+/** Response message for KeyManagementService.RawEncrypt. */
+export interface RawEncryptResponse {
+  /** The initialization vector (IV) generated by the service during encryption. This value must be stored and provided in RawDecryptRequest.initialization_vector at decryption time. */
+  initializationVector?: string;
+  /** Integrity verification field. A flag indicating whether RawEncryptRequest.initialization_vector_crc32c was received by KeyManagementService and used for the integrity verification of initialization_vector. A false value of this field indicates either that RawEncryptRequest.initialization_vector_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.initialization_vector_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedInitializationVectorCrc32c?: boolean;
+  /** Integrity verification field. A flag indicating whether RawEncryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the integrity verification of additional_authenticated_data. A false value of this field indicates either that // RawEncryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.additional_authenticated_data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedAdditionalAuthenticatedDataCrc32c?: boolean;
+  /** Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.ciphertext. An integrity check of ciphertext can be performed by computing the CRC32C checksum of ciphertext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  ciphertextCrc32c?: string;
+  /** Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.initialization_vector. An integrity check of initialization_vector can be performed by computing the CRC32C checksum of initialization_vector and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  initializationVectorCrc32c?: string;
+  /** Integrity verification field. A flag indicating whether RawEncryptRequest.plaintext_crc32c was received by KeyManagementService and used for the integrity verification of the plaintext. A false value of this field indicates either that RawEncryptRequest.plaintext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.plaintext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedPlaintextCrc32c?: boolean;
+  /** The ProtectionLevel of the CryptoKeyVersion used in encryption. */
+  protectionLevel?: RawEncryptResponseProtectionLevelEnum;
+  /** The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the intended resource was used for encryption. */
+  name?: string;
+  /** The length of the authentication tag that is appended to the end of the ciphertext. */
+  tagLength?: number;
+  /** The encrypted data. In the case of AES-GCM, the authentication tag is the tag_length bytes at the end of this field. */
+  ciphertext?: string;
+}
+export const RawEncryptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    initializationVector: S.optional(S.String),
+    verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
+    verifiedAdditionalAuthenticatedDataCrc32c: S.optional(S.Boolean),
+    ciphertextCrc32c: S.optional(S.String),
+    initializationVectorCrc32c: S.optional(S.String),
+    verifiedPlaintextCrc32c: S.optional(S.Boolean),
+    protectionLevel: S.optional(RawEncryptResponseProtectionLevelEnum),
+    name: S.optional(S.String),
+    tagLength: S.optional(S.Number),
+    ciphertext: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RawEncryptResponse",
+}) as any as S.Schema<RawEncryptResponse>;
 
 /** Request message for HsmManagement.ExecuteSingleTenantHsmInstanceProposal. */
 export type ExecuteSingleTenantHsmInstanceProposalRequest =
@@ -2029,6 +2118,196 @@ export const GetAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetAutokeyConfigProjectsRequest",
 }) as any as S.Schema<GetAutokeyConfigProjectsRequest>;
+
+export interface GetEffectiveAutokeyConfigFoldersRequest {
+  /** Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for. This may be helpful for evaluating the effect of nested folder configurations on a given resource project. Format: * projects/{project} * folders/{folder} */
+  parent: string;
+}
+export const GetEffectiveAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}:showEffectiveAutokeyConfig",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetEffectiveAutokeyConfigFoldersRequest",
+}) as any as S.Schema<GetEffectiveAutokeyConfigFoldersRequest>;
+
+/** Source of the effective AutokeyConfig. */
+export interface Source {
+  /** Contains the resource name of the AutokeyConfig that is effective, for example, `folders/{FOLDER_NUMBER}` or `projects/{PROJECT_NUMBER}` or `organizations/{ORGANIZATION_NUMBER}`. */
+  name?: string;
+}
+export const Source = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
+
+export type ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum =
+  | "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED"
+  | "DEDICATED_KEY_PROJECT"
+  | "RESOURCE_PROJECT"
+  | "DISABLED";
+export const ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum =
+  /*@__PURE__*/ S.String;
+
+/** Response message for ShowEffectiveAutokeyConfig */
+export interface ShowEffectiveAutokeyConfigResponse {
+  /** Source of the effective AutokeyConfig. */
+  source?: Source;
+  /** The KeyProjectResolutionMode for the AutokeyConfig. */
+  keyProjectResolutionMode?: ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum;
+  /** Name of the key project configured in the ancestry of the project or folder. */
+  keyProject?: string;
+}
+export const ShowEffectiveAutokeyConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    source: S.optional(Source),
+    keyProjectResolutionMode: S.optional(
+      ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum,
+    ),
+    keyProject: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ShowEffectiveAutokeyConfigResponse",
+}) as any as S.Schema<ShowEffectiveAutokeyConfigResponse>;
+
+export interface GetEffectiveAutokeyConfigProjectsRequest {
+  /** Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for. This may be helpful for evaluating the effect of nested folder configurations on a given resource project. Format: * projects/{project} * folders/{folder} */
+  parent: string;
+}
+export const GetEffectiveAutokeyConfigProjectsRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+parent}:showEffectiveAutokeyConfig",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+).annotate({
+  identifier: "GetEffectiveAutokeyConfigProjectsRequest",
+}) as any as S.Schema<GetEffectiveAutokeyConfigProjectsRequest>;
+
+export interface GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest {
+  /** Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for. */
+  project: string;
+}
+export const GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+project}:showEffectiveKeyAccessJustificationsEnrollmentConfig",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest",
+  }) as any as S.Schema<GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
+
+/** Represents the configuration of a protection level for a project's Key Access Justifications enrollment. */
+export interface KeyAccessJustificationsEnrollmentConfig {
+  /** Indicates whether the project is enrolled in KAJ policy enforcement. */
+  policyEnforcement?: boolean;
+  /** Indicates whether the project has KAJ logging enabled. */
+  auditLogging?: boolean;
+}
+export const KeyAccessJustificationsEnrollmentConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      policyEnforcement: S.optional(S.Boolean),
+      auditLogging: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "KeyAccessJustificationsEnrollmentConfig",
+}) as any as S.Schema<KeyAccessJustificationsEnrollmentConfig>;
+
+/** Represents a response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig */
+export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
+  /** Contains the effective KeyAccessJustificationsEnrollmentConfig for hardware keys. */
+  hardwareConfig?: KeyAccessJustificationsEnrollmentConfig;
+  /** Contains the effective KeyAccessJustificationsEnrollmentConfig for software keys. */
+  softwareConfig?: KeyAccessJustificationsEnrollmentConfig;
+  /** Contains the effective KeyAccessJustificationsEnrollmentConfig for external keys. */
+  externalConfig?: KeyAccessJustificationsEnrollmentConfig;
+}
+export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      hardwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
+      softwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
+      externalConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
+    }),
+  ).annotate({
+    identifier: "ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse",
+  }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>;
+
+export interface GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest {
+  /** Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}" */
+  project: string;
+}
+export const GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest",
+  }) as any as S.Schema<GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
+
+/** Represents a singleton configuration for Key Access Justifications policies. */
+export interface KeyAccessJustificationsPolicyConfig {
+  /** Optional. Specifies the default key access justifications (KAJ) policy used when a CryptoKey is created in this folder. This is only used when a Key Access Justifications policy is not provided in the CreateCryptoKeyRequest. This overrides any default policies in its ancestry. If this field is unset, or is set but contains an empty allowed_access_reasons list, no default Key Access Justifications (KAJ) policy configuration is active. In this scenario, all newly created keys will default to an "allow-all" policy. */
+  defaultKeyAccessJustificationPolicy?: KeyAccessJustificationsPolicy;
+  /** Output only. Indicates whether this parent resource is available to default policy feature. Please consult [the prerequisite of default policy feature](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy#before) for more details. */
+  defaultPolicyAvailable?: boolean;
+  /** Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig". */
+  name?: string;
+}
+export const KeyAccessJustificationsPolicyConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultKeyAccessJustificationPolicy: S.optional(
+      KeyAccessJustificationsPolicy,
+    ),
+    defaultPolicyAvailable: S.optional(S.Boolean),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "KeyAccessJustificationsPolicyConfig",
+}) as any as S.Schema<KeyAccessJustificationsPolicyConfig>;
+
+/** Represents a response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig. */
+export interface ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
+  /** Contains the effective KeyAccessJustificationsPolicyConfig. */
+  effectiveKajPolicy?: KeyAccessJustificationsPolicyConfig;
+}
+export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      effectiveKajPolicy: S.optional(KeyAccessJustificationsPolicyConfig),
+    }),
+  ).annotate({
+    identifier: "ShowEffectiveKeyAccessJustificationsPolicyConfigResponse",
+  }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>;
 
 export interface GetEkmConfigProjectsLocationsRequest {
   /** Required. The name of the EkmConfig to get. */
@@ -2297,27 +2576,6 @@ export const GetKajPolicyConfigFoldersRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetKajPolicyConfigFoldersRequest",
 }) as any as S.Schema<GetKajPolicyConfigFoldersRequest>;
-
-/** Represents a singleton configuration for Key Access Justifications policies. */
-export interface KeyAccessJustificationsPolicyConfig {
-  /** Optional. Specifies the default key access justifications (KAJ) policy used when a CryptoKey is created in this folder. This is only used when a Key Access Justifications policy is not provided in the CreateCryptoKeyRequest. This overrides any default policies in its ancestry. If this field is unset, or is set but contains an empty allowed_access_reasons list, no default Key Access Justifications (KAJ) policy configuration is active. In this scenario, all newly created keys will default to an "allow-all" policy. */
-  defaultKeyAccessJustificationPolicy?: KeyAccessJustificationsPolicy;
-  /** Output only. Indicates whether this parent resource is available to default policy feature. Please consult [the prerequisite of default policy feature](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy#before) for more details. */
-  defaultPolicyAvailable?: boolean;
-  /** Identifier. Represents the resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig". */
-  name?: string;
-}
-export const KeyAccessJustificationsPolicyConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultKeyAccessJustificationPolicy: S.optional(
-      KeyAccessJustificationsPolicy,
-    ),
-    defaultPolicyAvailable: S.optional(S.Boolean),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeyAccessJustificationsPolicyConfig",
-}) as any as S.Schema<KeyAccessJustificationsPolicyConfig>;
 
 export interface GetKajPolicyConfigOrganizationsRequest {
   /** Required. Specifies the name of the KeyAccessJustificationsPolicyConfig to get. */
@@ -3565,159 +3823,6 @@ export const ListSingleTenantHsmInstanceProposalsResponse =
     identifier: "ListSingleTenantHsmInstanceProposalsResponse",
   }) as any as S.Schema<ListSingleTenantHsmInstanceProposalsResponse>;
 
-/** Request message for KeyManagementService.MacSign. */
-export interface MacSignRequest {
-  /** Required. The data to sign. The MAC tag is computed over this data field based on the specific algorithm. */
-  data?: string;
-  /** Optional. An optional CRC32C checksum of the MacSignRequest.data. If specified, KeyManagementService will verify the integrity of the received MacSignRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacSignRequest.data) is equal to MacSignRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  dataCrc32c?: string;
-}
-export const MacSignRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.String),
-    dataCrc32c: S.optional(S.String),
-  }),
-).annotate({ identifier: "MacSignRequest" }) as any as S.Schema<MacSignRequest>;
-
-export interface MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
-  /** Required. The resource name of the CryptoKeyVersion to use for signing. */
-  name: string;
-  /** Request body */
-  body?: MacSignRequest;
-}
-export const MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MacSignRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:macSign",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-export type MacSignResponseProtectionLevelEnum =
-  | "PROTECTION_LEVEL_UNSPECIFIED"
-  | "SOFTWARE"
-  | "HSM"
-  | "EXTERNAL"
-  | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
-export const MacSignResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
-
-/** Response message for KeyManagementService.MacSign. */
-export interface MacSignResponse {
-  /** Integrity verification field. A flag indicating whether MacSignRequest.data_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that MacSignRequest.data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set MacSignRequest.data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedDataCrc32c?: boolean;
-  /** Integrity verification field. A CRC32C checksum of the returned MacSignResponse.mac. An integrity check of MacSignResponse.mac can be performed by computing the CRC32C checksum of MacSignResponse.mac and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  macCrc32c?: string;
-  /** The created signature. */
-  mac?: string;
-  /** The ProtectionLevel of the CryptoKeyVersion used for signing. */
-  protectionLevel?: MacSignResponseProtectionLevelEnum;
-  /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
-  name?: string;
-}
-export const MacSignResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verifiedDataCrc32c: S.optional(S.Boolean),
-    macCrc32c: S.optional(S.String),
-    mac: S.optional(S.String),
-    protectionLevel: S.optional(MacSignResponseProtectionLevelEnum),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MacSignResponse",
-}) as any as S.Schema<MacSignResponse>;
-
-/** Request message for KeyManagementService.MacVerify. */
-export interface MacVerifyRequest {
-  /** Required. The data used previously as a MacSignRequest.data to generate the MAC tag. */
-  data?: string;
-  /** Required. The signature to verify. */
-  mac?: string;
-  /** Optional. An optional CRC32C checksum of the MacVerifyRequest.mac. If specified, KeyManagementService will verify the integrity of the received MacVerifyRequest.mac using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacVerifyRequest.mac) is equal to MacVerifyRequest.mac_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  macCrc32c?: string;
-  /** Optional. An optional CRC32C checksum of the MacVerifyRequest.data. If specified, KeyManagementService will verify the integrity of the received MacVerifyRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacVerifyRequest.data) is equal to MacVerifyRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  dataCrc32c?: string;
-}
-export const MacVerifyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.String),
-    mac: S.optional(S.String),
-    macCrc32c: S.optional(S.String),
-    dataCrc32c: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MacVerifyRequest",
-}) as any as S.Schema<MacVerifyRequest>;
-
-export interface MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
-  /** Required. The resource name of the CryptoKeyVersion to use for verification. */
-  name: string;
-  /** Request body */
-  body?: MacVerifyRequest;
-}
-export const MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(MacVerifyRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:macVerify",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-export type MacVerifyResponseProtectionLevelEnum =
-  | "PROTECTION_LEVEL_UNSPECIFIED"
-  | "SOFTWARE"
-  | "HSM"
-  | "EXTERNAL"
-  | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
-export const MacVerifyResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
-
-/** Response message for KeyManagementService.MacVerify. */
-export interface MacVerifyResponse {
-  /** The ProtectionLevel of the CryptoKeyVersion used for verification. */
-  protectionLevel?: MacVerifyResponseProtectionLevelEnum;
-  /** Integrity verification field. A flag indicating whether MacVerifyRequest.mac_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that MacVerifyRequest.mac_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set MacVerifyRequest.mac_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedMacCrc32c?: boolean;
-  /** The resource name of the CryptoKeyVersion used for verification. Check this field to verify that the intended resource was used for verification. */
-  name?: string;
-  /** Integrity verification field. This value is used for the integrity verification of [MacVerifyResponse.success]. If the value of this field contradicts the value of [MacVerifyResponse.success], discard the response and perform a limited number of retries. */
-  verifiedSuccessIntegrity?: boolean;
-  /** This field indicates whether or not the verification operation for MacVerifyRequest.mac over MacVerifyRequest.data was successful. */
-  success?: boolean;
-  /** Integrity verification field. A flag indicating whether MacVerifyRequest.data_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that MacVerifyRequest.data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set MacVerifyRequest.data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedDataCrc32c?: boolean;
-}
-export const MacVerifyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    protectionLevel: S.optional(MacVerifyResponseProtectionLevelEnum),
-    verifiedMacCrc32c: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    verifiedSuccessIntegrity: S.optional(S.Boolean),
-    success: S.optional(S.Boolean),
-    verifiedDataCrc32c: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MacVerifyResponse",
-}) as any as S.Schema<MacVerifyResponse>;
-
 export interface PatchProjectsLocationsEkmConnectionsRequest {
   /** Output only. The resource name for the EkmConnection in the format `projects/*\/locations/*\/ekmConnections/*`. */
   name: string;
@@ -3793,197 +3898,6 @@ export const PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
     identifier:
       "PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
   }) as any as S.Schema<PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-/** Request message for KeyManagementService.RawDecrypt. */
-export interface RawDecryptRequest {
-  /** Optional. Optional data that must match the data originally supplied in RawEncryptRequest.additional_authenticated_data. */
-  additionalAuthenticatedData?: string;
-  /** Optional. An optional CRC32C checksum of the RawDecryptRequest.additional_authenticated_data. If specified, KeyManagementService will verify the integrity of the received additional_authenticated_data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(additional_authenticated_data) is equal to additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  additionalAuthenticatedDataCrc32c?: string;
-  /** The length of the authentication tag that is appended to the end of the ciphertext. If unspecified (0), the default value for the key's algorithm will be used (for AES-GCM, the default value is 16). */
-  tagLength?: number;
-  /** Optional. An optional CRC32C checksum of the RawDecryptRequest.initialization_vector. If specified, KeyManagementService will verify the integrity of the received initialization_vector using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(initialization_vector) is equal to initialization_vector_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  initializationVectorCrc32c?: string;
-  /** Optional. An optional CRC32C checksum of the RawDecryptRequest.ciphertext. If specified, KeyManagementService will verify the integrity of the received ciphertext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(ciphertext) is equal to ciphertext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  ciphertextCrc32c?: string;
-  /** Required. The encrypted data originally returned in RawEncryptResponse.ciphertext. */
-  ciphertext?: string;
-  /** Required. The initialization vector (IV) used during encryption, which must match the data originally provided in RawEncryptResponse.initialization_vector. */
-  initializationVector?: string;
-}
-export const RawDecryptRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    additionalAuthenticatedData: S.optional(S.String),
-    additionalAuthenticatedDataCrc32c: S.optional(S.String),
-    tagLength: S.optional(S.Number),
-    initializationVectorCrc32c: S.optional(S.String),
-    ciphertextCrc32c: S.optional(S.String),
-    ciphertext: S.optional(S.String),
-    initializationVector: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RawDecryptRequest",
-}) as any as S.Schema<RawDecryptRequest>;
-
-export interface RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
-  /** Required. The resource name of the CryptoKeyVersion to use for decryption. */
-  name: string;
-  /** Request body */
-  body?: RawDecryptRequest;
-}
-export const RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RawDecryptRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:rawDecrypt",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-export type RawDecryptResponseProtectionLevelEnum =
-  | "PROTECTION_LEVEL_UNSPECIFIED"
-  | "SOFTWARE"
-  | "HSM"
-  | "EXTERNAL"
-  | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
-export const RawDecryptResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
-
-/** Response message for KeyManagementService.RawDecrypt. */
-export interface RawDecryptResponse {
-  /** Integrity verification field. A flag indicating whether RawDecryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the integrity verification of additional_authenticated_data. A false value of this field indicates either that // RawDecryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawDecryptRequest.additional_authenticated_data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedAdditionalAuthenticatedDataCrc32c?: boolean;
-  /** The decrypted data. */
-  plaintext?: string;
-  /** Integrity verification field. A flag indicating whether RawDecryptRequest.ciphertext_crc32c was received by KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field indicates either that RawDecryptRequest.ciphertext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawDecryptRequest.ciphertext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedCiphertextCrc32c?: boolean;
-  /** The ProtectionLevel of the CryptoKeyVersion used in decryption. */
-  protectionLevel?: RawDecryptResponseProtectionLevelEnum;
-  /** Integrity verification field. A CRC32C checksum of the returned RawDecryptResponse.plaintext. An integrity check of plaintext can be performed by computing the CRC32C checksum of plaintext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  plaintextCrc32c?: string;
-  /** Integrity verification field. A flag indicating whether RawDecryptRequest.initialization_vector_crc32c was received by KeyManagementService and used for the integrity verification of initialization_vector. A false value of this field indicates either that RawDecryptRequest.initialization_vector_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawDecryptRequest.initialization_vector_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedInitializationVectorCrc32c?: boolean;
-}
-export const RawDecryptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    verifiedAdditionalAuthenticatedDataCrc32c: S.optional(S.Boolean),
-    plaintext: S.optional(S.String),
-    verifiedCiphertextCrc32c: S.optional(S.Boolean),
-    protectionLevel: S.optional(RawDecryptResponseProtectionLevelEnum),
-    plaintextCrc32c: S.optional(S.String),
-    verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "RawDecryptResponse",
-}) as any as S.Schema<RawDecryptResponse>;
-
-/** Request message for KeyManagementService.RawEncrypt. */
-export interface RawEncryptRequest {
-  /** Optional. An optional CRC32C checksum of the RawEncryptRequest.initialization_vector. If specified, KeyManagementService will verify the integrity of the received initialization_vector using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(initialization_vector) is equal to initialization_vector_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  initializationVectorCrc32c?: string;
-  /** Optional. An optional CRC32C checksum of the RawEncryptRequest.additional_authenticated_data. If specified, KeyManagementService will verify the integrity of the received additional_authenticated_data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(additional_authenticated_data) is equal to additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  additionalAuthenticatedDataCrc32c?: string;
-  /** Optional. Optional data that, if specified, must also be provided during decryption through RawDecryptRequest.additional_authenticated_data. This field may only be used in conjunction with an algorithm that accepts additional authenticated data (for example, AES-GCM). The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
-  additionalAuthenticatedData?: string;
-  /** Optional. An optional CRC32C checksum of the RawEncryptRequest.plaintext. If specified, KeyManagementService will verify the integrity of the received plaintext using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(plaintext) is equal to plaintext_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  plaintextCrc32c?: string;
-  /** Optional. A customer-supplied initialization vector that will be used for encryption. If it is not provided for AES-CBC and AES-CTR, one will be generated. It will be returned in RawEncryptResponse.initialization_vector. */
-  initializationVector?: string;
-  /** Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
-  plaintext?: string;
-}
-export const RawEncryptRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    initializationVectorCrc32c: S.optional(S.String),
-    additionalAuthenticatedDataCrc32c: S.optional(S.String),
-    additionalAuthenticatedData: S.optional(S.String),
-    plaintextCrc32c: S.optional(S.String),
-    initializationVector: S.optional(S.String),
-    plaintext: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RawEncryptRequest",
-}) as any as S.Schema<RawEncryptRequest>;
-
-export interface RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest {
-  /** Required. The resource name of the CryptoKeyVersion to use for encryption. */
-  name: string;
-  /** Request body */
-  body?: RawEncryptRequest;
-}
-export const RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(RawEncryptRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:rawEncrypt",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest",
-  }) as any as S.Schema<RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest>;
-
-export type RawEncryptResponseProtectionLevelEnum =
-  | "PROTECTION_LEVEL_UNSPECIFIED"
-  | "SOFTWARE"
-  | "HSM"
-  | "EXTERNAL"
-  | "EXTERNAL_VPC"
-  | "HSM_SINGLE_TENANT";
-export const RawEncryptResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
-
-/** Response message for KeyManagementService.RawEncrypt. */
-export interface RawEncryptResponse {
-  /** The initialization vector (IV) generated by the service during encryption. This value must be stored and provided in RawDecryptRequest.initialization_vector at decryption time. */
-  initializationVector?: string;
-  /** Integrity verification field. A flag indicating whether RawEncryptRequest.initialization_vector_crc32c was received by KeyManagementService and used for the integrity verification of initialization_vector. A false value of this field indicates either that RawEncryptRequest.initialization_vector_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.initialization_vector_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedInitializationVectorCrc32c?: boolean;
-  /** Integrity verification field. A flag indicating whether RawEncryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the integrity verification of additional_authenticated_data. A false value of this field indicates either that // RawEncryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.additional_authenticated_data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedAdditionalAuthenticatedDataCrc32c?: boolean;
-  /** Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.ciphertext. An integrity check of ciphertext can be performed by computing the CRC32C checksum of ciphertext and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  ciphertextCrc32c?: string;
-  /** Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.initialization_vector. An integrity check of initialization_vector can be performed by computing the CRC32C checksum of initialization_vector and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
-  initializationVectorCrc32c?: string;
-  /** Integrity verification field. A flag indicating whether RawEncryptRequest.plaintext_crc32c was received by KeyManagementService and used for the integrity verification of the plaintext. A false value of this field indicates either that RawEncryptRequest.plaintext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.plaintext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
-  verifiedPlaintextCrc32c?: boolean;
-  /** The ProtectionLevel of the CryptoKeyVersion used in encryption. */
-  protectionLevel?: RawEncryptResponseProtectionLevelEnum;
-  /** The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the intended resource was used for encryption. */
-  name?: string;
-  /** The length of the authentication tag that is appended to the end of the ciphertext. */
-  tagLength?: number;
-  /** The encrypted data. In the case of AES-GCM, the authentication tag is the tag_length bytes at the end of this field. */
-  ciphertext?: string;
-}
-export const RawEncryptResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    initializationVector: S.optional(S.String),
-    verifiedInitializationVectorCrc32c: S.optional(S.Boolean),
-    verifiedAdditionalAuthenticatedDataCrc32c: S.optional(S.Boolean),
-    ciphertextCrc32c: S.optional(S.String),
-    initializationVectorCrc32c: S.optional(S.String),
-    verifiedPlaintextCrc32c: S.optional(S.Boolean),
-    protectionLevel: S.optional(RawEncryptResponseProtectionLevelEnum),
-    name: S.optional(S.String),
-    tagLength: S.optional(S.Number),
-    ciphertext: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RawEncryptResponse",
-}) as any as S.Schema<RawEncryptResponse>;
 
 /** Request message for KeyManagementService.RestoreCryptoKeyVersion. */
 export type RestoreCryptoKeyVersionRequest = RefreshSingleTenantHsmInstance;
@@ -4138,174 +4052,177 @@ export const SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest =
     identifier: "SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest",
   }) as any as S.Schema<SetIamPolicyProjectsLocationsKeyRingsImportJobsRequest>;
 
-export interface ShowEffectiveAutokeyConfigFoldersRequest {
-  /** Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for. This may be helpful for evaluating the effect of nested folder configurations on a given resource project. Format: * projects/{project} * folders/{folder} */
-  parent: string;
+/** A Digest holds a cryptographic message digest. */
+export interface Digest {
+  /** A message digest produced with the SHA-256 algorithm. */
+  sha256?: string;
+  /** A message digest produced with the SHA-384 algorithm. */
+  sha384?: string;
+  /** A message digest produced with the SHA-512 algorithm. */
+  sha512?: string;
+  /** A message digest produced with SHAKE-256, to be used with ML-DSA external-μ algorithms only. See "message representative" note in section 6.2, algorithm 7 of the FIPS-204 standard: https://doi.org/10.6028/nist.fips.204 */
+  externalMu?: string;
 }
-export const ShowEffectiveAutokeyConfigFoldersRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const Digest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sha256: S.optional(S.String),
+    sha384: S.optional(S.String),
+    sha512: S.optional(S.String),
+    externalMu: S.optional(S.String),
+  }),
+).annotate({ identifier: "Digest" }) as any as S.Schema<Digest>;
+
+/** Request message for KeyManagementService.AsymmetricSign. */
+export interface AsymmetricSignRequest {
+  /** Optional. An optional CRC32C checksum of the AsymmetricSignRequest.digest. If specified, KeyManagementService will verify the integrity of the received AsymmetricSignRequest.digest using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricSignRequest.digest) is equal to AsymmetricSignRequest.digest_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  digestCrc32c?: string;
+  /** Optional. The digest of the data to sign. The digest must be produced with the same digest algorithm as specified by the key version's algorithm. This field may not be supplied if AsymmetricSignRequest.data is supplied. */
+  digest?: Digest;
+  /** Optional. An optional CRC32C checksum of the AsymmetricSignRequest.data. If specified, KeyManagementService will verify the integrity of the received AsymmetricSignRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(AsymmetricSignRequest.data) is equal to AsymmetricSignRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  dataCrc32c?: string;
+  /** Optional. The data to sign. It can't be supplied if AsymmetricSignRequest.digest is supplied. */
+  data?: string;
+}
+export const AsymmetricSignRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    digestCrc32c: S.optional(S.String),
+    digest: S.optional(Digest),
+    dataCrc32c: S.optional(S.String),
+    data: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AsymmetricSignRequest",
+}) as any as S.Schema<AsymmetricSignRequest>;
+
+export interface SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest {
+  /** Required. The resource name of the CryptoKeyVersion to use for signing. */
+  name: string;
+  /** Request body */
+  body?: AsymmetricSignRequest;
+}
+export const SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      parent: S.String.pipe(T.Label()),
+      name: S.String.pipe(T.Label()),
+      body: S.optional(AsymmetricSignRequest.pipe(T.HttpBody())),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "v1/{+parent}:showEffectiveAutokeyConfig",
+        method: "POST",
+        uri: "v1/{+name}:asymmetricSign",
         baseUrl: "https://cloudkms.googleapis.com/",
       }),
     ),
-).annotate({
-  identifier: "ShowEffectiveAutokeyConfigFoldersRequest",
-}) as any as S.Schema<ShowEffectiveAutokeyConfigFoldersRequest>;
+  ).annotate({
+    identifier:
+      "SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest",
+  }) as any as S.Schema<SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest>;
 
-/** Source of the effective AutokeyConfig. */
-export interface Source {
-  /** Contains the resource name of the AutokeyConfig that is effective, for example, `folders/{FOLDER_NUMBER}` or `projects/{PROJECT_NUMBER}` or `organizations/{ORGANIZATION_NUMBER}`. */
+export type AsymmetricSignResponseProtectionLevelEnum =
+  | "PROTECTION_LEVEL_UNSPECIFIED"
+  | "SOFTWARE"
+  | "HSM"
+  | "EXTERNAL"
+  | "EXTERNAL_VPC"
+  | "HSM_SINGLE_TENANT";
+export const AsymmetricSignResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
+
+/** Response message for KeyManagementService.AsymmetricSign. */
+export interface AsymmetricSignResponse {
+  /** Integrity verification field. A flag indicating whether AsymmetricSignRequest.digest_crc32c was received by KeyManagementService and used for the integrity verification of the digest. A false value of this field indicates either that AsymmetricSignRequest.digest_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricSignRequest.digest_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedDigestCrc32c?: boolean;
+  /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
+  name?: string;
+  /** The created signature. */
+  signature?: string;
+  /** The ProtectionLevel of the CryptoKeyVersion used for signing. */
+  protectionLevel?: AsymmetricSignResponseProtectionLevelEnum;
+  /** Integrity verification field. A flag indicating whether AsymmetricSignRequest.data_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that AsymmetricSignRequest.data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set AsymmetricSignRequest.data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedDataCrc32c?: boolean;
+  /** Integrity verification field. A CRC32C checksum of the returned AsymmetricSignResponse.signature. An integrity check of AsymmetricSignResponse.signature can be performed by computing the CRC32C checksum of AsymmetricSignResponse.signature and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  signatureCrc32c?: string;
+}
+export const AsymmetricSignResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    verifiedDigestCrc32c: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    signature: S.optional(S.String),
+    protectionLevel: S.optional(AsymmetricSignResponseProtectionLevelEnum),
+    verifiedDataCrc32c: S.optional(S.Boolean),
+    signatureCrc32c: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AsymmetricSignResponse",
+}) as any as S.Schema<AsymmetricSignResponse>;
+
+/** Request message for KeyManagementService.MacSign. */
+export interface MacSignRequest {
+  /** Required. The data to sign. The MAC tag is computed over this data field based on the specific algorithm. */
+  data?: string;
+  /** Optional. An optional CRC32C checksum of the MacSignRequest.data. If specified, KeyManagementService will verify the integrity of the received MacSignRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacSignRequest.data) is equal to MacSignRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  dataCrc32c?: string;
+}
+export const MacSignRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(S.String),
+    dataCrc32c: S.optional(S.String),
+  }),
+).annotate({ identifier: "MacSignRequest" }) as any as S.Schema<MacSignRequest>;
+
+export interface SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest {
+  /** Required. The resource name of the CryptoKeyVersion to use for signing. */
+  name: string;
+  /** Request body */
+  body?: MacSignRequest;
+}
+export const SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(MacSignRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:macSign",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest",
+  }) as any as S.Schema<SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest>;
+
+export type MacSignResponseProtectionLevelEnum =
+  | "PROTECTION_LEVEL_UNSPECIFIED"
+  | "SOFTWARE"
+  | "HSM"
+  | "EXTERNAL"
+  | "EXTERNAL_VPC"
+  | "HSM_SINGLE_TENANT";
+export const MacSignResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
+
+/** Response message for KeyManagementService.MacSign. */
+export interface MacSignResponse {
+  /** Integrity verification field. A flag indicating whether MacSignRequest.data_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that MacSignRequest.data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set MacSignRequest.data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedDataCrc32c?: boolean;
+  /** Integrity verification field. A CRC32C checksum of the returned MacSignResponse.mac. An integrity check of MacSignResponse.mac can be performed by computing the CRC32C checksum of MacSignResponse.mac and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  macCrc32c?: string;
+  /** The created signature. */
+  mac?: string;
+  /** The ProtectionLevel of the CryptoKeyVersion used for signing. */
+  protectionLevel?: MacSignResponseProtectionLevelEnum;
+  /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
   name?: string;
 }
-export const Source = /*@__PURE__*/ S.suspend(() =>
+export const MacSignResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
+    verifiedDataCrc32c: S.optional(S.Boolean),
+    macCrc32c: S.optional(S.String),
+    mac: S.optional(S.String),
+    protectionLevel: S.optional(MacSignResponseProtectionLevelEnum),
     name: S.optional(S.String),
   }),
-).annotate({ identifier: "Source" }) as any as S.Schema<Source>;
-
-export type ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum =
-  | "KEY_PROJECT_RESOLUTION_MODE_UNSPECIFIED"
-  | "DEDICATED_KEY_PROJECT"
-  | "RESOURCE_PROJECT"
-  | "DISABLED";
-export const ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum =
-  /*@__PURE__*/ S.String;
-
-/** Response message for ShowEffectiveAutokeyConfig */
-export interface ShowEffectiveAutokeyConfigResponse {
-  /** Source of the effective AutokeyConfig. */
-  source?: Source;
-  /** The KeyProjectResolutionMode for the AutokeyConfig. */
-  keyProjectResolutionMode?: ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum;
-  /** Name of the key project configured in the ancestry of the project or folder. */
-  keyProject?: string;
-}
-export const ShowEffectiveAutokeyConfigResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    source: S.optional(Source),
-    keyProjectResolutionMode: S.optional(
-      ShowEffectiveAutokeyConfigResponseKeyProjectResolutionModeEnum,
-    ),
-    keyProject: S.optional(S.String),
-  }),
 ).annotate({
-  identifier: "ShowEffectiveAutokeyConfigResponse",
-}) as any as S.Schema<ShowEffectiveAutokeyConfigResponse>;
-
-export interface ShowEffectiveAutokeyConfigProjectsRequest {
-  /** Required. Name of the resource project or folder to show the effective Cloud KMS Autokey configuration for. This may be helpful for evaluating the effect of nested folder configurations on a given resource project. Format: * projects/{project} * folders/{folder} */
-  parent: string;
-}
-export const ShowEffectiveAutokeyConfigProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+parent}:showEffectiveAutokeyConfig",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "ShowEffectiveAutokeyConfigProjectsRequest",
-  }) as any as S.Schema<ShowEffectiveAutokeyConfigProjectsRequest>;
-
-export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest {
-  /** Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsEnrollmentConfig for. */
-  project: string;
-}
-export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+project}:showEffectiveKeyAccessJustificationsEnrollmentConfig",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest",
-  }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest>;
-
-/** Represents the configuration of a protection level for a project's Key Access Justifications enrollment. */
-export interface KeyAccessJustificationsEnrollmentConfig {
-  /** Indicates whether the project is enrolled in KAJ policy enforcement. */
-  policyEnforcement?: boolean;
-  /** Indicates whether the project has KAJ logging enabled. */
-  auditLogging?: boolean;
-}
-export const KeyAccessJustificationsEnrollmentConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      policyEnforcement: S.optional(S.Boolean),
-      auditLogging: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "KeyAccessJustificationsEnrollmentConfig",
-}) as any as S.Schema<KeyAccessJustificationsEnrollmentConfig>;
-
-/** Represents a response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsEnrollmentConfig */
-export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
-  /** Contains the effective KeyAccessJustificationsEnrollmentConfig for hardware keys. */
-  hardwareConfig?: KeyAccessJustificationsEnrollmentConfig;
-  /** Contains the effective KeyAccessJustificationsEnrollmentConfig for software keys. */
-  softwareConfig?: KeyAccessJustificationsEnrollmentConfig;
-  /** Contains the effective KeyAccessJustificationsEnrollmentConfig for external keys. */
-  externalConfig?: KeyAccessJustificationsEnrollmentConfig;
-}
-export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      hardwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
-      softwareConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
-      externalConfig: S.optional(KeyAccessJustificationsEnrollmentConfig),
-    }),
-  ).annotate({
-    identifier: "ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse",
-  }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>;
-
-export interface ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest {
-  /** Required. Specifies the number or id of the project to get the effective KeyAccessJustificationsPolicyConfig. In the format of "projects/{|}" */
-  project: string;
-}
-export const ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig",
-        baseUrl: "https://cloudkms.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest",
-  }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest>;
-
-/** Represents a response message for KeyAccessJustificationsConfig.ShowEffectiveKeyAccessJustificationsPolicyConfig. */
-export interface ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
-  /** Contains the effective KeyAccessJustificationsPolicyConfig. */
-  effectiveKajPolicy?: KeyAccessJustificationsPolicyConfig;
-}
-export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      effectiveKajPolicy: S.optional(KeyAccessJustificationsPolicyConfig),
-    }),
-  ).annotate({
-    identifier: "ShowEffectiveKeyAccessJustificationsPolicyConfigResponse",
-  }) as any as S.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>;
+  identifier: "MacSignResponse",
+}) as any as S.Schema<MacSignResponse>;
 
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
@@ -4654,6 +4571,88 @@ export const VerifyConnectivityResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "VerifyConnectivityResponse",
 }) as any as S.Schema<VerifyConnectivityResponse>;
 
+/** Request message for KeyManagementService.MacVerify. */
+export interface MacVerifyRequest {
+  /** Required. The data used previously as a MacSignRequest.data to generate the MAC tag. */
+  data?: string;
+  /** Required. The signature to verify. */
+  mac?: string;
+  /** Optional. An optional CRC32C checksum of the MacVerifyRequest.mac. If specified, KeyManagementService will verify the integrity of the received MacVerifyRequest.mac using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacVerifyRequest.mac) is equal to MacVerifyRequest.mac_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  macCrc32c?: string;
+  /** Optional. An optional CRC32C checksum of the MacVerifyRequest.data. If specified, KeyManagementService will verify the integrity of the received MacVerifyRequest.data using this checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a checksum error, your client should verify that CRC32C(MacVerifyRequest.data) is equal to MacVerifyRequest.data_crc32c, and if so, perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
+  dataCrc32c?: string;
+}
+export const MacVerifyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(S.String),
+    mac: S.optional(S.String),
+    macCrc32c: S.optional(S.String),
+    dataCrc32c: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MacVerifyRequest",
+}) as any as S.Schema<MacVerifyRequest>;
+
+export interface VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest {
+  /** Required. The resource name of the CryptoKeyVersion to use for verification. */
+  name: string;
+  /** Request body */
+  body?: MacVerifyRequest;
+}
+export const VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(MacVerifyRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:macVerify",
+        baseUrl: "https://cloudkms.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest",
+  }) as any as S.Schema<VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest>;
+
+export type MacVerifyResponseProtectionLevelEnum =
+  | "PROTECTION_LEVEL_UNSPECIFIED"
+  | "SOFTWARE"
+  | "HSM"
+  | "EXTERNAL"
+  | "EXTERNAL_VPC"
+  | "HSM_SINGLE_TENANT";
+export const MacVerifyResponseProtectionLevelEnum = /*@__PURE__*/ S.String;
+
+/** Response message for KeyManagementService.MacVerify. */
+export interface MacVerifyResponse {
+  /** The ProtectionLevel of the CryptoKeyVersion used for verification. */
+  protectionLevel?: MacVerifyResponseProtectionLevelEnum;
+  /** Integrity verification field. A flag indicating whether MacVerifyRequest.mac_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that MacVerifyRequest.mac_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set MacVerifyRequest.mac_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedMacCrc32c?: boolean;
+  /** The resource name of the CryptoKeyVersion used for verification. Check this field to verify that the intended resource was used for verification. */
+  name?: string;
+  /** Integrity verification field. This value is used for the integrity verification of [MacVerifyResponse.success]. If the value of this field contradicts the value of [MacVerifyResponse.success], discard the response and perform a limited number of retries. */
+  verifiedSuccessIntegrity?: boolean;
+  /** This field indicates whether or not the verification operation for MacVerifyRequest.mac over MacVerifyRequest.data was successful. */
+  success?: boolean;
+  /** Integrity verification field. A flag indicating whether MacVerifyRequest.data_crc32c was received by KeyManagementService and used for the integrity verification of the data. A false value of this field indicates either that MacVerifyRequest.data_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set MacVerifyRequest.data_crc32c but this field is still false, discard the response and perform a limited number of retries. */
+  verifiedDataCrc32c?: boolean;
+}
+export const MacVerifyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    protectionLevel: S.optional(MacVerifyResponseProtectionLevelEnum),
+    verifiedMacCrc32c: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    verifiedSuccessIntegrity: S.optional(S.Boolean),
+    success: S.optional(S.Boolean),
+    verifiedDataCrc32c: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MacVerifyResponse",
+}) as any as S.Schema<MacVerifyResponse>;
+
 export type ApproveProjectsLocationsSingleTenantHsmInstancesProposalsError =
   | NotFound
   | Forbidden
@@ -4669,48 +4668,6 @@ export const approveProjectsLocationsSingleTenantHsmInstancesProposals: API.Oper
 > = /*@__PURE__*/ API.make(() => ({
   input: ApproveProjectsLocationsSingleTenantHsmInstancesProposalsRequest,
   output: ApproveSingleTenantHsmInstanceProposalResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT. */
-export const asymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
-  AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  AsymmetricDecryptResponse,
-  AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    AsymmetricDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  output: AsymmetricDecryptResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey. */
-export const asymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
-  AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  AsymmetricSignResponse,
-  AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    AsymmetricSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  output: AsymmetricSignResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4896,6 +4853,27 @@ export const decapsulateProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: AP
   retry: Retry.Retry,
 }));
 
+export type DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Decrypts data that was encrypted with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_DECRYPT. */
+export const decryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersion: API.OperationMethod<
+  DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  AsymmetricDecryptResponse,
+  DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    DecryptAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  output: AsymmetricDecryptResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type DecryptProjectsLocationsKeyRingsCryptoKeysError =
   | NotFound
   | Forbidden
@@ -4911,6 +4889,26 @@ export const decryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DecryptProjectsLocationsKeyRingsCryptoKeysRequest,
   output: DecryptResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Decrypts data that was originally encrypted using a raw cryptographic mechanism. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
+export const decryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersion: API.OperationMethod<
+  DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  RawDecryptResponse,
+  DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DecryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  output: RawDecryptResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5036,6 +5034,26 @@ export const encryptProjectsLocationsKeyRingsCryptoKeys: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and Decrypt rather than their raw counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
+export const encryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersion: API.OperationMethod<
+  EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  RawEncryptResponse,
+  EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EncryptRawProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  output: RawEncryptResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ExecuteProjectsLocationsSingleTenantHsmInstancesProposalsError =
   | NotFound
   | Forbidden
@@ -5120,6 +5138,78 @@ export const getAutokeyConfigProjects: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAutokeyConfigProjectsRequest,
   output: AutokeyConfig,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEffectiveAutokeyConfigFoldersError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: - If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`. */
+export const getEffectiveAutokeyConfigFolders: API.OperationMethod<
+  GetEffectiveAutokeyConfigFoldersRequest,
+  ShowEffectiveAutokeyConfigResponse,
+  GetEffectiveAutokeyConfigFoldersError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEffectiveAutokeyConfigFoldersRequest,
+  output: ShowEffectiveAutokeyConfigResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEffectiveAutokeyConfigProjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: - If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`. */
+export const getEffectiveAutokeyConfigProjects: API.OperationMethod<
+  GetEffectiveAutokeyConfigProjectsRequest,
+  ShowEffectiveAutokeyConfigResponse,
+  GetEffectiveAutokeyConfigProjectsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEffectiveAutokeyConfigProjectsRequest,
+  output: ShowEffectiveAutokeyConfigResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to the given project in hierarchy. */
+export const getEffectiveKeyAccessJustificationsEnrollmentConfigProjects: API.OperationMethod<
+  GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest,
+  ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse,
+  GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest,
+  output: ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetEffectiveKeyAccessJustificationsPolicyConfigProjectsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy. */
+export const getEffectiveKeyAccessJustificationsPolicyConfigProjects: API.OperationMethod<
+  GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest,
+  ShowEffectiveKeyAccessJustificationsPolicyConfigResponse,
+  GetEffectiveKeyAccessJustificationsPolicyConfigProjectsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest,
+  output: ShowEffectiveKeyAccessJustificationsPolicyConfigResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5763,46 +5853,6 @@ export const listProjectsLocationsSingleTenantHsmInstancesProposals: API.Paginat
   } as const,
 })) as any;
 
-export type MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag that can be verified by another source with the same key. */
-export const macSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
-  MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  MacSignResponse,
-  MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MacSignProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  output: MacSignResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response that indicates whether or not the verification was successful. */
-export const macVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
-  MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  MacVerifyResponse,
-  MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MacVerifyProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  output: MacVerifyResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type PatchProjectsLocationsEkmConnectionsError =
   | NotFound
   | Forbidden
@@ -5858,46 +5908,6 @@ export const patchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.Oper
 > = /*@__PURE__*/ API.make(() => ({
   input: PatchProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
   output: CryptoKeyVersion,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Decrypts data that was originally encrypted using a raw cryptographic mechanism. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
-export const rawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
-  RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  RawDecryptResponse,
-  RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RawDecryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  output: RawDecryptResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and Decrypt rather than their raw counterparts. The CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT. */
-export const rawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersions: API.OperationMethod<
-  RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  RawEncryptResponse,
-  RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RawEncryptProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsRequest,
-  output: RawEncryptResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6023,74 +6033,42 @@ export const setIamPolicyProjectsLocationsKeyRingsImportJobs: API.OperationMetho
   retry: Retry.Retry,
 }));
 
-export type ShowEffectiveAutokeyConfigFoldersError =
+export type SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionError =
   | NotFound
   | Forbidden
+  | BadRequest
+  | Conflict
   | GcpOpError;
-/** Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: - If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`. */
-export const showEffectiveAutokeyConfigFolders: API.OperationMethod<
-  ShowEffectiveAutokeyConfigFoldersRequest,
-  ShowEffectiveAutokeyConfigResponse,
-  ShowEffectiveAutokeyConfigFoldersError,
+/** Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, producing a signature that can be verified with the public key retrieved from GetPublicKey. */
+export const signAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersion: API.OperationMethod<
+  SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  AsymmetricSignResponse,
+  SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ShowEffectiveAutokeyConfigFoldersRequest,
-  output: ShowEffectiveAutokeyConfigResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
+  input: SignAsymmetricProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  output: AsymmetricSignResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type ShowEffectiveAutokeyConfigProjectsError =
+export type SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionError =
   | NotFound
   | Forbidden
+  | BadRequest
+  | Conflict
   | GcpOpError;
-/** Returns the effective Cloud KMS Autokey configuration for a given project or folder. Note on permissions: - If called on a project (`projects/{project}`), requires `cloudkms.projects.showEffectiveAutokeyConfig`. - If called on a folder (`folders/{folder}`), requires `cloudkms.folders.showEffectiveAutokeyConfig`. */
-export const showEffectiveAutokeyConfigProjects: API.OperationMethod<
-  ShowEffectiveAutokeyConfigProjectsRequest,
-  ShowEffectiveAutokeyConfigResponse,
-  ShowEffectiveAutokeyConfigProjectsError,
+/** Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag that can be verified by another source with the same key. */
+export const signMacProjectLocationKeyRingCryptoKeyCryptoKeyVersion: API.OperationMethod<
+  SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  MacSignResponse,
+  SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ShowEffectiveAutokeyConfigProjectsRequest,
-  output: ShowEffectiveAutokeyConfigResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Returns the KeyAccessJustificationsEnrollmentConfig of the resource closest to the given project in hierarchy. */
-export const showEffectiveKeyAccessJustificationsEnrollmentConfigProjects: API.OperationMethod<
-  ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest,
-  ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse,
-  ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ShowEffectiveKeyAccessJustificationsEnrollmentConfigProjectsRequest,
-  output: ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Returns the KeyAccessJustificationsPolicyConfig of the resource closest to the given project in hierarchy. */
-export const showEffectiveKeyAccessJustificationsPolicyConfigProjects: API.OperationMethod<
-  ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest,
-  ShowEffectiveKeyAccessJustificationsPolicyConfigResponse,
-  ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ShowEffectiveKeyAccessJustificationsPolicyConfigProjectsRequest,
-  output: ShowEffectiveKeyAccessJustificationsPolicyConfigResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
+  input: SignMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  output: MacSignResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -6349,6 +6327,26 @@ export const verifyConnectivityProjectsLocationsEkmConnections: API.OperationMet
   input: VerifyConnectivityProjectsLocationsEkmConnectionsRequest,
   output: VerifyConnectivityResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and returns a response that indicates whether or not the verification was successful. */
+export const verifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersion: API.OperationMethod<
+  VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  MacVerifyResponse,
+  VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: VerifyMacProjectLocationKeyRingCryptoKeyCryptoKeyVersionRequest,
+  output: MacVerifyResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

@@ -487,152 +487,6 @@ export const BulkAnalyzeProjectsLocationsConversationsSegmentsRequest =
     identifier: "BulkAnalyzeProjectsLocationsConversationsSegmentsRequest",
   }) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsSegmentsRequest>;
 
-/** Request for the BulkDeleteFeedbackLabels endpoint. */
-export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest {
-  /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
-  filter?: string;
-  /** Required. The parent resource for new feedback labels. */
-  parent?: string;
-}
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String),
-      parent: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest>;
-
-export interface BulkDeleteFeedbackLabelsProjectsLocationsRequest {
-  /** Required. The parent resource for new feedback labels. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
-}
-export const BulkDeleteFeedbackLabelsProjectsLocationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:bulkDeleteFeedbackLabels",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteFeedbackLabelsProjectsLocationsRequest",
-  }) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsRequest>;
-
-export interface BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest {
-  /** Required. The parent resource for new feedback labels. */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
-}
-export const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}:bulkDeleteFeedbackLabels",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest",
-  }) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest>;
-
-/** The request to delete conversations in bulk. */
-export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
-  /** Filter used to select the subset of conversations to delete. */
-  filter?: string;
-  /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
-  force?: boolean;
-  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
-  parent?: string;
-  /** Maximum number of conversations to delete. */
-  maxDeleteCount?: number;
-}
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      filter: S.optional(S.String),
-      force: S.optional(S.Boolean),
-      parent: S.optional(S.String),
-      maxDeleteCount: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest",
-  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest>;
-
-export interface BulkDeleteProjectsLocationsConversationsRequest {
-  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
-}
-export const BulkDeleteProjectsLocationsConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/conversations:bulkDelete",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteProjectsLocationsConversationsRequest",
-  }) as any as S.Schema<BulkDeleteProjectsLocationsConversationsRequest>;
-
-export interface BulkDeleteProjectsLocationsDatasetsConversationsRequest {
-  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
-  parent: string;
-  /** Request body */
-  body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
-}
-export const BulkDeleteProjectsLocationsDatasetsConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.pipe(
-          T.HttpBody(),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/conversations:bulkDelete",
-        baseUrl: "https://contactcenterinsights.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteProjectsLocationsDatasetsConversationsRequest",
-  }) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsConversationsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
   | "FEEDBACK_LABEL_TYPE_UNSPECIFIED"
   | "QUALITY_AI"
@@ -5758,6 +5612,152 @@ export const CreateProjectsLocationsViewsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectsLocationsViewsRequest",
 }) as any as S.Schema<CreateProjectsLocationsViewsRequest>;
+
+/** Request for the BulkDeleteFeedbackLabels endpoint. */
+export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest {
+  /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
+  filter?: string;
+  /** Required. The parent resource for new feedback labels. */
+  parent?: string;
+}
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String),
+      parent: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest>;
+
+export interface DeleteBulkFeedbackLabelProjectLocationRequest {
+  /** Required. The parent resource for new feedback labels. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
+}
+export const DeleteBulkFeedbackLabelProjectLocationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:bulkDeleteFeedbackLabels",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBulkFeedbackLabelProjectLocationRequest",
+  }) as any as S.Schema<DeleteBulkFeedbackLabelProjectLocationRequest>;
+
+export interface DeleteBulkFeedbackLabelProjectLocationDatasetRequest {
+  /** Required. The parent resource for new feedback labels. */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
+}
+export const DeleteBulkFeedbackLabelProjectLocationDatasetRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}:bulkDeleteFeedbackLabels",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBulkFeedbackLabelProjectLocationDatasetRequest",
+  }) as any as S.Schema<DeleteBulkFeedbackLabelProjectLocationDatasetRequest>;
+
+/** The request to delete conversations in bulk. */
+export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
+  /** Filter used to select the subset of conversations to delete. */
+  filter?: string;
+  /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
+  force?: boolean;
+  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
+  parent?: string;
+  /** Maximum number of conversations to delete. */
+  maxDeleteCount?: number;
+}
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      filter: S.optional(S.String),
+      force: S.optional(S.Boolean),
+      parent: S.optional(S.String),
+      maxDeleteCount: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest",
+  }) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest>;
+
+export interface DeleteBulkProjectLocationConversationRequest {
+  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
+}
+export const DeleteBulkProjectLocationConversationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/conversations:bulkDelete",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBulkProjectLocationConversationRequest",
+  }) as any as S.Schema<DeleteBulkProjectLocationConversationRequest>;
+
+export interface DeleteBulkProjectLocationDatasetConversationRequest {
+  /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
+  parent: string;
+  /** Request body */
+  body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
+}
+export const DeleteBulkProjectLocationDatasetConversationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(
+        GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.pipe(
+          T.HttpBody(),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/conversations:bulkDelete",
+        baseUrl: "https://contactcenterinsights.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBulkProjectLocationDatasetConversationRequest",
+  }) as any as S.Schema<DeleteBulkProjectLocationDatasetConversationRequest>;
 
 export interface DeleteProjectsLocationsAnalysisRulesRequest {
   /** Required. The name of the analysis rule to delete. */
@@ -11508,86 +11508,6 @@ export const bulkAnalyzeProjectsLocationsConversationsSegments: API.OperationMet
   retry: Retry.Retry,
 }));
 
-export type BulkDeleteFeedbackLabelsProjectsLocationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Delete feedback labels in bulk using a filter. */
-export const bulkDeleteFeedbackLabelsProjectsLocations: API.OperationMethod<
-  BulkDeleteFeedbackLabelsProjectsLocationsRequest,
-  GoogleLongrunningOperation,
-  BulkDeleteFeedbackLabelsProjectsLocationsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteFeedbackLabelsProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BulkDeleteFeedbackLabelsProjectsLocationsDatasetsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Delete feedback labels in bulk using a filter. */
-export const bulkDeleteFeedbackLabelsProjectsLocationsDatasets: API.OperationMethod<
-  BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest,
-  GoogleLongrunningOperation,
-  BulkDeleteFeedbackLabelsProjectsLocationsDatasetsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BulkDeleteProjectsLocationsConversationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes multiple conversations in a single request. */
-export const bulkDeleteProjectsLocationsConversations: API.OperationMethod<
-  BulkDeleteProjectsLocationsConversationsRequest,
-  GoogleLongrunningOperation,
-  BulkDeleteProjectsLocationsConversationsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteProjectsLocationsConversationsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BulkDeleteProjectsLocationsDatasetsConversationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes multiple conversations in a single request. */
-export const bulkDeleteProjectsLocationsDatasetsConversations: API.OperationMethod<
-  BulkDeleteProjectsLocationsDatasetsConversationsRequest,
-  GoogleLongrunningOperation,
-  BulkDeleteProjectsLocationsDatasetsConversationsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleLongrunningOperation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BulkDownloadFeedbackLabelsProjectsLocationsError =
   | NotFound
   | Forbidden
@@ -12302,6 +12222,86 @@ export const createProjectsLocationsViews: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsViewsRequest,
   output: GoogleCloudContactcenterinsightsV1View,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBulkFeedbackLabelProjectLocationError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Delete feedback labels in bulk using a filter. */
+export const deleteBulkFeedbackLabelProjectLocation: API.OperationMethod<
+  DeleteBulkFeedbackLabelProjectLocationRequest,
+  GoogleLongrunningOperation,
+  DeleteBulkFeedbackLabelProjectLocationError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBulkFeedbackLabelProjectLocationRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBulkFeedbackLabelProjectLocationDatasetError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Delete feedback labels in bulk using a filter. */
+export const deleteBulkFeedbackLabelProjectLocationDataset: API.OperationMethod<
+  DeleteBulkFeedbackLabelProjectLocationDatasetRequest,
+  GoogleLongrunningOperation,
+  DeleteBulkFeedbackLabelProjectLocationDatasetError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBulkFeedbackLabelProjectLocationDatasetRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBulkProjectLocationConversationError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes multiple conversations in a single request. */
+export const deleteBulkProjectLocationConversation: API.OperationMethod<
+  DeleteBulkProjectLocationConversationRequest,
+  GoogleLongrunningOperation,
+  DeleteBulkProjectLocationConversationError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBulkProjectLocationConversationRequest,
+  output: GoogleLongrunningOperation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBulkProjectLocationDatasetConversationError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes multiple conversations in a single request. */
+export const deleteBulkProjectLocationDatasetConversation: API.OperationMethod<
+  DeleteBulkProjectLocationDatasetConversationRequest,
+  GoogleLongrunningOperation,
+  DeleteBulkProjectLocationDatasetConversationError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBulkProjectLocationDatasetConversationRequest,
+  output: GoogleLongrunningOperation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

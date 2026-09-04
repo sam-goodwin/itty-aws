@@ -140,7 +140,7 @@ export type EndpointServingMode =
   | "ENDPOINT_SERVING_MODE_SHARED";
 export const EndpointServingMode = /*@__PURE__*/ S.String;
 
-export interface EndpointCreateRequest {
+export interface CreateEndpointRequest {
   name?: string;
   description?: string;
   proxyRegions?: StringList;
@@ -152,7 +152,7 @@ export interface EndpointCreateRequest {
   unauthenticated?: boolean;
   servingMode?: EndpointServingMode | (string & {});
 }
-export const EndpointCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     description: S.optional(S.String),
@@ -172,29 +172,29 @@ export const EndpointCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointCreateRequest",
-}) as any as S.Schema<EndpointCreateRequest>;
+  identifier: "CreateEndpointRequest",
+}) as any as S.Schema<CreateEndpointRequest>;
 
-export interface EndpointCreateResponse {
+export interface CreateEndpointResponse {
   endpointId?: string;
   endpointPageUrl?: string;
   name?: string;
 }
-export const EndpointCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     endpointPageUrl: S.optional(S.String),
     name: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "EndpointCreateResponse",
-}) as any as S.Schema<EndpointCreateResponse>;
+  identifier: "CreateEndpointResponse",
+}) as any as S.Schema<CreateEndpointResponse>;
 
-export interface EndpointGetByNameRequest {
+export interface GetEndpointByNameRequest {
   name?: string;
   environmentName?: string;
 }
-export const EndpointGetByNameRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetEndpointByNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -206,26 +206,26 @@ export const EndpointGetByNameRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointGetByNameRequest",
-}) as any as S.Schema<EndpointGetByNameRequest>;
+  identifier: "GetEndpointByNameRequest",
+}) as any as S.Schema<GetEndpointByNameRequest>;
 
-export interface EndpointGetByNameResponse {
+export interface GetEndpointByNameResponse {
   endpointId?: string;
   environmentName?: string;
 }
-export const EndpointGetByNameResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetEndpointByNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     environmentName: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "EndpointGetByNameResponse",
-}) as any as S.Schema<EndpointGetByNameResponse>;
+  identifier: "GetEndpointByNameResponse",
+}) as any as S.Schema<GetEndpointByNameResponse>;
 
-export interface EndpointGetLifecycleRequest {
+export interface GetEndpointLifecycleRequest {
   endpointId?: string;
 }
-export const EndpointGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetEndpointLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
   }).pipe(
@@ -236,8 +236,8 @@ export const EndpointGetLifecycleRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointGetLifecycleRequest",
-}) as any as S.Schema<EndpointGetLifecycleRequest>;
+  identifier: "GetEndpointLifecycleRequest",
+}) as any as S.Schema<GetEndpointLifecycleRequest>;
 
 export type EndpointLifecycleStatus =
   | "ENDPOINT_LIFECYCLE_STATUS_UNSPECIFIED"
@@ -269,16 +269,16 @@ export const EndpointLifecycle = /*@__PURE__*/ S.suspend(() =>
   identifier: "EndpointLifecycle",
 }) as any as S.Schema<EndpointLifecycle>;
 
-export interface EndpointGetLifecycleResponse {
+export interface GetEndpointLifecycleResponse {
   lifecycle?: EndpointLifecycle;
 }
-export const EndpointGetLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetEndpointLifecycleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lifecycle: S.optional(EndpointLifecycle),
   }),
 ).annotate({
-  identifier: "EndpointGetLifecycleResponse",
-}) as any as S.Schema<EndpointGetLifecycleResponse>;
+  identifier: "GetEndpointLifecycleResponse",
+}) as any as S.Schema<GetEndpointLifecycleResponse>;
 
 export interface ListPagination {
   maxObjects?: number;
@@ -291,11 +291,11 @@ export const ListPagination = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "ListPagination" }) as any as S.Schema<ListPagination>;
 
-export interface EndpointListRequest {
+export interface ListEndpointRequest {
   environmentName?: string;
   pagination?: ListPagination;
 }
-export const EndpointListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     environmentName: S.optional(S.String),
     pagination: S.optional(ListPagination),
@@ -307,8 +307,8 @@ export const EndpointListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointListRequest",
-}) as any as S.Schema<EndpointListRequest>;
+  identifier: "ListEndpointRequest",
+}) as any as S.Schema<ListEndpointRequest>;
 
 export interface CreationInfo {
   /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
@@ -398,18 +398,18 @@ export const EndpointListItemList = /*@__PURE__*/ S.Array(
   EndpointListItem,
 ) as any as S.Schema<EndpointListItemList>;
 
-export interface EndpointListResponse {
+export interface ListEndpointResponse {
   items?: EndpointListItemList;
   environmentName?: string;
 }
-export const EndpointListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     items: S.optional(EndpointListItemList),
     environmentName: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "EndpointListResponse",
-}) as any as S.Schema<EndpointListResponse>;
+  identifier: "ListEndpointResponse",
+}) as any as S.Schema<ListEndpointResponse>;
 
 export type EndpointStopSource =
   | "ENDPOINT_STOP_SOURCE_UNSPECIFIED"
@@ -417,11 +417,11 @@ export type EndpointStopSource =
   | "ENDPOINT_STOP_SOURCE_WEB";
 export const EndpointStopSource = /*@__PURE__*/ S.String;
 
-export interface EndpointStopRequest {
+export interface StopEndpointRequest {
   endpointId?: string;
   source?: EndpointStopSource | (string & {});
 }
-export const EndpointStopRequest = /*@__PURE__*/ S.suspend(() =>
+export const StopEndpointRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     endpointId: S.optional(S.String),
     source: S.optional(EndpointStopSource),
@@ -433,82 +433,82 @@ export const EndpointStopRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointStopRequest",
-}) as any as S.Schema<EndpointStopRequest>;
+  identifier: "StopEndpointRequest",
+}) as any as S.Schema<StopEndpointRequest>;
 
-export interface EndpointStopResponse {}
-export const EndpointStopResponse = /*@__PURE__*/ S.suspend(() =>
+export interface StopEndpointResponse {}
+export const StopEndpointResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "EndpointStopResponse",
-}) as any as S.Schema<EndpointStopResponse>;
+  identifier: "StopEndpointResponse",
+}) as any as S.Schema<StopEndpointResponse>;
 
-export type EndpointCreateError = ModalOpError;
+export type CreateEndpointError = ModalOpError;
 /** Endpoints */
-export const endpointCreate: API.OperationMethod<
-  EndpointCreateRequest,
-  EndpointCreateResponse,
-  EndpointCreateError,
+export const createEndpoint: API.OperationMethod<
+  CreateEndpointRequest,
+  CreateEndpointResponse,
+  CreateEndpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointCreateRequest,
-  output: EndpointCreateResponse,
+  input: CreateEndpointRequest,
+  output: CreateEndpointResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointGetByNameError = ModalOpError;
-export const endpointGetByName: API.OperationMethod<
-  EndpointGetByNameRequest,
-  EndpointGetByNameResponse,
-  EndpointGetByNameError,
+export type GetEndpointByNameError = ModalOpError;
+export const getEndpointByName: API.OperationMethod<
+  GetEndpointByNameRequest,
+  GetEndpointByNameResponse,
+  GetEndpointByNameError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointGetByNameRequest,
-  output: EndpointGetByNameResponse,
+  input: GetEndpointByNameRequest,
+  output: GetEndpointByNameResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointGetLifecycleError = ModalOpError;
-export const endpointGetLifecycle: API.OperationMethod<
-  EndpointGetLifecycleRequest,
-  EndpointGetLifecycleResponse,
-  EndpointGetLifecycleError,
+export type GetEndpointLifecycleError = ModalOpError;
+export const getEndpointLifecycle: API.OperationMethod<
+  GetEndpointLifecycleRequest,
+  GetEndpointLifecycleResponse,
+  GetEndpointLifecycleError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointGetLifecycleRequest,
-  output: EndpointGetLifecycleResponse,
+  input: GetEndpointLifecycleRequest,
+  output: GetEndpointLifecycleResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointListError = ModalOpError;
-export const endpointList: API.OperationMethod<
-  EndpointListRequest,
-  EndpointListResponse,
-  EndpointListError,
+export type ListEndpointError = ModalOpError;
+export const listEndpoint: API.OperationMethod<
+  ListEndpointRequest,
+  ListEndpointResponse,
+  ListEndpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointListRequest,
-  output: EndpointListResponse,
+  input: ListEndpointRequest,
+  output: ListEndpointResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type EndpointStopError = ModalOpError;
-export const endpointStop: API.OperationMethod<
-  EndpointStopRequest,
-  EndpointStopResponse,
-  EndpointStopError,
+export type StopEndpointError = ModalOpError;
+export const stopEndpoint: API.OperationMethod<
+  StopEndpointRequest,
+  StopEndpointResponse,
+  StopEndpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointStopRequest,
-  output: EndpointStopResponse,
+  input: StopEndpointRequest,
+  output: StopEndpointResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

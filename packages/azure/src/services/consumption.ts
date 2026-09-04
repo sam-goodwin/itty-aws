@@ -12,522 +12,6 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface AggregatedCostGetByManagementGroupRequest {
-  /** Order Id of the reservation */
-  managementGroupId: string;
-  /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
-  _filter?: string;
-}
-export const AggregatedCostGetByManagementGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managementGroupId: S.String.pipe(T.Label()),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AggregatedCostGetByManagementGroupRequest",
-  }) as any as S.Schema<AggregatedCostGetByManagementGroupRequest>;
-
-/** The type of identity that created the resource. */
-export type SystemDataCreatedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
-
-/** The type of identity that last modified the resource. */
-export type SystemDataLastModifiedByType =
-  | "User"
-  | "Application"
-  | "ManagedIdentity"
-  | "Key";
-export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
-
-/** Metadata pertaining to creation and last modification of the resource. */
-export interface SystemData {
-  /** The identity that created the resource. */
-  createdBy?: string;
-  /** The type of identity that created the resource. */
-  createdByType?: SystemDataCreatedByType;
-  /** The timestamp of resource creation (UTC). */
-  createdAt?: string;
-  /** The identity that last modified the resource. */
-  lastModifiedBy?: string;
-  /** The type of identity that last modified the resource. */
-  lastModifiedByType?: SystemDataLastModifiedByType;
-  /** The timestamp of resource last modification (UTC) */
-  lastModifiedAt?: string;
-}
-export const SystemData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdBy: S.optional(S.String),
-    createdByType: S.optional(SystemDataCreatedByType),
-    createdAt: S.optional(S.String),
-    lastModifiedBy: S.optional(S.String),
-    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
-    lastModifiedAt: S.optional(S.String),
-  }),
-).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
-
-/** Resource tags. */
-export type ManagementGroupAggregatedCostResultTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ManagementGroupAggregatedCostResultTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ManagementGroupAggregatedCostResultTagsMap>;
-
-/** A management group aggregated cost resource. */
-export interface ManagementGroupAggregatedCostResult {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Management Group Aggregated Cost. */
-  properties?: ManagementGroupAggregatedCostProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: ManagementGroupAggregatedCostResultTagsMap;
-}
-export const ManagementGroupAggregatedCostResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(
-      S.suspend(() => ManagementGroupAggregatedCostProperties),
-    ),
-    etag: S.optional(S.String),
-    tags: S.optional(ManagementGroupAggregatedCostResultTagsMap),
-  }),
-).annotate({
-  identifier: "ManagementGroupAggregatedCostResult",
-}) as any as S.Schema<ManagementGroupAggregatedCostResult>;
-
-/** Children of a management group */
-export type ManagementGroupAggregatedCostPropertiesChildrenList =
-  Array<ManagementGroupAggregatedCostResult>;
-export const ManagementGroupAggregatedCostPropertiesChildrenList =
-  /*@__PURE__*/ S.Array(
-    ManagementGroupAggregatedCostResult,
-  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesChildrenList>;
-
-/** List of subscription Guids included in the calculation of aggregated cost */
-export type ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
-  Array<string>;
-export const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList>;
-
-/** List of subscription Guids excluded from the calculation of aggregated cost */
-export type ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
-  Array<string>;
-export const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList>;
-
-/** The properties of the Management Group Aggregated Cost. */
-export interface ManagementGroupAggregatedCostProperties {
-  /** The id of the billing period resource that the aggregated cost belongs to. */
-  billingPeriodId?: string;
-  /** The start of the date time range covered by aggregated cost. */
-  usageStart?: string;
-  /** The end of the date time range covered by the aggregated cost. */
-  usageEnd?: string;
-  /** Azure Charges. */
-  azureCharges?: number;
-  /** Marketplace Charges. */
-  marketplaceCharges?: number;
-  /** Charges Billed Separately. */
-  chargesBilledSeparately?: number;
-  /** The ISO currency in which the meter is charged, for example, USD. */
-  currency?: string;
-  /** Children of a management group */
-  children?: ManagementGroupAggregatedCostPropertiesChildrenList;
-  /** List of subscription Guids included in the calculation of aggregated cost */
-  includedSubscriptions?: ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList;
-  /** List of subscription Guids excluded from the calculation of aggregated cost */
-  excludedSubscriptions?: ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList;
-}
-export const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      billingPeriodId: S.optional(S.String),
-      usageStart: S.optional(S.String),
-      usageEnd: S.optional(S.String),
-      azureCharges: S.optional(S.Number),
-      marketplaceCharges: S.optional(S.Number),
-      chargesBilledSeparately: S.optional(S.Number),
-      currency: S.optional(S.String),
-      children: S.optional(ManagementGroupAggregatedCostPropertiesChildrenList),
-      includedSubscriptions: S.optional(
-        ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList,
-      ),
-      excludedSubscriptions: S.optional(
-        ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList,
-      ),
-    }),
-).annotate({
-  identifier: "ManagementGroupAggregatedCostProperties",
-}) as any as S.Schema<ManagementGroupAggregatedCostProperties>;
-
-/** Resource tags. */
-export type AggregatedCostGetByManagementGroupResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AggregatedCostGetByManagementGroupResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<AggregatedCostGetByManagementGroupResponseTagsMap>;
-
-export interface AggregatedCostGetByManagementGroupResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Management Group Aggregated Cost. */
-  properties?: ManagementGroupAggregatedCostProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: AggregatedCostGetByManagementGroupResponseTagsMap;
-}
-export const AggregatedCostGetByManagementGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ManagementGroupAggregatedCostProperties),
-      etag: S.optional(S.String),
-      tags: S.optional(AggregatedCostGetByManagementGroupResponseTagsMap),
-    }),
-  ).annotate({
-    identifier: "AggregatedCostGetByManagementGroupResponse",
-  }) as any as S.Schema<AggregatedCostGetByManagementGroupResponse>;
-
-export interface AggregatedCostGetForBillingPeriodByManagementGroupRequest {
-  /** Order Id of the reservation */
-  managementGroupId: string;
-  /** Billing Period Name. */
-  billingPeriodName: string;
-}
-export const AggregatedCostGetForBillingPeriodByManagementGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managementGroupId: S.String.pipe(T.Label()),
-      billingPeriodName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AggregatedCostGetForBillingPeriodByManagementGroupRequest",
-  }) as any as S.Schema<AggregatedCostGetForBillingPeriodByManagementGroupRequest>;
-
-/** Resource tags. */
-export type AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap =
-  { [key: string]: string | undefined };
-export const AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap>;
-
-export interface AggregatedCostGetForBillingPeriodByManagementGroupResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the Management Group Aggregated Cost. */
-  properties?: ManagementGroupAggregatedCostProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap;
-}
-export const AggregatedCostGetForBillingPeriodByManagementGroupResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ManagementGroupAggregatedCostProperties),
-      etag: S.optional(S.String),
-      tags: S.optional(
-        AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "AggregatedCostGetForBillingPeriodByManagementGroupResponse",
-  }) as any as S.Schema<AggregatedCostGetForBillingPeriodByManagementGroupResponse>;
-
-export interface BalancesGetByBillingAccountRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-}
-export const BalancesGetByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "BalancesGetByBillingAccountRequest",
-}) as any as S.Schema<BalancesGetByBillingAccountRequest>;
-
-/** The billing frequency. */
-export type BillingFrequency = "Month" | "Quarter" | "Year";
-export const BillingFrequency = /*@__PURE__*/ S.String;
-
-export interface BalancePropertiesNewPurchasesDetailsItem {
-  /** the name of new purchase. */
-  name?: string;
-  /** the value of new purchase. */
-  value?: number;
-}
-export const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "BalancePropertiesNewPurchasesDetailsItem",
-}) as any as S.Schema<BalancePropertiesNewPurchasesDetailsItem>;
-
-/** List of new purchases. */
-export type BalancePropertiesNewPurchasesDetailsList =
-  Array<BalancePropertiesNewPurchasesDetailsItem>;
-export const BalancePropertiesNewPurchasesDetailsList = /*@__PURE__*/ S.Array(
-  BalancePropertiesNewPurchasesDetailsItem,
-) as any as S.Schema<BalancePropertiesNewPurchasesDetailsList>;
-
-export interface BalancePropertiesAdjustmentDetailsItem {
-  /** the name of new adjustment. */
-  name?: string;
-  /** the value of new adjustment. */
-  value?: number;
-}
-export const BalancePropertiesAdjustmentDetailsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      name: S.optional(S.String),
-      value: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "BalancePropertiesAdjustmentDetailsItem",
-}) as any as S.Schema<BalancePropertiesAdjustmentDetailsItem>;
-
-/** List of Adjustments (Promo credit, SIE credit etc.). */
-export type BalancePropertiesAdjustmentDetailsList =
-  Array<BalancePropertiesAdjustmentDetailsItem>;
-export const BalancePropertiesAdjustmentDetailsList = /*@__PURE__*/ S.Array(
-  BalancePropertiesAdjustmentDetailsItem,
-) as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
-
-/** The properties of the balance. */
-export interface BalanceProperties {
-  /** The ISO currency in which the meter is charged, for example, USD. */
-  currency?: string;
-  /** The beginning balance for the billing period. */
-  beginningBalance?: number;
-  /** The ending balance for the billing period (for open periods this will be updated daily). */
-  endingBalance?: number;
-  /** Total new purchase amount. */
-  newPurchases?: number;
-  /** Total adjustment amount. */
-  adjustments?: number;
-  /** Total Commitment usage. */
-  utilized?: number;
-  /** Overage for Azure services. */
-  serviceOverage?: number;
-  /** Charges Billed separately. */
-  chargesBilledSeparately?: number;
-  /** serviceOverage + chargesBilledSeparately. */
-  totalOverage?: number;
-  /** Azure service commitment + total Overage. */
-  totalUsage?: number;
-  /** Total charges for Azure Marketplace. */
-  azureMarketplaceServiceCharges?: number;
-  /** The billing frequency. */
-  billingFrequency?: BillingFrequency;
-  /** Price is hidden or not. */
-  priceHidden?: boolean;
-  /** Overage Refunds */
-  overageRefund?: number;
-  /** List of new purchases. */
-  newPurchasesDetails?: BalancePropertiesNewPurchasesDetailsList;
-  /** List of Adjustments (Promo credit, SIE credit etc.). */
-  adjustmentDetails?: BalancePropertiesAdjustmentDetailsList;
-}
-export const BalanceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    currency: S.optional(S.String),
-    beginningBalance: S.optional(S.Number),
-    endingBalance: S.optional(S.Number),
-    newPurchases: S.optional(S.Number),
-    adjustments: S.optional(S.Number),
-    utilized: S.optional(S.Number),
-    serviceOverage: S.optional(S.Number),
-    chargesBilledSeparately: S.optional(S.Number),
-    totalOverage: S.optional(S.Number),
-    totalUsage: S.optional(S.Number),
-    azureMarketplaceServiceCharges: S.optional(S.Number),
-    billingFrequency: S.optional(BillingFrequency),
-    priceHidden: S.optional(S.Boolean),
-    overageRefund: S.optional(S.Number),
-    newPurchasesDetails: S.optional(BalancePropertiesNewPurchasesDetailsList),
-    adjustmentDetails: S.optional(BalancePropertiesAdjustmentDetailsList),
-  }),
-).annotate({
-  identifier: "BalanceProperties",
-}) as any as S.Schema<BalanceProperties>;
-
-/** Resource tags. */
-export type BalancesGetByBillingAccountResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BalancesGetByBillingAccountResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BalancesGetByBillingAccountResponseTagsMap>;
-
-export interface BalancesGetByBillingAccountResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the balance. */
-  properties?: BalanceProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: BalancesGetByBillingAccountResponseTagsMap;
-}
-export const BalancesGetByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BalanceProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(BalancesGetByBillingAccountResponseTagsMap),
-  }),
-).annotate({
-  identifier: "BalancesGetByBillingAccountResponse",
-}) as any as S.Schema<BalancesGetByBillingAccountResponse>;
-
-export interface BalancesGetForBillingPeriodByBillingAccountRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Billing Period Name. */
-  billingPeriodName: string;
-}
-export const BalancesGetForBillingPeriodByBillingAccountRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountId: S.String.pipe(T.Label()),
-      billingPeriodName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "BalancesGetForBillingPeriodByBillingAccountRequest",
-  }) as any as S.Schema<BalancesGetForBillingPeriodByBillingAccountRequest>;
-
-/** Resource tags. */
-export type BalancesGetForBillingPeriodByBillingAccountResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const BalancesGetForBillingPeriodByBillingAccountResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BalancesGetForBillingPeriodByBillingAccountResponseTagsMap>;
-
-export interface BalancesGetForBillingPeriodByBillingAccountResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the balance. */
-  properties?: BalanceProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: BalancesGetForBillingPeriodByBillingAccountResponseTagsMap;
-}
-export const BalancesGetForBillingPeriodByBillingAccountResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(BalanceProperties),
-      etag: S.optional(S.String),
-      tags: S.optional(
-        BalancesGetForBillingPeriodByBillingAccountResponseTagsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "BalancesGetForBillingPeriodByBillingAccountResponse",
-  }) as any as S.Schema<BalancesGetForBillingPeriodByBillingAccountResponse>;
-
 /** The category of the budget, whether the budget tracks cost or usage. */
 export type CategoryType = "Cost";
 export const CategoryType = /*@__PURE__*/ S.String;
@@ -774,6 +258,48 @@ export const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "BudgetsCreateOrUpdateRequest",
 }) as any as S.Schema<BudgetsCreateOrUpdateRequest>;
 
+/** The type of identity that created the resource. */
+export type SystemDataCreatedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataCreatedByType = /*@__PURE__*/ S.String;
+
+/** The type of identity that last modified the resource. */
+export type SystemDataLastModifiedByType =
+  | "User"
+  | "Application"
+  | "ManagedIdentity"
+  | "Key";
+export const SystemDataLastModifiedByType = /*@__PURE__*/ S.String;
+
+/** Metadata pertaining to creation and last modification of the resource. */
+export interface SystemData {
+  /** The identity that created the resource. */
+  createdBy?: string;
+  /** The type of identity that created the resource. */
+  createdByType?: SystemDataCreatedByType;
+  /** The timestamp of resource creation (UTC). */
+  createdAt?: string;
+  /** The identity that last modified the resource. */
+  lastModifiedBy?: string;
+  /** The type of identity that last modified the resource. */
+  lastModifiedByType?: SystemDataLastModifiedByType;
+  /** The timestamp of resource last modification (UTC) */
+  lastModifiedAt?: string;
+}
+export const SystemData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdBy: S.optional(S.String),
+    createdByType: S.optional(SystemDataCreatedByType),
+    createdAt: S.optional(S.String),
+    lastModifiedBy: S.optional(S.String),
+    lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+    lastModifiedAt: S.optional(S.String),
+  }),
+).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
+
 /** The current amount of cost which is being tracked for a budget. */
 export interface CurrentSpend {
   /** The total amount of cost which is being tracked by the budget. */
@@ -872,13 +398,13 @@ export const BudgetsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BudgetsCreateOrUpdateResponse",
 }) as any as S.Schema<BudgetsCreateOrUpdateResponse>;
 
-export interface BudgetsDeleteRequest {
+export interface DeleteBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Budget Name. */
   budgetName: string;
 }
-export const BudgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     budgetName: S.String.pipe(T.Label()),
@@ -891,23 +417,497 @@ export const BudgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BudgetsDeleteRequest",
-}) as any as S.Schema<BudgetsDeleteRequest>;
+  identifier: "DeleteBudgetRequest",
+}) as any as S.Schema<DeleteBudgetRequest>;
 
-export interface BudgetsDeleteResponse {}
-export const BudgetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteBudgetResponse {}
+export const DeleteBudgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "BudgetsDeleteResponse",
-}) as any as S.Schema<BudgetsDeleteResponse>;
+  identifier: "DeleteBudgetResponse",
+}) as any as S.Schema<DeleteBudgetResponse>;
 
-export interface BudgetsGetRequest {
+export interface GetAggregatedCostByManagementGroupRequest {
+  /** Order Id of the reservation */
+  managementGroupId: string;
+  /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
+  _filter?: string;
+}
+export const GetAggregatedCostByManagementGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managementGroupId: S.String.pipe(T.Label()),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Consumption/aggregatedcost",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAggregatedCostByManagementGroupRequest",
+  }) as any as S.Schema<GetAggregatedCostByManagementGroupRequest>;
+
+/** Resource tags. */
+export type ManagementGroupAggregatedCostResultTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ManagementGroupAggregatedCostResultTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ManagementGroupAggregatedCostResultTagsMap>;
+
+/** A management group aggregated cost resource. */
+export interface ManagementGroupAggregatedCostResult {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Management Group Aggregated Cost. */
+  properties?: ManagementGroupAggregatedCostProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: ManagementGroupAggregatedCostResultTagsMap;
+}
+export const ManagementGroupAggregatedCostResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(
+      S.suspend(() => ManagementGroupAggregatedCostProperties),
+    ),
+    etag: S.optional(S.String),
+    tags: S.optional(ManagementGroupAggregatedCostResultTagsMap),
+  }),
+).annotate({
+  identifier: "ManagementGroupAggregatedCostResult",
+}) as any as S.Schema<ManagementGroupAggregatedCostResult>;
+
+/** Children of a management group */
+export type ManagementGroupAggregatedCostPropertiesChildrenList =
+  Array<ManagementGroupAggregatedCostResult>;
+export const ManagementGroupAggregatedCostPropertiesChildrenList =
+  /*@__PURE__*/ S.Array(
+    ManagementGroupAggregatedCostResult,
+  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesChildrenList>;
+
+/** List of subscription Guids included in the calculation of aggregated cost */
+export type ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
+  Array<string>;
+export const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList>;
+
+/** List of subscription Guids excluded from the calculation of aggregated cost */
+export type ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
+  Array<string>;
+export const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList>;
+
+/** The properties of the Management Group Aggregated Cost. */
+export interface ManagementGroupAggregatedCostProperties {
+  /** The id of the billing period resource that the aggregated cost belongs to. */
+  billingPeriodId?: string;
+  /** The start of the date time range covered by aggregated cost. */
+  usageStart?: string;
+  /** The end of the date time range covered by the aggregated cost. */
+  usageEnd?: string;
+  /** Azure Charges. */
+  azureCharges?: number;
+  /** Marketplace Charges. */
+  marketplaceCharges?: number;
+  /** Charges Billed Separately. */
+  chargesBilledSeparately?: number;
+  /** The ISO currency in which the meter is charged, for example, USD. */
+  currency?: string;
+  /** Children of a management group */
+  children?: ManagementGroupAggregatedCostPropertiesChildrenList;
+  /** List of subscription Guids included in the calculation of aggregated cost */
+  includedSubscriptions?: ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList;
+  /** List of subscription Guids excluded from the calculation of aggregated cost */
+  excludedSubscriptions?: ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList;
+}
+export const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      billingPeriodId: S.optional(S.String),
+      usageStart: S.optional(S.String),
+      usageEnd: S.optional(S.String),
+      azureCharges: S.optional(S.Number),
+      marketplaceCharges: S.optional(S.Number),
+      chargesBilledSeparately: S.optional(S.Number),
+      currency: S.optional(S.String),
+      children: S.optional(ManagementGroupAggregatedCostPropertiesChildrenList),
+      includedSubscriptions: S.optional(
+        ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList,
+      ),
+      excludedSubscriptions: S.optional(
+        ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList,
+      ),
+    }),
+).annotate({
+  identifier: "ManagementGroupAggregatedCostProperties",
+}) as any as S.Schema<ManagementGroupAggregatedCostProperties>;
+
+/** Resource tags. */
+export type AggregatedCostGetByManagementGroupResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AggregatedCostGetByManagementGroupResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AggregatedCostGetByManagementGroupResponseTagsMap>;
+
+export interface GetAggregatedCostByManagementGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Management Group Aggregated Cost. */
+  properties?: ManagementGroupAggregatedCostProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: AggregatedCostGetByManagementGroupResponseTagsMap;
+}
+export const GetAggregatedCostByManagementGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ManagementGroupAggregatedCostProperties),
+      etag: S.optional(S.String),
+      tags: S.optional(AggregatedCostGetByManagementGroupResponseTagsMap),
+    }),
+  ).annotate({
+    identifier: "GetAggregatedCostByManagementGroupResponse",
+  }) as any as S.Schema<GetAggregatedCostByManagementGroupResponse>;
+
+export interface GetAggregatedCostForBillingPeriodByManagementGroupRequest {
+  /** Order Id of the reservation */
+  managementGroupId: string;
+  /** Billing Period Name. */
+  billingPeriodName: string;
+}
+export const GetAggregatedCostForBillingPeriodByManagementGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managementGroupId: S.String.pipe(T.Label()),
+      billingPeriodName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/aggregatedCost",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetAggregatedCostForBillingPeriodByManagementGroupRequest",
+  }) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupRequest>;
+
+/** Resource tags. */
+export type AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap =
+  { [key: string]: string | undefined };
+export const AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap>;
+
+export interface GetAggregatedCostForBillingPeriodByManagementGroupResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the Management Group Aggregated Cost. */
+  properties?: ManagementGroupAggregatedCostProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap;
+}
+export const GetAggregatedCostForBillingPeriodByManagementGroupResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ManagementGroupAggregatedCostProperties),
+      etag: S.optional(S.String),
+      tags: S.optional(
+        AggregatedCostGetForBillingPeriodByManagementGroupResponseTagsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetAggregatedCostForBillingPeriodByManagementGroupResponse",
+  }) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponse>;
+
+export interface GetBalanceByBillingAccountRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+}
+export const GetBalanceByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/balances",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetBalanceByBillingAccountRequest",
+}) as any as S.Schema<GetBalanceByBillingAccountRequest>;
+
+/** The billing frequency. */
+export type BillingFrequency = "Month" | "Quarter" | "Year";
+export const BillingFrequency = /*@__PURE__*/ S.String;
+
+export interface BalancePropertiesNewPurchasesDetailsItem {
+  /** the name of new purchase. */
+  name?: string;
+  /** the value of new purchase. */
+  value?: number;
+}
+export const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      value: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "BalancePropertiesNewPurchasesDetailsItem",
+}) as any as S.Schema<BalancePropertiesNewPurchasesDetailsItem>;
+
+/** List of new purchases. */
+export type BalancePropertiesNewPurchasesDetailsList =
+  Array<BalancePropertiesNewPurchasesDetailsItem>;
+export const BalancePropertiesNewPurchasesDetailsList = /*@__PURE__*/ S.Array(
+  BalancePropertiesNewPurchasesDetailsItem,
+) as any as S.Schema<BalancePropertiesNewPurchasesDetailsList>;
+
+export interface BalancePropertiesAdjustmentDetailsItem {
+  /** the name of new adjustment. */
+  name?: string;
+  /** the value of new adjustment. */
+  value?: number;
+}
+export const BalancePropertiesAdjustmentDetailsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      name: S.optional(S.String),
+      value: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "BalancePropertiesAdjustmentDetailsItem",
+}) as any as S.Schema<BalancePropertiesAdjustmentDetailsItem>;
+
+/** List of Adjustments (Promo credit, SIE credit etc.). */
+export type BalancePropertiesAdjustmentDetailsList =
+  Array<BalancePropertiesAdjustmentDetailsItem>;
+export const BalancePropertiesAdjustmentDetailsList = /*@__PURE__*/ S.Array(
+  BalancePropertiesAdjustmentDetailsItem,
+) as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
+
+/** The properties of the balance. */
+export interface BalanceProperties {
+  /** The ISO currency in which the meter is charged, for example, USD. */
+  currency?: string;
+  /** The beginning balance for the billing period. */
+  beginningBalance?: number;
+  /** The ending balance for the billing period (for open periods this will be updated daily). */
+  endingBalance?: number;
+  /** Total new purchase amount. */
+  newPurchases?: number;
+  /** Total adjustment amount. */
+  adjustments?: number;
+  /** Total Commitment usage. */
+  utilized?: number;
+  /** Overage for Azure services. */
+  serviceOverage?: number;
+  /** Charges Billed separately. */
+  chargesBilledSeparately?: number;
+  /** serviceOverage + chargesBilledSeparately. */
+  totalOverage?: number;
+  /** Azure service commitment + total Overage. */
+  totalUsage?: number;
+  /** Total charges for Azure Marketplace. */
+  azureMarketplaceServiceCharges?: number;
+  /** The billing frequency. */
+  billingFrequency?: BillingFrequency;
+  /** Price is hidden or not. */
+  priceHidden?: boolean;
+  /** Overage Refunds */
+  overageRefund?: number;
+  /** List of new purchases. */
+  newPurchasesDetails?: BalancePropertiesNewPurchasesDetailsList;
+  /** List of Adjustments (Promo credit, SIE credit etc.). */
+  adjustmentDetails?: BalancePropertiesAdjustmentDetailsList;
+}
+export const BalanceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    currency: S.optional(S.String),
+    beginningBalance: S.optional(S.Number),
+    endingBalance: S.optional(S.Number),
+    newPurchases: S.optional(S.Number),
+    adjustments: S.optional(S.Number),
+    utilized: S.optional(S.Number),
+    serviceOverage: S.optional(S.Number),
+    chargesBilledSeparately: S.optional(S.Number),
+    totalOverage: S.optional(S.Number),
+    totalUsage: S.optional(S.Number),
+    azureMarketplaceServiceCharges: S.optional(S.Number),
+    billingFrequency: S.optional(BillingFrequency),
+    priceHidden: S.optional(S.Boolean),
+    overageRefund: S.optional(S.Number),
+    newPurchasesDetails: S.optional(BalancePropertiesNewPurchasesDetailsList),
+    adjustmentDetails: S.optional(BalancePropertiesAdjustmentDetailsList),
+  }),
+).annotate({
+  identifier: "BalanceProperties",
+}) as any as S.Schema<BalanceProperties>;
+
+/** Resource tags. */
+export type BalancesGetByBillingAccountResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BalancesGetByBillingAccountResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BalancesGetByBillingAccountResponseTagsMap>;
+
+export interface GetBalanceByBillingAccountResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the balance. */
+  properties?: BalanceProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: BalancesGetByBillingAccountResponseTagsMap;
+}
+export const GetBalanceByBillingAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(BalanceProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(BalancesGetByBillingAccountResponseTagsMap),
+  }),
+).annotate({
+  identifier: "GetBalanceByBillingAccountResponse",
+}) as any as S.Schema<GetBalanceByBillingAccountResponse>;
+
+export interface GetBalanceForBillingPeriodByBillingAccountRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Billing Period Name. */
+  billingPeriodName: string;
+}
+export const GetBalanceForBillingPeriodByBillingAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountId: S.String.pipe(T.Label()),
+      billingPeriodName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/balances",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GetBalanceForBillingPeriodByBillingAccountRequest",
+  }) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountRequest>;
+
+/** Resource tags. */
+export type BalancesGetForBillingPeriodByBillingAccountResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const BalancesGetForBillingPeriodByBillingAccountResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BalancesGetForBillingPeriodByBillingAccountResponseTagsMap>;
+
+export interface GetBalanceForBillingPeriodByBillingAccountResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the balance. */
+  properties?: BalanceProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: BalancesGetForBillingPeriodByBillingAccountResponseTagsMap;
+}
+export const GetBalanceForBillingPeriodByBillingAccountResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(BalanceProperties),
+      etag: S.optional(S.String),
+      tags: S.optional(
+        BalancesGetForBillingPeriodByBillingAccountResponseTagsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetBalanceForBillingPeriodByBillingAccountResponse",
+  }) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>;
+
+export interface GetBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Budget Name. */
   budgetName: string;
 }
-export const BudgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBudgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     budgetName: S.String.pipe(T.Label()),
@@ -920,10 +920,10 @@ export const BudgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BudgetsGetRequest",
-}) as any as S.Schema<BudgetsGetRequest>;
+  identifier: "GetBudgetRequest",
+}) as any as S.Schema<GetBudgetRequest>;
 
-export interface BudgetsGetResponse {
+export interface GetBudgetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -937,7 +937,7 @@ export interface BudgetsGetResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-export const BudgetsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBudgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -947,163 +947,16 @@ export const BudgetsGetResponse = /*@__PURE__*/ S.suspend(() =>
     eTag: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "BudgetsGetResponse",
-}) as any as S.Schema<BudgetsGetResponse>;
+  identifier: "GetBudgetResponse",
+}) as any as S.Schema<GetBudgetResponse>;
 
-export interface BudgetsListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-}
-export const BudgetsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.Consumption/budgets",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "BudgetsListRequest",
-}) as any as S.Schema<BudgetsListRequest>;
-
-/** A budget resource. */
-export interface Budget {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the budget. */
-  properties?: BudgetProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const Budget = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(BudgetProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
-
-/** The list of budgets. */
-export type BudgetsListResultValueList = Array<Budget>;
-export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
-  Budget,
-) as any as S.Schema<BudgetsListResultValueList>;
-
-/** Result of listing budgets. It contains a list of available budgets in the scope provided. */
-export interface BudgetsListResult {
-  /** The list of budgets. */
-  value?: BudgetsListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const BudgetsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(BudgetsListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BudgetsListResult",
-}) as any as S.Schema<BudgetsListResult>;
-
-export interface ChargesListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** Start date */
-  startDate?: string;
-  /** End date */
-  endDate?: string;
-  /** May be used to filter charges by properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
-  _filter?: string;
-  /** May be used to group charges for billingAccount scope by properties/billingProfileId, properties/invoiceSectionId, properties/customerId (specific for Partner Led), or for billingProfile scope by properties/invoiceSectionId. */
-  _apply?: string;
-}
-export const ChargesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    startDate: S.optional(S.String.pipe(T.Query())),
-    endDate: S.optional(S.String.pipe(T.Query())),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _apply: S.optional(S.String.pipe(T.Query("$apply"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.Consumption/charges",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ChargesListRequest",
-}) as any as S.Schema<ChargesListRequest>;
-
-/** Specifies the kind of charge summary. */
-export type ChargeSummaryKind = "legacy" | "modern";
-export const ChargeSummaryKind = /*@__PURE__*/ S.String;
-
-/** A charge summary resource. */
-export interface ChargeSummary {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Specifies the kind of charge summary. */
-  kind: ChargeSummaryKind;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const ChargeSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    kind: ChargeSummaryKind,
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "ChargeSummary" }) as any as S.Schema<ChargeSummary>;
-
-/** The list of charge summary */
-export type ChargesListResultValueList = Array<ChargeSummary>;
-export const ChargesListResultValueList = /*@__PURE__*/ S.Array(
-  ChargeSummary,
-) as any as S.Schema<ChargesListResultValueList>;
-
-/** Result of listing charge summary. */
-export interface ChargesListResult {
-  /** The list of charge summary */
-  value?: ChargesListResultValueList;
-}
-export const ChargesListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ChargesListResultValueList),
-  }),
-).annotate({
-  identifier: "ChargesListResult",
-}) as any as S.Schema<ChargesListResult>;
-
-export interface CreditsGetRequest {
+export interface GetCreditRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Azure Billing Profile ID. */
   billingProfileId: string;
 }
-export const CreditsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCreditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     billingAccountId: S.String.pipe(T.Label()),
     billingProfileId: S.String.pipe(T.Label()),
@@ -1116,8 +969,8 @@ export const CreditsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreditsGetRequest",
-}) as any as S.Schema<CreditsGetRequest>;
+  identifier: "GetCreditRequest",
+}) as any as S.Schema<GetCreditRequest>;
 
 /** The amount plus currency . */
 export interface Amount {
@@ -1232,7 +1085,7 @@ export const CreditsGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CreditsGetResponseTagsMap>;
 
-export interface CreditsGetResponse {
+export interface GetCreditResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1248,7 +1101,7 @@ export interface CreditsGetResponse {
   /** A list of Tag. */
   tags?: CreditsGetResponseTagsMap;
 }
-export const CreditsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCreditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1259,709 +1112,10 @@ export const CreditsGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(CreditsGetResponseTagsMap),
   }),
 ).annotate({
-  identifier: "CreditsGetResponse",
-}) as any as S.Schema<CreditsGetResponse>;
+  identifier: "GetCreditResponse",
+}) as any as S.Schema<GetCreditResponse>;
 
-export interface EventsListByBillingAccountRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
-  _filter?: string;
-}
-export const EventsListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "EventsListByBillingAccountRequest",
-}) as any as S.Schema<EventsListByBillingAccountRequest>;
-
-/** Identifies the type of the event. */
-export type EventType =
-  | "SettledCharges"
-  | "PendingCharges"
-  | "PendingAdjustments"
-  | "PendingNewCredit"
-  | "PendingExpiredCredit"
-  | "UnKnown"
-  | "NewCredit"
-  | "CreditExpired";
-export const EventType = /*@__PURE__*/ S.String;
-
-/** The event properties. */
-export interface EventProperties {
-  /** The date of the event. */
-  transactionDate?: string;
-  /** The description of the event. */
-  description?: string;
-  /** The amount of new credit or commitment for NewCredit or SettleCharges event. */
-  newCredit?: Amount;
-  /** The amount of balance adjustment. The property is not available for ConsumptionCommitment lots. */
-  adjustments?: Amount;
-  /** The amount of expired credit or commitment for NewCredit or SettleCharges event. */
-  creditExpired?: Amount;
-  /** The amount of charges for events of type SettleCharges and PendingEligibleCharges. */
-  charges?: Amount;
-  /** The balance after the event, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
-  closedBalance?: Amount;
-  /** Identifier of the billing account. */
-  billingAccountId?: string;
-  /** Name of the billing account. */
-  billingAccountDisplayName?: string;
-  /** Identifies the type of the event. */
-  eventType?: EventType;
-  /** The number which uniquely identifies the invoice on which the event was billed. This will be empty for unbilled events. */
-  invoiceNumber?: string;
-  /** The ID that uniquely identifies the billing profile for which the event happened. The property is only available for billing account of type MicrosoftCustomerAgreement. */
-  billingProfileId?: string;
-  /** The display name of the billing profile for which the event happened. The property is only available for billing account of type MicrosoftCustomerAgreement. */
-  billingProfileDisplayName?: string;
-  /** The ID that uniquely identifies the lot for which the event happened. */
-  lotId?: string;
-  /** Identifies the source of the lot for which the event happened. */
-  lotSource?: string;
-  /** Amount of canceled credit. */
-  canceledCredit?: Amount;
-  /** The credit currency of the event. */
-  creditCurrency?: string;
-  /** The billing currency of the event. */
-  billingCurrency?: string;
-  /** The reseller of the event. */
-  reseller?: Reseller;
-  /** The amount of expired credit or commitment for NewCredit or SettleCharges event in billing currency. */
-  creditExpiredInBillingCurrency?: AmountWithExchangeRate;
-  /** The amount of new credit or commitment for NewCredit or SettleCharges event in billing currency. */
-  newCreditInBillingCurrency?: AmountWithExchangeRate;
-  /** The amount of balance adjustment in billing currency. */
-  adjustmentsInBillingCurrency?: AmountWithExchangeRate;
-  /** The amount of charges for events of type SettleCharges and PendingEligibleCharges in billing currency. */
-  chargesInBillingCurrency?: AmountWithExchangeRate;
-  /** The balance in billing currency after the event, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
-  closedBalanceInBillingCurrency?: AmountWithExchangeRate;
-  /** If true, the listed details are based on an estimation and it will be subjected to change. */
-  isEstimatedBalance?: boolean;
-  /** The eTag for the resource. */
-  eTag?: string;
-}
-export const EventProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    transactionDate: S.optional(S.String),
-    description: S.optional(S.String),
-    newCredit: S.optional(Amount),
-    adjustments: S.optional(Amount),
-    creditExpired: S.optional(Amount),
-    charges: S.optional(Amount),
-    closedBalance: S.optional(Amount),
-    billingAccountId: S.optional(S.String),
-    billingAccountDisplayName: S.optional(S.String),
-    eventType: S.optional(EventType),
-    invoiceNumber: S.optional(S.String),
-    billingProfileId: S.optional(S.String),
-    billingProfileDisplayName: S.optional(S.String),
-    lotId: S.optional(S.String),
-    lotSource: S.optional(S.String),
-    canceledCredit: S.optional(Amount),
-    creditCurrency: S.optional(S.String),
-    billingCurrency: S.optional(S.String),
-    reseller: S.optional(Reseller),
-    creditExpiredInBillingCurrency: S.optional(AmountWithExchangeRate),
-    newCreditInBillingCurrency: S.optional(AmountWithExchangeRate),
-    adjustmentsInBillingCurrency: S.optional(AmountWithExchangeRate),
-    chargesInBillingCurrency: S.optional(AmountWithExchangeRate),
-    closedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
-    isEstimatedBalance: S.optional(S.Boolean),
-    eTag: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EventProperties",
-}) as any as S.Schema<EventProperties>;
-
-/** An event summary resource. */
-export interface EventSummary {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The event properties. */
-  properties?: EventProperties;
-  /** The eTag for the resource. */
-  eTag?: string;
-}
-export const EventSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(EventProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "EventSummary" }) as any as S.Schema<EventSummary>;
-
-/** The list of event summary. */
-export type EventsValueList = Array<EventSummary>;
-export const EventsValueList = /*@__PURE__*/ S.Array(
-  EventSummary,
-) as any as S.Schema<EventsValueList>;
-
-/** Result of listing event summary. */
-export interface Events {
-  /** The list of event summary. */
-  value?: EventsValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const Events = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(EventsValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
-
-export interface EventsListByBillingProfileRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Azure Billing Profile ID. */
-  billingProfileId: string;
-  /** Start date */
-  startDate: string;
-  /** End date */
-  endDate: string;
-}
-export const EventsListByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-    startDate: S.String.pipe(T.Query()),
-    endDate: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "EventsListByBillingProfileRequest",
-}) as any as S.Schema<EventsListByBillingProfileRequest>;
-
-export interface LotsListByBillingAccountRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
-  _filter?: string;
-}
-export const LotsListByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "LotsListByBillingAccountRequest",
-}) as any as S.Schema<LotsListByBillingAccountRequest>;
-
-/** The source of the lot. */
-export type LotSource =
-  | "PurchasedCredit"
-  | "PromotionalCredit"
-  | "ConsumptionCommitment";
-export const LotSource = /*@__PURE__*/ S.String;
-
-/** The status of the lot. */
-export type Status =
-  | "None"
-  | "Active"
-  | "Inactive"
-  | "Expired"
-  | "Complete"
-  | "Canceled";
-export const Status = /*@__PURE__*/ S.String;
-
-/** The organization type of the lot. */
-export type OrganizationType = "Primary" | "Contributor";
-export const OrganizationType = /*@__PURE__*/ S.String;
-
-/** The lot properties. */
-export interface LotProperties {
-  /** The original amount of a lot, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
-  originalAmount?: Amount;
-  /** The balance as of the last invoice. */
-  closedBalance?: Amount;
-  /** The source of the lot. */
-  source?: LotSource;
-  /** The date when the lot became effective. */
-  startDate?: string;
-  /** The expiration date of a lot. */
-  expirationDate?: string;
-  /** The po number of the invoice on which the lot was added. This property is not available for ConsumptionCommitment lots. */
-  poNumber?: string;
-  /** The date when the lot was added. */
-  purchasedDate?: string;
-  /** The status of the lot. */
-  status?: Status;
-  /** The currency of the lot. */
-  creditCurrency?: string;
-  /** The billing currency of the lot. */
-  billingCurrency?: string;
-  /** The original amount of a lot in billing currency, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
-  originalAmountInBillingCurrency?: AmountWithExchangeRate;
-  /** The balance as of the last invoice in billing currency. */
-  closedBalanceInBillingCurrency?: AmountWithExchangeRate;
-  /** The reseller of the lot. */
-  reseller?: Reseller;
-  /** If true, the listed details are based on an estimation and it will be subjected to change. */
-  isEstimatedBalance?: boolean;
-  /** The eTag for the resource. */
-  eTag?: string;
-  /** The organization type of the lot. */
-  OrganizationType?: OrganizationType;
-  /** Amount consumed from the commitment. */
-  usedAmount?: Amount;
-}
-export const LotProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    originalAmount: S.optional(Amount),
-    closedBalance: S.optional(Amount),
-    source: S.optional(LotSource),
-    startDate: S.optional(S.String),
-    expirationDate: S.optional(S.String),
-    poNumber: S.optional(S.String),
-    purchasedDate: S.optional(S.String),
-    status: S.optional(Status),
-    creditCurrency: S.optional(S.String),
-    billingCurrency: S.optional(S.String),
-    originalAmountInBillingCurrency: S.optional(AmountWithExchangeRate),
-    closedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
-    reseller: S.optional(Reseller),
-    isEstimatedBalance: S.optional(S.Boolean),
-    eTag: S.optional(S.String),
-    OrganizationType: S.optional(OrganizationType),
-    usedAmount: S.optional(Amount),
-  }),
-).annotate({ identifier: "LotProperties" }) as any as S.Schema<LotProperties>;
-
-/** A lot summary resource. */
-export interface LotSummary {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The lot properties. */
-  properties?: LotProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
-}
-export const LotSummary = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(LotProperties),
-    eTag: S.optional(S.String),
-  }),
-).annotate({ identifier: "LotSummary" }) as any as S.Schema<LotSummary>;
-
-/** The list of lot summary. */
-export type LotsValueList = Array<LotSummary>;
-export const LotsValueList = /*@__PURE__*/ S.Array(
-  LotSummary,
-) as any as S.Schema<LotsValueList>;
-
-/** Result of listing lot summary. */
-export interface Lots {
-  /** The list of lot summary. */
-  value?: LotsValueList;
-  /** URL to get the next set of operation list results if there are any. */
-  nextLink?: string;
-}
-export const Lots = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(LotsValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "Lots" }) as any as S.Schema<Lots>;
-
-export interface LotsListByBillingProfileRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Azure Billing Profile ID. */
-  billingProfileId: string;
-}
-export const LotsListByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    billingProfileId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "LotsListByBillingProfileRequest",
-}) as any as S.Schema<LotsListByBillingProfileRequest>;
-
-export interface LotsListByCustomerRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Customer ID */
-  customerId: string;
-  /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
-  _filter?: string;
-}
-export const LotsListByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    customerId: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "LotsListByCustomerRequest",
-}) as any as S.Schema<LotsListByCustomerRequest>;
-
-export interface MarketplacesListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
-  /** May be used to filter marketplaces by properties/usageEnd (Utc time), properties/usageStart (Utc time), properties/resourceGroup, properties/instanceName or properties/instanceId. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. */
-  _filter?: string;
-  /** May be used to limit the number of results to the most recent N marketplaces. */
-  _top?: number;
-  /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
-  _skiptoken?: string;
-}
-export const MarketplacesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    scope: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{scope}/providers/Microsoft.Consumption/marketplaces",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "MarketplacesListRequest",
-}) as any as S.Schema<MarketplacesListRequest>;
-
-/** The properties of the marketplace usage detail. */
-export interface MarketplaceProperties {
-  /** The id of the billing period resource that the usage belongs to. */
-  billingPeriodId?: string;
-  /** The start of the date time range covered by the usage detail. */
-  usageStart?: string;
-  /** The end of the date time range covered by the usage detail. */
-  usageEnd?: string;
-  /** The marketplace resource rate. */
-  resourceRate?: number;
-  /** The type of offer. */
-  offerName?: string;
-  /** The name of resource group. */
-  resourceGroup?: string;
-  /** Additional information. */
-  additionalInfo?: string;
-  /** The order number. */
-  orderNumber?: string;
-  /** The name of the resource instance that the usage is about. */
-  instanceName?: string;
-  /** The uri of the resource instance that the usage is about. */
-  instanceId?: string;
-  /** The ISO currency in which the meter is charged, for example, USD. */
-  currency?: string;
-  /** The quantity of usage. */
-  consumedQuantity?: number;
-  /** The unit of measure. */
-  unitOfMeasure?: string;
-  /** The amount of cost before tax. */
-  pretaxCost?: number;
-  /** The estimated usage is subject to change. */
-  isEstimated?: boolean;
-  /** The meter id (GUID). */
-  meterId?: string;
-  /** Subscription guid. */
-  subscriptionGuid?: string;
-  /** Subscription name. */
-  subscriptionName?: string;
-  /** Account name. */
-  accountName?: string;
-  /** Department name. */
-  departmentName?: string;
-  /** Consumed service name. */
-  consumedService?: string;
-  /** The cost center of this department if it is a department and a costcenter exists */
-  costCenter?: string;
-  /** Additional details of this usage item. By default this is not populated, unless it's specified in $expand. */
-  additionalProperties?: string;
-  /** The name of publisher. */
-  publisherName?: string;
-  /** The name of plan. */
-  planName?: string;
-  /** Flag indicating whether this is a recurring charge or not. */
-  isRecurringCharge?: boolean;
-}
-export const MarketplaceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingPeriodId: S.optional(S.String),
-    usageStart: S.optional(S.String),
-    usageEnd: S.optional(S.String),
-    resourceRate: S.optional(S.Number),
-    offerName: S.optional(S.String),
-    resourceGroup: S.optional(S.String),
-    additionalInfo: S.optional(S.String),
-    orderNumber: S.optional(S.String),
-    instanceName: S.optional(S.String),
-    instanceId: S.optional(S.String),
-    currency: S.optional(S.String),
-    consumedQuantity: S.optional(S.Number),
-    unitOfMeasure: S.optional(S.String),
-    pretaxCost: S.optional(S.Number),
-    isEstimated: S.optional(S.Boolean),
-    meterId: S.optional(S.String),
-    subscriptionGuid: S.optional(S.String),
-    subscriptionName: S.optional(S.String),
-    accountName: S.optional(S.String),
-    departmentName: S.optional(S.String),
-    consumedService: S.optional(S.String),
-    costCenter: S.optional(S.String),
-    additionalProperties: S.optional(S.String),
-    publisherName: S.optional(S.String),
-    planName: S.optional(S.String),
-    isRecurringCharge: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "MarketplaceProperties",
-}) as any as S.Schema<MarketplaceProperties>;
-
-/** Resource tags. */
-export type MarketplaceTagsMap = { [key: string]: string | undefined };
-export const MarketplaceTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<MarketplaceTagsMap>;
-
-/** A marketplace resource. */
-export interface Marketplace {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the marketplace usage detail. */
-  properties?: MarketplaceProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: MarketplaceTagsMap;
-}
-export const Marketplace = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(MarketplaceProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(MarketplaceTagsMap),
-  }),
-).annotate({ identifier: "Marketplace" }) as any as S.Schema<Marketplace>;
-
-/** The list of marketplaces. */
-export type MarketplacesListResultValueList = Array<Marketplace>;
-export const MarketplacesListResultValueList = /*@__PURE__*/ S.Array(
-  Marketplace,
-) as any as S.Schema<MarketplacesListResultValueList>;
-
-/** Result of listing marketplaces. It contains a list of available marketplaces in reverse chronological order by billing period. */
-export interface MarketplacesListResult {
-  /** The list of marketplaces. */
-  value?: MarketplacesListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const MarketplacesListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(MarketplacesListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MarketplacesListResult",
-}) as any as S.Schema<MarketplacesListResult>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Consumption/operations",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** The object that represents the operation. */
-export interface OperationDisplay {
-  /** Service provider: Microsoft.Consumption. */
-  provider?: string;
-  /** Resource on which the operation is performed: UsageDetail, etc. */
-  resource?: string;
-  /** Operation type: Read, write, delete, etc. */
-  operation?: string;
-  /** Description of the operation. */
-  description?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** A Consumption REST API operation. */
-export interface Operation {
-  /** Operation Id. */
-  id?: string;
-  /** Operation name: {provider}/{resource}/{operation}. */
-  name?: string;
-  /** The object that represents the operation. */
-  display?: OperationDisplay;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    display: S.optional(OperationDisplay),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of consumption operations supported by the Microsoft.Consumption resource provider. */
-export type OperationListResultValueList = Array<Operation>;
-export const OperationListResultValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationListResultValueList>;
-
-/** Result of listing consumption operations. It contains a list of operations and a URL link to get the next set of results. */
-export interface OperationListResult {
-  /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
-  value?: OperationListResultValueList;
-  /** URL to get the next set of operation list results if there are any. */
-  nextLink?: string;
-}
-export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationListResult",
-}) as any as S.Schema<OperationListResult>;
-
-export interface PriceSheetDownloadByBillingAccountPeriodRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Billing Period Name. */
-  billingPeriodName: string;
-}
-export const PriceSheetDownloadByBillingAccountPeriodRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      billingAccountId: S.String.pipe(T.Label()),
-      billingPeriodName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "PriceSheetDownloadByBillingAccountPeriodRequest",
-  }) as any as S.Schema<PriceSheetDownloadByBillingAccountPeriodRequest>;
-
-/** The status of the long running operation. */
-export type OperationStatusType = "Running" | "Completed" | "Failed";
-export const OperationStatusType = /*@__PURE__*/ S.String;
-
-/** The properties of the price sheet download. */
-export interface PricesheetDownloadProperties {
-  /** The link (url) to download the pricesheet. */
-  downloadUrl?: string;
-  /** Download link validity. */
-  validTill?: string;
-}
-export const PricesheetDownloadProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    downloadUrl: S.optional(S.String),
-    validTill: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PricesheetDownloadProperties",
-}) as any as S.Schema<PricesheetDownloadProperties>;
-
-/** The status of the long running operation. */
-export interface OperationStatus {
-  /** The status of the long running operation. */
-  status?: OperationStatusType;
-  /** The properties of the resource generated. */
-  properties?: PricesheetDownloadProperties;
-}
-export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: S.optional(OperationStatusType),
-    properties: S.optional(PricesheetDownloadProperties),
-  }),
-).annotate({
-  identifier: "OperationStatus",
-}) as any as S.Schema<OperationStatus>;
-
-export interface PriceSheetGetRequest {
+export interface GetPriceSheetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** May be used to expand the properties/meterDetails within a price sheet. By default, these fields are not included when returning price sheet. */
@@ -1971,7 +1125,7 @@ export interface PriceSheetGetRequest {
   /** May be used to limit the number of results to the top N results. */
   _top?: number;
 }
-export const PriceSheetGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPriceSheetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -1986,8 +1140,8 @@ export const PriceSheetGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PriceSheetGetRequest",
-}) as any as S.Schema<PriceSheetGetRequest>;
+  identifier: "GetPriceSheetRequest",
+}) as any as S.Schema<GetPriceSheetRequest>;
 
 /** The properties of the meter detail. */
 export interface MeterDetails {
@@ -2115,7 +1269,7 @@ export const PriceSheetGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<PriceSheetGetResponseTagsMap>;
 
-export interface PriceSheetGetResponse {
+export interface GetPriceSheetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2131,7 +1285,7 @@ export interface PriceSheetGetResponse {
   /** Resource tags. */
   tags?: PriceSheetGetResponseTagsMap;
 }
-export const PriceSheetGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetPriceSheetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2142,10 +1296,10 @@ export const PriceSheetGetResponse = /*@__PURE__*/ S.suspend(() =>
     tags: S.optional(PriceSheetGetResponseTagsMap),
   }),
 ).annotate({
-  identifier: "PriceSheetGetResponse",
-}) as any as S.Schema<PriceSheetGetResponse>;
+  identifier: "GetPriceSheetResponse",
+}) as any as S.Schema<GetPriceSheetResponse>;
 
-export interface PriceSheetGetByBillingPeriodRequest {
+export interface GetPriceSheetByBillingPeriodRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Billing Period Name. */
@@ -2157,7 +1311,7 @@ export interface PriceSheetGetByBillingPeriodRequest {
   /** May be used to limit the number of results to the top N results. */
   _top?: number;
 }
-export const PriceSheetGetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPriceSheetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     billingPeriodName: S.String.pipe(T.Label()),
@@ -2173,8 +1327,8 @@ export const PriceSheetGetByBillingPeriodRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PriceSheetGetByBillingPeriodRequest",
-}) as any as S.Schema<PriceSheetGetByBillingPeriodRequest>;
+  identifier: "GetPriceSheetByBillingPeriodRequest",
+}) as any as S.Schema<GetPriceSheetByBillingPeriodRequest>;
 
 /** Resource tags. */
 export type PriceSheetGetByBillingPeriodResponseTagsMap = {
@@ -2186,7 +1340,7 @@ export const PriceSheetGetByBillingPeriodResponseTagsMap =
     S.String,
   ) as any as S.Schema<PriceSheetGetByBillingPeriodResponseTagsMap>;
 
-export interface PriceSheetGetByBillingPeriodResponse {
+export interface GetPriceSheetByBillingPeriodResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2202,7 +1356,7 @@ export interface PriceSheetGetByBillingPeriodResponse {
   /** Resource tags. */
   tags?: PriceSheetGetByBillingPeriodResponseTagsMap;
 }
-export const PriceSheetGetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(
+export const GetPriceSheetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -2214,8 +1368,8 @@ export const PriceSheetGetByBillingPeriodResponse = /*@__PURE__*/ S.suspend(
       tags: S.optional(PriceSheetGetByBillingPeriodResponseTagsMap),
     }),
 ).annotate({
-  identifier: "PriceSheetGetByBillingPeriodResponse",
-}) as any as S.Schema<PriceSheetGetByBillingPeriodResponse>;
+  identifier: "GetPriceSheetByBillingPeriodResponse",
+}) as any as S.Schema<GetPriceSheetByBillingPeriodResponse>;
 
 export type ReservationRecommendationDetailsGetRequestScope =
   | "Single"
@@ -2238,7 +1392,7 @@ export type ReservationRecommendationDetailsGetRequestLookBackPeriod =
 export const ReservationRecommendationDetailsGetRequestLookBackPeriod =
   /*@__PURE__*/ S.String;
 
-export interface ReservationRecommendationDetailsGetRequest {
+export interface GetReservationRecommendationDetailRequest {
   /** The scope associated with reservation recommendation details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for BillingAccount scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope */
   resourceScope: string;
   /** Scope of the reservation. */
@@ -2258,7 +1412,7 @@ export interface ReservationRecommendationDetailsGetRequest {
   /** Specify the management group ID. Required when recommendation scope is 'ManagementGroup'. */
   managementGroupId?: string;
 }
-export const ReservationRecommendationDetailsGetRequest =
+export const GetReservationRecommendationDetailRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       resourceScope: S.String.pipe(T.Label()),
@@ -2281,8 +1435,8 @@ export const ReservationRecommendationDetailsGetRequest =
       }),
     ),
   ).annotate({
-    identifier: "ReservationRecommendationDetailsGetRequest",
-  }) as any as S.Schema<ReservationRecommendationDetailsGetRequest>;
+    identifier: "GetReservationRecommendationDetailRequest",
+  }) as any as S.Schema<GetReservationRecommendationDetailRequest>;
 
 /** List of subscriptions for which the reservation is applied. */
 export type ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
@@ -2494,7 +1648,7 @@ export const ReservationRecommendationDetailsGetResponseTagsMap =
     S.String,
   ) as any as S.Schema<ReservationRecommendationDetailsGetResponseTagsMap>;
 
-export interface ReservationRecommendationDetailsGetResponse {
+export interface GetReservationRecommendationDetailResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -2514,7 +1668,7 @@ export interface ReservationRecommendationDetailsGetResponse {
   /** Resource tags. */
   tags?: ReservationRecommendationDetailsGetResponseTagsMap;
 }
-export const ReservationRecommendationDetailsGetResponse =
+export const GetReservationRecommendationDetailResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -2528,16 +1682,1074 @@ export const ReservationRecommendationDetailsGetResponse =
       tags: S.optional(ReservationRecommendationDetailsGetResponseTagsMap),
     }),
   ).annotate({
-    identifier: "ReservationRecommendationDetailsGetResponse",
-  }) as any as S.Schema<ReservationRecommendationDetailsGetResponse>;
+    identifier: "GetReservationRecommendationDetailResponse",
+  }) as any as S.Schema<GetReservationRecommendationDetailResponse>;
 
-export interface ReservationRecommendationsListRequest {
+export interface GetTagRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+}
+export const GetTagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.Consumption/tags",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({ identifier: "GetTagRequest" }) as any as S.Schema<GetTagRequest>;
+
+/** Tag values. */
+export type TagValueList = Array<string>;
+export const TagValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TagValueList>;
+
+/** The tag resource. */
+export interface Tag {
+  /** Tag key. */
+  key?: string;
+  /** Tag values. */
+  value?: TagValueList;
+}
+export const Tag = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+    value: S.optional(TagValueList),
+  }),
+).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
+
+/** A list of Tag. */
+export type TagPropertiesTagsList = Array<Tag>;
+export const TagPropertiesTagsList = /*@__PURE__*/ S.Array(
+  Tag,
+) as any as S.Schema<TagPropertiesTagsList>;
+
+/** The properties of the tag. */
+export interface TagProperties {
+  /** A list of Tag. */
+  tags?: TagPropertiesTagsList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+  /** The link (url) to the previous page of results. */
+  previousLink?: string;
+}
+export const TagProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(TagPropertiesTagsList),
+    nextLink: S.optional(S.String),
+    previousLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "TagProperties" }) as any as S.Schema<TagProperties>;
+
+export interface GetTagResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the tag. */
+  properties?: TagProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const GetTagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(TagProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "GetTagResponse" }) as any as S.Schema<GetTagResponse>;
+
+export interface ListBudgetsRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+}
+export const ListBudgetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.Consumption/budgets",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListBudgetsRequest",
+}) as any as S.Schema<ListBudgetsRequest>;
+
+/** A budget resource. */
+export interface Budget {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the budget. */
+  properties?: BudgetProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const Budget = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(BudgetProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "Budget" }) as any as S.Schema<Budget>;
+
+/** The list of budgets. */
+export type BudgetsListResultValueList = Array<Budget>;
+export const BudgetsListResultValueList = /*@__PURE__*/ S.Array(
+  Budget,
+) as any as S.Schema<BudgetsListResultValueList>;
+
+/** Result of listing budgets. It contains a list of available budgets in the scope provided. */
+export interface ListBudgetsResult {
+  /** The list of budgets. */
+  value?: BudgetsListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ListBudgetsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(BudgetsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListBudgetsResult",
+}) as any as S.Schema<ListBudgetsResult>;
+
+export interface ListChargesRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** Start date */
+  startDate?: string;
+  /** End date */
+  endDate?: string;
+  /** May be used to filter charges by properties/usageEnd (Utc time), properties/usageStart (Utc time). The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
+  _filter?: string;
+  /** May be used to group charges for billingAccount scope by properties/billingProfileId, properties/invoiceSectionId, properties/customerId (specific for Partner Led), or for billingProfile scope by properties/invoiceSectionId. */
+  _apply?: string;
+}
+export const ListChargesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _apply: S.optional(S.String.pipe(T.Query("$apply"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.Consumption/charges",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListChargesRequest",
+}) as any as S.Schema<ListChargesRequest>;
+
+/** Specifies the kind of charge summary. */
+export type ChargeSummaryKind = "legacy" | "modern";
+export const ChargeSummaryKind = /*@__PURE__*/ S.String;
+
+/** A charge summary resource. */
+export interface ChargeSummary {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Specifies the kind of charge summary. */
+  kind: ChargeSummaryKind;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const ChargeSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    kind: ChargeSummaryKind,
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "ChargeSummary" }) as any as S.Schema<ChargeSummary>;
+
+/** The list of charge summary */
+export type ChargesListResultValueList = Array<ChargeSummary>;
+export const ChargesListResultValueList = /*@__PURE__*/ S.Array(
+  ChargeSummary,
+) as any as S.Schema<ChargesListResultValueList>;
+
+/** Result of listing charge summary. */
+export interface ListChargesResult {
+  /** The list of charge summary */
+  value?: ChargesListResultValueList;
+}
+export const ListChargesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ChargesListResultValueList),
+  }),
+).annotate({
+  identifier: "ListChargesResult",
+}) as any as S.Schema<ListChargesResult>;
+
+export interface ListEventByBillingAccountRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
+  _filter?: string;
+}
+export const ListEventByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/events",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventByBillingAccountRequest",
+}) as any as S.Schema<ListEventByBillingAccountRequest>;
+
+/** Identifies the type of the event. */
+export type EventType =
+  | "SettledCharges"
+  | "PendingCharges"
+  | "PendingAdjustments"
+  | "PendingNewCredit"
+  | "PendingExpiredCredit"
+  | "UnKnown"
+  | "NewCredit"
+  | "CreditExpired";
+export const EventType = /*@__PURE__*/ S.String;
+
+/** The event properties. */
+export interface EventProperties {
+  /** The date of the event. */
+  transactionDate?: string;
+  /** The description of the event. */
+  description?: string;
+  /** The amount of new credit or commitment for NewCredit or SettleCharges event. */
+  newCredit?: Amount;
+  /** The amount of balance adjustment. The property is not available for ConsumptionCommitment lots. */
+  adjustments?: Amount;
+  /** The amount of expired credit or commitment for NewCredit or SettleCharges event. */
+  creditExpired?: Amount;
+  /** The amount of charges for events of type SettleCharges and PendingEligibleCharges. */
+  charges?: Amount;
+  /** The balance after the event, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
+  closedBalance?: Amount;
+  /** Identifier of the billing account. */
+  billingAccountId?: string;
+  /** Name of the billing account. */
+  billingAccountDisplayName?: string;
+  /** Identifies the type of the event. */
+  eventType?: EventType;
+  /** The number which uniquely identifies the invoice on which the event was billed. This will be empty for unbilled events. */
+  invoiceNumber?: string;
+  /** The ID that uniquely identifies the billing profile for which the event happened. The property is only available for billing account of type MicrosoftCustomerAgreement. */
+  billingProfileId?: string;
+  /** The display name of the billing profile for which the event happened. The property is only available for billing account of type MicrosoftCustomerAgreement. */
+  billingProfileDisplayName?: string;
+  /** The ID that uniquely identifies the lot for which the event happened. */
+  lotId?: string;
+  /** Identifies the source of the lot for which the event happened. */
+  lotSource?: string;
+  /** Amount of canceled credit. */
+  canceledCredit?: Amount;
+  /** The credit currency of the event. */
+  creditCurrency?: string;
+  /** The billing currency of the event. */
+  billingCurrency?: string;
+  /** The reseller of the event. */
+  reseller?: Reseller;
+  /** The amount of expired credit or commitment for NewCredit or SettleCharges event in billing currency. */
+  creditExpiredInBillingCurrency?: AmountWithExchangeRate;
+  /** The amount of new credit or commitment for NewCredit or SettleCharges event in billing currency. */
+  newCreditInBillingCurrency?: AmountWithExchangeRate;
+  /** The amount of balance adjustment in billing currency. */
+  adjustmentsInBillingCurrency?: AmountWithExchangeRate;
+  /** The amount of charges for events of type SettleCharges and PendingEligibleCharges in billing currency. */
+  chargesInBillingCurrency?: AmountWithExchangeRate;
+  /** The balance in billing currency after the event, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
+  closedBalanceInBillingCurrency?: AmountWithExchangeRate;
+  /** If true, the listed details are based on an estimation and it will be subjected to change. */
+  isEstimatedBalance?: boolean;
+  /** The eTag for the resource. */
+  eTag?: string;
+}
+export const EventProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    transactionDate: S.optional(S.String),
+    description: S.optional(S.String),
+    newCredit: S.optional(Amount),
+    adjustments: S.optional(Amount),
+    creditExpired: S.optional(Amount),
+    charges: S.optional(Amount),
+    closedBalance: S.optional(Amount),
+    billingAccountId: S.optional(S.String),
+    billingAccountDisplayName: S.optional(S.String),
+    eventType: S.optional(EventType),
+    invoiceNumber: S.optional(S.String),
+    billingProfileId: S.optional(S.String),
+    billingProfileDisplayName: S.optional(S.String),
+    lotId: S.optional(S.String),
+    lotSource: S.optional(S.String),
+    canceledCredit: S.optional(Amount),
+    creditCurrency: S.optional(S.String),
+    billingCurrency: S.optional(S.String),
+    reseller: S.optional(Reseller),
+    creditExpiredInBillingCurrency: S.optional(AmountWithExchangeRate),
+    newCreditInBillingCurrency: S.optional(AmountWithExchangeRate),
+    adjustmentsInBillingCurrency: S.optional(AmountWithExchangeRate),
+    chargesInBillingCurrency: S.optional(AmountWithExchangeRate),
+    closedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
+    isEstimatedBalance: S.optional(S.Boolean),
+    eTag: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "EventProperties",
+}) as any as S.Schema<EventProperties>;
+
+/** An event summary resource. */
+export interface EventSummary {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The event properties. */
+  properties?: EventProperties;
+  /** The eTag for the resource. */
+  eTag?: string;
+}
+export const EventSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(EventProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "EventSummary" }) as any as S.Schema<EventSummary>;
+
+/** The list of event summary. */
+export type EventsValueList = Array<EventSummary>;
+export const EventsValueList = /*@__PURE__*/ S.Array(
+  EventSummary,
+) as any as S.Schema<EventsValueList>;
+
+/** Result of listing event summary. */
+export interface Events {
+  /** The list of event summary. */
+  value?: EventsValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const Events = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(EventsValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "Events" }) as any as S.Schema<Events>;
+
+export interface ListEventByBillingProfileRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Azure Billing Profile ID. */
+  billingProfileId: string;
+  /** Start date */
+  startDate: string;
+  /** End date */
+  endDate: string;
+}
+export const ListEventByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+    startDate: S.String.pipe(T.Query()),
+    endDate: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/events",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListEventByBillingProfileRequest",
+}) as any as S.Schema<ListEventByBillingProfileRequest>;
+
+export interface ListLotByBillingAccountRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
+  _filter?: string;
+}
+export const ListLotByBillingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/lots",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListLotByBillingAccountRequest",
+}) as any as S.Schema<ListLotByBillingAccountRequest>;
+
+/** The source of the lot. */
+export type LotSource =
+  | "PurchasedCredit"
+  | "PromotionalCredit"
+  | "ConsumptionCommitment";
+export const LotSource = /*@__PURE__*/ S.String;
+
+/** The status of the lot. */
+export type Status =
+  | "None"
+  | "Active"
+  | "Inactive"
+  | "Expired"
+  | "Complete"
+  | "Canceled";
+export const Status = /*@__PURE__*/ S.String;
+
+/** The organization type of the lot. */
+export type OrganizationType = "Primary" | "Contributor";
+export const OrganizationType = /*@__PURE__*/ S.String;
+
+/** The lot properties. */
+export interface LotProperties {
+  /** The original amount of a lot, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
+  originalAmount?: Amount;
+  /** The balance as of the last invoice. */
+  closedBalance?: Amount;
+  /** The source of the lot. */
+  source?: LotSource;
+  /** The date when the lot became effective. */
+  startDate?: string;
+  /** The expiration date of a lot. */
+  expirationDate?: string;
+  /** The po number of the invoice on which the lot was added. This property is not available for ConsumptionCommitment lots. */
+  poNumber?: string;
+  /** The date when the lot was added. */
+  purchasedDate?: string;
+  /** The status of the lot. */
+  status?: Status;
+  /** The currency of the lot. */
+  creditCurrency?: string;
+  /** The billing currency of the lot. */
+  billingCurrency?: string;
+  /** The original amount of a lot in billing currency, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
+  originalAmountInBillingCurrency?: AmountWithExchangeRate;
+  /** The balance as of the last invoice in billing currency. */
+  closedBalanceInBillingCurrency?: AmountWithExchangeRate;
+  /** The reseller of the lot. */
+  reseller?: Reseller;
+  /** If true, the listed details are based on an estimation and it will be subjected to change. */
+  isEstimatedBalance?: boolean;
+  /** The eTag for the resource. */
+  eTag?: string;
+  /** The organization type of the lot. */
+  OrganizationType?: OrganizationType;
+  /** Amount consumed from the commitment. */
+  usedAmount?: Amount;
+}
+export const LotProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    originalAmount: S.optional(Amount),
+    closedBalance: S.optional(Amount),
+    source: S.optional(LotSource),
+    startDate: S.optional(S.String),
+    expirationDate: S.optional(S.String),
+    poNumber: S.optional(S.String),
+    purchasedDate: S.optional(S.String),
+    status: S.optional(Status),
+    creditCurrency: S.optional(S.String),
+    billingCurrency: S.optional(S.String),
+    originalAmountInBillingCurrency: S.optional(AmountWithExchangeRate),
+    closedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
+    reseller: S.optional(Reseller),
+    isEstimatedBalance: S.optional(S.Boolean),
+    eTag: S.optional(S.String),
+    OrganizationType: S.optional(OrganizationType),
+    usedAmount: S.optional(Amount),
+  }),
+).annotate({ identifier: "LotProperties" }) as any as S.Schema<LotProperties>;
+
+/** A lot summary resource. */
+export interface LotSummary {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The lot properties. */
+  properties?: LotProperties;
+  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
+  eTag?: string;
+}
+export const LotSummary = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(LotProperties),
+    eTag: S.optional(S.String),
+  }),
+).annotate({ identifier: "LotSummary" }) as any as S.Schema<LotSummary>;
+
+/** The list of lot summary. */
+export type LotsValueList = Array<LotSummary>;
+export const LotsValueList = /*@__PURE__*/ S.Array(
+  LotSummary,
+) as any as S.Schema<LotsValueList>;
+
+/** Result of listing lot summary. */
+export interface Lots {
+  /** The list of lot summary. */
+  value?: LotsValueList;
+  /** URL to get the next set of operation list results if there are any. */
+  nextLink?: string;
+}
+export const Lots = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(LotsValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "Lots" }) as any as S.Schema<Lots>;
+
+export interface ListLotByBillingProfileRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Azure Billing Profile ID. */
+  billingProfileId: string;
+}
+export const ListLotByBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    billingProfileId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/providers/Microsoft.Consumption/lots",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListLotByBillingProfileRequest",
+}) as any as S.Schema<ListLotByBillingProfileRequest>;
+
+export interface ListLotByCustomerRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Customer ID */
+  customerId: string;
+  /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
+  _filter?: string;
+}
+export const ListLotByCustomerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingAccountId: S.String.pipe(T.Label()),
+    customerId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}/providers/Microsoft.Consumption/lots",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListLotByCustomerRequest",
+}) as any as S.Schema<ListLotByCustomerRequest>;
+
+export interface ListMarketplacesRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  scope: string;
+  /** May be used to filter marketplaces by properties/usageEnd (Utc time), properties/usageStart (Utc time), properties/resourceGroup, properties/instanceName or properties/instanceId. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. */
+  _filter?: string;
+  /** May be used to limit the number of results to the most recent N marketplaces. */
+  _top?: number;
+  /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
+  _skiptoken?: string;
+}
+export const ListMarketplacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    scope: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{scope}/providers/Microsoft.Consumption/marketplaces",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListMarketplacesRequest",
+}) as any as S.Schema<ListMarketplacesRequest>;
+
+/** The properties of the marketplace usage detail. */
+export interface MarketplaceProperties {
+  /** The id of the billing period resource that the usage belongs to. */
+  billingPeriodId?: string;
+  /** The start of the date time range covered by the usage detail. */
+  usageStart?: string;
+  /** The end of the date time range covered by the usage detail. */
+  usageEnd?: string;
+  /** The marketplace resource rate. */
+  resourceRate?: number;
+  /** The type of offer. */
+  offerName?: string;
+  /** The name of resource group. */
+  resourceGroup?: string;
+  /** Additional information. */
+  additionalInfo?: string;
+  /** The order number. */
+  orderNumber?: string;
+  /** The name of the resource instance that the usage is about. */
+  instanceName?: string;
+  /** The uri of the resource instance that the usage is about. */
+  instanceId?: string;
+  /** The ISO currency in which the meter is charged, for example, USD. */
+  currency?: string;
+  /** The quantity of usage. */
+  consumedQuantity?: number;
+  /** The unit of measure. */
+  unitOfMeasure?: string;
+  /** The amount of cost before tax. */
+  pretaxCost?: number;
+  /** The estimated usage is subject to change. */
+  isEstimated?: boolean;
+  /** The meter id (GUID). */
+  meterId?: string;
+  /** Subscription guid. */
+  subscriptionGuid?: string;
+  /** Subscription name. */
+  subscriptionName?: string;
+  /** Account name. */
+  accountName?: string;
+  /** Department name. */
+  departmentName?: string;
+  /** Consumed service name. */
+  consumedService?: string;
+  /** The cost center of this department if it is a department and a costcenter exists */
+  costCenter?: string;
+  /** Additional details of this usage item. By default this is not populated, unless it's specified in $expand. */
+  additionalProperties?: string;
+  /** The name of publisher. */
+  publisherName?: string;
+  /** The name of plan. */
+  planName?: string;
+  /** Flag indicating whether this is a recurring charge or not. */
+  isRecurringCharge?: boolean;
+}
+export const MarketplaceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    billingPeriodId: S.optional(S.String),
+    usageStart: S.optional(S.String),
+    usageEnd: S.optional(S.String),
+    resourceRate: S.optional(S.Number),
+    offerName: S.optional(S.String),
+    resourceGroup: S.optional(S.String),
+    additionalInfo: S.optional(S.String),
+    orderNumber: S.optional(S.String),
+    instanceName: S.optional(S.String),
+    instanceId: S.optional(S.String),
+    currency: S.optional(S.String),
+    consumedQuantity: S.optional(S.Number),
+    unitOfMeasure: S.optional(S.String),
+    pretaxCost: S.optional(S.Number),
+    isEstimated: S.optional(S.Boolean),
+    meterId: S.optional(S.String),
+    subscriptionGuid: S.optional(S.String),
+    subscriptionName: S.optional(S.String),
+    accountName: S.optional(S.String),
+    departmentName: S.optional(S.String),
+    consumedService: S.optional(S.String),
+    costCenter: S.optional(S.String),
+    additionalProperties: S.optional(S.String),
+    publisherName: S.optional(S.String),
+    planName: S.optional(S.String),
+    isRecurringCharge: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "MarketplaceProperties",
+}) as any as S.Schema<MarketplaceProperties>;
+
+/** Resource tags. */
+export type MarketplaceTagsMap = { [key: string]: string | undefined };
+export const MarketplaceTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<MarketplaceTagsMap>;
+
+/** A marketplace resource. */
+export interface Marketplace {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the marketplace usage detail. */
+  properties?: MarketplaceProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: MarketplaceTagsMap;
+}
+export const Marketplace = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(MarketplaceProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(MarketplaceTagsMap),
+  }),
+).annotate({ identifier: "Marketplace" }) as any as S.Schema<Marketplace>;
+
+/** The list of marketplaces. */
+export type MarketplacesListResultValueList = Array<Marketplace>;
+export const MarketplacesListResultValueList = /*@__PURE__*/ S.Array(
+  Marketplace,
+) as any as S.Schema<MarketplacesListResultValueList>;
+
+/** Result of listing marketplaces. It contains a list of available marketplaces in reverse chronological order by billing period. */
+export interface ListMarketplacesResult {
+  /** The list of marketplaces. */
+  value?: MarketplacesListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ListMarketplacesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(MarketplacesListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListMarketplacesResult",
+}) as any as S.Schema<ListMarketplacesResult>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Consumption/operations",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** The object that represents the operation. */
+export interface OperationDisplay {
+  /** Service provider: Microsoft.Consumption. */
+  provider?: string;
+  /** Resource on which the operation is performed: UsageDetail, etc. */
+  resource?: string;
+  /** Operation type: Read, write, delete, etc. */
+  operation?: string;
+  /** Description of the operation. */
+  description?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** A Consumption REST API operation. */
+export interface Operation {
+  /** Operation Id. */
+  id?: string;
+  /** Operation name: {provider}/{resource}/{operation}. */
+  name?: string;
+  /** The object that represents the operation. */
+  display?: OperationDisplay;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    display: S.optional(OperationDisplay),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of consumption operations supported by the Microsoft.Consumption resource provider. */
+export type OperationListResultValueList = Array<Operation>;
+export const OperationListResultValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationListResultValueList>;
+
+/** Result of listing consumption operations. It contains a list of operations and a URL link to get the next set of results. */
+export interface OperationListResult {
+  /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
+  value?: OperationListResultValueList;
+  /** URL to get the next set of operation list results if there are any. */
+  nextLink?: string;
+}
+export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationListResult",
+}) as any as S.Schema<OperationListResult>;
+
+export interface ListReservationDetailByReservationOrderRequest {
+  /** Order Id of the reservation */
+  reservationOrderId: string;
+  /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
+  _filter: string;
+}
+export const ListReservationDetailByReservationOrderRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reservationOrderId: S.String.pipe(T.Label()),
+      _filter: S.String.pipe(T.Query("$filter")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListReservationDetailByReservationOrderRequest",
+  }) as any as S.Schema<ListReservationDetailByReservationOrderRequest>;
+
+/** The properties of the reservation detail. */
+export interface ReservationDetailProperties {
+  /** The reservation order ID is the identifier for a reservation purchase. Each reservation order ID represents a single purchase transaction. A reservation order contains reservations. The reservation order specifies the VM size and region for the reservations. */
+  reservationOrderId?: string;
+  /** The instance Flexibility Ratio. */
+  instanceFlexibilityRatio?: string;
+  /** The instance Flexibility Group. */
+  instanceFlexibilityGroup?: string;
+  /** The reservation ID is the identifier of a reservation within a reservation order. Each reservation is the grouping for applying the benefit scope and also specifies the number of instances to which the reservation benefit can be applied to. */
+  reservationId?: string;
+  /** This is the ARM Sku name. It can be used to join with the serviceType field in additional info in usage records. */
+  skuName?: string;
+  /** This is the total hours reserved for the day. E.g. if reservation for 1 instance was made on 1 PM, this will be 11 hours for that day and 24 hours from subsequent days. */
+  reservedHours?: number;
+  /** The date on which consumption occurred. */
+  usageDate?: string;
+  /** This is the total hours used by the instance. */
+  usedHours?: number;
+  /** This identifier is the name of the resource or the fully qualified Resource ID. */
+  instanceId?: string;
+  /** This is the total count of instances that are reserved for the reservationId. */
+  totalReservedQuantity?: number;
+  /** The reservation kind. */
+  kind?: string;
+}
+export const ReservationDetailProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    reservationOrderId: S.optional(S.String),
+    instanceFlexibilityRatio: S.optional(S.String),
+    instanceFlexibilityGroup: S.optional(S.String),
+    reservationId: S.optional(S.String),
+    skuName: S.optional(S.String),
+    reservedHours: S.optional(S.Number),
+    usageDate: S.optional(S.String),
+    usedHours: S.optional(S.Number),
+    instanceId: S.optional(S.String),
+    totalReservedQuantity: S.optional(S.Number),
+    kind: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReservationDetailProperties",
+}) as any as S.Schema<ReservationDetailProperties>;
+
+/** Resource tags. */
+export type ReservationDetailTagsMap = { [key: string]: string | undefined };
+export const ReservationDetailTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ReservationDetailTagsMap>;
+
+/** reservation detail resource. */
+export interface ReservationDetail {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The properties of the reservation detail. */
+  properties?: ReservationDetailProperties;
+  /** The etag for the resource. */
+  etag?: string;
+  /** Resource tags. */
+  tags?: ReservationDetailTagsMap;
+}
+export const ReservationDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ReservationDetailProperties),
+    etag: S.optional(S.String),
+    tags: S.optional(ReservationDetailTagsMap),
+  }),
+).annotate({
+  identifier: "ReservationDetail",
+}) as any as S.Schema<ReservationDetail>;
+
+/** The list of reservation details. */
+export type ReservationDetailsListResultValueList = Array<ReservationDetail>;
+export const ReservationDetailsListResultValueList = /*@__PURE__*/ S.Array(
+  ReservationDetail,
+) as any as S.Schema<ReservationDetailsListResultValueList>;
+
+/** Result of listing reservation details. */
+export interface ReservationDetailsListResult {
+  /** The list of reservation details. */
+  value?: ReservationDetailsListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ReservationDetailsListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ReservationDetailsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ReservationDetailsListResult",
+}) as any as S.Schema<ReservationDetailsListResult>;
+
+export interface ListReservationDetailByReservationOrderAndReservationRequest {
+  /** Order Id of the reservation */
+  reservationOrderId: string;
+  /** Id of the reservation */
+  reservationId: string;
+  /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
+  _filter: string;
+}
+export const ListReservationDetailByReservationOrderAndReservationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      reservationOrderId: S.String.pipe(T.Label()),
+      reservationId: S.String.pipe(T.Label()),
+      _filter: S.String.pipe(T.Query("$filter")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListReservationDetailByReservationOrderAndReservationRequest",
+  }) as any as S.Schema<ListReservationDetailByReservationOrderAndReservationRequest>;
+
+export interface ListReservationDetailsRequest {
+  /** The fully qualified Azure Resource manager identifier of the resource. */
+  resourceScope: string;
+  /** Start date. Only applicable when querying with billing profile */
+  startDate?: string;
+  /** End date. Only applicable when querying with billing profile */
+  endDate?: string;
+  /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge'. Not applicable when querying with billing profile */
+  _filter?: string;
+  /** Reservation Id GUID. Only valid if reservationOrderId is also provided. Filter to a specific reservation */
+  reservationId?: string;
+  /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
+  reservationOrderId?: string;
+}
+export const ListReservationDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceScope: S.String.pipe(T.Label()),
+    startDate: S.optional(S.String.pipe(T.Query())),
+    endDate: S.optional(S.String.pipe(T.Query())),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    reservationId: S.optional(S.String.pipe(T.Query())),
+    reservationOrderId: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
+      code: 200,
+      apiVersion: "2026-06-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListReservationDetailsRequest",
+}) as any as S.Schema<ListReservationDetailsRequest>;
+
+export interface ListReservationRecommendationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceScope: string;
   /** May be used to filter reservationRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Single'; properties/resourceType with allowed values ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple'] and default value 'VirtualMachines'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last7Days'. */
   _filter?: string;
 }
-export const ReservationRecommendationsListRequest = /*@__PURE__*/ S.suspend(
+export const ListReservationRecommendationsRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       resourceScope: S.String.pipe(T.Label()),
@@ -2551,8 +2763,8 @@ export const ReservationRecommendationsListRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ReservationRecommendationsListRequest",
-}) as any as S.Schema<ReservationRecommendationsListRequest>;
+  identifier: "ListReservationRecommendationsRequest",
+}) as any as S.Schema<ListReservationRecommendationsRequest>;
 
 /** The type of identity that created the resource. */
 export type ReservationRecommendationSystemDataCreatedByType =
@@ -2661,7 +2873,7 @@ export const ReservationRecommendationsListResultValueList =
   ) as any as S.Schema<ReservationRecommendationsListResultValueList>;
 
 /** Result of listing reservation recommendations. */
-export interface ReservationRecommendationsListResult {
+export interface ListReservationRecommendationsResult {
   /** The list of reservation recommendations. */
   value?: ReservationRecommendationsListResultValueList;
   /** The link (url) to the next page of results. */
@@ -2669,7 +2881,7 @@ export interface ReservationRecommendationsListResult {
   /** The link (url) to the previous page of results. */
   previousLink?: string;
 }
-export const ReservationRecommendationsListResult = /*@__PURE__*/ S.suspend(
+export const ListReservationRecommendationsResult = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       value: S.optional(ReservationRecommendationsListResultValueList),
@@ -2677,200 +2889,13 @@ export const ReservationRecommendationsListResult = /*@__PURE__*/ S.suspend(
       previousLink: S.optional(S.String),
     }),
 ).annotate({
-  identifier: "ReservationRecommendationsListResult",
-}) as any as S.Schema<ReservationRecommendationsListResult>;
-
-export interface ReservationsDetailsListRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  resourceScope: string;
-  /** Start date. Only applicable when querying with billing profile */
-  startDate?: string;
-  /** End date. Only applicable when querying with billing profile */
-  endDate?: string;
-  /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge'. Not applicable when querying with billing profile */
-  _filter?: string;
-  /** Reservation Id GUID. Only valid if reservationOrderId is also provided. Filter to a specific reservation */
-  reservationId?: string;
-  /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
-  reservationOrderId?: string;
-}
-export const ReservationsDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceScope: S.String.pipe(T.Label()),
-    startDate: S.optional(S.String.pipe(T.Query())),
-    endDate: S.optional(S.String.pipe(T.Query())),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    reservationId: S.optional(S.String.pipe(T.Query())),
-    reservationOrderId: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{resourceScope}/providers/Microsoft.Consumption/reservationDetails",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReservationsDetailsListRequest",
-}) as any as S.Schema<ReservationsDetailsListRequest>;
-
-/** The properties of the reservation detail. */
-export interface ReservationDetailProperties {
-  /** The reservation order ID is the identifier for a reservation purchase. Each reservation order ID represents a single purchase transaction. A reservation order contains reservations. The reservation order specifies the VM size and region for the reservations. */
-  reservationOrderId?: string;
-  /** The instance Flexibility Ratio. */
-  instanceFlexibilityRatio?: string;
-  /** The instance Flexibility Group. */
-  instanceFlexibilityGroup?: string;
-  /** The reservation ID is the identifier of a reservation within a reservation order. Each reservation is the grouping for applying the benefit scope and also specifies the number of instances to which the reservation benefit can be applied to. */
-  reservationId?: string;
-  /** This is the ARM Sku name. It can be used to join with the serviceType field in additional info in usage records. */
-  skuName?: string;
-  /** This is the total hours reserved for the day. E.g. if reservation for 1 instance was made on 1 PM, this will be 11 hours for that day and 24 hours from subsequent days. */
-  reservedHours?: number;
-  /** The date on which consumption occurred. */
-  usageDate?: string;
-  /** This is the total hours used by the instance. */
-  usedHours?: number;
-  /** This identifier is the name of the resource or the fully qualified Resource ID. */
-  instanceId?: string;
-  /** This is the total count of instances that are reserved for the reservationId. */
-  totalReservedQuantity?: number;
-  /** The reservation kind. */
-  kind?: string;
-}
-export const ReservationDetailProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    reservationOrderId: S.optional(S.String),
-    instanceFlexibilityRatio: S.optional(S.String),
-    instanceFlexibilityGroup: S.optional(S.String),
-    reservationId: S.optional(S.String),
-    skuName: S.optional(S.String),
-    reservedHours: S.optional(S.Number),
-    usageDate: S.optional(S.String),
-    usedHours: S.optional(S.Number),
-    instanceId: S.optional(S.String),
-    totalReservedQuantity: S.optional(S.Number),
-    kind: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationDetailProperties",
-}) as any as S.Schema<ReservationDetailProperties>;
-
-/** Resource tags. */
-export type ReservationDetailTagsMap = { [key: string]: string | undefined };
-export const ReservationDetailTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ReservationDetailTagsMap>;
-
-/** reservation detail resource. */
-export interface ReservationDetail {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of the reservation detail. */
-  properties?: ReservationDetailProperties;
-  /** The etag for the resource. */
-  etag?: string;
-  /** Resource tags. */
-  tags?: ReservationDetailTagsMap;
-}
-export const ReservationDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ReservationDetailProperties),
-    etag: S.optional(S.String),
-    tags: S.optional(ReservationDetailTagsMap),
-  }),
-).annotate({
-  identifier: "ReservationDetail",
-}) as any as S.Schema<ReservationDetail>;
-
-/** The list of reservation details. */
-export type ReservationDetailsListResultValueList = Array<ReservationDetail>;
-export const ReservationDetailsListResultValueList = /*@__PURE__*/ S.Array(
-  ReservationDetail,
-) as any as S.Schema<ReservationDetailsListResultValueList>;
-
-/** Result of listing reservation details. */
-export interface ReservationDetailsListResult {
-  /** The list of reservation details. */
-  value?: ReservationDetailsListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const ReservationDetailsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ReservationDetailsListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationDetailsListResult",
-}) as any as S.Schema<ReservationDetailsListResult>;
-
-export interface ReservationsDetailsListByReservationOrderRequest {
-  /** Order Id of the reservation */
-  reservationOrderId: string;
-  /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
-  _filter: string;
-}
-export const ReservationsDetailsListByReservationOrderRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reservationOrderId: S.String.pipe(T.Label()),
-      _filter: S.String.pipe(T.Query("$filter")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/providers/Microsoft.Consumption/reservationDetails",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ReservationsDetailsListByReservationOrderRequest",
-  }) as any as S.Schema<ReservationsDetailsListByReservationOrderRequest>;
-
-export interface ReservationsDetailsListByReservationOrderAndReservationRequest {
-  /** Order Id of the reservation */
-  reservationOrderId: string;
-  /** Id of the reservation */
-  reservationId: string;
-  /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
-  _filter: string;
-}
-export const ReservationsDetailsListByReservationOrderAndReservationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      reservationOrderId: S.String.pipe(T.Label()),
-      reservationId: S.String.pipe(T.Label()),
-      _filter: S.String.pipe(T.Query("$filter")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Capacity/reservationorders/{reservationOrderId}/reservations/{reservationId}/providers/Microsoft.Consumption/reservationDetails",
-        code: 200,
-        apiVersion: "2026-06-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ReservationsDetailsListByReservationOrderAndReservationRequest",
-  }) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>;
+  identifier: "ListReservationRecommendationsResult",
+}) as any as S.Schema<ListReservationRecommendationsResult>;
 
 export type ReservationsSummariesListRequestGrain = "daily" | "monthly";
 export const ReservationsSummariesListRequestGrain = /*@__PURE__*/ S.String;
 
-export interface ReservationsSummariesListRequest {
+export interface ListReservationSummariesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceScope: string;
   /** Can be daily or monthly */
@@ -2886,7 +2911,7 @@ export interface ReservationsSummariesListRequest {
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
 }
-export const ReservationsSummariesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListReservationSummariesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resourceScope: S.String.pipe(T.Label()),
     grain: ReservationsSummariesListRequestGrain.pipe(T.Query()),
@@ -2904,8 +2929,8 @@ export const ReservationsSummariesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ReservationsSummariesListRequest",
-}) as any as S.Schema<ReservationsSummariesListRequest>;
+  identifier: "ListReservationSummariesRequest",
+}) as any as S.Schema<ListReservationSummariesRequest>;
 
 /** The properties of the reservation summary. */
 export interface ReservationSummaryProperties {
@@ -3028,7 +3053,7 @@ export type ReservationsSummariesListByReservationOrderRequestGrain =
 export const ReservationsSummariesListByReservationOrderRequestGrain =
   /*@__PURE__*/ S.String;
 
-export interface ReservationsSummariesListByReservationOrderRequest {
+export interface ListReservationSummaryByReservationOrderRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Can be daily or monthly */
@@ -3038,7 +3063,7 @@ export interface ReservationsSummariesListByReservationOrderRequest {
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-export const ReservationsSummariesListByReservationOrderRequest =
+export const ListReservationSummaryByReservationOrderRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reservationOrderId: S.String.pipe(T.Label()),
@@ -3055,8 +3080,8 @@ export const ReservationsSummariesListByReservationOrderRequest =
       }),
     ),
   ).annotate({
-    identifier: "ReservationsSummariesListByReservationOrderRequest",
-  }) as any as S.Schema<ReservationsSummariesListByReservationOrderRequest>;
+    identifier: "ListReservationSummaryByReservationOrderRequest",
+  }) as any as S.Schema<ListReservationSummaryByReservationOrderRequest>;
 
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   | "daily"
@@ -3064,7 +3089,7 @@ export type ReservationsSummariesListByReservationOrderAndReservationRequestGrai
 export const ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   /*@__PURE__*/ S.String;
 
-export interface ReservationsSummariesListByReservationOrderAndReservationRequest {
+export interface ListReservationSummaryByReservationOrderAndReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Id of the reservation */
@@ -3076,7 +3101,7 @@ export interface ReservationsSummariesListByReservationOrderAndReservationReques
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-export const ReservationsSummariesListByReservationOrderAndReservationRequest =
+export const ListReservationSummaryByReservationOrderAndReservationRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       reservationOrderId: S.String.pipe(T.Label()),
@@ -3095,176 +3120,10 @@ export const ReservationsSummariesListByReservationOrderAndReservationRequest =
       }),
     ),
   ).annotate({
-    identifier:
-      "ReservationsSummariesListByReservationOrderAndReservationRequest",
-  }) as any as S.Schema<ReservationsSummariesListByReservationOrderAndReservationRequest>;
+    identifier: "ListReservationSummaryByReservationOrderAndReservationRequest",
+  }) as any as S.Schema<ListReservationSummaryByReservationOrderAndReservationRequest>;
 
-export interface ReservationTransactionsListRequest {
-  /** BillingAccount ID */
-  billingAccountId: string;
-  /** Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and 'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for the entire December 2020 month (i.e. will contain records for dates December 30 and 31) */
-  _filter?: string;
-  /** Applies mark up to the transactions if the caller is a partner. */
-  useMarkupIfPartner?: boolean;
-  /** Preview markup percentage to be applied. */
-  previewMarkupPercentage?: number;
-}
-export const ReservationTransactionsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    billingAccountId: S.String.pipe(T.Label()),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    useMarkupIfPartner: S.optional(S.Boolean.pipe(T.Query())),
-    previewMarkupPercentage: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
-      code: 200,
-      apiVersion: "2026-06-01",
-    }),
-  ),
-).annotate({
-  identifier: "ReservationTransactionsListRequest",
-}) as any as S.Schema<ReservationTransactionsListRequest>;
-
-/** The properties of a legacy reservation transaction. */
-export interface LegacyReservationTransactionProperties {
-  /** The date of the transaction */
-  eventDate?: string;
-  /** The reservation order ID is the identifier for a reservation purchase. Each reservation order ID represents a single purchase transaction. A reservation order contains reservations. The reservation order specifies the VM size and region for the reservations. */
-  reservationOrderId?: string;
-  /** The description of the transaction. */
-  description?: string;
-  /** The type of the transaction (Purchase, Cancel or Refund). */
-  eventType?: string;
-  /** The quantity of the transaction. */
-  quantity?: number;
-  /** The charge of the transaction. */
-  amount?: number;
-  /** The ISO currency in which the transaction is charged, for example, USD. */
-  currency?: string;
-  /** The name of the reservation order. */
-  reservationOrderName?: string;
-  /** The purchasing enrollment. */
-  purchasingEnrollment?: string;
-  /** The subscription guid that makes the transaction. */
-  purchasingSubscriptionGuid?: string;
-  /** The subscription name that makes the transaction. */
-  purchasingSubscriptionName?: string;
-  /** This is the ARM Sku name. It can be used to join with the serviceType field in additional info in usage records. */
-  armSkuName?: string;
-  /** This is the term of the transaction. */
-  term?: string;
-  /** The region of the transaction. */
-  region?: string;
-  /** The name of the account that makes the transaction. */
-  accountName?: string;
-  /** The email of the account owner that makes the transaction. */
-  accountOwnerEmail?: string;
-  /** The department name. */
-  departmentName?: string;
-  /** The cost center of this department if it is a department and a cost center is provided. */
-  costCenter?: string;
-  /** The current enrollment. */
-  currentEnrollment?: string;
-  /** The billing frequency, which can be either one-time or recurring. */
-  billingFrequency?: string;
-  /** The billing month(yyyyMMdd), on which the event initiated. */
-  billingMonth?: number;
-  /** The monetary commitment amount at the enrollment scope. */
-  monetaryCommitment?: number;
-  /** The overage amount at the enrollment scope. */
-  overage?: number;
-}
-export const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      eventDate: S.optional(S.String),
-      reservationOrderId: S.optional(S.String),
-      description: S.optional(S.String),
-      eventType: S.optional(S.String),
-      quantity: S.optional(S.Number),
-      amount: S.optional(S.Number),
-      currency: S.optional(S.String),
-      reservationOrderName: S.optional(S.String),
-      purchasingEnrollment: S.optional(S.String),
-      purchasingSubscriptionGuid: S.optional(S.String),
-      purchasingSubscriptionName: S.optional(S.String),
-      armSkuName: S.optional(S.String),
-      term: S.optional(S.String),
-      region: S.optional(S.String),
-      accountName: S.optional(S.String),
-      accountOwnerEmail: S.optional(S.String),
-      departmentName: S.optional(S.String),
-      costCenter: S.optional(S.String),
-      currentEnrollment: S.optional(S.String),
-      billingFrequency: S.optional(S.String),
-      billingMonth: S.optional(S.Number),
-      monetaryCommitment: S.optional(S.Number),
-      overage: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "LegacyReservationTransactionProperties",
-}) as any as S.Schema<LegacyReservationTransactionProperties>;
-
-/** Resource tags. */
-export type ReservationTransactionTagsList = Array<string>;
-export const ReservationTransactionTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ReservationTransactionTagsList>;
-
-/** Reservation transaction resource. */
-export interface ReservationTransaction {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The properties of a legacy reservation transaction. */
-  properties?: LegacyReservationTransactionProperties;
-  /** Resource tags. */
-  tags?: ReservationTransactionTagsList;
-}
-export const ReservationTransaction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(LegacyReservationTransactionProperties),
-    tags: S.optional(ReservationTransactionTagsList),
-  }),
-).annotate({
-  identifier: "ReservationTransaction",
-}) as any as S.Schema<ReservationTransaction>;
-
-/** The list of reservation recommendations. */
-export type ReservationTransactionsListResultValueList =
-  Array<ReservationTransaction>;
-export const ReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
-  ReservationTransaction,
-) as any as S.Schema<ReservationTransactionsListResultValueList>;
-
-/** Result of listing reservation recommendations. */
-export interface ReservationTransactionsListResult {
-  /** The list of reservation recommendations. */
-  value?: ReservationTransactionsListResultValueList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-}
-export const ReservationTransactionsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(ReservationTransactionsListResultValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReservationTransactionsListResult",
-}) as any as S.Schema<ReservationTransactionsListResult>;
-
-export interface ReservationTransactionsListByBillingProfileRequest {
+export interface ListReservationTransactionByBillingProfileRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Azure Billing Profile ID. */
@@ -3272,7 +3131,7 @@ export interface ReservationTransactionsListByBillingProfileRequest {
   /** Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and 'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31) */
   _filter?: string;
 }
-export const ReservationTransactionsListByBillingProfileRequest =
+export const ListReservationTransactionByBillingProfileRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       billingAccountId: S.String.pipe(T.Label()),
@@ -3287,8 +3146,8 @@ export const ReservationTransactionsListByBillingProfileRequest =
       }),
     ),
   ).annotate({
-    identifier: "ReservationTransactionsListByBillingProfileRequest",
-  }) as any as S.Schema<ReservationTransactionsListByBillingProfileRequest>;
+    identifier: "ListReservationTransactionByBillingProfileRequest",
+  }) as any as S.Schema<ListReservationTransactionByBillingProfileRequest>;
 
 /** The properties of a modern reservation transaction. */
 export interface ModernReservationTransactionProperties {
@@ -3420,67 +3279,122 @@ export const ModernReservationTransactionsListResult = /*@__PURE__*/ S.suspend(
   identifier: "ModernReservationTransactionsListResult",
 }) as any as S.Schema<ModernReservationTransactionsListResult>;
 
-export interface TagsGetRequest {
-  /** The fully qualified Azure Resource manager identifier of the resource. */
-  scope: string;
+export interface ListReservationTransactionsRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and 'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for the entire December 2020 month (i.e. will contain records for dates December 30 and 31) */
+  _filter?: string;
+  /** Applies mark up to the transactions if the caller is a partner. */
+  useMarkupIfPartner?: boolean;
+  /** Preview markup percentage to be applied. */
+  previewMarkupPercentage?: number;
 }
-export const TagsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListReservationTransactionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    scope: S.String.pipe(T.Label()),
+    billingAccountId: S.String.pipe(T.Label()),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    useMarkupIfPartner: S.optional(S.Boolean.pipe(T.Query())),
+    previewMarkupPercentage: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/{scope}/providers/Microsoft.Consumption/tags",
+      uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Consumption/reservationTransactions",
       code: 200,
       apiVersion: "2026-06-01",
     }),
   ),
-).annotate({ identifier: "TagsGetRequest" }) as any as S.Schema<TagsGetRequest>;
+).annotate({
+  identifier: "ListReservationTransactionsRequest",
+}) as any as S.Schema<ListReservationTransactionsRequest>;
 
-/** Tag values. */
-export type TagValueList = Array<string>;
-export const TagValueList = /*@__PURE__*/ S.Array(
+/** The properties of a legacy reservation transaction. */
+export interface LegacyReservationTransactionProperties {
+  /** The date of the transaction */
+  eventDate?: string;
+  /** The reservation order ID is the identifier for a reservation purchase. Each reservation order ID represents a single purchase transaction. A reservation order contains reservations. The reservation order specifies the VM size and region for the reservations. */
+  reservationOrderId?: string;
+  /** The description of the transaction. */
+  description?: string;
+  /** The type of the transaction (Purchase, Cancel or Refund). */
+  eventType?: string;
+  /** The quantity of the transaction. */
+  quantity?: number;
+  /** The charge of the transaction. */
+  amount?: number;
+  /** The ISO currency in which the transaction is charged, for example, USD. */
+  currency?: string;
+  /** The name of the reservation order. */
+  reservationOrderName?: string;
+  /** The purchasing enrollment. */
+  purchasingEnrollment?: string;
+  /** The subscription guid that makes the transaction. */
+  purchasingSubscriptionGuid?: string;
+  /** The subscription name that makes the transaction. */
+  purchasingSubscriptionName?: string;
+  /** This is the ARM Sku name. It can be used to join with the serviceType field in additional info in usage records. */
+  armSkuName?: string;
+  /** This is the term of the transaction. */
+  term?: string;
+  /** The region of the transaction. */
+  region?: string;
+  /** The name of the account that makes the transaction. */
+  accountName?: string;
+  /** The email of the account owner that makes the transaction. */
+  accountOwnerEmail?: string;
+  /** The department name. */
+  departmentName?: string;
+  /** The cost center of this department if it is a department and a cost center is provided. */
+  costCenter?: string;
+  /** The current enrollment. */
+  currentEnrollment?: string;
+  /** The billing frequency, which can be either one-time or recurring. */
+  billingFrequency?: string;
+  /** The billing month(yyyyMMdd), on which the event initiated. */
+  billingMonth?: number;
+  /** The monetary commitment amount at the enrollment scope. */
+  monetaryCommitment?: number;
+  /** The overage amount at the enrollment scope. */
+  overage?: number;
+}
+export const LegacyReservationTransactionProperties = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      eventDate: S.optional(S.String),
+      reservationOrderId: S.optional(S.String),
+      description: S.optional(S.String),
+      eventType: S.optional(S.String),
+      quantity: S.optional(S.Number),
+      amount: S.optional(S.Number),
+      currency: S.optional(S.String),
+      reservationOrderName: S.optional(S.String),
+      purchasingEnrollment: S.optional(S.String),
+      purchasingSubscriptionGuid: S.optional(S.String),
+      purchasingSubscriptionName: S.optional(S.String),
+      armSkuName: S.optional(S.String),
+      term: S.optional(S.String),
+      region: S.optional(S.String),
+      accountName: S.optional(S.String),
+      accountOwnerEmail: S.optional(S.String),
+      departmentName: S.optional(S.String),
+      costCenter: S.optional(S.String),
+      currentEnrollment: S.optional(S.String),
+      billingFrequency: S.optional(S.String),
+      billingMonth: S.optional(S.Number),
+      monetaryCommitment: S.optional(S.Number),
+      overage: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "LegacyReservationTransactionProperties",
+}) as any as S.Schema<LegacyReservationTransactionProperties>;
+
+/** Resource tags. */
+export type ReservationTransactionTagsList = Array<string>;
+export const ReservationTransactionTagsList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<TagValueList>;
+) as any as S.Schema<ReservationTransactionTagsList>;
 
-/** The tag resource. */
-export interface Tag {
-  /** Tag key. */
-  key?: string;
-  /** Tag values. */
-  value?: TagValueList;
-}
-export const Tag = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-    value: S.optional(TagValueList),
-  }),
-).annotate({ identifier: "Tag" }) as any as S.Schema<Tag>;
-
-/** A list of Tag. */
-export type TagPropertiesTagsList = Array<Tag>;
-export const TagPropertiesTagsList = /*@__PURE__*/ S.Array(
-  Tag,
-) as any as S.Schema<TagPropertiesTagsList>;
-
-/** The properties of the tag. */
-export interface TagProperties {
-  /** A list of Tag. */
-  tags?: TagPropertiesTagsList;
-  /** The link (url) to the next page of results. */
-  nextLink?: string;
-  /** The link (url) to the previous page of results. */
-  previousLink?: string;
-}
-export const TagProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(TagPropertiesTagsList),
-    nextLink: S.optional(S.String),
-    previousLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "TagProperties" }) as any as S.Schema<TagProperties>;
-
-export interface TagsGetResponse {
+/** Reservation transaction resource. */
+export interface ReservationTransaction {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -3489,23 +3403,46 @@ export interface TagsGetResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  /** The properties of the tag. */
-  properties?: TagProperties;
-  /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
-  eTag?: string;
+  /** The properties of a legacy reservation transaction. */
+  properties?: LegacyReservationTransactionProperties;
+  /** Resource tags. */
+  tags?: ReservationTransactionTagsList;
 }
-export const TagsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const ReservationTransaction = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
     type: S.optional(S.String),
     systemData: S.optional(SystemData),
-    properties: S.optional(TagProperties),
-    eTag: S.optional(S.String),
+    properties: S.optional(LegacyReservationTransactionProperties),
+    tags: S.optional(ReservationTransactionTagsList),
   }),
 ).annotate({
-  identifier: "TagsGetResponse",
-}) as any as S.Schema<TagsGetResponse>;
+  identifier: "ReservationTransaction",
+}) as any as S.Schema<ReservationTransaction>;
+
+/** The list of reservation recommendations. */
+export type ReservationTransactionsListResultValueList =
+  Array<ReservationTransaction>;
+export const ReservationTransactionsListResultValueList = /*@__PURE__*/ S.Array(
+  ReservationTransaction,
+) as any as S.Schema<ReservationTransactionsListResultValueList>;
+
+/** Result of listing reservation recommendations. */
+export interface ListReservationTransactionsResult {
+  /** The list of reservation recommendations. */
+  value?: ReservationTransactionsListResultValueList;
+  /** The link (url) to the next page of results. */
+  nextLink?: string;
+}
+export const ListReservationTransactionsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(ReservationTransactionsListResultValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListReservationTransactionsResult",
+}) as any as S.Schema<ListReservationTransactionsResult>;
 
 export type UsageDetailsListRequestMetric =
   | "actualcost"
@@ -3513,7 +3450,7 @@ export type UsageDetailsListRequestMetric =
   | "usage";
 export const UsageDetailsListRequestMetric = /*@__PURE__*/ S.String;
 
-export interface UsageDetailsListRequest {
+export interface ListUsageDetailsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** May be used to expand the properties/additionalInfo or properties/meterDetails within a list of usage details. By default, these fields are not included when listing usage details. */
@@ -3527,7 +3464,7 @@ export interface UsageDetailsListRequest {
   /** Allows to select different type of cost/usage records. */
   metric?: UsageDetailsListRequestMetric | (string & {});
 }
-export const UsageDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListUsageDetailsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     _expand: S.optional(S.String.pipe(T.Query("$expand"))),
@@ -3544,8 +3481,8 @@ export const UsageDetailsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UsageDetailsListRequest",
-}) as any as S.Schema<UsageDetailsListRequest>;
+  identifier: "ListUsageDetailsRequest",
+}) as any as S.Schema<ListUsageDetailsRequest>;
 
 /** Specifies the kind of usage details. */
 export type UsageDetailsKind = "legacy" | "modern";
@@ -3594,81 +3531,79 @@ export const UsageDetailsListResultValueList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UsageDetailsListResultValueList>;
 
 /** Result of listing usage details. It contains a list of available usage details in reverse chronological order by billing period. */
-export interface UsageDetailsListResult {
+export interface ListUsageDetailsResult {
   /** The list of usage details. */
   value?: UsageDetailsListResultValueList;
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-export const UsageDetailsListResult = /*@__PURE__*/ S.suspend(() =>
+export const ListUsageDetailsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     value: S.optional(UsageDetailsListResultValueList),
     nextLink: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "UsageDetailsListResult",
-}) as any as S.Schema<UsageDetailsListResult>;
+  identifier: "ListUsageDetailsResult",
+}) as any as S.Schema<ListUsageDetailsResult>;
 
-export type AggregatedCostGetByManagementGroupError = AzureOpError;
-/** Provides the aggregate cost of a management group and all child management groups by current billing period. */
-export const AggregatedCostGetByManagementGroup: API.OperationMethod<
-  AggregatedCostGetByManagementGroupRequest,
-  AggregatedCostGetByManagementGroupResponse,
-  AggregatedCostGetByManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AggregatedCostGetByManagementGroupRequest,
-  output: AggregatedCostGetByManagementGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface PriceSheetDownloadByBillingAccountPeriodRequest {
+  /** BillingAccount ID */
+  billingAccountId: string;
+  /** Billing Period Name. */
+  billingPeriodName: string;
+}
+export const PriceSheetDownloadByBillingAccountPeriodRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      billingAccountId: S.String.pipe(T.Label()),
+      billingPeriodName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/download",
+        code: 200,
+        apiVersion: "2026-06-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "PriceSheetDownloadByBillingAccountPeriodRequest",
+  }) as any as S.Schema<PriceSheetDownloadByBillingAccountPeriodRequest>;
 
-export type AggregatedCostGetForBillingPeriodByManagementGroupError =
-  AzureOpError;
-/** Provides the aggregate cost of a management group and all child management groups by specified billing period */
-export const AggregatedCostGetForBillingPeriodByManagementGroup: API.OperationMethod<
-  AggregatedCostGetForBillingPeriodByManagementGroupRequest,
-  AggregatedCostGetForBillingPeriodByManagementGroupResponse,
-  AggregatedCostGetForBillingPeriodByManagementGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AggregatedCostGetForBillingPeriodByManagementGroupRequest,
-  output: AggregatedCostGetForBillingPeriodByManagementGroupResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** The status of the long running operation. */
+export type OperationStatusType = "Running" | "Completed" | "Failed";
+export const OperationStatusType = /*@__PURE__*/ S.String;
 
-export type BalancesGetByBillingAccountError = AzureOpError;
-/** Gets the balances for a scope by billingAccountId. Balances are available via this API only for May 1, 2014 or later. */
-export const BalancesGetByBillingAccount: API.OperationMethod<
-  BalancesGetByBillingAccountRequest,
-  BalancesGetByBillingAccountResponse,
-  BalancesGetByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BalancesGetByBillingAccountRequest,
-  output: BalancesGetByBillingAccountResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** The properties of the price sheet download. */
+export interface PricesheetDownloadProperties {
+  /** The link (url) to download the pricesheet. */
+  downloadUrl?: string;
+  /** Download link validity. */
+  validTill?: string;
+}
+export const PricesheetDownloadProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    downloadUrl: S.optional(S.String),
+    validTill: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PricesheetDownloadProperties",
+}) as any as S.Schema<PricesheetDownloadProperties>;
 
-export type BalancesGetForBillingPeriodByBillingAccountError = AzureOpError;
-/** Gets the balances for a scope by billing period and billingAccountId. Balances are available via this API only for May 1, 2014 or later. */
-export const BalancesGetForBillingPeriodByBillingAccount: API.OperationMethod<
-  BalancesGetForBillingPeriodByBillingAccountRequest,
-  BalancesGetForBillingPeriodByBillingAccountResponse,
-  BalancesGetForBillingPeriodByBillingAccountError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BalancesGetForBillingPeriodByBillingAccountRequest,
-  output: BalancesGetForBillingPeriodByBillingAccountResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** The status of the long running operation. */
+export interface OperationStatus {
+  /** The status of the long running operation. */
+  status?: OperationStatusType;
+  /** The properties of the resource generated. */
+  properties?: PricesheetDownloadProperties;
+}
+export const OperationStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: S.optional(OperationStatusType),
+    properties: S.optional(PricesheetDownloadProperties),
+  }),
+).annotate({
+  identifier: "OperationStatus",
+}) as any as S.Schema<OperationStatus>;
 
 export type BudgetsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation. */
@@ -3685,181 +3620,454 @@ export const BudgetsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BudgetsDeleteError = AzureOpError;
+export type DeleteBudgetError = AzureOpError;
 /** The operation to delete a budget. */
-export const BudgetsDelete: API.OperationMethod<
-  BudgetsDeleteRequest,
-  BudgetsDeleteResponse,
-  BudgetsDeleteError,
+export const DeleteBudget: API.OperationMethod<
+  DeleteBudgetRequest,
+  DeleteBudgetResponse,
+  DeleteBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsDeleteRequest,
-  output: BudgetsDeleteResponse,
+  input: DeleteBudgetRequest,
+  output: DeleteBudgetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type BudgetsGetError = AzureOpError;
+export type GetAggregatedCostByManagementGroupError = AzureOpError;
+/** Provides the aggregate cost of a management group and all child management groups by current billing period. */
+export const GetAggregatedCostByManagementGroup: API.OperationMethod<
+  GetAggregatedCostByManagementGroupRequest,
+  GetAggregatedCostByManagementGroupResponse,
+  GetAggregatedCostByManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAggregatedCostByManagementGroupRequest,
+  output: GetAggregatedCostByManagementGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAggregatedCostForBillingPeriodByManagementGroupError =
+  AzureOpError;
+/** Provides the aggregate cost of a management group and all child management groups by specified billing period */
+export const GetAggregatedCostForBillingPeriodByManagementGroup: API.OperationMethod<
+  GetAggregatedCostForBillingPeriodByManagementGroupRequest,
+  GetAggregatedCostForBillingPeriodByManagementGroupResponse,
+  GetAggregatedCostForBillingPeriodByManagementGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAggregatedCostForBillingPeriodByManagementGroupRequest,
+  output: GetAggregatedCostForBillingPeriodByManagementGroupResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBalanceByBillingAccountError = AzureOpError;
+/** Gets the balances for a scope by billingAccountId. Balances are available via this API only for May 1, 2014 or later. */
+export const GetBalanceByBillingAccount: API.OperationMethod<
+  GetBalanceByBillingAccountRequest,
+  GetBalanceByBillingAccountResponse,
+  GetBalanceByBillingAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBalanceByBillingAccountRequest,
+  output: GetBalanceByBillingAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBalanceForBillingPeriodByBillingAccountError = AzureOpError;
+/** Gets the balances for a scope by billing period and billingAccountId. Balances are available via this API only for May 1, 2014 or later. */
+export const GetBalanceForBillingPeriodByBillingAccount: API.OperationMethod<
+  GetBalanceForBillingPeriodByBillingAccountRequest,
+  GetBalanceForBillingPeriodByBillingAccountResponse,
+  GetBalanceForBillingPeriodByBillingAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBalanceForBillingPeriodByBillingAccountRequest,
+  output: GetBalanceForBillingPeriodByBillingAccountResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBudgetError = AzureOpError;
 /** Gets the budget for the scope by budget name. */
-export const BudgetsGet: API.OperationMethod<
-  BudgetsGetRequest,
-  BudgetsGetResponse,
-  BudgetsGetError,
+export const GetBudget: API.OperationMethod<
+  GetBudgetRequest,
+  GetBudgetResponse,
+  GetBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsGetRequest,
-  output: BudgetsGetResponse,
+  input: GetBudgetRequest,
+  output: GetBudgetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type BudgetsListError = AzureOpError;
-/** Lists all budgets for the defined scope. */
-export const BudgetsList: API.OperationMethod<
-  BudgetsListRequest,
-  BudgetsListResult,
-  BudgetsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsListRequest,
-  output: BudgetsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ChargesListError = AzureOpError;
-/** Lists the charges based for the defined scope. */
-export const ChargesList: API.OperationMethod<
-  ChargesListRequest,
-  ChargesListResult,
-  ChargesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChargesListRequest,
-  output: ChargesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CreditsGetError = AzureOpError;
+export type GetCreditError = AzureOpError;
 /** The credit summary by billingAccountId and billingProfileId. */
-export const CreditsGet: API.OperationMethod<
-  CreditsGetRequest,
-  CreditsGetResponse,
-  CreditsGetError,
+export const GetCredit: API.OperationMethod<
+  GetCreditRequest,
+  GetCreditResponse,
+  GetCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditsGetRequest,
-  output: CreditsGetResponse,
+  input: GetCreditRequest,
+  output: GetCreditResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EventsListByBillingAccountError = AzureOpError;
-/** Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date. */
-export const EventsListByBillingAccount: API.OperationMethod<
-  EventsListByBillingAccountRequest,
-  Events,
-  EventsListByBillingAccountError,
+export type GetPriceSheetError = AzureOpError;
+/** Gets the price sheet for a subscription. Price sheet is available via this API only for May 1, 2014 or later. */
+export const GetPriceSheet: API.OperationMethod<
+  GetPriceSheetRequest,
+  GetPriceSheetResponse,
+  GetPriceSheetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventsListByBillingAccountRequest,
+  input: GetPriceSheetRequest,
+  output: GetPriceSheetResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetPriceSheetByBillingPeriodError = AzureOpError;
+/** Get the price sheet for a scope by subscriptionId and billing period. Price sheet is available via this API only for May 1, 2014 or later. */
+export const GetPriceSheetByBillingPeriod: API.OperationMethod<
+  GetPriceSheetByBillingPeriodRequest,
+  GetPriceSheetByBillingPeriodResponse,
+  GetPriceSheetByBillingPeriodError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPriceSheetByBillingPeriodRequest,
+  output: GetPriceSheetByBillingPeriodResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetReservationRecommendationDetailError = AzureOpError;
+/** Details of a reservation recommendation for what-if analysis of reserved instances. */
+export const GetReservationRecommendationDetail: API.OperationMethod<
+  GetReservationRecommendationDetailRequest,
+  GetReservationRecommendationDetailResponse,
+  GetReservationRecommendationDetailError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetReservationRecommendationDetailRequest,
+  output: GetReservationRecommendationDetailResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetTagError = AzureOpError;
+/** Get all available tag keys for the defined scope */
+export const GetTag: API.OperationMethod<
+  GetTagRequest,
+  GetTagResponse,
+  GetTagError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetTagRequest,
+  output: GetTagResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListBudgetsError = AzureOpError;
+/** Lists all budgets for the defined scope. */
+export const ListBudgets: API.OperationMethod<
+  ListBudgetsRequest,
+  ListBudgetsResult,
+  ListBudgetsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBudgetsRequest,
+  output: ListBudgetsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListChargesError = AzureOpError;
+/** Lists the charges based for the defined scope. */
+export const ListCharges: API.OperationMethod<
+  ListChargesRequest,
+  ListChargesResult,
+  ListChargesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChargesRequest,
+  output: ListChargesResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListEventByBillingAccountError = AzureOpError;
+/** Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date. */
+export const ListEventByBillingAccount: API.OperationMethod<
+  ListEventByBillingAccountRequest,
+  Events,
+  ListEventByBillingAccountError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEventByBillingAccountRequest,
   output: Events,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type EventsListByBillingProfileError = AzureOpError;
+export type ListEventByBillingProfileError = AzureOpError;
 /** Lists the events that decrements Azure credits or Microsoft Azure consumption commitment for a billing account or a billing profile for a given start and end date. */
-export const EventsListByBillingProfile: API.OperationMethod<
-  EventsListByBillingProfileRequest,
+export const ListEventByBillingProfile: API.OperationMethod<
+  ListEventByBillingProfileRequest,
   Events,
-  EventsListByBillingProfileError,
+  ListEventByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventsListByBillingProfileRequest,
+  input: ListEventByBillingProfileRequest,
   output: Events,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LotsListByBillingAccountError = AzureOpError;
+export type ListLotByBillingAccountError = AzureOpError;
 /** Lists all Microsoft Azure consumption commitments for a billing account. The API is only supported for Microsoft Customer Agreements (MCA) and Direct Enterprise Agreement (EA) billing accounts. */
-export const LotsListByBillingAccount: API.OperationMethod<
-  LotsListByBillingAccountRequest,
+export const ListLotByBillingAccount: API.OperationMethod<
+  ListLotByBillingAccountRequest,
   Lots,
-  LotsListByBillingAccountError,
+  ListLotByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LotsListByBillingAccountRequest,
+  input: ListLotByBillingAccountRequest,
   output: Lots,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LotsListByBillingProfileError = AzureOpError;
+export type ListLotByBillingProfileError = AzureOpError;
 /** Lists all Azure credits for a billing account or a billing profile. The API is only supported for Microsoft Customer Agreements (MCA) billing accounts. */
-export const LotsListByBillingProfile: API.OperationMethod<
-  LotsListByBillingProfileRequest,
+export const ListLotByBillingProfile: API.OperationMethod<
+  ListLotByBillingProfileRequest,
   Lots,
-  LotsListByBillingProfileError,
+  ListLotByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LotsListByBillingProfileRequest,
+  input: ListLotByBillingProfileRequest,
   output: Lots,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type LotsListByCustomerError = AzureOpError;
+export type ListLotByCustomerError = AzureOpError;
 /** Lists all Azure credits for a customer. The API is only supported for Microsoft Partner Agreements (MPA) billing accounts. */
-export const LotsListByCustomer: API.OperationMethod<
-  LotsListByCustomerRequest,
+export const ListLotByCustomer: API.OperationMethod<
+  ListLotByCustomerRequest,
   Lots,
-  LotsListByCustomerError,
+  ListLotByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LotsListByCustomerRequest,
+  input: ListLotByCustomerRequest,
   output: Lots,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type MarketplacesListError = AzureOpError;
+export type ListMarketplacesError = AzureOpError;
 /** Lists the marketplaces for a scope at the defined scope. Marketplaces are available via this API only for May 1, 2014 or later. */
-export const MarketplacesList: API.OperationMethod<
-  MarketplacesListRequest,
-  MarketplacesListResult,
-  MarketplacesListError,
+export const ListMarketplaces: API.OperationMethod<
+  ListMarketplacesRequest,
+  ListMarketplacesResult,
+  ListMarketplacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarketplacesListRequest,
-  output: MarketplacesListResult,
+  input: ListMarketplacesRequest,
+  output: ListMarketplacesResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationListResult,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationDetailByReservationOrderError = AzureOpError;
+/** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
+export const ListReservationDetailByReservationOrder: API.OperationMethod<
+  ListReservationDetailByReservationOrderRequest,
+  ReservationDetailsListResult,
+  ListReservationDetailByReservationOrderError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationDetailByReservationOrderRequest,
+  output: ReservationDetailsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationDetailByReservationOrderAndReservationError =
+  AzureOpError;
+/** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
+export const ListReservationDetailByReservationOrderAndReservation: API.OperationMethod<
+  ListReservationDetailByReservationOrderAndReservationRequest,
+  ReservationDetailsListResult,
+  ListReservationDetailByReservationOrderAndReservationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationDetailByReservationOrderAndReservationRequest,
+  output: ReservationDetailsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationDetailsError = AzureOpError;
+/** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
+export const ListReservationDetails: API.OperationMethod<
+  ListReservationDetailsRequest,
+  ReservationDetailsListResult,
+  ListReservationDetailsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationDetailsRequest,
+  output: ReservationDetailsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationRecommendationsError = AzureOpError;
+/** List of recommendations for purchasing reserved instances. */
+export const ListReservationRecommendations: API.OperationMethod<
+  ListReservationRecommendationsRequest,
+  ListReservationRecommendationsResult,
+  ListReservationRecommendationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationRecommendationsRequest,
+  output: ListReservationRecommendationsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationSummariesError = AzureOpError;
+/** Lists the reservations summaries for the defined scope daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
+export const ListReservationSummaries: API.OperationMethod<
+  ListReservationSummariesRequest,
+  ReservationSummariesListResult,
+  ListReservationSummariesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationSummariesRequest,
+  output: ReservationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationSummaryByReservationOrderError = AzureOpError;
+/** Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
+export const ListReservationSummaryByReservationOrder: API.OperationMethod<
+  ListReservationSummaryByReservationOrderRequest,
+  ReservationSummariesListResult,
+  ListReservationSummaryByReservationOrderError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationSummaryByReservationOrderRequest,
+  output: ReservationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationSummaryByReservationOrderAndReservationError =
+  AzureOpError;
+/** Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
+export const ListReservationSummaryByReservationOrderAndReservation: API.OperationMethod<
+  ListReservationSummaryByReservationOrderAndReservationRequest,
+  ReservationSummariesListResult,
+  ListReservationSummaryByReservationOrderAndReservationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationSummaryByReservationOrderAndReservationRequest,
+  output: ReservationSummariesListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationTransactionByBillingProfileError = AzureOpError;
+/** List of transactions for reserved instances on billing profile scope. The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
+export const ListReservationTransactionByBillingProfile: API.OperationMethod<
+  ListReservationTransactionByBillingProfileRequest,
+  ModernReservationTransactionsListResult,
+  ListReservationTransactionByBillingProfileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationTransactionByBillingProfileRequest,
+  output: ModernReservationTransactionsListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListReservationTransactionsError = AzureOpError;
+/** List of transactions for reserved instances on billing account scope. Note: The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
+export const ListReservationTransactions: API.OperationMethod<
+  ListReservationTransactionsRequest,
+  ListReservationTransactionsResult,
+  ListReservationTransactionsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListReservationTransactionsRequest,
+  output: ListReservationTransactionsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListUsageDetailsError = AzureOpError;
+/** Lists the usage details for the defined scope. Usage details are available via this API only for May 1, 2014 or later. **Note:Microsoft will be retiring the Consumption Usage Details API at some point in the future. We do not recommend that you take a new dependency on this API. Please use the Cost Details API instead. We will notify customers once a date for retirement has been determined.For Learn more,see [Generate Cost Details Report - Create Operation](https://learn.microsoft.com/en-us/rest/api/cost-management/generate-cost-details-report/create-operation?tabs=HTTP)** */
+export const ListUsageDetails: API.OperationMethod<
+  ListUsageDetailsRequest,
+  ListUsageDetailsResult,
+  ListUsageDetailsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListUsageDetailsRequest,
+  output: ListUsageDetailsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3875,218 +4083,6 @@ export const PriceSheetDownloadByBillingAccountPeriod: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: PriceSheetDownloadByBillingAccountPeriodRequest,
   output: OperationStatus,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PriceSheetGetError = AzureOpError;
-/** Gets the price sheet for a subscription. Price sheet is available via this API only for May 1, 2014 or later. */
-export const PriceSheetGet: API.OperationMethod<
-  PriceSheetGetRequest,
-  PriceSheetGetResponse,
-  PriceSheetGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PriceSheetGetRequest,
-  output: PriceSheetGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type PriceSheetGetByBillingPeriodError = AzureOpError;
-/** Get the price sheet for a scope by subscriptionId and billing period. Price sheet is available via this API only for May 1, 2014 or later. */
-export const PriceSheetGetByBillingPeriod: API.OperationMethod<
-  PriceSheetGetByBillingPeriodRequest,
-  PriceSheetGetByBillingPeriodResponse,
-  PriceSheetGetByBillingPeriodError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PriceSheetGetByBillingPeriodRequest,
-  output: PriceSheetGetByBillingPeriodResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationRecommendationDetailsGetError = AzureOpError;
-/** Details of a reservation recommendation for what-if analysis of reserved instances. */
-export const ReservationRecommendationDetailsGet: API.OperationMethod<
-  ReservationRecommendationDetailsGetRequest,
-  ReservationRecommendationDetailsGetResponse,
-  ReservationRecommendationDetailsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationRecommendationDetailsGetRequest,
-  output: ReservationRecommendationDetailsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationRecommendationsListError = AzureOpError;
-/** List of recommendations for purchasing reserved instances. */
-export const ReservationRecommendationsList: API.OperationMethod<
-  ReservationRecommendationsListRequest,
-  ReservationRecommendationsListResult,
-  ReservationRecommendationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationRecommendationsListRequest,
-  output: ReservationRecommendationsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationsDetailsListError = AzureOpError;
-/** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
-export const ReservationsDetailsList: API.OperationMethod<
-  ReservationsDetailsListRequest,
-  ReservationDetailsListResult,
-  ReservationsDetailsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsDetailsListRequest,
-  output: ReservationDetailsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationsDetailsListByReservationOrderError = AzureOpError;
-/** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
-export const ReservationsDetailsListByReservationOrder: API.OperationMethod<
-  ReservationsDetailsListByReservationOrderRequest,
-  ReservationDetailsListResult,
-  ReservationsDetailsListByReservationOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsDetailsListByReservationOrderRequest,
-  output: ReservationDetailsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationsDetailsListByReservationOrderAndReservationError =
-  AzureOpError;
-/** Lists the reservations details for provided date range. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. If the data size is too large, customers may also get 504 as the API timed out preparing the data. In such cases, API call should be made with smaller date ranges or a call to Generate Reservation Details Report API should be made as it is asynchronous and will not run into response size time outs. */
-export const ReservationsDetailsListByReservationOrderAndReservation: API.OperationMethod<
-  ReservationsDetailsListByReservationOrderAndReservationRequest,
-  ReservationDetailsListResult,
-  ReservationsDetailsListByReservationOrderAndReservationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsDetailsListByReservationOrderAndReservationRequest,
-  output: ReservationDetailsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationsSummariesListError = AzureOpError;
-/** Lists the reservations summaries for the defined scope daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ReservationsSummariesList: API.OperationMethod<
-  ReservationsSummariesListRequest,
-  ReservationSummariesListResult,
-  ReservationsSummariesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsSummariesListRequest,
-  output: ReservationSummariesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationsSummariesListByReservationOrderError = AzureOpError;
-/** Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ReservationsSummariesListByReservationOrder: API.OperationMethod<
-  ReservationsSummariesListByReservationOrderRequest,
-  ReservationSummariesListResult,
-  ReservationsSummariesListByReservationOrderError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsSummariesListByReservationOrderRequest,
-  output: ReservationSummariesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationsSummariesListByReservationOrderAndReservationError =
-  AzureOpError;
-/** Lists the reservations summaries for daily or monthly grain. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ReservationsSummariesListByReservationOrderAndReservation: API.OperationMethod<
-  ReservationsSummariesListByReservationOrderAndReservationRequest,
-  ReservationSummariesListResult,
-  ReservationsSummariesListByReservationOrderAndReservationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsSummariesListByReservationOrderAndReservationRequest,
-  output: ReservationSummariesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationTransactionsListError = AzureOpError;
-/** List of transactions for reserved instances on billing account scope. Note: The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ReservationTransactionsList: API.OperationMethod<
-  ReservationTransactionsListRequest,
-  ReservationTransactionsListResult,
-  ReservationTransactionsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationTransactionsListRequest,
-  output: ReservationTransactionsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ReservationTransactionsListByBillingProfileError = AzureOpError;
-/** List of transactions for reserved instances on billing profile scope. The refund transactions are posted along with its purchase transaction (i.e. in the purchase billing month). For example, The refund is requested in May 2021. This refund transaction will have event date as May 2021 but the billing month as April 2020 when the reservation purchase was made. Note: ARM has a payload size limit of 12MB, so currently callers get 400 when the response size exceeds the ARM limit. In such cases, API call should be made with smaller date ranges. */
-export const ReservationTransactionsListByBillingProfile: API.OperationMethod<
-  ReservationTransactionsListByBillingProfileRequest,
-  ModernReservationTransactionsListResult,
-  ReservationTransactionsListByBillingProfileError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReservationTransactionsListByBillingProfileRequest,
-  output: ModernReservationTransactionsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TagsGetError = AzureOpError;
-/** Get all available tag keys for the defined scope */
-export const TagsGet: API.OperationMethod<
-  TagsGetRequest,
-  TagsGetResponse,
-  TagsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TagsGetRequest,
-  output: TagsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type UsageDetailsListError = AzureOpError;
-/** Lists the usage details for the defined scope. Usage details are available via this API only for May 1, 2014 or later. **Note:Microsoft will be retiring the Consumption Usage Details API at some point in the future. We do not recommend that you take a new dependency on this API. Please use the Cost Details API instead. We will notify customers once a date for retirement has been determined.For Learn more,see [Generate Cost Details Report - Create Operation](https://learn.microsoft.com/en-us/rest/api/cost-management/generate-cost-details-report/create-operation?tabs=HTTP)** */
-export const UsageDetailsList: API.OperationMethod<
-  UsageDetailsListRequest,
-  UsageDetailsListResult,
-  UsageDetailsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UsageDetailsListRequest,
-  output: UsageDetailsListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

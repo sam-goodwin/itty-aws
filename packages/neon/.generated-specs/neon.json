@@ -4165,7 +4165,7 @@
         "smithy.api#documentation": "Create a project transfer request\n\nCreates a transfer request for the specified project. The request expires after a set period.\nTo accept the request, the recipient calls `PUT /projects/{project_id}/transfer_requests/{request_id}`\nor uses the Neon Console claim link.\nThe optional `ru` parameter redirects the recipient after acceptance."
       }
     },
-    "com.neon.api#AcceptProjectTransferRequestRequest": {
+    "com.neon.api#RequestAcceptProjectTransferRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4195,10 +4195,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#AcceptProjectTransferRequest": {
+    "com.neon.api#RequestAcceptProjectTransfer": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#AcceptProjectTransferRequestRequest"
+        "target": "com.neon.api#RequestAcceptProjectTransferRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4212,7 +4212,7 @@
         "smithy.api#documentation": "Accept a project transfer request\n\nAccepts a transfer request for the specified project, transferring it to the specified organization\nor user. If org_id is not passed, the project will be transferred to the current user or organization account."
       }
     },
-    "com.neon.api#GetProjectJWKSRequest": {
+    "com.neon.api#GetProjectJwksRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4327,10 +4327,10 @@
         "smithy.api#documentation": "JWKS configurations associated with the project."
       }
     },
-    "com.neon.api#GetProjectJWKS": {
+    "com.neon.api#GetProjectJwks": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#GetProjectJWKSRequest"
+        "target": "com.neon.api#GetProjectJwksRequest"
       },
       "output": {
         "target": "com.neon.api#ProjectJWKSResponse"
@@ -4452,7 +4452,7 @@
         "smithy.api#documentation": "Add JWKS URL\n\nAdds a JWKS URL to the specified project for verifying JWTs used as the authentication mechanism.\n\nThe URL must be a valid HTTPS URL that returns a JSON Web Key Set.\n\nThe `provider_name` field allows you to specify which authentication provider you're using (e.g., Clerk, Auth0, AWS Cognito).\n\nThe `branch_id` scopes the JWKS URL to specific branches; if not specified, it applies to all branches.\n\nThe `role_names` scopes the URL to specific roles; if not specified, default roles are used (`authenticator`, `authenticated`, `anonymous`).\n\nThe `jwt_audience` specifies which `aud` values are accepted in JWTs."
       }
     },
-    "com.neon.api#DeleteProjectJWKSRequest": {
+    "com.neon.api#DeleteProjectJwksRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4476,10 +4476,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#DeleteProjectJWKS": {
+    "com.neon.api#DeleteProjectJwks": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#DeleteProjectJWKSRequest"
+        "target": "com.neon.api#DeleteProjectJwksRequest"
       },
       "output": {
         "target": "com.neon.api#JWKS"
@@ -4493,7 +4493,7 @@
         "smithy.api#documentation": "Delete JWKS URL\n\nRemoves the specified JWKS URL from the project.\nJWTs signed by keys from the removed URL can no longer authenticate to the project's endpoints."
       }
     },
-    "com.neon.api#GetProjectBranchDataAPIRequest": {
+    "com.neon.api#GetProjectBranchDataApiRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4647,10 +4647,10 @@
         "smithy.api#documentation": "List of available database schemas (SubZero only)"
       }
     },
-    "com.neon.api#GetProjectBranchDataAPI": {
+    "com.neon.api#GetProjectBranchDataApi": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#GetProjectBranchDataAPIRequest"
+        "target": "com.neon.api#GetProjectBranchDataApiRequest"
       },
       "output": {
         "target": "com.neon.api#DataAPIReponse"
@@ -4684,7 +4684,7 @@
         "smithy.api#documentation": "Authentication provider for the Neon Data API. `neon_auth`: use Neon's built-in managed authentication (no JWKS configuration required). `external`: use an external JWT provider, which requires `jwks_url`. When omitted, no auth provider is configured (existing setup is kept)."
       }
     },
-    "com.neon.api#CreateProjectBranchDataAPIRequest": {
+    "com.neon.api#CreateProjectBranchDataApiRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4773,10 +4773,10 @@
         "smithy.api#documentation": "Neon Data API created successfully"
       }
     },
-    "com.neon.api#CreateProjectBranchDataAPI": {
+    "com.neon.api#CreateProjectBranchDataApi": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#CreateProjectBranchDataAPIRequest"
+        "target": "com.neon.api#CreateProjectBranchDataApiRequest"
       },
       "output": {
         "target": "com.neon.api#DataAPICreateResponse"
@@ -4790,7 +4790,7 @@
         "smithy.api#documentation": "Create Neon Data API\n\nCreates a new instance of Neon Data API in the specified branch.\nThe Data API exposes a REST interface over the branch database. The `database_name` path parameter determines which database the API serves."
       }
     },
-    "com.neon.api#UpdateProjectBranchDataAPIRequest": {
+    "com.neon.api#UpdateProjectBranchDataApiRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4828,7 +4828,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#UpdateProjectBranchDataAPIResponse": {
+    "com.neon.api#UpdateProjectBranchDataApiResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -4843,13 +4843,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.neon.api#UpdateProjectBranchDataAPI": {
+    "com.neon.api#UpdateProjectBranchDataApi": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#UpdateProjectBranchDataAPIRequest"
+        "target": "com.neon.api#UpdateProjectBranchDataApiRequest"
       },
       "output": {
-        "target": "com.neon.api#UpdateProjectBranchDataAPIResponse"
+        "target": "com.neon.api#UpdateProjectBranchDataApiResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4860,7 +4860,7 @@
         "smithy.api#documentation": "Update Neon Data API\n\nUpdates the Neon Data API configuration for the specified branch.\nYou can optionally provide settings to update the Data API configuration.\nThe schema cache is always refreshed as part of this operation."
       }
     },
-    "com.neon.api#DeleteProjectBranchDataAPIRequest": {
+    "com.neon.api#DeleteProjectBranchDataApiRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4892,7 +4892,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#DeleteProjectBranchDataAPIResponse": {
+    "com.neon.api#DeleteProjectBranchDataApiResponse": {
       "type": "structure",
       "members": {
         "body": {
@@ -4907,13 +4907,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.neon.api#DeleteProjectBranchDataAPI": {
+    "com.neon.api#DeleteProjectBranchDataApi": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#DeleteProjectBranchDataAPIRequest"
+        "target": "com.neon.api#DeleteProjectBranchDataApiRequest"
       },
       "output": {
-        "target": "com.neon.api#DeleteProjectBranchDataAPIResponse"
+        "target": "com.neon.api#DeleteProjectBranchDataApiResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -5471,7 +5471,7 @@
         "smithy.api#documentation": "Delete domain from redirect_uri whitelist\n\nRemoves a domain from the redirect URI whitelist for the specified branch.\nAfter removal, the domain can no longer be used as a redirect target after authentication."
       }
     },
-    "com.neon.api#CreateNeonAuthProviderSDKKeysRequest": {
+    "com.neon.api#CreateNeonAuthProviderSdkKeysRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5492,10 +5492,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#CreateNeonAuthProviderSDKKeys": {
+    "com.neon.api#CreateNeonAuthProviderSdkKeys": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#CreateNeonAuthProviderSDKKeysRequest"
+        "target": "com.neon.api#CreateNeonAuthProviderSdkKeysRequest"
       },
       "output": {
         "target": "com.neon.api#NeonAuthCreateIntegrationResponse"
@@ -6661,7 +6661,7 @@
         "smithy.api#documentation": "Update email provider configuration\n\nUpdates the email provider configuration for the specified branch's Neon Auth integration.\nThe email provider handles transactional messages such as verification emails and password reset links.\n\nPartial `standard` updates — omitting fields to keep their stored values — are supported only for\nBetter Auth integrations, which merge omitted fields server-side. Legacy Stack Auth integrations do\nnot merge and require all six `standard` fields (`host`, `port`, `username`, `password`,\n`sender_email`, `sender_name`) on every update; a partial `standard` body is rejected with 400."
       }
     },
-    "com.neon.api#GetConnectionURIRequest": {
+    "com.neon.api#GetConnectionUriRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -6727,10 +6727,10 @@
       },
       "traits": {}
     },
-    "com.neon.api#GetConnectionURI": {
+    "com.neon.api#GetConnectionUri": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#GetConnectionURIRequest"
+        "target": "com.neon.api#GetConnectionUriRequest"
       },
       "output": {
         "target": "com.neon.api#ConnectionURIResponse"
@@ -9536,7 +9536,7 @@
         "smithy.api#documentation": "Set branch as default\n\nSets the specified branch as the project's default branch.\nThe default designation is automatically removed from the previous default branch.\nFor more information, see [Manage branches](https://neon.com/docs/manage/branches/)."
       }
     },
-    "com.neon.api#FinalizeRestoreBranchRequest": {
+    "com.neon.api#RestoreFinalizeBranchRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -9585,10 +9585,10 @@
       },
       "traits": {}
     },
-    "com.neon.api#FinalizeRestoreBranch": {
+    "com.neon.api#RestoreFinalizeBranch": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#FinalizeRestoreBranchRequest"
+        "target": "com.neon.api#RestoreFinalizeBranchRequest"
       },
       "output": {
         "target": "com.neon.api#OperationsResponse"
@@ -10583,7 +10583,7 @@
         "smithy.api#documentation": "Reset role password\n\nResets the password for the specified Postgres role.\nReturns a new password and operations. The new password is ready to use when the last operation finishes.\nThe old password remains valid until last operation finishes.\nConnections to the compute endpoint are dropped. If idle,\nthe compute endpoint becomes active for a short period of time.\n\nFor related information, see [Manage roles](https://neon.com/docs/manage/roles/)."
       }
     },
-    "com.neon.api#ListProjectVPCEndpointsRequest": {
+    "com.neon.api#ListProjectVpcEndpointsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10641,10 +10641,10 @@
         "smithy.api#documentation": "List of VPC endpoints returned by the request."
       }
     },
-    "com.neon.api#ListProjectVPCEndpoints": {
+    "com.neon.api#ListProjectVpcEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#ListProjectVPCEndpointsRequest"
+        "target": "com.neon.api#ListProjectVpcEndpointsRequest"
       },
       "output": {
         "target": "com.neon.api#VPCEndpointsResponse"
@@ -10706,7 +10706,7 @@
         "smithy.api#documentation": "Set VPC endpoint restriction\n\nSets or updates a VPC endpoint restriction for a Neon project.\nWhen a VPC endpoint restriction is set, the project only accepts connections\nfrom the specified VPC.\nA VPC endpoint can be set as a restriction only after it is assigned to the\nparent organization of the Neon project."
       }
     },
-    "com.neon.api#DeleteProjectVPCEndpointRequest": {
+    "com.neon.api#DeleteProjectVpcEndpointRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -10730,10 +10730,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#DeleteProjectVPCEndpoint": {
+    "com.neon.api#DeleteProjectVpcEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#DeleteProjectVPCEndpointRequest"
+        "target": "com.neon.api#DeleteProjectVpcEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -13406,7 +13406,7 @@
         "smithy.api#documentation": "Transfer projects between organizations\n\nTransfers selected projects, identified by their IDs, from your organization to another specified organization."
       }
     },
-    "com.neon.api#ListOrganizationVPCEndpointsAllRegionsRequest": {
+    "com.neon.api#ListOrganizationVpcEndpointsAllRegionsRequest": {
       "type": "structure",
       "members": {
         "org_id": {
@@ -13471,10 +13471,10 @@
         "smithy.api#documentation": "VPC endpoints associated with the region."
       }
     },
-    "com.neon.api#ListOrganizationVPCEndpointsAllRegions": {
+    "com.neon.api#ListOrganizationVpcEndpointsAllRegions": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#ListOrganizationVPCEndpointsAllRegionsRequest"
+        "target": "com.neon.api#ListOrganizationVpcEndpointsAllRegionsRequest"
       },
       "output": {
         "target": "com.neon.api#VPCEndpointsWithRegionResponse"
@@ -13488,7 +13488,7 @@
         "smithy.api#documentation": "List VPC endpoints across all regions\n\nRetrieves the list of VPC endpoints for the specified Neon organization across all regions."
       }
     },
-    "com.neon.api#ListOrganizationVPCEndpointsRequest": {
+    "com.neon.api#ListOrganizationVpcEndpointsRequest": {
       "type": "structure",
       "members": {
         "org_id": {
@@ -13512,10 +13512,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#ListOrganizationVPCEndpoints": {
+    "com.neon.api#ListOrganizationVpcEndpoints": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#ListOrganizationVPCEndpointsRequest"
+        "target": "com.neon.api#ListOrganizationVpcEndpointsRequest"
       },
       "output": {
         "target": "com.neon.api#VPCEndpointsResponse"
@@ -13529,7 +13529,7 @@
         "smithy.api#documentation": "List VPC endpoints\n\nRetrieves the list of VPC endpoints for the specified Neon organization."
       }
     },
-    "com.neon.api#GetOrganizationVPCEndpointDetailsRequest": {
+    "com.neon.api#GetOrganizationVpcEndpointDetailsRequest": {
       "type": "structure",
       "members": {
         "org_id": {
@@ -13611,10 +13611,10 @@
         "smithy.api#documentation": "A list of example projects that are restricted to use this VPC endpoint.\nThere are at most 3 projects in the list, even if more projects are restricted.\n"
       }
     },
-    "com.neon.api#GetOrganizationVPCEndpointDetails": {
+    "com.neon.api#GetOrganizationVpcEndpointDetails": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#GetOrganizationVPCEndpointDetailsRequest"
+        "target": "com.neon.api#GetOrganizationVpcEndpointDetailsRequest"
       },
       "output": {
         "target": "com.neon.api#VPCEndpointDetails"
@@ -13684,7 +13684,7 @@
         "smithy.api#documentation": "Assign or update VPC endpoint\n\nAssigns a VPC endpoint to a Neon organization or updates its existing assignment."
       }
     },
-    "com.neon.api#DeleteOrganizationVPCEndpointRequest": {
+    "com.neon.api#DeleteOrganizationVpcEndpointRequest": {
       "type": "structure",
       "members": {
         "org_id": {
@@ -13716,10 +13716,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.neon.api#DeleteOrganizationVPCEndpoint": {
+    "com.neon.api#DeleteOrganizationVpcEndpoint": {
       "type": "operation",
       "input": {
-        "target": "com.neon.api#DeleteOrganizationVPCEndpointRequest"
+        "target": "com.neon.api#DeleteOrganizationVpcEndpointRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -17579,28 +17579,28 @@
           "target": "com.neon.api#CreateProjectTransferRequest"
         },
         {
-          "target": "com.neon.api#AcceptProjectTransferRequest"
+          "target": "com.neon.api#RequestAcceptProjectTransfer"
         },
         {
-          "target": "com.neon.api#GetProjectJWKS"
+          "target": "com.neon.api#GetProjectJwks"
         },
         {
           "target": "com.neon.api#AddProjectJWKS"
         },
         {
-          "target": "com.neon.api#DeleteProjectJWKS"
+          "target": "com.neon.api#DeleteProjectJwks"
         },
         {
-          "target": "com.neon.api#GetProjectBranchDataAPI"
+          "target": "com.neon.api#GetProjectBranchDataApi"
         },
         {
-          "target": "com.neon.api#CreateProjectBranchDataAPI"
+          "target": "com.neon.api#CreateProjectBranchDataApi"
         },
         {
-          "target": "com.neon.api#UpdateProjectBranchDataAPI"
+          "target": "com.neon.api#UpdateProjectBranchDataApi"
         },
         {
-          "target": "com.neon.api#DeleteProjectBranchDataAPI"
+          "target": "com.neon.api#DeleteProjectBranchDataApi"
         },
         {
           "target": "com.neon.api#GetNeonAuth"
@@ -17621,7 +17621,7 @@
           "target": "com.neon.api#DeleteBranchNeonAuthTrustedDomain"
         },
         {
-          "target": "com.neon.api#CreateNeonAuthProviderSDKKeys"
+          "target": "com.neon.api#CreateNeonAuthProviderSdkKeys"
         },
         {
           "target": "com.neon.api#CreateBranchNeonAuthNewUser"
@@ -17663,7 +17663,7 @@
           "target": "com.neon.api#UpdateNeonAuthEmailProvider"
         },
         {
-          "target": "com.neon.api#GetConnectionURI"
+          "target": "com.neon.api#GetConnectionUri"
         },
         {
           "target": "com.neon.api#GetNeonAuthAllowLocalhost"
@@ -17741,7 +17741,7 @@
           "target": "com.neon.api#SetDefaultProjectBranch"
         },
         {
-          "target": "com.neon.api#FinalizeRestoreBranch"
+          "target": "com.neon.api#RestoreFinalizeBranch"
         },
         {
           "target": "com.neon.api#ListProjectBranchEndpoints"
@@ -17780,13 +17780,13 @@
           "target": "com.neon.api#ResetProjectBranchRolePassword"
         },
         {
-          "target": "com.neon.api#ListProjectVPCEndpoints"
+          "target": "com.neon.api#ListProjectVpcEndpoints"
         },
         {
           "target": "com.neon.api#AssignProjectVPCEndpoint"
         },
         {
-          "target": "com.neon.api#DeleteProjectVPCEndpoint"
+          "target": "com.neon.api#DeleteProjectVpcEndpoint"
         },
         {
           "target": "com.neon.api#ListProjectEndpoints"
@@ -17864,19 +17864,19 @@
           "target": "com.neon.api#TransferProjectsFromOrgToOrg"
         },
         {
-          "target": "com.neon.api#ListOrganizationVPCEndpointsAllRegions"
+          "target": "com.neon.api#ListOrganizationVpcEndpointsAllRegions"
         },
         {
-          "target": "com.neon.api#ListOrganizationVPCEndpoints"
+          "target": "com.neon.api#ListOrganizationVpcEndpoints"
         },
         {
-          "target": "com.neon.api#GetOrganizationVPCEndpointDetails"
+          "target": "com.neon.api#GetOrganizationVpcEndpointDetails"
         },
         {
           "target": "com.neon.api#AssignOrganizationVPCEndpoint"
         },
         {
-          "target": "com.neon.api#DeleteOrganizationVPCEndpoint"
+          "target": "com.neon.api#DeleteOrganizationVpcEndpoint"
         },
         {
           "target": "com.neon.api#GetActiveRegions"

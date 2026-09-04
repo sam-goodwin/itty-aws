@@ -460,14 +460,14 @@ export const SandboxTagList = /*@__PURE__*/ S.Array(
   SandboxTag,
 ) as any as S.Schema<SandboxTagList>;
 
-export interface SandboxCreateRequest {
+export interface CreateSandboxRequest {
   appId?: string;
   definition?: Sandbox;
   environmentName?: string;
   /** *DEPRECATED* 7/16/2025 */
   tags?: SandboxTagList;
 }
-export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     definition: S.optional(Sandbox),
@@ -481,8 +481,8 @@ export const SandboxCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxCreateRequest",
-}) as any as S.Schema<SandboxCreateRequest>;
+  identifier: "CreateSandboxRequest",
+}) as any as S.Schema<CreateSandboxRequest>;
 
 /** Used for both tasks and function outputs */
 export type GenericResultGenericStatus =
@@ -544,26 +544,26 @@ export const SandboxHandleMetadata = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxHandleMetadata",
 }) as any as S.Schema<SandboxHandleMetadata>;
 
-export interface SandboxCreateResponse {
+export interface CreateSandboxResponse {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     metadata: S.optional(SandboxHandleMetadata),
   }),
 ).annotate({
-  identifier: "SandboxCreateResponse",
-}) as any as S.Schema<SandboxCreateResponse>;
+  identifier: "CreateSandboxResponse",
+}) as any as S.Schema<CreateSandboxResponse>;
 
-export interface SandboxCreateConnectTokenRequest {
+export interface CreateSandboxConnectTokenRequest {
   sandboxId?: string;
   userMetadata?: string;
   /** Uses port 8080 if unspecified. */
   port?: number;
 }
-export const SandboxCreateConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     userMetadata: S.optional(S.String),
@@ -576,29 +576,29 @@ export const SandboxCreateConnectTokenRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxCreateConnectTokenRequest",
-}) as any as S.Schema<SandboxCreateConnectTokenRequest>;
+  identifier: "CreateSandboxConnectTokenRequest",
+}) as any as S.Schema<CreateSandboxConnectTokenRequest>;
 
-export interface SandboxCreateConnectTokenResponse {
+export interface CreateSandboxConnectTokenResponse {
   url?: string;
   token?: string;
 }
-export const SandboxCreateConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxConnectTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     token: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SandboxCreateConnectTokenResponse",
-}) as any as S.Schema<SandboxCreateConnectTokenResponse>;
+  identifier: "CreateSandboxConnectTokenResponse",
+}) as any as S.Schema<CreateSandboxConnectTokenResponse>;
 
-export interface SandboxCreateConnectTokenV2Request {
+export interface CreateSandboxConnectTokenV2Request {
   sandboxId?: string;
   userMetadata?: string;
   /** Uses port 8080 if unspecified. */
   port?: number;
 }
-export const SandboxCreateConnectTokenV2Request = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxConnectTokenV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     userMetadata: S.optional(S.String),
@@ -611,21 +611,21 @@ export const SandboxCreateConnectTokenV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxCreateConnectTokenV2Request",
-}) as any as S.Schema<SandboxCreateConnectTokenV2Request>;
+  identifier: "CreateSandboxConnectTokenV2Request",
+}) as any as S.Schema<CreateSandboxConnectTokenV2Request>;
 
-export interface SandboxCreateConnectTokenV2Response {
+export interface CreateSandboxConnectTokenV2Response {
   url?: string;
   token?: string;
 }
-export const SandboxCreateConnectTokenV2Response = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxConnectTokenV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     url: S.optional(S.String),
     token: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SandboxCreateConnectTokenV2Response",
-}) as any as S.Schema<SandboxCreateConnectTokenV2Response>;
+  identifier: "CreateSandboxConnectTokenV2Response",
+}) as any as S.Schema<CreateSandboxConnectTokenV2Response>;
 
 export type StringMap2Map = { [key: string]: StringMap2 | undefined };
 export const StringMap2Map = /*@__PURE__*/ S.Record(
@@ -633,14 +633,14 @@ export const StringMap2Map = /*@__PURE__*/ S.Record(
   StringMap2,
 ) as any as S.Schema<StringMap2Map>;
 
-export interface SandboxCreateV2Request {
+export interface CreateSandboxV2Request {
   appId?: string;
   definition?: Sandbox;
   ephemeralSecrets?: StringMap2;
   tags?: SandboxTagList;
   cloudBucketMountCredentials?: StringMap2Map;
 }
-export const SandboxCreateV2Request = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     definition: S.optional(Sandbox),
@@ -655,8 +655,8 @@ export const SandboxCreateV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxCreateV2Request",
-}) as any as S.Schema<SandboxCreateV2Request>;
+  identifier: "CreateSandboxV2Request",
+}) as any as S.Schema<CreateSandboxV2Request>;
 
 export interface TunnelData {
   host?: string;
@@ -694,14 +694,14 @@ export const CommandRouterAccess = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommandRouterAccess",
 }) as any as S.Schema<CommandRouterAccess>;
 
-export interface SandboxCreateV2Response {
+export interface CreateSandboxV2Response {
   sandboxId?: string;
   tunnels?: TunnelDataList;
   taskId?: string;
   metadata?: SandboxHandleMetadata;
   commandRouterAccess?: CommandRouterAccess;
 }
-export const SandboxCreateV2Response = /*@__PURE__*/ S.suspend(() =>
+export const CreateSandboxV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     tunnels: S.optional(TunnelDataList),
@@ -710,14 +710,14 @@ export const SandboxCreateV2Response = /*@__PURE__*/ S.suspend(() =>
     commandRouterAccess: S.optional(CommandRouterAccess),
   }),
 ).annotate({
-  identifier: "SandboxCreateV2Response",
-}) as any as S.Schema<SandboxCreateV2Response>;
+  identifier: "CreateSandboxV2Response",
+}) as any as S.Schema<CreateSandboxV2Response>;
 
-export interface SandboxGetCommandRouterAccessRequest {
+export interface GetSandboxCommandRouterAccessRequest {
   sandboxId?: string;
   taskId?: string;
 }
-export const SandboxGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(
+export const GetSandboxCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       sandboxId: S.optional(S.String),
@@ -730,16 +730,16 @@ export const SandboxGetCommandRouterAccessRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "SandboxGetCommandRouterAccessRequest",
-}) as any as S.Schema<SandboxGetCommandRouterAccessRequest>;
+  identifier: "GetSandboxCommandRouterAccessRequest",
+}) as any as S.Schema<GetSandboxCommandRouterAccessRequest>;
 
-export interface SandboxGetCommandRouterAccessResponse {
+export interface GetSandboxCommandRouterAccessResponse {
   jwt?: string;
   url?: string;
   /** Worker's public IPv4 address. When set, clients should connect directly to this IP while still using the URL's hostname for TLS SNI and the HTTP/2 :authority header. */
   workerIpv4Address?: string;
 }
-export const SandboxGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(
+export const GetSandboxCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       jwt: S.optional(S.String),
@@ -747,14 +747,14 @@ export const SandboxGetCommandRouterAccessResponse = /*@__PURE__*/ S.suspend(
       workerIpv4Address: S.optional(S.String),
     }),
 ).annotate({
-  identifier: "SandboxGetCommandRouterAccessResponse",
-}) as any as S.Schema<SandboxGetCommandRouterAccessResponse>;
+  identifier: "GetSandboxCommandRouterAccessResponse",
+}) as any as S.Schema<GetSandboxCommandRouterAccessResponse>;
 
-export interface SandboxGetExitSnapshotRequest {
+export interface GetSandboxExitSnapshotRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetExitSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxExitSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -766,8 +766,8 @@ export const SandboxGetExitSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetExitSnapshotRequest",
-}) as any as S.Schema<SandboxGetExitSnapshotRequest>;
+  identifier: "GetSandboxExitSnapshotRequest",
+}) as any as S.Schema<GetSandboxExitSnapshotRequest>;
 
 export interface SandboxGetExitSnapshotResponseSuccess {
   imageId?: string;
@@ -807,26 +807,26 @@ export const SandboxGetExitSnapshotResponseError = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxGetExitSnapshotResponseError",
 }) as any as S.Schema<SandboxGetExitSnapshotResponseError>;
 
-export interface SandboxGetExitSnapshotResponse {
+export interface GetSandboxExitSnapshotResponse {
   success?: SandboxGetExitSnapshotResponseSuccess;
   pending?: SandboxGetExitSnapshotResponsePending;
   error?: SandboxGetExitSnapshotResponseError;
 }
-export const SandboxGetExitSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxExitSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(SandboxGetExitSnapshotResponseSuccess),
     pending: S.optional(SandboxGetExitSnapshotResponsePending),
     error: S.optional(SandboxGetExitSnapshotResponseError),
   }),
 ).annotate({
-  identifier: "SandboxGetExitSnapshotResponse",
-}) as any as S.Schema<SandboxGetExitSnapshotResponse>;
+  identifier: "GetSandboxExitSnapshotResponse",
+}) as any as S.Schema<GetSandboxExitSnapshotResponse>;
 
-export interface SandboxGetExitSnapshotV2Request {
+export interface GetSandboxExitSnapshotV2Request {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetExitSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxExitSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -838,30 +838,30 @@ export const SandboxGetExitSnapshotV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetExitSnapshotV2Request",
-}) as any as S.Schema<SandboxGetExitSnapshotV2Request>;
+  identifier: "GetSandboxExitSnapshotV2Request",
+}) as any as S.Schema<GetSandboxExitSnapshotV2Request>;
 
-export interface SandboxGetExitSnapshotV2Response {
+export interface GetSandboxExitSnapshotV2Response {
   success?: SandboxGetExitSnapshotResponseSuccess;
   pending?: SandboxGetExitSnapshotResponsePending;
   error?: SandboxGetExitSnapshotResponseError;
 }
-export const SandboxGetExitSnapshotV2Response = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxExitSnapshotV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     success: S.optional(SandboxGetExitSnapshotResponseSuccess),
     pending: S.optional(SandboxGetExitSnapshotResponsePending),
     error: S.optional(SandboxGetExitSnapshotResponseError),
   }),
 ).annotate({
-  identifier: "SandboxGetExitSnapshotV2Response",
-}) as any as S.Schema<SandboxGetExitSnapshotV2Response>;
+  identifier: "GetSandboxExitSnapshotV2Response",
+}) as any as S.Schema<GetSandboxExitSnapshotV2Response>;
 
-export interface SandboxGetFromNameRequest {
+export interface GetSandboxFromNameRequest {
   sandboxName?: string;
   environmentName?: string;
   appName?: string;
 }
-export const SandboxGetFromNameRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxFromNameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -874,28 +874,28 @@ export const SandboxGetFromNameRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetFromNameRequest",
-}) as any as S.Schema<SandboxGetFromNameRequest>;
+  identifier: "GetSandboxFromNameRequest",
+}) as any as S.Schema<GetSandboxFromNameRequest>;
 
-export interface SandboxGetFromNameResponse {
+export interface GetSandboxFromNameResponse {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxGetFromNameResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxFromNameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     metadata: S.optional(SandboxHandleMetadata),
   }),
 ).annotate({
-  identifier: "SandboxGetFromNameResponse",
-}) as any as S.Schema<SandboxGetFromNameResponse>;
+  identifier: "GetSandboxFromNameResponse",
+}) as any as S.Schema<GetSandboxFromNameResponse>;
 
-export interface SandboxGetFromNameV2Request {
+export interface GetSandboxFromNameV2Request {
   sandboxName?: string;
   environmentName?: string;
   appName?: string;
 }
-export const SandboxGetFromNameV2Request = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxFromNameV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxName: S.optional(S.String),
     environmentName: S.optional(S.String),
@@ -908,26 +908,26 @@ export const SandboxGetFromNameV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetFromNameV2Request",
-}) as any as S.Schema<SandboxGetFromNameV2Request>;
+  identifier: "GetSandboxFromNameV2Request",
+}) as any as S.Schema<GetSandboxFromNameV2Request>;
 
-export interface SandboxGetFromNameV2Response {
+export interface GetSandboxFromNameV2Response {
   sandboxId?: string;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxGetFromNameV2Response = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxFromNameV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     metadata: S.optional(SandboxHandleMetadata),
   }),
 ).annotate({
-  identifier: "SandboxGetFromNameV2Response",
-}) as any as S.Schema<SandboxGetFromNameV2Response>;
+  identifier: "GetSandboxFromNameV2Response",
+}) as any as S.Schema<GetSandboxFromNameV2Response>;
 
-export interface SandboxGetResourceUsageRequest {
+export interface GetSandboxResourceUsageRequest {
   sandboxId?: string;
 }
-export const SandboxGetResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }).pipe(
@@ -938,16 +938,16 @@ export const SandboxGetResourceUsageRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetResourceUsageRequest",
-}) as any as S.Schema<SandboxGetResourceUsageRequest>;
+  identifier: "GetSandboxResourceUsageRequest",
+}) as any as S.Schema<GetSandboxResourceUsageRequest>;
 
-export interface SandboxGetResourceUsageResponse {
+export interface GetSandboxResourceUsageResponse {
   cpuCoreNanosecs?: string;
   memGibNanosecs?: string;
   gpuNanosecs?: string;
   gpuType?: string;
 }
-export const SandboxGetResourceUsageResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxResourceUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cpuCoreNanosecs: S.optional(S.String),
     memGibNanosecs: S.optional(S.String),
@@ -955,16 +955,170 @@ export const SandboxGetResourceUsageResponse = /*@__PURE__*/ S.suspend(() =>
     gpuType: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SandboxGetResourceUsageResponse",
-}) as any as S.Schema<SandboxGetResourceUsageResponse>;
+  identifier: "GetSandboxResourceUsageResponse",
+}) as any as S.Schema<GetSandboxResourceUsageResponse>;
 
-export interface SandboxGetTaskIdRequest {
+export interface GetSandboxSnapshotRequest {
+  snapshotId?: string;
+}
+export const GetSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshotId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxSnapshotGet",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSandboxSnapshotRequest",
+}) as any as S.Schema<GetSandboxSnapshotRequest>;
+
+export interface SandboxSnapshotHandleMetadata {
+  isV2?: boolean;
+}
+export const SandboxSnapshotHandleMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    isV2: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SandboxSnapshotHandleMetadata",
+}) as any as S.Schema<SandboxSnapshotHandleMetadata>;
+
+export interface GetSandboxSnapshotResponse {
+  snapshotId?: string;
+  handleMetadata?: SandboxSnapshotHandleMetadata;
+}
+export const GetSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshotId: S.optional(S.String),
+    handleMetadata: S.optional(SandboxSnapshotHandleMetadata),
+  }),
+).annotate({
+  identifier: "GetSandboxSnapshotResponse",
+}) as any as S.Schema<GetSandboxSnapshotResponse>;
+
+export interface GetSandboxSnapshotFsAsyncRequest {
+  imageId?: string;
+  timeout?: number;
+}
+export const GetSandboxSnapshotFsAsyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageId: S.optional(S.String),
+    timeout: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxSnapshotFsAsyncGet",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSandboxSnapshotFsAsyncRequest",
+}) as any as S.Schema<GetSandboxSnapshotFsAsyncRequest>;
+
+export interface ImageMetadata {
+  /** The output of `python -VV. Not set if missing */
+  pythonVersionInfo?: string;
+  /** Installed python packages, as listed by by `pip list`. package name -> version. Empty if missing */
+  pythonPackages?: StringMap;
+  /** The working directory of the image, as an absolute file path. For most images, this is not set, which means to use the default workdir: - On function runners, the default is `/root` (home directory). - For image builds and sandbox environments, it is `/`. */
+  workdir?: string;
+  /** The version of glibc in this image, if any. */
+  libcVersionInfo?: string;
+  /** The builder version for/with which the image was created. */
+  imageBuilderVersion?: string;
+}
+export const ImageMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pythonVersionInfo: S.optional(S.String),
+    pythonPackages: S.optional(StringMap),
+    workdir: S.optional(S.String),
+    libcVersionInfo: S.optional(S.String),
+    imageBuilderVersion: S.optional(S.String),
+  }),
+).annotate({ identifier: "ImageMetadata" }) as any as S.Schema<ImageMetadata>;
+
+export interface GetSandboxSnapshotFsAsyncResponse {
+  imageId?: string;
+  result?: GenericResult;
+  /** Metadata may be empty since we may skip it for performance reasons. */
+  imageMetadata?: ImageMetadata;
+}
+export const GetSandboxSnapshotFsAsyncResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    imageId: S.optional(S.String),
+    result: S.optional(GenericResult),
+    imageMetadata: S.optional(ImageMetadata),
+  }),
+).annotate({
+  identifier: "GetSandboxSnapshotFsAsyncResponse",
+}) as any as S.Schema<GetSandboxSnapshotFsAsyncResponse>;
+
+export interface GetSandboxTagRequest {
+  sandboxId?: string;
+}
+export const GetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sandboxId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxTagsGet",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSandboxTagRequest",
+}) as any as S.Schema<GetSandboxTagRequest>;
+
+export interface GetSandboxTagResponse {
+  tags?: SandboxTagList;
+}
+export const GetSandboxTagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(SandboxTagList),
+  }),
+).annotate({
+  identifier: "GetSandboxTagResponse",
+}) as any as S.Schema<GetSandboxTagResponse>;
+
+export interface GetSandboxTagV2Request {
+  sandboxId?: string;
+}
+export const GetSandboxTagV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sandboxId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxTagsGetV2",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSandboxTagV2Request",
+}) as any as S.Schema<GetSandboxTagV2Request>;
+
+export interface GetSandboxTagV2Response {
+  tags?: SandboxTagList;
+}
+export const GetSandboxTagV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tags: S.optional(SandboxTagList),
+  }),
+).annotate({
+  identifier: "GetSandboxTagV2Response",
+}) as any as S.Schema<GetSandboxTagV2Response>;
+
+export interface GetSandboxTaskIdRequest {
   sandboxId?: string;
   timeout?: number;
   /** Legacy clients do not provide a timeout. New clients must always provide a timeout. */
   waitUntilReady?: boolean;
 }
-export const SandboxGetTaskIdRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTaskIdRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -977,30 +1131,30 @@ export const SandboxGetTaskIdRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetTaskIdRequest",
-}) as any as S.Schema<SandboxGetTaskIdRequest>;
+  identifier: "GetSandboxTaskIdRequest",
+}) as any as S.Schema<GetSandboxTaskIdRequest>;
 
-export interface SandboxGetTaskIdResponse {
+export interface GetSandboxTaskIdResponse {
   taskId?: string;
   /** This is None if the sandbox was terminated before a task could be scheduled. */
   taskResult?: GenericResult;
 }
-export const SandboxGetTaskIdResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTaskIdResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     taskResult: S.optional(GenericResult),
   }),
 ).annotate({
-  identifier: "SandboxGetTaskIdResponse",
-}) as any as S.Schema<SandboxGetTaskIdResponse>;
+  identifier: "GetSandboxTaskIdResponse",
+}) as any as S.Schema<GetSandboxTaskIdResponse>;
 
-export interface SandboxGetTaskIdV2Request {
+export interface GetSandboxTaskIdV2Request {
   sandboxId?: string;
   timeout?: number;
   /** Legacy clients do not provide a timeout. New clients must always provide a timeout. */
   waitUntilReady?: boolean;
 }
-export const SandboxGetTaskIdV2Request = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTaskIdV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1013,28 +1167,28 @@ export const SandboxGetTaskIdV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetTaskIdV2Request",
-}) as any as S.Schema<SandboxGetTaskIdV2Request>;
+  identifier: "GetSandboxTaskIdV2Request",
+}) as any as S.Schema<GetSandboxTaskIdV2Request>;
 
-export interface SandboxGetTaskIdV2Response {
+export interface GetSandboxTaskIdV2Response {
   taskId?: string;
   /** This is None if the sandbox was terminated before a task could be scheduled. */
   taskResult?: GenericResult;
 }
-export const SandboxGetTaskIdV2Response = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTaskIdV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     taskId: S.optional(S.String),
     taskResult: S.optional(GenericResult),
   }),
 ).annotate({
-  identifier: "SandboxGetTaskIdV2Response",
-}) as any as S.Schema<SandboxGetTaskIdV2Response>;
+  identifier: "GetSandboxTaskIdV2Response",
+}) as any as S.Schema<GetSandboxTaskIdV2Response>;
 
-export interface SandboxGetTunnelsRequest {
+export interface GetSandboxTunnelRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1046,27 +1200,27 @@ export const SandboxGetTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetTunnelsRequest",
-}) as any as S.Schema<SandboxGetTunnelsRequest>;
+  identifier: "GetSandboxTunnelRequest",
+}) as any as S.Schema<GetSandboxTunnelRequest>;
 
-export interface SandboxGetTunnelsResponse {
+export interface GetSandboxTunnelResponse {
   result?: GenericResult;
   tunnels?: TunnelDataList;
 }
-export const SandboxGetTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTunnelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     tunnels: S.optional(TunnelDataList),
   }),
 ).annotate({
-  identifier: "SandboxGetTunnelsResponse",
-}) as any as S.Schema<SandboxGetTunnelsResponse>;
+  identifier: "GetSandboxTunnelResponse",
+}) as any as S.Schema<GetSandboxTunnelResponse>;
 
-export interface SandboxGetTunnelsV2Request {
+export interface GetSandboxTunnelV2Request {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxGetTunnelsV2Request = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTunnelV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1078,30 +1232,30 @@ export const SandboxGetTunnelsV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxGetTunnelsV2Request",
-}) as any as S.Schema<SandboxGetTunnelsV2Request>;
+  identifier: "GetSandboxTunnelV2Request",
+}) as any as S.Schema<GetSandboxTunnelV2Request>;
 
-export interface SandboxGetTunnelsV2Response {
+export interface GetSandboxTunnelV2Response {
   result?: GenericResult;
   tunnels?: TunnelDataList;
 }
-export const SandboxGetTunnelsV2Response = /*@__PURE__*/ S.suspend(() =>
+export const GetSandboxTunnelV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     tunnels: S.optional(TunnelDataList),
   }),
 ).annotate({
-  identifier: "SandboxGetTunnelsV2Response",
-}) as any as S.Schema<SandboxGetTunnelsV2Response>;
+  identifier: "GetSandboxTunnelV2Response",
+}) as any as S.Schema<GetSandboxTunnelV2Response>;
 
-export interface SandboxListRequest {
+export interface ListSandboxRequest {
   appId?: string;
   beforeTimestamp?: number;
   environmentName?: string;
   includeFinished?: boolean;
   tags?: SandboxTagList;
 }
-export const SandboxListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     beforeTimestamp: S.optional(S.Number),
@@ -1116,8 +1270,8 @@ export const SandboxListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxListRequest",
-}) as any as S.Schema<SandboxListRequest>;
+  identifier: "ListSandboxRequest",
+}) as any as S.Schema<ListSandboxRequest>;
 
 /** ENOSPC: No space left on device */
 export type TaskSnapshotBehavior =
@@ -1233,25 +1387,25 @@ export const SandboxInfoList = /*@__PURE__*/ S.Array(
   SandboxInfo,
 ) as any as S.Schema<SandboxInfoList>;
 
-export interface SandboxListResponse {
+export interface ListSandboxResponse {
   sandboxes?: SandboxInfoList;
 }
-export const SandboxListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxes: S.optional(SandboxInfoList),
   }),
 ).annotate({
-  identifier: "SandboxListResponse",
-}) as any as S.Schema<SandboxListResponse>;
+  identifier: "ListSandboxResponse",
+}) as any as S.Schema<ListSandboxResponse>;
 
-export interface SandboxListV2Request {
+export interface ListSandboxV2Request {
   appId?: string;
   beforeTimestamp?: number;
   environmentName?: string;
   includeFinished?: boolean;
   tags?: SandboxTagList;
 }
-export const SandboxListV2Request = /*@__PURE__*/ S.suspend(() =>
+export const ListSandboxV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     appId: S.optional(S.String),
     beforeTimestamp: S.optional(S.Number),
@@ -1266,19 +1420,19 @@ export const SandboxListV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxListV2Request",
-}) as any as S.Schema<SandboxListV2Request>;
+  identifier: "ListSandboxV2Request",
+}) as any as S.Schema<ListSandboxV2Request>;
 
-export interface SandboxListV2Response {
+export interface ListSandboxV2Response {
   sandboxes?: SandboxInfoList;
 }
-export const SandboxListV2Response = /*@__PURE__*/ S.suspend(() =>
+export const ListSandboxV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxes: S.optional(SandboxInfoList),
   }),
 ).annotate({
-  identifier: "SandboxListV2Response",
-}) as any as S.Schema<SandboxListV2Response>;
+  identifier: "ListSandboxV2Response",
+}) as any as S.Schema<ListSandboxV2Response>;
 
 export type SandboxRestoreRequestSandboxNameOverrideType =
   | "SANDBOX_NAME_OVERRIDE_TYPE_UNSPECIFIED"
@@ -1287,7 +1441,7 @@ export type SandboxRestoreRequestSandboxNameOverrideType =
 export const SandboxRestoreRequestSandboxNameOverrideType =
   /*@__PURE__*/ S.String;
 
-export interface SandboxRestoreRequest {
+export interface RestoreSandboxRequest {
   snapshotId?: string;
   sandboxNameOverride?: string;
   sandboxNameOverrideType?:
@@ -1298,7 +1452,7 @@ export interface SandboxRestoreRequest {
   replaceVolumeMounts?: boolean;
   volumeMounts?: VolumeMountList;
 }
-export const SandboxRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+export const RestoreSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     sandboxNameOverride: S.optional(S.String),
@@ -1316,21 +1470,21 @@ export const SandboxRestoreRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxRestoreRequest",
-}) as any as S.Schema<SandboxRestoreRequest>;
+  identifier: "RestoreSandboxRequest",
+}) as any as S.Schema<RestoreSandboxRequest>;
 
-export interface SandboxRestoreResponse {
+export interface RestoreSandboxResponse {
   sandboxId?: string;
 }
-export const SandboxRestoreResponse = /*@__PURE__*/ S.suspend(() =>
+export const RestoreSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SandboxRestoreResponse",
-}) as any as S.Schema<SandboxRestoreResponse>;
+  identifier: "RestoreSandboxResponse",
+}) as any as S.Schema<RestoreSandboxResponse>;
 
-export interface SandboxRestoreV2Request {
+export interface RestoreSandboxV2Request {
   snapshotId?: string;
   sandboxNameOverride?: string;
   sandboxNameOverrideType?:
@@ -1338,7 +1492,7 @@ export interface SandboxRestoreV2Request {
     | (string & {});
   workerId?: string;
 }
-export const SandboxRestoreV2Request = /*@__PURE__*/ S.suspend(() =>
+export const RestoreSandboxV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     snapshotId: S.optional(S.String),
     sandboxNameOverride: S.optional(S.String),
@@ -1354,17 +1508,17 @@ export const SandboxRestoreV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxRestoreV2Request",
-}) as any as S.Schema<SandboxRestoreV2Request>;
+  identifier: "RestoreSandboxV2Request",
+}) as any as S.Schema<RestoreSandboxV2Request>;
 
-export interface SandboxRestoreV2Response {
+export interface RestoreSandboxV2Response {
   sandboxId?: string;
   tunnels?: TunnelDataList;
   taskId?: string;
   metadata?: SandboxHandleMetadata;
   commandRouterAccess?: CommandRouterAccess;
 }
-export const SandboxRestoreV2Response = /*@__PURE__*/ S.suspend(() =>
+export const RestoreSandboxV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     tunnels: S.optional(TunnelDataList),
@@ -1373,34 +1527,8 @@ export const SandboxRestoreV2Response = /*@__PURE__*/ S.suspend(() =>
     commandRouterAccess: S.optional(CommandRouterAccess),
   }),
 ).annotate({
-  identifier: "SandboxRestoreV2Response",
-}) as any as S.Schema<SandboxRestoreV2Response>;
-
-export interface SandboxSetNameRequest {
-  sandboxId?: string;
-  name?: string;
-}
-export const SandboxSetNameRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandboxId: S.optional(S.String),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxSetName",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxSetNameRequest",
-}) as any as S.Schema<SandboxSetNameRequest>;
-
-export interface SandboxSetNameResponse {}
-export const SandboxSetNameResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SandboxSetNameResponse",
-}) as any as S.Schema<SandboxSetNameResponse>;
+  identifier: "RestoreSandboxV2Response",
+}) as any as S.Schema<RestoreSandboxV2Response>;
 
 export interface SandboxSnapshotRequest {
   sandboxId?: string;
@@ -1449,28 +1577,6 @@ export const SandboxSnapshotFsRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxSnapshotFsRequest",
 }) as any as S.Schema<SandboxSnapshotFsRequest>;
 
-export interface ImageMetadata {
-  /** The output of `python -VV. Not set if missing */
-  pythonVersionInfo?: string;
-  /** Installed python packages, as listed by by `pip list`. package name -> version. Empty if missing */
-  pythonPackages?: StringMap;
-  /** The working directory of the image, as an absolute file path. For most images, this is not set, which means to use the default workdir: - On function runners, the default is `/root` (home directory). - For image builds and sandbox environments, it is `/`. */
-  workdir?: string;
-  /** The version of glibc in this image, if any. */
-  libcVersionInfo?: string;
-  /** The builder version for/with which the image was created. */
-  imageBuilderVersion?: string;
-}
-export const ImageMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pythonVersionInfo: S.optional(S.String),
-    pythonPackages: S.optional(StringMap),
-    workdir: S.optional(S.String),
-    libcVersionInfo: S.optional(S.String),
-    imageBuilderVersion: S.optional(S.String),
-  }),
-).annotate({ identifier: "ImageMetadata" }) as any as S.Schema<ImageMetadata>;
-
 export interface SandboxSnapshotFsResponse {
   imageId?: string;
   result?: GenericResult;
@@ -1515,112 +1621,6 @@ export const SandboxSnapshotFsAsyncResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxSnapshotFsAsyncResponse",
 }) as any as S.Schema<SandboxSnapshotFsAsyncResponse>;
 
-export interface SandboxSnapshotFsAsyncGetRequest {
-  imageId?: string;
-  timeout?: number;
-}
-export const SandboxSnapshotFsAsyncGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageId: S.optional(S.String),
-    timeout: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxSnapshotFsAsyncGet",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxSnapshotFsAsyncGetRequest",
-}) as any as S.Schema<SandboxSnapshotFsAsyncGetRequest>;
-
-export interface SandboxSnapshotFsAsyncGetResponse {
-  imageId?: string;
-  result?: GenericResult;
-  /** Metadata may be empty since we may skip it for performance reasons. */
-  imageMetadata?: ImageMetadata;
-}
-export const SandboxSnapshotFsAsyncGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    imageId: S.optional(S.String),
-    result: S.optional(GenericResult),
-    imageMetadata: S.optional(ImageMetadata),
-  }),
-).annotate({
-  identifier: "SandboxSnapshotFsAsyncGetResponse",
-}) as any as S.Schema<SandboxSnapshotFsAsyncGetResponse>;
-
-export interface SandboxSnapshotGetRequest {
-  snapshotId?: string;
-}
-export const SandboxSnapshotGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshotId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxSnapshotGet",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxSnapshotGetRequest",
-}) as any as S.Schema<SandboxSnapshotGetRequest>;
-
-export interface SandboxSnapshotHandleMetadata {
-  isV2?: boolean;
-}
-export const SandboxSnapshotHandleMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    isV2: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SandboxSnapshotHandleMetadata",
-}) as any as S.Schema<SandboxSnapshotHandleMetadata>;
-
-export interface SandboxSnapshotGetResponse {
-  snapshotId?: string;
-  handleMetadata?: SandboxSnapshotHandleMetadata;
-}
-export const SandboxSnapshotGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshotId: S.optional(S.String),
-    handleMetadata: S.optional(SandboxSnapshotHandleMetadata),
-  }),
-).annotate({
-  identifier: "SandboxSnapshotGetResponse",
-}) as any as S.Schema<SandboxSnapshotGetResponse>;
-
-export interface SandboxSnapshotWaitRequest {
-  snapshotId?: string;
-  timeout?: number;
-}
-export const SandboxSnapshotWaitRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    snapshotId: S.optional(S.String),
-    timeout: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxSnapshotWait",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxSnapshotWaitRequest",
-}) as any as S.Schema<SandboxSnapshotWaitRequest>;
-
-export interface SandboxSnapshotWaitResponse {
-  result?: GenericResult;
-}
-export const SandboxSnapshotWaitResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(GenericResult),
-  }),
-).annotate({
-  identifier: "SandboxSnapshotWaitResponse",
-}) as any as S.Schema<SandboxSnapshotWaitResponse>;
-
 export interface SandboxStdinWriteRequest {
   sandboxId?: string;
   input?: string;
@@ -1650,118 +1650,6 @@ export const SandboxStdinWriteResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SandboxStdinWriteResponse",
 }) as any as S.Schema<SandboxStdinWriteResponse>;
-
-export interface SandboxTagsGetRequest {
-  sandboxId?: string;
-}
-export const SandboxTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandboxId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxTagsGet",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxTagsGetRequest",
-}) as any as S.Schema<SandboxTagsGetRequest>;
-
-export interface SandboxTagsGetResponse {
-  tags?: SandboxTagList;
-}
-export const SandboxTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(SandboxTagList),
-  }),
-).annotate({
-  identifier: "SandboxTagsGetResponse",
-}) as any as S.Schema<SandboxTagsGetResponse>;
-
-export interface SandboxTagsGetV2Request {
-  sandboxId?: string;
-}
-export const SandboxTagsGetV2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sandboxId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxTagsGetV2",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxTagsGetV2Request",
-}) as any as S.Schema<SandboxTagsGetV2Request>;
-
-export interface SandboxTagsGetV2Response {
-  tags?: SandboxTagList;
-}
-export const SandboxTagsGetV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tags: S.optional(SandboxTagList),
-  }),
-).annotate({
-  identifier: "SandboxTagsGetV2Response",
-}) as any as S.Schema<SandboxTagsGetV2Response>;
-
-export interface SandboxTagsSetRequest {
-  environmentName?: string;
-  sandboxId?: string;
-  tags?: SandboxTagList;
-}
-export const SandboxTagsSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentName: S.optional(S.String),
-    sandboxId: S.optional(S.String),
-    tags: S.optional(SandboxTagList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxTagsSet",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxTagsSetRequest",
-}) as any as S.Schema<SandboxTagsSetRequest>;
-
-export interface SandboxTagsSetResponse {}
-export const SandboxTagsSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SandboxTagsSetResponse",
-}) as any as S.Schema<SandboxTagsSetResponse>;
-
-export interface SandboxTagsSetV2Request {
-  environmentName?: string;
-  sandboxId?: string;
-  tags?: SandboxTagList;
-}
-export const SandboxTagsSetV2Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentName: S.optional(S.String),
-    sandboxId: S.optional(S.String),
-    tags: S.optional(SandboxTagList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/SandboxTagsSetV2",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SandboxTagsSetV2Request",
-}) as any as S.Schema<SandboxTagsSetV2Request>;
-
-export interface SandboxTagsSetV2Response {}
-export const SandboxTagsSetV2Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SandboxTagsSetV2Response",
-}) as any as S.Schema<SandboxTagsSetV2Response>;
 
 export interface SandboxTerminateRequest {
   sandboxId?: string;
@@ -1819,11 +1707,93 @@ export const SandboxTerminateV2Response = /*@__PURE__*/ S.suspend(() =>
   identifier: "SandboxTerminateV2Response",
 }) as any as S.Schema<SandboxTerminateV2Response>;
 
-export interface SandboxWaitRequest {
+export interface SetSandboxNameRequest {
+  sandboxId?: string;
+  name?: string;
+}
+export const SetSandboxNameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sandboxId: S.optional(S.String),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxSetName",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetSandboxNameRequest",
+}) as any as S.Schema<SetSandboxNameRequest>;
+
+export interface SetSandboxNameResponse {}
+export const SetSandboxNameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SetSandboxNameResponse",
+}) as any as S.Schema<SetSandboxNameResponse>;
+
+export interface SetSandboxTagRequest {
+  environmentName?: string;
+  sandboxId?: string;
+  tags?: SandboxTagList;
+}
+export const SetSandboxTagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentName: S.optional(S.String),
+    sandboxId: S.optional(S.String),
+    tags: S.optional(SandboxTagList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxTagsSet",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetSandboxTagRequest",
+}) as any as S.Schema<SetSandboxTagRequest>;
+
+export interface SetSandboxTagResponse {}
+export const SetSandboxTagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SetSandboxTagResponse",
+}) as any as S.Schema<SetSandboxTagResponse>;
+
+export interface SetSandboxTagV2Request {
+  environmentName?: string;
+  sandboxId?: string;
+  tags?: SandboxTagList;
+}
+export const SetSandboxTagV2Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentName: S.optional(S.String),
+    sandboxId: S.optional(S.String),
+    tags: S.optional(SandboxTagList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxTagsSetV2",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SetSandboxTagV2Request",
+}) as any as S.Schema<SetSandboxTagV2Request>;
+
+export interface SetSandboxTagV2Response {}
+export const SetSandboxTagV2Response = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SetSandboxTagV2Response",
+}) as any as S.Schema<SetSandboxTagV2Response>;
+
+export interface WaitSandboxRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxWaitRequest = /*@__PURE__*/ S.suspend(() =>
+export const WaitSandboxRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1835,27 +1805,57 @@ export const SandboxWaitRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxWaitRequest",
-}) as any as S.Schema<SandboxWaitRequest>;
+  identifier: "WaitSandboxRequest",
+}) as any as S.Schema<WaitSandboxRequest>;
 
-export interface SandboxWaitResponse {
+export interface WaitSandboxResponse {
   result?: GenericResult;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxWaitResponse = /*@__PURE__*/ S.suspend(() =>
+export const WaitSandboxResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     metadata: S.optional(SandboxHandleMetadata),
   }),
 ).annotate({
-  identifier: "SandboxWaitResponse",
-}) as any as S.Schema<SandboxWaitResponse>;
+  identifier: "WaitSandboxResponse",
+}) as any as S.Schema<WaitSandboxResponse>;
 
-export interface SandboxWaitUntilReadyRequest {
+export interface WaitSandboxSnapshotRequest {
+  snapshotId?: string;
+  timeout?: number;
+}
+export const WaitSandboxSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    snapshotId: S.optional(S.String),
+    timeout: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/SandboxSnapshotWait",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "WaitSandboxSnapshotRequest",
+}) as any as S.Schema<WaitSandboxSnapshotRequest>;
+
+export interface WaitSandboxSnapshotResponse {
+  result?: GenericResult;
+}
+export const WaitSandboxSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(GenericResult),
+  }),
+).annotate({
+  identifier: "WaitSandboxSnapshotResponse",
+}) as any as S.Schema<WaitSandboxSnapshotResponse>;
+
+export interface WaitSandboxUntilReadyRequest {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
+export const WaitSandboxUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1867,25 +1867,25 @@ export const SandboxWaitUntilReadyRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxWaitUntilReadyRequest",
-}) as any as S.Schema<SandboxWaitUntilReadyRequest>;
+  identifier: "WaitSandboxUntilReadyRequest",
+}) as any as S.Schema<WaitSandboxUntilReadyRequest>;
 
-export interface SandboxWaitUntilReadyResponse {
+export interface WaitSandboxUntilReadyResponse {
   readyAt?: number;
 }
-export const SandboxWaitUntilReadyResponse = /*@__PURE__*/ S.suspend(() =>
+export const WaitSandboxUntilReadyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     readyAt: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "SandboxWaitUntilReadyResponse",
-}) as any as S.Schema<SandboxWaitUntilReadyResponse>;
+  identifier: "WaitSandboxUntilReadyResponse",
+}) as any as S.Schema<WaitSandboxUntilReadyResponse>;
 
-export interface SandboxWaitV2Request {
+export interface WaitSandboxV2Request {
   sandboxId?: string;
   timeout?: number;
 }
-export const SandboxWaitV2Request = /*@__PURE__*/ S.suspend(() =>
+export const WaitSandboxV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     sandboxId: S.optional(S.String),
     timeout: S.optional(S.Number),
@@ -1897,285 +1897,327 @@ export const SandboxWaitV2Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SandboxWaitV2Request",
-}) as any as S.Schema<SandboxWaitV2Request>;
+  identifier: "WaitSandboxV2Request",
+}) as any as S.Schema<WaitSandboxV2Request>;
 
-export interface SandboxWaitV2Response {
+export interface WaitSandboxV2Response {
   result?: GenericResult;
   metadata?: SandboxHandleMetadata;
 }
-export const SandboxWaitV2Response = /*@__PURE__*/ S.suspend(() =>
+export const WaitSandboxV2Response = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GenericResult),
     metadata: S.optional(SandboxHandleMetadata),
   }),
 ).annotate({
-  identifier: "SandboxWaitV2Response",
-}) as any as S.Schema<SandboxWaitV2Response>;
+  identifier: "WaitSandboxV2Response",
+}) as any as S.Schema<WaitSandboxV2Response>;
 
-export type SandboxCreateError = ModalOpError;
+export type CreateSandboxError = ModalOpError;
 /** Sandboxes */
-export const sandboxCreate: API.OperationMethod<
-  SandboxCreateRequest,
-  SandboxCreateResponse,
-  SandboxCreateError,
+export const createSandbox: API.OperationMethod<
+  CreateSandboxRequest,
+  CreateSandboxResponse,
+  CreateSandboxError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCreateRequest,
-  output: SandboxCreateResponse,
+  input: CreateSandboxRequest,
+  output: CreateSandboxResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxCreateConnectTokenError = ModalOpError;
-export const sandboxCreateConnectToken: API.OperationMethod<
-  SandboxCreateConnectTokenRequest,
-  SandboxCreateConnectTokenResponse,
-  SandboxCreateConnectTokenError,
+export type CreateSandboxConnectTokenError = ModalOpError;
+export const createSandboxConnectToken: API.OperationMethod<
+  CreateSandboxConnectTokenRequest,
+  CreateSandboxConnectTokenResponse,
+  CreateSandboxConnectTokenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCreateConnectTokenRequest,
-  output: SandboxCreateConnectTokenResponse,
+  input: CreateSandboxConnectTokenRequest,
+  output: CreateSandboxConnectTokenResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxCreateConnectTokenV2Error = ModalOpError;
-export const sandboxCreateConnectTokenV2: API.OperationMethod<
-  SandboxCreateConnectTokenV2Request,
-  SandboxCreateConnectTokenV2Response,
-  SandboxCreateConnectTokenV2Error,
+export type CreateSandboxConnectTokenV2Error = ModalOpError;
+export const createSandboxConnectTokenV2: API.OperationMethod<
+  CreateSandboxConnectTokenV2Request,
+  CreateSandboxConnectTokenV2Response,
+  CreateSandboxConnectTokenV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCreateConnectTokenV2Request,
-  output: SandboxCreateConnectTokenV2Response,
+  input: CreateSandboxConnectTokenV2Request,
+  output: CreateSandboxConnectTokenV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxCreateV2Error = ModalOpError;
-export const sandboxCreateV2: API.OperationMethod<
-  SandboxCreateV2Request,
-  SandboxCreateV2Response,
-  SandboxCreateV2Error,
+export type CreateSandboxV2Error = ModalOpError;
+export const createSandboxV2: API.OperationMethod<
+  CreateSandboxV2Request,
+  CreateSandboxV2Response,
+  CreateSandboxV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxCreateV2Request,
-  output: SandboxCreateV2Response,
+  input: CreateSandboxV2Request,
+  output: CreateSandboxV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetCommandRouterAccessError = ModalOpError;
-export const sandboxGetCommandRouterAccess: API.OperationMethod<
-  SandboxGetCommandRouterAccessRequest,
-  SandboxGetCommandRouterAccessResponse,
-  SandboxGetCommandRouterAccessError,
+export type GetSandboxCommandRouterAccessError = ModalOpError;
+export const getSandboxCommandRouterAccess: API.OperationMethod<
+  GetSandboxCommandRouterAccessRequest,
+  GetSandboxCommandRouterAccessResponse,
+  GetSandboxCommandRouterAccessError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetCommandRouterAccessRequest,
-  output: SandboxGetCommandRouterAccessResponse,
+  input: GetSandboxCommandRouterAccessRequest,
+  output: GetSandboxCommandRouterAccessResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetExitSnapshotError = ModalOpError;
-export const sandboxGetExitSnapshot: API.OperationMethod<
-  SandboxGetExitSnapshotRequest,
-  SandboxGetExitSnapshotResponse,
-  SandboxGetExitSnapshotError,
+export type GetSandboxExitSnapshotError = ModalOpError;
+export const getSandboxExitSnapshot: API.OperationMethod<
+  GetSandboxExitSnapshotRequest,
+  GetSandboxExitSnapshotResponse,
+  GetSandboxExitSnapshotError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetExitSnapshotRequest,
-  output: SandboxGetExitSnapshotResponse,
+  input: GetSandboxExitSnapshotRequest,
+  output: GetSandboxExitSnapshotResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetExitSnapshotV2Error = ModalOpError;
-export const sandboxGetExitSnapshotV2: API.OperationMethod<
-  SandboxGetExitSnapshotV2Request,
-  SandboxGetExitSnapshotV2Response,
-  SandboxGetExitSnapshotV2Error,
+export type GetSandboxExitSnapshotV2Error = ModalOpError;
+export const getSandboxExitSnapshotV2: API.OperationMethod<
+  GetSandboxExitSnapshotV2Request,
+  GetSandboxExitSnapshotV2Response,
+  GetSandboxExitSnapshotV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetExitSnapshotV2Request,
-  output: SandboxGetExitSnapshotV2Response,
+  input: GetSandboxExitSnapshotV2Request,
+  output: GetSandboxExitSnapshotV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetFromNameError = ModalOpError;
-export const sandboxGetFromName: API.OperationMethod<
-  SandboxGetFromNameRequest,
-  SandboxGetFromNameResponse,
-  SandboxGetFromNameError,
+export type GetSandboxFromNameError = ModalOpError;
+export const getSandboxFromName: API.OperationMethod<
+  GetSandboxFromNameRequest,
+  GetSandboxFromNameResponse,
+  GetSandboxFromNameError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetFromNameRequest,
-  output: SandboxGetFromNameResponse,
+  input: GetSandboxFromNameRequest,
+  output: GetSandboxFromNameResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetFromNameV2Error = ModalOpError;
-export const sandboxGetFromNameV2: API.OperationMethod<
-  SandboxGetFromNameV2Request,
-  SandboxGetFromNameV2Response,
-  SandboxGetFromNameV2Error,
+export type GetSandboxFromNameV2Error = ModalOpError;
+export const getSandboxFromNameV2: API.OperationMethod<
+  GetSandboxFromNameV2Request,
+  GetSandboxFromNameV2Response,
+  GetSandboxFromNameV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetFromNameV2Request,
-  output: SandboxGetFromNameV2Response,
+  input: GetSandboxFromNameV2Request,
+  output: GetSandboxFromNameV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetResourceUsageError = ModalOpError;
-export const sandboxGetResourceUsage: API.OperationMethod<
-  SandboxGetResourceUsageRequest,
-  SandboxGetResourceUsageResponse,
-  SandboxGetResourceUsageError,
+export type GetSandboxResourceUsageError = ModalOpError;
+export const getSandboxResourceUsage: API.OperationMethod<
+  GetSandboxResourceUsageRequest,
+  GetSandboxResourceUsageResponse,
+  GetSandboxResourceUsageError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetResourceUsageRequest,
-  output: SandboxGetResourceUsageResponse,
+  input: GetSandboxResourceUsageRequest,
+  output: GetSandboxResourceUsageResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetTaskIdError = ModalOpError;
-export const sandboxGetTaskId: API.OperationMethod<
-  SandboxGetTaskIdRequest,
-  SandboxGetTaskIdResponse,
-  SandboxGetTaskIdError,
+export type GetSandboxSnapshotError = ModalOpError;
+export const getSandboxSnapshot: API.OperationMethod<
+  GetSandboxSnapshotRequest,
+  GetSandboxSnapshotResponse,
+  GetSandboxSnapshotError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetTaskIdRequest,
-  output: SandboxGetTaskIdResponse,
+  input: GetSandboxSnapshotRequest,
+  output: GetSandboxSnapshotResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetTaskIdV2Error = ModalOpError;
+export type GetSandboxSnapshotFsAsyncError = ModalOpError;
+export const getSandboxSnapshotFsAsync: API.OperationMethod<
+  GetSandboxSnapshotFsAsyncRequest,
+  GetSandboxSnapshotFsAsyncResponse,
+  GetSandboxSnapshotFsAsyncError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSandboxSnapshotFsAsyncRequest,
+  output: GetSandboxSnapshotFsAsyncResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSandboxTagError = ModalOpError;
+export const getSandboxTag: API.OperationMethod<
+  GetSandboxTagRequest,
+  GetSandboxTagResponse,
+  GetSandboxTagError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSandboxTagRequest,
+  output: GetSandboxTagResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSandboxTagV2Error = ModalOpError;
+export const getSandboxTagV2: API.OperationMethod<
+  GetSandboxTagV2Request,
+  GetSandboxTagV2Response,
+  GetSandboxTagV2Error,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSandboxTagV2Request,
+  output: GetSandboxTagV2Response,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSandboxTaskIdError = ModalOpError;
+export const getSandboxTaskId: API.OperationMethod<
+  GetSandboxTaskIdRequest,
+  GetSandboxTaskIdResponse,
+  GetSandboxTaskIdError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSandboxTaskIdRequest,
+  output: GetSandboxTaskIdResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSandboxTaskIdV2Error = ModalOpError;
 /** needed for modal container exec */
-export const sandboxGetTaskIdV2: API.OperationMethod<
-  SandboxGetTaskIdV2Request,
-  SandboxGetTaskIdV2Response,
-  SandboxGetTaskIdV2Error,
+export const getSandboxTaskIdV2: API.OperationMethod<
+  GetSandboxTaskIdV2Request,
+  GetSandboxTaskIdV2Response,
+  GetSandboxTaskIdV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetTaskIdV2Request,
-  output: SandboxGetTaskIdV2Response,
+  input: GetSandboxTaskIdV2Request,
+  output: GetSandboxTaskIdV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetTunnelsError = ModalOpError;
-export const sandboxGetTunnels: API.OperationMethod<
-  SandboxGetTunnelsRequest,
-  SandboxGetTunnelsResponse,
-  SandboxGetTunnelsError,
+export type GetSandboxTunnelError = ModalOpError;
+export const getSandboxTunnel: API.OperationMethod<
+  GetSandboxTunnelRequest,
+  GetSandboxTunnelResponse,
+  GetSandboxTunnelError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetTunnelsRequest,
-  output: SandboxGetTunnelsResponse,
+  input: GetSandboxTunnelRequest,
+  output: GetSandboxTunnelResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxGetTunnelsV2Error = ModalOpError;
-export const sandboxGetTunnelsV2: API.OperationMethod<
-  SandboxGetTunnelsV2Request,
-  SandboxGetTunnelsV2Response,
-  SandboxGetTunnelsV2Error,
+export type GetSandboxTunnelV2Error = ModalOpError;
+export const getSandboxTunnelV2: API.OperationMethod<
+  GetSandboxTunnelV2Request,
+  GetSandboxTunnelV2Response,
+  GetSandboxTunnelV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxGetTunnelsV2Request,
-  output: SandboxGetTunnelsV2Response,
+  input: GetSandboxTunnelV2Request,
+  output: GetSandboxTunnelV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxListError = ModalOpError;
-export const sandboxList: API.OperationMethod<
-  SandboxListRequest,
-  SandboxListResponse,
-  SandboxListError,
+export type ListSandboxError = ModalOpError;
+export const listSandbox: API.OperationMethod<
+  ListSandboxRequest,
+  ListSandboxResponse,
+  ListSandboxError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxListRequest,
-  output: SandboxListResponse,
+  input: ListSandboxRequest,
+  output: ListSandboxResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxListV2Error = ModalOpError;
-export const sandboxListV2: API.OperationMethod<
-  SandboxListV2Request,
-  SandboxListV2Response,
-  SandboxListV2Error,
+export type ListSandboxV2Error = ModalOpError;
+export const listSandboxV2: API.OperationMethod<
+  ListSandboxV2Request,
+  ListSandboxV2Response,
+  ListSandboxV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxListV2Request,
-  output: SandboxListV2Response,
+  input: ListSandboxV2Request,
+  output: ListSandboxV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxRestoreError = ModalOpError;
-export const sandboxRestore: API.OperationMethod<
-  SandboxRestoreRequest,
-  SandboxRestoreResponse,
-  SandboxRestoreError,
+export type RestoreSandboxError = ModalOpError;
+export const restoreSandbox: API.OperationMethod<
+  RestoreSandboxRequest,
+  RestoreSandboxResponse,
+  RestoreSandboxError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxRestoreRequest,
-  output: SandboxRestoreResponse,
+  input: RestoreSandboxRequest,
+  output: RestoreSandboxResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxRestoreV2Error = ModalOpError;
-export const sandboxRestoreV2: API.OperationMethod<
-  SandboxRestoreV2Request,
-  SandboxRestoreV2Response,
-  SandboxRestoreV2Error,
+export type RestoreSandboxV2Error = ModalOpError;
+export const restoreSandboxV2: API.OperationMethod<
+  RestoreSandboxV2Request,
+  RestoreSandboxV2Response,
+  RestoreSandboxV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxRestoreV2Request,
-  output: SandboxRestoreV2Response,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxSetNameError = ModalOpError;
-export const sandboxSetName: API.OperationMethod<
-  SandboxSetNameRequest,
-  SandboxSetNameResponse,
-  SandboxSetNameError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxSetNameRequest,
-  output: SandboxSetNameResponse,
+  input: RestoreSandboxV2Request,
+  output: RestoreSandboxV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -2223,48 +2265,6 @@ export const sandboxSnapshotFsAsync: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SandboxSnapshotFsAsyncGetError = ModalOpError;
-export const sandboxSnapshotFsAsyncGet: API.OperationMethod<
-  SandboxSnapshotFsAsyncGetRequest,
-  SandboxSnapshotFsAsyncGetResponse,
-  SandboxSnapshotFsAsyncGetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxSnapshotFsAsyncGetRequest,
-  output: SandboxSnapshotFsAsyncGetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxSnapshotGetError = ModalOpError;
-export const sandboxSnapshotGet: API.OperationMethod<
-  SandboxSnapshotGetRequest,
-  SandboxSnapshotGetResponse,
-  SandboxSnapshotGetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxSnapshotGetRequest,
-  output: SandboxSnapshotGetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxSnapshotWaitError = ModalOpError;
-export const sandboxSnapshotWait: API.OperationMethod<
-  SandboxSnapshotWaitRequest,
-  SandboxSnapshotWaitResponse,
-  SandboxSnapshotWaitError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxSnapshotWaitRequest,
-  output: SandboxSnapshotWaitResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
 export type SandboxStdinWriteError = ModalOpError;
 export const sandboxStdinWrite: API.OperationMethod<
   SandboxStdinWriteRequest,
@@ -2274,62 +2274,6 @@ export const sandboxStdinWrite: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SandboxStdinWriteRequest,
   output: SandboxStdinWriteResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxTagsGetError = ModalOpError;
-export const sandboxTagsGet: API.OperationMethod<
-  SandboxTagsGetRequest,
-  SandboxTagsGetResponse,
-  SandboxTagsGetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxTagsGetRequest,
-  output: SandboxTagsGetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxTagsGetV2Error = ModalOpError;
-export const sandboxTagsGetV2: API.OperationMethod<
-  SandboxTagsGetV2Request,
-  SandboxTagsGetV2Response,
-  SandboxTagsGetV2Error,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxTagsGetV2Request,
-  output: SandboxTagsGetV2Response,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxTagsSetError = ModalOpError;
-export const sandboxTagsSet: API.OperationMethod<
-  SandboxTagsSetRequest,
-  SandboxTagsSetResponse,
-  SandboxTagsSetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxTagsSetRequest,
-  output: SandboxTagsSetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SandboxTagsSetV2Error = ModalOpError;
-export const sandboxTagsSetV2: API.OperationMethod<
-  SandboxTagsSetV2Request,
-  SandboxTagsSetV2Response,
-  SandboxTagsSetV2Error,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SandboxTagsSetV2Request,
-  output: SandboxTagsSetV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -2363,43 +2307,99 @@ export const sandboxTerminateV2: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SandboxWaitError = ModalOpError;
-export const sandboxWait: API.OperationMethod<
-  SandboxWaitRequest,
-  SandboxWaitResponse,
-  SandboxWaitError,
+export type SetSandboxNameError = ModalOpError;
+export const setSandboxName: API.OperationMethod<
+  SetSandboxNameRequest,
+  SetSandboxNameResponse,
+  SetSandboxNameError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxWaitRequest,
-  output: SandboxWaitResponse,
+  input: SetSandboxNameRequest,
+  output: SetSandboxNameResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxWaitUntilReadyError = ModalOpError;
-export const sandboxWaitUntilReady: API.OperationMethod<
-  SandboxWaitUntilReadyRequest,
-  SandboxWaitUntilReadyResponse,
-  SandboxWaitUntilReadyError,
+export type SetSandboxTagError = ModalOpError;
+export const setSandboxTag: API.OperationMethod<
+  SetSandboxTagRequest,
+  SetSandboxTagResponse,
+  SetSandboxTagError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxWaitUntilReadyRequest,
-  output: SandboxWaitUntilReadyResponse,
+  input: SetSandboxTagRequest,
+  output: SetSandboxTagResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
 }));
 
-export type SandboxWaitV2Error = ModalOpError;
-export const sandboxWaitV2: API.OperationMethod<
-  SandboxWaitV2Request,
-  SandboxWaitV2Response,
-  SandboxWaitV2Error,
+export type SetSandboxTagV2Error = ModalOpError;
+export const setSandboxTagV2: API.OperationMethod<
+  SetSandboxTagV2Request,
+  SetSandboxTagV2Response,
+  SetSandboxTagV2Error,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SandboxWaitV2Request,
-  output: SandboxWaitV2Response,
+  input: SetSandboxTagV2Request,
+  output: SetSandboxTagV2Response,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type WaitSandboxError = ModalOpError;
+export const waitSandbox: API.OperationMethod<
+  WaitSandboxRequest,
+  WaitSandboxResponse,
+  WaitSandboxError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: WaitSandboxRequest,
+  output: WaitSandboxResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type WaitSandboxSnapshotError = ModalOpError;
+export const waitSandboxSnapshot: API.OperationMethod<
+  WaitSandboxSnapshotRequest,
+  WaitSandboxSnapshotResponse,
+  WaitSandboxSnapshotError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: WaitSandboxSnapshotRequest,
+  output: WaitSandboxSnapshotResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type WaitSandboxUntilReadyError = ModalOpError;
+export const waitSandboxUntilReady: API.OperationMethod<
+  WaitSandboxUntilReadyRequest,
+  WaitSandboxUntilReadyResponse,
+  WaitSandboxUntilReadyError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: WaitSandboxUntilReadyRequest,
+  output: WaitSandboxUntilReadyResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type WaitSandboxV2Error = ModalOpError;
+export const waitSandboxV2: API.OperationMethod<
+  WaitSandboxV2Request,
+  WaitSandboxV2Response,
+  WaitSandboxV2Error,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: WaitSandboxV2Request,
+  output: WaitSandboxV2Response,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

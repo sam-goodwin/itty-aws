@@ -87,29 +87,28 @@ export const UserHomeSettingsPartialUpdateRequestTabsList =
     PinnedSceneTab,
   ) as any as S.Schema<UserHomeSettingsPartialUpdateRequestTabsList>;
 
-export interface UserHomeSettingsPartialUpdateRequest {
+export interface UpdateUserHomeSettingPartialRequest {
   uuid: string;
   /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
   tabs?: UserHomeSettingsPartialUpdateRequestTabsList;
   /** Tab descriptor for the user's chosen home page — the destination opened when they click the PostHog logo or hit `/`. Set to a tab descriptor to pick a homepage, send `null` or `{}` to clear it and fall back to the project default. */
   homepage?: PinnedSceneTab | null;
 }
-export const UserHomeSettingsPartialUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uuid: S.String.pipe(T.Label()),
-      tabs: S.optional(UserHomeSettingsPartialUpdateRequestTabsList),
-      homepage: S.optional(S.NullOr(PinnedSceneTab)),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/api/user_home_settings/{uuid}/",
-        code: 200,
-      }),
-    ),
+export const UpdateUserHomeSettingPartialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uuid: S.String.pipe(T.Label()),
+    tabs: S.optional(UserHomeSettingsPartialUpdateRequestTabsList),
+    homepage: S.optional(S.NullOr(PinnedSceneTab)),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/api/user_home_settings/{uuid}/",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "UserHomeSettingsPartialUpdateRequest",
-}) as any as S.Schema<UserHomeSettingsPartialUpdateRequest>;
+  identifier: "UpdateUserHomeSettingPartialRequest",
+}) as any as S.Schema<UpdateUserHomeSettingPartialRequest>;
 
 /** Ordered list of pinned navigation tabs shown in the sidebar for the authenticated user within the current team. Send the full list to replace the existing pins; omit to leave them unchanged. */
 export type PinnedSceneTabsTabsList = Array<PinnedSceneTab>;
@@ -149,19 +148,19 @@ export const UserHomeSettingsRetrieveRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "UserHomeSettingsRetrieveRequest",
 }) as any as S.Schema<UserHomeSettingsRetrieveRequest>;
 
-export type UserHomeSettingsPartialUpdateError =
+export type UpdateUserHomeSettingPartialError =
   | BadRequest
   | Forbidden
   | NotFound
   | PosthogOpError;
 /** Update the authenticated user's pinned sidebar tabs and/or homepage for the current team. Pass `@me` as the UUID. Send `tabs` to replace the pinned tab list, `homepage` to set the home destination (any PostHog URL — dashboard, insight, search results, scene). Either field may be omitted to leave it unchanged; sending `homepage: null` or `{}` clears the homepage. */
-export const userHomeSettingsPartialUpdate: API.OperationMethod<
-  UserHomeSettingsPartialUpdateRequest,
+export const updateUserHomeSettingPartial: API.OperationMethod<
+  UpdateUserHomeSettingPartialRequest,
   PinnedSceneTabs,
-  UserHomeSettingsPartialUpdateError,
+  UpdateUserHomeSettingPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserHomeSettingsPartialUpdateRequest,
+  input: UpdateUserHomeSettingPartialRequest,
   output: PinnedSceneTabs,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,

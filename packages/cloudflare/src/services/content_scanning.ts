@@ -288,6 +288,40 @@ export const GetContentScanningResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetContentScanningResponse",
 }) as any as S.Schema<GetContentScanningResponse>;
 
+export interface GetSettingRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+}
+export const GetSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/content-upload-scan/settings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingRequest",
+}) as any as S.Schema<GetSettingRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingResponse {
+  /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
+  modified?: string | null;
+  /** Defines the status of Content Scanning. */
+  value?: string | null;
+}
+export const GetSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.NullOr(S.String)),
+    value: S.optional(S.NullOr(S.String)),
+  }),
+).annotate({
+  identifier: "GetSettingResponse",
+}) as any as S.Schema<GetSettingResponse>;
+
 export interface ListPayloadsRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -328,40 +362,6 @@ export const ListPayloadsResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ListPayloadsResponse",
 }) as any as S.Schema<ListPayloadsResponse>;
-
-export interface SettingsGetRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-}
-export const SettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/content-upload-scan/settings",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsGetRequest",
-}) as any as S.Schema<SettingsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsGetResponse {
-  /** Defines the last modification date (ISO 8601) of the Content Scanning status. */
-  modified?: string | null;
-  /** Defines the status of Content Scanning. */
-  value?: string | null;
-}
-export const SettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.NullOr(S.String)),
-    value: S.optional(S.NullOr(S.String)),
-  }),
-).annotate({
-  identifier: "SettingsGetResponse",
-}) as any as S.Schema<SettingsGetResponse>;
 
 export type UpdateRequestValue = "enabled" | "disabled";
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
@@ -525,6 +525,21 @@ export const getContentScanning: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetSettingError = Forbidden | CloudflareOpError;
+/** Retrieve the current status of Content Scanning. */
+export const getSetting: API.OperationMethod<
+  GetSettingRequest,
+  GetSettingResponse,
+  GetSettingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingRequest,
+  output: GetSettingResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ListPayloadsError =
   | ContentScanningNotEnabled
   | Forbidden
@@ -553,21 +568,6 @@ export const listPayloads: API.PaginatedOperationMethod<
   cloudflarePaginate,
 ) as any;
 
-export type SettingsGetError = Forbidden | CloudflareOpError;
-/** Retrieve the current status of Content Scanning. */
-export const settingsGet: API.OperationMethod<
-  SettingsGetRequest,
-  SettingsGetResponse,
-  SettingsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsGetRequest,
-  output: SettingsGetResponse,
-  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
 export type UpdateError =
   | ContentScanningNotEntitled
   | Forbidden
@@ -590,12 +590,6 @@ export const update: API.OperationMethod<
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
-
-// Alias of getContentScanning (same route, alternate export name upstream).
-export const getSetting = getContentScanning;
-export type GetSettingRequest = GetContentScanningRequest;
-export type GetSettingResponse = GetContentScanningResponse;
-export type GetSettingError = GetContentScanningError;
 
 // Alias of createContentScanning (same route, alternate export name upstream).
 export const putContentScanning = createContentScanning;

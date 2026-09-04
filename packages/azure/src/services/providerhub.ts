@@ -193,157 +193,6 @@ export const AuthorizedApplicationsCreateOrUpdateResponse =
     identifier: "AuthorizedApplicationsCreateOrUpdateResponse",
   }) as any as S.Schema<AuthorizedApplicationsCreateOrUpdateResponse>;
 
-export interface AuthorizedApplicationsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The application ID. */
-  applicationId: string;
-}
-export const AuthorizedApplicationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    applicationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "AuthorizedApplicationsDeleteRequest",
-}) as any as S.Schema<AuthorizedApplicationsDeleteRequest>;
-
-export interface AuthorizedApplicationsDeleteResponse {}
-export const AuthorizedApplicationsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "AuthorizedApplicationsDeleteResponse",
-}) as any as S.Schema<AuthorizedApplicationsDeleteResponse>;
-
-export interface AuthorizedApplicationsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The application ID. */
-  applicationId: string;
-}
-export const AuthorizedApplicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    applicationId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "AuthorizedApplicationsGetRequest",
-}) as any as S.Schema<AuthorizedApplicationsGetRequest>;
-
-export interface AuthorizedApplicationsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: AuthorizedApplicationProperties;
-}
-export const AuthorizedApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizedApplicationProperties),
-  }),
-).annotate({
-  identifier: "AuthorizedApplicationsGetResponse",
-}) as any as S.Schema<AuthorizedApplicationsGetResponse>;
-
-export interface AuthorizedApplicationsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const AuthorizedApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "AuthorizedApplicationsListRequest",
-}) as any as S.Schema<AuthorizedApplicationsListRequest>;
-
-/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
-export interface AuthorizedApplication {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: AuthorizedApplicationProperties;
-}
-export const AuthorizedApplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(AuthorizedApplicationProperties),
-  }),
-).annotate({
-  identifier: "AuthorizedApplication",
-}) as any as S.Schema<AuthorizedApplication>;
-
-/** The AuthorizedApplication items on this page */
-export type AuthorizedApplicationArrayResponseWithContinuationValueList =
-  Array<AuthorizedApplication>;
-export const AuthorizedApplicationArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    AuthorizedApplication,
-  ) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuationValueList>;
-
-/** Paged collection of AuthorizedApplication items */
-export interface AuthorizedApplicationArrayResponseWithContinuation {
-  /** The AuthorizedApplication items on this page */
-  value: AuthorizedApplicationArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const AuthorizedApplicationArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: AuthorizedApplicationArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizedApplicationArrayResponseWithContinuation",
-  }) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuation>;
-
 export interface CheckinManifestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -392,6 +241,101 @@ export const CheckinManifestInfo = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CheckinManifestInfo",
 }) as any as S.Schema<CheckinManifestInfo>;
+
+/** Resource tags. */
+export type ProviderMonitorSettingsCreateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProviderMonitorSettingsCreateRequestTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProviderMonitorSettingsCreateRequestTagsMap>;
+
+export interface ProviderMonitorSettingProperties {
+  /** The provisioning state. */
+  provisioningState?: ProvisioningState | (string & {});
+}
+export const ProviderMonitorSettingProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "ProviderMonitorSettingProperties",
+}) as any as S.Schema<ProviderMonitorSettingProperties>;
+
+export interface CreateProviderMonitorSettingRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the provider monitor setting. */
+  providerMonitorSettingName: string;
+  /** Resource tags. */
+  tags?: ProviderMonitorSettingsCreateRequestTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: ProviderMonitorSettingProperties;
+}
+export const CreateProviderMonitorSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    providerMonitorSettingName: S.String.pipe(T.Label()),
+    tags: S.optional(ProviderMonitorSettingsCreateRequestTagsMap),
+    location: S.String,
+    properties: S.optional(ProviderMonitorSettingProperties),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "CreateProviderMonitorSettingRequest",
+}) as any as S.Schema<CreateProviderMonitorSettingRequest>;
+
+/** Resource tags. */
+export type ProviderMonitorSettingsCreateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProviderMonitorSettingsCreateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProviderMonitorSettingsCreateResponseTagsMap>;
+
+export interface CreateProviderMonitorSettingResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProviderMonitorSettingsCreateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: ProviderMonitorSettingProperties;
+}
+export const CreateProviderMonitorSettingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      tags: S.optional(ProviderMonitorSettingsCreateResponseTagsMap),
+      location: S.String,
+      properties: S.optional(ProviderMonitorSettingProperties),
+    }),
+).annotate({
+  identifier: "CreateProviderMonitorSettingResponse",
+}) as any as S.Schema<CreateProviderMonitorSettingResponse>;
 
 /** The auto provisioning configuration. */
 export interface CustomRolloutSpecificationAutoProvisionConfig {
@@ -4217,190 +4161,6 @@ export const CustomRolloutsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "CustomRolloutsCreateOrUpdateResponse",
 }) as any as S.Schema<CustomRolloutsCreateOrUpdateResponse>;
 
-export interface CustomRolloutsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
-}
-export const CustomRolloutsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    rolloutName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomRolloutsDeleteRequest",
-}) as any as S.Schema<CustomRolloutsDeleteRequest>;
-
-export interface CustomRolloutsDeleteResponse {}
-export const CustomRolloutsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomRolloutsDeleteResponse",
-}) as any as S.Schema<CustomRolloutsDeleteResponse>;
-
-export interface CustomRolloutsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
-}
-export const CustomRolloutsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    rolloutName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomRolloutsGetRequest",
-}) as any as S.Schema<CustomRolloutsGetRequest>;
-
-export interface CustomRolloutsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the rollout. */
-  properties: CustomRolloutProperties;
-}
-export const CustomRolloutsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomRolloutProperties,
-  }),
-).annotate({
-  identifier: "CustomRolloutsGetResponse",
-}) as any as S.Schema<CustomRolloutsGetResponse>;
-
-export interface CustomRolloutsListByProviderRegistrationRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const CustomRolloutsListByProviderRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "CustomRolloutsListByProviderRegistrationRequest",
-  }) as any as S.Schema<CustomRolloutsListByProviderRegistrationRequest>;
-
-/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
-export interface CustomRollout {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the rollout. */
-  properties: CustomRolloutProperties;
-}
-export const CustomRollout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CustomRolloutProperties,
-  }),
-).annotate({ identifier: "CustomRollout" }) as any as S.Schema<CustomRollout>;
-
-/** The CustomRollout items on this page */
-export type CustomRolloutArrayResponseWithContinuationValueList =
-  Array<CustomRollout>;
-export const CustomRolloutArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    CustomRollout,
-  ) as any as S.Schema<CustomRolloutArrayResponseWithContinuationValueList>;
-
-/** Paged collection of CustomRollout items */
-export interface CustomRolloutArrayResponseWithContinuation {
-  /** The CustomRollout items on this page */
-  value: CustomRolloutArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const CustomRolloutArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: CustomRolloutArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "CustomRolloutArrayResponseWithContinuation",
-  }) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>;
-
-export interface CustomRolloutsStopRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
-}
-export const CustomRolloutsStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    rolloutName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}/stop",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "CustomRolloutsStopRequest",
-}) as any as S.Schema<CustomRolloutsStopRequest>;
-
-export interface CustomRolloutsStopResponse {}
-export const CustomRolloutsStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CustomRolloutsStopResponse",
-}) as any as S.Schema<CustomRolloutsStopResponse>;
-
 export interface ExpeditedRolloutDefinition {
   /** Indicates whether expedited rollout is enabled/disabled */
   enabled?: boolean;
@@ -4795,7 +4555,39 @@ export const DefaultRolloutsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "DefaultRolloutsCreateOrUpdateResponse",
 }) as any as S.Schema<DefaultRolloutsCreateOrUpdateResponse>;
 
-export interface DefaultRolloutsDeleteRequest {
+export interface DeleteAuthorizedApplicationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The application ID. */
+  applicationId: string;
+}
+export const DeleteAuthorizedApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    applicationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAuthorizedApplicationRequest",
+}) as any as S.Schema<DeleteAuthorizedApplicationRequest>;
+
+export interface DeleteAuthorizedApplicationResponse {}
+export const DeleteAuthorizedApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAuthorizedApplicationResponse",
+}) as any as S.Schema<DeleteAuthorizedApplicationResponse>;
+
+export interface DeleteCustomRolloutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
@@ -4803,7 +4595,39 @@ export interface DefaultRolloutsDeleteRequest {
   /** The rollout name. */
   rolloutName: string;
 }
-export const DefaultRolloutsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    rolloutName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCustomRolloutRequest",
+}) as any as S.Schema<DeleteCustomRolloutRequest>;
+
+export interface DeleteCustomRolloutResponse {}
+export const DeleteCustomRolloutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteCustomRolloutResponse",
+}) as any as S.Schema<DeleteCustomRolloutResponse>;
+
+export interface DeleteDefaultRolloutRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The rollout name. */
+  rolloutName: string;
+}
+export const DeleteDefaultRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     providerNamespace: S.String.pipe(T.Label()),
@@ -4817,167 +4641,390 @@ export const DefaultRolloutsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DefaultRolloutsDeleteRequest",
-}) as any as S.Schema<DefaultRolloutsDeleteRequest>;
+  identifier: "DeleteDefaultRolloutRequest",
+}) as any as S.Schema<DeleteDefaultRolloutRequest>;
 
-export interface DefaultRolloutsDeleteResponse {}
-export const DefaultRolloutsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteDefaultRolloutResponse {}
+export const DeleteDefaultRolloutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "DefaultRolloutsDeleteResponse",
-}) as any as S.Schema<DefaultRolloutsDeleteResponse>;
+  identifier: "DeleteDefaultRolloutResponse",
+}) as any as S.Schema<DeleteDefaultRolloutResponse>;
 
-export interface DefaultRolloutsGetRequest {
+export interface DeleteNotificationRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
+  /** The notification registration. */
+  notificationRegistrationName: string;
 }
-export const DefaultRolloutsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteNotificationRegistrationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      notificationRegistrationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteNotificationRegistrationRequest",
+}) as any as S.Schema<DeleteNotificationRegistrationRequest>;
+
+export interface DeleteNotificationRegistrationResponse {}
+export const DeleteNotificationRegistrationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteNotificationRegistrationResponse",
+}) as any as S.Schema<DeleteNotificationRegistrationResponse>;
+
+export interface DeleteOperationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const DeleteOperationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     providerNamespace: S.String.pipe(T.Label()),
-    rolloutName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
       code: 200,
       apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
-  identifier: "DefaultRolloutsGetRequest",
-}) as any as S.Schema<DefaultRolloutsGetRequest>;
+  identifier: "DeleteOperationRequest",
+}) as any as S.Schema<DeleteOperationRequest>;
 
-export interface DefaultRolloutsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the rollout. */
-  properties?: DefaultRolloutProperties;
-}
-export const DefaultRolloutsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DefaultRolloutProperties),
-  }),
+export interface DeleteOperationResponse {}
+export const DeleteOperationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "DefaultRolloutsGetResponse",
-}) as any as S.Schema<DefaultRolloutsGetResponse>;
+  identifier: "DeleteOperationResponse",
+}) as any as S.Schema<DeleteOperationResponse>;
 
-export interface DefaultRolloutsListByProviderRegistrationRequest {
+export interface DeleteProviderMonitorSettingRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the provider monitor setting. */
+  providerMonitorSettingName: string;
+}
+export const DeleteProviderMonitorSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    providerMonitorSettingName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProviderMonitorSettingRequest",
+}) as any as S.Schema<DeleteProviderMonitorSettingRequest>;
+
+export interface DeleteProviderMonitorSettingResponse {}
+export const DeleteProviderMonitorSettingResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteProviderMonitorSettingResponse",
+}) as any as S.Schema<DeleteProviderMonitorSettingResponse>;
+
+export interface DeleteProviderRegistrationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
 }
-export const DefaultRolloutsListByProviderRegistrationRequest =
+export const DeleteProviderRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteProviderRegistrationRequest",
+}) as any as S.Schema<DeleteProviderRegistrationRequest>;
+
+export interface DeleteProviderRegistrationResponse {}
+export const DeleteProviderRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteProviderRegistrationResponse",
+}) as any as S.Schema<DeleteProviderRegistrationResponse>;
+
+export interface ResourceManagementEntityInput {
+  /** The resource id. */
+  resourceId: string;
+  /** The home tenant id. */
+  homeTenantId?: string;
+  /** The location. */
+  location?: string;
+}
+export const ResourceManagementEntityInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    resourceId: S.String,
+    homeTenantId: S.optional(S.String),
+    location: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ResourceManagementEntityInput",
+}) as any as S.Schema<ResourceManagementEntityInput>;
+
+/** resource management action content. */
+export type ResourceActionsDeleteResourcesRequestResourcesList =
+  Array<ResourceManagementEntityInput>;
+export const ResourceActionsDeleteResourcesRequestResourcesList =
+  /*@__PURE__*/ S.Array(
+    ResourceManagementEntityInput,
+  ) as any as S.Schema<ResourceActionsDeleteResourcesRequestResourcesList>;
+
+export interface DeleteResourceActionResourceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource action name. */
+  resourceActionName: string;
+  /** resource management action content. */
+  resources?: ResourceActionsDeleteResourcesRequestResourcesList;
+}
+export const DeleteResourceActionResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    resourceActionName: S.String.pipe(T.Label()),
+    resources: S.optional(ResourceActionsDeleteResourcesRequestResourcesList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteResourceActionResourceRequest",
+}) as any as S.Schema<DeleteResourceActionResourceRequest>;
+
+export interface DeleteResourceActionResourceResponse {}
+export const DeleteResourceActionResourceResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteResourceActionResourceResponse",
+}) as any as S.Schema<DeleteResourceActionResourceResponse>;
+
+export interface DeleteResourceTypeRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+}
+export const DeleteResourceTypeRegistrationRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteResourceTypeRegistrationRequest",
+}) as any as S.Schema<DeleteResourceTypeRegistrationRequest>;
+
+export interface DeleteResourceTypeRegistrationResponse {}
+export const DeleteResourceTypeRegistrationResponse = /*@__PURE__*/ S.suspend(
+  () => S.Struct({}),
+).annotate({
+  identifier: "DeleteResourceTypeRegistrationResponse",
+}) as any as S.Schema<DeleteResourceTypeRegistrationResponse>;
+
+export interface DeleteSkusRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The SKU. */
+  sku: string;
+}
+export const DeleteSkusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    resourceType: S.String.pipe(T.Label()),
+    sku: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSkusRequest",
+}) as any as S.Schema<DeleteSkusRequest>;
+
+export interface DeleteSkusResponse {}
+export const DeleteSkusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSkusResponse",
+}) as any as S.Schema<DeleteSkusResponse>;
+
+export interface DeleteSkusNestedResourceTypeFirstRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The SKU. */
+  sku: string;
+}
+export const DeleteSkusNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      sku: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSkusNestedResourceTypeFirstRequest",
+}) as any as S.Schema<DeleteSkusNestedResourceTypeFirstRequest>;
+
+export interface DeleteSkusNestedResourceTypeFirstResponse {}
+export const DeleteSkusNestedResourceTypeFirstResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteSkusNestedResourceTypeFirstResponse",
+  }) as any as S.Schema<DeleteSkusNestedResourceTypeFirstResponse>;
+
+export interface DeleteSkusNestedResourceTypeSecondRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The second child resource type. */
+  nestedResourceTypeSecond: string;
+  /** The SKU. */
+  sku: string;
+}
+export const DeleteSkusNestedResourceTypeSecondRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      nestedResourceTypeSecond: S.String.pipe(T.Label()),
+      sku: S.String.pipe(T.Label()),
     }).pipe(
       T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
         code: 200,
         apiVersion: "2025-10-01",
       }),
     ),
   ).annotate({
-    identifier: "DefaultRolloutsListByProviderRegistrationRequest",
-  }) as any as S.Schema<DefaultRolloutsListByProviderRegistrationRequest>;
+    identifier: "DeleteSkusNestedResourceTypeSecondRequest",
+  }) as any as S.Schema<DeleteSkusNestedResourceTypeSecondRequest>;
 
-/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
-export interface DefaultRollout {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the rollout. */
-  properties?: DefaultRolloutProperties;
-}
-export const DefaultRollout = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(DefaultRolloutProperties),
-  }),
-).annotate({ identifier: "DefaultRollout" }) as any as S.Schema<DefaultRollout>;
+export interface DeleteSkusNestedResourceTypeSecondResponse {}
+export const DeleteSkusNestedResourceTypeSecondResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteSkusNestedResourceTypeSecondResponse",
+  }) as any as S.Schema<DeleteSkusNestedResourceTypeSecondResponse>;
 
-/** The DefaultRollout items on this page */
-export type DefaultRolloutArrayResponseWithContinuationValueList =
-  Array<DefaultRollout>;
-export const DefaultRolloutArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    DefaultRollout,
-  ) as any as S.Schema<DefaultRolloutArrayResponseWithContinuationValueList>;
-
-/** Paged collection of DefaultRollout items */
-export interface DefaultRolloutArrayResponseWithContinuation {
-  /** The DefaultRollout items on this page */
-  value: DefaultRolloutArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const DefaultRolloutArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: DefaultRolloutArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DefaultRolloutArrayResponseWithContinuation",
-  }) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>;
-
-export interface DefaultRolloutsStopRequest {
+export interface DeleteSkusNestedResourceTypeThirdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  /** The rollout name. */
-  rolloutName: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The second child resource type. */
+  nestedResourceTypeSecond: string;
+  /** The third child resource type. */
+  nestedResourceTypeThird: string;
+  /** The SKU. */
+  sku: string;
 }
-export const DefaultRolloutsStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    rolloutName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
+export const DeleteSkusNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      nestedResourceTypeSecond: S.String.pipe(T.Label()),
+      nestedResourceTypeThird: S.String.pipe(T.Label()),
+      sku: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
 ).annotate({
-  identifier: "DefaultRolloutsStopRequest",
-}) as any as S.Schema<DefaultRolloutsStopRequest>;
+  identifier: "DeleteSkusNestedResourceTypeThirdRequest",
+}) as any as S.Schema<DeleteSkusNestedResourceTypeThirdRequest>;
 
-export interface DefaultRolloutsStopResponse {}
-export const DefaultRolloutsStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DefaultRolloutsStopResponse",
-}) as any as S.Schema<DefaultRolloutsStopResponse>;
+export interface DeleteSkusNestedResourceTypeThirdResponse {}
+export const DeleteSkusNestedResourceTypeThirdResponse =
+  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+    identifier: "DeleteSkusNestedResourceTypeThirdResponse",
+  }) as any as S.Schema<DeleteSkusNestedResourceTypeThirdResponse>;
 
 export interface GenerateManifestRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -5392,6 +5439,1915 @@ export const ResourceProviderManifest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ResourceProviderManifest",
 }) as any as S.Schema<ResourceProviderManifest>;
 
+export interface GenerateProviderRegistrationOperationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const GenerateProviderRegistrationOperationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateProviderRegistrationOperationRequest",
+  }) as any as S.Schema<GenerateProviderRegistrationOperationRequest>;
+
+/** The origin. */
+export type OperationOrigins = "NotSpecified" | "User" | "System";
+export const OperationOrigins = /*@__PURE__*/ S.String;
+
+export interface OperationsDisplayDefinition {
+  /** The provider. */
+  provider: string;
+  /** The resource. */
+  resource: string;
+  /** The operation. */
+  operation: string;
+  /** The description. */
+  description: string;
+}
+export const OperationsDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.String,
+    resource: S.String,
+    operation: S.String,
+    description: S.String,
+  }),
+).annotate({
+  identifier: "OperationsDisplayDefinition",
+}) as any as S.Schema<OperationsDisplayDefinition>;
+
+/** The action type. */
+export type OperationActionType = "NotSpecified" | "Internal";
+export const OperationActionType = /*@__PURE__*/ S.String;
+
+/** Properties of an Operation. */
+export interface OperationsDefinition {
+  /** Name of the operation. */
+  name: string;
+  /** Indicates whether the operation applies to data-plane. */
+  isDataAction?: boolean;
+  /** The origin. */
+  origin?: OperationOrigins;
+  /** Display information of the operation. */
+  display: OperationsDisplayDefinition;
+  /** The action type. */
+  actionType?: OperationActionType;
+  /** Anything */
+  properties?: unknown;
+}
+export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    isDataAction: S.optional(S.Boolean),
+    origin: S.optional(OperationOrigins),
+    display: OperationsDisplayDefinition,
+    actionType: S.optional(OperationActionType),
+    properties: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "OperationsDefinition",
+}) as any as S.Schema<OperationsDefinition>;
+
+export type ProviderRegistrationsGenerateOperationsResponseBodyList =
+  Array<OperationsDefinition>;
+export const ProviderRegistrationsGenerateOperationsResponseBodyList =
+  /*@__PURE__*/ S.Array(
+    OperationsDefinition,
+  ) as any as S.Schema<ProviderRegistrationsGenerateOperationsResponseBodyList>;
+
+export type GenerateProviderRegistrationOperationResponse =
+  ProviderRegistrationsGenerateOperationsResponseBodyList;
+export const GenerateProviderRegistrationOperationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    ProviderRegistrationsGenerateOperationsResponseBodyList.pipe(
+      T.RawResponseRoot(),
+    ),
+  ).annotate({
+    identifier: "GenerateProviderRegistrationOperationResponse",
+  }) as any as S.Schema<GenerateProviderRegistrationOperationResponse>;
+
+export interface GetAuthorizedApplicationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The application ID. */
+  applicationId: string;
+}
+export const GetAuthorizedApplicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    applicationId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications/{applicationId}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAuthorizedApplicationRequest",
+}) as any as S.Schema<GetAuthorizedApplicationRequest>;
+
+export interface GetAuthorizedApplicationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: AuthorizedApplicationProperties;
+}
+export const GetAuthorizedApplicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AuthorizedApplicationProperties),
+  }),
+).annotate({
+  identifier: "GetAuthorizedApplicationResponse",
+}) as any as S.Schema<GetAuthorizedApplicationResponse>;
+
+export interface GetCustomRolloutRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The rollout name. */
+  rolloutName: string;
+}
+export const GetCustomRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    rolloutName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomRolloutRequest",
+}) as any as S.Schema<GetCustomRolloutRequest>;
+
+export interface GetCustomRolloutResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rollout. */
+  properties: CustomRolloutProperties;
+}
+export const GetCustomRolloutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: CustomRolloutProperties,
+  }),
+).annotate({
+  identifier: "GetCustomRolloutResponse",
+}) as any as S.Schema<GetCustomRolloutResponse>;
+
+export interface GetDefaultRolloutRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The rollout name. */
+  rolloutName: string;
+}
+export const GetDefaultRolloutRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    rolloutName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetDefaultRolloutRequest",
+}) as any as S.Schema<GetDefaultRolloutRequest>;
+
+export interface GetDefaultRolloutResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rollout. */
+  properties?: DefaultRolloutProperties;
+}
+export const GetDefaultRolloutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DefaultRolloutProperties),
+  }),
+).annotate({
+  identifier: "GetDefaultRolloutResponse",
+}) as any as S.Schema<GetDefaultRolloutResponse>;
+
+export interface GetManifestRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The environment supplied to the manifests operation. */
+  environment: string;
+}
+export const GetManifestRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    environment: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/manifests/{environment}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetManifestRequest",
+}) as any as S.Schema<GetManifestRequest>;
+
+/** The manifest properties. */
+export interface ManifestInfoProperties {
+  /** The manifest. */
+  manifest?: string;
+  /** The URI the manifest content is read from when the manifest is not supplied inline. */
+  manifestUri?: string;
+  /** The manifest commit identifier. */
+  commitId?: string;
+}
+export const ManifestInfoProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    manifest: S.optional(S.String),
+    manifestUri: S.optional(S.String),
+    commitId: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ManifestInfoProperties",
+}) as any as S.Schema<ManifestInfoProperties>;
+
+export interface GetManifestResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** The manifest properties. */
+  properties?: ManifestInfoProperties;
+}
+export const GetManifestResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ManifestInfoProperties),
+  }),
+).annotate({
+  identifier: "GetManifestResponse",
+}) as any as S.Schema<GetManifestResponse>;
+
+export interface GetNotificationRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The notification registration. */
+  notificationRegistrationName: string;
+}
+export const GetNotificationRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    notificationRegistrationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetNotificationRegistrationRequest",
+}) as any as S.Schema<GetNotificationRegistrationRequest>;
+
+/** The notification mode. */
+export type NotificationMode = "NotSpecified" | "EventHub" | "WebHook";
+export const NotificationMode = /*@__PURE__*/ S.String;
+
+/** The message scope. */
+export type MessageScope = "NotSpecified" | "RegisteredSubscriptions";
+export const MessageScope = /*@__PURE__*/ S.String;
+
+/** The included events. */
+export type NotificationRegistrationPropertiesIncludedEventsList =
+  Array<string>;
+export const NotificationRegistrationPropertiesIncludedEventsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NotificationRegistrationPropertiesIncludedEventsList>;
+
+/** The locations. */
+export type NotificationEndpointLocationsList = Array<string>;
+export const NotificationEndpointLocationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NotificationEndpointLocationsList>;
+
+export interface NotificationEndpoint {
+  /** The notification destination. */
+  notificationDestination?: string;
+  /** The locations. */
+  locations?: NotificationEndpointLocationsList;
+}
+export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notificationDestination: S.optional(S.String),
+    locations: S.optional(NotificationEndpointLocationsList),
+  }),
+).annotate({
+  identifier: "NotificationEndpoint",
+}) as any as S.Schema<NotificationEndpoint>;
+
+/** The notification endpoints. */
+export type NotificationRegistrationPropertiesNotificationEndpointsList =
+  Array<NotificationEndpoint>;
+export const NotificationRegistrationPropertiesNotificationEndpointsList =
+  /*@__PURE__*/ S.Array(
+    NotificationEndpoint,
+  ) as any as S.Schema<NotificationRegistrationPropertiesNotificationEndpointsList>;
+
+export interface NotificationRegistrationProperties {
+  /** The notification mode. */
+  notificationMode?: NotificationMode | (string & {});
+  /** The message scope. */
+  messageScope?: MessageScope | (string & {});
+  /** The included events. */
+  includedEvents?: NotificationRegistrationPropertiesIncludedEventsList;
+  /** The notification endpoints. */
+  notificationEndpoints?: NotificationRegistrationPropertiesNotificationEndpointsList;
+  /** The provisioned state of the resource. */
+  provisioningState?: ProvisioningState | (string & {});
+}
+export const NotificationRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    notificationMode: S.optional(NotificationMode),
+    messageScope: S.optional(MessageScope),
+    includedEvents: S.optional(
+      NotificationRegistrationPropertiesIncludedEventsList,
+    ),
+    notificationEndpoints: S.optional(
+      NotificationRegistrationPropertiesNotificationEndpointsList,
+    ),
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "NotificationRegistrationProperties",
+}) as any as S.Schema<NotificationRegistrationProperties>;
+
+export interface GetNotificationRegistrationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: NotificationRegistrationProperties;
+}
+export const GetNotificationRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(NotificationRegistrationProperties),
+  }),
+).annotate({
+  identifier: "GetNotificationRegistrationResponse",
+}) as any as S.Schema<GetNotificationRegistrationResponse>;
+
+export interface GetProviderMonitorSettingRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the provider monitor setting. */
+  providerMonitorSettingName: string;
+}
+export const GetProviderMonitorSettingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    providerMonitorSettingName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetProviderMonitorSettingRequest",
+}) as any as S.Schema<GetProviderMonitorSettingRequest>;
+
+/** Resource tags. */
+export type ProviderMonitorSettingsGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProviderMonitorSettingsGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProviderMonitorSettingsGetResponseTagsMap>;
+
+export interface GetProviderMonitorSettingResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProviderMonitorSettingsGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: ProviderMonitorSettingProperties;
+}
+export const GetProviderMonitorSettingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProviderMonitorSettingsGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(ProviderMonitorSettingProperties),
+  }),
+).annotate({
+  identifier: "GetProviderMonitorSettingResponse",
+}) as any as S.Schema<GetProviderMonitorSettingResponse>;
+
+export interface GetProviderRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const GetProviderRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetProviderRegistrationRequest",
+}) as any as S.Schema<GetProviderRegistrationRequest>;
+
+/** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+export type ProviderRegistrationsGetResponseKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct";
+export const ProviderRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
+
+export interface GetProviderRegistrationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ProviderRegistrationProperties;
+  /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+  kind?: ProviderRegistrationsGetResponseKind;
+}
+export const GetProviderRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ProviderRegistrationProperties),
+    kind: S.optional(ProviderRegistrationsGetResponseKind),
+  }),
+).annotate({
+  identifier: "GetProviderRegistrationResponse",
+}) as any as S.Schema<GetProviderRegistrationResponse>;
+
+export interface GetResourceTypeRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+}
+export const GetResourceTypeRegistrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    resourceType: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetResourceTypeRegistrationRequest",
+}) as any as S.Schema<GetResourceTypeRegistrationRequest>;
+
+/** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+export type ResourceTypeRegistrationsGetResponseKind =
+  | "Managed"
+  | "Hybrid"
+  | "Direct";
+export const ResourceTypeRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
+
+export interface GetResourceTypeRegistrationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ResourceTypeRegistrationProperties;
+  /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
+  kind?: ResourceTypeRegistrationsGetResponseKind;
+}
+export const GetResourceTypeRegistrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ResourceTypeRegistrationProperties),
+    kind: S.optional(ResourceTypeRegistrationsGetResponseKind),
+  }),
+).annotate({
+  identifier: "GetResourceTypeRegistrationResponse",
+}) as any as S.Schema<GetResourceTypeRegistrationResponse>;
+
+export interface GetSkusRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The SKU. */
+  sku: string;
+}
+export const GetSkusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+    resourceType: S.String.pipe(T.Label()),
+    sku: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({ identifier: "GetSkusRequest" }) as any as S.Schema<GetSkusRequest>;
+
+/** The locations. */
+export type SkuSettingLocationsList = Array<string>;
+export const SkuSettingLocationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuSettingLocationsList>;
+
+/** The zones. */
+export type SkuLocationInfoZonesList = Array<string>;
+export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuLocationInfoZonesList>;
+
+/** The name. */
+export type SkuZoneDetailNameList = Array<string>;
+export const SkuZoneDetailNameList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuZoneDetailNameList>;
+
+export interface SkuCapability {
+  /** The name. */
+  name: string;
+  /** The value. */
+  value: string;
+}
+export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    value: S.String,
+  }),
+).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
+
+/** The capabilities. */
+export type SkuZoneDetailCapabilitiesList = Array<SkuCapability>;
+export const SkuZoneDetailCapabilitiesList = /*@__PURE__*/ S.Array(
+  SkuCapability,
+) as any as S.Schema<SkuZoneDetailCapabilitiesList>;
+
+export interface SkuZoneDetail {
+  /** The name. */
+  name?: SkuZoneDetailNameList;
+  /** The capabilities. */
+  capabilities?: SkuZoneDetailCapabilitiesList;
+}
+export const SkuZoneDetail = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(SkuZoneDetailNameList),
+    capabilities: S.optional(SkuZoneDetailCapabilitiesList),
+  }),
+).annotate({ identifier: "SkuZoneDetail" }) as any as S.Schema<SkuZoneDetail>;
+
+/** The zone details. */
+export type SkuLocationInfoZoneDetailsList = Array<SkuZoneDetail>;
+export const SkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
+  SkuZoneDetail,
+) as any as S.Schema<SkuLocationInfoZoneDetailsList>;
+
+/** The extended locations. */
+export type SkuLocationInfoExtendedLocationsList = Array<string>;
+export const SkuLocationInfoExtendedLocationsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuLocationInfoExtendedLocationsList>;
+
+export interface SkuLocationInfo {
+  /** The location. */
+  location: string;
+  /** The zones. */
+  zones?: SkuLocationInfoZonesList;
+  /** The zone details. */
+  zoneDetails?: SkuLocationInfoZoneDetailsList;
+  /** The extended locations. */
+  extendedLocations?: SkuLocationInfoExtendedLocationsList;
+  /** The type. */
+  type?: ExtendedLocationType | (string & {});
+}
+export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    location: S.String,
+    zones: S.optional(SkuLocationInfoZonesList),
+    zoneDetails: S.optional(SkuLocationInfoZoneDetailsList),
+    extendedLocations: S.optional(SkuLocationInfoExtendedLocationsList),
+    type: S.optional(ExtendedLocationType),
+  }),
+).annotate({
+  identifier: "SkuLocationInfo",
+}) as any as S.Schema<SkuLocationInfo>;
+
+/** The location info. */
+export type SkuSettingLocationInfoList = Array<SkuLocationInfo>;
+export const SkuSettingLocationInfoList = /*@__PURE__*/ S.Array(
+  SkuLocationInfo,
+) as any as S.Schema<SkuSettingLocationInfoList>;
+
+/** The required quota ids. */
+export type SkuSettingRequiredQuotaIdsList = Array<string>;
+export const SkuSettingRequiredQuotaIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuSettingRequiredQuotaIdsList>;
+
+/** The required features. */
+export type SkuSettingRequiredFeaturesList = Array<string>;
+export const SkuSettingRequiredFeaturesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SkuSettingRequiredFeaturesList>;
+
+/** The scale type. */
+export type SkuScaleType = "None" | "Manual" | "Automatic";
+export const SkuScaleType = /*@__PURE__*/ S.String;
+
+export interface SkuCapacity {
+  /** The minimum. */
+  minimum: number;
+  /** The maximum. */
+  maximum?: number;
+  /** The default. */
+  default?: number;
+  /** The scale type. */
+  scaleType?: SkuScaleType | (string & {});
+}
+export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    minimum: S.Number,
+    maximum: S.optional(S.Number),
+    default: S.optional(S.Number),
+    scaleType: S.optional(SkuScaleType),
+  }),
+).annotate({ identifier: "SkuCapacity" }) as any as S.Schema<SkuCapacity>;
+
+export interface SkuCost {
+  /** The meter id. */
+  meterId: string;
+  /** The quantity. */
+  quantity?: number;
+  /** The extended unit. */
+  extendedUnit?: string;
+}
+export const SkuCost = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    meterId: S.String,
+    quantity: S.optional(S.Number),
+    extendedUnit: S.optional(S.String),
+  }),
+).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
+
+/** The costs. */
+export type SkuSettingCostsList = Array<SkuCost>;
+export const SkuSettingCostsList = /*@__PURE__*/ S.Array(
+  SkuCost,
+) as any as S.Schema<SkuSettingCostsList>;
+
+/** The capabilities. */
+export type SkuSettingCapabilitiesList = Array<SkuCapability>;
+export const SkuSettingCapabilitiesList = /*@__PURE__*/ S.Array(
+  SkuCapability,
+) as any as S.Schema<SkuSettingCapabilitiesList>;
+
+export interface SkuSetting {
+  /** The name. */
+  name: string;
+  /** The tier. */
+  tier?: string;
+  /** The size. */
+  size?: string;
+  /** The family. */
+  family?: string;
+  /** The kind. */
+  kind?: string;
+  /** The locations. */
+  locations?: SkuSettingLocationsList;
+  /** The location info. */
+  locationInfo?: SkuSettingLocationInfoList;
+  /** The required quota ids. */
+  requiredQuotaIds?: SkuSettingRequiredQuotaIdsList;
+  /** The required features. */
+  requiredFeatures?: SkuSettingRequiredFeaturesList;
+  /** The capacity. */
+  capacity?: SkuCapacity;
+  /** The costs. */
+  costs?: SkuSettingCostsList;
+  /** The capabilities. */
+  capabilities?: SkuSettingCapabilitiesList;
+}
+export const SkuSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    tier: S.optional(S.String),
+    size: S.optional(S.String),
+    family: S.optional(S.String),
+    kind: S.optional(S.String),
+    locations: S.optional(SkuSettingLocationsList),
+    locationInfo: S.optional(SkuSettingLocationInfoList),
+    requiredQuotaIds: S.optional(SkuSettingRequiredQuotaIdsList),
+    requiredFeatures: S.optional(SkuSettingRequiredFeaturesList),
+    capacity: S.optional(SkuCapacity),
+    costs: S.optional(SkuSettingCostsList),
+    capabilities: S.optional(SkuSettingCapabilitiesList),
+  }),
+).annotate({ identifier: "SkuSetting" }) as any as S.Schema<SkuSetting>;
+
+/** The sku settings. */
+export type ResourceTypeSkuSkuSettingsList = Array<SkuSetting>;
+export const ResourceTypeSkuSkuSettingsList = /*@__PURE__*/ S.Array(
+  SkuSetting,
+) as any as S.Schema<ResourceTypeSkuSkuSettingsList>;
+
+export interface ResourceTypeSku {
+  /** The sku settings. */
+  skuSettings: ResourceTypeSkuSkuSettingsList;
+  /** The provisioning state. */
+  provisioningState?: ProvisioningState | (string & {});
+}
+export const ResourceTypeSku = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skuSettings: ResourceTypeSkuSkuSettingsList,
+    provisioningState: S.optional(ProvisioningState),
+  }),
+).annotate({
+  identifier: "ResourceTypeSku",
+}) as any as S.Schema<ResourceTypeSku>;
+
+export interface GetSkusResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ResourceTypeSku;
+}
+export const GetSkusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ResourceTypeSku),
+  }),
+).annotate({
+  identifier: "GetSkusResponse",
+}) as any as S.Schema<GetSkusResponse>;
+
+export interface GetSkusNestedResourceTypeFirstRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The SKU. */
+  sku: string;
+}
+export const GetSkusNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      sku: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSkusNestedResourceTypeFirstRequest",
+}) as any as S.Schema<GetSkusNestedResourceTypeFirstRequest>;
+
+export interface GetSkusNestedResourceTypeFirstResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ResourceTypeSku;
+}
+export const GetSkusNestedResourceTypeFirstResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ResourceTypeSku),
+    }),
+).annotate({
+  identifier: "GetSkusNestedResourceTypeFirstResponse",
+}) as any as S.Schema<GetSkusNestedResourceTypeFirstResponse>;
+
+export interface GetSkusNestedResourceTypeSecondRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The second child resource type. */
+  nestedResourceTypeSecond: string;
+  /** The SKU. */
+  sku: string;
+}
+export const GetSkusNestedResourceTypeSecondRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      nestedResourceTypeSecond: S.String.pipe(T.Label()),
+      sku: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSkusNestedResourceTypeSecondRequest",
+}) as any as S.Schema<GetSkusNestedResourceTypeSecondRequest>;
+
+export interface GetSkusNestedResourceTypeSecondResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ResourceTypeSku;
+}
+export const GetSkusNestedResourceTypeSecondResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ResourceTypeSku),
+    }),
+).annotate({
+  identifier: "GetSkusNestedResourceTypeSecondResponse",
+}) as any as S.Schema<GetSkusNestedResourceTypeSecondResponse>;
+
+export interface GetSkusNestedResourceTypeThirdRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The second child resource type. */
+  nestedResourceTypeSecond: string;
+  /** The third child resource type. */
+  nestedResourceTypeThird: string;
+  /** The SKU. */
+  sku: string;
+}
+export const GetSkusNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      nestedResourceTypeSecond: S.String.pipe(T.Label()),
+      nestedResourceTypeThird: S.String.pipe(T.Label()),
+      sku: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSkusNestedResourceTypeThirdRequest",
+}) as any as S.Schema<GetSkusNestedResourceTypeThirdRequest>;
+
+export interface GetSkusNestedResourceTypeThirdResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ResourceTypeSku;
+}
+export const GetSkusNestedResourceTypeThirdResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ResourceTypeSku),
+    }),
+).annotate({
+  identifier: "GetSkusNestedResourceTypeThirdResponse",
+}) as any as S.Schema<GetSkusNestedResourceTypeThirdResponse>;
+
+export interface ListAuthorizedApplicationsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const ListAuthorizedApplicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    providerNamespace: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/authorizedApplications",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListAuthorizedApplicationsRequest",
+}) as any as S.Schema<ListAuthorizedApplicationsRequest>;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface AuthorizedApplication {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: AuthorizedApplicationProperties;
+}
+export const AuthorizedApplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(AuthorizedApplicationProperties),
+  }),
+).annotate({
+  identifier: "AuthorizedApplication",
+}) as any as S.Schema<AuthorizedApplication>;
+
+/** The AuthorizedApplication items on this page */
+export type AuthorizedApplicationArrayResponseWithContinuationValueList =
+  Array<AuthorizedApplication>;
+export const AuthorizedApplicationArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    AuthorizedApplication,
+  ) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuationValueList>;
+
+/** Paged collection of AuthorizedApplication items */
+export interface AuthorizedApplicationArrayResponseWithContinuation {
+  /** The AuthorizedApplication items on this page */
+  value: AuthorizedApplicationArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const AuthorizedApplicationArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: AuthorizedApplicationArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AuthorizedApplicationArrayResponseWithContinuation",
+  }) as any as S.Schema<AuthorizedApplicationArrayResponseWithContinuation>;
+
+export interface ListCustomRolloutByProviderRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const ListCustomRolloutByProviderRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListCustomRolloutByProviderRegistrationRequest",
+  }) as any as S.Schema<ListCustomRolloutByProviderRegistrationRequest>;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface CustomRollout {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rollout. */
+  properties: CustomRolloutProperties;
+}
+export const CustomRollout = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: CustomRolloutProperties,
+  }),
+).annotate({ identifier: "CustomRollout" }) as any as S.Schema<CustomRollout>;
+
+/** The CustomRollout items on this page */
+export type CustomRolloutArrayResponseWithContinuationValueList =
+  Array<CustomRollout>;
+export const CustomRolloutArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    CustomRollout,
+  ) as any as S.Schema<CustomRolloutArrayResponseWithContinuationValueList>;
+
+/** Paged collection of CustomRollout items */
+export interface CustomRolloutArrayResponseWithContinuation {
+  /** The CustomRollout items on this page */
+  value: CustomRolloutArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const CustomRolloutArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: CustomRolloutArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CustomRolloutArrayResponseWithContinuation",
+  }) as any as S.Schema<CustomRolloutArrayResponseWithContinuation>;
+
+export interface ListDefaultRolloutByProviderRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const ListDefaultRolloutByProviderRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListDefaultRolloutByProviderRegistrationRequest",
+  }) as any as S.Schema<ListDefaultRolloutByProviderRegistrationRequest>;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface DefaultRollout {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the rollout. */
+  properties?: DefaultRolloutProperties;
+}
+export const DefaultRollout = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(DefaultRolloutProperties),
+  }),
+).annotate({ identifier: "DefaultRollout" }) as any as S.Schema<DefaultRollout>;
+
+/** The DefaultRollout items on this page */
+export type DefaultRolloutArrayResponseWithContinuationValueList =
+  Array<DefaultRollout>;
+export const DefaultRolloutArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    DefaultRollout,
+  ) as any as S.Schema<DefaultRolloutArrayResponseWithContinuationValueList>;
+
+/** Paged collection of DefaultRollout items */
+export interface DefaultRolloutArrayResponseWithContinuation {
+  /** The DefaultRollout items on this page */
+  value: DefaultRolloutArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const DefaultRolloutArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: DefaultRolloutArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DefaultRolloutArrayResponseWithContinuation",
+  }) as any as S.Schema<DefaultRolloutArrayResponseWithContinuation>;
+
+export interface ListNotificationRegistrationByProviderRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const ListNotificationRegistrationByProviderRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListNotificationRegistrationByProviderRegistrationRequest",
+  }) as any as S.Schema<ListNotificationRegistrationByProviderRegistrationRequest>;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface NotificationRegistration {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: NotificationRegistrationProperties;
+}
+export const NotificationRegistration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(NotificationRegistrationProperties),
+  }),
+).annotate({
+  identifier: "NotificationRegistration",
+}) as any as S.Schema<NotificationRegistration>;
+
+/** The NotificationRegistration items on this page */
+export type NotificationRegistrationArrayResponseWithContinuationValueList =
+  Array<NotificationRegistration>;
+export const NotificationRegistrationArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    NotificationRegistration,
+  ) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuationValueList>;
+
+/** Paged collection of NotificationRegistration items */
+export interface NotificationRegistrationArrayResponseWithContinuation {
+  /** The NotificationRegistration items on this page */
+  value: NotificationRegistrationArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const NotificationRegistrationArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: NotificationRegistrationArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "NotificationRegistrationArrayResponseWithContinuation",
+  }) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuation>;
+
+export interface ListOperationByProviderRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const ListOperationByProviderRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListOperationByProviderRegistrationRequest",
+  }) as any as S.Schema<ListOperationByProviderRegistrationRequest>;
+
+export interface LocalizedOperationDisplayDefinition {
+  /** Display information of the operation. */
+  default: OperationsDisplayDefinition;
+  /** Display information of the operation for en locale. */
+  en?: OperationsDisplayDefinition;
+  /** Display information of the operation for cs locale. */
+  cs?: OperationsDisplayDefinition;
+  /** Display information of the operation for de locale. */
+  de?: OperationsDisplayDefinition;
+  /** Display information of the operation for es locale. */
+  es?: OperationsDisplayDefinition;
+  /** Display information of the operation for fr locale. */
+  fr?: OperationsDisplayDefinition;
+  /** Display information of the operation for hu locale. */
+  hu?: OperationsDisplayDefinition;
+  /** Display information of the operation for it locale. */
+  it?: OperationsDisplayDefinition;
+  /** Display information of the operation for ja locale. */
+  ja?: OperationsDisplayDefinition;
+  /** Display information of the operation for ko locale. */
+  ko?: OperationsDisplayDefinition;
+  /** Display information of the operation for nl locale. */
+  nl?: OperationsDisplayDefinition;
+  /** Display information of the operation for pl locale. */
+  pl?: OperationsDisplayDefinition;
+  /** Display information of the operation for pt-BR locale. */
+  ptBR?: OperationsDisplayDefinition;
+  /** Display information of the operation for pt-PT locale. */
+  ptPT?: OperationsDisplayDefinition;
+  /** Display information of the operation for ru locale. */
+  ru?: OperationsDisplayDefinition;
+  /** Display information of the operation for sv locale. */
+  sv?: OperationsDisplayDefinition;
+  /** Display information of the operation for zh-Hans locale. */
+  zhHans?: OperationsDisplayDefinition;
+  /** Display information of the operation for zh-Hant locale. */
+  zhHant?: OperationsDisplayDefinition;
+  /** Display information of the operation for qps-Ploc pseudo locale. */
+  qpsPloc?: OperationsDisplayDefinition;
+}
+export const LocalizedOperationDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: OperationsDisplayDefinition,
+    en: S.optional(OperationsDisplayDefinition),
+    cs: S.optional(OperationsDisplayDefinition),
+    de: S.optional(OperationsDisplayDefinition),
+    es: S.optional(OperationsDisplayDefinition),
+    fr: S.optional(OperationsDisplayDefinition),
+    hu: S.optional(OperationsDisplayDefinition),
+    it: S.optional(OperationsDisplayDefinition),
+    ja: S.optional(OperationsDisplayDefinition),
+    ko: S.optional(OperationsDisplayDefinition),
+    nl: S.optional(OperationsDisplayDefinition),
+    pl: S.optional(OperationsDisplayDefinition),
+    ptBR: S.optional(OperationsDisplayDefinition),
+    ptPT: S.optional(OperationsDisplayDefinition),
+    ru: S.optional(OperationsDisplayDefinition),
+    sv: S.optional(OperationsDisplayDefinition),
+    zhHans: S.optional(OperationsDisplayDefinition),
+    zhHant: S.optional(OperationsDisplayDefinition),
+    qpsPloc: S.optional(OperationsDisplayDefinition),
+  }),
+).annotate({
+  identifier: "LocalizedOperationDisplayDefinition",
+}) as any as S.Schema<LocalizedOperationDisplayDefinition>;
+
+export interface LocalizedOperationDefinition {
+  /** Name of the operation. */
+  name: string;
+  /** Indicates whether the operation applies to data-plane. */
+  isDataAction?: boolean;
+  /** The origin. */
+  origin?: OperationOrigins | (string & {});
+  /** Display information of the operation. */
+  display: LocalizedOperationDisplayDefinition;
+  /** The action type. */
+  actionType?: OperationActionType | (string & {});
+  /** Anything */
+  properties?: unknown;
+}
+export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    isDataAction: S.optional(S.Boolean),
+    origin: S.optional(OperationOrigins),
+    display: LocalizedOperationDisplayDefinition,
+    actionType: S.optional(OperationActionType),
+    properties: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "LocalizedOperationDefinition",
+}) as any as S.Schema<LocalizedOperationDefinition>;
+
+/** Operations content. */
+export type OperationsContentPropertiesContentsList =
+  Array<LocalizedOperationDefinition>;
+export const OperationsContentPropertiesContentsList = /*@__PURE__*/ S.Array(
+  LocalizedOperationDefinition,
+) as any as S.Schema<OperationsContentPropertiesContentsList>;
+
+export interface OperationsContentProperties {
+  /** Operations content. */
+  contents?: OperationsContentPropertiesContentsList;
+}
+export const OperationsContentProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contents: S.optional(OperationsContentPropertiesContentsList),
+  }),
+).annotate({
+  identifier: "OperationsContentProperties",
+}) as any as S.Schema<OperationsContentProperties>;
+
+export interface ListOperationByProviderRegistrationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: OperationsContentProperties;
+}
+export const ListOperationByProviderRegistrationResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(OperationsContentProperties),
+    }),
+  ).annotate({
+    identifier: "ListOperationByProviderRegistrationResponse",
+  }) as any as S.Schema<ListOperationByProviderRegistrationResponse>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ProviderHub/operations",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** The value. */
+export type OperationsDefinitionArrayResponseWithContinuationValueList =
+  Array<OperationsDefinition>;
+export const OperationsDefinitionArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    OperationsDefinition,
+  ) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuationValueList>;
+
+export interface OperationsDefinitionArrayResponseWithContinuation {
+  /** The value. */
+  value?: OperationsDefinitionArrayResponseWithContinuationValueList;
+  /** The URL to get to the next set of results, if there are any. */
+  nextLink?: string;
+}
+export const OperationsDefinitionArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.optional(
+        OperationsDefinitionArrayResponseWithContinuationValueList,
+      ),
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "OperationsDefinitionArrayResponseWithContinuation",
+  }) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>;
+
+export interface ListProviderMonitorSettingByResourceGroupRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListProviderMonitorSettingByResourceGroupRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProviderMonitorSettingByResourceGroupRequest",
+  }) as any as S.Schema<ListProviderMonitorSettingByResourceGroupRequest>;
+
+/** Resource tags. */
+export type ProviderMonitorSettingTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProviderMonitorSettingTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<ProviderMonitorSettingTagsMap>;
+
+/** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
+export interface ProviderMonitorSetting {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: ProviderMonitorSettingTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: ProviderMonitorSettingProperties;
+}
+export const ProviderMonitorSetting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(ProviderMonitorSettingTagsMap),
+    location: S.String,
+    properties: S.optional(ProviderMonitorSettingProperties),
+  }),
+).annotate({
+  identifier: "ProviderMonitorSetting",
+}) as any as S.Schema<ProviderMonitorSetting>;
+
+/** The ProviderMonitorSetting items on this page */
+export type ProviderMonitorSettingArrayResponseWithContinuationValueList =
+  Array<ProviderMonitorSetting>;
+export const ProviderMonitorSettingArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    ProviderMonitorSetting,
+  ) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuationValueList>;
+
+/** Paged collection of ProviderMonitorSetting items */
+export interface ProviderMonitorSettingArrayResponseWithContinuation {
+  /** The ProviderMonitorSetting items on this page */
+  value: ProviderMonitorSettingArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ProviderMonitorSettingArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: ProviderMonitorSettingArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ProviderMonitorSettingArrayResponseWithContinuation",
+  }) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuation>;
+
+export interface ListProviderMonitorSettingBySubscriptionRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListProviderMonitorSettingBySubscriptionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListProviderMonitorSettingBySubscriptionRequest",
+  }) as any as S.Schema<ListProviderMonitorSettingBySubscriptionRequest>;
+
+export interface ListProviderRegistrationsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+}
+export const ListProviderRegistrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListProviderRegistrationsRequest",
+}) as any as S.Schema<ListProviderRegistrationsRequest>;
+
+/** The ProviderRegistration items on this page */
+export type ProviderRegistrationArrayResponseWithContinuationValueList =
+  Array<ProviderRegistration>;
+export const ProviderRegistrationArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    ProviderRegistration,
+  ) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuationValueList>;
+
+/** Paged collection of ProviderRegistration items */
+export interface ProviderRegistrationArrayResponseWithContinuation {
+  /** The ProviderRegistration items on this page */
+  value: ProviderRegistrationArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ProviderRegistrationArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: ProviderRegistrationArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ProviderRegistrationArrayResponseWithContinuation",
+  }) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>;
+
+export interface ListResourceTypeRegistrationByProviderRegistrationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+}
+export const ListResourceTypeRegistrationByProviderRegistrationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListResourceTypeRegistrationByProviderRegistrationRequest",
+  }) as any as S.Schema<ListResourceTypeRegistrationByProviderRegistrationRequest>;
+
+/** The ResourceTypeRegistration items on this page */
+export type ResourceTypeRegistrationArrayResponseWithContinuationValueList =
+  Array<ResourceTypeRegistration>;
+export const ResourceTypeRegistrationArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    ResourceTypeRegistration,
+  ) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuationValueList>;
+
+/** Paged collection of ResourceTypeRegistration items */
+export interface ResourceTypeRegistrationArrayResponseWithContinuation {
+  /** The ResourceTypeRegistration items on this page */
+  value: ResourceTypeRegistrationArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const ResourceTypeRegistrationArrayResponseWithContinuation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: ResourceTypeRegistrationArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ResourceTypeRegistrationArrayResponseWithContinuation",
+  }) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuation>;
+
+export interface ListSkusByResourceTypeRegistrationNestedResourceTypeFirstRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+}
+export const ListSkusByResourceTypeRegistrationNestedResourceTypeFirstRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListSkusByResourceTypeRegistrationNestedResourceTypeFirstRequest",
+  }) as any as S.Schema<ListSkusByResourceTypeRegistrationNestedResourceTypeFirstRequest>;
+
+/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
+export interface SkuResource {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  properties?: ResourceTypeSku;
+}
+export const SkuResource = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ResourceTypeSku),
+  }),
+).annotate({ identifier: "SkuResource" }) as any as S.Schema<SkuResource>;
+
+/** The SkuResource items on this page */
+export type SkuResourceArrayResponseWithContinuationValueList =
+  Array<SkuResource>;
+export const SkuResourceArrayResponseWithContinuationValueList =
+  /*@__PURE__*/ S.Array(
+    SkuResource,
+  ) as any as S.Schema<SkuResourceArrayResponseWithContinuationValueList>;
+
+/** Paged collection of SkuResource items */
+export interface SkuResourceArrayResponseWithContinuation {
+  /** The SkuResource items on this page */
+  value: SkuResourceArrayResponseWithContinuationValueList;
+  /** The link to the next page of items */
+  nextLink?: string;
+}
+export const SkuResourceArrayResponseWithContinuation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: SkuResourceArrayResponseWithContinuationValueList,
+      nextLink: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SkuResourceArrayResponseWithContinuation",
+}) as any as S.Schema<SkuResourceArrayResponseWithContinuation>;
+
+export interface ListSkusByResourceTypeRegistrationNestedResourceTypeSecondRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The second child resource type. */
+  nestedResourceTypeSecond: string;
+}
+export const ListSkusByResourceTypeRegistrationNestedResourceTypeSecondRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      nestedResourceTypeSecond: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListSkusByResourceTypeRegistrationNestedResourceTypeSecondRequest",
+  }) as any as S.Schema<ListSkusByResourceTypeRegistrationNestedResourceTypeSecondRequest>;
+
+export interface ListSkusByResourceTypeRegistrationNestedResourceTypeThirdRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+  /** The first child resource type. */
+  nestedResourceTypeFirst: string;
+  /** The second child resource type. */
+  nestedResourceTypeSecond: string;
+  /** The third child resource type. */
+  nestedResourceTypeThird: string;
+}
+export const ListSkusByResourceTypeRegistrationNestedResourceTypeThirdRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+      nestedResourceTypeFirst: S.String.pipe(T.Label()),
+      nestedResourceTypeSecond: S.String.pipe(T.Label()),
+      nestedResourceTypeThird: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "ListSkusByResourceTypeRegistrationNestedResourceTypeThirdRequest",
+  }) as any as S.Schema<ListSkusByResourceTypeRegistrationNestedResourceTypeThirdRequest>;
+
+export interface ListSkusByResourceTypeRegistrationsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource provider hosted within ProviderHub. */
+  providerNamespace: string;
+  /** The resource type. */
+  resourceType: string;
+}
+export const ListSkusByResourceTypeRegistrationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      providerNamespace: S.String.pipe(T.Label()),
+      resourceType: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
+        code: 200,
+        apiVersion: "2025-10-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "ListSkusByResourceTypeRegistrationsRequest",
+  }) as any as S.Schema<ListSkusByResourceTypeRegistrationsRequest>;
+
 /** The manifest properties. */
 export interface ManifestInfoPropertiesInput {
   /** The manifest. */
@@ -5436,25 +7392,6 @@ export const ManifestsCreateOrUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ManifestsCreateOrUpdateRequest",
 }) as any as S.Schema<ManifestsCreateOrUpdateRequest>;
 
-/** The manifest properties. */
-export interface ManifestInfoProperties {
-  /** The manifest. */
-  manifest?: string;
-  /** The URI the manifest content is read from when the manifest is not supplied inline. */
-  manifestUri?: string;
-  /** The manifest commit identifier. */
-  commitId?: string;
-}
-export const ManifestInfoProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    manifest: S.optional(S.String),
-    manifestUri: S.optional(S.String),
-    commitId: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ManifestInfoProperties",
-}) as any as S.Schema<ManifestInfoProperties>;
-
 export interface ManifestsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5478,55 +7415,6 @@ export const ManifestsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ManifestsCreateOrUpdateResponse",
 }) as any as S.Schema<ManifestsCreateOrUpdateResponse>;
-
-export interface ManifestsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The environment supplied to the manifests operation. */
-  environment: string;
-}
-export const ManifestsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    environment: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/manifests/{environment}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "ManifestsGetRequest",
-}) as any as S.Schema<ManifestsGetRequest>;
-
-export interface ManifestsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** The manifest properties. */
-  properties?: ManifestInfoProperties;
-}
-export const ManifestsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ManifestInfoProperties),
-  }),
-).annotate({
-  identifier: "ManifestsGetResponse",
-}) as any as S.Schema<ManifestsGetResponse>;
 
 /** The environment type. */
 export type AvailableCheckInManifestEnvironment =
@@ -5859,79 +7747,6 @@ export const NewRegionFrontloadReleaseStopResponse = /*@__PURE__*/ S.suspend(
   identifier: "NewRegionFrontloadReleaseStopResponse",
 }) as any as S.Schema<NewRegionFrontloadReleaseStopResponse>;
 
-/** The notification mode. */
-export type NotificationMode = "NotSpecified" | "EventHub" | "WebHook";
-export const NotificationMode = /*@__PURE__*/ S.String;
-
-/** The message scope. */
-export type MessageScope = "NotSpecified" | "RegisteredSubscriptions";
-export const MessageScope = /*@__PURE__*/ S.String;
-
-/** The included events. */
-export type NotificationRegistrationPropertiesIncludedEventsList =
-  Array<string>;
-export const NotificationRegistrationPropertiesIncludedEventsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NotificationRegistrationPropertiesIncludedEventsList>;
-
-/** The locations. */
-export type NotificationEndpointLocationsList = Array<string>;
-export const NotificationEndpointLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NotificationEndpointLocationsList>;
-
-export interface NotificationEndpoint {
-  /** The notification destination. */
-  notificationDestination?: string;
-  /** The locations. */
-  locations?: NotificationEndpointLocationsList;
-}
-export const NotificationEndpoint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notificationDestination: S.optional(S.String),
-    locations: S.optional(NotificationEndpointLocationsList),
-  }),
-).annotate({
-  identifier: "NotificationEndpoint",
-}) as any as S.Schema<NotificationEndpoint>;
-
-/** The notification endpoints. */
-export type NotificationRegistrationPropertiesNotificationEndpointsList =
-  Array<NotificationEndpoint>;
-export const NotificationRegistrationPropertiesNotificationEndpointsList =
-  /*@__PURE__*/ S.Array(
-    NotificationEndpoint,
-  ) as any as S.Schema<NotificationRegistrationPropertiesNotificationEndpointsList>;
-
-export interface NotificationRegistrationProperties {
-  /** The notification mode. */
-  notificationMode?: NotificationMode | (string & {});
-  /** The message scope. */
-  messageScope?: MessageScope | (string & {});
-  /** The included events. */
-  includedEvents?: NotificationRegistrationPropertiesIncludedEventsList;
-  /** The notification endpoints. */
-  notificationEndpoints?: NotificationRegistrationPropertiesNotificationEndpointsList;
-  /** The provisioned state of the resource. */
-  provisioningState?: ProvisioningState | (string & {});
-}
-export const NotificationRegistrationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    notificationMode: S.optional(NotificationMode),
-    messageScope: S.optional(MessageScope),
-    includedEvents: S.optional(
-      NotificationRegistrationPropertiesIncludedEventsList,
-    ),
-    notificationEndpoints: S.optional(
-      NotificationRegistrationPropertiesNotificationEndpointsList,
-    ),
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "NotificationRegistrationProperties",
-}) as any as S.Schema<NotificationRegistrationProperties>;
-
 export interface NotificationRegistrationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5984,301 +7799,6 @@ export const NotificationRegistrationsCreateOrUpdateResponse =
     identifier: "NotificationRegistrationsCreateOrUpdateResponse",
   }) as any as S.Schema<NotificationRegistrationsCreateOrUpdateResponse>;
 
-export interface NotificationRegistrationsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The notification registration. */
-  notificationRegistrationName: string;
-}
-export const NotificationRegistrationsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      notificationRegistrationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "NotificationRegistrationsDeleteRequest",
-}) as any as S.Schema<NotificationRegistrationsDeleteRequest>;
-
-export interface NotificationRegistrationsDeleteResponse {}
-export const NotificationRegistrationsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "NotificationRegistrationsDeleteResponse",
-}) as any as S.Schema<NotificationRegistrationsDeleteResponse>;
-
-export interface NotificationRegistrationsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The notification registration. */
-  notificationRegistrationName: string;
-}
-export const NotificationRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    notificationRegistrationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations/{notificationRegistrationName}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "NotificationRegistrationsGetRequest",
-}) as any as S.Schema<NotificationRegistrationsGetRequest>;
-
-export interface NotificationRegistrationsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: NotificationRegistrationProperties;
-}
-export const NotificationRegistrationsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(NotificationRegistrationProperties),
-    }),
-).annotate({
-  identifier: "NotificationRegistrationsGetResponse",
-}) as any as S.Schema<NotificationRegistrationsGetResponse>;
-
-export interface NotificationRegistrationsListByProviderRegistrationRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const NotificationRegistrationsListByProviderRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/notificationRegistrations",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "NotificationRegistrationsListByProviderRegistrationRequest",
-  }) as any as S.Schema<NotificationRegistrationsListByProviderRegistrationRequest>;
-
-/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
-export interface NotificationRegistration {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: NotificationRegistrationProperties;
-}
-export const NotificationRegistration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(NotificationRegistrationProperties),
-  }),
-).annotate({
-  identifier: "NotificationRegistration",
-}) as any as S.Schema<NotificationRegistration>;
-
-/** The NotificationRegistration items on this page */
-export type NotificationRegistrationArrayResponseWithContinuationValueList =
-  Array<NotificationRegistration>;
-export const NotificationRegistrationArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    NotificationRegistration,
-  ) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuationValueList>;
-
-/** Paged collection of NotificationRegistration items */
-export interface NotificationRegistrationArrayResponseWithContinuation {
-  /** The NotificationRegistration items on this page */
-  value: NotificationRegistrationArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const NotificationRegistrationArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: NotificationRegistrationArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "NotificationRegistrationArrayResponseWithContinuation",
-  }) as any as S.Schema<NotificationRegistrationArrayResponseWithContinuation>;
-
-/** The origin. */
-export type OperationOrigins = "NotSpecified" | "User" | "System";
-export const OperationOrigins = /*@__PURE__*/ S.String;
-
-export interface OperationsDisplayDefinition {
-  /** The provider. */
-  provider: string;
-  /** The resource. */
-  resource: string;
-  /** The operation. */
-  operation: string;
-  /** The description. */
-  description: string;
-}
-export const OperationsDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.String,
-    resource: S.String,
-    operation: S.String,
-    description: S.String,
-  }),
-).annotate({
-  identifier: "OperationsDisplayDefinition",
-}) as any as S.Schema<OperationsDisplayDefinition>;
-
-export interface LocalizedOperationDisplayDefinition {
-  /** Display information of the operation. */
-  default: OperationsDisplayDefinition;
-  /** Display information of the operation for en locale. */
-  en?: OperationsDisplayDefinition;
-  /** Display information of the operation for cs locale. */
-  cs?: OperationsDisplayDefinition;
-  /** Display information of the operation for de locale. */
-  de?: OperationsDisplayDefinition;
-  /** Display information of the operation for es locale. */
-  es?: OperationsDisplayDefinition;
-  /** Display information of the operation for fr locale. */
-  fr?: OperationsDisplayDefinition;
-  /** Display information of the operation for hu locale. */
-  hu?: OperationsDisplayDefinition;
-  /** Display information of the operation for it locale. */
-  it?: OperationsDisplayDefinition;
-  /** Display information of the operation for ja locale. */
-  ja?: OperationsDisplayDefinition;
-  /** Display information of the operation for ko locale. */
-  ko?: OperationsDisplayDefinition;
-  /** Display information of the operation for nl locale. */
-  nl?: OperationsDisplayDefinition;
-  /** Display information of the operation for pl locale. */
-  pl?: OperationsDisplayDefinition;
-  /** Display information of the operation for pt-BR locale. */
-  ptBR?: OperationsDisplayDefinition;
-  /** Display information of the operation for pt-PT locale. */
-  ptPT?: OperationsDisplayDefinition;
-  /** Display information of the operation for ru locale. */
-  ru?: OperationsDisplayDefinition;
-  /** Display information of the operation for sv locale. */
-  sv?: OperationsDisplayDefinition;
-  /** Display information of the operation for zh-Hans locale. */
-  zhHans?: OperationsDisplayDefinition;
-  /** Display information of the operation for zh-Hant locale. */
-  zhHant?: OperationsDisplayDefinition;
-  /** Display information of the operation for qps-Ploc pseudo locale. */
-  qpsPloc?: OperationsDisplayDefinition;
-}
-export const LocalizedOperationDisplayDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: OperationsDisplayDefinition,
-    en: S.optional(OperationsDisplayDefinition),
-    cs: S.optional(OperationsDisplayDefinition),
-    de: S.optional(OperationsDisplayDefinition),
-    es: S.optional(OperationsDisplayDefinition),
-    fr: S.optional(OperationsDisplayDefinition),
-    hu: S.optional(OperationsDisplayDefinition),
-    it: S.optional(OperationsDisplayDefinition),
-    ja: S.optional(OperationsDisplayDefinition),
-    ko: S.optional(OperationsDisplayDefinition),
-    nl: S.optional(OperationsDisplayDefinition),
-    pl: S.optional(OperationsDisplayDefinition),
-    ptBR: S.optional(OperationsDisplayDefinition),
-    ptPT: S.optional(OperationsDisplayDefinition),
-    ru: S.optional(OperationsDisplayDefinition),
-    sv: S.optional(OperationsDisplayDefinition),
-    zhHans: S.optional(OperationsDisplayDefinition),
-    zhHant: S.optional(OperationsDisplayDefinition),
-    qpsPloc: S.optional(OperationsDisplayDefinition),
-  }),
-).annotate({
-  identifier: "LocalizedOperationDisplayDefinition",
-}) as any as S.Schema<LocalizedOperationDisplayDefinition>;
-
-/** The action type. */
-export type OperationActionType = "NotSpecified" | "Internal";
-export const OperationActionType = /*@__PURE__*/ S.String;
-
-export interface LocalizedOperationDefinition {
-  /** Name of the operation. */
-  name: string;
-  /** Indicates whether the operation applies to data-plane. */
-  isDataAction?: boolean;
-  /** The origin. */
-  origin?: OperationOrigins | (string & {});
-  /** Display information of the operation. */
-  display: LocalizedOperationDisplayDefinition;
-  /** The action type. */
-  actionType?: OperationActionType | (string & {});
-  /** Anything */
-  properties?: unknown;
-}
-export const LocalizedOperationDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    isDataAction: S.optional(S.Boolean),
-    origin: S.optional(OperationOrigins),
-    display: LocalizedOperationDisplayDefinition,
-    actionType: S.optional(OperationActionType),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "LocalizedOperationDefinition",
-}) as any as S.Schema<LocalizedOperationDefinition>;
-
-/** Operations content. */
-export type OperationsContentPropertiesContentsList =
-  Array<LocalizedOperationDefinition>;
-export const OperationsContentPropertiesContentsList = /*@__PURE__*/ S.Array(
-  LocalizedOperationDefinition,
-) as any as S.Schema<OperationsContentPropertiesContentsList>;
-
-export interface OperationsContentProperties {
-  /** Operations content. */
-  contents?: OperationsContentPropertiesContentsList;
-}
-export const OperationsContentProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contents: S.optional(OperationsContentPropertiesContentsList),
-  }),
-).annotate({
-  identifier: "OperationsContentProperties",
-}) as any as S.Schema<OperationsContentProperties>;
-
 export interface OperationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6325,515 +7845,6 @@ export const OperationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "OperationsCreateOrUpdateResponse",
 }) as any as S.Schema<OperationsCreateOrUpdateResponse>;
-
-export interface OperationsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const OperationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsDeleteRequest",
-}) as any as S.Schema<OperationsDeleteRequest>;
-
-export interface OperationsDeleteResponse {}
-export const OperationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OperationsDeleteResponse",
-}) as any as S.Schema<OperationsDeleteResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.ProviderHub/operations",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** Properties of an Operation. */
-export interface OperationsDefinition {
-  /** Name of the operation. */
-  name: string;
-  /** Indicates whether the operation applies to data-plane. */
-  isDataAction?: boolean;
-  /** The origin. */
-  origin?: OperationOrigins;
-  /** Display information of the operation. */
-  display: OperationsDisplayDefinition;
-  /** The action type. */
-  actionType?: OperationActionType;
-  /** Anything */
-  properties?: unknown;
-}
-export const OperationsDefinition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    isDataAction: S.optional(S.Boolean),
-    origin: S.optional(OperationOrigins),
-    display: OperationsDisplayDefinition,
-    actionType: S.optional(OperationActionType),
-    properties: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "OperationsDefinition",
-}) as any as S.Schema<OperationsDefinition>;
-
-/** The value. */
-export type OperationsDefinitionArrayResponseWithContinuationValueList =
-  Array<OperationsDefinition>;
-export const OperationsDefinitionArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    OperationsDefinition,
-  ) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuationValueList>;
-
-export interface OperationsDefinitionArrayResponseWithContinuation {
-  /** The value. */
-  value?: OperationsDefinitionArrayResponseWithContinuationValueList;
-  /** The URL to get to the next set of results, if there are any. */
-  nextLink?: string;
-}
-export const OperationsDefinitionArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: S.optional(
-        OperationsDefinitionArrayResponseWithContinuationValueList,
-      ),
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "OperationsDefinitionArrayResponseWithContinuation",
-  }) as any as S.Schema<OperationsDefinitionArrayResponseWithContinuation>;
-
-export interface OperationsListByProviderRegistrationRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const OperationsListByProviderRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/operations/default",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "OperationsListByProviderRegistrationRequest",
-  }) as any as S.Schema<OperationsListByProviderRegistrationRequest>;
-
-export interface OperationsListByProviderRegistrationResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: OperationsContentProperties;
-}
-export const OperationsListByProviderRegistrationResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(OperationsContentProperties),
-    }),
-  ).annotate({
-    identifier: "OperationsListByProviderRegistrationResponse",
-  }) as any as S.Schema<OperationsListByProviderRegistrationResponse>;
-
-/** Resource tags. */
-export type ProviderMonitorSettingsCreateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProviderMonitorSettingsCreateRequestTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ProviderMonitorSettingsCreateRequestTagsMap>;
-
-export interface ProviderMonitorSettingProperties {
-  /** The provisioning state. */
-  provisioningState?: ProvisioningState | (string & {});
-}
-export const ProviderMonitorSettingProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "ProviderMonitorSettingProperties",
-}) as any as S.Schema<ProviderMonitorSettingProperties>;
-
-export interface ProviderMonitorSettingsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the provider monitor setting. */
-  providerMonitorSettingName: string;
-  /** Resource tags. */
-  tags?: ProviderMonitorSettingsCreateRequestTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: ProviderMonitorSettingProperties;
-}
-export const ProviderMonitorSettingsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      providerMonitorSettingName: S.String.pipe(T.Label()),
-      tags: S.optional(ProviderMonitorSettingsCreateRequestTagsMap),
-      location: S.String,
-      properties: S.optional(ProviderMonitorSettingProperties),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "ProviderMonitorSettingsCreateRequest",
-}) as any as S.Schema<ProviderMonitorSettingsCreateRequest>;
-
-/** Resource tags. */
-export type ProviderMonitorSettingsCreateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProviderMonitorSettingsCreateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ProviderMonitorSettingsCreateResponseTagsMap>;
-
-export interface ProviderMonitorSettingsCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProviderMonitorSettingsCreateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: ProviderMonitorSettingProperties;
-}
-export const ProviderMonitorSettingsCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(ProviderMonitorSettingsCreateResponseTagsMap),
-      location: S.String,
-      properties: S.optional(ProviderMonitorSettingProperties),
-    }),
-).annotate({
-  identifier: "ProviderMonitorSettingsCreateResponse",
-}) as any as S.Schema<ProviderMonitorSettingsCreateResponse>;
-
-export interface ProviderMonitorSettingsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the provider monitor setting. */
-  providerMonitorSettingName: string;
-}
-export const ProviderMonitorSettingsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      providerMonitorSettingName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "ProviderMonitorSettingsDeleteRequest",
-}) as any as S.Schema<ProviderMonitorSettingsDeleteRequest>;
-
-export interface ProviderMonitorSettingsDeleteResponse {}
-export const ProviderMonitorSettingsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ProviderMonitorSettingsDeleteResponse",
-}) as any as S.Schema<ProviderMonitorSettingsDeleteResponse>;
-
-export interface ProviderMonitorSettingsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the provider monitor setting. */
-  providerMonitorSettingName: string;
-}
-export const ProviderMonitorSettingsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    providerMonitorSettingName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProviderMonitorSettingsGetRequest",
-}) as any as S.Schema<ProviderMonitorSettingsGetRequest>;
-
-/** Resource tags. */
-export type ProviderMonitorSettingsGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProviderMonitorSettingsGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProviderMonitorSettingsGetResponseTagsMap>;
-
-export interface ProviderMonitorSettingsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProviderMonitorSettingsGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: ProviderMonitorSettingProperties;
-}
-export const ProviderMonitorSettingsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProviderMonitorSettingsGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(ProviderMonitorSettingProperties),
-  }),
-).annotate({
-  identifier: "ProviderMonitorSettingsGetResponse",
-}) as any as S.Schema<ProviderMonitorSettingsGetResponse>;
-
-export interface ProviderMonitorSettingsListByResourceGroupRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const ProviderMonitorSettingsListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProviderMonitorSettingsListByResourceGroupRequest",
-  }) as any as S.Schema<ProviderMonitorSettingsListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type ProviderMonitorSettingTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProviderMonitorSettingTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<ProviderMonitorSettingTagsMap>;
-
-/** Concrete tracked resource types can be created by aliasing this type using a specific property type. */
-export interface ProviderMonitorSetting {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProviderMonitorSettingTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: ProviderMonitorSettingProperties;
-}
-export const ProviderMonitorSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(ProviderMonitorSettingTagsMap),
-    location: S.String,
-    properties: S.optional(ProviderMonitorSettingProperties),
-  }),
-).annotate({
-  identifier: "ProviderMonitorSetting",
-}) as any as S.Schema<ProviderMonitorSetting>;
-
-/** The ProviderMonitorSetting items on this page */
-export type ProviderMonitorSettingArrayResponseWithContinuationValueList =
-  Array<ProviderMonitorSetting>;
-export const ProviderMonitorSettingArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    ProviderMonitorSetting,
-  ) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuationValueList>;
-
-/** Paged collection of ProviderMonitorSetting items */
-export interface ProviderMonitorSettingArrayResponseWithContinuation {
-  /** The ProviderMonitorSetting items on this page */
-  value: ProviderMonitorSettingArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ProviderMonitorSettingArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: ProviderMonitorSettingArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProviderMonitorSettingArrayResponseWithContinuation",
-  }) as any as S.Schema<ProviderMonitorSettingArrayResponseWithContinuation>;
-
-export interface ProviderMonitorSettingsListBySubscriptionRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const ProviderMonitorSettingsListBySubscriptionRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerMonitorSettings",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProviderMonitorSettingsListBySubscriptionRequest",
-  }) as any as S.Schema<ProviderMonitorSettingsListBySubscriptionRequest>;
-
-export interface ProviderMonitorSettingsUpdateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the provider monitor setting. */
-  providerMonitorSettingName: string;
-}
-export const ProviderMonitorSettingsUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      providerMonitorSettingName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "ProviderMonitorSettingsUpdateRequest",
-}) as any as S.Schema<ProviderMonitorSettingsUpdateRequest>;
-
-/** Resource tags. */
-export type ProviderMonitorSettingsUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const ProviderMonitorSettingsUpdateResponseTagsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<ProviderMonitorSettingsUpdateResponseTagsMap>;
-
-export interface ProviderMonitorSettingsUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: ProviderMonitorSettingsUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  properties?: ProviderMonitorSettingProperties;
-}
-export const ProviderMonitorSettingsUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      tags: S.optional(ProviderMonitorSettingsUpdateResponseTagsMap),
-      location: S.String,
-      properties: S.optional(ProviderMonitorSettingProperties),
-    }),
-).annotate({
-  identifier: "ProviderMonitorSettingsUpdateResponse",
-}) as any as S.Schema<ProviderMonitorSettingsUpdateResponse>;
 
 /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
 export type ProviderRegistrationsCreateOrUpdateRequestKind =
@@ -6905,237 +7916,6 @@ export const ProviderRegistrationsCreateOrUpdateResponse =
   ).annotate({
     identifier: "ProviderRegistrationsCreateOrUpdateResponse",
   }) as any as S.Schema<ProviderRegistrationsCreateOrUpdateResponse>;
-
-export interface ProviderRegistrationsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const ProviderRegistrationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProviderRegistrationsDeleteRequest",
-}) as any as S.Schema<ProviderRegistrationsDeleteRequest>;
-
-export interface ProviderRegistrationsDeleteResponse {}
-export const ProviderRegistrationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ProviderRegistrationsDeleteResponse",
-}) as any as S.Schema<ProviderRegistrationsDeleteResponse>;
-
-export interface ProviderRegistrationsGenerateOperationsRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const ProviderRegistrationsGenerateOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/generateOperations",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ProviderRegistrationsGenerateOperationsRequest",
-  }) as any as S.Schema<ProviderRegistrationsGenerateOperationsRequest>;
-
-export type ProviderRegistrationsGenerateOperationsResponseBodyList =
-  Array<OperationsDefinition>;
-export const ProviderRegistrationsGenerateOperationsResponseBodyList =
-  /*@__PURE__*/ S.Array(
-    OperationsDefinition,
-  ) as any as S.Schema<ProviderRegistrationsGenerateOperationsResponseBodyList>;
-
-export type ProviderRegistrationsGenerateOperationsResponse =
-  ProviderRegistrationsGenerateOperationsResponseBodyList;
-export const ProviderRegistrationsGenerateOperationsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    ProviderRegistrationsGenerateOperationsResponseBodyList.pipe(
-      T.RawResponseRoot(),
-    ),
-  ).annotate({
-    identifier: "ProviderRegistrationsGenerateOperationsResponse",
-  }) as any as S.Schema<ProviderRegistrationsGenerateOperationsResponse>;
-
-export interface ProviderRegistrationsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const ProviderRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProviderRegistrationsGetRequest",
-}) as any as S.Schema<ProviderRegistrationsGetRequest>;
-
-/** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ProviderRegistrationsGetResponseKind =
-  | "Managed"
-  | "Hybrid"
-  | "Direct";
-export const ProviderRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
-
-export interface ProviderRegistrationsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: ProviderRegistrationProperties;
-  /** Provider registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-  kind?: ProviderRegistrationsGetResponseKind;
-}
-export const ProviderRegistrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProviderRegistrationProperties),
-    kind: S.optional(ProviderRegistrationsGetResponseKind),
-  }),
-).annotate({
-  identifier: "ProviderRegistrationsGetResponse",
-}) as any as S.Schema<ProviderRegistrationsGetResponse>;
-
-export interface ProviderRegistrationsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-}
-export const ProviderRegistrationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProviderRegistrationsListRequest",
-}) as any as S.Schema<ProviderRegistrationsListRequest>;
-
-/** The ProviderRegistration items on this page */
-export type ProviderRegistrationArrayResponseWithContinuationValueList =
-  Array<ProviderRegistration>;
-export const ProviderRegistrationArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    ProviderRegistration,
-  ) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuationValueList>;
-
-/** Paged collection of ProviderRegistration items */
-export interface ProviderRegistrationArrayResponseWithContinuation {
-  /** The ProviderRegistration items on this page */
-  value: ProviderRegistrationArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ProviderRegistrationArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: ProviderRegistrationArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ProviderRegistrationArrayResponseWithContinuation",
-  }) as any as S.Schema<ProviderRegistrationArrayResponseWithContinuation>;
-
-export interface ResourceManagementEntityInput {
-  /** The resource id. */
-  resourceId: string;
-  /** The home tenant id. */
-  homeTenantId?: string;
-  /** The location. */
-  location?: string;
-}
-export const ResourceManagementEntityInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    resourceId: S.String,
-    homeTenantId: S.optional(S.String),
-    location: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ResourceManagementEntityInput",
-}) as any as S.Schema<ResourceManagementEntityInput>;
-
-/** resource management action content. */
-export type ResourceActionsDeleteResourcesRequestResourcesList =
-  Array<ResourceManagementEntityInput>;
-export const ResourceActionsDeleteResourcesRequestResourcesList =
-  /*@__PURE__*/ S.Array(
-    ResourceManagementEntityInput,
-  ) as any as S.Schema<ResourceActionsDeleteResourcesRequestResourcesList>;
-
-export interface ResourceActionsDeleteResourcesRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource action name. */
-  resourceActionName: string;
-  /** resource management action content. */
-  resources?: ResourceActionsDeleteResourcesRequestResourcesList;
-}
-export const ResourceActionsDeleteResourcesRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceActionName: S.String.pipe(T.Label()),
-      resources: S.optional(ResourceActionsDeleteResourcesRequestResourcesList),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourceActions/{resourceActionName}/deleteResources",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "ResourceActionsDeleteResourcesRequest",
-}) as any as S.Schema<ResourceActionsDeleteResourcesRequest>;
-
-export interface ResourceActionsDeleteResourcesResponse {}
-export const ResourceActionsDeleteResourcesResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResourceActionsDeleteResourcesResponse",
-}) as any as S.Schema<ResourceActionsDeleteResourcesResponse>;
 
 /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
 export type ResourceTypeRegistrationsCreateOrUpdateRequestKind =
@@ -7210,365 +7990,6 @@ export const ResourceTypeRegistrationsCreateOrUpdateResponse =
   ).annotate({
     identifier: "ResourceTypeRegistrationsCreateOrUpdateResponse",
   }) as any as S.Schema<ResourceTypeRegistrationsCreateOrUpdateResponse>;
-
-export interface ResourceTypeRegistrationsDeleteRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-}
-export const ResourceTypeRegistrationsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "ResourceTypeRegistrationsDeleteRequest",
-}) as any as S.Schema<ResourceTypeRegistrationsDeleteRequest>;
-
-export interface ResourceTypeRegistrationsDeleteResponse {}
-export const ResourceTypeRegistrationsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "ResourceTypeRegistrationsDeleteResponse",
-}) as any as S.Schema<ResourceTypeRegistrationsDeleteResponse>;
-
-export interface ResourceTypeRegistrationsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-}
-export const ResourceTypeRegistrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    providerNamespace: S.String.pipe(T.Label()),
-    resourceType: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}",
-      code: 200,
-      apiVersion: "2025-10-01",
-    }),
-  ),
-).annotate({
-  identifier: "ResourceTypeRegistrationsGetRequest",
-}) as any as S.Schema<ResourceTypeRegistrationsGetRequest>;
-
-/** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-export type ResourceTypeRegistrationsGetResponseKind =
-  | "Managed"
-  | "Hybrid"
-  | "Direct";
-export const ResourceTypeRegistrationsGetResponseKind = /*@__PURE__*/ S.String;
-
-export interface ResourceTypeRegistrationsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: ResourceTypeRegistrationProperties;
-  /** Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type. */
-  kind?: ResourceTypeRegistrationsGetResponseKind;
-}
-export const ResourceTypeRegistrationsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ResourceTypeRegistrationProperties),
-      kind: S.optional(ResourceTypeRegistrationsGetResponseKind),
-    }),
-).annotate({
-  identifier: "ResourceTypeRegistrationsGetResponse",
-}) as any as S.Schema<ResourceTypeRegistrationsGetResponse>;
-
-export interface ResourceTypeRegistrationsListByProviderRegistrationRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-}
-export const ResourceTypeRegistrationsListByProviderRegistrationRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "ResourceTypeRegistrationsListByProviderRegistrationRequest",
-  }) as any as S.Schema<ResourceTypeRegistrationsListByProviderRegistrationRequest>;
-
-/** The ResourceTypeRegistration items on this page */
-export type ResourceTypeRegistrationArrayResponseWithContinuationValueList =
-  Array<ResourceTypeRegistration>;
-export const ResourceTypeRegistrationArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    ResourceTypeRegistration,
-  ) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuationValueList>;
-
-/** Paged collection of ResourceTypeRegistration items */
-export interface ResourceTypeRegistrationArrayResponseWithContinuation {
-  /** The ResourceTypeRegistration items on this page */
-  value: ResourceTypeRegistrationArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const ResourceTypeRegistrationArrayResponseWithContinuation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      value: ResourceTypeRegistrationArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ResourceTypeRegistrationArrayResponseWithContinuation",
-  }) as any as S.Schema<ResourceTypeRegistrationArrayResponseWithContinuation>;
-
-/** The locations. */
-export type SkuSettingLocationsList = Array<string>;
-export const SkuSettingLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSettingLocationsList>;
-
-/** The zones. */
-export type SkuLocationInfoZonesList = Array<string>;
-export const SkuLocationInfoZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoZonesList>;
-
-/** The name. */
-export type SkuZoneDetailNameList = Array<string>;
-export const SkuZoneDetailNameList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuZoneDetailNameList>;
-
-export interface SkuCapability {
-  /** The name. */
-  name: string;
-  /** The value. */
-  value: string;
-}
-export const SkuCapability = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    value: S.String,
-  }),
-).annotate({ identifier: "SkuCapability" }) as any as S.Schema<SkuCapability>;
-
-/** The capabilities. */
-export type SkuZoneDetailCapabilitiesList = Array<SkuCapability>;
-export const SkuZoneDetailCapabilitiesList = /*@__PURE__*/ S.Array(
-  SkuCapability,
-) as any as S.Schema<SkuZoneDetailCapabilitiesList>;
-
-export interface SkuZoneDetail {
-  /** The name. */
-  name?: SkuZoneDetailNameList;
-  /** The capabilities. */
-  capabilities?: SkuZoneDetailCapabilitiesList;
-}
-export const SkuZoneDetail = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(SkuZoneDetailNameList),
-    capabilities: S.optional(SkuZoneDetailCapabilitiesList),
-  }),
-).annotate({ identifier: "SkuZoneDetail" }) as any as S.Schema<SkuZoneDetail>;
-
-/** The zone details. */
-export type SkuLocationInfoZoneDetailsList = Array<SkuZoneDetail>;
-export const SkuLocationInfoZoneDetailsList = /*@__PURE__*/ S.Array(
-  SkuZoneDetail,
-) as any as S.Schema<SkuLocationInfoZoneDetailsList>;
-
-/** The extended locations. */
-export type SkuLocationInfoExtendedLocationsList = Array<string>;
-export const SkuLocationInfoExtendedLocationsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuLocationInfoExtendedLocationsList>;
-
-export interface SkuLocationInfo {
-  /** The location. */
-  location: string;
-  /** The zones. */
-  zones?: SkuLocationInfoZonesList;
-  /** The zone details. */
-  zoneDetails?: SkuLocationInfoZoneDetailsList;
-  /** The extended locations. */
-  extendedLocations?: SkuLocationInfoExtendedLocationsList;
-  /** The type. */
-  type?: ExtendedLocationType | (string & {});
-}
-export const SkuLocationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    location: S.String,
-    zones: S.optional(SkuLocationInfoZonesList),
-    zoneDetails: S.optional(SkuLocationInfoZoneDetailsList),
-    extendedLocations: S.optional(SkuLocationInfoExtendedLocationsList),
-    type: S.optional(ExtendedLocationType),
-  }),
-).annotate({
-  identifier: "SkuLocationInfo",
-}) as any as S.Schema<SkuLocationInfo>;
-
-/** The location info. */
-export type SkuSettingLocationInfoList = Array<SkuLocationInfo>;
-export const SkuSettingLocationInfoList = /*@__PURE__*/ S.Array(
-  SkuLocationInfo,
-) as any as S.Schema<SkuSettingLocationInfoList>;
-
-/** The required quota ids. */
-export type SkuSettingRequiredQuotaIdsList = Array<string>;
-export const SkuSettingRequiredQuotaIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSettingRequiredQuotaIdsList>;
-
-/** The required features. */
-export type SkuSettingRequiredFeaturesList = Array<string>;
-export const SkuSettingRequiredFeaturesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SkuSettingRequiredFeaturesList>;
-
-/** The scale type. */
-export type SkuScaleType = "None" | "Manual" | "Automatic";
-export const SkuScaleType = /*@__PURE__*/ S.String;
-
-export interface SkuCapacity {
-  /** The minimum. */
-  minimum: number;
-  /** The maximum. */
-  maximum?: number;
-  /** The default. */
-  default?: number;
-  /** The scale type. */
-  scaleType?: SkuScaleType | (string & {});
-}
-export const SkuCapacity = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    minimum: S.Number,
-    maximum: S.optional(S.Number),
-    default: S.optional(S.Number),
-    scaleType: S.optional(SkuScaleType),
-  }),
-).annotate({ identifier: "SkuCapacity" }) as any as S.Schema<SkuCapacity>;
-
-export interface SkuCost {
-  /** The meter id. */
-  meterId: string;
-  /** The quantity. */
-  quantity?: number;
-  /** The extended unit. */
-  extendedUnit?: string;
-}
-export const SkuCost = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    meterId: S.String,
-    quantity: S.optional(S.Number),
-    extendedUnit: S.optional(S.String),
-  }),
-).annotate({ identifier: "SkuCost" }) as any as S.Schema<SkuCost>;
-
-/** The costs. */
-export type SkuSettingCostsList = Array<SkuCost>;
-export const SkuSettingCostsList = /*@__PURE__*/ S.Array(
-  SkuCost,
-) as any as S.Schema<SkuSettingCostsList>;
-
-/** The capabilities. */
-export type SkuSettingCapabilitiesList = Array<SkuCapability>;
-export const SkuSettingCapabilitiesList = /*@__PURE__*/ S.Array(
-  SkuCapability,
-) as any as S.Schema<SkuSettingCapabilitiesList>;
-
-export interface SkuSetting {
-  /** The name. */
-  name: string;
-  /** The tier. */
-  tier?: string;
-  /** The size. */
-  size?: string;
-  /** The family. */
-  family?: string;
-  /** The kind. */
-  kind?: string;
-  /** The locations. */
-  locations?: SkuSettingLocationsList;
-  /** The location info. */
-  locationInfo?: SkuSettingLocationInfoList;
-  /** The required quota ids. */
-  requiredQuotaIds?: SkuSettingRequiredQuotaIdsList;
-  /** The required features. */
-  requiredFeatures?: SkuSettingRequiredFeaturesList;
-  /** The capacity. */
-  capacity?: SkuCapacity;
-  /** The costs. */
-  costs?: SkuSettingCostsList;
-  /** The capabilities. */
-  capabilities?: SkuSettingCapabilitiesList;
-}
-export const SkuSetting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    tier: S.optional(S.String),
-    size: S.optional(S.String),
-    family: S.optional(S.String),
-    kind: S.optional(S.String),
-    locations: S.optional(SkuSettingLocationsList),
-    locationInfo: S.optional(SkuSettingLocationInfoList),
-    requiredQuotaIds: S.optional(SkuSettingRequiredQuotaIdsList),
-    requiredFeatures: S.optional(SkuSettingRequiredFeaturesList),
-    capacity: S.optional(SkuCapacity),
-    costs: S.optional(SkuSettingCostsList),
-    capabilities: S.optional(SkuSettingCapabilitiesList),
-  }),
-).annotate({ identifier: "SkuSetting" }) as any as S.Schema<SkuSetting>;
-
-/** The sku settings. */
-export type ResourceTypeSkuSkuSettingsList = Array<SkuSetting>;
-export const ResourceTypeSkuSkuSettingsList = /*@__PURE__*/ S.Array(
-  SkuSetting,
-) as any as S.Schema<ResourceTypeSkuSkuSettingsList>;
-
-export interface ResourceTypeSku {
-  /** The sku settings. */
-  skuSettings: ResourceTypeSkuSkuSettingsList;
-  /** The provisioning state. */
-  provisioningState?: ProvisioningState | (string & {});
-}
-export const ResourceTypeSku = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    skuSettings: ResourceTypeSkuSkuSettingsList,
-    provisioningState: S.optional(ProvisioningState),
-  }),
-).annotate({
-  identifier: "ResourceTypeSku",
-}) as any as S.Schema<ResourceTypeSku>;
 
 export interface SkusCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
@@ -7806,246 +8227,106 @@ export const SkusCreateOrUpdateNestedResourceTypeThirdResponse =
     identifier: "SkusCreateOrUpdateNestedResourceTypeThirdResponse",
   }) as any as S.Schema<SkusCreateOrUpdateNestedResourceTypeThirdResponse>;
 
-export interface SkusDeleteRequest {
+export interface StopCustomRolloutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The SKU. */
-  sku: string;
+  /** The rollout name. */
+  rolloutName: string;
 }
-export const SkusDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const StopCustomRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     providerNamespace: S.String.pipe(T.Label()),
-    resourceType: S.String.pipe(T.Label()),
-    sku: S.String.pipe(T.Label()),
+    rolloutName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/customRollouts/{rolloutName}/stop",
       code: 200,
       apiVersion: "2025-10-01",
     }),
   ),
 ).annotate({
-  identifier: "SkusDeleteRequest",
-}) as any as S.Schema<SkusDeleteRequest>;
+  identifier: "StopCustomRolloutRequest",
+}) as any as S.Schema<StopCustomRolloutRequest>;
 
-export interface SkusDeleteResponse {}
-export const SkusDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface StopCustomRolloutResponse {}
+export const StopCustomRolloutResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "SkusDeleteResponse",
-}) as any as S.Schema<SkusDeleteResponse>;
+  identifier: "StopCustomRolloutResponse",
+}) as any as S.Schema<StopCustomRolloutResponse>;
 
-export interface SkusDeleteNestedResourceTypeFirstRequest {
+export interface StopDefaultRolloutRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource provider hosted within ProviderHub. */
   providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The SKU. */
-  sku: string;
+  /** The rollout name. */
+  rolloutName: string;
 }
-export const SkusDeleteNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      sku: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "SkusDeleteNestedResourceTypeFirstRequest",
-}) as any as S.Schema<SkusDeleteNestedResourceTypeFirstRequest>;
-
-export interface SkusDeleteNestedResourceTypeFirstResponse {}
-export const SkusDeleteNestedResourceTypeFirstResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SkusDeleteNestedResourceTypeFirstResponse",
-  }) as any as S.Schema<SkusDeleteNestedResourceTypeFirstResponse>;
-
-export interface SkusDeleteNestedResourceTypeSecondRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The second child resource type. */
-  nestedResourceTypeSecond: string;
-  /** The SKU. */
-  sku: string;
-}
-export const SkusDeleteNestedResourceTypeSecondRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      nestedResourceTypeSecond: S.String.pipe(T.Label()),
-      sku: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SkusDeleteNestedResourceTypeSecondRequest",
-  }) as any as S.Schema<SkusDeleteNestedResourceTypeSecondRequest>;
-
-export interface SkusDeleteNestedResourceTypeSecondResponse {}
-export const SkusDeleteNestedResourceTypeSecondResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SkusDeleteNestedResourceTypeSecondResponse",
-  }) as any as S.Schema<SkusDeleteNestedResourceTypeSecondResponse>;
-
-export interface SkusDeleteNestedResourceTypeThirdRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The second child resource type. */
-  nestedResourceTypeSecond: string;
-  /** The third child resource type. */
-  nestedResourceTypeThird: string;
-  /** The SKU. */
-  sku: string;
-}
-export const SkusDeleteNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      nestedResourceTypeSecond: S.String.pipe(T.Label()),
-      nestedResourceTypeThird: S.String.pipe(T.Label()),
-      sku: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "SkusDeleteNestedResourceTypeThirdRequest",
-}) as any as S.Schema<SkusDeleteNestedResourceTypeThirdRequest>;
-
-export interface SkusDeleteNestedResourceTypeThirdResponse {}
-export const SkusDeleteNestedResourceTypeThirdResponse =
-  /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "SkusDeleteNestedResourceTypeThirdResponse",
-  }) as any as S.Schema<SkusDeleteNestedResourceTypeThirdResponse>;
-
-export interface SkusGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The SKU. */
-  sku: string;
-}
-export const SkusGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const StopDefaultRolloutRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     providerNamespace: S.String.pipe(T.Label()),
-    resourceType: S.String.pipe(T.Label()),
-    sku: S.String.pipe(T.Label()),
+    rolloutName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus/{sku}",
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/defaultRollouts/{rolloutName}/stop",
       code: 200,
       apiVersion: "2025-10-01",
     }),
   ),
-).annotate({ identifier: "SkusGetRequest" }) as any as S.Schema<SkusGetRequest>;
+).annotate({
+  identifier: "StopDefaultRolloutRequest",
+}) as any as S.Schema<StopDefaultRolloutRequest>;
 
-export interface SkusGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: ResourceTypeSku;
+export interface StopDefaultRolloutResponse {}
+export const StopDefaultRolloutResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "StopDefaultRolloutResponse",
+}) as any as S.Schema<StopDefaultRolloutResponse>;
+
+export interface UpdateProviderMonitorSettingRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the provider monitor setting. */
+  providerMonitorSettingName: string;
 }
-export const SkusGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateProviderMonitorSettingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    providerMonitorSettingName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ProviderHub/providerMonitorSettings/{providerMonitorSettingName}",
+      code: 200,
+      apiVersion: "2025-10-01",
+    }),
+  ),
 ).annotate({
-  identifier: "SkusGetResponse",
-}) as any as S.Schema<SkusGetResponse>;
+  identifier: "UpdateProviderMonitorSettingRequest",
+}) as any as S.Schema<UpdateProviderMonitorSettingRequest>;
 
-export interface SkusGetNestedResourceTypeFirstRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The SKU. */
-  sku: string;
-}
-export const SkusGetNestedResourceTypeFirstRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      sku: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus/{sku}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "SkusGetNestedResourceTypeFirstRequest",
-}) as any as S.Schema<SkusGetNestedResourceTypeFirstRequest>;
+/** Resource tags. */
+export type ProviderMonitorSettingsUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const ProviderMonitorSettingsUpdateResponseTagsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<ProviderMonitorSettingsUpdateResponseTagsMap>;
 
-export interface SkusGetNestedResourceTypeFirstResponse {
+export interface UpdateProviderMonitorSettingResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -8054,313 +8335,26 @@ export interface SkusGetNestedResourceTypeFirstResponse {
   type?: string;
   /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
   systemData?: SystemData;
-  properties?: ResourceTypeSku;
+  /** Resource tags. */
+  tags?: ProviderMonitorSettingsUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  properties?: ProviderMonitorSettingProperties;
 }
-export const SkusGetNestedResourceTypeFirstResponse = /*@__PURE__*/ S.suspend(
+export const UpdateProviderMonitorSettingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
       name: S.optional(S.String),
       type: S.optional(S.String),
       systemData: S.optional(SystemData),
-      properties: S.optional(ResourceTypeSku),
+      tags: S.optional(ProviderMonitorSettingsUpdateResponseTagsMap),
+      location: S.String,
+      properties: S.optional(ProviderMonitorSettingProperties),
     }),
 ).annotate({
-  identifier: "SkusGetNestedResourceTypeFirstResponse",
-}) as any as S.Schema<SkusGetNestedResourceTypeFirstResponse>;
-
-export interface SkusGetNestedResourceTypeSecondRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The second child resource type. */
-  nestedResourceTypeSecond: string;
-  /** The SKU. */
-  sku: string;
-}
-export const SkusGetNestedResourceTypeSecondRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      nestedResourceTypeSecond: S.String.pipe(T.Label()),
-      sku: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus/{sku}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "SkusGetNestedResourceTypeSecondRequest",
-}) as any as S.Schema<SkusGetNestedResourceTypeSecondRequest>;
-
-export interface SkusGetNestedResourceTypeSecondResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: ResourceTypeSku;
-}
-export const SkusGetNestedResourceTypeSecondResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ResourceTypeSku),
-    }),
-).annotate({
-  identifier: "SkusGetNestedResourceTypeSecondResponse",
-}) as any as S.Schema<SkusGetNestedResourceTypeSecondResponse>;
-
-export interface SkusGetNestedResourceTypeThirdRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The second child resource type. */
-  nestedResourceTypeSecond: string;
-  /** The third child resource type. */
-  nestedResourceTypeThird: string;
-  /** The SKU. */
-  sku: string;
-}
-export const SkusGetNestedResourceTypeThirdRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      nestedResourceTypeSecond: S.String.pipe(T.Label()),
-      nestedResourceTypeThird: S.String.pipe(T.Label()),
-      sku: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus/{sku}",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-).annotate({
-  identifier: "SkusGetNestedResourceTypeThirdRequest",
-}) as any as S.Schema<SkusGetNestedResourceTypeThirdRequest>;
-
-export interface SkusGetNestedResourceTypeThirdResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: ResourceTypeSku;
-}
-export const SkusGetNestedResourceTypeThirdResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ResourceTypeSku),
-    }),
-).annotate({
-  identifier: "SkusGetNestedResourceTypeThirdResponse",
-}) as any as S.Schema<SkusGetNestedResourceTypeThirdResponse>;
-
-export interface SkusListByResourceTypeRegistrationsRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-}
-export const SkusListByResourceTypeRegistrationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/skus",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SkusListByResourceTypeRegistrationsRequest",
-  }) as any as S.Schema<SkusListByResourceTypeRegistrationsRequest>;
-
-/** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
-export interface SkuResource {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  properties?: ResourceTypeSku;
-}
-export const SkuResource = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ResourceTypeSku),
-  }),
-).annotate({ identifier: "SkuResource" }) as any as S.Schema<SkuResource>;
-
-/** The SkuResource items on this page */
-export type SkuResourceArrayResponseWithContinuationValueList =
-  Array<SkuResource>;
-export const SkuResourceArrayResponseWithContinuationValueList =
-  /*@__PURE__*/ S.Array(
-    SkuResource,
-  ) as any as S.Schema<SkuResourceArrayResponseWithContinuationValueList>;
-
-/** Paged collection of SkuResource items */
-export interface SkuResourceArrayResponseWithContinuation {
-  /** The SkuResource items on this page */
-  value: SkuResourceArrayResponseWithContinuationValueList;
-  /** The link to the next page of items */
-  nextLink?: string;
-}
-export const SkuResourceArrayResponseWithContinuation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      value: SkuResourceArrayResponseWithContinuationValueList,
-      nextLink: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SkuResourceArrayResponseWithContinuation",
-}) as any as S.Schema<SkuResourceArrayResponseWithContinuation>;
-
-export interface SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-}
-export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/skus",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest",
-  }) as any as S.Schema<SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest>;
-
-export interface SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The second child resource type. */
-  nestedResourceTypeSecond: string;
-}
-export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      nestedResourceTypeSecond: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/skus",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest",
-  }) as any as S.Schema<SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest>;
-
-export interface SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the resource provider hosted within ProviderHub. */
-  providerNamespace: string;
-  /** The resource type. */
-  resourceType: string;
-  /** The first child resource type. */
-  nestedResourceTypeFirst: string;
-  /** The second child resource type. */
-  nestedResourceTypeSecond: string;
-  /** The third child resource type. */
-  nestedResourceTypeThird: string;
-}
-export const SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      providerNamespace: S.String.pipe(T.Label()),
-      resourceType: S.String.pipe(T.Label()),
-      nestedResourceTypeFirst: S.String.pipe(T.Label()),
-      nestedResourceTypeSecond: S.String.pipe(T.Label()),
-      nestedResourceTypeThird: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.ProviderHub/providerRegistrations/{providerNamespace}/resourcetypeRegistrations/{resourceType}/resourcetypeRegistrations/{nestedResourceTypeFirst}/resourcetypeRegistrations/{nestedResourceTypeSecond}/resourcetypeRegistrations/{nestedResourceTypeThird}/skus",
-        code: 200,
-        apiVersion: "2025-10-01",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest",
-  }) as any as S.Schema<SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest>;
+  identifier: "UpdateProviderMonitorSettingResponse",
+}) as any as S.Schema<UpdateProviderMonitorSettingResponse>;
 
 export type AuthorizedApplicationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates the authorized application. */
@@ -8372,51 +8366,6 @@ export const AuthorizedApplicationsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AuthorizedApplicationsCreateOrUpdateRequest,
   output: AuthorizedApplicationsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AuthorizedApplicationsDeleteError = AzureOpError;
-/** Deletes an authorized application. */
-export const AuthorizedApplicationsDelete: API.OperationMethod<
-  AuthorizedApplicationsDeleteRequest,
-  AuthorizedApplicationsDeleteResponse,
-  AuthorizedApplicationsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizedApplicationsDeleteRequest,
-  output: AuthorizedApplicationsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AuthorizedApplicationsGetError = AzureOpError;
-/** Gets the authorized application details. */
-export const AuthorizedApplicationsGet: API.OperationMethod<
-  AuthorizedApplicationsGetRequest,
-  AuthorizedApplicationsGetResponse,
-  AuthorizedApplicationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizedApplicationsGetRequest,
-  output: AuthorizedApplicationsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type AuthorizedApplicationsListError = AzureOpError;
-/** Gets the list of the authorized applications in the provider namespace. */
-export const AuthorizedApplicationsList: API.OperationMethod<
-  AuthorizedApplicationsListRequest,
-  AuthorizedApplicationArrayResponseWithContinuation,
-  AuthorizedApplicationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizedApplicationsListRequest,
-  output: AuthorizedApplicationArrayResponseWithContinuation,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8437,6 +8386,21 @@ export const CheckinManifest: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type CreateProviderMonitorSettingError = AzureOpError;
+/** Creates the provider monitor setting. */
+export const CreateProviderMonitorSetting: API.OperationMethod<
+  CreateProviderMonitorSettingRequest,
+  CreateProviderMonitorSettingResponse,
+  CreateProviderMonitorSettingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProviderMonitorSettingRequest,
+  output: CreateProviderMonitorSettingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type CustomRolloutsCreateOrUpdateError = AzureOpError;
 /** Creates or updates the rollout details. */
 export const CustomRolloutsCreateOrUpdate: API.OperationMethod<
@@ -8447,66 +8411,6 @@ export const CustomRolloutsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CustomRolloutsCreateOrUpdateRequest,
   output: CustomRolloutsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomRolloutsDeleteError = AzureOpError;
-/** Deletes the custom rollout resource. Custom rollout must be in terminal state. */
-export const CustomRolloutsDelete: API.OperationMethod<
-  CustomRolloutsDeleteRequest,
-  CustomRolloutsDeleteResponse,
-  CustomRolloutsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomRolloutsDeleteRequest,
-  output: CustomRolloutsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomRolloutsGetError = AzureOpError;
-/** Gets the custom rollout details. */
-export const CustomRolloutsGet: API.OperationMethod<
-  CustomRolloutsGetRequest,
-  CustomRolloutsGetResponse,
-  CustomRolloutsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomRolloutsGetRequest,
-  output: CustomRolloutsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomRolloutsListByProviderRegistrationError = AzureOpError;
-/** Gets the list of the custom rollouts for the given provider. */
-export const CustomRolloutsListByProviderRegistration: API.OperationMethod<
-  CustomRolloutsListByProviderRegistrationRequest,
-  CustomRolloutArrayResponseWithContinuation,
-  CustomRolloutsListByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomRolloutsListByProviderRegistrationRequest,
-  output: CustomRolloutArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CustomRolloutsStopError = AzureOpError;
-/** Stops or cancels the custom rollout, if in progress. */
-export const CustomRolloutsStop: API.OperationMethod<
-  CustomRolloutsStopRequest,
-  CustomRolloutsStopResponse,
-  CustomRolloutsStopError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomRolloutsStopRequest,
-  output: CustomRolloutsStopResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8527,61 +8431,196 @@ export const DefaultRolloutsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DefaultRolloutsDeleteError = AzureOpError;
+export type DeleteAuthorizedApplicationError = AzureOpError;
+/** Deletes an authorized application. */
+export const DeleteAuthorizedApplication: API.OperationMethod<
+  DeleteAuthorizedApplicationRequest,
+  DeleteAuthorizedApplicationResponse,
+  DeleteAuthorizedApplicationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAuthorizedApplicationRequest,
+  output: DeleteAuthorizedApplicationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCustomRolloutError = AzureOpError;
+/** Deletes the custom rollout resource. Custom rollout must be in terminal state. */
+export const DeleteCustomRollout: API.OperationMethod<
+  DeleteCustomRolloutRequest,
+  DeleteCustomRolloutResponse,
+  DeleteCustomRolloutError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCustomRolloutRequest,
+  output: DeleteCustomRolloutResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteDefaultRolloutError = AzureOpError;
 /** Deletes the rollout resource. Rollout must be in terminal state. */
-export const DefaultRolloutsDelete: API.OperationMethod<
-  DefaultRolloutsDeleteRequest,
-  DefaultRolloutsDeleteResponse,
-  DefaultRolloutsDeleteError,
+export const DeleteDefaultRollout: API.OperationMethod<
+  DeleteDefaultRolloutRequest,
+  DeleteDefaultRolloutResponse,
+  DeleteDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DefaultRolloutsDeleteRequest,
-  output: DefaultRolloutsDeleteResponse,
+  input: DeleteDefaultRolloutRequest,
+  output: DeleteDefaultRolloutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DefaultRolloutsGetError = AzureOpError;
-/** Gets the default rollout details. */
-export const DefaultRolloutsGet: API.OperationMethod<
-  DefaultRolloutsGetRequest,
-  DefaultRolloutsGetResponse,
-  DefaultRolloutsGetError,
+export type DeleteNotificationRegistrationError = AzureOpError;
+/** Deletes a notification registration. */
+export const DeleteNotificationRegistration: API.OperationMethod<
+  DeleteNotificationRegistrationRequest,
+  DeleteNotificationRegistrationResponse,
+  DeleteNotificationRegistrationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DefaultRolloutsGetRequest,
-  output: DefaultRolloutsGetResponse,
+  input: DeleteNotificationRegistrationRequest,
+  output: DeleteNotificationRegistrationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DefaultRolloutsListByProviderRegistrationError = AzureOpError;
-/** Gets the list of the rollouts for the given provider. */
-export const DefaultRolloutsListByProviderRegistration: API.OperationMethod<
-  DefaultRolloutsListByProviderRegistrationRequest,
-  DefaultRolloutArrayResponseWithContinuation,
-  DefaultRolloutsListByProviderRegistrationError,
+export type DeleteOperationError = AzureOpError;
+/** Deletes an operation. */
+export const DeleteOperation: API.OperationMethod<
+  DeleteOperationRequest,
+  DeleteOperationResponse,
+  DeleteOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DefaultRolloutsListByProviderRegistrationRequest,
-  output: DefaultRolloutArrayResponseWithContinuation,
+  input: DeleteOperationRequest,
+  output: DeleteOperationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type DefaultRolloutsStopError = AzureOpError;
-/** Stops or cancels the rollout, if in progress. */
-export const DefaultRolloutsStop: API.OperationMethod<
-  DefaultRolloutsStopRequest,
-  DefaultRolloutsStopResponse,
-  DefaultRolloutsStopError,
+export type DeleteProviderMonitorSettingError = AzureOpError;
+/** Deletes a provider monitor setting. */
+export const DeleteProviderMonitorSetting: API.OperationMethod<
+  DeleteProviderMonitorSettingRequest,
+  DeleteProviderMonitorSettingResponse,
+  DeleteProviderMonitorSettingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DefaultRolloutsStopRequest,
-  output: DefaultRolloutsStopResponse,
+  input: DeleteProviderMonitorSettingRequest,
+  output: DeleteProviderMonitorSettingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteProviderRegistrationError = AzureOpError;
+/** Deletes a provider registration. */
+export const DeleteProviderRegistration: API.OperationMethod<
+  DeleteProviderRegistrationRequest,
+  DeleteProviderRegistrationResponse,
+  DeleteProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteProviderRegistrationRequest,
+  output: DeleteProviderRegistrationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteResourceActionResourceError = AzureOpError;
+/** Deletes resources. */
+export const DeleteResourceActionResource: API.OperationMethod<
+  DeleteResourceActionResourceRequest,
+  DeleteResourceActionResourceResponse,
+  DeleteResourceActionResourceError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteResourceActionResourceRequest,
+  output: DeleteResourceActionResourceResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteResourceTypeRegistrationError = AzureOpError;
+/** Deletes a resource type */
+export const DeleteResourceTypeRegistration: API.OperationMethod<
+  DeleteResourceTypeRegistrationRequest,
+  DeleteResourceTypeRegistrationResponse,
+  DeleteResourceTypeRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteResourceTypeRegistrationRequest,
+  output: DeleteResourceTypeRegistrationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSkusError = AzureOpError;
+/** Deletes a resource type sku. */
+export const DeleteSkus: API.OperationMethod<
+  DeleteSkusRequest,
+  DeleteSkusResponse,
+  DeleteSkusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSkusRequest,
+  output: DeleteSkusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSkusNestedResourceTypeFirstError = AzureOpError;
+/** Deletes a resource type sku. */
+export const DeleteSkusNestedResourceTypeFirst: API.OperationMethod<
+  DeleteSkusNestedResourceTypeFirstRequest,
+  DeleteSkusNestedResourceTypeFirstResponse,
+  DeleteSkusNestedResourceTypeFirstError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSkusNestedResourceTypeFirstRequest,
+  output: DeleteSkusNestedResourceTypeFirstResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSkusNestedResourceTypeSecondError = AzureOpError;
+/** Deletes a resource type sku. */
+export const DeleteSkusNestedResourceTypeSecond: API.OperationMethod<
+  DeleteSkusNestedResourceTypeSecondRequest,
+  DeleteSkusNestedResourceTypeSecondResponse,
+  DeleteSkusNestedResourceTypeSecondError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSkusNestedResourceTypeSecondRequest,
+  output: DeleteSkusNestedResourceTypeSecondResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteSkusNestedResourceTypeThirdError = AzureOpError;
+/** Deletes a resource type sku. */
+export const DeleteSkusNestedResourceTypeThird: API.OperationMethod<
+  DeleteSkusNestedResourceTypeThirdRequest,
+  DeleteSkusNestedResourceTypeThirdResponse,
+  DeleteSkusNestedResourceTypeThirdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSkusNestedResourceTypeThirdRequest,
+  output: DeleteSkusNestedResourceTypeThirdResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8602,6 +8641,416 @@ export const GenerateManifest: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GenerateProviderRegistrationOperationError = AzureOpError;
+/** Generates the operations api for the given provider. */
+export const GenerateProviderRegistrationOperation: API.OperationMethod<
+  GenerateProviderRegistrationOperationRequest,
+  GenerateProviderRegistrationOperationResponse,
+  GenerateProviderRegistrationOperationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateProviderRegistrationOperationRequest,
+  output: GenerateProviderRegistrationOperationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAuthorizedApplicationError = AzureOpError;
+/** Gets the authorized application details. */
+export const GetAuthorizedApplication: API.OperationMethod<
+  GetAuthorizedApplicationRequest,
+  GetAuthorizedApplicationResponse,
+  GetAuthorizedApplicationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAuthorizedApplicationRequest,
+  output: GetAuthorizedApplicationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCustomRolloutError = AzureOpError;
+/** Gets the custom rollout details. */
+export const GetCustomRollout: API.OperationMethod<
+  GetCustomRolloutRequest,
+  GetCustomRolloutResponse,
+  GetCustomRolloutError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCustomRolloutRequest,
+  output: GetCustomRolloutResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDefaultRolloutError = AzureOpError;
+/** Gets the default rollout details. */
+export const GetDefaultRollout: API.OperationMethod<
+  GetDefaultRolloutRequest,
+  GetDefaultRolloutResponse,
+  GetDefaultRolloutError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDefaultRolloutRequest,
+  output: GetDefaultRolloutResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetManifestError = AzureOpError;
+/** Gets the manifest from the manifest repository. */
+export const GetManifest: API.OperationMethod<
+  GetManifestRequest,
+  GetManifestResponse,
+  GetManifestError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetManifestRequest,
+  output: GetManifestResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetNotificationRegistrationError = AzureOpError;
+/** Gets the notification registration details. */
+export const GetNotificationRegistration: API.OperationMethod<
+  GetNotificationRegistrationRequest,
+  GetNotificationRegistrationResponse,
+  GetNotificationRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetNotificationRegistrationRequest,
+  output: GetNotificationRegistrationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetProviderMonitorSettingError = AzureOpError;
+/** Gets the provider monitor setting details. */
+export const GetProviderMonitorSetting: API.OperationMethod<
+  GetProviderMonitorSettingRequest,
+  GetProviderMonitorSettingResponse,
+  GetProviderMonitorSettingError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProviderMonitorSettingRequest,
+  output: GetProviderMonitorSettingResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetProviderRegistrationError = AzureOpError;
+/** Gets the provider registration details. */
+export const GetProviderRegistration: API.OperationMethod<
+  GetProviderRegistrationRequest,
+  GetProviderRegistrationResponse,
+  GetProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetProviderRegistrationRequest,
+  output: GetProviderRegistrationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetResourceTypeRegistrationError = AzureOpError;
+/** Gets a resource type details in the given subscription and provider. */
+export const GetResourceTypeRegistration: API.OperationMethod<
+  GetResourceTypeRegistrationRequest,
+  GetResourceTypeRegistrationResponse,
+  GetResourceTypeRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetResourceTypeRegistrationRequest,
+  output: GetResourceTypeRegistrationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSkusError = AzureOpError;
+/** Gets the sku details for the given resource type and sku name. */
+export const GetSkus: API.OperationMethod<
+  GetSkusRequest,
+  GetSkusResponse,
+  GetSkusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSkusRequest,
+  output: GetSkusResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSkusNestedResourceTypeFirstError = AzureOpError;
+/** Gets the sku details for the given resource type and sku name. */
+export const GetSkusNestedResourceTypeFirst: API.OperationMethod<
+  GetSkusNestedResourceTypeFirstRequest,
+  GetSkusNestedResourceTypeFirstResponse,
+  GetSkusNestedResourceTypeFirstError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSkusNestedResourceTypeFirstRequest,
+  output: GetSkusNestedResourceTypeFirstResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSkusNestedResourceTypeSecondError = AzureOpError;
+/** Gets the sku details for the given resource type and sku name. */
+export const GetSkusNestedResourceTypeSecond: API.OperationMethod<
+  GetSkusNestedResourceTypeSecondRequest,
+  GetSkusNestedResourceTypeSecondResponse,
+  GetSkusNestedResourceTypeSecondError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSkusNestedResourceTypeSecondRequest,
+  output: GetSkusNestedResourceTypeSecondResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetSkusNestedResourceTypeThirdError = AzureOpError;
+/** Gets the sku details for the given resource type and sku name. */
+export const GetSkusNestedResourceTypeThird: API.OperationMethod<
+  GetSkusNestedResourceTypeThirdRequest,
+  GetSkusNestedResourceTypeThirdResponse,
+  GetSkusNestedResourceTypeThirdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSkusNestedResourceTypeThirdRequest,
+  output: GetSkusNestedResourceTypeThirdResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAuthorizedApplicationsError = AzureOpError;
+/** Gets the list of the authorized applications in the provider namespace. */
+export const ListAuthorizedApplications: API.OperationMethod<
+  ListAuthorizedApplicationsRequest,
+  AuthorizedApplicationArrayResponseWithContinuation,
+  ListAuthorizedApplicationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAuthorizedApplicationsRequest,
+  output: AuthorizedApplicationArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCustomRolloutByProviderRegistrationError = AzureOpError;
+/** Gets the list of the custom rollouts for the given provider. */
+export const ListCustomRolloutByProviderRegistration: API.OperationMethod<
+  ListCustomRolloutByProviderRegistrationRequest,
+  CustomRolloutArrayResponseWithContinuation,
+  ListCustomRolloutByProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCustomRolloutByProviderRegistrationRequest,
+  output: CustomRolloutArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDefaultRolloutByProviderRegistrationError = AzureOpError;
+/** Gets the list of the rollouts for the given provider. */
+export const ListDefaultRolloutByProviderRegistration: API.OperationMethod<
+  ListDefaultRolloutByProviderRegistrationRequest,
+  DefaultRolloutArrayResponseWithContinuation,
+  ListDefaultRolloutByProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDefaultRolloutByProviderRegistrationRequest,
+  output: DefaultRolloutArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListNotificationRegistrationByProviderRegistrationError =
+  AzureOpError;
+/** Gets the list of the notification registrations for the given provider. */
+export const ListNotificationRegistrationByProviderRegistration: API.OperationMethod<
+  ListNotificationRegistrationByProviderRegistrationRequest,
+  NotificationRegistrationArrayResponseWithContinuation,
+  ListNotificationRegistrationByProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListNotificationRegistrationByProviderRegistrationRequest,
+  output: NotificationRegistrationArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationByProviderRegistrationError = AzureOpError;
+/** Gets the operations supported by the given provider. */
+export const ListOperationByProviderRegistration: API.OperationMethod<
+  ListOperationByProviderRegistrationRequest,
+  ListOperationByProviderRegistrationResponse,
+  ListOperationByProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationByProviderRegistrationRequest,
+  output: ListOperationByProviderRegistrationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  OperationsDefinitionArrayResponseWithContinuation,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: OperationsDefinitionArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProviderMonitorSettingByResourceGroupError = AzureOpError;
+/** Gets the list of the provider monitor settings in the resource group. */
+export const ListProviderMonitorSettingByResourceGroup: API.OperationMethod<
+  ListProviderMonitorSettingByResourceGroupRequest,
+  ProviderMonitorSettingArrayResponseWithContinuation,
+  ListProviderMonitorSettingByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProviderMonitorSettingByResourceGroupRequest,
+  output: ProviderMonitorSettingArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProviderMonitorSettingBySubscriptionError = AzureOpError;
+/** Gets the list of the provider monitor settings in the subscription. */
+export const ListProviderMonitorSettingBySubscription: API.OperationMethod<
+  ListProviderMonitorSettingBySubscriptionRequest,
+  ProviderMonitorSettingArrayResponseWithContinuation,
+  ListProviderMonitorSettingBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProviderMonitorSettingBySubscriptionRequest,
+  output: ProviderMonitorSettingArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProviderRegistrationsError = AzureOpError;
+/** Gets the list of the provider registrations in the subscription. */
+export const ListProviderRegistrations: API.OperationMethod<
+  ListProviderRegistrationsRequest,
+  ProviderRegistrationArrayResponseWithContinuation,
+  ListProviderRegistrationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProviderRegistrationsRequest,
+  output: ProviderRegistrationArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListResourceTypeRegistrationByProviderRegistrationError =
+  AzureOpError;
+/** Gets the list of the resource types for the given provider. */
+export const ListResourceTypeRegistrationByProviderRegistration: API.OperationMethod<
+  ListResourceTypeRegistrationByProviderRegistrationRequest,
+  ResourceTypeRegistrationArrayResponseWithContinuation,
+  ListResourceTypeRegistrationByProviderRegistrationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListResourceTypeRegistrationByProviderRegistrationRequest,
+  output: ResourceTypeRegistrationArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSkusByResourceTypeRegistrationNestedResourceTypeFirstError =
+  AzureOpError;
+/** Gets the list of skus for the given resource type. */
+export const ListSkusByResourceTypeRegistrationNestedResourceTypeFirst: API.OperationMethod<
+  ListSkusByResourceTypeRegistrationNestedResourceTypeFirstRequest,
+  SkuResourceArrayResponseWithContinuation,
+  ListSkusByResourceTypeRegistrationNestedResourceTypeFirstError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSkusByResourceTypeRegistrationNestedResourceTypeFirstRequest,
+  output: SkuResourceArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSkusByResourceTypeRegistrationNestedResourceTypeSecondError =
+  AzureOpError;
+/** Gets the list of skus for the given resource type. */
+export const ListSkusByResourceTypeRegistrationNestedResourceTypeSecond: API.OperationMethod<
+  ListSkusByResourceTypeRegistrationNestedResourceTypeSecondRequest,
+  SkuResourceArrayResponseWithContinuation,
+  ListSkusByResourceTypeRegistrationNestedResourceTypeSecondError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSkusByResourceTypeRegistrationNestedResourceTypeSecondRequest,
+  output: SkuResourceArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSkusByResourceTypeRegistrationNestedResourceTypeThirdError =
+  AzureOpError;
+/** Gets the list of skus for the given resource type. */
+export const ListSkusByResourceTypeRegistrationNestedResourceTypeThird: API.OperationMethod<
+  ListSkusByResourceTypeRegistrationNestedResourceTypeThirdRequest,
+  SkuResourceArrayResponseWithContinuation,
+  ListSkusByResourceTypeRegistrationNestedResourceTypeThirdError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSkusByResourceTypeRegistrationNestedResourceTypeThirdRequest,
+  output: SkuResourceArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSkusByResourceTypeRegistrationsError = AzureOpError;
+/** Gets the list of skus for the given resource type. */
+export const ListSkusByResourceTypeRegistrations: API.OperationMethod<
+  ListSkusByResourceTypeRegistrationsRequest,
+  SkuResourceArrayResponseWithContinuation,
+  ListSkusByResourceTypeRegistrationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSkusByResourceTypeRegistrationsRequest,
+  output: SkuResourceArrayResponseWithContinuation,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
 export type ManifestsCreateOrUpdateError = AzureOpError;
 /** Creates or Updates a manifest in manifest repository. */
 export const ManifestsCreateOrUpdate: API.OperationMethod<
@@ -8612,21 +9061,6 @@ export const ManifestsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ManifestsCreateOrUpdateRequest,
   output: ManifestsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ManifestsGetError = AzureOpError;
-/** Gets the manifest from the manifest repository. */
-export const ManifestsGet: API.OperationMethod<
-  ManifestsGetRequest,
-  ManifestsGetResponse,
-  ManifestsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ManifestsGetRequest,
-  output: ManifestsGetResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8707,52 +9141,6 @@ export const NotificationRegistrationsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type NotificationRegistrationsDeleteError = AzureOpError;
-/** Deletes a notification registration. */
-export const NotificationRegistrationsDelete: API.OperationMethod<
-  NotificationRegistrationsDeleteRequest,
-  NotificationRegistrationsDeleteResponse,
-  NotificationRegistrationsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotificationRegistrationsDeleteRequest,
-  output: NotificationRegistrationsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotificationRegistrationsGetError = AzureOpError;
-/** Gets the notification registration details. */
-export const NotificationRegistrationsGet: API.OperationMethod<
-  NotificationRegistrationsGetRequest,
-  NotificationRegistrationsGetResponse,
-  NotificationRegistrationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotificationRegistrationsGetRequest,
-  output: NotificationRegistrationsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type NotificationRegistrationsListByProviderRegistrationError =
-  AzureOpError;
-/** Gets the list of the notification registrations for the given provider. */
-export const NotificationRegistrationsListByProviderRegistration: API.OperationMethod<
-  NotificationRegistrationsListByProviderRegistrationRequest,
-  NotificationRegistrationArrayResponseWithContinuation,
-  NotificationRegistrationsListByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NotificationRegistrationsListByProviderRegistrationRequest,
-  output: NotificationRegistrationArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type OperationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates the operation supported by the given provider. */
 export const OperationsCreateOrUpdate: API.OperationMethod<
@@ -8763,141 +9151,6 @@ export const OperationsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: OperationsCreateOrUpdateRequest,
   output: OperationsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsDeleteError = AzureOpError;
-/** Deletes an operation. */
-export const OperationsDelete: API.OperationMethod<
-  OperationsDeleteRequest,
-  OperationsDeleteResponse,
-  OperationsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsDeleteRequest,
-  output: OperationsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsDefinitionArrayResponseWithContinuation,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsDefinitionArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsListByProviderRegistrationError = AzureOpError;
-/** Gets the operations supported by the given provider. */
-export const OperationsListByProviderRegistration: API.OperationMethod<
-  OperationsListByProviderRegistrationRequest,
-  OperationsListByProviderRegistrationResponse,
-  OperationsListByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListByProviderRegistrationRequest,
-  output: OperationsListByProviderRegistrationResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderMonitorSettingsCreateError = AzureOpError;
-/** Creates the provider monitor setting. */
-export const ProviderMonitorSettingsCreate: API.OperationMethod<
-  ProviderMonitorSettingsCreateRequest,
-  ProviderMonitorSettingsCreateResponse,
-  ProviderMonitorSettingsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderMonitorSettingsCreateRequest,
-  output: ProviderMonitorSettingsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderMonitorSettingsDeleteError = AzureOpError;
-/** Deletes a provider monitor setting. */
-export const ProviderMonitorSettingsDelete: API.OperationMethod<
-  ProviderMonitorSettingsDeleteRequest,
-  ProviderMonitorSettingsDeleteResponse,
-  ProviderMonitorSettingsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderMonitorSettingsDeleteRequest,
-  output: ProviderMonitorSettingsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderMonitorSettingsGetError = AzureOpError;
-/** Gets the provider monitor setting details. */
-export const ProviderMonitorSettingsGet: API.OperationMethod<
-  ProviderMonitorSettingsGetRequest,
-  ProviderMonitorSettingsGetResponse,
-  ProviderMonitorSettingsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderMonitorSettingsGetRequest,
-  output: ProviderMonitorSettingsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderMonitorSettingsListByResourceGroupError = AzureOpError;
-/** Gets the list of the provider monitor settings in the resource group. */
-export const ProviderMonitorSettingsListByResourceGroup: API.OperationMethod<
-  ProviderMonitorSettingsListByResourceGroupRequest,
-  ProviderMonitorSettingArrayResponseWithContinuation,
-  ProviderMonitorSettingsListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderMonitorSettingsListByResourceGroupRequest,
-  output: ProviderMonitorSettingArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderMonitorSettingsListBySubscriptionError = AzureOpError;
-/** Gets the list of the provider monitor settings in the subscription. */
-export const ProviderMonitorSettingsListBySubscription: API.OperationMethod<
-  ProviderMonitorSettingsListBySubscriptionRequest,
-  ProviderMonitorSettingArrayResponseWithContinuation,
-  ProviderMonitorSettingsListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderMonitorSettingsListBySubscriptionRequest,
-  output: ProviderMonitorSettingArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderMonitorSettingsUpdateError = AzureOpError;
-/** Updates the provider monitor setting properties as specified in the request body. Update fails if the specified provider monitor setting does not already exist. */
-export const ProviderMonitorSettingsUpdate: API.OperationMethod<
-  ProviderMonitorSettingsUpdateRequest,
-  ProviderMonitorSettingsUpdateResponse,
-  ProviderMonitorSettingsUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderMonitorSettingsUpdateRequest,
-  output: ProviderMonitorSettingsUpdateResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8918,81 +9171,6 @@ export const ProviderRegistrationsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ProviderRegistrationsDeleteError = AzureOpError;
-/** Deletes a provider registration. */
-export const ProviderRegistrationsDelete: API.OperationMethod<
-  ProviderRegistrationsDeleteRequest,
-  ProviderRegistrationsDeleteResponse,
-  ProviderRegistrationsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderRegistrationsDeleteRequest,
-  output: ProviderRegistrationsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderRegistrationsGenerateOperationsError = AzureOpError;
-/** Generates the operations api for the given provider. */
-export const ProviderRegistrationsGenerateOperations: API.OperationMethod<
-  ProviderRegistrationsGenerateOperationsRequest,
-  ProviderRegistrationsGenerateOperationsResponse,
-  ProviderRegistrationsGenerateOperationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderRegistrationsGenerateOperationsRequest,
-  output: ProviderRegistrationsGenerateOperationsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderRegistrationsGetError = AzureOpError;
-/** Gets the provider registration details. */
-export const ProviderRegistrationsGet: API.OperationMethod<
-  ProviderRegistrationsGetRequest,
-  ProviderRegistrationsGetResponse,
-  ProviderRegistrationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderRegistrationsGetRequest,
-  output: ProviderRegistrationsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProviderRegistrationsListError = AzureOpError;
-/** Gets the list of the provider registrations in the subscription. */
-export const ProviderRegistrationsList: API.OperationMethod<
-  ProviderRegistrationsListRequest,
-  ProviderRegistrationArrayResponseWithContinuation,
-  ProviderRegistrationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderRegistrationsListRequest,
-  output: ProviderRegistrationArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ResourceActionsDeleteResourcesError = AzureOpError;
-/** Deletes resources. */
-export const ResourceActionsDeleteResources: API.OperationMethod<
-  ResourceActionsDeleteResourcesRequest,
-  ResourceActionsDeleteResourcesResponse,
-  ResourceActionsDeleteResourcesError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResourceActionsDeleteResourcesRequest,
-  output: ResourceActionsDeleteResourcesResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ResourceTypeRegistrationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a resource type. */
 export const ResourceTypeRegistrationsCreateOrUpdate: API.OperationMethod<
@@ -9003,52 +9181,6 @@ export const ResourceTypeRegistrationsCreateOrUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ResourceTypeRegistrationsCreateOrUpdateRequest,
   output: ResourceTypeRegistrationsCreateOrUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ResourceTypeRegistrationsDeleteError = AzureOpError;
-/** Deletes a resource type */
-export const ResourceTypeRegistrationsDelete: API.OperationMethod<
-  ResourceTypeRegistrationsDeleteRequest,
-  ResourceTypeRegistrationsDeleteResponse,
-  ResourceTypeRegistrationsDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResourceTypeRegistrationsDeleteRequest,
-  output: ResourceTypeRegistrationsDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ResourceTypeRegistrationsGetError = AzureOpError;
-/** Gets a resource type details in the given subscription and provider. */
-export const ResourceTypeRegistrationsGet: API.OperationMethod<
-  ResourceTypeRegistrationsGetRequest,
-  ResourceTypeRegistrationsGetResponse,
-  ResourceTypeRegistrationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResourceTypeRegistrationsGetRequest,
-  output: ResourceTypeRegistrationsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ResourceTypeRegistrationsListByProviderRegistrationError =
-  AzureOpError;
-/** Gets the list of the resource types for the given provider. */
-export const ResourceTypeRegistrationsListByProviderRegistration: API.OperationMethod<
-  ResourceTypeRegistrationsListByProviderRegistrationRequest,
-  ResourceTypeRegistrationArrayResponseWithContinuation,
-  ResourceTypeRegistrationsListByProviderRegistrationError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ResourceTypeRegistrationsListByProviderRegistrationRequest,
-  output: ResourceTypeRegistrationArrayResponseWithContinuation,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9114,184 +9246,46 @@ export const SkusCreateOrUpdateNestedResourceTypeThird: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type SkusDeleteError = AzureOpError;
-/** Deletes a resource type sku. */
-export const SkusDelete: API.OperationMethod<
-  SkusDeleteRequest,
-  SkusDeleteResponse,
-  SkusDeleteError,
+export type StopCustomRolloutError = AzureOpError;
+/** Stops or cancels the custom rollout, if in progress. */
+export const StopCustomRollout: API.OperationMethod<
+  StopCustomRolloutRequest,
+  StopCustomRolloutResponse,
+  StopCustomRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SkusDeleteRequest,
-  output: SkusDeleteResponse,
+  input: StopCustomRolloutRequest,
+  output: StopCustomRolloutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SkusDeleteNestedResourceTypeFirstError = AzureOpError;
-/** Deletes a resource type sku. */
-export const SkusDeleteNestedResourceTypeFirst: API.OperationMethod<
-  SkusDeleteNestedResourceTypeFirstRequest,
-  SkusDeleteNestedResourceTypeFirstResponse,
-  SkusDeleteNestedResourceTypeFirstError,
+export type StopDefaultRolloutError = AzureOpError;
+/** Stops or cancels the rollout, if in progress. */
+export const StopDefaultRollout: API.OperationMethod<
+  StopDefaultRolloutRequest,
+  StopDefaultRolloutResponse,
+  StopDefaultRolloutError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SkusDeleteNestedResourceTypeFirstRequest,
-  output: SkusDeleteNestedResourceTypeFirstResponse,
+  input: StopDefaultRolloutRequest,
+  output: StopDefaultRolloutResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SkusDeleteNestedResourceTypeSecondError = AzureOpError;
-/** Deletes a resource type sku. */
-export const SkusDeleteNestedResourceTypeSecond: API.OperationMethod<
-  SkusDeleteNestedResourceTypeSecondRequest,
-  SkusDeleteNestedResourceTypeSecondResponse,
-  SkusDeleteNestedResourceTypeSecondError,
+export type UpdateProviderMonitorSettingError = AzureOpError;
+/** Updates the provider monitor setting properties as specified in the request body. Update fails if the specified provider monitor setting does not already exist. */
+export const UpdateProviderMonitorSetting: API.OperationMethod<
+  UpdateProviderMonitorSettingRequest,
+  UpdateProviderMonitorSettingResponse,
+  UpdateProviderMonitorSettingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SkusDeleteNestedResourceTypeSecondRequest,
-  output: SkusDeleteNestedResourceTypeSecondResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusDeleteNestedResourceTypeThirdError = AzureOpError;
-/** Deletes a resource type sku. */
-export const SkusDeleteNestedResourceTypeThird: API.OperationMethod<
-  SkusDeleteNestedResourceTypeThirdRequest,
-  SkusDeleteNestedResourceTypeThirdResponse,
-  SkusDeleteNestedResourceTypeThirdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusDeleteNestedResourceTypeThirdRequest,
-  output: SkusDeleteNestedResourceTypeThirdResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusGetError = AzureOpError;
-/** Gets the sku details for the given resource type and sku name. */
-export const SkusGet: API.OperationMethod<
-  SkusGetRequest,
-  SkusGetResponse,
-  SkusGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusGetRequest,
-  output: SkusGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusGetNestedResourceTypeFirstError = AzureOpError;
-/** Gets the sku details for the given resource type and sku name. */
-export const SkusGetNestedResourceTypeFirst: API.OperationMethod<
-  SkusGetNestedResourceTypeFirstRequest,
-  SkusGetNestedResourceTypeFirstResponse,
-  SkusGetNestedResourceTypeFirstError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusGetNestedResourceTypeFirstRequest,
-  output: SkusGetNestedResourceTypeFirstResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusGetNestedResourceTypeSecondError = AzureOpError;
-/** Gets the sku details for the given resource type and sku name. */
-export const SkusGetNestedResourceTypeSecond: API.OperationMethod<
-  SkusGetNestedResourceTypeSecondRequest,
-  SkusGetNestedResourceTypeSecondResponse,
-  SkusGetNestedResourceTypeSecondError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusGetNestedResourceTypeSecondRequest,
-  output: SkusGetNestedResourceTypeSecondResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusGetNestedResourceTypeThirdError = AzureOpError;
-/** Gets the sku details for the given resource type and sku name. */
-export const SkusGetNestedResourceTypeThird: API.OperationMethod<
-  SkusGetNestedResourceTypeThirdRequest,
-  SkusGetNestedResourceTypeThirdResponse,
-  SkusGetNestedResourceTypeThirdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusGetNestedResourceTypeThirdRequest,
-  output: SkusGetNestedResourceTypeThirdResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusListByResourceTypeRegistrationsError = AzureOpError;
-/** Gets the list of skus for the given resource type. */
-export const SkusListByResourceTypeRegistrations: API.OperationMethod<
-  SkusListByResourceTypeRegistrationsRequest,
-  SkuResourceArrayResponseWithContinuation,
-  SkusListByResourceTypeRegistrationsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusListByResourceTypeRegistrationsRequest,
-  output: SkuResourceArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeFirstError =
-  AzureOpError;
-/** Gets the list of skus for the given resource type. */
-export const SkusListByResourceTypeRegistrationsNestedResourceTypeFirst: API.OperationMethod<
-  SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest,
-  SkuResourceArrayResponseWithContinuation,
-  SkusListByResourceTypeRegistrationsNestedResourceTypeFirstError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusListByResourceTypeRegistrationsNestedResourceTypeFirstRequest,
-  output: SkuResourceArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeSecondError =
-  AzureOpError;
-/** Gets the list of skus for the given resource type. */
-export const SkusListByResourceTypeRegistrationsNestedResourceTypeSecond: API.OperationMethod<
-  SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest,
-  SkuResourceArrayResponseWithContinuation,
-  SkusListByResourceTypeRegistrationsNestedResourceTypeSecondError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusListByResourceTypeRegistrationsNestedResourceTypeSecondRequest,
-  output: SkuResourceArrayResponseWithContinuation,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SkusListByResourceTypeRegistrationsNestedResourceTypeThirdError =
-  AzureOpError;
-/** Gets the list of skus for the given resource type. */
-export const SkusListByResourceTypeRegistrationsNestedResourceTypeThird: API.OperationMethod<
-  SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest,
-  SkuResourceArrayResponseWithContinuation,
-  SkusListByResourceTypeRegistrationsNestedResourceTypeThirdError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SkusListByResourceTypeRegistrationsNestedResourceTypeThirdRequest,
-  output: SkuResourceArrayResponseWithContinuation,
+  input: UpdateProviderMonitorSettingRequest,
+  output: UpdateProviderMonitorSettingResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

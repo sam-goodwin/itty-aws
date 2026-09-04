@@ -1456,6 +1456,349 @@ export const AnalyzeOrgPolicyGovernedContainersResponse =
     identifier: "AnalyzeOrgPolicyGovernedContainersResponse",
   }) as any as S.Schema<AnalyzeOrgPolicyGovernedContainersResponse>;
 
+export type FeedContentTypeEnum =
+  | "CONTENT_TYPE_UNSPECIFIED"
+  | "RESOURCE"
+  | "IAM_POLICY"
+  | "ORG_POLICY"
+  | "ACCESS_POLICY"
+  | "OS_INVENTORY"
+  | "RELATIONSHIP";
+export const FeedContentTypeEnum = /*@__PURE__*/ S.String;
+
+/** A Pub/Sub destination. */
+export interface PubsubDestination {
+  /** The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`. */
+  topic?: string;
+}
+export const PubsubDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    topic: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PubsubDestination",
+}) as any as S.Schema<PubsubDestination>;
+
+/** Output configuration for asset feed destination. */
+export interface FeedOutputConfig {
+  /** Destination on Pub/Sub. */
+  pubsubDestination?: PubsubDestination;
+}
+export const FeedOutputConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pubsubDestination: S.optional(PubsubDestination),
+  }),
+).annotate({
+  identifier: "FeedOutputConfig",
+}) as any as S.Schema<FeedOutputConfig>;
+
+/** An asset feed used to export asset updates to a destinations. An asset feed filter controls what updates are exported. The asset feed must be created within a project, organization, or folder. Supported destinations are: Pub/Sub topics. */
+export interface Feed {
+  /** Asset content type. If not specified, no content but the asset name and type will be returned. */
+  contentType?: FeedContentTypeEnum | (string & {});
+  /** A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions. */
+  condition?: Expr;
+  /** Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization. */
+  name?: string;
+  /** A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format). */
+  assetNames?: StringList;
+  /** A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` For a list of all supported asset types, see [Supported asset types](/asset-inventory/docs/supported-asset-types). */
+  assetTypes?: StringList;
+  /** A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
+  relationshipTypes?: StringList;
+  /** Required. Feed output configuration defining where the asset updates are published to. */
+  feedOutputConfig?: FeedOutputConfig;
+}
+export const Feed = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentType: S.optional(FeedContentTypeEnum),
+    condition: S.optional(Expr),
+    name: S.optional(S.String),
+    assetNames: S.optional(StringList),
+    assetTypes: S.optional(StringList),
+    relationshipTypes: S.optional(StringList),
+    feedOutputConfig: S.optional(FeedOutputConfig),
+  }),
+).annotate({ identifier: "Feed" }) as any as S.Schema<Feed>;
+
+/** Create asset feed request. */
+export interface CreateFeedRequest {
+  /** Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization. */
+  feedId?: string;
+  /** Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
+  feed?: Feed;
+}
+export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    feedId: S.optional(S.String),
+    feed: S.optional(Feed),
+  }),
+).annotate({
+  identifier: "CreateFeedRequest",
+}) as any as S.Schema<CreateFeedRequest>;
+
+export interface CreateFeedsRequest {
+  /** Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). */
+  parent: string;
+  /** Request body */
+  body?: CreateFeedRequest;
+}
+export const CreateFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(CreateFeedRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/feeds",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateFeedsRequest",
+}) as any as S.Schema<CreateFeedsRequest>;
+
+/** The query content. */
+export interface QueryContent {
+  /** An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC. */
+  iamPolicyAnalysisQuery?: IamPolicyAnalysisQuery;
+}
+export const QueryContent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    iamPolicyAnalysisQuery: S.optional(IamPolicyAnalysisQuery),
+  }),
+).annotate({ identifier: "QueryContent" }) as any as S.Schema<QueryContent>;
+
+export type StringMap = { [key: string]: string | undefined };
+export const StringMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<StringMap>;
+
+/** A saved query which can be shared with others or used later. */
+export interface SavedQuery {
+  /** The query content. */
+  content?: QueryContent;
+  /** Output only. The create time of this saved query. */
+  createTime?: string;
+  /** Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters. */
+  labels?: StringMap;
+  /** Output only. The account's email address who has updated this saved query most recently. */
+  lastUpdater?: string;
+  /** The description of this saved query. This value should be fewer than 255 characters. */
+  description?: string;
+  /** Output only. The last update time of this saved query. */
+  lastUpdateTime?: string;
+  /** The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id */
+  name?: string;
+  /** Output only. The account's email address who has created this saved query. */
+  creator?: string;
+}
+export const SavedQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(QueryContent),
+    createTime: S.optional(S.String),
+    labels: S.optional(StringMap),
+    lastUpdater: S.optional(S.String),
+    description: S.optional(S.String),
+    lastUpdateTime: S.optional(S.String),
+    name: S.optional(S.String),
+    creator: S.optional(S.String),
+  }),
+).annotate({ identifier: "SavedQuery" }) as any as S.Schema<SavedQuery>;
+
+export interface CreateSavedQueriesRequest {
+  /** Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored. */
+  savedQueryId?: string;
+  /** Required. The name of the project/folder/organization where this saved_query should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). */
+  parent: string;
+  /** Request body */
+  body?: SavedQuery;
+}
+export const CreateSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    savedQueryId: S.optional(S.String.pipe(T.Query())),
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(SavedQuery.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}/savedQueries",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "CreateSavedQueriesRequest",
+}) as any as S.Schema<CreateSavedQueriesRequest>;
+
+export interface DeleteFeedsRequest {
+  /** Required. The name of the feed and it must be in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
+  name: string;
+}
+export const DeleteFeedsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteFeedsRequest",
+}) as any as S.Schema<DeleteFeedsRequest>;
+
+/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
+export interface Empty {}
+export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
+  identifier: "Empty",
+}) as any as S.Schema<Empty>;
+
+export interface DeleteSavedQueriesRequest {
+  /** Required. The name of the saved query to delete. It must be in the format of: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id */
+  name: string;
+}
+export const DeleteSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "v1/{+name}",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSavedQueriesRequest",
+}) as any as S.Schema<DeleteSavedQueriesRequest>;
+
+export type ExportAssetsRequestContentTypeEnum =
+  | "CONTENT_TYPE_UNSPECIFIED"
+  | "RESOURCE"
+  | "IAM_POLICY"
+  | "ORG_POLICY"
+  | "ACCESS_POLICY"
+  | "OS_INVENTORY"
+  | "RELATIONSHIP";
+export const ExportAssetsRequestContentTypeEnum = /*@__PURE__*/ S.String;
+
+/** A Cloud Storage location. */
+export interface GcsDestination {
+  /** The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the exported result. */
+  uri?: string;
+  /** The URI prefix of all generated Cloud Storage objects. Example: "gs://bucket_name/object_name_prefix". Each object URI is in format: "gs://bucket_name/object_name_prefix// and only contains assets for that type. starts from 0. Example: "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the first shard of output objects containing all compute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be returned if file with the same name "gs://bucket_name/object_name_prefix" already exists. */
+  uriPrefix?: string;
+}
+export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    uri: S.optional(S.String),
+    uriPrefix: S.optional(S.String),
+  }),
+).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
+
+export type PartitionSpecPartitionKeyEnum =
+  | "PARTITION_KEY_UNSPECIFIED"
+  | "READ_TIME"
+  | "REQUEST_TIME";
+export const PartitionSpecPartitionKeyEnum = /*@__PURE__*/ S.String;
+
+/** Specifications of BigQuery partitioned table as export destination. */
+export interface PartitionSpec {
+  /** The partition key for BigQuery partitioned table. */
+  partitionKey?: PartitionSpecPartitionKeyEnum | (string & {});
+}
+export const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    partitionKey: S.optional(PartitionSpecPartitionKeyEnum),
+  }),
+).annotate({ identifier: "PartitionSpec" }) as any as S.Schema<PartitionSpec>;
+
+/** A BigQuery destination for exporting assets to. */
+export interface BigQueryDestination {
+  /** Required. The BigQuery table to which the snapshot result should be written. If this table does not exist, a new table with the given name will be created. */
+  table?: string;
+  /** [partition_spec] determines whether to export to partitioned table(s) and how to partition the data. If [partition_spec] is unset or [partition_spec.partition_key] is unset or `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be exported to non-partitioned table(s). [force] will decide whether to overwrite existing table(s). If [partition_spec] is specified. First, the snapshot results will be written to partitioned table(s) with two additional timestamp columns, readTime and requestTime, one of which will be the partition key. Secondly, in the case when any destination table already exists, it will first try to update existing table's schema as necessary by appending additional columns. Then, if [force] is `TRUE`, the corresponding partition will be overwritten by the snapshot results (data in different partitions will remain intact); if [force] is unset or `FALSE`, it will append the data. An error will be returned if the schema update or data appension fails. */
+  partitionSpec?: PartitionSpec;
+  /** Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the snapshot result should be exported. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. Setting the `contentType` for `exportAssets` determines the [schema](/asset-inventory/docs/exporting-to-bigquery#bigquery-schema) of the BigQuery table. Setting `separateTablesPerAssetType` to `TRUE` also influences the schema. */
+  dataset?: string;
+  /** If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMENT error. */
+  force?: boolean;
+  /** If this flag is `TRUE`, the snapshot results will be written to one or multiple tables, each of which contains results of one asset type. The [force] and [partition_spec] fields will apply to each of them. Field [table] will be concatenated with "_" and the asset type names (see https://cloud.google.com/asset-inventory/docs/supported-asset-types for supported asset types) to construct per-asset-type table names, in which all non-alphanumeric characters like "." and "/" will be substituted by "_". Example: if field [table] is "mytable" and snapshot results contain "storage.googleapis.com/Bucket" assets, the corresponding table name will be "mytable_storage_googleapis_com_Bucket". If any of these tables does not exist, a new table with the concatenated name will be created. When [content_type] in the ExportAssetsRequest is `RESOURCE`, the schema of each table will include RECORD-type columns mapped to the nested fields in the Asset.resource.data field of that asset type (up to the 15 nested level BigQuery supports (https://cloud.google.com/bigquery/docs/nested-repeated#limitations)). The fields in >15 nested levels will be stored in JSON format string as a child column of its parent RECORD column. If error occurs when exporting to any table, the whole export call will return an error but the export results that already succeed will persist. Example: if exporting to table_type_A succeeds when exporting to table_type_B fails during one export call, the results in table_type_A will persist and there will not be partial results persisting in a table. */
+  separateTablesPerAssetType?: boolean;
+}
+export const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    table: S.optional(S.String),
+    partitionSpec: S.optional(PartitionSpec),
+    dataset: S.optional(S.String),
+    force: S.optional(S.Boolean),
+    separateTablesPerAssetType: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "BigQueryDestination",
+}) as any as S.Schema<BigQueryDestination>;
+
+/** Output configuration for export assets destination. */
+export interface OutputConfig {
+  /** Destination on Cloud Storage. */
+  gcsDestination?: GcsDestination;
+  /** Destination on BigQuery. The output table stores the fields in asset Protobuf as columns in BigQuery. */
+  bigqueryDestination?: BigQueryDestination;
+}
+export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    gcsDestination: S.optional(GcsDestination),
+    bigqueryDestination: S.optional(BigQueryDestination),
+  }),
+).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
+
+/** Export asset request. */
+export interface ExportAssetsRequest {
+  /** Asset content type. If not specified, no content but the asset name will be returned. */
+  contentType?: ExportAssetsRequestContentTypeEnum | (string & {});
+  /** Required. Output configuration indicating where the results will be output to. */
+  outputConfig?: OutputConfig;
+  /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
+  assetTypes?: StringList;
+  /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
+  readTime?: string;
+  /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it snapshots specified relationships. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_types] or if any of the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it snapshots the supported relationships for all [asset_types] or returns an error if any of the [asset_types] has no relationship support. An unspecified asset types field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
+  relationshipTypes?: StringList;
+}
+export const ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentType: S.optional(ExportAssetsRequestContentTypeEnum),
+    outputConfig: S.optional(OutputConfig),
+    assetTypes: S.optional(StringList),
+    readTime: S.optional(S.String),
+    relationshipTypes: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "ExportAssetsRequest",
+}) as any as S.Schema<ExportAssetsRequest>;
+
+export interface ExportAssetsV1Request {
+  /** Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"), or a folder number (such as "folders/123"). */
+  parent: string;
+  /** Request body */
+  body?: ExportAssetsRequest;
+}
+export const ExportAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    parent: S.String.pipe(T.Label()),
+    body: S.optional(ExportAssetsRequest.pipe(T.HttpBody())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "v1/{+parent}:exportAssets",
+      baseUrl: "https://cloudasset.googleapis.com/",
+    }),
+  ),
+).annotate({
+  identifier: "ExportAssetsV1Request",
+}) as any as S.Schema<ExportAssetsV1Request>;
+
 export type BatchGetAssetsHistoryV1ContentTypeEnum =
   | "CONTENT_TYPE_UNSPECIFIED"
   | "RESOURCE"
@@ -1466,7 +1809,7 @@ export type BatchGetAssetsHistoryV1ContentTypeEnum =
   | "RELATIONSHIP";
 export const BatchGetAssetsHistoryV1ContentTypeEnum = /*@__PURE__*/ S.String;
 
-export interface BatchGetAssetsHistoryV1Request {
+export interface GetBatchAssetHistoryV1Request {
   /** Required. The relative name of the root asset. It can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id")", or a project number (such as "projects/12345"). */
   parent: string;
   /** Start time of the time window (exclusive). */
@@ -1480,7 +1823,7 @@ export interface BatchGetAssetsHistoryV1Request {
   /** Optional. The content type. */
   contentType?: BatchGetAssetsHistoryV1ContentTypeEnum | (string & {});
 }
-export const BatchGetAssetsHistoryV1Request = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchAssetHistoryV1Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     parent: S.String.pipe(T.Label()),
     "readTimeWindow.startTime": S.optional(S.String.pipe(T.Query())),
@@ -1498,8 +1841,8 @@ export const BatchGetAssetsHistoryV1Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchGetAssetsHistoryV1Request",
-}) as any as S.Schema<BatchGetAssetsHistoryV1Request>;
+  identifier: "GetBatchAssetHistoryV1Request",
+}) as any as S.Schema<GetBatchAssetHistoryV1Request>;
 
 /** Operating system information for the VM. */
 export interface OsInfo {
@@ -2880,13 +3223,13 @@ export const BatchGetAssetsHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BatchGetAssetsHistoryResponse",
 }) as any as S.Schema<BatchGetAssetsHistoryResponse>;
 
-export interface BatchGetEffectiveIamPoliciesRequest {
+export interface GetBatchEffectiveIamPolicyRequest {
   /** Required. Only IAM policies on or below the scope will be returned. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization ID, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project ID, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects). */
   scope: string;
   /** Required. The names refer to the [full_resource_names] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the asset types [supported by search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types). A maximum of 20 resources' effective policies can be retrieved in a batch. */
   names?: StringList;
 }
-export const BatchGetEffectiveIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchEffectiveIamPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: S.String.pipe(T.Label()),
     names: S.optional(StringList.pipe(T.Query())),
@@ -2898,8 +3241,8 @@ export const BatchGetEffectiveIamPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BatchGetEffectiveIamPoliciesRequest",
-}) as any as S.Schema<BatchGetEffectiveIamPoliciesRequest>;
+  identifier: "GetBatchEffectiveIamPolicyRequest",
+}) as any as S.Schema<GetBatchEffectiveIamPolicyRequest>;
 
 /** The IAM policy and its attached resource. */
 export interface PolicyInfo {
@@ -2942,361 +3285,17 @@ export const EffectiveIamPolicyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EffectiveIamPolicyList>;
 
 /** A response message for AssetService.BatchGetEffectiveIamPolicies. */
-export interface BatchGetEffectiveIamPoliciesResponse {
+export interface GetBatchEffectiveIamPolicyResponse {
   /** The effective policies for a batch of resources. Note that the results order is the same as the order of BatchGetEffectiveIamPoliciesRequest.names. When a resource does not have any effective IAM policies, its corresponding policy_result will contain empty EffectiveIamPolicy.policies. */
   policyResults?: EffectiveIamPolicyList;
 }
-export const BatchGetEffectiveIamPoliciesResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      policyResults: S.optional(EffectiveIamPolicyList),
-    }),
-).annotate({
-  identifier: "BatchGetEffectiveIamPoliciesResponse",
-}) as any as S.Schema<BatchGetEffectiveIamPoliciesResponse>;
-
-export type FeedContentTypeEnum =
-  | "CONTENT_TYPE_UNSPECIFIED"
-  | "RESOURCE"
-  | "IAM_POLICY"
-  | "ORG_POLICY"
-  | "ACCESS_POLICY"
-  | "OS_INVENTORY"
-  | "RELATIONSHIP";
-export const FeedContentTypeEnum = /*@__PURE__*/ S.String;
-
-/** A Pub/Sub destination. */
-export interface PubsubDestination {
-  /** The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`. */
-  topic?: string;
-}
-export const PubsubDestination = /*@__PURE__*/ S.suspend(() =>
+export const GetBatchEffectiveIamPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    topic: S.optional(S.String),
+    policyResults: S.optional(EffectiveIamPolicyList),
   }),
 ).annotate({
-  identifier: "PubsubDestination",
-}) as any as S.Schema<PubsubDestination>;
-
-/** Output configuration for asset feed destination. */
-export interface FeedOutputConfig {
-  /** Destination on Pub/Sub. */
-  pubsubDestination?: PubsubDestination;
-}
-export const FeedOutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pubsubDestination: S.optional(PubsubDestination),
-  }),
-).annotate({
-  identifier: "FeedOutputConfig",
-}) as any as S.Schema<FeedOutputConfig>;
-
-/** An asset feed used to export asset updates to a destinations. An asset feed filter controls what updates are exported. The asset feed must be created within a project, organization, or folder. Supported destinations are: Pub/Sub topics. */
-export interface Feed {
-  /** Asset content type. If not specified, no content but the asset name and type will be returned. */
-  contentType?: FeedContentTypeEnum | (string & {});
-  /** A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes-with-condition) for detailed instructions. */
-  condition?: Expr;
-  /** Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization. */
-  name?: string;
-  /** A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format). */
-  assetNames?: StringList;
-  /** A list of types of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `"compute.googleapis.com/Disk"` For a list of all supported asset types, see [Supported asset types](/asset-inventory/docs/supported-asset-types). */
-  assetTypes?: StringList;
-  /** A list of relationship types to output, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it outputs specified relationship updates on the [asset_names] or the [asset_types]. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_names] or [asset_types], or any of the [asset_names] or the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it outputs the supported relationships of the types of [asset_names] and [asset_types] or returns an error if any of the [asset_names] or the [asset_types] has no replationship support. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
-  relationshipTypes?: StringList;
-  /** Required. Feed output configuration defining where the asset updates are published to. */
-  feedOutputConfig?: FeedOutputConfig;
-}
-export const Feed = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(FeedContentTypeEnum),
-    condition: S.optional(Expr),
-    name: S.optional(S.String),
-    assetNames: S.optional(StringList),
-    assetTypes: S.optional(StringList),
-    relationshipTypes: S.optional(StringList),
-    feedOutputConfig: S.optional(FeedOutputConfig),
-  }),
-).annotate({ identifier: "Feed" }) as any as S.Schema<Feed>;
-
-/** Create asset feed request. */
-export interface CreateFeedRequest {
-  /** Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization. */
-  feedId?: string;
-  /** Required. The feed details. The field `name` must be empty and it will be generated in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
-  feed?: Feed;
-}
-export const CreateFeedRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    feedId: S.optional(S.String),
-    feed: S.optional(Feed),
-  }),
-).annotate({
-  identifier: "CreateFeedRequest",
-}) as any as S.Schema<CreateFeedRequest>;
-
-export interface CreateFeedsRequest {
-  /** Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). */
-  parent: string;
-  /** Request body */
-  body?: CreateFeedRequest;
-}
-export const CreateFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(CreateFeedRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/feeds",
-      baseUrl: "https://cloudasset.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateFeedsRequest",
-}) as any as S.Schema<CreateFeedsRequest>;
-
-/** The query content. */
-export interface QueryContent {
-  /** An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC. */
-  iamPolicyAnalysisQuery?: IamPolicyAnalysisQuery;
-}
-export const QueryContent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    iamPolicyAnalysisQuery: S.optional(IamPolicyAnalysisQuery),
-  }),
-).annotate({ identifier: "QueryContent" }) as any as S.Schema<QueryContent>;
-
-export type StringMap = { [key: string]: string | undefined };
-export const StringMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<StringMap>;
-
-/** A saved query which can be shared with others or used later. */
-export interface SavedQuery {
-  /** The query content. */
-  content?: QueryContent;
-  /** Output only. The create time of this saved query. */
-  createTime?: string;
-  /** Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters. */
-  labels?: StringMap;
-  /** Output only. The account's email address who has updated this saved query most recently. */
-  lastUpdater?: string;
-  /** The description of this saved query. This value should be fewer than 255 characters. */
-  description?: string;
-  /** Output only. The last update time of this saved query. */
-  lastUpdateTime?: string;
-  /** The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id */
-  name?: string;
-  /** Output only. The account's email address who has created this saved query. */
-  creator?: string;
-}
-export const SavedQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(QueryContent),
-    createTime: S.optional(S.String),
-    labels: S.optional(StringMap),
-    lastUpdater: S.optional(S.String),
-    description: S.optional(S.String),
-    lastUpdateTime: S.optional(S.String),
-    name: S.optional(S.String),
-    creator: S.optional(S.String),
-  }),
-).annotate({ identifier: "SavedQuery" }) as any as S.Schema<SavedQuery>;
-
-export interface CreateSavedQueriesRequest {
-  /** Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored. */
-  savedQueryId?: string;
-  /** Required. The name of the project/folder/organization where this saved_query should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). */
-  parent: string;
-  /** Request body */
-  body?: SavedQuery;
-}
-export const CreateSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    savedQueryId: S.optional(S.String.pipe(T.Query())),
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(SavedQuery.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}/savedQueries",
-      baseUrl: "https://cloudasset.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "CreateSavedQueriesRequest",
-}) as any as S.Schema<CreateSavedQueriesRequest>;
-
-export interface DeleteFeedsRequest {
-  /** Required. The name of the feed and it must be in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
-  name: string;
-}
-export const DeleteFeedsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudasset.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteFeedsRequest",
-}) as any as S.Schema<DeleteFeedsRequest>;
-
-/** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
-export interface Empty {}
-export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-  identifier: "Empty",
-}) as any as S.Schema<Empty>;
-
-export interface DeleteSavedQueriesRequest {
-  /** Required. The name of the saved query to delete. It must be in the format of: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id */
-  name: string;
-}
-export const DeleteSavedQueriesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "v1/{+name}",
-      baseUrl: "https://cloudasset.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "DeleteSavedQueriesRequest",
-}) as any as S.Schema<DeleteSavedQueriesRequest>;
-
-export type ExportAssetsRequestContentTypeEnum =
-  | "CONTENT_TYPE_UNSPECIFIED"
-  | "RESOURCE"
-  | "IAM_POLICY"
-  | "ORG_POLICY"
-  | "ACCESS_POLICY"
-  | "OS_INVENTORY"
-  | "RELATIONSHIP";
-export const ExportAssetsRequestContentTypeEnum = /*@__PURE__*/ S.String;
-
-/** A Cloud Storage location. */
-export interface GcsDestination {
-  /** The URI of the Cloud Storage object. It's the same URI that is used by gcloud storage. Example: "gs://bucket_name/object_name". See [Viewing and Editing Object Metadata](https://cloud.google.com/storage/docs/viewing-editing-metadata) for more information. If the specified Cloud Storage object already exists and there is no [hold](https://cloud.google.com/storage/docs/object-holds), it will be overwritten with the exported result. */
-  uri?: string;
-  /** The URI prefix of all generated Cloud Storage objects. Example: "gs://bucket_name/object_name_prefix". Each object URI is in format: "gs://bucket_name/object_name_prefix// and only contains assets for that type. starts from 0. Example: "gs://bucket_name/object_name_prefix/compute.googleapis.com/Disk/0" is the first shard of output objects containing all compute.googleapis.com/Disk assets. An INVALID_ARGUMENT error will be returned if file with the same name "gs://bucket_name/object_name_prefix" already exists. */
-  uriPrefix?: string;
-}
-export const GcsDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    uri: S.optional(S.String),
-    uriPrefix: S.optional(S.String),
-  }),
-).annotate({ identifier: "GcsDestination" }) as any as S.Schema<GcsDestination>;
-
-export type PartitionSpecPartitionKeyEnum =
-  | "PARTITION_KEY_UNSPECIFIED"
-  | "READ_TIME"
-  | "REQUEST_TIME";
-export const PartitionSpecPartitionKeyEnum = /*@__PURE__*/ S.String;
-
-/** Specifications of BigQuery partitioned table as export destination. */
-export interface PartitionSpec {
-  /** The partition key for BigQuery partitioned table. */
-  partitionKey?: PartitionSpecPartitionKeyEnum | (string & {});
-}
-export const PartitionSpec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    partitionKey: S.optional(PartitionSpecPartitionKeyEnum),
-  }),
-).annotate({ identifier: "PartitionSpec" }) as any as S.Schema<PartitionSpec>;
-
-/** A BigQuery destination for exporting assets to. */
-export interface BigQueryDestination {
-  /** Required. The BigQuery table to which the snapshot result should be written. If this table does not exist, a new table with the given name will be created. */
-  table?: string;
-  /** [partition_spec] determines whether to export to partitioned table(s) and how to partition the data. If [partition_spec] is unset or [partition_spec.partition_key] is unset or `PARTITION_KEY_UNSPECIFIED`, the snapshot results will be exported to non-partitioned table(s). [force] will decide whether to overwrite existing table(s). If [partition_spec] is specified. First, the snapshot results will be written to partitioned table(s) with two additional timestamp columns, readTime and requestTime, one of which will be the partition key. Secondly, in the case when any destination table already exists, it will first try to update existing table's schema as necessary by appending additional columns. Then, if [force] is `TRUE`, the corresponding partition will be overwritten by the snapshot results (data in different partitions will remain intact); if [force] is unset or `FALSE`, it will append the data. An error will be returned if the schema update or data appension fails. */
-  partitionSpec?: PartitionSpec;
-  /** Required. The BigQuery dataset in format "projects/projectId/datasets/datasetId", to which the snapshot result should be exported. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. Setting the `contentType` for `exportAssets` determines the [schema](/asset-inventory/docs/exporting-to-bigquery#bigquery-schema) of the BigQuery table. Setting `separateTablesPerAssetType` to `TRUE` also influences the schema. */
-  dataset?: string;
-  /** If the destination table already exists and this flag is `TRUE`, the table will be overwritten by the contents of assets snapshot. If the flag is `FALSE` or unset and the destination table already exists, the export call returns an INVALID_ARGUMENT error. */
-  force?: boolean;
-  /** If this flag is `TRUE`, the snapshot results will be written to one or multiple tables, each of which contains results of one asset type. The [force] and [partition_spec] fields will apply to each of them. Field [table] will be concatenated with "_" and the asset type names (see https://cloud.google.com/asset-inventory/docs/supported-asset-types for supported asset types) to construct per-asset-type table names, in which all non-alphanumeric characters like "." and "/" will be substituted by "_". Example: if field [table] is "mytable" and snapshot results contain "storage.googleapis.com/Bucket" assets, the corresponding table name will be "mytable_storage_googleapis_com_Bucket". If any of these tables does not exist, a new table with the concatenated name will be created. When [content_type] in the ExportAssetsRequest is `RESOURCE`, the schema of each table will include RECORD-type columns mapped to the nested fields in the Asset.resource.data field of that asset type (up to the 15 nested level BigQuery supports (https://cloud.google.com/bigquery/docs/nested-repeated#limitations)). The fields in >15 nested levels will be stored in JSON format string as a child column of its parent RECORD column. If error occurs when exporting to any table, the whole export call will return an error but the export results that already succeed will persist. Example: if exporting to table_type_A succeeds when exporting to table_type_B fails during one export call, the results in table_type_A will persist and there will not be partial results persisting in a table. */
-  separateTablesPerAssetType?: boolean;
-}
-export const BigQueryDestination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    table: S.optional(S.String),
-    partitionSpec: S.optional(PartitionSpec),
-    dataset: S.optional(S.String),
-    force: S.optional(S.Boolean),
-    separateTablesPerAssetType: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "BigQueryDestination",
-}) as any as S.Schema<BigQueryDestination>;
-
-/** Output configuration for export assets destination. */
-export interface OutputConfig {
-  /** Destination on Cloud Storage. */
-  gcsDestination?: GcsDestination;
-  /** Destination on BigQuery. The output table stores the fields in asset Protobuf as columns in BigQuery. */
-  bigqueryDestination?: BigQueryDestination;
-}
-export const OutputConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    gcsDestination: S.optional(GcsDestination),
-    bigqueryDestination: S.optional(BigQueryDestination),
-  }),
-).annotate({ identifier: "OutputConfig" }) as any as S.Schema<OutputConfig>;
-
-/** Export asset request. */
-export interface ExportAssetsRequest {
-  /** Asset content type. If not specified, no content but the asset name will be returned. */
-  contentType?: ExportAssetsRequestContentTypeEnum | (string & {});
-  /** Required. Output configuration indicating where the results will be output to. */
-  outputConfig?: OutputConfig;
-  /** A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expressions are also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types. */
-  assetTypes?: StringList;
-  /** Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results. */
-  readTime?: string;
-  /** A list of relationship types to export, for example: `INSTANCE_TO_INSTANCEGROUP`. This field should only be specified if content_type=RELATIONSHIP. * If specified: it snapshots specified relationships. It returns an error if any of the [relationship_types] doesn't belong to the supported relationship types of the [asset_types] or if any of the [asset_types] doesn't belong to the source types of the [relationship_types]. * Otherwise: it snapshots the supported relationships for all [asset_types] or returns an error if any of the [asset_types] has no relationship support. An unspecified asset types field means all supported asset_types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types and relationship types. */
-  relationshipTypes?: StringList;
-}
-export const ExportAssetsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(ExportAssetsRequestContentTypeEnum),
-    outputConfig: S.optional(OutputConfig),
-    assetTypes: S.optional(StringList),
-    readTime: S.optional(S.String),
-    relationshipTypes: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "ExportAssetsRequest",
-}) as any as S.Schema<ExportAssetsRequest>;
-
-export interface ExportAssetsV1Request {
-  /** Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"), or a folder number (such as "folders/123"). */
-  parent: string;
-  /** Request body */
-  body?: ExportAssetsRequest;
-}
-export const ExportAssetsV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    parent: S.String.pipe(T.Label()),
-    body: S.optional(ExportAssetsRequest.pipe(T.HttpBody())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "v1/{+parent}:exportAssets",
-      baseUrl: "https://cloudasset.googleapis.com/",
-    }),
-  ),
-).annotate({
-  identifier: "ExportAssetsV1Request",
-}) as any as S.Schema<ExportAssetsV1Request>;
+  identifier: "GetBatchEffectiveIamPolicyResponse",
+}) as any as S.Schema<GetBatchEffectiveIamPolicyResponse>;
 
 export interface GetFeedsRequest {
   /** Required. The name of the Feed and it must be in the format of: projects/project_number/feeds/feed_id folders/folder_number/feeds/feed_id organizations/organization_number/feeds/feed_id */
@@ -4235,39 +4234,6 @@ export const analyzeOrgPolicyGovernedContainersV1: API.PaginatedOperationMethod<
   } as const,
 })) as any;
 
-export type BatchGetAssetsHistoryV1Error = NotFound | Forbidden | GcpOpError;
-/** Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error. */
-export const batchGetAssetsHistoryV1: API.OperationMethod<
-  BatchGetAssetsHistoryV1Request,
-  BatchGetAssetsHistoryResponse,
-  BatchGetAssetsHistoryV1Error,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetAssetsHistoryV1Request,
-  output: BatchGetAssetsHistoryResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BatchGetEffectiveIamPoliciesError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets effective IAM policies for a batch of resources. */
-export const batchGetEffectiveIamPolicies: API.OperationMethod<
-  BatchGetEffectiveIamPoliciesRequest,
-  BatchGetEffectiveIamPoliciesResponse,
-  BatchGetEffectiveIamPoliciesError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetEffectiveIamPoliciesRequest,
-  output: BatchGetEffectiveIamPoliciesResponse,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CreateFeedsError =
   | NotFound
   | Forbidden
@@ -4364,6 +4330,36 @@ export const exportAssetsV1: API.OperationMethod<
   input: ExportAssetsV1Request,
   output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchAssetHistoryV1Error = NotFound | Forbidden | GcpOpError;
+/** Batch gets the update history of assets that overlap a time window. For IAM_POLICY content, this API outputs history when the asset and its attached IAM POLICY both exist. This can create gaps in the output history. Otherwise, this API outputs history with asset in both non-delete or deleted status. If a specified asset does not exist, this API returns an INVALID_ARGUMENT error. */
+export const getBatchAssetHistoryV1: API.OperationMethod<
+  GetBatchAssetHistoryV1Request,
+  BatchGetAssetsHistoryResponse,
+  GetBatchAssetHistoryV1Error,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchAssetHistoryV1Request,
+  output: BatchGetAssetsHistoryResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBatchEffectiveIamPolicyError = NotFound | Forbidden | GcpOpError;
+/** Gets effective IAM policies for a batch of resources. */
+export const getBatchEffectiveIamPolicy: API.OperationMethod<
+  GetBatchEffectiveIamPolicyRequest,
+  GetBatchEffectiveIamPolicyResponse,
+  GetBatchEffectiveIamPolicyError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBatchEffectiveIamPolicyRequest,
+  output: GetBatchEffectiveIamPolicyResponse,
+  errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));

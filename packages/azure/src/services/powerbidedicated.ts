@@ -12,6 +12,86 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
+export interface CapacitiesResumeRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
+  dedicatedCapacityName: string;
+}
+export const CapacitiesResumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dedicatedCapacityName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/resume",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "CapacitiesResumeRequest",
+}) as any as S.Schema<CapacitiesResumeRequest>;
+
+export interface CapacitiesResumeResponse {}
+export const CapacitiesResumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CapacitiesResumeResponse",
+}) as any as S.Schema<CapacitiesResumeResponse>;
+
+export interface CheckCapacityNameAvailabilityRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of Azure region. */
+  location: string;
+  /** Name for checking availability. */
+  name?: string;
+  /** The resource type of PowerBI dedicated. */
+  type?: string;
+}
+export const CheckCapacityNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      location: S.String.pipe(T.Label()),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/locations/{location}/checkNameAvailability",
+        code: 200,
+        apiVersion: "2021-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "CheckCapacityNameAvailabilityRequest",
+}) as any as S.Schema<CheckCapacityNameAvailabilityRequest>;
+
+/** The checking result of capacity name availability. */
+export interface CheckCapacityNameAvailabilityResult {
+  /** Indicator of availability of the capacity name. */
+  nameAvailable?: boolean;
+  /** The reason of unavailability. */
+  reason?: string;
+  /** The detailed message of the request unavailability. */
+  message?: string;
+}
+export const CheckCapacityNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nameAvailable: S.optional(S.Boolean),
+    reason: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckCapacityNameAvailabilityResult",
+}) as any as S.Schema<CheckCapacityNameAvailabilityResult>;
+
 /** Resource tags. */
 export type AutoScaleVCoresCreateRequestTagsMap = {
   [key: string]: string | undefined;
@@ -67,7 +147,7 @@ export const AutoScaleVCoreSku = /*@__PURE__*/ S.suspend(() =>
   identifier: "AutoScaleVCoreSku",
 }) as any as S.Schema<AutoScaleVCoreSku>;
 
-export interface AutoScaleVCoresCreateRequest {
+export interface CreateAutoScaleVCoreRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -83,7 +163,7 @@ export interface AutoScaleVCoresCreateRequest {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const AutoScaleVCoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -101,8 +181,8 @@ export const AutoScaleVCoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AutoScaleVCoresCreateRequest",
-}) as any as S.Schema<AutoScaleVCoresCreateRequest>;
+  identifier: "CreateAutoScaleVCoreRequest",
+}) as any as S.Schema<CreateAutoScaleVCoreRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -155,7 +235,7 @@ export const AutoScaleVCoresCreateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<AutoScaleVCoresCreateResponseTagsMap>;
 
-export interface AutoScaleVCoresCreateResponse {
+export interface CreateAutoScaleVCoreResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -173,7 +253,7 @@ export interface AutoScaleVCoresCreateResponse {
   /** The SKU of the auto scale v-core resource. */
   sku: AutoScaleVCoreSku;
 }
-export const AutoScaleVCoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -185,356 +265,8 @@ export const AutoScaleVCoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
     sku: AutoScaleVCoreSku,
   }),
 ).annotate({
-  identifier: "AutoScaleVCoresCreateResponse",
-}) as any as S.Schema<AutoScaleVCoresCreateResponse>;
-
-export interface AutoScaleVCoresDeleteRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
-  vcoreName: string;
-}
-export const AutoScaleVCoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    vcoreName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AutoScaleVCoresDeleteRequest",
-}) as any as S.Schema<AutoScaleVCoresDeleteRequest>;
-
-export interface AutoScaleVCoresDeleteResponse {}
-export const AutoScaleVCoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "AutoScaleVCoresDeleteResponse",
-}) as any as S.Schema<AutoScaleVCoresDeleteResponse>;
-
-export interface AutoScaleVCoresGetRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
-  vcoreName: string;
-}
-export const AutoScaleVCoresGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    vcoreName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AutoScaleVCoresGetRequest",
-}) as any as S.Schema<AutoScaleVCoresGetRequest>;
-
-/** Resource tags. */
-export type AutoScaleVCoresGetResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AutoScaleVCoresGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoScaleVCoresGetResponseTagsMap>;
-
-export interface AutoScaleVCoresGetResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AutoScaleVCoresGetResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of an auto scale v-core resource. */
-  properties?: AutoScaleVCoreProperties;
-  /** The SKU of the auto scale v-core resource. */
-  sku: AutoScaleVCoreSku;
-}
-export const AutoScaleVCoresGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutoScaleVCoresGetResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutoScaleVCoreProperties),
-    sku: AutoScaleVCoreSku,
-  }),
-).annotate({
-  identifier: "AutoScaleVCoresGetResponse",
-}) as any as S.Schema<AutoScaleVCoresGetResponse>;
-
-export interface AutoScaleVCoresListByResourceGroupRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-}
-export const AutoScaleVCoresListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
-        code: 200,
-        apiVersion: "2021-01-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "AutoScaleVCoresListByResourceGroupRequest",
-  }) as any as S.Schema<AutoScaleVCoresListByResourceGroupRequest>;
-
-/** Resource tags. */
-export type AutoScaleVCoreTagsMap = { [key: string]: string | undefined };
-export const AutoScaleVCoreTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoScaleVCoreTagsMap>;
-
-/** Represents an instance of an auto scale v-core resource. */
-export interface AutoScaleVCore {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AutoScaleVCoreTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of an auto scale v-core resource. */
-  properties?: AutoScaleVCoreProperties;
-  /** The SKU of the auto scale v-core resource. */
-  sku: AutoScaleVCoreSku;
-}
-export const AutoScaleVCore = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutoScaleVCoreTagsMap),
-    location: S.String,
-    properties: S.optional(AutoScaleVCoreProperties),
-    sku: AutoScaleVCoreSku,
-  }),
-).annotate({ identifier: "AutoScaleVCore" }) as any as S.Schema<AutoScaleVCore>;
-
-/** An array of auto scale v-core resources. */
-export type AutoScaleVCoreListResultValueList = Array<AutoScaleVCore>;
-export const AutoScaleVCoreListResultValueList = /*@__PURE__*/ S.Array(
-  AutoScaleVCore,
-) as any as S.Schema<AutoScaleVCoreListResultValueList>;
-
-/** An array of auto scale v-core resources. */
-export interface AutoScaleVCoreListResult {
-  /** An array of auto scale v-core resources. */
-  value: AutoScaleVCoreListResultValueList;
-  nextLink?: string;
-}
-export const AutoScaleVCoreListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: AutoScaleVCoreListResultValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AutoScaleVCoreListResult",
-}) as any as S.Schema<AutoScaleVCoreListResult>;
-
-export interface AutoScaleVCoresListBySubscriptionRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-}
-export const AutoScaleVCoresListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
-        code: 200,
-        apiVersion: "2021-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "AutoScaleVCoresListBySubscriptionRequest",
-}) as any as S.Schema<AutoScaleVCoresListBySubscriptionRequest>;
-
-/** Key-value pairs of additional provisioning properties. */
-export type AutoScaleVCoresUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AutoScaleVCoresUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoScaleVCoresUpdateRequestTagsMap>;
-
-/** An object that represents a set of mutable auto scale v-core resource properties. */
-export interface AutoScaleVCoreMutableProperties {
-  /** The maximum capacity of an auto scale v-core resource. */
-  capacityLimit?: number;
-}
-export const AutoScaleVCoreMutableProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    capacityLimit: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "AutoScaleVCoreMutableProperties",
-}) as any as S.Schema<AutoScaleVCoreMutableProperties>;
-
-export interface AutoScaleVCoresUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
-  vcoreName: string;
-  /** The SKU of the auto scale v-core resource. */
-  sku?: AutoScaleVCoreSku;
-  /** Key-value pairs of additional provisioning properties. */
-  tags?: AutoScaleVCoresUpdateRequestTagsMap;
-  /** Properties of the update operation request. */
-  properties?: AutoScaleVCoreMutableProperties;
-}
-export const AutoScaleVCoresUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    vcoreName: S.String.pipe(T.Label()),
-    sku: S.optional(AutoScaleVCoreSku),
-    tags: S.optional(AutoScaleVCoresUpdateRequestTagsMap),
-    properties: S.optional(AutoScaleVCoreMutableProperties),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "AutoScaleVCoresUpdateRequest",
-}) as any as S.Schema<AutoScaleVCoresUpdateRequest>;
-
-/** Resource tags. */
-export type AutoScaleVCoresUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const AutoScaleVCoresUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<AutoScaleVCoresUpdateResponseTagsMap>;
-
-export interface AutoScaleVCoresUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: AutoScaleVCoresUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of an auto scale v-core resource. */
-  properties?: AutoScaleVCoreProperties;
-  /** The SKU of the auto scale v-core resource. */
-  sku: AutoScaleVCoreSku;
-}
-export const AutoScaleVCoresUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(AutoScaleVCoresUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(AutoScaleVCoreProperties),
-    sku: AutoScaleVCoreSku,
-  }),
-).annotate({
-  identifier: "AutoScaleVCoresUpdateResponse",
-}) as any as S.Schema<AutoScaleVCoresUpdateResponse>;
-
-export interface CapacitiesCheckNameAvailabilityRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of Azure region. */
-  location: string;
-  /** Name for checking availability. */
-  name?: string;
-  /** The resource type of PowerBI dedicated. */
-  type?: string;
-}
-export const CapacitiesCheckNameAvailabilityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      location: S.String.pipe(T.Label()),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/locations/{location}/checkNameAvailability",
-        code: 200,
-        apiVersion: "2021-01-01",
-      }),
-    ),
-).annotate({
-  identifier: "CapacitiesCheckNameAvailabilityRequest",
-}) as any as S.Schema<CapacitiesCheckNameAvailabilityRequest>;
-
-/** The checking result of capacity name availability. */
-export interface CheckCapacityNameAvailabilityResult {
-  /** Indicator of availability of the capacity name. */
-  nameAvailable?: boolean;
-  /** The reason of unavailability. */
-  reason?: string;
-  /** The detailed message of the request unavailability. */
-  message?: string;
-}
-export const CheckCapacityNameAvailabilityResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckCapacityNameAvailabilityResult",
-}) as any as S.Schema<CheckCapacityNameAvailabilityResult>;
+  identifier: "CreateAutoScaleVCoreResponse",
+}) as any as S.Schema<CreateAutoScaleVCoreResponse>;
 
 /** Resource tags. */
 export type CapacitiesCreateRequestTagsMap = {
@@ -605,7 +337,7 @@ export const CapacitySku = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "CapacitySku" }) as any as S.Schema<CapacitySku>;
 
-export interface CapacitiesCreateRequest {
+export interface CreateCapacityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -621,7 +353,7 @@ export interface CapacitiesCreateRequest {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const CapacitiesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -639,8 +371,8 @@ export const CapacitiesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CapacitiesCreateRequest",
-}) as any as S.Schema<CapacitiesCreateRequest>;
+  identifier: "CreateCapacityRequest",
+}) as any as S.Schema<CreateCapacityRequest>;
 
 /** Resource tags. */
 export type CapacitiesCreateResponseTagsMap = {
@@ -711,7 +443,7 @@ export const DedicatedCapacityProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "DedicatedCapacityProperties",
 }) as any as S.Schema<DedicatedCapacityProperties>;
 
-export interface CapacitiesCreateResponse {
+export interface CreateCapacityResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -729,7 +461,7 @@ export interface CapacitiesCreateResponse {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const CapacitiesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCapacityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -741,10 +473,42 @@ export const CapacitiesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     sku: CapacitySku,
   }),
 ).annotate({
-  identifier: "CapacitiesCreateResponse",
-}) as any as S.Schema<CapacitiesCreateResponse>;
+  identifier: "CreateCapacityResponse",
+}) as any as S.Schema<CreateCapacityResponse>;
 
-export interface CapacitiesDeleteRequest {
+export interface DeleteAutoScaleVCoreRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
+  vcoreName: string;
+}
+export const DeleteAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    vcoreName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAutoScaleVCoreRequest",
+}) as any as S.Schema<DeleteAutoScaleVCoreRequest>;
+
+export interface DeleteAutoScaleVCoreResponse {}
+export const DeleteAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteAutoScaleVCoreResponse",
+}) as any as S.Schema<DeleteAutoScaleVCoreResponse>;
+
+export interface DeleteCapacityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -752,7 +516,7 @@ export interface CapacitiesDeleteRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const CapacitiesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCapacityRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -766,17 +530,84 @@ export const CapacitiesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CapacitiesDeleteRequest",
-}) as any as S.Schema<CapacitiesDeleteRequest>;
+  identifier: "DeleteCapacityRequest",
+}) as any as S.Schema<DeleteCapacityRequest>;
 
-export interface CapacitiesDeleteResponse {}
-export const CapacitiesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCapacityResponse {}
+export const DeleteCapacityResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CapacitiesDeleteResponse",
-}) as any as S.Schema<CapacitiesDeleteResponse>;
+  identifier: "DeleteCapacityResponse",
+}) as any as S.Schema<DeleteCapacityResponse>;
 
-export interface CapacitiesGetDetailsRequest {
+export interface GetAutoScaleVCoreRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
+  vcoreName: string;
+}
+export const GetAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    vcoreName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetAutoScaleVCoreRequest",
+}) as any as S.Schema<GetAutoScaleVCoreRequest>;
+
+/** Resource tags. */
+export type AutoScaleVCoresGetResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoScaleVCoresGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutoScaleVCoresGetResponseTagsMap>;
+
+export interface GetAutoScaleVCoreResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AutoScaleVCoresGetResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of an auto scale v-core resource. */
+  properties?: AutoScaleVCoreProperties;
+  /** The SKU of the auto scale v-core resource. */
+  sku: AutoScaleVCoreSku;
+}
+export const GetAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AutoScaleVCoresGetResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AutoScaleVCoreProperties),
+    sku: AutoScaleVCoreSku,
+  }),
+).annotate({
+  identifier: "GetAutoScaleVCoreResponse",
+}) as any as S.Schema<GetAutoScaleVCoreResponse>;
+
+export interface GetCapacityDetailRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -784,7 +615,7 @@ export interface CapacitiesGetDetailsRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const CapacitiesGetDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCapacityDetailRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -798,8 +629,8 @@ export const CapacitiesGetDetailsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CapacitiesGetDetailsRequest",
-}) as any as S.Schema<CapacitiesGetDetailsRequest>;
+  identifier: "GetCapacityDetailRequest",
+}) as any as S.Schema<GetCapacityDetailRequest>;
 
 /** Resource tags. */
 export type CapacitiesGetDetailsResponseTagsMap = {
@@ -810,7 +641,7 @@ export const CapacitiesGetDetailsResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CapacitiesGetDetailsResponseTagsMap>;
 
-export interface CapacitiesGetDetailsResponse {
+export interface GetCapacityDetailResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -828,7 +659,7 @@ export interface CapacitiesGetDetailsResponse {
   /** The SKU of the PowerBI Dedicated capacity resource. */
   sku: CapacitySku;
 }
-export const CapacitiesGetDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCapacityDetailResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -840,14 +671,117 @@ export const CapacitiesGetDetailsResponse = /*@__PURE__*/ S.suspend(() =>
     sku: CapacitySku,
   }),
 ).annotate({
-  identifier: "CapacitiesGetDetailsResponse",
-}) as any as S.Schema<CapacitiesGetDetailsResponse>;
+  identifier: "GetCapacityDetailResponse",
+}) as any as S.Schema<GetCapacityDetailResponse>;
 
-export interface CapacitiesListRequest {
+export interface ListAutoScaleVCoreByResourceGroupRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+}
+export const ListAutoScaleVCoreByResourceGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      resourceGroupName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+        code: 200,
+        apiVersion: "2021-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListAutoScaleVCoreByResourceGroupRequest",
+}) as any as S.Schema<ListAutoScaleVCoreByResourceGroupRequest>;
+
+/** Resource tags. */
+export type AutoScaleVCoreTagsMap = { [key: string]: string | undefined };
+export const AutoScaleVCoreTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutoScaleVCoreTagsMap>;
+
+/** Represents an instance of an auto scale v-core resource. */
+export interface AutoScaleVCore {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AutoScaleVCoreTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of an auto scale v-core resource. */
+  properties?: AutoScaleVCoreProperties;
+  /** The SKU of the auto scale v-core resource. */
+  sku: AutoScaleVCoreSku;
+}
+export const AutoScaleVCore = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AutoScaleVCoreTagsMap),
+    location: S.String,
+    properties: S.optional(AutoScaleVCoreProperties),
+    sku: AutoScaleVCoreSku,
+  }),
+).annotate({ identifier: "AutoScaleVCore" }) as any as S.Schema<AutoScaleVCore>;
+
+/** An array of auto scale v-core resources. */
+export type AutoScaleVCoreListResultValueList = Array<AutoScaleVCore>;
+export const AutoScaleVCoreListResultValueList = /*@__PURE__*/ S.Array(
+  AutoScaleVCore,
+) as any as S.Schema<AutoScaleVCoreListResultValueList>;
+
+/** An array of auto scale v-core resources. */
+export interface AutoScaleVCoreListResult {
+  /** An array of auto scale v-core resources. */
+  value: AutoScaleVCoreListResultValueList;
+  nextLink?: string;
+}
+export const AutoScaleVCoreListResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: AutoScaleVCoreListResultValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AutoScaleVCoreListResult",
+}) as any as S.Schema<AutoScaleVCoreListResult>;
+
+export interface ListAutoScaleVCoreBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const CapacitiesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAutoScaleVCoreBySubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+        code: 200,
+        apiVersion: "2021-01-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListAutoScaleVCoreBySubscriptionRequest",
+}) as any as S.Schema<ListAutoScaleVCoreBySubscriptionRequest>;
+
+export interface ListCapacitiesRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+}
+export const ListCapacitiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -859,8 +793,8 @@ export const CapacitiesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CapacitiesListRequest",
-}) as any as S.Schema<CapacitiesListRequest>;
+  identifier: "ListCapacitiesRequest",
+}) as any as S.Schema<ListCapacitiesRequest>;
 
 /** Resource tags. */
 export type DedicatedCapacityTagsMap = { [key: string]: string | undefined };
@@ -925,34 +859,33 @@ export const DedicatedCapacities = /*@__PURE__*/ S.suspend(() =>
   identifier: "DedicatedCapacities",
 }) as any as S.Schema<DedicatedCapacities>;
 
-export interface CapacitiesListByResourceGroupRequest {
+export interface ListCapacityByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const CapacitiesListByResourceGroupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities",
-        code: 200,
-        apiVersion: "2021-01-01",
-      }),
-    ),
+export const ListCapacityByResourceGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
 ).annotate({
-  identifier: "CapacitiesListByResourceGroupRequest",
-}) as any as S.Schema<CapacitiesListByResourceGroupRequest>;
+  identifier: "ListCapacityByResourceGroupRequest",
+}) as any as S.Schema<ListCapacityByResourceGroupRequest>;
 
-export interface CapacitiesListSkusRequest {
+export interface ListCapacitySkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const CapacitiesListSkusRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCapacitySkusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
   }).pipe(
@@ -964,8 +897,8 @@ export const CapacitiesListSkusRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CapacitiesListSkusRequest",
-}) as any as S.Schema<CapacitiesListSkusRequest>;
+  identifier: "ListCapacitySkusRequest",
+}) as any as S.Schema<ListCapacitySkusRequest>;
 
 /** The collection of available SKUs for new resources */
 export type SkuEnumerationForNewResourceResultValueList = Array<CapacitySku>;
@@ -987,7 +920,7 @@ export const SkuEnumerationForNewResourceResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "SkuEnumerationForNewResourceResult",
 }) as any as S.Schema<SkuEnumerationForNewResourceResult>;
 
-export interface CapacitiesListSkusForCapacityRequest {
+export interface ListCapacitySkusForCapacityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -995,23 +928,22 @@ export interface CapacitiesListSkusForCapacityRequest {
   /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
   dedicatedCapacityName: string;
 }
-export const CapacitiesListSkusForCapacityRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      resourceGroupName: S.String.pipe(T.Label()),
-      dedicatedCapacityName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/skus",
-        code: 200,
-        apiVersion: "2021-01-01",
-      }),
-    ),
+export const ListCapacitySkusForCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dedicatedCapacityName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/skus",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
 ).annotate({
-  identifier: "CapacitiesListSkusForCapacityRequest",
-}) as any as S.Schema<CapacitiesListSkusForCapacityRequest>;
+  identifier: "ListCapacitySkusForCapacityRequest",
+}) as any as S.Schema<ListCapacitySkusForCapacityRequest>;
 
 /** An object that represents SKU details for existing resources */
 export interface SkuDetailsForExistingResource {
@@ -1051,163 +983,8 @@ export const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ S.suspend(
   identifier: "SkuEnumerationForExistingResourceResult",
 }) as any as S.Schema<SkuEnumerationForExistingResourceResult>;
 
-export interface CapacitiesResumeRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
-  dedicatedCapacityName: string;
-}
-export const CapacitiesResumeRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dedicatedCapacityName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/resume",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "CapacitiesResumeRequest",
-}) as any as S.Schema<CapacitiesResumeRequest>;
-
-export interface CapacitiesResumeResponse {}
-export const CapacitiesResumeResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CapacitiesResumeResponse",
-}) as any as S.Schema<CapacitiesResumeResponse>;
-
-export interface CapacitiesSuspendRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
-  dedicatedCapacityName: string;
-}
-export const CapacitiesSuspendRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dedicatedCapacityName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/suspend",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "CapacitiesSuspendRequest",
-}) as any as S.Schema<CapacitiesSuspendRequest>;
-
-export interface CapacitiesSuspendResponse {}
-export const CapacitiesSuspendResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CapacitiesSuspendResponse",
-}) as any as S.Schema<CapacitiesSuspendResponse>;
-
-/** Key-value pairs of additional provisioning properties. */
-export type CapacitiesUpdateRequestTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CapacitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CapacitiesUpdateRequestTagsMap>;
-
-/** An object that represents a set of mutable Dedicated capacity resource properties. */
-export type DedicatedCapacityMutablePropertiesInput =
-  DedicatedCapacityPropertiesInput;
-export const DedicatedCapacityMutablePropertiesInput =
-  DedicatedCapacityPropertiesInput;
-
-export interface CapacitiesUpdateRequest {
-  /** The ID of the target subscription. */
-  subscriptionId: string;
-  /** The name of the resource group. The name is case insensitive. */
-  resourceGroupName: string;
-  /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
-  dedicatedCapacityName: string;
-  /** The SKU of the Dedicated capacity resource. */
-  sku?: CapacitySku;
-  /** Key-value pairs of additional provisioning properties. */
-  tags?: CapacitiesUpdateRequestTagsMap;
-  /** Properties of the provision operation request. */
-  properties?: DedicatedCapacityPropertiesInput;
-}
-export const CapacitiesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    resourceGroupName: S.String.pipe(T.Label()),
-    dedicatedCapacityName: S.String.pipe(T.Label()),
-    sku: S.optional(CapacitySku),
-    tags: S.optional(CapacitiesUpdateRequestTagsMap),
-    properties: S.optional(DedicatedCapacityPropertiesInput),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
-      code: 200,
-      apiVersion: "2021-01-01",
-    }),
-  ),
-).annotate({
-  identifier: "CapacitiesUpdateRequest",
-}) as any as S.Schema<CapacitiesUpdateRequest>;
-
-/** Resource tags. */
-export type CapacitiesUpdateResponseTagsMap = {
-  [key: string]: string | undefined;
-};
-export const CapacitiesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.String,
-) as any as S.Schema<CapacitiesUpdateResponseTagsMap>;
-
-export interface CapacitiesUpdateResponse {
-  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Resource tags. */
-  tags?: CapacitiesUpdateResponseTagsMap;
-  /** The geo-location where the resource lives */
-  location: string;
-  /** Properties of the provision operation request. */
-  properties?: DedicatedCapacityProperties;
-  /** The SKU of the PowerBI Dedicated capacity resource. */
-  sku: CapacitySku;
-}
-export const CapacitiesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    tags: S.optional(CapacitiesUpdateResponseTagsMap),
-    location: S.String,
-    properties: S.optional(DedicatedCapacityProperties),
-    sku: CapacitySku,
-  }),
-).annotate({
-  identifier: "CapacitiesUpdateResponse",
-}) as any as S.Schema<CapacitiesUpdateResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({
       method: "GET",
@@ -1217,8 +994,8 @@ export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
 
 /** The object that represents the operation. */
 export interface OperationDisplay {
@@ -1401,215 +1178,226 @@ export const OperationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "OperationListResult",
 }) as any as S.Schema<OperationListResult>;
 
-export type AutoScaleVCoresCreateError = AzureOpError;
-/** Provisions the specified auto scale v-core based on the configuration specified in the request. */
-export const AutoScaleVCoresCreate: API.OperationMethod<
-  AutoScaleVCoresCreateRequest,
-  AutoScaleVCoresCreateResponse,
-  AutoScaleVCoresCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutoScaleVCoresCreateRequest,
-  output: AutoScaleVCoresCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface SuspendCapacityRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
+  dedicatedCapacityName: string;
+}
+export const SuspendCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dedicatedCapacityName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}/suspend",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "SuspendCapacityRequest",
+}) as any as S.Schema<SuspendCapacityRequest>;
 
-export type AutoScaleVCoresDeleteError = AzureOpError;
-/** Deletes the specified auto scale v-core. */
-export const AutoScaleVCoresDelete: API.OperationMethod<
-  AutoScaleVCoresDeleteRequest,
-  AutoScaleVCoresDeleteResponse,
-  AutoScaleVCoresDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutoScaleVCoresDeleteRequest,
-  output: AutoScaleVCoresDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface SuspendCapacityResponse {}
+export const SuspendCapacityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "SuspendCapacityResponse",
+}) as any as S.Schema<SuspendCapacityResponse>;
 
-export type AutoScaleVCoresGetError = AzureOpError;
-/** Gets details about the specified auto scale v-core. */
-export const AutoScaleVCoresGet: API.OperationMethod<
-  AutoScaleVCoresGetRequest,
-  AutoScaleVCoresGetResponse,
-  AutoScaleVCoresGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutoScaleVCoresGetRequest,
-  output: AutoScaleVCoresGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Key-value pairs of additional provisioning properties. */
+export type AutoScaleVCoresUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoScaleVCoresUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutoScaleVCoresUpdateRequestTagsMap>;
 
-export type AutoScaleVCoresListByResourceGroupError = AzureOpError;
-/** Gets all the auto scale v-cores for the given resource group. */
-export const AutoScaleVCoresListByResourceGroup: API.OperationMethod<
-  AutoScaleVCoresListByResourceGroupRequest,
-  AutoScaleVCoreListResult,
-  AutoScaleVCoresListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutoScaleVCoresListByResourceGroupRequest,
-  output: AutoScaleVCoreListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** An object that represents a set of mutable auto scale v-core resource properties. */
+export interface AutoScaleVCoreMutableProperties {
+  /** The maximum capacity of an auto scale v-core resource. */
+  capacityLimit?: number;
+}
+export const AutoScaleVCoreMutableProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    capacityLimit: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "AutoScaleVCoreMutableProperties",
+}) as any as S.Schema<AutoScaleVCoreMutableProperties>;
 
-export type AutoScaleVCoresListBySubscriptionError = AzureOpError;
-/** Lists all the auto scale v-cores for the given subscription. */
-export const AutoScaleVCoresListBySubscription: API.OperationMethod<
-  AutoScaleVCoresListBySubscriptionRequest,
-  AutoScaleVCoreListResult,
-  AutoScaleVCoresListBySubscriptionError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutoScaleVCoresListBySubscriptionRequest,
-  output: AutoScaleVCoreListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateAutoScaleVCoreRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63. */
+  vcoreName: string;
+  /** The SKU of the auto scale v-core resource. */
+  sku?: AutoScaleVCoreSku;
+  /** Key-value pairs of additional provisioning properties. */
+  tags?: AutoScaleVCoresUpdateRequestTagsMap;
+  /** Properties of the update operation request. */
+  properties?: AutoScaleVCoreMutableProperties;
+}
+export const UpdateAutoScaleVCoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    vcoreName: S.String.pipe(T.Label()),
+    sku: S.optional(AutoScaleVCoreSku),
+    tags: S.optional(AutoScaleVCoresUpdateRequestTagsMap),
+    properties: S.optional(AutoScaleVCoreMutableProperties),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores/{vcoreName}",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAutoScaleVCoreRequest",
+}) as any as S.Schema<UpdateAutoScaleVCoreRequest>;
 
-export type AutoScaleVCoresUpdateError = AzureOpError;
-/** Updates the current state of the specified auto scale v-core. */
-export const AutoScaleVCoresUpdate: API.OperationMethod<
-  AutoScaleVCoresUpdateRequest,
-  AutoScaleVCoresUpdateResponse,
-  AutoScaleVCoresUpdateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AutoScaleVCoresUpdateRequest,
-  output: AutoScaleVCoresUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Resource tags. */
+export type AutoScaleVCoresUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const AutoScaleVCoresUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<AutoScaleVCoresUpdateResponseTagsMap>;
 
-export type CapacitiesCheckNameAvailabilityError = AzureOpError;
-/** Check the name availability in the target location. */
-export const CapacitiesCheckNameAvailability: API.OperationMethod<
-  CapacitiesCheckNameAvailabilityRequest,
-  CheckCapacityNameAvailabilityResult,
-  CapacitiesCheckNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesCheckNameAvailabilityRequest,
-  output: CheckCapacityNameAvailabilityResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateAutoScaleVCoreResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: AutoScaleVCoresUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of an auto scale v-core resource. */
+  properties?: AutoScaleVCoreProperties;
+  /** The SKU of the auto scale v-core resource. */
+  sku: AutoScaleVCoreSku;
+}
+export const UpdateAutoScaleVCoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(AutoScaleVCoresUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(AutoScaleVCoreProperties),
+    sku: AutoScaleVCoreSku,
+  }),
+).annotate({
+  identifier: "UpdateAutoScaleVCoreResponse",
+}) as any as S.Schema<UpdateAutoScaleVCoreResponse>;
 
-export type CapacitiesCreateError = AzureOpError;
-/** Provisions the specified Dedicated capacity based on the configuration specified in the request. */
-export const CapacitiesCreate: API.OperationMethod<
-  CapacitiesCreateRequest,
-  CapacitiesCreateResponse,
-  CapacitiesCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesCreateRequest,
-  output: CapacitiesCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Key-value pairs of additional provisioning properties. */
+export type CapacitiesUpdateRequestTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CapacitiesUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CapacitiesUpdateRequestTagsMap>;
 
-export type CapacitiesDeleteError = AzureOpError;
-/** Deletes the specified Dedicated capacity. */
-export const CapacitiesDelete: API.OperationMethod<
-  CapacitiesDeleteRequest,
-  CapacitiesDeleteResponse,
-  CapacitiesDeleteError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesDeleteRequest,
-  output: CapacitiesDeleteResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** An object that represents a set of mutable Dedicated capacity resource properties. */
+export type DedicatedCapacityMutablePropertiesInput =
+  DedicatedCapacityPropertiesInput;
+export const DedicatedCapacityMutablePropertiesInput =
+  DedicatedCapacityPropertiesInput;
 
-export type CapacitiesGetDetailsError = AzureOpError;
-/** Gets details about the specified dedicated capacity. */
-export const CapacitiesGetDetails: API.OperationMethod<
-  CapacitiesGetDetailsRequest,
-  CapacitiesGetDetailsResponse,
-  CapacitiesGetDetailsError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesGetDetailsRequest,
-  output: CapacitiesGetDetailsResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateCapacityRequest {
+  /** The ID of the target subscription. */
+  subscriptionId: string;
+  /** The name of the resource group. The name is case insensitive. */
+  resourceGroupName: string;
+  /** The name of the dedicated capacity. It must be a minimum of 3 characters, and a maximum of 63. */
+  dedicatedCapacityName: string;
+  /** The SKU of the Dedicated capacity resource. */
+  sku?: CapacitySku;
+  /** Key-value pairs of additional provisioning properties. */
+  tags?: CapacitiesUpdateRequestTagsMap;
+  /** Properties of the provision operation request. */
+  properties?: DedicatedCapacityPropertiesInput;
+}
+export const UpdateCapacityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    resourceGroupName: S.String.pipe(T.Label()),
+    dedicatedCapacityName: S.String.pipe(T.Label()),
+    sku: S.optional(CapacitySku),
+    tags: S.optional(CapacitiesUpdateRequestTagsMap),
+    properties: S.optional(DedicatedCapacityPropertiesInput),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/capacities/{dedicatedCapacityName}",
+      code: 200,
+      apiVersion: "2021-01-01",
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCapacityRequest",
+}) as any as S.Schema<UpdateCapacityRequest>;
 
-export type CapacitiesListError = AzureOpError;
-/** Lists all the Dedicated capacities for the given subscription. */
-export const CapacitiesList: API.OperationMethod<
-  CapacitiesListRequest,
-  DedicatedCapacities,
-  CapacitiesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesListRequest,
-  output: DedicatedCapacities,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** Resource tags. */
+export type CapacitiesUpdateResponseTagsMap = {
+  [key: string]: string | undefined;
+};
+export const CapacitiesUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.String,
+) as any as S.Schema<CapacitiesUpdateResponseTagsMap>;
 
-export type CapacitiesListByResourceGroupError = AzureOpError;
-/** Gets all the Dedicated capacities for the given resource group. */
-export const CapacitiesListByResourceGroup: API.OperationMethod<
-  CapacitiesListByResourceGroupRequest,
-  DedicatedCapacities,
-  CapacitiesListByResourceGroupError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesListByResourceGroupRequest,
-  output: DedicatedCapacities,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CapacitiesListSkusError = AzureOpError;
-/** Lists eligible SKUs for PowerBI Dedicated resource provider. */
-export const CapacitiesListSkus: API.OperationMethod<
-  CapacitiesListSkusRequest,
-  SkuEnumerationForNewResourceResult,
-  CapacitiesListSkusError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesListSkusRequest,
-  output: SkuEnumerationForNewResourceResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CapacitiesListSkusForCapacityError = AzureOpError;
-/** Lists eligible SKUs for a PowerBI Dedicated resource. */
-export const CapacitiesListSkusForCapacity: API.OperationMethod<
-  CapacitiesListSkusForCapacityRequest,
-  SkuEnumerationForExistingResourceResult,
-  CapacitiesListSkusForCapacityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesListSkusForCapacityRequest,
-  output: SkuEnumerationForExistingResourceResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateCapacityResponse {
+  /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Resource tags. */
+  tags?: CapacitiesUpdateResponseTagsMap;
+  /** The geo-location where the resource lives */
+  location: string;
+  /** Properties of the provision operation request. */
+  properties?: DedicatedCapacityProperties;
+  /** The SKU of the PowerBI Dedicated capacity resource. */
+  sku: CapacitySku;
+}
+export const UpdateCapacityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    tags: S.optional(CapacitiesUpdateResponseTagsMap),
+    location: S.String,
+    properties: S.optional(DedicatedCapacityProperties),
+    sku: CapacitySku,
+  }),
+).annotate({
+  identifier: "UpdateCapacityResponse",
+}) as any as S.Schema<UpdateCapacityResponse>;
 
 export type CapacitiesResumeError = AzureOpError;
 /** Resumes operation of the specified Dedicated capacity instance. */
@@ -1626,46 +1414,256 @@ export const CapacitiesResume: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CapacitiesSuspendError = AzureOpError;
-/** Suspends operation of the specified dedicated capacity instance. */
-export const CapacitiesSuspend: API.OperationMethod<
-  CapacitiesSuspendRequest,
-  CapacitiesSuspendResponse,
-  CapacitiesSuspendError,
+export type CheckCapacityNameAvailabilityError = AzureOpError;
+/** Check the name availability in the target location. */
+export const CheckCapacityNameAvailability: API.OperationMethod<
+  CheckCapacityNameAvailabilityRequest,
+  CheckCapacityNameAvailabilityResult,
+  CheckCapacityNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesSuspendRequest,
-  output: CapacitiesSuspendResponse,
+  input: CheckCapacityNameAvailabilityRequest,
+  output: CheckCapacityNameAvailabilityResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CapacitiesUpdateError = AzureOpError;
-/** Updates the current state of the specified Dedicated capacity. */
-export const CapacitiesUpdate: API.OperationMethod<
-  CapacitiesUpdateRequest,
-  CapacitiesUpdateResponse,
-  CapacitiesUpdateError,
+export type CreateAutoScaleVCoreError = AzureOpError;
+/** Provisions the specified auto scale v-core based on the configuration specified in the request. */
+export const CreateAutoScaleVCore: API.OperationMethod<
+  CreateAutoScaleVCoreRequest,
+  CreateAutoScaleVCoreResponse,
+  CreateAutoScaleVCoreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CapacitiesUpdateRequest,
-  output: CapacitiesUpdateResponse,
+  input: CreateAutoScaleVCoreRequest,
+  output: CreateAutoScaleVCoreResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
+export type CreateCapacityError = AzureOpError;
+/** Provisions the specified Dedicated capacity based on the configuration specified in the request. */
+export const CreateCapacity: API.OperationMethod<
+  CreateCapacityRequest,
+  CreateCapacityResponse,
+  CreateCapacityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCapacityRequest,
+  output: CreateCapacityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteAutoScaleVCoreError = AzureOpError;
+/** Deletes the specified auto scale v-core. */
+export const DeleteAutoScaleVCore: API.OperationMethod<
+  DeleteAutoScaleVCoreRequest,
+  DeleteAutoScaleVCoreResponse,
+  DeleteAutoScaleVCoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAutoScaleVCoreRequest,
+  output: DeleteAutoScaleVCoreResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteCapacityError = AzureOpError;
+/** Deletes the specified Dedicated capacity. */
+export const DeleteCapacity: API.OperationMethod<
+  DeleteCapacityRequest,
+  DeleteCapacityResponse,
+  DeleteCapacityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCapacityRequest,
+  output: DeleteCapacityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetAutoScaleVCoreError = AzureOpError;
+/** Gets details about the specified auto scale v-core. */
+export const GetAutoScaleVCore: API.OperationMethod<
+  GetAutoScaleVCoreRequest,
+  GetAutoScaleVCoreResponse,
+  GetAutoScaleVCoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAutoScaleVCoreRequest,
+  output: GetAutoScaleVCoreResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCapacityDetailError = AzureOpError;
+/** Gets details about the specified dedicated capacity. */
+export const GetCapacityDetail: API.OperationMethod<
+  GetCapacityDetailRequest,
+  GetCapacityDetailResponse,
+  GetCapacityDetailError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCapacityDetailRequest,
+  output: GetCapacityDetailResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAutoScaleVCoreByResourceGroupError = AzureOpError;
+/** Gets all the auto scale v-cores for the given resource group. */
+export const ListAutoScaleVCoreByResourceGroup: API.OperationMethod<
+  ListAutoScaleVCoreByResourceGroupRequest,
+  AutoScaleVCoreListResult,
+  ListAutoScaleVCoreByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAutoScaleVCoreByResourceGroupRequest,
+  output: AutoScaleVCoreListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListAutoScaleVCoreBySubscriptionError = AzureOpError;
+/** Lists all the auto scale v-cores for the given subscription. */
+export const ListAutoScaleVCoreBySubscription: API.OperationMethod<
+  ListAutoScaleVCoreBySubscriptionRequest,
+  AutoScaleVCoreListResult,
+  ListAutoScaleVCoreBySubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAutoScaleVCoreBySubscriptionRequest,
+  output: AutoScaleVCoreListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCapacitiesError = AzureOpError;
+/** Lists all the Dedicated capacities for the given subscription. */
+export const ListCapacities: API.OperationMethod<
+  ListCapacitiesRequest,
+  DedicatedCapacities,
+  ListCapacitiesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCapacitiesRequest,
+  output: DedicatedCapacities,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCapacityByResourceGroupError = AzureOpError;
+/** Gets all the Dedicated capacities for the given resource group. */
+export const ListCapacityByResourceGroup: API.OperationMethod<
+  ListCapacityByResourceGroupRequest,
+  DedicatedCapacities,
+  ListCapacityByResourceGroupError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCapacityByResourceGroupRequest,
+  output: DedicatedCapacities,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCapacitySkusError = AzureOpError;
+/** Lists eligible SKUs for PowerBI Dedicated resource provider. */
+export const ListCapacitySkus: API.OperationMethod<
+  ListCapacitySkusRequest,
+  SkuEnumerationForNewResourceResult,
+  ListCapacitySkusError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCapacitySkusRequest,
+  output: SkuEnumerationForNewResourceResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCapacitySkusForCapacityError = AzureOpError;
+/** Lists eligible SKUs for a PowerBI Dedicated resource. */
+export const ListCapacitySkusForCapacity: API.OperationMethod<
+  ListCapacitySkusForCapacityRequest,
+  SkuEnumerationForExistingResourceResult,
+  ListCapacitySkusForCapacityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCapacitySkusForCapacityRequest,
+  output: SkuEnumerationForExistingResourceResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
 /** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
   OperationListResult,
-  OperationsListError,
+  ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
+  input: ListOperationsRequest,
   output: OperationListResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type SuspendCapacityError = AzureOpError;
+/** Suspends operation of the specified dedicated capacity instance. */
+export const SuspendCapacity: API.OperationMethod<
+  SuspendCapacityRequest,
+  SuspendCapacityResponse,
+  SuspendCapacityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SuspendCapacityRequest,
+  output: SuspendCapacityResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateAutoScaleVCoreError = AzureOpError;
+/** Updates the current state of the specified auto scale v-core. */
+export const UpdateAutoScaleVCore: API.OperationMethod<
+  UpdateAutoScaleVCoreRequest,
+  UpdateAutoScaleVCoreResponse,
+  UpdateAutoScaleVCoreError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAutoScaleVCoreRequest,
+  output: UpdateAutoScaleVCoreResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateCapacityError = AzureOpError;
+/** Updates the current state of the specified Dedicated capacity. */
+export const UpdateCapacity: API.OperationMethod<
+  UpdateCapacityRequest,
+  UpdateCapacityResponse,
+  UpdateCapacityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCapacityRequest,
+  output: UpdateCapacityResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

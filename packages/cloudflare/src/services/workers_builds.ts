@@ -60,13 +60,705 @@ export const BuildsCancelResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "BuildsCancelResponse",
 }) as any as S.Schema<BuildsCancelResponse>;
 
-export interface BuildsGetRequest {
+export interface CreateDeployHookRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Human-readable name of the worker. */
+  scriptName: string;
+  /** Git branch name. */
+  branch: string;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName: string;
+}
+export const CreateDeployHookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    branch: S.String,
+    deployHookName: S.String.pipe(T.Body("deploy_hook_name")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateDeployHookRequest",
+}) as any as S.Schema<CreateDeployHookRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateDeployHookResponse {
+  /** Git branch name. */
+  branch?: string | null;
+  createdOn?: string | null;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName?: string | null;
+  /** Deploy hook UUID. */
+  deployHookUuid?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  modifiedOn?: string | null;
+}
+export const CreateDeployHookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deployHookName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
+    ),
+    deployHookUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
+    ),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "CreateDeployHookResponse",
+}) as any as S.Schema<CreateDeployHookResponse>;
+
+export interface CreateTokenRequest {
+  /** Account identifier. */
+  accountId: string;
+  buildTokenName: string;
+  buildTokenSecret: string;
+  cloudflareTokenId: string;
+}
+export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    buildTokenName: S.String.pipe(T.Body("build_token_name")),
+    buildTokenSecret: S.String.pipe(T.Body("build_token_secret")),
+    cloudflareTokenId: S.String.pipe(T.Body("cloudflare_token_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/builds/tokens",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTokenRequest",
+}) as any as S.Schema<CreateTokenRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateTokenResponse {
+  buildTokenName?: string | null;
+  /** Build token UUID. */
+  buildTokenUuid?: string | null;
+  cloudflareTokenId?: string | null;
+  ownerType?: string | null;
+}
+export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buildTokenName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("build_token_name")),
+    ),
+    buildTokenUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
+    ),
+    cloudflareTokenId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("cloudflare_token_id")),
+    ),
+    ownerType: S.optional(S.NullOr(S.String).pipe(T.Body("owner_type"))),
+  }),
+).annotate({
+  identifier: "CreateTokenResponse",
+}) as any as S.Schema<CreateTokenResponse>;
+
+export type TriggersCreateRequestBranchExcludesList = Array<string>;
+export const TriggersCreateRequestBranchExcludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateRequestBranchExcludesList>;
+
+export type TriggersCreateRequestBranchIncludesList = Array<string>;
+export const TriggersCreateRequestBranchIncludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateRequestBranchIncludesList>;
+
+export type TriggersCreateRequestPathExcludesList = Array<string>;
+export const TriggersCreateRequestPathExcludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateRequestPathExcludesList>;
+
+export type TriggersCreateRequestPathIncludesList = Array<string>;
+export const TriggersCreateRequestPathIncludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateRequestPathIncludesList>;
+
+export interface CreateTriggerRequest {
+  /** Account identifier. */
+  accountId: string;
+  branchExcludes: TriggersCreateRequestBranchExcludesList;
+  branchIncludes: TriggersCreateRequestBranchIncludesList;
+  buildCommand: string;
+  /** Build token UUID. */
+  buildTokenUuid: string;
+  deployCommand: string;
+  /** System-generated worker script tag. */
+  externalScriptId: string;
+  pathExcludes: TriggersCreateRequestPathExcludesList;
+  pathIncludes: TriggersCreateRequestPathIncludesList;
+  /** Repository connection UUID. */
+  repoConnectionUuid: string;
+  /** Root directory path. */
+  rootDirectory: string;
+  triggerName: string;
+  buildCachingEnabled?: boolean;
+}
+export const CreateTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    branchExcludes: TriggersCreateRequestBranchExcludesList.pipe(
+      T.Body("branch_excludes"),
+    ),
+    branchIncludes: TriggersCreateRequestBranchIncludesList.pipe(
+      T.Body("branch_includes"),
+    ),
+    buildCommand: S.String.pipe(T.Body("build_command")),
+    buildTokenUuid: S.String.pipe(T.Body("build_token_uuid")),
+    deployCommand: S.String.pipe(T.Body("deploy_command")),
+    externalScriptId: S.String.pipe(T.Body("external_script_id")),
+    pathExcludes: TriggersCreateRequestPathExcludesList.pipe(
+      T.Body("path_excludes"),
+    ),
+    pathIncludes: TriggersCreateRequestPathIncludesList.pipe(
+      T.Body("path_includes"),
+    ),
+    repoConnectionUuid: S.String.pipe(T.Body("repo_connection_uuid")),
+    rootDirectory: S.String.pipe(T.Body("root_directory")),
+    triggerName: S.String.pipe(T.Body("trigger_name")),
+    buildCachingEnabled: S.optional(
+      S.Boolean.pipe(T.Body("build_caching_enabled")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/builds/triggers",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTriggerRequest",
+}) as any as S.Schema<CreateTriggerRequest>;
+
+export type TriggersCreateResponseBranchExcludesList = Array<string>;
+export const TriggersCreateResponseBranchExcludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateResponseBranchExcludesList>;
+
+export type TriggersCreateResponseBranchIncludesList = Array<string>;
+export const TriggersCreateResponseBranchIncludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateResponseBranchIncludesList>;
+
+export type TriggersCreateResponsePathExcludesList = Array<string>;
+export const TriggersCreateResponsePathExcludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateResponsePathExcludesList>;
+
+export type TriggersCreateResponsePathIncludesList = Array<string>;
+export const TriggersCreateResponsePathIncludesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TriggersCreateResponsePathIncludesList>;
+
+export type TriggersCreateResponseRepoConnectionProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const TriggersCreateResponseRepoConnectionProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface TriggersCreateResponseRepoConnection {
+  createdOn?: string | null;
+  deletedOn?: string | null;
+  modifiedOn?: string | null;
+  /** Provider account identifier. */
+  providerAccountId?: string | null;
+  providerAccountName?: string | null;
+  providerType?: TriggersCreateResponseRepoConnectionProviderType | null;
+  /** Repository connection UUID. */
+  repoConnectionUuid?: string | null;
+  /** Repository identifier. */
+  repoId?: string | null;
+  repoName?: string | null;
+}
+export const TriggersCreateResponseRepoConnection = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      providerAccountId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(TriggersCreateResponseRepoConnectionProviderType).pipe(
+          T.Body("provider_type"),
+        ),
+      ),
+      repoConnectionUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+      ),
+      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+    }),
+).annotate({
+  identifier: "TriggersCreateResponseRepoConnection",
+}) as any as S.Schema<TriggersCreateResponseRepoConnection>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateTriggerResponse {
+  branchExcludes?: TriggersCreateResponseBranchExcludesList | null;
+  branchIncludes?: TriggersCreateResponseBranchIncludesList | null;
+  buildCachingEnabled?: boolean | null;
+  buildCommand?: string | null;
+  buildTokenName?: string | null;
+  /** Build token UUID. */
+  buildTokenUuid?: string | null;
+  createdOn?: string | null;
+  deletedOn?: string | null;
+  deployCommand?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  modifiedOn?: string | null;
+  pathExcludes?: TriggersCreateResponsePathExcludesList | null;
+  pathIncludes?: TriggersCreateResponsePathIncludesList | null;
+  repoConnection?: TriggersCreateResponseRepoConnection | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
+}
+export const CreateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branchExcludes: S.optional(
+      S.NullOr(TriggersCreateResponseBranchExcludesList).pipe(
+        T.Body("branch_excludes"),
+      ),
+    ),
+    branchIncludes: S.optional(
+      S.NullOr(TriggersCreateResponseBranchIncludesList).pipe(
+        T.Body("branch_includes"),
+      ),
+    ),
+    buildCachingEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+    ),
+    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
+    buildTokenName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("build_token_name")),
+    ),
+    buildTokenUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
+    ),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+    deployCommand: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_command")),
+    ),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    pathExcludes: S.optional(
+      S.NullOr(TriggersCreateResponsePathExcludesList).pipe(
+        T.Body("path_excludes"),
+      ),
+    ),
+    pathIncludes: S.optional(
+      S.NullOr(TriggersCreateResponsePathIncludesList).pipe(
+        T.Body("path_includes"),
+      ),
+    ),
+    repoConnection: S.optional(
+      S.NullOr(TriggersCreateResponseRepoConnection).pipe(
+        T.Body("repo_connection"),
+      ),
+    ),
+    rootDirectory: S.optional(
+      S.NullOr(S.String).pipe(T.Body("root_directory")),
+    ),
+    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
+  }),
+).annotate({
+  identifier: "CreateTriggerResponse",
+}) as any as S.Schema<CreateTriggerResponse>;
+
+export type TriggersCreateBuildRequestSeedRepoProvider =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const TriggersCreateBuildRequestSeedRepoProvider =
+  /*@__PURE__*/ S.String;
+
+export interface TriggersCreateBuildRequestSeedRepoFilesItem {
+  content: string;
+  filename: string;
+  isBase64?: boolean;
+  /** Text to replace in the file */
+  replace?: string;
+}
+export const TriggersCreateBuildRequestSeedRepoFilesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      content: S.String,
+      filename: S.String,
+      isBase64: S.optional(S.Boolean),
+      replace: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "TriggersCreateBuildRequestSeedRepoFilesItem",
+  }) as any as S.Schema<TriggersCreateBuildRequestSeedRepoFilesItem>;
+
+export type TriggersCreateBuildRequestSeedRepoFilesList =
+  Array<TriggersCreateBuildRequestSeedRepoFilesItem>;
+export const TriggersCreateBuildRequestSeedRepoFilesList =
+  /*@__PURE__*/ S.Array(
+    TriggersCreateBuildRequestSeedRepoFilesItem,
+  ) as any as S.Schema<TriggersCreateBuildRequestSeedRepoFilesList>;
+
+export interface TriggersCreateBuildRequestSeedRepo {
+  /** Git branch name. */
+  branch: string;
+  owner: string;
+  path: string;
+  provider: TriggersCreateBuildRequestSeedRepoProvider | (string & {});
+  repository: string;
+  files?: TriggersCreateBuildRequestSeedRepoFilesList;
+}
+export const TriggersCreateBuildRequestSeedRepo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.String,
+    owner: S.String,
+    path: S.String,
+    provider: TriggersCreateBuildRequestSeedRepoProvider,
+    repository: S.String,
+    files: S.optional(TriggersCreateBuildRequestSeedRepoFilesList),
+  }),
+).annotate({
+  identifier: "TriggersCreateBuildRequestSeedRepo",
+}) as any as S.Schema<TriggersCreateBuildRequestSeedRepo>;
+
+export interface CreateTriggerBuildRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Trigger UUID. */
+  triggerUuid: string;
+  /** Git branch name (required if commit_hash not provided) */
+  branch?: string;
+  /** Git commit hash (required if branch not provided) */
+  commitHash?: string;
+  seedRepo?: TriggersCreateBuildRequestSeedRepo;
+}
+export const CreateTriggerBuildRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
+    branch: S.optional(S.String),
+    commitHash: S.optional(S.String.pipe(T.Body("commit_hash"))),
+    seedRepo: S.optional(
+      TriggersCreateBuildRequestSeedRepo.pipe(T.Body("seed_repo")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTriggerBuildRequest",
+}) as any as S.Schema<CreateTriggerBuildRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateTriggerBuildResponse {
+  /** Build UUID. */
+  buildUuid?: string | null;
+  createdOn?: string | null;
+}
+export const CreateTriggerBuildResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+  }),
+).annotate({
+  identifier: "CreateTriggerBuildResponse",
+}) as any as S.Schema<CreateTriggerBuildResponse>;
+
+export interface DeleteDeployHookRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Human-readable name of the worker. */
+  scriptName: string;
+  /** Deploy hook UUID. */
+  deployHookUuid: string;
+}
+export const DeleteDeployHookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDeployHookRequest",
+}) as any as S.Schema<DeleteDeployHookRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteDeployHookResponse {
+  /** Git branch name. */
+  branch?: string | null;
+  createdOn?: string | null;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName?: string | null;
+  /** Deploy hook UUID. */
+  deployHookUuid?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  modifiedOn?: string | null;
+}
+export const DeleteDeployHookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deployHookName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
+    ),
+    deployHookUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
+    ),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "DeleteDeployHookResponse",
+}) as any as S.Schema<DeleteDeployHookResponse>;
+
+export interface DeleteReposConnectionRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Repository connection UUID. */
+  repoConnectionUuid: string;
+}
+export const DeleteReposConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    repoConnectionUuid: S.String.pipe(T.Label("repo_connection_uuid")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteReposConnectionRequest",
+}) as any as S.Schema<DeleteReposConnectionRequest>;
+
+export type DeleteReposConnectionResponse = unknown;
+export const DeleteReposConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "DeleteReposConnectionResponse",
+}) as any as S.Schema<DeleteReposConnectionResponse>;
+
+export interface DeleteTokenRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Build token UUID. */
+  buildTokenUuid: string;
+}
+export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    buildTokenUuid: S.String.pipe(T.Label("build_token_uuid")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/builds/tokens/{build_token_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTokenRequest",
+}) as any as S.Schema<DeleteTokenRequest>;
+
+export type DeleteTokenResponse = unknown;
+export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "DeleteTokenResponse",
+}) as any as S.Schema<DeleteTokenResponse>;
+
+export interface DeleteTriggerRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Trigger UUID. */
+  triggerUuid: string;
+}
+export const DeleteTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTriggerRequest",
+}) as any as S.Schema<DeleteTriggerRequest>;
+
+export type DeleteTriggerResponse = unknown;
+export const DeleteTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Unknown.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "DeleteTriggerResponse",
+}) as any as S.Schema<DeleteTriggerResponse>;
+
+export interface DeleteTriggerEnvironmentVariableRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Trigger UUID. */
+  triggerUuid: string;
+  /** Environment variable key. */
+  environmentVariableKey: string;
+}
+export const DeleteTriggerEnvironmentVariableRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
+      environmentVariableKey: S.String.pipe(
+        T.Label("environment_variable_key"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "DeleteTriggerEnvironmentVariableRequest",
+}) as any as S.Schema<DeleteTriggerEnvironmentVariableRequest>;
+
+export type DeleteTriggerEnvironmentVariableResponse = unknown;
+export const DeleteTriggerEnvironmentVariableResponse = /*@__PURE__*/ S.suspend(
+  () => S.Unknown.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "DeleteTriggerEnvironmentVariableResponse",
+}) as any as S.Schema<DeleteTriggerEnvironmentVariableResponse>;
+
+export interface DeployHooksTriggerRequest {
+  /** Deploy hook UUID. */
+  deployHookUuid: string;
+}
+export const DeployHooksTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/workers/builds/deploy_hooks/{deploy_hook_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeployHooksTriggerRequest",
+}) as any as S.Schema<DeployHooksTriggerRequest>;
+
+export type DeployHooksTriggerResponseStatus =
+  | "queued"
+  | "initializing"
+  | "running"
+  | "stopped";
+export const DeployHooksTriggerResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeployHooksTriggerResponse {
+  /** True if a pending build already exists for this branch */
+  alreadyExists?: boolean | null;
+  /** Build UUID. */
+  buildUuid?: string | null;
+  createdOn?: string | null;
+  status?: DeployHooksTriggerResponseStatus | null;
+}
+export const DeployHooksTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    alreadyExists: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("already_exists")),
+    ),
+    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    status: S.optional(S.NullOr(DeployHooksTriggerResponseStatus)),
+  }),
+).annotate({
+  identifier: "DeployHooksTriggerResponse",
+}) as any as S.Schema<DeployHooksTriggerResponse>;
+
+export interface GetAccountLimitsRequest {
+  /** Account identifier. */
+  accountId: string;
+}
+export const GetAccountLimitsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/builds/account/limits",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAccountLimitsRequest",
+}) as any as S.Schema<GetAccountLimitsRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAccountLimitsResponse {
+  /** When build minutes will refresh (only for non-paid plans) */
+  buildMinutesRefreshOn?: string | null;
+  /** Whether build minutes limit has been reached (only for non-paid plans) */
+  hasReachedBuildMinutesLimit?: boolean | null;
+}
+export const GetAccountLimitsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buildMinutesRefreshOn: S.optional(
+      S.NullOr(S.String).pipe(T.Body("build_minutes_refresh_on")),
+    ),
+    hasReachedBuildMinutesLimit: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("has_reached_build_minutes_limit")),
+    ),
+  }),
+).annotate({
+  identifier: "GetAccountLimitsResponse",
+}) as any as S.Schema<GetAccountLimitsResponse>;
+
+export interface GetBuildRequest {
   /** Account identifier. */
   accountId: string;
   /** Build UUID. */
   buildUuid: string;
 }
-export const BuildsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBuildRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     buildUuid: S.String.pipe(T.Label("build_uuid")),
@@ -78,8 +770,8 @@ export const BuildsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BuildsGetRequest",
-}) as any as S.Schema<BuildsGetRequest>;
+  identifier: "GetBuildRequest",
+}) as any as S.Schema<GetBuildRequest>;
 
 export type BuildsGetResponseBuildOutcome =
   | "success"
@@ -342,7 +1034,7 @@ export const BuildsGetResponseTrigger = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<BuildsGetResponseTrigger>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BuildsGetResponse {
+export interface GetBuildResponse {
   buildOutcome?: BuildsGetResponseBuildOutcome | null;
   buildTriggerMetadata?: BuildsGetResponseBuildTriggerMetadata | null;
   /** Build UUID. */
@@ -357,7 +1049,7 @@ export interface BuildsGetResponse {
   /** Trigger information without build_token_uuid */
   trigger?: BuildsGetResponseTrigger | null;
 }
-export const BuildsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBuildResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     buildOutcome: S.optional(
       S.NullOr(BuildsGetResponseBuildOutcome).pipe(T.Body("build_outcome")),
@@ -382,344 +1074,10 @@ export const BuildsGetResponse = /*@__PURE__*/ S.suspend(() =>
     trigger: S.optional(S.NullOr(BuildsGetResponseTrigger)),
   }),
 ).annotate({
-  identifier: "BuildsGetResponse",
-}) as any as S.Schema<BuildsGetResponse>;
+  identifier: "GetBuildResponse",
+}) as any as S.Schema<GetBuildResponse>;
 
-export interface BuildsListRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** System-generated worker script tag. */
-  externalScriptId: string;
-  /** Page number for pagination */
-  page?: number;
-  /** Number of items per page */
-  perPage?: number;
-}
-export const BuildsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    externalScriptId: S.String.pipe(T.Label("external_script_id")),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/builds/workers/{external_script_id}/builds",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BuildsListRequest",
-}) as any as S.Schema<BuildsListRequest>;
-
-export type BuildsListResultItemBuildOutcome =
-  | "success"
-  | "fail"
-  | "skipped"
-  | "cancelled"
-  | "terminated";
-export const BuildsListResultItemBuildOutcome = /*@__PURE__*/ S.String;
-
-export type BuildsListResultItemBuildTriggerMetadataBuildTriggerSource =
-  | "push"
-  | "pull_request"
-  | "manual"
-  | "api";
-export const BuildsListResultItemBuildTriggerMetadataBuildTriggerSource =
-  /*@__PURE__*/ S.String;
-
-export type BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap = {
-  [key: string]: string | undefined;
-};
-export const BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap>;
-
-export type BuildsListResultItemBuildTriggerMetadataProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const BuildsListResultItemBuildTriggerMetadataProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface BuildsListResultItemBuildTriggerMetadata {
-  author?: string | null;
-  /** Git branch name. */
-  branch?: string | null;
-  buildCommand?: string | null;
-  buildTokenName?: string | null;
-  /** Build token UUID. */
-  buildTokenUuid?: string | null;
-  buildTriggerSource?: BuildsListResultItemBuildTriggerMetadataBuildTriggerSource | null;
-  /** Git commit hash */
-  commitHash?: string | null;
-  commitMessage?: string | null;
-  deployCommand?: string | null;
-  environmentVariables?: BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap | null;
-  providerAccountName?: string | null;
-  providerType?: BuildsListResultItemBuildTriggerMetadataProviderType | null;
-  repoName?: string | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-}
-export const BuildsListResultItemBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      author: S.optional(S.NullOr(S.String)),
-      branch: S.optional(S.NullOr(S.String)),
-      buildCommand: S.optional(
-        S.NullOr(S.String).pipe(T.Body("build_command")),
-      ),
-      buildTokenName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("build_token_name")),
-      ),
-      buildTokenUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
-      ),
-      buildTriggerSource: S.optional(
-        S.NullOr(
-          BuildsListResultItemBuildTriggerMetadataBuildTriggerSource,
-        ).pipe(T.Body("build_trigger_source")),
-      ),
-      commitHash: S.optional(S.NullOr(S.String).pipe(T.Body("commit_hash"))),
-      commitMessage: S.optional(
-        S.NullOr(S.String).pipe(T.Body("commit_message")),
-      ),
-      deployCommand: S.optional(
-        S.NullOr(S.String).pipe(T.Body("deploy_command")),
-      ),
-      environmentVariables: S.optional(
-        S.NullOr(
-          BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap,
-        ).pipe(T.Body("environment_variables")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(BuildsListResultItemBuildTriggerMetadataProviderType).pipe(
-          T.Body("provider_type"),
-        ),
-      ),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-      rootDirectory: S.optional(
-        S.NullOr(S.String).pipe(T.Body("root_directory")),
-      ),
-    }),
-).annotate({
-  identifier: "BuildsListResultItemBuildTriggerMetadata",
-}) as any as S.Schema<BuildsListResultItemBuildTriggerMetadata>;
-
-export type BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
-export const BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
-
-export type BuildsListResultItemStatus =
-  | "queued"
-  | "initializing"
-  | "running"
-  | "stopped";
-export const BuildsListResultItemStatus = /*@__PURE__*/ S.String;
-
-export type BuildsListResultItemTriggerBranchExcludesList = Array<string>;
-export const BuildsListResultItemTriggerBranchExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerBranchExcludesList>;
-
-export type BuildsListResultItemTriggerBranchIncludesList = Array<string>;
-export const BuildsListResultItemTriggerBranchIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerBranchIncludesList>;
-
-export type BuildsListResultItemTriggerPathExcludesList = Array<string>;
-export const BuildsListResultItemTriggerPathExcludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerPathExcludesList>;
-
-export type BuildsListResultItemTriggerPathIncludesList = Array<string>;
-export const BuildsListResultItemTriggerPathIncludesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<BuildsListResultItemTriggerPathIncludesList>;
-
-export type BuildsListResultItemTriggerRepoConnectionProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const BuildsListResultItemTriggerRepoConnectionProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface BuildsListResultItemTriggerRepoConnection {
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  modifiedOn?: string | null;
-  /** Provider account identifier. */
-  providerAccountId?: string | null;
-  providerAccountName?: string | null;
-  providerType?: BuildsListResultItemTriggerRepoConnectionProviderType | null;
-  /** Repository connection UUID. */
-  repoConnectionUuid?: string | null;
-  /** Repository identifier. */
-  repoId?: string | null;
-  repoName?: string | null;
-}
-export const BuildsListResultItemTriggerRepoConnection =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      providerAccountId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(BuildsListResultItemTriggerRepoConnectionProviderType).pipe(
-          T.Body("provider_type"),
-        ),
-      ),
-      repoConnectionUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
-      ),
-      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-    }),
-  ).annotate({
-    identifier: "BuildsListResultItemTriggerRepoConnection",
-  }) as any as S.Schema<BuildsListResultItemTriggerRepoConnection>;
-
-export interface BuildsListResultItemTrigger {
-  branchExcludes?: BuildsListResultItemTriggerBranchExcludesList | null;
-  branchIncludes?: BuildsListResultItemTriggerBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  deployCommand?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-  pathExcludes?: BuildsListResultItemTriggerPathExcludesList | null;
-  pathIncludes?: BuildsListResultItemTriggerPathIncludesList | null;
-  repoConnection?: BuildsListResultItemTriggerRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
-}
-export const BuildsListResultItemTrigger = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchExcludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerBranchExcludesList).pipe(
-        T.Body("branch_excludes"),
-      ),
-    ),
-    branchIncludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerBranchIncludesList).pipe(
-        T.Body("branch_includes"),
-      ),
-    ),
-    buildCachingEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-    ),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    deployCommand: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_command")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pathExcludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerPathExcludesList).pipe(
-        T.Body("path_excludes"),
-      ),
-    ),
-    pathIncludes: S.optional(
-      S.NullOr(BuildsListResultItemTriggerPathIncludesList).pipe(
-        T.Body("path_includes"),
-      ),
-    ),
-    repoConnection: S.optional(
-      S.NullOr(BuildsListResultItemTriggerRepoConnection).pipe(
-        T.Body("repo_connection"),
-      ),
-    ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-  }),
-).annotate({
-  identifier: "BuildsListResultItemTrigger",
-}) as any as S.Schema<BuildsListResultItemTrigger>;
-
-export interface BuildsListResultItem {
-  buildOutcome?: BuildsListResultItemBuildOutcome | null;
-  buildTriggerMetadata?: BuildsListResultItemBuildTriggerMetadata | null;
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-  initializingOn?: string | null;
-  modifiedOn?: string | null;
-  pullRequest?: BuildsGetResponsePullRequest | null;
-  runningOn?: string | null;
-  status?: BuildsListResultItemStatus | null;
-  stoppedOn?: string | null;
-  /** Trigger information without build_token_uuid */
-  trigger?: BuildsListResultItemTrigger | null;
-}
-export const BuildsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildOutcome: S.optional(
-      S.NullOr(BuildsListResultItemBuildOutcome).pipe(T.Body("build_outcome")),
-    ),
-    buildTriggerMetadata: S.optional(
-      S.NullOr(BuildsListResultItemBuildTriggerMetadata).pipe(
-        T.Body("build_trigger_metadata"),
-      ),
-    ),
-    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    initializingOn: S.optional(
-      S.NullOr(S.String).pipe(T.Body("initializing_on")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pullRequest: S.optional(
-      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
-    ),
-    runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
-    status: S.optional(S.NullOr(BuildsListResultItemStatus)),
-    stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
-    trigger: S.optional(S.NullOr(BuildsListResultItemTrigger)),
-  }),
-).annotate({
-  identifier: "BuildsListResultItem",
-}) as any as S.Schema<BuildsListResultItem>;
-
-export type BuildsListResultList = Array<BuildsListResultItem>;
-export const BuildsListResultList = /*@__PURE__*/ S.Array(
-  BuildsListResultItem,
-) as any as S.Schema<BuildsListResultList>;
-
-export type BuildsListResponse = BuildsListResultList;
-export const BuildsListResponse = /*@__PURE__*/ S.suspend(() =>
-  BuildsListResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "BuildsListResponse",
-}) as any as S.Schema<BuildsListResponse>;
-
-export interface BuildsLogsGetRequest {
+export interface GetBuildLogRequest {
   /** Account identifier. */
   accountId: string;
   /** Build UUID. */
@@ -727,7 +1085,7 @@ export interface BuildsLogsGetRequest {
   /** Pagination cursor for log retrieval. */
   cursor?: string;
 }
-export const BuildsLogsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBuildLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     buildUuid: S.String.pipe(T.Label("build_uuid")),
@@ -740,8 +1098,8 @@ export const BuildsLogsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BuildsLogsGetRequest",
-}) as any as S.Schema<BuildsLogsGetRequest>;
+  identifier: "GetBuildLogRequest",
+}) as any as S.Schema<GetBuildLogRequest>;
 
 export type BuildsLogsGetResponseLinesItem = string | number;
 export const BuildsLogsGetResponseLinesItem = /*@__PURE__*/ S.Unknown.pipe(
@@ -755,421 +1113,21 @@ export const BuildsLogsGetResponseLinesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<BuildsLogsGetResponseLinesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BuildsLogsGetResponse {
+export interface GetBuildLogResponse {
   /** Pagination cursor for log retrieval. */
   cursor?: string | null;
   lines?: BuildsLogsGetResponseLinesList | null;
   truncated?: boolean | null;
 }
-export const BuildsLogsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBuildLogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     cursor: S.optional(S.NullOr(S.String)),
     lines: S.optional(S.NullOr(BuildsLogsGetResponseLinesList)),
     truncated: S.optional(S.NullOr(S.Boolean)),
   }),
 ).annotate({
-  identifier: "BuildsLogsGetResponse",
-}) as any as S.Schema<BuildsLogsGetResponse>;
-
-export interface DeployHooksCreateRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Human-readable name of the worker. */
-  scriptName: string;
-  /** Git branch name. */
-  branch: string;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName: string;
-}
-export const DeployHooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    branch: S.String,
-    deployHookName: S.String.pipe(T.Body("deploy_hook_name")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeployHooksCreateRequest",
-}) as any as S.Schema<DeployHooksCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeployHooksCreateResponse {
-  /** Git branch name. */
-  branch?: string | null;
-  createdOn?: string | null;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName?: string | null;
-  /** Deploy hook UUID. */
-  deployHookUuid?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-}
-export const DeployHooksCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deployHookName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
-    ),
-    deployHookUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "DeployHooksCreateResponse",
-}) as any as S.Schema<DeployHooksCreateResponse>;
-
-export interface DeployHooksDeleteRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Human-readable name of the worker. */
-  scriptName: string;
-  /** Deploy hook UUID. */
-  deployHookUuid: string;
-}
-export const DeployHooksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeployHooksDeleteRequest",
-}) as any as S.Schema<DeployHooksDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeployHooksDeleteResponse {
-  /** Git branch name. */
-  branch?: string | null;
-  createdOn?: string | null;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName?: string | null;
-  /** Deploy hook UUID. */
-  deployHookUuid?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-}
-export const DeployHooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deployHookName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
-    ),
-    deployHookUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "DeployHooksDeleteResponse",
-}) as any as S.Schema<DeployHooksDeleteResponse>;
-
-export interface DeployHooksGetRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Human-readable name of the worker. */
-  scriptName: string;
-  /** Deploy hook UUID. */
-  deployHookUuid: string;
-}
-export const DeployHooksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeployHooksGetRequest",
-}) as any as S.Schema<DeployHooksGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeployHooksGetResponse {
-  /** Git branch name. */
-  branch?: string | null;
-  createdOn?: string | null;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName?: string | null;
-  /** Deploy hook UUID. */
-  deployHookUuid?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-}
-export const DeployHooksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deployHookName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
-    ),
-    deployHookUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "DeployHooksGetResponse",
-}) as any as S.Schema<DeployHooksGetResponse>;
-
-export interface DeployHooksListRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Human-readable name of the worker. */
-  scriptName: string;
-}
-export const DeployHooksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeployHooksListRequest",
-}) as any as S.Schema<DeployHooksListRequest>;
-
-export interface DeployHooksListResultItemLatestBuild {
-  createdOn?: string | null;
-}
-export const DeployHooksListResultItemLatestBuild = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    }),
-).annotate({
-  identifier: "DeployHooksListResultItemLatestBuild",
-}) as any as S.Schema<DeployHooksListResultItemLatestBuild>;
-
-export interface DeployHooksListResultItem {
-  /** Git branch name. */
-  branch?: string | null;
-  createdOn?: string | null;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName?: string | null;
-  /** Deploy hook UUID. */
-  deployHookUuid?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  latestBuild?: DeployHooksListResultItemLatestBuild | null;
-  modifiedOn?: string | null;
-}
-export const DeployHooksListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deployHookName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
-    ),
-    deployHookUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    latestBuild: S.optional(
-      S.NullOr(DeployHooksListResultItemLatestBuild).pipe(
-        T.Body("latest_build"),
-      ),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "DeployHooksListResultItem",
-}) as any as S.Schema<DeployHooksListResultItem>;
-
-export type DeployHooksListResultList = Array<DeployHooksListResultItem>;
-export const DeployHooksListResultList = /*@__PURE__*/ S.Array(
-  DeployHooksListResultItem,
-) as any as S.Schema<DeployHooksListResultList>;
-
-export type DeployHooksListResponse = DeployHooksListResultList;
-export const DeployHooksListResponse = /*@__PURE__*/ S.suspend(() =>
-  DeployHooksListResultList.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "DeployHooksListResponse",
-}) as any as S.Schema<DeployHooksListResponse>;
-
-export interface DeployHooksTriggerRequest {
-  /** Deploy hook UUID. */
-  deployHookUuid: string;
-}
-export const DeployHooksTriggerRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/workers/builds/deploy_hooks/{deploy_hook_uuid}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeployHooksTriggerRequest",
-}) as any as S.Schema<DeployHooksTriggerRequest>;
-
-export type DeployHooksTriggerResponseStatus =
-  | "queued"
-  | "initializing"
-  | "running"
-  | "stopped";
-export const DeployHooksTriggerResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeployHooksTriggerResponse {
-  /** True if a pending build already exists for this branch */
-  alreadyExists?: boolean | null;
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-  status?: DeployHooksTriggerResponseStatus | null;
-}
-export const DeployHooksTriggerResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    alreadyExists: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("already_exists")),
-    ),
-    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    status: S.optional(S.NullOr(DeployHooksTriggerResponseStatus)),
-  }),
-).annotate({
-  identifier: "DeployHooksTriggerResponse",
-}) as any as S.Schema<DeployHooksTriggerResponse>;
-
-export interface DeployHooksUpdateRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Human-readable name of the worker. */
-  scriptName: string;
-  /** Deploy hook UUID. */
-  deployHookUuid: string;
-  /** Git branch name. */
-  branch: string;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName: string;
-}
-export const DeployHooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    scriptName: S.String.pipe(T.Label("script_name")),
-    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
-    branch: S.String,
-    deployHookName: S.String.pipe(T.Body("deploy_hook_name")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DeployHooksUpdateRequest",
-}) as any as S.Schema<DeployHooksUpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeployHooksUpdateResponse {
-  /** Git branch name. */
-  branch?: string | null;
-  createdOn?: string | null;
-  /** Deploy hook name (1-58 characters). */
-  deployHookName?: string | null;
-  /** Deploy hook UUID. */
-  deployHookUuid?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-}
-export const DeployHooksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.optional(S.NullOr(S.String)),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deployHookName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
-    ),
-    deployHookUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "DeployHooksUpdateResponse",
-}) as any as S.Schema<DeployHooksUpdateResponse>;
-
-export interface GetAccountLimitsRequest {
-  /** Account identifier. */
-  accountId: string;
-}
-export const GetAccountLimitsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/builds/account/limits",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GetAccountLimitsRequest",
-}) as any as S.Schema<GetAccountLimitsRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetAccountLimitsResponse {
-  /** When build minutes will refresh (only for non-paid plans) */
-  buildMinutesRefreshOn?: string | null;
-  /** Whether build minutes limit has been reached (only for non-paid plans) */
-  hasReachedBuildMinutesLimit?: boolean | null;
-}
-export const GetAccountLimitsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildMinutesRefreshOn: S.optional(
-      S.NullOr(S.String).pipe(T.Body("build_minutes_refresh_on")),
-    ),
-    hasReachedBuildMinutesLimit: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("has_reached_build_minutes_limit")),
-    ),
-  }),
-).annotate({
-  identifier: "GetAccountLimitsResponse",
-}) as any as S.Schema<GetAccountLimitsResponse>;
+  identifier: "GetBuildLogResponse",
+}) as any as S.Schema<GetBuildLogResponse>;
 
 export interface GetBuildsByVersionRequest {
   /** Account identifier. */
@@ -1521,6 +1479,62 @@ export const GetBuildsByVersionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetBuildsByVersionResponse",
 }) as any as S.Schema<GetBuildsByVersionResponse>;
+
+export interface GetDeployHookRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Human-readable name of the worker. */
+  scriptName: string;
+  /** Deploy hook UUID. */
+  deployHookUuid: string;
+}
+export const GetDeployHookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDeployHookRequest",
+}) as any as S.Schema<GetDeployHookRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDeployHookResponse {
+  /** Git branch name. */
+  branch?: string | null;
+  createdOn?: string | null;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName?: string | null;
+  /** Deploy hook UUID. */
+  deployHookUuid?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  modifiedOn?: string | null;
+}
+export const GetDeployHookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deployHookName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
+    ),
+    deployHookUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
+    ),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "GetDeployHookResponse",
+}) as any as S.Schema<GetDeployHookResponse>;
 
 export interface GetLatestBuildsRequest {
   /** Account identifier. */
@@ -1875,7 +1889,7 @@ export type ReposConfigAutofillGetRequestProviderType =
   | "gitlab_internal";
 export const ReposConfigAutofillGetRequestProviderType = /*@__PURE__*/ S.String;
 
-export interface ReposConfigAutofillGetRequest {
+export interface GetReposConfigAutofillRequest {
   /** Account identifier. */
   accountId: string;
   providerType: ReposConfigAutofillGetRequestProviderType | (string & {});
@@ -1888,7 +1902,7 @@ export interface ReposConfigAutofillGetRequest {
   /** Root directory path. */
   rootDirectory?: string;
 }
-export const ReposConfigAutofillGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetReposConfigAutofillRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     providerType: ReposConfigAutofillGetRequestProviderType.pipe(
@@ -1906,8 +1920,8 @@ export const ReposConfigAutofillGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ReposConfigAutofillGetRequest",
-}) as any as S.Schema<ReposConfigAutofillGetRequest>;
+  identifier: "GetReposConfigAutofillRequest",
+}) as any as S.Schema<GetReposConfigAutofillRequest>;
 
 export type ReposConfigAutofillGetResponseEnvWorkerNamesMap = {
   [key: string]: string | undefined;
@@ -1936,14 +1950,14 @@ export const ReposConfigAutofillGetResponseScriptsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ReposConfigAutofillGetResponseScriptsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ReposConfigAutofillGetResponse {
+export interface GetReposConfigAutofillResponse {
   configFile?: string | null;
   defaultWorkerName?: string | null;
   envWorkerNames?: ReposConfigAutofillGetResponseEnvWorkerNamesMap | null;
   packageManager?: ReposConfigAutofillGetResponsePackageManager | null;
   scripts?: ReposConfigAutofillGetResponseScriptsMap | null;
 }
-export const ReposConfigAutofillGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetReposConfigAutofillResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     configFile: S.optional(S.NullOr(S.String).pipe(T.Body("config_file"))),
     defaultWorkerName: S.optional(
@@ -1962,201 +1976,426 @@ export const ReposConfigAutofillGetResponse = /*@__PURE__*/ S.suspend(() =>
     scripts: S.optional(S.NullOr(ReposConfigAutofillGetResponseScriptsMap)),
   }),
 ).annotate({
-  identifier: "ReposConfigAutofillGetResponse",
-}) as any as S.Schema<ReposConfigAutofillGetResponse>;
+  identifier: "GetReposConfigAutofillResponse",
+}) as any as S.Schema<GetReposConfigAutofillResponse>;
 
-export interface ReposConnectionsDeleteRequest {
+export interface ListBuildsRequest {
   /** Account identifier. */
   accountId: string;
-  /** Repository connection UUID. */
-  repoConnectionUuid: string;
+  /** System-generated worker script tag. */
+  externalScriptId: string;
+  /** Page number for pagination */
+  page?: number;
+  /** Number of items per page */
+  perPage?: number;
 }
-export const ReposConnectionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListBuildsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    repoConnectionUuid: S.String.pipe(T.Label("repo_connection_uuid")),
+    externalScriptId: S.String.pipe(T.Label("external_script_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/builds/repos/connections/{repo_connection_uuid}",
+      method: "GET",
+      uri: "/accounts/{account_id}/builds/workers/{external_script_id}/builds",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ReposConnectionsDeleteRequest",
-}) as any as S.Schema<ReposConnectionsDeleteRequest>;
+  identifier: "ListBuildsRequest",
+}) as any as S.Schema<ListBuildsRequest>;
 
-export type ReposConnectionsDeleteResponse = unknown;
-export const ReposConnectionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "ReposConnectionsDeleteResponse",
-}) as any as S.Schema<ReposConnectionsDeleteResponse>;
+export type BuildsListResultItemBuildOutcome =
+  | "success"
+  | "fail"
+  | "skipped"
+  | "cancelled"
+  | "terminated";
+export const BuildsListResultItemBuildOutcome = /*@__PURE__*/ S.String;
 
-export type ReposConnectionsUpsertRequestProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const ReposConnectionsUpsertRequestProviderType = /*@__PURE__*/ S.String;
-
-export interface ReposConnectionsUpsertRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Provider account identifier. */
-  providerAccountId: string;
-  providerAccountName: string;
-  providerType: ReposConnectionsUpsertRequestProviderType | (string & {});
-  /** Repository identifier. */
-  repoId: string;
-  repoName: string;
-}
-export const ReposConnectionsUpsertRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    providerAccountId: S.String.pipe(T.Body("provider_account_id")),
-    providerAccountName: S.String.pipe(T.Body("provider_account_name")),
-    providerType: ReposConnectionsUpsertRequestProviderType.pipe(
-      T.Body("provider_type"),
-    ),
-    repoId: S.String.pipe(T.Body("repo_id")),
-    repoName: S.String.pipe(T.Body("repo_name")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/builds/repos/connections",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ReposConnectionsUpsertRequest",
-}) as any as S.Schema<ReposConnectionsUpsertRequest>;
-
-export type ReposConnectionsUpsertResponseProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const ReposConnectionsUpsertResponseProviderType =
+export type BuildsListResultItemBuildTriggerMetadataBuildTriggerSource =
+  | "push"
+  | "pull_request"
+  | "manual"
+  | "api";
+export const BuildsListResultItemBuildTriggerMetadataBuildTriggerSource =
   /*@__PURE__*/ S.String;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ReposConnectionsUpsertResponse {
+export type BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap = {
+  [key: string]: string | undefined;
+};
+export const BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap>;
+
+export type BuildsListResultItemBuildTriggerMetadataProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const BuildsListResultItemBuildTriggerMetadataProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface BuildsListResultItemBuildTriggerMetadata {
+  author?: string | null;
+  /** Git branch name. */
+  branch?: string | null;
+  buildCommand?: string | null;
+  buildTokenName?: string | null;
+  /** Build token UUID. */
+  buildTokenUuid?: string | null;
+  buildTriggerSource?: BuildsListResultItemBuildTriggerMetadataBuildTriggerSource | null;
+  /** Git commit hash */
+  commitHash?: string | null;
+  commitMessage?: string | null;
+  deployCommand?: string | null;
+  environmentVariables?: BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap | null;
+  providerAccountName?: string | null;
+  providerType?: BuildsListResultItemBuildTriggerMetadataProviderType | null;
+  repoName?: string | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+}
+export const BuildsListResultItemBuildTriggerMetadata = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      author: S.optional(S.NullOr(S.String)),
+      branch: S.optional(S.NullOr(S.String)),
+      buildCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_command")),
+      ),
+      buildTokenName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_token_name")),
+      ),
+      buildTokenUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
+      ),
+      buildTriggerSource: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataBuildTriggerSource,
+        ).pipe(T.Body("build_trigger_source")),
+      ),
+      commitHash: S.optional(S.NullOr(S.String).pipe(T.Body("commit_hash"))),
+      commitMessage: S.optional(
+        S.NullOr(S.String).pipe(T.Body("commit_message")),
+      ),
+      deployCommand: S.optional(
+        S.NullOr(S.String).pipe(T.Body("deploy_command")),
+      ),
+      environmentVariables: S.optional(
+        S.NullOr(
+          BuildsListResultItemBuildTriggerMetadataEnvironmentVariablesMap,
+        ).pipe(T.Body("environment_variables")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(BuildsListResultItemBuildTriggerMetadataProviderType).pipe(
+          T.Body("provider_type"),
+        ),
+      ),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+      rootDirectory: S.optional(
+        S.NullOr(S.String).pipe(T.Body("root_directory")),
+      ),
+    }),
+).annotate({
+  identifier: "BuildsListResultItemBuildTriggerMetadata",
+}) as any as S.Schema<BuildsListResultItemBuildTriggerMetadata>;
+
+export type BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
+export const BuildsListResultItemPullRequest = BuildsGetResponsePullRequest;
+
+export type BuildsListResultItemStatus =
+  | "queued"
+  | "initializing"
+  | "running"
+  | "stopped";
+export const BuildsListResultItemStatus = /*@__PURE__*/ S.String;
+
+export type BuildsListResultItemTriggerBranchExcludesList = Array<string>;
+export const BuildsListResultItemTriggerBranchExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemTriggerBranchExcludesList>;
+
+export type BuildsListResultItemTriggerBranchIncludesList = Array<string>;
+export const BuildsListResultItemTriggerBranchIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemTriggerBranchIncludesList>;
+
+export type BuildsListResultItemTriggerPathExcludesList = Array<string>;
+export const BuildsListResultItemTriggerPathExcludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemTriggerPathExcludesList>;
+
+export type BuildsListResultItemTriggerPathIncludesList = Array<string>;
+export const BuildsListResultItemTriggerPathIncludesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<BuildsListResultItemTriggerPathIncludesList>;
+
+export type BuildsListResultItemTriggerRepoConnectionProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const BuildsListResultItemTriggerRepoConnectionProviderType =
+  /*@__PURE__*/ S.String;
+
+export interface BuildsListResultItemTriggerRepoConnection {
   createdOn?: string | null;
   deletedOn?: string | null;
   modifiedOn?: string | null;
   /** Provider account identifier. */
   providerAccountId?: string | null;
   providerAccountName?: string | null;
-  providerType?: ReposConnectionsUpsertResponseProviderType | null;
+  providerType?: BuildsListResultItemTriggerRepoConnectionProviderType | null;
   /** Repository connection UUID. */
   repoConnectionUuid?: string | null;
   /** Repository identifier. */
   repoId?: string | null;
   repoName?: string | null;
 }
-export const ReposConnectionsUpsertResponse = /*@__PURE__*/ S.suspend(() =>
+export const BuildsListResultItemTriggerRepoConnection =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+      providerAccountId: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+      ),
+      providerAccountName: S.optional(
+        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+      ),
+      providerType: S.optional(
+        S.NullOr(BuildsListResultItemTriggerRepoConnectionProviderType).pipe(
+          T.Body("provider_type"),
+        ),
+      ),
+      repoConnectionUuid: S.optional(
+        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+      ),
+      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+    }),
+  ).annotate({
+    identifier: "BuildsListResultItemTriggerRepoConnection",
+  }) as any as S.Schema<BuildsListResultItemTriggerRepoConnection>;
+
+export interface BuildsListResultItemTrigger {
+  branchExcludes?: BuildsListResultItemTriggerBranchExcludesList | null;
+  branchIncludes?: BuildsListResultItemTriggerBranchIncludesList | null;
+  buildCachingEnabled?: boolean | null;
+  buildCommand?: string | null;
+  createdOn?: string | null;
+  deletedOn?: string | null;
+  deployCommand?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  modifiedOn?: string | null;
+  pathExcludes?: BuildsListResultItemTriggerPathExcludesList | null;
+  pathIncludes?: BuildsListResultItemTriggerPathIncludesList | null;
+  repoConnection?: BuildsListResultItemTriggerRepoConnection | null;
+  /** Root directory path. */
+  rootDirectory?: string | null;
+  triggerName?: string | null;
+  /** Trigger UUID. */
+  triggerUuid?: string | null;
+}
+export const BuildsListResultItemTrigger = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    providerAccountId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-    ),
-    providerAccountName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-    ),
-    providerType: S.optional(
-      S.NullOr(ReposConnectionsUpsertResponseProviderType).pipe(
-        T.Body("provider_type"),
+    branchExcludes: S.optional(
+      S.NullOr(BuildsListResultItemTriggerBranchExcludesList).pipe(
+        T.Body("branch_excludes"),
       ),
     ),
-    repoConnectionUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+    branchIncludes: S.optional(
+      S.NullOr(BuildsListResultItemTriggerBranchIncludesList).pipe(
+        T.Body("branch_includes"),
+      ),
     ),
-    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+    buildCachingEnabled: S.optional(
+      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
+    ),
+    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+    deployCommand: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_command")),
+    ),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    pathExcludes: S.optional(
+      S.NullOr(BuildsListResultItemTriggerPathExcludesList).pipe(
+        T.Body("path_excludes"),
+      ),
+    ),
+    pathIncludes: S.optional(
+      S.NullOr(BuildsListResultItemTriggerPathIncludesList).pipe(
+        T.Body("path_includes"),
+      ),
+    ),
+    repoConnection: S.optional(
+      S.NullOr(BuildsListResultItemTriggerRepoConnection).pipe(
+        T.Body("repo_connection"),
+      ),
+    ),
+    rootDirectory: S.optional(
+      S.NullOr(S.String).pipe(T.Body("root_directory")),
+    ),
+    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
+    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
   }),
 ).annotate({
-  identifier: "ReposConnectionsUpsertResponse",
-}) as any as S.Schema<ReposConnectionsUpsertResponse>;
+  identifier: "BuildsListResultItemTrigger",
+}) as any as S.Schema<BuildsListResultItemTrigger>;
 
-export interface TokensCreateRequest {
+export interface BuildsListResultItem {
+  buildOutcome?: BuildsListResultItemBuildOutcome | null;
+  buildTriggerMetadata?: BuildsListResultItemBuildTriggerMetadata | null;
+  /** Build UUID. */
+  buildUuid?: string | null;
+  createdOn?: string | null;
+  initializingOn?: string | null;
+  modifiedOn?: string | null;
+  pullRequest?: BuildsGetResponsePullRequest | null;
+  runningOn?: string | null;
+  status?: BuildsListResultItemStatus | null;
+  stoppedOn?: string | null;
+  /** Trigger information without build_token_uuid */
+  trigger?: BuildsListResultItemTrigger | null;
+}
+export const BuildsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    buildOutcome: S.optional(
+      S.NullOr(BuildsListResultItemBuildOutcome).pipe(T.Body("build_outcome")),
+    ),
+    buildTriggerMetadata: S.optional(
+      S.NullOr(BuildsListResultItemBuildTriggerMetadata).pipe(
+        T.Body("build_trigger_metadata"),
+      ),
+    ),
+    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    initializingOn: S.optional(
+      S.NullOr(S.String).pipe(T.Body("initializing_on")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    pullRequest: S.optional(
+      S.NullOr(BuildsGetResponsePullRequest).pipe(T.Body("pull_request")),
+    ),
+    runningOn: S.optional(S.NullOr(S.String).pipe(T.Body("running_on"))),
+    status: S.optional(S.NullOr(BuildsListResultItemStatus)),
+    stoppedOn: S.optional(S.NullOr(S.String).pipe(T.Body("stopped_on"))),
+    trigger: S.optional(S.NullOr(BuildsListResultItemTrigger)),
+  }),
+).annotate({
+  identifier: "BuildsListResultItem",
+}) as any as S.Schema<BuildsListResultItem>;
+
+export type BuildsListResultList = Array<BuildsListResultItem>;
+export const BuildsListResultList = /*@__PURE__*/ S.Array(
+  BuildsListResultItem,
+) as any as S.Schema<BuildsListResultList>;
+
+export type ListBuildsResponse = BuildsListResultList;
+export const ListBuildsResponse = /*@__PURE__*/ S.suspend(() =>
+  BuildsListResultList.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "ListBuildsResponse",
+}) as any as S.Schema<ListBuildsResponse>;
+
+export interface ListDeployHooksRequest {
   /** Account identifier. */
   accountId: string;
-  buildTokenName: string;
-  buildTokenSecret: string;
-  cloudflareTokenId: string;
+  /** Human-readable name of the worker. */
+  scriptName: string;
 }
-export const TokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDeployHooksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    buildTokenName: S.String.pipe(T.Body("build_token_name")),
-    buildTokenSecret: S.String.pipe(T.Body("build_token_secret")),
-    cloudflareTokenId: S.String.pipe(T.Body("cloudflare_token_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/builds/tokens",
+      method: "GET",
+      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "TokensCreateRequest",
-}) as any as S.Schema<TokensCreateRequest>;
+  identifier: "ListDeployHooksRequest",
+}) as any as S.Schema<ListDeployHooksRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokensCreateResponse {
-  buildTokenName?: string | null;
-  /** Build token UUID. */
-  buildTokenUuid?: string | null;
-  cloudflareTokenId?: string | null;
-  ownerType?: string | null;
+export interface DeployHooksListResultItemLatestBuild {
+  createdOn?: string | null;
 }
-export const TokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeployHooksListResultItemLatestBuild = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    }),
+).annotate({
+  identifier: "DeployHooksListResultItemLatestBuild",
+}) as any as S.Schema<DeployHooksListResultItemLatestBuild>;
+
+export interface DeployHooksListResultItem {
+  /** Git branch name. */
+  branch?: string | null;
+  createdOn?: string | null;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName?: string | null;
+  /** Deploy hook UUID. */
+  deployHookUuid?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  latestBuild?: DeployHooksListResultItemLatestBuild | null;
+  modifiedOn?: string | null;
+}
+export const DeployHooksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    buildTokenName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("build_token_name")),
+    branch: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deployHookName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
     ),
-    buildTokenUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
+    deployHookUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
     ),
-    cloudflareTokenId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("cloudflare_token_id")),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
     ),
-    ownerType: S.optional(S.NullOr(S.String).pipe(T.Body("owner_type"))),
+    latestBuild: S.optional(
+      S.NullOr(DeployHooksListResultItemLatestBuild).pipe(
+        T.Body("latest_build"),
+      ),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
   }),
 ).annotate({
-  identifier: "TokensCreateResponse",
-}) as any as S.Schema<TokensCreateResponse>;
+  identifier: "DeployHooksListResultItem",
+}) as any as S.Schema<DeployHooksListResultItem>;
 
-export interface TokensDeleteRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Build token UUID. */
-  buildTokenUuid: string;
-}
-export const TokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    buildTokenUuid: S.String.pipe(T.Label("build_token_uuid")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/builds/tokens/{build_token_uuid}",
-      code: 200,
-    }),
-  ),
+export type DeployHooksListResultList = Array<DeployHooksListResultItem>;
+export const DeployHooksListResultList = /*@__PURE__*/ S.Array(
+  DeployHooksListResultItem,
+) as any as S.Schema<DeployHooksListResultList>;
+
+export type ListDeployHooksResponse = DeployHooksListResultList;
+export const ListDeployHooksResponse = /*@__PURE__*/ S.suspend(() =>
+  DeployHooksListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "TokensDeleteRequest",
-}) as any as S.Schema<TokensDeleteRequest>;
+  identifier: "ListDeployHooksResponse",
+}) as any as S.Schema<ListDeployHooksResponse>;
 
-export type TokensDeleteResponse = unknown;
-export const TokensDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "TokensDeleteResponse",
-}) as any as S.Schema<TokensDeleteResponse>;
-
-export interface TokensListRequest {
+export interface ListTokensRequest {
   /** Account identifier. */
   accountId: string;
   /** Page number for pagination */
@@ -2164,7 +2403,7 @@ export interface TokensListRequest {
   /** Number of items per page */
   perPage?: number;
 }
-export const TokensListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2177,8 +2416,8 @@ export const TokensListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TokensListRequest",
-}) as any as S.Schema<TokensListRequest>;
+  identifier: "ListTokensRequest",
+}) as any as S.Schema<ListTokensRequest>;
 
 export interface TokensListResultItem {
   buildTokenName?: string | null;
@@ -2209,408 +2448,20 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
 
-export type TokensListResponse = TokensListResultList;
-export const TokensListResponse = /*@__PURE__*/ S.suspend(() =>
+export type ListTokensResponse = TokensListResultList;
+export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   TokensListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "TokensListResponse",
-}) as any as S.Schema<TokensListResponse>;
+  identifier: "ListTokensResponse",
+}) as any as S.Schema<ListTokensResponse>;
 
-export type TriggersCreateRequestBranchExcludesList = Array<string>;
-export const TriggersCreateRequestBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateRequestBranchExcludesList>;
-
-export type TriggersCreateRequestBranchIncludesList = Array<string>;
-export const TriggersCreateRequestBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateRequestBranchIncludesList>;
-
-export type TriggersCreateRequestPathExcludesList = Array<string>;
-export const TriggersCreateRequestPathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateRequestPathExcludesList>;
-
-export type TriggersCreateRequestPathIncludesList = Array<string>;
-export const TriggersCreateRequestPathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateRequestPathIncludesList>;
-
-export interface TriggersCreateRequest {
-  /** Account identifier. */
-  accountId: string;
-  branchExcludes: TriggersCreateRequestBranchExcludesList;
-  branchIncludes: TriggersCreateRequestBranchIncludesList;
-  buildCommand: string;
-  /** Build token UUID. */
-  buildTokenUuid: string;
-  deployCommand: string;
-  /** System-generated worker script tag. */
-  externalScriptId: string;
-  pathExcludes: TriggersCreateRequestPathExcludesList;
-  pathIncludes: TriggersCreateRequestPathIncludesList;
-  /** Repository connection UUID. */
-  repoConnectionUuid: string;
-  /** Root directory path. */
-  rootDirectory: string;
-  triggerName: string;
-  buildCachingEnabled?: boolean;
-}
-export const TriggersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    branchExcludes: TriggersCreateRequestBranchExcludesList.pipe(
-      T.Body("branch_excludes"),
-    ),
-    branchIncludes: TriggersCreateRequestBranchIncludesList.pipe(
-      T.Body("branch_includes"),
-    ),
-    buildCommand: S.String.pipe(T.Body("build_command")),
-    buildTokenUuid: S.String.pipe(T.Body("build_token_uuid")),
-    deployCommand: S.String.pipe(T.Body("deploy_command")),
-    externalScriptId: S.String.pipe(T.Body("external_script_id")),
-    pathExcludes: TriggersCreateRequestPathExcludesList.pipe(
-      T.Body("path_excludes"),
-    ),
-    pathIncludes: TriggersCreateRequestPathIncludesList.pipe(
-      T.Body("path_includes"),
-    ),
-    repoConnectionUuid: S.String.pipe(T.Body("repo_connection_uuid")),
-    rootDirectory: S.String.pipe(T.Body("root_directory")),
-    triggerName: S.String.pipe(T.Body("trigger_name")),
-    buildCachingEnabled: S.optional(
-      S.Boolean.pipe(T.Body("build_caching_enabled")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/builds/triggers",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TriggersCreateRequest",
-}) as any as S.Schema<TriggersCreateRequest>;
-
-export type TriggersCreateResponseBranchExcludesList = Array<string>;
-export const TriggersCreateResponseBranchExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateResponseBranchExcludesList>;
-
-export type TriggersCreateResponseBranchIncludesList = Array<string>;
-export const TriggersCreateResponseBranchIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateResponseBranchIncludesList>;
-
-export type TriggersCreateResponsePathExcludesList = Array<string>;
-export const TriggersCreateResponsePathExcludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateResponsePathExcludesList>;
-
-export type TriggersCreateResponsePathIncludesList = Array<string>;
-export const TriggersCreateResponsePathIncludesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TriggersCreateResponsePathIncludesList>;
-
-export type TriggersCreateResponseRepoConnectionProviderType =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const TriggersCreateResponseRepoConnectionProviderType =
-  /*@__PURE__*/ S.String;
-
-export interface TriggersCreateResponseRepoConnection {
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  modifiedOn?: string | null;
-  /** Provider account identifier. */
-  providerAccountId?: string | null;
-  providerAccountName?: string | null;
-  providerType?: TriggersCreateResponseRepoConnectionProviderType | null;
-  /** Repository connection UUID. */
-  repoConnectionUuid?: string | null;
-  /** Repository identifier. */
-  repoId?: string | null;
-  repoName?: string | null;
-}
-export const TriggersCreateResponseRepoConnection = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-      deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-      modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-      providerAccountId: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_id")),
-      ),
-      providerAccountName: S.optional(
-        S.NullOr(S.String).pipe(T.Body("provider_account_name")),
-      ),
-      providerType: S.optional(
-        S.NullOr(TriggersCreateResponseRepoConnectionProviderType).pipe(
-          T.Body("provider_type"),
-        ),
-      ),
-      repoConnectionUuid: S.optional(
-        S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
-      ),
-      repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
-      repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
-    }),
-).annotate({
-  identifier: "TriggersCreateResponseRepoConnection",
-}) as any as S.Schema<TriggersCreateResponseRepoConnection>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TriggersCreateResponse {
-  branchExcludes?: TriggersCreateResponseBranchExcludesList | null;
-  branchIncludes?: TriggersCreateResponseBranchIncludesList | null;
-  buildCachingEnabled?: boolean | null;
-  buildCommand?: string | null;
-  buildTokenName?: string | null;
-  /** Build token UUID. */
-  buildTokenUuid?: string | null;
-  createdOn?: string | null;
-  deletedOn?: string | null;
-  deployCommand?: string | null;
-  /** System-generated worker script tag. */
-  externalScriptId?: string | null;
-  modifiedOn?: string | null;
-  pathExcludes?: TriggersCreateResponsePathExcludesList | null;
-  pathIncludes?: TriggersCreateResponsePathIncludesList | null;
-  repoConnection?: TriggersCreateResponseRepoConnection | null;
-  /** Root directory path. */
-  rootDirectory?: string | null;
-  triggerName?: string | null;
-  /** Trigger UUID. */
-  triggerUuid?: string | null;
-}
-export const TriggersCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branchExcludes: S.optional(
-      S.NullOr(TriggersCreateResponseBranchExcludesList).pipe(
-        T.Body("branch_excludes"),
-      ),
-    ),
-    branchIncludes: S.optional(
-      S.NullOr(TriggersCreateResponseBranchIncludesList).pipe(
-        T.Body("branch_includes"),
-      ),
-    ),
-    buildCachingEnabled: S.optional(
-      S.NullOr(S.Boolean).pipe(T.Body("build_caching_enabled")),
-    ),
-    buildCommand: S.optional(S.NullOr(S.String).pipe(T.Body("build_command"))),
-    buildTokenName: S.optional(
-      S.NullOr(S.String).pipe(T.Body("build_token_name")),
-    ),
-    buildTokenUuid: S.optional(
-      S.NullOr(S.String).pipe(T.Body("build_token_uuid")),
-    ),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
-    deployCommand: S.optional(
-      S.NullOr(S.String).pipe(T.Body("deploy_command")),
-    ),
-    externalScriptId: S.optional(
-      S.NullOr(S.String).pipe(T.Body("external_script_id")),
-    ),
-    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-    pathExcludes: S.optional(
-      S.NullOr(TriggersCreateResponsePathExcludesList).pipe(
-        T.Body("path_excludes"),
-      ),
-    ),
-    pathIncludes: S.optional(
-      S.NullOr(TriggersCreateResponsePathIncludesList).pipe(
-        T.Body("path_includes"),
-      ),
-    ),
-    repoConnection: S.optional(
-      S.NullOr(TriggersCreateResponseRepoConnection).pipe(
-        T.Body("repo_connection"),
-      ),
-    ),
-    rootDirectory: S.optional(
-      S.NullOr(S.String).pipe(T.Body("root_directory")),
-    ),
-    triggerName: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_name"))),
-    triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
-  }),
-).annotate({
-  identifier: "TriggersCreateResponse",
-}) as any as S.Schema<TriggersCreateResponse>;
-
-export type TriggersCreateBuildRequestSeedRepoProvider =
-  | "github"
-  | "gitlab"
-  | "gitlab_internal";
-export const TriggersCreateBuildRequestSeedRepoProvider =
-  /*@__PURE__*/ S.String;
-
-export interface TriggersCreateBuildRequestSeedRepoFilesItem {
-  content: string;
-  filename: string;
-  isBase64?: boolean;
-  /** Text to replace in the file */
-  replace?: string;
-}
-export const TriggersCreateBuildRequestSeedRepoFilesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      content: S.String,
-      filename: S.String,
-      isBase64: S.optional(S.Boolean),
-      replace: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggersCreateBuildRequestSeedRepoFilesItem",
-  }) as any as S.Schema<TriggersCreateBuildRequestSeedRepoFilesItem>;
-
-export type TriggersCreateBuildRequestSeedRepoFilesList =
-  Array<TriggersCreateBuildRequestSeedRepoFilesItem>;
-export const TriggersCreateBuildRequestSeedRepoFilesList =
-  /*@__PURE__*/ S.Array(
-    TriggersCreateBuildRequestSeedRepoFilesItem,
-  ) as any as S.Schema<TriggersCreateBuildRequestSeedRepoFilesList>;
-
-export interface TriggersCreateBuildRequestSeedRepo {
-  /** Git branch name. */
-  branch: string;
-  owner: string;
-  path: string;
-  provider: TriggersCreateBuildRequestSeedRepoProvider | (string & {});
-  repository: string;
-  files?: TriggersCreateBuildRequestSeedRepoFilesList;
-}
-export const TriggersCreateBuildRequestSeedRepo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    branch: S.String,
-    owner: S.String,
-    path: S.String,
-    provider: TriggersCreateBuildRequestSeedRepoProvider,
-    repository: S.String,
-    files: S.optional(TriggersCreateBuildRequestSeedRepoFilesList),
-  }),
-).annotate({
-  identifier: "TriggersCreateBuildRequestSeedRepo",
-}) as any as S.Schema<TriggersCreateBuildRequestSeedRepo>;
-
-export interface TriggersCreateBuildRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Trigger UUID. */
-  triggerUuid: string;
-  /** Git branch name (required if commit_hash not provided) */
-  branch?: string;
-  /** Git commit hash (required if branch not provided) */
-  commitHash?: string;
-  seedRepo?: TriggersCreateBuildRequestSeedRepo;
-}
-export const TriggersCreateBuildRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-    branch: S.optional(S.String),
-    commitHash: S.optional(S.String.pipe(T.Body("commit_hash"))),
-    seedRepo: S.optional(
-      TriggersCreateBuildRequestSeedRepo.pipe(T.Body("seed_repo")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/builds",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TriggersCreateBuildRequest",
-}) as any as S.Schema<TriggersCreateBuildRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TriggersCreateBuildResponse {
-  /** Build UUID. */
-  buildUuid?: string | null;
-  createdOn?: string | null;
-}
-export const TriggersCreateBuildResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    buildUuid: S.optional(S.NullOr(S.String).pipe(T.Body("build_uuid"))),
-    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-  }),
-).annotate({
-  identifier: "TriggersCreateBuildResponse",
-}) as any as S.Schema<TriggersCreateBuildResponse>;
-
-export interface TriggersDeleteRequest {
+export interface ListTriggerEnvironmentVariablesRequest {
   /** Account identifier. */
   accountId: string;
   /** Trigger UUID. */
   triggerUuid: string;
 }
-export const TriggersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TriggersDeleteRequest",
-}) as any as S.Schema<TriggersDeleteRequest>;
-
-export type TriggersDeleteResponse = unknown;
-export const TriggersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Unknown.pipe(T.EnvelopePayloadRoot()),
-).annotate({
-  identifier: "TriggersDeleteResponse",
-}) as any as S.Schema<TriggersDeleteResponse>;
-
-export interface TriggersEnvironmentVariablesDeleteRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Trigger UUID. */
-  triggerUuid: string;
-  /** Environment variable key. */
-  environmentVariableKey: string;
-}
-export const TriggersEnvironmentVariablesDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-      environmentVariableKey: S.String.pipe(
-        T.Label("environment_variable_key"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables/{environment_variable_key}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "TriggersEnvironmentVariablesDeleteRequest",
-  }) as any as S.Schema<TriggersEnvironmentVariablesDeleteRequest>;
-
-export type TriggersEnvironmentVariablesDeleteResponse = unknown;
-export const TriggersEnvironmentVariablesDeleteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Unknown.pipe(T.EnvelopePayloadRoot()),
-  ).annotate({
-    identifier: "TriggersEnvironmentVariablesDeleteResponse",
-  }) as any as S.Schema<TriggersEnvironmentVariablesDeleteResponse>;
-
-export interface TriggersEnvironmentVariablesListRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Trigger UUID. */
-  triggerUuid: string;
-}
-export const TriggersEnvironmentVariablesListRequest = /*@__PURE__*/ S.suspend(
+export const ListTriggerEnvironmentVariablesRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -2623,8 +2474,8 @@ export const TriggersEnvironmentVariablesListRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "TriggersEnvironmentVariablesListRequest",
-}) as any as S.Schema<TriggersEnvironmentVariablesListRequest>;
+  identifier: "ListTriggerEnvironmentVariablesRequest",
+}) as any as S.Schema<ListTriggerEnvironmentVariablesRequest>;
 
 export interface TriggersEnvironmentVariablesListResultValue {
   createdOn: string;
@@ -2651,91 +2502,21 @@ export const TriggersEnvironmentVariablesListResultMap = /*@__PURE__*/ S.Record(
   TriggersEnvironmentVariablesListResultValue,
 ) as any as S.Schema<TriggersEnvironmentVariablesListResultMap>;
 
-export type TriggersEnvironmentVariablesListResponse =
+export type ListTriggerEnvironmentVariablesResponse =
   TriggersEnvironmentVariablesListResultMap;
-export const TriggersEnvironmentVariablesListResponse = /*@__PURE__*/ S.suspend(
+export const ListTriggerEnvironmentVariablesResponse = /*@__PURE__*/ S.suspend(
   () => TriggersEnvironmentVariablesListResultMap.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "TriggersEnvironmentVariablesListResponse",
-}) as any as S.Schema<TriggersEnvironmentVariablesListResponse>;
+  identifier: "ListTriggerEnvironmentVariablesResponse",
+}) as any as S.Schema<ListTriggerEnvironmentVariablesResponse>;
 
-export interface TriggersEnvironmentVariablesUpsertRequestBodyValue {
-  isSecret: boolean;
-  value?: string;
-}
-export const TriggersEnvironmentVariablesUpsertRequestBodyValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      isSecret: S.Boolean.pipe(T.Body("is_secret")),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "TriggersEnvironmentVariablesUpsertRequestBodyValue",
-  }) as any as S.Schema<TriggersEnvironmentVariablesUpsertRequestBodyValue>;
-
-export type TriggersEnvironmentVariablesUpsertRequestBodyMap = {
-  [key: string]: TriggersEnvironmentVariablesUpsertRequestBodyValue | undefined;
-};
-export const TriggersEnvironmentVariablesUpsertRequestBodyMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    TriggersEnvironmentVariablesUpsertRequestBodyValue,
-  ) as any as S.Schema<TriggersEnvironmentVariablesUpsertRequestBodyMap>;
-
-export interface TriggersEnvironmentVariablesUpsertRequest {
-  /** Account identifier. */
-  accountId: string;
-  /** Trigger UUID. */
-  triggerUuid: string;
-  body: TriggersEnvironmentVariablesUpsertRequestBodyMap;
-}
-export const TriggersEnvironmentVariablesUpsertRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
-      body: TriggersEnvironmentVariablesUpsertRequestBodyMap.pipe(T.HttpBody()),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "TriggersEnvironmentVariablesUpsertRequest",
-  }) as any as S.Schema<TriggersEnvironmentVariablesUpsertRequest>;
-
-export type TriggersEnvironmentVariablesUpsertResultValue =
-  TriggersEnvironmentVariablesListResultValue;
-export const TriggersEnvironmentVariablesUpsertResultValue =
-  TriggersEnvironmentVariablesListResultValue;
-
-export type TriggersEnvironmentVariablesUpsertResultMap = {
-  [key: string]: TriggersEnvironmentVariablesListResultValue | undefined;
-};
-export const TriggersEnvironmentVariablesUpsertResultMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    TriggersEnvironmentVariablesListResultValue,
-  ) as any as S.Schema<TriggersEnvironmentVariablesUpsertResultMap>;
-
-export type TriggersEnvironmentVariablesUpsertResponse =
-  TriggersEnvironmentVariablesUpsertResultMap;
-export const TriggersEnvironmentVariablesUpsertResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    TriggersEnvironmentVariablesUpsertResultMap.pipe(T.EnvelopePayloadRoot()),
-  ).annotate({
-    identifier: "TriggersEnvironmentVariablesUpsertResponse",
-  }) as any as S.Schema<TriggersEnvironmentVariablesUpsertResponse>;
-
-export interface TriggersListRequest {
+export interface ListTriggersRequest {
   /** Account identifier. */
   accountId: string;
   /** System-generated worker script tag. */
   externalScriptId: string;
 }
-export const TriggersListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListTriggersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     externalScriptId: S.String.pipe(T.Label("external_script_id")),
@@ -2747,8 +2528,8 @@ export const TriggersListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TriggersListRequest",
-}) as any as S.Schema<TriggersListRequest>;
+  identifier: "ListTriggersRequest",
+}) as any as S.Schema<ListTriggersRequest>;
 
 export type TriggersListResultItemBranchExcludesList = Array<string>;
 export const TriggersListResultItemBranchExcludesList = /*@__PURE__*/ S.Array(
@@ -2902,12 +2683,12 @@ export const TriggersListResultList = /*@__PURE__*/ S.Array(
   TriggersListResultItem,
 ) as any as S.Schema<TriggersListResultList>;
 
-export type TriggersListResponse = TriggersListResultList;
-export const TriggersListResponse = /*@__PURE__*/ S.suspend(() =>
+export type ListTriggersResponse = TriggersListResultList;
+export const ListTriggersResponse = /*@__PURE__*/ S.suspend(() =>
   TriggersListResultList.pipe(T.EnvelopePayloadRoot()),
 ).annotate({
-  identifier: "TriggersListResponse",
-}) as any as S.Schema<TriggersListResponse>;
+  identifier: "ListTriggersResponse",
+}) as any as S.Schema<ListTriggersResponse>;
 
 export interface TriggersPurgeCacheRequest {
   /** Account identifier. */
@@ -2937,6 +2718,68 @@ export const TriggersPurgeCacheResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "TriggersPurgeCacheResponse",
 }) as any as S.Schema<TriggersPurgeCacheResponse>;
 
+export interface UpdateDeployHookRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Human-readable name of the worker. */
+  scriptName: string;
+  /** Deploy hook UUID. */
+  deployHookUuid: string;
+  /** Git branch name. */
+  branch: string;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName: string;
+}
+export const UpdateDeployHookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    scriptName: S.String.pipe(T.Label("script_name")),
+    deployHookUuid: S.String.pipe(T.Label("deploy_hook_uuid")),
+    branch: S.String,
+    deployHookName: S.String.pipe(T.Body("deploy_hook_name")),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/builds/workers/{script_name}/deploy_hooks/{deploy_hook_uuid}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateDeployHookRequest",
+}) as any as S.Schema<UpdateDeployHookRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateDeployHookResponse {
+  /** Git branch name. */
+  branch?: string | null;
+  createdOn?: string | null;
+  /** Deploy hook name (1-58 characters). */
+  deployHookName?: string | null;
+  /** Deploy hook UUID. */
+  deployHookUuid?: string | null;
+  /** System-generated worker script tag. */
+  externalScriptId?: string | null;
+  modifiedOn?: string | null;
+}
+export const UpdateDeployHookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    branch: S.optional(S.NullOr(S.String)),
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deployHookName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_name")),
+    ),
+    deployHookUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("deploy_hook_uuid")),
+    ),
+    externalScriptId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("external_script_id")),
+    ),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "UpdateDeployHookResponse",
+}) as any as S.Schema<UpdateDeployHookResponse>;
+
 export type TriggersUpdateRequestBranchExcludesList = Array<string>;
 export const TriggersUpdateRequestBranchExcludesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -2957,7 +2800,7 @@ export const TriggersUpdateRequestPathIncludesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<TriggersUpdateRequestPathIncludesList>;
 
-export interface TriggersUpdateRequest {
+export interface UpdateTriggerRequest {
   /** Account identifier. */
   accountId: string;
   /** Trigger UUID. */
@@ -2975,7 +2818,7 @@ export interface TriggersUpdateRequest {
   rootDirectory?: string;
   triggerName?: string;
 }
-export const TriggersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTriggerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
@@ -3007,8 +2850,8 @@ export const TriggersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TriggersUpdateRequest",
-}) as any as S.Schema<TriggersUpdateRequest>;
+  identifier: "UpdateTriggerRequest",
+}) as any as S.Schema<UpdateTriggerRequest>;
 
 export type TriggersUpdateResponseBranchExcludesList = Array<string>;
 export const TriggersUpdateResponseBranchExcludesList = /*@__PURE__*/ S.Array(
@@ -3079,7 +2922,7 @@ export const TriggersUpdateResponseRepoConnection = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<TriggersUpdateResponseRepoConnection>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TriggersUpdateResponse {
+export interface UpdateTriggerResponse {
   branchExcludes?: TriggersUpdateResponseBranchExcludesList | null;
   branchIncludes?: TriggersUpdateResponseBranchIncludesList | null;
   buildCachingEnabled?: boolean | null;
@@ -3102,7 +2945,7 @@ export interface TriggersUpdateResponse {
   /** Trigger UUID. */
   triggerUuid?: string | null;
 }
-export const TriggersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTriggerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     branchExcludes: S.optional(
       S.NullOr(TriggersUpdateResponseBranchExcludesList).pipe(
@@ -3155,8 +2998,164 @@ export const TriggersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     triggerUuid: S.optional(S.NullOr(S.String).pipe(T.Body("trigger_uuid"))),
   }),
 ).annotate({
-  identifier: "TriggersUpdateResponse",
-}) as any as S.Schema<TriggersUpdateResponse>;
+  identifier: "UpdateTriggerResponse",
+}) as any as S.Schema<UpdateTriggerResponse>;
+
+export type ReposConnectionsUpsertRequestProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const ReposConnectionsUpsertRequestProviderType = /*@__PURE__*/ S.String;
+
+export interface UpsertReposConnectionRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Provider account identifier. */
+  providerAccountId: string;
+  providerAccountName: string;
+  providerType: ReposConnectionsUpsertRequestProviderType | (string & {});
+  /** Repository identifier. */
+  repoId: string;
+  repoName: string;
+}
+export const UpsertReposConnectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerAccountId: S.String.pipe(T.Body("provider_account_id")),
+    providerAccountName: S.String.pipe(T.Body("provider_account_name")),
+    providerType: ReposConnectionsUpsertRequestProviderType.pipe(
+      T.Body("provider_type"),
+    ),
+    repoId: S.String.pipe(T.Body("repo_id")),
+    repoName: S.String.pipe(T.Body("repo_name")),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/builds/repos/connections",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpsertReposConnectionRequest",
+}) as any as S.Schema<UpsertReposConnectionRequest>;
+
+export type ReposConnectionsUpsertResponseProviderType =
+  | "github"
+  | "gitlab"
+  | "gitlab_internal";
+export const ReposConnectionsUpsertResponseProviderType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpsertReposConnectionResponse {
+  createdOn?: string | null;
+  deletedOn?: string | null;
+  modifiedOn?: string | null;
+  /** Provider account identifier. */
+  providerAccountId?: string | null;
+  providerAccountName?: string | null;
+  providerType?: ReposConnectionsUpsertResponseProviderType | null;
+  /** Repository connection UUID. */
+  repoConnectionUuid?: string | null;
+  /** Repository identifier. */
+  repoId?: string | null;
+  repoName?: string | null;
+}
+export const UpsertReposConnectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
+    deletedOn: S.optional(S.NullOr(S.String).pipe(T.Body("deleted_on"))),
+    modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
+    providerAccountId: S.optional(
+      S.NullOr(S.String).pipe(T.Body("provider_account_id")),
+    ),
+    providerAccountName: S.optional(
+      S.NullOr(S.String).pipe(T.Body("provider_account_name")),
+    ),
+    providerType: S.optional(
+      S.NullOr(ReposConnectionsUpsertResponseProviderType).pipe(
+        T.Body("provider_type"),
+      ),
+    ),
+    repoConnectionUuid: S.optional(
+      S.NullOr(S.String).pipe(T.Body("repo_connection_uuid")),
+    ),
+    repoId: S.optional(S.NullOr(S.String).pipe(T.Body("repo_id"))),
+    repoName: S.optional(S.NullOr(S.String).pipe(T.Body("repo_name"))),
+  }),
+).annotate({
+  identifier: "UpsertReposConnectionResponse",
+}) as any as S.Schema<UpsertReposConnectionResponse>;
+
+export interface TriggersEnvironmentVariablesUpsertRequestBodyValue {
+  isSecret: boolean;
+  value?: string;
+}
+export const TriggersEnvironmentVariablesUpsertRequestBodyValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      isSecret: S.Boolean.pipe(T.Body("is_secret")),
+      value: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "TriggersEnvironmentVariablesUpsertRequestBodyValue",
+  }) as any as S.Schema<TriggersEnvironmentVariablesUpsertRequestBodyValue>;
+
+export type TriggersEnvironmentVariablesUpsertRequestBodyMap = {
+  [key: string]: TriggersEnvironmentVariablesUpsertRequestBodyValue | undefined;
+};
+export const TriggersEnvironmentVariablesUpsertRequestBodyMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    TriggersEnvironmentVariablesUpsertRequestBodyValue,
+  ) as any as S.Schema<TriggersEnvironmentVariablesUpsertRequestBodyMap>;
+
+export interface UpsertTriggerEnvironmentVariableRequest {
+  /** Account identifier. */
+  accountId: string;
+  /** Trigger UUID. */
+  triggerUuid: string;
+  body: TriggersEnvironmentVariablesUpsertRequestBodyMap;
+}
+export const UpsertTriggerEnvironmentVariableRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      triggerUuid: S.String.pipe(T.Label("trigger_uuid")),
+      body: TriggersEnvironmentVariablesUpsertRequestBodyMap.pipe(T.HttpBody()),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/builds/triggers/{trigger_uuid}/environment_variables",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "UpsertTriggerEnvironmentVariableRequest",
+}) as any as S.Schema<UpsertTriggerEnvironmentVariableRequest>;
+
+export type TriggersEnvironmentVariablesUpsertResultValue =
+  TriggersEnvironmentVariablesListResultValue;
+export const TriggersEnvironmentVariablesUpsertResultValue =
+  TriggersEnvironmentVariablesListResultValue;
+
+export type TriggersEnvironmentVariablesUpsertResultMap = {
+  [key: string]: TriggersEnvironmentVariablesListResultValue | undefined;
+};
+export const TriggersEnvironmentVariablesUpsertResultMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    TriggersEnvironmentVariablesListResultValue,
+  ) as any as S.Schema<TriggersEnvironmentVariablesUpsertResultMap>;
+
+export type UpsertTriggerEnvironmentVariableResponse =
+  TriggersEnvironmentVariablesUpsertResultMap;
+export const UpsertTriggerEnvironmentVariableResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    TriggersEnvironmentVariablesUpsertResultMap.pipe(T.EnvelopePayloadRoot()),
+).annotate({
+  identifier: "UpsertTriggerEnvironmentVariableResponse",
+}) as any as S.Schema<UpsertTriggerEnvironmentVariableResponse>;
 
 export type BuildsCancelError = CloudflareOpError;
 /** Cancel a running or queued build */
@@ -3173,106 +3172,136 @@ export const buildsCancel: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BuildsGetError = CloudflareOpError;
-/** Retrieve detailed information about a specific build */
-export const buildsGet: API.OperationMethod<
-  BuildsGetRequest,
-  BuildsGetResponse,
-  BuildsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BuildsGetRequest,
-  output: BuildsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BuildsListError = CloudflareOpError;
-/** Get all builds for a specific worker script with pagination */
-export const buildsList: API.OperationMethod<
-  BuildsListRequest,
-  BuildsListResponse,
-  BuildsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BuildsListRequest,
-  output: BuildsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BuildsLogsGetError = CloudflareOpError;
-/** Retrieve logs for a specific build with cursor-based pagination */
-export const buildsLogsGet: API.OperationMethod<
-  BuildsLogsGetRequest,
-  BuildsLogsGetResponse,
-  BuildsLogsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BuildsLogsGetRequest,
-  output: BuildsLogsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DeployHooksCreateError = CloudflareOpError;
+export type CreateDeployHookError = CloudflareOpError;
 /** Create a new deploy hook for a worker script. */
-export const deployHooksCreate: API.OperationMethod<
-  DeployHooksCreateRequest,
-  DeployHooksCreateResponse,
-  DeployHooksCreateError,
+export const createDeployHook: API.OperationMethod<
+  CreateDeployHookRequest,
+  CreateDeployHookResponse,
+  CreateDeployHookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployHooksCreateRequest,
-  output: DeployHooksCreateResponse,
+  input: CreateDeployHookRequest,
+  output: CreateDeployHookResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeployHooksDeleteError = CloudflareOpError;
+export type CreateTokenError = CloudflareOpError;
+/** Create a new build authentication token */
+export const createToken: API.OperationMethod<
+  CreateTokenRequest,
+  CreateTokenResponse,
+  CreateTokenError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTokenRequest,
+  output: CreateTokenResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateTriggerError = CloudflareOpError;
+/** Create a new CI/CD trigger */
+export const createTrigger: API.OperationMethod<
+  CreateTriggerRequest,
+  CreateTriggerResponse,
+  CreateTriggerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTriggerRequest,
+  output: CreateTriggerResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateTriggerBuildError = CloudflareOpError;
+/** Trigger a manual build for a specific trigger */
+export const createTriggerBuild: API.OperationMethod<
+  CreateTriggerBuildRequest,
+  CreateTriggerBuildResponse,
+  CreateTriggerBuildError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateTriggerBuildRequest,
+  output: CreateTriggerBuildResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteDeployHookError = CloudflareOpError;
 /** Delete a deploy hook. */
-export const deployHooksDelete: API.OperationMethod<
-  DeployHooksDeleteRequest,
-  DeployHooksDeleteResponse,
-  DeployHooksDeleteError,
+export const deleteDeployHook: API.OperationMethod<
+  DeleteDeployHookRequest,
+  DeleteDeployHookResponse,
+  DeleteDeployHookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployHooksDeleteRequest,
-  output: DeployHooksDeleteResponse,
+  input: DeleteDeployHookRequest,
+  output: DeleteDeployHookResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeployHooksGetError = CloudflareOpError;
-/** Get details of a specific deploy hook. */
-export const deployHooksGet: API.OperationMethod<
-  DeployHooksGetRequest,
-  DeployHooksGetResponse,
-  DeployHooksGetError,
+export type DeleteReposConnectionError = CloudflareOpError;
+/** Remove a repository connection */
+export const deleteReposConnection: API.OperationMethod<
+  DeleteReposConnectionRequest,
+  DeleteReposConnectionResponse,
+  DeleteReposConnectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployHooksGetRequest,
-  output: DeployHooksGetResponse,
+  input: DeleteReposConnectionRequest,
+  output: DeleteReposConnectionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type DeployHooksListError = CloudflareOpError;
-/** Get all deploy hooks for a specific worker script. */
-export const deployHooksList: API.OperationMethod<
-  DeployHooksListRequest,
-  DeployHooksListResponse,
-  DeployHooksListError,
+export type DeleteTokenError = CloudflareOpError;
+/** Remove a build authentication token */
+export const deleteToken: API.OperationMethod<
+  DeleteTokenRequest,
+  DeleteTokenResponse,
+  DeleteTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployHooksListRequest,
-  output: DeployHooksListResponse,
+  input: DeleteTokenRequest,
+  output: DeleteTokenResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTriggerError = CloudflareOpError;
+/** Remove a CI/CD trigger */
+export const deleteTrigger: API.OperationMethod<
+  DeleteTriggerRequest,
+  DeleteTriggerResponse,
+  DeleteTriggerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTriggerRequest,
+  output: DeleteTriggerResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteTriggerEnvironmentVariableError = CloudflareOpError;
+/** Remove a specific environment variable from a trigger */
+export const deleteTriggerEnvironmentVariable: API.OperationMethod<
+  DeleteTriggerEnvironmentVariableRequest,
+  DeleteTriggerEnvironmentVariableResponse,
+  DeleteTriggerEnvironmentVariableError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteTriggerEnvironmentVariableRequest,
+  output: DeleteTriggerEnvironmentVariableResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3293,21 +3322,6 @@ export const deployHooksTrigger: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeployHooksUpdateError = CloudflareOpError;
-/** Update an existing deploy hook. */
-export const deployHooksUpdate: API.OperationMethod<
-  DeployHooksUpdateRequest,
-  DeployHooksUpdateResponse,
-  DeployHooksUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeployHooksUpdateRequest,
-  output: DeployHooksUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
 export type GetAccountLimitsError = CloudflareOpError;
 /** Retrieve account limits and usage information */
 export const getAccountLimits: API.OperationMethod<
@@ -3318,6 +3332,36 @@ export const getAccountLimits: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: GetAccountLimitsRequest,
   output: GetAccountLimitsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBuildError = CloudflareOpError;
+/** Retrieve detailed information about a specific build */
+export const getBuild: API.OperationMethod<
+  GetBuildRequest,
+  GetBuildResponse,
+  GetBuildError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBuildRequest,
+  output: GetBuildResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetBuildLogError = CloudflareOpError;
+/** Retrieve logs for a specific build with cursor-based pagination */
+export const getBuildLog: API.OperationMethod<
+  GetBuildLogRequest,
+  GetBuildLogResponse,
+  GetBuildLogError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBuildLogRequest,
+  output: GetBuildLogResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3338,6 +3382,21 @@ export const getBuildsByVersion: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetDeployHookError = CloudflareOpError;
+/** Get details of a specific deploy hook. */
+export const getDeployHook: API.OperationMethod<
+  GetDeployHookRequest,
+  GetDeployHookResponse,
+  GetDeployHookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDeployHookRequest,
+  output: GetDeployHookResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetLatestBuildsError = CloudflareOpError;
 /** Retrieve the most recent builds for multiple worker scripts */
 export const getLatestBuilds: API.OperationMethod<
@@ -3353,196 +3412,91 @@ export const getLatestBuilds: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ReposConfigAutofillGetError = CloudflareOpError;
+export type GetReposConfigAutofillError = CloudflareOpError;
 /** Analyze repository for automatic configuration detection */
-export const reposConfigAutofillGet: API.OperationMethod<
-  ReposConfigAutofillGetRequest,
-  ReposConfigAutofillGetResponse,
-  ReposConfigAutofillGetError,
+export const getReposConfigAutofill: API.OperationMethod<
+  GetReposConfigAutofillRequest,
+  GetReposConfigAutofillResponse,
+  GetReposConfigAutofillError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReposConfigAutofillGetRequest,
-  output: ReposConfigAutofillGetResponse,
+  input: GetReposConfigAutofillRequest,
+  output: GetReposConfigAutofillResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ReposConnectionsDeleteError = CloudflareOpError;
-/** Remove a repository connection */
-export const reposConnectionsDelete: API.OperationMethod<
-  ReposConnectionsDeleteRequest,
-  ReposConnectionsDeleteResponse,
-  ReposConnectionsDeleteError,
+export type ListBuildsError = CloudflareOpError;
+/** Get all builds for a specific worker script with pagination */
+export const listBuilds: API.OperationMethod<
+  ListBuildsRequest,
+  ListBuildsResponse,
+  ListBuildsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReposConnectionsDeleteRequest,
-  output: ReposConnectionsDeleteResponse,
+  input: ListBuildsRequest,
+  output: ListBuildsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ReposConnectionsUpsertError = CloudflareOpError;
-/** Upsert a repository connection for CI/CD integration */
-export const reposConnectionsUpsert: API.OperationMethod<
-  ReposConnectionsUpsertRequest,
-  ReposConnectionsUpsertResponse,
-  ReposConnectionsUpsertError,
+export type ListDeployHooksError = CloudflareOpError;
+/** Get all deploy hooks for a specific worker script. */
+export const listDeployHooks: API.OperationMethod<
+  ListDeployHooksRequest,
+  ListDeployHooksResponse,
+  ListDeployHooksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReposConnectionsUpsertRequest,
-  output: ReposConnectionsUpsertResponse,
+  input: ListDeployHooksRequest,
+  output: ListDeployHooksResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type TokensCreateError = CloudflareOpError;
-/** Create a new build authentication token */
-export const tokensCreate: API.OperationMethod<
-  TokensCreateRequest,
-  TokensCreateResponse,
-  TokensCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TokensCreateRequest,
-  output: TokensCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TokensDeleteError = CloudflareOpError;
-/** Remove a build authentication token */
-export const tokensDelete: API.OperationMethod<
-  TokensDeleteRequest,
-  TokensDeleteResponse,
-  TokensDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TokensDeleteRequest,
-  output: TokensDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TokensListError = CloudflareOpError;
+export type ListTokensError = CloudflareOpError;
 /** Get all build tokens with pagination */
-export const tokensList: API.OperationMethod<
-  TokensListRequest,
-  TokensListResponse,
-  TokensListError,
+export const listTokens: API.OperationMethod<
+  ListTokensRequest,
+  ListTokensResponse,
+  ListTokensError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensListRequest,
-  output: TokensListResponse,
+  input: ListTokensRequest,
+  output: ListTokensResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type TriggersCreateError = CloudflareOpError;
-/** Create a new CI/CD trigger */
-export const triggersCreate: API.OperationMethod<
-  TriggersCreateRequest,
-  TriggersCreateResponse,
-  TriggersCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TriggersCreateRequest,
-  output: TriggersCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TriggersCreateBuildError = CloudflareOpError;
-/** Trigger a manual build for a specific trigger */
-export const triggersCreateBuild: API.OperationMethod<
-  TriggersCreateBuildRequest,
-  TriggersCreateBuildResponse,
-  TriggersCreateBuildError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TriggersCreateBuildRequest,
-  output: TriggersCreateBuildResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TriggersDeleteError = CloudflareOpError;
-/** Remove a CI/CD trigger */
-export const triggersDelete: API.OperationMethod<
-  TriggersDeleteRequest,
-  TriggersDeleteResponse,
-  TriggersDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TriggersDeleteRequest,
-  output: TriggersDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TriggersEnvironmentVariablesDeleteError = CloudflareOpError;
-/** Remove a specific environment variable from a trigger */
-export const triggersEnvironmentVariablesDelete: API.OperationMethod<
-  TriggersEnvironmentVariablesDeleteRequest,
-  TriggersEnvironmentVariablesDeleteResponse,
-  TriggersEnvironmentVariablesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TriggersEnvironmentVariablesDeleteRequest,
-  output: TriggersEnvironmentVariablesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TriggersEnvironmentVariablesListError = CloudflareOpError;
+export type ListTriggerEnvironmentVariablesError = CloudflareOpError;
 /** Get all environment variables for a trigger */
-export const triggersEnvironmentVariablesList: API.OperationMethod<
-  TriggersEnvironmentVariablesListRequest,
-  TriggersEnvironmentVariablesListResponse,
-  TriggersEnvironmentVariablesListError,
+export const listTriggerEnvironmentVariables: API.OperationMethod<
+  ListTriggerEnvironmentVariablesRequest,
+  ListTriggerEnvironmentVariablesResponse,
+  ListTriggerEnvironmentVariablesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggersEnvironmentVariablesListRequest,
-  output: TriggersEnvironmentVariablesListResponse,
+  input: ListTriggerEnvironmentVariablesRequest,
+  output: ListTriggerEnvironmentVariablesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type TriggersEnvironmentVariablesUpsertError = CloudflareOpError;
-/** Create or update environment variables for a trigger */
-export const triggersEnvironmentVariablesUpsert: API.OperationMethod<
-  TriggersEnvironmentVariablesUpsertRequest,
-  TriggersEnvironmentVariablesUpsertResponse,
-  TriggersEnvironmentVariablesUpsertError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TriggersEnvironmentVariablesUpsertRequest,
-  output: TriggersEnvironmentVariablesUpsertResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type TriggersListError = CloudflareOpError;
+export type ListTriggersError = CloudflareOpError;
 /** Get all triggers for a specific worker script */
-export const triggersList: API.OperationMethod<
-  TriggersListRequest,
-  TriggersListResponse,
-  TriggersListError,
+export const listTriggers: API.OperationMethod<
+  ListTriggersRequest,
+  ListTriggersResponse,
+  ListTriggersError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggersListRequest,
-  output: TriggersListResponse,
+  input: ListTriggersRequest,
+  output: ListTriggersResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3563,16 +3517,61 @@ export const triggersPurgeCache: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TriggersUpdateError = CloudflareOpError;
-/** Update an existing CI/CD trigger */
-export const triggersUpdate: API.OperationMethod<
-  TriggersUpdateRequest,
-  TriggersUpdateResponse,
-  TriggersUpdateError,
+export type UpdateDeployHookError = CloudflareOpError;
+/** Update an existing deploy hook. */
+export const updateDeployHook: API.OperationMethod<
+  UpdateDeployHookRequest,
+  UpdateDeployHookResponse,
+  UpdateDeployHookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggersUpdateRequest,
-  output: TriggersUpdateResponse,
+  input: UpdateDeployHookRequest,
+  output: UpdateDeployHookResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateTriggerError = CloudflareOpError;
+/** Update an existing CI/CD trigger */
+export const updateTrigger: API.OperationMethod<
+  UpdateTriggerRequest,
+  UpdateTriggerResponse,
+  UpdateTriggerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTriggerRequest,
+  output: UpdateTriggerResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpsertReposConnectionError = CloudflareOpError;
+/** Upsert a repository connection for CI/CD integration */
+export const upsertReposConnection: API.OperationMethod<
+  UpsertReposConnectionRequest,
+  UpsertReposConnectionResponse,
+  UpsertReposConnectionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpsertReposConnectionRequest,
+  output: UpsertReposConnectionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpsertTriggerEnvironmentVariableError = CloudflareOpError;
+/** Create or update environment variables for a trigger */
+export const upsertTriggerEnvironmentVariable: API.OperationMethod<
+  UpsertTriggerEnvironmentVariableRequest,
+  UpsertTriggerEnvironmentVariableResponse,
+  UpsertTriggerEnvironmentVariableError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpsertTriggerEnvironmentVariableRequest,
+  output: UpsertTriggerEnvironmentVariableResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

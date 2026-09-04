@@ -18665,7 +18665,7 @@
         }
       }
     },
-    "com.gcp.dialogflow_v3#BatchDeleteProjectsLocationsAgentsTestCasesRequest": {
+    "com.gcp.dialogflow_v3#DeleteBatchProjectLocationAgentTestCaseRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -18684,10 +18684,10 @@
         }
       }
     },
-    "com.gcp.dialogflow_v3#BatchDeleteProjectsLocationsAgentsTestCases": {
+    "com.gcp.dialogflow_v3#DeleteBatchProjectLocationAgentTestCase": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.dialogflow_v3#BatchDeleteProjectsLocationsAgentsTestCasesRequest"
+        "target": "com.gcp.dialogflow_v3#DeleteBatchProjectLocationAgentTestCaseRequest"
       },
       "output": {
         "target": "com.gcp.dialogflow_v3#GoogleProtobufEmpty"

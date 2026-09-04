@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.modal.webhook#WebhookTokenCreateRequest": {
+    "com.modal.webhook#CreateWebhookTokenRequest": {
       "type": "structure",
       "members": {
         "scoped": {
@@ -28,7 +28,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.webhook#WebhookTokenCreateResponse": {
+    "com.modal.webhook#CreateWebhookTokenResponse": {
       "type": "structure",
       "members": {
         "tokenId": {
@@ -45,13 +45,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.webhook#WebhookTokenCreate": {
+    "com.modal.webhook#CreateWebhookToken": {
       "type": "operation",
       "input": {
-        "target": "com.modal.webhook#WebhookTokenCreateRequest"
+        "target": "com.modal.webhook#CreateWebhookTokenRequest"
       },
       "output": {
-        "target": "com.modal.webhook#WebhookTokenCreateResponse"
+        "target": "com.modal.webhook#CreateWebhookTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -62,7 +62,7 @@
         "smithy.api#documentation": "Webhook tokens (proxy tokens)"
       }
     },
-    "com.modal.webhook#WebhookTokenDeleteRequest": {
+    "com.modal.webhook#DeleteWebhookTokenRequest": {
       "type": "structure",
       "members": {
         "tokenId": {
@@ -73,10 +73,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.webhook#WebhookTokenDelete": {
+    "com.modal.webhook#DeleteWebhookToken": {
       "type": "operation",
       "input": {
-        "target": "com.modal.webhook#WebhookTokenDeleteRequest"
+        "target": "com.modal.webhook#DeleteWebhookTokenRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -119,7 +119,7 @@
         }
       }
     },
-    "com.modal.webhook#WebhookTokenEnvironmentListRequest": {
+    "com.modal.webhook#ListWebhookTokenEnvironmentRequest": {
       "type": "structure",
       "members": {
         "tokenId": {
@@ -136,7 +136,7 @@
         "target": "smithy.api#String"
       }
     },
-    "com.modal.webhook#WebhookTokenEnvironmentListResponse": {
+    "com.modal.webhook#ListWebhookTokenEnvironmentResponse": {
       "type": "structure",
       "members": {
         "environmentIds": {
@@ -147,13 +147,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.webhook#WebhookTokenEnvironmentList": {
+    "com.modal.webhook#ListWebhookTokenEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.modal.webhook#WebhookTokenEnvironmentListRequest"
+        "target": "com.modal.webhook#ListWebhookTokenEnvironmentRequest"
       },
       "output": {
-        "target": "com.modal.webhook#WebhookTokenEnvironmentListResponse"
+        "target": "com.modal.webhook#ListWebhookTokenEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -216,7 +216,7 @@
         "target": "com.modal.webhook#WebhookToken"
       }
     },
-    "com.modal.webhook#WebhookTokenListResponse": {
+    "com.modal.webhook#ListWebhookTokenResponse": {
       "type": "structure",
       "members": {
         "tokens": {
@@ -227,13 +227,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.webhook#WebhookTokenList": {
+    "com.modal.webhook#ListWebhookToken": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.modal.webhook#WebhookTokenListResponse"
+        "target": "com.modal.webhook#ListWebhookTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -243,7 +243,7 @@
         }
       }
     },
-    "com.modal.webhook#WebhookTokenListForEnvironmentRequest": {
+    "com.modal.webhook#ListWebhookTokenForEnvironmentRequest": {
       "type": "structure",
       "members": {
         "environmentName": {
@@ -254,7 +254,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.webhook#WebhookTokenListForEnvironmentResponse": {
+    "com.modal.webhook#ListWebhookTokenForEnvironmentResponse": {
       "type": "structure",
       "members": {
         "tokens": {
@@ -265,13 +265,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.webhook#WebhookTokenListForEnvironment": {
+    "com.modal.webhook#ListWebhookTokenForEnvironment": {
       "type": "operation",
       "input": {
-        "target": "com.modal.webhook#WebhookTokenListForEnvironmentRequest"
+        "target": "com.modal.webhook#ListWebhookTokenForEnvironmentRequest"
       },
       "output": {
-        "target": "com.modal.webhook#WebhookTokenListForEnvironmentResponse"
+        "target": "com.modal.webhook#ListWebhookTokenForEnvironmentResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -286,25 +286,25 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.modal.webhook#WebhookTokenCreate"
+          "target": "com.modal.webhook#CreateWebhookToken"
         },
         {
-          "target": "com.modal.webhook#WebhookTokenDelete"
+          "target": "com.modal.webhook#DeleteWebhookToken"
         },
         {
           "target": "com.modal.webhook#WebhookTokenEnvironmentAdd"
         },
         {
-          "target": "com.modal.webhook#WebhookTokenEnvironmentList"
+          "target": "com.modal.webhook#ListWebhookTokenEnvironment"
         },
         {
           "target": "com.modal.webhook#WebhookTokenEnvironmentRemove"
         },
         {
-          "target": "com.modal.webhook#WebhookTokenList"
+          "target": "com.modal.webhook#ListWebhookToken"
         },
         {
-          "target": "com.modal.webhook#WebhookTokenListForEnvironment"
+          "target": "com.modal.webhook#ListWebhookTokenForEnvironment"
         }
       ],
       "traits": {

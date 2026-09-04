@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.redhatopenshift#OpenShiftClustersListCredentials": {
+    "com.azure.redhatopenshift#ListOpenShiftClusterCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersListCredentialsRequest"
+        "target": "com.azure.redhatopenshift#ListOpenShiftClusterCredentialsRequest"
       },
       "output": {
         "target": "com.azure.redhatopenshift#OpenShiftClusterCredentials"
@@ -57,7 +57,7 @@
         "smithy.api#documentation": "OpenShiftClusterCredentials represents an OpenShift cluster's credentials."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersListCredentialsRequest": {
+    "com.azure.redhatopenshift#ListOpenShiftClusterCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -89,10 +89,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersListAdminCredentials": {
+    "com.azure.redhatopenshift#ListOpenShiftClusterAdminCredentials": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersListAdminCredentialsRequest"
+        "target": "com.azure.redhatopenshift#ListOpenShiftClusterAdminCredentialsRequest"
       },
       "output": {
         "target": "com.azure.redhatopenshift#OpenShiftClusterAdminKubeconfig"
@@ -122,7 +122,7 @@
         "smithy.api#documentation": "OpenShiftClusterAdminKubeconfig represents an OpenShift cluster's admin kubeconfig."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersListAdminCredentialsRequest": {
+    "com.azure.redhatopenshift#ListOpenShiftClusterAdminCredentialsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -154,10 +154,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersDelete": {
+    "com.azure.redhatopenshift#DeleteOpenShiftCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersDeleteRequest"
+        "target": "com.azure.redhatopenshift#DeleteOpenShiftClusterRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -173,7 +173,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-25"
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersDeleteRequest": {
+    "com.azure.redhatopenshift#DeleteOpenShiftClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -205,13 +205,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersUpdate": {
+    "com.azure.redhatopenshift#UpdateOpenShiftCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersUpdateRequest"
+        "target": "com.azure.redhatopenshift#UpdateOpenShiftClusterRequest"
       },
       "output": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersUpdateResponse"
+        "target": "com.azure.redhatopenshift#UpdateOpenShiftClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -224,7 +224,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-25"
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersUpdateResponse": {
+    "com.azure.redhatopenshift#UpdateOpenShiftClusterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1114,7 +1114,7 @@
         "smithy.api#documentation": "The type of identity that created the resource."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersUpdateRequest": {
+    "com.azure.redhatopenshift#UpdateOpenShiftClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1711,13 +1711,13 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersGet": {
+    "com.azure.redhatopenshift#GetOpenShiftCluster": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersGetRequest"
+        "target": "com.azure.redhatopenshift#GetOpenShiftClusterRequest"
       },
       "output": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersGetResponse"
+        "target": "com.azure.redhatopenshift#GetOpenShiftClusterResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -1730,7 +1730,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-25"
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersGetResponse": {
+    "com.azure.redhatopenshift#GetOpenShiftClusterResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -1843,7 +1843,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersGetRequest": {
+    "com.azure.redhatopenshift#GetOpenShiftClusterRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -1875,10 +1875,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersListByResourceGroup": {
+    "com.azure.redhatopenshift#ListOpenShiftClusterByResourceGroup": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersListByResourceGroupRequest"
+        "target": "com.azure.redhatopenshift#ListOpenShiftClusterByResourceGroupRequest"
       },
       "output": {
         "target": "com.azure.redhatopenshift#OpenShiftClusterList"
@@ -2037,7 +2037,7 @@
         "smithy.api#documentation": "Resource tags."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersListByResourceGroupRequest": {
+    "com.azure.redhatopenshift#ListOpenShiftClusterByResourceGroupRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2061,10 +2061,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersList": {
+    "com.azure.redhatopenshift#ListOpenShiftClusters": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftClustersListRequest"
+        "target": "com.azure.redhatopenshift#ListOpenShiftClustersRequest"
       },
       "output": {
         "target": "com.azure.redhatopenshift#OpenShiftClusterList"
@@ -2080,7 +2080,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-25"
       }
     },
-    "com.azure.redhatopenshift#OpenShiftClustersListRequest": {
+    "com.azure.redhatopenshift#ListOpenShiftClustersRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2240,10 +2240,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#PlatformWorkloadIdentityRoleSetsList": {
+    "com.azure.redhatopenshift#ListPlatformWorkloadIdentityRoleSets": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityRoleSetsListRequest"
+        "target": "com.azure.redhatopenshift#ListPlatformWorkloadIdentityRoleSetsRequest"
       },
       "output": {
         "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityRoleSetList"
@@ -2327,7 +2327,7 @@
         "smithy.api#documentation": "PlatformWorkloadIdentityRoleSet represents a mapping from the names of OCP operators to the built-in roles that should be assigned to those operator's corresponding managed identities for a particular OCP version."
       }
     },
-    "com.azure.redhatopenshift#PlatformWorkloadIdentityRoleSetsListRequest": {
+    "com.azure.redhatopenshift#ListPlatformWorkloadIdentityRoleSetsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2351,13 +2351,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftVersionsGet": {
+    "com.azure.redhatopenshift#GetOpenShiftVersion": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftVersionsGetRequest"
+        "target": "com.azure.redhatopenshift#GetOpenShiftVersionRequest"
       },
       "output": {
-        "target": "com.azure.redhatopenshift#OpenShiftVersionsGetResponse"
+        "target": "com.azure.redhatopenshift#GetOpenShiftVersionResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -2370,7 +2370,7 @@
         "com.distilled.openapi#apiVersion": "2025-07-25"
       }
     },
-    "com.azure.redhatopenshift#OpenShiftVersionsGetResponse": {
+    "com.azure.redhatopenshift#GetOpenShiftVersionResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -2422,7 +2422,7 @@
         "smithy.api#documentation": "OpenShiftVersionProperties represents the properties of an OpenShiftVersion."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftVersionsGetRequest": {
+    "com.azure.redhatopenshift#GetOpenShiftVersionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2454,10 +2454,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OpenShiftVersionsList": {
+    "com.azure.redhatopenshift#ListOpenShiftVersions": {
       "type": "operation",
       "input": {
-        "target": "com.azure.redhatopenshift#OpenShiftVersionsListRequest"
+        "target": "com.azure.redhatopenshift#ListOpenShiftVersionsRequest"
       },
       "output": {
         "target": "com.azure.redhatopenshift#OpenShiftVersionList"
@@ -2541,7 +2541,7 @@
         "smithy.api#documentation": "OpenShiftVersion represents an OpenShift version that can be installed."
       }
     },
-    "com.azure.redhatopenshift#OpenShiftVersionsListRequest": {
+    "com.azure.redhatopenshift#ListOpenShiftVersionsRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -2565,7 +2565,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.redhatopenshift#OperationsList": {
+    "com.azure.redhatopenshift#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
@@ -2677,43 +2677,43 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersListCredentials"
+          "target": "com.azure.redhatopenshift#ListOpenShiftClusterCredentials"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersListAdminCredentials"
+          "target": "com.azure.redhatopenshift#ListOpenShiftClusterAdminCredentials"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersDelete"
+          "target": "com.azure.redhatopenshift#DeleteOpenShiftCluster"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersUpdate"
+          "target": "com.azure.redhatopenshift#UpdateOpenShiftCluster"
         },
         {
           "target": "com.azure.redhatopenshift#OpenShiftClustersCreateOrUpdate"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersGet"
+          "target": "com.azure.redhatopenshift#GetOpenShiftCluster"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersListByResourceGroup"
+          "target": "com.azure.redhatopenshift#ListOpenShiftClusterByResourceGroup"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftClustersList"
+          "target": "com.azure.redhatopenshift#ListOpenShiftClusters"
         },
         {
           "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityRoleSetGet"
         },
         {
-          "target": "com.azure.redhatopenshift#PlatformWorkloadIdentityRoleSetsList"
+          "target": "com.azure.redhatopenshift#ListPlatformWorkloadIdentityRoleSets"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftVersionsGet"
+          "target": "com.azure.redhatopenshift#GetOpenShiftVersion"
         },
         {
-          "target": "com.azure.redhatopenshift#OpenShiftVersionsList"
+          "target": "com.azure.redhatopenshift#ListOpenShiftVersions"
         },
         {
-          "target": "com.azure.redhatopenshift#OperationsList"
+          "target": "com.azure.redhatopenshift#ListOperations"
         }
       ],
       "traits": {

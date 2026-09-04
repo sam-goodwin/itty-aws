@@ -157,7 +157,7 @@
       },
       "traits": {}
     },
-    "com.vercel.edge_cache#DangerouslyDeleteByTagsRequest": {
+    "com.vercel.edge_cache#DeleteDangerouslyByTagRequest": {
       "type": "structure",
       "members": {
         "projectIdOrName": {
@@ -198,10 +198,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.vercel.edge_cache#DangerouslyDeleteByTags": {
+    "com.vercel.edge_cache#DeleteDangerouslyByTag": {
       "type": "operation",
       "input": {
-        "target": "com.vercel.edge_cache#DangerouslyDeleteByTagsRequest"
+        "target": "com.vercel.edge_cache#DeleteDangerouslyByTagRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -306,7 +306,7 @@
       },
       "traits": {}
     },
-    "com.vercel.edge_cache#DangerouslyDeleteBySrcImagesRequest": {
+    "com.vercel.edge_cache#DeleteDangerouslyBySrcImageRequest": {
       "type": "structure",
       "members": {
         "projectIdOrName": {
@@ -344,10 +344,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.vercel.edge_cache#DangerouslyDeleteBySrcImages": {
+    "com.vercel.edge_cache#DeleteDangerouslyBySrcImage": {
       "type": "operation",
       "input": {
-        "target": "com.vercel.edge_cache#DangerouslyDeleteBySrcImagesRequest"
+        "target": "com.vercel.edge_cache#DeleteDangerouslyBySrcImageRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -435,13 +435,13 @@
           "target": "com.vercel.edge_cache#InvalidateByTags"
         },
         {
-          "target": "com.vercel.edge_cache#DangerouslyDeleteByTags"
+          "target": "com.vercel.edge_cache#DeleteDangerouslyByTag"
         },
         {
           "target": "com.vercel.edge_cache#InvalidateBySrcImages"
         },
         {
-          "target": "com.vercel.edge_cache#DangerouslyDeleteBySrcImages"
+          "target": "com.vercel.edge_cache#DeleteDangerouslyBySrcImage"
         }
       ],
       "traits": {

@@ -45,7 +45,7 @@
         "smithy.api#documentation": "Modal Flash (experimental)"
       }
     },
-    "com.modal.flash#FlashContainerListRequest": {
+    "com.modal.flash#ListFlashContainerRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -76,7 +76,7 @@
         "target": "com.modal.flash#FlashContainerListResponseContainer"
       }
     },
-    "com.modal.flash#FlashContainerListResponse": {
+    "com.modal.flash#ListFlashContainerResponse": {
       "type": "structure",
       "members": {
         "containers": {
@@ -87,13 +87,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.modal.flash#FlashContainerList": {
+    "com.modal.flash#ListFlashContainer": {
       "type": "operation",
       "input": {
-        "target": "com.modal.flash#FlashContainerListRequest"
+        "target": "com.modal.flash#ListFlashContainerRequest"
       },
       "output": {
-        "target": "com.modal.flash#FlashContainerListResponse"
+        "target": "com.modal.flash#ListFlashContainerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -156,7 +156,7 @@
         }
       }
     },
-    "com.modal.flash#FlashSetTargetSlotsMetricsRequest": {
+    "com.modal.flash#SetFlashTargetSlotMetricRequest": {
       "type": "structure",
       "members": {
         "functionId": {
@@ -173,20 +173,20 @@
         "smithy.api#input": {}
       }
     },
-    "com.modal.flash#FlashSetTargetSlotsMetricsResponse": {
+    "com.modal.flash#SetFlashTargetSlotMetricResponse": {
       "type": "structure",
       "members": {},
       "traits": {
         "smithy.api#output": {}
       }
     },
-    "com.modal.flash#FlashSetTargetSlotsMetrics": {
+    "com.modal.flash#SetFlashTargetSlotMetric": {
       "type": "operation",
       "input": {
-        "target": "com.modal.flash#FlashSetTargetSlotsMetricsRequest"
+        "target": "com.modal.flash#SetFlashTargetSlotMetricRequest"
       },
       "output": {
-        "target": "com.modal.flash#FlashSetTargetSlotsMetricsResponse"
+        "target": "com.modal.flash#SetFlashTargetSlotMetricResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -204,13 +204,13 @@
           "target": "com.modal.flash#FlashContainerDeregister"
         },
         {
-          "target": "com.modal.flash#FlashContainerList"
+          "target": "com.modal.flash#ListFlashContainer"
         },
         {
           "target": "com.modal.flash#FlashContainerRegister"
         },
         {
-          "target": "com.modal.flash#FlashSetTargetSlotsMetrics"
+          "target": "com.modal.flash#SetFlashTargetSlotMetric"
         }
       ],
       "traits": {

@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.warehouse_model_paths#WarehouseModelPathsListRequest": {
+    "com.posthog.warehouse_model_paths#ListWarehouseModelPathsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -287,10 +287,10 @@
       },
       "traits": {}
     },
-    "com.posthog.warehouse_model_paths#WarehouseModelPathsList": {
+    "com.posthog.warehouse_model_paths#ListWarehouseModelPaths": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.warehouse_model_paths#WarehouseModelPathsListRequest"
+        "target": "com.posthog.warehouse_model_paths#ListWarehouseModelPathsRequest"
       },
       "output": {
         "target": "com.posthog.warehouse_model_paths#PaginatedDataWarehouseModelPathList"
@@ -348,7 +348,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.warehouse_model_paths#WarehouseModelPathsList"
+          "target": "com.posthog.warehouse_model_paths#ListWarehouseModelPaths"
         },
         {
           "target": "com.posthog.warehouse_model_paths#WarehouseModelPathsRetrieve"

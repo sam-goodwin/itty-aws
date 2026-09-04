@@ -17,7 +17,7 @@
     ]
   },
   "shapes": {
-    "com.posthog.data_modeling_jobs#DataModelingJobsListRequest": {
+    "com.posthog.data_modeling_jobs#ListDataModelingJobsRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -235,10 +235,10 @@
       },
       "traits": {}
     },
-    "com.posthog.data_modeling_jobs#DataModelingJobsList": {
+    "com.posthog.data_modeling_jobs#ListDataModelingJobs": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.data_modeling_jobs#DataModelingJobsListRequest"
+        "target": "com.posthog.data_modeling_jobs#ListDataModelingJobsRequest"
       },
       "output": {
         "target": "com.posthog.data_modeling_jobs#PaginatedDataModelingJobList"
@@ -364,7 +364,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.data_modeling_jobs#DataModelingJobsList"
+          "target": "com.posthog.data_modeling_jobs#ListDataModelingJobs"
         },
         {
           "target": "com.posthog.data_modeling_jobs#DataModelingJobsRetrieve"

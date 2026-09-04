@@ -11,44 +11,11 @@ import * as Retry from "../retry.ts";
 
 export type { PosthogOpError, PosthogOpContext };
 
-export interface WebAnalyticsPathCleaningSuggestionsApplyRequest {
-  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
-  project_id: string;
-  id: string;
-}
-export const WebAnalyticsPathCleaningSuggestionsApplyRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      project_id: S.String.pipe(T.Label()),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/api/projects/{project_id}/web_analytics_path_cleaning_suggestions/{id}/apply/",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "WebAnalyticsPathCleaningSuggestionsApplyRequest",
-  }) as any as S.Schema<WebAnalyticsPathCleaningSuggestionsApplyRequest>;
-
-export interface ApplyPathCleaningSuggestionResponse {
-  /** Number of rules merged into the team's path_cleaning_filters. */
-  applied: number;
-}
-export const ApplyPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applied: S.Number,
-  }),
-).annotate({
-  identifier: "ApplyPathCleaningSuggestionResponse",
-}) as any as S.Schema<ApplyPathCleaningSuggestionResponse>;
-
-export interface WebAnalyticsPathCleaningSuggestionsGenerateRequest {
+export interface GenerateWebAnalyticPathCleaningSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-export const WebAnalyticsPathCleaningSuggestionsGenerateRequest =
+export const GenerateWebAnalyticPathCleaningSuggestionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -60,8 +27,8 @@ export const WebAnalyticsPathCleaningSuggestionsGenerateRequest =
       }),
     ),
   ).annotate({
-    identifier: "WebAnalyticsPathCleaningSuggestionsGenerateRequest",
-  }) as any as S.Schema<WebAnalyticsPathCleaningSuggestionsGenerateRequest>;
+    identifier: "GenerateWebAnalyticPathCleaningSuggestionRequest",
+  }) as any as S.Schema<GenerateWebAnalyticPathCleaningSuggestionRequest>;
 
 export interface SuggestedRule {
   /** re2 pattern matching the dynamic path segment. */
@@ -132,6 +99,39 @@ export const GeneratePathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(
   identifier: "GeneratePathCleaningSuggestionResponse",
 }) as any as S.Schema<GeneratePathCleaningSuggestionResponse>;
 
+export interface WebAnalyticsPathCleaningSuggestionsApplyRequest {
+  /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
+  project_id: string;
+  id: string;
+}
+export const WebAnalyticsPathCleaningSuggestionsApplyRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      project_id: S.String.pipe(T.Label()),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/api/projects/{project_id}/web_analytics_path_cleaning_suggestions/{id}/apply/",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "WebAnalyticsPathCleaningSuggestionsApplyRequest",
+  }) as any as S.Schema<WebAnalyticsPathCleaningSuggestionsApplyRequest>;
+
+export interface ApplyPathCleaningSuggestionResponse {
+  /** Number of rules merged into the team's path_cleaning_filters. */
+  applied: number;
+}
+export const ApplyPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applied: S.Number,
+  }),
+).annotate({
+  identifier: "ApplyPathCleaningSuggestionResponse",
+}) as any as S.Schema<ApplyPathCleaningSuggestionResponse>;
+
 export interface WebAnalyticsPathCleaningSuggestionsPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -198,6 +198,21 @@ export const PreviewPathCleaningSuggestionResponse = /*@__PURE__*/ S.suspend(
   identifier: "PreviewPathCleaningSuggestionResponse",
 }) as any as S.Schema<PreviewPathCleaningSuggestionResponse>;
 
+export type GenerateWebAnalyticPathCleaningSuggestionError = PosthogOpError;
+/** Generate path-cleaning suggestions on demand Samples the team's recent paths, asks the LLM for cleaning rules, validates them against the real paths, and stores the result as a `path_cleaning_suggestions` health issue (replacing any previous active one). Runs even if the team already has rules. Returns the suggestion (or a skip status when there aren't enough paths to suggest from). */
+export const generateWebAnalyticPathCleaningSuggestion: API.OperationMethod<
+  GenerateWebAnalyticPathCleaningSuggestionRequest,
+  GeneratePathCleaningSuggestionResponse,
+  GenerateWebAnalyticPathCleaningSuggestionError,
+  PosthogOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateWebAnalyticPathCleaningSuggestionRequest,
+  output: GeneratePathCleaningSuggestionResponse,
+  errors: [],
+  protocol: PosthogProtocol,
+  retry: Retry.Retry,
+}));
+
 export type WebAnalyticsPathCleaningSuggestionsApplyError = PosthogOpError;
 /** Apply a path-cleaning suggestion Merges the suggestion's rules into the team's path_cleaning_filters (never overwrites existing rules) and resolves the underlying health issue. Requires project admin, matching the team API's gate on path_cleaning_filters. */
 export const webAnalyticsPathCleaningSuggestionsApply: API.OperationMethod<
@@ -208,21 +223,6 @@ export const webAnalyticsPathCleaningSuggestionsApply: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: WebAnalyticsPathCleaningSuggestionsApplyRequest,
   output: ApplyPathCleaningSuggestionResponse,
-  errors: [],
-  protocol: PosthogProtocol,
-  retry: Retry.Retry,
-}));
-
-export type WebAnalyticsPathCleaningSuggestionsGenerateError = PosthogOpError;
-/** Generate path-cleaning suggestions on demand Samples the team's recent paths, asks the LLM for cleaning rules, validates them against the real paths, and stores the result as a `path_cleaning_suggestions` health issue (replacing any previous active one). Runs even if the team already has rules. Returns the suggestion (or a skip status when there aren't enough paths to suggest from). */
-export const webAnalyticsPathCleaningSuggestionsGenerate: API.OperationMethod<
-  WebAnalyticsPathCleaningSuggestionsGenerateRequest,
-  GeneratePathCleaningSuggestionResponse,
-  WebAnalyticsPathCleaningSuggestionsGenerateError,
-  PosthogOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebAnalyticsPathCleaningSuggestionsGenerateRequest,
-  output: GeneratePathCleaningSuggestionResponse,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

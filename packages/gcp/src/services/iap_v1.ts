@@ -171,7 +171,7 @@ export const TunnelDestGroup = /*@__PURE__*/ S.suspend(() =>
   identifier: "TunnelDestGroup",
 }) as any as S.Schema<TunnelDestGroup>;
 
-export interface CreateProjectsIap_tunnelLocationsDestGroupsRequest {
+export interface CreateProjectsIapTunnelLocationsDestGroupsRequest {
   /** Required. Google Cloud Project ID and location. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}`. */
   parent: string;
   /** Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`. */
@@ -179,7 +179,7 @@ export interface CreateProjectsIap_tunnelLocationsDestGroupsRequest {
   /** Request body */
   body?: TunnelDestGroup;
 }
-export const CreateProjectsIap_tunnelLocationsDestGroupsRequest =
+export const CreateProjectsIapTunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -193,8 +193,8 @@ export const CreateProjectsIap_tunnelLocationsDestGroupsRequest =
       }),
     ),
   ).annotate({
-    identifier: "CreateProjectsIap_tunnelLocationsDestGroupsRequest",
-  }) as any as S.Schema<CreateProjectsIap_tunnelLocationsDestGroupsRequest>;
+    identifier: "CreateProjectsIapTunnelLocationsDestGroupsRequest",
+  }) as any as S.Schema<CreateProjectsIapTunnelLocationsDestGroupsRequest>;
 
 export interface DeleteProjectsBrandsIdentityAwareProxyClientsRequest {
   /** Required. Name of the Identity Aware Proxy client to be deleted. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. */
@@ -221,11 +221,11 @@ export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
 
-export interface DeleteProjectsIap_tunnelLocationsDestGroupsRequest {
+export interface DeleteProjectsIapTunnelLocationsDestGroupsRequest {
   /** Required. Name of the TunnelDestGroup to delete. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. */
   name: string;
 }
-export const DeleteProjectsIap_tunnelLocationsDestGroupsRequest =
+export const DeleteProjectsIapTunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -237,8 +237,8 @@ export const DeleteProjectsIap_tunnelLocationsDestGroupsRequest =
       }),
     ),
   ).annotate({
-    identifier: "DeleteProjectsIap_tunnelLocationsDestGroupsRequest",
-  }) as any as S.Schema<DeleteProjectsIap_tunnelLocationsDestGroupsRequest>;
+    identifier: "DeleteProjectsIapTunnelLocationsDestGroupsRequest",
+  }) as any as S.Schema<DeleteProjectsIapTunnelLocationsDestGroupsRequest>;
 
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
@@ -811,11 +811,11 @@ export const GetProjectsBrandsIdentityAwareProxyClientsRequest =
     identifier: "GetProjectsBrandsIdentityAwareProxyClientsRequest",
   }) as any as S.Schema<GetProjectsBrandsIdentityAwareProxyClientsRequest>;
 
-export interface GetProjectsIap_tunnelLocationsDestGroupsRequest {
+export interface GetProjectsIapTunnelLocationsDestGroupsRequest {
   /** Required. Name of the TunnelDestGroup to be fetched. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. */
   name: string;
 }
-export const GetProjectsIap_tunnelLocationsDestGroupsRequest =
+export const GetProjectsIapTunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -827,8 +827,8 @@ export const GetProjectsIap_tunnelLocationsDestGroupsRequest =
       }),
     ),
   ).annotate({
-    identifier: "GetProjectsIap_tunnelLocationsDestGroupsRequest",
-  }) as any as S.Schema<GetProjectsIap_tunnelLocationsDestGroupsRequest>;
+    identifier: "GetProjectsIapTunnelLocationsDestGroupsRequest",
+  }) as any as S.Schema<GetProjectsIapTunnelLocationsDestGroupsRequest>;
 
 export interface ListProjectsBrandsRequest {
   /** Required. GCP Project number/id. In the following format: projects/{project_number/id}. */
@@ -913,7 +913,7 @@ export const ListIdentityAwareProxyClientsResponse = /*@__PURE__*/ S.suspend(
   identifier: "ListIdentityAwareProxyClientsResponse",
 }) as any as S.Schema<ListIdentityAwareProxyClientsResponse>;
 
-export interface ListProjectsIap_tunnelLocationsDestGroupsRequest {
+export interface ListProjectsIapTunnelLocationsDestGroupsRequest {
   /** The maximum number of groups to return. The service might return fewer than this value. If unspecified, at most 100 groups are returned. The maximum value is 1000; values above 1000 are coerced to 1000. */
   pageSize?: number;
   /** Required. Google Cloud Project ID and location. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}`. A `-` can be used for the location to group across all locations. */
@@ -921,7 +921,7 @@ export interface ListProjectsIap_tunnelLocationsDestGroupsRequest {
   /** A page token, received from a previous `ListTunnelDestGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTunnelDestGroups` must match the call that provided the page token. */
   pageToken?: string;
 }
-export const ListProjectsIap_tunnelLocationsDestGroupsRequest =
+export const ListProjectsIapTunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -935,8 +935,8 @@ export const ListProjectsIap_tunnelLocationsDestGroupsRequest =
       }),
     ),
   ).annotate({
-    identifier: "ListProjectsIap_tunnelLocationsDestGroupsRequest",
-  }) as any as S.Schema<ListProjectsIap_tunnelLocationsDestGroupsRequest>;
+    identifier: "ListProjectsIapTunnelLocationsDestGroupsRequest",
+  }) as any as S.Schema<ListProjectsIapTunnelLocationsDestGroupsRequest>;
 
 export type TunnelDestGroupList = Array<TunnelDestGroup>;
 export const TunnelDestGroupList = /*@__PURE__*/ S.Array(
@@ -959,7 +959,7 @@ export const ListTunnelDestGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ListTunnelDestGroupsResponse",
 }) as any as S.Schema<ListTunnelDestGroupsResponse>;
 
-export interface PatchProjectsIap_tunnelLocationsDestGroupsRequest {
+export interface PatchProjectsIapTunnelLocationsDestGroupsRequest {
   /** Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). */
   name: string;
   /** A field mask that specifies which IAP settings to update. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask */
@@ -967,7 +967,7 @@ export interface PatchProjectsIap_tunnelLocationsDestGroupsRequest {
   /** Request body */
   body?: TunnelDestGroup;
 }
-export const PatchProjectsIap_tunnelLocationsDestGroupsRequest =
+export const PatchProjectsIapTunnelLocationsDestGroupsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -981,8 +981,8 @@ export const PatchProjectsIap_tunnelLocationsDestGroupsRequest =
       }),
     ),
   ).annotate({
-    identifier: "PatchProjectsIap_tunnelLocationsDestGroupsRequest",
-  }) as any as S.Schema<PatchProjectsIap_tunnelLocationsDestGroupsRequest>;
+    identifier: "PatchProjectsIapTunnelLocationsDestGroupsRequest",
+  }) as any as S.Schema<PatchProjectsIapTunnelLocationsDestGroupsRequest>;
 
 /** The request sent to ResetIdentityAwareProxyClientSecret. */
 export interface ResetIdentityAwareProxyClientSecretRequest {}
@@ -1190,20 +1190,20 @@ export const createProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateProjectsIap_tunnelLocationsDestGroupsError =
+export type CreateProjectsIapTunnelLocationsDestGroupsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Creates a new TunnelDestGroup. */
-export const createProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
-  CreateProjectsIap_tunnelLocationsDestGroupsRequest,
+export const createProjectsIapTunnelLocationsDestGroups: API.OperationMethod<
+  CreateProjectsIapTunnelLocationsDestGroupsRequest,
   TunnelDestGroup,
-  CreateProjectsIap_tunnelLocationsDestGroupsError,
+  CreateProjectsIapTunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsIap_tunnelLocationsDestGroupsRequest,
+  input: CreateProjectsIapTunnelLocationsDestGroupsRequest,
   output: TunnelDestGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1230,20 +1230,20 @@ export const deleteProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteProjectsIap_tunnelLocationsDestGroupsError =
+export type DeleteProjectsIapTunnelLocationsDestGroupsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Deletes a TunnelDestGroup. */
-export const deleteProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
-  DeleteProjectsIap_tunnelLocationsDestGroupsRequest,
+export const deleteProjectsIapTunnelLocationsDestGroups: API.OperationMethod<
+  DeleteProjectsIapTunnelLocationsDestGroupsRequest,
   Empty,
-  DeleteProjectsIap_tunnelLocationsDestGroupsError,
+  DeleteProjectsIapTunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsIap_tunnelLocationsDestGroupsRequest,
+  input: DeleteProjectsIapTunnelLocationsDestGroupsRequest,
   output: Empty,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1318,18 +1318,18 @@ export const getProjectsBrandsIdentityAwareProxyClients: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetProjectsIap_tunnelLocationsDestGroupsError =
+export type GetProjectsIapTunnelLocationsDestGroupsError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Retrieves an existing TunnelDestGroup. */
-export const getProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
-  GetProjectsIap_tunnelLocationsDestGroupsRequest,
+export const getProjectsIapTunnelLocationsDestGroups: API.OperationMethod<
+  GetProjectsIapTunnelLocationsDestGroupsRequest,
   TunnelDestGroup,
-  GetProjectsIap_tunnelLocationsDestGroupsError,
+  GetProjectsIapTunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsIap_tunnelLocationsDestGroupsRequest,
+  input: GetProjectsIapTunnelLocationsDestGroupsRequest,
   output: TunnelDestGroup,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1374,19 +1374,19 @@ export const listProjectsBrandsIdentityAwareProxyClients: API.PaginatedOperation
   } as const,
 })) as any;
 
-export type ListProjectsIap_tunnelLocationsDestGroupsError =
+export type ListProjectsIapTunnelLocationsDestGroupsError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location ID. For example: `/v1/projects/123/iap_tunnel/locations/-/destGroups` */
-export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMethod<
-  ListProjectsIap_tunnelLocationsDestGroupsRequest,
+export const listProjectsIapTunnelLocationsDestGroups: API.PaginatedOperationMethod<
+  ListProjectsIapTunnelLocationsDestGroupsRequest,
   ListTunnelDestGroupsResponse,
-  ListProjectsIap_tunnelLocationsDestGroupsError,
+  ListProjectsIapTunnelLocationsDestGroupsError,
   GcpOpContext,
   ListTunnelDestGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsIap_tunnelLocationsDestGroupsRequest,
+  input: ListProjectsIapTunnelLocationsDestGroupsRequest,
   output: ListTunnelDestGroupsResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -1397,20 +1397,20 @@ export const listProjectsIap_tunnelLocationsDestGroups: API.PaginatedOperationMe
   } as const,
 })) as any;
 
-export type PatchProjectsIap_tunnelLocationsDestGroupsError =
+export type PatchProjectsIapTunnelLocationsDestGroupsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Updates a TunnelDestGroup. */
-export const patchProjectsIap_tunnelLocationsDestGroups: API.OperationMethod<
-  PatchProjectsIap_tunnelLocationsDestGroupsRequest,
+export const patchProjectsIapTunnelLocationsDestGroups: API.OperationMethod<
+  PatchProjectsIapTunnelLocationsDestGroupsRequest,
   TunnelDestGroup,
-  PatchProjectsIap_tunnelLocationsDestGroupsError,
+  PatchProjectsIapTunnelLocationsDestGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsIap_tunnelLocationsDestGroupsRequest,
+  input: PatchProjectsIapTunnelLocationsDestGroupsRequest,
   output: TunnelDestGroup,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,

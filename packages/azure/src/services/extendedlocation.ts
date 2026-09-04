@@ -252,7 +252,7 @@ export const CustomLocationsCreateOrUpdateResponse = /*@__PURE__*/ S.suspend(
   identifier: "CustomLocationsCreateOrUpdateResponse",
 }) as any as S.Schema<CustomLocationsCreateOrUpdateResponse>;
 
-export interface CustomLocationsDeleteRequest {
+export interface DeleteCustomLocationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -260,7 +260,7 @@ export interface CustomLocationsDeleteRequest {
   /** Custom Locations name. */
   resourceName: string;
 }
-export const CustomLocationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -274,17 +274,17 @@ export const CustomLocationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomLocationsDeleteRequest",
-}) as any as S.Schema<CustomLocationsDeleteRequest>;
+  identifier: "DeleteCustomLocationRequest",
+}) as any as S.Schema<DeleteCustomLocationRequest>;
 
-export interface CustomLocationsDeleteResponse {}
-export const CustomLocationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteCustomLocationResponse {}
+export const DeleteCustomLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "CustomLocationsDeleteResponse",
-}) as any as S.Schema<CustomLocationsDeleteResponse>;
+  identifier: "DeleteCustomLocationResponse",
+}) as any as S.Schema<DeleteCustomLocationResponse>;
 
-export interface CustomLocationsGetRequest {
+export interface GetCustomLocationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -292,7 +292,7 @@ export interface CustomLocationsGetRequest {
   /** Custom Locations name. */
   resourceName: string;
 }
-export const CustomLocationsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -306,8 +306,8 @@ export const CustomLocationsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomLocationsGetRequest",
-}) as any as S.Schema<CustomLocationsGetRequest>;
+  identifier: "GetCustomLocationRequest",
+}) as any as S.Schema<GetCustomLocationRequest>;
 
 /** Resource tags. */
 export type CustomLocationsGetResponseTagsMap = {
@@ -369,7 +369,7 @@ export const CustomLocationsGetResponseSystemData = /*@__PURE__*/ S.suspend(
   identifier: "CustomLocationsGetResponseSystemData",
 }) as any as S.Schema<CustomLocationsGetResponseSystemData>;
 
-export interface CustomLocationsGetResponse {
+export interface GetCustomLocationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -387,7 +387,7 @@ export interface CustomLocationsGetResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CustomLocationsGetResponseSystemData;
 }
-export const CustomLocationsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -399,17 +399,17 @@ export const CustomLocationsGetResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(CustomLocationsGetResponseSystemData),
   }),
 ).annotate({
-  identifier: "CustomLocationsGetResponse",
-}) as any as S.Schema<CustomLocationsGetResponse>;
+  identifier: "GetCustomLocationResponse",
+}) as any as S.Schema<GetCustomLocationResponse>;
 
-export interface CustomLocationsListByResourceGroupRequest {
+export interface ListCustomLocationByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const CustomLocationsListByResourceGroupRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListCustomLocationByResourceGroupRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
       resourceGroupName: S.String.pipe(T.Label()),
@@ -421,9 +421,9 @@ export const CustomLocationsListByResourceGroupRequest =
         apiVersion: "2021-08-15",
       }),
     ),
-  ).annotate({
-    identifier: "CustomLocationsListByResourceGroupRequest",
-  }) as any as S.Schema<CustomLocationsListByResourceGroupRequest>;
+).annotate({
+  identifier: "ListCustomLocationByResourceGroupRequest",
+}) as any as S.Schema<ListCustomLocationByResourceGroupRequest>;
 
 /** Resource tags. */
 export type CustomLocationTagsMap = { [key: string]: string | undefined };
@@ -531,11 +531,11 @@ export const CustomLocationListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "CustomLocationListResult",
 }) as any as S.Schema<CustomLocationListResult>;
 
-export interface CustomLocationsListBySubscriptionRequest {
+export interface ListCustomLocationBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const CustomLocationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
+export const ListCustomLocationBySubscriptionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -548,10 +548,10 @@ export const CustomLocationsListBySubscriptionRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "CustomLocationsListBySubscriptionRequest",
-}) as any as S.Schema<CustomLocationsListBySubscriptionRequest>;
+  identifier: "ListCustomLocationBySubscriptionRequest",
+}) as any as S.Schema<ListCustomLocationBySubscriptionRequest>;
 
-export interface CustomLocationsListEnabledResourceTypesRequest {
+export interface ListCustomLocationEnabledResourceTypesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -559,7 +559,7 @@ export interface CustomLocationsListEnabledResourceTypesRequest {
   /** Custom Locations name. */
   resourceName: string;
 }
-export const CustomLocationsListEnabledResourceTypesRequest =
+export const ListCustomLocationEnabledResourceTypesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -574,8 +574,8 @@ export const CustomLocationsListEnabledResourceTypesRequest =
       }),
     ),
   ).annotate({
-    identifier: "CustomLocationsListEnabledResourceTypesRequest",
-  }) as any as S.Schema<CustomLocationsListEnabledResourceTypesRequest>;
+    identifier: "ListCustomLocationEnabledResourceTypesRequest",
+  }) as any as S.Schema<ListCustomLocationEnabledResourceTypesRequest>;
 
 /** Metadata of the Resource Type. */
 export interface EnabledResourceTypePropertiesTypesMetadataItem {
@@ -720,20 +720,19 @@ export const EnabledResourceTypesListResult = /*@__PURE__*/ S.suspend(() =>
   identifier: "EnabledResourceTypesListResult",
 }) as any as S.Schema<EnabledResourceTypesListResult>;
 
-export interface CustomLocationsListOperationsRequest {}
-export const CustomLocationsListOperationsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({}).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.ExtendedLocation/operations",
-        code: 200,
-        apiVersion: "2021-08-15",
-      }),
-    ),
+export interface ListCustomLocationOperationsRequest {}
+export const ListCustomLocationOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.ExtendedLocation/operations",
+      code: 200,
+      apiVersion: "2021-08-15",
+    }),
+  ),
 ).annotate({
-  identifier: "CustomLocationsListOperationsRequest",
-}) as any as S.Schema<CustomLocationsListOperationsRequest>;
+  identifier: "ListCustomLocationOperationsRequest",
+}) as any as S.Schema<ListCustomLocationOperationsRequest>;
 
 /** Describes the properties of a Custom Locations Operation Value Display. */
 export interface CustomLocationOperationValueDisplay {
@@ -811,7 +810,7 @@ export const CustomLocationsUpdateRequestTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<CustomLocationsUpdateRequestTagsMap>;
 
-export interface CustomLocationsUpdateRequest {
+export interface UpdateCustomLocationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -825,7 +824,7 @@ export interface CustomLocationsUpdateRequest {
   /** Resource tags */
   tags?: CustomLocationsUpdateRequestTagsMap;
 }
-export const CustomLocationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateCustomLocationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -842,8 +841,8 @@ export const CustomLocationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomLocationsUpdateRequest",
-}) as any as S.Schema<CustomLocationsUpdateRequest>;
+  identifier: "UpdateCustomLocationRequest",
+}) as any as S.Schema<UpdateCustomLocationRequest>;
 
 /** Resource tags. */
 export type CustomLocationsUpdateResponseTagsMap = {
@@ -905,7 +904,7 @@ export const CustomLocationsUpdateResponseSystemData = /*@__PURE__*/ S.suspend(
   identifier: "CustomLocationsUpdateResponseSystemData",
 }) as any as S.Schema<CustomLocationsUpdateResponseSystemData>;
 
-export interface CustomLocationsUpdateResponse {
+export interface UpdateCustomLocationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -923,7 +922,7 @@ export interface CustomLocationsUpdateResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: CustomLocationsUpdateResponseSystemData;
 }
-export const CustomLocationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateCustomLocationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -935,8 +934,8 @@ export const CustomLocationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     systemData: S.optional(CustomLocationsUpdateResponseSystemData),
   }),
 ).annotate({
-  identifier: "CustomLocationsUpdateResponse",
-}) as any as S.Schema<CustomLocationsUpdateResponse>;
+  identifier: "UpdateCustomLocationResponse",
+}) as any as S.Schema<UpdateCustomLocationResponse>;
 
 export type CustomLocationsCreateOrUpdateError = AzureOpError;
 /** Creates or updates a Custom Location. Creates or updates a Custom Location in the specified Subscription and Resource Group */
@@ -953,106 +952,106 @@ export const CustomLocationsCreateOrUpdate: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsDeleteError = AzureOpError;
+export type DeleteCustomLocationError = AzureOpError;
 /** Deletes a Custom Location. Deletes the Custom Location with the specified Resource Name, Resource Group, and Subscription Id. */
-export const CustomLocationsDelete: API.OperationMethod<
-  CustomLocationsDeleteRequest,
-  CustomLocationsDeleteResponse,
-  CustomLocationsDeleteError,
+export const DeleteCustomLocation: API.OperationMethod<
+  DeleteCustomLocationRequest,
+  DeleteCustomLocationResponse,
+  DeleteCustomLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsDeleteRequest,
-  output: CustomLocationsDeleteResponse,
+  input: DeleteCustomLocationRequest,
+  output: DeleteCustomLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsGetError = AzureOpError;
+export type GetCustomLocationError = AzureOpError;
 /** Gets a Custom Location. Gets the details of the customLocation with a specified resource group and name. */
-export const CustomLocationsGet: API.OperationMethod<
-  CustomLocationsGetRequest,
-  CustomLocationsGetResponse,
-  CustomLocationsGetError,
+export const GetCustomLocation: API.OperationMethod<
+  GetCustomLocationRequest,
+  GetCustomLocationResponse,
+  GetCustomLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsGetRequest,
-  output: CustomLocationsGetResponse,
+  input: GetCustomLocationRequest,
+  output: GetCustomLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsListByResourceGroupError = AzureOpError;
+export type ListCustomLocationByResourceGroupError = AzureOpError;
 /** Gets a list of Custom Locations in the specified subscription and resource group. Gets a list of Custom Locations in the specified subscription and resource group. The operation returns properties of each Custom Location. */
-export const CustomLocationsListByResourceGroup: API.OperationMethod<
-  CustomLocationsListByResourceGroupRequest,
+export const ListCustomLocationByResourceGroup: API.OperationMethod<
+  ListCustomLocationByResourceGroupRequest,
   CustomLocationListResult,
-  CustomLocationsListByResourceGroupError,
+  ListCustomLocationByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsListByResourceGroupRequest,
+  input: ListCustomLocationByResourceGroupRequest,
   output: CustomLocationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsListBySubscriptionError = AzureOpError;
+export type ListCustomLocationBySubscriptionError = AzureOpError;
 /** Gets a list of Custom Locations in a subscription. Gets a list of Custom Locations in the specified subscription. The operation returns properties of each Custom Location */
-export const CustomLocationsListBySubscription: API.OperationMethod<
-  CustomLocationsListBySubscriptionRequest,
+export const ListCustomLocationBySubscription: API.OperationMethod<
+  ListCustomLocationBySubscriptionRequest,
   CustomLocationListResult,
-  CustomLocationsListBySubscriptionError,
+  ListCustomLocationBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsListBySubscriptionRequest,
+  input: ListCustomLocationBySubscriptionRequest,
   output: CustomLocationListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsListEnabledResourceTypesError = AzureOpError;
+export type ListCustomLocationEnabledResourceTypesError = AzureOpError;
 /** Gets the list of Enabled Resource Types. Gets the list of the Enabled Resource Types. */
-export const CustomLocationsListEnabledResourceTypes: API.OperationMethod<
-  CustomLocationsListEnabledResourceTypesRequest,
+export const ListCustomLocationEnabledResourceTypes: API.OperationMethod<
+  ListCustomLocationEnabledResourceTypesRequest,
   EnabledResourceTypesListResult,
-  CustomLocationsListEnabledResourceTypesError,
+  ListCustomLocationEnabledResourceTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsListEnabledResourceTypesRequest,
+  input: ListCustomLocationEnabledResourceTypesRequest,
   output: EnabledResourceTypesListResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsListOperationsError = AzureOpError;
+export type ListCustomLocationOperationsError = AzureOpError;
 /** Lists all available Custom Locations operations. */
-export const CustomLocationsListOperations: API.OperationMethod<
-  CustomLocationsListOperationsRequest,
+export const ListCustomLocationOperations: API.OperationMethod<
+  ListCustomLocationOperationsRequest,
   CustomLocationOperationsList,
-  CustomLocationsListOperationsError,
+  ListCustomLocationOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsListOperationsRequest,
+  input: ListCustomLocationOperationsRequest,
   output: CustomLocationOperationsList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CustomLocationsUpdateError = AzureOpError;
+export type UpdateCustomLocationError = AzureOpError;
 /** Updates a Custom Location. Updates a Custom Location with the specified Resource Name in the specified Resource Group and Subscription. */
-export const CustomLocationsUpdate: API.OperationMethod<
-  CustomLocationsUpdateRequest,
-  CustomLocationsUpdateResponse,
-  CustomLocationsUpdateError,
+export const UpdateCustomLocation: API.OperationMethod<
+  UpdateCustomLocationRequest,
+  UpdateCustomLocationResponse,
+  UpdateCustomLocationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomLocationsUpdateRequest,
-  output: CustomLocationsUpdateResponse,
+  input: UpdateCustomLocationRequest,
+  output: UpdateCustomLocationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

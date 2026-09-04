@@ -5991,11 +5991,11 @@ export const GetJSONWebKeysResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetJSONWebKeysResponse",
 }) as any as S.Schema<GetJSONWebKeysResponse>;
 
-export interface GetOpenid_configurationProjectsLocationsClustersWell_knownRequest {
+export interface GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest {
   /** The cluster (project, location, cluster name) to get the discovery document for. Specified in the format `projects/*\/locations/*\/clusters/*`. */
   parent: string;
 }
-export const GetOpenid_configurationProjectsLocationsClustersWell_knownRequest =
+export const GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       parent: S.String.pipe(T.Label()),
@@ -6008,8 +6008,8 @@ export const GetOpenid_configurationProjectsLocationsClustersWell_knownRequest =
     ),
   ).annotate({
     identifier:
-      "GetOpenid_configurationProjectsLocationsClustersWell_knownRequest",
-  }) as any as S.Schema<GetOpenid_configurationProjectsLocationsClustersWell_knownRequest>;
+      "GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest",
+  }) as any as S.Schema<GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest>;
 
 /** GetOpenIDConfigResponse is an OIDC discovery document for the cluster. See the OpenID Connect Discovery 1.0 specification for details. */
 export interface GetOpenIDConfigResponse {
@@ -8798,18 +8798,18 @@ export const getJwksProjectsLocationsClusters: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetOpenid_configurationProjectsLocationsClustersWell_knownError =
+export type GetOpenidConfigurationProjectsLocationsClustersWellKnownError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Gets the OIDC discovery document for the cluster. See the [OpenID Connect Discovery 1.0 specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details. */
-export const getOpenid_configurationProjectsLocationsClustersWell_known: API.OperationMethod<
-  GetOpenid_configurationProjectsLocationsClustersWell_knownRequest,
+export const getOpenidConfigurationProjectsLocationsClustersWellKnown: API.OperationMethod<
+  GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest,
   GetOpenIDConfigResponse,
-  GetOpenid_configurationProjectsLocationsClustersWell_knownError,
+  GetOpenidConfigurationProjectsLocationsClustersWellKnownError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOpenid_configurationProjectsLocationsClustersWell_knownRequest,
+  input: GetOpenidConfigurationProjectsLocationsClustersWellKnownRequest,
   output: GetOpenIDConfigResponse,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,

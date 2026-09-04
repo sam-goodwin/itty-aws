@@ -319,7 +319,7 @@ export const ConnectedClusterIdentityInput = /*@__PURE__*/ S.suspend(() =>
 export type ConnectedClusterKind = "ProvisionedCluster";
 export const ConnectedClusterKind = /*@__PURE__*/ S.String;
 
-export interface ConnectedClusterCreateOrReplaceRequest {
+export interface CreateConnectedClusterOrReplaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -337,7 +337,7 @@ export interface ConnectedClusterCreateOrReplaceRequest {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind | (string & {});
 }
-export const ConnectedClusterCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
+export const CreateConnectedClusterOrReplaceRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -357,8 +357,8 @@ export const ConnectedClusterCreateOrReplaceRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "ConnectedClusterCreateOrReplaceRequest",
-}) as any as S.Schema<ConnectedClusterCreateOrReplaceRequest>;
+  identifier: "CreateConnectedClusterOrReplaceRequest",
+}) as any as S.Schema<CreateConnectedClusterOrReplaceRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -662,7 +662,7 @@ export const ConnectedClusterIdentity = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectedClusterIdentity",
 }) as any as S.Schema<ConnectedClusterIdentity>;
 
-export interface ConnectedClusterCreateOrReplaceResponse {
+export interface CreateConnectedClusterOrReplaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -682,7 +682,7 @@ export interface ConnectedClusterCreateOrReplaceResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const ConnectedClusterCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(
+export const CreateConnectedClusterOrReplaceResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
@@ -696,10 +696,10 @@ export const ConnectedClusterCreateOrReplaceResponse = /*@__PURE__*/ S.suspend(
       kind: S.optional(ConnectedClusterKind),
     }),
 ).annotate({
-  identifier: "ConnectedClusterCreateOrReplaceResponse",
-}) as any as S.Schema<ConnectedClusterCreateOrReplaceResponse>;
+  identifier: "CreateConnectedClusterOrReplaceResponse",
+}) as any as S.Schema<CreateConnectedClusterOrReplaceResponse>;
 
-export interface ConnectedClusterDeleteRequest {
+export interface DeleteConnectedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -707,7 +707,7 @@ export interface ConnectedClusterDeleteRequest {
   /** The name of the Kubernetes cluster on which get is called. */
   clusterName: string;
 }
-export const ConnectedClusterDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -721,17 +721,17 @@ export const ConnectedClusterDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectedClusterDeleteRequest",
-}) as any as S.Schema<ConnectedClusterDeleteRequest>;
+  identifier: "DeleteConnectedClusterRequest",
+}) as any as S.Schema<DeleteConnectedClusterRequest>;
 
-export interface ConnectedClusterDeleteResponse {}
-export const ConnectedClusterDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteConnectedClusterResponse {}
+export const DeleteConnectedClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ConnectedClusterDeleteResponse",
-}) as any as S.Schema<ConnectedClusterDeleteResponse>;
+  identifier: "DeleteConnectedClusterResponse",
+}) as any as S.Schema<DeleteConnectedClusterResponse>;
 
-export interface ConnectedClusterGetRequest {
+export interface GetConnectedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -739,7 +739,7 @@ export interface ConnectedClusterGetRequest {
   /** The name of the Kubernetes cluster on which get is called. */
   clusterName: string;
 }
-export const ConnectedClusterGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -753,8 +753,8 @@ export const ConnectedClusterGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectedClusterGetRequest",
-}) as any as S.Schema<ConnectedClusterGetRequest>;
+  identifier: "GetConnectedClusterRequest",
+}) as any as S.Schema<GetConnectedClusterRequest>;
 
 /** Resource tags. */
 export type ConnectedClusterGetResponseTagsMap = {
@@ -765,7 +765,7 @@ export const ConnectedClusterGetResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ConnectedClusterGetResponseTagsMap>;
 
-export interface ConnectedClusterGetResponse {
+export interface GetConnectedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -785,7 +785,7 @@ export interface ConnectedClusterGetResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const ConnectedClusterGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectedClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -798,16 +798,105 @@ export const ConnectedClusterGetResponse = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(ConnectedClusterKind),
   }),
 ).annotate({
-  identifier: "ConnectedClusterGetResponse",
-}) as any as S.Schema<ConnectedClusterGetResponse>;
+  identifier: "GetConnectedClusterResponse",
+}) as any as S.Schema<GetConnectedClusterResponse>;
 
-export interface ConnectedClusterListByResourceGroupRequest {
+export interface GetOperationRequest {}
+export const GetOperationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Kubernetes/operations",
+      code: 200,
+      apiVersion: "2026-05-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetOperationRequest",
+}) as any as S.Schema<GetOperationRequest>;
+
+/** Localized display information for this particular operation. */
+export interface OperationListValueItemDisplay {
+  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
+  provider?: string;
+  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
+  resource?: string;
+  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
+  operation?: string;
+  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
+  description?: string;
+}
+export const OperationListValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationListValueItemDisplay",
+}) as any as S.Schema<OperationListValueItemDisplay>;
+
+/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+export type OperationListValueItemOrigin = "user" | "system" | "user,system";
+export const OperationListValueItemOrigin = /*@__PURE__*/ S.String;
+
+/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+export type OperationListValueItemActionType = "Internal";
+export const OperationListValueItemActionType = /*@__PURE__*/ S.String;
+
+/** Details of a REST API operation, returned from the Resource Provider Operations API */
+export interface OperationListValueItem {
+  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
+  name?: string;
+  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
+  isDataAction?: boolean;
+  /** Localized display information for this particular operation. */
+  display?: OperationListValueItemDisplay;
+  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+  origin?: OperationListValueItemOrigin;
+  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+  actionType?: OperationListValueItemActionType;
+}
+export const OperationListValueItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationListValueItemDisplay),
+    origin: S.optional(OperationListValueItemOrigin),
+    actionType: S.optional(OperationListValueItemActionType),
+  }),
+).annotate({
+  identifier: "OperationListValueItem",
+}) as any as S.Schema<OperationListValueItem>;
+
+/** The list of connected cluster API operations. */
+export type OperationListValueList = Array<OperationListValueItem>;
+export const OperationListValueList = /*@__PURE__*/ S.Array(
+  OperationListValueItem,
+) as any as S.Schema<OperationListValueList>;
+
+/** The paginated list of connected cluster API operations. */
+export interface OperationList {
+  /** The list of connected cluster API operations. */
+  value: OperationListValueList;
+  /** The link to fetch the next page of connected cluster API operations. */
+  nextLink?: string;
+}
+export const OperationList = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: OperationListValueList,
+    nextLink: S.optional(S.String),
+  }),
+).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
+
+export interface ListConnectedClusterByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-export const ConnectedClusterListByResourceGroupRequest =
+export const ListConnectedClusterByResourceGroupRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -821,8 +910,8 @@ export const ConnectedClusterListByResourceGroupRequest =
       }),
     ),
   ).annotate({
-    identifier: "ConnectedClusterListByResourceGroupRequest",
-  }) as any as S.Schema<ConnectedClusterListByResourceGroupRequest>;
+    identifier: "ListConnectedClusterByResourceGroupRequest",
+  }) as any as S.Schema<ListConnectedClusterByResourceGroupRequest>;
 
 /** Resource tags. */
 export type ConnectedClusterTagsMap = { [key: string]: string | undefined };
@@ -890,11 +979,11 @@ export const ConnectedClusterList = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectedClusterList",
 }) as any as S.Schema<ConnectedClusterList>;
 
-export interface ConnectedClusterListBySubscriptionRequest {
+export interface ListConnectedClusterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-export const ConnectedClusterListBySubscriptionRequest =
+export const ListConnectedClusterBySubscriptionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -907,14 +996,14 @@ export const ConnectedClusterListBySubscriptionRequest =
       }),
     ),
   ).annotate({
-    identifier: "ConnectedClusterListBySubscriptionRequest",
-  }) as any as S.Schema<ConnectedClusterListBySubscriptionRequest>;
+    identifier: "ListConnectedClusterBySubscriptionRequest",
+  }) as any as S.Schema<ListConnectedClusterBySubscriptionRequest>;
 
 /** The mode of client authentication. */
 export type AuthenticationMethod = "Token" | "AAD";
 export const AuthenticationMethod = /*@__PURE__*/ S.String;
 
-export interface ConnectedClusterListClusterUserCredentialRequest {
+export interface ListConnectedClusterClusterUserCredentialRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -926,7 +1015,7 @@ export interface ConnectedClusterListClusterUserCredentialRequest {
   /** Boolean value to indicate whether the request is for client side proxy or not */
   clientProxy: boolean;
 }
-export const ConnectedClusterListClusterUserCredentialRequest =
+export const ListConnectedClusterClusterUserCredentialRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       subscriptionId: S.String.pipe(T.Label()),
@@ -943,8 +1032,8 @@ export const ConnectedClusterListClusterUserCredentialRequest =
       }),
     ),
   ).annotate({
-    identifier: "ConnectedClusterListClusterUserCredentialRequest",
-  }) as any as S.Schema<ConnectedClusterListClusterUserCredentialRequest>;
+    identifier: "ListConnectedClusterClusterUserCredentialRequest",
+  }) as any as S.Schema<ListConnectedClusterClusterUserCredentialRequest>;
 
 /** Contains the REP (rendezvous endpoint) and “Sender” access token. */
 export interface HybridConnectionConfig {
@@ -1047,7 +1136,7 @@ export const ConnectedClusterPatchProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConnectedClusterPatchProperties",
 }) as any as S.Schema<ConnectedClusterPatchProperties>;
 
-export interface ConnectedClusterUpdateRequest {
+export interface UpdateConnectedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
@@ -1059,7 +1148,7 @@ export interface ConnectedClusterUpdateRequest {
   /** Describes the connected cluster resource properties that can be updated during PATCH operation. */
   properties?: ConnectedClusterPatchProperties;
 }
-export const ConnectedClusterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConnectedClusterRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     resourceGroupName: S.String.pipe(T.Label()),
@@ -1075,8 +1164,8 @@ export const ConnectedClusterUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectedClusterUpdateRequest",
-}) as any as S.Schema<ConnectedClusterUpdateRequest>;
+  identifier: "UpdateConnectedClusterRequest",
+}) as any as S.Schema<UpdateConnectedClusterRequest>;
 
 /** Resource tags. */
 export type ConnectedClusterUpdateResponseTagsMap = {
@@ -1087,7 +1176,7 @@ export const ConnectedClusterUpdateResponseTagsMap = /*@__PURE__*/ S.Record(
   S.String,
 ) as any as S.Schema<ConnectedClusterUpdateResponseTagsMap>;
 
-export interface ConnectedClusterUpdateResponse {
+export interface UpdateConnectedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
   /** The name of the resource */
@@ -1107,7 +1196,7 @@ export interface ConnectedClusterUpdateResponse {
   /** The kind of connected cluster. */
   kind?: ConnectedClusterKind;
 }
-export const ConnectedClusterUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConnectedClusterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1120,213 +1209,124 @@ export const ConnectedClusterUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     kind: S.optional(ConnectedClusterKind),
   }),
 ).annotate({
-  identifier: "ConnectedClusterUpdateResponse",
-}) as any as S.Schema<ConnectedClusterUpdateResponse>;
+  identifier: "UpdateConnectedClusterResponse",
+}) as any as S.Schema<UpdateConnectedClusterResponse>;
 
-export interface OperationsGetRequest {}
-export const OperationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Kubernetes/operations",
-      code: 200,
-      apiVersion: "2026-05-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsGetRequest",
-}) as any as S.Schema<OperationsGetRequest>;
-
-/** Localized display information for this particular operation. */
-export interface OperationListValueItemDisplay {
-  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
-  provider?: string;
-  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
-  resource?: string;
-  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
-  operation?: string;
-  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
-  description?: string;
-}
-export const OperationListValueItemDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationListValueItemDisplay",
-}) as any as S.Schema<OperationListValueItemDisplay>;
-
-/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationListValueItemOrigin = "user" | "system" | "user,system";
-export const OperationListValueItemOrigin = /*@__PURE__*/ S.String;
-
-/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationListValueItemActionType = "Internal";
-export const OperationListValueItemActionType = /*@__PURE__*/ S.String;
-
-/** Details of a REST API operation, returned from the Resource Provider Operations API */
-export interface OperationListValueItem {
-  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
-  name?: string;
-  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
-  isDataAction?: boolean;
-  /** Localized display information for this particular operation. */
-  display?: OperationListValueItemDisplay;
-  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-  origin?: OperationListValueItemOrigin;
-  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-  actionType?: OperationListValueItemActionType;
-}
-export const OperationListValueItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationListValueItemDisplay),
-    origin: S.optional(OperationListValueItemOrigin),
-    actionType: S.optional(OperationListValueItemActionType),
-  }),
-).annotate({
-  identifier: "OperationListValueItem",
-}) as any as S.Schema<OperationListValueItem>;
-
-/** The list of connected cluster API operations. */
-export type OperationListValueList = Array<OperationListValueItem>;
-export const OperationListValueList = /*@__PURE__*/ S.Array(
-  OperationListValueItem,
-) as any as S.Schema<OperationListValueList>;
-
-/** The paginated list of connected cluster API operations. */
-export interface OperationList {
-  /** The list of connected cluster API operations. */
-  value: OperationListValueList;
-  /** The link to fetch the next page of connected cluster API operations. */
-  nextLink?: string;
-}
-export const OperationList = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: OperationListValueList,
-    nextLink: S.optional(S.String),
-  }),
-).annotate({ identifier: "OperationList" }) as any as S.Schema<OperationList>;
-
-export type ConnectedClusterCreateOrReplaceError = AzureOpError;
+export type CreateConnectedClusterOrReplaceError = AzureOpError;
 /** Register a new Kubernetes cluster with Azure Resource Manager. API to register a new Kubernetes cluster and create or replace a connected cluster tracked resource in Azure Resource Manager (ARM). */
-export const ConnectedClusterCreateOrReplace: API.OperationMethod<
-  ConnectedClusterCreateOrReplaceRequest,
-  ConnectedClusterCreateOrReplaceResponse,
-  ConnectedClusterCreateOrReplaceError,
+export const CreateConnectedClusterOrReplace: API.OperationMethod<
+  CreateConnectedClusterOrReplaceRequest,
+  CreateConnectedClusterOrReplaceResponse,
+  CreateConnectedClusterOrReplaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterCreateOrReplaceRequest,
-  output: ConnectedClusterCreateOrReplaceResponse,
+  input: CreateConnectedClusterOrReplaceRequest,
+  output: CreateConnectedClusterOrReplaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectedClusterDeleteError = AzureOpError;
+export type DeleteConnectedClusterError = AzureOpError;
 /** Delete a connected cluster. Delete a connected cluster, removing the tracked resource in Azure Resource Manager (ARM). */
-export const ConnectedClusterDelete: API.OperationMethod<
-  ConnectedClusterDeleteRequest,
-  ConnectedClusterDeleteResponse,
-  ConnectedClusterDeleteError,
+export const DeleteConnectedCluster: API.OperationMethod<
+  DeleteConnectedClusterRequest,
+  DeleteConnectedClusterResponse,
+  DeleteConnectedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterDeleteRequest,
-  output: ConnectedClusterDeleteResponse,
+  input: DeleteConnectedClusterRequest,
+  output: DeleteConnectedClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectedClusterGetError = AzureOpError;
+export type GetConnectedClusterError = AzureOpError;
 /** Get the properties of the specified connected cluster. Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details. */
-export const ConnectedClusterGet: API.OperationMethod<
-  ConnectedClusterGetRequest,
-  ConnectedClusterGetResponse,
-  ConnectedClusterGetError,
+export const GetConnectedCluster: API.OperationMethod<
+  GetConnectedClusterRequest,
+  GetConnectedClusterResponse,
+  GetConnectedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterGetRequest,
-  output: ConnectedClusterGetResponse,
+  input: GetConnectedClusterRequest,
+  output: GetConnectedClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectedClusterListByResourceGroupError = AzureOpError;
+export type GetOperationError = AzureOpError;
+/** List the operations for the provider */
+export const GetOperation: API.OperationMethod<
+  GetOperationRequest,
+  OperationList,
+  GetOperationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOperationRequest,
+  output: OperationList,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListConnectedClusterByResourceGroupError = AzureOpError;
 /** Lists all connected clusters in the given Resource Group API to enumerate registered connected K8s clusters under a Resource Group */
-export const ConnectedClusterListByResourceGroup: API.OperationMethod<
-  ConnectedClusterListByResourceGroupRequest,
+export const ListConnectedClusterByResourceGroup: API.OperationMethod<
+  ListConnectedClusterByResourceGroupRequest,
   ConnectedClusterList,
-  ConnectedClusterListByResourceGroupError,
+  ListConnectedClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterListByResourceGroupRequest,
+  input: ListConnectedClusterByResourceGroupRequest,
   output: ConnectedClusterList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectedClusterListBySubscriptionError = AzureOpError;
+export type ListConnectedClusterBySubscriptionError = AzureOpError;
 /** Lists all connected clusters in the given Subscription API to enumerate registered connected K8s clusters under a Subscription */
-export const ConnectedClusterListBySubscription: API.OperationMethod<
-  ConnectedClusterListBySubscriptionRequest,
+export const ListConnectedClusterBySubscription: API.OperationMethod<
+  ListConnectedClusterBySubscriptionRequest,
   ConnectedClusterList,
-  ConnectedClusterListBySubscriptionError,
+  ListConnectedClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterListBySubscriptionRequest,
+  input: ListConnectedClusterBySubscriptionRequest,
   output: ConnectedClusterList,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectedClusterListClusterUserCredentialError = AzureOpError;
+export type ListConnectedClusterClusterUserCredentialError = AzureOpError;
 /** Gets cluster user credentials of a connected cluster Gets cluster user credentials of the connected cluster with a specified resource group and name. */
-export const ConnectedClusterListClusterUserCredential: API.OperationMethod<
-  ConnectedClusterListClusterUserCredentialRequest,
+export const ListConnectedClusterClusterUserCredential: API.OperationMethod<
+  ListConnectedClusterClusterUserCredentialRequest,
   CredentialResults,
-  ConnectedClusterListClusterUserCredentialError,
+  ListConnectedClusterClusterUserCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterListClusterUserCredentialRequest,
+  input: ListConnectedClusterClusterUserCredentialRequest,
   output: CredentialResults,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ConnectedClusterUpdateError = AzureOpError;
+export type UpdateConnectedClusterError = AzureOpError;
 /** Updates a connected cluster. API to update certain properties of the connected cluster resource */
-export const ConnectedClusterUpdate: API.OperationMethod<
-  ConnectedClusterUpdateRequest,
-  ConnectedClusterUpdateResponse,
-  ConnectedClusterUpdateError,
+export const UpdateConnectedCluster: API.OperationMethod<
+  UpdateConnectedClusterRequest,
+  UpdateConnectedClusterResponse,
+  UpdateConnectedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectedClusterUpdateRequest,
-  output: ConnectedClusterUpdateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type OperationsGetError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsGet: API.OperationMethod<
-  OperationsGetRequest,
-  OperationList,
-  OperationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsGetRequest,
-  output: OperationList,
+  input: UpdateConnectedClusterRequest,
+  output: UpdateConnectedClusterResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

@@ -4773,7 +4773,7 @@
         "smithy.api#documentation": "Updates an instance within a project. This method updates only the display name and type for an Instance. To update other Instance properties, such as labels, use PartialUpdateInstance."
       }
     },
-    "com.gcp.bigtableadmin_v2#PartialUpdateInstanceProjectsInstancesRequest": {
+    "com.gcp.bigtableadmin_v2#UpdatePartialInstanceProjectInstanceRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -4800,10 +4800,10 @@
         }
       }
     },
-    "com.gcp.bigtableadmin_v2#PartialUpdateInstanceProjectsInstances": {
+    "com.gcp.bigtableadmin_v2#UpdatePartialInstanceProjectInstance": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.bigtableadmin_v2#PartialUpdateInstanceProjectsInstancesRequest"
+        "target": "com.gcp.bigtableadmin_v2#UpdatePartialInstanceProjectInstanceRequest"
       },
       "output": {
         "target": "com.gcp.bigtableadmin_v2#Operation"
@@ -7869,7 +7869,7 @@
         "smithy.api#documentation": "Gets information about a cluster."
       }
     },
-    "com.gcp.bigtableadmin_v2#PartialUpdateClusterProjectsInstancesClustersRequest": {
+    "com.gcp.bigtableadmin_v2#UpdatePartialClusterProjectInstanceClusterRequest": {
       "type": "structure",
       "members": {
         "name": {
@@ -7896,10 +7896,10 @@
         }
       }
     },
-    "com.gcp.bigtableadmin_v2#PartialUpdateClusterProjectsInstancesClusters": {
+    "com.gcp.bigtableadmin_v2#UpdatePartialClusterProjectInstanceCluster": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.bigtableadmin_v2#PartialUpdateClusterProjectsInstancesClustersRequest"
+        "target": "com.gcp.bigtableadmin_v2#UpdatePartialClusterProjectInstanceClusterRequest"
       },
       "output": {
         "target": "com.gcp.bigtableadmin_v2#Operation"

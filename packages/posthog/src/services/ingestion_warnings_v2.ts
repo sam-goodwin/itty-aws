@@ -20,7 +20,7 @@ export type IngestionWarningsV2ListRequestSeverity =
   | "error";
 export const IngestionWarningsV2ListRequestSeverity = /*@__PURE__*/ S.String;
 
-export interface IngestionWarningsV2ListRequest {
+export interface ListIngestionWarningV2Request {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Only return warnings in this category (e.g. 'size', 'merge', 'event'). Warnings from producers that don't yet emit a category have category 'unknown'. */
@@ -42,7 +42,7 @@ export interface IngestionWarningsV2ListRequest {
   /** End of the time range, as an ISO 8601 datetime or a relative duration (e.g. '-1h'). Defaults to now. */
   until?: string;
 }
-export const IngestionWarningsV2ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListIngestionWarningV2Request = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     project_id: S.String.pipe(T.Label()),
     category: S.optional(S.String.pipe(T.Query())),
@@ -64,8 +64,8 @@ export const IngestionWarningsV2ListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "IngestionWarningsV2ListRequest",
-}) as any as S.Schema<IngestionWarningsV2ListRequest>;
+  identifier: "ListIngestionWarningV2Request",
+}) as any as S.Schema<ListIngestionWarningV2Request>;
 
 export interface IngestionWarningV2SparklinePoint {
   /** Start of the time bucket (UTC). */
@@ -174,24 +174,24 @@ export const IngestionWarningsV2ListResponseBodyList = /*@__PURE__*/ S.Array(
   IngestionWarningsV2Summary,
 ) as any as S.Schema<IngestionWarningsV2ListResponseBodyList>;
 
-export type IngestionWarningsV2ListResponse =
+export type ListIngestionWarningV2Response =
   IngestionWarningsV2ListResponseBodyList;
-export const IngestionWarningsV2ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListIngestionWarningV2Response = /*@__PURE__*/ S.suspend(() =>
   IngestionWarningsV2ListResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "IngestionWarningsV2ListResponse",
-}) as any as S.Schema<IngestionWarningsV2ListResponse>;
+  identifier: "ListIngestionWarningV2Response",
+}) as any as S.Schema<ListIngestionWarningV2Response>;
 
-export type IngestionWarningsV2ListError = PosthogOpError;
+export type ListIngestionWarningV2Error = PosthogOpError;
 /** List ingestion warnings Lists this project's ingestion warnings — events or person/group updates that were ingested with problems (oversized messages, rejected person merges, invalid data) — grouped by warning type. Each entry carries the warning's category and severity, the total count and a sparkline over the requested time range, and the most recent sample warnings with the affected event/person/group. Filter by category, type, severity or time range to drill into a specific problem. */
-export const ingestionWarningsV2List: API.OperationMethod<
-  IngestionWarningsV2ListRequest,
-  IngestionWarningsV2ListResponse,
-  IngestionWarningsV2ListError,
+export const listIngestionWarningV2: API.OperationMethod<
+  ListIngestionWarningV2Request,
+  ListIngestionWarningV2Response,
+  ListIngestionWarningV2Error,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestionWarningsV2ListRequest,
-  output: IngestionWarningsV2ListResponse,
+  input: ListIngestionWarningV2Request,
+  output: ListIngestionWarningV2Response,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,

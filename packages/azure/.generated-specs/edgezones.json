@@ -452,13 +452,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#ExtendedZonesGet": {
+    "com.azure.edgezones#GetExtendedZone": {
       "type": "operation",
       "input": {
-        "target": "com.azure.edgezones#ExtendedZonesGetRequest"
+        "target": "com.azure.edgezones#GetExtendedZoneRequest"
       },
       "output": {
-        "target": "com.azure.edgezones#ExtendedZonesGetResponse"
+        "target": "com.azure.edgezones#GetExtendedZoneResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -471,7 +471,7 @@
         "com.distilled.openapi#apiVersion": "2026-10-01"
       }
     },
-    "com.azure.edgezones#ExtendedZonesGetResponse": {
+    "com.azure.edgezones#GetExtendedZoneResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -509,7 +509,7 @@
         "smithy.api#output": {}
       }
     },
-    "com.azure.edgezones#ExtendedZonesGetRequest": {
+    "com.azure.edgezones#GetExtendedZoneRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -533,10 +533,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#ExtendedZonesListBySubscription": {
+    "com.azure.edgezones#ListExtendedZoneBySubscription": {
       "type": "operation",
       "input": {
-        "target": "com.azure.edgezones#ExtendedZonesListBySubscriptionRequest"
+        "target": "com.azure.edgezones#ListExtendedZoneBySubscriptionRequest"
       },
       "output": {
         "target": "com.azure.edgezones#ExtendedZoneListResult"
@@ -620,7 +620,7 @@
         "smithy.api#documentation": "Resource that represents an Azure Extended Zone available to a subscription for registering and unregistering."
       }
     },
-    "com.azure.edgezones#ExtendedZonesListBySubscriptionRequest": {
+    "com.azure.edgezones#ListExtendedZoneBySubscriptionRequest": {
       "type": "structure",
       "members": {
         "subscriptionId": {
@@ -636,13 +636,13 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.edgezones#OperationsList": {
+    "com.azure.edgezones#ListOperations": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.azure.edgezones#OperationsListResponse"
+        "target": "com.azure.edgezones#ListOperationsResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -655,7 +655,7 @@
         "com.distilled.openapi#apiVersion": "2026-10-01"
       }
     },
-    "com.azure.edgezones#OperationsListResponse": {
+    "com.azure.edgezones#ListOperationsResponse": {
       "type": "structure",
       "members": {
         "value": {
@@ -805,13 +805,13 @@
           "target": "com.azure.edgezones#ExtendedZonesRegister"
         },
         {
-          "target": "com.azure.edgezones#ExtendedZonesGet"
+          "target": "com.azure.edgezones#GetExtendedZone"
         },
         {
-          "target": "com.azure.edgezones#ExtendedZonesListBySubscription"
+          "target": "com.azure.edgezones#ListExtendedZoneBySubscription"
         },
         {
-          "target": "com.azure.edgezones#OperationsList"
+          "target": "com.azure.edgezones#ListOperations"
         }
       ],
       "traits": {

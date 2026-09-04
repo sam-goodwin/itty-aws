@@ -254,88 +254,6 @@ export const AddSplitPointsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddSplitPointsResponse",
 }) as any as S.Schema<AddSplitPointsResponse>;
 
-/** A session in the Cloud Spanner API. */
-export interface Session {
-  /** Output only. The approximate timestamp when the session is last used. It's typically earlier than the actual last use time. */
-  approximateLastUseTime?: string;
-  /** Output only. The timestamp when the session is created. */
-  createTime?: string;
-  /** The database role which created this session. */
-  creatorRole?: string;
-  /** Optional. If `true`, specifies a multiplexed session. Use a multiplexed session for multiple, concurrent operations including any combination of read-only and read-write transactions. Use `sessions.create` to create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed session. You can't delete or list multiplexed sessions. */
-  multiplexed?: boolean;
-  /** Output only. The name of the session. This is always system-assigned. */
-  name?: string;
-  /** The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels. */
-  labels?: StringMap;
-}
-export const Session = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approximateLastUseTime: S.optional(S.String),
-    createTime: S.optional(S.String),
-    creatorRole: S.optional(S.String),
-    multiplexed: S.optional(S.Boolean),
-    name: S.optional(S.String),
-    labels: S.optional(StringMap),
-  }),
-).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
-
-/** The request for BatchCreateSessions. */
-export interface BatchCreateSessionsRequest {
-  /** Parameters to apply to each created session. */
-  sessionTemplate?: Session;
-  /** Required. The number of sessions to be created in this batch call. At least one session is created. The API can return fewer than the requested number of sessions. If a specific number of sessions are desired, the client can make additional calls to `BatchCreateSessions` (adjusting session_count as necessary). */
-  sessionCount?: number;
-}
-export const BatchCreateSessionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionTemplate: S.optional(Session),
-    sessionCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "BatchCreateSessionsRequest",
-}) as any as S.Schema<BatchCreateSessionsRequest>;
-
-export interface BatchCreateProjectsInstancesDatabasesSessionsRequest {
-  /** Required. The database in which the new sessions are created. */
-  database: string;
-  /** Request body */
-  body?: BatchCreateSessionsRequest;
-}
-export const BatchCreateProjectsInstancesDatabasesSessionsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      database: S.String.pipe(T.Label()),
-      body: S.optional(BatchCreateSessionsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+database}/sessions:batchCreate",
-        baseUrl: "https://spanner.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchCreateProjectsInstancesDatabasesSessionsRequest",
-  }) as any as S.Schema<BatchCreateProjectsInstancesDatabasesSessionsRequest>;
-
-export type SessionList = Array<Session>;
-export const SessionList = /*@__PURE__*/ S.Array(
-  Session,
-) as any as S.Schema<SessionList>;
-
-/** The response for BatchCreateSessions. */
-export interface BatchCreateSessionsResponse {
-  /** The freshly created sessions. */
-  session?: SessionList;
-}
-export const BatchCreateSessionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    session: S.optional(SessionList),
-  }),
-).annotate({
-  identifier: "BatchCreateSessionsResponse",
-}) as any as S.Schema<BatchCreateSessionsResponse>;
-
 export type StringList = Array<string>;
 export const StringList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1178,6 +1096,88 @@ export const CopyProjectsInstancesBackupsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CopyProjectsInstancesBackupsRequest",
 }) as any as S.Schema<CopyProjectsInstancesBackupsRequest>;
+
+/** A session in the Cloud Spanner API. */
+export interface Session {
+  /** Output only. The approximate timestamp when the session is last used. It's typically earlier than the actual last use time. */
+  approximateLastUseTime?: string;
+  /** Output only. The timestamp when the session is created. */
+  createTime?: string;
+  /** The database role which created this session. */
+  creatorRole?: string;
+  /** Optional. If `true`, specifies a multiplexed session. Use a multiplexed session for multiple, concurrent operations including any combination of read-only and read-write transactions. Use `sessions.create` to create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed session. You can't delete or list multiplexed sessions. */
+  multiplexed?: boolean;
+  /** Output only. The name of the session. This is always system-assigned. */
+  name?: string;
+  /** The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels. */
+  labels?: StringMap;
+}
+export const Session = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    approximateLastUseTime: S.optional(S.String),
+    createTime: S.optional(S.String),
+    creatorRole: S.optional(S.String),
+    multiplexed: S.optional(S.Boolean),
+    name: S.optional(S.String),
+    labels: S.optional(StringMap),
+  }),
+).annotate({ identifier: "Session" }) as any as S.Schema<Session>;
+
+/** The request for BatchCreateSessions. */
+export interface BatchCreateSessionsRequest {
+  /** Parameters to apply to each created session. */
+  sessionTemplate?: Session;
+  /** Required. The number of sessions to be created in this batch call. At least one session is created. The API can return fewer than the requested number of sessions. If a specific number of sessions are desired, the client can make additional calls to `BatchCreateSessions` (adjusting session_count as necessary). */
+  sessionCount?: number;
+}
+export const BatchCreateSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionTemplate: S.optional(Session),
+    sessionCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "BatchCreateSessionsRequest",
+}) as any as S.Schema<BatchCreateSessionsRequest>;
+
+export interface CreateBatchProjectInstanceDatabaseSessionRequest {
+  /** Required. The database in which the new sessions are created. */
+  database: string;
+  /** Request body */
+  body?: BatchCreateSessionsRequest;
+}
+export const CreateBatchProjectInstanceDatabaseSessionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      database: S.String.pipe(T.Label()),
+      body: S.optional(BatchCreateSessionsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+database}/sessions:batchCreate",
+        baseUrl: "https://spanner.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateBatchProjectInstanceDatabaseSessionRequest",
+  }) as any as S.Schema<CreateBatchProjectInstanceDatabaseSessionRequest>;
+
+export type SessionList = Array<Session>;
+export const SessionList = /*@__PURE__*/ S.Array(
+  Session,
+) as any as S.Schema<SessionList>;
+
+/** The response for BatchCreateSessions. */
+export interface BatchCreateSessionsResponse {
+  /** The freshly created sessions. */
+  session?: SessionList;
+}
+export const BatchCreateSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    session: S.optional(SessionList),
+  }),
+).annotate({
+  identifier: "BatchCreateSessionsResponse",
+}) as any as S.Schema<BatchCreateSessionsResponse>;
 
 export type ReplicaInfoTypeEnum =
   | "TYPE_UNSPECIFIED"
@@ -5783,26 +5783,6 @@ export const addSplitPointsProjectsInstancesDatabases: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type BatchCreateProjectsInstancesDatabasesSessionsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates multiple new sessions. This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for best practices on session cache management. */
-export const batchCreateProjectsInstancesDatabasesSessions: API.OperationMethod<
-  BatchCreateProjectsInstancesDatabasesSessionsRequest,
-  BatchCreateSessionsResponse,
-  BatchCreateProjectsInstancesDatabasesSessionsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateProjectsInstancesDatabasesSessionsRequest,
-  output: BatchCreateSessionsResponse,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type BatchWriteProjectsInstancesDatabasesSessionsError =
   | NotFound
   | Forbidden
@@ -6018,6 +5998,26 @@ export const copyProjectsInstancesBackups: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CopyProjectsInstancesBackupsRequest,
   output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBatchProjectInstanceDatabaseSessionError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates multiple new sessions. This API can be used to initialize a session cache on the clients. See https://goo.gl/TgSFN2 for best practices on session cache management. */
+export const createBatchProjectInstanceDatabaseSession: API.OperationMethod<
+  CreateBatchProjectInstanceDatabaseSessionRequest,
+  BatchCreateSessionsResponse,
+  CreateBatchProjectInstanceDatabaseSessionError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBatchProjectInstanceDatabaseSessionRequest,
+  output: BatchCreateSessionsResponse,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

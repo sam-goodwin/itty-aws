@@ -12,6 +12,30 @@ import * as Retry from "../retry.ts";
 
 export type { ModalOpError, ModalOpContext };
 
+export interface DeleteDictRequest {
+  dictId?: string;
+}
+export const DeleteDictRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dictId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/DictDelete",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDictRequest",
+}) as any as S.Schema<DeleteDictRequest>;
+
+export interface DeleteDictResponse {}
+export const DeleteDictResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDictResponse",
+}) as any as S.Schema<DeleteDictResponse>;
+
 export interface DictClearRequest {
   dictId?: string;
 }
@@ -66,114 +90,6 @@ export const DictContainsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DictContainsResponse",
 }) as any as S.Schema<DictContainsResponse>;
 
-export interface DictDeleteRequest {
-  dictId?: string;
-}
-export const DictDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dictId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/DictDelete",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DictDeleteRequest",
-}) as any as S.Schema<DictDeleteRequest>;
-
-export interface DictDeleteResponse {}
-export const DictDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DictDeleteResponse",
-}) as any as S.Schema<DictDeleteResponse>;
-
-export interface DictGetRequest {
-  dictId?: string;
-  key?: string;
-}
-export const DictGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dictId: S.optional(S.String),
-    key: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/DictGet",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DictGetRequest" }) as any as S.Schema<DictGetRequest>;
-
-export interface DictGetResponse {
-  found?: boolean;
-  value?: string;
-}
-export const DictGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    found: S.optional(S.Boolean),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DictGetResponse",
-}) as any as S.Schema<DictGetResponse>;
-
-export interface DictGetByIdRequest {
-  dictId?: string;
-}
-export const DictGetByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dictId: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/DictGetById",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DictGetByIdRequest",
-}) as any as S.Schema<DictGetByIdRequest>;
-
-export interface CreationInfo {
-  /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
-  createdAt?: number;
-  /** Timestamp of resource creation */
-  createdBy?: string;
-}
-export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.Number),
-    createdBy: S.optional(S.String),
-  }),
-).annotate({ identifier: "CreationInfo" }) as any as S.Schema<CreationInfo>;
-
-export interface DictMetadata {
-  name?: string;
-  creationInfo?: CreationInfo;
-}
-export const DictMetadata = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    creationInfo: S.optional(CreationInfo),
-  }),
-).annotate({ identifier: "DictMetadata" }) as any as S.Schema<DictMetadata>;
-
-export interface DictGetByIdResponse {
-  dictId?: string;
-  metadata?: DictMetadata;
-}
-export const DictGetByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dictId: S.optional(S.String),
-    metadata: S.optional(DictMetadata),
-  }),
-).annotate({
-  identifier: "DictGetByIdResponse",
-}) as any as S.Schema<DictGetByIdResponse>;
-
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
   | "OBJECT_CREATION_TYPE_CREATE_IF_MISSING"
@@ -222,6 +138,30 @@ export const DictGetOrCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "DictGetOrCreateRequest",
 }) as any as S.Schema<DictGetOrCreateRequest>;
+
+export interface CreationInfo {
+  /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
+  createdAt?: number;
+  /** Timestamp of resource creation */
+  createdBy?: string;
+}
+export const CreationInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.optional(S.Number),
+    createdBy: S.optional(S.String),
+  }),
+).annotate({ identifier: "CreationInfo" }) as any as S.Schema<CreationInfo>;
+
+export interface DictMetadata {
+  name?: string;
+  creationInfo?: CreationInfo;
+}
+export const DictMetadata = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    creationInfo: S.optional(CreationInfo),
+  }),
+).annotate({ identifier: "DictMetadata" }) as any as S.Schema<DictMetadata>;
 
 export interface DictGetOrCreateResponse {
   dictId?: string;
@@ -286,72 +226,6 @@ export const DictLenResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DictLenResponse",
 }) as any as S.Schema<DictLenResponse>;
 
-export interface ListPagination {
-  maxObjects?: number;
-  createdBefore?: number;
-}
-export const ListPagination = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxObjects: S.optional(S.Number),
-    createdBefore: S.optional(S.Number),
-  }),
-).annotate({ identifier: "ListPagination" }) as any as S.Schema<ListPagination>;
-
-export interface DictListRequest {
-  environmentName?: string;
-  pagination?: ListPagination;
-}
-export const DictListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    environmentName: S.optional(S.String),
-    pagination: S.optional(ListPagination),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/modal.client.ModalClient/DictList",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DictListRequest",
-}) as any as S.Schema<DictListRequest>;
-
-export interface DictListResponseDictInfo {
-  name?: string;
-  createdAt?: number;
-  /** Superseded by metadata, used by clients up to 1.1.2 */
-  dictId?: string;
-  metadata?: DictMetadata;
-}
-export const DictListResponseDictInfo = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    createdAt: S.optional(S.Number),
-    dictId: S.optional(S.String),
-    metadata: S.optional(DictMetadata),
-  }),
-).annotate({
-  identifier: "DictListResponseDictInfo",
-}) as any as S.Schema<DictListResponseDictInfo>;
-
-export type DictListResponseDictInfoList = Array<DictListResponseDictInfo>;
-export const DictListResponseDictInfoList = /*@__PURE__*/ S.Array(
-  DictListResponseDictInfo,
-) as any as S.Schema<DictListResponseDictInfoList>;
-
-export interface DictListResponse {
-  dicts?: DictListResponseDictInfoList;
-  environmentName?: string;
-}
-export const DictListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dicts: S.optional(DictListResponseDictInfoList),
-    environmentName: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DictListResponse",
-}) as any as S.Schema<DictListResponse>;
-
 export interface DictPopRequest {
   dictId?: string;
   key?: string;
@@ -382,12 +256,138 @@ export const DictPopResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DictPopResponse",
 }) as any as S.Schema<DictPopResponse>;
 
-export interface DictUpdateRequest {
+export interface GetDictRequest {
+  dictId?: string;
+  key?: string;
+}
+export const GetDictRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dictId: S.optional(S.String),
+    key: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/DictGet",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetDictRequest" }) as any as S.Schema<GetDictRequest>;
+
+export interface GetDictResponse {
+  found?: boolean;
+  value?: string;
+}
+export const GetDictResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    found: S.optional(S.Boolean),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDictResponse",
+}) as any as S.Schema<GetDictResponse>;
+
+export interface GetDictByIdRequest {
+  dictId?: string;
+}
+export const GetDictByIdRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dictId: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/DictGetById",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDictByIdRequest",
+}) as any as S.Schema<GetDictByIdRequest>;
+
+export interface GetDictByIdResponse {
+  dictId?: string;
+  metadata?: DictMetadata;
+}
+export const GetDictByIdResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dictId: S.optional(S.String),
+    metadata: S.optional(DictMetadata),
+  }),
+).annotate({
+  identifier: "GetDictByIdResponse",
+}) as any as S.Schema<GetDictByIdResponse>;
+
+export interface ListPagination {
+  maxObjects?: number;
+  createdBefore?: number;
+}
+export const ListPagination = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxObjects: S.optional(S.Number),
+    createdBefore: S.optional(S.Number),
+  }),
+).annotate({ identifier: "ListPagination" }) as any as S.Schema<ListPagination>;
+
+export interface ListDictRequest {
+  environmentName?: string;
+  pagination?: ListPagination;
+}
+export const ListDictRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    environmentName: S.optional(S.String),
+    pagination: S.optional(ListPagination),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/modal.client.ModalClient/DictList",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListDictRequest",
+}) as any as S.Schema<ListDictRequest>;
+
+export interface DictListResponseDictInfo {
+  name?: string;
+  createdAt?: number;
+  /** Superseded by metadata, used by clients up to 1.1.2 */
+  dictId?: string;
+  metadata?: DictMetadata;
+}
+export const DictListResponseDictInfo = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    createdAt: S.optional(S.Number),
+    dictId: S.optional(S.String),
+    metadata: S.optional(DictMetadata),
+  }),
+).annotate({
+  identifier: "DictListResponseDictInfo",
+}) as any as S.Schema<DictListResponseDictInfo>;
+
+export type DictListResponseDictInfoList = Array<DictListResponseDictInfo>;
+export const DictListResponseDictInfoList = /*@__PURE__*/ S.Array(
+  DictListResponseDictInfo,
+) as any as S.Schema<DictListResponseDictInfoList>;
+
+export interface ListDictResponse {
+  dicts?: DictListResponseDictInfoList;
+  environmentName?: string;
+}
+export const ListDictResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dicts: S.optional(DictListResponseDictInfoList),
+    environmentName: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDictResponse",
+}) as any as S.Schema<ListDictResponse>;
+
+export interface UpdateDictRequest {
   dictId?: string;
   updates?: DictEntryList;
   ifNotExists?: boolean;
 }
-export const DictUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDictRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dictId: S.optional(S.String),
     updates: S.optional(DictEntryList),
@@ -400,19 +400,33 @@ export const DictUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DictUpdateRequest",
-}) as any as S.Schema<DictUpdateRequest>;
+  identifier: "UpdateDictRequest",
+}) as any as S.Schema<UpdateDictRequest>;
 
-export interface DictUpdateResponse {
+export interface UpdateDictResponse {
   created?: boolean;
 }
-export const DictUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDictResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "DictUpdateResponse",
-}) as any as S.Schema<DictUpdateResponse>;
+  identifier: "UpdateDictResponse",
+}) as any as S.Schema<UpdateDictResponse>;
+
+export type DeleteDictError = ModalOpError;
+export const deleteDict: API.OperationMethod<
+  DeleteDictRequest,
+  DeleteDictResponse,
+  DeleteDictError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDictRequest,
+  output: DeleteDictResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
 
 export type DictClearError = ModalOpError;
 /** Dicts */
@@ -438,48 +452,6 @@ export const dictContains: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: DictContainsRequest,
   output: DictContainsResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DictDeleteError = ModalOpError;
-export const dictDelete: API.OperationMethod<
-  DictDeleteRequest,
-  DictDeleteResponse,
-  DictDeleteError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DictDeleteRequest,
-  output: DictDeleteResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DictGetError = ModalOpError;
-export const dictGet: API.OperationMethod<
-  DictGetRequest,
-  DictGetResponse,
-  DictGetError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DictGetRequest,
-  output: DictGetResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
-export type DictGetByIdError = ModalOpError;
-export const dictGetById: API.OperationMethod<
-  DictGetByIdRequest,
-  DictGetByIdResponse,
-  DictGetByIdError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DictGetByIdRequest,
-  output: DictGetByIdResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -527,20 +499,6 @@ export const dictLen: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DictListError = ModalOpError;
-export const dictList: API.OperationMethod<
-  DictListRequest,
-  DictListResponse,
-  DictListError,
-  ModalOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DictListRequest,
-  output: DictListResponse,
-  errors: [UnknownModalError],
-  protocol: ModalProtocol,
-  retry: Retry.Retry,
-}));
-
 export type DictPopError = ModalOpError;
 export const dictPop: API.OperationMethod<
   DictPopRequest,
@@ -555,15 +513,57 @@ export const dictPop: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DictUpdateError = ModalOpError;
-export const dictUpdate: API.OperationMethod<
-  DictUpdateRequest,
-  DictUpdateResponse,
-  DictUpdateError,
+export type GetDictError = ModalOpError;
+export const getDict: API.OperationMethod<
+  GetDictRequest,
+  GetDictResponse,
+  GetDictError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DictUpdateRequest,
-  output: DictUpdateResponse,
+  input: GetDictRequest,
+  output: GetDictResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetDictByIdError = ModalOpError;
+export const getDictById: API.OperationMethod<
+  GetDictByIdRequest,
+  GetDictByIdResponse,
+  GetDictByIdError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDictByIdRequest,
+  output: GetDictByIdResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListDictError = ModalOpError;
+export const listDict: API.OperationMethod<
+  ListDictRequest,
+  ListDictResponse,
+  ListDictError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDictRequest,
+  output: ListDictResponse,
+  errors: [UnknownModalError],
+  protocol: ModalProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateDictError = ModalOpError;
+export const updateDict: API.OperationMethod<
+  UpdateDictRequest,
+  UpdateDictResponse,
+  UpdateDictError,
+  ModalOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDictRequest,
+  output: UpdateDictResponse,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,

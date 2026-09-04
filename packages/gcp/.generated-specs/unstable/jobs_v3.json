@@ -4336,7 +4336,7 @@
         }
       }
     },
-    "com.gcp.jobs_v3#BatchDeleteProjectsJobsRequest": {
+    "com.gcp.jobs_v3#DeleteBatchProjectJobRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -4356,10 +4356,10 @@
         }
       }
     },
-    "com.gcp.jobs_v3#BatchDeleteProjectsJobs": {
+    "com.gcp.jobs_v3#DeleteBatchProjectJob": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.jobs_v3#BatchDeleteProjectsJobsRequest"
+        "target": "com.gcp.jobs_v3#DeleteBatchProjectJobRequest"
       },
       "output": {
         "target": "com.gcp.jobs_v3#Empty"

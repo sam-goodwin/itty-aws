@@ -4386,7 +4386,7 @@
         "target": "com.gcp.cloudasset_v1#GoogleIdentityAccesscontextmanagerV1DevicePolicyAllowedEncryptionStatusesItemEnum"
       }
     },
-    "com.gcp.cloudasset_v1#BatchGetEffectiveIamPoliciesResponse": {
+    "com.gcp.cloudasset_v1#GetBatchEffectiveIamPolicyResponse": {
       "type": "structure",
       "members": {
         "policyResults": {
@@ -5357,7 +5357,7 @@
         "smithy.api#documentation": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp"
       }
     },
-    "com.gcp.cloudasset_v1#BatchGetEffectiveIamPoliciesRequest": {
+    "com.gcp.cloudasset_v1#GetBatchEffectiveIamPolicyRequest": {
       "type": "structure",
       "members": {
         "scope": {
@@ -5403,13 +5403,13 @@
         ]
       }
     },
-    "com.gcp.cloudasset_v1#BatchGetEffectiveIamPolicies": {
+    "com.gcp.cloudasset_v1#GetBatchEffectiveIamPolicy": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudasset_v1#BatchGetEffectiveIamPoliciesRequest"
+        "target": "com.gcp.cloudasset_v1#GetBatchEffectiveIamPolicyRequest"
       },
       "output": {
-        "target": "com.gcp.cloudasset_v1#BatchGetEffectiveIamPoliciesResponse"
+        "target": "com.gcp.cloudasset_v1#GetBatchEffectiveIamPolicyResponse"
       },
       "errors": [
         {
@@ -5793,7 +5793,7 @@
         }
       }
     },
-    "com.gcp.cloudasset_v1#BatchGetAssetsHistoryV1Request": {
+    "com.gcp.cloudasset_v1#GetBatchAssetHistoryV1Request": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5841,10 +5841,10 @@
         }
       }
     },
-    "com.gcp.cloudasset_v1#BatchGetAssetsHistoryV1": {
+    "com.gcp.cloudasset_v1#GetBatchAssetHistoryV1": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.cloudasset_v1#BatchGetAssetsHistoryV1Request"
+        "target": "com.gcp.cloudasset_v1#GetBatchAssetHistoryV1Request"
       },
       "output": {
         "target": "com.gcp.cloudasset_v1#BatchGetAssetsHistoryResponse"

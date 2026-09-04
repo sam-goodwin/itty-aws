@@ -12,30 +12,181 @@ import * as Retry from "../retry.ts";
 
 export type { AzureOpError, AzureOpContext };
 
-export interface ChatTranscriptsGetRequest {
+/** The type of resource. */
+export type Type =
+  | "Microsoft.Support/supportTickets"
+  | "Microsoft.Support/communications";
+export const Type = /*@__PURE__*/ S.String;
+
+export interface CheckCommunicationNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
-  /** The name of the ChatTranscriptDetails */
-  chatTranscriptName: string;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type | (string & {});
 }
-export const ChatTranscriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const CheckCommunicationNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      supportTicketName: S.String.pipe(T.Label()),
+      name: S.String,
+      type: Type,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckCommunicationNameAvailabilityRequest",
+  }) as any as S.Schema<CheckCommunicationNameAvailabilityRequest>;
+
+/** Output of check name availability API. */
+export interface CheckNameAvailabilityOutput {
+  /** Indicates whether the name is available. */
+  nameAvailable?: boolean;
+  /** The reason why the name is not available. */
+  reason?: string;
+  /** The detailed error message describing why the name is not available. */
+  message?: string;
+}
+export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nameAvailable: S.optional(S.Boolean),
+    reason: S.optional(S.String),
+    message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CheckNameAvailabilityOutput",
+}) as any as S.Schema<CheckNameAvailabilityOutput>;
+
+export interface CheckCommunicationNoSubscriptionNameAvailabilityRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type | (string & {});
+}
+export const CheckCommunicationNoSubscriptionNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+      name: S.String,
+      type: Type,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckCommunicationNoSubscriptionNameAvailabilityRequest",
+  }) as any as S.Schema<CheckCommunicationNoSubscriptionNameAvailabilityRequest>;
+
+export interface CheckSupportTicketNameAvailabilityRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type | (string & {});
+}
+export const CheckSupportTicketNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      subscriptionId: S.String.pipe(T.Label()),
+      name: S.String,
+      type: Type,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckSupportTicketNameAvailabilityRequest",
+  }) as any as S.Schema<CheckSupportTicketNameAvailabilityRequest>;
+
+export interface CheckSupportTicketNoSubscriptionNameAvailabilityRequest {
+  /** The resource name to validate. */
+  name: string;
+  /** The type of resource. */
+  type: Type | (string & {});
+}
+export const CheckSupportTicketNoSubscriptionNameAvailabilityRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      type: Type,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/providers/Microsoft.Support/checkNameAvailability",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+  ).annotate({
+    identifier: "CheckSupportTicketNoSubscriptionNameAvailabilityRequest",
+  }) as any as S.Schema<CheckSupportTicketNoSubscriptionNameAvailabilityRequest>;
+
+/** Describes the properties of a communication resource. */
+export interface CommunicationDetailsPropertiesInput {
+  /** Email address of the sender. This property is required if called by a service principal. */
+  sender?: string;
+  /** Subject of the communication. */
+  subject: string;
+  /** Body of the communication. */
+  body: string;
+}
+export const CommunicationDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sender: S.optional(S.String),
+    subject: S.String,
+    body: S.String,
+  }),
+).annotate({
+  identifier: "CommunicationDetailsPropertiesInput",
+}) as any as S.Schema<CommunicationDetailsPropertiesInput>;
+
+export interface CreateCommunicationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The name of the CommunicationDetails */
+  communicationName: string;
+  /** Properties of the resource. */
+  properties: CommunicationDetailsPropertiesInput;
+}
+export const CreateCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
-    chatTranscriptName: S.String.pipe(T.Label()),
+    communicationName: S.String.pipe(T.Label()),
+    properties: CommunicationDetailsPropertiesInput,
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+      method: "PUT",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
       code: 200,
       apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
-  identifier: "ChatTranscriptsGetRequest",
-}) as any as S.Schema<ChatTranscriptsGetRequest>;
+  identifier: "CreateCommunicationRequest",
+}) as any as S.Schema<CreateCommunicationRequest>;
 
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType =
@@ -79,324 +230,13 @@ export const SystemData = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SystemData" }) as any as S.Schema<SystemData>;
 
-/** Direction of communication. */
-export type CommunicationDirection = "inbound" | "outbound";
-export const CommunicationDirection = /*@__PURE__*/ S.String;
-
-/** Describes the properties of a Message Details resource. */
-export interface MessageProperties {
-  /** Content type. */
-  contentType?: string;
-  /** Direction of communication. */
-  communicationDirection?: CommunicationDirection;
-  /** Name of the sender. */
-  sender?: string;
-  /** Body of the communication. */
-  body?: string;
-  /** Time in UTC (ISO 8601 format) when the communication was created. */
-  createdDate?: string;
-}
-export const MessageProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String),
-    communicationDirection: S.optional(CommunicationDirection),
-    sender: S.optional(S.String),
-    body: S.optional(S.String),
-    createdDate: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MessageProperties",
-}) as any as S.Schema<MessageProperties>;
-
-/** List of chat transcript communication resources. */
-export type ChatTranscriptDetailsPropertiesMessagesList =
-  Array<MessageProperties>;
-export const ChatTranscriptDetailsPropertiesMessagesList =
-  /*@__PURE__*/ S.Array(
-    MessageProperties,
-  ) as any as S.Schema<ChatTranscriptDetailsPropertiesMessagesList>;
-
-/** Describes the properties of a Chat Transcript Details resource. */
-export interface ChatTranscriptDetailsProperties {
-  /** List of chat transcript communication resources. */
-  messages?: ChatTranscriptDetailsPropertiesMessagesList;
-  /** Time in UTC (ISO 8601 format) when the chat began. */
-  startTime?: string;
-}
-export const ChatTranscriptDetailsProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    messages: S.optional(ChatTranscriptDetailsPropertiesMessagesList),
-    startTime: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ChatTranscriptDetailsProperties",
-}) as any as S.Schema<ChatTranscriptDetailsProperties>;
-
-export interface ChatTranscriptsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ChatTranscriptDetailsProperties;
-}
-export const ChatTranscriptsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ChatTranscriptDetailsProperties),
-  }),
-).annotate({
-  identifier: "ChatTranscriptsGetResponse",
-}) as any as S.Schema<ChatTranscriptsGetResponse>;
-
-export interface ChatTranscriptsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-}
-export const ChatTranscriptsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    supportTicketName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ChatTranscriptsListRequest",
-}) as any as S.Schema<ChatTranscriptsListRequest>;
-
-/** Object that represents a Chat Transcript resource. */
-export interface ChatTranscriptDetails {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ChatTranscriptDetailsProperties;
-}
-export const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ChatTranscriptDetailsProperties),
-  }),
-).annotate({
-  identifier: "ChatTranscriptDetails",
-}) as any as S.Schema<ChatTranscriptDetails>;
-
-/** [Placeholder] Description for value property */
-export type ChatTranscriptsListResultValueList = Array<ChatTranscriptDetails>;
-export const ChatTranscriptsListResultValueList = /*@__PURE__*/ S.Array(
-  ChatTranscriptDetails,
-) as any as S.Schema<ChatTranscriptsListResultValueList>;
-
-/** [Placeholder] Description for page model */
-export interface ChatTranscriptsListResult {
-  /** [Placeholder] Description for nextLink property */
-  nextLink?: string;
-  /** [Placeholder] Description for value property */
-  value?: ChatTranscriptsListResultValueList;
-}
-export const ChatTranscriptsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ChatTranscriptsListResultValueList),
-  }),
-).annotate({
-  identifier: "ChatTranscriptsListResult",
-}) as any as S.Schema<ChatTranscriptsListResult>;
-
-export interface ChatTranscriptsNoSubscriptionGetRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The name of the ChatTranscriptDetails */
-  chatTranscriptName: string;
-}
-export const ChatTranscriptsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      chatTranscriptName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "ChatTranscriptsNoSubscriptionGetRequest",
-}) as any as S.Schema<ChatTranscriptsNoSubscriptionGetRequest>;
-
-export interface ChatTranscriptsNoSubscriptionGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ChatTranscriptDetailsProperties;
-}
-export const ChatTranscriptsNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(ChatTranscriptDetailsProperties),
-    }),
-).annotate({
-  identifier: "ChatTranscriptsNoSubscriptionGetResponse",
-}) as any as S.Schema<ChatTranscriptsNoSubscriptionGetResponse>;
-
-export interface ChatTranscriptsNoSubscriptionListRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-}
-export const ChatTranscriptsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "ChatTranscriptsNoSubscriptionListRequest",
-}) as any as S.Schema<ChatTranscriptsNoSubscriptionListRequest>;
-
-/** The type of resource. */
-export type Type =
-  | "Microsoft.Support/supportTickets"
-  | "Microsoft.Support/communications";
-export const Type = /*@__PURE__*/ S.String;
-
-export interface CommunicationsCheckNameAvailabilityRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The resource name to validate. */
-  name: string;
-  /** The type of resource. */
-  type: Type | (string & {});
-}
-export const CommunicationsCheckNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      supportTicketName: S.String.pipe(T.Label()),
-      name: S.String,
-      type: Type,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "CommunicationsCheckNameAvailabilityRequest",
-  }) as any as S.Schema<CommunicationsCheckNameAvailabilityRequest>;
-
-/** Output of check name availability API. */
-export interface CheckNameAvailabilityOutput {
-  /** Indicates whether the name is available. */
-  nameAvailable?: boolean;
-  /** The reason why the name is not available. */
-  reason?: string;
-  /** The detailed error message describing why the name is not available. */
-  message?: string;
-}
-export const CheckNameAvailabilityOutput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nameAvailable: S.optional(S.Boolean),
-    reason: S.optional(S.String),
-    message: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "CheckNameAvailabilityOutput",
-}) as any as S.Schema<CheckNameAvailabilityOutput>;
-
-/** Describes the properties of a communication resource. */
-export interface CommunicationDetailsPropertiesInput {
-  /** Email address of the sender. This property is required if called by a service principal. */
-  sender?: string;
-  /** Subject of the communication. */
-  subject: string;
-  /** Body of the communication. */
-  body: string;
-}
-export const CommunicationDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sender: S.optional(S.String),
-    subject: S.String,
-    body: S.String,
-  }),
-).annotate({
-  identifier: "CommunicationDetailsPropertiesInput",
-}) as any as S.Schema<CommunicationDetailsPropertiesInput>;
-
-export interface CommunicationsCreateRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The name of the CommunicationDetails */
-  communicationName: string;
-  /** Properties of the resource. */
-  properties: CommunicationDetailsPropertiesInput;
-}
-export const CommunicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    supportTicketName: S.String.pipe(T.Label()),
-    communicationName: S.String.pipe(T.Label()),
-    properties: CommunicationDetailsPropertiesInput,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "CommunicationsCreateRequest",
-}) as any as S.Schema<CommunicationsCreateRequest>;
-
 /** Communication type. */
 export type CommunicationType = "web" | "phone";
 export const CommunicationType = /*@__PURE__*/ S.String;
+
+/** Direction of communication. */
+export type CommunicationDirection = "inbound" | "outbound";
+export const CommunicationDirection = /*@__PURE__*/ S.String;
 
 /** Describes the properties of a communication resource. */
 export interface CommunicationDetailsProperties {
@@ -426,7 +266,7 @@ export const CommunicationDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "CommunicationDetailsProperties",
 }) as any as S.Schema<CommunicationDetailsProperties>;
 
-export interface CommunicationsCreateResponse {
+export interface CreateCommunicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -438,7 +278,7 @@ export interface CommunicationsCreateResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CommunicationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCommunicationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -447,160 +287,10 @@ export const CommunicationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: CommunicationDetailsProperties,
   }),
 ).annotate({
-  identifier: "CommunicationsCreateResponse",
-}) as any as S.Schema<CommunicationsCreateResponse>;
+  identifier: "CreateCommunicationResponse",
+}) as any as S.Schema<CreateCommunicationResponse>;
 
-export interface CommunicationsGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The name of the CommunicationDetails */
-  communicationName: string;
-}
-export const CommunicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    supportTicketName: S.String.pipe(T.Label()),
-    communicationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "CommunicationsGetRequest",
-}) as any as S.Schema<CommunicationsGetRequest>;
-
-export interface CommunicationsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties: CommunicationDetailsProperties;
-}
-export const CommunicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CommunicationDetailsProperties,
-  }),
-).annotate({
-  identifier: "CommunicationsGetResponse",
-}) as any as S.Schema<CommunicationsGetResponse>;
-
-export interface CommunicationsListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The number of values to return in the collection. Default is 10 and max is 10. */
-  _top?: number;
-  /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
-  _filter?: string;
-}
-export const CommunicationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    supportTicketName: S.String.pipe(T.Label()),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "CommunicationsListRequest",
-}) as any as S.Schema<CommunicationsListRequest>;
-
-/** Object that represents a Communication resource. */
-export interface CommunicationDetails {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties: CommunicationDetailsProperties;
-}
-export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: CommunicationDetailsProperties,
-  }),
-).annotate({
-  identifier: "CommunicationDetails",
-}) as any as S.Schema<CommunicationDetails>;
-
-/** [Placeholder] Description for value property */
-export type CommunicationsListResultValueList = Array<CommunicationDetails>;
-export const CommunicationsListResultValueList = /*@__PURE__*/ S.Array(
-  CommunicationDetails,
-) as any as S.Schema<CommunicationsListResultValueList>;
-
-/** [Placeholder] Description for page model */
-export interface CommunicationsListResult {
-  /** [Placeholder] Description for nextLink property */
-  nextLink?: string;
-  /** [Placeholder] Description for value property */
-  value?: CommunicationsListResultValueList;
-}
-export const CommunicationsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(CommunicationsListResultValueList),
-  }),
-).annotate({
-  identifier: "CommunicationsListResult",
-}) as any as S.Schema<CommunicationsListResult>;
-
-export interface CommunicationsNoSubscriptionCheckNameAvailabilityRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The resource name to validate. */
-  name: string;
-  /** The type of resource. */
-  type: Type | (string & {});
-}
-export const CommunicationsNoSubscriptionCheckNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      name: S.String,
-      type: Type,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "CommunicationsNoSubscriptionCheckNameAvailabilityRequest",
-  }) as any as S.Schema<CommunicationsNoSubscriptionCheckNameAvailabilityRequest>;
-
-export interface CommunicationsNoSubscriptionCreateRequest {
+export interface CreateCommunicationNoSubscriptionRequest {
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
   /** The name of the CommunicationDetails */
@@ -608,8 +298,8 @@ export interface CommunicationsNoSubscriptionCreateRequest {
   /** Properties of the resource. */
   properties: CommunicationDetailsPropertiesInput;
 }
-export const CommunicationsNoSubscriptionCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateCommunicationNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       supportTicketName: S.String.pipe(T.Label()),
       communicationName: S.String.pipe(T.Label()),
@@ -622,11 +312,11 @@ export const CommunicationsNoSubscriptionCreateRequest =
         apiVersion: "2024-04-01",
       }),
     ),
-  ).annotate({
-    identifier: "CommunicationsNoSubscriptionCreateRequest",
-  }) as any as S.Schema<CommunicationsNoSubscriptionCreateRequest>;
+).annotate({
+  identifier: "CreateCommunicationNoSubscriptionRequest",
+}) as any as S.Schema<CreateCommunicationNoSubscriptionRequest>;
 
-export interface CommunicationsNoSubscriptionCreateResponse {
+export interface CreateCommunicationNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -638,7 +328,7 @@ export interface CommunicationsNoSubscriptionCreateResponse {
   /** Properties of the resource. */
   properties: CommunicationDetailsProperties;
 }
-export const CommunicationsNoSubscriptionCreateResponse =
+export const CreateCommunicationNoSubscriptionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -648,82 +338,8 @@ export const CommunicationsNoSubscriptionCreateResponse =
       properties: CommunicationDetailsProperties,
     }),
   ).annotate({
-    identifier: "CommunicationsNoSubscriptionCreateResponse",
-  }) as any as S.Schema<CommunicationsNoSubscriptionCreateResponse>;
-
-export interface CommunicationsNoSubscriptionGetRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The name of the CommunicationDetails */
-  communicationName: string;
-}
-export const CommunicationsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      communicationName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "CommunicationsNoSubscriptionGetRequest",
-}) as any as S.Schema<CommunicationsNoSubscriptionGetRequest>;
-
-export interface CommunicationsNoSubscriptionGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties: CommunicationDetailsProperties;
-}
-export const CommunicationsNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: CommunicationDetailsProperties,
-    }),
-).annotate({
-  identifier: "CommunicationsNoSubscriptionGetResponse",
-}) as any as S.Schema<CommunicationsNoSubscriptionGetResponse>;
-
-export interface CommunicationsNoSubscriptionListRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** The number of values to return in the collection. Default is 10 and max is 10. */
-  _top?: number;
-  /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
-  _filter?: string;
-}
-export const CommunicationsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "CommunicationsNoSubscriptionListRequest",
-}) as any as S.Schema<CommunicationsNoSubscriptionListRequest>;
+    identifier: "CreateCommunicationNoSubscriptionResponse",
+  }) as any as S.Schema<CreateCommunicationNoSubscriptionResponse>;
 
 /** Describes the properties of a file. */
 export interface FileDetailsPropertiesInput {
@@ -744,7 +360,7 @@ export const FileDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileDetailsPropertiesInput",
 }) as any as S.Schema<FileDetailsPropertiesInput>;
 
-export interface FilesCreateRequest {
+export interface CreateFileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the FileWorkspaceDetails */
@@ -754,7 +370,7 @@ export interface FilesCreateRequest {
   /** Properties of the resource */
   properties?: FileDetailsPropertiesInput;
 }
-export const FilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateFileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -769,8 +385,8 @@ export const FilesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "FilesCreateRequest",
-}) as any as S.Schema<FilesCreateRequest>;
+  identifier: "CreateFileRequest",
+}) as any as S.Schema<CreateFileRequest>;
 
 /** Describes the properties of a file. */
 export interface FileDetailsProperties {
@@ -794,7 +410,7 @@ export const FileDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileDetailsProperties",
 }) as any as S.Schema<FileDetailsProperties>;
 
-export interface FilesCreateResponse {
+export interface CreateFileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -806,7 +422,7 @@ export interface FilesCreateResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const FilesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateFileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -815,126 +431,10 @@ export const FilesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(FileDetailsProperties),
   }),
 ).annotate({
-  identifier: "FilesCreateResponse",
-}) as any as S.Schema<FilesCreateResponse>;
+  identifier: "CreateFileResponse",
+}) as any as S.Schema<CreateFileResponse>;
 
-export interface FilesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-  /** The name of the FileDetails */
-  fileName: string;
-}
-export const FilesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    fileWorkspaceName: S.String.pipe(T.Label()),
-    fileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FilesGetRequest",
-}) as any as S.Schema<FilesGetRequest>;
-
-export interface FilesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource */
-  properties?: FileDetailsProperties;
-}
-export const FilesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileDetailsProperties),
-  }),
-).annotate({
-  identifier: "FilesGetResponse",
-}) as any as S.Schema<FilesGetResponse>;
-
-export interface FilesListRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-}
-export const FilesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    fileWorkspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FilesListRequest",
-}) as any as S.Schema<FilesListRequest>;
-
-/** Object that represents File Details resource */
-export interface FileDetails {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource */
-  properties?: FileDetailsProperties;
-}
-export const FileDetails = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileDetailsProperties),
-  }),
-).annotate({ identifier: "FileDetails" }) as any as S.Schema<FileDetails>;
-
-/** [Placeholder] Description for value property */
-export type FilesListResultValueList = Array<FileDetails>;
-export const FilesListResultValueList = /*@__PURE__*/ S.Array(
-  FileDetails,
-) as any as S.Schema<FilesListResultValueList>;
-
-/** [Placeholder] Description for page model */
-export interface FilesListResult {
-  /** [Placeholder] Description for nextLink property */
-  nextLink?: string;
-  /** [Placeholder] Description for value property */
-  value?: FilesListResultValueList;
-}
-export const FilesListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(FilesListResultValueList),
-  }),
-).annotate({
-  identifier: "FilesListResult",
-}) as any as S.Schema<FilesListResult>;
-
-export interface FilesNoSubscriptionCreateRequest {
+export interface CreateFileNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
   /** The name of the FileDetails */
@@ -942,7 +442,7 @@ export interface FilesNoSubscriptionCreateRequest {
   /** Properties of the resource */
   properties?: FileDetailsPropertiesInput;
 }
-export const FilesNoSubscriptionCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateFileNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     fileWorkspaceName: S.String.pipe(T.Label()),
     fileName: S.String.pipe(T.Label()),
@@ -956,10 +456,10 @@ export const FilesNoSubscriptionCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "FilesNoSubscriptionCreateRequest",
-}) as any as S.Schema<FilesNoSubscriptionCreateRequest>;
+  identifier: "CreateFileNoSubscriptionRequest",
+}) as any as S.Schema<CreateFileNoSubscriptionRequest>;
 
-export interface FilesNoSubscriptionCreateResponse {
+export interface CreateFileNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -971,7 +471,7 @@ export interface FilesNoSubscriptionCreateResponse {
   /** Properties of the resource */
   properties?: FileDetailsProperties;
 }
-export const FilesNoSubscriptionCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateFileNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -980,154 +480,16 @@ export const FilesNoSubscriptionCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(FileDetailsProperties),
   }),
 ).annotate({
-  identifier: "FilesNoSubscriptionCreateResponse",
-}) as any as S.Schema<FilesNoSubscriptionCreateResponse>;
+  identifier: "CreateFileNoSubscriptionResponse",
+}) as any as S.Schema<CreateFileNoSubscriptionResponse>;
 
-export interface FilesNoSubscriptionGetRequest {
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-  /** The name of the FileDetails */
-  fileName: string;
-}
-export const FilesNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileWorkspaceName: S.String.pipe(T.Label()),
-    fileName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FilesNoSubscriptionGetRequest",
-}) as any as S.Schema<FilesNoSubscriptionGetRequest>;
-
-export interface FilesNoSubscriptionGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource */
-  properties?: FileDetailsProperties;
-}
-export const FilesNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileDetailsProperties),
-  }),
-).annotate({
-  identifier: "FilesNoSubscriptionGetResponse",
-}) as any as S.Schema<FilesNoSubscriptionGetResponse>;
-
-export interface FilesNoSubscriptionListRequest {
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-}
-export const FilesNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileWorkspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FilesNoSubscriptionListRequest",
-}) as any as S.Schema<FilesNoSubscriptionListRequest>;
-
-export interface FilesNoSubscriptionUploadRequest {
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-  /** The name of the FileDetails */
-  fileName: string;
-  /** File Content in base64 encoded format */
-  content?: string;
-  /** Index of the uploaded chunk (Index starts at 0) */
-  chunkIndex?: number;
-}
-export const FilesNoSubscriptionUploadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fileWorkspaceName: S.String.pipe(T.Label()),
-    fileName: S.String.pipe(T.Label()),
-    content: S.optional(S.String),
-    chunkIndex: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FilesNoSubscriptionUploadRequest",
-}) as any as S.Schema<FilesNoSubscriptionUploadRequest>;
-
-export interface FilesNoSubscriptionUploadResponse {}
-export const FilesNoSubscriptionUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FilesNoSubscriptionUploadResponse",
-}) as any as S.Schema<FilesNoSubscriptionUploadResponse>;
-
-export interface FilesUploadRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-  /** The name of the FileDetails */
-  fileName: string;
-  /** File Content in base64 encoded format */
-  content?: string;
-  /** Index of the uploaded chunk (Index starts at 0) */
-  chunkIndex?: number;
-}
-export const FilesUploadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    fileWorkspaceName: S.String.pipe(T.Label()),
-    fileName: S.String.pipe(T.Label()),
-    content: S.optional(S.String),
-    chunkIndex: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FilesUploadRequest",
-}) as any as S.Schema<FilesUploadRequest>;
-
-export interface FilesUploadResponse {}
-export const FilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FilesUploadResponse",
-}) as any as S.Schema<FilesUploadResponse>;
-
-export interface FileWorkspacesCreateRequest {
+export interface CreateFileWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const FileWorkspacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateFileWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     fileWorkspaceName: S.String.pipe(T.Label()),
@@ -1140,8 +502,8 @@ export const FileWorkspacesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "FileWorkspacesCreateRequest",
-}) as any as S.Schema<FileWorkspacesCreateRequest>;
+  identifier: "CreateFileWorkspaceRequest",
+}) as any as S.Schema<CreateFileWorkspaceRequest>;
 
 /** Describes the properties of a file workspace. */
 export interface FileWorkspaceDetailsProperties {
@@ -1159,7 +521,7 @@ export const FileWorkspaceDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "FileWorkspaceDetailsProperties",
 }) as any as S.Schema<FileWorkspaceDetailsProperties>;
 
-export interface FileWorkspacesCreateResponse {
+export interface CreateFileWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -1171,7 +533,7 @@ export interface FileWorkspacesCreateResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const FileWorkspacesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateFileWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -1180,61 +542,15 @@ export const FileWorkspacesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: S.optional(FileWorkspaceDetailsProperties),
   }),
 ).annotate({
-  identifier: "FileWorkspacesCreateResponse",
-}) as any as S.Schema<FileWorkspacesCreateResponse>;
+  identifier: "CreateFileWorkspaceResponse",
+}) as any as S.Schema<CreateFileWorkspaceResponse>;
 
-export interface FileWorkspacesGetRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
+export interface CreateFileWorkspaceNoSubscriptionRequest {
   /** The name of the FileWorkspaceDetails */
   fileWorkspaceName: string;
 }
-export const FileWorkspacesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.String.pipe(T.Label()),
-    fileWorkspaceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "FileWorkspacesGetRequest",
-}) as any as S.Schema<FileWorkspacesGetRequest>;
-
-export interface FileWorkspacesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource */
-  properties?: FileWorkspaceDetailsProperties;
-}
-export const FileWorkspacesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(FileWorkspaceDetailsProperties),
-  }),
-).annotate({
-  identifier: "FileWorkspacesGetResponse",
-}) as any as S.Schema<FileWorkspacesGetResponse>;
-
-export interface FileWorkspacesNoSubscriptionCreateRequest {
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-}
-export const FileWorkspacesNoSubscriptionCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const CreateFileWorkspaceNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       fileWorkspaceName: S.String.pipe(T.Label()),
     }).pipe(
@@ -1245,11 +561,11 @@ export const FileWorkspacesNoSubscriptionCreateRequest =
         apiVersion: "2024-04-01",
       }),
     ),
-  ).annotate({
-    identifier: "FileWorkspacesNoSubscriptionCreateRequest",
-  }) as any as S.Schema<FileWorkspacesNoSubscriptionCreateRequest>;
+).annotate({
+  identifier: "CreateFileWorkspaceNoSubscriptionRequest",
+}) as any as S.Schema<CreateFileWorkspaceNoSubscriptionRequest>;
 
-export interface FileWorkspacesNoSubscriptionCreateResponse {
+export interface CreateFileWorkspaceNoSubscriptionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -1261,7 +577,7 @@ export interface FileWorkspacesNoSubscriptionCreateResponse {
   /** Properties of the resource */
   properties?: FileWorkspaceDetailsProperties;
 }
-export const FileWorkspacesNoSubscriptionCreateResponse =
+export const CreateFileWorkspaceNoSubscriptionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -1271,446 +587,8 @@ export const FileWorkspacesNoSubscriptionCreateResponse =
       properties: S.optional(FileWorkspaceDetailsProperties),
     }),
   ).annotate({
-    identifier: "FileWorkspacesNoSubscriptionCreateResponse",
-  }) as any as S.Schema<FileWorkspacesNoSubscriptionCreateResponse>;
-
-export interface FileWorkspacesNoSubscriptionGetRequest {
-  /** The name of the FileWorkspaceDetails */
-  fileWorkspaceName: string;
-}
-export const FileWorkspacesNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      fileWorkspaceName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "FileWorkspacesNoSubscriptionGetRequest",
-}) as any as S.Schema<FileWorkspacesNoSubscriptionGetRequest>;
-
-export interface FileWorkspacesNoSubscriptionGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource */
-  properties?: FileWorkspaceDetailsProperties;
-}
-export const FileWorkspacesNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: S.optional(FileWorkspaceDetailsProperties),
-    }),
-).annotate({
-  identifier: "FileWorkspacesNoSubscriptionGetResponse",
-}) as any as S.Schema<FileWorkspacesNoSubscriptionGetResponse>;
-
-export interface OperationsListRequest {}
-export const OperationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/operations",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "OperationsListRequest",
-}) as any as S.Schema<OperationsListRequest>;
-
-/** Localized display information for this particular operation. */
-export interface OperationDisplay {
-  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
-  provider?: string;
-  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
-  resource?: string;
-  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
-  operation?: string;
-  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
-  description?: string;
-}
-export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    provider: S.optional(S.String),
-    resource: S.optional(S.String),
-    operation: S.optional(S.String),
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationDisplay",
-}) as any as S.Schema<OperationDisplay>;
-
-/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-export type OperationOrigin = "user" | "system" | "user,system";
-export const OperationOrigin = /*@__PURE__*/ S.String;
-
-/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-export type OperationActionType = "Internal";
-export const OperationActionType = /*@__PURE__*/ S.String;
-
-/** Details of a REST API operation, returned from the Resource Provider Operations API */
-export interface Operation {
-  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
-  name?: string;
-  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
-  isDataAction?: boolean;
-  /** Localized display information for this particular operation. */
-  display?: OperationDisplay;
-  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
-  origin?: OperationOrigin;
-  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
-  actionType?: OperationActionType;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    isDataAction: S.optional(S.Boolean),
-    display: S.optional(OperationDisplay),
-    origin: S.optional(OperationOrigin),
-    actionType: S.optional(OperationActionType),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
-/** List of operations supported by the resource provider */
-export type OperationsListResponseValueList = Array<Operation>;
-export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
-  Operation,
-) as any as S.Schema<OperationsListResponseValueList>;
-
-export interface OperationsListResponse {
-  /** List of operations supported by the resource provider */
-  value?: OperationsListResponseValueList;
-  /** URL to get the next set of operation list results (if there are any). */
-  nextLink?: string;
-}
-export const OperationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    value: S.optional(OperationsListResponseValueList),
-    nextLink: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OperationsListResponse",
-}) as any as S.Schema<OperationsListResponse>;
-
-export interface ProblemClassificationsGetRequest {
-  /** Name of the Azure service. */
-  serviceName: string;
-  /** Name of problem classification. */
-  problemClassificationName: string;
-}
-export const ProblemClassificationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-    problemClassificationName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProblemClassificationsGetRequest",
-}) as any as S.Schema<ProblemClassificationsGetRequest>;
-
-/** This property indicates whether secondary consent is present for problem classification. */
-export interface SecondaryConsentEnabled {
-  /** User consent description. */
-  description?: string;
-  /** The Azure service for which secondary consent is needed for case creation. */
-  type?: string;
-}
-export const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    description: S.optional(S.String),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SecondaryConsentEnabled",
-}) as any as S.Schema<SecondaryConsentEnabled>;
-
-/** This property indicates whether secondary consent is present for problem classification */
-export type ProblemClassificationPropertiesSecondaryConsentEnabledList =
-  Array<SecondaryConsentEnabled>;
-export const ProblemClassificationPropertiesSecondaryConsentEnabledList =
-  /*@__PURE__*/ S.Array(
-    SecondaryConsentEnabled,
-  ) as any as S.Schema<ProblemClassificationPropertiesSecondaryConsentEnabledList>;
-
-/** Details about a problem classification available for an Azure service. */
-export interface ProblemClassificationProperties {
-  /** Localized name of problem classification. */
-  displayName?: string;
-  /** This property indicates whether secondary consent is present for problem classification */
-  secondaryConsentEnabled?: ProblemClassificationPropertiesSecondaryConsentEnabledList;
-}
-export const ProblemClassificationProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    secondaryConsentEnabled: S.optional(
-      ProblemClassificationPropertiesSecondaryConsentEnabledList,
-    ),
-  }),
-).annotate({
-  identifier: "ProblemClassificationProperties",
-}) as any as S.Schema<ProblemClassificationProperties>;
-
-export interface ProblemClassificationsGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ProblemClassificationProperties;
-}
-export const ProblemClassificationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProblemClassificationProperties),
-  }),
-).annotate({
-  identifier: "ProblemClassificationsGetResponse",
-}) as any as S.Schema<ProblemClassificationsGetResponse>;
-
-export interface ProblemClassificationsListRequest {
-  /** Name of the Azure service. */
-  serviceName: string;
-}
-export const ProblemClassificationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ProblemClassificationsListRequest",
-}) as any as S.Schema<ProblemClassificationsListRequest>;
-
-/** ProblemClassification resource object. */
-export interface ProblemClassification {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ProblemClassificationProperties;
-}
-export const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ProblemClassificationProperties),
-  }),
-).annotate({
-  identifier: "ProblemClassification",
-}) as any as S.Schema<ProblemClassification>;
-
-/** List of ProblemClassification resources. */
-export type ProblemClassificationsListResultValueList =
-  Array<ProblemClassification>;
-export const ProblemClassificationsListResultValueList = /*@__PURE__*/ S.Array(
-  ProblemClassification,
-) as any as S.Schema<ProblemClassificationsListResultValueList>;
-
-/** Collection of ProblemClassification resources. */
-export interface ProblemClassificationsListResult {
-  /** The link to the next page of items */
-  nextLink?: string;
-  /** List of ProblemClassification resources. */
-  value?: ProblemClassificationsListResultValueList;
-}
-export const ProblemClassificationsListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ProblemClassificationsListResultValueList),
-  }),
-).annotate({
-  identifier: "ProblemClassificationsListResult",
-}) as any as S.Schema<ProblemClassificationsListResult>;
-
-export interface ServicesGetRequest {
-  /** Name of the Azure service. */
-  serviceName: string;
-}
-export const ServicesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    serviceName: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/services/{serviceName}",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesGetRequest",
-}) as any as S.Schema<ServicesGetRequest>;
-
-/** ARM Resource types. */
-export type ServicePropertiesResourceTypesList = Array<string>;
-export const ServicePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ServicePropertiesResourceTypesList>;
-
-/** Details about an Azure service available for support ticket creation. */
-export interface ServiceProperties {
-  /** Localized name of the Azure service. */
-  displayName?: string;
-  /** ARM Resource types. */
-  resourceTypes?: ServicePropertiesResourceTypesList;
-}
-export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    displayName: S.optional(S.String),
-    resourceTypes: S.optional(ServicePropertiesResourceTypesList),
-  }),
-).annotate({
-  identifier: "ServiceProperties",
-}) as any as S.Schema<ServiceProperties>;
-
-export interface ServicesGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ServiceProperties;
-}
-export const ServicesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceProperties),
-  }),
-).annotate({
-  identifier: "ServicesGetResponse",
-}) as any as S.Schema<ServicesGetResponse>;
-
-export interface ServicesListRequest {}
-export const ServicesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/providers/Microsoft.Support/services",
-      code: 200,
-      apiVersion: "2024-04-01",
-    }),
-  ),
-).annotate({
-  identifier: "ServicesListRequest",
-}) as any as S.Schema<ServicesListRequest>;
-
-/** Object that represents a Service resource. */
-export interface Service {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties?: ServiceProperties;
-}
-export const Service = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    type: S.optional(S.String),
-    systemData: S.optional(SystemData),
-    properties: S.optional(ServiceProperties),
-  }),
-).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
-
-/** List of Service resources. */
-export type ServicesListResultValueList = Array<Service>;
-export const ServicesListResultValueList = /*@__PURE__*/ S.Array(
-  Service,
-) as any as S.Schema<ServicesListResultValueList>;
-
-/** Collection of Service resources. */
-export interface ServicesListResult {
-  /** The link to the next page of items */
-  nextLink?: string;
-  /** List of Service resources. */
-  value?: ServicesListResultValueList;
-}
-export const ServicesListResult = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nextLink: S.optional(S.String),
-    value: S.optional(ServicesListResultValueList),
-  }),
-).annotate({
-  identifier: "ServicesListResult",
-}) as any as S.Schema<ServicesListResult>;
-
-export interface SupportTicketsCheckNameAvailabilityRequest {
-  /** The ID of the target subscription. The value must be an UUID. */
-  subscriptionId: string;
-  /** The resource name to validate. */
-  name: string;
-  /** The type of resource. */
-  type: Type | (string & {});
-}
-export const SupportTicketsCheckNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      subscriptionId: S.String.pipe(T.Label()),
-      name: S.String,
-      type: Type,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SupportTicketsCheckNameAvailabilityRequest",
-  }) as any as S.Schema<SupportTicketsCheckNameAvailabilityRequest>;
+    identifier: "CreateFileWorkspaceNoSubscriptionResponse",
+  }) as any as S.Schema<CreateFileWorkspaceNoSubscriptionResponse>;
 
 /** A value that indicates the urgency of the case, which in turn determines the response time according to the service level agreement of the technical support plan you have with Azure. Note: 'Highest critical impact', also known as the 'Emergency - Severe impact' level in the Azure portal is reserved only for our Premium customers. */
 export type SeverityLevel =
@@ -1935,7 +813,7 @@ export const SupportTicketDetailsPropertiesInput = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportTicketDetailsPropertiesInput",
 }) as any as S.Schema<SupportTicketDetailsPropertiesInput>;
 
-export interface SupportTicketsCreateRequest {
+export interface CreateSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
@@ -1943,7 +821,7 @@ export interface SupportTicketsCreateRequest {
   /** Properties of the resource. */
   properties: SupportTicketDetailsPropertiesInput;
 }
-export const SupportTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -1957,8 +835,8 @@ export const SupportTicketsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SupportTicketsCreateRequest",
-}) as any as S.Schema<SupportTicketsCreateRequest>;
+  identifier: "CreateSupportTicketRequest",
+}) as any as S.Schema<CreateSupportTicketRequest>;
 
 /** Service Level Agreement details for a support ticket. */
 export interface ServiceLevelAgreement {
@@ -2097,7 +975,7 @@ export const SupportTicketDetailsProperties = /*@__PURE__*/ S.suspend(() =>
   identifier: "SupportTicketDetailsProperties",
 }) as any as S.Schema<SupportTicketDetailsProperties>;
 
-export interface SupportTicketsCreateResponse {
+export interface CreateSupportTicketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -2109,7 +987,7 @@ export interface SupportTicketsCreateResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const SupportTicketsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2118,16 +996,717 @@ export const SupportTicketsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: SupportTicketDetailsProperties,
   }),
 ).annotate({
-  identifier: "SupportTicketsCreateResponse",
-}) as any as S.Schema<SupportTicketsCreateResponse>;
+  identifier: "CreateSupportTicketResponse",
+}) as any as S.Schema<CreateSupportTicketResponse>;
 
-export interface SupportTicketsGetRequest {
+export interface CreateSupportTicketNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** Properties of the resource. */
+  properties: SupportTicketDetailsPropertiesInput;
+}
+export const CreateSupportTicketNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+      properties: SupportTicketDetailsPropertiesInput,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "CreateSupportTicketNoSubscriptionRequest",
+}) as any as S.Schema<CreateSupportTicketNoSubscriptionRequest>;
+
+export interface CreateSupportTicketNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties: SupportTicketDetailsProperties;
+}
+export const CreateSupportTicketNoSubscriptionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: SupportTicketDetailsProperties,
+    }),
+  ).annotate({
+    identifier: "CreateSupportTicketNoSubscriptionResponse",
+  }) as any as S.Schema<CreateSupportTicketNoSubscriptionResponse>;
+
+export interface FilesNoSubscriptionUploadRequest {
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+  /** The name of the FileDetails */
+  fileName: string;
+  /** File Content in base64 encoded format */
+  content?: string;
+  /** Index of the uploaded chunk (Index starts at 0) */
+  chunkIndex?: number;
+}
+export const FilesNoSubscriptionUploadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileWorkspaceName: S.String.pipe(T.Label()),
+    fileName: S.String.pipe(T.Label()),
+    content: S.optional(S.String),
+    chunkIndex: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "FilesNoSubscriptionUploadRequest",
+}) as any as S.Schema<FilesNoSubscriptionUploadRequest>;
+
+export interface FilesNoSubscriptionUploadResponse {}
+export const FilesNoSubscriptionUploadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "FilesNoSubscriptionUploadResponse",
+}) as any as S.Schema<FilesNoSubscriptionUploadResponse>;
+
+export interface FilesUploadRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+  /** The name of the FileDetails */
+  fileName: string;
+  /** File Content in base64 encoded format */
+  content?: string;
+  /** Index of the uploaded chunk (Index starts at 0) */
+  chunkIndex?: number;
+}
+export const FilesUploadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    fileWorkspaceName: S.String.pipe(T.Label()),
+    fileName: S.String.pipe(T.Label()),
+    content: S.optional(S.String),
+    chunkIndex: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}/upload",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "FilesUploadRequest",
+}) as any as S.Schema<FilesUploadRequest>;
+
+export interface FilesUploadResponse {}
+export const FilesUploadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "FilesUploadResponse",
+}) as any as S.Schema<FilesUploadResponse>;
+
+export interface GetChatTranscriptRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The name of the ChatTranscriptDetails */
+  chatTranscriptName: string;
+}
+export const GetChatTranscriptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    supportTicketName: S.String.pipe(T.Label()),
+    chatTranscriptName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetChatTranscriptRequest",
+}) as any as S.Schema<GetChatTranscriptRequest>;
+
+/** Describes the properties of a Message Details resource. */
+export interface MessageProperties {
+  /** Content type. */
+  contentType?: string;
+  /** Direction of communication. */
+  communicationDirection?: CommunicationDirection;
+  /** Name of the sender. */
+  sender?: string;
+  /** Body of the communication. */
+  body?: string;
+  /** Time in UTC (ISO 8601 format) when the communication was created. */
+  createdDate?: string;
+}
+export const MessageProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentType: S.optional(S.String),
+    communicationDirection: S.optional(CommunicationDirection),
+    sender: S.optional(S.String),
+    body: S.optional(S.String),
+    createdDate: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "MessageProperties",
+}) as any as S.Schema<MessageProperties>;
+
+/** List of chat transcript communication resources. */
+export type ChatTranscriptDetailsPropertiesMessagesList =
+  Array<MessageProperties>;
+export const ChatTranscriptDetailsPropertiesMessagesList =
+  /*@__PURE__*/ S.Array(
+    MessageProperties,
+  ) as any as S.Schema<ChatTranscriptDetailsPropertiesMessagesList>;
+
+/** Describes the properties of a Chat Transcript Details resource. */
+export interface ChatTranscriptDetailsProperties {
+  /** List of chat transcript communication resources. */
+  messages?: ChatTranscriptDetailsPropertiesMessagesList;
+  /** Time in UTC (ISO 8601 format) when the chat began. */
+  startTime?: string;
+}
+export const ChatTranscriptDetailsProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    messages: S.optional(ChatTranscriptDetailsPropertiesMessagesList),
+    startTime: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ChatTranscriptDetailsProperties",
+}) as any as S.Schema<ChatTranscriptDetailsProperties>;
+
+export interface GetChatTranscriptResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ChatTranscriptDetailsProperties;
+}
+export const GetChatTranscriptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ChatTranscriptDetailsProperties),
+  }),
+).annotate({
+  identifier: "GetChatTranscriptResponse",
+}) as any as S.Schema<GetChatTranscriptResponse>;
+
+export interface GetChatTranscriptNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The name of the ChatTranscriptDetails */
+  chatTranscriptName: string;
+}
+export const GetChatTranscriptNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+      chatTranscriptName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetChatTranscriptNoSubscriptionRequest",
+}) as any as S.Schema<GetChatTranscriptNoSubscriptionRequest>;
+
+export interface GetChatTranscriptNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ChatTranscriptDetailsProperties;
+}
+export const GetChatTranscriptNoSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(ChatTranscriptDetailsProperties),
+    }),
+).annotate({
+  identifier: "GetChatTranscriptNoSubscriptionResponse",
+}) as any as S.Schema<GetChatTranscriptNoSubscriptionResponse>;
+
+export interface GetCommunicationRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The name of the CommunicationDetails */
+  communicationName: string;
+}
+export const GetCommunicationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    supportTicketName: S.String.pipe(T.Label()),
+    communicationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetCommunicationRequest",
+}) as any as S.Schema<GetCommunicationRequest>;
+
+export interface GetCommunicationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties: CommunicationDetailsProperties;
+}
+export const GetCommunicationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: CommunicationDetailsProperties,
+  }),
+).annotate({
+  identifier: "GetCommunicationResponse",
+}) as any as S.Schema<GetCommunicationResponse>;
+
+export interface GetCommunicationNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The name of the CommunicationDetails */
+  communicationName: string;
+}
+export const GetCommunicationNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+      communicationName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetCommunicationNoSubscriptionRequest",
+}) as any as S.Schema<GetCommunicationNoSubscriptionRequest>;
+
+export interface GetCommunicationNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties: CommunicationDetailsProperties;
+}
+export const GetCommunicationNoSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: CommunicationDetailsProperties,
+    }),
+).annotate({
+  identifier: "GetCommunicationNoSubscriptionResponse",
+}) as any as S.Schema<GetCommunicationNoSubscriptionResponse>;
+
+export interface GetFileRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+  /** The name of the FileDetails */
+  fileName: string;
+}
+export const GetFileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    fileWorkspaceName: S.String.pipe(T.Label()),
+    fileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({ identifier: "GetFileRequest" }) as any as S.Schema<GetFileRequest>;
+
+export interface GetFileResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource */
+  properties?: FileDetailsProperties;
+}
+export const GetFileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(FileDetailsProperties),
+  }),
+).annotate({
+  identifier: "GetFileResponse",
+}) as any as S.Schema<GetFileResponse>;
+
+export interface GetFileNoSubscriptionRequest {
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+  /** The name of the FileDetails */
+  fileName: string;
+}
+export const GetFileNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileWorkspaceName: S.String.pipe(T.Label()),
+    fileName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetFileNoSubscriptionRequest",
+}) as any as S.Schema<GetFileNoSubscriptionRequest>;
+
+export interface GetFileNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource */
+  properties?: FileDetailsProperties;
+}
+export const GetFileNoSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(FileDetailsProperties),
+  }),
+).annotate({
+  identifier: "GetFileNoSubscriptionResponse",
+}) as any as S.Schema<GetFileNoSubscriptionResponse>;
+
+export interface GetFileWorkspaceRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+}
+export const GetFileWorkspaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    fileWorkspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetFileWorkspaceRequest",
+}) as any as S.Schema<GetFileWorkspaceRequest>;
+
+export interface GetFileWorkspaceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource */
+  properties?: FileWorkspaceDetailsProperties;
+}
+export const GetFileWorkspaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(FileWorkspaceDetailsProperties),
+  }),
+).annotate({
+  identifier: "GetFileWorkspaceResponse",
+}) as any as S.Schema<GetFileWorkspaceResponse>;
+
+export interface GetFileWorkspaceNoSubscriptionRequest {
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+}
+export const GetFileWorkspaceNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      fileWorkspaceName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetFileWorkspaceNoSubscriptionRequest",
+}) as any as S.Schema<GetFileWorkspaceNoSubscriptionRequest>;
+
+export interface GetFileWorkspaceNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource */
+  properties?: FileWorkspaceDetailsProperties;
+}
+export const GetFileWorkspaceNoSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: S.optional(FileWorkspaceDetailsProperties),
+    }),
+).annotate({
+  identifier: "GetFileWorkspaceNoSubscriptionResponse",
+}) as any as S.Schema<GetFileWorkspaceNoSubscriptionResponse>;
+
+export interface GetProblemClassificationRequest {
+  /** Name of the Azure service. */
+  serviceName: string;
+  /** Name of problem classification. */
+  problemClassificationName: string;
+}
+export const GetProblemClassificationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+    problemClassificationName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications/{problemClassificationName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetProblemClassificationRequest",
+}) as any as S.Schema<GetProblemClassificationRequest>;
+
+/** This property indicates whether secondary consent is present for problem classification. */
+export interface SecondaryConsentEnabled {
+  /** User consent description. */
+  description?: string;
+  /** The Azure service for which secondary consent is needed for case creation. */
+  type?: string;
+}
+export const SecondaryConsentEnabled = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    description: S.optional(S.String),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SecondaryConsentEnabled",
+}) as any as S.Schema<SecondaryConsentEnabled>;
+
+/** This property indicates whether secondary consent is present for problem classification */
+export type ProblemClassificationPropertiesSecondaryConsentEnabledList =
+  Array<SecondaryConsentEnabled>;
+export const ProblemClassificationPropertiesSecondaryConsentEnabledList =
+  /*@__PURE__*/ S.Array(
+    SecondaryConsentEnabled,
+  ) as any as S.Schema<ProblemClassificationPropertiesSecondaryConsentEnabledList>;
+
+/** Details about a problem classification available for an Azure service. */
+export interface ProblemClassificationProperties {
+  /** Localized name of problem classification. */
+  displayName?: string;
+  /** This property indicates whether secondary consent is present for problem classification */
+  secondaryConsentEnabled?: ProblemClassificationPropertiesSecondaryConsentEnabledList;
+}
+export const ProblemClassificationProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    secondaryConsentEnabled: S.optional(
+      ProblemClassificationPropertiesSecondaryConsentEnabledList,
+    ),
+  }),
+).annotate({
+  identifier: "ProblemClassificationProperties",
+}) as any as S.Schema<ProblemClassificationProperties>;
+
+export interface GetProblemClassificationResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ProblemClassificationProperties;
+}
+export const GetProblemClassificationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ProblemClassificationProperties),
+  }),
+).annotate({
+  identifier: "GetProblemClassificationResponse",
+}) as any as S.Schema<GetProblemClassificationResponse>;
+
+export interface GetServiceRequest {
+  /** Name of the Azure service. */
+  serviceName: string;
+}
+export const GetServiceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/services/{serviceName}",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "GetServiceRequest",
+}) as any as S.Schema<GetServiceRequest>;
+
+/** ARM Resource types. */
+export type ServicePropertiesResourceTypesList = Array<string>;
+export const ServicePropertiesResourceTypesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ServicePropertiesResourceTypesList>;
+
+/** Details about an Azure service available for support ticket creation. */
+export interface ServiceProperties {
+  /** Localized name of the Azure service. */
+  displayName?: string;
+  /** ARM Resource types. */
+  resourceTypes?: ServicePropertiesResourceTypesList;
+}
+export const ServiceProperties = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    displayName: S.optional(S.String),
+    resourceTypes: S.optional(ServicePropertiesResourceTypesList),
+  }),
+).annotate({
+  identifier: "ServiceProperties",
+}) as any as S.Schema<ServiceProperties>;
+
+export interface GetServiceResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ServiceProperties;
+}
+export const GetServiceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ServiceProperties),
+  }),
+).annotate({
+  identifier: "GetServiceResponse",
+}) as any as S.Schema<GetServiceResponse>;
+
+export interface GetSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
   supportTicketName: string;
 }
-export const SupportTicketsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -2140,10 +1719,10 @@ export const SupportTicketsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SupportTicketsGetRequest",
-}) as any as S.Schema<SupportTicketsGetRequest>;
+  identifier: "GetSupportTicketRequest",
+}) as any as S.Schema<GetSupportTicketRequest>;
 
-export interface SupportTicketsGetResponse {
+export interface GetSupportTicketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -2155,7 +1734,7 @@ export interface SupportTicketsGetResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const SupportTicketsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2164,33 +1743,566 @@ export const SupportTicketsGetResponse = /*@__PURE__*/ S.suspend(() =>
     properties: SupportTicketDetailsProperties,
   }),
 ).annotate({
-  identifier: "SupportTicketsGetResponse",
-}) as any as S.Schema<SupportTicketsGetResponse>;
+  identifier: "GetSupportTicketResponse",
+}) as any as S.Schema<GetSupportTicketResponse>;
 
-export interface SupportTicketsListRequest {
+export interface GetSupportTicketNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+}
+export const GetSupportTicketNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "GetSupportTicketNoSubscriptionRequest",
+}) as any as S.Schema<GetSupportTicketNoSubscriptionRequest>;
+
+export interface GetSupportTicketNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties: SupportTicketDetailsProperties;
+}
+export const GetSupportTicketNoSubscriptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: SupportTicketDetailsProperties,
+    }),
+).annotate({
+  identifier: "GetSupportTicketNoSubscriptionResponse",
+}) as any as S.Schema<GetSupportTicketNoSubscriptionResponse>;
+
+export interface ListChatTranscriptNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+}
+export const ListChatTranscriptNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListChatTranscriptNoSubscriptionRequest",
+}) as any as S.Schema<ListChatTranscriptNoSubscriptionRequest>;
+
+/** Object that represents a Chat Transcript resource. */
+export interface ChatTranscriptDetails {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ChatTranscriptDetailsProperties;
+}
+export const ChatTranscriptDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ChatTranscriptDetailsProperties),
+  }),
+).annotate({
+  identifier: "ChatTranscriptDetails",
+}) as any as S.Schema<ChatTranscriptDetails>;
+
+/** [Placeholder] Description for value property */
+export type ChatTranscriptsListResultValueList = Array<ChatTranscriptDetails>;
+export const ChatTranscriptsListResultValueList = /*@__PURE__*/ S.Array(
+  ChatTranscriptDetails,
+) as any as S.Schema<ChatTranscriptsListResultValueList>;
+
+/** [Placeholder] Description for page model */
+export interface ListChatTranscriptsResult {
+  /** [Placeholder] Description for nextLink property */
+  nextLink?: string;
+  /** [Placeholder] Description for value property */
+  value?: ChatTranscriptsListResultValueList;
+}
+export const ListChatTranscriptsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ChatTranscriptsListResultValueList),
+  }),
+).annotate({
+  identifier: "ListChatTranscriptsResult",
+}) as any as S.Schema<ListChatTranscriptsResult>;
+
+export interface ListChatTranscriptsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
-  /** The number of values to return in the collection. Default is 25 and max is 100. */
-  _top?: number;
-  /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'. */
-  _filter?: string;
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
 }
-export const SupportTicketsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListChatTranscriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
-    _top: S.optional(S.Number.pipe(T.Query("$top"))),
-    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    supportTicketName: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
       code: 200,
       apiVersion: "2024-04-01",
     }),
   ),
 ).annotate({
-  identifier: "SupportTicketsListRequest",
-}) as any as S.Schema<SupportTicketsListRequest>;
+  identifier: "ListChatTranscriptsRequest",
+}) as any as S.Schema<ListChatTranscriptsRequest>;
+
+export interface ListCommunicationNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The number of values to return in the collection. Default is 10 and max is 10. */
+  _top?: number;
+  /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
+  _filter?: string;
+}
+export const ListCommunicationNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListCommunicationNoSubscriptionRequest",
+}) as any as S.Schema<ListCommunicationNoSubscriptionRequest>;
+
+/** Object that represents a Communication resource. */
+export interface CommunicationDetails {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties: CommunicationDetailsProperties;
+}
+export const CommunicationDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: CommunicationDetailsProperties,
+  }),
+).annotate({
+  identifier: "CommunicationDetails",
+}) as any as S.Schema<CommunicationDetails>;
+
+/** [Placeholder] Description for value property */
+export type CommunicationsListResultValueList = Array<CommunicationDetails>;
+export const CommunicationsListResultValueList = /*@__PURE__*/ S.Array(
+  CommunicationDetails,
+) as any as S.Schema<CommunicationsListResultValueList>;
+
+/** [Placeholder] Description for page model */
+export interface ListCommunicationsResult {
+  /** [Placeholder] Description for nextLink property */
+  nextLink?: string;
+  /** [Placeholder] Description for value property */
+  value?: CommunicationsListResultValueList;
+}
+export const ListCommunicationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(CommunicationsListResultValueList),
+  }),
+).annotate({
+  identifier: "ListCommunicationsResult",
+}) as any as S.Schema<ListCommunicationsResult>;
+
+export interface ListCommunicationsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** The number of values to return in the collection. Default is 10 and max is 10. */
+  _top?: number;
+  /** The filter to apply on the operation. You can filter by communicationType and createdDate properties. CommunicationType supports Equals ('eq') operator and createdDate supports Greater Than ('gt') and Greater Than or Equals ('ge') operators. You may combine the CommunicationType and CreatedDate filters by Logical And ('and') operator. */
+  _filter?: string;
+}
+export const ListCommunicationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    supportTicketName: S.String.pipe(T.Label()),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListCommunicationsRequest",
+}) as any as S.Schema<ListCommunicationsRequest>;
+
+export interface ListFileNoSubscriptionRequest {
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+}
+export const ListFileNoSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fileWorkspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListFileNoSubscriptionRequest",
+}) as any as S.Schema<ListFileNoSubscriptionRequest>;
+
+/** Object that represents File Details resource */
+export interface FileDetails {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource */
+  properties?: FileDetailsProperties;
+}
+export const FileDetails = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(FileDetailsProperties),
+  }),
+).annotate({ identifier: "FileDetails" }) as any as S.Schema<FileDetails>;
+
+/** [Placeholder] Description for value property */
+export type FilesListResultValueList = Array<FileDetails>;
+export const FilesListResultValueList = /*@__PURE__*/ S.Array(
+  FileDetails,
+) as any as S.Schema<FilesListResultValueList>;
+
+/** [Placeholder] Description for page model */
+export interface ListFilesResult {
+  /** [Placeholder] Description for nextLink property */
+  nextLink?: string;
+  /** [Placeholder] Description for value property */
+  value?: FilesListResultValueList;
+}
+export const ListFilesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(FilesListResultValueList),
+  }),
+).annotate({
+  identifier: "ListFilesResult",
+}) as any as S.Schema<ListFilesResult>;
+
+export interface ListFilesRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
+  /** The name of the FileWorkspaceDetails */
+  fileWorkspaceName: string;
+}
+export const ListFilesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    fileWorkspaceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListFilesRequest",
+}) as any as S.Schema<ListFilesRequest>;
+
+export interface ListOperationsRequest {}
+export const ListOperationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/operations",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListOperationsRequest",
+}) as any as S.Schema<ListOperationsRequest>;
+
+/** Localized display information for this particular operation. */
+export interface OperationDisplay {
+  /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
+  provider?: string;
+  /** The localized friendly name of the resource type related to this operation. E.g. "Virtual Machines" or "Job Schedule Collections". */
+  resource?: string;
+  /** The concise, localized friendly name for the operation; suitable for dropdowns. E.g. "Create or Update Virtual Machine", "Restart Virtual Machine". */
+  operation?: string;
+  /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
+  description?: string;
+}
+export const OperationDisplay = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    provider: S.optional(S.String),
+    resource: S.optional(S.String),
+    operation: S.optional(S.String),
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "OperationDisplay",
+}) as any as S.Schema<OperationDisplay>;
+
+/** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+export type OperationOrigin = "user" | "system" | "user,system";
+export const OperationOrigin = /*@__PURE__*/ S.String;
+
+/** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+export type OperationActionType = "Internal";
+export const OperationActionType = /*@__PURE__*/ S.String;
+
+/** Details of a REST API operation, returned from the Resource Provider Operations API */
+export interface Operation {
+  /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
+  name?: string;
+  /** Whether the operation applies to data-plane. This is "true" for data-plane operations and "false" for ARM/control-plane operations. */
+  isDataAction?: boolean;
+  /** Localized display information for this particular operation. */
+  display?: OperationDisplay;
+  /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
+  origin?: OperationOrigin;
+  /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
+  actionType?: OperationActionType;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    isDataAction: S.optional(S.Boolean),
+    display: S.optional(OperationDisplay),
+    origin: S.optional(OperationOrigin),
+    actionType: S.optional(OperationActionType),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
+
+/** List of operations supported by the resource provider */
+export type OperationsListResponseValueList = Array<Operation>;
+export const OperationsListResponseValueList = /*@__PURE__*/ S.Array(
+  Operation,
+) as any as S.Schema<OperationsListResponseValueList>;
+
+export interface ListOperationsResponse {
+  /** List of operations supported by the resource provider */
+  value?: OperationsListResponseValueList;
+  /** URL to get the next set of operation list results (if there are any). */
+  nextLink?: string;
+}
+export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    value: S.optional(OperationsListResponseValueList),
+    nextLink: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListOperationsResponse",
+}) as any as S.Schema<ListOperationsResponse>;
+
+export interface ListProblemClassificationsRequest {
+  /** Name of the Azure service. */
+  serviceName: string;
+}
+export const ListProblemClassificationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    serviceName: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListProblemClassificationsRequest",
+}) as any as S.Schema<ListProblemClassificationsRequest>;
+
+/** ProblemClassification resource object. */
+export interface ProblemClassification {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ProblemClassificationProperties;
+}
+export const ProblemClassification = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ProblemClassificationProperties),
+  }),
+).annotate({
+  identifier: "ProblemClassification",
+}) as any as S.Schema<ProblemClassification>;
+
+/** List of ProblemClassification resources. */
+export type ProblemClassificationsListResultValueList =
+  Array<ProblemClassification>;
+export const ProblemClassificationsListResultValueList = /*@__PURE__*/ S.Array(
+  ProblemClassification,
+) as any as S.Schema<ProblemClassificationsListResultValueList>;
+
+/** Collection of ProblemClassification resources. */
+export interface ListProblemClassificationsResult {
+  /** The link to the next page of items */
+  nextLink?: string;
+  /** List of ProblemClassification resources. */
+  value?: ProblemClassificationsListResultValueList;
+}
+export const ListProblemClassificationsResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ProblemClassificationsListResultValueList),
+  }),
+).annotate({
+  identifier: "ListProblemClassificationsResult",
+}) as any as S.Schema<ListProblemClassificationsResult>;
+
+export interface ListServicesRequest {}
+export const ListServicesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/providers/Microsoft.Support/services",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
+).annotate({
+  identifier: "ListServicesRequest",
+}) as any as S.Schema<ListServicesRequest>;
+
+/** Object that represents a Service resource. */
+export interface Service {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties?: ServiceProperties;
+}
+export const Service = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    type: S.optional(S.String),
+    systemData: S.optional(SystemData),
+    properties: S.optional(ServiceProperties),
+  }),
+).annotate({ identifier: "Service" }) as any as S.Schema<Service>;
+
+/** List of Service resources. */
+export type ServicesListResultValueList = Array<Service>;
+export const ServicesListResultValueList = /*@__PURE__*/ S.Array(
+  Service,
+) as any as S.Schema<ServicesListResultValueList>;
+
+/** Collection of Service resources. */
+export interface ListServicesResult {
+  /** The link to the next page of items */
+  nextLink?: string;
+  /** List of Service resources. */
+  value?: ServicesListResultValueList;
+}
+export const ListServicesResult = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nextLink: S.optional(S.String),
+    value: S.optional(ServicesListResultValueList),
+  }),
+).annotate({
+  identifier: "ListServicesResult",
+}) as any as S.Schema<ListServicesResult>;
+
+export interface ListSupportTicketNoSubscriptionRequest {
+  /** The number of values to return in the collection. Default is 25 and max is 100. */
+  _top?: number;
+  /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'. */
+  _filter?: string;
+}
+export const ListSupportTicketNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      _top: S.optional(S.Number.pipe(T.Query("$top"))),
+      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/providers/Microsoft.Support/supportTickets",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "ListSupportTicketNoSubscriptionRequest",
+}) as any as S.Schema<ListSupportTicketNoSubscriptionRequest>;
 
 /** Object that represents SupportTicketDetails resource. */
 export interface SupportTicketDetails {
@@ -2224,159 +2336,45 @@ export const SupportTicketsListResultValueList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SupportTicketsListResultValueList>;
 
 /** [Placeholder] Description for page model */
-export interface SupportTicketsListResult {
+export interface ListSupportTicketsResult {
   /** [Placeholder] Description for nextLink property */
   nextLink?: string;
   /** [Placeholder] Description for value property */
   value?: SupportTicketsListResultValueList;
 }
-export const SupportTicketsListResult = /*@__PURE__*/ S.suspend(() =>
+export const ListSupportTicketsResult = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     nextLink: S.optional(S.String),
     value: S.optional(SupportTicketsListResultValueList),
   }),
 ).annotate({
-  identifier: "SupportTicketsListResult",
-}) as any as S.Schema<SupportTicketsListResult>;
+  identifier: "ListSupportTicketsResult",
+}) as any as S.Schema<ListSupportTicketsResult>;
 
-export interface SupportTicketsNoSubscriptionCheckNameAvailabilityRequest {
-  /** The resource name to validate. */
-  name: string;
-  /** The type of resource. */
-  type: Type | (string & {});
-}
-export const SupportTicketsNoSubscriptionCheckNameAvailabilityRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      type: Type,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/providers/Microsoft.Support/checkNameAvailability",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SupportTicketsNoSubscriptionCheckNameAvailabilityRequest",
-  }) as any as S.Schema<SupportTicketsNoSubscriptionCheckNameAvailabilityRequest>;
-
-export interface SupportTicketsNoSubscriptionCreateRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** Properties of the resource. */
-  properties: SupportTicketDetailsPropertiesInput;
-}
-export const SupportTicketsNoSubscriptionCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      properties: SupportTicketDetailsPropertiesInput,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SupportTicketsNoSubscriptionCreateRequest",
-  }) as any as S.Schema<SupportTicketsNoSubscriptionCreateRequest>;
-
-export interface SupportTicketsNoSubscriptionCreateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties: SupportTicketDetailsProperties;
-}
-export const SupportTicketsNoSubscriptionCreateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: SupportTicketDetailsProperties,
-    }),
-  ).annotate({
-    identifier: "SupportTicketsNoSubscriptionCreateResponse",
-  }) as any as S.Schema<SupportTicketsNoSubscriptionCreateResponse>;
-
-export interface SupportTicketsNoSubscriptionGetRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-}
-export const SupportTicketsNoSubscriptionGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-).annotate({
-  identifier: "SupportTicketsNoSubscriptionGetRequest",
-}) as any as S.Schema<SupportTicketsNoSubscriptionGetRequest>;
-
-export interface SupportTicketsNoSubscriptionGetResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties: SupportTicketDetailsProperties;
-}
-export const SupportTicketsNoSubscriptionGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: SupportTicketDetailsProperties,
-    }),
-).annotate({
-  identifier: "SupportTicketsNoSubscriptionGetResponse",
-}) as any as S.Schema<SupportTicketsNoSubscriptionGetResponse>;
-
-export interface SupportTicketsNoSubscriptionListRequest {
+export interface ListSupportTicketsRequest {
+  /** The ID of the target subscription. The value must be an UUID. */
+  subscriptionId: string;
   /** The number of values to return in the collection. Default is 25 and max is 100. */
   _top?: number;
-  /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. <a target='_blank' href='https://docs.microsoft.com/odata/concepts/queryoptions-overview'>Learn more</a> <br/><i>Status</i> , <i>ServiceId</i>, and <i>ProblemClassificationId</i> filters can only be used with 'eq' operator. For <i>CreatedDate</i> filter, the supported operators are 'gt' and 'ge'. When using both filters, combine them using the logical 'AND'. */
+  /** The filter to apply on the operation. We support 'odata v4.0' filter semantics. [Learn more](https://docs.microsoft.com/odata/concepts/queryoptions-overview). _Status_, _ServiceId_, and _ProblemClassificationId_ filters can only be used with Equals ('eq') operator. For _CreatedDate_ filter, the supported operators are Greater Than ('gt') and Greater Than or Equals ('ge'). When using both filters, combine them using the logical 'AND'. */
   _filter?: string;
 }
-export const SupportTicketsNoSubscriptionListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      _top: S.optional(S.Number.pipe(T.Query("$top"))),
-      _filter: S.optional(S.String.pipe(T.Query("$filter"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/providers/Microsoft.Support/supportTickets",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
+export const ListSupportTicketsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.String.pipe(T.Label()),
+    _top: S.optional(S.Number.pipe(T.Query("$top"))),
+    _filter: S.optional(S.String.pipe(T.Query("$filter"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
+      code: 200,
+      apiVersion: "2024-04-01",
+    }),
+  ),
 ).annotate({
-  identifier: "SupportTicketsNoSubscriptionListRequest",
-}) as any as S.Schema<SupportTicketsNoSubscriptionListRequest>;
+  identifier: "ListSupportTicketsRequest",
+}) as any as S.Schema<ListSupportTicketsRequest>;
 
 /** Status to be updated on the ticket. */
 export type Status = "open" | "closed";
@@ -2429,76 +2427,6 @@ export const UpdateContactProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateContactProfile>;
 
 /** This property indicates secondary consents for the support ticket */
-export type SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
-  Array<SecondaryConsent>;
-export const SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
-  /*@__PURE__*/ S.Array(
-    SecondaryConsent,
-  ) as any as S.Schema<SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList>;
-
-export interface SupportTicketsNoSubscriptionUpdateRequest {
-  /** The name of the SupportTicketDetails */
-  supportTicketName: string;
-  /** Severity level. */
-  severity?: SeverityLevel | (string & {});
-  /** Status to be updated on the ticket. */
-  status?: Status | (string & {});
-  /** Contact details to be updated on the support ticket. */
-  contactDetails?: UpdateContactProfile;
-  /** Advanced diagnostic consent to be updated on the support ticket. */
-  advancedDiagnosticConsent?: Consent | (string & {});
-  /** This property indicates secondary consents for the support ticket */
-  secondaryConsent?: SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList;
-}
-export const SupportTicketsNoSubscriptionUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      supportTicketName: S.String.pipe(T.Label()),
-      severity: S.optional(SeverityLevel),
-      status: S.optional(Status),
-      contactDetails: S.optional(UpdateContactProfile),
-      advancedDiagnosticConsent: S.optional(Consent),
-      secondaryConsent: S.optional(
-        SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
-        code: 200,
-        apiVersion: "2024-04-01",
-      }),
-    ),
-  ).annotate({
-    identifier: "SupportTicketsNoSubscriptionUpdateRequest",
-  }) as any as S.Schema<SupportTicketsNoSubscriptionUpdateRequest>;
-
-export interface SupportTicketsNoSubscriptionUpdateResponse {
-  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
-  id?: string;
-  /** The name of the resource */
-  name?: string;
-  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
-  type?: string;
-  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
-  systemData?: SystemData;
-  /** Properties of the resource. */
-  properties: SupportTicketDetailsProperties;
-}
-export const SupportTicketsNoSubscriptionUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      name: S.optional(S.String),
-      type: S.optional(S.String),
-      systemData: S.optional(SystemData),
-      properties: SupportTicketDetailsProperties,
-    }),
-  ).annotate({
-    identifier: "SupportTicketsNoSubscriptionUpdateResponse",
-  }) as any as S.Schema<SupportTicketsNoSubscriptionUpdateResponse>;
-
-/** This property indicates secondary consents for the support ticket */
 export type SupportTicketsUpdateRequestSecondaryConsentList =
   Array<SecondaryConsent>;
 export const SupportTicketsUpdateRequestSecondaryConsentList =
@@ -2506,7 +2434,7 @@ export const SupportTicketsUpdateRequestSecondaryConsentList =
     SecondaryConsent,
   ) as any as S.Schema<SupportTicketsUpdateRequestSecondaryConsentList>;
 
-export interface SupportTicketsUpdateRequest {
+export interface UpdateSupportTicketRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the SupportTicketDetails */
@@ -2522,7 +2450,7 @@ export interface SupportTicketsUpdateRequest {
   /** This property indicates secondary consents for the support ticket */
   secondaryConsent?: SupportTicketsUpdateRequestSecondaryConsentList;
 }
-export const SupportTicketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSupportTicketRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     subscriptionId: S.String.pipe(T.Label()),
     supportTicketName: S.String.pipe(T.Label()),
@@ -2542,10 +2470,10 @@ export const SupportTicketsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SupportTicketsUpdateRequest",
-}) as any as S.Schema<SupportTicketsUpdateRequest>;
+  identifier: "UpdateSupportTicketRequest",
+}) as any as S.Schema<UpdateSupportTicketRequest>;
 
-export interface SupportTicketsUpdateResponse {
+export interface UpdateSupportTicketResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
   /** The name of the resource */
@@ -2557,7 +2485,7 @@ export interface SupportTicketsUpdateResponse {
   /** Properties of the resource. */
   properties: SupportTicketDetailsProperties;
 }
-export const SupportTicketsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSupportTicketResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     name: S.optional(S.String),
@@ -2566,275 +2494,256 @@ export const SupportTicketsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     properties: SupportTicketDetailsProperties,
   }),
 ).annotate({
-  identifier: "SupportTicketsUpdateResponse",
-}) as any as S.Schema<SupportTicketsUpdateResponse>;
+  identifier: "UpdateSupportTicketResponse",
+}) as any as S.Schema<UpdateSupportTicketResponse>;
 
-export type ChatTranscriptsGetError = AzureOpError;
-/** Returns chatTranscript details for a support ticket under a subscription. */
-export const ChatTranscriptsGet: API.OperationMethod<
-  ChatTranscriptsGetRequest,
-  ChatTranscriptsGetResponse,
-  ChatTranscriptsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChatTranscriptsGetRequest,
-  output: ChatTranscriptsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+/** This property indicates secondary consents for the support ticket */
+export type SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
+  Array<SecondaryConsent>;
+export const SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList =
+  /*@__PURE__*/ S.Array(
+    SecondaryConsent,
+  ) as any as S.Schema<SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList>;
 
-export type ChatTranscriptsListError = AzureOpError;
-/** Lists all chat transcripts for a support ticket under subscription */
-export const ChatTranscriptsList: API.OperationMethod<
-  ChatTranscriptsListRequest,
-  ChatTranscriptsListResult,
-  ChatTranscriptsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChatTranscriptsListRequest,
-  output: ChatTranscriptsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateSupportTicketNoSubscriptionRequest {
+  /** The name of the SupportTicketDetails */
+  supportTicketName: string;
+  /** Severity level. */
+  severity?: SeverityLevel | (string & {});
+  /** Status to be updated on the ticket. */
+  status?: Status | (string & {});
+  /** Contact details to be updated on the support ticket. */
+  contactDetails?: UpdateContactProfile;
+  /** Advanced diagnostic consent to be updated on the support ticket. */
+  advancedDiagnosticConsent?: Consent | (string & {});
+  /** This property indicates secondary consents for the support ticket */
+  secondaryConsent?: SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList;
+}
+export const UpdateSupportTicketNoSubscriptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      supportTicketName: S.String.pipe(T.Label()),
+      severity: S.optional(SeverityLevel),
+      status: S.optional(Status),
+      contactDetails: S.optional(UpdateContactProfile),
+      advancedDiagnosticConsent: S.optional(Consent),
+      secondaryConsent: S.optional(
+        SupportTicketsNoSubscriptionUpdateRequestSecondaryConsentList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+        code: 200,
+        apiVersion: "2024-04-01",
+      }),
+    ),
+).annotate({
+  identifier: "UpdateSupportTicketNoSubscriptionRequest",
+}) as any as S.Schema<UpdateSupportTicketNoSubscriptionRequest>;
 
-export type ChatTranscriptsNoSubscriptionGetError = AzureOpError;
-/** Returns chatTranscript details for a no subscription support ticket. */
-export const ChatTranscriptsNoSubscriptionGet: API.OperationMethod<
-  ChatTranscriptsNoSubscriptionGetRequest,
-  ChatTranscriptsNoSubscriptionGetResponse,
-  ChatTranscriptsNoSubscriptionGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChatTranscriptsNoSubscriptionGetRequest,
-  output: ChatTranscriptsNoSubscriptionGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
+export interface UpdateSupportTicketNoSubscriptionResponse {
+  /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
+  id?: string;
+  /** The name of the resource */
+  name?: string;
+  /** The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts" */
+  type?: string;
+  /** Azure Resource Manager metadata containing createdBy and modifiedBy information. */
+  systemData?: SystemData;
+  /** Properties of the resource. */
+  properties: SupportTicketDetailsProperties;
+}
+export const UpdateSupportTicketNoSubscriptionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      name: S.optional(S.String),
+      type: S.optional(S.String),
+      systemData: S.optional(SystemData),
+      properties: SupportTicketDetailsProperties,
+    }),
+  ).annotate({
+    identifier: "UpdateSupportTicketNoSubscriptionResponse",
+  }) as any as S.Schema<UpdateSupportTicketNoSubscriptionResponse>;
 
-export type ChatTranscriptsNoSubscriptionListError = AzureOpError;
-/** Lists all chat transcripts for a support ticket */
-export const ChatTranscriptsNoSubscriptionList: API.OperationMethod<
-  ChatTranscriptsNoSubscriptionListRequest,
-  ChatTranscriptsListResult,
-  ChatTranscriptsNoSubscriptionListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ChatTranscriptsNoSubscriptionListRequest,
-  output: ChatTranscriptsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommunicationsCheckNameAvailabilityError = AzureOpError;
+export type CheckCommunicationNameAvailabilityError = AzureOpError;
 /** Check the availability of a resource name. This API should be used to check the uniqueness of the name for adding a new communication to the support ticket. */
-export const CommunicationsCheckNameAvailability: API.OperationMethod<
-  CommunicationsCheckNameAvailabilityRequest,
+export const CheckCommunicationNameAvailability: API.OperationMethod<
+  CheckCommunicationNameAvailabilityRequest,
   CheckNameAvailabilityOutput,
-  CommunicationsCheckNameAvailabilityError,
+  CheckCommunicationNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsCheckNameAvailabilityRequest,
+  input: CheckCommunicationNameAvailabilityRequest,
   output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CommunicationsCreateError = AzureOpError;
-/** Adds a new customer communication to an Azure support ticket. */
-export const CommunicationsCreate: API.OperationMethod<
-  CommunicationsCreateRequest,
-  CommunicationsCreateResponse,
-  CommunicationsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsCreateRequest,
-  output: CommunicationsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommunicationsGetError = AzureOpError;
-/** Returns communication details for a support ticket. */
-export const CommunicationsGet: API.OperationMethod<
-  CommunicationsGetRequest,
-  CommunicationsGetResponse,
-  CommunicationsGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsGetRequest,
-  output: CommunicationsGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommunicationsListError = AzureOpError;
-/** Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const CommunicationsList: API.OperationMethod<
-  CommunicationsListRequest,
-  CommunicationsListResult,
-  CommunicationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsListRequest,
-  output: CommunicationsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type CommunicationsNoSubscriptionCheckNameAvailabilityError =
+export type CheckCommunicationNoSubscriptionNameAvailabilityError =
   AzureOpError;
 /** Check the availability of a resource name. This API should be used to check the uniqueness of the name for adding a new communication to the support ticket. */
-export const CommunicationsNoSubscriptionCheckNameAvailability: API.OperationMethod<
-  CommunicationsNoSubscriptionCheckNameAvailabilityRequest,
+export const CheckCommunicationNoSubscriptionNameAvailability: API.OperationMethod<
+  CheckCommunicationNoSubscriptionNameAvailabilityRequest,
   CheckNameAvailabilityOutput,
-  CommunicationsNoSubscriptionCheckNameAvailabilityError,
+  CheckCommunicationNoSubscriptionNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsNoSubscriptionCheckNameAvailabilityRequest,
+  input: CheckCommunicationNoSubscriptionNameAvailabilityRequest,
   output: CheckNameAvailabilityOutput,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CommunicationsNoSubscriptionCreateError = AzureOpError;
+export type CheckSupportTicketNameAvailabilityError = AzureOpError;
+/** Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription. */
+export const CheckSupportTicketNameAvailability: API.OperationMethod<
+  CheckSupportTicketNameAvailabilityRequest,
+  CheckNameAvailabilityOutput,
+  CheckSupportTicketNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckSupportTicketNameAvailabilityRequest,
+  output: CheckNameAvailabilityOutput,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CheckSupportTicketNoSubscriptionNameAvailabilityError =
+  AzureOpError;
+/** Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription. */
+export const CheckSupportTicketNoSubscriptionNameAvailability: API.OperationMethod<
+  CheckSupportTicketNoSubscriptionNameAvailabilityRequest,
+  CheckNameAvailabilityOutput,
+  CheckSupportTicketNoSubscriptionNameAvailabilityError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CheckSupportTicketNoSubscriptionNameAvailabilityRequest,
+  output: CheckNameAvailabilityOutput,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateCommunicationError = AzureOpError;
 /** Adds a new customer communication to an Azure support ticket. */
-export const CommunicationsNoSubscriptionCreate: API.OperationMethod<
-  CommunicationsNoSubscriptionCreateRequest,
-  CommunicationsNoSubscriptionCreateResponse,
-  CommunicationsNoSubscriptionCreateError,
+export const CreateCommunication: API.OperationMethod<
+  CreateCommunicationRequest,
+  CreateCommunicationResponse,
+  CreateCommunicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsNoSubscriptionCreateRequest,
-  output: CommunicationsNoSubscriptionCreateResponse,
+  input: CreateCommunicationRequest,
+  output: CreateCommunicationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CommunicationsNoSubscriptionGetError = AzureOpError;
-/** Returns communication details for a support ticket. */
-export const CommunicationsNoSubscriptionGet: API.OperationMethod<
-  CommunicationsNoSubscriptionGetRequest,
-  CommunicationsNoSubscriptionGetResponse,
-  CommunicationsNoSubscriptionGetError,
+export type CreateCommunicationNoSubscriptionError = AzureOpError;
+/** Adds a new customer communication to an Azure support ticket. */
+export const CreateCommunicationNoSubscription: API.OperationMethod<
+  CreateCommunicationNoSubscriptionRequest,
+  CreateCommunicationNoSubscriptionResponse,
+  CreateCommunicationNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsNoSubscriptionGetRequest,
-  output: CommunicationsNoSubscriptionGetResponse,
+  input: CreateCommunicationNoSubscriptionRequest,
+  output: CreateCommunicationNoSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type CommunicationsNoSubscriptionListError = AzureOpError;
-/** Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const CommunicationsNoSubscriptionList: API.OperationMethod<
-  CommunicationsNoSubscriptionListRequest,
-  CommunicationsListResult,
-  CommunicationsNoSubscriptionListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CommunicationsNoSubscriptionListRequest,
-  output: CommunicationsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FilesCreateError = AzureOpError;
+export type CreateFileError = AzureOpError;
 /** Creates a new file under a workspace for the specified subscription. */
-export const FilesCreate: API.OperationMethod<
-  FilesCreateRequest,
-  FilesCreateResponse,
-  FilesCreateError,
+export const CreateFile: API.OperationMethod<
+  CreateFileRequest,
+  CreateFileResponse,
+  CreateFileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesCreateRequest,
-  output: FilesCreateResponse,
+  input: CreateFileRequest,
+  output: CreateFileResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FilesGetError = AzureOpError;
-/** Returns details of a specific file in a work space. */
-export const FilesGet: API.OperationMethod<
-  FilesGetRequest,
-  FilesGetResponse,
-  FilesGetError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FilesGetRequest,
-  output: FilesGetResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FilesListError = AzureOpError;
-/** Lists all the Files information under a workspace for an Azure subscription. */
-export const FilesList: API.OperationMethod<
-  FilesListRequest,
-  FilesListResult,
-  FilesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FilesListRequest,
-  output: FilesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FilesNoSubscriptionCreateError = AzureOpError;
+export type CreateFileNoSubscriptionError = AzureOpError;
 /** Creates a new file under a workspace. */
-export const FilesNoSubscriptionCreate: API.OperationMethod<
-  FilesNoSubscriptionCreateRequest,
-  FilesNoSubscriptionCreateResponse,
-  FilesNoSubscriptionCreateError,
+export const CreateFileNoSubscription: API.OperationMethod<
+  CreateFileNoSubscriptionRequest,
+  CreateFileNoSubscriptionResponse,
+  CreateFileNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesNoSubscriptionCreateRequest,
-  output: FilesNoSubscriptionCreateResponse,
+  input: CreateFileNoSubscriptionRequest,
+  output: CreateFileNoSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FilesNoSubscriptionGetError = AzureOpError;
-/** Returns details of a specific file in a work space. */
-export const FilesNoSubscriptionGet: API.OperationMethod<
-  FilesNoSubscriptionGetRequest,
-  FilesNoSubscriptionGetResponse,
-  FilesNoSubscriptionGetError,
+export type CreateFileWorkspaceError = AzureOpError;
+/** Creates a new file workspace for the specified subscription. */
+export const CreateFileWorkspace: API.OperationMethod<
+  CreateFileWorkspaceRequest,
+  CreateFileWorkspaceResponse,
+  CreateFileWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesNoSubscriptionGetRequest,
-  output: FilesNoSubscriptionGetResponse,
+  input: CreateFileWorkspaceRequest,
+  output: CreateFileWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FilesNoSubscriptionListError = AzureOpError;
-/** Lists all the Files information under a workspace for an Azure subscription. */
-export const FilesNoSubscriptionList: API.OperationMethod<
-  FilesNoSubscriptionListRequest,
-  FilesListResult,
-  FilesNoSubscriptionListError,
+export type CreateFileWorkspaceNoSubscriptionError = AzureOpError;
+/** Creates a new file workspace. */
+export const CreateFileWorkspaceNoSubscription: API.OperationMethod<
+  CreateFileWorkspaceNoSubscriptionRequest,
+  CreateFileWorkspaceNoSubscriptionResponse,
+  CreateFileWorkspaceNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FilesNoSubscriptionListRequest,
-  output: FilesListResult,
+  input: CreateFileWorkspaceNoSubscriptionRequest,
+  output: CreateFileWorkspaceNoSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSupportTicketError = AzureOpError;
+/** Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/>**Creating a support ticket for on-behalf-of**: Include _x-ms-authorization-auxiliary_ header to provide an auxiliary token as per [documentation](https://docs.microsoft.com/azure/azure-resource-manager/management/authenticate-multi-tenant). The primary token will be from the tenant for whom a support ticket is being raised against the subscription, i.e. Cloud solution provider (CSP) customer tenant. The auxiliary token will be from the Cloud solution provider (CSP) partner tenant. */
+export const CreateSupportTicket: API.OperationMethod<
+  CreateSupportTicketRequest,
+  CreateSupportTicketResponse,
+  CreateSupportTicketError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSupportTicketRequest,
+  output: CreateSupportTicketResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateSupportTicketNoSubscriptionError = AzureOpError;
+/** Creates a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/> */
+export const CreateSupportTicketNoSubscription: API.OperationMethod<
+  CreateSupportTicketNoSubscriptionRequest,
+  CreateSupportTicketNoSubscriptionResponse,
+  CreateSupportTicketNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSupportTicketNoSubscriptionRequest,
+  output: CreateSupportTicketNoSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2870,287 +2779,376 @@ export const FilesUpload: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type FileWorkspacesCreateError = AzureOpError;
-/** Creates a new file workspace for the specified subscription. */
-export const FileWorkspacesCreate: API.OperationMethod<
-  FileWorkspacesCreateRequest,
-  FileWorkspacesCreateResponse,
-  FileWorkspacesCreateError,
+export type GetChatTranscriptError = AzureOpError;
+/** Returns chatTranscript details for a support ticket under a subscription. */
+export const GetChatTranscript: API.OperationMethod<
+  GetChatTranscriptRequest,
+  GetChatTranscriptResponse,
+  GetChatTranscriptError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileWorkspacesCreateRequest,
-  output: FileWorkspacesCreateResponse,
+  input: GetChatTranscriptRequest,
+  output: GetChatTranscriptResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FileWorkspacesGetError = AzureOpError;
+export type GetChatTranscriptNoSubscriptionError = AzureOpError;
+/** Returns chatTranscript details for a no subscription support ticket. */
+export const GetChatTranscriptNoSubscription: API.OperationMethod<
+  GetChatTranscriptNoSubscriptionRequest,
+  GetChatTranscriptNoSubscriptionResponse,
+  GetChatTranscriptNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetChatTranscriptNoSubscriptionRequest,
+  output: GetChatTranscriptNoSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCommunicationError = AzureOpError;
+/** Returns communication details for a support ticket. */
+export const GetCommunication: API.OperationMethod<
+  GetCommunicationRequest,
+  GetCommunicationResponse,
+  GetCommunicationError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCommunicationRequest,
+  output: GetCommunicationResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetCommunicationNoSubscriptionError = AzureOpError;
+/** Returns communication details for a support ticket. */
+export const GetCommunicationNoSubscription: API.OperationMethod<
+  GetCommunicationNoSubscriptionRequest,
+  GetCommunicationNoSubscriptionResponse,
+  GetCommunicationNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCommunicationNoSubscriptionRequest,
+  output: GetCommunicationNoSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFileError = AzureOpError;
+/** Returns details of a specific file in a work space. */
+export const GetFile: API.OperationMethod<
+  GetFileRequest,
+  GetFileResponse,
+  GetFileError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFileRequest,
+  output: GetFileResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFileNoSubscriptionError = AzureOpError;
+/** Returns details of a specific file in a work space. */
+export const GetFileNoSubscription: API.OperationMethod<
+  GetFileNoSubscriptionRequest,
+  GetFileNoSubscriptionResponse,
+  GetFileNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetFileNoSubscriptionRequest,
+  output: GetFileNoSubscriptionResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFileWorkspaceError = AzureOpError;
 /** Gets details for a specific file workspace in an Azure subscription. */
-export const FileWorkspacesGet: API.OperationMethod<
-  FileWorkspacesGetRequest,
-  FileWorkspacesGetResponse,
-  FileWorkspacesGetError,
+export const GetFileWorkspace: API.OperationMethod<
+  GetFileWorkspaceRequest,
+  GetFileWorkspaceResponse,
+  GetFileWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileWorkspacesGetRequest,
-  output: FileWorkspacesGetResponse,
+  input: GetFileWorkspaceRequest,
+  output: GetFileWorkspaceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type FileWorkspacesNoSubscriptionCreateError = AzureOpError;
-/** Creates a new file workspace. */
-export const FileWorkspacesNoSubscriptionCreate: API.OperationMethod<
-  FileWorkspacesNoSubscriptionCreateRequest,
-  FileWorkspacesNoSubscriptionCreateResponse,
-  FileWorkspacesNoSubscriptionCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FileWorkspacesNoSubscriptionCreateRequest,
-  output: FileWorkspacesNoSubscriptionCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type FileWorkspacesNoSubscriptionGetError = AzureOpError;
+export type GetFileWorkspaceNoSubscriptionError = AzureOpError;
 /** Gets details for a specific file workspace. */
-export const FileWorkspacesNoSubscriptionGet: API.OperationMethod<
-  FileWorkspacesNoSubscriptionGetRequest,
-  FileWorkspacesNoSubscriptionGetResponse,
-  FileWorkspacesNoSubscriptionGetError,
+export const GetFileWorkspaceNoSubscription: API.OperationMethod<
+  GetFileWorkspaceNoSubscriptionRequest,
+  GetFileWorkspaceNoSubscriptionResponse,
+  GetFileWorkspaceNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileWorkspacesNoSubscriptionGetRequest,
-  output: FileWorkspacesNoSubscriptionGetResponse,
+  input: GetFileWorkspaceNoSubscriptionRequest,
+  output: GetFileWorkspaceNoSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type OperationsListError = AzureOpError;
-/** List the operations for the provider */
-export const OperationsList: API.OperationMethod<
-  OperationsListRequest,
-  OperationsListResponse,
-  OperationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OperationsListRequest,
-  output: OperationsListResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ProblemClassificationsGetError = AzureOpError;
+export type GetProblemClassificationError = AzureOpError;
 /** Get problem classification details for a specific Azure service. */
-export const ProblemClassificationsGet: API.OperationMethod<
-  ProblemClassificationsGetRequest,
-  ProblemClassificationsGetResponse,
-  ProblemClassificationsGetError,
+export const GetProblemClassification: API.OperationMethod<
+  GetProblemClassificationRequest,
+  GetProblemClassificationResponse,
+  GetProblemClassificationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProblemClassificationsGetRequest,
-  output: ProblemClassificationsGetResponse,
+  input: GetProblemClassificationRequest,
+  output: GetProblemClassificationResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ProblemClassificationsListError = AzureOpError;
-/** Lists all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids. */
-export const ProblemClassificationsList: API.OperationMethod<
-  ProblemClassificationsListRequest,
-  ProblemClassificationsListResult,
-  ProblemClassificationsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProblemClassificationsListRequest,
-  output: ProblemClassificationsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ServicesGetError = AzureOpError;
+export type GetServiceError = AzureOpError;
 /** Gets a specific Azure service for support ticket creation. */
-export const ServicesGet: API.OperationMethod<
-  ServicesGetRequest,
-  ServicesGetResponse,
-  ServicesGetError,
+export const GetService: API.OperationMethod<
+  GetServiceRequest,
+  GetServiceResponse,
+  GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesGetRequest,
-  output: ServicesGetResponse,
+  input: GetServiceRequest,
+  output: GetServiceResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type ServicesListError = AzureOpError;
-/** Lists all the Azure services available for support ticket creation. For **Technical** issues, select the Service Id that maps to the Azure service/product as displayed in the **Services** drop-down list on the Azure portal's [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) page. Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation. This practice ensures that you always have the most recent set of service and problem classification Ids. */
-export const ServicesList: API.OperationMethod<
-  ServicesListRequest,
-  ServicesListResult,
-  ServicesListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ServicesListRequest,
-  output: ServicesListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SupportTicketsCheckNameAvailabilityError = AzureOpError;
-/** Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription. */
-export const SupportTicketsCheckNameAvailability: API.OperationMethod<
-  SupportTicketsCheckNameAvailabilityRequest,
-  CheckNameAvailabilityOutput,
-  SupportTicketsCheckNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsCheckNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SupportTicketsCreateError = AzureOpError;
-/** Creates a new support ticket for Subscription and Service limits (Quota), Technical, Billing, and Subscription Management issues for the specified subscription. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/>**Creating a support ticket for on-behalf-of**: Include _x-ms-authorization-auxiliary_ header to provide an auxiliary token as per [documentation](https://docs.microsoft.com/azure/azure-resource-manager/management/authenticate-multi-tenant). The primary token will be from the tenant for whom a support ticket is being raised against the subscription, i.e. Cloud solution provider (CSP) customer tenant. The auxiliary token will be from the Cloud solution provider (CSP) partner tenant. */
-export const SupportTicketsCreate: API.OperationMethod<
-  SupportTicketsCreateRequest,
-  SupportTicketsCreateResponse,
-  SupportTicketsCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsCreateRequest,
-  output: SupportTicketsCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SupportTicketsGetError = AzureOpError;
+export type GetSupportTicketError = AzureOpError;
 /** Get ticket details for an Azure subscription. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const SupportTicketsGet: API.OperationMethod<
-  SupportTicketsGetRequest,
-  SupportTicketsGetResponse,
-  SupportTicketsGetError,
+export const GetSupportTicket: API.OperationMethod<
+  GetSupportTicketRequest,
+  GetSupportTicketResponse,
+  GetSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsGetRequest,
-  output: SupportTicketsGetResponse,
+  input: GetSupportTicketRequest,
+  output: GetSupportTicketResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SupportTicketsListError = AzureOpError;
-/** Lists all the support tickets for an Azure subscription. You can also filter the support tickets by _Status_, _CreatedDate_, _ServiceId_, and _ProblemClassificationId_ using the $filter parameter. Output will be a paged result with _nextLink_, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const SupportTicketsList: API.OperationMethod<
-  SupportTicketsListRequest,
-  SupportTicketsListResult,
-  SupportTicketsListError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsListRequest,
-  output: SupportTicketsListResult,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SupportTicketsNoSubscriptionCheckNameAvailabilityError =
-  AzureOpError;
-/** Check the availability of a resource name. This API should be used to check the uniqueness of the name for support ticket creation for the selected subscription. */
-export const SupportTicketsNoSubscriptionCheckNameAvailability: API.OperationMethod<
-  SupportTicketsNoSubscriptionCheckNameAvailabilityRequest,
-  CheckNameAvailabilityOutput,
-  SupportTicketsNoSubscriptionCheckNameAvailabilityError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsNoSubscriptionCheckNameAvailabilityRequest,
-  output: CheckNameAvailabilityOutput,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SupportTicketsNoSubscriptionCreateError = AzureOpError;
-/** Creates a new support ticket for Billing, and Subscription Management issues. Learn the [prerequisites](https://aka.ms/supportAPI) required to create a support ticket.<br/><br/>Always call the Services and ProblemClassifications API to get the most recent set of services and problem categories required for support ticket creation.<br/><br/>Adding attachments is not currently supported via the API. To add a file to an existing support ticket, visit the [Manage support ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/managesupportrequest) page in the Azure portal, select the support ticket, and use the file upload control to add a new file.<br/><br/>Providing consent to share diagnostic information with Azure support is currently not supported via the API. The Azure support engineer working on your ticket will reach out to you for consent if your issue requires gathering diagnostic information from your Azure resources.<br/><br/> */
-export const SupportTicketsNoSubscriptionCreate: API.OperationMethod<
-  SupportTicketsNoSubscriptionCreateRequest,
-  SupportTicketsNoSubscriptionCreateResponse,
-  SupportTicketsNoSubscriptionCreateError,
-  AzureOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsNoSubscriptionCreateRequest,
-  output: SupportTicketsNoSubscriptionCreateResponse,
-  errors: [UnknownAzureError],
-  protocol: AzureProtocol,
-  retry: Retry.Retry,
-}));
-
-export type SupportTicketsNoSubscriptionGetError = AzureOpError;
+export type GetSupportTicketNoSubscriptionError = AzureOpError;
 /** Gets details for a specific support ticket. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const SupportTicketsNoSubscriptionGet: API.OperationMethod<
-  SupportTicketsNoSubscriptionGetRequest,
-  SupportTicketsNoSubscriptionGetResponse,
-  SupportTicketsNoSubscriptionGetError,
+export const GetSupportTicketNoSubscription: API.OperationMethod<
+  GetSupportTicketNoSubscriptionRequest,
+  GetSupportTicketNoSubscriptionResponse,
+  GetSupportTicketNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsNoSubscriptionGetRequest,
-  output: SupportTicketsNoSubscriptionGetResponse,
+  input: GetSupportTicketNoSubscriptionRequest,
+  output: GetSupportTicketNoSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SupportTicketsNoSubscriptionListError = AzureOpError;
+export type ListChatTranscriptNoSubscriptionError = AzureOpError;
+/** Lists all chat transcripts for a support ticket */
+export const ListChatTranscriptNoSubscription: API.OperationMethod<
+  ListChatTranscriptNoSubscriptionRequest,
+  ListChatTranscriptsResult,
+  ListChatTranscriptNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChatTranscriptNoSubscriptionRequest,
+  output: ListChatTranscriptsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListChatTranscriptsError = AzureOpError;
+/** Lists all chat transcripts for a support ticket under subscription */
+export const ListChatTranscripts: API.OperationMethod<
+  ListChatTranscriptsRequest,
+  ListChatTranscriptsResult,
+  ListChatTranscriptsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListChatTranscriptsRequest,
+  output: ListChatTranscriptsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCommunicationNoSubscriptionError = AzureOpError;
+/** Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
+export const ListCommunicationNoSubscription: API.OperationMethod<
+  ListCommunicationNoSubscriptionRequest,
+  ListCommunicationsResult,
+  ListCommunicationNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCommunicationNoSubscriptionRequest,
+  output: ListCommunicationsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListCommunicationsError = AzureOpError;
+/** Lists all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
+export const ListCommunications: API.OperationMethod<
+  ListCommunicationsRequest,
+  ListCommunicationsResult,
+  ListCommunicationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCommunicationsRequest,
+  output: ListCommunicationsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListFileNoSubscriptionError = AzureOpError;
+/** Lists all the Files information under a workspace for an Azure subscription. */
+export const ListFileNoSubscription: API.OperationMethod<
+  ListFileNoSubscriptionRequest,
+  ListFilesResult,
+  ListFileNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListFileNoSubscriptionRequest,
+  output: ListFilesResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListFilesError = AzureOpError;
+/** Lists all the Files information under a workspace for an Azure subscription. */
+export const ListFiles: API.OperationMethod<
+  ListFilesRequest,
+  ListFilesResult,
+  ListFilesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListFilesRequest,
+  output: ListFilesResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListOperationsError = AzureOpError;
+/** List the operations for the provider */
+export const ListOperations: API.OperationMethod<
+  ListOperationsRequest,
+  ListOperationsResponse,
+  ListOperationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOperationsRequest,
+  output: ListOperationsResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListProblemClassificationsError = AzureOpError;
+/** Lists all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids. */
+export const ListProblemClassifications: API.OperationMethod<
+  ListProblemClassificationsRequest,
+  ListProblemClassificationsResult,
+  ListProblemClassificationsError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProblemClassificationsRequest,
+  output: ListProblemClassificationsResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListServicesError = AzureOpError;
+/** Lists all the Azure services available for support ticket creation. For **Technical** issues, select the Service Id that maps to the Azure service/product as displayed in the **Services** drop-down list on the Azure portal's [New support request](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) page. Always use the service and its corresponding problem classification(s) obtained programmatically for support ticket creation. This practice ensures that you always have the most recent set of service and problem classification Ids. */
+export const ListServices: API.OperationMethod<
+  ListServicesRequest,
+  ListServicesResult,
+  ListServicesError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListServicesRequest,
+  output: ListServicesResult,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type ListSupportTicketNoSubscriptionError = AzureOpError;
 /** Lists all the support tickets. <br/><br/>You can also filter the support tickets by <i>Status</i>, <i>CreatedDate</i>, , <i>ServiceId</i>, and <i>ProblemClassificationId</i> using the $filter parameter. Output will be a paged result with <i>nextLink</i>, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
-export const SupportTicketsNoSubscriptionList: API.OperationMethod<
-  SupportTicketsNoSubscriptionListRequest,
-  SupportTicketsListResult,
-  SupportTicketsNoSubscriptionListError,
+export const ListSupportTicketNoSubscription: API.OperationMethod<
+  ListSupportTicketNoSubscriptionRequest,
+  ListSupportTicketsResult,
+  ListSupportTicketNoSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsNoSubscriptionListRequest,
-  output: SupportTicketsListResult,
+  input: ListSupportTicketNoSubscriptionRequest,
+  output: ListSupportTicketsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SupportTicketsNoSubscriptionUpdateError = AzureOpError;
-/** This API allows you to update the severity level, ticket status, and your contact information in the support ticket.<br/><br/>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer. In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API. */
-export const SupportTicketsNoSubscriptionUpdate: API.OperationMethod<
-  SupportTicketsNoSubscriptionUpdateRequest,
-  SupportTicketsNoSubscriptionUpdateResponse,
-  SupportTicketsNoSubscriptionUpdateError,
+export type ListSupportTicketsError = AzureOpError;
+/** Lists all the support tickets for an Azure subscription. You can also filter the support tickets by _Status_, _CreatedDate_, _ServiceId_, and _ProblemClassificationId_ using the $filter parameter. Output will be a paged result with _nextLink_, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. */
+export const ListSupportTickets: API.OperationMethod<
+  ListSupportTicketsRequest,
+  ListSupportTicketsResult,
+  ListSupportTicketsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsNoSubscriptionUpdateRequest,
-  output: SupportTicketsNoSubscriptionUpdateResponse,
+  input: ListSupportTicketsRequest,
+  output: ListSupportTicketsResult,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
 }));
 
-export type SupportTicketsUpdateError = AzureOpError;
+export type UpdateSupportTicketError = AzureOpError;
 /** This API allows you to update the severity level, ticket status, advanced diagnostic consent and your contact information in the support ticket.<br/><br/>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer. In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API. */
-export const SupportTicketsUpdate: API.OperationMethod<
-  SupportTicketsUpdateRequest,
-  SupportTicketsUpdateResponse,
-  SupportTicketsUpdateError,
+export const UpdateSupportTicket: API.OperationMethod<
+  UpdateSupportTicketRequest,
+  UpdateSupportTicketResponse,
+  UpdateSupportTicketError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SupportTicketsUpdateRequest,
-  output: SupportTicketsUpdateResponse,
+  input: UpdateSupportTicketRequest,
+  output: UpdateSupportTicketResponse,
+  errors: [UnknownAzureError],
+  protocol: AzureProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateSupportTicketNoSubscriptionError = AzureOpError;
+/** This API allows you to update the severity level, ticket status, and your contact information in the support ticket.<br/><br/>Note: The severity levels cannot be changed if a support ticket is actively being worked upon by an Azure support engineer. In such a case, contact your support engineer to request severity update by adding a new communication using the Communications API. */
+export const UpdateSupportTicketNoSubscription: API.OperationMethod<
+  UpdateSupportTicketNoSubscriptionRequest,
+  UpdateSupportTicketNoSubscriptionResponse,
+  UpdateSupportTicketNoSubscriptionError,
+  AzureOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSupportTicketNoSubscriptionRequest,
+  output: UpdateSupportTicketNoSubscriptionResponse,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,

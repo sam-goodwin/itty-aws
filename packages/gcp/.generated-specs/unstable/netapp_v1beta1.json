@@ -6809,7 +6809,7 @@
         }
       }
     },
-    "com.gcp.netapp_v1beta1#ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest": {
+    "com.gcp.netapp_v1beta1#GetExecuteOntapProjectLocationStoragePoolOntapRequest": {
       "type": "structure",
       "members": {
         "ontapPath": {
@@ -6822,10 +6822,10 @@
         }
       }
     },
-    "com.gcp.netapp_v1beta1#ExecuteOntapGetProjectsLocationsStoragePoolsOntap": {
+    "com.gcp.netapp_v1beta1#GetExecuteOntapProjectLocationStoragePoolOntap": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.netapp_v1beta1#ExecuteOntapGetProjectsLocationsStoragePoolsOntapRequest"
+        "target": "com.gcp.netapp_v1beta1#GetExecuteOntapProjectLocationStoragePoolOntapRequest"
       },
       "output": {
         "target": "com.gcp.netapp_v1beta1#ExecuteOntapGetResponse"
@@ -6846,7 +6846,7 @@
         "smithy.api#documentation": "`ExecuteOntapGet` sends the ONTAP `GET` request to the `StoragePool` cluster."
       }
     },
-    "com.gcp.netapp_v1beta1#ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest": {
+    "com.gcp.netapp_v1beta1#DeleteExecuteOntapProjectLocationStoragePoolOntapRequest": {
       "type": "structure",
       "members": {
         "ontapPath": {
@@ -6859,10 +6859,10 @@
         }
       }
     },
-    "com.gcp.netapp_v1beta1#ExecuteOntapDeleteProjectsLocationsStoragePoolsOntap": {
+    "com.gcp.netapp_v1beta1#DeleteExecuteOntapProjectLocationStoragePoolOntap": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.netapp_v1beta1#ExecuteOntapDeleteProjectsLocationsStoragePoolsOntapRequest"
+        "target": "com.gcp.netapp_v1beta1#DeleteExecuteOntapProjectLocationStoragePoolOntapRequest"
       },
       "output": {
         "target": "com.gcp.netapp_v1beta1#ExecuteOntapDeleteResponse"

@@ -11332,7 +11332,7 @@
         }
       }
     },
-    "com.gcp.ces_v1#BatchDeleteProjectsLocationsAppsConversationsRequest": {
+    "com.gcp.ces_v1#DeleteBatchProjectLocationAppConversationRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11352,10 +11352,10 @@
         }
       }
     },
-    "com.gcp.ces_v1#BatchDeleteProjectsLocationsAppsConversations": {
+    "com.gcp.ces_v1#DeleteBatchProjectLocationAppConversation": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.ces_v1#BatchDeleteProjectsLocationsAppsConversationsRequest"
+        "target": "com.gcp.ces_v1#DeleteBatchProjectLocationAppConversationRequest"
       },
       "output": {
         "target": "com.gcp.ces_v1#Operation"

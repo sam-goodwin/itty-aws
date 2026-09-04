@@ -59,7 +59,7 @@
       },
       "traits": {}
     },
-    "com.posthog.ingestion_warnings_v2#IngestionWarningsV2ListRequest": {
+    "com.posthog.ingestion_warnings_v2#ListIngestionWarningV2Request": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -316,7 +316,7 @@
       },
       "traits": {}
     },
-    "com.posthog.ingestion_warnings_v2#IngestionWarningsV2ListResponse": {
+    "com.posthog.ingestion_warnings_v2#ListIngestionWarningV2Response": {
       "type": "structure",
       "members": {
         "body": {
@@ -331,13 +331,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.posthog.ingestion_warnings_v2#IngestionWarningsV2List": {
+    "com.posthog.ingestion_warnings_v2#ListIngestionWarningV2": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.ingestion_warnings_v2#IngestionWarningsV2ListRequest"
+        "target": "com.posthog.ingestion_warnings_v2#ListIngestionWarningV2Request"
       },
       "output": {
-        "target": "com.posthog.ingestion_warnings_v2#IngestionWarningsV2ListResponse"
+        "target": "com.posthog.ingestion_warnings_v2#ListIngestionWarningV2Response"
       },
       "traits": {
         "smithy.api#http": {
@@ -353,7 +353,7 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.ingestion_warnings_v2#IngestionWarningsV2List"
+          "target": "com.posthog.ingestion_warnings_v2#ListIngestionWarningV2"
         }
       ],
       "traits": {

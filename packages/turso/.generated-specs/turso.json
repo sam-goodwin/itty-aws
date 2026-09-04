@@ -3743,7 +3743,7 @@
       },
       "traits": {}
     },
-    "com.turso.api#ListAPITokensResponse": {
+    "com.turso.api#ListApiTokensResponse": {
       "type": "structure",
       "members": {
         "tokens": {
@@ -3754,13 +3754,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.turso.api#ListAPITokens": {
+    "com.turso.api#ListApiTokens": {
       "type": "operation",
       "input": {
         "target": "smithy.api#Unit"
       },
       "output": {
-        "target": "com.turso.api#ListAPITokensResponse"
+        "target": "com.turso.api#ListApiTokensResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3852,7 +3852,7 @@
         "smithy.api#documentation": "Permissions to grant a group-scoped token. Each entry is either an individual scope or one of the presets `read-only` (expands to `read`) and `full-access` (expands to every scope). Required and must be non-empty when `group` is set. `db:mint-token` lets the token issue new SQL credentials; `db:rotate-creds` invalidates every existing SQL token for the database — they are deliberately separate because rotation is destructive."
       }
     },
-    "com.turso.api#CreateAPITokenRequest": {
+    "com.turso.api#CreateApiTokenRequest": {
       "type": "structure",
       "members": {
         "tokenName": {
@@ -3886,7 +3886,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.turso.api#CreateAPITokenResponse": {
+    "com.turso.api#CreateApiTokenResponse": {
       "type": "structure",
       "members": {
         "name": {
@@ -3906,13 +3906,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.turso.api#CreateAPIToken": {
+    "com.turso.api#CreateApiToken": {
       "type": "operation",
       "input": {
-        "target": "com.turso.api#CreateAPITokenRequest"
+        "target": "com.turso.api#CreateApiTokenRequest"
       },
       "output": {
-        "target": "com.turso.api#CreateAPITokenResponse"
+        "target": "com.turso.api#CreateApiTokenResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -3975,7 +3975,7 @@
         "smithy.api#documentation": "Revoke API Token\n\nRevokes the provided API token belonging to a user."
       }
     },
-    "com.turso.api#ListOrganizationAPITokensRequest": {
+    "com.turso.api#ListOrganizationApiTokensRequest": {
       "type": "structure",
       "members": {
         "organizationSlug": {
@@ -4069,7 +4069,7 @@
       },
       "traits": {}
     },
-    "com.turso.api#ListOrganizationAPITokensResponse": {
+    "com.turso.api#ListOrganizationApiTokensResponse": {
       "type": "structure",
       "members": {
         "tokens": {
@@ -4080,13 +4080,13 @@
         "smithy.api#output": {}
       }
     },
-    "com.turso.api#ListOrganizationAPITokens": {
+    "com.turso.api#ListOrganizationApiTokens": {
       "type": "operation",
       "input": {
-        "target": "com.turso.api#ListOrganizationAPITokensRequest"
+        "target": "com.turso.api#ListOrganizationApiTokensRequest"
       },
       "output": {
-        "target": "com.turso.api#ListOrganizationAPITokensResponse"
+        "target": "com.turso.api#ListOrganizationApiTokensResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -4984,16 +4984,16 @@
           "target": "com.turso.api#ValidateAPIToken"
         },
         {
-          "target": "com.turso.api#ListAPITokens"
+          "target": "com.turso.api#ListApiTokens"
         },
         {
-          "target": "com.turso.api#CreateAPIToken"
+          "target": "com.turso.api#CreateApiToken"
         },
         {
           "target": "com.turso.api#RevokeAPIToken"
         },
         {
-          "target": "com.turso.api#ListOrganizationAPITokens"
+          "target": "com.turso.api#ListOrganizationApiTokens"
         },
         {
           "target": "com.turso.api#RevokeOrganizationAPIToken"

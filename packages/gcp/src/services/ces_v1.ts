@@ -65,97 +65,6 @@ export class NotFound
     [{ status: 404 }],
   ) {}
 
-export type StringList = Array<string>;
-export const StringList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StringList>;
-
-/** Request message for AgentService.BatchDeleteConversations. */
-export interface BatchDeleteConversationsRequest {
-  /** Required. The resource names of the conversations to delete. */
-  conversations?: StringList;
-}
-export const BatchDeleteConversationsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    conversations: S.optional(StringList),
-  }),
-).annotate({
-  identifier: "BatchDeleteConversationsRequest",
-}) as any as S.Schema<BatchDeleteConversationsRequest>;
-
-export interface BatchDeleteProjectsLocationsAppsConversationsRequest {
-  /** Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}` */
-  parent: string;
-  /** Request body */
-  body?: BatchDeleteConversationsRequest;
-}
-export const BatchDeleteProjectsLocationsAppsConversationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(BatchDeleteConversationsRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/conversations:batchDelete",
-        baseUrl: "https://ces.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BatchDeleteProjectsLocationsAppsConversationsRequest",
-  }) as any as S.Schema<BatchDeleteProjectsLocationsAppsConversationsRequest>;
-
-export type DocumentMap = { [key: string]: unknown | undefined };
-export const DocumentMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DocumentMap>;
-
-export type DocumentMapList = Array<DocumentMap>;
-export const DocumentMapList = /*@__PURE__*/ S.Array(
-  DocumentMap,
-) as any as S.Schema<DocumentMapList>;
-
-/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
-export interface Status {
-  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
-  message?: string;
-  /** The status code, which should be an enum value of google.rpc.Code. */
-  code?: number;
-  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
-  details?: DocumentMapList;
-}
-export const Status = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.optional(S.String),
-    code: S.optional(S.Number),
-    details: S.optional(DocumentMapList),
-  }),
-).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
-
-/** This resource represents a long-running operation that is the result of a network API call. */
-export interface Operation {
-  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
-  name?: string;
-  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
-  response?: DocumentMap;
-  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
-  metadata?: DocumentMap;
-  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
-  done?: boolean;
-  /** The error result of the operation in case of failure or cancellation. */
-  error?: Status;
-}
-export const Operation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
-    response: S.optional(DocumentMap),
-    metadata: S.optional(DocumentMap),
-    done: S.optional(S.Boolean),
-    error: S.optional(Status),
-  }),
-).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
 export const CancelOperationRequest = /*@__PURE__*/ S.suspend(() =>
@@ -191,6 +100,11 @@ export interface Empty {}
 export const Empty = /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
   identifier: "Empty",
 }) as any as S.Schema<Empty>;
+
+export type StringList = Array<string>;
+export const StringList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StringList>;
 
 /** Language settings of the app. */
 export interface LanguageSettings {
@@ -1199,6 +1113,57 @@ export const CreateProjectsLocationsAppsRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "CreateProjectsLocationsAppsRequest",
 }) as any as S.Schema<CreateProjectsLocationsAppsRequest>;
+
+export type DocumentMap = { [key: string]: unknown | undefined };
+export const DocumentMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DocumentMap>;
+
+export type DocumentMapList = Array<DocumentMap>;
+export const DocumentMapList = /*@__PURE__*/ S.Array(
+  DocumentMap,
+) as any as S.Schema<DocumentMapList>;
+
+/** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
+export interface Status {
+  /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
+  message?: string;
+  /** The status code, which should be an enum value of google.rpc.Code. */
+  code?: number;
+  /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
+  details?: DocumentMapList;
+}
+export const Status = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.optional(S.String),
+    code: S.optional(S.Number),
+    details: S.optional(DocumentMapList),
+  }),
+).annotate({ identifier: "Status" }) as any as S.Schema<Status>;
+
+/** This resource represents a long-running operation that is the result of a network API call. */
+export interface Operation {
+  /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
+  name?: string;
+  /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
+  response?: DocumentMap;
+  /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
+  metadata?: DocumentMap;
+  /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
+  done?: boolean;
+  /** The error result of the operation in case of failure or cancellation. */
+  error?: Status;
+}
+export const Operation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+    response: S.optional(DocumentMap),
+    metadata: S.optional(DocumentMap),
+    done: S.optional(S.Boolean),
+    error: S.optional(Status),
+  }),
+).annotate({ identifier: "Operation" }) as any as S.Schema<Operation>;
 
 /** A toolset with a selection of its tools. */
 export interface AgentAgentToolset {
@@ -3738,6 +3703,41 @@ export const CreateProjectsLocationsAppsVersionsRequest =
   ).annotate({
     identifier: "CreateProjectsLocationsAppsVersionsRequest",
   }) as any as S.Schema<CreateProjectsLocationsAppsVersionsRequest>;
+
+/** Request message for AgentService.BatchDeleteConversations. */
+export interface BatchDeleteConversationsRequest {
+  /** Required. The resource names of the conversations to delete. */
+  conversations?: StringList;
+}
+export const BatchDeleteConversationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    conversations: S.optional(StringList),
+  }),
+).annotate({
+  identifier: "BatchDeleteConversationsRequest",
+}) as any as S.Schema<BatchDeleteConversationsRequest>;
+
+export interface DeleteBatchProjectLocationAppConversationRequest {
+  /** Required. The resource name of the app to delete conversations from. Format: `projects/{project}/locations/{location}/apps/{app}` */
+  parent: string;
+  /** Request body */
+  body?: BatchDeleteConversationsRequest;
+}
+export const DeleteBatchProjectLocationAppConversationRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(BatchDeleteConversationsRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/conversations:batchDelete",
+        baseUrl: "https://ces.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBatchProjectLocationAppConversationRequest",
+  }) as any as S.Schema<DeleteBatchProjectLocationAppConversationRequest>;
 
 export interface DeleteProjectsLocationsAppsRequest {
   /** Required. The resource name of the app to delete. */
@@ -7115,26 +7115,6 @@ export const StreamRunSessionProjectsLocationsAppsSessionsRequest =
     identifier: "StreamRunSessionProjectsLocationsAppsSessionsRequest",
   }) as any as S.Schema<StreamRunSessionProjectsLocationsAppsSessionsRequest>;
 
-export type BatchDeleteProjectsLocationsAppsConversationsError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Batch deletes the specified conversations. */
-export const batchDeleteProjectsLocationsAppsConversations: API.OperationMethod<
-  BatchDeleteProjectsLocationsAppsConversationsRequest,
-  Operation,
-  BatchDeleteProjectsLocationsAppsConversationsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteProjectsLocationsAppsConversationsRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -7310,6 +7290,26 @@ export const createProjectsLocationsAppsVersions: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CreateProjectsLocationsAppsVersionsRequest,
   output: AppVersion,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteBatchProjectLocationAppConversationError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Batch deletes the specified conversations. */
+export const deleteBatchProjectLocationAppConversation: API.OperationMethod<
+  DeleteBatchProjectLocationAppConversationRequest,
+  Operation,
+  DeleteBatchProjectLocationAppConversationError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBatchProjectLocationAppConversationRequest,
+  output: Operation,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

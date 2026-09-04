@@ -565,7 +565,7 @@ export const ViewCapabilities = /*@__PURE__*/ S.Record(
   ViewCapabilitiesValue,
 ) as any as S.Schema<ViewCapabilities>;
 
-export interface CreateAPITokenRequest {
+export interface CreateApiTokenRequest {
   datasetCapabilities?: DatasetCapabilities;
   /** Description of the token */
   description?: string;
@@ -576,7 +576,7 @@ export interface CreateAPITokenRequest {
   orgCapabilities?: OrgCapabilities;
   viewCapabilities?: ViewCapabilities;
 }
-export const CreateAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: S.optional(DatasetCapabilities),
     description: S.optional(S.String),
@@ -586,10 +586,10 @@ export const CreateAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
     viewCapabilities: S.optional(ViewCapabilities),
   }).pipe(T.Http({ method: "POST", uri: "/v2/tokens", code: 200 })),
 ).annotate({
-  identifier: "CreateAPITokenRequest",
-}) as any as S.Schema<CreateAPITokenRequest>;
+  identifier: "CreateApiTokenRequest",
+}) as any as S.Schema<CreateApiTokenRequest>;
 
-export interface CreateAPITokenResponse {
+export interface CreateApiTokenResponse {
   datasetCapabilities: DatasetCapabilities;
   /** Description of the token */
   description?: string;
@@ -604,7 +604,7 @@ export interface CreateAPITokenResponse {
   viewCapabilities?: ViewCapabilities;
   token?: string;
 }
-export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     datasetCapabilities: DatasetCapabilities,
     description: S.optional(S.String),
@@ -617,8 +617,8 @@ export const CreateAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
     token: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CreateAPITokenResponse",
-}) as any as S.Schema<CreateAPITokenResponse>;
+  identifier: "CreateApiTokenResponse",
+}) as any as S.Schema<CreateApiTokenResponse>;
 
 export type TimeSeriesChartType = "TimeSeries";
 export const TimeSeriesChartType = /*@__PURE__*/ S.String;
@@ -3188,23 +3188,23 @@ export const DeleteAnnotationResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DeleteAnnotationResponse",
 }) as any as S.Schema<DeleteAnnotationResponse>;
 
-export interface DeleteAPITokenRequest {
+export interface DeleteApiTokenRequest {
   id: string;
 }
-export const DeleteAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "DELETE", uri: "/v2/tokens/{id}", code: 200 })),
 ).annotate({
-  identifier: "DeleteAPITokenRequest",
-}) as any as S.Schema<DeleteAPITokenRequest>;
+  identifier: "DeleteApiTokenRequest",
+}) as any as S.Schema<DeleteApiTokenRequest>;
 
-export interface DeleteAPITokenResponse {}
-export const DeleteAPITokenResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteApiTokenResponse {}
+export const DeleteApiTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "DeleteAPITokenResponse",
-}) as any as S.Schema<DeleteAPITokenResponse>;
+  identifier: "DeleteApiTokenResponse",
+}) as any as S.Schema<DeleteApiTokenResponse>;
 
 export interface DeleteDashboardRequest {
   uid: string;
@@ -3453,16 +3453,16 @@ export const GetAnnotationsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetAnnotationsResponse",
 }) as any as S.Schema<GetAnnotationsResponse>;
 
-export interface GetAPITokenRequest {
+export interface GetApiTokenRequest {
   id: string;
 }
-export const GetAPITokenRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetApiTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String.pipe(T.Label()),
   }).pipe(T.Http({ method: "GET", uri: "/v2/tokens/{id}", code: 200 })),
 ).annotate({
-  identifier: "GetAPITokenRequest",
-}) as any as S.Schema<GetAPITokenRequest>;
+  identifier: "GetApiTokenRequest",
+}) as any as S.Schema<GetApiTokenRequest>;
 
 export interface APIToken {
   datasetCapabilities: DatasetCapabilities;
@@ -3491,24 +3491,24 @@ export const APIToken = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "APIToken" }) as any as S.Schema<APIToken>;
 
-export interface GetAPITokensRequest {}
-export const GetAPITokensRequest = /*@__PURE__*/ S.suspend(() =>
+export interface GetApiTokensRequest {}
+export const GetApiTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v2/tokens", code: 200 })),
 ).annotate({
-  identifier: "GetAPITokensRequest",
-}) as any as S.Schema<GetAPITokensRequest>;
+  identifier: "GetApiTokensRequest",
+}) as any as S.Schema<GetApiTokensRequest>;
 
 export type GetAPITokensResponseBodyList = Array<APIToken>;
 export const GetAPITokensResponseBodyList = /*@__PURE__*/ S.Array(
   APIToken,
 ) as any as S.Schema<GetAPITokensResponseBodyList>;
 
-export type GetAPITokensResponse = GetAPITokensResponseBodyList;
-export const GetAPITokensResponse = /*@__PURE__*/ S.suspend(() =>
+export type GetApiTokensResponse = GetAPITokensResponseBodyList;
+export const GetApiTokensResponse = /*@__PURE__*/ S.suspend(() =>
   GetAPITokensResponseBodyList.pipe(T.RawResponseRoot()),
 ).annotate({
-  identifier: "GetAPITokensResponse",
-}) as any as S.Schema<GetAPITokensResponse>;
+  identifier: "GetApiTokensResponse",
+}) as any as S.Schema<GetApiTokensResponse>;
 
 export interface GetCurrentUserRequest {}
 export const GetCurrentUserRequest = /*@__PURE__*/ S.suspend(() =>
@@ -5545,16 +5545,16 @@ export const createAnnotation: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type CreateAPITokenError = UnprocessableEntity | AxiomOpError;
+export type CreateApiTokenError = UnprocessableEntity | AxiomOpError;
 /** Create API token */
-export const createAPIToken: API.OperationMethod<
-  CreateAPITokenRequest,
-  CreateAPITokenResponse,
-  CreateAPITokenError,
+export const createApiToken: API.OperationMethod<
+  CreateApiTokenRequest,
+  CreateApiTokenResponse,
+  CreateApiTokenError,
   AxiomOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAPITokenRequest,
-  output: CreateAPITokenResponse,
+  input: CreateApiTokenRequest,
+  output: CreateApiTokenResponse,
   errors: [UnprocessableEntity, UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,
@@ -5754,16 +5754,16 @@ export const deleteAnnotation: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type DeleteAPITokenError = NotFound | AxiomOpError;
+export type DeleteApiTokenError = NotFound | AxiomOpError;
 /** Delete API token */
-export const deleteAPIToken: API.OperationMethod<
-  DeleteAPITokenRequest,
-  DeleteAPITokenResponse,
-  DeleteAPITokenError,
+export const deleteApiToken: API.OperationMethod<
+  DeleteApiTokenRequest,
+  DeleteApiTokenResponse,
+  DeleteApiTokenError,
   AxiomOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAPITokenRequest,
-  output: DeleteAPITokenResponse,
+  input: DeleteApiTokenRequest,
+  output: DeleteApiTokenResponse,
   errors: [NotFound, UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,
@@ -5945,31 +5945,31 @@ export const getAnnotations: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type GetAPITokenError = NotFound | AxiomOpError;
+export type GetApiTokenError = NotFound | AxiomOpError;
 /** Get API token by ID */
-export const getAPIToken: API.OperationMethod<
-  GetAPITokenRequest,
+export const getApiToken: API.OperationMethod<
+  GetApiTokenRequest,
   APIToken,
-  GetAPITokenError,
+  GetApiTokenError,
   AxiomOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAPITokenRequest,
+  input: GetApiTokenRequest,
   output: APIToken,
   errors: [NotFound, UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetAPITokensError = AxiomOpError;
+export type GetApiTokensError = AxiomOpError;
 /** Get API tokens */
-export const getAPITokens: API.OperationMethod<
-  GetAPITokensRequest,
-  GetAPITokensResponse,
-  GetAPITokensError,
+export const getApiTokens: API.OperationMethod<
+  GetApiTokensRequest,
+  GetApiTokensResponse,
+  GetApiTokensError,
   AxiomOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAPITokensRequest,
-  output: GetAPITokensResponse,
+  input: GetApiTokensRequest,
+  output: GetApiTokensResponse,
   errors: [UnknownAxiomError],
   protocol: AxiomProtocol,
   retry: Retry.Retry,

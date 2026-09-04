@@ -78,7 +78,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysListRequest": {
+    "com.posthog.surveys#ListSurveysRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -780,10 +780,10 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysList": {
+    "com.posthog.surveys#ListSurveys": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysListRequest"
+        "target": "com.posthog.surveys#ListSurveysRequest"
       },
       "output": {
         "target": "com.posthog.surveys#PaginatedSurveyList"
@@ -2581,7 +2581,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysCreateRequest": {
+    "com.posthog.surveys#CreateSurveyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -2965,10 +2965,10 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysCreate": {
+    "com.posthog.surveys#CreateSurvey": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysCreateRequest"
+        "target": "com.posthog.surveys#CreateSurveyRequest"
       },
       "output": {
         "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutput"
@@ -3059,7 +3059,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysUpdateRequest": {
+    "com.posthog.surveys#UpdateSurveyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3221,10 +3221,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysUpdate": {
+    "com.posthog.surveys#UpdateSurvey": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysUpdateRequest"
+        "target": "com.posthog.surveys#UpdateSurveyRequest"
       },
       "output": {
         "target": "com.posthog.surveys#Survey"
@@ -3276,7 +3276,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysPartialUpdateRequest": {
+    "com.posthog.surveys#UpdateSurveyPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3493,10 +3493,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysPartialUpdate": {
+    "com.posthog.surveys#UpdateSurveyPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysPartialUpdateRequest"
+        "target": "com.posthog.surveys#UpdateSurveyPartialRequest"
       },
       "output": {
         "target": "com.posthog.surveys#SurveySerializerCreateUpdateOnlyOutput"
@@ -3684,7 +3684,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysDuplicateToProjectsCreateRequest": {
+    "com.posthog.surveys#CreateSurveyDuplicateToProjectRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -3864,10 +3864,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysDuplicateToProjectsCreate": {
+    "com.posthog.surveys#CreateSurveyDuplicateToProject": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysDuplicateToProjectsCreateRequest"
+        "target": "com.posthog.surveys#CreateSurveyDuplicateToProjectRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4193,7 +4193,7 @@
         "smithy.api#documentation": "Launch a survey by setting `start_date` to the current time. No-op if the survey is already launched (start_date set in the past) — returns the existing state unchanged. Does not affect archived surveys or surveys with an end_date in the past; unarchive or extend the end_date first."
       }
     },
-    "com.posthog.surveys#SurveysResponsesListRequest": {
+    "com.posthog.surveys#ListSurveyResponsesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4477,10 +4477,10 @@
         "smithy.api#documentation": "Survey response rows for the requested page."
       }
     },
-    "com.posthog.surveys#SurveysResponsesList": {
+    "com.posthog.surveys#ListSurveyResponses": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysResponsesListRequest"
+        "target": "com.posthog.surveys#ListSurveyResponsesRequest"
       },
       "output": {
         "target": "com.posthog.surveys#SurveyResponsesList"
@@ -4513,7 +4513,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysResponsesArchiveCreateRequest": {
+    "com.posthog.surveys#CreateSurveyResponseArchiveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4700,10 +4700,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysResponsesArchiveCreate": {
+    "com.posthog.surveys#CreateSurveyResponseArchive": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysResponsesArchiveCreateRequest"
+        "target": "com.posthog.surveys#CreateSurveyResponseArchiveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -4747,7 +4747,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysResponsesUnarchiveCreateRequest": {
+    "com.posthog.surveys#CreateSurveyResponseUnarchiveRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -4934,10 +4934,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysResponsesUnarchiveCreate": {
+    "com.posthog.surveys#CreateSurveyResponseUnarchive": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysResponsesUnarchiveCreateRequest"
+        "target": "com.posthog.surveys#CreateSurveyResponseUnarchiveRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5112,7 +5112,7 @@
         "smithy.api#documentation": "Get survey response statistics for a specific survey.\n\nArgs:\n    date_from: Optional ISO timestamp for start date (e.g. 2024-01-01T00:00:00Z)\n    date_to: Optional ISO timestamp for end date (e.g. 2024-01-31T23:59:59Z)\n    exclude_archived: Optional boolean to exclude archived responses (default: false, includes archived)\n    include_per_question_stats: Optional boolean to include per-question response counts and distributions\n\nReturns:\n    Survey statistics including event counts, unique respondents, and conversion rates"
       }
     },
-    "com.posthog.surveys#SurveysStopRequest": {
+    "com.posthog.surveys#StopSurveyRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5136,10 +5136,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysStop": {
+    "com.posthog.surveys#StopSurvey": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysStopRequest"
+        "target": "com.posthog.surveys#StopSurveyRequest"
       },
       "output": {
         "target": "com.posthog.surveys#Survey"
@@ -5153,7 +5153,7 @@
         "smithy.api#documentation": "Stop a survey by setting `end_date` to the current time. No new responses are accepted after this; existing responses remain available. No-op if the survey already has an end_date in the past."
       }
     },
-    "com.posthog.surveys#SurveysSummarizeResponsesCreateRequest": {
+    "com.posthog.surveys#CreateSurveySummarizeResponseRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5197,10 +5197,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysSummarizeResponsesCreate": {
+    "com.posthog.surveys#CreateSurveySummarizeResponse": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysSummarizeResponsesCreateRequest"
+        "target": "com.posthog.surveys#CreateSurveySummarizeResponseRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5244,7 +5244,7 @@
       },
       "traits": {}
     },
-    "com.posthog.surveys#SurveysSummaryHeadlineCreateRequest": {
+    "com.posthog.surveys#CreateSurveySummaryHeadlineRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -5424,10 +5424,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.surveys#SurveysSummaryHeadlineCreate": {
+    "com.posthog.surveys#CreateSurveySummaryHeadline": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.surveys#SurveysSummaryHeadlineCreateRequest"
+        "target": "com.posthog.surveys#CreateSurveySummaryHeadlineRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -5772,19 +5772,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.surveys#SurveysList"
+          "target": "com.posthog.surveys#ListSurveys"
         },
         {
-          "target": "com.posthog.surveys#SurveysCreate"
+          "target": "com.posthog.surveys#CreateSurvey"
         },
         {
           "target": "com.posthog.surveys#SurveysRetrieve"
         },
         {
-          "target": "com.posthog.surveys#SurveysUpdate"
+          "target": "com.posthog.surveys#UpdateSurvey"
         },
         {
-          "target": "com.posthog.surveys#SurveysPartialUpdate"
+          "target": "com.posthog.surveys#UpdateSurveyPartial"
         },
         {
           "target": "com.posthog.surveys#SurveysDestroy"
@@ -5796,7 +5796,7 @@
           "target": "com.posthog.surveys#SurveysArchivedResponseUuidsRetrieve"
         },
         {
-          "target": "com.posthog.surveys#SurveysDuplicateToProjectsCreate"
+          "target": "com.posthog.surveys#CreateSurveyDuplicateToProject"
         },
         {
           "target": "com.posthog.surveys#SurveysGenerateTranslationsCreate"
@@ -5805,25 +5805,25 @@
           "target": "com.posthog.surveys#SurveysLaunch"
         },
         {
-          "target": "com.posthog.surveys#SurveysResponsesList"
+          "target": "com.posthog.surveys#ListSurveyResponses"
         },
         {
-          "target": "com.posthog.surveys#SurveysResponsesArchiveCreate"
+          "target": "com.posthog.surveys#CreateSurveyResponseArchive"
         },
         {
-          "target": "com.posthog.surveys#SurveysResponsesUnarchiveCreate"
+          "target": "com.posthog.surveys#CreateSurveyResponseUnarchive"
         },
         {
           "target": "com.posthog.surveys#SurveysStatsRetrieve"
         },
         {
-          "target": "com.posthog.surveys#SurveysStop"
+          "target": "com.posthog.surveys#StopSurvey"
         },
         {
-          "target": "com.posthog.surveys#SurveysSummarizeResponsesCreate"
+          "target": "com.posthog.surveys#CreateSurveySummarizeResponse"
         },
         {
-          "target": "com.posthog.surveys#SurveysSummaryHeadlineCreate"
+          "target": "com.posthog.surveys#CreateSurveySummaryHeadline"
         },
         {
           "target": "com.posthog.surveys#SurveysAllActivityRetrieve"

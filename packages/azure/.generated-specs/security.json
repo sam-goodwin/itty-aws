@@ -17,10 +17,10 @@
     ]
   },
   "shapes": {
-    "com.azure.security#DataScannersDelete": {
+    "com.azure.security#DeleteDataScanner": {
       "type": "operation",
       "input": {
-        "target": "com.azure.security#DataScannersDeleteRequest"
+        "target": "com.azure.security#DeleteDataScannerRequest"
       },
       "output": {
         "target": "smithy.api#Unit"
@@ -36,7 +36,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.security#DataScannersDeleteRequest": {
+    "com.azure.security#DeleteDataScannerRequest": {
       "type": "structure",
       "members": {
         "scopeId": {
@@ -327,13 +327,13 @@
         "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
-    "com.azure.security#DataScannersGet": {
+    "com.azure.security#GetDataScanner": {
       "type": "operation",
       "input": {
-        "target": "com.azure.security#DataScannersGetRequest"
+        "target": "com.azure.security#GetDataScannerRequest"
       },
       "output": {
-        "target": "com.azure.security#DataScannersGetResponse"
+        "target": "com.azure.security#GetDataScannerResponse"
       },
       "traits": {
         "smithy.api#http": {
@@ -346,7 +346,7 @@
         "com.distilled.openapi#apiVersion": "2026-08-01"
       }
     },
-    "com.azure.security#DataScannersGetResponse": {
+    "com.azure.security#GetDataScannerResponse": {
       "type": "structure",
       "members": {
         "id": {
@@ -416,7 +416,7 @@
         "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
-    "com.azure.security#DataScannersGetRequest": {
+    "com.azure.security#GetDataScannerRequest": {
       "type": "structure",
       "members": {
         "scopeId": {
@@ -440,10 +440,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.azure.security#DataScannersList": {
+    "com.azure.security#ListDataScanners": {
       "type": "operation",
       "input": {
-        "target": "com.azure.security#DataScannersListRequest"
+        "target": "com.azure.security#ListDataScannersRequest"
       },
       "output": {
         "target": "com.azure.security#DataScannerList"
@@ -559,7 +559,7 @@
         "smithy.api#documentation": "Managed service identity (either system assigned, or none)"
       }
     },
-    "com.azure.security#DataScannersListRequest": {
+    "com.azure.security#ListDataScannersRequest": {
       "type": "structure",
       "members": {
         "scopeId": {
@@ -580,16 +580,16 @@
       "version": "1.0",
       "operations": [
         {
-          "target": "com.azure.security#DataScannersDelete"
+          "target": "com.azure.security#DeleteDataScanner"
         },
         {
           "target": "com.azure.security#DataScannersCreateOrUpdate"
         },
         {
-          "target": "com.azure.security#DataScannersGet"
+          "target": "com.azure.security#GetDataScanner"
         },
         {
-          "target": "com.azure.security#DataScannersList"
+          "target": "com.azure.security#ListDataScanners"
         }
       ],
       "traits": {

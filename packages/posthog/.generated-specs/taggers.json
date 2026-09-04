@@ -73,7 +73,7 @@
       },
       "traits": {}
     },
-    "com.posthog.taggers#TaggersListRequest": {
+    "com.posthog.taggers#ListTaggersRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -648,10 +648,10 @@
       },
       "traits": {}
     },
-    "com.posthog.taggers#TaggersList": {
+    "com.posthog.taggers#ListTaggers": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.taggers#TaggersListRequest"
+        "target": "com.posthog.taggers#ListTaggersRequest"
       },
       "output": {
         "target": "com.posthog.taggers#PaginatedTaggerList"
@@ -700,7 +700,7 @@
       },
       "traits": {}
     },
-    "com.posthog.taggers#TaggersCreateRequest": {
+    "com.posthog.taggers#CreateTaggerRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -750,10 +750,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.taggers#TaggersCreate": {
+    "com.posthog.taggers#CreateTagger": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.taggers#TaggersCreateRequest"
+        "target": "com.posthog.taggers#CreateTaggerRequest"
       },
       "output": {
         "target": "com.posthog.taggers#Tagger"
@@ -815,7 +815,7 @@
         "smithy.api#documentation": "Conditions that scope when the tagger runs"
       }
     },
-    "com.posthog.taggers#TaggersUpdateRequest": {
+    "com.posthog.taggers#UpdateTaggerRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -876,10 +876,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.taggers#TaggersUpdate": {
+    "com.posthog.taggers#UpdateTagger": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.taggers#TaggersUpdateRequest"
+        "target": "com.posthog.taggers#UpdateTaggerRequest"
       },
       "output": {
         "target": "com.posthog.taggers#Tagger"
@@ -901,7 +901,7 @@
         "smithy.api#documentation": "Conditions that scope when the tagger runs"
       }
     },
-    "com.posthog.taggers#TaggersPartialUpdateRequest": {
+    "com.posthog.taggers#UpdateTaggerPartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -958,10 +958,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.taggers#TaggersPartialUpdate": {
+    "com.posthog.taggers#UpdateTaggerPartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.taggers#TaggersPartialUpdateRequest"
+        "target": "com.posthog.taggers#UpdateTaggerPartialRequest"
       },
       "output": {
         "target": "com.posthog.taggers#Tagger"
@@ -1043,7 +1043,7 @@
         "smithy.api#documentation": "Optional tag whitelist. Returned tags outside this list are filtered out."
       }
     },
-    "com.posthog.taggers#TaggersTestHogCreateRequest": {
+    "com.posthog.taggers#CreateTaggerTestHogRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -1170,10 +1170,10 @@
         "smithy.api#documentation": "Per-event Hog tagger test results."
       }
     },
-    "com.posthog.taggers#TaggersTestHogCreate": {
+    "com.posthog.taggers#CreateTaggerTestHog": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.taggers#TaggersTestHogCreateRequest"
+        "target": "com.posthog.taggers#CreateTaggerTestHogRequest"
       },
       "output": {
         "target": "com.posthog.taggers#TestHogTaggerResponse"
@@ -1192,25 +1192,25 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.taggers#TaggersList"
+          "target": "com.posthog.taggers#ListTaggers"
         },
         {
-          "target": "com.posthog.taggers#TaggersCreate"
+          "target": "com.posthog.taggers#CreateTagger"
         },
         {
           "target": "com.posthog.taggers#TaggersRetrieve"
         },
         {
-          "target": "com.posthog.taggers#TaggersUpdate"
+          "target": "com.posthog.taggers#UpdateTagger"
         },
         {
-          "target": "com.posthog.taggers#TaggersPartialUpdate"
+          "target": "com.posthog.taggers#UpdateTaggerPartial"
         },
         {
           "target": "com.posthog.taggers#TaggersDestroy"
         },
         {
-          "target": "com.posthog.taggers#TaggersTestHogCreate"
+          "target": "com.posthog.taggers#CreateTaggerTestHog"
         }
       ],
       "traits": {

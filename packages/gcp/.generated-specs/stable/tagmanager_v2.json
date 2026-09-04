@@ -5117,7 +5117,7 @@
         "smithy.api#documentation": "Gets a Container Version."
       }
     },
-    "com.gcp.tagmanager_v2#Set_latestAccountsContainersVersionsRequest": {
+    "com.gcp.tagmanager_v2#SetLatestAccountsContainersVersionsRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -5130,10 +5130,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#Set_latestAccountsContainersVersions": {
+    "com.gcp.tagmanager_v2#SetLatestAccountsContainersVersions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#Set_latestAccountsContainersVersionsRequest"
+        "target": "com.gcp.tagmanager_v2#SetLatestAccountsContainersVersionsRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#ContainerVersion"
@@ -5260,7 +5260,7 @@
         "smithy.api#documentation": "Undeletes a Container Version."
       }
     },
-    "com.gcp.tagmanager_v2#Create_versionAccountsContainersWorkspacesRequest": {
+    "com.gcp.tagmanager_v2#CreateVersionAccountsContainersWorkspacesRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -5280,10 +5280,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#Create_versionAccountsContainersWorkspaces": {
+    "com.gcp.tagmanager_v2#CreateVersionAccountsContainersWorkspaces": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#Create_versionAccountsContainersWorkspacesRequest"
+        "target": "com.gcp.tagmanager_v2#CreateVersionAccountsContainersWorkspacesRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#CreateContainerVersionResponse"
@@ -5499,7 +5499,7 @@
         "smithy.api#documentation": "Gets a Workspace."
       }
     },
-    "com.gcp.tagmanager_v2#Bulk_updateAccountsContainersWorkspacesRequest": {
+    "com.gcp.tagmanager_v2#UpdateBulkAccountContainerWorkspaceRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -5519,10 +5519,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#Bulk_updateAccountsContainersWorkspaces": {
+    "com.gcp.tagmanager_v2#UpdateBulkAccountContainerWorkspace": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#Bulk_updateAccountsContainersWorkspacesRequest"
+        "target": "com.gcp.tagmanager_v2#UpdateBulkAccountContainerWorkspaceRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#BulkUpdateWorkspaceResponse"
@@ -5769,7 +5769,7 @@
         "smithy.api#documentation": "Updates a Workspace."
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesGtag_configRequest": {
+    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesGtagConfigRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -5789,10 +5789,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesGtag_config": {
+    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesGtagConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesGtag_configRequest"
+        "target": "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesGtagConfigRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#ListGtagConfigResponse"
@@ -5817,7 +5817,7 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesGtag_configRequest": {
+    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesGtagConfigRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -5830,10 +5830,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesGtag_config": {
+    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesGtagConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesGtag_configRequest"
+        "target": "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesGtagConfigRequest"
       },
       "errors": [
         {
@@ -5857,7 +5857,7 @@
         "smithy.api#documentation": "Deletes a Google tag config."
       }
     },
-    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesGtag_configRequest": {
+    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesGtagConfigRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -5877,10 +5877,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesGtag_config": {
+    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesGtagConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesGtag_configRequest"
+        "target": "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesGtagConfigRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#GtagConfig"
@@ -5907,7 +5907,7 @@
         "smithy.api#documentation": "Creates a Google tag config."
       }
     },
-    "com.gcp.tagmanager_v2#UpdateAccountsContainersWorkspacesGtag_configRequest": {
+    "com.gcp.tagmanager_v2#UpdateAccountsContainersWorkspacesGtagConfigRequest": {
       "type": "structure",
       "members": {
         "fingerprint": {
@@ -5934,10 +5934,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#UpdateAccountsContainersWorkspacesGtag_config": {
+    "com.gcp.tagmanager_v2#UpdateAccountsContainersWorkspacesGtagConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#UpdateAccountsContainersWorkspacesGtag_configRequest"
+        "target": "com.gcp.tagmanager_v2#UpdateAccountsContainersWorkspacesGtagConfigRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#GtagConfig"
@@ -5964,7 +5964,7 @@
         "smithy.api#documentation": "Updates a Google tag config."
       }
     },
-    "com.gcp.tagmanager_v2#GetAccountsContainersWorkspacesGtag_configRequest": {
+    "com.gcp.tagmanager_v2#GetAccountsContainersWorkspacesGtagConfigRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -5977,10 +5977,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#GetAccountsContainersWorkspacesGtag_config": {
+    "com.gcp.tagmanager_v2#GetAccountsContainersWorkspacesGtagConfig": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#GetAccountsContainersWorkspacesGtag_configRequest"
+        "target": "com.gcp.tagmanager_v2#GetAccountsContainersWorkspacesGtagConfigRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#GtagConfig"
@@ -8881,7 +8881,7 @@
         "target": "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuilt_in_variablesTypeEnum"
       }
     },
-    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuilt_in_variablesRequest": {
+    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuiltInVariablesRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -8901,10 +8901,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuilt_in_variables": {
+    "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuiltInVariables": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuilt_in_variablesRequest"
+        "target": "com.gcp.tagmanager_v2#CreateAccountsContainersWorkspacesBuiltInVariablesRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#CreateBuiltInVariableResponse"
@@ -9644,7 +9644,7 @@
         "target": "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuilt_in_variablesTypeEnum"
       }
     },
-    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest": {
+    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuiltInVariablesRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -9664,10 +9664,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuilt_in_variables": {
+    "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuiltInVariables": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuilt_in_variablesRequest"
+        "target": "com.gcp.tagmanager_v2#DeleteAccountsContainersWorkspacesBuiltInVariablesRequest"
       },
       "errors": [
         {
@@ -9691,7 +9691,7 @@
         "smithy.api#documentation": "Deletes one or more GTM Built-In Variables."
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesBuilt_in_variablesRequest": {
+    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesBuiltInVariablesRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -9711,10 +9711,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesBuilt_in_variables": {
+    "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesBuiltInVariables": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesBuilt_in_variablesRequest"
+        "target": "com.gcp.tagmanager_v2#ListAccountsContainersWorkspacesBuiltInVariablesRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#ListEnabledBuiltInVariablesResponse"
@@ -10815,7 +10815,7 @@
         "smithy.api#documentation": "Gets the latest container version header"
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsContainersVersion_headersRequest": {
+    "com.gcp.tagmanager_v2#ListAccountsContainersVersionHeadersRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -10842,10 +10842,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsContainersVersion_headers": {
+    "com.gcp.tagmanager_v2#ListAccountsContainersVersionHeaders": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#ListAccountsContainersVersion_headersRequest"
+        "target": "com.gcp.tagmanager_v2#ListAccountsContainersVersionHeadersRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#ListContainerVersionsResponse"
@@ -11283,7 +11283,7 @@
         "smithy.api#documentation": "Deletes a GTM Environment."
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsUser_permissionsRequest": {
+    "com.gcp.tagmanager_v2#ListAccountsUserPermissionsRequest": {
       "type": "structure",
       "members": {
         "pageToken": {
@@ -11303,10 +11303,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#ListAccountsUser_permissions": {
+    "com.gcp.tagmanager_v2#ListAccountsUserPermissions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#ListAccountsUser_permissionsRequest"
+        "target": "com.gcp.tagmanager_v2#ListAccountsUserPermissionsRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#ListUserPermissionsResponse"
@@ -11331,7 +11331,7 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#DeleteAccountsUser_permissionsRequest": {
+    "com.gcp.tagmanager_v2#DeleteAccountsUserPermissionsRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -11344,10 +11344,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#DeleteAccountsUser_permissions": {
+    "com.gcp.tagmanager_v2#DeleteAccountsUserPermissions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#DeleteAccountsUser_permissionsRequest"
+        "target": "com.gcp.tagmanager_v2#DeleteAccountsUserPermissionsRequest"
       },
       "errors": [
         {
@@ -11371,7 +11371,7 @@
         "smithy.api#documentation": "Removes a user from the account, revoking access to it and all of its containers."
       }
     },
-    "com.gcp.tagmanager_v2#CreateAccountsUser_permissionsRequest": {
+    "com.gcp.tagmanager_v2#CreateAccountsUserPermissionsRequest": {
       "type": "structure",
       "members": {
         "parent": {
@@ -11391,10 +11391,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#CreateAccountsUser_permissions": {
+    "com.gcp.tagmanager_v2#CreateAccountsUserPermissions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#CreateAccountsUser_permissionsRequest"
+        "target": "com.gcp.tagmanager_v2#CreateAccountsUserPermissionsRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#UserPermission"
@@ -11421,7 +11421,7 @@
         "smithy.api#documentation": "Creates a user's Account & Container access."
       }
     },
-    "com.gcp.tagmanager_v2#UpdateAccountsUser_permissionsRequest": {
+    "com.gcp.tagmanager_v2#UpdateAccountsUserPermissionsRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -11441,10 +11441,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#UpdateAccountsUser_permissions": {
+    "com.gcp.tagmanager_v2#UpdateAccountsUserPermissions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#UpdateAccountsUser_permissionsRequest"
+        "target": "com.gcp.tagmanager_v2#UpdateAccountsUserPermissionsRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#UserPermission"
@@ -11471,7 +11471,7 @@
         "smithy.api#documentation": "Updates a user's Account & Container access."
       }
     },
-    "com.gcp.tagmanager_v2#GetAccountsUser_permissionsRequest": {
+    "com.gcp.tagmanager_v2#GetAccountsUserPermissionsRequest": {
       "type": "structure",
       "members": {
         "path": {
@@ -11484,10 +11484,10 @@
         }
       }
     },
-    "com.gcp.tagmanager_v2#GetAccountsUser_permissions": {
+    "com.gcp.tagmanager_v2#GetAccountsUserPermissions": {
       "type": "operation",
       "input": {
-        "target": "com.gcp.tagmanager_v2#GetAccountsUser_permissionsRequest"
+        "target": "com.gcp.tagmanager_v2#GetAccountsUserPermissionsRequest"
       },
       "output": {
         "target": "com.gcp.tagmanager_v2#UserPermission"

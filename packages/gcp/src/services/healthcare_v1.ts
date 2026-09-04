@@ -648,45 +648,6 @@ export const ArchiveUserDataMappingResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ArchiveUserDataMappingResponse",
 }) as any as S.Schema<ArchiveUserDataMappingResponse>;
 
-/** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
-export interface HttpBody {
-  /** The HTTP request/response body as raw binary. */
-  data?: string;
-  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
-  extensions?: DocumentMapList;
-  /** The HTTP Content-Type header value specifying the content type of the body. */
-  contentType?: string;
-}
-export const HttpBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(S.String),
-    extensions: S.optional(DocumentMapList),
-    contentType: S.optional(S.String),
-  }),
-).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
-
-export interface Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest {
-  /** Required. The name of the FHIR store this resource belongs to. */
-  parent: string;
-  /** Request body */
-  body?: HttpBody;
-}
-export const Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+parent}/fhir/Binary",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest>;
-
 export interface Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the Binary resource to retrieve. */
   name: string;
@@ -706,27 +667,22 @@ export const Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest =
     identifier: "Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest",
   }) as any as S.Schema<Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
-export interface Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest {
-  /** Required. The name of the resource to update. */
-  name: string;
-  /** Request body */
-  body?: HttpBody;
+/** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
+export interface HttpBody {
+  /** The HTTP request/response body as raw binary. */
+  data?: string;
+  /** Application specific response metadata. Must be set in the first response for streaming APIs. */
+  extensions?: DocumentMapList;
+  /** The HTTP Content-Type header value specifying the content type of the body. */
+  contentType?: string;
 }
-export const Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1/{+name}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest>;
+export const HttpBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(S.String),
+    extensions: S.optional(DocumentMapList),
+    contentType: S.optional(S.String),
+  }),
+).annotate({ identifier: "HttpBody" }) as any as S.Schema<HttpBody>;
 
 export interface Binary_vreadProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the Binary resource version to retrieve. */
@@ -805,92 +761,6 @@ export const Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest =
   ).annotate({
     identifier: "Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest",
   }) as any as S.Schema<Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest>;
-
-/** The configuration for exporting to Cloud Storage. */
-export interface GoogleCloudHealthcareV1FhirGcsDestination {
-  /** URI for a Cloud Storage directory where result files should be written, in the format of `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
-  uriPrefix?: string;
-}
-export const GoogleCloudHealthcareV1FhirGcsDestination =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      uriPrefix: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1FhirGcsDestination",
-  }) as any as S.Schema<GoogleCloudHealthcareV1FhirGcsDestination>;
-
-export type BulkDeleteResourcesRequestVersionConfigEnum =
-  | "VERSION_CONFIG_UNSPECIFIED"
-  | "ALL"
-  | "CURRENT_ONLY"
-  | "HISTORY_ONLY";
-export const BulkDeleteResourcesRequestVersionConfigEnum =
-  /*@__PURE__*/ S.String;
-
-/** Specifies the configuration for importing data from Cloud Storage. */
-export interface GoogleCloudHealthcareV1FhirGcsSource {
-  /** Required. Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata. */
-  uri?: string;
-}
-export const GoogleCloudHealthcareV1FhirGcsSource = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      uri: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "GoogleCloudHealthcareV1FhirGcsSource",
-}) as any as S.Schema<GoogleCloudHealthcareV1FhirGcsSource>;
-
-/** Request to bulk delete FHIR resources. */
-export interface BulkDeleteResourcesRequest {
-  /** Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is fully rolled out), this will default to true. During the transition period, the default depends on the Mendel flag status for the project. */
-  validateOnly?: boolean;
-  /** Optional. The Cloud Storage output destination. The Healthcare Service Agent account requires the `roles/storage.objectAdmin` role on the Cloud Storage location. The deleted resources outputs are organized by FHIR resource types. The server creates one or more objects per resource type. Each object contains newline delimited strings in the format {resourceType}/{resourceId}. */
-  gcsDestination?: GoogleCloudHealthcareV1FhirGcsDestination;
-  /** Optional. Specifies which version of the resources to delete. */
-  versionConfig?: BulkDeleteResourcesRequestVersionConfigEnum | (string & {});
-  /** Optional. If provided, only resources updated before or atthis time are deleted. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time zone. */
-  until?: string;
-  /** Optional. String of comma-delimited FHIR resource types. If provided, only resources of the specified resource type(s) will be deleted. */
-  type?: string;
-  /** Optional. Specifies the Cloud Storage source data location containing the list of resource IDs to delete. Each file inside `gcs_source` must contain newline-delimited strings in the format `{resourceType}/{resourceId}`. This field is mutually exclusive with filter parameters such as `type` and `until`. */
-  gcsSource?: GoogleCloudHealthcareV1FhirGcsSource;
-}
-export const BulkDeleteResourcesRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    validateOnly: S.optional(S.Boolean),
-    gcsDestination: S.optional(GoogleCloudHealthcareV1FhirGcsDestination),
-    versionConfig: S.optional(BulkDeleteResourcesRequestVersionConfigEnum),
-    until: S.optional(S.String),
-    type: S.optional(S.String),
-    gcsSource: S.optional(GoogleCloudHealthcareV1FhirGcsSource),
-  }),
-).annotate({
-  identifier: "BulkDeleteResourcesRequest",
-}) as any as S.Schema<BulkDeleteResourcesRequest>;
-
-export interface BulkDeleteProjectsLocationsDatasetsFhirStoresRequest {
-  /** Required. The name of the FHIR store to bulk delete resources from, in the format of `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
-  name: string;
-  /** Request body */
-  body?: BulkDeleteResourcesRequest;
-}
-export const BulkDeleteProjectsLocationsDatasetsFhirStoresRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-      body: S.optional(BulkDeleteResourcesRequest.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "v1/{+name}:bulkDelete",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier: "BulkDeleteProjectsLocationsDatasetsFhirStoresRequest",
-  }) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsFhirStoresRequest>;
 
 /** The request message for Operations.CancelOperation. */
 export type CancelOperationRequest = ArchiveUserDataMappingRequest;
@@ -1049,29 +919,6 @@ export const CheckDataAccessResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CheckDataAccessResponse",
 }) as any as S.Schema<CheckDataAccessResponse>;
 
-export interface ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest {
-  /** Required. The name of the FHIR store this resource belongs to. */
-  parent: string;
-  /** Required. The FHIR resource type to delete, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/resourcelist.html)). */
-  type: string;
-}
-export const ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      type: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "v1/{+parent}/fhir/{+type}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest>;
-
 export interface ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The FHIR resource type to update, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/resourcelist.html)). */
   type: string;
@@ -1098,32 +945,6 @@ export const ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest =
       "ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest",
   }) as any as S.Schema<ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest>;
 
-export interface ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest {
-  /** Required. The name of the FHIR store this resource belongs to. */
-  parent: string;
-  /** Required. The FHIR resource type to update, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the provided content. */
-  type: string;
-  /** Request body */
-  body?: HttpBody;
-}
-export const ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      parent: S.String.pipe(T.Label()),
-      type: S.String.pipe(T.Label()),
-      body: S.optional(HttpBody.pipe(T.HttpBody())),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "v1/{+parent}/fhir/{+type}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest",
-  }) as any as S.Schema<ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest>;
-
 export interface Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the consent resource to find enforcement status, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{consent_id}` */
   name: string;
@@ -1143,6 +964,28 @@ export const Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRe
     identifier:
       "Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest",
   }) as any as S.Schema<Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest>;
+
+export interface CreateBinaryProjectLocationDatasetFhirStoreFhirRequest {
+  /** Required. The name of the FHIR store this resource belongs to. */
+  parent: string;
+  /** Request body */
+  body?: HttpBody;
+}
+export const CreateBinaryProjectLocationDatasetFhirStoreFhirRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      body: S.optional(HttpBody.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+parent}/fhir/Binary",
+        baseUrl: "https://healthcare.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateBinaryProjectLocationDatasetFhirStoreFhirRequest",
+  }) as any as S.Schema<CreateBinaryProjectLocationDatasetFhirStoreFhirRequest>;
 
 /** Represents a customer-managed encryption key spec that can be applied to a resource. */
 export interface EncryptionSpec {
@@ -2869,11 +2712,119 @@ export const DeidentifyProjectsLocationsDatasetsFhirStoresRequest =
     identifier: "DeidentifyProjectsLocationsDatasetsFhirStoresRequest",
   }) as any as S.Schema<DeidentifyProjectsLocationsDatasetsFhirStoresRequest>;
 
-export interface Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest {
+/** The configuration for exporting to Cloud Storage. */
+export interface GoogleCloudHealthcareV1FhirGcsDestination {
+  /** URI for a Cloud Storage directory where result files should be written, in the format of `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
+  uriPrefix?: string;
+}
+export const GoogleCloudHealthcareV1FhirGcsDestination =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      uriPrefix: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "GoogleCloudHealthcareV1FhirGcsDestination",
+  }) as any as S.Schema<GoogleCloudHealthcareV1FhirGcsDestination>;
+
+export type BulkDeleteResourcesRequestVersionConfigEnum =
+  | "VERSION_CONFIG_UNSPECIFIED"
+  | "ALL"
+  | "CURRENT_ONLY"
+  | "HISTORY_ONLY";
+export const BulkDeleteResourcesRequestVersionConfigEnum =
+  /*@__PURE__*/ S.String;
+
+/** Specifies the configuration for importing data from Cloud Storage. */
+export interface GoogleCloudHealthcareV1FhirGcsSource {
+  /** Required. Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata. */
+  uri?: string;
+}
+export const GoogleCloudHealthcareV1FhirGcsSource = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      uri: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GoogleCloudHealthcareV1FhirGcsSource",
+}) as any as S.Schema<GoogleCloudHealthcareV1FhirGcsSource>;
+
+/** Request to bulk delete FHIR resources. */
+export interface BulkDeleteResourcesRequest {
+  /** Optional. If set to true, the request will only perform a dry run. By default (once the behavior change is fully rolled out), this will default to true. During the transition period, the default depends on the Mendel flag status for the project. */
+  validateOnly?: boolean;
+  /** Optional. The Cloud Storage output destination. The Healthcare Service Agent account requires the `roles/storage.objectAdmin` role on the Cloud Storage location. The deleted resources outputs are organized by FHIR resource types. The server creates one or more objects per resource type. Each object contains newline delimited strings in the format {resourceType}/{resourceId}. */
+  gcsDestination?: GoogleCloudHealthcareV1FhirGcsDestination;
+  /** Optional. Specifies which version of the resources to delete. */
+  versionConfig?: BulkDeleteResourcesRequestVersionConfigEnum | (string & {});
+  /** Optional. If provided, only resources updated before or atthis time are deleted. The time uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time zone. */
+  until?: string;
+  /** Optional. String of comma-delimited FHIR resource types. If provided, only resources of the specified resource type(s) will be deleted. */
+  type?: string;
+  /** Optional. Specifies the Cloud Storage source data location containing the list of resource IDs to delete. Each file inside `gcs_source` must contain newline-delimited strings in the format `{resourceType}/{resourceId}`. This field is mutually exclusive with filter parameters such as `type` and `until`. */
+  gcsSource?: GoogleCloudHealthcareV1FhirGcsSource;
+}
+export const BulkDeleteResourcesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    validateOnly: S.optional(S.Boolean),
+    gcsDestination: S.optional(GoogleCloudHealthcareV1FhirGcsDestination),
+    versionConfig: S.optional(BulkDeleteResourcesRequestVersionConfigEnum),
+    until: S.optional(S.String),
+    type: S.optional(S.String),
+    gcsSource: S.optional(GoogleCloudHealthcareV1FhirGcsSource),
+  }),
+).annotate({
+  identifier: "BulkDeleteResourcesRequest",
+}) as any as S.Schema<BulkDeleteResourcesRequest>;
+
+export interface DeleteBulkProjectLocationDatasetFhirStoreRequest {
+  /** Required. The name of the FHIR store to bulk delete resources from, in the format of `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
+  name: string;
+  /** Request body */
+  body?: BulkDeleteResourcesRequest;
+}
+export const DeleteBulkProjectLocationDatasetFhirStoreRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(BulkDeleteResourcesRequest.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "v1/{+name}:bulkDelete",
+        baseUrl: "https://healthcare.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteBulkProjectLocationDatasetFhirStoreRequest",
+  }) as any as S.Schema<DeleteBulkProjectLocationDatasetFhirStoreRequest>;
+
+export interface DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest {
+  /** Required. The name of the FHIR store this resource belongs to. */
+  parent: string;
+  /** Required. The FHIR resource type to delete, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/resourcelist.html)). */
+  type: string;
+}
+export const DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      type: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "v1/{+parent}/fhir/{+type}",
+        baseUrl: "https://healthcare.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest",
+  }) as any as S.Schema<DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest>;
+
+export interface DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest {
   /** Required. Name of the operation to be deleted, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`. */
   name: string;
 }
-export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest =
+export const DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -2886,8 +2837,8 @@ export const Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsR
     ),
   ).annotate({
     identifier:
-      "Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest",
-  }) as any as S.Schema<Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest>;
+      "DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest",
+  }) as any as S.Schema<DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest>;
 
 export interface DeleteProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to delete. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`. */
@@ -3655,31 +3606,11 @@ export const ExportProjectsLocationsDatasetsHl7V2StoresRequest =
     identifier: "ExportProjectsLocationsDatasetsHl7V2StoresRequest",
   }) as any as S.Schema<ExportProjectsLocationsDatasetsHl7V2StoresRequest>;
 
-export interface Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest {
-  /** Required. Name of the operation to query, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`. */
-  name: string;
-}
-export const Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "v1/{+name}",
-        baseUrl: "https://healthcare.googleapis.com/",
-      }),
-    ),
-  ).annotate({
-    identifier:
-      "Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest",
-  }) as any as S.Schema<Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest>;
-
-export interface GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest {
+export interface GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest {
   /** Required. The resource name of the DICOM store to get metrics for. */
   name: string;
 }
-export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
+export const GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3692,8 +3623,8 @@ export const GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest =
     ),
   ).annotate({
     identifier:
-      "GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest",
-  }) as any as S.Schema<GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
+      "GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest",
+  }) as any as S.Schema<GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest>;
 
 /** DicomStoreMetrics contains metrics describing a DICOM store. */
 export interface DicomStoreMetrics {
@@ -3723,11 +3654,31 @@ export const DicomStoreMetrics = /*@__PURE__*/ S.suspend(() =>
   identifier: "DicomStoreMetrics",
 }) as any as S.Schema<DicomStoreMetrics>;
 
-export interface GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest {
+export interface GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest {
+  /** Required. Name of the operation to query, in the format `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/operations/{operation_id}`. */
+  name: string;
+}
+export const GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "v1/{+name}",
+        baseUrl: "https://healthcare.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier:
+      "GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest",
+  }) as any as S.Schema<GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest>;
+
+export interface GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest {
   /** Required. The resource name of the FHIR store to get metrics for. */
   name: string;
 }
-export const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest =
+export const GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       name: S.String.pipe(T.Label()),
@@ -3739,8 +3690,8 @@ export const GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest =
       }),
     ),
   ).annotate({
-    identifier: "GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest",
-  }) as any as S.Schema<GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
+    identifier: "GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest",
+  }) as any as S.Schema<GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest>;
 
 /** Count of resources and total storage size by type for a given FHIR store. */
 export interface FhirStoreMetric {
@@ -6902,6 +6853,53 @@ export const TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest =
     identifier: "TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest",
   }) as any as S.Schema<TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest>;
 
+export interface UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest {
+  /** Required. The name of the resource to update. */
+  name: string;
+  /** Request body */
+  body?: HttpBody;
+}
+export const UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String.pipe(T.Label()),
+      body: S.optional(HttpBody.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "v1/{+name}",
+        baseUrl: "https://healthcare.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest",
+  }) as any as S.Schema<UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest>;
+
+export interface UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest {
+  /** Required. The name of the FHIR store this resource belongs to. */
+  parent: string;
+  /** Required. The FHIR resource type to update, such as Patient or Observation. For a complete list, see the FHIR Resource Index ([DSTU2](https://hl7.org/fhir/DSTU2/resourcelist.html), [STU3](https://hl7.org/fhir/STU3/resourcelist.html), [R4](https://hl7.org/fhir/R4/resourcelist.html), [R5](https://hl7.org/fhir/R5/resourcelist.html)). Must match the resource type in the provided content. */
+  type: string;
+  /** Request body */
+  body?: HttpBody;
+}
+export const UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      parent: S.String.pipe(T.Label()),
+      type: S.String.pipe(T.Label()),
+      body: S.optional(HttpBody.pipe(T.HttpBody())),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "v1/{+parent}/fhir/{+type}",
+        baseUrl: "https://healthcare.googleapis.com/",
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest",
+  }) as any as S.Schema<UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest>;
+
 export interface UpdateProjectsLocationsDatasetsFhirStoresFhirRequest {
   /** Required. The name of the resource to update. */
   name: string;
@@ -7043,26 +7041,6 @@ export const archiveProjectsLocationsDatasetsConsentStoresUserDataMappings: API.
   retry: Retry.Retry,
 }));
 
-export type Binary_createProjectsLocationsDatasetsFhirStoresFhirError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Creates a FHIR Binary resource. This method can be used to create a Binary resource either by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource is created with this method using the FHIR content type this method's behavior is the same as [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create). If a resource type other than Binary is used in the request it's treated in the same way as non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content type is used in the request, a Binary resource will be generated, and the uploaded data will be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be filled in using the value of the `Content-Type` header, and the `securityContext` field (not present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method is 1 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full resource content, do not support Binary resources that are larger than 10 MB. In these cases the resource's `data` field will be omitted. Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to indicate that including the data is `unsupported`. On success, an empty `201 Created` response is returned. The newly created resource's ID and version are returned in the Location header. Using `Prefer: representation=resource` is not allowed for this method. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
-export const binary_createProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
-  Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest,
-  HttpBody,
-  Binary_createProjectsLocationsDatasetsFhirStoresFhirError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Binary_createProjectsLocationsDatasetsFhirStoresFhirRequest,
-  output: HttpBody,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type Binary_readProjectsLocationsDatasetsFhirStoresFhirError =
   | NotFound
   | Forbidden
@@ -7077,26 +7055,6 @@ export const binary_readProjectsLocationsDatasetsFhirStoresFhir: API.OperationMe
   input: Binary_readProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type Binary_updateProjectsLocationsDatasetsFhirStoresFhirError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Updates the entire contents of a Binary resource. If the specified resource does not exist and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. This method can be used to update a Binary resource either by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource is updated with this method using the FHIR content type this method's behavior is the same as `update`. If a resource type other than Binary is used in the request it will be treated in the same way as non-FHIR data. When a non-FHIR content type is used in the request, a Binary resource will be generated using the ID from the resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be filled in using the value of the `Content-Type` header, and the `securityContext` field (not present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full resource content, do not support Binary resources that are larger than 10 MB. In these cases the resource's `data` field will be omitted. Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to indicate that including the data is `unsupported`. On success, an empty 200 OK response will be returned, or a 201 Created if the resource did not exit. The resource's ID and version are returned in the Location header. Using `Prefer: representation=resource` is not allowed for this method. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
-export const binary_updateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
-  Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest,
-  HttpBody,
-  Binary_updateProjectsLocationsDatasetsFhirStoresFhirError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Binary_updateProjectsLocationsDatasetsFhirStoresFhirRequest,
-  output: HttpBody,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -7151,26 +7109,6 @@ export const bulk_exportProjectsLocationsDatasetsFhirStoresFhir: API.OperationMe
   input: Bulk_exportProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type BulkDeleteProjectsLocationsDatasetsFhirStoresError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Bulk deletes the FHIR resources from the given FHIR store. This method returns an Operation that can be used to track the progress of the deletion by calling GetOperation. The success and secondary_success counters correspond to the deleted current version and historical versions, respectively. */
-export const bulkDeleteProjectsLocationsDatasetsFhirStores: API.OperationMethod<
-  BulkDeleteProjectsLocationsDatasetsFhirStoresRequest,
-  Operation,
-  BulkDeleteProjectsLocationsDatasetsFhirStoresError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteProjectsLocationsDatasetsFhirStoresRequest,
-  output: Operation,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -7233,26 +7171,6 @@ export const checkDataAccessProjectsLocationsDatasetsConsentStores: API.Operatio
   retry: Retry.Retry,
 }));
 
-export type ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** Deletes a FHIR resource that match an identifier search query. Implements the FHIR standard conditional delete interaction, limited to searching by resource identifier. If multiple resources match, 412 Precondition Failed error will be returned. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted resource is moved to a history repository that can still be retrieved through vread and related methods, unless they are removed by the purge method. For samples that show how to call `conditionalDelete`, see [Conditionally deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource). */
-export const conditionalDeleteProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
-  ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest,
-  Empty,
-  ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalDeleteProjectsLocationsDatasetsFhirStoresFhirRequest,
-  output: Empty,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirError =
   | NotFound
   | Forbidden
@@ -7267,26 +7185,6 @@ export const conditionalPatchProjectsLocationsDatasetsFhirStoresFhir: API.Operat
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input: ConditionalPatchProjectsLocationsDatasetsFhirStoresFhirRequest,
-  output: HttpBody,
-  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirError =
-  | NotFound
-  | Forbidden
-  | BadRequest
-  | Conflict
-  | GcpOpError;
-/** If a resource is found with the identifier specified in the query parameters, updates the entire contents of that resource. Implements the FHIR standard conditional update interaction, limited to searching by resource identifier. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. If the search criteria identify more than one match, the request returns a `412 Precondition Failed` error. If the search criteria identify zero matches, and the supplied resource body contains an `id`, and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. If the search criteria identify zero matches, and the supplied resource body does not contain an `id`, the resource is created with a server-assigned ID as per the create method. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `conditionalUpdate`, see [Conditionally updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource). */
-export const conditionalUpdateProjectsLocationsDatasetsFhirStoresFhir: API.OperationMethod<
-  ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest,
-  HttpBody,
-  ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConditionalUpdateProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -7308,6 +7206,26 @@ export const consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhir: 
     Consent_enforcement_statusProjectsLocationsDatasetsFhirStoresFhirRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateBinaryProjectLocationDatasetFhirStoreFhirError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Creates a FHIR Binary resource. This method can be used to create a Binary resource either by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource is created with this method using the FHIR content type this method's behavior is the same as [`fhir.create`](https://cloud.google.com/healthcare-api/docs/reference/rest/v1/projects.locations.datasets.fhirStores.fhir/create). If a resource type other than Binary is used in the request it's treated in the same way as non-FHIR data (e.g., images, zip archives, pdf files, documents). When a non-FHIR content type is used in the request, a Binary resource will be generated, and the uploaded data will be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be filled in using the value of the `Content-Type` header, and the `securityContext` field (not present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method is 1 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full resource content, do not support Binary resources that are larger than 10 MB. In these cases the resource's `data` field will be omitted. Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to indicate that including the data is `unsupported`. On success, an empty `201 Created` response is returned. The newly created resource's ID and version are returned in the Location header. Using `Prefer: representation=resource` is not allowed for this method. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
+export const createBinaryProjectLocationDatasetFhirStoreFhir: API.OperationMethod<
+  CreateBinaryProjectLocationDatasetFhirStoreFhirRequest,
+  HttpBody,
+  CreateBinaryProjectLocationDatasetFhirStoreFhirError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateBinaryProjectLocationDatasetFhirStoreFhirRequest,
+  output: HttpBody,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
@@ -7593,21 +7511,61 @@ export const deidentifyProjectsLocationsDatasetsFhirStores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsError =
+export type DeleteBulkProjectLocationDatasetFhirStoreError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Bulk deletes the FHIR resources from the given FHIR store. This method returns an Operation that can be used to track the progress of the deletion by calling GetOperation. The success and secondary_success counters correspond to the deleted current version and historical versions, respectively. */
+export const deleteBulkProjectLocationDatasetFhirStore: API.OperationMethod<
+  DeleteBulkProjectLocationDatasetFhirStoreRequest,
+  Operation,
+  DeleteBulkProjectLocationDatasetFhirStoreError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBulkProjectLocationDatasetFhirStoreRequest,
+  output: Operation,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteConditionalProjectLocationDatasetFhirStoreFhirError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Deletes a FHIR resource that match an identifier search query. Implements the FHIR standard conditional delete interaction, limited to searching by resource identifier. If multiple resources match, 412 Precondition Failed error will be returned. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. Note: Unless resource versioning is disabled by setting the disable_resource_versioning flag on the FHIR store, the deleted resource is moved to a history repository that can still be retrieved through vread and related methods, unless they are removed by the purge method. For samples that show how to call `conditionalDelete`, see [Conditionally deleting a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource). */
+export const deleteConditionalProjectLocationDatasetFhirStoreFhir: API.OperationMethod<
+  DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest,
+  Empty,
+  DeleteConditionalProjectLocationDatasetFhirStoreFhirError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConditionalProjectLocationDatasetFhirStoreFhirRequest,
+  output: Empty,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsError =
   | NotFound
   | Forbidden
   | BadRequest
   | Conflict
   | GcpOpError;
 /** Deletes operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data delete request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-delete-request). Returns success if the operation was successfully cancelled. If the operation is complete, or has already been cancelled, returns an error response. */
-export const delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
-  Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest,
+export const deleteFhirOperationProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
+  DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest,
   HttpBody,
-  Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsError,
+  DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
   input:
-    Delete_fhir_operationProjectsLocationsDatasetsFhirStoresOperationsRequest,
+    DeleteFhirOperationProjectsLocationsDatasetsFhirStoresOperationsRequest,
   output: HttpBody,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
@@ -8034,55 +7992,55 @@ export const exportProjectsLocationsDatasetsHl7V2Stores: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsError =
-  | NotFound
-  | Forbidden
-  | GcpOpError;
-/** Gets the status of operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can have one of these states: * in-progress: response status code is `202` and `X-Progress` header is set to `in progress`. * complete: response status code is `200` and the body is a JSON-encoded operation response as defined by the spec. For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status. * error: response status code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
-export const get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
-  Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest,
-  HttpBody,
-  Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsError,
-  GcpOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input:
-    Get_fhir_operation_statusProjectsLocationsDatasetsFhirStoresOperationsRequest,
-  output: HttpBody,
-  errors: [NotFound, Forbidden, UnknownGCPError],
-  protocol: GcpProtocol,
-  retry: Retry.Retry,
-}));
-
-export type GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresError =
+export type GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Gets metrics associated with the DICOM store. */
-export const getDICOMStoreMetricsProjectsLocationsDatasetsDicomStores: API.OperationMethod<
-  GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest,
+export const getDicomStoreMetricsProjectsLocationsDatasetsDicomStores: API.OperationMethod<
+  GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest,
   DicomStoreMetrics,
-  GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresError,
+  GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDICOMStoreMetricsProjectsLocationsDatasetsDicomStoresRequest,
+  input: GetDicomStoreMetricsProjectsLocationsDatasetsDicomStoresRequest,
   output: DicomStoreMetrics,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
 }));
 
-export type GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresError =
+export type GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsError =
+  | NotFound
+  | Forbidden
+  | GcpOpError;
+/** Gets the status of operations as defined in the FHIR specification. Implements the FHIR implementation guide [bulk data status request](https://build.fhir.org/ig/HL7/bulk-data/export.html#bulk-data-status-request). Operations can have one of these states: * in-progress: response status code is `202` and `X-Progress` header is set to `in progress`. * complete: response status code is `200` and the body is a JSON-encoded operation response as defined by the spec. For a bulk export, this response is defined in https://build.fhir.org/ig/HL7/bulk-data/export.html#response---complete-status. * error: response status code is `5XX`, and the body is a JSON-encoded `OperationOutcome` resource describing the reason for the error. */
+export const getFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperations: API.OperationMethod<
+  GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest,
+  HttpBody,
+  GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input:
+    GetFhirOperationStatusProjectsLocationsDatasetsFhirStoresOperationsRequest,
+  output: HttpBody,
+  errors: [NotFound, Forbidden, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresError =
   | NotFound
   | Forbidden
   | GcpOpError;
 /** Gets metrics associated with the FHIR store. */
-export const getFHIRStoreMetricsProjectsLocationsDatasetsFhirStores: API.OperationMethod<
-  GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest,
+export const getFhirStoreMetricsProjectsLocationsDatasetsFhirStores: API.OperationMethod<
+  GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest,
   FhirStoreMetrics,
-  GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresError,
+  GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFHIRStoreMetricsProjectsLocationsDatasetsFhirStoresRequest,
+  input: GetFhirStoreMetricsProjectsLocationsDatasetsFhirStoresRequest,
   output: FhirStoreMetrics,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
@@ -9926,6 +9884,46 @@ export const testIamPermissionsProjectsLocationsDatasetsHl7V2Stores: API.Operati
 > = /*@__PURE__*/ API.make(() => ({
   input: TestIamPermissionsProjectsLocationsDatasetsHl7V2StoresRequest,
   output: TestIamPermissionsResponse,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateBinaryProjectLocationDatasetFhirStoreFhirError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** Updates the entire contents of a Binary resource. If the specified resource does not exist and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. This method can be used to update a Binary resource either by using one of the accepted FHIR JSON content types, or as a raw data stream. If a resource is updated with this method using the FHIR content type this method's behavior is the same as `update`. If a resource type other than Binary is used in the request it will be treated in the same way as non-FHIR data. When a non-FHIR content type is used in the request, a Binary resource will be generated using the ID from the resource path, and the uploaded data will be stored in the `content` field (`DSTU2` and `STU3`), or the `data` field (`R4` and `R5`). The Binary resource's `contentType` will be filled in using the value of the `Content-Type` header, and the `securityContext` field (not present in `DSTU2`) will be populated from the `X-Security-Context` header if it exists. At this time `securityContext` has no special behavior in the Cloud Healthcare API. Note: the limit on data ingested through this method is 2 GB. For best performance, use a non-FHIR data type instead of wrapping the data in a Binary resource. Some of the Healthcare API features, such as [exporting to BigQuery](https://cloud.google.com/healthcare-api/docs/how-tos/fhir-export-bigquery) or [Pub/Sub notifications](https://cloud.google.com/healthcare-api/docs/fhir-pubsub#behavior_when_a_fhir_resource_is_too_large_or_traffic_is_high) with full resource content, do not support Binary resources that are larger than 10 MB. In these cases the resource's `data` field will be omitted. Instead, the "http://hl7.org/fhir/StructureDefinition/data-absent-reason" extension will be present to indicate that including the data is `unsupported`. On success, an empty 200 OK response will be returned, or a 201 Created if the resource did not exit. The resource's ID and version are returned in the Location header. Using `Prefer: representation=resource` is not allowed for this method. The definition of the Binary REST API can be found at https://hl7.org/fhir/binary.html#rest. */
+export const updateBinaryProjectLocationDatasetFhirStoreFhir: API.OperationMethod<
+  UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest,
+  HttpBody,
+  UpdateBinaryProjectLocationDatasetFhirStoreFhirError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateBinaryProjectLocationDatasetFhirStoreFhirRequest,
+  output: HttpBody,
+  errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
+  protocol: GcpProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateConditionalProjectLocationDatasetFhirStoreFhirError =
+  | NotFound
+  | Forbidden
+  | BadRequest
+  | Conflict
+  | GcpOpError;
+/** If a resource is found with the identifier specified in the query parameters, updates the entire contents of that resource. Implements the FHIR standard conditional update interaction, limited to searching by resource identifier. Search term for identifier should be in the pattern `identifier=system|value` or `identifier=value` - similar to the `search` method on resources with a specific identifier. If the search criteria identify more than one match, the request returns a `412 Precondition Failed` error. If the search criteria identify zero matches, and the supplied resource body contains an `id`, and the FHIR store has enable_update_create set, creates the resource with the client-specified ID. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud Audit Logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources. If the search criteria identify zero matches, and the supplied resource body does not contain an `id`, the resource is created with a server-assigned ID as per the create method. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the updated resource, including the server-assigned version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `conditionalUpdate`, see [Conditionally updating a FHIR resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource). */
+export const updateConditionalProjectLocationDatasetFhirStoreFhir: API.OperationMethod<
+  UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest,
+  HttpBody,
+  UpdateConditionalProjectLocationDatasetFhirStoreFhirError,
+  GcpOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConditionalProjectLocationDatasetFhirStoreFhirRequest,
+  output: HttpBody,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,

@@ -30,7 +30,7 @@ export const PosthogConnectionsForwardCreateRequestQueryMap =
     S.String,
   ) as any as S.Schema<PosthogConnectionsForwardCreateRequestQueryMap>;
 
-export interface PosthogConnectionsForwardCreateRequest {
+export interface CreatePosthogConnectionForwardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
@@ -43,7 +43,7 @@ export interface PosthogConnectionsForwardCreateRequest {
   /** JSON request body for write methods. */
   data?: unknown;
 }
-export const PosthogConnectionsForwardCreateRequest = /*@__PURE__*/ S.suspend(
+export const CreatePosthogConnectionForwardRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       project_id: S.String.pipe(T.Label()),
@@ -60,8 +60,8 @@ export const PosthogConnectionsForwardCreateRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "PosthogConnectionsForwardCreateRequest",
-}) as any as S.Schema<PosthogConnectionsForwardCreateRequest>;
+  identifier: "CreatePosthogConnectionForwardRequest",
+}) as any as S.Schema<CreatePosthogConnectionForwardRequest>;
 
 export interface PostHogConnectionForwardResponse {
   /** HTTP status the target project returned. */
@@ -126,15 +126,15 @@ export const PostHogConnectionTarget = /*@__PURE__*/ S.suspend(() =>
   identifier: "PostHogConnectionTarget",
 }) as any as S.Schema<PostHogConnectionTarget>;
 
-export type PosthogConnectionsForwardCreateError = PosthogOpError;
+export type CreatePosthogConnectionForwardError = PosthogOpError;
 /** Forward a request through a PostHog connection Replay an API request against the connected PostHog project. The server injects the connection's token; the response is passed through. */
-export const posthogConnectionsForwardCreate: API.OperationMethod<
-  PosthogConnectionsForwardCreateRequest,
+export const createPosthogConnectionForward: API.OperationMethod<
+  CreatePosthogConnectionForwardRequest,
   PostHogConnectionForwardResponse,
-  PosthogConnectionsForwardCreateError,
+  CreatePosthogConnectionForwardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PosthogConnectionsForwardCreateRequest,
+  input: CreatePosthogConnectionForwardRequest,
   output: PostHogConnectionForwardResponse,
   errors: [],
   protocol: PosthogProtocol,

@@ -47,7 +47,7 @@
       },
       "traits": {}
     },
-    "com.posthog.field_notes#FieldNotesListRequest": {
+    "com.posthog.field_notes#ListFieldNotesRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -446,10 +446,10 @@
       },
       "traits": {}
     },
-    "com.posthog.field_notes#FieldNotesList": {
+    "com.posthog.field_notes#ListFieldNotes": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.field_notes#FieldNotesListRequest"
+        "target": "com.posthog.field_notes#ListFieldNotesRequest"
       },
       "output": {
         "target": "com.posthog.field_notes#PaginatedFieldNoteList"
@@ -495,7 +495,7 @@
         "smithy.api#documentation": "Viewport size when the field note was made, as {width, height}."
       }
     },
-    "com.posthog.field_notes#FieldNotesCreateRequest": {
+    "com.posthog.field_notes#CreateFieldNoteRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -593,10 +593,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.field_notes#FieldNotesCreate": {
+    "com.posthog.field_notes#CreateFieldNote": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.field_notes#FieldNotesCreateRequest"
+        "target": "com.posthog.field_notes#CreateFieldNoteRequest"
       },
       "output": {
         "target": "com.posthog.field_notes#FieldNote"
@@ -683,7 +683,7 @@
         "smithy.api#documentation": "Viewport size when the field note was made, as {width, height}."
       }
     },
-    "com.posthog.field_notes#FieldNotesUpdateRequest": {
+    "com.posthog.field_notes#UpdateFieldNoteRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -789,10 +789,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.field_notes#FieldNotesUpdate": {
+    "com.posthog.field_notes#UpdateFieldNote": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.field_notes#FieldNotesUpdateRequest"
+        "target": "com.posthog.field_notes#UpdateFieldNoteRequest"
       },
       "output": {
         "target": "com.posthog.field_notes#FieldNote"
@@ -838,7 +838,7 @@
         "smithy.api#documentation": "Viewport size when the field note was made, as {width, height}."
       }
     },
-    "com.posthog.field_notes#FieldNotesPartialUpdateRequest": {
+    "com.posthog.field_notes#UpdateFieldNotePartialRequest": {
       "type": "structure",
       "members": {
         "project_id": {
@@ -940,10 +940,10 @@
         "smithy.api#input": {}
       }
     },
-    "com.posthog.field_notes#FieldNotesPartialUpdate": {
+    "com.posthog.field_notes#UpdateFieldNotePartial": {
       "type": "operation",
       "input": {
-        "target": "com.posthog.field_notes#FieldNotesPartialUpdateRequest"
+        "target": "com.posthog.field_notes#UpdateFieldNotePartialRequest"
       },
       "output": {
         "target": "com.posthog.field_notes#FieldNote"
@@ -1003,19 +1003,19 @@
       "version": "1.0.0",
       "operations": [
         {
-          "target": "com.posthog.field_notes#FieldNotesList"
+          "target": "com.posthog.field_notes#ListFieldNotes"
         },
         {
-          "target": "com.posthog.field_notes#FieldNotesCreate"
+          "target": "com.posthog.field_notes#CreateFieldNote"
         },
         {
           "target": "com.posthog.field_notes#FieldNotesRetrieve"
         },
         {
-          "target": "com.posthog.field_notes#FieldNotesUpdate"
+          "target": "com.posthog.field_notes#UpdateFieldNote"
         },
         {
-          "target": "com.posthog.field_notes#FieldNotesPartialUpdate"
+          "target": "com.posthog.field_notes#UpdateFieldNotePartial"
         },
         {
           "target": "com.posthog.field_notes#FieldNotesDestroy"
