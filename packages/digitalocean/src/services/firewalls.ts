@@ -52,6 +52,14 @@ export const FirewallsAddRulesRequestInboundRulesItemSourcesKubernetesIdsList =
     S.String,
   ) as any as S.Schema<FirewallsAddRulesRequestInboundRulesItemSourcesKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsAddRulesRequestInboundRulesItemSourcesTagsList =
+  Array<string>;
+export const FirewallsAddRulesRequestInboundRulesItemSourcesTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsAddRulesRequestInboundRulesItemSourcesTagsList>;
+
 export interface FirewallsAddRulesRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsAddRulesRequestInboundRulesItemSourcesAddressesList;
@@ -61,7 +69,8 @@ export interface FirewallsAddRulesRequestInboundRulesItemSources {
   load_balancer_uids?: FirewallsAddRulesRequestInboundRulesItemSourcesLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsAddRulesRequestInboundRulesItemSourcesKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsAddRulesRequestInboundRulesItemSourcesTagsList | null;
 }
 export const FirewallsAddRulesRequestInboundRulesItemSources =
   /*@__PURE__*/ S.suspend(() =>
@@ -78,7 +87,9 @@ export const FirewallsAddRulesRequestInboundRulesItemSources =
       kubernetes_ids: S.optional(
         FirewallsAddRulesRequestInboundRulesItemSourcesKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsAddRulesRequestInboundRulesItemSourcesTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsAddRulesRequestInboundRulesItemSources",
@@ -148,6 +159,14 @@ export const FirewallsAddRulesRequestOutboundRulesItemDestinationsKubernetesIdsL
     S.String,
   ) as any as S.Schema<FirewallsAddRulesRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsAddRulesRequestOutboundRulesItemDestinationsTagsList =
+  Array<string>;
+export const FirewallsAddRulesRequestOutboundRulesItemDestinationsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsAddRulesRequestOutboundRulesItemDestinationsTagsList>;
+
 export interface FirewallsAddRulesRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsAddRulesRequestOutboundRulesItemDestinationsAddressesList;
@@ -157,7 +176,8 @@ export interface FirewallsAddRulesRequestOutboundRulesItemDestinations {
   load_balancer_uids?: FirewallsAddRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsAddRulesRequestOutboundRulesItemDestinationsKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsAddRulesRequestOutboundRulesItemDestinationsTagsList | null;
 }
 export const FirewallsAddRulesRequestOutboundRulesItemDestinations =
   /*@__PURE__*/ S.suspend(() =>
@@ -174,7 +194,9 @@ export const FirewallsAddRulesRequestOutboundRulesItemDestinations =
       kubernetes_ids: S.optional(
         FirewallsAddRulesRequestOutboundRulesItemDestinationsKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsAddRulesRequestOutboundRulesItemDestinationsTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsAddRulesRequestOutboundRulesItemDestinations",
@@ -237,15 +259,22 @@ export const FirewallsAddRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallsAddRulesResponse",
 }) as any as S.Schema<FirewallsAddRulesResponse>;
 
+/** An array containing the names of the Tags to be assigned to the firewall. */
+export type FirewallsAddTagsRequestTagsList = Array<string>;
+export const FirewallsAddTagsRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FirewallsAddTagsRequestTagsList>;
+
 export interface FirewallsAddTagsRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
   firewall_id: string;
-  tags: unknown;
+  /** An array containing the names of the Tags to be assigned to the firewall. */
+  tags: FirewallsAddTagsRequestTagsList;
 }
 export const FirewallsAddTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewall_id: S.String.pipe(T.Label()),
-    tags: S.Unknown,
+    tags: FirewallsAddTagsRequestTagsList,
   }).pipe(
     T.Http({
       method: "POST",
@@ -305,6 +334,12 @@ export const FirewallsCreateRequestDropletIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FirewallsCreateRequestDropletIdsList>;
 
+/** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
+export type FirewallsCreateRequestTagsList = Array<string>;
+export const FirewallsCreateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FirewallsCreateRequestTagsList>;
+
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type FirewallsCreateRequestInboundRulesItemProtocol =
   | "tcp"
@@ -345,6 +380,14 @@ export const FirewallsCreateRequestInboundRulesItemSourcesKubernetesIdsList =
     S.String,
   ) as any as S.Schema<FirewallsCreateRequestInboundRulesItemSourcesKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsCreateRequestInboundRulesItemSourcesTagsList =
+  Array<string>;
+export const FirewallsCreateRequestInboundRulesItemSourcesTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsCreateRequestInboundRulesItemSourcesTagsList>;
+
 export interface FirewallsCreateRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsCreateRequestInboundRulesItemSourcesAddressesList;
@@ -354,7 +397,8 @@ export interface FirewallsCreateRequestInboundRulesItemSources {
   load_balancer_uids?: FirewallsCreateRequestInboundRulesItemSourcesLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsCreateRequestInboundRulesItemSourcesKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsCreateRequestInboundRulesItemSourcesTagsList | null;
 }
 export const FirewallsCreateRequestInboundRulesItemSources =
   /*@__PURE__*/ S.suspend(() =>
@@ -371,7 +415,9 @@ export const FirewallsCreateRequestInboundRulesItemSources =
       kubernetes_ids: S.optional(
         FirewallsCreateRequestInboundRulesItemSourcesKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsCreateRequestInboundRulesItemSourcesTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsCreateRequestInboundRulesItemSources",
@@ -441,6 +487,14 @@ export const FirewallsCreateRequestOutboundRulesItemDestinationsKubernetesIdsLis
     S.String,
   ) as any as S.Schema<FirewallsCreateRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsCreateRequestOutboundRulesItemDestinationsTagsList =
+  Array<string>;
+export const FirewallsCreateRequestOutboundRulesItemDestinationsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsCreateRequestOutboundRulesItemDestinationsTagsList>;
+
 export interface FirewallsCreateRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsCreateRequestOutboundRulesItemDestinationsAddressesList;
@@ -450,7 +504,8 @@ export interface FirewallsCreateRequestOutboundRulesItemDestinations {
   load_balancer_uids?: FirewallsCreateRequestOutboundRulesItemDestinationsLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsCreateRequestOutboundRulesItemDestinationsKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsCreateRequestOutboundRulesItemDestinationsTagsList | null;
 }
 export const FirewallsCreateRequestOutboundRulesItemDestinations =
   /*@__PURE__*/ S.suspend(() =>
@@ -467,7 +522,9 @@ export const FirewallsCreateRequestOutboundRulesItemDestinations =
       kubernetes_ids: S.optional(
         FirewallsCreateRequestOutboundRulesItemDestinationsKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsCreateRequestOutboundRulesItemDestinationsTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsCreateRequestOutboundRulesItemDestinations",
@@ -502,7 +559,8 @@ export interface FirewallsCreateRequest {
   name: string;
   /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
   droplet_ids?: FirewallsCreateRequestDropletIdsList | null;
-  tags?: unknown;
+  /** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
+  tags?: FirewallsCreateRequestTagsList | null;
   inbound_rules?: FirewallsCreateRequestInboundRulesList | null;
   outbound_rules?: FirewallsCreateRequestOutboundRulesList | null;
 }
@@ -510,7 +568,7 @@ export const FirewallsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     droplet_ids: S.optional(S.NullOr(FirewallsCreateRequestDropletIdsList)),
-    tags: S.optional(S.Unknown),
+    tags: S.optional(S.NullOr(FirewallsCreateRequestTagsList)),
     inbound_rules: S.optional(S.NullOr(FirewallsCreateRequestInboundRulesList)),
     outbound_rules: S.optional(
       S.NullOr(FirewallsCreateRequestOutboundRulesList),
@@ -551,6 +609,12 @@ export const FirewallDropletIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FirewallDropletIdsList>;
 
+/** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
+export type FirewallTagsList = Array<string>;
+export const FirewallTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FirewallTagsList>;
+
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type FirewallInboundRulesItemProtocol = "tcp" | "udp" | "icmp";
 export const FirewallInboundRulesItemProtocol = /*@__PURE__*/ S.String;
@@ -583,6 +647,12 @@ export const FirewallInboundRulesItemSourcesKubernetesIdsList =
     S.String,
   ) as any as S.Schema<FirewallInboundRulesItemSourcesKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallInboundRulesItemSourcesTagsList = Array<string>;
+export const FirewallInboundRulesItemSourcesTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FirewallInboundRulesItemSourcesTagsList>;
+
 export interface FirewallInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallInboundRulesItemSourcesAddressesList;
@@ -592,7 +662,8 @@ export interface FirewallInboundRulesItemSources {
   load_balancer_uids?: FirewallInboundRulesItemSourcesLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallInboundRulesItemSourcesKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallInboundRulesItemSourcesTagsList | null;
 }
 export const FirewallInboundRulesItemSources = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -604,7 +675,7 @@ export const FirewallInboundRulesItemSources = /*@__PURE__*/ S.suspend(() =>
     kubernetes_ids: S.optional(
       FirewallInboundRulesItemSourcesKubernetesIdsList,
     ),
-    tags: S.optional(S.Unknown),
+    tags: S.optional(S.NullOr(FirewallInboundRulesItemSourcesTagsList)),
   }),
 ).annotate({
   identifier: "FirewallInboundRulesItemSources",
@@ -666,6 +737,13 @@ export const FirewallOutboundRulesItemDestinationsKubernetesIdsList =
     S.String,
   ) as any as S.Schema<FirewallOutboundRulesItemDestinationsKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallOutboundRulesItemDestinationsTagsList = Array<string>;
+export const FirewallOutboundRulesItemDestinationsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallOutboundRulesItemDestinationsTagsList>;
+
 export interface FirewallOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallOutboundRulesItemDestinationsAddressesList;
@@ -675,7 +753,8 @@ export interface FirewallOutboundRulesItemDestinations {
   load_balancer_uids?: FirewallOutboundRulesItemDestinationsLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallOutboundRulesItemDestinationsKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallOutboundRulesItemDestinationsTagsList | null;
 }
 export const FirewallOutboundRulesItemDestinations = /*@__PURE__*/ S.suspend(
   () =>
@@ -690,7 +769,7 @@ export const FirewallOutboundRulesItemDestinations = /*@__PURE__*/ S.suspend(
       kubernetes_ids: S.optional(
         FirewallOutboundRulesItemDestinationsKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(S.NullOr(FirewallOutboundRulesItemDestinationsTagsList)),
     }),
 ).annotate({
   identifier: "FirewallOutboundRulesItemDestinations",
@@ -731,7 +810,8 @@ export interface Firewall {
   name: string;
   /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
   droplet_ids?: FirewallDropletIdsList | null;
-  tags?: unknown;
+  /** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
+  tags?: FirewallTagsList | null;
   inbound_rules?: FirewallInboundRulesList | null;
   outbound_rules?: FirewallOutboundRulesList | null;
 }
@@ -743,7 +823,7 @@ export const Firewall = /*@__PURE__*/ S.suspend(() =>
     pending_changes: S.optional(FirewallPendingChangesList),
     name: S.String,
     droplet_ids: S.optional(S.NullOr(FirewallDropletIdsList)),
-    tags: S.optional(S.Unknown),
+    tags: S.optional(S.NullOr(FirewallTagsList)),
     inbound_rules: S.optional(S.NullOr(FirewallInboundRulesList)),
     outbound_rules: S.optional(S.NullOr(FirewallOutboundRulesList)),
   }),
@@ -856,6 +936,14 @@ export const FirewallsDeleteRulesRequestInboundRulesItemSourcesKubernetesIdsList
     S.String,
   ) as any as S.Schema<FirewallsDeleteRulesRequestInboundRulesItemSourcesKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsDeleteRulesRequestInboundRulesItemSourcesTagsList =
+  Array<string>;
+export const FirewallsDeleteRulesRequestInboundRulesItemSourcesTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsDeleteRulesRequestInboundRulesItemSourcesTagsList>;
+
 export interface FirewallsDeleteRulesRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsDeleteRulesRequestInboundRulesItemSourcesAddressesList;
@@ -865,7 +953,8 @@ export interface FirewallsDeleteRulesRequestInboundRulesItemSources {
   load_balancer_uids?: FirewallsDeleteRulesRequestInboundRulesItemSourcesLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsDeleteRulesRequestInboundRulesItemSourcesKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsDeleteRulesRequestInboundRulesItemSourcesTagsList | null;
 }
 export const FirewallsDeleteRulesRequestInboundRulesItemSources =
   /*@__PURE__*/ S.suspend(() =>
@@ -882,7 +971,9 @@ export const FirewallsDeleteRulesRequestInboundRulesItemSources =
       kubernetes_ids: S.optional(
         FirewallsDeleteRulesRequestInboundRulesItemSourcesKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsDeleteRulesRequestInboundRulesItemSourcesTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsDeleteRulesRequestInboundRulesItemSources",
@@ -953,6 +1044,14 @@ export const FirewallsDeleteRulesRequestOutboundRulesItemDestinationsKubernetesI
     S.String,
   ) as any as S.Schema<FirewallsDeleteRulesRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsDeleteRulesRequestOutboundRulesItemDestinationsTagsList =
+  Array<string>;
+export const FirewallsDeleteRulesRequestOutboundRulesItemDestinationsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsDeleteRulesRequestOutboundRulesItemDestinationsTagsList>;
+
 export interface FirewallsDeleteRulesRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsDeleteRulesRequestOutboundRulesItemDestinationsAddressesList;
@@ -962,7 +1061,8 @@ export interface FirewallsDeleteRulesRequestOutboundRulesItemDestinations {
   load_balancer_uids?: FirewallsDeleteRulesRequestOutboundRulesItemDestinationsLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsDeleteRulesRequestOutboundRulesItemDestinationsKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsDeleteRulesRequestOutboundRulesItemDestinationsTagsList | null;
 }
 export const FirewallsDeleteRulesRequestOutboundRulesItemDestinations =
   /*@__PURE__*/ S.suspend(() =>
@@ -979,7 +1079,11 @@ export const FirewallsDeleteRulesRequestOutboundRulesItemDestinations =
       kubernetes_ids: S.optional(
         FirewallsDeleteRulesRequestOutboundRulesItemDestinationsKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(
+          FirewallsDeleteRulesRequestOutboundRulesItemDestinationsTagsList,
+        ),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsDeleteRulesRequestOutboundRulesItemDestinations",
@@ -1045,15 +1149,22 @@ export const FirewallsDeleteRulesResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FirewallsDeleteRulesResponse",
 }) as any as S.Schema<FirewallsDeleteRulesResponse>;
 
+/** An array containing the names of the Tags to be removed from the firewall. */
+export type FirewallsDeleteTagsRequestTagsList = Array<string>;
+export const FirewallsDeleteTagsRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FirewallsDeleteTagsRequestTagsList>;
+
 export interface FirewallsDeleteTagsRequest {
   /** A unique ID that can be used to identify and reference a firewall. */
   firewall_id: string;
-  tags: unknown;
+  /** An array containing the names of the Tags to be removed from the firewall. */
+  tags: FirewallsDeleteTagsRequestTagsList;
 }
 export const FirewallsDeleteTagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     firewall_id: S.String.pipe(T.Label()),
-    tags: S.Unknown,
+    tags: FirewallsDeleteTagsRequestTagsList,
   }).pipe(
     T.Http({
       method: "DELETE",
@@ -1189,6 +1300,12 @@ export const FirewallsUpdateRequestDropletIdsList = /*@__PURE__*/ S.Array(
   S.Number,
 ) as any as S.Schema<FirewallsUpdateRequestDropletIdsList>;
 
+/** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
+export type FirewallsUpdateRequestTagsList = Array<string>;
+export const FirewallsUpdateRequestTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<FirewallsUpdateRequestTagsList>;
+
 /** The type of traffic to be allowed. This may be one of `tcp`, `udp`, or `icmp`. */
 export type FirewallsUpdateRequestInboundRulesItemProtocol =
   | "tcp"
@@ -1229,6 +1346,14 @@ export const FirewallsUpdateRequestInboundRulesItemSourcesKubernetesIdsList =
     S.String,
   ) as any as S.Schema<FirewallsUpdateRequestInboundRulesItemSourcesKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsUpdateRequestInboundRulesItemSourcesTagsList =
+  Array<string>;
+export const FirewallsUpdateRequestInboundRulesItemSourcesTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsUpdateRequestInboundRulesItemSourcesTagsList>;
+
 export interface FirewallsUpdateRequestInboundRulesItemSources {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsUpdateRequestInboundRulesItemSourcesAddressesList;
@@ -1238,7 +1363,8 @@ export interface FirewallsUpdateRequestInboundRulesItemSources {
   load_balancer_uids?: FirewallsUpdateRequestInboundRulesItemSourcesLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsUpdateRequestInboundRulesItemSourcesKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsUpdateRequestInboundRulesItemSourcesTagsList | null;
 }
 export const FirewallsUpdateRequestInboundRulesItemSources =
   /*@__PURE__*/ S.suspend(() =>
@@ -1255,7 +1381,9 @@ export const FirewallsUpdateRequestInboundRulesItemSources =
       kubernetes_ids: S.optional(
         FirewallsUpdateRequestInboundRulesItemSourcesKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsUpdateRequestInboundRulesItemSourcesTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsUpdateRequestInboundRulesItemSources",
@@ -1325,6 +1453,14 @@ export const FirewallsUpdateRequestOutboundRulesItemDestinationsKubernetesIdsLis
     S.String,
   ) as any as S.Schema<FirewallsUpdateRequestOutboundRulesItemDestinationsKubernetesIdsList>;
 
+/** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+export type FirewallsUpdateRequestOutboundRulesItemDestinationsTagsList =
+  Array<string>;
+export const FirewallsUpdateRequestOutboundRulesItemDestinationsTagsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<FirewallsUpdateRequestOutboundRulesItemDestinationsTagsList>;
+
 export interface FirewallsUpdateRequestOutboundRulesItemDestinations {
   /** An array of strings containing the IPv4 addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the firewall will allow traffic. */
   addresses?: FirewallsUpdateRequestOutboundRulesItemDestinationsAddressesList;
@@ -1334,7 +1470,8 @@ export interface FirewallsUpdateRequestOutboundRulesItemDestinations {
   load_balancer_uids?: FirewallsUpdateRequestOutboundRulesItemDestinationsLoadBalancerUidsList;
   /** An array containing the IDs of the Kubernetes clusters to which the firewall will allow traffic. */
   kubernetes_ids?: FirewallsUpdateRequestOutboundRulesItemDestinationsKubernetesIdsList;
-  tags?: unknown;
+  /** An array containing the names of Tags corresponding to groups of Droplets to which the firewall will allow traffic. */
+  tags?: FirewallsUpdateRequestOutboundRulesItemDestinationsTagsList | null;
 }
 export const FirewallsUpdateRequestOutboundRulesItemDestinations =
   /*@__PURE__*/ S.suspend(() =>
@@ -1351,7 +1488,9 @@ export const FirewallsUpdateRequestOutboundRulesItemDestinations =
       kubernetes_ids: S.optional(
         FirewallsUpdateRequestOutboundRulesItemDestinationsKubernetesIdsList,
       ),
-      tags: S.optional(S.Unknown),
+      tags: S.optional(
+        S.NullOr(FirewallsUpdateRequestOutboundRulesItemDestinationsTagsList),
+      ),
     }),
   ).annotate({
     identifier: "FirewallsUpdateRequestOutboundRulesItemDestinations",
@@ -1388,7 +1527,8 @@ export interface FirewallsUpdateRequest {
   name: string;
   /** An array containing the IDs of the Droplets assigned to the firewall. <br><br>Requires `droplet:read` scope. */
   droplet_ids?: FirewallsUpdateRequestDropletIdsList | null;
-  tags?: unknown;
+  /** An array containing the names of the Tags assigned to the firewall. <br><br>Requires `tag:read` scope. */
+  tags?: FirewallsUpdateRequestTagsList | null;
   inbound_rules?: FirewallsUpdateRequestInboundRulesList | null;
   outbound_rules?: FirewallsUpdateRequestOutboundRulesList | null;
 }
@@ -1397,7 +1537,7 @@ export const FirewallsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     firewall_id: S.String.pipe(T.Label()),
     name: S.String,
     droplet_ids: S.optional(S.NullOr(FirewallsUpdateRequestDropletIdsList)),
-    tags: S.optional(S.Unknown),
+    tags: S.optional(S.NullOr(FirewallsUpdateRequestTagsList)),
     inbound_rules: S.optional(S.NullOr(FirewallsUpdateRequestInboundRulesList)),
     outbound_rules: S.optional(
       S.NullOr(FirewallsUpdateRequestOutboundRulesList),
