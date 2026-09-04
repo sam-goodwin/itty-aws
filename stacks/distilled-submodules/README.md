@@ -74,8 +74,9 @@ Shared files live in [`scaffold/`](./scaffold); per-repository files live in
 no two upstreams publish their specs the same way. The existing ones are a
 plain URL fetch (`planetscale`, `neon`, `supabase`, …), a GraphQL
 introspection (`railway`), a discovery-directory crawl (`gcp`), a raw file
-download (`github`, `kubernetes`, `stripe`, `turso`, …), and a sparse partial
-clone (`aws`, `azure`).
+download (`github`, `kubernetes`, `stripe`, `turso`, …), a sparse partial
+clone (`aws`, `azure`), and a docs-site markdown crawl (`cloudflare`,
+`whop`).
 
 `spec-repos/` is outside this stack's TypeScript program on purpose: those
 files are shipped verbatim into the mirrors, where they run under Bun against
@@ -145,17 +146,10 @@ repositories, settings, topics), **Contents: Read and write** (commit the
 scaffold) and **Workflows: Read and write** (the scaffold includes
 `.github/workflows/update-specs.yml`). No organization permissions are needed.
 
-## Known gap: cloudflare
+## Cloudflare
 
-`spec-mirror-cloudflare` exists but has no fetch machinery. The
-`@distilled.cloud/cloudflare` generator reads markdown from
-`developers.cloudflare.com`, which migrated to Astro/Starlight and now returns
-the **full HTML page** at every `<page>/index.md` URL — including the ones its
-own `/api/llms.txt` still advertises as markdown. A crawl today yields 7.2 GB
-of HTML instead of ~16 MB of markdown.
-
-`packages/cloudflare/scripts/download-api-docs.ts` has the same problem, so the
-in-repo `packages/cloudflare/specs` is a stale snapshot. The likely fix is to
-move the generator onto
-[`cloudflare/api-schemas`](https://github.com/cloudflare/api-schemas), which
-publishes a real 24 MB `openapi.json` — a generator change, tracked separately.
+`spec-mirror-cloudflare` snapshots the per-method markdown pages at
+`developers.cloudflare.com/api/resources/**/methods/**` (`<page>/index.md`).
+Resource index pages still return HTML, so the fetch script skips them.
+`packages/cloudflare/scripts/spec-to-smithy.ts` reads the Starlight dialect
+those method pages use.
