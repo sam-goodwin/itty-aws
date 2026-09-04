@@ -18,6 +18,8 @@
     { "path": "./packages/expo-eas/tsconfig.scripts.json" },
     { "path": "./packages/fly-io/tsconfig.json" },
     { "path": "./packages/fly-io/tsconfig.scripts.json" },
+    { "path": "./packages/forgejo/tsconfig.json" },
+    { "path": "./packages/forgejo/tsconfig.scripts.json" },
     { "path": "./packages/gcp/tsconfig.json" },
     { "path": "./packages/gcp/tsconfig.scripts.json" },
     { "path": "./packages/github/tsconfig.json" },
