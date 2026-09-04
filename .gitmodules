@@ -128,3 +128,8 @@
 	url = https://github.com/distilled-mirror/spec-mirror-modal.git
 	ignore = dirty
 	shallow = true
+[submodule "packages/coolify/specs/spec-mirror-coolify"]
+	path = packages/coolify/specs/spec-mirror-coolify
+	url = https://github.com/distilled-mirror/spec-mirror-coolify.git
+	ignore = dirty
+	shallow = true
